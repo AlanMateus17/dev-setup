@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ecossistema AMtech</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,600&display=swap">
+<style>
+/* Layout: diagrama em faixas (topo = público e vendas, base = hardware); toque em um bloco destaca as conexões; abaixo, painel do bloco, fluxos prontos, contas a criar e lista por camada. Paleta do Aura Design System. */
+:root{
+  --bg:#F7F5F0; --surface:#FFFFFF; --ink:#13262B; --muted:#5B6B6E; --line:#DCD8CE;
+  --aura:#0E3A45; --gold:#C08A3E; --local:#E2ECEC; --local-s:#7EA3A8; --remote:#F3E7D3; --remote-s:#C9A46B;
+  --hw:#ECEAE4; --hw-s:#A8A69E; --band:#EFEDE6; --band2:#F7F5F0; --edge:#0E3A45; --hot:#C08A3E;
+  --display:"Fraunces",Georgia,serif; --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0B1A1E; --surface:#112429; --ink:#E9EEEC; --muted:#9AAEB0; --line:#24414A;
+  --aura:#7FC4C9; --gold:#D9A85E; --local:#163238; --local-s:#3F6D74; --remote:#33281A; --remote-s:#8A6A3A;
+  --hw:#1E2E32; --hw-s:#4C5E62; --band:#0F2126; --band2:#0B1A1E; --edge:#7FC4C9; --hot:#D9A85E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B1A1E; --surface:#112429; --ink:#E9EEEC; --muted:#9AAEB0; --line:#24414A;
+  --aura:#7FC4C9; --gold:#D9A85E; --local:#163238; --local-s:#3F6D74; --remote:#33281A; --remote-s:#8A6A3A;
+  --hw:#1E2E32; --hw-s:#4C5E62; --band:#0F2126; --band2:#0B1A1E; --edge:#7FC4C9; --hot:#D9A85E; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px}
+.wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(28px,6vw,40px);line-height:1.1;margin:0;color:var(--aura);text-wrap:balance}
+h2{font-family:var(--display);font-weight:600;font-size:23px;margin:0 0 6px;color:var(--aura);text-wrap:balance}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.lede{color:var(--muted);max-width:66ch;margin:8px 0 0}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--muted);align-items:center}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.sw{width:16px;height:12px;border-radius:3px;display:inline-block;border:1px solid}
+.sw.l{background:var(--local);border-color:var(--local-s)} .sw.r{background:var(--remote);border-color:var(--remote-s)} .sw.h{background:var(--hw);border-color:var(--hw-s)}
+.sw.f{background:transparent;border:1.5px dashed var(--muted)}
+.key{width:9px;height:9px;border-radius:50%;background:var(--gold);display:inline-block}
+.bar{display:flex;flex-wrap:wrap;gap:8px}
+.bar button{font:500 13px var(--sans);padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.bar button[aria-pressed="true"]{background:var(--aura);border-color:var(--aura);color:var(--bg)}
+.bar button:focus-visible,.nd:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.canvas{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--band2);-webkit-overflow-scrolling:touch}
+.canvas svg{display:block;width:1000px;max-width:none;height:auto}
+.canvas.fit svg{width:100%}
+.hint{font-size:13px;color:var(--muted);margin:0}
+svg text{font-family:var(--sans)}
+.bandbg{fill:var(--band)} .bandtitle{font:600 13px var(--sans);fill:var(--aura)} .bandnum{font:500 12px var(--mono);fill:var(--gold)}
+.strip{font:400 12px var(--sans);fill:var(--muted)} .stripline{stroke:var(--gold);stroke-dasharray:4 4;stroke-width:1}
+.nd{cursor:pointer}
+.nd rect.b{stroke-width:1}
+.nd.local rect.b{fill:var(--local);stroke:var(--local-s)} .nd.remote rect.b{fill:var(--remote);stroke:var(--remote-s)} .nd.hw rect.b{fill:var(--hw);stroke:var(--hw-s)}
+.nd.fut rect.b{stroke-dasharray:4 3}
+.nd text{font:500 12px var(--sans);fill:var(--ink)}
+.nd circle.k{fill:var(--gold)}
+.edges path{fill:none;stroke:var(--edge);stroke-width:1;opacity:.13}
+.edges.off path{opacity:0}
+svg.sel .nd{opacity:.28} svg.sel .nd.on{opacity:1} svg.sel .nd.me rect.b{stroke:var(--hot);stroke-width:2.5}
+svg.sel .edges path{opacity:.04} svg.sel .edges path.on{opacity:.95;stroke:var(--hot);stroke-width:1.8}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:120px}
+.panel h3{margin:0;font-size:18px;font-weight:600}
+.panel .meta{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font:500 11px var(--mono);padding:2px 8px;border-radius:4px;background:var(--local);color:var(--ink);letter-spacing:.03em}
+.tag.r{background:var(--remote)} .tag.k{background:var(--gold);color:var(--bg)}
+.panel p{margin:0;max-width:70ch}
+.conn{display:flex;flex-direction:column;gap:4px;margin:0;padding:0;list-style:none}
+.conn li{display:flex;gap:8px;align-items:baseline;font-size:14px}
+.conn button{font:500 14px var(--sans);background:none;border:0;padding:0;color:var(--aura);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.conn .dir{font:500 12px var(--mono);color:var(--gold);flex:none;width:18px}
+.conn .lab{color:var(--muted)}
+.steps{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:4px;font-size:14px}
+.steps li::marker{font-family:var(--mono);color:var(--gold)}
+.acc{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.card h3{margin:0 0 8px;font-size:15px;font-weight:600}
+.card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.card li{font-size:14px;display:flex;flex-direction:column}
+.card li b{font-weight:500}
+.card li span{color:var(--muted);font-size:13px}
+.note{border-left:3px solid var(--gold);padding:10px 14px;background:var(--surface);font-size:14px;max-width:72ch;border-radius:0}
+details.ly{background:var(--surface);border:1px solid var(--line);border-radius:10px}
+details.ly + details.ly{margin-top:8px}
+details.ly summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;display:flex;gap:10px}
+details.ly summary::-webkit-details-marker{display:none}
+details.ly summary .bandnum{font:500 12px var(--mono);color:var(--gold)}
+details.ly ul{margin:0;padding:0 14px 12px 36px;font-size:14px;display:flex;flex-direction:column;gap:4px}
+details.ly li span{color:var(--muted)}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Grupo AMtech Digital · do hardware à venda · out/2026</div>
+    <h1>Ecossistema AMtech</h1>
+    <p class="lede">Todas as camadas do seu setup em um desenho só: o notebook, as ferramentas locais, a nuvem, os sites, a criação de conteúdo e a venda dos infoprodutos. Toque em qualquer bloco para ver com o que ele se conecta, ou escolha um fluxo pronto.</p>
+    <p class="lede"><a href="mapa.html" style="color:var(--aura)">Ver a ordem de estudo, as nuvens e os dados de mercado →</a></p>
+  </header>
+
+  <section style="display:flex;flex-direction:column;gap:12px">
+    <div class="legend">
+      <span><i class="sw l"></i>Local (no notebook)</span>
+      <span><i class="sw r"></i>Remoto (nuvem ou serviço)</span>
+      <span><i class="sw h"></i>Hardware</span>
+      <span><i class="sw f"></i>Futuro</span>
+      <span><i class="key"></i>Precisa de conta</span>
+    </div>
+    <div class="bar" role="group" aria-label="Fluxos prontos">
+      <button id="fx-none" data-flow="" aria-pressed="true">Todas as conexões</button>
+      <button id="fx-venda" data-flow="venda" aria-pressed="false">Vender o mini-curso</button>
+      <button id="fx-dev" data-flow="dev" aria-pressed="false">Codar com agente e publicar</button>
+      <button id="fx-vaga" data-flow="vaga" aria-pressed="false">Conseguir a vaga de dev</button>
+      <button id="fx-livro" data-flow="livro" aria-pressed="false">Do livro ao leitor</button>
+      <button id="fx-estudo" data-flow="estudo" aria-pressed="false">Estudar com IA</button>
+      <button id="fx-lab" data-flow="lab" aria-pressed="false">Laboratório de segurança</button>
+      <button id="fx-free" data-flow="free" aria-pressed="false">Site para um cliente</button>
+    </div>
+    <div class="bar">
+      <button id="fitbtn" aria-pressed="false">Ver o desenho inteiro na tela</button>
+    </div>
+    <p class="hint">No celular, arraste o desenho para os lados. "Ver inteiro" encolhe tudo para caber na tela.</p>
+    <div class="canvas" id="canvas"><svg id="svg" viewBox="0 0 1000 100" role="img" aria-label="Diagrama das camadas do ecossistema AMtech"></svg></div>
+    <div class="panel" id="panel" aria-live="polite"></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Auditoria · 20/out/2026</div>
+    <h2>O que faltava no setup</h2>
+    <p class="lede" style="margin-bottom:12px">Comparei o setup com o que um dev .NET pleno, um criador de cursos e uma pequena empresa de software precisam ter. Os itens novos já estão no desenho; aqui eles aparecem por urgência.</p>
+    <div class="acc" id="gaps"></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Contas e conexões</div>
+    <h2>Contas que você precisa ter</h2>
+    <p class="note">Crie as contas da empresa com um e-mail do seu domínio (ex.: contato@…), não com o Gmail pessoal. Isso facilita passar para o CNPJ, separar pessoal de empresa e trocar de ferramenta depois. Toda conta com 2FA no app autenticador do celular, senha no KeePassXC e códigos de recuperação impressos.</p>
+    <div class="acc" id="acc" style="margin-top:12px"></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Lista</div>
+    <h2>Tudo por camada</h2>
+    <p class="hint" style="margin-bottom:10px">A mesma informação do desenho, em texto, para ler com calma no celular.</p>
+    <div id="list"></div>
+  </section>
+</div>
+
+<script>
+const LAYERS=[
+ ["pub","Público e canais","Link na bio, vídeo, post, busca e indicação levam a pessoa até o site ou o WhatsApp."],
+ ["venda","Plataformas de venda e recebimento","Cada venda é lançada no carnê-leão e o dinheiro cai na sua conta separada."],
+ ["emp","Pessoa física: impostos e finanças","Tudo no seu CPF por enquanto; o CNPJ entra quando a renda justificar."],
+ ["web","Vitrine web (sites e domínio)","Os sites mostram e vendem os produtos e o seu portfólio."],
+ ["prod","Produtos (o que você vende)","Cada produto nasce do conteúdo gravado, escrito ou programado."],
+ ["est","Estudo e carreira","O que você estuda vira produto, aula, post e linha no currículo."],
+ ["cont","Produção de conteúdo","Gravação e edição rodam no notebook; os arquivos finais sobem para as plataformas."],
+ ["nuvem","Nuvem, código e entrega","git push via SSH leva o código ao GitHub; o Actions testa e publica."],
+ ["app","Aplicação: sistemas AM (Aura)","A API envia logs, métricas e traces pelo OpenTelemetry."],
+ ["obs","Observabilidade","Coletor, Prometheus e Grafana rodam como containers."],
+ ["cnt","Containers, Kubernetes e infra como código","A CLI docker e o kubectl no Ubuntu falam com a engine do Docker no WSL2."],
+ ["clc","Claude: recursos, conectores e plugins","Os conectores dão ao Claude acesso às suas contas, com permissão que você aprova; os plugins trazem rotinas prontas."],
+ ["chat","Assistentes de IA (chat, pesquisa e estudo)","O que é código vai para o agente; o que é pesquisa e estudo fica nos assistentes e termina salvo no vault."],
+ ["ia","Agentes de IA e sandbox","O agente roda dentro do ai-jail e só enxerga ~/dev/<projeto>."],
+ ["lin","Linux (Ubuntu no WSL2, Arch no 2º disco)","O código fica no ext4 do Linux; o Windows enxerga pela ponte do WSL2."],
+ ["win","Windows 11, apps e máquinas virtuais","O Windows depende de TPM, BitLocker e Defender para ficar protegido."],
+ ["seg","Segurança e cofre","Drivers AMD e NVIDIA ligam o sistema ao hardware."],
+ ["hw","Hardware",""]
+];
+/* id, camada, rótulo do bloco (| quebra linha), tipo l/r/h, conta 1/0, futuro 1/0, descrição */
+const N=[
+ ["mbs","pub","Meta Business Suite","r",1,0,"Agenda posts e reels do Instagram com antecedência e mostra as métricas. Grátis."],
+ ["ig","pub","Instagram","r",1,0,"Canal principal de venda: posts, reels e link na bio para o Instituto AMS."],
+ ["yt","pub","YouTube","r",1,0,"Aulas e vídeos de vendas. Gera público para os cursos e para o livro."],
+ ["li","pub","LinkedIn","r",1,0,"Vitrine para a vaga de dev: projetos, posts técnicos e certificações."],
+ ["wa","pub","WhatsApp Business","r",1,0,"Atendimento de alunos particulares e clientes de sites."],
+ ["seo","pub","Busca Google (SEO)","r",0,0,"Pessoas chegando ao blog e aos sites pelos artigos."],
+ ["alunos","pub","Alunos e ex-alunos","h",0,0,"Seu público inicial: alunos do EMTI, ex-alunos e contatos."],
+ ["recr","pub","Recrutadores","h",0,0,"Quem decide a vaga de dev. Olham GitHub, LinkedIn e o site."],
+
+ ["pixa","venda","Pix Automático +|gateway (ex.: Asaas)","r",1,1,"Cobrança recorrente dos sistemas AM por Pix, sem cartão. Lançado pelo Banco Central em 2025. Entra quando o primeiro SaaS tiver cliente."],
+ ["agenda","venda","Agenda online|(Cal.com)","r",1,0,"Aluno particular escolhe horário sozinho e já paga. Open source, com plano grátis."],
+ ["comu","venda","Comunidade|(Discord ou grupo)","r",1,0,"Alunos do curso juntos: tira-dúvidas, retenção e indicação."],
+ ["ads","venda","Anúncios (Meta Ads)","r",1,1,"Só depois que o produto vender organicamente; antes disso é dinheiro jogado fora."],
+ ["crm","venda","CRM simples|(planilha)","l",0,0,"Lista de alunos, clientes e propostas. Uma planilha resolve até dezenas de clientes."],
+ ["hotm","venda","Hotmart","r",1,0,"Checkout, área de membros e afiliados para cursos e PDFs. Aceita vender no CPF. Melhor quando você mesmo leva o público."],
+ ["kiwi","venda","Kiwify","r",1,0,"Mesma função da Hotmart, com painel mais simples. Aceita vender no CPF."],
+ ["eduzz","venda","Eduzz","r",1,0,"Outra plataforma brasileira de infoprodutos, com programa de afiliados próprio."],
+ ["udemy","venda","Udemy","r",1,0,"Marketplace mundial: ela traz alunos que você não alcançaria. Ganha bem menos por venda orgânica do que pelo seu cupom. Recebe por PayPal ou Payoneer e pede um formulário fiscal dos EUA."],
+ ["dio","venda","DIO (parceria)","r",1,0,"Não é marketplace aberto como a Udemy. Os experts trabalham em parceria com a DIO; o caminho é publicar artigos e projetos lá e se candidatar ou ser convidado."],
+ ["ytm","venda","YouTube (membros)","r",1,1,"Assinatura mensal do canal, quando houver público."],
+ ["mp","venda","Mercado Pago","r",1,0,"Pix e cartão para aulas particulares e serviços de sites."],
+ ["mailer","venda","MailerLite","r",1,0,"Newsletter do blog com grupos por tema e funil de lançamento. Você já escolheu o plano grátis."],
+ ["afil","venda","Afiliados|(Amazon, Hotmart…)","r",1,0,"Links de produtos de terceiros no blog e nos vídeos."],
+
+ ["inpi","emp","Registro de marca|(INPI)","r",1,0,"Proteger AMtech, Instituto AMS e os nomes AM antes de investir na marca. Pode ser pedido no seu CPF; confira no INPI o desconto disponível para pessoa física."],
+ ["legal","emp","Termos, privacidade|(LGPD) e contratos","l",0,0,"Termos de uso, política de privacidade nos sites e contrato padrão de serviço. Obrigatório antes de coletar e-mail ou vender."],
+ ["ecnpj","emp","Certificado digital|(e-CNPJ)","r",1,1,"Só quando houver CNPJ: emissão de nota por API e assinatura de documentos da empresa."],
+ ["nfapi","emp","API de NFS-e|(ex.: Focus NFe)","r",1,1,"Só quando houver CNPJ. Implementa o seu IEmissorFiscal: os sistemas AM emitem nota sozinhos."],
+ ["cnpj","emp","CNPJ (futuro)","r",1,1,"Ainda não. Quando a renda crescer, MEI ou SLU. Até lá, tudo no seu CPF."],
+ ["govbr","emp","gov.br|(prata ou ouro)","r",1,0,"Acesso ao carnê-leão online e à declaração do Imposto de Renda."],
+ ["nfse","emp","Carnê-leão|(Receita Federal)","r",1,0,"Todo mês você lança o que recebeu de compradores (Hotmart, Kiwify, aulas, sites) e do exterior (Udemy) e paga o DARF até o último dia útil do mês seguinte."],
+ ["irpf","emp","Declaração anual|do IR","r",1,0,"Os valores lançados no carnê-leão entram sozinhos na declaração."],
+ ["banco","emp","Conta bancária|separada (CPF)","r",1,0,"Uma conta só para receber vendas e serviços, separada do salário. Facilita o carnê-leão e a futura passagem para CNPJ."],
+ ["conta","emp","Contador","h",0,0,"Uma consulta para montar o carnê-leão do jeito certo e dizer a partir de que renda vale abrir CNPJ."],
+ ["caixa","emp","Caixa da Casa /|AM Rendara","l",0,0,"Controle financeiro pessoal e da empresa (seu sistema)."],
+
+ ["mail","web","E-mail profissional|(enviar e receber)","r",1,0,"contato@seu-dominio. O roteamento da Cloudflare só recebe; para enviar, é preciso um provedor de e-mail."],
+ ["dom","web","Domínio|(Registro.br)","r",1,0,"Seu domínio .com.br, registrado no seu CPF. Os nameservers apontam para a Cloudflare."],
+ ["site","web","Site pessoal + blog|(Jekyll)","r",0,0,"alanmateus17.github.io: portfólio, blog e newsletter."],
+ ["inst","web","Instituto AMS","r",0,0,"Site dos cursos: páginas de venda que levam ao checkout."],
+ ["amsite","web","Site Grupo AMtech","r",0,0,"Site institucional da empresa: serviços, sistemas AM e contato."],
+ ["catal","web","Catálogo do HTML","r",0,0,"Site didático para os alunos publicarem os próprios sites."],
+ ["umami","web","Umami (analytics)","r",0,0,"Estatística de visitas sem cookies invasivos. Open source."],
+ ["gsc","web","Google Search|Console","r",1,0,"Mostra como o Google indexa os sites e quais buscas trazem visitas."],
+ ["hostg","web","Hostinger|(clientes WP)","r",1,0,"Hospedagem WordPress que você já tem; serve para sites de clientes."],
+
+ ["curso","prod","Mini-curso Lógica|de Programação","l",0,0,"Primeiro produto de lançamento, para validar antes de construir mais."],
+ ["form","prod","Formações (TI,|Matemática, Finanças)","l",0,1,"Cursos completos, depois que o mini-curso vender."],
+ ["tmpl","prod","Templates e|código-fonte","l",0,0,"Frontends prontos e projetos vendidos como download."],
+ ["livro","prod","Livro Lógica|e Máquina","l",0,0,"PDF primeiro; impresso depois."],
+ ["aulas","prod","Aulas particulares","h",0,0,"Seus estudos viram aula paga."],
+ ["sites","prod","Sites para|pequenas empresas","l",0,0,"Freelance em Barbacena: sites e lojas."],
+ ["saas","prod","Sistemas AM|(SaaS)","r",0,1,"AM Kaixara, AM Rendara e os demais, vendidos por assinatura."],
+
+ ["learn","est","Microsoft Learn +|AWS Skill Builder","r",1,0,"Trilhas oficiais e gratuitas para AZ-900, AZ-204 e AWS."],
+ ["thm","est","TryHackMe /|Hack The Box","r",1,0,"Laboratórios guiados de segurança para Security+, eJPT e OSCP."],
+ ["plat","est","Alura · Rocketseat ·|DIO · Udemy","r",1,0,"Contas de aluno. A licença é para você assistir e estudar; baixar, copiar ou extrair as aulas para alimentar IA não é permitido. O que vai para a IA são as suas anotações e os seus projetos."],
+ ["anki","est","Anki","l",0,0,"Repetição espaçada para comandos, conceitos, certificações e concurso. Open source."],
+ ["road","est","roadmap.sh + Akita","r",0,0,"Roteiros de estudo e referência da trilha Linux."],
+ ["ghed","est","GitHub Education","r",1,0,"Pacote para professores: Copilot Pro e outros benefícios. Peça a verificação."],
+ ["obss","cont","OBS Studio","l",0,0,"Grava tela, câmera e áudio das aulas e vídeos."],
+ ["edit","cont","DaVinci Resolve|ou Kdenlive","l",0,0,"Edição de vídeo. Os dois têm versão grátis."],
+ ["aud","cont","Audacity","l",0,0,"Limpa ruído e ajusta o áudio."],
+ ["img","cont","Canva · Krita ·|Inkscape","l",1,0,"Capas, posts e thumbnails. Canva precisa de conta; Krita e Inkscape são open source."],
+ ["whis","cont","Whisper (local)","l",0,0,"Transcreve as aulas para legenda, artigo e capítulo."],
+ ["voz","cont","Clonagem de voz","r",1,1,"Você quer usar. Avalie a ferramenta e os termos de uso antes; deixe claro ao público quando a voz for gerada."],
+
+ ["blob","nuvem","Armazenamento de|arquivos (Blob/R2)","r",1,0,"Fotos de produtos, anexos e PDFs dos sistemas AM fora do banco de dados."],
+ ["tmail","nuvem","E-mail transacional|(Resend, SES…)","r",1,0,"E-mails automáticos dos sistemas: confirmação de conta, senha, recibo."],
+ ["sonar","nuvem","SonarQube Cloud","r",1,0,"Nota de qualidade e segurança do código a cada PR. Grátis para repositório público; recrutador vê o selo."],
+ ["ghproj","nuvem","Projects · ADRs ·|MkDocs","r",0,0,"GitHub Projects espelhando o EPIC-01, decisões de arquitetura registradas e documentação publicada no Pages."],
+ ["dbot","nuvem","Dependabot +|CodeQL","r",0,0,"Dependabot atualiza pacotes vulneráveis; CodeQL procura falhas no seu código. Grátis em repositório público."],
+ ["gcp","nuvem","Google Cloud","r",1,1,"Terceira nuvem: só o básico, quando um projeto de IA ou dados pedir."],
+ ["gh","nuvem","GitHub","r",1,0,"Código, vault, ensino-ti e a org grupo-amtech-digital. É também o seu portfólio."],
+ ["gha","nuvem","GitHub Actions","r",0,0,"CI/CD: build, testes, segurança e deploy."],
+ ["ghcr","nuvem","GHCR (imagens)","r",0,0,"Registro das imagens Docker das APIs."],
+ ["ghp","nuvem","GitHub Pages","r",0,0,"Hospeda site pessoal, blog e Catálogo do HTML."],
+ ["cf","nuvem","Cloudflare|(DNS, Pages, e-mail)","r",1,0,"DNS, HTTPS, proteção, hospedagem estática dos sites comerciais e redirecionamento de e-mail do domínio."],
+ ["vercel","nuvem","Vercel","r",1,0,"Frontends Next.js. O plano grátis é para uso pessoal e não comercial; confira os termos antes de pôr venda nele."],
+ ["azure","nuvem","Azure","r",1,0,"Primeira nuvem para as APIs AM: App Service/Container Apps, PostgreSQL, Key Vault."],
+ ["aws","nuvem","AWS","r",1,1,"Segunda nuvem, para o mercado maior."],
+ ["anth","nuvem","Claude (assinatura|e API)","r",1,0,"Assinatura usada pelo app e pelo Claude Code; API para as funções de IA dos sistemas."],
+
+ ["oapi","app","OpenAPI + Scalar","l",0,0,"Documentação interativa da API. No .NET 9 em diante, o Swagger saiu do modelo padrão e o Scalar é a escolha comum."],
+ ["gis","app","PostGIS + MapLibre","l",0,1,"Mapas e geolocalização do AM Rotara. Lacuna já identificada nos cursos da Alura e da Rocketseat."],
+ ["story","app","Storybook","l",0,0,"Vitrine dos componentes do aura-frontend-kit; vira demo pública e produto (template)."],
+ ["clean","app","Clean Arch + DDD","l",0,0,"Domain, Application, Infrastructure e Api. O domínio não conhece banco nem web."],
+ ["ef","app","EF Core + Npgsql","l",0,0,"ORM do .NET para PostgreSQL, com migrations versionadas."],
+ ["sig","app","SignalR","l",0,0,"Tempo real: pedido mudou de status no AM Rotara, venda nova no AM Kaixara."],
+ ["rls","app","Multi-tenant (RLS)","l",0,0,"tenant_id + Row-Level Security: cada cliente só vê os próprios dados, garantido pelo banco."],
+ ["tests","app","Testes: xUnit,|Playwright, k6","l",0,0,"Unidade, integração com banco real, testes de tela no navegador e teste de carga."],
+ ["shared","app","Serviços aura- (10)","l",0,1,"aura-copilot, aura-historico (Clojure/Datomic), aura-analytics (Python/FastAPI) e os demais. Só nascem quando um sistema precisar."],
+ ["front","app","Next.js +|Aura Design System","l",0,0,"Telas dos sistemas e, no futuro, dos sites próprios."],
+ ["api","app","API ASP.NET Core","l",0,0,"Regras de negócio dos sistemas AM."],
+ ["auth","app","Keycloak /|Entra ID","l",0,0,"Login e permissões (OAuth2/OIDC)."],
+ ["ai","app","IA: RAG + pgvector","l",0,1,"Busca e assistente dentro dos sistemas (AM Projeta, aura-copilot)."],
+ ["lic","app","aura-licensing","l",0,1,"Cobrança por módulo dos sistemas AM."],
+ ["status","app","aura-status","l",0,0,"Seu painel de repos, backup e Dependabot."],
+
+ ["sentry","obs","Sentry (erros)","r",1,0,"Avisa quando um erro acontece em produção, com o ponto exato no código. Plano grátis para um dev."],
+ ["kuma","obs","Uptime Kuma","l",0,0,"Verifica a cada minuto se os sites e APIs estão no ar e avisa no celular. Open source."],
+ ["seq","obs","Seq (logs)","l",0,0,"Visualizador de logs simples para começar, antes da stack Grafana."],
+ ["loki","obs","Loki + Tempo","l",0,1,"Logs e rastreamento de requisições entre serviços, consultados no Grafana."],
+ ["otel","obs","OpenTelemetry","l",0,0,"Coleta logs, métricas e traces da API."],
+ ["prom","obs","Prometheus","l",0,0,"Guarda as métricas."],
+ ["graf","obs","Grafana","l",0,0,"Painéis e alertas."],
+ ["aspire","obs",".NET Aspire","l",0,0,"Sobe o sistema inteiro no dev com painel próprio."],
+
+ ["caddy","cnt","Caddy (proxy + HTTPS)","l",0,0,"Fica na frente das APIs e emite o certificado HTTPS sozinho. Usado no servidor e no homelab."],
+ ["mailp","cnt","Mailpit","l",0,0,"Caixa de e-mail falsa para testar os e-mails dos sistemas sem enviar nada de verdade."],
+ ["kafka","cnt","Kafka","l",0,1,"Mensageria padrão em empresa grande. Depois do RabbitMQ."],
+ ["k8st","cnt","kubectl · Helm · k9s","l",0,1,"Ferramentas para operar o Kubernetes: comandos, pacotes e painel no terminal."],
+ ["clis","cnt","Azure CLI · AWS CLI","l",0,0,"Linha de comando das nuvens; usadas pelo Terraform."],
+ ["datomic","cnt","Datomic local","l",0,1,"Só quando o aura-historico existir (desvio intencional da stack)."],
+ ["docker","cnt","Docker + Compose","l",0,0,"Engine no WSL2; um compose por sistema."],
+ ["pg","cnt","PostgreSQL","l",0,0,"Banco de todos os sistemas (com pgvector para IA)."],
+ ["redis","cnt","Redis","l",0,0,"Cache e backplane do SignalR."],
+ ["rmq","cnt","RabbitMQ","l",0,1,"Fila de eventos entre sistemas."],
+ ["kind","cnt","Kubernetes local|(kind)","l",0,1,"Treino de Kubernetes sem pagar nuvem."],
+ ["tf","cnt","Terraform","l",0,0,"Cria Azure, AWS e Cloudflare por código."],
+ ["n8n","cnt","n8n","l",0,1,"Automação: novo aluno → e-mail, post agendado, aviso."],
+
+ ["proj","clc","Projects + memória","r",1,0,"Um Project por frente (Aura, aulas, livro, infoprodutos) com arquivos e instruções fixas. A memória lembra o contexto entre conversas."],
+ ["arts","clc","Artifacts (Docs,|Slides, Sheets…)","r",1,0,"Documentos, apresentações, planilhas e designs editáveis e compartilháveis. O Caixa da Casa e este diagrama são artifacts."],
+ ["resq","clc","Pesquisa aprofundada","r",1,0,"Relatório com dezenas de fontes: mercado de cursos, concorrentes, editais."],
+ ["sched","clc","Tarefas agendadas","r",1,0,"O Claude executa sozinho em horário marcado: resumo semanal dos repositórios, rascunho de post, revisão do plano de estudos."],
+ ["cchr","clc","Claude in Chrome +|uso do computador","r",1,0,"O Claude opera o navegador e os apps do Windows por você, pedindo aprovação nas ações sensíveis."],
+ ["cgws","clc","Conector Google|(Gmail, Drive…)","r",1,0,"Já conectado. Lê e organiza e-mail, agenda de aulas, arquivos do Drive, Docs, Sheets e Slides."],
+ ["ccan","clc","Conectores Canva|+ Figma","r",1,0,"Já conectados. Canva para posts e capas; Figma para as telas dos sistemas e do Instituto AMS."],
+ ["cml","clc","Conector MailerLite","r",1,0,"Já conectado. O Claude monta grupos, formulários e campanhas da newsletter."],
+ ["cdev","clc","Vercel · AWS ·|Microsoft Learn","r",1,0,"Já conectados. Deploy e logs na Vercel; documentação oficial da AWS e da Microsoft (Azure, .NET) direto na conversa."],
+ ["cupw","clc","Conector Upwork","r",1,0,"Já conectado. Busca freelas e ajuda com propostas: renda extra com sites e sistemas."],
+ ["clov","clc","Lovable + Supabase","r",1,0,"Já conectados. Fora da sua stack, mas ótimos para validar antes de construir: uma landing ou protótipo em horas para testar se vende."],
+ ["cdup","clc","Notion · monday ·|GitBook · Stripe","r",1,0,"Já conectados, mas repetem o que você já tem. Decidido: Notion sai, fica o Obsidian. monday, GitBook e Stripe também repetem GitHub Projects, MkDocs e as plataformas de curso."],
+ ["pbiz","clc","Plugins: small-|business + marketing","r",0,0,"Rotinas prontas de conteúdo, funil, SEO, propostas, cobrança e fechamento do mês."],
+ ["peng","clc","Plugins: engineering|+ design","r",0,0,"Revisão de código, arquitetura, ADR, testes, incidentes, crítica de design e acessibilidade."],
+ ["pfin","clc","Plugins: finance +|Fiscal.ai","r",0,0,"Demonstrativos e conciliação para a empresa; dados de empresas abertas para os seus estudos de investimento."],
+ ["phst","clc","Plugins: Hostinger ·|Adobe · Cloudinary","r",0,0,"Hostinger para os sites de clientes; Adobe e Cloudinary para editar e otimizar imagens e vídeos."],
+ ["ccf","clc","Conector Cloudflare","r",1,0,"Conectado. Este conector avisa que está descontinuado; troque pelo Cloudflare API MCP (mcp.cloudflare.com/mcp), que cobre DNS, Pages e R2."],
+ ["cvid","clc","Conector vidIQ","r",1,0,"Conectado. Palavras-chave, tendências, títulos e thumbnails para YouTube e Instagram."],
+ ["capp2","chat","Claude (app)","r",1,0,"Seu assistente principal (assinatura paga): planejamento, escrita longa, revisão e análise de documentos."],
+ ["gpt","chat","ChatGPT","r",1,0,"Assistente geral da OpenAI: segunda opinião em código e texto, imagens e conversa por voz. O plano grátis basta."],
+ ["gem","chat","Gemini (pago)","r",1,0,"Sua segunda assinatura paga. Ligado a Gmail, Drive, Docs e YouTube: pesquisa aprofundada, resumo de vídeos longos e limites maiores no NotebookLM. Use para tudo que vive no ecossistema Google."],
+ ["nblm","chat","NotebookLM","r",1,0,"Do Google: você envia PDFs (livro do VHSlins, apostilas, editais) e ele responde só com base neles, com citações. Ótimo para estudar e preparar aulas."],
+ ["grok","chat","Grok","r",1,0,"Assistente da xAI, ligado ao X. Útil para acompanhar notícias e tendências em tempo real. Use a versão grátis."],
+ ["ds","chat","DeepSeek","r",1,0,"Modelo chinês forte em raciocínio e código, com chat grátis. Os dados enviados ficam em servidores na China: nada de dados de clientes, alunos ou da empresa. Para uso sensível, rode a versão pequena no Ollama."],
+ ["codex","chat","Codex (OpenAI)","r",1,0,"Agente de código da OpenAI (terminal, VS Code e nuvem). Está incluído até no plano grátis do ChatGPT, com limite. Use como segunda opinião ao Claude Code, nos mesmos repositórios."],
+ ["gcode","chat","Agentes de código|do Google","r",1,0,"Jules e o CLI do Google. As regras mudaram em 2026: o CLI deixou de ser grátis para contas pessoais. Confira o que o seu plano do Gemini inclui antes de montar um fluxo em cima dele."],
+ ["perp","chat","Perplexity","r",1,0,"Busca com fontes citadas. Bom para pesquisa de mercado e para checar fatos antes de publicar."],
+ ["copi","chat","GitHub Copilot","r",1,0,"Autocompletar e chat dentro do VS Code. Professores verificados no GitHub Education ganham o plano Pro grátis."],
+ ["lmods","ia","Modelos locais:|Qwen · Gemma · Llama","l",0,0,"Modelos abertos baixados pelo Ollama. Versões de 3B a 4B cabem na GTX 1650; inclui versões pequenas do DeepSeek-R1. Rodam offline, então servem para dados sensíveis."],
+ ["rag","ia","Base de conhecimento|(RAG) das suas notas","l",0,0,"Suas anotações, resumos com suas palavras, exercícios resolvidos e aulas que você mesmo gravou, indexados para a IA consultar. Roda com Ollama + pgvector (local) ou NotebookLM e Claude Projects."],
+ ["cc","ia","Claude Code","l",1,0,"Agente de programação no terminal."],
+ ["jail","ia","ai-jail","l",0,0,"Sandbox do agente."],
+ ["mem","ia","ai-memory","l",0,0,"Memória do agente entre sessões (container)."],
+ ["mcp","ia","Servidores MCP","l",0,0,"Agente acessa GitHub e banco de dev com permissão limitada."],
+ ["kit","ia","CLAUDE.md, agentes|e skills (seus)","l",0,0,"Revisor C#, /commit, /novo-sistema-aura e os demais que você vai criar."],
+ ["oll","ia","Ollama (3B–4B)","l",0,0,"IA local na GTX 1650; API em localhost:11434."],
+
+ ["nvim","lin","Neovim","l",0,1,"Editor de terminal da trilha Arch e Akita. Aprender aos poucos; não substitui o VS Code no começo."],
+ ["netw","lin","nmap · dig · curl ·|Wireshark","l",0,0,"Trilha de redes e diagnóstico de containers. Só contra seus próprios alvos."],
+ ["wsl","lin","Ubuntu (WSL2)","l",0,0,"Onde o código vive e roda."],
+ ["git","lin","Git + SSH + gh","l",0,0,"Versionamento e acesso ao GitHub."],
+ ["rt","lin",".NET 10 · Node ·|Python","l",0,0,"Runtimes das APIs, do front e dos scripts."],
+ ["tex","lin","TeX Live","l",0,0,"Compila o livro e as apostilas."],
+ ["sec","lin","gitleaks · Trivy","l",0,0,"Barra senha no commit e acha vulnerabilidades em imagens."],
+ ["dot","lin","dotfiles","l",0,0,"Configuração versionada do ambiente."],
+ ["arch","lin","Arch + Omarchy|(2º NVMe)","l",0,1,"Linux nativo com boot próprio, sem tocar no Windows."],
+
+ ["tail","win","Tailscale (VPN)","r",1,1,"Acesso seguro ao homelab e ao notebook de qualquer lugar, sem abrir porta no roteador. Grátis para uso pessoal."],
+ ["wslcfg","win",".wslconfig +|localhost","l",0,0,"Limita o WSL a 12 GB de RAM e faz o localhost do Windows abrir os apps que rodam no Linux."],
+ ["wterm","win","Terminal · PowerShell|· winget","l",0,0,"Terminal com abas para Ubuntu e PowerShell; winget instala e atualiza programas."],
+ ["draw","win","Excalidraw /|draw.io","l",0,0,"Diagramas de arquitetura para ADRs, aulas e entrevistas."],
+ ["unity","win","Unity · Cocos","l",0,0,"Mantidos para as aulas de robótica. Decisão sua: ficam ou saem."],
+ ["boot","win","Gerenciador de boot","l",0,1,"Escolhe Windows ou Arch ao ligar; cada sistema no próprio disco."],
+ ["nitro","win","NitroSense + drivers|AMD e NVIDIA","l",0,0,"Controle das ventoinhas e modos de energia do Nitro, mais os drivers de vídeo. Não remover."],
+ ["zip","win","7-Zip","l",0,0,"Abre e cria .zip, .7z e .tar (ISOs, backups, materiais de aula)."],
+ ["ptoys","win","PowerToys","l",0,0,"Utilitários da Microsoft: organizar janelas nos dois monitores, renomear em lote, color picker para o design."],
+ ["pdf","win","SumatraPDF","l",0,0,"Leitor de PDF leve para livros, apostilas e o PDF do Lógica e Máquina."],
+ ["sharex","win","ShareX","l",0,0,"Prints, GIFs e gravações curtas da tela para aulas, posts e issues do GitHub."],
+ ["office","win","LibreOffice","l",0,0,"Abrir e editar .docx, .xlsx e .pptx que chegam da escola e de clientes."],
+ ["ffox","win","Firefox|(2º navegador)","l",0,0,"Testar os sites em outro motor de navegador e separar contas pessoais das da empresa."],
+ ["w11","win","Windows 11 Home","l",1,0,"Host do dia a dia (conta local, sem conta Microsoft)."],
+ ["vsc","win","VS Code","l",0,0,"Editor; abre os projetos dentro do Linux."],
+ ["obsd","win","Obsidian + Git","l",0,0,"Vault de estudo, roteiros e planejamento."],
+ ["dbv","win","DBeaver · Bruno","l",0,0,"Banco de dados e testes de API."],
+ ["nav","win","Navegador +|Claude in Chrome","l",0,0,"Testes, DevTools e acesso a todas as contas web."],
+ ["vbox","win","VirtualBox","l",0,0,"Roda as VMs de estudo."],
+ ["vms","win","VMs: Kali · Arch ·|Servidores","l",0,1,"Kali (segurança), Arch (treino da instalação), Ubuntu Server (deploy), Windows Server com Active Directory e RHEL/Rocky (corporativo)."],
+ ["ard","win","Arduino IDE 2","l",0,0,"Programação das placas de robótica."],
+
+ ["sign","seg","Commits assinados|(chave SSH)","l",0,0,"Selo Verified no GitHub: prova que o commit é seu. Usa a chave SSH que você já tem."],
+ ["restic","seg","restic (backup|criptografado)","l",0,0,"Backup criptografado e incremental para o disco externo e para a nuvem (ex.: armazenamento do seu plano Google)."],
+ ["ykey","seg","Chave física|(YubiKey)","h",0,1,"2FA à prova de phishing para GitHub, Google e Microsoft."],
+ ["tpm","seg","TPM + Secure Boot","h",0,0,"Só sistema assinado dá boot."],
+ ["bitl","seg","BitLocker","l",0,0,"Disco criptografado; chave guardada fora da máquina."],
+ ["def","seg","Defender + Firewall","l",0,0,"Antivírus e bloqueio de rede."],
+ ["kee","seg","KeePassXC","l",0,0,"Cofre de todas as senhas das contas marcadas com o ponto dourado."],
+ ["tfa","seg","App 2FA|(celular)","l",0,0,"Segundo fator de todas as contas."],
+ ["bkp","seg","Backup 3-2-1","l",0,0,"GitHub + disco externo + (depois) NAS."],
+
+ ["ups","hw","Nobreak","h",0,0,"Queda de energia no meio de um build, gravação ou atualização corrompe arquivo. Protege notebook, roteador e NAS."],
+ ["cool","hw","Base com cooler","h",0,0,"O Nitro esquenta com Docker, VMs e Ollama; menos calor, menos queda de desempenho."],
+ ["sata","hw","SSD SATA 2,5\"","h",0,1,"Baia livre: espaço extra para VMs e imagens de laboratório. Confira cabo e suporte."],
+ ["nb","hw","Acer Nitro|(32 GB, GTX 1650)","h",0,0,"Ryzen 7 5800H, 32 GB (até 64), SSD 1 TB."],
+ ["nvme","hw","2º NVMe|(1–4 TB)","h",0,1,"Slot M.2 livre."],
+ ["mon","hw","2º monitor","h",0,0,"Código numa tela, app na outra."],
+ ["mic","hw","Microfone +|câmera","h",0,1,"Áudio limpo vende mais curso que câmera boa."],
+ ["cel","hw","Celular","h",0,0,"Reels, 2FA e atendimento."],
+ ["ext","hw","Disco externo","h",0,0,"Segunda cópia do backup."],
+ ["rob","hw","Arduino · ESP32 · Pi","h",0,1,"Aulas, projeto agro e automação."],
+ ["nas","hw","NAS / homelab","h",0,1,"Gitea, backup e servidor de estudo."]
+];
+/* origem, destino, o que passa */
+const E=[
+ ["nb","w11","roda o Windows"],["mon","nb","HDMI"],["nvme","arch","disco próprio"],["mic","obss","áudio e vídeo USB"],["cel","ig","posta reels"],["cel","tfa","gera os códigos"],["cel","wa","atendimento"],["ext","bkp","2ª cópia"],["nas","bkp","3ª cópia (futuro)"],["rob","ard","USB serial"],
+ ["tpm","bitl","protege a chave"],["bitl","nb","criptografa o disco"],["def","w11","protege"],["kee","tfa","senha + 2FA de cada conta"],["kee","gh","senhas e tokens"],["kee","hotm","senhas"],["kee","azure","senhas"],["bkp","wsl","copia ~/dev"],["bkp","obsd","copia o vault"],
+ ["w11","wsl","WSL2"],["vsc","wsl","Remote – WSL"],["obsd","gh","Obsidian Git"],["dbv","pg","porta 5432"],["dbv","api","HTTP (Bruno)"],["nav","front","localhost:3000"],["nav","hotm","painel web"],["capp2","anth","assinatura"],["capp2","obsd","roteiros e planos"],["vbox","vms","executa"],["ard","rob","grava o firmware"],
+ ["wsl","git","terminal"],["wsl","rt","executa"],["wsl","docker","socket da engine"],["git","gh","push via SSH"],["tex","livro","gera o PDF"],["sec","git","pre-commit"],["dot","gh","versionado"],["arch","dot","mesmos dotfiles"],
+ ["cc","jail","roda dentro"],["jail","wsl","só ~/dev/<projeto>"],["cc","mem","lembra decisões"],["mem","docker","container"],["cc","mcp","usa ferramentas"],["mcp","gh","issues e PRs"],["mcp","pg","leitura do banco de dev"],["kit","cc","regras e agentes"],["cc","anth","modelo Claude"],["oll","n8n","IA local nas automações"],["lmods","oll","roda em"],["ds","lmods","mesma família, versão local"],["copi","vsc","autocompletar"],["gpt","obsd","respostas salvas no vault"],["gem","yt","resume vídeos"],["nblm","obsd","resumos de estudo"],["nblm","curso","prepara as aulas"],["perp","obsd","pesquisa com fontes"],["grok","li","tendências do setor"],["gpt","img","gera imagens"],["cel","gpt","app no celular"],["capp2","cc","plano vira tarefa"],["plat","obsd","suas anotações"],["obsd","rag","indexa as notas"],["rag","oll","responde local"],["rag","pg","pgvector"],["rag","nblm","mesmos PDFs e notas"],["curso","kiwi","produto"],["curso","udemy","versão para o marketplace"],["curso","eduzz","produto"],["form","dio","proposta de parceria"],["kiwi","nfse","lança no carnê-leão"],["eduzz","nfse","lança no carnê-leão"],["udemy","nfse","carnê-leão (exterior)"],["kiwi","banco","saque"],["eduzz","banco","saque"],["udemy","banco","PayPal ou Payoneer"],["inst","kiwi","botão comprar"],["yt","ytm","membros"],["nfse","irpf","importa"],["obsd","dio","artigos e projetos"],["nitro","nb","ventoinhas e GPU"],["zip","bkp","compacta"],["ptoys","mon","janelas nos 2 monitores"],["pdf","livro","revisão do PDF"],["sharex","ig","GIFs e prints"],["sharex","curso","demonstrações"],["office","sites","documentos de clientes"],["ffox","inst","teste em outro navegador"],["ghproj","gh","issues e board"],["dbot","gh","PRs de segurança"],["dbot","status","alertas"],["gcp","tf","cria recursos"],["clean","api","organiza"],["ef","pg","Npgsql"],["api","ef","usa"],["sig","front","WebSocket"],["sig","redis","backplane"],["api","sig","emite"],["rls","pg","políticas"],["api","rls","define o tenant"],["tests","api","testa"],["tests","gha","roda no CI"],["shared","api","HTTP"],["seq","api","logs"],["loki","graf","consultas"],["mailp","api","SMTP de teste"],["docker","mailp","container"],["kafka","api","eventos"],["k8st","kind","opera"],["clis","azure","comandos"],["clis","aws","comandos"],["datomic","shared","aura-historico"],["nvim","wsl","editor"],["netw","vms","diagnóstico"],["wslcfg","wsl","limite de RAM"],["wterm","wsl","abre o Ubuntu"],["draw","obsd","diagramas"],["boot","arch","boot"],["boot","w11","boot"],["sata","vms","discos das VMs"],["mbs","ig","agenda posts"],["pixa","lic","cobrança recorrente"],["pixa","banco","recebimento"],["agenda","aulas","horários"],["agenda","mp","pagamento"],["comu","curso","suporte aos alunos"],["ads","ig","alcance pago"],["crm","sites","propostas"],["inpi","cnpj","titular da marca"],["legal","inst","termos e privacidade"],["legal","sites","contrato"],["ecnpj","nfapi","autentica"],["nfapi","api","IEmissorFiscal"],["mail","dom","registros MX"],["mail","mailer","remetente"],["tmail","api","e-mails do sistema"],["blob","api","arquivos"],["sonar","gha","análise no PR"],["oapi","api","documenta"],["oapi","dbv","Bruno importa"],["gis","pg","extensão"],["gis","front","mapa"],["story","front","componentes"],["story","tmpl","demo do template"],["sentry","api","erros"],["sentry","front","erros"],["kuma","inst","está no ar?"],["kuma","cel","alerta"],["caddy","api","HTTPS"],["sign","gh","Verified"],["restic","ext","cópia local"],["restic","bkp","executa"],["ykey","gh","2FA"],["tail","nas","acesso remoto"],["ups","nb","energia"],["cool","nb","temperatura"],["learn","azure","certificação"],["thm","vms","prática"],["plat","obsd","anotações"],["anki","obsd","cartões"],["ghed","copi","Copilot Pro"],["road","obsd","roteiro"],["capp2","proj","organiza"],["capp2","arts","cria"],["capp2","resq","pesquisa"],["sched","capp2","roda sozinho"],["cchr","nav","opera o navegador"],["cchr","w11","opera apps"],["cgws","gem","mesmos dados Google"],["cgws","obsd","resumos de e-mail e agenda"],["ccan","img","posts e capas"],["ccan","front","telas do Figma"],["cml","mailer","campanhas"],["cdev","vercel","deploy e logs"],["cdev","aws","documentação"],["cdev","azure","documentação"],["cupw","sites","encontra clientes"],["clov","inst","landing de validação"],["pbiz","ig","conteúdo"],["pbiz","hotm","funil e lançamento"],["peng","api","revisão e arquitetura"],["pfin","caixa","fechamento do mês"],["phst","hostg","sites de clientes"],["phst","edit","imagem e vídeo"],["ccf","cf","DNS e Pages"],["cvid","yt","tendências"],["arts","caixa","app da família"],["codex","gh","mesmos repos"],["codex","vsc","extensão"],["gcode","gh","mesmos repos"],
+ ["docker","pg","container"],["docker","redis","container"],["docker","rmq","container"],["docker","kind","cluster local"],["docker","n8n","container"],["tf","azure","cria recursos"],["tf","aws","cria recursos"],["tf","cf","DNS por código"],["n8n","mailer","novo aluno → e-mail"],["n8n","hotm","webhook de venda"],
+ ["api","otel","telemetria"],["otel","prom","métricas"],["prom","graf","painéis"],["aspire","otel","painel de dev"],["aspire","docker","sobe os serviços"],
+ ["front","api","HTTP + SignalR"],["api","pg","Npgsql"],["api","redis","cache"],["api","rmq","eventos"],["api","auth","valida JWT"],["ai","pg","pgvector"],["ai","anth","modelos"],["ai","oll","modelo local"],["api","ai","usa"],["lic","api","libera módulos"],["status","gh","Dependabot e repos"],["status","git","git status"],
+ ["gh","gha","dispara a cada push"],["gha","ghcr","publica imagem"],["gha","azure","deploy OIDC"],["gha","vercel","deploy front"],["gha","ghp","publica sites"],["gha","cf","publica Pages"],["ghcr","azure","imagem"],["ghcr","aws","imagem"],["dom","cf","nameservers"],
+ ["obss","edit","gravação"],["aud","edit","áudio limpo"],["obss","whis","áudio"],["whis","obsd","transcrição"],["voz","edit","narração"],["edit","yt","vídeo final"],["edit","curso","aulas editadas"],["img","ig","posts"],["img","inst","capas"],["obsd","livro","capítulos"],["obsd","curso","roteiro"],
+ ["curso","hotm","produto cadastrado"],["form","hotm","produto"],["tmpl","hotm","download"],["livro","hotm","PDF"],["aulas","mp","cobrança"],["sites","mp","cobrança"],["sites","hostg","hospedagem do cliente"],["saas","azure","roda na nuvem"],["saas","lic","cobrança por módulo"],["tmpl","gh","demo pública"],
+ ["site","ghp","hospedado"],["catal","ghp","hospedado"],["inst","cf","hospedado (Pages)"],["amsite","cf","hospedado (Pages)"],["dom","inst","endereço"],["dom","amsite","endereço"],["umami","inst","visitas"],["gsc","seo","indexação"],["inst","hotm","botão comprar"],["site","mailer","formulário da newsletter"],["site","afil","links no blog"],
+ ["hotm","nfse","lança no carnê-leão"],["mp","nfse","lança no carnê-leão"],["hotm","banco","saque"],["mp","banco","saque"],["banco","caixa","extrato"],["cnpj","govbr","acesso"],["cnpj","banco","titular"],["conta","nfse","orienta impostos"],["cnpj","dom","titular do domínio"],["govbr","nfse","login"],
+ ["mailer","inst","leva à página de venda"],["mailer","hotm","lançamento"],["wa","aulas","agenda"],
+ ["ig","inst","link na bio"],["yt","inst","link na descrição"],["ig","wa","contato direto"],["li","recr","perfil e posts"],["gh","recr","portfólio"],["site","recr","currículo"],["alunos","catal","usam o site"],["alunos","ig","seguem"],["seo","site","visitas"],["seo","inst","visitas"],["li","site","link"]
+];
+const FLOWS={
+ venda:{t:"Vender o mini-curso",s:["mic","obss","edit","curso","hotm","inst","ig","mailer","hotm","nfse","banco","caixa"],d:["Microfone e câmera captam a aula.","O OBS grava a tela e o áudio.","A edição corta e finaliza.","O mini-curso é montado com as aulas.","Você cadastra o produto na Hotmart (ou Kiwify, Eduzz) e uma versão na Udemy.","A página no Instituto AMS leva ao checkout.","O Instagram leva o público até a página.","O MailerLite envia o lançamento para a lista.","A venda acontece no checkout.","Você lança as vendas do mês no carnê-leão.","O dinheiro cai na sua conta separada.","O Caixa da Casa registra a entrada."]},
+ dev:{t:"Codar com agente e publicar",s:["vsc","wsl","kit","cc","jail","git","gh","gha","ghcr","azure"],d:["Você abre o projeto no VS Code.","O VS Code roda dentro do Ubuntu.","O CLAUDE.md e seus agentes dão as regras.","O Claude Code faz a tarefa.","O ai-jail limita o agente à pasta do projeto.","Você revisa e faz o commit.","O push vai ao GitHub.","O Actions testa e gera a imagem.","A imagem vai para o GHCR.","O deploy sobe no Azure."]},
+ vaga:{t:"Conseguir a vaga de dev",s:["api","front","gh","gha","ghp","site","li","recr"],d:["Você constrói a API de um sistema AM.","E as telas em Next.js.","O código fica público no GitHub, com README.","O Actions mostra testes passando (selo verde).","O Pages publica o portfólio.","O site reúne projetos, blog e currículo.","O LinkedIn divulga cada entrega.","O recrutador encontra tudo ligado."]},
+ livro:{t:"Do livro ao leitor",s:["obsd","livro","tex","livro","hotm","ig","yt"],d:["Você escreve os capítulos no Obsidian.","O texto vira o livro.","O TeX Live gera o PDF.","O PDF final fica pronto.","A plataforma vende o PDF.","O Instagram divulga.","O YouTube mostra trechos em aula."]},
+ estudo:{t:"Estudar e preparar aula com IA",s:["nblm","perp","gpt","capp2","obsd","curso"],d:["O NotebookLM responde com base nos seus PDFs.","O Perplexity traz fontes atuais.","O ChatGPT dá uma segunda explicação.","O Claude organiza tudo em plano de aula.","O resultado fica no vault do Obsidian.","O conteúdo vira aula do mini-curso."]},
+ lab:{t:"Laboratório de segurança",s:["nb","w11","vbox","vms","obsd","site","li"],d:["O notebook roda tudo.","O Windows hospeda as VMs.","O VirtualBox executa.","Kali ataca a VM alvo numa rede isolada.","Você documenta no Obsidian.","O writeup vira post no blog.","O LinkedIn divulga para recrutadores."]},
+ free:{t:"Site para um cliente",s:["wa","sites","vsc","gh","hostg","mp","nfse","banco"],d:["O cliente chega pelo WhatsApp.","Você fecha o serviço de site.","Desenvolve no VS Code.","Versiona no GitHub.","Publica na Hostinger do cliente.","Cobra pelo Mercado Pago.","Lança no carnê-leão.","Recebe na conta separada."]}
+};
+const ACC=[
+ ["Desenvolvimento",[["GitHub","Código, portfólio, Actions, Pages. Grátis."],["Claude (Anthropic)","Assinatura que você já tem; API à parte para os sistemas."],["Microsoft (Azure)","Conta de estudo com alerta de orçamento. Use e-mail da empresa."],["AWS","Quando chegar a etapa 2 de nuvem. Ative alerta de custo no primeiro dia."],["Docker Hub","Opcional; o GHCR já resolve."]]],
+ ["Inteligência artificial",[["Claude","Assinatura paga: código, agentes e escrita longa."],["ChatGPT (OpenAI)","Plano grátis."],["Google (Gemini e NotebookLM)","Você já paga o Gemini. Mesma conta Google do YouTube; confira no plano se há armazenamento extra no Google One, que pode guardar uma cópia do backup."],["Grok (xAI)","Grátis com limite."],["DeepSeek","Grátis; nunca envie dados sensíveis."],["Perplexity","Grátis."],["GitHub Copilot","Pro grátis se você for verificado como professor no GitHub Education."]]],
+ ["Conectores do Claude",[["Já conectados","Google, Canva, Figma, MailerLite, Vercel, AWS, Microsoft Learn, Upwork, Lovable, Supabase, Notion, monday, GitBook, Stripe, Shopify, WordPress.com, Spotify."],["Revise as permissões","Cada conector age na sua conta. Desligue os que não usa: Spotify, Shopify, WordPress.com e Notion (você ficou com o Obsidian)."],["Sugeridos","Cloudflare e vidIQ."]]],
+ ["Sites e domínio",[["Registro.br","Domínio .com.br no CNPJ (ou CPF até abrir a empresa)."],["Cloudflare","DNS, HTTPS, Pages para os sites comerciais e redirecionamento de e-mail. Plano grátis."],["Vercel","Frontends de estudo e portfólio. Confira os termos antes de usar para venda."],["Hostinger","Você já tem; útil para sites WordPress de clientes."],["Google Search Console","Indexação dos sites."]]],
+ ["Canais e conteúdo",[["Google (YouTube)","Canal da marca, separado do pessoal."],["Instagram (conta profissional)","Canal principal de venda."],["LinkedIn","Perfil de dev; página da empresa depois."],["WhatsApp Business","Número separado do pessoal, se possível."],["Canva","Grátis para começar; Krita e Inkscape cobrem o resto."]]],
+ ["Venda",[["Hotmart, Kiwify e Eduzz","Todas aceitam CPF. Compare as taxas atuais; lance o mini-curso em uma por vez."],["Udemy","Conta de instrutor, PayPal ou Payoneer e o formulário fiscal dos EUA."],["DIO","Perfil ativo com artigos e projetos para buscar a parceria."],["Mercado Pago","Pix e cartão para serviços e aulas."],["MailerLite","Newsletter; plano grátis já decidido."],["Programas de afiliados","Amazon Associados, Hotmart, Eduzz."]]],
+ ["Pessoa física e impostos",[["gov.br (prata ou ouro)","Acesso ao carnê-leão online e ao IR."],["Carnê-leão","Lançamento mensal das vendas e serviços; DARF até o último dia útil do mês seguinte."],["Conta bancária separada","Banco digital sem mensalidade, só para as vendas."],["Contador (uma consulta)","Para começar certo e saber quando abrir CNPJ."],["CNPJ","Futuro."]]]
+];
+const GAPS=[
+ ["Fazer agora (baratos e urgentes)",[["Commits assinados e 2FA em tudo","Uma tarde. Dá o selo Verified no GitHub e fecha a porta para roubo de conta."],["restic + segunda cópia fora da casa","Hoje o backup depende de um disco externo; o armazenamento do seu plano Google pode ser a cópia de fora."],["E-mail profissional","Antes de abrir as contas da empresa e de lançar a newsletter."],["Termos e política de privacidade (LGPD)","Antes de coletar o primeiro e-mail no Instituto AMS."],["OpenAPI + Scalar nas APIs","Recrutador abre a documentação da API em um clique."]]],
+ ["Antes de lançar o mini-curso",[["Pesquisa de marca no INPI","Confira se AMtech e Instituto AMS estão livres antes de investir em logo e domínio. O pedido pode ser feito no seu CPF."],["Agenda online e comunidade","Aulas particulares sem troca de mensagens; alunos do curso num só lugar."],["Meta Business Suite e CRM simples","Posts agendados e lista de quem comprou."],["Hospedagem comercial dos sites","O plano grátis da Vercel é só para uso pessoal ou não comercial; os sites que vendem ficam na Cloudflare Pages."]]],
+ ["Quando os sistemas AM tiverem cliente",[["Sentry, Uptime Kuma e Caddy","Saber do erro antes do cliente."],["E-mail transacional e armazenamento de arquivos","Confirmação de conta, recibos e anexos."],["Pix Automático e API de NFS-e","Cobrança recorrente sem cartão e nota emitida pelo próprio sistema. Dependem de CNPJ, então ficam para depois."],["PostGIS + MapLibre","Só quando o AM Rotara sair do papel."]]],
+ ["Vendendo no CPF",[["Carnê-leão desde a primeira venda","A Receita cruza dados das plataformas e dos bancos; atraso gera multa e juros."],["Conta separada","Para não misturar salário com vendas."],["Uma consulta com contador","Antes do lançamento, não depois."]]],
+ ["Hardware e conforto",[["Nobreak","Protege contra queda de energia no meio de build ou gravação."],["Base com cooler","Docker, VMs e Ollama esquentam o Nitro."],["2º NVMe","Já planejado para o Arch."],["YubiKey","Opcional, depois."]]]
+];
+const LN=Object.fromEntries(LAYERS.map((l,i)=>[l[0],i]));
+const byId=Object.fromEntries(N.map(n=>[n[0],n]));
+const W=1000,BW=148,BH=44,GX=12,GY=10,COLS=6,X0=(W-(COLS*BW+(COLS-1)*GX))/2,HEAD=32,STRIP=34;
+const pos={};let y=12;const bands=[];
+LAYERS.forEach(([id,t,strip],i)=>{
+  const items=N.filter(n=>n[1]===id);const rows=Math.ceil(items.length/COLS);
+  const h=HEAD+rows*(BH+GY)+4;bands.push({id,t,y,h,strip,i});
+  items.forEach((n,k)=>{const r=Math.floor(k/COLS),c=k%COLS;const inRow=Math.min(COLS,items.length-r*COLS);
+    const off=(COLS-inRow)*(BW+GX)/2;pos[n[0]]={x:X0+off+c*(BW+GX),y:y+HEAD+r*(BH+GY)};});
+  y+=h+(strip?STRIP:0);
+});
+const H=y+8;const svg=document.getElementById("svg");svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+const NS="http://www.w3.org/2000/svg";const mk=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e};
+bands.forEach(b=>{
+  mk("rect",{x:6,y:b.y,width:W-12,height:b.h,rx:10,class:"bandbg"});
+  const tt=mk("text",{x:20,y:b.y+21,class:"bandnum"});tt.textContent=String(LAYERS.length-b.i).padStart(2,"0");
+  const t2=mk("text",{x:46,y:b.y+21,class:"bandtitle"});t2.textContent=b.t;
+  if(b.strip){const sy=b.y+b.h+STRIP/2;mk("line",{x1:28,y1:b.y+b.h+4,x2:28,y2:b.y+b.h+STRIP-4,class:"stripline"});
+    const st=mk("text",{x:40,y:sy+4,class:"strip"});st.textContent="↕ "+b.strip;}
+});
+const eg=mk("g",{class:"edges",id:"edges"});
+const ctr=id=>({x:pos[id].x+BW/2,y:pos[id].y+BH/2});
+const paths=E.map(([a,b,l])=>{
+  const A=pos[a],B=pos[b];if(!A||!B){console.warn(a,b);return null}
+  let d;
+  if(Math.abs(A.y-B.y)<2){const ax=A.x+BW/2,bx=B.x+BW/2,yy=A.y;d=`M${ax} ${yy} C${ax} ${yy-26},${bx} ${yy-26},${bx} ${yy}`;}
+  else{const down=A.y<B.y;const ax=A.x+BW/2,ay=down?A.y+BH:A.y,bx=B.x+BW/2,by=down?B.y:B.y+BH;const m=(by-ay)/2;d=`M${ax} ${ay} C${ax} ${ay+m},${bx} ${by-m},${bx} ${by}`;}
+  const p=mk("path",{d},eg);p.dataset.a=a;p.dataset.b=b;return p;
+}).filter(Boolean);
+const nodes={};
+N.forEach(([id,ly,lab,k,acc,fut])=>{
+  const P=pos[id];const g=mk("g",{class:`nd ${k==="l"?"local":k==="r"?"remote":"hw"}${fut?" fut":""}`,tabindex:0,role:"button","aria-label":lab.replace("|"," ")});
+  g.dataset.id=id;mk("rect",{x:P.x,y:P.y,width:BW,height:BH,rx:7,class:"b"},g);
+  const lines=lab.split("|");lines.forEach((ln,i)=>{const t=mk("text",{x:P.x+BW/2,y:P.y+BH/2+(i-(lines.length-1)/2)*15+4,"text-anchor":"middle"},g);t.textContent=ln;});
+  if(acc)mk("circle",{cx:P.x+BW-8,cy:P.y+8,r:4,class:"k"},g);
+  g.addEventListener("click",()=>select(id));g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();select(id)}});
+  nodes[id]=g;
+});
+const panel=document.getElementById("panel");
+const lname=id=>LAYERS[LN[byId[id][1]]][1];
+function clearSel(){svg.classList.remove("sel");Object.values(nodes).forEach(n=>n.classList.remove("on","me"));paths.forEach(p=>p.classList.remove("on"));}
+function idle(){panel.innerHTML=`<h3>Toque em um bloco</h3><p>São ${N.length} blocos em ${LAYERS.length} camadas, com ${E.length} conexões. Toque em qualquer bloco para ver o que ele faz e com o que se conecta, ou escolha um fluxo acima para ver o caminho passo a passo.</p>`;}
+function select(id){
+  setFlowBtn("");clearSel();svg.classList.add("sel");nodes[id].classList.add("on","me");
+  const out=[],inn=[];
+  paths.forEach(p=>{if(p.dataset.a===id){p.classList.add("on");nodes[p.dataset.b].classList.add("on");out.push(p.dataset.b)}
+    if(p.dataset.b===id){p.classList.add("on");nodes[p.dataset.a].classList.add("on");inn.push(p.dataset.a)}});
+  const n=byId[id];const lab=e=>E.find(x=>x[0]===e[0]&&x[1]===e[1])[2];
+  const li=(o,dir,l)=>`<li><span class="dir">${dir}</span><span><button data-go="${o}">${byId[o][2].replace("|"," ")}</button> <span class="lab">· ${l}</span></span></li>`;
+  panel.innerHTML=`<h3>${n[2].replace("|"," ")}</h3><div class="meta"><span class="tag">${lname(id)}</span><span class="tag ${n[3]==="r"?"r":""}">${n[3]==="l"?"Local":n[3]==="r"?"Remoto":"Físico"}</span>${n[4]?'<span class="tag k">Precisa de conta</span>':""}${n[5]?'<span class="tag">Futuro</span>':""}</div><p>${n[6]}</p>
+  ${out.length||inn.length?`<ul class="conn">${out.map(o=>li(o,"→",lab([id,o]))).join("")}${inn.map(o=>li(o,"←",lab([o,id]))).join("")}</ul>`:""}`;
+  panel.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>{select(b.dataset.go);nodes[b.dataset.go].focus({preventScroll:true})}));
+}
+const fbtns=[...document.querySelectorAll("[data-flow]")];
+function setFlowBtn(f){fbtns.forEach(b=>b.setAttribute("aria-pressed",b.dataset.flow===f?"true":"false"))}
+function flow(f){
+  clearSel();setFlowBtn(f);if(!f){idle();return}
+  const F=FLOWS[f];svg.classList.add("sel");F.s.forEach(id=>nodes[id].classList.add("on"));
+  for(let i=0;i<F.s.length-1;i++){const a=F.s[i],b=F.s[i+1];paths.forEach(p=>{if((p.dataset.a===a&&p.dataset.b===b)||(p.dataset.a===b&&p.dataset.b===a))p.classList.add("on")})}
+  nodes[F.s[0]].classList.add("me");
+  panel.innerHTML=`<h3>${F.t}</h3><ol class="steps">${F.s.map((id,i)=>`<li><b>${byId[id][2].replace("|"," ")}</b>: ${F.d[i]}</li>`).join("")}</ol>`;
+}
+fbtns.forEach(b=>b.addEventListener("click",()=>flow(b.dataset.flow)));
+const fit=document.getElementById("fitbtn");
+fit.addEventListener("click",()=>{const on=document.getElementById("canvas").classList.toggle("fit");fit.setAttribute("aria-pressed",on);fit.textContent=on?"Voltar ao tamanho normal":"Ver o desenho inteiro na tela";});
+idle();
+document.getElementById("gaps").innerHTML=GAPS.map(([t,l])=>`<div class="card"><h3>${t}</h3><ul>${l.map(([a,b])=>`<li><b>${a}</b><span>${b}</span></li>`).join("")}</ul></div>`).join("");
+document.getElementById("acc").innerHTML=ACC.map(([t,l])=>`<div class="card"><h3>${t}</h3><ul>${l.map(([a,b])=>`<li><b>${a}</b><span>${b}</span></li>`).join("")}</ul></div>`).join("");
+document.getElementById("list").innerHTML=LAYERS.map(([id,t],i)=>`<details class="ly"><summary><span class="bandnum">${String(LAYERS.length-i).padStart(2,"0")}</span>${t}</summary><ul>${N.filter(n=>n[1]===id).map(n=>`<li>${n[2].replace("|"," ")}${n[4]?" ●":""} <span>· ${n[6]}</span></li>`).join("")}</ul></details>`).join("");
+</script>
+
+</body>
+</html>

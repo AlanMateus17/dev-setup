@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mapa do Setup AMtech</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap">
+<style>
+/* Layout: abertura com a decisão sobre SOs e nuvem, depois a pilha de camadas (topo = nuvem, base = hardware) com pontes, fluxos, mercado, ordem de estudo e cortes. Paleta do Aura Design System. */
+:root{
+  --bg:#F7F5F0; --surface:#FFFFFF; --ink:#13262B; --muted:#5B6B6E; --line:#DCD8CE;
+  --aura:#0E3A45; --gold:#C08A3E; --gold-soft:#F3E7D3; --aura-soft:#E2ECEC;
+  --ok:#2F7A4F; --ok-bg:#E3F1E8; --f1:#9A5B12; --f1-bg:#FBEBD2; --f2:#1E5C8C; --f2-bg:#E1EDF7;
+  --f3:#6B4A92; --f3-bg:#EEE7F6; --fut:#5B6B6E; --fut-bg:#ECEAE4; --cut:#A33A3A; --cut-bg:#F8E3E3;
+  --bar:#0E3A45; --bar2:#C08A3E;
+  --display:"Fraunces",Georgia,serif; --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0B1A1E; --surface:#112429; --ink:#E9EEEC; --muted:#9AAEB0; --line:#24414A;
+  --aura:#7FC4C9; --gold:#D9A85E; --gold-soft:#3A2D18; --aura-soft:#163238;
+  --ok:#7CCB9A; --ok-bg:#16301F; --f1:#E8B46A; --f1-bg:#3A2A12; --f2:#86B9E6; --f2-bg:#152A3D;
+  --f3:#C3A6E6; --f3-bg:#2A2038; --fut:#A9B6B7; --fut-bg:#1E2E32; --cut:#EE9A9A; --cut-bg:#3A1C1C;
+  --bar:#7FC4C9; --bar2:#D9A85E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B1A1E; --surface:#112429; --ink:#E9EEEC; --muted:#9AAEB0; --line:#24414A;
+  --aura:#7FC4C9; --gold:#D9A85E; --gold-soft:#3A2D18; --aura-soft:#163238;
+  --ok:#7CCB9A; --ok-bg:#16301F; --f1:#E8B46A; --f1-bg:#3A2A12; --f2:#86B9E6; --f2-bg:#152A3D;
+  --f3:#C3A6E6; --f3-bg:#2A2038; --fut:#A9B6B7; --fut-bg:#1E2E32; --cut:#EE9A9A; --cut-bg:#3A1C1C;
+  --bar:#7FC4C9; --bar2:#D9A85E; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px}
+.wrap{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:36px}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(28px,6vw,40px);line-height:1.1;margin:0;text-wrap:balance;color:var(--aura)}
+h2{font-family:var(--display);font-weight:600;font-size:24px;margin:0 0 4px;text-wrap:balance;color:var(--aura)}
+h3{text-wrap:balance}
+.lede{color:var(--muted);max-width:64ch;margin:8px 0 0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{font:500 13px var(--sans);padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--aura);border-color:var(--aura);color:var(--bg)}
+.filters button:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.badge{font:500 11px var(--mono);letter-spacing:.04em;padding:2px 7px;border-radius:4px;white-space:nowrap;font-style:normal}
+.ok{color:var(--ok);background:var(--ok-bg)} .f1{color:var(--f1);background:var(--f1-bg)} .f2{color:var(--f2);background:var(--f2-bg)}
+.f3{color:var(--f3);background:var(--f3-bg)} .fut{color:var(--fut);background:var(--fut-bg)} .dec{color:var(--cut);background:var(--cut-bg)}
+.src{width:9px;height:9px;border-radius:50%;flex:none;display:inline-block}
+.src.plano{background:var(--aura)} .src.sug{border:1.5px solid var(--gold);background:transparent} .src.criar{background:var(--gold)}
+.stack{display:flex;flex-direction:column}
+.layer{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.layer header{display:flex;gap:12px;align-items:baseline;padding:14px 16px 10px;border-bottom:1px solid var(--line)}
+.layer .num{font:500 13px var(--mono);color:var(--gold);flex:none}
+.layer h3{margin:0;font-size:17px;font-weight:600}
+.layer .role{margin:2px 0 0;font-size:13px;color:var(--muted)}
+.layer.win header{background:var(--gold-soft)} .layer.lin header{background:var(--aura-soft)}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--line)}
+details.it{background:var(--surface);min-width:0}
+summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;padding:10px 16px}
+summary::-webkit-details-marker{display:none}
+summary .n{font-weight:500;flex:1;min-width:0}
+summary::after{content:"+";font:500 15px var(--mono);color:var(--muted)}
+details[open] summary::after{content:"–"}
+.body{padding:0 16px 14px 33px;font-size:14px;display:flex;flex-direction:column;gap:6px}
+.body b{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block}
+.bridge{display:flex;gap:10px;align-items:stretch;padding:6px 0 6px 22px}
+.bridge .rail{width:2px;background:repeating-linear-gradient(var(--gold) 0 5px,transparent 5px 9px);flex:none}
+.bridge p{margin:6px 0;font-size:13px;color:var(--muted)}
+.bridge p strong{color:var(--ink);font-weight:500}
+.flows{display:flex;flex-direction:column;gap:14px}
+.flow{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.flow h3{margin:0 0 2px;font-size:16px;font-weight:600}
+.flow .when{font-size:13px;color:var(--muted);margin:0 0 10px}
+.flow ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.flow li::marker{font-family:var(--mono);color:var(--gold)}
+code{font-family:var(--mono);font-size:.88em;background:var(--aura-soft);padding:1px 5px;border-radius:4px;overflow-wrap:anywhere}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.card .top{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.card h4{margin:0;font-size:15px;font-weight:600;flex:1;min-width:0}
+.card p{margin:0;font-size:14px}
+.card .kind{font:500 11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.card dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:14px}
+.card dt{font:500 11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-top:3px}
+.card dd{margin:0;min-width:0}
+.note{border-left:3px solid var(--gold);padding:10px 14px;background:var(--surface);font-size:14px;max-width:72ch;border-radius:0}
+.cut{display:flex;flex-direction:column;gap:8px;font-size:14px}
+.cut div{display:flex;gap:10px;align-items:baseline}
+.cut div span:first-child{font-weight:500;min-width:170px}
+.cut div span:last-child{color:var(--muted)}
+@media(max-width:520px){.cut div{flex-direction:column;gap:0}.cut div span:first-child{min-width:0}}
+.empty{padding:12px 16px;font-size:13px;color:var(--muted)}
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.chart h3{margin:0;font-size:15px;font-weight:600}
+.chart .srcline{font-size:12px;color:var(--muted);margin:0}
+.bar{display:grid;grid-template-columns:110px 1fr 46px;gap:8px;align-items:center;font-size:13px}
+.bar .track{height:12px;background:var(--aura-soft);border-radius:3px;overflow:hidden}
+.bar .fill{height:100%;background:var(--bar);border-radius:3px}
+.bar .v{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+.road{display:flex;flex-direction:column;gap:0;counter-reset:r}
+.step{display:grid;grid-template-columns:48px 1fr;gap:12px;padding:14px 0;border-top:1px solid var(--line)}
+.step:first-child{border-top:0}
+.step .k{font:500 22px var(--display);color:var(--gold);line-height:1}
+.step h3{margin:0;font-size:16px;font-weight:600}
+.step .when{font:500 12px var(--mono);color:var(--muted);margin:2px 0 6px}
+.step p{margin:0;font-size:14px;max-width:68ch}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Acer Nitro AN515-45 · Grupo AMtech Digital · versão 2 · out/2026</div>
+    <h1>Mapa do setup</h1>
+    <p class="lede">O setup completo de desenvolvimento, do hardware até a nuvem: o que você já escolheu, o que as empresas grandes pedem hoje e o que está crescendo para os próximos anos. Toque em qualquer item para ver o que ele faz e com quem conversa.</p>
+    <p class="lede"><a href="index.html" style="color:var(--aura)">← Ver o diagrama completo do ecossistema</a></p>
+  </header>
+
+  <section>
+    <div class="eyebrow">Sistemas operacionais</div>
+    <h2>Arch, Kali e os outros: sim, mas do jeito certo</h2>
+    <p class="lede">Você deve aprender Arch e Kali. O que eu desaconselhei foi o <em>jeito</em>: particionar o SSD atual em dual boot agora. O risco é perder dados de novo e travar o setup que já funciona. Com o segundo NVMe e máquinas virtuais, você tem todos os sistemas sem esse risco.</p>
+    <div class="grid" style="margin-top:14px" id="os"></div>
+    <p class="note" style="margin-top:14px">O Windows 11 Home não tem o Hyper-V Manager. As VMs rodam no VirtualBox (grátis, inclusive para uso comercial) ou no VMware Workstation Pro (grátis só para uso pessoal). Os dois funcionam com o WSL2 ligado, mas ficam um pouco mais lentos, porque usam a plataforma de hipervisor do Windows. Com 32 GB de RAM, rode no máximo uma ou duas VMs por vez.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Nuvem</div>
+    <h2>Azure primeiro, AWS em seguida, Google Cloud só o básico</h2>
+    <div class="grid" style="margin-top:14px" id="cloud"></div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:12px" aria-label="Legenda e filtros">
+    <div>
+      <div class="eyebrow">A pilha</div>
+      <h2>As camadas do setup</h2>
+    </div>
+    <div class="legend">
+      <span><i class="src plano"></i>Já estava no seu plano</span>
+      <span><i class="src sug"></i>Sugestão minha</span>
+      <span><i class="src criar"></i>Você vai criar</span>
+    </div>
+    <div class="legend">
+      <span><i class="badge ok">OK</i>Instalado</span>
+      <span><i class="badge f1">F1</i>Agora (base)</span>
+      <span><i class="badge f2">F2</i>Próximos 3 meses</span>
+      <span><i class="badge f3">F3</i>3 a 12 meses</span>
+      <span><i class="badge fut">FUT</i>Depois de 12 meses</span>
+      <span><i class="badge dec">DEC</i>Decisão sua</span>
+    </div>
+    <div class="filters" role="group" aria-label="Filtrar por fase">
+      <button id="fl-all" data-f="all" aria-pressed="true">Tudo</button>
+      <button id="fl-now" data-f="now" aria-pressed="false">Só agora (OK + F1)</button>
+      <button id="fl-f2" data-f="f2" aria-pressed="false">F2</button>
+      <button id="fl-f3" data-f="f3" aria-pressed="false">F3 + futuro</button>
+      <button id="fl-sug" data-f="sug" aria-pressed="false">Só sugestões novas</button>
+      <button id="fl-criar" data-f="criar" aria-pressed="false">O que criar</button>
+    </div>
+    <div class="stack" id="stack"></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Como tudo conversa</div>
+    <h2>Fluxos do dia a dia</h2>
+    <p class="lede" style="margin-bottom:14px">Cada fluxo é uma sequência real: a ordem dos passos é a ordem em que os dados passam pelas camadas.</p>
+    <div class="flows" id="flows"></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Mercado</div>
+    <h2>O que está sendo usado e pedido</h2>
+    <p class="lede" style="margin-bottom:14px">Dados recentes que justificam as escolhas acima. Docker e nuvem já são básico; Kubernetes e Terraform separam pleno de júnior; IA aplicada é o que mais cresce.</p>
+    <div class="charts">
+      <div class="chart">
+        <h3>Fatia do mercado de nuvem (receita)</h3>
+        <div id="ch1"></div>
+        <p class="srcline">Synergy Research, 2º trimestre de 2026</p>
+      </div>
+      <div class="chart">
+        <h3>Uso entre desenvolvedores</h3>
+        <div id="ch2"></div>
+        <p class="srcline">Stack Overflow Developer Survey 2026 (out/2026)</p>
+      </div>
+    </div>
+    <div class="grid" style="margin-top:12px" id="trends"></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Ordem de estudo</div>
+    <h2>Do presente para o futuro, sem abrir tudo de uma vez</h2>
+    <p class="note">Sua aposta de 12 meses é vaga de dev mais renda própria. A ordem abaixo coloca primeiro o que aparece em quase toda vaga .NET e deixa para depois o que só pesa em vagas mais avançadas. Cada etapa termina com algo publicado no GitHub, que é o que o recrutador vê.</p>
+    <div class="road" id="road" style="margin-top:8px"></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Peças autorais</div>
+    <h2>Agentes, skills, hooks e ferramentas que você vai criar</h2>
+    <div class="grid" style="margin-top:14px" id="make"></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Fora do setup</div>
+    <h2>Cortado ou adiado, e por quê</h2>
+    <div class="cut" style="margin-top:10px" id="cut"></div>
+  </section>
+</div>
+
+<script>
+const OS=[
+ ["Windows 11 Home","Já instalado","ok","SSD atual (NVMe 1)","Host do dia a dia: apps com janela, GPU, drivers. Também é o que a maioria das empresas usa no notebook do dev .NET."],
+ ["Ubuntu no WSL2","Já instalado","ok","Dentro do Windows","Onde o código roda. Ubuntu é o Linux mais comum em servidores e containers, então é o que mais aparece em vaga."],
+ ["Arch Linux + Omarchy","Seu plano (estilo Akita)","f3","Segundo NVMe, com boot próprio","Primeiro numa VM para treinar a instalação manual pelo ArchWiki; depois no segundo SSD. Disco separado = dual boot sem risco ao Windows. Ensina Linux por dentro e vira destaque no currículo."],
+ ["Kali Linux","Trilha de segurança","f3","VM (VirtualBox)","Caixa de ferramentas de pentest, não sistema do dia a dia. Use em VM, só contra seus próprios alvos (labs como Metasploitable e Juice Shop). Entra junto com Security+ e eJPT."],
+ ["Ubuntu Server / Debian","Homelab","f2","VM agora, NAS ou PC velho depois","Servidor sem interface, só SSH. É onde você treina deploy de verdade, proxy reverso, firewall e backup."],
+ ["Windows Server (avaliação)","Sugestão","fut","VM","Active Directory está em quase toda empresa grande e é o alvo principal em pentest corporativo (OSCP cobra AD). A versão de avaliação é gratuita por tempo limitado."],
+ ["RHEL / Rocky Linux","Sugestão","fut","VM","Linux corporativo de banco, governo e indústria. Vale conhecer o básico (dnf, SELinux, systemd) depois de dominar Ubuntu."]
+];
+const CL=[
+ ["Microsoft Azure","1º · casa com sua stack","f2",["Por quê","A stack do Aura é .NET 10; o Azure tem a melhor integração (App Service, Azure SQL/PostgreSQL, Key Vault, Entra ID) e é forte em empresa brasileira que usa Microsoft."],["Certificações","AZ-900 (fundamentos) e depois AZ-204 (desenvolvedor)."],["Prática","Publicar um sistema AM no Azure com Terraform, Key Vault e deploy pelo GitHub Actions."]],
+ ["Amazon Web Services","2º · maior mercado","f3",["Por quê","Maior fatia do mercado e a nuvem mais usada pelos desenvolvedores. Muitas vagas pedem AWS mesmo em times .NET."],["Certificações","Cloud Practitioner e depois Developer Associate."],["Prática","Subir o mesmo sistema na AWS (ECS ou App Runner, RDS, S3) e comparar com o Azure. Isso vira post no blog e aula."]],
+ ["Google Cloud","3º · só o básico","fut",["Por quê","Cresce rápido, puxado por IA e dados, mas aparece menos em vaga .NET no Brasil."],["Certificação","Nenhuma por agora; só conhecer os serviços equivalentes."],["Prática","Usar quando um projeto de IA ou BigQuery pedir."]],
+ ["Regra de ouro para as três","Custo","f1",["Conta","Use os níveis gratuitos e crie alerta de orçamento (ex.: US$ 5) no primeiro dia."],["Infra","Tudo por código (Terraform/OpenTofu), para destruir com um comando e não esquecer nada ligado."],["Local","Azurite simula o Storage do Azure; emuladores evitam gastar enquanto aprende."]]
+];
+const L=[
+{id:"nuvem",n:"10",t:"Nuvem e entrega",r:"Onde o código mora fora da máquina e de onde os sistemas saem para o mundo.",c:"",items:[
+ ["GitHub (AlanMateus17 + org grupo-amtech-digital)","plano","ok","Guarda os ~23 repositórios, o vault e o ensino-ti. É a fonte de verdade do código.","Recebe git push via SSH da camada 6; dispara o Actions; Vercel e Pages leem dele."],
+ ["GitHub Actions","plano","f1","CI/CD: compila, testa, analisa segurança e gera a imagem Docker a cada push.","Lê o repo; publica no GHCR; faz deploy no Azure/AWS com credenciais OIDC (sem senha guardada)."],
+ ["GHCR (registro de imagens)","sug","f2","Guarda as imagens Docker das APIs.","Recebe do Actions; Azure Container Apps, AWS ou Kubernetes puxam daqui."],
+ ["Dependabot + CodeQL","plano","ok","Dependabot atualiza pacotes vulneráveis; o CodeQL procura falhas de segurança no seu código. Os dois são grátis em repo público.","Abrem PRs e alertas; o aura-status mostra."],
+ ["GitHub Projects + ADRs + MkDocs Pages","plano","f1","Board do EPIC-01, decisões de arquitetura e documentação publicada.","Ligados a issues e PRs; MkDocs publica pelo Actions."],
+ ["Vercel e GitHub Pages","plano","ok","Frontends Next.js, site pessoal e Catálogo do HTML.","Deploy automático a cada push."],
+ ["Azure (App Service / Container Apps, PostgreSQL, Key Vault, Entra ID)","sug","f2","Primeira nuvem para os sistemas AM: hospeda API e banco, guarda segredos e faz login corporativo.","Recebe deploy do Actions; criado por Terraform; a API lê segredos do Key Vault."],
+ ["AWS (ECS/App Runner, RDS, S3, IAM)","sug","f3","Segunda nuvem, para dominar o mercado maior e comparar.","Mesmo fluxo do Azure, com outro provedor no Terraform."],
+ ["Cloudflare (DNS e proteção)","sug","f2","DNS dos seus domínios, HTTPS e proteção contra ataque no plano gratuito.","Fica na frente de Vercel, Pages e APIs."]
+]},
+{id:"app",n:"9",t:"Aplicação: ecossistema Aura",r:"O software que você está construindo. Roda nos containers, depois na nuvem.",c:"lin",items:[
+ ["Frontend Next.js + TypeScript + Tailwind","plano","f1","Telas dos sistemas com o aura-frontend-kit e o Aura Design System.","HTTP/JSON com a API e tempo real por SignalR. localhost:3000."],
+ ["API ASP.NET Core (Controllers)","plano","f1","Regras de negócio, validação e JSON. Um projeto por sistema AM.","PostgreSQL (5432), Redis (6379) e RabbitMQ (5672) pela rede do Compose."],
+ ["Clean Architecture + DDD","plano","f1","Domain, Application, Infrastructure, Api. O domínio não conhece banco nem web.","Dependências só para dentro; a Infrastructure implementa as interfaces."],
+ [".NET Aspire","sug","f2","Ferramenta da Microsoft que sobe API, banco, cache e fila juntos com um painel de logs, métricas e traces. Muito usada em vaga .NET nova.","Orquestra os containers no dev e gera a configuração de deploy para o Azure."],
+ ["EF Core + Npgsql","sug","f1","ORM do .NET para PostgreSQL, com migrations versionadas.","Na Infrastructure; fala com o PostgreSQL."],
+ ["SignalR","plano","f2","Tempo real (pedido mudou de status no AM Rotara).","WebSocket com o navegador; Redis como backplane."],
+ ["Multi-tenant (tenant_id + RLS)","plano","f1","Cada cliente só vê os próprios dados, garantido pelo banco.","A API define o tenant na conexão; o PostgreSQL filtra."],
+ ["Autenticação OAuth2/OIDC (Keycloak)","sug","f2","Login, papéis e tokens JWT padrão de mercado. Keycloak é open source; na nuvem, troca por Entra ID.","A API valida o JWT; o front faz login pelo fluxo OIDC."],
+ ["Mensageria (RabbitMQ; Kafka depois)","sug","f3","Comunicação assíncrona entre sistemas: venda no AM Kaixara gera evento para o AM Rendara. Kafka é o padrão em empresa grande.","A API publica eventos; os consumidores processam em segundo plano."],
+ ["IA aplicada: Microsoft.Extensions.AI + pgvector","sug","f3","Busca semântica e RAG dentro dos sistemas (AM Projeta, aura-copilot). É a habilidade que mais cresce.","Embeddings guardados no PostgreSQL com pgvector; chama modelos na nuvem ou o Ollama."],
+ ["Serviços compartilhados aura- (10)","plano","fut","aura-licensing, aura-copilot, aura-historico (Clojure/Datomic), aura-analytics (Python/FastAPI) e os demais.","Nascem só quando um sistema precisar."],
+ ["Testes: xUnit, Testcontainers, Playwright, k6","sug","f1","Unidade e integração no .NET; Playwright testa as telas no navegador; k6 mede carga. Testes são pedidos em quase toda vaga.","Rodam no WSL e no Actions."]
+]},
+{id:"obs",n:"8",t:"Observabilidade",r:"Como você sabe o que está acontecendo dentro do sistema rodando. Pedido em toda vaga pleno.",c:"lin",items:[
+ ["OpenTelemetry","sug","f2","Padrão aberto para logs, métricas e traces. Já vem integrado no .NET e no Aspire.","A API envia dados para o coletor, que repassa para Prometheus, Loki e Tempo/Jaeger."],
+ ["Prometheus + Grafana","sug","f2","Métricas (requisições, erros, tempo de resposta) e painéis. É a dupla que mais aparece em vaga de DevOps/SRE.","Prometheus coleta; Grafana mostra e alerta."],
+ ["Loki e Tempo (ou Jaeger)","sug","f3","Logs e rastreamento de uma requisição passando por vários serviços.","Consultados pelo Grafana."],
+ ["Seq (opcional no começo)","sug","f2","Visualizador de logs mais simples, bom para começar antes da stack Grafana.","Recebe logs do Serilog."]
+]},
+{id:"cont",n:"7",t:"Containers, Kubernetes e infraestrutura como código",r:"Docker já é o básico de mercado; Kubernetes e Terraform são o próximo degrau.",c:"lin",items:[
+ ["Docker Desktop (engine no WSL2) + Compose","plano","f1","Executa os containers; um compose por sistema sobe banco, cache, fila e ferramentas.","A CLI docker no Ubuntu fala com a engine pelo socket; serviços se acham pelo nome."],
+ ["PostgreSQL + Redis","plano","f1","Banco principal e cache.","5432 e 6379; acessados pela API e pelo DBeaver."],
+ ["RabbitMQ (container)","sug","f3","Fila de mensagens local.","Painel em localhost:15672."],
+ ["Mailpit","sug","f2","Caixa de e-mail falsa para testes.","SMTP 1025; tela em localhost:8025."],
+ ["kind ou k3d + kubectl + Helm + k9s","sug","f3","Kubernetes local dentro do Docker: aprender pods, deployments, services e ingress sem pagar nuvem. k9s é o painel no terminal.","Usa as mesmas imagens do GHCR; depois o mesmo YAML vai para AKS (Azure) ou EKS (AWS)."],
+ ["Terraform (ou OpenTofu)","sug","f2","Cria a infraestrutura de nuvem por código: banco, rede, app, segredos. Destrói tudo com um comando.","Roda no WSL e no Actions; fala com as APIs do Azure e da AWS."],
+ ["Azure CLI e AWS CLI","sug","f2","Linha de comando das nuvens.","Autenticadas por login próprio; usadas pelo Terraform."],
+ ["ai-memory (container)","plano","f2","Memória do Claude Code entre sessões.","HTTP local."],
+ ["n8n (self-hosted)","plano","f3","Automações de conteúdo e rotina.","Chama APIs, webhooks e o Ollama."],
+ ["Datomic local","plano","fut","Só quando o aura-historico existir.","Usado pelo serviço Clojure."]
+]},
+{id:"ia",n:"6",t:"Agentes de IA e sandbox",r:"Onde os agentes trabalham. Ficam presos e só enxergam a pasta do projeto.",c:"lin",items:[
+ ["Claude Code (CLI)","plano","f2","Agente de programação: lê o repo, edita, roda testes e comandos.","Dentro do ai-jail; lê CLAUDE.md; usa subagentes, skills, hooks e MCP; consulta o ai-memory."],
+ ["ai-jail (Akita)","plano","f2","Sandbox que limita o que o agente vê e executa.","Libera só ~/dev/<projeto> e o vault em leitura."],
+ ["CLAUDE.md por repositório","criar","f1","Regras fixas do agente: stack, camadas, nomes AM, tecnologias rejeitadas.","Lido automaticamente ao abrir o repo."],
+ ["Servidores MCP","sug","f2","Dão ao agente acesso controlado ao GitHub e ao PostgreSQL de dev (só leitura). MCP virou padrão de integração de agentes.","Configurados por projeto; passam pelo ai-jail."],
+ ["Ollama + modelo 3B–4B","plano","f2","IA local e offline. Teste de 2 semanas: se não usar, desinstala.","Roda no Windows com a GTX 1650; API em localhost:11434."],
+ ["Whisper (local)","plano","f3","Transcreve suas aulas gravadas.","Lê o áudio do OBS; entrega texto ao vault."]
+]},
+{id:"lin",n:"5",t:"Linux: Ubuntu no WSL2",r:"Onde todo o código vive e roda. ext4, rápido para Git, Docker e .NET.",c:"lin",items:[
+ ["Ubuntu (padrão do WSL2)","plano","ok","Linux real em VM leve. Código em ~/dev.","Ponte da camada 4."],
+ ["Git + SSH + GitHub CLI (gh)","plano","ok","Versionamento, autenticação e PRs pelo terminal.","Porta 22 e API do GitHub."],
+ ["Node.js LTS, .NET 10 SDK, Python 3 + uv","plano","f1","Runtimes do front, das APIs e dos scripts.","Mesmas versões fixadas no Actions."],
+ ["Shell moderno: zsh, tmux, fzf, ripgrep, lazygit","sug","f2","Terminal produtivo; as mesmas ferramentas do Omarchy, então o que você aprender aqui vale no Arch.","Configurados pelo repositório dotfiles."],
+ ["Neovim (aprender aos poucos)","plano","f3","Editor de terminal da trilha Arch/Akita. Não substitui o VS Code no começo.","Mesmo LSP do C# e do TypeScript."],
+ ["TeX Live","plano","f2","Compila o livro Lógica e Máquina e as apostilas.","VS Code (LaTeX Workshop) chama o compilador."],
+ ["Segurança no código: gitleaks, Trivy, pre-commit","sug","f1","gitleaks barra senha esquecida no commit; Trivy acha vulnerabilidades em imagens Docker. DevSecOps é pedido crescente.","Rodam no hook de commit e no Actions."],
+ ["Ferramentas de rede: nmap, dig, curl, ss, Wireshark","plano","f2","Trilha de redes e diagnóstico.","Só contra suas VMs e containers."],
+ ["dotfiles (repositório)","criar","f1","Configurações versionadas; reconstrói a máquina numa tarde.","Clonado do GitHub; install.sh aplica tudo."]
+]},
+{id:"ponte",n:"4",t:"Ponte Windows ↔ Linux e virtualização",r:"O que faz os sistemas trabalharem juntos.",c:"",items:[
+ ["WSL2 + .wslconfig (12 GB)","plano","f1","Kernel Linux ao lado do Windows, com limite de memória.","Base para Docker e VMs."],
+ ["VS Code Remote – WSL","plano","f1","Janela no Windows, editor e terminal no Linux.","Servidor do VS Code dentro do Ubuntu."],
+ ["Encaminhamento de localhost","plano","ok","localhost:3000 do Windows abre o app que roda no Linux.","Automático."],
+ ["VirtualBox (ou VMware Workstation Pro pessoal)","sug","f2","Roda as VMs de Arch (treino), Kali, Ubuntu Server e Windows Server.","Usa a plataforma de hipervisor do Windows enquanto o WSL2 estiver ligado."],
+ ["Gerenciador de boot (segundo NVMe)","sug","fut","Escolher Windows ou Arch ao ligar. Cada SO no próprio disco, sem mexer no outro.","Configurado na instalação do Arch."]
+]},
+{id:"win",n:"3",t:"Windows 11 Home (apps com interface)",r:"Só o que precisa de janela, GPU ou hardware.",c:"win",items:[
+ ["VS Code + extensões","plano","ok","C# Dev Kit, ESLint, Tailwind, Docker, Kubernetes, Terraform, LaTeX Workshop, GitLens, REST Client.","Abre os projetos via Remote – WSL."],
+ ["Windows Terminal + PowerShell + winget","plano","ok","Terminal com abas e instalador de programas.","Abre o WSL direto."],
+ ["KeePassXC","plano","f1","Cofre offline de senhas, chaves e recuperação do BitLocker.","Você copia para .env local, GitHub Secrets ou Key Vault. Nunca para o repo."],
+ ["Obsidian + Obsidian Git","plano","f1","Vault Portfolio-AMS com commit e push automáticos.","Sincroniza com o GitHub."],
+ ["DBeaver Community","sug","f1","Cliente gráfico de banco.","localhost:5432."],
+ ["Bruno","sug","f2","Testar APIs, com as coleções salvas no repo.","localhost:5000."],
+ ["Excalidraw / draw.io","sug","f1","Diagramas de arquitetura para ADRs, aulas e entrevistas.","Arquivos salvos no repo ou no vault."],
+ ["Navegador + Claude in Chrome","plano","ok","Testes, DevTools e pesquisa.","Acessa localhost."],
+ ["Arduino IDE 2","sug","f2","Arduino Uno, Leonardo e ESP32.","USB serial."],
+ ["OBS Studio","plano","f3","Gravar aulas e vídeos.","Áudio vai para o Whisper."],
+ ["Unity e Cocos Dashboard","plano","dec","Mantidos para as aulas de robótica. Decida se ficam.","Isolados."]
+]},
+{id:"seg",n:"2",t:"Segurança e firmware",r:"Protege tudo que está acima.",c:"win",items:[
+ ["TPM 2.0 + Secure Boot","plano","ok","Só sistema assinado dá boot.","Base do BitLocker. O Arch precisa de configuração extra para Secure Boot."],
+ ["BitLocker","plano","f1","Disco criptografado sem conta Microsoft; chave no KeePassXC e no papel.","Usa o TPM."],
+ ["Defender + Firewall","plano","ok","Antivírus e bloqueio de rede.","Exclusão na pasta do WSL para não deixar o build lento."],
+ ["Backup 3-2-1","plano","f1","Código no GitHub; documentos em disco externo; pg_dump agendado. Depois, NAS.","Script de backup."]
+]},
+{id:"hw",n:"1",t:"Hardware",r:"A base física.",c:"",items:[
+ ["Acer Nitro AN515-45","plano","ok","Ryzen 7 5800H, 32 GB (até 64), GTX 1650 4 GB, 2 slots M.2 e 1 baia de 2,5\".","A GPU só serve IA local até ~4B."],
+ ["Segundo NVMe (1 a 2 TB)","sug","f2","Disco dedicado ao Arch (ou ao WSL e Docker enquanto o Arch não vem). PCIe 3.0 basta.","Slot M.2 livre."],
+ ["SSD SATA de 2,5\"","sug","fut","Espaço extra para VMs e imagens de laboratório.","Baia de 2,5\" (conferir cabo e suporte)."],
+ ["Segundo monitor","plano","ok","Código numa tela, app na outra.","HDMI."],
+ ["Placas de robótica (Arduino, ESP32, Raspberry Pi)","plano","f3","Aulas, projeto agro e automação.","USB serial e Wi-Fi/MQTT."],
+ ["NAS ou servidor homelab","plano","fut","Gitea, registry, backup, ISOs da assistência técnica, Ubuntu Server de verdade.","NFS/Samba; acesso externo só por WireGuard."]
+]}
+];
+const B={
+ nuvem:"<strong>git push via SSH</strong> manda o código ao GitHub; o <strong>Actions</strong> testa e entrega no Vercel, GHCR, Azure ou AWS.",
+ app:"A API emite <strong>logs, métricas e traces</strong> pelo OpenTelemetry.",
+ obs:"Coletor, Prometheus e Grafana rodam <strong>como containers</strong> no mesmo compose.",
+ cont:"A <strong>CLI docker e o kubectl</strong> no Ubuntu falam com a engine e com o cluster local.",
+ ia:"O agente roda <strong>dentro do ai-jail</strong>, que só libera <code>~/dev/&lt;projeto&gt;</code>.",
+ lin:"O código fica no <strong>ext4 do WSL</strong>; o Windows enxerga pela ponte abaixo.",
+ ponte:"O <strong>VS Code, o navegador e o VirtualBox</strong> do Windows usam o hipervisor e o localhost.",
+ win:"O Windows depende de <strong>TPM, BitLocker e Defender</strong>.",
+ seg:"<strong>Drivers AMD + NVIDIA</strong> ligam o sistema ao hardware."
+};
+const FL=[
+ {t:"Escrever código de um sistema AM",w:"Todo dia.",s:["<code>code ~/dev/am-kaixara</code> no Ubuntu abre o VS Code do Windows com o servidor dentro do Linux.","O .NET Aspire (ou <code>docker compose up</code>) sobe PostgreSQL, Redis e a API.","O Next.js roda em localhost:3000 e chama a API; o navegador do Windows abre tudo via localhost.","O painel do Aspire ou o Grafana mostra logs e traces de cada requisição.","Você confere dados no DBeaver e testa endpoints no Bruno."]},
+ {t:"Pedir uma tarefa ao agente",w:"Ao delegar feature, teste ou refatoração.",s:["Você roda o Claude Code dentro do ai-jail, na pasta do projeto.","Ele lê o CLAUDE.md e consulta o ai-memory.","Chama o subagente revisor-csharp ou a skill /novo-sistema-aura conforme a tarefa; usa o MCP para ver issues e o banco de dev.","Escreve o código e roda testes; o hook roda <code>dotnet format</code>.","Você revisa o diff e faz o commit pela skill /commit."]},
+ {t:"Entregar uma versão na nuvem",w:"Ao terminar uma feature.",s:["O pre-commit roda gitleaks, formatação e testes rápidos.","<code>git push</code> manda ao GitHub.","O Actions testa (Testcontainers, Playwright), roda CodeQL e Trivy e gera a imagem.","O Terraform garante a infraestrutura; o Actions faz deploy no Azure com OIDC, sem senha guardada.","O frontend sai no Vercel; o Grafana passa a mostrar a versão nova."]},
+ {t:"Laboratório de segurança",w:"Trilha Security+ → eJPT → OSCP.",s:["No VirtualBox, você liga a VM do Kali e uma VM alvo (Metasploitable) numa rede interna isolada.","Faz o reconhecimento com nmap e Wireshark, depois explora com as ferramentas do Kali.","Mais tarde, uma VM de Windows Server com Active Directory vira o alvo corporativo.","Cada máquina resolvida vira writeup no blog e material de aula."]},
+ {t:"Estudar e escrever o livro",w:"Noites de estudo.",s:["Notas no Obsidian, com push automático.","Capítulos em LaTeX no WSL, compilados pelo VS Code.","Aulas gravadas no OBS passam pelo Whisper e voltam como texto.","O Claude Code lê o vault em modo leitura para cruzar estudo e código."]}
+];
+const CH1=[["AWS",28],["Microsoft",20],["Google",15]];
+const CH2=[["Docker",59.1],["AWS",41.8],["Kubernetes",26],["Azure",25.1],["Google Cloud",24.5],["Terraform",18.3]];
+const TR=[
+ ["Engenharia de IA e agentes","Pesquisa SoftServe/MIT (2026): 51% dos executivos dizem que engenheiro de IA é o perfil mais procurado. Na prática: RAG, MCP, avaliação de respostas e orquestração de agentes. No seu setup: pgvector, Microsoft.Extensions.AI, MCP e os agentes do Claude Code."],
+ ["Arquitetura de software","32% esperam mais demanda por arquitetos. Você já está no caminho certo com Clean Architecture, DDD e ADRs; falta mensageria e sistemas distribuídos."],
+ ["Plataforma e DevOps","Kubernetes, Terraform, CI/CD e observabilidade aparecem em vaga pleno e sênior. Docker sozinho já é obrigatório."],
+ ["DevSecOps e LGPD","Segurança dentro do pipeline (CodeQL, Trivy, gitleaks) e cuidado com dados pessoais. Combina com sua pós em cibersegurança."],
+ ["Inglês","Aparece como diferencial em toda lista de mercado. A documentação de tudo acima está em inglês primeiro."]
+];
+const RD=[
+ ["Fundação","Agora até jan/2027","Terminar a Fase 1 do setup; C#/.NET, SQL, Git, Docker Compose e testes. Entregar o primeiro sistema AM com CI no GitHub Actions. Isso já atende a maioria das vagas júnior .NET."],
+ ["Nuvem Azure","Fev a abr/2027","AZ-900 e deploy do AM Kaixara no Azure com Terraform, Key Vault e OIDC. Começar a observabilidade com OpenTelemetry e Aspire."],
+ ["IA aplicada","Mai a jul/2027","RAG com pgvector dentro de um sistema AM, um servidor MCP próprio e os agentes do Claude Code. É o tema que mais cresce e conversa com o AM Projeta."],
+ ["Distribuído e plataforma","Ago a out/2027","RabbitMQ, autenticação OIDC, Kubernetes local (kind) e Grafana. AZ-204 no fim."],
+ ["Linux e segurança","Em paralelo, 1 a 2 noites por semana","Arch em VM, depois no segundo NVMe; Kali em VM para a trilha Security+ → eJPT. Já está no seu plano; aqui só ganha lugar na máquina."],
+ ["Segunda nuvem e sênior","2028","AWS (Cloud Practitioner → Developer Associate), Kafka, Windows Server/AD para OSCP, homelab com Ubuntu Server."]
+];
+const MK=[
+ ["CLAUDE.md padrão do Aura","Contexto do agente","f1","Modelo copiado para cada repo: stack, camadas, nomes, tecnologias rejeitadas e como rodar testes."],
+ ["Subagente revisor-csharp","Agente do Claude Code","f1","Caça seus erros recorrentes: PascalCase, throw sem if, atribuição esquecida no construtor."],
+ ["Skill /commit","Skill do Claude Code","f1","Mensagens no padrão Conventional Commits a partir do diff."],
+ ["dotfiles + install.sh","Repositório","f1","Reconstrói o ambiente (WSL agora, Arch depois) com um comando."],
+ ["Skill /novo-sistema-aura","Skill do Claude Code","f2","Esqueleto de sistema AM: solução Clean Arch, Aspire, compose, testes, CLAUDE.md, Actions e Terraform."],
+ ["Módulos Terraform do Aura","Infra como código","f2","Um módulo reaproveitável (app + PostgreSQL + Key Vault) usado por todos os sistemas, primeiro no Azure."],
+ ["Hooks do Claude Code + Git","Hooks","f2","Pós-edição: dotnet format. pre-commit: gitleaks e testes. post-commit: sinal para o aura-status."],
+ ["aura-mcp","Servidor MCP em C#","f3","Expõe ao agente o catálogo dos 13 sistemas, ADRs e o vault. Projeto de portfólio de IA com sua stack."],
+ ["Subagente arquiteto-aura","Agente do Claude Code","f3","Confere Clean Arch/DDD e escreve o rascunho do ADR."],
+ ["aura-status","Ferramenta C#","f2","Painel de repos, backup, Dependabot e estudos. Depois, módulo da Waybar no Arch."],
+ ["Laboratório de segurança","Repositório + VMs","f3","Configuração das VMs e writeups das máquinas resolvidas."],
+ ["AMtech Dev Edition","Scripts sobre o Omarchy","fut","Sua edição do Arch com tema Aura e ambiente .NET."]
+];
+const CUT=[
+ ["Dual boot no SSD atual","Risco de perder dados; o Arch vai para o segundo NVMe."],
+ ["Kali como sistema principal","É caixa de ferramentas de pentest, não ambiente de dev. Fica em VM."],
+ ["OpenClaw","Histórico sério de instâncias expostas e execução de código não confiável."],
+ ["LLM 8B na GPU / fine-tuning","Não cabe nos 4 GB; RAG resolve."],
+ ["Bun, Hono, Rust, Tauri, gRPC","Rejeitados por você para o Aura."],
+ ["Engenharia de dados (Spark, Airflow, dbt)","Mercado aquecido, mas fora do seu caminho .NET + arquitetura. Reavaliar em 2028."],
+ ["Mobile nativo (Kotlin, Swift, Flutter)","Fora do foco dos 12 meses."],
+ ["Postman, IDEs pagas, SaaS pagos","Você prefere open source; Bruno, DBeaver e VS Code cobrem."]
+];
+const lab={ok:"OK",f1:"F1",f2:"F2",f3:"F3",fut:"FUT",dec:"DEC"};
+document.getElementById("os").innerHTML=OS.map(([n,k,f,w,o])=>`<div class="card"><div class="top"><h4>${n}</h4><span class="badge ${f}">${lab[f]}</span></div><span class="kind">${k}</span><dl><dt>Onde</dt><dd>${w}</dd><dt>Por quê</dt><dd>${o}</dd></dl></div>`).join("");
+document.getElementById("cloud").innerHTML=CL.map(([n,k,f,...r])=>`<div class="card"><div class="top"><h4>${n}</h4><span class="badge ${f}">${lab[f]}</span></div><span class="kind">${k}</span><dl>${r.map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join("")}</dl></div>`).join("");
+const st=document.getElementById("stack");
+L.forEach(ly=>{
+  const sec=document.createElement("article");
+  sec.className="layer "+ly.c;
+  sec.innerHTML=`<header><span class="num">${ly.n}</span><div><h3>${ly.t}</h3><p class="role">${ly.r}</p></div></header><div class="items"></div><p class="empty" hidden>Nada nesta camada com esse filtro.</p>`;
+  const box=sec.querySelector(".items");
+  ly.items.forEach(([n,src,f,o,c])=>{
+    const d=document.createElement("details");d.className="it";d.dataset.f=f;d.dataset.src=src;
+    d.innerHTML=`<summary><i class="src ${src}"></i><span class="n">${n}</span><span class="badge ${f}">${lab[f]}</span></summary><div class="body"><div><b>O que faz</b>${o}</div><div><b>Conversa com</b>${c}</div></div>`;
+    box.appendChild(d);
+  });
+  st.appendChild(sec);
+  if(B[ly.id]){const b=document.createElement("div");b.className="bridge";b.innerHTML=`<span class="rail" aria-hidden="true"></span><p>${B[ly.id]}</p>`;st.appendChild(b);}
+});
+document.getElementById("flows").innerHTML=FL.map(f=>`<div class="flow"><h3>${f.t}</h3><p class="when">${f.w}</p><ol>${f.s.map(x=>`<li>${x}</li>`).join("")}</ol></div>`).join("");
+const bars=(d,max)=>d.map(([a,v])=>`<div class="bar"><span>${a}</span><span class="track"><span class="fill" style="display:block;width:${(v/max*100).toFixed(1)}%"></span></span><span class="v">${String(v).replace(".",",")}%</span></div>`).join("");
+document.getElementById("ch1").innerHTML=bars(CH1,100);
+document.getElementById("ch2").innerHTML=bars(CH2,100);
+document.getElementById("trends").innerHTML=TR.map(([a,b])=>`<div class="card"><h4>${a}</h4><p>${b}</p></div>`).join("");
+document.getElementById("road").innerHTML=RD.map(([a,w,b],i)=>`<div class="step"><span class="k">${i+1}</span><div><h3>${a}</h3><p class="when">${w}</p><p>${b}</p></div></div>`).join("");
+document.getElementById("make").innerHTML=MK.map(([n,k,f,o])=>`<div class="card"><div class="top"><i class="src criar"></i><h4>${n}</h4><span class="badge ${f}">${lab[f]}</span></div><span class="kind">${k}</span><p>${o}</p></div>`).join("");
+document.getElementById("cut").innerHTML=CUT.map(([a,b])=>`<div><span>${a}</span><span>${b}</span></div>`).join("");
+const btns=[...document.querySelectorAll(".filters button")];
+function apply(f){
+  btns.forEach(b=>b.setAttribute("aria-pressed",b.dataset.f===f?"true":"false"));
+  document.querySelectorAll(".layer").forEach(ly=>{
+    let vis=0;
+    ly.querySelectorAll("details.it").forEach(d=>{
+      const p=d.dataset.f,s=d.dataset.src;
+      const show=f==="all"||(f==="now"&&(p==="ok"||p==="f1"))||(f==="f2"&&p==="f2")||(f==="f3"&&(p==="f3"||p==="fut"))||(f==="criar"&&s==="criar")||(f==="sug"&&s==="sug");
+      d.hidden=!show;if(show)vis++;
+    });
+    ly.querySelector(".empty").hidden=vis>0;
+  });
+  try{localStorage.setItem("mapa-filtro",f)}catch(e){}
+}
+btns.forEach(b=>b.addEventListener("click",()=>apply(b.dataset.f)));
+let saved="all";try{saved=localStorage.getItem("mapa-filtro")||"all"}catch(e){}
+apply(btns.some(b=>b.dataset.f===saved)?saved:"all");
+</script>
+
+</body>
+</html>
