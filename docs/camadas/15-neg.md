@@ -31,6 +31,11 @@ flowchart LR
     n_nvisa["Vigilância sanitária (RDC 216)"]
     n_nanatel["Anatel e Inmetro"]
   end
+  subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
+    n_ocatal["Portfólio de ofertas"]
+    n_oesteira["Esteira de ofertas"]
+    n_ogbp["Google Perfil da Empresa"]
+  end
   subgraph L_emp["Pessoa física: impostos e finanças"]
     n_cnpj["CNPJ (futuro)"]
   end
@@ -45,10 +50,12 @@ flowchart LR
   n_nsoft -->|"constrói"| n_nrot
   n_sites -->|"vira serviço da empresa"| n_nsoft
   n_ncnpj -->|"AMtech Tecnologia"| n_nsoft
+  n_oesteira -->|"lança"| n_nsoft
   n_nloja -->|"mesmo balcão"| n_nponto
   n_npecas -->|"vendidas no balcão"| n_nloja
   n_nmaker -->|"usa a bancada"| n_nloja
   n_nkaix -->|"ordens de serviço"| n_nloja
+  n_ogbp -->|"presença local"| n_nloja
   n_nponto -->|"vendedores da cidade"| n_nentr
   n_nanatel -->|"homologação"| n_nmaker
   n_nentr -->|"entrega o Flex"| n_nflex
@@ -63,13 +70,16 @@ flowchart LR
   n_nkaix -->|"PDV e ficha técnica"| n_nsushi
   n_nvisa -->|"alvará sanitário"| n_nsushi
   n_ncnpj -->|"AM Alimentação"| n_nsushi
+  n_ogbp -->|"presença local"| n_nsushi
   n_npad -->|"pães e doces"| n_ncafe
   n_nkaix -->|"PDV"| n_ncafe
   n_nvisa -->|"alvará sanitário"| n_ncafe
   n_nkaix -->|"PDV e previsão"| n_npad
   n_nvisa -->|"alvará sanitário"| n_npad
+  n_ogbp -->|"presença local"| n_npad
   n_cnpj -->|"vira"| n_ncnpj
   n_nplan -->|"portões entre fases"| n_ncnpj
+  n_ocatal -->|"negócios físicos"| n_nplan
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_nsoft,n_nloja,n_npecas,n_nponto,n_nmaker,n_nentr,n_nflex,n_ndeliv,n_nsushi,n_ncafe,n_npad,n_ncnpj,n_nplan,n_nifood,n_nvisa,n_nanatel desta
 ```
@@ -109,6 +119,7 @@ Software sob encomenda, sites, manutenção e SaaS AM. Primeiro CNPJ do grupo (M
 | → envia para | [AM Rotara (entregas)](10-app.md#nrot) | Aplicação: sistemas AM (Aura) | constrói |
 | ← recebe de | [Sites para pequenas empresas](16-prod.md#sites) | Produtos (o que você vende) | vira serviço da empresa |
 | ← recebe de | [3 CNPJs por frente](15-neg.md#ncnpj) | Negócios do grupo (Barbacena) | AMtech Tecnologia |
+| ← recebe de | [Esteira de ofertas](22-oper.md#oesteira) | Operação do grupo (esteira, marca, qualidade) | lança |
 
 <a id="nloja"></a>
 
@@ -124,6 +135,7 @@ Loja de 30 a 50 m² com bancada técnica, mostruário e balcão de pacotes. Une 
 | ← recebe de | [Peças sem estoque (sob encomenda)](15-neg.md#npecas) | Negócios do grupo (Barbacena) | vendidas no balcão |
 | ← recebe de | [AMtech Maker (robótica)](15-neg.md#nmaker) | Negócios do grupo (Barbacena) | usa a bancada |
 | ← recebe de | [AM Kaixara (PDV e cardápio)](10-app.md#nkaix) | Aplicação: sistemas AM (Aura) | ordens de serviço |
+| ← recebe de | [Google Perfil da Empresa](22-oper.md#ogbp) | Operação do grupo (esteira, marca, qualidade) | presença local |
 
 <a id="npecas"></a>
 
@@ -222,6 +234,7 @@ Delivery e retirada de quarta a domingo à noite, cardápio em torno do salmão 
 | ← recebe de | [AM Kaixara (PDV e cardápio)](10-app.md#nkaix) | Aplicação: sistemas AM (Aura) | PDV e ficha técnica |
 | ← recebe de | [Vigilância sanitária (RDC 216)](15-neg.md#nvisa) | Negócios do grupo (Barbacena) | alvará sanitário |
 | ← recebe de | [3 CNPJs por frente](15-neg.md#ncnpj) | Negócios do grupo (Barbacena) | AM Alimentação |
+| ← recebe de | [Google Perfil da Empresa](22-oper.md#ogbp) | Operação do grupo (esteira, marca, qualidade) | presença local |
 
 <a id="ncafe"></a>
 
@@ -252,6 +265,7 @@ Padaria de finalização com massa congelada, café da manhã mineiro, almoço p
 | ← recebe de | [AM Delivery (várias empresas)](15-neg.md#ndeliv) | Negócios do grupo (Barbacena) | pedidos e marmitas |
 | ← recebe de | [AM Kaixara (PDV e cardápio)](10-app.md#nkaix) | Aplicação: sistemas AM (Aura) | PDV e previsão |
 | ← recebe de | [Vigilância sanitária (RDC 216)](15-neg.md#nvisa) | Negócios do grupo (Barbacena) | alvará sanitário |
+| ← recebe de | [Google Perfil da Empresa](22-oper.md#ogbp) | Operação do grupo (esteira, marca, qualidade) | presença local |
 
 <a id="ncnpj"></a>
 
@@ -280,6 +294,7 @@ Artefato e motor tools/negocios/financas.py: investimento, ponto de equilíbrio,
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [3 CNPJs por frente](15-neg.md#ncnpj) | Negócios do grupo (Barbacena) | portões entre fases |
+| ← recebe de | [Portfólio de ofertas](22-oper.md#ocatal) | Operação do grupo (esteira, marca, qualidade) | negócios físicos |
 
 <a id="nifood"></a>
 

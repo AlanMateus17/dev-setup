@@ -38,6 +38,9 @@ flowchart LR
     n_nativo["Mídia nativa (Taboola, Outbrain)"]
     n_infl["Influenciadores e newsletters"]
   end
+  subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
+    n_oedit["Agente editor de conteúdo"]
+  end
   subgraph L_pub["Público e canais"]
     n_facebook["Facebook"]
     n_ig["Instagram"]
@@ -106,6 +109,7 @@ flowchart LR
   n_utm -->|"marca os links"| n_postiz
   n_nas -->|"roda 24 h"| n_postiz
   n_aprov -->|"libera"| n_n8n
+  n_oedit -->|"fila de aprovação"| n_aprov
   n_horario -->|"escolhe o horário"| n_n8n
   n_metrics -->|"desempenho por horário"| n_horario
   n_pixel -->|"eventos de compra"| n_inst
@@ -273,6 +277,7 @@ Nenhum post sai sem o seu ok (Telegram ou e-mail). Protege o canal de erro da IA
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | libera |
+| ← recebe de | [Agente editor de conteúdo](22-oper.md#oedit) | Operação do grupo (esteira, marca, qualidade) | fila de aprovação |
 
 <a id="horario"></a>
 

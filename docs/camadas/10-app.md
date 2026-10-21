@@ -32,6 +32,9 @@ flowchart LR
     n_nkaix["AM Kaixara (PDV e cardápio)"]
     n_nrot["AM Rotara (entregas)"]
   end
+  subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
+    n_ocomp["Agente comprador"]
+  end
   subgraph L_venda["Plataformas de venda e recebimento"]
     n_pixa["Pix Automático + gateway (ex.: Asaas)"]
   end
@@ -143,6 +146,7 @@ flowchart LR
   n_nkaix -->|"vendas do dia"| n_caixa
   n_nsoft -->|"constrói"| n_nkaix
   n_saas -->|"vende por assinatura"| n_nkaix
+  n_ocomp -->|"estoque mínimo"| n_nkaix
   n_nrot -->|"roteiriza"| n_nentr
   n_nrot -->|"app e painel"| n_ndeliv
   n_nrot -->|"repasses"| n_caixa
@@ -417,6 +421,7 @@ PDV, comandas, ordem de serviço, estoque, ficha técnica e engenharia de cardá
 | → envia para | [Caixa da Casa / AM Rendara](18-emp.md#caixa) | Pessoa física: impostos e finanças | vendas do dia |
 | ← recebe de | [AMtech Software (projetos e SaaS)](15-neg.md#nsoft) | Negócios do grupo (Barbacena) | constrói |
 | ← recebe de | [Sistemas AM (SaaS)](16-prod.md#saas) | Produtos (o que você vende) | vende por assinatura |
+| ← recebe de | [Agente comprador](22-oper.md#ocomp) | Operação do grupo (esteira, marca, qualidade) | estoque mínimo |
 
 <a id="nrot"></a>
 

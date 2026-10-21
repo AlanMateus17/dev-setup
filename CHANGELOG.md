@@ -2,6 +2,13 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.7.0] - 2026-10-21
+
+### Adicionado
+- `docs/operacao/`: esteira de ofertas, marca e presença, flywheel de conteúdo, automação e escala, padrão de qualidade, clientes e dados, ordem de execução.
+- `data/portfolio.json` com 47 ofertas (14 fontes de renda novas) e `tools/portfolio/portfolio.py`, que valida, pontua e gera `docs/operacao/portfolio.md` e `portfolio.html`, com testes no CI.
+- Camada "Operação do grupo", 18 blocos (incluindo os agentes do grupo) e o fluxo "Do trabalho ao conteúdo".
+
 ## [1.6.0] - 2026-10-21
 
 ### Adicionado

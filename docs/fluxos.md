@@ -375,3 +375,30 @@ flowchart LR
 6. **[AM Kaixara (PDV e cardápio)](camadas/10-app.md#nkaix)**: O AM Kaixara entra com cardápio, fichas técnicas e estoque.
 7. **[AM Rotara (entregas)](camadas/10-app.md#nrot)**: O AM Rotara liga o delivery próprio e a frota.
 8. **[Sushi (delivery)](camadas/15-neg.md#nsushi)**: A casa abre, e os números voltam para o painel.
+
+## Do trabalho ao conteúdo
+
+```mermaid
+flowchart LR
+  s0["1. Flywheel de conteúdo"]
+  s1["2. Whisper (local)"]
+  s2["3. Agente editor de conteúdo"]
+  s3["4. Aprovação no celular"]
+  s4["5. Postiz (agendador)"]
+  s5["6. Banco de métricas (PostgreSQL)"]
+  s6["7. Analista semanal"]
+  s0 --> s1
+  s1 --> s2
+  s2 --> s3
+  s3 --> s4
+  s4 --> s5
+  s5 --> s6
+```
+
+1. **[Flywheel de conteúdo](camadas/22-oper.md#ofly)**: Você grava a aula, o reparo, o capítulo ou a decisão da semana.
+2. **[Whisper (local)](camadas/12-cont.md#whis)**: O Whisper transcreve no notebook.
+3. **[Agente editor de conteúdo](camadas/22-oper.md#oedit)**: O agente propõe cortes, legendas, carrossel, post do Google e newsletter.
+4. **[Aprovação no celular](camadas/20-mkt.md#aprov)**: Você aprova no celular.
+5. **[Postiz (agendador)](camadas/20-mkt.md#postiz)**: O Postiz publica no melhor horário de cada rede.
+6. **[Banco de métricas (PostgreSQL)](camadas/20-mkt.md#metrics)**: Retenção, cliques e vendas voltam para o banco.
+7. **[Analista semanal](camadas/22-oper.md#oanal)**: O analista semanal diz o que funcionou e o que mudar.

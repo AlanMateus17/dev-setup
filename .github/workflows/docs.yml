@@ -22,3 +22,7 @@ jobs:
         run: python -m unittest discover -s tools/negocios -v
       - name: Conferir os números gerados dos negócios
         run: python tools/negocios/gerar.py --check
+      - name: Testar e conferir o portfólio de ofertas
+        run: |
+          python -m unittest discover -s tools/portfolio -v
+          python tools/portfolio/portfolio.py --check

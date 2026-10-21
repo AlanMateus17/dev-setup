@@ -23,6 +23,9 @@ flowchart LR
     n_graf["Grafana"]
     n_aspire[".NET Aspire"]
   end
+  subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
+    n_oanal["Analista semanal"]
+  end
   subgraph L_emp["Pessoa física: impostos e finanças"]
     n_caixa["Caixa da Casa / AM Rendara"]
   end
@@ -50,6 +53,7 @@ flowchart LR
   n_aspire -->|"painel de dev"| n_otel
   n_prom -->|"painéis"| n_graf
   n_caixa -->|"DRE por negócio"| n_graf
+  n_oanal -->|"lê o painel"| n_graf
   n_aspire -->|"sobe os serviços"| n_docker
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_sentry,n_kuma,n_seq,n_loki,n_otel,n_prom,n_graf,n_aspire desta
@@ -158,6 +162,7 @@ Painéis e alertas.
 | ← recebe de | [Loki + Tempo](09-obs.md#loki) | Observabilidade | consultas |
 | ← recebe de | [Prometheus](09-obs.md#prom) | Observabilidade | painéis |
 | ← recebe de | [Caixa da Casa / AM Rendara](18-emp.md#caixa) | Pessoa física: impostos e finanças | DRE por negócio |
+| ← recebe de | [Analista semanal](22-oper.md#oanal) | Operação do grupo (esteira, marca, qualidade) | lê o painel |
 
 <a id="aspire"></a>
 

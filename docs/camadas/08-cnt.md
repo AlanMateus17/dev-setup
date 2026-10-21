@@ -28,6 +28,11 @@ flowchart LR
     n_tf["Terraform"]
     n_n8n["n8n"]
   end
+  subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
+    n_oatend["Agente atendente (WhatsApp)"]
+    n_ocob["Agente cobrador"]
+    n_opos["Agente pós-venda"]
+  end
   subgraph L_mkt["Marketing, automação e medição"]
     n_aprov["Aprovação no celular"]
     n_hooks["Webhooks de venda"]
@@ -107,6 +112,9 @@ flowchart LR
   n_n8n -->|"webhook de venda"| n_hotm
   n_n8n -->|"manda o post aprovado"| n_postiz
   n_n8n -->|"grava"| n_metrics
+  n_n8n -->|"roda"| n_ocob
+  n_n8n -->|"roda"| n_opos
+  n_n8n -->|"roda"| n_oatend
   n_oll -->|"IA local nas automações"| n_n8n
   n_aprov -->|"libera"| n_n8n
   n_horario -->|"escolhe o horário"| n_n8n
@@ -317,6 +325,9 @@ Automação: novo aluno → e-mail, post agendado, aviso.
 | → envia para | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | webhook de venda |
 | → envia para | [Postiz (agendador)](20-mkt.md#postiz) | Marketing, automação e medição | manda o post aprovado |
 | → envia para | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | grava |
+| → envia para | [Agente cobrador](22-oper.md#ocob) | Operação do grupo (esteira, marca, qualidade) | roda |
+| → envia para | [Agente pós-venda](22-oper.md#opos) | Operação do grupo (esteira, marca, qualidade) | roda |
+| → envia para | [Agente atendente (WhatsApp)](22-oper.md#oatend) | Operação do grupo (esteira, marca, qualidade) | roda |
 | ← recebe de | [Ollama (3B–4B)](05-ia.md#oll) | Agentes de IA e sandbox | IA local nas automações |
 | ← recebe de | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
 | ← recebe de | [Aprovação no celular](20-mkt.md#aprov) | Marketing, automação e medição | libera |

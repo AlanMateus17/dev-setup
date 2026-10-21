@@ -25,6 +25,11 @@ flowchart LR
     n_tiktok["TikTok"]
     n_facebook["Facebook"]
   end
+  subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
+    n_oatend["Agente atendente (WhatsApp)"]
+    n_obuild["Canal build in public"]
+    n_omarca["Marca pessoal Alan Mateus"]
+  end
   subgraph L_mkt["Marketing, automação e medição"]
     n_ads["Meta Ads (Instagram, Facebook)"]
     n_dub["Dublagem (YouTube + ElevenLabs)"]
@@ -74,6 +79,7 @@ flowchart LR
   n_img -->|"posts"| n_ig
   n_alunos -->|"seguem"| n_ig
   n_postiz -->|"publica"| n_ig
+  n_omarca -->|"perfil"| n_ig
   n_yt -->|"membros"| n_ytm
   n_yt -->|"link na descrição"| n_inst
   n_gem -->|"resume vídeos"| n_yt
@@ -82,12 +88,16 @@ flowchart LR
   n_postiz -->|"publica"| n_yt
   n_dub -->|"faixas de áudio"| n_yt
   n_spotads -->|"lembrança da marca"| n_yt
+  n_obuild -->|"vídeo semanal"| n_yt
+  n_omarca -->|"canal"| n_yt
   n_li -->|"perfil e posts"| n_recr
   n_li -->|"link"| n_site
   n_grok -->|"tendências do setor"| n_li
   n_postiz -->|"publica"| n_li
+  n_omarca -->|"carreira e B2B"| n_li
   n_wa -->|"agenda"| n_aulas
   n_cel -->|"atendimento"| n_wa
+  n_oatend -->|"responde"| n_wa
   n_seo -->|"visitas"| n_site
   n_seo -->|"visitas"| n_inst
   n_gsc -->|"indexação"| n_seo
@@ -149,6 +159,7 @@ Canal principal de venda: posts, reels e link na bio para o Instituto AMS.
 | ← recebe de | [Canva · Krita · Inkscape](12-cont.md#img) | Produção de conteúdo | posts |
 | ← recebe de | [Alunos e ex-alunos](21-pub.md#alunos) | Público e canais | seguem |
 | ← recebe de | [Postiz (agendador)](20-mkt.md#postiz) | Marketing, automação e medição | publica |
+| ← recebe de | [Marca pessoal Alan Mateus](22-oper.md#omarca) | Operação do grupo (esteira, marca, qualidade) | perfil |
 
 <a id="yt"></a>
 
@@ -168,6 +179,8 @@ Aulas e vídeos de vendas. Gera público para os cursos e para o livro.
 | ← recebe de | [Postiz (agendador)](20-mkt.md#postiz) | Marketing, automação e medição | publica |
 | ← recebe de | [Dublagem (YouTube + ElevenLabs)](20-mkt.md#dub) | Marketing, automação e medição | faixas de áudio |
 | ← recebe de | [Spotify Ad Studio](20-mkt.md#spotads) | Marketing, automação e medição | lembrança da marca |
+| ← recebe de | [Canal build in public](22-oper.md#obuild) | Operação do grupo (esteira, marca, qualidade) | vídeo semanal |
+| ← recebe de | [Marca pessoal Alan Mateus](22-oper.md#omarca) | Operação do grupo (esteira, marca, qualidade) | canal |
 
 <a id="li"></a>
 
@@ -183,6 +196,7 @@ Vitrine para a vaga de dev: projetos, posts técnicos e certificações.
 | → envia para | [Site pessoal + blog (Jekyll)](17-web.md#site) | Vitrine web (sites e domínio) | link |
 | ← recebe de | [Grok](06-chat.md#grok) | Assistentes de IA (chat, pesquisa e estudo) | tendências do setor |
 | ← recebe de | [Postiz (agendador)](20-mkt.md#postiz) | Marketing, automação e medição | publica |
+| ← recebe de | [Marca pessoal Alan Mateus](22-oper.md#omarca) | Operação do grupo (esteira, marca, qualidade) | carreira e B2B |
 
 <a id="wa"></a>
 
@@ -197,6 +211,7 @@ Atendimento de alunos particulares e clientes de sites.
 | → envia para | [Aulas particulares](16-prod.md#aulas) | Produtos (o que você vende) | agenda |
 | ← recebe de | [Celular](01-hw.md#cel) | Hardware | atendimento |
 | ← recebe de | [Instagram](21-pub.md#ig) | Público e canais | contato direto |
+| ← recebe de | [Agente atendente (WhatsApp)](22-oper.md#oatend) | Operação do grupo (esteira, marca, qualidade) | responde |
 
 <a id="seo"></a>
 
@@ -267,4 +282,4 @@ Reels e posts da página da marca; mesma conta de anúncios do Instagram.
 
 ---
 
-[↓ Camada 20 · Marketing, automação e medição](20-mkt.md)
+[↑ Camada 22 · Operação do grupo (esteira, marca, qualidade)](22-oper.md) · [↓ Camada 20 · Marketing, automação e medição](20-mkt.md)

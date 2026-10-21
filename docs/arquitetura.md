@@ -9,6 +9,7 @@ A pilha vai do público (topo) ao hardware (base). Cada linha é a ligação ent
 
 ```mermaid
 flowchart TB
+  L_oper["22 · Operação do grupo (esteira, marca, qualidade)<br/>18 blocos"]
   L_pub["21 · Público e canais<br/>10 blocos"]
   L_mkt["20 · Marketing, automação e medição<br/>23 blocos"]
   L_venda["19 · Plataformas de venda e recebimento<br/>13 blocos"]
@@ -30,6 +31,7 @@ flowchart TB
   L_win["03 · Windows 11, apps e máquinas virtuais<br/>21 blocos"]
   L_seg["02 · Segurança e cofre<br/>9 blocos"]
   L_hw["01 · Hardware<br/>13 blocos"]
+  L_oper --- L_pub
   L_pub --- L_mkt
   L_mkt --- L_venda
   L_venda --- L_emp
@@ -51,13 +53,14 @@ flowchart TB
   L_win --- L_seg
   L_seg --- L_hw
   classDef cam fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class L_pub,L_mkt,L_venda,L_emp,L_web,L_prod,L_neg,L_editora,L_est,L_cont,L_nuvem,L_app,L_obs,L_cnt,L_clc,L_chat,L_ia,L_lin,L_win,L_seg,L_hw cam
+  class L_oper,L_pub,L_mkt,L_venda,L_emp,L_web,L_prod,L_neg,L_editora,L_est,L_cont,L_nuvem,L_app,L_obs,L_cnt,L_clc,L_chat,L_ia,L_lin,L_win,L_seg,L_hw cam
 ```
 
 ## Camadas e ligações
 
 | # | Camada | Blocos | Como se liga à camada de baixo |
 |---|---|---|---|
+| 22 | [Operação do grupo (esteira, marca, qualidade)](camadas/22-oper.md) | 18 | Toda oferta passa pela esteira e pelo padrão de qualidade antes de chegar ao público; cada venda e cada trabalho voltam como dado e conteúdo. |
 | 21 | [Público e canais](camadas/21-pub.md) | 10 | Link na bio, vídeo, post, busca e indicação levam a pessoa até o site ou o WhatsApp. |
 | 20 | [Marketing, automação e medição](camadas/20-mkt.md) | 23 | O que é publicado e anunciado aqui leva às plataformas de venda; cada venda volta como dado para o banco de métricas. |
 | 19 | [Plataformas de venda e recebimento](camadas/19-venda.md) | 13 | Cada venda é lançada no carnê-leão e o dinheiro cai na sua conta separada. |

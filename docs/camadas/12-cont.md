@@ -21,6 +21,9 @@ flowchart LR
     n_whis["Whisper (local)"]
     n_voz["Voz clonada (ElevenLabs)"]
   end
+  subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
+    n_oedit["Agente editor de conteúdo"]
+  end
   subgraph L_pub["Público e canais"]
     n_ig["Instagram"]
     n_yt["YouTube"]
@@ -74,10 +77,12 @@ flowchart LR
   n_gpt -->|"gera imagens"| n_img
   n_ccan -->|"posts e capas"| n_img
   n_whis -->|"transcrição"| n_obsd
+  n_whis -->|"transcrição"| n_oedit
   n_voz -->|"sua voz em outros idiomas"| n_dub
   n_voz -->|"narração"| n_bcurso
   n_ws -->|"voz e vídeo locais"| n_voz
   n_gpuh -->|"modelos abertos"| n_voz
+  n_oedit -->|"narração"| n_voz
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_obss,n_edit,n_aud,n_img,n_whis,n_voz desta
 ```
@@ -166,6 +171,7 @@ Transcreve as aulas para legenda, artigo e capítulo.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | transcrição |
+| → envia para | [Agente editor de conteúdo](22-oper.md#oedit) | Operação do grupo (esteira, marca, qualidade) | transcrição |
 | ← recebe de | [OBS Studio](12-cont.md#obss) | Produção de conteúdo | áudio |
 
 <a id="voz"></a>
@@ -183,6 +189,7 @@ Clonagem profissional da sua própria voz (plano Creator em diante, uso comercia
 | → envia para | [Curso por seção](14-editora.md#bcurso) | Editora AMS Silva (produção de livros) | narração |
 | ← recebe de | [Workstation com GPU](01-hw.md#ws) | Hardware | voz e vídeo locais |
 | ← recebe de | [GPU na nuvem por hora](11-nuvem.md#gpuh) | Nuvem, código e entrega | modelos abertos |
+| ← recebe de | [Agente editor de conteúdo](22-oper.md#oedit) | Operação do grupo (esteira, marca, qualidade) | narração |
 
 ---
 

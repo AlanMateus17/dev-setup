@@ -22,6 +22,10 @@ flowchart LR
     n_sites["Sites para pequenas empresas"]
     n_saas["Sistemas AM (SaaS)"]
   end
+  subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
+    n_oesteira["Esteira de ofertas"]
+    n_oorc["Agente orçamentista"]
+  end
   subgraph L_pub["Público e canais"]
     n_wa["WhatsApp Business"]
   end
@@ -93,6 +97,7 @@ flowchart LR
   n_comu -->|"suporte aos alunos"| n_curso
   n_edit -->|"aulas editadas"| n_curso
   n_obsd -->|"roteiro"| n_curso
+  n_oesteira -->|"lança"| n_curso
   n_form -->|"proposta de parceria"| n_dio
   n_form -->|"produto"| n_hotm
   n_tmpl -->|"download"| n_hotm
@@ -110,6 +115,7 @@ flowchart LR
   n_obsd -->|"capítulos"| n_livro
   n_bci -->|"PDF, EPUB e impressão"| n_livro
   n_isca -->|"capítulo grátis"| n_livro
+  n_oesteira -->|"lança"| n_livro
   n_aulas -->|"cobrança"| n_mp
   n_agenda -->|"horários"| n_aulas
   n_wa -->|"agenda"| n_aulas
@@ -121,6 +127,7 @@ flowchart LR
   n_legal -->|"contrato"| n_sites
   n_cupw -->|"encontra clientes"| n_sites
   n_prof -->|"licença para escolas"| n_sites
+  n_oorc -->|"propostas"| n_sites
   n_saas -->|"roda na nuvem"| n_azure
   n_saas -->|"cobrança por módulo"| n_lic
   n_saas -->|"vende por assinatura"| n_nkaix
@@ -159,6 +166,7 @@ Primeiro produto de lançamento, para validar antes de construir mais.
 | ← recebe de | [Comunidade (Discord ou grupo)](19-venda.md#comu) | Plataformas de venda e recebimento | suporte aos alunos |
 | ← recebe de | [DaVinci Resolve ou Kdenlive](12-cont.md#edit) | Produção de conteúdo | aulas editadas |
 | ← recebe de | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | roteiro |
+| ← recebe de | [Esteira de ofertas](22-oper.md#oesteira) | Operação do grupo (esteira, marca, qualidade) | lança |
 
 <a id="form"></a>
 
@@ -209,6 +217,7 @@ Lógica e Máquina, em 5 volumes, publicado pela Editora AMS Silva. Ebook, impre
 | ← recebe de | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | capítulos |
 | ← recebe de | [Pipeline do livro (CI)](14-editora.md#bci) | Editora AMS Silva (produção de livros) | PDF, EPUB e impressão |
 | ← recebe de | [Isca grátis + sequência de e-mails](20-mkt.md#isca) | Marketing, automação e medição | capítulo grátis |
+| ← recebe de | [Esteira de ofertas](22-oper.md#oesteira) | Operação do grupo (esteira, marca, qualidade) | lança |
 
 <a id="aulas"></a>
 
@@ -242,6 +251,7 @@ Freelance em Barbacena: sites e lojas.
 | ← recebe de | [Termos, privacidade (LGPD) e contratos](18-emp.md#legal) | Pessoa física: impostos e finanças | contrato |
 | ← recebe de | [Conector Upwork](07-clc.md#cupw) | Claude: recursos, conectores e plugins | encontra clientes |
 | ← recebe de | [Edição do professor](14-editora.md#prof) | Editora AMS Silva (produção de livros) | licença para escolas |
+| ← recebe de | [Agente orçamentista](22-oper.md#oorc) | Operação do grupo (esteira, marca, qualidade) | propostas |
 
 <a id="saas"></a>
 

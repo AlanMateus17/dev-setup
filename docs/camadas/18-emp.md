@@ -26,6 +26,9 @@ flowchart LR
     n_conta["Contador"]
     n_caixa["Caixa da Casa / AM Rendara"]
   end
+  subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
+    n_ofisc["Organizador fiscal"]
+  end
   subgraph L_mkt["Marketing, automação e medição"]
     n_metrics["Banco de métricas (PostgreSQL)"]
   end
@@ -85,6 +88,7 @@ flowchart LR
   n_metrics -->|"base do carnê-leão"| n_nfse
   n_kdp -->|"carnê-leão (exterior)"| n_nfse
   n_pod -->|"carnê-leão"| n_nfse
+  n_ofisc -->|"carnê-leão"| n_nfse
   n_banco -->|"extrato"| n_caixa
   n_kiwi -->|"saque"| n_banco
   n_eduzz -->|"saque"| n_banco
@@ -92,6 +96,7 @@ flowchart LR
   n_pixa -->|"recebimento"| n_banco
   n_hotm -->|"saque"| n_banco
   n_mp -->|"saque"| n_banco
+  n_ofisc -->|"entrega ao contador"| n_conta
   n_caixa -->|"DRE por negócio"| n_graf
   n_pfin -->|"fechamento do mês"| n_caixa
   n_arts -->|"app da família"| n_caixa
@@ -218,6 +223,7 @@ Todo mês você lança o que recebeu de compradores (Hotmart, Kiwify, aulas, sit
 | ← recebe de | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | base do carnê-leão |
 | ← recebe de | [Amazon KDP](14-editora.md#kdp) | Editora AMS Silva (produção de livros) | carnê-leão (exterior) |
 | ← recebe de | [Gráfica sob demanda (Brasil)](14-editora.md#pod) | Editora AMS Silva (produção de livros) | carnê-leão |
+| ← recebe de | [Organizador fiscal](22-oper.md#ofisc) | Operação do grupo (esteira, marca, qualidade) | carnê-leão |
 
 <a id="irpf"></a>
 
@@ -261,6 +267,7 @@ Uma consulta para montar o carnê-leão do jeito certo e dizer a partir de que r
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Carnê-leão (Receita Federal)](18-emp.md#nfse) | Pessoa física: impostos e finanças | orienta impostos |
+| ← recebe de | [Organizador fiscal](22-oper.md#ofisc) | Operação do grupo (esteira, marca, qualidade) | entrega ao contador |
 
 <a id="caixa"></a>
 

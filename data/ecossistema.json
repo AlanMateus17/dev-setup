@@ -1,6 +1,11 @@
 {
  "camadas": [
   {
+   "id": "oper",
+   "titulo": "Operação do grupo (esteira, marca, qualidade)",
+   "ponte": "Toda oferta passa pela esteira e pelo padrão de qualidade antes de chegar ao público; cada venda e cada trabalho voltam como dado e conteúdo."
+  },
+  {
    "id": "pub",
    "titulo": "Público e canais",
    "ponte": "Link na bio, vídeo, post, busca e indicação levam a pessoa até o site ou o WhatsApp."
@@ -2635,6 +2640,168 @@
    "conta": false,
    "futuro": true,
    "descricao": "Pedidos, roteirização com PostGIS, app do entregador, prova de entrega e repasse semanal. Base da AM Entregas e do AM Delivery."
+  },
+  {
+   "id": "ocatal",
+   "camada": "oper",
+   "rotulo": "Portfólio de ofertas",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "data/portfolio.json: todas as ofertas do grupo com estágio, notas, pontuação e próximo passo. Gera docs/operacao/portfolio.md e o portfólio interativo."
+  },
+  {
+   "id": "oesteira",
+   "camada": "oper",
+   "rotulo": "Esteira de ofertas",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Ideia, validação, construção, lançamento e escala, com portões objetivos. Uma oferta em construção e uma em validação por vez."
+  },
+  {
+   "id": "oqual",
+   "camada": "oper",
+   "rotulo": "Padrão de|qualidade",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Checklist de 'pronto' por tipo de oferta: infoproduto, livro, software, serviço, negócio físico e conteúdo."
+  },
+  {
+   "id": "omarca",
+   "camada": "oper",
+   "rotulo": "Marca pessoal|Alan Mateus",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": false,
+   "descricao": "O guarda-chuva de confiança do grupo: Instituto AMS, Editora AMS Silva, AMtech e os negócios locais apontam para você."
+  },
+  {
+   "id": "ogbp",
+   "camada": "oper",
+   "rotulo": "Google Perfil|da Empresa",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": true,
+   "descricao": "O canal local mais importante: loja, assistência e restaurantes. Post semanal, fotos, horários e resposta a avaliações em 24 h."
+  },
+  {
+   "id": "oaval",
+   "camada": "oper",
+   "rotulo": "NPS e avaliações",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Uma pergunta depois de cada compra ou serviço e pedido de avaliação no Google. Reclamação vira issue da oferta."
+  },
+  {
+   "id": "ocrm",
+   "camada": "oper",
+   "rotulo": "CRM único + LGPD",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Uma ficha por cliente com ofertas compradas, origem e consentimento. Começa em planilha e MailerLite; vira tabela no PostgreSQL do grupo."
+  },
+  {
+   "id": "ofly",
+   "camada": "oper",
+   "rotulo": "Flywheel de|conteúdo",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Cada aula, capítulo, projeto, reparo ou prato vira várias peças: cortes, carrossel, artigo, newsletter, questão, template."
+  },
+  {
+   "id": "obuild",
+   "camada": "oper",
+   "rotulo": "Canal build|in public",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": true,
+   "descricao": "Vídeo semanal com rosto mostrando decisões reais do grupo: números, setup, aulas. Gera confiança para todas as ofertas."
+  },
+  {
+   "id": "oatend",
+   "camada": "oper",
+   "rotulo": "Agente atendente|(WhatsApp)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Responde perguntas frequentes, mostra catálogo e horários e agenda. Passa para você o que não souber. Nunca promete preço fora da tabela."
+  },
+  {
+   "id": "oorc",
+   "camada": "oper",
+   "rotulo": "Agente orçamentista",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Monta propostas a partir dos pacotes e do histórico, para você aprovar."
+  },
+  {
+   "id": "ocob",
+   "camada": "oper",
+   "rotulo": "Agente cobrador",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Lembra vencimentos e envia o Pix; avisa você nos atrasos. Não faz estorno nem acordo sozinho."
+  },
+  {
+   "id": "opos",
+   "camada": "oper",
+   "rotulo": "Agente pós-venda",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Pergunta a nota, pede avaliação e oferece o próximo passo da jornada do cliente."
+  },
+  {
+   "id": "oedit",
+   "camada": "oper",
+   "rotulo": "Agente editor de|conteúdo",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Transforma transcrições em cortes, títulos, legendas, carrosséis, posts do Google e newsletter, seguindo o guia de estilo da marca."
+  },
+  {
+   "id": "oanal",
+   "camada": "oper",
+   "rotulo": "Analista semanal",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Lê o painel toda segunda e manda 3 fatos e 1 sugestão de decisão. Só leitura."
+  },
+  {
+   "id": "ofisc",
+   "camada": "oper",
+   "rotulo": "Organizador fiscal",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Junta notas, extratos e vendas do mês para o contador e para o carnê-leão."
+  },
+  {
+   "id": "orevo",
+   "camada": "oper",
+   "rotulo": "Revisor de oferta",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Confere cada lançamento contra o padrão de qualidade antes de ir ao ar."
+  },
+  {
+   "id": "ocomp",
+   "camada": "oper",
+   "rotulo": "Agente comprador",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Sugere a lista de compras dos negócios de comida pelo estoque mínimo e pela previsão de produção."
   }
  ],
  "conexoes": [
@@ -5042,6 +5209,191 @@
    "de": "nplan",
    "para": "ncnpj",
    "rotulo": "portões entre fases"
+  },
+  {
+   "de": "ocatal",
+   "para": "oesteira",
+   "rotulo": "fila por pontuação"
+  },
+  {
+   "de": "oesteira",
+   "para": "oqual",
+   "rotulo": "portão de lançamento"
+  },
+  {
+   "de": "orevo",
+   "para": "oqual",
+   "rotulo": "confere"
+  },
+  {
+   "de": "oesteira",
+   "para": "curso",
+   "rotulo": "lança"
+  },
+  {
+   "de": "oesteira",
+   "para": "livro",
+   "rotulo": "lança"
+  },
+  {
+   "de": "oesteira",
+   "para": "nsoft",
+   "rotulo": "lança"
+  },
+  {
+   "de": "ocatal",
+   "para": "nplan",
+   "rotulo": "negócios físicos"
+  },
+  {
+   "de": "ofly",
+   "para": "oedit",
+   "rotulo": "trabalho capturado"
+  },
+  {
+   "de": "whis",
+   "para": "oedit",
+   "rotulo": "transcrição"
+  },
+  {
+   "de": "oedit",
+   "para": "aprov",
+   "rotulo": "fila de aprovação"
+  },
+  {
+   "de": "oedit",
+   "para": "voz",
+   "rotulo": "narração"
+  },
+  {
+   "de": "ofly",
+   "para": "obuild",
+   "rotulo": "decisões reais"
+  },
+  {
+   "de": "obuild",
+   "para": "yt",
+   "rotulo": "vídeo semanal"
+  },
+  {
+   "de": "omarca",
+   "para": "ig",
+   "rotulo": "perfil"
+  },
+  {
+   "de": "omarca",
+   "para": "yt",
+   "rotulo": "canal"
+  },
+  {
+   "de": "omarca",
+   "para": "li",
+   "rotulo": "carreira e B2B"
+  },
+  {
+   "de": "omarca",
+   "para": "obuild",
+   "rotulo": "rosto"
+  },
+  {
+   "de": "ogbp",
+   "para": "nloja",
+   "rotulo": "presença local"
+  },
+  {
+   "de": "ogbp",
+   "para": "nsushi",
+   "rotulo": "presença local"
+  },
+  {
+   "de": "ogbp",
+   "para": "npad",
+   "rotulo": "presença local"
+  },
+  {
+   "de": "opos",
+   "para": "ogbp",
+   "rotulo": "pede avaliação"
+  },
+  {
+   "de": "opos",
+   "para": "oaval",
+   "rotulo": "NPS"
+  },
+  {
+   "de": "oaval",
+   "para": "oqual",
+   "rotulo": "melhoria"
+  },
+  {
+   "de": "opos",
+   "para": "ocrm",
+   "rotulo": "próximo passo"
+  },
+  {
+   "de": "crm",
+   "para": "ocrm",
+   "rotulo": "vira"
+  },
+  {
+   "de": "ocrm",
+   "para": "mailer",
+   "rotulo": "etiquetas"
+  },
+  {
+   "de": "oatend",
+   "para": "wa",
+   "rotulo": "responde"
+  },
+  {
+   "de": "oorc",
+   "para": "sites",
+   "rotulo": "propostas"
+  },
+  {
+   "de": "ocob",
+   "para": "pixa",
+   "rotulo": "Pix"
+  },
+  {
+   "de": "ocob",
+   "para": "mp",
+   "rotulo": "cobrança"
+  },
+  {
+   "de": "oanal",
+   "para": "graf",
+   "rotulo": "lê o painel"
+  },
+  {
+   "de": "ofisc",
+   "para": "nfse",
+   "rotulo": "carnê-leão"
+  },
+  {
+   "de": "ofisc",
+   "para": "conta",
+   "rotulo": "entrega ao contador"
+  },
+  {
+   "de": "ocomp",
+   "para": "nkaix",
+   "rotulo": "estoque mínimo"
+  },
+  {
+   "de": "n8n",
+   "para": "ocob",
+   "rotulo": "roda"
+  },
+  {
+   "de": "n8n",
+   "para": "opos",
+   "rotulo": "roda"
+  },
+  {
+   "de": "n8n",
+   "para": "oatend",
+   "rotulo": "roda"
   }
  ],
  "fluxos": [
@@ -5510,6 +5862,40 @@
     {
      "bloco": "nsushi",
      "descricao": "A casa abre, e os números voltam para o painel."
+    }
+   ]
+  },
+  {
+   "id": "conteudo",
+   "titulo": "Do trabalho ao conteúdo",
+   "passos": [
+    {
+     "bloco": "ofly",
+     "descricao": "Você grava a aula, o reparo, o capítulo ou a decisão da semana."
+    },
+    {
+     "bloco": "whis",
+     "descricao": "O Whisper transcreve no notebook."
+    },
+    {
+     "bloco": "oedit",
+     "descricao": "O agente propõe cortes, legendas, carrossel, post do Google e newsletter."
+    },
+    {
+     "bloco": "aprov",
+     "descricao": "Você aprova no celular."
+    },
+    {
+     "bloco": "postiz",
+     "descricao": "O Postiz publica no melhor horário de cada rede."
+    },
+    {
+     "bloco": "metrics",
+     "descricao": "Retenção, cliques e vendas voltam para o banco."
+    },
+    {
+     "bloco": "oanal",
+     "descricao": "O analista semanal diz o que funcionou e o que mudar."
     }
    ]
   }

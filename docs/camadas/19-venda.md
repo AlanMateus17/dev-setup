@@ -28,6 +28,10 @@ flowchart LR
     n_mailer["MailerLite"]
     n_afil["Afiliados (Amazon, Hotmart…)"]
   end
+  subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
+    n_ocob["Agente cobrador"]
+    n_ocrm["CRM único + LGPD"]
+  end
   subgraph L_pub["Público e canais"]
     n_yt["YouTube"]
   end
@@ -75,10 +79,12 @@ flowchart LR
   end
   n_pixa -->|"cobrança recorrente"| n_lic
   n_pixa -->|"recebimento"| n_banco
+  n_ocob -->|"Pix"| n_pixa
   n_agenda -->|"horários"| n_aulas
   n_agenda -->|"pagamento"| n_mp
   n_comu -->|"suporte aos alunos"| n_curso
   n_crm -->|"propostas"| n_sites
+  n_crm -->|"vira"| n_ocrm
   n_hotm -->|"lança no carnê-leão"| n_nfse
   n_hotm -->|"saque"| n_banco
   n_hotm -->|"venda e reembolso"| n_hooks
@@ -113,12 +119,14 @@ flowchart LR
   n_mp -->|"saque"| n_banco
   n_aulas -->|"cobrança"| n_mp
   n_sites -->|"cobrança"| n_mp
+  n_ocob -->|"cobrança"| n_mp
   n_mailer -->|"leva à página de venda"| n_inst
   n_mail -->|"remetente"| n_mailer
   n_cml -->|"campanhas"| n_mailer
   n_n8n -->|"novo aluno → e-mail"| n_mailer
   n_site -->|"formulário da newsletter"| n_mailer
   n_isca -->|"sequência"| n_mailer
+  n_ocrm -->|"etiquetas"| n_mailer
   n_site -->|"links no blog"| n_afil
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_pixa,n_agenda,n_comu,n_crm,n_hotm,n_kiwi,n_eduzz,n_udemy,n_dio,n_ytm,n_mp,n_mailer,n_afil desta
@@ -154,6 +162,7 @@ Cobrança recorrente dos sistemas AM por Pix, sem cartão. Lançado pelo Banco C
 |---|---|---|---|
 | → envia para | [aura-licensing](10-app.md#lic) | Aplicação: sistemas AM (Aura) | cobrança recorrente |
 | → envia para | [Conta bancária separada (CPF)](18-emp.md#banco) | Pessoa física: impostos e finanças | recebimento |
+| ← recebe de | [Agente cobrador](22-oper.md#ocob) | Operação do grupo (esteira, marca, qualidade) | Pix |
 
 <a id="agenda"></a>
 
@@ -191,6 +200,7 @@ Lista de alunos, clientes e propostas. Uma planilha resolve até dezenas de clie
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Sites para pequenas empresas](16-prod.md#sites) | Produtos (o que você vende) | propostas |
+| → envia para | [CRM único + LGPD](22-oper.md#ocrm) | Operação do grupo (esteira, marca, qualidade) | vira |
 
 <a id="hotm"></a>
 
@@ -303,6 +313,7 @@ Pix e cartão para aulas particulares e serviços de sites.
 | ← recebe de | [Agenda online (Cal.com)](19-venda.md#agenda) | Plataformas de venda e recebimento | pagamento |
 | ← recebe de | [Aulas particulares](16-prod.md#aulas) | Produtos (o que você vende) | cobrança |
 | ← recebe de | [Sites para pequenas empresas](16-prod.md#sites) | Produtos (o que você vende) | cobrança |
+| ← recebe de | [Agente cobrador](22-oper.md#ocob) | Operação do grupo (esteira, marca, qualidade) | cobrança |
 
 <a id="mailer"></a>
 
@@ -321,6 +332,7 @@ Newsletter do blog com grupos por tema e funil de lançamento. Você já escolhe
 | ← recebe de | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | novo aluno → e-mail |
 | ← recebe de | [Site pessoal + blog (Jekyll)](17-web.md#site) | Vitrine web (sites e domínio) | formulário da newsletter |
 | ← recebe de | [Isca grátis + sequência de e-mails](20-mkt.md#isca) | Marketing, automação e medição | sequência |
+| ← recebe de | [CRM único + LGPD](22-oper.md#ocrm) | Operação do grupo (esteira, marca, qualidade) | etiquetas |
 
 <a id="afil"></a>
 
