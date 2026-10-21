@@ -33,6 +33,7 @@ CHANGELOG.md            o que mudou em cada edição
 | **TikZ e SVG** | Pranchas técnicas e diagramas vetoriais, versionados como código |
 | **YAML de exercícios** | Gera a lista do capítulo, o gabarito no fim do volume, o site am-mentor e os baralhos Anki, todos a partir do mesmo arquivo |
 | **GitHub Actions** | Compila tudo a cada mudança e publica os arquivos de cada versão |
+| **Imagens e figuras** | Busca em acervos com filtro de licença e figuras geradas por código: ver [Imagens e figuras](10-imagens-e-figuras.md) |
 
 ## O que o pipeline confere a cada mudança
 

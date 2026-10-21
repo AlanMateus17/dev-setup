@@ -25,7 +25,7 @@
 - [17 · Pessoa física: impostos e finanças](camadas/17-emp.md) (11 blocos)
 - [16 · Vitrine web (sites e domínio)](camadas/16-web.md) (9 blocos)
 - [15 · Produtos (o que você vende)](camadas/15-prod.md) (7 blocos)
-- [14 · Editora AMS Silva (produção de livros)](camadas/14-editora.md) (25 blocos)
+- [14 · Editora AMS Silva (produção de livros)](camadas/14-editora.md) (36 blocos)
 - [13 · Estudo e carreira](camadas/13-est.md) (6 blocos)
 - [12 · Produção de conteúdo](camadas/12-cont.md) (6 blocos)
 - [11 · Nuvem, código e entrega](camadas/11-nuvem.md) (17 blocos)

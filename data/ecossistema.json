@@ -2369,6 +2369,105 @@
    "conta": false,
    "futuro": false,
    "descricao": "Cada conceito tem identificador; o pipeline avisa quando algo é usado antes de ser ensinado ou exige outro livro."
+  },
+  {
+   "id": "metodo",
+   "camada": "editora",
+   "rotulo": "Seu método|(metodo.yaml)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "O passo a passo de criação que você vai implementar: cada etapa com entrada, saída e critério de conclusão, conferido pelo pipeline."
+  },
+  {
+   "id": "acervos",
+   "camada": "editora",
+   "rotulo": "Acervos de imagens|(APIs)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Openverse, Wikimedia Commons, Smithsonian, The Met, Europeana, Library of Congress, NASA, Internet Archive, Biblioteca Nacional Digital, Unsplash e Pexels."
+  },
+  {
+   "id": "buscaimg",
+   "camada": "editora",
+   "rotulo": "Busca automática|de imagens",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Script que consulta os acervos a partir do figuras.yaml de cada capítulo e traz candidatos com licença e resolução."
+  },
+  {
+   "id": "licenca",
+   "camada": "editora",
+   "rotulo": "Filtro de licença|e fichas",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Só passa domínio público, CC0, CC BY, CC BY-SA (com cuidado) e licenças de banco com uso comercial. Cada imagem ganha uma ficha com autor, fonte, licença e link."
+  },
+  {
+   "id": "contato",
+   "camada": "editora",
+   "rotulo": "Folha de contato|(artefato)",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Página com os candidatos lado a lado para você escolher."
+  },
+  {
+   "id": "creditos",
+   "camada": "editora",
+   "rotulo": "Créditos e legendas",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Gerados das fichas: legenda de cada imagem e página de créditos. O build falha se faltar ficha."
+  },
+  {
+   "id": "figcod",
+   "camada": "editora",
+   "rotulo": "Figuras por código|(Matplotlib…)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Gráficos e grafos gerados de dados e definições a cada build, no estilo do livro."
+  },
+  {
+   "id": "circ",
+   "camada": "editora",
+   "rotulo": "CircuiTikZ",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Circuitos e portas lógicas para a física e a eletrônica do livro."
+  },
+  {
+   "id": "gerad",
+   "camada": "editora",
+   "rotulo": "Geradores de tabelas",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Tabelas-verdade, conversões de base e tabelas de operações geradas e conferidas por script. Exemplo testado em tools/editora."
+  },
+  {
+   "id": "manim",
+   "camada": "editora",
+   "rotulo": "Manim (animações)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "O mesmo código da figura vira animação para as aulas do curso."
+  },
+  {
+   "id": "alt",
+   "camada": "editora",
+   "rotulo": "Texto alternativo",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Descrição de cada figura para o EPUB acessível; rascunho por IA, revisão sua."
   }
  ],
  "conexoes": [
@@ -4516,6 +4615,96 @@
    "de": "projcap",
    "para": "gh",
    "rotulo": "portfólio do aluno"
+  },
+  {
+   "de": "metodo",
+   "para": "modelo",
+   "rotulo": "etapas do capítulo"
+  },
+  {
+   "de": "metodo",
+   "para": "bci",
+   "rotulo": "etapas conferidas"
+  },
+  {
+   "de": "fonte",
+   "para": "buscaimg",
+   "rotulo": "figuras.yaml"
+  },
+  {
+   "de": "buscaimg",
+   "para": "acervos",
+   "rotulo": "consulta as APIs"
+  },
+  {
+   "de": "buscaimg",
+   "para": "licenca",
+   "rotulo": "candidatos"
+  },
+  {
+   "de": "licenca",
+   "para": "contato",
+   "rotulo": "só o permitido"
+  },
+  {
+   "de": "contato",
+   "para": "creditos",
+   "rotulo": "sua escolha"
+  },
+  {
+   "de": "creditos",
+   "para": "bci",
+   "rotulo": "bloqueia sem ficha"
+  },
+  {
+   "de": "creditos",
+   "para": "brepo",
+   "rotulo": "fichas versionadas"
+  },
+  {
+   "de": "figcod",
+   "para": "bci",
+   "rotulo": "gerado a cada build"
+  },
+  {
+   "de": "circ",
+   "para": "bci",
+   "rotulo": "gerado a cada build"
+  },
+  {
+   "de": "gerad",
+   "para": "bci",
+   "rotulo": "gerado e conferido"
+  },
+  {
+   "de": "manim",
+   "para": "bcurso",
+   "rotulo": "animações"
+  },
+  {
+   "de": "figcod",
+   "para": "manim",
+   "rotulo": "mesmo código"
+  },
+  {
+   "de": "alt",
+   "para": "bci",
+   "rotulo": "EPUB acessível"
+  },
+  {
+   "de": "bcls",
+   "para": "figcod",
+   "rotulo": "cores e fontes"
+  },
+  {
+   "de": "img",
+   "para": "licenca",
+   "rotulo": "ficha com prompt e ferramenta"
+  },
+  {
+   "de": "tikz",
+   "para": "manim",
+   "rotulo": "pranchas animadas"
   }
  ],
  "fluxos": [
@@ -4908,6 +5097,44 @@
     {
      "bloco": "kdp",
      "descricao": "Publicado na Amazon e nas plataformas."
+    }
+   ]
+  },
+  {
+   "id": "imagem",
+   "titulo": "Ilustrar um capítulo",
+   "passos": [
+    {
+     "bloco": "fonte",
+     "descricao": "O capítulo declara as figuras de que precisa."
+    },
+    {
+     "bloco": "buscaimg",
+     "descricao": "A busca consulta os acervos."
+    },
+    {
+     "bloco": "acervos",
+     "descricao": "Os acervos devolvem candidatos com licença."
+    },
+    {
+     "bloco": "licenca",
+     "descricao": "O filtro descarta licenças proibidas e baixa resolução."
+    },
+    {
+     "bloco": "contato",
+     "descricao": "Você escolhe na folha de contato."
+    },
+    {
+     "bloco": "creditos",
+     "descricao": "Legenda e créditos são gerados."
+    },
+    {
+     "bloco": "figcod",
+     "descricao": "As figuras técnicas saem do código."
+    },
+    {
+     "bloco": "bci",
+     "descricao": "O pipeline confere tudo e monta o livro."
     }
    ]
   }

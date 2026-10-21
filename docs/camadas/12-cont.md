@@ -36,6 +36,7 @@ flowchart LR
   end
   subgraph L_editora["Editora AMS Silva (produção de livros)"]
     n_bcurso["Curso por seção"]
+    n_licenca["Filtro de licença e fichas"]
     n_refs["Quadro de referências"]
   end
   subgraph L_nuvem["Nuvem, código e entrega"]
@@ -69,6 +70,7 @@ flowchart LR
   n_img -->|"posts"| n_ig
   n_img -->|"capas"| n_inst
   n_img -->|"rascunhos de ideia"| n_refs
+  n_img -->|"ficha com prompt e ferramenta"| n_licenca
   n_gpt -->|"gera imagens"| n_img
   n_ccan -->|"posts e capas"| n_img
   n_whis -->|"transcrição"| n_obsd
@@ -149,6 +151,7 @@ Capas, posts e thumbnails. Canva precisa de conta; Krita e Inkscape são open so
 | → envia para | [Instagram](20-pub.md#ig) | Público e canais | posts |
 | → envia para | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | capas |
 | → envia para | [Quadro de referências](14-editora.md#refs) | Editora AMS Silva (produção de livros) | rascunhos de ideia |
+| → envia para | [Filtro de licença e fichas](14-editora.md#licenca) | Editora AMS Silva (produção de livros) | ficha com prompt e ferramenta |
 | ← recebe de | [ChatGPT](06-chat.md#gpt) | Assistentes de IA (chat, pesquisa e estudo) | gera imagens |
 | ← recebe de | [Conectores Canva + Figma](07-clc.md#ccan) | Claude: recursos, conectores e plugins | posts e capas |
 

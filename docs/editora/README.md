@@ -33,6 +33,8 @@ flowchart LR
 7. [Lançamento e divulgação](07-lancamento-e-divulgacao.md): Brasil primeiro, depois o mundo
 8. [Roteiro](08-roteiro.md): as fases, do Capítulo 1 ao lançamento
 9. [Nível do livro e concursos](09-nivel-e-concursos.md): um caminho único, autocontido, com domínio total para prova e para o trabalho; PF, PRF e Forças Armadas
+10. [Imagens e figuras](10-imagens-e-figuras.md): busca automática em acervos com filtro de licença, figuras geradas por código
+11. [Automação e método](11-automacao-e-metodo.md): o seu passo a passo dentro do pipeline e o que é automático
 
 ## O que já existe
 

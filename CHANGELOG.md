@@ -2,6 +2,14 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.5.0] - 2026-10-21
+
+### Adicionado
+- `docs/editora/10-imagens-e-figuras.md`: acervos, regras de licença, busca automática e figuras geradas por código.
+- `docs/editora/11-automacao-e-metodo.md`: o método de criação dentro do pipeline e o que é automático.
+- `tools/editora/tabela_verdade.py` com testes, rodando no CI.
+- 11 blocos e o fluxo "Ilustrar um capítulo".
+
 ## [1.4.0] - 2026-10-21
 
 ### Adicionado

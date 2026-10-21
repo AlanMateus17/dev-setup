@@ -315,3 +315,33 @@ flowchart LR
 7. **[Errata e edições](camadas/14-editora.md#errata)**: As correções entram com número de edição.
 8. **[Livro Lógica e Máquina](camadas/15-prod.md#livro)**: Sai o PDF, o EPUB e o arquivo de impressão.
 9. **[Amazon KDP](camadas/14-editora.md#kdp)**: Publicado na Amazon e nas plataformas.
+
+## Ilustrar um capítulo
+
+```mermaid
+flowchart LR
+  s0["1. Fonte única (Markdown + Pandoc)"]
+  s1["2. Busca automática de imagens"]
+  s2["3. Acervos de imagens (APIs)"]
+  s3["4. Filtro de licença e fichas"]
+  s4["5. Folha de contato (artefato)"]
+  s5["6. Créditos e legendas"]
+  s6["7. Figuras por código (Matplotlib…)"]
+  s7["8. Pipeline do livro (CI)"]
+  s0 --> s1
+  s1 --> s2
+  s2 --> s3
+  s3 --> s4
+  s4 --> s5
+  s5 --> s6
+  s6 --> s7
+```
+
+1. **[Fonte única (Markdown + Pandoc)](camadas/14-editora.md#fonte)**: O capítulo declara as figuras de que precisa.
+2. **[Busca automática de imagens](camadas/14-editora.md#buscaimg)**: A busca consulta os acervos.
+3. **[Acervos de imagens (APIs)](camadas/14-editora.md#acervos)**: Os acervos devolvem candidatos com licença.
+4. **[Filtro de licença e fichas](camadas/14-editora.md#licenca)**: O filtro descarta licenças proibidas e baixa resolução.
+5. **[Folha de contato (artefato)](camadas/14-editora.md#contato)**: Você escolhe na folha de contato.
+6. **[Créditos e legendas](camadas/14-editora.md#creditos)**: Legenda e créditos são gerados.
+7. **[Figuras por código (Matplotlib…)](camadas/14-editora.md#figcod)**: As figuras técnicas saem do código.
+8. **[Pipeline do livro (CI)](camadas/14-editora.md#bci)**: O pipeline confere tudo e monta o livro.

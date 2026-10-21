@@ -16,3 +16,5 @@ jobs:
           python-version: "3.12"
       - name: Validar e conferir arquivos gerados
         run: python tools/gerar_docs.py --check
+      - name: Testar ferramentas da editora
+        run: python -m unittest discover -s tools/editora -v
