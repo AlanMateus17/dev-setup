@@ -259,7 +259,7 @@ flowchart LR
 flowchart LR
   s0["1. Lucro por Venda (calculadora)"]
   s1["2. Padrão de UTM"]
-  s2["3. Anúncios (Meta Ads)"]
+  s2["3. Meta Ads (Instagram, Facebook)"]
   s3["4. Hotmart"]
   s4["5. Webhooks de venda"]
   s5["6. Banco de métricas (PostgreSQL)"]
@@ -276,7 +276,7 @@ flowchart LR
 
 1. **[Lucro por Venda (calculadora)](camadas/18-mkt.md#calc)**: A calculadora define o CPA e o ROAS de empate.
 2. **[Padrão de UTM](camadas/18-mkt.md#utm)**: Os links do anúncio levam UTM.
-3. **[Anúncios (Meta Ads)](camadas/17-venda.md#ads)**: A campanha roda com orçamento de teste.
+3. **[Meta Ads (Instagram, Facebook)](camadas/18-mkt.md#ads)**: A campanha roda com orçamento de teste.
 4. **[Hotmart](camadas/17-venda.md#hotm)**: A venda acontece na plataforma.
 5. **[Webhooks de venda](camadas/18-mkt.md#hooks)**: O webhook avisa a venda.
 6. **[Banco de métricas (PostgreSQL)](camadas/18-mkt.md#metrics)**: O banco junta venda, taxa e gasto.

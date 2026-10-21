@@ -8,7 +8,7 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 
 | Camadas | Blocos | Conexões | Fluxos | Contas necessárias |
 |---|---|---|---|---|
-| 19 | 227 | 348 | 9 | 86 |
+| 19 | 227 | 381 | 9 | 86 |
 
 ## Por onde começar
 
@@ -72,8 +72,8 @@ O Windows cuida só do que precisa de janela, GPU e segurança; todo o trabalho 
 | # | Camada | Blocos | Destaques |
 |---|---|---|---|
 | 19 | [Público e canais](docs/camadas/19-pub.md) | 10 | Meta Business Suite, Instagram, YouTube, LinkedIn… |
-| 18 | [Marketing, automação e medição](docs/camadas/18-mkt.md) | 22 | Isca grátis + sequência de e-mails, Postiz (agendador), Aprovação no celular, Algoritmo de horário… |
-| 17 | [Plataformas de venda e recebimento](docs/camadas/17-venda.md) | 14 | Pix Automático + gateway (ex.: Asaas), Agenda online (Cal.com), Comunidade (Discord ou grupo), Anúncios (Meta Ads)… |
+| 18 | [Marketing, automação e medição](docs/camadas/18-mkt.md) | 23 | Meta Ads (Instagram, Facebook), Isca grátis + sequência de e-mails, Postiz (agendador), Aprovação no celular… |
+| 17 | [Plataformas de venda e recebimento](docs/camadas/17-venda.md) | 13 | Pix Automático + gateway (ex.: Asaas), Agenda online (Cal.com), Comunidade (Discord ou grupo), CRM simples (planilha)… |
 | 16 | [Pessoa física: impostos e finanças](docs/camadas/16-emp.md) | 11 | Registro de marca (INPI), Termos, privacidade (LGPD) e contratos, Certificado digital (e-CNPJ), API de NFS-e (ex.: Focus NFe)… |
 | 15 | [Vitrine web (sites e domínio)](docs/camadas/15-web.md) | 9 | E-mail profissional (enviar e receber), Domínio (Registro.br), Site pessoal + blog (Jekyll), Instituto AMS… |
 | 14 | [Produtos (o que você vende)](docs/camadas/14-prod.md) | 7 | Mini-curso Lógica de Programação, Formações (TI, Matemática, Finanças), Templates e código-fonte, Livro Lógica e Máquina… |

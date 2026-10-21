@@ -198,12 +198,12 @@
   },
   {
    "id": "ads",
-   "camada": "venda",
-   "rotulo": "Anúncios (Meta Ads)",
+   "camada": "mkt",
+   "rotulo": "Meta Ads|(Instagram, Facebook)",
    "tipo": "remoto",
    "conta": true,
    "futuro": true,
-   "descricao": "Só depois que o produto vender organicamente; antes disso é dinheiro jogado fora."
+   "descricao": "Primeiro canal pago: anúncios da isca grátis e remarketing do mini-curso. Desde jan/2026 a fatura tem +12,15% de impostos sobre a mídia."
   },
   {
    "id": "crm",
@@ -1936,11 +1936,11 @@
   {
    "id": "pixel",
    "camada": "mkt",
-   "rotulo": "Pixel + API de|Conversões",
+   "rotulo": "Tags de conversão|(Pixel, Google…)",
    "tipo": "remoto",
    "conta": true,
    "futuro": false,
-   "descricao": "Pixel e CAPI da Meta juntos, com deduplicação por event_id. Sem isso o anúncio não aprende quem compra."
+   "descricao": "Pixel + API de Conversões da Meta, tag do Google Ads, pixel do TikTok e as tags de Kwai, Pinterest, LinkedIn e nativos. Sem a tag, o canal não aprende quem compra e a venda não chega ao painel."
   },
   {
    "id": "utm",
@@ -3881,6 +3881,171 @@
    "de": "nas",
    "para": "metrics",
    "rotulo": "roda 24 h"
+  },
+  {
+   "de": "ads",
+   "para": "isca",
+   "rotulo": "leva à isca grátis"
+  },
+  {
+   "de": "calc",
+   "para": "ads",
+   "rotulo": "custo máximo por clique"
+  },
+  {
+   "de": "utm",
+   "para": "gads",
+   "rotulo": "marca os links"
+  },
+  {
+   "de": "gads",
+   "para": "isca",
+   "rotulo": "leva à isca grátis"
+  },
+  {
+   "de": "pixel",
+   "para": "gads",
+   "rotulo": "otimiza para venda"
+  },
+  {
+   "de": "calc",
+   "para": "gads",
+   "rotulo": "custo máximo por clique"
+  },
+  {
+   "de": "utm",
+   "para": "ttads",
+   "rotulo": "marca os links"
+  },
+  {
+   "de": "ttads",
+   "para": "isca",
+   "rotulo": "leva à isca grátis"
+  },
+  {
+   "de": "pixel",
+   "para": "ttads",
+   "rotulo": "otimiza para venda"
+  },
+  {
+   "de": "calc",
+   "para": "ttads",
+   "rotulo": "custo máximo por clique"
+  },
+  {
+   "de": "utm",
+   "para": "kwaiads",
+   "rotulo": "marca os links"
+  },
+  {
+   "de": "kwaiads",
+   "para": "isca",
+   "rotulo": "leva à isca grátis"
+  },
+  {
+   "de": "pixel",
+   "para": "kwaiads",
+   "rotulo": "otimiza para venda"
+  },
+  {
+   "de": "calc",
+   "para": "kwaiads",
+   "rotulo": "custo máximo por clique"
+  },
+  {
+   "de": "utm",
+   "para": "spotads",
+   "rotulo": "marca os links"
+  },
+  {
+   "de": "spotads",
+   "para": "isca",
+   "rotulo": "leva à isca grátis"
+  },
+  {
+   "de": "calc",
+   "para": "spotads",
+   "rotulo": "custo máximo por clique"
+  },
+  {
+   "de": "utm",
+   "para": "pinads",
+   "rotulo": "marca os links"
+  },
+  {
+   "de": "pinads",
+   "para": "isca",
+   "rotulo": "leva à isca grátis"
+  },
+  {
+   "de": "pixel",
+   "para": "pinads",
+   "rotulo": "otimiza para venda"
+  },
+  {
+   "de": "calc",
+   "para": "pinads",
+   "rotulo": "custo máximo por clique"
+  },
+  {
+   "de": "utm",
+   "para": "liads",
+   "rotulo": "marca os links"
+  },
+  {
+   "de": "liads",
+   "para": "isca",
+   "rotulo": "leva à isca grátis"
+  },
+  {
+   "de": "pixel",
+   "para": "liads",
+   "rotulo": "otimiza para venda"
+  },
+  {
+   "de": "calc",
+   "para": "liads",
+   "rotulo": "custo máximo por clique"
+  },
+  {
+   "de": "utm",
+   "para": "nativo",
+   "rotulo": "marca os links"
+  },
+  {
+   "de": "nativo",
+   "para": "isca",
+   "rotulo": "leva à isca grátis"
+  },
+  {
+   "de": "pixel",
+   "para": "nativo",
+   "rotulo": "otimiza para venda"
+  },
+  {
+   "de": "calc",
+   "para": "nativo",
+   "rotulo": "custo máximo por clique"
+  },
+  {
+   "de": "utm",
+   "para": "infl",
+   "rotulo": "marca os links"
+  },
+  {
+   "de": "infl",
+   "para": "isca",
+   "rotulo": "leva à isca grátis"
+  },
+  {
+   "de": "regras",
+   "para": "infl",
+   "rotulo": "renova ou encerra parceria"
+  },
+  {
+   "de": "spotads",
+   "para": "yt",
+   "rotulo": "lembrança da marca"
   }
  ],
  "fluxos": [
@@ -4252,12 +4417,36 @@
      "obs": "Perfis da marca, separados dos pessoais."
     },
     {
-     "nome": "Google Ads",
-     "obs": "Quando os vídeos longos converterem."
-    },
-    {
      "nome": "Telegram",
      "obs": "Bot de aprovação dos posts."
+    },
+    {
+     "nome": "Google Ads",
+     "obs": "Pesquisa e YouTube; tag do Google no site."
+    },
+    {
+     "nome": "TikTok Ads Manager",
+     "obs": "Mínimo de US$ 20/dia por grupo de anúncios."
+    },
+    {
+     "nome": "Kwai Ads",
+     "obs": "Depois de Meta e TikTok."
+    },
+    {
+     "nome": "Spotify Ad Studio",
+     "obs": "Áudio e podcast, para marca."
+    },
+    {
+     "nome": "Pinterest Ads",
+     "obs": "Confira se a conta aceita o Brasil."
+    },
+    {
+     "nome": "LinkedIn Campaign Manager",
+     "obs": "Só para B2B."
+    },
+    {
+     "nome": "Taboola ou Outbrain",
+     "obs": "Mídia nativa, para artigos do blog."
     }
    ]
   },

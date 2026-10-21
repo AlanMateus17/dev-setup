@@ -14,8 +14,14 @@ Contas que o setup exige. Senhas no KeePassXC, 2FA no app autenticador e código
 | **ElevenLabs** | Plano Creator para clonar a própria voz; 2FA obrigatório. |
 | **Gerenciador de Negócios da Meta** | Pixel, API de Conversões e conta de anúncios; uma conta só. |
 | **TikTok e Facebook** | Perfis da marca, separados dos pessoais. |
-| **Google Ads** | Quando os vídeos longos converterem. |
 | **Telegram** | Bot de aprovação dos posts. |
+| **Google Ads** | Pesquisa e YouTube; tag do Google no site. |
+| **TikTok Ads Manager** | Mínimo de US$ 20/dia por grupo de anúncios. |
+| **Kwai Ads** | Depois de Meta e TikTok. |
+| **Spotify Ad Studio** | Áudio e podcast, para marca. |
+| **Pinterest Ads** | Confira se a conta aceita o Brasil. |
+| **LinkedIn Campaign Manager** | Só para B2B. |
+| **Taboola ou Outbrain** | Mídia nativa, para artigos do blog. |
 
 ## Desenvolvimento
 

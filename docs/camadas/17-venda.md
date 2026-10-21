@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** Cada venda é lançada no carnê-leão e o dinheiro cai na sua conta separada.
 
-**14 blocos** · 13 precisam de conta · 3 marcados como futuro
+**13 blocos** · 12 precisam de conta · 2 marcados como futuro
 
 ## Mapa de conexões
 
@@ -17,7 +17,6 @@ flowchart LR
     n_pixa["Pix Automático + gateway (ex.: Asaas)"]
     n_agenda["Agenda online (Cal.com)"]
     n_comu["Comunidade (Discord ou grupo)"]
-    n_ads["Anúncios (Meta Ads)"]
     n_crm["CRM simples (planilha)"]
     n_hotm["Hotmart"]
     n_kiwi["Kiwify"]
@@ -30,17 +29,12 @@ flowchart LR
     n_afil["Afiliados (Amazon, Hotmart…)"]
   end
   subgraph L_pub["Público e canais"]
-    n_ig["Instagram"]
     n_yt["YouTube"]
   end
   subgraph L_mkt["Marketing, automação e medição"]
     n_afprog["Programa de afiliados"]
     n_hooks["Webhooks de venda"]
     n_isca["Isca grátis + sequência de e-mails"]
-    n_metrics["Banco de métricas (PostgreSQL)"]
-    n_pixel["Pixel + API de Conversões"]
-    n_regras["Regras de corte"]
-    n_utm["Padrão de UTM"]
   end
   subgraph L_emp["Pessoa física: impostos e finanças"]
     n_banco["Conta bancária separada (CPF)"]
@@ -81,11 +75,6 @@ flowchart LR
   n_agenda -->|"horários"| n_aulas
   n_agenda -->|"pagamento"| n_mp
   n_comu -->|"suporte aos alunos"| n_curso
-  n_ads -->|"alcance pago"| n_ig
-  n_ads -->|"gasto por campanha"| n_metrics
-  n_pixel -->|"otimiza para venda"| n_ads
-  n_utm -->|"marca os links"| n_ads
-  n_regras -->|"pausa ou escala"| n_ads
   n_crm -->|"propostas"| n_sites
   n_hotm -->|"lança no carnê-leão"| n_nfse
   n_hotm -->|"saque"| n_banco
@@ -128,7 +117,7 @@ flowchart LR
   n_isca -->|"sequência"| n_mailer
   n_site -->|"links no blog"| n_afil
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_pixa,n_agenda,n_comu,n_ads,n_crm,n_hotm,n_kiwi,n_eduzz,n_udemy,n_dio,n_ytm,n_mp,n_mailer,n_afil desta
+  class n_pixa,n_agenda,n_comu,n_crm,n_hotm,n_kiwi,n_eduzz,n_udemy,n_dio,n_ytm,n_mp,n_mailer,n_afil desta
 ```
 
 ## Blocos
@@ -138,7 +127,6 @@ flowchart LR
 | [Pix Automático + gateway (ex.: Asaas)](#pixa) | Remoto · precisa de conta · futuro | Cobrança recorrente dos sistemas AM por Pix, sem cartão. Lançado pelo Banco Central em 2025. Entra quando o primeiro SaaS tiver cliente. |
 | [Agenda online (Cal.com)](#agenda) | Remoto · precisa de conta | Aluno particular escolhe horário sozinho e já paga. Open source, com plano grátis. |
 | [Comunidade (Discord ou grupo)](#comu) | Remoto · precisa de conta | Alunos do curso juntos: tira-dúvidas, retenção e indicação. |
-| [Anúncios (Meta Ads)](#ads) | Remoto · precisa de conta · futuro | Só depois que o produto vender organicamente; antes disso é dinheiro jogado fora. |
 | [CRM simples (planilha)](#crm) | Local | Lista de alunos, clientes e propostas. Uma planilha resolve até dezenas de clientes. |
 | [Hotmart](#hotm) | Remoto · precisa de conta | Checkout, área de membros e afiliados para cursos e PDFs. Aceita vender no CPF. Melhor quando você mesmo leva o público. |
 | [Kiwify](#kiwi) | Remoto · precisa de conta | Mesma função da Hotmart, com painel mais simples. Aceita vender no CPF. |
@@ -187,22 +175,6 @@ Alunos do curso juntos: tira-dúvidas, retenção e indicação.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Mini-curso Lógica de Programação](14-prod.md#curso) | Produtos (o que você vende) | suporte aos alunos |
-
-<a id="ads"></a>
-
-### Anúncios (Meta Ads)
-
-*Remoto · precisa de conta · futuro*
-
-Só depois que o produto vender organicamente; antes disso é dinheiro jogado fora.
-
-| Direção | Bloco | Camada | O que passa |
-|---|---|---|---|
-| → envia para | [Instagram](19-pub.md#ig) | Público e canais | alcance pago |
-| → envia para | [Banco de métricas (PostgreSQL)](18-mkt.md#metrics) | Marketing, automação e medição | gasto por campanha |
-| ← recebe de | [Pixel + API de Conversões](18-mkt.md#pixel) | Marketing, automação e medição | otimiza para venda |
-| ← recebe de | [Padrão de UTM](18-mkt.md#utm) | Marketing, automação e medição | marca os links |
-| ← recebe de | [Regras de corte](18-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
 
 <a id="crm"></a>
 

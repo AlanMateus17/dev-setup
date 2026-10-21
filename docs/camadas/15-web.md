@@ -38,7 +38,7 @@ flowchart LR
     n_infl["Influenciadores e newsletters"]
     n_isca["Isca grátis + sequência de e-mails"]
     n_nativo["Mídia nativa (Taboola, Outbrain)"]
-    n_pixel["Pixel + API de Conversões"]
+    n_pixel["Tags de conversão (Pixel, Google…)"]
   end
   subgraph L_venda["Plataformas de venda e recebimento"]
     n_afil["Afiliados (Amazon, Hotmart…)"]
@@ -197,7 +197,7 @@ Site dos cursos: páginas de venda que levam ao checkout.
 | ← recebe de | [Instagram](19-pub.md#ig) | Público e canais | link na bio |
 | ← recebe de | [YouTube](19-pub.md#yt) | Público e canais | link na descrição |
 | ← recebe de | [Busca Google (SEO)](19-pub.md#seo) | Público e canais | visitas |
-| ← recebe de | [Pixel + API de Conversões](18-mkt.md#pixel) | Marketing, automação e medição | eventos de compra |
+| ← recebe de | [Tags de conversão (Pixel, Google…)](18-mkt.md#pixel) | Marketing, automação e medição | eventos de compra |
 | ← recebe de | [TikTok](19-pub.md#tiktok) | Público e canais | link na bio |
 | ← recebe de | [Facebook](19-pub.md#facebook) | Público e canais | link |
 | ← recebe de | [Influenciadores e newsletters](18-mkt.md#infl) | Marketing, automação e medição | link com cupom |

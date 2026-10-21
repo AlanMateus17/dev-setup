@@ -19,8 +19,8 @@
 ## Camadas
 
 - [19 · Público e canais](camadas/19-pub.md) (10 blocos)
-- [18 · Marketing, automação e medição](camadas/18-mkt.md) (22 blocos)
-- [17 · Plataformas de venda e recebimento](camadas/17-venda.md) (14 blocos)
+- [18 · Marketing, automação e medição](camadas/18-mkt.md) (23 blocos)
+- [17 · Plataformas de venda e recebimento](camadas/17-venda.md) (13 blocos)
 - [16 · Pessoa física: impostos e finanças](camadas/16-emp.md) (11 blocos)
 - [15 · Vitrine web (sites e domínio)](camadas/15-web.md) (9 blocos)
 - [14 · Produtos (o que você vende)](camadas/14-prod.md) (7 blocos)

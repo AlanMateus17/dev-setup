@@ -26,11 +26,12 @@ flowchart LR
     n_facebook["Facebook"]
   end
   subgraph L_mkt["Marketing, automação e medição"]
+    n_ads["Meta Ads (Instagram, Facebook)"]
     n_dub["Dublagem (YouTube + ElevenLabs)"]
     n_postiz["Postiz (agendador)"]
+    n_spotads["Spotify Ad Studio"]
   end
   subgraph L_venda["Plataformas de venda e recebimento"]
-    n_ads["Anúncios (Meta Ads)"]
     n_ytm["YouTube (membros)"]
   end
   subgraph L_web["Vitrine web (sites e domínio)"]
@@ -80,6 +81,7 @@ flowchart LR
   n_edit -->|"vídeo final"| n_yt
   n_postiz -->|"publica"| n_yt
   n_dub -->|"faixas de áudio"| n_yt
+  n_spotads -->|"lembrança da marca"| n_yt
   n_li -->|"perfil e posts"| n_recr
   n_li -->|"link"| n_site
   n_grok -->|"tendências do setor"| n_li
@@ -142,7 +144,7 @@ Canal principal de venda: posts, reels e link na bio para o Instituto AMS.
 | ← recebe de | [Celular](01-hw.md#cel) | Hardware | posta reels |
 | ← recebe de | [ShareX](03-win.md#sharex) | Windows 11, apps e máquinas virtuais | GIFs e prints |
 | ← recebe de | [Meta Business Suite](19-pub.md#mbs) | Público e canais | agenda posts |
-| ← recebe de | [Anúncios (Meta Ads)](17-venda.md#ads) | Plataformas de venda e recebimento | alcance pago |
+| ← recebe de | [Meta Ads (Instagram, Facebook)](18-mkt.md#ads) | Marketing, automação e medição | alcance pago |
 | ← recebe de | [Plugins: small- business + marketing](07-clc.md#pbiz) | Claude: recursos, conectores e plugins | conteúdo |
 | ← recebe de | [Canva · Krita · Inkscape](12-cont.md#img) | Produção de conteúdo | posts |
 | ← recebe de | [Alunos e ex-alunos](19-pub.md#alunos) | Público e canais | seguem |
@@ -165,6 +167,7 @@ Aulas e vídeos de vendas. Gera público para os cursos e para o livro.
 | ← recebe de | [DaVinci Resolve ou Kdenlive](12-cont.md#edit) | Produção de conteúdo | vídeo final |
 | ← recebe de | [Postiz (agendador)](18-mkt.md#postiz) | Marketing, automação e medição | publica |
 | ← recebe de | [Dublagem (YouTube + ElevenLabs)](18-mkt.md#dub) | Marketing, automação e medição | faixas de áudio |
+| ← recebe de | [Spotify Ad Studio](18-mkt.md#spotads) | Marketing, automação e medição | lembrança da marca |
 
 <a id="li"></a>
 

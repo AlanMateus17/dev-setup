@@ -10,8 +10,8 @@ A pilha vai do público (topo) ao hardware (base). Cada linha é a ligação ent
 ```mermaid
 flowchart TB
   L_pub["19 · Público e canais<br/>10 blocos"]
-  L_mkt["18 · Marketing, automação e medição<br/>22 blocos"]
-  L_venda["17 · Plataformas de venda e recebimento<br/>14 blocos"]
+  L_mkt["18 · Marketing, automação e medição<br/>23 blocos"]
+  L_venda["17 · Plataformas de venda e recebimento<br/>13 blocos"]
   L_emp["16 · Pessoa física: impostos e finanças<br/>11 blocos"]
   L_web["15 · Vitrine web (sites e domínio)<br/>9 blocos"]
   L_prod["14 · Produtos (o que você vende)<br/>7 blocos"]
@@ -55,8 +55,8 @@ flowchart TB
 | # | Camada | Blocos | Como se liga à camada de baixo |
 |---|---|---|---|
 | 19 | [Público e canais](camadas/19-pub.md) | 10 | Link na bio, vídeo, post, busca e indicação levam a pessoa até o site ou o WhatsApp. |
-| 18 | [Marketing, automação e medição](camadas/18-mkt.md) | 22 | O que é publicado e anunciado aqui leva às plataformas de venda; cada venda volta como dado para o banco de métricas. |
-| 17 | [Plataformas de venda e recebimento](camadas/17-venda.md) | 14 | Cada venda é lançada no carnê-leão e o dinheiro cai na sua conta separada. |
+| 18 | [Marketing, automação e medição](camadas/18-mkt.md) | 23 | O que é publicado e anunciado aqui leva às plataformas de venda; cada venda volta como dado para o banco de métricas. |
+| 17 | [Plataformas de venda e recebimento](camadas/17-venda.md) | 13 | Cada venda é lançada no carnê-leão e o dinheiro cai na sua conta separada. |
 | 16 | [Pessoa física: impostos e finanças](camadas/16-emp.md) | 11 | Tudo no seu CPF por enquanto; o CNPJ entra quando a renda justificar. |
 | 15 | [Vitrine web (sites e domínio)](camadas/15-web.md) | 9 | Os sites mostram e vendem os produtos e o seu portfólio. |
 | 14 | [Produtos (o que você vende)](camadas/14-prod.md) | 7 | Cada produto nasce do conteúdo gravado, escrito ou programado. |
