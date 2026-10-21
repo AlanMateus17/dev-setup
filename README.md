@@ -138,7 +138,7 @@ docs/
   contas.md, auditoria.md, nuvem.md, roteiro.md, ...
   adr/                decisões de arquitetura
   index.html          diagrama interativo (gerado)
-  mapa.html           sistemas, nuvens, mercado e ordem de estudo
+  mapa.html           sistemas, nuvens, pilha, mercado e ordem de estudo (gerado)
 scripts/windows/      inventário somente leitura do Windows
 tools/                gerador e template do diagrama
 ```

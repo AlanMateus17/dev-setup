@@ -99,7 +99,7 @@ Pior caixa: −R$ 6.725. Capital mínimo: investimento R$ 3.100 + prejuízo da r
 
 A · Tecnologia · rampa de 8 meses, começando em 35,0% do alvo.
 
-> Os pacotes rendem pouco sozinhos (cerca de R$ 1.150 por mês aqui). O ganho real é o movimento: cada retirada é um cliente dentro da loja.
+> Os pacotes rendem pouco sozinhos (cerca de R$ 1.140 por mês aqui). O ganho real é o movimento: cada retirada é um cliente dentro da loja.
 
 ### Investimento inicial
 

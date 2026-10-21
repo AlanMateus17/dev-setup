@@ -102,7 +102,7 @@ def gerar() -> str:
 def gerar_planejador() -> str:
     import json
     dados = json.loads((RAIZ / "data" / "negocios.json").read_text(encoding="utf-8"))
-    corpo = TEMPLATE.read_text(encoding="utf-8").replace("__DATA__", json.dumps(dados, ensure_ascii=False))
+    corpo = TEMPLATE.read_text(encoding="utf-8").replace("__DATA__", json.dumps(dados, ensure_ascii=False).replace("</", "<\\/"))
     return ('<!doctype html>\n<html lang="pt-BR">\n<head>\n<meta charset="utf-8">\n'
             '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n'
             "<!-- Arquivo GERADO por tools/negocios/gerar.py. Edite o template ou data/negocios.json. -->\n"

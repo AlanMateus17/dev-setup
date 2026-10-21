@@ -22,6 +22,7 @@ RAIZ = Path(__file__).resolve().parent.parent
 DADOS = RAIZ / "data"
 DOCS = RAIZ / "docs"
 TEMPLATE_HTML = RAIZ / "tools" / "diagrama.template.html"
+TEMPLATE_MAPA = RAIZ / "tools" / "mapa.template.html"
 
 TIPO = {"local": "Local", "remoto": "Remoto", "fisico": "Físico"}
 FASE = {"ok": "Instalado", "f1": "Agora", "f2": "Próximos 3 meses", "f3": "3 a 12 meses", "fut": "Depois de 12 meses", "dec": "Decisão sua"}
@@ -320,7 +321,7 @@ def gerar_indice_docs(eco: dict, por_camada: dict) -> str:
     out.append("- [Negócios do grupo](negocios/README.md): os nove negócios em Barbacena, estrutura de CNPJs, ordem de abertura, números, cardápios e mínimo legal")
     out.append("- [Vários computadores, SSD externo e NAS](infra/README.md): como crescer o setup para mais máquinas e armazenamento local e em nuvem")
     out.append("- [Decisões de arquitetura (ADRs)](adr/)")
-    out.append("- Versões interativas: [`index.html`](index.html) (diagrama) e [`mapa.html`](mapa.html), para abrir no navegador\n")
+    out.append("- Versões interativas, geradas dos mesmos dados: [`index.html`](index.html) (diagrama) e [`mapa.html`](mapa.html) (mapa do setup), para abrir no navegador\n")
     out.append("## Camadas\n")
     for c in eco["camadas"]:
         out.append(f"- [{num(eco, c['id']):02d} · {c['titulo']}](camadas/{arquivo_camada(eco, c['id'])}) ({len(por_camada[c['id']])} blocos)")
@@ -392,7 +393,7 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
             "  contas.md, auditoria.md, nuvem.md, roteiro.md, ...",
             "  adr/                decisões de arquitetura",
             "  index.html          diagrama interativo (gerado)",
-            "  mapa.html           sistemas, nuvens, mercado e ordem de estudo",
+            "  mapa.html           sistemas, nuvens, pilha, mercado e ordem de estudo (gerado)",
             "scripts/windows/      inventário somente leitura do Windows",
             "tools/                gerador e template do diagrama",
             "```\n",
@@ -406,6 +407,13 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
 def gerar_html(eco: dict) -> str:
     tpl = TEMPLATE_HTML.read_text(encoding="utf-8")
     dados = json.dumps(eco, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    return tpl.replace("__DATA__", dados)
+
+
+def gerar_mapa_html(eco: dict, mapa: dict) -> str:
+    tpl = TEMPLATE_MAPA.read_text(encoding="utf-8")
+    eco_min = {k: eco[k] for k in ("camadas", "blocos", "conexoes", "fluxos")}
+    dados = json.dumps({"eco": eco_min, "mapa": mapa}, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     return tpl.replace("__DATA__", dados)
 
 
@@ -434,6 +442,7 @@ def gerar_tudo(eco: dict, mapa: dict) -> dict[Path, str]:
     arquivos[DOCS / "README.md"] = gerar_indice_docs(eco, por_camada)
     arquivos[RAIZ / "README.md"] = gerar_readme(eco, por_camada)
     arquivos[DOCS / "index.html"] = gerar_html(eco)
+    arquivos[DOCS / "mapa.html"] = gerar_mapa_html(eco, mapa)
     return arquivos
 
 

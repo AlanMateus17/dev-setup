@@ -16,7 +16,7 @@ A Shopee tinha cerca de 5 mil agências em mais de 1.200 cidades em setembro de 
 
 ## A conta honesta
 
-Com 1.200 pacotes da Shopee e 800 do Mercado Livre por mês, a receita direta fica perto de **R$ 1.150**. Não paga nem o aluguel. O motivo para ter o ponto é outro:
+Com 1.200 pacotes da Shopee e 800 do Mercado Livre por mês, a receita direta fica perto de **R$ 1.140**. Não paga nem o aluguel. O motivo para ter o ponto é outro:
 
 - **Movimento:** 2.000 visitas por mês, de gente que mora ou trabalha perto, passando na frente do mostruário e da bancada.
 - **Vendedores da cidade** postam na loja e viram clientes do [Mercado Envios Flex e da coleta](05-logistica-e-entregas.md).

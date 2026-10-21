@@ -2,6 +2,16 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.7.1] - 2026-10-21
+
+### Corrigido
+- `docs/mapa.html` estava escrito à mão e mostrava 10 camadas e 5 fluxos antigos. Agora é gerado de `tools/mapa.template.html` com `data/ecossistema.json` e `data/mapa.json`: as 22 camadas, os 299 blocos com conexões e os 13 fluxos, conferido no CI.
+- Receita do ponto de retirada corrigida de R$ 1.150 para R$ 1.140, como dá o motor financeiro.
+- Os dados embutidos no planejador e no portfólio escapam `</` para não quebrar a página.
+
+### Adicionado
+- `tools/negocios/test_coerencia.py`: confere se os números escritos nos documentos batem com o motor financeiro e com o portfólio.
+
 ## [1.7.0] - 2026-10-21
 
 ### Adicionado
