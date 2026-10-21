@@ -26,3 +26,32 @@ jobs:
         run: |
           python -m unittest discover -s tools/portfolio -v
           python tools/portfolio/portfolio.py --check
+      - name: Testar o pipeline de conteúdo e conferir o roteiro de implantação
+        run: |
+          python -m unittest discover -s tools/conteudo -v
+          python -m unittest discover -s tools/implantacao -v
+          python tools/implantacao/gerar.py --check
+
+  scripts:
+    name: Validar scripts e Docker Compose
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: ShellCheck
+        run: shellcheck -S warning scripts/wsl/*.sh infra/automacao/*.sh infra/automacao/sql/*.sh
+      - name: PSScriptAnalyzer
+        shell: pwsh
+        run: |
+          Install-Module PSScriptAnalyzer -Scope CurrentUser -Force
+          $r = Invoke-ScriptAnalyzer -Path scripts/windows -Settings PSScriptAnalyzerSettings.psd1 -Severity Error,Warning
+          $r | Format-Table -AutoSize
+          if ($r) { exit 1 }
+      - name: Docker Compose da automação
+        working-directory: infra/automacao
+        env:
+          METRICAS_SENHA: ci
+          GRAFANA_DB_SENHA: ci
+          GRAFANA_SENHA: ci
+          N8N_CHAVE: ci
+          AMTECH_DIR: /tmp/amtech
+        run: docker compose config --quiet

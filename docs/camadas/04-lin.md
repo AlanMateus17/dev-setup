@@ -25,6 +25,9 @@ flowchart LR
     n_arch["Arch + Omarchy (2º NVMe)"]
     n_syncth["Syncthing"]
   end
+  subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
+    n_overif["Verificadores"]
+  end
   subgraph L_prod["Produtos (o que você vende)"]
     n_livro["Livro Lógica e Máquina"]
   end
@@ -71,6 +74,7 @@ flowchart LR
   n_jail -->|"só ~/dev/#lt;projeto#gt;"| n_wsl
   n_wslcfg -->|"limite de RAM"| n_wsl
   n_wterm -->|"abre o Ubuntu"| n_wsl
+  n_overif -->|"confere"| n_wsl
   n_git -->|"push via SSH"| n_gh
   n_sec -->|"pre-commit"| n_git
   n_status -->|"git status"| n_git
@@ -146,6 +150,7 @@ Onde o código vive e roda.
 | ← recebe de | [Neovim](04-lin.md#nvim) | Linux (Ubuntu no WSL2, Arch no 2º disco) | editor |
 | ← recebe de | [.wslconfig + localhost](03-win.md#wslcfg) | Windows 11, apps e máquinas virtuais | limite de RAM |
 | ← recebe de | [Terminal · PowerShell · winget](03-win.md#wterm) | Windows 11, apps e máquinas virtuais | abre o Ubuntu |
+| ← recebe de | [Verificadores](22-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | confere |
 
 <a id="git"></a>
 

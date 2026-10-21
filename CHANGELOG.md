@@ -2,6 +2,17 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.8.0] - 2026-10-21
+
+### Adicionado
+- Implantação: `data/implantacao.json` com 11 fases e 58 passos, gerando `docs/implantacao/roteiro.md` e `acompanhamento.html`.
+- `scripts/windows/instalar.ps1` e `verificar.ps1` (winget com IDs conferidos, WSL2, .wslconfig, segurança).
+- `scripts/wsl/bootstrap.sh`, `verificar.sh` e `ativar-pipeline.sh` (ferramentas, .NET 10, Node, uv, gitleaks, trivy, Claude Code, ai-jail, Git assinado, pastas, timer).
+- `infra/automacao/`: Docker Compose com n8n, banco de métricas (esquema, views de lucro e de melhor horário, usuário só de leitura), Grafana e Uptime Kuma; `infra/postiz/README.md`.
+- `tools/conteudo/processar.py`: pipeline de conteúdo com transcrição local, guia de marca, fila de aprovação e aviso no Telegram, com 10 testes.
+- `config/marca.md`: guia de marca para preencher.
+- CI: job novo com ShellCheck, PSScriptAnalyzer e validação do Docker Compose.
+
 ## [1.7.1] - 2026-10-21
 
 ### Corrigido

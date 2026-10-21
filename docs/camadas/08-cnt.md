@@ -32,6 +32,7 @@ flowchart LR
     n_oatend["Agente atendente (WhatsApp)"]
     n_ocob["Agente cobrador"]
     n_opos["Agente pós-venda"]
+    n_overif["Verificadores"]
   end
   subgraph L_mkt["Marketing, automação e medição"]
     n_aprov["Aprovação no celular"]
@@ -93,6 +94,7 @@ flowchart LR
   n_wsl -->|"socket da engine"| n_docker
   n_mem -->|"container"| n_docker
   n_aspire -->|"sobe os serviços"| n_docker
+  n_overif -->|"confere"| n_docker
   n_dbv -->|"porta 5432"| n_pg
   n_mcp -->|"leitura do banco de dev"| n_pg
   n_rag -->|"pgvector"| n_pg
@@ -120,6 +122,7 @@ flowchart LR
   n_horario -->|"escolhe o horário"| n_n8n
   n_hooks -->|"dispara"| n_n8n
   n_nas -->|"roda 24 h"| n_n8n
+  n_overif -->|"confere"| n_n8n
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_caddy,n_mailp,n_kafka,n_k8st,n_clis,n_datomic,n_docker,n_pg,n_redis,n_rmq,n_kind,n_tf,n_n8n desta
 ```
@@ -235,6 +238,7 @@ Engine no WSL2; um compose por sistema.
 | ← recebe de | [Ubuntu (WSL2)](04-lin.md#wsl) | Linux (Ubuntu no WSL2, Arch no 2º disco) | socket da engine |
 | ← recebe de | [ai-memory](05-ia.md#mem) | Agentes de IA e sandbox | container |
 | ← recebe de | [.NET Aspire](09-obs.md#aspire) | Observabilidade | sobe os serviços |
+| ← recebe de | [Verificadores](22-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | confere |
 
 <a id="pg"></a>
 
@@ -334,6 +338,7 @@ Automação: novo aluno → e-mail, post agendado, aviso.
 | ← recebe de | [Algoritmo de horário](20-mkt.md#horario) | Marketing, automação e medição | escolhe o horário |
 | ← recebe de | [Webhooks de venda](20-mkt.md#hooks) | Marketing, automação e medição | dispara |
 | ← recebe de | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | roda 24 h |
+| ← recebe de | [Verificadores](22-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | confere |
 
 ---
 

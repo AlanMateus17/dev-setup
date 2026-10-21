@@ -9,7 +9,7 @@ A pilha vai do público (topo) ao hardware (base). Cada linha é a ligação ent
 
 ```mermaid
 flowchart TB
-  L_oper["22 · Operação do grupo (esteira, marca, qualidade)<br/>18 blocos"]
+  L_oper["22 · Operação do grupo (esteira, marca, qualidade)<br/>22 blocos"]
   L_pub["21 · Público e canais<br/>10 blocos"]
   L_mkt["20 · Marketing, automação e medição<br/>23 blocos"]
   L_venda["19 · Plataformas de venda e recebimento<br/>13 blocos"]
@@ -60,7 +60,7 @@ flowchart TB
 
 | # | Camada | Blocos | Como se liga à camada de baixo |
 |---|---|---|---|
-| 22 | [Operação do grupo (esteira, marca, qualidade)](camadas/22-oper.md) | 18 | Toda oferta passa pela esteira e pelo padrão de qualidade antes de chegar ao público; cada venda e cada trabalho voltam como dado e conteúdo. |
+| 22 | [Operação do grupo (esteira, marca, qualidade)](camadas/22-oper.md) | 22 | Toda oferta passa pela esteira e pelo padrão de qualidade antes de chegar ao público; cada venda e cada trabalho voltam como dado e conteúdo. |
 | 21 | [Público e canais](camadas/21-pub.md) | 10 | Link na bio, vídeo, post, busca e indicação levam a pessoa até o site ou o WhatsApp. |
 | 20 | [Marketing, automação e medição](camadas/20-mkt.md) | 23 | O que é publicado e anunciado aqui leva às plataformas de venda; cada venda volta como dado para o banco de métricas. |
 | 19 | [Plataformas de venda e recebimento](camadas/19-venda.md) | 13 | Cada venda é lançada no carnê-leão e o dinheiro cai na sua conta separada. |

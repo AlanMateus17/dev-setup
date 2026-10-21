@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** Toda oferta passa pela esteira e pelo padrão de qualidade antes de chegar ao público; cada venda e cada trabalho voltam como dado e conteúdo.
 
-**18 blocos** · 2 precisam de conta · 9 marcados como futuro
+**22 blocos** · 2 precisam de conta · 9 marcados como futuro
 
 ## Mapa de conexões
 
@@ -32,6 +32,10 @@ flowchart LR
     n_ofisc["Organizador fiscal"]
     n_orevo["Revisor de oferta"]
     n_ocomp["Agente comprador"]
+    n_oimpl["Roteiro de implantação"]
+    n_oinst["Instaladores (PowerShell e bash)"]
+    n_overif["Verificadores"]
+    n_opipe["Pipeline de conteúdo"]
   end
   subgraph L_pub["Público e canais"]
     n_ig["Instagram"]
@@ -75,7 +79,14 @@ flowchart LR
     n_graf["Grafana"]
   end
   subgraph L_cnt["Containers, Kubernetes e infra como código"]
+    n_docker["Docker + Compose"]
     n_n8n["n8n"]
+  end
+  subgraph L_lin["Linux (Ubuntu no WSL2, Arch no 2º disco)"]
+    n_wsl["Ubuntu (WSL2)"]
+  end
+  subgraph L_win["Windows 11, apps e máquinas virtuais"]
+    n_w11["Windows 11 Home"]
   end
   n_ocatal -->|"fila por pontuação"| n_oesteira
   n_ocatal -->|"negócios físicos"| n_nplan
@@ -99,6 +110,7 @@ flowchart LR
   n_crm -->|"vira"| n_ocrm
   n_ofly -->|"trabalho capturado"| n_oedit
   n_ofly -->|"decisões reais"| n_obuild
+  n_opipe -->|"alimentado por"| n_ofly
   n_obuild -->|"vídeo semanal"| n_yt
   n_oatend -->|"responde"| n_wa
   n_n8n -->|"roda"| n_oatend
@@ -110,12 +122,22 @@ flowchart LR
   n_oedit -->|"fila de aprovação"| n_aprov
   n_oedit -->|"narração"| n_voz
   n_whis -->|"transcrição"| n_oedit
+  n_opipe -->|"executa"| n_oedit
   n_oanal -->|"lê o painel"| n_graf
   n_ofisc -->|"carnê-leão"| n_nfse
   n_ofisc -->|"entrega ao contador"| n_conta
   n_ocomp -->|"estoque mínimo"| n_nkaix
+  n_oimpl -->|"passos com script"| n_oinst
+  n_oinst -->|"depois confere"| n_overif
+  n_oinst -->|"instala"| n_opipe
+  n_overif -->|"confere"| n_wsl
+  n_overif -->|"confere"| n_docker
+  n_overif -->|"confere"| n_w11
+  n_overif -->|"confere"| n_n8n
+  n_overif -->|"confere"| n_graf
+  n_whis -->|"transcreve"| n_opipe
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_ocatal,n_oesteira,n_oqual,n_omarca,n_ogbp,n_oaval,n_ocrm,n_ofly,n_obuild,n_oatend,n_oorc,n_ocob,n_opos,n_oedit,n_oanal,n_ofisc,n_orevo,n_ocomp desta
+  class n_ocatal,n_oesteira,n_oqual,n_omarca,n_ogbp,n_oaval,n_ocrm,n_ofly,n_obuild,n_oatend,n_oorc,n_ocob,n_opos,n_oedit,n_oanal,n_ofisc,n_orevo,n_ocomp,n_oimpl,n_oinst,n_overif,n_opipe desta
 ```
 
 ## Blocos
@@ -140,6 +162,10 @@ flowchart LR
 | [Organizador fiscal](#ofisc) | Local · futuro | Junta notas, extratos e vendas do mês para o contador e para o carnê-leão. |
 | [Revisor de oferta](#orevo) | Local | Confere cada lançamento contra o padrão de qualidade antes de ir ao ar. |
 | [Agente comprador](#ocomp) | Local · futuro | Sugere a lista de compras dos negócios de comida pelo estoque mínimo e pela previsão de produção. |
+| [Roteiro de implantação](#oimpl) | Local | data/implantacao.json: 11 fases e 58 passos com critério de pronto, gerando docs/implantacao/roteiro.md e a página de acompanhamento. |
+| [Instaladores (PowerShell e bash)](#oinst) | Local | instalar.ps1 (winget, WSL2, .wslconfig) e bootstrap.sh (ferramentas, linguagens, Claude Code, ai-jail, Git assinado). Seguros para rodar de novo. |
+| [Verificadores](#overif) | Local | verificar.ps1 e verificar.sh: somente leitura, dizem 'pronto' ou listam o que falta. Também conferem os serviços da automação. |
+| [Pipeline de conteúdo](#opipe) | Local | tools/conteudo/processar.py com timer de 15 min: entrada → transcrição → peças pelo guia de marca → fila de aprovação → aviso no Telegram. |
 
 <a id="ocatal"></a>
 
@@ -253,6 +279,7 @@ Cada aula, capítulo, projeto, reparo ou prato vira várias peças: cortes, carr
 |---|---|---|---|
 | → envia para | [Agente editor de conteúdo](22-oper.md#oedit) | Operação do grupo (esteira, marca, qualidade) | trabalho capturado |
 | → envia para | [Canal build in public](22-oper.md#obuild) | Operação do grupo (esteira, marca, qualidade) | decisões reais |
+| ← recebe de | [Pipeline de conteúdo](22-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | alimentado por |
 
 <a id="obuild"></a>
 
@@ -336,6 +363,7 @@ Transforma transcrições em cortes, títulos, legendas, carrosséis, posts do G
 | → envia para | [Voz clonada (ElevenLabs)](12-cont.md#voz) | Produção de conteúdo | narração |
 | ← recebe de | [Flywheel de conteúdo](22-oper.md#ofly) | Operação do grupo (esteira, marca, qualidade) | trabalho capturado |
 | ← recebe de | [Whisper (local)](12-cont.md#whis) | Produção de conteúdo | transcrição |
+| ← recebe de | [Pipeline de conteúdo](22-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | executa |
 
 <a id="oanal"></a>
 
@@ -385,6 +413,64 @@ Sugere a lista de compras dos negócios de comida pelo estoque mínimo e pela pr
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [AM Kaixara (PDV e cardápio)](10-app.md#nkaix) | Aplicação: sistemas AM (Aura) | estoque mínimo |
+
+<a id="oimpl"></a>
+
+### Roteiro de implantação
+
+*Local*
+
+data/implantacao.json: 11 fases e 58 passos com critério de pronto, gerando docs/implantacao/roteiro.md e a página de acompanhamento.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Instaladores (PowerShell e bash)](22-oper.md#oinst) | Operação do grupo (esteira, marca, qualidade) | passos com script |
+
+<a id="oinst"></a>
+
+### Instaladores (PowerShell e bash)
+
+*Local*
+
+instalar.ps1 (winget, WSL2, .wslconfig) e bootstrap.sh (ferramentas, linguagens, Claude Code, ai-jail, Git assinado). Seguros para rodar de novo.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Verificadores](22-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | depois confere |
+| → envia para | [Pipeline de conteúdo](22-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | instala |
+| ← recebe de | [Roteiro de implantação](22-oper.md#oimpl) | Operação do grupo (esteira, marca, qualidade) | passos com script |
+
+<a id="overif"></a>
+
+### Verificadores
+
+*Local*
+
+verificar.ps1 e verificar.sh: somente leitura, dizem 'pronto' ou listam o que falta. Também conferem os serviços da automação.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Ubuntu (WSL2)](04-lin.md#wsl) | Linux (Ubuntu no WSL2, Arch no 2º disco) | confere |
+| → envia para | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | confere |
+| → envia para | [Windows 11 Home](03-win.md#w11) | Windows 11, apps e máquinas virtuais | confere |
+| → envia para | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | confere |
+| → envia para | [Grafana](09-obs.md#graf) | Observabilidade | confere |
+| ← recebe de | [Instaladores (PowerShell e bash)](22-oper.md#oinst) | Operação do grupo (esteira, marca, qualidade) | depois confere |
+
+<a id="opipe"></a>
+
+### Pipeline de conteúdo
+
+*Local*
+
+tools/conteudo/processar.py com timer de 15 min: entrada → transcrição → peças pelo guia de marca → fila de aprovação → aviso no Telegram.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Agente editor de conteúdo](22-oper.md#oedit) | Operação do grupo (esteira, marca, qualidade) | executa |
+| → envia para | [Flywheel de conteúdo](22-oper.md#ofly) | Operação do grupo (esteira, marca, qualidade) | alimentado por |
+| ← recebe de | [Whisper (local)](12-cont.md#whis) | Produção de conteúdo | transcreve |
+| ← recebe de | [Instaladores (PowerShell e bash)](22-oper.md#oinst) | Operação do grupo (esteira, marca, qualidade) | instala |
 
 ---
 

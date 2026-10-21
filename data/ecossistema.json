@@ -2802,6 +2802,42 @@
    "conta": false,
    "futuro": true,
    "descricao": "Sugere a lista de compras dos negócios de comida pelo estoque mínimo e pela previsão de produção."
+  },
+  {
+   "id": "oimpl",
+   "camada": "oper",
+   "rotulo": "Roteiro de|implantação",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "data/implantacao.json: 11 fases e 58 passos com critério de pronto, gerando docs/implantacao/roteiro.md e a página de acompanhamento."
+  },
+  {
+   "id": "oinst",
+   "camada": "oper",
+   "rotulo": "Instaladores|(PowerShell e bash)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "instalar.ps1 (winget, WSL2, .wslconfig) e bootstrap.sh (ferramentas, linguagens, Claude Code, ai-jail, Git assinado). Seguros para rodar de novo."
+  },
+  {
+   "id": "overif",
+   "camada": "oper",
+   "rotulo": "Verificadores",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "verificar.ps1 e verificar.sh: somente leitura, dizem 'pronto' ou listam o que falta. Também conferem os serviços da automação."
+  },
+  {
+   "id": "opipe",
+   "camada": "oper",
+   "rotulo": "Pipeline de|conteúdo",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "tools/conteudo/processar.py com timer de 15 min: entrada → transcrição → peças pelo guia de marca → fila de aprovação → aviso no Telegram."
   }
  ],
  "conexoes": [
@@ -5394,6 +5430,61 @@
    "de": "n8n",
    "para": "oatend",
    "rotulo": "roda"
+  },
+  {
+   "de": "oimpl",
+   "para": "oinst",
+   "rotulo": "passos com script"
+  },
+  {
+   "de": "oinst",
+   "para": "overif",
+   "rotulo": "depois confere"
+  },
+  {
+   "de": "overif",
+   "para": "wsl",
+   "rotulo": "confere"
+  },
+  {
+   "de": "overif",
+   "para": "docker",
+   "rotulo": "confere"
+  },
+  {
+   "de": "overif",
+   "para": "w11",
+   "rotulo": "confere"
+  },
+  {
+   "de": "opipe",
+   "para": "oedit",
+   "rotulo": "executa"
+  },
+  {
+   "de": "whis",
+   "para": "opipe",
+   "rotulo": "transcreve"
+  },
+  {
+   "de": "opipe",
+   "para": "ofly",
+   "rotulo": "alimentado por"
+  },
+  {
+   "de": "oinst",
+   "para": "opipe",
+   "rotulo": "instala"
+  },
+  {
+   "de": "overif",
+   "para": "n8n",
+   "rotulo": "confere"
+  },
+  {
+   "de": "overif",
+   "para": "graf",
+   "rotulo": "confere"
   }
  ],
  "fluxos": [

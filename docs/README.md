@@ -13,6 +13,7 @@
 - [Peças autorais](pecas-autorais.md) · [Fora do setup](fora-do-setup.md)
 - [Marketing, vendas e automação](marketing/README.md): funil, canais sem rosto com voz clonada, publicação automática, tráfego, parcerias, internacional e medição de lucro
 - [Editora AMS Silva](editora/README.md): estrutura legal, pipeline de produção dos livros, rigor editorial, identidade visual, avaliação, produtos, lançamento e roteiro
+- [Implantação](implantacao/README.md): roteiro com 58 passos, scripts que instalam e verificadores que conferem; pipeline de conteúdo e stack de automação
 - [Operação do grupo](operacao/README.md): esteira de ofertas, portfólio pontuado, marca e presença, flywheel de conteúdo, automação, qualidade, clientes e ordem de execução
 - [Negócios do grupo](negocios/README.md): os nove negócios em Barbacena, estrutura de CNPJs, ordem de abertura, números, cardápios e mínimo legal
 - [Vários computadores, SSD externo e NAS](infra/README.md): como crescer o setup para mais máquinas e armazenamento local e em nuvem
@@ -21,7 +22,7 @@
 
 ## Camadas
 
-- [22 · Operação do grupo (esteira, marca, qualidade)](camadas/22-oper.md) (18 blocos)
+- [22 · Operação do grupo (esteira, marca, qualidade)](camadas/22-oper.md) (22 blocos)
 - [21 · Público e canais](camadas/21-pub.md) (10 blocos)
 - [20 · Marketing, automação e medição](camadas/20-mkt.md) (23 blocos)
 - [19 · Plataformas de venda e recebimento](camadas/19-venda.md) (13 blocos)

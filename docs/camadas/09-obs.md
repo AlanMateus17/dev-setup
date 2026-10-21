@@ -25,6 +25,7 @@ flowchart LR
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_oanal["Analista semanal"]
+    n_overif["Verificadores"]
   end
   subgraph L_emp["Pessoa física: impostos e finanças"]
     n_caixa["Caixa da Casa / AM Rendara"]
@@ -54,6 +55,7 @@ flowchart LR
   n_prom -->|"painéis"| n_graf
   n_caixa -->|"DRE por negócio"| n_graf
   n_oanal -->|"lê o painel"| n_graf
+  n_overif -->|"confere"| n_graf
   n_aspire -->|"sobe os serviços"| n_docker
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_sentry,n_kuma,n_seq,n_loki,n_otel,n_prom,n_graf,n_aspire desta
@@ -163,6 +165,7 @@ Painéis e alertas.
 | ← recebe de | [Prometheus](09-obs.md#prom) | Observabilidade | painéis |
 | ← recebe de | [Caixa da Casa / AM Rendara](18-emp.md#caixa) | Pessoa física: impostos e finanças | DRE por negócio |
 | ← recebe de | [Analista semanal](22-oper.md#oanal) | Operação do grupo (esteira, marca, qualidade) | lê o painel |
+| ← recebe de | [Verificadores](22-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | confere |
 
 <a id="aspire"></a>
 

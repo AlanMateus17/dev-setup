@@ -23,6 +23,7 @@ flowchart LR
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_oedit["Agente editor de conteúdo"]
+    n_opipe["Pipeline de conteúdo"]
   end
   subgraph L_pub["Público e canais"]
     n_ig["Instagram"]
@@ -78,6 +79,7 @@ flowchart LR
   n_ccan -->|"posts e capas"| n_img
   n_whis -->|"transcrição"| n_obsd
   n_whis -->|"transcrição"| n_oedit
+  n_whis -->|"transcreve"| n_opipe
   n_voz -->|"sua voz em outros idiomas"| n_dub
   n_voz -->|"narração"| n_bcurso
   n_ws -->|"voz e vídeo locais"| n_voz
@@ -172,6 +174,7 @@ Transcreve as aulas para legenda, artigo e capítulo.
 |---|---|---|---|
 | → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | transcrição |
 | → envia para | [Agente editor de conteúdo](22-oper.md#oedit) | Operação do grupo (esteira, marca, qualidade) | transcrição |
+| → envia para | [Pipeline de conteúdo](22-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | transcreve |
 | ← recebe de | [OBS Studio](12-cont.md#obss) | Produção de conteúdo | áudio |
 
 <a id="voz"></a>

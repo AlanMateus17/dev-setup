@@ -36,6 +36,9 @@ flowchart LR
     n_vms["VMs: Kali · Arch · Servidores"]
     n_ard["Arduino IDE 2"]
   end
+  subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
+    n_overif["Verificadores"]
+  end
   subgraph L_pub["Público e canais"]
     n_ig["Instagram"]
   end
@@ -126,6 +129,7 @@ flowchart LR
   n_nb -->|"roda o Windows"| n_w11
   n_def -->|"protege"| n_w11
   n_cchr -->|"opera apps"| n_w11
+  n_overif -->|"confere"| n_w11
   n_vsc -->|"Remote – WSL"| n_wsl
   n_copi -->|"autocompletar"| n_vsc
   n_codex -->|"extensão"| n_vsc
@@ -360,6 +364,7 @@ Host do dia a dia (conta local, sem conta Microsoft).
 | ← recebe de | [Defender + Firewall](02-seg.md#def) | Segurança e cofre | protege |
 | ← recebe de | [Gerenciador de boot](03-win.md#boot) | Windows 11, apps e máquinas virtuais | boot |
 | ← recebe de | [Claude in Chrome + uso do computador](07-clc.md#cchr) | Claude: recursos, conectores e plugins | opera apps |
+| ← recebe de | [Verificadores](22-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | confere |
 
 <a id="vsc"></a>
 

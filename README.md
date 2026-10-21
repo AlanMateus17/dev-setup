@@ -8,13 +8,14 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 
 | Camadas | Blocos | Conexões | Fluxos | Contas necessárias |
 |---|---|---|---|---|
-| 22 | 299 | 518 | 13 | 98 |
+| 22 | 303 | 529 | 13 | 98 |
 
 ## Por onde começar
 
 - **[Arquitetura](docs/arquitetura.md)**: a pilha inteira, camada por camada, com o diagrama de cada uma.
 - **[Fluxos de ponta a ponta](docs/fluxos.md)**: codar com agente e publicar, vender um curso, publicar automaticamente, medir uma campanha e outros.
 - **[Editora AMS Silva](docs/editora/README.md)**: livros produzidos como software, com código testado, gabaritos conferidos e PDF, EPUB e impressão gerados da mesma fonte.
+- **[Implantação](docs/implantacao/README.md)**: do planejamento ao setup funcionando, com scripts de instalação, verificadores e o roteiro passo a passo.
 - **[Operação do grupo](docs/operacao/README.md)**: a esteira por onde passa toda oferta, o portfólio com 47 ofertas pontuadas, marca, conteúdo, automação, qualidade e a ordem de execução.
 - **[Negócios do grupo](docs/negocios/README.md)**: software, loja, robótica, ponto de retirada, entregas, delivery, sushi, cafeteria e padaria, com números, ordem de abertura e mínimo legal de cada um.
 - **[Marketing, vendas e automação](docs/marketing/README.md)**: funil, canais sem rosto com voz clonada, publicação no melhor horário, tráfego pago, parcerias, internacional e lucro por venda.
@@ -80,7 +81,7 @@ O Windows cuida só do que precisa de janela, GPU e segurança; todo o trabalho 
 
 | # | Camada | Blocos | Destaques |
 |---|---|---|---|
-| 22 | [Operação do grupo (esteira, marca, qualidade)](docs/camadas/22-oper.md) | 18 | Portfólio de ofertas, Esteira de ofertas, Padrão de qualidade, Marca pessoal Alan Mateus… |
+| 22 | [Operação do grupo (esteira, marca, qualidade)](docs/camadas/22-oper.md) | 22 | Portfólio de ofertas, Esteira de ofertas, Padrão de qualidade, Marca pessoal Alan Mateus… |
 | 21 | [Público e canais](docs/camadas/21-pub.md) | 10 | Meta Business Suite, Instagram, YouTube, LinkedIn… |
 | 20 | [Marketing, automação e medição](docs/camadas/20-mkt.md) | 23 | Meta Ads (Instagram, Facebook), Isca grátis + sequência de e-mails, Postiz (agendador), Aprovação no celular… |
 | 19 | [Plataformas de venda e recebimento](docs/camadas/19-venda.md) | 13 | Pix Automático + gateway (ex.: Asaas), Agenda online (Cal.com), Comunidade (Discord ou grupo), CRM simples (planilha)… |
@@ -125,7 +126,7 @@ flowchart LR
 ## Estrutura
 
 ```
-data/                 fonte única: ecossistema.json, mapa.json, negocios.json e portfolio.json
+data/                 fonte única: ecossistema, mapa, negócios, portfólio e implantação
 docs/
   arquitetura.md      a pilha e as ligações entre camadas
   camadas/            uma página por camada, com diagrama e conexões de cada bloco
@@ -133,14 +134,18 @@ docs/
   marketing/          funil, IA, publicação, tráfego, canais, parcerias, internacional, lucro
   infra/              vários computadores, SSD externo, NAS local e em nuvem
   editora/            Editora AMS Silva: pipeline dos livros, rigor, produtos e lançamento
+  implantacao/        roteiro de implantação e acompanhamento (gerados)
   operacao/           esteira, portfólio, marca, conteúdo, automação, qualidade, execução
   negocios/           os nove negócios do grupo: estrutura, ordem, números, cardápios, licenças
   contas.md, auditoria.md, nuvem.md, roteiro.md, ...
   adr/                decisões de arquitetura
   index.html          diagrama interativo (gerado)
   mapa.html           sistemas, nuvens, pilha, mercado e ordem de estudo (gerado)
-scripts/windows/      inventário somente leitura do Windows
-tools/                gerador e template do diagrama
+scripts/windows/      instalar.ps1, verificar.ps1 e o inventário do Windows
+scripts/wsl/          bootstrap.sh, verificar.sh e ativar-pipeline.sh
+infra/automacao/      n8n, banco de métricas, Grafana e Uptime Kuma (Docker Compose)
+config/marca.md       guia de marca usado pelo pipeline de conteúdo
+tools/                geradores, motor financeiro, pipeline de conteúdo e templates
 ```
 
 ## Status
