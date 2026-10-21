@@ -16,8 +16,11 @@ A avaliação só é honesta lendo o texto. Estes são os critérios; cada um re
 | 8 | Correção | Definições, código e respostas corretos e verificados | Erros | Verificado por teste e revisão |
 | 9 | Voz | O texto tem a sua voz de professor? | Genérico | Reconhecível |
 | 10 | Acabamento | Diagramação, figuras e consistência | Rascunho | Pronto para gráfica |
+| 11 | Autocontido | Dá para fazer tudo sem outro livro? | Depende de outros | Nada de fora é exigido |
+| 12 | Pronto para prova | Resolve as questões de banca do assunto? | Não cobre | Cobre todos os tópicos dos editais-alvo |
+| 13 | Pronto para o trabalho | O leitor usa o assunto como dev, engenheiro ou cientista? | Só teoria | Projeto real entregue |
 
-**Leitura da nota:** até 15, ainda é rascunho; de 16 a 23, bom e publicável com ajustes; 24 ou mais, diferenciado.
+**Leitura da nota (máximo 39):** até 20, ainda é rascunho; de 21 a 30, bom e publicável com ajustes; 31 ou mais, diferenciado.
 
 ## Comparação com o mercado
 

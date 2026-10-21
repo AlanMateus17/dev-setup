@@ -15,7 +15,7 @@ flowchart TB
   L_emp["17 · Pessoa física: impostos e finanças<br/>11 blocos"]
   L_web["16 · Vitrine web (sites e domínio)<br/>9 blocos"]
   L_prod["15 · Produtos (o que você vende)<br/>7 blocos"]
-  L_editora["14 · Editora AMS Silva (produção de livros)<br/>22 blocos"]
+  L_editora["14 · Editora AMS Silva (produção de livros)<br/>25 blocos"]
   L_est["13 · Estudo e carreira<br/>6 blocos"]
   L_cont["12 · Produção de conteúdo<br/>6 blocos"]
   L_nuvem["11 · Nuvem, código e entrega<br/>17 blocos"]
@@ -62,7 +62,7 @@ flowchart TB
 | 17 | [Pessoa física: impostos e finanças](camadas/17-emp.md) | 11 | Tudo no seu CPF por enquanto; o CNPJ entra quando a renda justificar. |
 | 16 | [Vitrine web (sites e domínio)](camadas/16-web.md) | 9 | Os sites mostram e vendem os produtos e o seu portfólio. |
 | 15 | [Produtos (o que você vende)](camadas/15-prod.md) | 7 | Cada produto nasce do conteúdo gravado, escrito ou programado. |
-| 14 | [Editora AMS Silva (produção de livros)](camadas/14-editora.md) | 22 | Cada livro sai do pipeline como produto pronto para as plataformas e para a gráfica. |
+| 14 | [Editora AMS Silva (produção de livros)](camadas/14-editora.md) | 25 | Cada livro sai do pipeline como produto pronto para as plataformas e para a gráfica. |
 | 13 | [Estudo e carreira](camadas/13-est.md) | 6 | O que você estuda vira produto, aula, post e linha no currículo. |
 | 12 | [Produção de conteúdo](camadas/12-cont.md) | 6 | Gravação e edição rodam no notebook; os arquivos finais sobem para as plataformas. |
 | 11 | [Nuvem, código e entrega](camadas/11-nuvem.md) | 17 | git push via SSH leva o código ao GitHub; o Actions testa e publica. |

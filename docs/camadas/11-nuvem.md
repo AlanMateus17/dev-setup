@@ -48,6 +48,7 @@ flowchart LR
   end
   subgraph L_editora["Editora AMS Silva (produção de livros)"]
     n_brepo["Repositório do livro"]
+    n_projcap["Projeto do capítulo"]
   end
   subgraph L_est["Estudo e carreira"]
     n_learn["Microsoft Learn + AWS Skill Builder"]
@@ -117,6 +118,7 @@ flowchart LR
   n_tmpl -->|"demo pública"| n_gh
   n_ws -->|"mesmos repositórios"| n_gh
   n_brepo -->|"hospedado"| n_gh
+  n_projcap -->|"portfólio do aluno"| n_gh
   n_gha -->|"publica imagem"| n_ghcr
   n_gha -->|"deploy OIDC"| n_azure
   n_gha -->|"deploy front"| n_vercel
@@ -274,6 +276,7 @@ Código, vault, ensino-ti e a org grupo-amtech-digital. É também o seu portfó
 | ← recebe de | [Templates e código-fonte](15-prod.md#tmpl) | Produtos (o que você vende) | demo pública |
 | ← recebe de | [Workstation com GPU](01-hw.md#ws) | Hardware | mesmos repositórios |
 | ← recebe de | [Repositório do livro](14-editora.md#brepo) | Editora AMS Silva (produção de livros) | hospedado |
+| ← recebe de | [Projeto do capítulo](14-editora.md#projcap) | Editora AMS Silva (produção de livros) | portfólio do aluno |
 
 <a id="gha"></a>
 

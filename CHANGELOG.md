@@ -2,6 +2,13 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.4.0] - 2026-10-21
+
+### Adicionado
+- `docs/editora/09-nivel-e-concursos.md`: caminho único, livro autocontido, matemática e física da TI, concursos PF, PRF e Forças Armadas, critério de domínio.
+- Blocos Matriz de editais, Projeto do capítulo e Mapa de pré-requisitos.
+- Critérios 11 a 13 na avaliação do livro; itens novos no checklist de rigor.
+
 ## [1.3.0] - 2026-10-21
 
 ### Adicionado

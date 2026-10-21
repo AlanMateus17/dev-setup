@@ -32,6 +32,7 @@ flowchart LR
 6. [Produtos e receita](06-produtos-e-receita.md): o que vender junto com os livros
 7. [Lançamento e divulgação](07-lancamento-e-divulgacao.md): Brasil primeiro, depois o mundo
 8. [Roteiro](08-roteiro.md): as fases, do Capítulo 1 ao lançamento
+9. [Nível do livro e concursos](09-nivel-e-concursos.md): um caminho único, autocontido, com domínio total para prova e para o trabalho; PF, PRF e Forças Armadas
 
 ## O que já existe
 

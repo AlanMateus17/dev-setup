@@ -8,7 +8,7 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 
 | Camadas | Blocos | Conexões | Fluxos | Contas necessárias |
 |---|---|---|---|---|
-| 20 | 249 | 422 | 10 | 89 |
+| 20 | 252 | 429 | 10 | 89 |
 
 ## Por onde começar
 
@@ -80,7 +80,7 @@ O Windows cuida só do que precisa de janela, GPU e segurança; todo o trabalho 
 | 17 | [Pessoa física: impostos e finanças](docs/camadas/17-emp.md) | 11 | Registro de marca (INPI), Termos, privacidade (LGPD) e contratos, Certificado digital (e-CNPJ), API de NFS-e (ex.: Focus NFe)… |
 | 16 | [Vitrine web (sites e domínio)](docs/camadas/16-web.md) | 9 | E-mail profissional (enviar e receber), Domínio (Registro.br), Site pessoal + blog (Jekyll), Instituto AMS… |
 | 15 | [Produtos (o que você vende)](docs/camadas/15-prod.md) | 7 | Mini-curso Lógica de Programação, Formações (TI, Matemática, Finanças), Templates e código-fonte, Livro Lógica e Máquina… |
-| 14 | [Editora AMS Silva (produção de livros)](docs/camadas/14-editora.md) | 22 | Selo Editora AMS Silva, Repositório do livro, Seu modelo de criação, Fonte única (Markdown + Pandoc)… |
+| 14 | [Editora AMS Silva (produção de livros)](docs/camadas/14-editora.md) | 25 | Selo Editora AMS Silva, Repositório do livro, Seu modelo de criação, Fonte única (Markdown + Pandoc)… |
 | 13 | [Estudo e carreira](docs/camadas/13-est.md) | 6 | Microsoft Learn + AWS Skill Builder, TryHackMe / Hack The Box, Alura · Rocketseat · DIO · Udemy, Anki… |
 | 12 | [Produção de conteúdo](docs/camadas/12-cont.md) | 6 | OBS Studio, DaVinci Resolve ou Kdenlive, Audacity, Canva · Krita · Inkscape… |
 | 11 | [Nuvem, código e entrega](docs/camadas/11-nuvem.md) | 17 | Armazenamento de arquivos (Blob/R2), E-mail transacional (Resend, SES…), SonarQube Cloud, Projects · ADRs · MkDocs… |

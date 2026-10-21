@@ -28,6 +28,11 @@ Cada capítulo só vai para a edição quando cumpre a lista inteira.
 - [ ] Pelo menos um exercício ligado a um problema real (um sistema AM, um caso de empresa, uma questão de concurso ou vestibular)
 - [ ] Todos os exercícios com solução completa, não só resposta
 - [ ] Fontes de exercícios externos citadas
+- [ ] Questões no estilo das bancas (Cebraspe certo ou errado, objetivas das Forças Armadas) e questões reais com banca, órgão e ano
+- [ ] Exercícios de trabalho tirados de sistemas reais
+- [ ] Projeto do capítulo que só se resolve dominando o assunto
+- [ ] Toda matemática e física usada está explicada no próprio livro, na profundidade que a TI exige
+- [ ] Tópicos do capítulo ligados à matriz de editais
 
 **Verificação**
 - [ ] Todo código compila e passa nos testes

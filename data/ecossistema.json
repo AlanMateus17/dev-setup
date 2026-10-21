@@ -2342,6 +2342,33 @@
    "conta": false,
    "futuro": false,
    "descricao": "Referências de design, pranchas, caixas e paletas testadas em impressão."
+  },
+  {
+   "id": "editais",
+   "camada": "editora",
+   "rotulo": "Matriz de editais",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Cada tópico dos editais de PF, PRF e Forças Armadas ligado ao capítulo que o ensina; o pipeline mostra a cobertura e aponta lacunas."
+  },
+  {
+   "id": "projcap",
+   "camada": "editora",
+   "rotulo": "Projeto do capítulo",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Cada capítulo termina com um projeto que só se resolve dominando o assunto, no estilo da École 42."
+  },
+  {
+   "id": "prereq",
+   "camada": "editora",
+   "rotulo": "Mapa de|pré-requisitos",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Cada conceito tem identificador; o pipeline avisa quando algo é usado antes de ser ensinado ou exige outro livro."
   }
  ],
  "conexoes": [
@@ -4454,6 +4481,41 @@
    "de": "isca",
    "para": "livro",
    "rotulo": "capítulo grátis"
+  },
+  {
+   "de": "editais",
+   "para": "bci",
+   "rotulo": "cobertura conferida"
+  },
+  {
+   "de": "editais",
+   "para": "exyaml",
+   "rotulo": "questões de banca"
+  },
+  {
+   "de": "prereq",
+   "para": "bci",
+   "rotulo": "nada usado antes de ensinado"
+  },
+  {
+   "de": "fonte",
+   "para": "prereq",
+   "rotulo": "conceitos marcados"
+  },
+  {
+   "de": "projcap",
+   "para": "brepo",
+   "rotulo": "versionado"
+  },
+  {
+   "de": "projcap",
+   "para": "bcurso",
+   "rotulo": "projeto das aulas"
+  },
+  {
+   "de": "projcap",
+   "para": "gh",
+   "rotulo": "portfólio do aluno"
   }
  ],
  "fluxos": [

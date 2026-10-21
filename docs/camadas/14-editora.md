@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** Cada livro sai do pipeline como produto pronto para as plataformas e para a gráfica.
 
-**22 blocos** · 3 precisam de conta · 5 marcados como futuro
+**25 blocos** · 3 precisam de conta · 5 marcados como futuro
 
 ## Mapa de conexões
 
@@ -36,6 +36,9 @@ flowchart LR
     n_prof["Edição do professor"]
     n_trad["Traduções (espanhol, inglês)"]
     n_refs["Quadro de referências"]
+    n_editais["Matriz de editais"]
+    n_projcap["Projeto do capítulo"]
+    n_prereq["Mapa de pré-requisitos"]
   end
   subgraph L_mkt["Marketing, automação e medição"]
     n_calc["Lucro por Venda (calculadora)"]
@@ -84,11 +87,14 @@ flowchart LR
   n_tikz -->|"versionado"| n_brepo
   n_bagentes -->|"apontam problemas"| n_brepo
   n_errata -->|"correções"| n_brepo
+  n_projcap -->|"versionado"| n_brepo
   n_modelo -->|"template de capítulo"| n_fonte
   n_modelo -->|"regras conferidas"| n_bci
+  n_fonte -->|"conceitos marcados"| n_prereq
   n_obsd -->|"rascunho"| n_fonte
   n_exyaml -->|"baralhos"| n_anki
   n_exyaml -->|"exercícios das aulas"| n_bcurso
+  n_editais -->|"questões de banca"| n_exyaml
   n_bcls -->|"identidade visual"| n_bci
   n_isbn -->|"vai na capa e na ficha"| n_bcls
   n_ficha -->|"verso da folha de rosto"| n_bcls
@@ -96,6 +102,8 @@ flowchart LR
   n_bci -->|"PDF, EPUB e impressão"| n_livro
   n_tex -->|"compila o PDF"| n_bci
   n_lint -->|"revisão"| n_bci
+  n_editais -->|"cobertura conferida"| n_bci
+  n_prereq -->|"nada usado antes de ensinado"| n_bci
   n_cc -->|"executa"| n_bagentes
   n_beta -->|"erros encontrados"| n_errata
   n_livro -->|"1 exemplar"| n_deplegal
@@ -109,14 +117,16 @@ flowchart LR
   n_voz -->|"narração"| n_bcurso
   n_edit -->|"aulas"| n_bcurso
   n_calc -->|"preço e margem"| n_bcurso
+  n_projcap -->|"projeto das aulas"| n_bcurso
   n_prof -->|"licença para escolas"| n_sites
   n_livro -->|"material do professor"| n_prof
   n_trad -->|"voz em outros idiomas"| n_dub
   n_livro -->|"outras línguas"| n_trad
   n_img -->|"rascunhos de ideia"| n_refs
   n_ccan -->|"quadros e capas"| n_refs
+  n_projcap -->|"portfólio do aluno"| n_gh
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_selo,n_brepo,n_modelo,n_fonte,n_exyaml,n_tikz,n_bcls,n_bci,n_lint,n_bagentes,n_beta,n_errata,n_isbn,n_ficha,n_deplegal,n_kdp,n_pod,n_bkit,n_bcurso,n_prof,n_trad,n_refs desta
+  class n_selo,n_brepo,n_modelo,n_fonte,n_exyaml,n_tikz,n_bcls,n_bci,n_lint,n_bagentes,n_beta,n_errata,n_isbn,n_ficha,n_deplegal,n_kdp,n_pod,n_bkit,n_bcurso,n_prof,n_trad,n_refs,n_editais,n_projcap,n_prereq desta
 ```
 
 ## Blocos
@@ -145,6 +155,9 @@ flowchart LR
 | [Edição do professor](#prof) | Local · futuro | Slides, planos de aula, avaliações e gabaritos; licença para escolas. |
 | [Traduções (espanhol, inglês)](#trad) | Remoto · futuro | Tradução revisada por nativo; ebook e curso dublados. |
 | [Quadro de referências](#refs) | Remoto | Referências de design, pranchas, caixas e paletas testadas em impressão. |
+| [Matriz de editais](#editais) | Local | Cada tópico dos editais de PF, PRF e Forças Armadas ligado ao capítulo que o ensina; o pipeline mostra a cobertura e aponta lacunas. |
+| [Projeto do capítulo](#projcap) | Local | Cada capítulo termina com um projeto que só se resolve dominando o assunto, no estilo da École 42. |
+| [Mapa de pré-requisitos](#prereq) | Local | Cada conceito tem identificador; o pipeline avisa quando algo é usado antes de ser ensinado ou exige outro livro. |
 
 <a id="selo"></a>
 
@@ -176,6 +189,7 @@ Um repositório por livro: texto, exercícios, figuras, código, estilo, errata 
 | ← recebe de | [Pranchas TikZ e SVG](14-editora.md#tikz) | Editora AMS Silva (produção de livros) | versionado |
 | ← recebe de | [Agentes da editora](14-editora.md#bagentes) | Editora AMS Silva (produção de livros) | apontam problemas |
 | ← recebe de | [Errata e edições](14-editora.md#errata) | Editora AMS Silva (produção de livros) | correções |
+| ← recebe de | [Projeto do capítulo](14-editora.md#projcap) | Editora AMS Silva (produção de livros) | versionado |
 
 <a id="modelo"></a>
 
@@ -201,6 +215,7 @@ O texto escrito uma vez e convertido em LaTeX, EPUB e HTML.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Repositório do livro](14-editora.md#brepo) | Editora AMS Silva (produção de livros) | versionado |
+| → envia para | [Mapa de pré-requisitos](14-editora.md#prereq) | Editora AMS Silva (produção de livros) | conceitos marcados |
 | ← recebe de | [Seu modelo de criação](14-editora.md#modelo) | Editora AMS Silva (produção de livros) | template de capítulo |
 | ← recebe de | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | rascunho |
 
@@ -217,6 +232,7 @@ Enunciado, nível, fonte, gabarito e solução. Gera a lista do capítulo, o gab
 | → envia para | [Repositório do livro](14-editora.md#brepo) | Editora AMS Silva (produção de livros) | versionado |
 | → envia para | [Anki](13-est.md#anki) | Estudo e carreira | baralhos |
 | → envia para | [Curso por seção](14-editora.md#bcurso) | Editora AMS Silva (produção de livros) | exercícios das aulas |
+| ← recebe de | [Matriz de editais](14-editora.md#editais) | Editora AMS Silva (produção de livros) | questões de banca |
 
 <a id="tikz"></a>
 
@@ -261,6 +277,8 @@ A cada mudança: compila e testa o código, confere gabaritos, revisa texto e li
 | ← recebe de | [Classe LaTeX do livro](14-editora.md#bcls) | Editora AMS Silva (produção de livros) | identidade visual |
 | ← recebe de | [TeX Live](04-lin.md#tex) | Linux (Ubuntu no WSL2, Arch no 2º disco) | compila o PDF |
 | ← recebe de | [Revisão automática (LanguageTool, Vale)](14-editora.md#lint) | Editora AMS Silva (produção de livros) | revisão |
+| ← recebe de | [Matriz de editais](14-editora.md#editais) | Editora AMS Silva (produção de livros) | cobertura conferida |
+| ← recebe de | [Mapa de pré-requisitos](14-editora.md#prereq) | Editora AMS Silva (produção de livros) | nada usado antes de ensinado |
 
 <a id="lint"></a>
 
@@ -403,6 +421,7 @@ Uma aula por seção na ordem do sumário, com voz clonada e tela.
 | ← recebe de | [Voz clonada (ElevenLabs)](12-cont.md#voz) | Produção de conteúdo | narração |
 | ← recebe de | [DaVinci Resolve ou Kdenlive](12-cont.md#edit) | Produção de conteúdo | aulas |
 | ← recebe de | [Lucro por Venda (calculadora)](19-mkt.md#calc) | Marketing, automação e medição | preço e margem |
+| ← recebe de | [Projeto do capítulo](14-editora.md#projcap) | Editora AMS Silva (produção de livros) | projeto das aulas |
 
 <a id="prof"></a>
 
@@ -443,6 +462,46 @@ Referências de design, pranchas, caixas e paletas testadas em impressão.
 | → envia para | [Classe LaTeX do livro](14-editora.md#bcls) | Editora AMS Silva (produção de livros) | referências visuais |
 | ← recebe de | [Canva · Krita · Inkscape](12-cont.md#img) | Produção de conteúdo | rascunhos de ideia |
 | ← recebe de | [Conectores Canva + Figma](07-clc.md#ccan) | Claude: recursos, conectores e plugins | quadros e capas |
+
+<a id="editais"></a>
+
+### Matriz de editais
+
+*Local*
+
+Cada tópico dos editais de PF, PRF e Forças Armadas ligado ao capítulo que o ensina; o pipeline mostra a cobertura e aponta lacunas.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Pipeline do livro (CI)](14-editora.md#bci) | Editora AMS Silva (produção de livros) | cobertura conferida |
+| → envia para | [Exercícios em YAML](14-editora.md#exyaml) | Editora AMS Silva (produção de livros) | questões de banca |
+
+<a id="projcap"></a>
+
+### Projeto do capítulo
+
+*Local*
+
+Cada capítulo termina com um projeto que só se resolve dominando o assunto, no estilo da École 42.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Repositório do livro](14-editora.md#brepo) | Editora AMS Silva (produção de livros) | versionado |
+| → envia para | [Curso por seção](14-editora.md#bcurso) | Editora AMS Silva (produção de livros) | projeto das aulas |
+| → envia para | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | portfólio do aluno |
+
+<a id="prereq"></a>
+
+### Mapa de pré-requisitos
+
+*Local*
+
+Cada conceito tem identificador; o pipeline avisa quando algo é usado antes de ser ensinado ou exige outro livro.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Pipeline do livro (CI)](14-editora.md#bci) | Editora AMS Silva (produção de livros) | nada usado antes de ensinado |
+| ← recebe de | [Fonte única (Markdown + Pandoc)](14-editora.md#fonte) | Editora AMS Silva (produção de livros) | conceitos marcados |
 
 ---
 
