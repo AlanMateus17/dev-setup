@@ -13,6 +13,7 @@ Plano para vender cursos, livro, templates e serviços no Brasil e fora dele, co
 | Sua voz clonada em todos os vídeos | Sim | Clonagem profissional da própria voz; rótulo de IA onde a rede exige ([02](02-canais-dark-e-ia.md)) |
 | Custo de cada venda calculado, sem prejuízo | Sim | Calculadora de lucro por venda + registro de cada campanha ([07](07-medicao-e-lucro.md)) |
 | Tráfego pago gastando o mínimo | Sim, depois de validar no orgânico | Teste pequeno, limites de CPA e regras de corte ([04](04-trafego-pago.md)) |
+| Anunciar em todos os canais | Sim, um de cada vez | Limite de custo por canal na calculadora; anúncio frio direto para produto de R$ 97 tende a dar prejuízo ([11](11-canais-de-anuncio.md)) |
 | Parcerias pela internet | Sim | Afiliados, coprodução e prospecção com IA, sempre com contato humano ([05](05-parcerias-e-afiliados.md)) |
 | Todos os países | Sim, em ordem | Espanhol primeiro, inglês depois; dublagem automática do YouTube ([06](06-internacional.md)) |
 | Saber 100% do que gastou, vendeu e lucrou | Sim | Toda venda, gasto e taxa entra no banco e no painel ([07](07-medicao-e-lucro.md)) |
@@ -30,6 +31,7 @@ Plano para vender cursos, livro, templates e serviços no Brasil e fora dele, co
 8. [Ferramentas e custos](08-ferramentas-e-custos.md)
 9. [Riscos](09-riscos.md)
 10. [Os primeiros 90 dias](10-primeiros-90-dias.md)
+11. [Canais de anúncio](11-canais-de-anuncio.md): Meta, Google, YouTube, TikTok, Kwai, Spotify, Pinterest, LinkedIn, nativos, influenciadores e afiliados, com o limite de custo de cada um
 
 ## Regra que vale para tudo
 

@@ -8,7 +8,7 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 
 | Camadas | Blocos | Conexões | Fluxos | Contas necessárias |
 |---|---|---|---|---|
-| 19 | 216 | 319 | 9 | 79 |
+| 19 | 227 | 348 | 9 | 86 |
 
 ## Por onde começar
 
@@ -72,24 +72,24 @@ O Windows cuida só do que precisa de janela, GPU e segurança; todo o trabalho 
 | # | Camada | Blocos | Destaques |
 |---|---|---|---|
 | 19 | [Público e canais](docs/camadas/19-pub.md) | 10 | Meta Business Suite, Instagram, YouTube, LinkedIn… |
-| 18 | [Marketing, automação e medição](docs/camadas/18-mkt.md) | 16 | Isca grátis + sequência de e-mails, Postiz (agendador), Aprovação no celular, Algoritmo de horário… |
+| 18 | [Marketing, automação e medição](docs/camadas/18-mkt.md) | 22 | Isca grátis + sequência de e-mails, Postiz (agendador), Aprovação no celular, Algoritmo de horário… |
 | 17 | [Plataformas de venda e recebimento](docs/camadas/17-venda.md) | 14 | Pix Automático + gateway (ex.: Asaas), Agenda online (Cal.com), Comunidade (Discord ou grupo), Anúncios (Meta Ads)… |
 | 16 | [Pessoa física: impostos e finanças](docs/camadas/16-emp.md) | 11 | Registro de marca (INPI), Termos, privacidade (LGPD) e contratos, Certificado digital (e-CNPJ), API de NFS-e (ex.: Focus NFe)… |
 | 15 | [Vitrine web (sites e domínio)](docs/camadas/15-web.md) | 9 | E-mail profissional (enviar e receber), Domínio (Registro.br), Site pessoal + blog (Jekyll), Instituto AMS… |
 | 14 | [Produtos (o que você vende)](docs/camadas/14-prod.md) | 7 | Mini-curso Lógica de Programação, Formações (TI, Matemática, Finanças), Templates e código-fonte, Livro Lógica e Máquina… |
 | 13 | [Estudo e carreira](docs/camadas/13-est.md) | 6 | Microsoft Learn + AWS Skill Builder, TryHackMe / Hack The Box, Alura · Rocketseat · DIO · Udemy, Anki… |
 | 12 | [Produção de conteúdo](docs/camadas/12-cont.md) | 6 | OBS Studio, DaVinci Resolve ou Kdenlive, Audacity, Canva · Krita · Inkscape… |
-| 11 | [Nuvem, código e entrega](docs/camadas/11-nuvem.md) | 15 | Armazenamento de arquivos (Blob/R2), E-mail transacional (Resend, SES…), SonarQube Cloud, Projects · ADRs · MkDocs… |
+| 11 | [Nuvem, código e entrega](docs/camadas/11-nuvem.md) | 17 | Armazenamento de arquivos (Blob/R2), E-mail transacional (Resend, SES…), SonarQube Cloud, Projects · ADRs · MkDocs… |
 | 10 | [Aplicação: sistemas AM (Aura)](docs/camadas/10-app.md) | 15 | OpenAPI + Scalar, PostGIS + MapLibre, Storybook, Clean Arch + DDD… |
 | 09 | [Observabilidade](docs/camadas/09-obs.md) | 8 | Sentry (erros), Uptime Kuma, Seq (logs), Loki + Tempo… |
 | 08 | [Containers, Kubernetes e infra como código](docs/camadas/08-cnt.md) | 13 | Caddy (proxy + HTTPS), Mailpit, Kafka, kubectl · Helm · k9s… |
 | 07 | [Claude: recursos, conectores e plugins](docs/camadas/07-clc.md) | 18 | Projects + memória, Artifacts (Docs, Slides, Sheets…), Pesquisa aprofundada, Tarefas agendadas… |
 | 06 | [Assistentes de IA (chat, pesquisa e estudo)](docs/camadas/06-chat.md) | 10 | Claude (app), ChatGPT, Gemini (pago), NotebookLM… |
 | 05 | [Agentes de IA e sandbox](docs/camadas/05-ia.md) | 8 | Modelos locais: Qwen · Gemma · Llama, Base de conhecimento (RAG) das suas notas, Claude Code, ai-jail… |
-| 04 | [Linux (Ubuntu no WSL2, Arch no 2º disco)](docs/camadas/04-lin.md) | 9 | Neovim, nmap · dig · curl · Wireshark, Ubuntu (WSL2), Git + SSH + gh… |
+| 04 | [Linux (Ubuntu no WSL2, Arch no 2º disco)](docs/camadas/04-lin.md) | 10 | Neovim, nmap · dig · curl · Wireshark, Ubuntu (WSL2), Git + SSH + gh… |
 | 03 | [Windows 11, apps e máquinas virtuais](docs/camadas/03-win.md) | 21 | Tailscale (VPN), .wslconfig + localhost, Terminal · PowerShell · winget, Excalidraw / draw.io… |
 | 02 | [Segurança e cofre](docs/camadas/02-seg.md) | 9 | Commits assinados (chave SSH), restic (backup criptografado), Chave física (YubiKey), TPM + Secure Boot… |
-| 01 | [Hardware](docs/camadas/01-hw.md) | 11 | Nobreak, Base com cooler, SSD SATA 2,5", Acer Nitro (32 GB, GTX 1650)… |
+| 01 | [Hardware](docs/camadas/01-hw.md) | 13 | Nobreak, Base com cooler, SSD SATA 2,5", Acer Nitro (32 GB, GTX 1650)… |
 
 ## Stack fixa dos sistemas
 
@@ -100,7 +100,7 @@ C#/.NET 10 · ASP.NET Core (Controllers) · Clean Architecture + DDD · PostgreS
 ```mermaid
 flowchart LR
   D["data/ecossistema.json<br/>data/mapa.json"] --> G["tools/gerar_docs.py"]
-  G --> M["docs/*.md<br/>18 páginas de camada"]
+  G --> M["docs/*.md<br/>19 páginas de camada"]
   G --> H["docs/index.html<br/>diagrama interativo"]
   G --> R["README.md"]
   CI["GitHub Actions"] -->|"valida e confere"| G
@@ -118,7 +118,8 @@ docs/
   arquitetura.md      a pilha e as ligações entre camadas
   camadas/            uma página por camada, com diagrama e conexões de cada bloco
   fluxos.md           fluxos de ponta a ponta
-  marketing/          funil, IA, publicação, tráfego, parcerias, internacional, lucro
+  marketing/          funil, IA, publicação, tráfego, canais, parcerias, internacional, lucro
+  infra/              vários computadores, SSD externo, NAS local e em nuvem
   contas.md, auditoria.md, nuvem.md, roteiro.md, ...
   adr/                decisões de arquitetura
   index.html          diagrama interativo (gerado)

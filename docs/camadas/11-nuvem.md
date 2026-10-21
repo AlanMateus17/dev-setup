@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** git push via SSH leva o código ao GitHub; o Actions testa e publica.
 
-**15 blocos** · 10 precisam de conta · 2 marcados como futuro
+**17 blocos** · 12 precisam de conta · 4 marcados como futuro
 
 ## Mapa de conexões
 
@@ -29,6 +29,8 @@ flowchart LR
     n_azure["Azure"]
     n_aws["AWS"]
     n_anth["Claude (assinatura e API)"]
+    n_b2["Backblaze B2 (backup)"]
+    n_gpuh["GPU na nuvem por hora"]
   end
   subgraph L_pub["Público e canais"]
     n_recr["Recrutadores"]
@@ -46,6 +48,9 @@ flowchart LR
   end
   subgraph L_est["Estudo e carreira"]
     n_learn["Microsoft Learn + AWS Skill Builder"]
+  end
+  subgraph L_cont["Produção de conteúdo"]
+    n_voz["Voz clonada (ElevenLabs)"]
   end
   subgraph L_app["Aplicação: sistemas AM (Aura)"]
     n_ai["IA: RAG + pgvector"]
@@ -79,8 +84,13 @@ flowchart LR
   end
   subgraph L_seg["Segurança e cofre"]
     n_kee["KeePassXC"]
+    n_restic["restic (backup criptografado)"]
     n_sign["Commits assinados (chave SSH)"]
     n_ykey["Chave física (YubiKey)"]
+  end
+  subgraph L_hw["Hardware"]
+    n_nas["Servidor caseiro (NAS + serviços)"]
+    n_ws["Workstation com GPU"]
   end
   n_blob -->|"arquivos"| n_api
   n_tmail -->|"e-mails do sistema"| n_api
@@ -102,6 +112,7 @@ flowchart LR
   n_gcode -->|"mesmos repos"| n_gh
   n_status -->|"Dependabot e repos"| n_gh
   n_tmpl -->|"demo pública"| n_gh
+  n_ws -->|"mesmos repositórios"| n_gh
   n_gha -->|"publica imagem"| n_ghcr
   n_gha -->|"deploy OIDC"| n_azure
   n_gha -->|"deploy front"| n_vercel
@@ -130,8 +141,11 @@ flowchart LR
   n_capp2 -->|"assinatura"| n_anth
   n_cc -->|"modelo Claude"| n_anth
   n_ai -->|"modelos"| n_anth
+  n_nas -->|"restic diário"| n_b2
+  n_restic -->|"criptografado"| n_b2
+  n_gpuh -->|"modelos abertos"| n_voz
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_blob,n_tmail,n_sonar,n_ghproj,n_dbot,n_gcp,n_gh,n_gha,n_ghcr,n_ghp,n_cf,n_vercel,n_azure,n_aws,n_anth desta
+  class n_blob,n_tmail,n_sonar,n_ghproj,n_dbot,n_gcp,n_gh,n_gha,n_ghcr,n_ghp,n_cf,n_vercel,n_azure,n_aws,n_anth,n_b2,n_gpuh desta
 ```
 
 ## Blocos
@@ -153,6 +167,8 @@ flowchart LR
 | [Azure](#azure) | Remoto · precisa de conta | Primeira nuvem para as APIs AM: App Service/Container Apps, PostgreSQL, Key Vault. |
 | [AWS](#aws) | Remoto · precisa de conta · futuro | Segunda nuvem, para o mercado maior. |
 | [Claude (assinatura e API)](#anth) | Remoto · precisa de conta | Assinatura usada pelo app e pelo Claude Code; API para as funções de IA dos sistemas. |
+| [Backblaze B2 (backup)](#b2) | Remoto · precisa de conta · futuro | Cópia fora de casa do backup, criptografada pelo restic. US$ 6,95 por TB/mês. |
+| [GPU na nuvem por hora](#gpuh) | Remoto · precisa de conta · futuro | Para treinar ou gerar voz e vídeo com modelos abertos quando a GTX 1650 não der conta. |
 
 <a id="blob"></a>
 
@@ -252,6 +268,7 @@ Código, vault, ensino-ti e a org grupo-amtech-digital. É também o seu portfó
 | ← recebe de | [Agentes de código do Google](06-chat.md#gcode) | Assistentes de IA (chat, pesquisa e estudo) | mesmos repos |
 | ← recebe de | [aura-status](10-app.md#status) | Aplicação: sistemas AM (Aura) | Dependabot e repos |
 | ← recebe de | [Templates e código-fonte](14-prod.md#tmpl) | Produtos (o que você vende) | demo pública |
+| ← recebe de | [Workstation com GPU](01-hw.md#ws) | Hardware | mesmos repositórios |
 
 <a id="gha"></a>
 
@@ -377,6 +394,31 @@ Assinatura usada pelo app e pelo Claude Code; API para as funções de IA dos si
 | ← recebe de | [Claude (app)](06-chat.md#capp2) | Assistentes de IA (chat, pesquisa e estudo) | assinatura |
 | ← recebe de | [Claude Code](05-ia.md#cc) | Agentes de IA e sandbox | modelo Claude |
 | ← recebe de | [IA: RAG + pgvector](10-app.md#ai) | Aplicação: sistemas AM (Aura) | modelos |
+
+<a id="b2"></a>
+
+### Backblaze B2 (backup)
+
+*Remoto · precisa de conta · futuro*
+
+Cópia fora de casa do backup, criptografada pelo restic. US$ 6,95 por TB/mês.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| ← recebe de | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | restic diário |
+| ← recebe de | [restic (backup criptografado)](02-seg.md#restic) | Segurança e cofre | criptografado |
+
+<a id="gpuh"></a>
+
+### GPU na nuvem por hora
+
+*Remoto · precisa de conta · futuro*
+
+Para treinar ou gerar voz e vídeo com modelos abertos quando a GTX 1650 não der conta.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Voz clonada (ElevenLabs)](12-cont.md#voz) | Produção de conteúdo | modelos abertos |
 
 ---
 

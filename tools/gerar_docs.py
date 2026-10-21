@@ -315,6 +315,7 @@ def gerar_indice_docs(eco: dict, por_camada: dict) -> str:
     out.append("- [Sistemas operacionais](sistemas-operacionais.md) · [Nuvem](nuvem.md) · [Mercado](mercado.md) · [Roteiro de estudo](roteiro.md)")
     out.append("- [Peças autorais](pecas-autorais.md) · [Fora do setup](fora-do-setup.md)")
     out.append("- [Marketing, vendas e automação](marketing/README.md): funil, canais sem rosto com voz clonada, publicação automática, tráfego, parcerias, internacional e medição de lucro")
+    out.append("- [Vários computadores, SSD externo e NAS](infra/README.md): como crescer o setup para mais máquinas e armazenamento local e em nuvem")
     out.append("- [Decisões de arquitetura (ADRs)](adr/)")
     out.append("- Versões interativas: [`index.html`](index.html) (diagrama) e [`mapa.html`](mapa.html), para abrir no navegador\n")
     out.append("## Camadas\n")
@@ -362,7 +363,7 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
             "## Como este repositório funciona\n",
             "```mermaid", "flowchart LR",
             '  D["data/ecossistema.json<br/>data/mapa.json"] --> G["tools/gerar_docs.py"]',
-            '  G --> M["docs/*.md<br/>18 páginas de camada"]',
+            f'  G --> M["docs/*.md<br/>{len(eco["camadas"])} páginas de camada"]',
             '  G --> H["docs/index.html<br/>diagrama interativo"]',
             '  G --> R["README.md"]',
             '  CI["GitHub Actions"] -->|"valida e confere"| G',
@@ -377,7 +378,8 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
             "  arquitetura.md      a pilha e as ligações entre camadas",
             "  camadas/            uma página por camada, com diagrama e conexões de cada bloco",
             "  fluxos.md           fluxos de ponta a ponta",
-            "  marketing/          funil, IA, publicação, tráfego, parcerias, internacional, lucro",
+            "  marketing/          funil, IA, publicação, tráfego, canais, parcerias, internacional, lucro",
+            "  infra/              vários computadores, SSD externo, NAS local e em nuvem",
             "  contas.md, auditoria.md, nuvem.md, roteiro.md, ...",
             "  adr/                decisões de arquitetura",
             "  index.html          diagrama interativo (gerado)",

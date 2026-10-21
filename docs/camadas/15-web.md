@@ -35,7 +35,9 @@ flowchart LR
     n_yt["YouTube"]
   end
   subgraph L_mkt["Marketing, automação e medição"]
+    n_infl["Influenciadores e newsletters"]
     n_isca["Isca grátis + sequência de e-mails"]
+    n_nativo["Mídia nativa (Taboola, Outbrain)"]
     n_pixel["Pixel + API de Conversões"]
   end
   subgraph L_venda["Plataformas de venda e recebimento"]
@@ -80,6 +82,7 @@ flowchart LR
   n_site -->|"currículo"| n_recr
   n_seo -->|"visitas"| n_site
   n_li -->|"link"| n_site
+  n_nativo -->|"leva aos artigos"| n_site
   n_inst -->|"botão comprar"| n_kiwi
   n_inst -->|"hospedado (Pages)"| n_cf
   n_inst -->|"botão comprar"| n_hotm
@@ -97,6 +100,7 @@ flowchart LR
   n_pixel -->|"eventos de compra"| n_inst
   n_tiktok -->|"link na bio"| n_inst
   n_facebook -->|"link"| n_inst
+  n_infl -->|"link com cupom"| n_inst
   n_amsite -->|"hospedado (Pages)"| n_cf
   n_catal -->|"hospedado"| n_ghp
   n_alunos -->|"usam o site"| n_catal
@@ -166,6 +170,7 @@ alanmateus17.github.io: portfólio, blog e newsletter.
 | → envia para | [Recrutadores](19-pub.md#recr) | Público e canais | currículo |
 | ← recebe de | [Busca Google (SEO)](19-pub.md#seo) | Público e canais | visitas |
 | ← recebe de | [LinkedIn](19-pub.md#li) | Público e canais | link |
+| ← recebe de | [Mídia nativa (Taboola, Outbrain)](18-mkt.md#nativo) | Marketing, automação e medição | leva aos artigos |
 
 <a id="inst"></a>
 
@@ -195,6 +200,7 @@ Site dos cursos: páginas de venda que levam ao checkout.
 | ← recebe de | [Pixel + API de Conversões](18-mkt.md#pixel) | Marketing, automação e medição | eventos de compra |
 | ← recebe de | [TikTok](19-pub.md#tiktok) | Público e canais | link na bio |
 | ← recebe de | [Facebook](19-pub.md#facebook) | Público e canais | link |
+| ← recebe de | [Influenciadores e newsletters](18-mkt.md#infl) | Marketing, automação e medição | link com cupom |
 
 <a id="amsite"></a>
 

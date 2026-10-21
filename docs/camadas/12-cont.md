@@ -34,6 +34,9 @@ flowchart LR
   subgraph L_prod["Produtos (o que você vende)"]
     n_curso["Mini-curso Lógica de Programação"]
   end
+  subgraph L_nuvem["Nuvem, código e entrega"]
+    n_gpuh["GPU na nuvem por hora"]
+  end
   subgraph L_clc["Claude: recursos, conectores e plugins"]
     n_ccan["Conectores Canva + Figma"]
     n_phst["Plugins: Hostinger · Adobe · Cloudinary"]
@@ -46,6 +49,8 @@ flowchart LR
   end
   subgraph L_hw["Hardware"]
     n_mic["Microfone + câmera"]
+    n_ssdext["SSD externo (USB-C 10 Gbps)"]
+    n_ws["Workstation com GPU"]
   end
   n_obss -->|"gravação"| n_edit
   n_obss -->|"áudio"| n_whis
@@ -55,12 +60,15 @@ flowchart LR
   n_phst -->|"imagem e vídeo"| n_edit
   n_aud -->|"áudio limpo"| n_edit
   n_voz -->|"narração"| n_edit
+  n_ssdext -->|"projetos de vídeo"| n_edit
   n_img -->|"posts"| n_ig
   n_img -->|"capas"| n_inst
   n_gpt -->|"gera imagens"| n_img
   n_ccan -->|"posts e capas"| n_img
   n_whis -->|"transcrição"| n_obsd
   n_voz -->|"sua voz em outros idiomas"| n_dub
+  n_ws -->|"voz e vídeo locais"| n_voz
+  n_gpuh -->|"modelos abertos"| n_voz
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_obss,n_edit,n_aud,n_img,n_whis,n_voz desta
 ```
@@ -106,6 +114,7 @@ Edição de vídeo. Os dois têm versão grátis.
 | ← recebe de | [OBS Studio](12-cont.md#obss) | Produção de conteúdo | gravação |
 | ← recebe de | [Audacity](12-cont.md#aud) | Produção de conteúdo | áudio limpo |
 | ← recebe de | [Voz clonada (ElevenLabs)](12-cont.md#voz) | Produção de conteúdo | narração |
+| ← recebe de | [SSD externo (USB-C 10 Gbps)](01-hw.md#ssdext) | Hardware | projetos de vídeo |
 
 <a id="aud"></a>
 
@@ -159,6 +168,8 @@ Clonagem profissional da sua própria voz (plano Creator em diante, uso comercia
 |---|---|---|---|
 | → envia para | [DaVinci Resolve ou Kdenlive](12-cont.md#edit) | Produção de conteúdo | narração |
 | → envia para | [Dublagem (YouTube + ElevenLabs)](18-mkt.md#dub) | Marketing, automação e medição | sua voz em outros idiomas |
+| ← recebe de | [Workstation com GPU](01-hw.md#ws) | Hardware | voz e vídeo locais |
+| ← recebe de | [GPU na nuvem por hora](11-nuvem.md#gpuh) | Nuvem, código e entrega | modelos abertos |
 
 ---
 

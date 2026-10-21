@@ -1873,11 +1873,11 @@
   {
    "id": "nas",
    "camada": "hw",
-   "rotulo": "NAS / homelab",
+   "rotulo": "Servidor caseiro|(NAS + serviços)",
    "tipo": "fisico",
    "conta": false,
    "futuro": true,
-   "descricao": "Gitea, backup e servidor de estudo."
+   "descricao": "PC antigo ou mini PC com 16 GB de RAM e dois HDs em RAID 1, com Ubuntu Server e Docker (ou OpenMediaVault). Guarda o backup local e roda n8n, Postiz, banco de métricas, Grafana, Uptime Kuma e Gitea 24 horas."
   },
   {
    "id": "tiktok",
@@ -2040,6 +2040,105 @@
    "conta": false,
    "futuro": true,
    "descricao": "Dublagem automática do YouTube para vídeos; ElevenLabs para cursos fora do YouTube. Espanhol primeiro."
+  },
+  {
+   "id": "spotads",
+   "camada": "mkt",
+   "rotulo": "Spotify Ad Studio",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": true,
+   "descricao": "Anúncios em áudio e podcast, abertos a anunciantes no Brasil. Clique baixo: serve para marca, não para venda direta."
+  },
+  {
+   "id": "kwaiads",
+   "camada": "mkt",
+   "rotulo": "Kwai Ads",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": true,
+   "descricao": "Plataforma de anúncios do Kwai no Brasil; teste depois de Meta e TikTok."
+  },
+  {
+   "id": "pinads",
+   "camada": "mkt",
+   "rotulo": "Pinterest Ads",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": true,
+   "descricao": "Para templates e material visual; confira se a conta aceita o Brasil."
+  },
+  {
+   "id": "liads",
+   "camada": "mkt",
+   "rotulo": "LinkedIn Ads",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": true,
+   "descricao": "Caro; só para B2B (sistemas AM e consultoria)."
+  },
+  {
+   "id": "nativo",
+   "camada": "mkt",
+   "rotulo": "Mídia nativa|(Taboola, Outbrain)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": true,
+   "descricao": "Clique barato e conversão baixa; leva leitores a artigos do blog que vendem."
+  },
+  {
+   "id": "infl",
+   "camada": "mkt",
+   "rotulo": "Influenciadores e|newsletters",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Post pago ou por desempenho no nicho de TI e educação; peça números reais e use cupom."
+  },
+  {
+   "id": "ssdext",
+   "camada": "hw",
+   "rotulo": "SSD externo|(USB-C 10 Gbps)",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": false,
+   "descricao": "NVMe em gabinete USB 3.2 Gen 2: projetos de vídeo e backup portátil, criptografado. A porta USB-C do Nitro é de 10 Gbps, sem Thunderbolt."
+  },
+  {
+   "id": "ws",
+   "camada": "hw",
+   "rotulo": "Workstation com GPU",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Segundo computador com 12 GB ou mais de memória de vídeo para voz, vídeo e IA locais. Só se sair mais barato que assinaturas e GPU por hora."
+  },
+  {
+   "id": "syncth",
+   "camada": "lin",
+   "rotulo": "Syncthing",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Sincroniza vault, projetos de vídeo e o cofre do KeePassXC entre as máquinas, sem nuvem no meio. Open source."
+  },
+  {
+   "id": "b2",
+   "camada": "nuvem",
+   "rotulo": "Backblaze B2|(backup)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": true,
+   "descricao": "Cópia fora de casa do backup, criptografada pelo restic. US$ 6,95 por TB/mês."
+  },
+  {
+   "id": "gpuh",
+   "camada": "nuvem",
+   "rotulo": "GPU na nuvem|por hora",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": true,
+   "descricao": "Para treinar ou gerar voz e vídeo com modelos abertos quando a GTX 1650 não der conta."
   }
  ],
  "conexoes": [
@@ -3637,6 +3736,151 @@
    "de": "facebook",
    "para": "inst",
    "rotulo": "link"
+  },
+  {
+   "de": "spotads",
+   "para": "metrics",
+   "rotulo": "gasto"
+  },
+  {
+   "de": "kwaiads",
+   "para": "metrics",
+   "rotulo": "gasto"
+  },
+  {
+   "de": "pinads",
+   "para": "metrics",
+   "rotulo": "gasto"
+  },
+  {
+   "de": "liads",
+   "para": "metrics",
+   "rotulo": "gasto"
+  },
+  {
+   "de": "nativo",
+   "para": "metrics",
+   "rotulo": "gasto"
+  },
+  {
+   "de": "infl",
+   "para": "metrics",
+   "rotulo": "custo do post"
+  },
+  {
+   "de": "regras",
+   "para": "spotads",
+   "rotulo": "pausa ou escala"
+  },
+  {
+   "de": "regras",
+   "para": "kwaiads",
+   "rotulo": "pausa ou escala"
+  },
+  {
+   "de": "regras",
+   "para": "pinads",
+   "rotulo": "pausa ou escala"
+  },
+  {
+   "de": "regras",
+   "para": "liads",
+   "rotulo": "pausa ou escala"
+  },
+  {
+   "de": "regras",
+   "para": "nativo",
+   "rotulo": "pausa ou escala"
+  },
+  {
+   "de": "calc",
+   "para": "infl",
+   "rotulo": "valor máximo do post"
+  },
+  {
+   "de": "infl",
+   "para": "inst",
+   "rotulo": "link com cupom"
+  },
+  {
+   "de": "nativo",
+   "para": "site",
+   "rotulo": "leva aos artigos"
+  },
+  {
+   "de": "nb",
+   "para": "ssdext",
+   "rotulo": "USB-C 10 Gbps"
+  },
+  {
+   "de": "ssdext",
+   "para": "bkp",
+   "rotulo": "cópia portátil"
+  },
+  {
+   "de": "ssdext",
+   "para": "edit",
+   "rotulo": "projetos de vídeo"
+  },
+  {
+   "de": "ws",
+   "para": "tail",
+   "rotulo": "rede privada"
+  },
+  {
+   "de": "ws",
+   "para": "gh",
+   "rotulo": "mesmos repositórios"
+  },
+  {
+   "de": "ws",
+   "para": "voz",
+   "rotulo": "voz e vídeo locais"
+  },
+  {
+   "de": "syncth",
+   "para": "nas",
+   "rotulo": "sincroniza"
+  },
+  {
+   "de": "syncth",
+   "para": "obsd",
+   "rotulo": "vault"
+  },
+  {
+   "de": "syncth",
+   "para": "kee",
+   "rotulo": "cofre de senhas"
+  },
+  {
+   "de": "nas",
+   "para": "b2",
+   "rotulo": "restic diário"
+  },
+  {
+   "de": "restic",
+   "para": "b2",
+   "rotulo": "criptografado"
+  },
+  {
+   "de": "gpuh",
+   "para": "voz",
+   "rotulo": "modelos abertos"
+  },
+  {
+   "de": "nas",
+   "para": "n8n",
+   "rotulo": "roda 24 h"
+  },
+  {
+   "de": "nas",
+   "para": "postiz",
+   "rotulo": "roda 24 h"
+  },
+  {
+   "de": "nas",
+   "para": "metrics",
+   "rotulo": "roda 24 h"
   }
  ],
  "fluxos": [
@@ -4039,6 +4283,14 @@
     {
      "nome": "Docker Hub",
      "obs": "Opcional; o GHCR já resolve."
+    },
+    {
+     "nome": "Tailscale",
+     "obs": "Rede privada entre as máquinas; plano grátis."
+    },
+    {
+     "nome": "Backblaze",
+     "obs": "Backup fora de casa; ative alerta de custo."
     }
    ]
   },

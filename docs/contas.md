@@ -26,6 +26,8 @@ Contas que o setup exige. Senhas no KeePassXC, 2FA no app autenticador e código
 | **Microsoft (Azure)** | Conta de estudo com alerta de orçamento. Use e-mail da empresa. |
 | **AWS** | Quando chegar a etapa 2 de nuvem. Ative alerta de custo no primeiro dia. |
 | **Docker Hub** | Opcional; o GHCR já resolve. |
+| **Tailscale** | Rede privada entre as máquinas; plano grátis. |
+| **Backblaze** | Backup fora de casa; ative alerta de custo. |
 
 ## Inteligência artificial
 

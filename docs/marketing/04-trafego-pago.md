@@ -30,6 +30,9 @@
 
 ## Canais, em ordem
 
+Todos os canais, com o limite de custo de cada um: [Canais de anúncio](11-canais-de-anuncio.md). Lembre: desde jan/2026 a fatura da Meta tem +12,15% de impostos sobre a mídia, e o TikTok exige pelo menos US$ 20/dia por grupo de anúncios.
+
+
 1. **Meta (Instagram e Facebook):** melhor para infoproduto de entrada no Brasil.
 2. **YouTube Ads:** para os vídeos longos que já convertem no orgânico.
 3. **Google Pesquisa:** para buscas com intenção ("curso de lógica de programação").

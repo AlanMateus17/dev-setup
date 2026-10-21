@@ -89,6 +89,7 @@ flowchart LR
   subgraph L_lin["Linux (Ubuntu no WSL2, Arch no 2º disco)"]
     n_arch["Arch + Omarchy (2º NVMe)"]
     n_netw["nmap · dig · curl · Wireshark"]
+    n_syncth["Syncthing"]
     n_wsl["Ubuntu (WSL2)"]
   end
   subgraph L_seg["Segurança e cofre"]
@@ -97,12 +98,14 @@ flowchart LR
   end
   subgraph L_hw["Hardware"]
     n_mon["2º monitor"]
-    n_nas["NAS / homelab"]
+    n_nas["Servidor caseiro (NAS + serviços)"]
     n_nb["Acer Nitro (32 GB, GTX 1650)"]
     n_rob["Arduino · ESP32 · Pi"]
     n_sata["SSD SATA 2,5#quot;"]
+    n_ws["Workstation com GPU"]
   end
   n_tail -->|"acesso remoto"| n_nas
+  n_ws -->|"rede privada"| n_tail
   n_wslcfg -->|"limite de RAM"| n_wsl
   n_wterm -->|"abre o Ubuntu"| n_wsl
   n_draw -->|"diagramas"| n_obsd
@@ -138,6 +141,7 @@ flowchart LR
   n_road -->|"roteiro"| n_obsd
   n_cgws -->|"resumos de e-mail e agenda"| n_obsd
   n_whis -->|"transcrição"| n_obsd
+  n_syncth -->|"vault"| n_obsd
   n_dbv -->|"porta 5432"| n_pg
   n_dbv -->|"HTTP (Bruno)"| n_api
   n_oapi -->|"Bruno importa"| n_dbv
@@ -190,7 +194,8 @@ Acesso seguro ao homelab e ao notebook de qualquer lugar, sem abrir porta no rot
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [NAS / homelab](01-hw.md#nas) | Hardware | acesso remoto |
+| → envia para | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | acesso remoto |
+| ← recebe de | [Workstation com GPU](01-hw.md#ws) | Hardware | rede privada |
 
 <a id="wslcfg"></a>
 
@@ -392,6 +397,7 @@ Vault de estudo, roteiros e planejamento.
 | ← recebe de | [roadmap.sh + Akita](13-est.md#road) | Estudo e carreira | roteiro |
 | ← recebe de | [Conector Google (Gmail, Drive…)](07-clc.md#cgws) | Claude: recursos, conectores e plugins | resumos de e-mail e agenda |
 | ← recebe de | [Whisper (local)](12-cont.md#whis) | Produção de conteúdo | transcrição |
+| ← recebe de | [Syncthing](04-lin.md#syncth) | Linux (Ubuntu no WSL2, Arch no 2º disco) | vault |
 
 <a id="dbv"></a>
 

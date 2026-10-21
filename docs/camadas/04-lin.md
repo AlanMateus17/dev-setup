@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** O código fica no ext4 do Linux; o Windows enxerga pela ponte do WSL2.
 
-**9 blocos** · 0 precisam de conta · 2 marcados como futuro
+**10 blocos** · 0 precisam de conta · 2 marcados como futuro
 
 ## Mapa de conexões
 
@@ -23,6 +23,7 @@ flowchart LR
     n_sec["gitleaks · Trivy"]
     n_dot["dotfiles"]
     n_arch["Arch + Omarchy (2º NVMe)"]
+    n_syncth["Syncthing"]
   end
   subgraph L_prod["Produtos (o que você vende)"]
     n_livro["Livro Lógica e Máquina"]
@@ -41,6 +42,7 @@ flowchart LR
   end
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
     n_boot["Gerenciador de boot"]
+    n_obsd["Obsidian + Git"]
     n_vms["VMs: Kali · Arch · Servidores"]
     n_vsc["VS Code"]
     n_w11["Windows 11 Home"]
@@ -49,8 +51,10 @@ flowchart LR
   end
   subgraph L_seg["Segurança e cofre"]
     n_bkp["Backup 3-2-1"]
+    n_kee["KeePassXC"]
   end
   subgraph L_hw["Hardware"]
+    n_nas["Servidor caseiro (NAS + serviços)"]
     n_nvme["2º NVMe (1–4 TB)"]
   end
   n_nvim -->|"editor"| n_wsl
@@ -72,8 +76,11 @@ flowchart LR
   n_arch -->|"mesmos dotfiles"| n_dot
   n_nvme -->|"disco próprio"| n_arch
   n_boot -->|"boot"| n_arch
+  n_syncth -->|"sincroniza"| n_nas
+  n_syncth -->|"vault"| n_obsd
+  n_syncth -->|"cofre de senhas"| n_kee
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_nvim,n_netw,n_wsl,n_git,n_rt,n_tex,n_sec,n_dot,n_arch desta
+  class n_nvim,n_netw,n_wsl,n_git,n_rt,n_tex,n_sec,n_dot,n_arch,n_syncth desta
 ```
 
 ## Blocos
@@ -89,6 +96,7 @@ flowchart LR
 | [gitleaks · Trivy](#sec) | Local | Barra senha no commit e acha vulnerabilidades em imagens. |
 | [dotfiles](#dot) | Local | Configuração versionada do ambiente. |
 | [Arch + Omarchy (2º NVMe)](#arch) | Local · futuro | Linux nativo com boot próprio, sem tocar no Windows. |
+| [Syncthing](#syncth) | Local | Sincroniza vault, projetos de vídeo e o cofre do KeePassXC entre as máquinas, sem nuvem no meio. Open source. |
 
 <a id="nvim"></a>
 
@@ -212,6 +220,20 @@ Linux nativo com boot próprio, sem tocar no Windows.
 | → envia para | [dotfiles](04-lin.md#dot) | Linux (Ubuntu no WSL2, Arch no 2º disco) | mesmos dotfiles |
 | ← recebe de | [2º NVMe (1–4 TB)](01-hw.md#nvme) | Hardware | disco próprio |
 | ← recebe de | [Gerenciador de boot](03-win.md#boot) | Windows 11, apps e máquinas virtuais | boot |
+
+<a id="syncth"></a>
+
+### Syncthing
+
+*Local*
+
+Sincroniza vault, projetos de vídeo e o cofre do KeePassXC entre as máquinas, sem nuvem no meio. Open source.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | sincroniza |
+| → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | vault |
+| → envia para | [KeePassXC](02-seg.md#kee) | Segurança e cofre | cofre de senhas |
 
 ---
 

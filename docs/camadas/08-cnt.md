@@ -69,6 +69,9 @@ flowchart LR
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
     n_dbv["DBeaver · Bruno"]
   end
+  subgraph L_hw["Hardware"]
+    n_nas["Servidor caseiro (NAS + serviços)"]
+  end
   n_caddy -->|"HTTPS"| n_api
   n_mailp -->|"SMTP de teste"| n_api
   n_docker -->|"container"| n_mailp
@@ -108,6 +111,7 @@ flowchart LR
   n_aprov -->|"libera"| n_n8n
   n_horario -->|"escolhe o horário"| n_n8n
   n_hooks -->|"dispara"| n_n8n
+  n_nas -->|"roda 24 h"| n_n8n
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_caddy,n_mailp,n_kafka,n_k8st,n_clis,n_datomic,n_docker,n_pg,n_redis,n_rmq,n_kind,n_tf,n_n8n desta
 ```
@@ -318,6 +322,7 @@ Automação: novo aluno → e-mail, post agendado, aviso.
 | ← recebe de | [Aprovação no celular](18-mkt.md#aprov) | Marketing, automação e medição | libera |
 | ← recebe de | [Algoritmo de horário](18-mkt.md#horario) | Marketing, automação e medição | escolhe o horário |
 | ← recebe de | [Webhooks de venda](18-mkt.md#hooks) | Marketing, automação e medição | dispara |
+| ← recebe de | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | roda 24 h |
 
 ---
 

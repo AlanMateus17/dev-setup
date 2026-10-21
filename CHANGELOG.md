@@ -2,6 +2,16 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.2.0] - 2026-10-20
+
+### Adicionado
+- `docs/marketing/11-canais-de-anuncio.md`: todos os canais de anúncio com o limite de custo de cada um.
+- `docs/infra/`: vários computadores, SSD externo, NAS local e armazenamento em nuvem.
+- Blocos de Spotify, Kwai, Pinterest, LinkedIn, mídia nativa e influenciadores; SSD externo, workstation, Syncthing, Backblaze B2 e GPU por hora.
+
+### Alterado
+- Servidor caseiro detalhado (NAS + serviços 24 h).
+
 ## [1.1.0] - 2026-10-20
 
 ### Adicionado

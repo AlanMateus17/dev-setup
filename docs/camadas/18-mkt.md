@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** O que é publicado e anunciado aqui leva às plataformas de venda; cada venda volta como dado para o banco de métricas.
 
-**16 blocos** · 3 precisam de conta · 10 marcados como futuro
+**22 blocos** · 8 precisam de conta · 16 marcados como futuro
 
 ## Mapa de conexões
 
@@ -30,6 +30,12 @@ flowchart LR
     n_afprog["Programa de afiliados"]
     n_prosp["Prospecção de parceiros"]
     n_dub["Dublagem (YouTube + ElevenLabs)"]
+    n_spotads["Spotify Ad Studio"]
+    n_kwaiads["Kwai Ads"]
+    n_pinads["Pinterest Ads"]
+    n_liads["LinkedIn Ads"]
+    n_nativo["Mídia nativa (Taboola, Outbrain)"]
+    n_infl["Influenciadores e newsletters"]
   end
   subgraph L_pub["Público e canais"]
     n_facebook["Facebook"]
@@ -50,6 +56,7 @@ flowchart LR
   end
   subgraph L_web["Vitrine web (sites e domínio)"]
     n_inst["Instituto AMS"]
+    n_site["Site pessoal + blog (Jekyll)"]
   end
   subgraph L_cont["Produção de conteúdo"]
     n_voz["Voz clonada (ElevenLabs)"]
@@ -61,6 +68,9 @@ flowchart LR
     n_cvid["Conector vidIQ"]
     n_pbiz["Plugins: small- business + marketing"]
   end
+  subgraph L_hw["Hardware"]
+    n_nas["Servidor caseiro (NAS + serviços)"]
+  end
   n_isca -->|"sequência"| n_mailer
   n_inst -->|"captura o e-mail"| n_isca
   n_postiz -->|"publica"| n_yt
@@ -70,6 +80,7 @@ flowchart LR
   n_postiz -->|"publica"| n_li
   n_n8n -->|"manda o post aprovado"| n_postiz
   n_utm -->|"marca os links"| n_postiz
+  n_nas -->|"roda 24 h"| n_postiz
   n_aprov -->|"libera"| n_n8n
   n_horario -->|"escolhe o horário"| n_n8n
   n_metrics -->|"desempenho por horário"| n_horario
@@ -81,9 +92,15 @@ flowchart LR
   n_ttads -->|"gasto"| n_metrics
   n_regras -->|"pausa ou escala"| n_ttads
   n_regras -->|"pausa ou escala"| n_ads
+  n_regras -->|"pausa ou escala"| n_spotads
+  n_regras -->|"pausa ou escala"| n_kwaiads
+  n_regras -->|"pausa ou escala"| n_pinads
+  n_regras -->|"pausa ou escala"| n_liads
+  n_regras -->|"pausa ou escala"| n_nativo
   n_calc -->|"CPA e ROAS de empate"| n_regras
   n_painel -->|"dispara alertas"| n_regras
   n_calc -->|"comissão máxima"| n_afprog
+  n_calc -->|"valor máximo do post"| n_infl
   n_hooks -->|"dispara"| n_n8n
   n_hotm -->|"venda e reembolso"| n_hooks
   n_kiwi -->|"venda e reembolso"| n_hooks
@@ -92,14 +109,23 @@ flowchart LR
   n_metrics -->|"base do carnê-leão"| n_nfse
   n_n8n -->|"grava"| n_metrics
   n_ads -->|"gasto por campanha"| n_metrics
+  n_spotads -->|"gasto"| n_metrics
+  n_kwaiads -->|"gasto"| n_metrics
+  n_pinads -->|"gasto"| n_metrics
+  n_liads -->|"gasto"| n_metrics
+  n_nativo -->|"gasto"| n_metrics
+  n_infl -->|"custo do post"| n_metrics
+  n_nas -->|"roda 24 h"| n_metrics
   n_afprog -->|"afiliados cadastrados"| n_hotm
   n_prosp -->|"novos afiliados"| n_afprog
   n_cvid -->|"canais semelhantes"| n_prosp
   n_pbiz -->|"rascunho de propostas"| n_prosp
   n_dub -->|"faixas de áudio"| n_yt
   n_voz -->|"sua voz em outros idiomas"| n_dub
+  n_nativo -->|"leva aos artigos"| n_site
+  n_infl -->|"link com cupom"| n_inst
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_isca,n_postiz,n_aprov,n_horario,n_pixel,n_utm,n_gads,n_ttads,n_regras,n_calc,n_hooks,n_metrics,n_painel,n_afprog,n_prosp,n_dub desta
+  class n_isca,n_postiz,n_aprov,n_horario,n_pixel,n_utm,n_gads,n_ttads,n_regras,n_calc,n_hooks,n_metrics,n_painel,n_afprog,n_prosp,n_dub,n_spotads,n_kwaiads,n_pinads,n_liads,n_nativo,n_infl desta
 ```
 
 ## Blocos
@@ -122,6 +148,12 @@ flowchart LR
 | [Programa de afiliados](#afprog) | Remoto · futuro | Comissão definida pela calculadora, aberta depois de 20 vendas próprias. |
 | [Prospecção de parceiros](#prosp) | Local | Busca e qualificação de parceiros com IA; mensagem revisada e enviada por você. |
 | [Dublagem (YouTube + ElevenLabs)](#dub) | Remoto · futuro | Dublagem automática do YouTube para vídeos; ElevenLabs para cursos fora do YouTube. Espanhol primeiro. |
+| [Spotify Ad Studio](#spotads) | Remoto · precisa de conta · futuro | Anúncios em áudio e podcast, abertos a anunciantes no Brasil. Clique baixo: serve para marca, não para venda direta. |
+| [Kwai Ads](#kwaiads) | Remoto · precisa de conta · futuro | Plataforma de anúncios do Kwai no Brasil; teste depois de Meta e TikTok. |
+| [Pinterest Ads](#pinads) | Remoto · precisa de conta · futuro | Para templates e material visual; confira se a conta aceita o Brasil. |
+| [LinkedIn Ads](#liads) | Remoto · precisa de conta · futuro | Caro; só para B2B (sistemas AM e consultoria). |
+| [Mídia nativa (Taboola, Outbrain)](#nativo) | Remoto · precisa de conta · futuro | Clique barato e conversão baixa; leva leitores a artigos do blog que vendem. |
+| [Influenciadores e newsletters](#infl) | Remoto · futuro | Post pago ou por desempenho no nicho de TI e educação; peça números reais e use cupom. |
 
 <a id="isca"></a>
 
@@ -153,6 +185,7 @@ Agendador open source (AGPL-3.0) que publica em mais de 28 redes. Roda no seu Do
 | → envia para | [LinkedIn](19-pub.md#li) | Público e canais | publica |
 | ← recebe de | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | manda o post aprovado |
 | ← recebe de | [Padrão de UTM](18-mkt.md#utm) | Marketing, automação e medição | marca os links |
+| ← recebe de | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | roda 24 h |
 
 <a id="aprov"></a>
 
@@ -244,6 +277,11 @@ Pausa criativo ou conjunto quando o CPA passa do de empate; sobe 15% do orçamen
 | → envia para | [Anúncios (Meta Ads)](17-venda.md#ads) | Plataformas de venda e recebimento | pausa ou escala |
 | → envia para | [Google e YouTube Ads](18-mkt.md#gads) | Marketing, automação e medição | pausa ou escala |
 | → envia para | [TikTok Ads](18-mkt.md#ttads) | Marketing, automação e medição | pausa ou escala |
+| → envia para | [Spotify Ad Studio](18-mkt.md#spotads) | Marketing, automação e medição | pausa ou escala |
+| → envia para | [Kwai Ads](18-mkt.md#kwaiads) | Marketing, automação e medição | pausa ou escala |
+| → envia para | [Pinterest Ads](18-mkt.md#pinads) | Marketing, automação e medição | pausa ou escala |
+| → envia para | [LinkedIn Ads](18-mkt.md#liads) | Marketing, automação e medição | pausa ou escala |
+| → envia para | [Mídia nativa (Taboola, Outbrain)](18-mkt.md#nativo) | Marketing, automação e medição | pausa ou escala |
 | ← recebe de | [Lucro por Venda (calculadora)](18-mkt.md#calc) | Marketing, automação e medição | CPA e ROAS de empate |
 | ← recebe de | [Painel de lucro (Grafana)](18-mkt.md#painel) | Marketing, automação e medição | dispara alertas |
 
@@ -259,6 +297,7 @@ Artefato com taxas das plataformas, imposto, CPA e ROAS de empate, simulador e o
 |---|---|---|---|
 | → envia para | [Regras de corte](18-mkt.md#regras) | Marketing, automação e medição | CPA e ROAS de empate |
 | → envia para | [Programa de afiliados](18-mkt.md#afprog) | Marketing, automação e medição | comissão máxima |
+| → envia para | [Influenciadores e newsletters](18-mkt.md#infl) | Marketing, automação e medição | valor máximo do post |
 
 <a id="hooks"></a>
 
@@ -292,6 +331,13 @@ Tabelas de produtos, vendas, gastos, ferramentas e impostos.
 | ← recebe de | [Anúncios (Meta Ads)](17-venda.md#ads) | Plataformas de venda e recebimento | gasto por campanha |
 | ← recebe de | [Google e YouTube Ads](18-mkt.md#gads) | Marketing, automação e medição | gasto |
 | ← recebe de | [TikTok Ads](18-mkt.md#ttads) | Marketing, automação e medição | gasto |
+| ← recebe de | [Spotify Ad Studio](18-mkt.md#spotads) | Marketing, automação e medição | gasto |
+| ← recebe de | [Kwai Ads](18-mkt.md#kwaiads) | Marketing, automação e medição | gasto |
+| ← recebe de | [Pinterest Ads](18-mkt.md#pinads) | Marketing, automação e medição | gasto |
+| ← recebe de | [LinkedIn Ads](18-mkt.md#liads) | Marketing, automação e medição | gasto |
+| ← recebe de | [Mídia nativa (Taboola, Outbrain)](18-mkt.md#nativo) | Marketing, automação e medição | gasto |
+| ← recebe de | [Influenciadores e newsletters](18-mkt.md#infl) | Marketing, automação e medição | custo do post |
+| ← recebe de | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | roda 24 h |
 
 <a id="painel"></a>
 
@@ -346,6 +392,86 @@ Dublagem automática do YouTube para vídeos; ElevenLabs para cursos fora do You
 |---|---|---|---|
 | → envia para | [YouTube](19-pub.md#yt) | Público e canais | faixas de áudio |
 | ← recebe de | [Voz clonada (ElevenLabs)](12-cont.md#voz) | Produção de conteúdo | sua voz em outros idiomas |
+
+<a id="spotads"></a>
+
+### Spotify Ad Studio
+
+*Remoto · precisa de conta · futuro*
+
+Anúncios em áudio e podcast, abertos a anunciantes no Brasil. Clique baixo: serve para marca, não para venda direta.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Banco de métricas (PostgreSQL)](18-mkt.md#metrics) | Marketing, automação e medição | gasto |
+| ← recebe de | [Regras de corte](18-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
+
+<a id="kwaiads"></a>
+
+### Kwai Ads
+
+*Remoto · precisa de conta · futuro*
+
+Plataforma de anúncios do Kwai no Brasil; teste depois de Meta e TikTok.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Banco de métricas (PostgreSQL)](18-mkt.md#metrics) | Marketing, automação e medição | gasto |
+| ← recebe de | [Regras de corte](18-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
+
+<a id="pinads"></a>
+
+### Pinterest Ads
+
+*Remoto · precisa de conta · futuro*
+
+Para templates e material visual; confira se a conta aceita o Brasil.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Banco de métricas (PostgreSQL)](18-mkt.md#metrics) | Marketing, automação e medição | gasto |
+| ← recebe de | [Regras de corte](18-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
+
+<a id="liads"></a>
+
+### LinkedIn Ads
+
+*Remoto · precisa de conta · futuro*
+
+Caro; só para B2B (sistemas AM e consultoria).
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Banco de métricas (PostgreSQL)](18-mkt.md#metrics) | Marketing, automação e medição | gasto |
+| ← recebe de | [Regras de corte](18-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
+
+<a id="nativo"></a>
+
+### Mídia nativa (Taboola, Outbrain)
+
+*Remoto · precisa de conta · futuro*
+
+Clique barato e conversão baixa; leva leitores a artigos do blog que vendem.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Banco de métricas (PostgreSQL)](18-mkt.md#metrics) | Marketing, automação e medição | gasto |
+| → envia para | [Site pessoal + blog (Jekyll)](15-web.md#site) | Vitrine web (sites e domínio) | leva aos artigos |
+| ← recebe de | [Regras de corte](18-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
+
+<a id="infl"></a>
+
+### Influenciadores e newsletters
+
+*Remoto · futuro*
+
+Post pago ou por desempenho no nicho de TI e educação; peça números reais e use cupom.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Banco de métricas (PostgreSQL)](18-mkt.md#metrics) | Marketing, automação e medição | custo do post |
+| → envia para | [Instituto AMS](15-web.md#inst) | Vitrine web (sites e domínio) | link com cupom |
+| ← recebe de | [Lucro por Venda (calculadora)](18-mkt.md#calc) | Marketing, automação e medição | valor máximo do post |
 
 ---
 

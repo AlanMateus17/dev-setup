@@ -29,9 +29,11 @@ flowchart LR
   end
   subgraph L_nuvem["Nuvem, código e entrega"]
     n_azure["Azure"]
+    n_b2["Backblaze B2 (backup)"]
     n_gh["GitHub"]
   end
   subgraph L_lin["Linux (Ubuntu no WSL2, Arch no 2º disco)"]
+    n_syncth["Syncthing"]
     n_wsl["Ubuntu (WSL2)"]
   end
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
@@ -42,12 +44,14 @@ flowchart LR
   subgraph L_hw["Hardware"]
     n_cel["Celular"]
     n_ext["Disco externo"]
-    n_nas["NAS / homelab"]
+    n_nas["Servidor caseiro (NAS + serviços)"]
     n_nb["Acer Nitro (32 GB, GTX 1650)"]
+    n_ssdext["SSD externo (USB-C 10 Gbps)"]
   end
   n_sign -->|"Verified"| n_gh
   n_restic -->|"cópia local"| n_ext
   n_restic -->|"executa"| n_bkp
+  n_restic -->|"criptografado"| n_b2
   n_ykey -->|"2FA"| n_gh
   n_tpm -->|"protege a chave"| n_bitl
   n_bitl -->|"criptografa o disco"| n_nb
@@ -56,12 +60,14 @@ flowchart LR
   n_kee -->|"senhas e tokens"| n_gh
   n_kee -->|"senhas"| n_hotm
   n_kee -->|"senhas"| n_azure
+  n_syncth -->|"cofre de senhas"| n_kee
   n_cel -->|"gera os códigos"| n_tfa
   n_bkp -->|"copia ~/dev"| n_wsl
   n_bkp -->|"copia o vault"| n_obsd
   n_ext -->|"2ª cópia"| n_bkp
   n_nas -->|"3ª cópia (futuro)"| n_bkp
   n_zip -->|"compacta"| n_bkp
+  n_ssdext -->|"cópia portátil"| n_bkp
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_sign,n_restic,n_ykey,n_tpm,n_bitl,n_def,n_kee,n_tfa,n_bkp desta
 ```
@@ -104,6 +110,7 @@ Backup criptografado e incremental para o disco externo e para a nuvem (ex.: arm
 |---|---|---|---|
 | → envia para | [Disco externo](01-hw.md#ext) | Hardware | cópia local |
 | → envia para | [Backup 3-2-1](02-seg.md#bkp) | Segurança e cofre | executa |
+| → envia para | [Backblaze B2 (backup)](11-nuvem.md#b2) | Nuvem, código e entrega | criptografado |
 
 <a id="ykey"></a>
 
@@ -168,6 +175,7 @@ Cofre de todas as senhas das contas marcadas com o ponto dourado.
 | → envia para | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | senhas e tokens |
 | → envia para | [Hotmart](17-venda.md#hotm) | Plataformas de venda e recebimento | senhas |
 | → envia para | [Azure](11-nuvem.md#azure) | Nuvem, código e entrega | senhas |
+| ← recebe de | [Syncthing](04-lin.md#syncth) | Linux (Ubuntu no WSL2, Arch no 2º disco) | cofre de senhas |
 
 <a id="tfa"></a>
 
@@ -195,9 +203,10 @@ GitHub + disco externo + (depois) NAS.
 | → envia para | [Ubuntu (WSL2)](04-lin.md#wsl) | Linux (Ubuntu no WSL2, Arch no 2º disco) | copia ~/dev |
 | → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | copia o vault |
 | ← recebe de | [Disco externo](01-hw.md#ext) | Hardware | 2ª cópia |
-| ← recebe de | [NAS / homelab](01-hw.md#nas) | Hardware | 3ª cópia (futuro) |
+| ← recebe de | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | 3ª cópia (futuro) |
 | ← recebe de | [7-Zip](03-win.md#zip) | Windows 11, apps e máquinas virtuais | compacta |
 | ← recebe de | [restic (backup criptografado)](02-seg.md#restic) | Segurança e cofre | executa |
+| ← recebe de | [SSD externo (USB-C 10 Gbps)](01-hw.md#ssdext) | Hardware | cópia portátil |
 
 ---
 

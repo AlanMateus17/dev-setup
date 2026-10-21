@@ -14,8 +14,11 @@ Regra: assinatura nova só quando ela se paga. Cada uma entra na calculadora no 
 | OBS, DaVinci Resolve, Audacity, Whisper | Gravar, editar, áudio, legendas | grátis | já |
 | n8n | Orquestração | grátis (no seu Docker) | fase 2 |
 | Postiz | Agendamento em todas as redes | grátis (no seu Docker); servidor 24 h depois | fase 2 |
-| Servidor (VPS) | Postiz e n8n ligados sempre | 4 a 8 GB de RAM | quando a publicação automática estiver testada no notebook |
+| Servidor caseiro (ou VPS) | Postiz, n8n e banco de métricas ligados sempre | PC antigo ou mini PC com 16 GB e 2 HDs; VPS de 4 a 8 GB como alternativa ([infra](../infra/README.md)) | quando a publicação automática estiver testada no notebook |
 | GPU na nuvem por hora | Voz ou vídeo local, se um dia valer | por hora | só se sair mais barato que as assinaturas |
+| Tailscale | Rede privada entre as máquinas | grátis (até 6 usuários, dispositivos ilimitados) | já |
+| Backblaze B2 | Backup fora de casa | US$ 6,95 por TB/mês | junto com o servidor caseiro |
+| Cloudflare R2 | Arquivos públicos dos sites e sistemas | US$ 0,015 por GB/mês, 10 GB grátis, download grátis | quando os sistemas tiverem arquivos |
 | Hotmart, Kiwify, Eduzz, Udemy | Venda | taxa por venda | já |
 | MailerLite | Lista e sequências | grátis até o limite do plano | já |
 | Meta Ads | Tráfego | orçamento de teste | depois de 10 vendas orgânicas |
