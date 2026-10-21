@@ -28,6 +28,9 @@ flowchart LR
   subgraph L_prod["Produtos (o que você vende)"]
     n_livro["Livro Lógica e Máquina"]
   end
+  subgraph L_editora["Editora AMS Silva (produção de livros)"]
+    n_bci["Pipeline do livro (CI)"]
+  end
   subgraph L_nuvem["Nuvem, código e entrega"]
     n_gh["GitHub"]
   end
@@ -72,6 +75,7 @@ flowchart LR
   n_sec -->|"pre-commit"| n_git
   n_status -->|"git status"| n_git
   n_tex -->|"gera o PDF"| n_livro
+  n_tex -->|"compila o PDF"| n_bci
   n_dot -->|"versionado"| n_gh
   n_arch -->|"mesmos dotfiles"| n_dot
   n_nvme -->|"disco próprio"| n_arch
@@ -180,7 +184,8 @@ Compila o livro e as apostilas.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Livro Lógica e Máquina](14-prod.md#livro) | Produtos (o que você vende) | gera o PDF |
+| → envia para | [Livro Lógica e Máquina](15-prod.md#livro) | Produtos (o que você vende) | gera o PDF |
+| → envia para | [Pipeline do livro (CI)](14-editora.md#bci) | Editora AMS Silva (produção de livros) | compila o PDF |
 
 <a id="sec"></a>
 

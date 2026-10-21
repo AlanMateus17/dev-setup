@@ -21,6 +21,9 @@ flowchart LR
     n_road["roadmap.sh + Akita"]
     n_ghed["GitHub Education"]
   end
+  subgraph L_editora["Editora AMS Silva (produção de livros)"]
+    n_exyaml["Exercícios em YAML"]
+  end
   subgraph L_nuvem["Nuvem, código e entrega"]
     n_azure["Azure"]
   end
@@ -35,6 +38,7 @@ flowchart LR
   n_thm -->|"prática"| n_vms
   n_plat -->|"suas anotações"| n_obsd
   n_anki -->|"cartões"| n_obsd
+  n_exyaml -->|"baralhos"| n_anki
   n_road -->|"roteiro"| n_obsd
   n_ghed -->|"Copilot Pro"| n_copi
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
@@ -99,6 +103,7 @@ Repetição espaçada para comandos, conceitos, certificações e concurso. Open
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | cartões |
+| ← recebe de | [Exercícios em YAML](14-editora.md#exyaml) | Editora AMS Silva (produção de livros) | baralhos |
 
 <a id="road"></a>
 
@@ -126,4 +131,4 @@ Pacote para professores: Copilot Pro e outros benefícios. Peça a verificação
 
 ---
 
-[↑ Camada 14 · Produtos (o que você vende)](14-prod.md) · [↓ Camada 12 · Produção de conteúdo](12-cont.md)
+[↑ Camada 14 · Editora AMS Silva (produção de livros)](14-editora.md) · [↓ Camada 12 · Produção de conteúdo](12-cont.md)

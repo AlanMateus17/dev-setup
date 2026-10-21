@@ -184,7 +184,7 @@ Vitrine dos componentes do aura-frontend-kit; vira demo pública e produto (temp
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Next.js + Aura Design System](10-app.md#front) | Aplicação: sistemas AM (Aura) | componentes |
-| → envia para | [Templates e código-fonte](14-prod.md#tmpl) | Produtos (o que você vende) | demo do template |
+| → envia para | [Templates e código-fonte](15-prod.md#tmpl) | Produtos (o que você vende) | demo do template |
 
 <a id="clean"></a>
 
@@ -308,7 +308,7 @@ Regras de negócio dos sistemas AM.
 | ← recebe de | [Seq (logs)](09-obs.md#seq) | Observabilidade | logs |
 | ← recebe de | [Mailpit](08-cnt.md#mailp) | Containers, Kubernetes e infra como código | SMTP de teste |
 | ← recebe de | [Kafka](08-cnt.md#kafka) | Containers, Kubernetes e infra como código | eventos |
-| ← recebe de | [API de NFS-e (ex.: Focus NFe)](16-emp.md#nfapi) | Pessoa física: impostos e finanças | IEmissorFiscal |
+| ← recebe de | [API de NFS-e (ex.: Focus NFe)](17-emp.md#nfapi) | Pessoa física: impostos e finanças | IEmissorFiscal |
 | ← recebe de | [E-mail transacional (Resend, SES…)](11-nuvem.md#tmail) | Nuvem, código e entrega | e-mails do sistema |
 | ← recebe de | [Armazenamento de arquivos (Blob/R2)](11-nuvem.md#blob) | Nuvem, código e entrega | arquivos |
 | ← recebe de | [OpenAPI + Scalar](10-app.md#oapi) | Aplicação: sistemas AM (Aura) | documenta |
@@ -356,8 +356,8 @@ Cobrança por módulo dos sistemas AM.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | libera módulos |
-| ← recebe de | [Pix Automático + gateway (ex.: Asaas)](17-venda.md#pixa) | Plataformas de venda e recebimento | cobrança recorrente |
-| ← recebe de | [Sistemas AM (SaaS)](14-prod.md#saas) | Produtos (o que você vende) | cobrança por módulo |
+| ← recebe de | [Pix Automático + gateway (ex.: Asaas)](18-venda.md#pixa) | Plataformas de venda e recebimento | cobrança recorrente |
+| ← recebe de | [Sistemas AM (SaaS)](15-prod.md#saas) | Produtos (o que você vende) | cobrança por módulo |
 
 <a id="status"></a>
 

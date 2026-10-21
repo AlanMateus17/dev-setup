@@ -313,15 +313,15 @@ Automação: novo aluno → e-mail, post agendado, aviso.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [MailerLite](17-venda.md#mailer) | Plataformas de venda e recebimento | novo aluno → e-mail |
-| → envia para | [Hotmart](17-venda.md#hotm) | Plataformas de venda e recebimento | webhook de venda |
-| → envia para | [Postiz (agendador)](18-mkt.md#postiz) | Marketing, automação e medição | manda o post aprovado |
-| → envia para | [Banco de métricas (PostgreSQL)](18-mkt.md#metrics) | Marketing, automação e medição | grava |
+| → envia para | [MailerLite](18-venda.md#mailer) | Plataformas de venda e recebimento | novo aluno → e-mail |
+| → envia para | [Hotmart](18-venda.md#hotm) | Plataformas de venda e recebimento | webhook de venda |
+| → envia para | [Postiz (agendador)](19-mkt.md#postiz) | Marketing, automação e medição | manda o post aprovado |
+| → envia para | [Banco de métricas (PostgreSQL)](19-mkt.md#metrics) | Marketing, automação e medição | grava |
 | ← recebe de | [Ollama (3B–4B)](05-ia.md#oll) | Agentes de IA e sandbox | IA local nas automações |
 | ← recebe de | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
-| ← recebe de | [Aprovação no celular](18-mkt.md#aprov) | Marketing, automação e medição | libera |
-| ← recebe de | [Algoritmo de horário](18-mkt.md#horario) | Marketing, automação e medição | escolhe o horário |
-| ← recebe de | [Webhooks de venda](18-mkt.md#hooks) | Marketing, automação e medição | dispara |
+| ← recebe de | [Aprovação no celular](19-mkt.md#aprov) | Marketing, automação e medição | libera |
+| ← recebe de | [Algoritmo de horário](19-mkt.md#horario) | Marketing, automação e medição | escolhe o horário |
+| ← recebe de | [Webhooks de venda](19-mkt.md#hooks) | Marketing, automação e medição | dispara |
 | ← recebe de | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | roda 24 h |
 
 ---

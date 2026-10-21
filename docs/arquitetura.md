@@ -9,12 +9,13 @@ A pilha vai do público (topo) ao hardware (base). Cada linha é a ligação ent
 
 ```mermaid
 flowchart TB
-  L_pub["19 · Público e canais<br/>10 blocos"]
-  L_mkt["18 · Marketing, automação e medição<br/>23 blocos"]
-  L_venda["17 · Plataformas de venda e recebimento<br/>13 blocos"]
-  L_emp["16 · Pessoa física: impostos e finanças<br/>11 blocos"]
-  L_web["15 · Vitrine web (sites e domínio)<br/>9 blocos"]
-  L_prod["14 · Produtos (o que você vende)<br/>7 blocos"]
+  L_pub["20 · Público e canais<br/>10 blocos"]
+  L_mkt["19 · Marketing, automação e medição<br/>23 blocos"]
+  L_venda["18 · Plataformas de venda e recebimento<br/>13 blocos"]
+  L_emp["17 · Pessoa física: impostos e finanças<br/>11 blocos"]
+  L_web["16 · Vitrine web (sites e domínio)<br/>9 blocos"]
+  L_prod["15 · Produtos (o que você vende)<br/>7 blocos"]
+  L_editora["14 · Editora AMS Silva (produção de livros)<br/>22 blocos"]
   L_est["13 · Estudo e carreira<br/>6 blocos"]
   L_cont["12 · Produção de conteúdo<br/>6 blocos"]
   L_nuvem["11 · Nuvem, código e entrega<br/>17 blocos"]
@@ -33,7 +34,8 @@ flowchart TB
   L_venda --- L_emp
   L_emp --- L_web
   L_web --- L_prod
-  L_prod --- L_est
+  L_prod --- L_editora
+  L_editora --- L_est
   L_est --- L_cont
   L_cont --- L_nuvem
   L_nuvem --- L_app
@@ -47,19 +49,20 @@ flowchart TB
   L_win --- L_seg
   L_seg --- L_hw
   classDef cam fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class L_pub,L_mkt,L_venda,L_emp,L_web,L_prod,L_est,L_cont,L_nuvem,L_app,L_obs,L_cnt,L_clc,L_chat,L_ia,L_lin,L_win,L_seg,L_hw cam
+  class L_pub,L_mkt,L_venda,L_emp,L_web,L_prod,L_editora,L_est,L_cont,L_nuvem,L_app,L_obs,L_cnt,L_clc,L_chat,L_ia,L_lin,L_win,L_seg,L_hw cam
 ```
 
 ## Camadas e ligações
 
 | # | Camada | Blocos | Como se liga à camada de baixo |
 |---|---|---|---|
-| 19 | [Público e canais](camadas/19-pub.md) | 10 | Link na bio, vídeo, post, busca e indicação levam a pessoa até o site ou o WhatsApp. |
-| 18 | [Marketing, automação e medição](camadas/18-mkt.md) | 23 | O que é publicado e anunciado aqui leva às plataformas de venda; cada venda volta como dado para o banco de métricas. |
-| 17 | [Plataformas de venda e recebimento](camadas/17-venda.md) | 13 | Cada venda é lançada no carnê-leão e o dinheiro cai na sua conta separada. |
-| 16 | [Pessoa física: impostos e finanças](camadas/16-emp.md) | 11 | Tudo no seu CPF por enquanto; o CNPJ entra quando a renda justificar. |
-| 15 | [Vitrine web (sites e domínio)](camadas/15-web.md) | 9 | Os sites mostram e vendem os produtos e o seu portfólio. |
-| 14 | [Produtos (o que você vende)](camadas/14-prod.md) | 7 | Cada produto nasce do conteúdo gravado, escrito ou programado. |
+| 20 | [Público e canais](camadas/20-pub.md) | 10 | Link na bio, vídeo, post, busca e indicação levam a pessoa até o site ou o WhatsApp. |
+| 19 | [Marketing, automação e medição](camadas/19-mkt.md) | 23 | O que é publicado e anunciado aqui leva às plataformas de venda; cada venda volta como dado para o banco de métricas. |
+| 18 | [Plataformas de venda e recebimento](camadas/18-venda.md) | 13 | Cada venda é lançada no carnê-leão e o dinheiro cai na sua conta separada. |
+| 17 | [Pessoa física: impostos e finanças](camadas/17-emp.md) | 11 | Tudo no seu CPF por enquanto; o CNPJ entra quando a renda justificar. |
+| 16 | [Vitrine web (sites e domínio)](camadas/16-web.md) | 9 | Os sites mostram e vendem os produtos e o seu portfólio. |
+| 15 | [Produtos (o que você vende)](camadas/15-prod.md) | 7 | Cada produto nasce do conteúdo gravado, escrito ou programado. |
+| 14 | [Editora AMS Silva (produção de livros)](camadas/14-editora.md) | 22 | Cada livro sai do pipeline como produto pronto para as plataformas e para a gráfica. |
 | 13 | [Estudo e carreira](camadas/13-est.md) | 6 | O que você estuda vira produto, aula, post e linha no currículo. |
 | 12 | [Produção de conteúdo](camadas/12-cont.md) | 6 | Gravação e edição rodam no notebook; os arquivos finais sobem para as plataformas. |
 | 11 | [Nuvem, código e entrega](camadas/11-nuvem.md) | 17 | git push via SSH leva o código ao GitHub; o Actions testa e publica. |

@@ -34,6 +34,10 @@ flowchart LR
   subgraph L_prod["Produtos (o que você vende)"]
     n_curso["Mini-curso Lógica de Programação"]
   end
+  subgraph L_editora["Editora AMS Silva (produção de livros)"]
+    n_bcurso["Curso por seção"]
+    n_refs["Quadro de referências"]
+  end
   subgraph L_nuvem["Nuvem, código e entrega"]
     n_gpuh["GPU na nuvem por hora"]
   end
@@ -57,16 +61,19 @@ flowchart LR
   n_mic -->|"áudio e vídeo USB"| n_obss
   n_edit -->|"vídeo final"| n_yt
   n_edit -->|"aulas editadas"| n_curso
+  n_edit -->|"aulas"| n_bcurso
   n_phst -->|"imagem e vídeo"| n_edit
   n_aud -->|"áudio limpo"| n_edit
   n_voz -->|"narração"| n_edit
   n_ssdext -->|"projetos de vídeo"| n_edit
   n_img -->|"posts"| n_ig
   n_img -->|"capas"| n_inst
+  n_img -->|"rascunhos de ideia"| n_refs
   n_gpt -->|"gera imagens"| n_img
   n_ccan -->|"posts e capas"| n_img
   n_whis -->|"transcrição"| n_obsd
   n_voz -->|"sua voz em outros idiomas"| n_dub
+  n_voz -->|"narração"| n_bcurso
   n_ws -->|"voz e vídeo locais"| n_voz
   n_gpuh -->|"modelos abertos"| n_voz
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
@@ -108,8 +115,9 @@ Edição de vídeo. Os dois têm versão grátis.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [YouTube](19-pub.md#yt) | Público e canais | vídeo final |
-| → envia para | [Mini-curso Lógica de Programação](14-prod.md#curso) | Produtos (o que você vende) | aulas editadas |
+| → envia para | [YouTube](20-pub.md#yt) | Público e canais | vídeo final |
+| → envia para | [Mini-curso Lógica de Programação](15-prod.md#curso) | Produtos (o que você vende) | aulas editadas |
+| → envia para | [Curso por seção](14-editora.md#bcurso) | Editora AMS Silva (produção de livros) | aulas |
 | ← recebe de | [Plugins: Hostinger · Adobe · Cloudinary](07-clc.md#phst) | Claude: recursos, conectores e plugins | imagem e vídeo |
 | ← recebe de | [OBS Studio](12-cont.md#obss) | Produção de conteúdo | gravação |
 | ← recebe de | [Audacity](12-cont.md#aud) | Produção de conteúdo | áudio limpo |
@@ -138,8 +146,9 @@ Capas, posts e thumbnails. Canva precisa de conta; Krita e Inkscape são open so
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instagram](19-pub.md#ig) | Público e canais | posts |
-| → envia para | [Instituto AMS](15-web.md#inst) | Vitrine web (sites e domínio) | capas |
+| → envia para | [Instagram](20-pub.md#ig) | Público e canais | posts |
+| → envia para | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | capas |
+| → envia para | [Quadro de referências](14-editora.md#refs) | Editora AMS Silva (produção de livros) | rascunhos de ideia |
 | ← recebe de | [ChatGPT](06-chat.md#gpt) | Assistentes de IA (chat, pesquisa e estudo) | gera imagens |
 | ← recebe de | [Conectores Canva + Figma](07-clc.md#ccan) | Claude: recursos, conectores e plugins | posts e capas |
 
@@ -167,7 +176,8 @@ Clonagem profissional da sua própria voz (plano Creator em diante, uso comercia
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [DaVinci Resolve ou Kdenlive](12-cont.md#edit) | Produção de conteúdo | narração |
-| → envia para | [Dublagem (YouTube + ElevenLabs)](18-mkt.md#dub) | Marketing, automação e medição | sua voz em outros idiomas |
+| → envia para | [Dublagem (YouTube + ElevenLabs)](19-mkt.md#dub) | Marketing, automação e medição | sua voz em outros idiomas |
+| → envia para | [Curso por seção](14-editora.md#bcurso) | Editora AMS Silva (produção de livros) | narração |
 | ← recebe de | [Workstation com GPU](01-hw.md#ws) | Hardware | voz e vídeo locais |
 | ← recebe de | [GPU na nuvem por hora](11-nuvem.md#gpuh) | Nuvem, código e entrega | modelos abertos |
 

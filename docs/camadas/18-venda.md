@@ -1,7 +1,7 @@
 <!-- Arquivo GERADO por tools/gerar_docs.py a partir de data/. Edite os dados, não este arquivo. -->
 
 
-# Camada 17 · Plataformas de venda e recebimento
+# Camada 18 · Plataformas de venda e recebimento
 
 [← Arquitetura](../arquitetura.md) · [Índice da documentação](../README.md)
 
@@ -53,6 +53,9 @@ flowchart LR
     n_sites["Sites para pequenas empresas"]
     n_tmpl["Templates e código-fonte"]
   end
+  subgraph L_editora["Editora AMS Silva (produção de livros)"]
+    n_bcurso["Curso por seção"]
+  end
   subgraph L_app["Aplicação: sistemas AM (Aura)"]
     n_lic["aura-licensing"]
   end
@@ -90,6 +93,7 @@ flowchart LR
   n_inst -->|"botão comprar"| n_hotm
   n_mailer -->|"lançamento"| n_hotm
   n_afprog -->|"afiliados cadastrados"| n_hotm
+  n_bcurso -->|"venda"| n_hotm
   n_kiwi -->|"lança no carnê-leão"| n_nfse
   n_kiwi -->|"saque"| n_banco
   n_kiwi -->|"venda e reembolso"| n_hooks
@@ -149,7 +153,7 @@ Cobrança recorrente dos sistemas AM por Pix, sem cartão. Lançado pelo Banco C
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [aura-licensing](10-app.md#lic) | Aplicação: sistemas AM (Aura) | cobrança recorrente |
-| → envia para | [Conta bancária separada (CPF)](16-emp.md#banco) | Pessoa física: impostos e finanças | recebimento |
+| → envia para | [Conta bancária separada (CPF)](17-emp.md#banco) | Pessoa física: impostos e finanças | recebimento |
 
 <a id="agenda"></a>
 
@@ -161,8 +165,8 @@ Aluno particular escolhe horário sozinho e já paga. Open source, com plano gr�
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Aulas particulares](14-prod.md#aulas) | Produtos (o que você vende) | horários |
-| → envia para | [Mercado Pago](17-venda.md#mp) | Plataformas de venda e recebimento | pagamento |
+| → envia para | [Aulas particulares](15-prod.md#aulas) | Produtos (o que você vende) | horários |
+| → envia para | [Mercado Pago](18-venda.md#mp) | Plataformas de venda e recebimento | pagamento |
 
 <a id="comu"></a>
 
@@ -174,7 +178,7 @@ Alunos do curso juntos: tira-dúvidas, retenção e indicação.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Mini-curso Lógica de Programação](14-prod.md#curso) | Produtos (o que você vende) | suporte aos alunos |
+| → envia para | [Mini-curso Lógica de Programação](15-prod.md#curso) | Produtos (o que você vende) | suporte aos alunos |
 
 <a id="crm"></a>
 
@@ -186,7 +190,7 @@ Lista de alunos, clientes e propostas. Uma planilha resolve até dezenas de clie
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Sites para pequenas empresas](14-prod.md#sites) | Produtos (o que você vende) | propostas |
+| → envia para | [Sites para pequenas empresas](15-prod.md#sites) | Produtos (o que você vende) | propostas |
 
 <a id="hotm"></a>
 
@@ -198,20 +202,21 @@ Checkout, área de membros e afiliados para cursos e PDFs. Aceita vender no CPF.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Carnê-leão (Receita Federal)](16-emp.md#nfse) | Pessoa física: impostos e finanças | lança no carnê-leão |
-| → envia para | [Conta bancária separada (CPF)](16-emp.md#banco) | Pessoa física: impostos e finanças | saque |
-| → envia para | [Webhooks de venda](18-mkt.md#hooks) | Marketing, automação e medição | venda e reembolso |
+| → envia para | [Carnê-leão (Receita Federal)](17-emp.md#nfse) | Pessoa física: impostos e finanças | lança no carnê-leão |
+| → envia para | [Conta bancária separada (CPF)](17-emp.md#banco) | Pessoa física: impostos e finanças | saque |
+| → envia para | [Webhooks de venda](19-mkt.md#hooks) | Marketing, automação e medição | venda e reembolso |
 | ← recebe de | [KeePassXC](02-seg.md#kee) | Segurança e cofre | senhas |
 | ← recebe de | [Navegador + Claude in Chrome](03-win.md#nav) | Windows 11, apps e máquinas virtuais | painel web |
 | ← recebe de | [Plugins: small- business + marketing](07-clc.md#pbiz) | Claude: recursos, conectores e plugins | funil e lançamento |
 | ← recebe de | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | webhook de venda |
-| ← recebe de | [Mini-curso Lógica de Programação](14-prod.md#curso) | Produtos (o que você vende) | produto cadastrado |
-| ← recebe de | [Formações (TI, Matemática, Finanças)](14-prod.md#form) | Produtos (o que você vende) | produto |
-| ← recebe de | [Templates e código-fonte](14-prod.md#tmpl) | Produtos (o que você vende) | download |
-| ← recebe de | [Livro Lógica e Máquina](14-prod.md#livro) | Produtos (o que você vende) | PDF |
-| ← recebe de | [Instituto AMS](15-web.md#inst) | Vitrine web (sites e domínio) | botão comprar |
-| ← recebe de | [MailerLite](17-venda.md#mailer) | Plataformas de venda e recebimento | lançamento |
-| ← recebe de | [Programa de afiliados](18-mkt.md#afprog) | Marketing, automação e medição | afiliados cadastrados |
+| ← recebe de | [Mini-curso Lógica de Programação](15-prod.md#curso) | Produtos (o que você vende) | produto cadastrado |
+| ← recebe de | [Formações (TI, Matemática, Finanças)](15-prod.md#form) | Produtos (o que você vende) | produto |
+| ← recebe de | [Templates e código-fonte](15-prod.md#tmpl) | Produtos (o que você vende) | download |
+| ← recebe de | [Livro Lógica e Máquina](15-prod.md#livro) | Produtos (o que você vende) | PDF |
+| ← recebe de | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | botão comprar |
+| ← recebe de | [MailerLite](18-venda.md#mailer) | Plataformas de venda e recebimento | lançamento |
+| ← recebe de | [Programa de afiliados](19-mkt.md#afprog) | Marketing, automação e medição | afiliados cadastrados |
+| ← recebe de | [Curso por seção](14-editora.md#bcurso) | Editora AMS Silva (produção de livros) | venda |
 
 <a id="kiwi"></a>
 
@@ -223,11 +228,11 @@ Mesma função da Hotmart, com painel mais simples. Aceita vender no CPF.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Carnê-leão (Receita Federal)](16-emp.md#nfse) | Pessoa física: impostos e finanças | lança no carnê-leão |
-| → envia para | [Conta bancária separada (CPF)](16-emp.md#banco) | Pessoa física: impostos e finanças | saque |
-| → envia para | [Webhooks de venda](18-mkt.md#hooks) | Marketing, automação e medição | venda e reembolso |
-| ← recebe de | [Mini-curso Lógica de Programação](14-prod.md#curso) | Produtos (o que você vende) | produto |
-| ← recebe de | [Instituto AMS](15-web.md#inst) | Vitrine web (sites e domínio) | botão comprar |
+| → envia para | [Carnê-leão (Receita Federal)](17-emp.md#nfse) | Pessoa física: impostos e finanças | lança no carnê-leão |
+| → envia para | [Conta bancária separada (CPF)](17-emp.md#banco) | Pessoa física: impostos e finanças | saque |
+| → envia para | [Webhooks de venda](19-mkt.md#hooks) | Marketing, automação e medição | venda e reembolso |
+| ← recebe de | [Mini-curso Lógica de Programação](15-prod.md#curso) | Produtos (o que você vende) | produto |
+| ← recebe de | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | botão comprar |
 
 <a id="eduzz"></a>
 
@@ -239,10 +244,10 @@ Outra plataforma brasileira de infoprodutos, com programa de afiliados próprio.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Carnê-leão (Receita Federal)](16-emp.md#nfse) | Pessoa física: impostos e finanças | lança no carnê-leão |
-| → envia para | [Conta bancária separada (CPF)](16-emp.md#banco) | Pessoa física: impostos e finanças | saque |
-| → envia para | [Webhooks de venda](18-mkt.md#hooks) | Marketing, automação e medição | venda e reembolso |
-| ← recebe de | [Mini-curso Lógica de Programação](14-prod.md#curso) | Produtos (o que você vende) | produto |
+| → envia para | [Carnê-leão (Receita Federal)](17-emp.md#nfse) | Pessoa física: impostos e finanças | lança no carnê-leão |
+| → envia para | [Conta bancária separada (CPF)](17-emp.md#banco) | Pessoa física: impostos e finanças | saque |
+| → envia para | [Webhooks de venda](19-mkt.md#hooks) | Marketing, automação e medição | venda e reembolso |
+| ← recebe de | [Mini-curso Lógica de Programação](15-prod.md#curso) | Produtos (o que você vende) | produto |
 
 <a id="udemy"></a>
 
@@ -254,9 +259,9 @@ Marketplace mundial: ela traz alunos que você não alcançaria. Ganha bem menos
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Carnê-leão (Receita Federal)](16-emp.md#nfse) | Pessoa física: impostos e finanças | carnê-leão (exterior) |
-| → envia para | [Conta bancária separada (CPF)](16-emp.md#banco) | Pessoa física: impostos e finanças | PayPal ou Payoneer |
-| ← recebe de | [Mini-curso Lógica de Programação](14-prod.md#curso) | Produtos (o que você vende) | versão para o marketplace |
+| → envia para | [Carnê-leão (Receita Federal)](17-emp.md#nfse) | Pessoa física: impostos e finanças | carnê-leão (exterior) |
+| → envia para | [Conta bancária separada (CPF)](17-emp.md#banco) | Pessoa física: impostos e finanças | PayPal ou Payoneer |
+| ← recebe de | [Mini-curso Lógica de Programação](15-prod.md#curso) | Produtos (o que você vende) | versão para o marketplace |
 
 <a id="dio"></a>
 
@@ -268,7 +273,7 @@ Não é marketplace aberto como a Udemy. Os experts trabalham em parceria com a 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [Formações (TI, Matemática, Finanças)](14-prod.md#form) | Produtos (o que você vende) | proposta de parceria |
+| ← recebe de | [Formações (TI, Matemática, Finanças)](15-prod.md#form) | Produtos (o que você vende) | proposta de parceria |
 | ← recebe de | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | artigos e projetos |
 
 <a id="ytm"></a>
@@ -281,7 +286,7 @@ Assinatura mensal do canal, quando houver público.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [YouTube](19-pub.md#yt) | Público e canais | membros |
+| ← recebe de | [YouTube](20-pub.md#yt) | Público e canais | membros |
 
 <a id="mp"></a>
 
@@ -293,11 +298,11 @@ Pix e cartão para aulas particulares e serviços de sites.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Carnê-leão (Receita Federal)](16-emp.md#nfse) | Pessoa física: impostos e finanças | lança no carnê-leão |
-| → envia para | [Conta bancária separada (CPF)](16-emp.md#banco) | Pessoa física: impostos e finanças | saque |
-| ← recebe de | [Agenda online (Cal.com)](17-venda.md#agenda) | Plataformas de venda e recebimento | pagamento |
-| ← recebe de | [Aulas particulares](14-prod.md#aulas) | Produtos (o que você vende) | cobrança |
-| ← recebe de | [Sites para pequenas empresas](14-prod.md#sites) | Produtos (o que você vende) | cobrança |
+| → envia para | [Carnê-leão (Receita Federal)](17-emp.md#nfse) | Pessoa física: impostos e finanças | lança no carnê-leão |
+| → envia para | [Conta bancária separada (CPF)](17-emp.md#banco) | Pessoa física: impostos e finanças | saque |
+| ← recebe de | [Agenda online (Cal.com)](18-venda.md#agenda) | Plataformas de venda e recebimento | pagamento |
+| ← recebe de | [Aulas particulares](15-prod.md#aulas) | Produtos (o que você vende) | cobrança |
+| ← recebe de | [Sites para pequenas empresas](15-prod.md#sites) | Produtos (o que você vende) | cobrança |
 
 <a id="mailer"></a>
 
@@ -309,13 +314,13 @@ Newsletter do blog com grupos por tema e funil de lançamento. Você já escolhe
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instituto AMS](15-web.md#inst) | Vitrine web (sites e domínio) | leva à página de venda |
-| → envia para | [Hotmart](17-venda.md#hotm) | Plataformas de venda e recebimento | lançamento |
-| ← recebe de | [E-mail profissional (enviar e receber)](15-web.md#mail) | Vitrine web (sites e domínio) | remetente |
+| → envia para | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | leva à página de venda |
+| → envia para | [Hotmart](18-venda.md#hotm) | Plataformas de venda e recebimento | lançamento |
+| ← recebe de | [E-mail profissional (enviar e receber)](16-web.md#mail) | Vitrine web (sites e domínio) | remetente |
 | ← recebe de | [Conector MailerLite](07-clc.md#cml) | Claude: recursos, conectores e plugins | campanhas |
 | ← recebe de | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | novo aluno → e-mail |
-| ← recebe de | [Site pessoal + blog (Jekyll)](15-web.md#site) | Vitrine web (sites e domínio) | formulário da newsletter |
-| ← recebe de | [Isca grátis + sequência de e-mails](18-mkt.md#isca) | Marketing, automação e medição | sequência |
+| ← recebe de | [Site pessoal + blog (Jekyll)](16-web.md#site) | Vitrine web (sites e domínio) | formulário da newsletter |
+| ← recebe de | [Isca grátis + sequência de e-mails](19-mkt.md#isca) | Marketing, automação e medição | sequência |
 
 <a id="afil"></a>
 
@@ -327,8 +332,8 @@ Links de produtos de terceiros no blog e nos vídeos.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [Site pessoal + blog (Jekyll)](15-web.md#site) | Vitrine web (sites e domínio) | links no blog |
+| ← recebe de | [Site pessoal + blog (Jekyll)](16-web.md#site) | Vitrine web (sites e domínio) | links no blog |
 
 ---
 
-[↑ Camada 18 · Marketing, automação e medição](18-mkt.md) · [↓ Camada 16 · Pessoa física: impostos e finanças](16-emp.md)
+[↑ Camada 19 · Marketing, automação e medição](19-mkt.md) · [↓ Camada 17 · Pessoa física: impostos e finanças](17-emp.md)

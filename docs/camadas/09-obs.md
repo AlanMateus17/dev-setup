@@ -87,7 +87,7 @@ Verifica a cada minuto se os sites e APIs estão no ar e avisa no celular. Open 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instituto AMS](15-web.md#inst) | Vitrine web (sites e domínio) | está no ar? |
+| → envia para | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | está no ar? |
 | → envia para | [Celular](01-hw.md#cel) | Hardware | alerta |
 
 <a id="seq"></a>

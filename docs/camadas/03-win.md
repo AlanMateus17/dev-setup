@@ -51,6 +51,9 @@ flowchart LR
     n_livro["Livro Lógica e Máquina"]
     n_sites["Sites para pequenas empresas"]
   end
+  subgraph L_editora["Editora AMS Silva (produção de livros)"]
+    n_fonte["Fonte única (Markdown + Pandoc)"]
+  end
   subgraph L_est["Estudo e carreira"]
     n_anki["Anki"]
     n_plat["Alura · Rocketseat · DIO · Udemy"]
@@ -131,6 +134,7 @@ flowchart LR
   n_obsd -->|"artigos e projetos"| n_dio
   n_obsd -->|"capítulos"| n_livro
   n_obsd -->|"roteiro"| n_curso
+  n_obsd -->|"rascunho"| n_fonte
   n_bkp -->|"copia o vault"| n_obsd
   n_capp2 -->|"roteiros e planos"| n_obsd
   n_gpt -->|"respostas salvas no vault"| n_obsd
@@ -302,7 +306,7 @@ Leitor de PDF leve para livros, apostilas e o PDF do Lógica e Máquina.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Livro Lógica e Máquina](14-prod.md#livro) | Produtos (o que você vende) | revisão do PDF |
+| → envia para | [Livro Lógica e Máquina](15-prod.md#livro) | Produtos (o que você vende) | revisão do PDF |
 
 <a id="sharex"></a>
 
@@ -314,8 +318,8 @@ Prints, GIFs e gravações curtas da tela para aulas, posts e issues do GitHub.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instagram](19-pub.md#ig) | Público e canais | GIFs e prints |
-| → envia para | [Mini-curso Lógica de Programação](14-prod.md#curso) | Produtos (o que você vende) | demonstrações |
+| → envia para | [Instagram](20-pub.md#ig) | Público e canais | GIFs e prints |
+| → envia para | [Mini-curso Lógica de Programação](15-prod.md#curso) | Produtos (o que você vende) | demonstrações |
 
 <a id="office"></a>
 
@@ -327,7 +331,7 @@ Abrir e editar .docx, .xlsx e .pptx que chegam da escola e de clientes.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Sites para pequenas empresas](14-prod.md#sites) | Produtos (o que você vende) | documentos de clientes |
+| → envia para | [Sites para pequenas empresas](15-prod.md#sites) | Produtos (o que você vende) | documentos de clientes |
 
 <a id="ffox"></a>
 
@@ -339,7 +343,7 @@ Testar os sites em outro motor de navegador e separar contas pessoais das da emp
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instituto AMS](15-web.md#inst) | Vitrine web (sites e domínio) | teste em outro navegador |
+| → envia para | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | teste em outro navegador |
 
 <a id="w11"></a>
 
@@ -383,9 +387,10 @@ Vault de estudo, roteiros e planejamento.
 |---|---|---|---|
 | → envia para | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | Obsidian Git |
 | → envia para | [Base de conhecimento (RAG) das suas notas](05-ia.md#rag) | Agentes de IA e sandbox | indexa as notas |
-| → envia para | [DIO (parceria)](17-venda.md#dio) | Plataformas de venda e recebimento | artigos e projetos |
-| → envia para | [Livro Lógica e Máquina](14-prod.md#livro) | Produtos (o que você vende) | capítulos |
-| → envia para | [Mini-curso Lógica de Programação](14-prod.md#curso) | Produtos (o que você vende) | roteiro |
+| → envia para | [DIO (parceria)](18-venda.md#dio) | Plataformas de venda e recebimento | artigos e projetos |
+| → envia para | [Livro Lógica e Máquina](15-prod.md#livro) | Produtos (o que você vende) | capítulos |
+| → envia para | [Mini-curso Lógica de Programação](15-prod.md#curso) | Produtos (o que você vende) | roteiro |
+| → envia para | [Fonte única (Markdown + Pandoc)](14-editora.md#fonte) | Editora AMS Silva (produção de livros) | rascunho |
 | ← recebe de | [Backup 3-2-1](02-seg.md#bkp) | Segurança e cofre | copia o vault |
 | ← recebe de | [Claude (app)](06-chat.md#capp2) | Assistentes de IA (chat, pesquisa e estudo) | roteiros e planos |
 | ← recebe de | [ChatGPT](06-chat.md#gpt) | Assistentes de IA (chat, pesquisa e estudo) | respostas salvas no vault |
@@ -424,7 +429,7 @@ Testes, DevTools e acesso a todas as contas web.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Next.js + Aura Design System](10-app.md#front) | Aplicação: sistemas AM (Aura) | localhost:3000 |
-| → envia para | [Hotmart](17-venda.md#hotm) | Plataformas de venda e recebimento | painel web |
+| → envia para | [Hotmart](18-venda.md#hotm) | Plataformas de venda e recebimento | painel web |
 | ← recebe de | [Claude in Chrome + uso do computador](07-clc.md#cchr) | Claude: recursos, conectores e plugins | opera o navegador |
 
 <a id="vbox"></a>

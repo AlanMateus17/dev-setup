@@ -7,6 +7,15 @@
 
 Contas que o setup exige. Senhas no KeePassXC, 2FA no app autenticador e códigos de recuperação impressos.
 
+## Editora
+
+| Item | Observação |
+|---|---|
+| **CBL (plataforma de ISBN)** | ISBN e código de barras; confira se aceita CPF. |
+| **Amazon KDP** | Ebook e impressão sob demanda; dados fiscais para receber do exterior. |
+| **INPI** | Registro da marca Editora AMS Silva. |
+| **Gráfica sob demanda** | Compare antes de escolher; peça cópia de prova. |
+
 ## Marketing e automação
 
 | Item | Observação |

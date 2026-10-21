@@ -315,6 +315,7 @@ def gerar_indice_docs(eco: dict, por_camada: dict) -> str:
     out.append("- [Sistemas operacionais](sistemas-operacionais.md) · [Nuvem](nuvem.md) · [Mercado](mercado.md) · [Roteiro de estudo](roteiro.md)")
     out.append("- [Peças autorais](pecas-autorais.md) · [Fora do setup](fora-do-setup.md)")
     out.append("- [Marketing, vendas e automação](marketing/README.md): funil, canais sem rosto com voz clonada, publicação automática, tráfego, parcerias, internacional e medição de lucro")
+    out.append("- [Editora AMS Silva](editora/README.md): estrutura legal, pipeline de produção dos livros, rigor editorial, identidade visual, avaliação, produtos, lançamento e roteiro")
     out.append("- [Vários computadores, SSD externo e NAS](infra/README.md): como crescer o setup para mais máquinas e armazenamento local e em nuvem")
     out.append("- [Decisões de arquitetura (ADRs)](adr/)")
     out.append("- Versões interativas: [`index.html`](index.html) (diagrama) e [`mapa.html`](mapa.html), para abrir no navegador\n")
@@ -336,6 +337,7 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
            "## Por onde começar\n",
            "- **[Arquitetura](docs/arquitetura.md)**: a pilha inteira, camada por camada, com o diagrama de cada uma.",
            "- **[Fluxos de ponta a ponta](docs/fluxos.md)**: codar com agente e publicar, vender um curso, publicar automaticamente, medir uma campanha e outros.",
+           "- **[Editora AMS Silva](docs/editora/README.md)**: livros produzidos como software, com código testado, gabaritos conferidos e PDF, EPUB e impressão gerados da mesma fonte.",
            "- **[Marketing, vendas e automação](docs/marketing/README.md)**: funil, canais sem rosto com voz clonada, publicação no melhor horário, tráfego pago, parcerias, internacional e lucro por venda.",
            "- **Diagrama interativo**: baixe [`docs/index.html`](docs/index.html) e abra no navegador. Toque em qualquer bloco para ver as conexões dele.",
            "- **[Toda a documentação](docs/README.md)**\n",
@@ -380,6 +382,7 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
             "  fluxos.md           fluxos de ponta a ponta",
             "  marketing/          funil, IA, publicação, tráfego, canais, parcerias, internacional, lucro",
             "  infra/              vários computadores, SSD externo, NAS local e em nuvem",
+            "  editora/            Editora AMS Silva: pipeline dos livros, rigor, produtos e lançamento",
             "  contas.md, auditoria.md, nuvem.md, roteiro.md, ...",
             "  adr/                decisões de arquitetura",
             "  index.html          diagrama interativo (gerado)",
