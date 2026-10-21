@@ -309,7 +309,7 @@ Prints, GIFs e gravações curtas da tela para aulas, posts e issues do GitHub.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instagram](18-pub.md#ig) | Público e canais | GIFs e prints |
+| → envia para | [Instagram](19-pub.md#ig) | Público e canais | GIFs e prints |
 | → envia para | [Mini-curso Lógica de Programação](14-prod.md#curso) | Produtos (o que você vende) | demonstrações |
 
 <a id="office"></a>

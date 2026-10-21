@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** Gravação e edição rodam no notebook; os arquivos finais sobem para as plataformas.
 
-**6 blocos** · 2 precisam de conta · 1 marcados como futuro
+**6 blocos** · 2 precisam de conta · 0 marcados como futuro
 
 ## Mapa de conexões
 
@@ -19,11 +19,14 @@ flowchart LR
     n_aud["Audacity"]
     n_img["Canva · Krita · Inkscape"]
     n_whis["Whisper (local)"]
-    n_voz["Clonagem de voz"]
+    n_voz["Voz clonada (ElevenLabs)"]
   end
   subgraph L_pub["Público e canais"]
     n_ig["Instagram"]
     n_yt["YouTube"]
+  end
+  subgraph L_mkt["Marketing, automação e medição"]
+    n_dub["Dublagem (YouTube + ElevenLabs)"]
   end
   subgraph L_web["Vitrine web (sites e domínio)"]
     n_inst["Instituto AMS"]
@@ -57,6 +60,7 @@ flowchart LR
   n_gpt -->|"gera imagens"| n_img
   n_ccan -->|"posts e capas"| n_img
   n_whis -->|"transcrição"| n_obsd
+  n_voz -->|"sua voz em outros idiomas"| n_dub
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_obss,n_edit,n_aud,n_img,n_whis,n_voz desta
 ```
@@ -70,7 +74,7 @@ flowchart LR
 | [Audacity](#aud) | Local | Limpa ruído e ajusta o áudio. |
 | [Canva · Krita · Inkscape](#img) | Local · precisa de conta | Capas, posts e thumbnails. Canva precisa de conta; Krita e Inkscape são open source. |
 | [Whisper (local)](#whis) | Local | Transcreve as aulas para legenda, artigo e capítulo. |
-| [Clonagem de voz](#voz) | Remoto · precisa de conta · futuro | Você quer usar. Avalie a ferramenta e os termos de uso antes; deixe claro ao público quando a voz for gerada. |
+| [Voz clonada (ElevenLabs)](#voz) | Remoto · precisa de conta | Clonagem profissional da sua própria voz (plano Creator em diante, uso comercial nos planos pagos). Treino com 30 minutos ou mais de áudio limpo. Avise o público que a voz é gerada por IA. |
 
 <a id="obss"></a>
 
@@ -96,12 +100,12 @@ Edição de vídeo. Os dois têm versão grátis.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [YouTube](18-pub.md#yt) | Público e canais | vídeo final |
+| → envia para | [YouTube](19-pub.md#yt) | Público e canais | vídeo final |
 | → envia para | [Mini-curso Lógica de Programação](14-prod.md#curso) | Produtos (o que você vende) | aulas editadas |
 | ← recebe de | [Plugins: Hostinger · Adobe · Cloudinary](07-clc.md#phst) | Claude: recursos, conectores e plugins | imagem e vídeo |
 | ← recebe de | [OBS Studio](12-cont.md#obss) | Produção de conteúdo | gravação |
 | ← recebe de | [Audacity](12-cont.md#aud) | Produção de conteúdo | áudio limpo |
-| ← recebe de | [Clonagem de voz](12-cont.md#voz) | Produção de conteúdo | narração |
+| ← recebe de | [Voz clonada (ElevenLabs)](12-cont.md#voz) | Produção de conteúdo | narração |
 
 <a id="aud"></a>
 
@@ -125,7 +129,7 @@ Capas, posts e thumbnails. Canva precisa de conta; Krita e Inkscape são open so
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instagram](18-pub.md#ig) | Público e canais | posts |
+| → envia para | [Instagram](19-pub.md#ig) | Público e canais | posts |
 | → envia para | [Instituto AMS](15-web.md#inst) | Vitrine web (sites e domínio) | capas |
 | ← recebe de | [ChatGPT](06-chat.md#gpt) | Assistentes de IA (chat, pesquisa e estudo) | gera imagens |
 | ← recebe de | [Conectores Canva + Figma](07-clc.md#ccan) | Claude: recursos, conectores e plugins | posts e capas |
@@ -145,15 +149,16 @@ Transcreve as aulas para legenda, artigo e capítulo.
 
 <a id="voz"></a>
 
-### Clonagem de voz
+### Voz clonada (ElevenLabs)
 
-*Remoto · precisa de conta · futuro*
+*Remoto · precisa de conta*
 
-Você quer usar. Avalie a ferramenta e os termos de uso antes; deixe claro ao público quando a voz for gerada.
+Clonagem profissional da sua própria voz (plano Creator em diante, uso comercial nos planos pagos). Treino com 30 minutos ou mais de áudio limpo. Avise o público que a voz é gerada por IA.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [DaVinci Resolve ou Kdenlive](12-cont.md#edit) | Produção de conteúdo | narração |
+| → envia para | [Dublagem (YouTube + ElevenLabs)](18-mkt.md#dub) | Marketing, automação e medição | sua voz em outros idiomas |
 
 ---
 

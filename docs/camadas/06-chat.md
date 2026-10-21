@@ -145,7 +145,7 @@ Sua segunda assinatura paga. Ligado a Gmail, Drive, Docs e YouTube: pesquisa apr
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [YouTube](18-pub.md#yt) | Público e canais | resume vídeos |
+| → envia para | [YouTube](19-pub.md#yt) | Público e canais | resume vídeos |
 | ← recebe de | [Conector Google (Gmail, Drive…)](07-clc.md#cgws) | Claude: recursos, conectores e plugins | mesmos dados Google |
 
 <a id="nblm"></a>
@@ -172,7 +172,7 @@ Assistente da xAI, ligado ao X. Útil para acompanhar notícias e tendências em
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [LinkedIn](18-pub.md#li) | Público e canais | tendências do setor |
+| → envia para | [LinkedIn](19-pub.md#li) | Público e canais | tendências do setor |
 
 <a id="ds"></a>
 

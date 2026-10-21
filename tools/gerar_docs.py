@@ -191,7 +191,7 @@ def gerar_camada(eco: dict, camada: dict, por_id: dict, saidas: dict, entradas: 
 
 def gerar_arquitetura(eco: dict, por_camada: dict) -> str:
     out = [AVISO, "# Arquitetura do setup\n", "[← Índice da documentação](README.md)\n"]
-    out.append("A pilha vai do público (topo) ao hardware (base). Cada seta é a ligação entre uma camada e a de baixo; o detalhe de cada ligação está na tabela abaixo e em cada página de camada.\n")
+    out.append("A pilha vai do público (topo) ao hardware (base). Cada linha é a ligação entre uma camada e a de baixo; o detalhe de cada ligação está na tabela abaixo e em cada página de camada.\n")
     linhas = ["```mermaid", "flowchart TB"]
     for c in eco["camadas"]:
         n = num(eco, c["id"])
@@ -199,8 +199,6 @@ def gerar_arquitetura(eco: dict, por_camada: dict) -> str:
     ids = [c["id"] for c in eco["camadas"]]
     for a, b in zip(ids, ids[1:]):
         linhas.append(f"  L_{a} --- L_{b}")
-    for c in eco["camadas"]:
-        linhas.append(f'  click L_{c["id"]} "camadas/{arquivo_camada(eco, c["id"])}"')
     linhas.append("  classDef cam fill:#e2ecec,stroke:#0e3a45,color:#13262b")
     linhas.append("  class " + ",".join(f"L_{i}" for i in ids) + " cam")
     linhas.append("```\n")
@@ -316,6 +314,7 @@ def gerar_indice_docs(eco: dict, por_camada: dict) -> str:
     out.append("- [Auditoria: o que faltava](auditoria.md)")
     out.append("- [Sistemas operacionais](sistemas-operacionais.md) · [Nuvem](nuvem.md) · [Mercado](mercado.md) · [Roteiro de estudo](roteiro.md)")
     out.append("- [Peças autorais](pecas-autorais.md) · [Fora do setup](fora-do-setup.md)")
+    out.append("- [Marketing, vendas e automação](marketing/README.md): funil, canais sem rosto com voz clonada, publicação automática, tráfego, parcerias, internacional e medição de lucro")
     out.append("- [Decisões de arquitetura (ADRs)](adr/)")
     out.append("- Versões interativas: [`index.html`](index.html) (diagrama) e [`mapa.html`](mapa.html), para abrir no navegador\n")
     out.append("## Camadas\n")
@@ -335,7 +334,8 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
            f"| Camadas | Blocos | Conexões | Fluxos | Contas necessárias |\n|---|---|---|---|---|\n| {len(eco['camadas'])} | {total_b} | {total_c} | {len(eco['fluxos'])} | {contas} |\n",
            "## Por onde começar\n",
            "- **[Arquitetura](docs/arquitetura.md)**: a pilha inteira, camada por camada, com o diagrama de cada uma.",
-           "- **[Fluxos de ponta a ponta](docs/fluxos.md)**: codar com agente e publicar, vender um curso, laboratório de segurança e outros.",
+           "- **[Fluxos de ponta a ponta](docs/fluxos.md)**: codar com agente e publicar, vender um curso, publicar automaticamente, medir uma campanha e outros.",
+           "- **[Marketing, vendas e automação](docs/marketing/README.md)**: funil, canais sem rosto com voz clonada, publicação no melhor horário, tráfego pago, parcerias, internacional e lucro por venda.",
            "- **Diagrama interativo**: baixe [`docs/index.html`](docs/index.html) e abra no navegador. Toque em qualquer bloco para ver as conexões dele.",
            "- **[Toda a documentação](docs/README.md)**\n",
            "## A pilha\n",
@@ -345,8 +345,6 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
         out.append(f'  L_{c["id"]}["{num(eco, c["id"]):02d} · {mm(c["titulo"])}"]')
     for a, b in zip(ids, ids[1:]):
         out.append(f"  L_{a} --- L_{b}")
-    for c in eco["camadas"]:
-        out.append(f'  click L_{c["id"]} "docs/camadas/{arquivo_camada(eco, c["id"])}"')
     out.append("  classDef cam fill:#e2ecec,stroke:#0e3a45,color:#13262b")
     out.append("  class " + ",".join(f"L_{i}" for i in ids) + " cam")
     out += ["```\n",
@@ -379,6 +377,7 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
             "  arquitetura.md      a pilha e as ligações entre camadas",
             "  camadas/            uma página por camada, com diagrama e conexões de cada bloco",
             "  fluxos.md           fluxos de ponta a ponta",
+            "  marketing/          funil, IA, publicação, tráfego, parcerias, internacional, lucro",
             "  contas.md, auditoria.md, nuvem.md, roteiro.md, ...",
             "  adr/                decisões de arquitetura",
             "  index.html          diagrama interativo (gerado)",
@@ -447,6 +446,13 @@ def main() -> int:
             if not args.check:
                 caminho.parent.mkdir(parents=True, exist_ok=True)
                 caminho.write_text(texto, encoding="utf-8")
+
+    pasta = DOCS / "camadas"
+    sobrando = [f for f in pasta.glob("*.md") if f not in arquivos]
+    for f in sobrando:
+        desatualizados.append(f.relative_to(RAIZ))
+        if not args.check:
+            f.unlink()
 
     sem_conexao = [b["id"] for b in eco["blocos"]
                    if not any(c["de"] == b["id"] or c["para"] == b["id"] for c in eco["conexoes"])]

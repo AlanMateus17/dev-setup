@@ -26,6 +26,9 @@ flowchart LR
     n_conta["Contador"]
     n_caixa["Caixa da Casa / AM Rendara"]
   end
+  subgraph L_mkt["Marketing, automação e medição"]
+    n_metrics["Banco de métricas (PostgreSQL)"]
+  end
   subgraph L_venda["Plataformas de venda e recebimento"]
     n_eduzz["Eduzz"]
     n_hotm["Hotmart"]
@@ -64,6 +67,7 @@ flowchart LR
   n_hotm -->|"lança no carnê-leão"| n_nfse
   n_mp -->|"lança no carnê-leão"| n_nfse
   n_conta -->|"orienta impostos"| n_nfse
+  n_metrics -->|"base do carnê-leão"| n_nfse
   n_banco -->|"extrato"| n_caixa
   n_kiwi -->|"saque"| n_banco
   n_eduzz -->|"saque"| n_banco
@@ -189,6 +193,7 @@ Todo mês você lança o que recebeu de compradores (Hotmart, Kiwify, aulas, sit
 | ← recebe de | [Mercado Pago](17-venda.md#mp) | Plataformas de venda e recebimento | lança no carnê-leão |
 | ← recebe de | [Contador](16-emp.md#conta) | Pessoa física: impostos e finanças | orienta impostos |
 | ← recebe de | [gov.br (prata ou ouro)](16-emp.md#govbr) | Pessoa física: impostos e finanças | login |
+| ← recebe de | [Banco de métricas (PostgreSQL)](18-mkt.md#metrics) | Marketing, automação e medição | base do carnê-leão |
 
 <a id="irpf"></a>
 

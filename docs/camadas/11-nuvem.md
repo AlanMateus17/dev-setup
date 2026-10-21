@@ -238,7 +238,7 @@ Código, vault, ensino-ti e a org grupo-amtech-digital. É também o seu portfó
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [GitHub Actions](11-nuvem.md#gha) | Nuvem, código e entrega | dispara a cada push |
-| → envia para | [Recrutadores](18-pub.md#recr) | Público e canais | portfólio |
+| → envia para | [Recrutadores](19-pub.md#recr) | Público e canais | portfólio |
 | ← recebe de | [KeePassXC](02-seg.md#kee) | Segurança e cofre | senhas e tokens |
 | ← recebe de | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | Obsidian Git |
 | ← recebe de | [Git + SSH + gh](04-lin.md#git) | Linux (Ubuntu no WSL2, Arch no 2º disco) | push via SSH |

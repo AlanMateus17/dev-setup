@@ -33,6 +33,15 @@ flowchart LR
     n_ig["Instagram"]
     n_yt["YouTube"]
   end
+  subgraph L_mkt["Marketing, automação e medição"]
+    n_afprog["Programa de afiliados"]
+    n_hooks["Webhooks de venda"]
+    n_isca["Isca grátis + sequência de e-mails"]
+    n_metrics["Banco de métricas (PostgreSQL)"]
+    n_pixel["Pixel + API de Conversões"]
+    n_regras["Regras de corte"]
+    n_utm["Padrão de UTM"]
+  end
   subgraph L_emp["Pessoa física: impostos e finanças"]
     n_banco["Conta bancária separada (CPF)"]
     n_nfse["Carnê-leão (Receita Federal)"]
@@ -73,9 +82,14 @@ flowchart LR
   n_agenda -->|"pagamento"| n_mp
   n_comu -->|"suporte aos alunos"| n_curso
   n_ads -->|"alcance pago"| n_ig
+  n_ads -->|"gasto por campanha"| n_metrics
+  n_pixel -->|"otimiza para venda"| n_ads
+  n_utm -->|"marca os links"| n_ads
+  n_regras -->|"pausa ou escala"| n_ads
   n_crm -->|"propostas"| n_sites
   n_hotm -->|"lança no carnê-leão"| n_nfse
   n_hotm -->|"saque"| n_banco
+  n_hotm -->|"venda e reembolso"| n_hooks
   n_kee -->|"senhas"| n_hotm
   n_nav -->|"painel web"| n_hotm
   n_pbiz -->|"funil e lançamento"| n_hotm
@@ -86,12 +100,15 @@ flowchart LR
   n_livro -->|"PDF"| n_hotm
   n_inst -->|"botão comprar"| n_hotm
   n_mailer -->|"lançamento"| n_hotm
+  n_afprog -->|"afiliados cadastrados"| n_hotm
   n_kiwi -->|"lança no carnê-leão"| n_nfse
   n_kiwi -->|"saque"| n_banco
+  n_kiwi -->|"venda e reembolso"| n_hooks
   n_curso -->|"produto"| n_kiwi
   n_inst -->|"botão comprar"| n_kiwi
   n_eduzz -->|"lança no carnê-leão"| n_nfse
   n_eduzz -->|"saque"| n_banco
+  n_eduzz -->|"venda e reembolso"| n_hooks
   n_curso -->|"produto"| n_eduzz
   n_udemy -->|"carnê-leão (exterior)"| n_nfse
   n_udemy -->|"PayPal ou Payoneer"| n_banco
@@ -108,6 +125,7 @@ flowchart LR
   n_cml -->|"campanhas"| n_mailer
   n_n8n -->|"novo aluno → e-mail"| n_mailer
   n_site -->|"formulário da newsletter"| n_mailer
+  n_isca -->|"sequência"| n_mailer
   n_site -->|"links no blog"| n_afil
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_pixa,n_agenda,n_comu,n_ads,n_crm,n_hotm,n_kiwi,n_eduzz,n_udemy,n_dio,n_ytm,n_mp,n_mailer,n_afil desta
@@ -180,7 +198,11 @@ Só depois que o produto vender organicamente; antes disso é dinheiro jogado fo
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instagram](18-pub.md#ig) | Público e canais | alcance pago |
+| → envia para | [Instagram](19-pub.md#ig) | Público e canais | alcance pago |
+| → envia para | [Banco de métricas (PostgreSQL)](18-mkt.md#metrics) | Marketing, automação e medição | gasto por campanha |
+| ← recebe de | [Pixel + API de Conversões](18-mkt.md#pixel) | Marketing, automação e medição | otimiza para venda |
+| ← recebe de | [Padrão de UTM](18-mkt.md#utm) | Marketing, automação e medição | marca os links |
+| ← recebe de | [Regras de corte](18-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
 
 <a id="crm"></a>
 
@@ -206,6 +228,7 @@ Checkout, área de membros e afiliados para cursos e PDFs. Aceita vender no CPF.
 |---|---|---|---|
 | → envia para | [Carnê-leão (Receita Federal)](16-emp.md#nfse) | Pessoa física: impostos e finanças | lança no carnê-leão |
 | → envia para | [Conta bancária separada (CPF)](16-emp.md#banco) | Pessoa física: impostos e finanças | saque |
+| → envia para | [Webhooks de venda](18-mkt.md#hooks) | Marketing, automação e medição | venda e reembolso |
 | ← recebe de | [KeePassXC](02-seg.md#kee) | Segurança e cofre | senhas |
 | ← recebe de | [Navegador + Claude in Chrome](03-win.md#nav) | Windows 11, apps e máquinas virtuais | painel web |
 | ← recebe de | [Plugins: small- business + marketing](07-clc.md#pbiz) | Claude: recursos, conectores e plugins | funil e lançamento |
@@ -216,6 +239,7 @@ Checkout, área de membros e afiliados para cursos e PDFs. Aceita vender no CPF.
 | ← recebe de | [Livro Lógica e Máquina](14-prod.md#livro) | Produtos (o que você vende) | PDF |
 | ← recebe de | [Instituto AMS](15-web.md#inst) | Vitrine web (sites e domínio) | botão comprar |
 | ← recebe de | [MailerLite](17-venda.md#mailer) | Plataformas de venda e recebimento | lançamento |
+| ← recebe de | [Programa de afiliados](18-mkt.md#afprog) | Marketing, automação e medição | afiliados cadastrados |
 
 <a id="kiwi"></a>
 
@@ -229,6 +253,7 @@ Mesma função da Hotmart, com painel mais simples. Aceita vender no CPF.
 |---|---|---|---|
 | → envia para | [Carnê-leão (Receita Federal)](16-emp.md#nfse) | Pessoa física: impostos e finanças | lança no carnê-leão |
 | → envia para | [Conta bancária separada (CPF)](16-emp.md#banco) | Pessoa física: impostos e finanças | saque |
+| → envia para | [Webhooks de venda](18-mkt.md#hooks) | Marketing, automação e medição | venda e reembolso |
 | ← recebe de | [Mini-curso Lógica de Programação](14-prod.md#curso) | Produtos (o que você vende) | produto |
 | ← recebe de | [Instituto AMS](15-web.md#inst) | Vitrine web (sites e domínio) | botão comprar |
 
@@ -244,6 +269,7 @@ Outra plataforma brasileira de infoprodutos, com programa de afiliados próprio.
 |---|---|---|---|
 | → envia para | [Carnê-leão (Receita Federal)](16-emp.md#nfse) | Pessoa física: impostos e finanças | lança no carnê-leão |
 | → envia para | [Conta bancária separada (CPF)](16-emp.md#banco) | Pessoa física: impostos e finanças | saque |
+| → envia para | [Webhooks de venda](18-mkt.md#hooks) | Marketing, automação e medição | venda e reembolso |
 | ← recebe de | [Mini-curso Lógica de Programação](14-prod.md#curso) | Produtos (o que você vende) | produto |
 
 <a id="udemy"></a>
@@ -283,7 +309,7 @@ Assinatura mensal do canal, quando houver público.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [YouTube](18-pub.md#yt) | Público e canais | membros |
+| ← recebe de | [YouTube](19-pub.md#yt) | Público e canais | membros |
 
 <a id="mp"></a>
 
@@ -317,6 +343,7 @@ Newsletter do blog com grupos por tema e funil de lançamento. Você já escolhe
 | ← recebe de | [Conector MailerLite](07-clc.md#cml) | Claude: recursos, conectores e plugins | campanhas |
 | ← recebe de | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | novo aluno → e-mail |
 | ← recebe de | [Site pessoal + blog (Jekyll)](15-web.md#site) | Vitrine web (sites e domínio) | formulário da newsletter |
+| ← recebe de | [Isca grátis + sequência de e-mails](18-mkt.md#isca) | Marketing, automação e medição | sequência |
 
 <a id="afil"></a>
 
@@ -332,4 +359,4 @@ Links de produtos de terceiros no blog e nos vídeos.
 
 ---
 
-[↑ Camada 18 · Público e canais](18-pub.md) · [↓ Camada 16 · Pessoa física: impostos e finanças](16-emp.md)
+[↑ Camada 18 · Marketing, automação e medição](18-mkt.md) · [↓ Camada 16 · Pessoa física: impostos e finanças](16-emp.md)

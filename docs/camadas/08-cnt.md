@@ -28,6 +28,13 @@ flowchart LR
     n_tf["Terraform"]
     n_n8n["n8n"]
   end
+  subgraph L_mkt["Marketing, automação e medição"]
+    n_aprov["Aprovação no celular"]
+    n_hooks["Webhooks de venda"]
+    n_horario["Algoritmo de horário"]
+    n_metrics["Banco de métricas (PostgreSQL)"]
+    n_postiz["Postiz (agendador)"]
+  end
   subgraph L_venda["Plataformas de venda e recebimento"]
     n_hotm["Hotmart"]
     n_mailer["MailerLite"]
@@ -95,7 +102,12 @@ flowchart LR
   n_gcp -->|"cria recursos"| n_tf
   n_n8n -->|"novo aluno → e-mail"| n_mailer
   n_n8n -->|"webhook de venda"| n_hotm
+  n_n8n -->|"manda o post aprovado"| n_postiz
+  n_n8n -->|"grava"| n_metrics
   n_oll -->|"IA local nas automações"| n_n8n
+  n_aprov -->|"libera"| n_n8n
+  n_horario -->|"escolhe o horário"| n_n8n
+  n_hooks -->|"dispara"| n_n8n
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_caddy,n_mailp,n_kafka,n_k8st,n_clis,n_datomic,n_docker,n_pg,n_redis,n_rmq,n_kind,n_tf,n_n8n desta
 ```
@@ -299,8 +311,13 @@ Automação: novo aluno → e-mail, post agendado, aviso.
 |---|---|---|---|
 | → envia para | [MailerLite](17-venda.md#mailer) | Plataformas de venda e recebimento | novo aluno → e-mail |
 | → envia para | [Hotmart](17-venda.md#hotm) | Plataformas de venda e recebimento | webhook de venda |
+| → envia para | [Postiz (agendador)](18-mkt.md#postiz) | Marketing, automação e medição | manda o post aprovado |
+| → envia para | [Banco de métricas (PostgreSQL)](18-mkt.md#metrics) | Marketing, automação e medição | grava |
 | ← recebe de | [Ollama (3B–4B)](05-ia.md#oll) | Agentes de IA e sandbox | IA local nas automações |
 | ← recebe de | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
+| ← recebe de | [Aprovação no celular](18-mkt.md#aprov) | Marketing, automação e medição | libera |
+| ← recebe de | [Algoritmo de horário](18-mkt.md#horario) | Marketing, automação e medição | escolhe o horário |
+| ← recebe de | [Webhooks de venda](18-mkt.md#hooks) | Marketing, automação e medição | dispara |
 
 ---
 

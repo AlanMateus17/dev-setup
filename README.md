@@ -8,12 +8,13 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 
 | Camadas | Blocos | Conexões | Fluxos | Contas necessárias |
 |---|---|---|---|---|
-| 18 | 198 | 280 | 7 | 74 |
+| 19 | 216 | 319 | 9 | 79 |
 
 ## Por onde começar
 
 - **[Arquitetura](docs/arquitetura.md)**: a pilha inteira, camada por camada, com o diagrama de cada uma.
-- **[Fluxos de ponta a ponta](docs/fluxos.md)**: codar com agente e publicar, vender um curso, laboratório de segurança e outros.
+- **[Fluxos de ponta a ponta](docs/fluxos.md)**: codar com agente e publicar, vender um curso, publicar automaticamente, medir uma campanha e outros.
+- **[Marketing, vendas e automação](docs/marketing/README.md)**: funil, canais sem rosto com voz clonada, publicação no melhor horário, tráfego pago, parcerias, internacional e lucro por venda.
 - **Diagrama interativo**: baixe [`docs/index.html`](docs/index.html) e abra no navegador. Toque em qualquer bloco para ver as conexões dele.
 - **[Toda a documentação](docs/README.md)**
 
@@ -21,7 +22,8 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 
 ```mermaid
 flowchart TB
-  L_pub["18 · Público e canais"]
+  L_pub["19 · Público e canais"]
+  L_mkt["18 · Marketing, automação e medição"]
   L_venda["17 · Plataformas de venda e recebimento"]
   L_emp["16 · Pessoa física: impostos e finanças"]
   L_web["15 · Vitrine web (sites e domínio)"]
@@ -39,7 +41,8 @@ flowchart TB
   L_win["03 · Windows 11, apps e máquinas virtuais"]
   L_seg["02 · Segurança e cofre"]
   L_hw["01 · Hardware"]
-  L_pub --- L_venda
+  L_pub --- L_mkt
+  L_mkt --- L_venda
   L_venda --- L_emp
   L_emp --- L_web
   L_web --- L_prod
@@ -56,26 +59,8 @@ flowchart TB
   L_lin --- L_win
   L_win --- L_seg
   L_seg --- L_hw
-  click L_pub "docs/camadas/18-pub.md"
-  click L_venda "docs/camadas/17-venda.md"
-  click L_emp "docs/camadas/16-emp.md"
-  click L_web "docs/camadas/15-web.md"
-  click L_prod "docs/camadas/14-prod.md"
-  click L_est "docs/camadas/13-est.md"
-  click L_cont "docs/camadas/12-cont.md"
-  click L_nuvem "docs/camadas/11-nuvem.md"
-  click L_app "docs/camadas/10-app.md"
-  click L_obs "docs/camadas/09-obs.md"
-  click L_cnt "docs/camadas/08-cnt.md"
-  click L_clc "docs/camadas/07-clc.md"
-  click L_chat "docs/camadas/06-chat.md"
-  click L_ia "docs/camadas/05-ia.md"
-  click L_lin "docs/camadas/04-lin.md"
-  click L_win "docs/camadas/03-win.md"
-  click L_seg "docs/camadas/02-seg.md"
-  click L_hw "docs/camadas/01-hw.md"
   classDef cam fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class L_pub,L_venda,L_emp,L_web,L_prod,L_est,L_cont,L_nuvem,L_app,L_obs,L_cnt,L_clc,L_chat,L_ia,L_lin,L_win,L_seg,L_hw cam
+  class L_pub,L_mkt,L_venda,L_emp,L_web,L_prod,L_est,L_cont,L_nuvem,L_app,L_obs,L_cnt,L_clc,L_chat,L_ia,L_lin,L_win,L_seg,L_hw cam
 ```
 
 ## A ideia em uma frase
@@ -86,7 +71,8 @@ O Windows cuida só do que precisa de janela, GPU e segurança; todo o trabalho 
 
 | # | Camada | Blocos | Destaques |
 |---|---|---|---|
-| 18 | [Público e canais](docs/camadas/18-pub.md) | 8 | Meta Business Suite, Instagram, YouTube, LinkedIn… |
+| 19 | [Público e canais](docs/camadas/19-pub.md) | 10 | Meta Business Suite, Instagram, YouTube, LinkedIn… |
+| 18 | [Marketing, automação e medição](docs/camadas/18-mkt.md) | 16 | Isca grátis + sequência de e-mails, Postiz (agendador), Aprovação no celular, Algoritmo de horário… |
 | 17 | [Plataformas de venda e recebimento](docs/camadas/17-venda.md) | 14 | Pix Automático + gateway (ex.: Asaas), Agenda online (Cal.com), Comunidade (Discord ou grupo), Anúncios (Meta Ads)… |
 | 16 | [Pessoa física: impostos e finanças](docs/camadas/16-emp.md) | 11 | Registro de marca (INPI), Termos, privacidade (LGPD) e contratos, Certificado digital (e-CNPJ), API de NFS-e (ex.: Focus NFe)… |
 | 15 | [Vitrine web (sites e domínio)](docs/camadas/15-web.md) | 9 | E-mail profissional (enviar e receber), Domínio (Registro.br), Site pessoal + blog (Jekyll), Instituto AMS… |
@@ -132,6 +118,7 @@ docs/
   arquitetura.md      a pilha e as ligações entre camadas
   camadas/            uma página por camada, com diagrama e conexões de cada bloco
   fluxos.md           fluxos de ponta a ponta
+  marketing/          funil, IA, publicação, tráfego, parcerias, internacional, lucro
   contas.md, auditoria.md, nuvem.md, roteiro.md, ...
   adr/                decisões de arquitetura
   index.html          diagrama interativo (gerado)

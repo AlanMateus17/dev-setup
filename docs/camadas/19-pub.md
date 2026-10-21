@@ -1,13 +1,13 @@
 <!-- Arquivo GERADO por tools/gerar_docs.py a partir de data/. Edite os dados, não este arquivo. -->
 
 
-# Camada 18 · Público e canais
+# Camada 19 · Público e canais
 
 [← Arquitetura](../arquitetura.md) · [Índice da documentação](../README.md)
 
 > **Ligação com a camada de baixo:** Link na bio, vídeo, post, busca e indicação levam a pessoa até o site ou o WhatsApp.
 
-**8 blocos** · 5 precisam de conta · 0 marcados como futuro
+**10 blocos** · 7 precisam de conta · 0 marcados como futuro
 
 ## Mapa de conexões
 
@@ -22,6 +22,12 @@ flowchart LR
     n_seo["Busca Google (SEO)"]
     n_alunos["Alunos e ex-alunos"]
     n_recr["Recrutadores"]
+    n_tiktok["TikTok"]
+    n_facebook["Facebook"]
+  end
+  subgraph L_mkt["Marketing, automação e medição"]
+    n_dub["Dublagem (YouTube + ElevenLabs)"]
+    n_postiz["Postiz (agendador)"]
   end
   subgraph L_venda["Plataformas de venda e recebimento"]
     n_ads["Anúncios (Meta Ads)"]
@@ -66,14 +72,18 @@ flowchart LR
   n_pbiz -->|"conteúdo"| n_ig
   n_img -->|"posts"| n_ig
   n_alunos -->|"seguem"| n_ig
+  n_postiz -->|"publica"| n_ig
   n_yt -->|"membros"| n_ytm
   n_yt -->|"link na descrição"| n_inst
   n_gem -->|"resume vídeos"| n_yt
   n_cvid -->|"tendências"| n_yt
   n_edit -->|"vídeo final"| n_yt
+  n_postiz -->|"publica"| n_yt
+  n_dub -->|"faixas de áudio"| n_yt
   n_li -->|"perfil e posts"| n_recr
   n_li -->|"link"| n_site
   n_grok -->|"tendências do setor"| n_li
+  n_postiz -->|"publica"| n_li
   n_wa -->|"agenda"| n_aulas
   n_cel -->|"atendimento"| n_wa
   n_seo -->|"visitas"| n_site
@@ -82,8 +92,12 @@ flowchart LR
   n_alunos -->|"usam o site"| n_catal
   n_gh -->|"portfólio"| n_recr
   n_site -->|"currículo"| n_recr
+  n_tiktok -->|"link na bio"| n_inst
+  n_postiz -->|"publica"| n_tiktok
+  n_facebook -->|"link"| n_inst
+  n_postiz -->|"publica"| n_facebook
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_mbs,n_ig,n_yt,n_li,n_wa,n_seo,n_alunos,n_recr desta
+  class n_mbs,n_ig,n_yt,n_li,n_wa,n_seo,n_alunos,n_recr,n_tiktok,n_facebook desta
 ```
 
 ## Blocos
@@ -98,6 +112,8 @@ flowchart LR
 | [Busca Google (SEO)](#seo) | Remoto | Pessoas chegando ao blog e aos sites pelos artigos. |
 | [Alunos e ex-alunos](#alunos) | Físico | Seu público inicial: alunos do EMTI, ex-alunos e contatos. |
 | [Recrutadores](#recr) | Físico | Quem decide a vaga de dev. Olham GitHub, LinkedIn e o site. |
+| [TikTok](#tiktok) | Remoto · precisa de conta | Cortes verticais diários. Conteúdo realista de IA precisa do rótulo de IA. |
+| [Facebook](#facebook) | Remoto · precisa de conta | Reels e posts da página da marca; mesma conta de anúncios do Instagram. |
 
 <a id="mbs"></a>
 
@@ -109,7 +125,7 @@ Agenda posts e reels do Instagram com antecedência e mostra as métricas. Grát
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instagram](18-pub.md#ig) | Público e canais | agenda posts |
+| → envia para | [Instagram](19-pub.md#ig) | Público e canais | agenda posts |
 
 <a id="ig"></a>
 
@@ -122,14 +138,15 @@ Canal principal de venda: posts, reels e link na bio para o Instituto AMS.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Instituto AMS](15-web.md#inst) | Vitrine web (sites e domínio) | link na bio |
-| → envia para | [WhatsApp Business](18-pub.md#wa) | Público e canais | contato direto |
+| → envia para | [WhatsApp Business](19-pub.md#wa) | Público e canais | contato direto |
 | ← recebe de | [Celular](01-hw.md#cel) | Hardware | posta reels |
 | ← recebe de | [ShareX](03-win.md#sharex) | Windows 11, apps e máquinas virtuais | GIFs e prints |
-| ← recebe de | [Meta Business Suite](18-pub.md#mbs) | Público e canais | agenda posts |
+| ← recebe de | [Meta Business Suite](19-pub.md#mbs) | Público e canais | agenda posts |
 | ← recebe de | [Anúncios (Meta Ads)](17-venda.md#ads) | Plataformas de venda e recebimento | alcance pago |
 | ← recebe de | [Plugins: small- business + marketing](07-clc.md#pbiz) | Claude: recursos, conectores e plugins | conteúdo |
 | ← recebe de | [Canva · Krita · Inkscape](12-cont.md#img) | Produção de conteúdo | posts |
-| ← recebe de | [Alunos e ex-alunos](18-pub.md#alunos) | Público e canais | seguem |
+| ← recebe de | [Alunos e ex-alunos](19-pub.md#alunos) | Público e canais | seguem |
+| ← recebe de | [Postiz (agendador)](18-mkt.md#postiz) | Marketing, automação e medição | publica |
 
 <a id="yt"></a>
 
@@ -146,6 +163,8 @@ Aulas e vídeos de vendas. Gera público para os cursos e para o livro.
 | ← recebe de | [Gemini (pago)](06-chat.md#gem) | Assistentes de IA (chat, pesquisa e estudo) | resume vídeos |
 | ← recebe de | [Conector vidIQ](07-clc.md#cvid) | Claude: recursos, conectores e plugins | tendências |
 | ← recebe de | [DaVinci Resolve ou Kdenlive](12-cont.md#edit) | Produção de conteúdo | vídeo final |
+| ← recebe de | [Postiz (agendador)](18-mkt.md#postiz) | Marketing, automação e medição | publica |
+| ← recebe de | [Dublagem (YouTube + ElevenLabs)](18-mkt.md#dub) | Marketing, automação e medição | faixas de áudio |
 
 <a id="li"></a>
 
@@ -157,9 +176,10 @@ Vitrine para a vaga de dev: projetos, posts técnicos e certificações.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Recrutadores](18-pub.md#recr) | Público e canais | perfil e posts |
+| → envia para | [Recrutadores](19-pub.md#recr) | Público e canais | perfil e posts |
 | → envia para | [Site pessoal + blog (Jekyll)](15-web.md#site) | Vitrine web (sites e domínio) | link |
 | ← recebe de | [Grok](06-chat.md#grok) | Assistentes de IA (chat, pesquisa e estudo) | tendências do setor |
+| ← recebe de | [Postiz (agendador)](18-mkt.md#postiz) | Marketing, automação e medição | publica |
 
 <a id="wa"></a>
 
@@ -173,7 +193,7 @@ Atendimento de alunos particulares e clientes de sites.
 |---|---|---|---|
 | → envia para | [Aulas particulares](14-prod.md#aulas) | Produtos (o que você vende) | agenda |
 | ← recebe de | [Celular](01-hw.md#cel) | Hardware | atendimento |
-| ← recebe de | [Instagram](18-pub.md#ig) | Público e canais | contato direto |
+| ← recebe de | [Instagram](19-pub.md#ig) | Público e canais | contato direto |
 
 <a id="seo"></a>
 
@@ -200,7 +220,7 @@ Seu público inicial: alunos do EMTI, ex-alunos e contatos.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Catálogo do HTML](15-web.md#catal) | Vitrine web (sites e domínio) | usam o site |
-| → envia para | [Instagram](18-pub.md#ig) | Público e canais | seguem |
+| → envia para | [Instagram](19-pub.md#ig) | Público e canais | seguem |
 
 <a id="recr"></a>
 
@@ -212,10 +232,36 @@ Quem decide a vaga de dev. Olham GitHub, LinkedIn e o site.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [LinkedIn](18-pub.md#li) | Público e canais | perfil e posts |
+| ← recebe de | [LinkedIn](19-pub.md#li) | Público e canais | perfil e posts |
 | ← recebe de | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | portfólio |
 | ← recebe de | [Site pessoal + blog (Jekyll)](15-web.md#site) | Vitrine web (sites e domínio) | currículo |
 
+<a id="tiktok"></a>
+
+### TikTok
+
+*Remoto · precisa de conta*
+
+Cortes verticais diários. Conteúdo realista de IA precisa do rótulo de IA.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Instituto AMS](15-web.md#inst) | Vitrine web (sites e domínio) | link na bio |
+| ← recebe de | [Postiz (agendador)](18-mkt.md#postiz) | Marketing, automação e medição | publica |
+
+<a id="facebook"></a>
+
+### Facebook
+
+*Remoto · precisa de conta*
+
+Reels e posts da página da marca; mesma conta de anúncios do Instagram.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Instituto AMS](15-web.md#inst) | Vitrine web (sites e domínio) | link |
+| ← recebe de | [Postiz (agendador)](18-mkt.md#postiz) | Marketing, automação e medição | publica |
+
 ---
 
-[↓ Camada 17 · Plataformas de venda e recebimento](17-venda.md)
+[↓ Camada 18 · Marketing, automação e medição](18-mkt.md)

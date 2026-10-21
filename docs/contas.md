@@ -7,6 +7,16 @@
 
 Contas que o setup exige. Senhas no KeePassXC, 2FA no app autenticador e códigos de recuperação impressos.
 
+## Marketing e automação
+
+| Item | Observação |
+|---|---|
+| **ElevenLabs** | Plano Creator para clonar a própria voz; 2FA obrigatório. |
+| **Gerenciador de Negócios da Meta** | Pixel, API de Conversões e conta de anúncios; uma conta só. |
+| **TikTok e Facebook** | Perfis da marca, separados dos pessoais. |
+| **Google Ads** | Quando os vídeos longos converterem. |
+| **Telegram** | Bot de aprovação dos posts. |
+
 ## Desenvolvimento
 
 | Item | Observação |

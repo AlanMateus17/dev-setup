@@ -11,12 +11,14 @@
 - [Auditoria: o que faltava](auditoria.md)
 - [Sistemas operacionais](sistemas-operacionais.md) · [Nuvem](nuvem.md) · [Mercado](mercado.md) · [Roteiro de estudo](roteiro.md)
 - [Peças autorais](pecas-autorais.md) · [Fora do setup](fora-do-setup.md)
+- [Marketing, vendas e automação](marketing/README.md): funil, canais sem rosto com voz clonada, publicação automática, tráfego, parcerias, internacional e medição de lucro
 - [Decisões de arquitetura (ADRs)](adr/)
 - Versões interativas: [`index.html`](index.html) (diagrama) e [`mapa.html`](mapa.html), para abrir no navegador
 
 ## Camadas
 
-- [18 · Público e canais](camadas/18-pub.md) (8 blocos)
+- [19 · Público e canais](camadas/19-pub.md) (10 blocos)
+- [18 · Marketing, automação e medição](camadas/18-mkt.md) (16 blocos)
 - [17 · Plataformas de venda e recebimento](camadas/17-venda.md) (14 blocos)
 - [16 · Pessoa física: impostos e finanças](camadas/16-emp.md) (11 blocos)
 - [15 · Vitrine web (sites e domínio)](camadas/15-web.md) (9 blocos)

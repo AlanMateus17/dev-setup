@@ -6,6 +6,11 @@
    "ponte": "Link na bio, vídeo, post, busca e indicação levam a pessoa até o site ou o WhatsApp."
   },
   {
+   "id": "mkt",
+   "titulo": "Marketing, automação e medição",
+   "ponte": "O que é publicado e anunciado aqui leva às plataformas de venda; cada venda volta como dado para o banco de métricas."
+  },
+  {
    "id": "venda",
    "titulo": "Plataformas de venda e recebimento",
    "ponte": "Cada venda é lançada no carnê-leão e o dinheiro cai na sua conta separada."
@@ -635,11 +640,11 @@
   {
    "id": "voz",
    "camada": "cont",
-   "rotulo": "Clonagem de voz",
+   "rotulo": "Voz clonada|(ElevenLabs)",
    "tipo": "remoto",
    "conta": true,
-   "futuro": true,
-   "descricao": "Você quer usar. Avalie a ferramenta e os termos de uso antes; deixe claro ao público quando a voz for gerada."
+   "futuro": false,
+   "descricao": "Clonagem profissional da sua própria voz (plano Creator em diante, uso comercial nos planos pagos). Treino com 30 minutos ou mais de áudio limpo. Avise o público que a voz é gerada por IA."
   },
   {
    "id": "blob",
@@ -1873,6 +1878,168 @@
    "conta": false,
    "futuro": true,
    "descricao": "Gitea, backup e servidor de estudo."
+  },
+  {
+   "id": "tiktok",
+   "camada": "pub",
+   "rotulo": "TikTok",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Cortes verticais diários. Conteúdo realista de IA precisa do rótulo de IA."
+  },
+  {
+   "id": "facebook",
+   "camada": "pub",
+   "rotulo": "Facebook",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Reels e posts da página da marca; mesma conta de anúncios do Instagram."
+  },
+  {
+   "id": "isca",
+   "camada": "mkt",
+   "rotulo": "Isca grátis +|sequência de e-mails",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Aula ou PDF grátis que captura o e-mail e abre uma sequência de 5 a 7 e-mails até o mini-curso."
+  },
+  {
+   "id": "postiz",
+   "camada": "mkt",
+   "rotulo": "Postiz (agendador)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Agendador open source (AGPL-3.0) que publica em mais de 28 redes. Roda no seu Docker com PostgreSQL e Redis; integra com o n8n."
+  },
+  {
+   "id": "aprov",
+   "camada": "mkt",
+   "rotulo": "Aprovação no celular",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Nenhum post sai sem o seu ok (Telegram ou e-mail). Protege o canal de erro da IA."
+  },
+  {
+   "id": "horario",
+   "camada": "mkt",
+   "rotulo": "Algoritmo de horário",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Calcula o desempenho por rede, dia e hora com os seus dados; 80% dos posts nas melhores faixas, 20% testando faixas novas."
+  },
+  {
+   "id": "pixel",
+   "camada": "mkt",
+   "rotulo": "Pixel + API de|Conversões",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Pixel e CAPI da Meta juntos, com deduplicação por event_id. Sem isso o anúncio não aprende quem compra."
+  },
+  {
+   "id": "utm",
+   "camada": "mkt",
+   "rotulo": "Padrão de UTM",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Todo link marcado com fonte, meio, campanha e criativo, para ligar cada venda ao anúncio ou post que a trouxe."
+  },
+  {
+   "id": "gads",
+   "camada": "mkt",
+   "rotulo": "Google e YouTube|Ads",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": true,
+   "descricao": "Para vídeos longos que já convertem e buscas com intenção de compra."
+  },
+  {
+   "id": "ttads",
+   "camada": "mkt",
+   "rotulo": "TikTok Ads",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": true,
+   "descricao": "Depois que os cortes orgânicos mostrarem tração."
+  },
+  {
+   "id": "regras",
+   "camada": "mkt",
+   "rotulo": "Regras de corte",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Pausa criativo ou conjunto quando o CPA passa do de empate; sobe 15% do orçamento quando fica abaixo do CPA da margem."
+  },
+  {
+   "id": "calc",
+   "camada": "mkt",
+   "rotulo": "Lucro por Venda|(calculadora)",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Artefato com taxas das plataformas, imposto, CPA e ROAS de empate, simulador e o lucro real de cada campanha."
+  },
+  {
+   "id": "hooks",
+   "camada": "mkt",
+   "rotulo": "Webhooks de venda",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Hotmart, Kiwify e Eduzz avisam cada venda e reembolso; o n8n grava no banco."
+  },
+  {
+   "id": "metrics",
+   "camada": "mkt",
+   "rotulo": "Banco de métricas|(PostgreSQL)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Tabelas de produtos, vendas, gastos, ferramentas e impostos."
+  },
+  {
+   "id": "painel",
+   "camada": "mkt",
+   "rotulo": "Painel de lucro|(Grafana)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Lucro por produto, canal, campanha e país, atualizado sozinho."
+  },
+  {
+   "id": "afprog",
+   "camada": "mkt",
+   "rotulo": "Programa de afiliados",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Comissão definida pela calculadora, aberta depois de 20 vendas próprias."
+  },
+  {
+   "id": "prosp",
+   "camada": "mkt",
+   "rotulo": "Prospecção de|parceiros",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Busca e qualificação de parceiros com IA; mensagem revisada e enviada por você."
+  },
+  {
+   "id": "dub",
+   "camada": "mkt",
+   "rotulo": "Dublagem (YouTube|+ ElevenLabs)",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Dublagem automática do YouTube para vídeos; ElevenLabs para cursos fora do YouTube. Espanhol primeiro."
   }
  ],
  "conexoes": [
@@ -3275,6 +3442,201 @@
    "de": "li",
    "para": "site",
    "rotulo": "link"
+  },
+  {
+   "de": "n8n",
+   "para": "postiz",
+   "rotulo": "manda o post aprovado"
+  },
+  {
+   "de": "aprov",
+   "para": "n8n",
+   "rotulo": "libera"
+  },
+  {
+   "de": "horario",
+   "para": "n8n",
+   "rotulo": "escolhe o horário"
+  },
+  {
+   "de": "postiz",
+   "para": "yt",
+   "rotulo": "publica"
+  },
+  {
+   "de": "postiz",
+   "para": "ig",
+   "rotulo": "publica"
+  },
+  {
+   "de": "postiz",
+   "para": "tiktok",
+   "rotulo": "publica"
+  },
+  {
+   "de": "postiz",
+   "para": "facebook",
+   "rotulo": "publica"
+  },
+  {
+   "de": "postiz",
+   "para": "li",
+   "rotulo": "publica"
+  },
+  {
+   "de": "voz",
+   "para": "dub",
+   "rotulo": "sua voz em outros idiomas"
+  },
+  {
+   "de": "dub",
+   "para": "yt",
+   "rotulo": "faixas de áudio"
+  },
+  {
+   "de": "inst",
+   "para": "isca",
+   "rotulo": "captura o e-mail"
+  },
+  {
+   "de": "isca",
+   "para": "mailer",
+   "rotulo": "sequência"
+  },
+  {
+   "de": "pixel",
+   "para": "inst",
+   "rotulo": "eventos de compra"
+  },
+  {
+   "de": "pixel",
+   "para": "ads",
+   "rotulo": "otimiza para venda"
+  },
+  {
+   "de": "utm",
+   "para": "ads",
+   "rotulo": "marca os links"
+  },
+  {
+   "de": "utm",
+   "para": "postiz",
+   "rotulo": "marca os links"
+  },
+  {
+   "de": "calc",
+   "para": "regras",
+   "rotulo": "CPA e ROAS de empate"
+  },
+  {
+   "de": "regras",
+   "para": "ads",
+   "rotulo": "pausa ou escala"
+  },
+  {
+   "de": "regras",
+   "para": "gads",
+   "rotulo": "pausa ou escala"
+  },
+  {
+   "de": "regras",
+   "para": "ttads",
+   "rotulo": "pausa ou escala"
+  },
+  {
+   "de": "hotm",
+   "para": "hooks",
+   "rotulo": "venda e reembolso"
+  },
+  {
+   "de": "kiwi",
+   "para": "hooks",
+   "rotulo": "venda e reembolso"
+  },
+  {
+   "de": "eduzz",
+   "para": "hooks",
+   "rotulo": "venda e reembolso"
+  },
+  {
+   "de": "hooks",
+   "para": "n8n",
+   "rotulo": "dispara"
+  },
+  {
+   "de": "n8n",
+   "para": "metrics",
+   "rotulo": "grava"
+  },
+  {
+   "de": "ads",
+   "para": "metrics",
+   "rotulo": "gasto por campanha"
+  },
+  {
+   "de": "gads",
+   "para": "metrics",
+   "rotulo": "gasto"
+  },
+  {
+   "de": "ttads",
+   "para": "metrics",
+   "rotulo": "gasto"
+  },
+  {
+   "de": "metrics",
+   "para": "painel",
+   "rotulo": "consultas"
+  },
+  {
+   "de": "metrics",
+   "para": "horario",
+   "rotulo": "desempenho por horário"
+  },
+  {
+   "de": "metrics",
+   "para": "nfse",
+   "rotulo": "base do carnê-leão"
+  },
+  {
+   "de": "painel",
+   "para": "regras",
+   "rotulo": "dispara alertas"
+  },
+  {
+   "de": "afprog",
+   "para": "hotm",
+   "rotulo": "afiliados cadastrados"
+  },
+  {
+   "de": "prosp",
+   "para": "afprog",
+   "rotulo": "novos afiliados"
+  },
+  {
+   "de": "cvid",
+   "para": "prosp",
+   "rotulo": "canais semelhantes"
+  },
+  {
+   "de": "pbiz",
+   "para": "prosp",
+   "rotulo": "rascunho de propostas"
+  },
+  {
+   "de": "calc",
+   "para": "afprog",
+   "rotulo": "comissão máxima"
+  },
+  {
+   "de": "tiktok",
+   "para": "inst",
+   "rotulo": "link na bio"
+  },
+  {
+   "de": "facebook",
+   "para": "inst",
+   "rotulo": "link"
   }
  ],
  "fluxos": [
@@ -3551,9 +3913,110 @@
      "descricao": "Recebe na conta separada."
     }
    ]
+  },
+  {
+   "id": "auto",
+   "titulo": "Publicar automaticamente no melhor horário",
+   "passos": [
+    {
+     "bloco": "obss",
+     "descricao": "Você grava a tela e o setup."
+    },
+    {
+     "bloco": "voz",
+     "descricao": "A voz clonada narra o seu roteiro."
+    },
+    {
+     "bloco": "edit",
+     "descricao": "A edição monta o vídeo e os cortes."
+    },
+    {
+     "bloco": "aprov",
+     "descricao": "Você aprova pelo celular."
+    },
+    {
+     "bloco": "horario",
+     "descricao": "O algoritmo escolhe o horário de cada rede."
+    },
+    {
+     "bloco": "n8n",
+     "descricao": "O n8n gera título, descrição e hashtags."
+    },
+    {
+     "bloco": "postiz",
+     "descricao": "O Postiz publica em todas as redes."
+    },
+    {
+     "bloco": "metrics",
+     "descricao": "O desempenho volta para o banco e ajusta os horários."
+    }
+   ]
+  },
+  {
+   "id": "medir",
+   "titulo": "Medir o lucro de uma campanha",
+   "passos": [
+    {
+     "bloco": "calc",
+     "descricao": "A calculadora define o CPA e o ROAS de empate."
+    },
+    {
+     "bloco": "utm",
+     "descricao": "Os links do anúncio levam UTM."
+    },
+    {
+     "bloco": "ads",
+     "descricao": "A campanha roda com orçamento de teste."
+    },
+    {
+     "bloco": "hotm",
+     "descricao": "A venda acontece na plataforma."
+    },
+    {
+     "bloco": "hooks",
+     "descricao": "O webhook avisa a venda."
+    },
+    {
+     "bloco": "metrics",
+     "descricao": "O banco junta venda, taxa e gasto."
+    },
+    {
+     "bloco": "painel",
+     "descricao": "O painel mostra o lucro real."
+    },
+    {
+     "bloco": "regras",
+     "descricao": "As regras pausam ou escalam."
+    }
+   ]
   }
  ],
  "contas": [
+  {
+   "grupo": "Marketing e automação",
+   "itens": [
+    {
+     "nome": "ElevenLabs",
+     "obs": "Plano Creator para clonar a própria voz; 2FA obrigatório."
+    },
+    {
+     "nome": "Gerenciador de Negócios da Meta",
+     "obs": "Pixel, API de Conversões e conta de anúncios; uma conta só."
+    },
+    {
+     "nome": "TikTok e Facebook",
+     "obs": "Perfis da marca, separados dos pessoais."
+    },
+    {
+     "nome": "Google Ads",
+     "obs": "Quando os vídeos longos converterem."
+    },
+    {
+     "nome": "Telegram",
+     "obs": "Bot de aprovação dos posts."
+    }
+   ]
+  },
   {
    "grupo": "Desenvolvimento",
    "itens": [

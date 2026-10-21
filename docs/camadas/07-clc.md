@@ -37,6 +37,9 @@ flowchart LR
     n_ig["Instagram"]
     n_yt["YouTube"]
   end
+  subgraph L_mkt["Marketing, automação e medição"]
+    n_prosp["Prospecção de parceiros"]
+  end
   subgraph L_venda["Plataformas de venda e recebimento"]
     n_hotm["Hotmart"]
     n_mailer["MailerLite"]
@@ -93,12 +96,14 @@ flowchart LR
   n_clov -->|"landing de validação"| n_inst
   n_pbiz -->|"conteúdo"| n_ig
   n_pbiz -->|"funil e lançamento"| n_hotm
+  n_pbiz -->|"rascunho de propostas"| n_prosp
   n_peng -->|"revisão e arquitetura"| n_api
   n_pfin -->|"fechamento do mês"| n_caixa
   n_phst -->|"sites de clientes"| n_hostg
   n_phst -->|"imagem e vídeo"| n_edit
   n_ccf -->|"DNS e Pages"| n_cf
   n_cvid -->|"tendências"| n_yt
+  n_cvid -->|"canais semelhantes"| n_prosp
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_proj,n_arts,n_resq,n_sched,n_cchr,n_cgws,n_ccan,n_cml,n_cdev,n_cupw,n_clov,n_cdup,n_pbiz,n_peng,n_pfin,n_phst,n_ccf,n_cvid desta
 ```
@@ -284,8 +289,9 @@ Rotinas prontas de conteúdo, funil, SEO, propostas, cobrança e fechamento do m
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instagram](18-pub.md#ig) | Público e canais | conteúdo |
+| → envia para | [Instagram](19-pub.md#ig) | Público e canais | conteúdo |
 | → envia para | [Hotmart](17-venda.md#hotm) | Plataformas de venda e recebimento | funil e lançamento |
+| → envia para | [Prospecção de parceiros](18-mkt.md#prosp) | Marketing, automação e medição | rascunho de propostas |
 
 <a id="peng"></a>
 
@@ -346,7 +352,8 @@ Conectado. Palavras-chave, tendências, títulos e thumbnails para YouTube e Ins
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [YouTube](18-pub.md#yt) | Público e canais | tendências |
+| → envia para | [YouTube](19-pub.md#yt) | Público e canais | tendências |
+| → envia para | [Prospecção de parceiros](18-mkt.md#prosp) | Marketing, automação e medição | canais semelhantes |
 
 ---
 

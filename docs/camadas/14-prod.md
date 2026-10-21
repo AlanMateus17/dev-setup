@@ -187,7 +187,7 @@ Seus estudos viram aula paga.
 |---|---|---|---|
 | → envia para | [Mercado Pago](17-venda.md#mp) | Plataformas de venda e recebimento | cobrança |
 | ← recebe de | [Agenda online (Cal.com)](17-venda.md#agenda) | Plataformas de venda e recebimento | horários |
-| ← recebe de | [WhatsApp Business](18-pub.md#wa) | Público e canais | agenda |
+| ← recebe de | [WhatsApp Business](19-pub.md#wa) | Público e canais | agenda |
 
 <a id="sites"></a>
 

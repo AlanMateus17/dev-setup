@@ -5,11 +5,12 @@
 
 [← Índice da documentação](README.md)
 
-A pilha vai do público (topo) ao hardware (base). Cada seta é a ligação entre uma camada e a de baixo; o detalhe de cada ligação está na tabela abaixo e em cada página de camada.
+A pilha vai do público (topo) ao hardware (base). Cada linha é a ligação entre uma camada e a de baixo; o detalhe de cada ligação está na tabela abaixo e em cada página de camada.
 
 ```mermaid
 flowchart TB
-  L_pub["18 · Público e canais<br/>8 blocos"]
+  L_pub["19 · Público e canais<br/>10 blocos"]
+  L_mkt["18 · Marketing, automação e medição<br/>16 blocos"]
   L_venda["17 · Plataformas de venda e recebimento<br/>14 blocos"]
   L_emp["16 · Pessoa física: impostos e finanças<br/>11 blocos"]
   L_web["15 · Vitrine web (sites e domínio)<br/>9 blocos"]
@@ -27,7 +28,8 @@ flowchart TB
   L_win["03 · Windows 11, apps e máquinas virtuais<br/>21 blocos"]
   L_seg["02 · Segurança e cofre<br/>9 blocos"]
   L_hw["01 · Hardware<br/>11 blocos"]
-  L_pub --- L_venda
+  L_pub --- L_mkt
+  L_mkt --- L_venda
   L_venda --- L_emp
   L_emp --- L_web
   L_web --- L_prod
@@ -44,33 +46,16 @@ flowchart TB
   L_lin --- L_win
   L_win --- L_seg
   L_seg --- L_hw
-  click L_pub "camadas/18-pub.md"
-  click L_venda "camadas/17-venda.md"
-  click L_emp "camadas/16-emp.md"
-  click L_web "camadas/15-web.md"
-  click L_prod "camadas/14-prod.md"
-  click L_est "camadas/13-est.md"
-  click L_cont "camadas/12-cont.md"
-  click L_nuvem "camadas/11-nuvem.md"
-  click L_app "camadas/10-app.md"
-  click L_obs "camadas/09-obs.md"
-  click L_cnt "camadas/08-cnt.md"
-  click L_clc "camadas/07-clc.md"
-  click L_chat "camadas/06-chat.md"
-  click L_ia "camadas/05-ia.md"
-  click L_lin "camadas/04-lin.md"
-  click L_win "camadas/03-win.md"
-  click L_seg "camadas/02-seg.md"
-  click L_hw "camadas/01-hw.md"
   classDef cam fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class L_pub,L_venda,L_emp,L_web,L_prod,L_est,L_cont,L_nuvem,L_app,L_obs,L_cnt,L_clc,L_chat,L_ia,L_lin,L_win,L_seg,L_hw cam
+  class L_pub,L_mkt,L_venda,L_emp,L_web,L_prod,L_est,L_cont,L_nuvem,L_app,L_obs,L_cnt,L_clc,L_chat,L_ia,L_lin,L_win,L_seg,L_hw cam
 ```
 
 ## Camadas e ligações
 
 | # | Camada | Blocos | Como se liga à camada de baixo |
 |---|---|---|---|
-| 18 | [Público e canais](camadas/18-pub.md) | 8 | Link na bio, vídeo, post, busca e indicação levam a pessoa até o site ou o WhatsApp. |
+| 19 | [Público e canais](camadas/19-pub.md) | 10 | Link na bio, vídeo, post, busca e indicação levam a pessoa até o site ou o WhatsApp. |
+| 18 | [Marketing, automação e medição](camadas/18-mkt.md) | 16 | O que é publicado e anunciado aqui leva às plataformas de venda; cada venda volta como dado para o banco de métricas. |
 | 17 | [Plataformas de venda e recebimento](camadas/17-venda.md) | 14 | Cada venda é lançada no carnê-leão e o dinheiro cai na sua conta separada. |
 | 16 | [Pessoa física: impostos e finanças](camadas/16-emp.md) | 11 | Tudo no seu CPF por enquanto; o CNPJ entra quando a renda justificar. |
 | 15 | [Vitrine web (sites e domínio)](camadas/15-web.md) | 9 | Os sites mostram e vendem os produtos e o seu portfólio. |
