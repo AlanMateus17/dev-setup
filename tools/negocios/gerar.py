@@ -15,6 +15,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from financas import RAIZ, carregar  # noqa: E402
 
 SAIDA = RAIZ / "docs" / "negocios" / "numeros.md"
+PLANEJADOR = RAIZ / "docs" / "negocios" / "planejador.html"
+TEMPLATE = RAIZ / "tools" / "negocios" / "planejador.template.html"
 AVISO = "<!-- Arquivo GERADO por tools/negocios/gerar.py a partir de data/negocios.json. Não edite à mão. -->\n"
 CLUSTER = {"A": "A · Tecnologia", "B": "B · Logística", "C": "C · Alimentação"}
 
@@ -97,20 +99,32 @@ def gerar() -> str:
     return "\n".join(o)
 
 
+def gerar_planejador() -> str:
+    import json
+    dados = json.loads((RAIZ / "data" / "negocios.json").read_text(encoding="utf-8"))
+    corpo = TEMPLATE.read_text(encoding="utf-8").replace("__DATA__", json.dumps(dados, ensure_ascii=False))
+    return ('<!doctype html>\n<html lang="pt-BR">\n<head>\n<meta charset="utf-8">\n'
+            '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n'
+            "<!-- Arquivo GERADO por tools/negocios/gerar.py. Edite o template ou data/negocios.json. -->\n"
+            "</head>\n<body>\n" + corpo + "\n</body>\n</html>\n")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true")
     a = ap.parse_args()
-    novo = gerar()
+    saidas = {SAIDA: gerar(), PLANEJADOR: gerar_planejador()}
     if a.check:
-        atual = SAIDA.read_text(encoding="utf-8") if SAIDA.exists() else ""
-        if atual != novo:
-            print("docs/negocios/numeros.md está desatualizado. Rode: python tools/negocios/gerar.py", file=sys.stderr)
+        ruins = [c for c, novo in saidas.items() if (c.read_text(encoding="utf-8") if c.exists() else "") != novo]
+        for c in ruins:
+            print(f"{c.relative_to(RAIZ)} está desatualizado. Rode: python tools/negocios/gerar.py", file=sys.stderr)
+        if ruins:
             return 1
-        print("numeros.md em dia.")
+        print("numeros.md e planejador.html em dia.")
         return 0
-    SAIDA.write_text(novo, encoding="utf-8")
-    print(f"Gerado {SAIDA.relative_to(RAIZ)}")
+    for c, novo in saidas.items():
+        c.write_text(novo, encoding="utf-8")
+        print(f"Gerado {c.relative_to(RAIZ)}")
     return 0
 
 

@@ -60,7 +60,7 @@ flowchart TB
 - [Cardápios e desperdício](10-cardapios-e-desperdicio.md): engenharia de cardápio, ficha técnica, previsão de produção e o destino de cada sobra
 - [Mínimo legal para abrir](11-minimo-para-abrir.md): licenças, alvarás e obrigações de cada negócio
 - [Sistemas e medição do grupo](12-sistemas-do-grupo.md): qual sistema AM roda em cada negócio e o painel único de números
-- Planejador interativo: o artefato **Planejador do Grupo** usa as mesmas fórmulas de `tools/negocios/financas.py`
+- [Planejador do Grupo](planejador.html): versão interativa (baixe e abra no navegador), com as mesmas fórmulas de `tools/negocios/financas.py`
 
 ## Por que esta ordem
 
