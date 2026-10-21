@@ -8,13 +8,14 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 
 | Camadas | Blocos | Conexões | Fluxos | Contas necessárias |
 |---|---|---|---|---|
-| 20 | 263 | 447 | 11 | 90 |
+| 21 | 281 | 481 | 12 | 96 |
 
 ## Por onde começar
 
 - **[Arquitetura](docs/arquitetura.md)**: a pilha inteira, camada por camada, com o diagrama de cada uma.
 - **[Fluxos de ponta a ponta](docs/fluxos.md)**: codar com agente e publicar, vender um curso, publicar automaticamente, medir uma campanha e outros.
 - **[Editora AMS Silva](docs/editora/README.md)**: livros produzidos como software, com código testado, gabaritos conferidos e PDF, EPUB e impressão gerados da mesma fonte.
+- **[Negócios do grupo](docs/negocios/README.md)**: software, loja, robótica, ponto de retirada, entregas, delivery, sushi, cafeteria e padaria, com números, ordem de abertura e mínimo legal de cada um.
 - **[Marketing, vendas e automação](docs/marketing/README.md)**: funil, canais sem rosto com voz clonada, publicação no melhor horário, tráfego pago, parcerias, internacional e lucro por venda.
 - **Diagrama interativo**: baixe [`docs/index.html`](docs/index.html) e abra no navegador. Toque em qualquer bloco para ver as conexões dele.
 - **[Toda a documentação](docs/README.md)**
@@ -23,12 +24,13 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 
 ```mermaid
 flowchart TB
-  L_pub["20 · Público e canais"]
-  L_mkt["19 · Marketing, automação e medição"]
-  L_venda["18 · Plataformas de venda e recebimento"]
-  L_emp["17 · Pessoa física: impostos e finanças"]
-  L_web["16 · Vitrine web (sites e domínio)"]
-  L_prod["15 · Produtos (o que você vende)"]
+  L_pub["21 · Público e canais"]
+  L_mkt["20 · Marketing, automação e medição"]
+  L_venda["19 · Plataformas de venda e recebimento"]
+  L_emp["18 · Pessoa física: impostos e finanças"]
+  L_web["17 · Vitrine web (sites e domínio)"]
+  L_prod["16 · Produtos (o que você vende)"]
+  L_neg["15 · Negócios do grupo (Barbacena)"]
   L_editora["14 · Editora AMS Silva (produção de livros)"]
   L_est["13 · Estudo e carreira"]
   L_cont["12 · Produção de conteúdo"]
@@ -48,7 +50,8 @@ flowchart TB
   L_venda --- L_emp
   L_emp --- L_web
   L_web --- L_prod
-  L_prod --- L_editora
+  L_prod --- L_neg
+  L_neg --- L_editora
   L_editora --- L_est
   L_est --- L_cont
   L_cont --- L_nuvem
@@ -63,7 +66,7 @@ flowchart TB
   L_win --- L_seg
   L_seg --- L_hw
   classDef cam fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class L_pub,L_mkt,L_venda,L_emp,L_web,L_prod,L_editora,L_est,L_cont,L_nuvem,L_app,L_obs,L_cnt,L_clc,L_chat,L_ia,L_lin,L_win,L_seg,L_hw cam
+  class L_pub,L_mkt,L_venda,L_emp,L_web,L_prod,L_neg,L_editora,L_est,L_cont,L_nuvem,L_app,L_obs,L_cnt,L_clc,L_chat,L_ia,L_lin,L_win,L_seg,L_hw cam
 ```
 
 ## A ideia em uma frase
@@ -74,17 +77,18 @@ O Windows cuida só do que precisa de janela, GPU e segurança; todo o trabalho 
 
 | # | Camada | Blocos | Destaques |
 |---|---|---|---|
-| 20 | [Público e canais](docs/camadas/20-pub.md) | 10 | Meta Business Suite, Instagram, YouTube, LinkedIn… |
-| 19 | [Marketing, automação e medição](docs/camadas/19-mkt.md) | 23 | Meta Ads (Instagram, Facebook), Isca grátis + sequência de e-mails, Postiz (agendador), Aprovação no celular… |
-| 18 | [Plataformas de venda e recebimento](docs/camadas/18-venda.md) | 13 | Pix Automático + gateway (ex.: Asaas), Agenda online (Cal.com), Comunidade (Discord ou grupo), CRM simples (planilha)… |
-| 17 | [Pessoa física: impostos e finanças](docs/camadas/17-emp.md) | 11 | Registro de marca (INPI), Termos, privacidade (LGPD) e contratos, Certificado digital (e-CNPJ), API de NFS-e (ex.: Focus NFe)… |
-| 16 | [Vitrine web (sites e domínio)](docs/camadas/16-web.md) | 9 | E-mail profissional (enviar e receber), Domínio (Registro.br), Site pessoal + blog (Jekyll), Instituto AMS… |
-| 15 | [Produtos (o que você vende)](docs/camadas/15-prod.md) | 7 | Mini-curso Lógica de Programação, Formações (TI, Matemática, Finanças), Templates e código-fonte, Livro Lógica e Máquina… |
+| 21 | [Público e canais](docs/camadas/21-pub.md) | 10 | Meta Business Suite, Instagram, YouTube, LinkedIn… |
+| 20 | [Marketing, automação e medição](docs/camadas/20-mkt.md) | 23 | Meta Ads (Instagram, Facebook), Isca grátis + sequência de e-mails, Postiz (agendador), Aprovação no celular… |
+| 19 | [Plataformas de venda e recebimento](docs/camadas/19-venda.md) | 13 | Pix Automático + gateway (ex.: Asaas), Agenda online (Cal.com), Comunidade (Discord ou grupo), CRM simples (planilha)… |
+| 18 | [Pessoa física: impostos e finanças](docs/camadas/18-emp.md) | 11 | Registro de marca (INPI), Termos, privacidade (LGPD) e contratos, Certificado digital (e-CNPJ), API de NFS-e (ex.: Focus NFe)… |
+| 17 | [Vitrine web (sites e domínio)](docs/camadas/17-web.md) | 9 | E-mail profissional (enviar e receber), Domínio (Registro.br), Site pessoal + blog (Jekyll), Instituto AMS… |
+| 16 | [Produtos (o que você vende)](docs/camadas/16-prod.md) | 7 | Mini-curso Lógica de Programação, Formações (TI, Matemática, Finanças), Templates e código-fonte, Livro Lógica e Máquina… |
+| 15 | [Negócios do grupo (Barbacena)](docs/camadas/15-neg.md) | 16 | AMtech Software (projetos e SaaS), Loja AMtech (assistência), Peças sem estoque (sob encomenda), Ponto de retirada (Shopee e ML)… |
 | 14 | [Editora AMS Silva (produção de livros)](docs/camadas/14-editora.md) | 36 | Selo Editora AMS Silva, Repositório do livro, Seu modelo de criação, Fonte única (Markdown + Pandoc)… |
 | 13 | [Estudo e carreira](docs/camadas/13-est.md) | 6 | Microsoft Learn + AWS Skill Builder, TryHackMe / Hack The Box, Alura · Rocketseat · DIO · Udemy, Anki… |
 | 12 | [Produção de conteúdo](docs/camadas/12-cont.md) | 6 | OBS Studio, DaVinci Resolve ou Kdenlive, Audacity, Canva · Krita · Inkscape… |
 | 11 | [Nuvem, código e entrega](docs/camadas/11-nuvem.md) | 17 | Armazenamento de arquivos (Blob/R2), E-mail transacional (Resend, SES…), SonarQube Cloud, Projects · ADRs · MkDocs… |
-| 10 | [Aplicação: sistemas AM (Aura)](docs/camadas/10-app.md) | 15 | OpenAPI + Scalar, PostGIS + MapLibre, Storybook, Clean Arch + DDD… |
+| 10 | [Aplicação: sistemas AM (Aura)](docs/camadas/10-app.md) | 17 | OpenAPI + Scalar, PostGIS + MapLibre, Storybook, Clean Arch + DDD… |
 | 09 | [Observabilidade](docs/camadas/09-obs.md) | 8 | Sentry (erros), Uptime Kuma, Seq (logs), Loki + Tempo… |
 | 08 | [Containers, Kubernetes e infra como código](docs/camadas/08-cnt.md) | 13 | Caddy (proxy + HTTPS), Mailpit, Kafka, kubectl · Helm · k9s… |
 | 07 | [Claude: recursos, conectores e plugins](docs/camadas/07-clc.md) | 18 | Projects + memória, Artifacts (Docs, Slides, Sheets…), Pesquisa aprofundada, Tarefas agendadas… |
@@ -104,7 +108,7 @@ C#/.NET 10 · ASP.NET Core (Controllers) · Clean Architecture + DDD · PostgreS
 ```mermaid
 flowchart LR
   D["data/ecossistema.json<br/>data/mapa.json"] --> G["tools/gerar_docs.py"]
-  G --> M["docs/*.md<br/>20 páginas de camada"]
+  G --> M["docs/*.md<br/>21 páginas de camada"]
   G --> H["docs/index.html<br/>diagrama interativo"]
   G --> R["README.md"]
   CI["GitHub Actions"] -->|"valida e confere"| G
@@ -117,7 +121,7 @@ flowchart LR
 ## Estrutura
 
 ```
-data/                 fonte única: ecossistema.json e mapa.json
+data/                 fonte única: ecossistema.json, mapa.json e negocios.json
 docs/
   arquitetura.md      a pilha e as ligações entre camadas
   camadas/            uma página por camada, com diagrama e conexões de cada bloco
@@ -125,6 +129,7 @@ docs/
   marketing/          funil, IA, publicação, tráfego, canais, parcerias, internacional, lucro
   infra/              vários computadores, SSD externo, NAS local e em nuvem
   editora/            Editora AMS Silva: pipeline dos livros, rigor, produtos e lançamento
+  negocios/           os nove negócios do grupo: estrutura, ordem, números, cardápios, licenças
   contas.md, auditoria.md, nuvem.md, roteiro.md, ...
   adr/                decisões de arquitetura
   index.html          diagrama interativo (gerado)

@@ -184,7 +184,7 @@ Compila o livro e as apostilas.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Livro Lógica e Máquina](15-prod.md#livro) | Produtos (o que você vende) | gera o PDF |
+| → envia para | [Livro Lógica e Máquina](16-prod.md#livro) | Produtos (o que você vende) | gera o PDF |
 | → envia para | [Pipeline do livro (CI)](14-editora.md#bci) | Editora AMS Silva (produção de livros) | compila o PDF |
 
 <a id="sec"></a>

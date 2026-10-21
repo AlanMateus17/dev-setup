@@ -316,6 +316,7 @@ def gerar_indice_docs(eco: dict, por_camada: dict) -> str:
     out.append("- [Peças autorais](pecas-autorais.md) · [Fora do setup](fora-do-setup.md)")
     out.append("- [Marketing, vendas e automação](marketing/README.md): funil, canais sem rosto com voz clonada, publicação automática, tráfego, parcerias, internacional e medição de lucro")
     out.append("- [Editora AMS Silva](editora/README.md): estrutura legal, pipeline de produção dos livros, rigor editorial, identidade visual, avaliação, produtos, lançamento e roteiro")
+    out.append("- [Negócios do grupo](negocios/README.md): os nove negócios em Barbacena, estrutura de CNPJs, ordem de abertura, números, cardápios e mínimo legal")
     out.append("- [Vários computadores, SSD externo e NAS](infra/README.md): como crescer o setup para mais máquinas e armazenamento local e em nuvem")
     out.append("- [Decisões de arquitetura (ADRs)](adr/)")
     out.append("- Versões interativas: [`index.html`](index.html) (diagrama) e [`mapa.html`](mapa.html), para abrir no navegador\n")
@@ -338,6 +339,7 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
            "- **[Arquitetura](docs/arquitetura.md)**: a pilha inteira, camada por camada, com o diagrama de cada uma.",
            "- **[Fluxos de ponta a ponta](docs/fluxos.md)**: codar com agente e publicar, vender um curso, publicar automaticamente, medir uma campanha e outros.",
            "- **[Editora AMS Silva](docs/editora/README.md)**: livros produzidos como software, com código testado, gabaritos conferidos e PDF, EPUB e impressão gerados da mesma fonte.",
+           "- **[Negócios do grupo](docs/negocios/README.md)**: software, loja, robótica, ponto de retirada, entregas, delivery, sushi, cafeteria e padaria, com números, ordem de abertura e mínimo legal de cada um.",
            "- **[Marketing, vendas e automação](docs/marketing/README.md)**: funil, canais sem rosto com voz clonada, publicação no melhor horário, tráfego pago, parcerias, internacional e lucro por venda.",
            "- **Diagrama interativo**: baixe [`docs/index.html`](docs/index.html) e abra no navegador. Toque em qualquer bloco para ver as conexões dele.",
            "- **[Toda a documentação](docs/README.md)**\n",
@@ -375,7 +377,7 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
             "3. O GitHub Actions roda `python tools/gerar_docs.py --check` a cada push: se os dados tiverem erro ou os arquivos gerados estiverem desatualizados, o build falha.\n",
             "## Estrutura\n",
             "```",
-            "data/                 fonte única: ecossistema.json e mapa.json",
+            "data/                 fonte única: ecossistema.json, mapa.json e negocios.json",
             "docs/",
             "  arquitetura.md      a pilha e as ligações entre camadas",
             "  camadas/            uma página por camada, com diagrama e conexões de cada bloco",
@@ -383,6 +385,7 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
             "  marketing/          funil, IA, publicação, tráfego, canais, parcerias, internacional, lucro",
             "  infra/              vários computadores, SSD externo, NAS local e em nuvem",
             "  editora/            Editora AMS Silva: pipeline dos livros, rigor, produtos e lançamento",
+            "  negocios/           os nove negócios do grupo: estrutura, ordem, números, cardápios, licenças",
             "  contas.md, auditoria.md, nuvem.md, roteiro.md, ...",
             "  adr/                decisões de arquitetura",
             "  index.html          diagrama interativo (gerado)",

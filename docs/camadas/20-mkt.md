@@ -1,7 +1,7 @@
 <!-- Arquivo GERADO por tools/gerar_docs.py a partir de data/. Edite os dados, não este arquivo. -->
 
 
-# Camada 19 · Marketing, automação e medição
+# Camada 20 · Marketing, automação e medição
 
 [← Arquitetura](../arquitetura.md) · [Índice da documentação](../README.md)
 
@@ -212,13 +212,13 @@ Primeiro canal pago: anúncios da isca grátis e remarketing do mini-curso. Desd
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instagram](20-pub.md#ig) | Público e canais | alcance pago |
-| → envia para | [Banco de métricas (PostgreSQL)](19-mkt.md#metrics) | Marketing, automação e medição | gasto por campanha |
-| → envia para | [Isca grátis + sequência de e-mails](19-mkt.md#isca) | Marketing, automação e medição | leva à isca grátis |
-| ← recebe de | [Tags de conversão (Pixel, Google…)](19-mkt.md#pixel) | Marketing, automação e medição | otimiza para venda |
-| ← recebe de | [Padrão de UTM](19-mkt.md#utm) | Marketing, automação e medição | marca os links |
-| ← recebe de | [Regras de corte](19-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
-| ← recebe de | [Lucro por Venda (calculadora)](19-mkt.md#calc) | Marketing, automação e medição | custo máximo por clique |
+| → envia para | [Instagram](21-pub.md#ig) | Público e canais | alcance pago |
+| → envia para | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | gasto por campanha |
+| → envia para | [Isca grátis + sequência de e-mails](20-mkt.md#isca) | Marketing, automação e medição | leva à isca grátis |
+| ← recebe de | [Tags de conversão (Pixel, Google…)](20-mkt.md#pixel) | Marketing, automação e medição | otimiza para venda |
+| ← recebe de | [Padrão de UTM](20-mkt.md#utm) | Marketing, automação e medição | marca os links |
+| ← recebe de | [Regras de corte](20-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
+| ← recebe de | [Lucro por Venda (calculadora)](20-mkt.md#calc) | Marketing, automação e medição | custo máximo por clique |
 
 <a id="isca"></a>
 
@@ -230,18 +230,18 @@ Aula ou PDF grátis que captura o e-mail e abre uma sequência de 5 a 7 e-mails 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [MailerLite](18-venda.md#mailer) | Plataformas de venda e recebimento | sequência |
-| → envia para | [Livro Lógica e Máquina](15-prod.md#livro) | Produtos (o que você vende) | capítulo grátis |
-| ← recebe de | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | captura o e-mail |
-| ← recebe de | [Meta Ads (Instagram, Facebook)](19-mkt.md#ads) | Marketing, automação e medição | leva à isca grátis |
-| ← recebe de | [Google e YouTube Ads](19-mkt.md#gads) | Marketing, automação e medição | leva à isca grátis |
-| ← recebe de | [TikTok Ads](19-mkt.md#ttads) | Marketing, automação e medição | leva à isca grátis |
-| ← recebe de | [Kwai Ads](19-mkt.md#kwaiads) | Marketing, automação e medição | leva à isca grátis |
-| ← recebe de | [Spotify Ad Studio](19-mkt.md#spotads) | Marketing, automação e medição | leva à isca grátis |
-| ← recebe de | [Pinterest Ads](19-mkt.md#pinads) | Marketing, automação e medição | leva à isca grátis |
-| ← recebe de | [LinkedIn Ads](19-mkt.md#liads) | Marketing, automação e medição | leva à isca grátis |
-| ← recebe de | [Mídia nativa (Taboola, Outbrain)](19-mkt.md#nativo) | Marketing, automação e medição | leva à isca grátis |
-| ← recebe de | [Influenciadores e newsletters](19-mkt.md#infl) | Marketing, automação e medição | leva à isca grátis |
+| → envia para | [MailerLite](19-venda.md#mailer) | Plataformas de venda e recebimento | sequência |
+| → envia para | [Livro Lógica e Máquina](16-prod.md#livro) | Produtos (o que você vende) | capítulo grátis |
+| ← recebe de | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | captura o e-mail |
+| ← recebe de | [Meta Ads (Instagram, Facebook)](20-mkt.md#ads) | Marketing, automação e medição | leva à isca grátis |
+| ← recebe de | [Google e YouTube Ads](20-mkt.md#gads) | Marketing, automação e medição | leva à isca grátis |
+| ← recebe de | [TikTok Ads](20-mkt.md#ttads) | Marketing, automação e medição | leva à isca grátis |
+| ← recebe de | [Kwai Ads](20-mkt.md#kwaiads) | Marketing, automação e medição | leva à isca grátis |
+| ← recebe de | [Spotify Ad Studio](20-mkt.md#spotads) | Marketing, automação e medição | leva à isca grátis |
+| ← recebe de | [Pinterest Ads](20-mkt.md#pinads) | Marketing, automação e medição | leva à isca grátis |
+| ← recebe de | [LinkedIn Ads](20-mkt.md#liads) | Marketing, automação e medição | leva à isca grátis |
+| ← recebe de | [Mídia nativa (Taboola, Outbrain)](20-mkt.md#nativo) | Marketing, automação e medição | leva à isca grátis |
+| ← recebe de | [Influenciadores e newsletters](20-mkt.md#infl) | Marketing, automação e medição | leva à isca grátis |
 
 <a id="postiz"></a>
 
@@ -253,13 +253,13 @@ Agendador open source (AGPL-3.0) que publica em mais de 28 redes. Roda no seu Do
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [YouTube](20-pub.md#yt) | Público e canais | publica |
-| → envia para | [Instagram](20-pub.md#ig) | Público e canais | publica |
-| → envia para | [TikTok](20-pub.md#tiktok) | Público e canais | publica |
-| → envia para | [Facebook](20-pub.md#facebook) | Público e canais | publica |
-| → envia para | [LinkedIn](20-pub.md#li) | Público e canais | publica |
+| → envia para | [YouTube](21-pub.md#yt) | Público e canais | publica |
+| → envia para | [Instagram](21-pub.md#ig) | Público e canais | publica |
+| → envia para | [TikTok](21-pub.md#tiktok) | Público e canais | publica |
+| → envia para | [Facebook](21-pub.md#facebook) | Público e canais | publica |
+| → envia para | [LinkedIn](21-pub.md#li) | Público e canais | publica |
 | ← recebe de | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | manda o post aprovado |
-| ← recebe de | [Padrão de UTM](19-mkt.md#utm) | Marketing, automação e medição | marca os links |
+| ← recebe de | [Padrão de UTM](20-mkt.md#utm) | Marketing, automação e medição | marca os links |
 | ← recebe de | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | roda 24 h |
 
 <a id="aprov"></a>
@@ -285,7 +285,7 @@ Calcula o desempenho por rede, dia e hora com os seus dados; 80% dos posts nas m
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | escolhe o horário |
-| ← recebe de | [Banco de métricas (PostgreSQL)](19-mkt.md#metrics) | Marketing, automação e medição | desempenho por horário |
+| ← recebe de | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | desempenho por horário |
 
 <a id="pixel"></a>
 
@@ -297,14 +297,14 @@ Pixel + API de Conversões da Meta, tag do Google Ads, pixel do TikTok e as tags
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | eventos de compra |
-| → envia para | [Meta Ads (Instagram, Facebook)](19-mkt.md#ads) | Marketing, automação e medição | otimiza para venda |
-| → envia para | [Google e YouTube Ads](19-mkt.md#gads) | Marketing, automação e medição | otimiza para venda |
-| → envia para | [TikTok Ads](19-mkt.md#ttads) | Marketing, automação e medição | otimiza para venda |
-| → envia para | [Kwai Ads](19-mkt.md#kwaiads) | Marketing, automação e medição | otimiza para venda |
-| → envia para | [Pinterest Ads](19-mkt.md#pinads) | Marketing, automação e medição | otimiza para venda |
-| → envia para | [LinkedIn Ads](19-mkt.md#liads) | Marketing, automação e medição | otimiza para venda |
-| → envia para | [Mídia nativa (Taboola, Outbrain)](19-mkt.md#nativo) | Marketing, automação e medição | otimiza para venda |
+| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | eventos de compra |
+| → envia para | [Meta Ads (Instagram, Facebook)](20-mkt.md#ads) | Marketing, automação e medição | otimiza para venda |
+| → envia para | [Google e YouTube Ads](20-mkt.md#gads) | Marketing, automação e medição | otimiza para venda |
+| → envia para | [TikTok Ads](20-mkt.md#ttads) | Marketing, automação e medição | otimiza para venda |
+| → envia para | [Kwai Ads](20-mkt.md#kwaiads) | Marketing, automação e medição | otimiza para venda |
+| → envia para | [Pinterest Ads](20-mkt.md#pinads) | Marketing, automação e medição | otimiza para venda |
+| → envia para | [LinkedIn Ads](20-mkt.md#liads) | Marketing, automação e medição | otimiza para venda |
+| → envia para | [Mídia nativa (Taboola, Outbrain)](20-mkt.md#nativo) | Marketing, automação e medição | otimiza para venda |
 
 <a id="utm"></a>
 
@@ -316,16 +316,16 @@ Todo link marcado com fonte, meio, campanha e criativo, para ligar cada venda ao
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Meta Ads (Instagram, Facebook)](19-mkt.md#ads) | Marketing, automação e medição | marca os links |
-| → envia para | [Postiz (agendador)](19-mkt.md#postiz) | Marketing, automação e medição | marca os links |
-| → envia para | [Google e YouTube Ads](19-mkt.md#gads) | Marketing, automação e medição | marca os links |
-| → envia para | [TikTok Ads](19-mkt.md#ttads) | Marketing, automação e medição | marca os links |
-| → envia para | [Kwai Ads](19-mkt.md#kwaiads) | Marketing, automação e medição | marca os links |
-| → envia para | [Spotify Ad Studio](19-mkt.md#spotads) | Marketing, automação e medição | marca os links |
-| → envia para | [Pinterest Ads](19-mkt.md#pinads) | Marketing, automação e medição | marca os links |
-| → envia para | [LinkedIn Ads](19-mkt.md#liads) | Marketing, automação e medição | marca os links |
-| → envia para | [Mídia nativa (Taboola, Outbrain)](19-mkt.md#nativo) | Marketing, automação e medição | marca os links |
-| → envia para | [Influenciadores e newsletters](19-mkt.md#infl) | Marketing, automação e medição | marca os links |
+| → envia para | [Meta Ads (Instagram, Facebook)](20-mkt.md#ads) | Marketing, automação e medição | marca os links |
+| → envia para | [Postiz (agendador)](20-mkt.md#postiz) | Marketing, automação e medição | marca os links |
+| → envia para | [Google e YouTube Ads](20-mkt.md#gads) | Marketing, automação e medição | marca os links |
+| → envia para | [TikTok Ads](20-mkt.md#ttads) | Marketing, automação e medição | marca os links |
+| → envia para | [Kwai Ads](20-mkt.md#kwaiads) | Marketing, automação e medição | marca os links |
+| → envia para | [Spotify Ad Studio](20-mkt.md#spotads) | Marketing, automação e medição | marca os links |
+| → envia para | [Pinterest Ads](20-mkt.md#pinads) | Marketing, automação e medição | marca os links |
+| → envia para | [LinkedIn Ads](20-mkt.md#liads) | Marketing, automação e medição | marca os links |
+| → envia para | [Mídia nativa (Taboola, Outbrain)](20-mkt.md#nativo) | Marketing, automação e medição | marca os links |
+| → envia para | [Influenciadores e newsletters](20-mkt.md#infl) | Marketing, automação e medição | marca os links |
 
 <a id="gads"></a>
 
@@ -337,12 +337,12 @@ Para vídeos longos que já convertem e buscas com intenção de compra.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Banco de métricas (PostgreSQL)](19-mkt.md#metrics) | Marketing, automação e medição | gasto |
-| → envia para | [Isca grátis + sequência de e-mails](19-mkt.md#isca) | Marketing, automação e medição | leva à isca grátis |
-| ← recebe de | [Regras de corte](19-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
-| ← recebe de | [Padrão de UTM](19-mkt.md#utm) | Marketing, automação e medição | marca os links |
-| ← recebe de | [Tags de conversão (Pixel, Google…)](19-mkt.md#pixel) | Marketing, automação e medição | otimiza para venda |
-| ← recebe de | [Lucro por Venda (calculadora)](19-mkt.md#calc) | Marketing, automação e medição | custo máximo por clique |
+| → envia para | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | gasto |
+| → envia para | [Isca grátis + sequência de e-mails](20-mkt.md#isca) | Marketing, automação e medição | leva à isca grátis |
+| ← recebe de | [Regras de corte](20-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
+| ← recebe de | [Padrão de UTM](20-mkt.md#utm) | Marketing, automação e medição | marca os links |
+| ← recebe de | [Tags de conversão (Pixel, Google…)](20-mkt.md#pixel) | Marketing, automação e medição | otimiza para venda |
+| ← recebe de | [Lucro por Venda (calculadora)](20-mkt.md#calc) | Marketing, automação e medição | custo máximo por clique |
 
 <a id="ttads"></a>
 
@@ -354,12 +354,12 @@ Depois que os cortes orgânicos mostrarem tração.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Banco de métricas (PostgreSQL)](19-mkt.md#metrics) | Marketing, automação e medição | gasto |
-| → envia para | [Isca grátis + sequência de e-mails](19-mkt.md#isca) | Marketing, automação e medição | leva à isca grátis |
-| ← recebe de | [Regras de corte](19-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
-| ← recebe de | [Padrão de UTM](19-mkt.md#utm) | Marketing, automação e medição | marca os links |
-| ← recebe de | [Tags de conversão (Pixel, Google…)](19-mkt.md#pixel) | Marketing, automação e medição | otimiza para venda |
-| ← recebe de | [Lucro por Venda (calculadora)](19-mkt.md#calc) | Marketing, automação e medição | custo máximo por clique |
+| → envia para | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | gasto |
+| → envia para | [Isca grátis + sequência de e-mails](20-mkt.md#isca) | Marketing, automação e medição | leva à isca grátis |
+| ← recebe de | [Regras de corte](20-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
+| ← recebe de | [Padrão de UTM](20-mkt.md#utm) | Marketing, automação e medição | marca os links |
+| ← recebe de | [Tags de conversão (Pixel, Google…)](20-mkt.md#pixel) | Marketing, automação e medição | otimiza para venda |
+| ← recebe de | [Lucro por Venda (calculadora)](20-mkt.md#calc) | Marketing, automação e medição | custo máximo por clique |
 
 <a id="regras"></a>
 
@@ -371,17 +371,17 @@ Pausa criativo ou conjunto quando o CPA passa do de empate; sobe 15% do orçamen
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Meta Ads (Instagram, Facebook)](19-mkt.md#ads) | Marketing, automação e medição | pausa ou escala |
-| → envia para | [Google e YouTube Ads](19-mkt.md#gads) | Marketing, automação e medição | pausa ou escala |
-| → envia para | [TikTok Ads](19-mkt.md#ttads) | Marketing, automação e medição | pausa ou escala |
-| → envia para | [Spotify Ad Studio](19-mkt.md#spotads) | Marketing, automação e medição | pausa ou escala |
-| → envia para | [Kwai Ads](19-mkt.md#kwaiads) | Marketing, automação e medição | pausa ou escala |
-| → envia para | [Pinterest Ads](19-mkt.md#pinads) | Marketing, automação e medição | pausa ou escala |
-| → envia para | [LinkedIn Ads](19-mkt.md#liads) | Marketing, automação e medição | pausa ou escala |
-| → envia para | [Mídia nativa (Taboola, Outbrain)](19-mkt.md#nativo) | Marketing, automação e medição | pausa ou escala |
-| → envia para | [Influenciadores e newsletters](19-mkt.md#infl) | Marketing, automação e medição | renova ou encerra parceria |
-| ← recebe de | [Lucro por Venda (calculadora)](19-mkt.md#calc) | Marketing, automação e medição | CPA e ROAS de empate |
-| ← recebe de | [Painel de lucro (Grafana)](19-mkt.md#painel) | Marketing, automação e medição | dispara alertas |
+| → envia para | [Meta Ads (Instagram, Facebook)](20-mkt.md#ads) | Marketing, automação e medição | pausa ou escala |
+| → envia para | [Google e YouTube Ads](20-mkt.md#gads) | Marketing, automação e medição | pausa ou escala |
+| → envia para | [TikTok Ads](20-mkt.md#ttads) | Marketing, automação e medição | pausa ou escala |
+| → envia para | [Spotify Ad Studio](20-mkt.md#spotads) | Marketing, automação e medição | pausa ou escala |
+| → envia para | [Kwai Ads](20-mkt.md#kwaiads) | Marketing, automação e medição | pausa ou escala |
+| → envia para | [Pinterest Ads](20-mkt.md#pinads) | Marketing, automação e medição | pausa ou escala |
+| → envia para | [LinkedIn Ads](20-mkt.md#liads) | Marketing, automação e medição | pausa ou escala |
+| → envia para | [Mídia nativa (Taboola, Outbrain)](20-mkt.md#nativo) | Marketing, automação e medição | pausa ou escala |
+| → envia para | [Influenciadores e newsletters](20-mkt.md#infl) | Marketing, automação e medição | renova ou encerra parceria |
+| ← recebe de | [Lucro por Venda (calculadora)](20-mkt.md#calc) | Marketing, automação e medição | CPA e ROAS de empate |
+| ← recebe de | [Painel de lucro (Grafana)](20-mkt.md#painel) | Marketing, automação e medição | dispara alertas |
 
 <a id="calc"></a>
 
@@ -393,17 +393,17 @@ Artefato com taxas das plataformas, imposto, CPA e ROAS de empate, simulador e o
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Regras de corte](19-mkt.md#regras) | Marketing, automação e medição | CPA e ROAS de empate |
-| → envia para | [Programa de afiliados](19-mkt.md#afprog) | Marketing, automação e medição | comissão máxima |
-| → envia para | [Influenciadores e newsletters](19-mkt.md#infl) | Marketing, automação e medição | valor máximo do post |
-| → envia para | [Meta Ads (Instagram, Facebook)](19-mkt.md#ads) | Marketing, automação e medição | custo máximo por clique |
-| → envia para | [Google e YouTube Ads](19-mkt.md#gads) | Marketing, automação e medição | custo máximo por clique |
-| → envia para | [TikTok Ads](19-mkt.md#ttads) | Marketing, automação e medição | custo máximo por clique |
-| → envia para | [Kwai Ads](19-mkt.md#kwaiads) | Marketing, automação e medição | custo máximo por clique |
-| → envia para | [Spotify Ad Studio](19-mkt.md#spotads) | Marketing, automação e medição | custo máximo por clique |
-| → envia para | [Pinterest Ads](19-mkt.md#pinads) | Marketing, automação e medição | custo máximo por clique |
-| → envia para | [LinkedIn Ads](19-mkt.md#liads) | Marketing, automação e medição | custo máximo por clique |
-| → envia para | [Mídia nativa (Taboola, Outbrain)](19-mkt.md#nativo) | Marketing, automação e medição | custo máximo por clique |
+| → envia para | [Regras de corte](20-mkt.md#regras) | Marketing, automação e medição | CPA e ROAS de empate |
+| → envia para | [Programa de afiliados](20-mkt.md#afprog) | Marketing, automação e medição | comissão máxima |
+| → envia para | [Influenciadores e newsletters](20-mkt.md#infl) | Marketing, automação e medição | valor máximo do post |
+| → envia para | [Meta Ads (Instagram, Facebook)](20-mkt.md#ads) | Marketing, automação e medição | custo máximo por clique |
+| → envia para | [Google e YouTube Ads](20-mkt.md#gads) | Marketing, automação e medição | custo máximo por clique |
+| → envia para | [TikTok Ads](20-mkt.md#ttads) | Marketing, automação e medição | custo máximo por clique |
+| → envia para | [Kwai Ads](20-mkt.md#kwaiads) | Marketing, automação e medição | custo máximo por clique |
+| → envia para | [Spotify Ad Studio](20-mkt.md#spotads) | Marketing, automação e medição | custo máximo por clique |
+| → envia para | [Pinterest Ads](20-mkt.md#pinads) | Marketing, automação e medição | custo máximo por clique |
+| → envia para | [LinkedIn Ads](20-mkt.md#liads) | Marketing, automação e medição | custo máximo por clique |
+| → envia para | [Mídia nativa (Taboola, Outbrain)](20-mkt.md#nativo) | Marketing, automação e medição | custo máximo por clique |
 | → envia para | [Kit edição especial](14-editora.md#bkit) | Editora AMS Silva (produção de livros) | preço e margem |
 | → envia para | [Curso por seção](14-editora.md#bcurso) | Editora AMS Silva (produção de livros) | preço e margem |
 
@@ -418,9 +418,9 @@ Hotmart, Kiwify e Eduzz avisam cada venda e reembolso; o n8n grava no banco.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | dispara |
-| ← recebe de | [Hotmart](18-venda.md#hotm) | Plataformas de venda e recebimento | venda e reembolso |
-| ← recebe de | [Kiwify](18-venda.md#kiwi) | Plataformas de venda e recebimento | venda e reembolso |
-| ← recebe de | [Eduzz](18-venda.md#eduzz) | Plataformas de venda e recebimento | venda e reembolso |
+| ← recebe de | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | venda e reembolso |
+| ← recebe de | [Kiwify](19-venda.md#kiwi) | Plataformas de venda e recebimento | venda e reembolso |
+| ← recebe de | [Eduzz](19-venda.md#eduzz) | Plataformas de venda e recebimento | venda e reembolso |
 
 <a id="metrics"></a>
 
@@ -432,19 +432,19 @@ Tabelas de produtos, vendas, gastos, ferramentas e impostos.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Painel de lucro (Grafana)](19-mkt.md#painel) | Marketing, automação e medição | consultas |
-| → envia para | [Algoritmo de horário](19-mkt.md#horario) | Marketing, automação e medição | desempenho por horário |
-| → envia para | [Carnê-leão (Receita Federal)](17-emp.md#nfse) | Pessoa física: impostos e finanças | base do carnê-leão |
+| → envia para | [Painel de lucro (Grafana)](20-mkt.md#painel) | Marketing, automação e medição | consultas |
+| → envia para | [Algoritmo de horário](20-mkt.md#horario) | Marketing, automação e medição | desempenho por horário |
+| → envia para | [Carnê-leão (Receita Federal)](18-emp.md#nfse) | Pessoa física: impostos e finanças | base do carnê-leão |
 | ← recebe de | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | grava |
-| ← recebe de | [Meta Ads (Instagram, Facebook)](19-mkt.md#ads) | Marketing, automação e medição | gasto por campanha |
-| ← recebe de | [Google e YouTube Ads](19-mkt.md#gads) | Marketing, automação e medição | gasto |
-| ← recebe de | [TikTok Ads](19-mkt.md#ttads) | Marketing, automação e medição | gasto |
-| ← recebe de | [Spotify Ad Studio](19-mkt.md#spotads) | Marketing, automação e medição | gasto |
-| ← recebe de | [Kwai Ads](19-mkt.md#kwaiads) | Marketing, automação e medição | gasto |
-| ← recebe de | [Pinterest Ads](19-mkt.md#pinads) | Marketing, automação e medição | gasto |
-| ← recebe de | [LinkedIn Ads](19-mkt.md#liads) | Marketing, automação e medição | gasto |
-| ← recebe de | [Mídia nativa (Taboola, Outbrain)](19-mkt.md#nativo) | Marketing, automação e medição | gasto |
-| ← recebe de | [Influenciadores e newsletters](19-mkt.md#infl) | Marketing, automação e medição | custo do post |
+| ← recebe de | [Meta Ads (Instagram, Facebook)](20-mkt.md#ads) | Marketing, automação e medição | gasto por campanha |
+| ← recebe de | [Google e YouTube Ads](20-mkt.md#gads) | Marketing, automação e medição | gasto |
+| ← recebe de | [TikTok Ads](20-mkt.md#ttads) | Marketing, automação e medição | gasto |
+| ← recebe de | [Spotify Ad Studio](20-mkt.md#spotads) | Marketing, automação e medição | gasto |
+| ← recebe de | [Kwai Ads](20-mkt.md#kwaiads) | Marketing, automação e medição | gasto |
+| ← recebe de | [Pinterest Ads](20-mkt.md#pinads) | Marketing, automação e medição | gasto |
+| ← recebe de | [LinkedIn Ads](20-mkt.md#liads) | Marketing, automação e medição | gasto |
+| ← recebe de | [Mídia nativa (Taboola, Outbrain)](20-mkt.md#nativo) | Marketing, automação e medição | gasto |
+| ← recebe de | [Influenciadores e newsletters](20-mkt.md#infl) | Marketing, automação e medição | custo do post |
 | ← recebe de | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | roda 24 h |
 
 <a id="painel"></a>
@@ -457,8 +457,8 @@ Lucro por produto, canal, campanha e país, atualizado sozinho.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Regras de corte](19-mkt.md#regras) | Marketing, automação e medição | dispara alertas |
-| ← recebe de | [Banco de métricas (PostgreSQL)](19-mkt.md#metrics) | Marketing, automação e medição | consultas |
+| → envia para | [Regras de corte](20-mkt.md#regras) | Marketing, automação e medição | dispara alertas |
+| ← recebe de | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | consultas |
 
 <a id="afprog"></a>
 
@@ -470,9 +470,9 @@ Comissão definida pela calculadora, aberta depois de 20 vendas próprias.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Hotmart](18-venda.md#hotm) | Plataformas de venda e recebimento | afiliados cadastrados |
-| ← recebe de | [Prospecção de parceiros](19-mkt.md#prosp) | Marketing, automação e medição | novos afiliados |
-| ← recebe de | [Lucro por Venda (calculadora)](19-mkt.md#calc) | Marketing, automação e medição | comissão máxima |
+| → envia para | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | afiliados cadastrados |
+| ← recebe de | [Prospecção de parceiros](20-mkt.md#prosp) | Marketing, automação e medição | novos afiliados |
+| ← recebe de | [Lucro por Venda (calculadora)](20-mkt.md#calc) | Marketing, automação e medição | comissão máxima |
 
 <a id="prosp"></a>
 
@@ -484,7 +484,7 @@ Busca e qualificação de parceiros com IA; mensagem revisada e enviada por voc�
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Programa de afiliados](19-mkt.md#afprog) | Marketing, automação e medição | novos afiliados |
+| → envia para | [Programa de afiliados](20-mkt.md#afprog) | Marketing, automação e medição | novos afiliados |
 | ← recebe de | [Conector vidIQ](07-clc.md#cvid) | Claude: recursos, conectores e plugins | canais semelhantes |
 | ← recebe de | [Plugins: small- business + marketing](07-clc.md#pbiz) | Claude: recursos, conectores e plugins | rascunho de propostas |
 
@@ -498,7 +498,7 @@ Dublagem automática do YouTube para vídeos; ElevenLabs para cursos fora do You
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [YouTube](20-pub.md#yt) | Público e canais | faixas de áudio |
+| → envia para | [YouTube](21-pub.md#yt) | Público e canais | faixas de áudio |
 | ← recebe de | [Voz clonada (ElevenLabs)](12-cont.md#voz) | Produção de conteúdo | sua voz em outros idiomas |
 | ← recebe de | [Traduções (espanhol, inglês)](14-editora.md#trad) | Editora AMS Silva (produção de livros) | voz em outros idiomas |
 
@@ -512,12 +512,12 @@ Anúncios em áudio e podcast, abertos a anunciantes no Brasil. Clique baixo: se
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Banco de métricas (PostgreSQL)](19-mkt.md#metrics) | Marketing, automação e medição | gasto |
-| → envia para | [Isca grátis + sequência de e-mails](19-mkt.md#isca) | Marketing, automação e medição | leva à isca grátis |
-| → envia para | [YouTube](20-pub.md#yt) | Público e canais | lembrança da marca |
-| ← recebe de | [Regras de corte](19-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
-| ← recebe de | [Padrão de UTM](19-mkt.md#utm) | Marketing, automação e medição | marca os links |
-| ← recebe de | [Lucro por Venda (calculadora)](19-mkt.md#calc) | Marketing, automação e medição | custo máximo por clique |
+| → envia para | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | gasto |
+| → envia para | [Isca grátis + sequência de e-mails](20-mkt.md#isca) | Marketing, automação e medição | leva à isca grátis |
+| → envia para | [YouTube](21-pub.md#yt) | Público e canais | lembrança da marca |
+| ← recebe de | [Regras de corte](20-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
+| ← recebe de | [Padrão de UTM](20-mkt.md#utm) | Marketing, automação e medição | marca os links |
+| ← recebe de | [Lucro por Venda (calculadora)](20-mkt.md#calc) | Marketing, automação e medição | custo máximo por clique |
 
 <a id="kwaiads"></a>
 
@@ -529,12 +529,12 @@ Plataforma de anúncios do Kwai no Brasil; teste depois de Meta e TikTok.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Banco de métricas (PostgreSQL)](19-mkt.md#metrics) | Marketing, automação e medição | gasto |
-| → envia para | [Isca grátis + sequência de e-mails](19-mkt.md#isca) | Marketing, automação e medição | leva à isca grátis |
-| ← recebe de | [Regras de corte](19-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
-| ← recebe de | [Padrão de UTM](19-mkt.md#utm) | Marketing, automação e medição | marca os links |
-| ← recebe de | [Tags de conversão (Pixel, Google…)](19-mkt.md#pixel) | Marketing, automação e medição | otimiza para venda |
-| ← recebe de | [Lucro por Venda (calculadora)](19-mkt.md#calc) | Marketing, automação e medição | custo máximo por clique |
+| → envia para | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | gasto |
+| → envia para | [Isca grátis + sequência de e-mails](20-mkt.md#isca) | Marketing, automação e medição | leva à isca grátis |
+| ← recebe de | [Regras de corte](20-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
+| ← recebe de | [Padrão de UTM](20-mkt.md#utm) | Marketing, automação e medição | marca os links |
+| ← recebe de | [Tags de conversão (Pixel, Google…)](20-mkt.md#pixel) | Marketing, automação e medição | otimiza para venda |
+| ← recebe de | [Lucro por Venda (calculadora)](20-mkt.md#calc) | Marketing, automação e medição | custo máximo por clique |
 
 <a id="pinads"></a>
 
@@ -546,12 +546,12 @@ Para templates e material visual; confira se a conta aceita o Brasil.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Banco de métricas (PostgreSQL)](19-mkt.md#metrics) | Marketing, automação e medição | gasto |
-| → envia para | [Isca grátis + sequência de e-mails](19-mkt.md#isca) | Marketing, automação e medição | leva à isca grátis |
-| ← recebe de | [Regras de corte](19-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
-| ← recebe de | [Padrão de UTM](19-mkt.md#utm) | Marketing, automação e medição | marca os links |
-| ← recebe de | [Tags de conversão (Pixel, Google…)](19-mkt.md#pixel) | Marketing, automação e medição | otimiza para venda |
-| ← recebe de | [Lucro por Venda (calculadora)](19-mkt.md#calc) | Marketing, automação e medição | custo máximo por clique |
+| → envia para | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | gasto |
+| → envia para | [Isca grátis + sequência de e-mails](20-mkt.md#isca) | Marketing, automação e medição | leva à isca grátis |
+| ← recebe de | [Regras de corte](20-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
+| ← recebe de | [Padrão de UTM](20-mkt.md#utm) | Marketing, automação e medição | marca os links |
+| ← recebe de | [Tags de conversão (Pixel, Google…)](20-mkt.md#pixel) | Marketing, automação e medição | otimiza para venda |
+| ← recebe de | [Lucro por Venda (calculadora)](20-mkt.md#calc) | Marketing, automação e medição | custo máximo por clique |
 
 <a id="liads"></a>
 
@@ -563,12 +563,12 @@ Caro; só para B2B (sistemas AM e consultoria).
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Banco de métricas (PostgreSQL)](19-mkt.md#metrics) | Marketing, automação e medição | gasto |
-| → envia para | [Isca grátis + sequência de e-mails](19-mkt.md#isca) | Marketing, automação e medição | leva à isca grátis |
-| ← recebe de | [Regras de corte](19-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
-| ← recebe de | [Padrão de UTM](19-mkt.md#utm) | Marketing, automação e medição | marca os links |
-| ← recebe de | [Tags de conversão (Pixel, Google…)](19-mkt.md#pixel) | Marketing, automação e medição | otimiza para venda |
-| ← recebe de | [Lucro por Venda (calculadora)](19-mkt.md#calc) | Marketing, automação e medição | custo máximo por clique |
+| → envia para | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | gasto |
+| → envia para | [Isca grátis + sequência de e-mails](20-mkt.md#isca) | Marketing, automação e medição | leva à isca grátis |
+| ← recebe de | [Regras de corte](20-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
+| ← recebe de | [Padrão de UTM](20-mkt.md#utm) | Marketing, automação e medição | marca os links |
+| ← recebe de | [Tags de conversão (Pixel, Google…)](20-mkt.md#pixel) | Marketing, automação e medição | otimiza para venda |
+| ← recebe de | [Lucro por Venda (calculadora)](20-mkt.md#calc) | Marketing, automação e medição | custo máximo por clique |
 
 <a id="nativo"></a>
 
@@ -580,13 +580,13 @@ Clique barato e conversão baixa; leva leitores a artigos do blog que vendem.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Banco de métricas (PostgreSQL)](19-mkt.md#metrics) | Marketing, automação e medição | gasto |
-| → envia para | [Site pessoal + blog (Jekyll)](16-web.md#site) | Vitrine web (sites e domínio) | leva aos artigos |
-| → envia para | [Isca grátis + sequência de e-mails](19-mkt.md#isca) | Marketing, automação e medição | leva à isca grátis |
-| ← recebe de | [Regras de corte](19-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
-| ← recebe de | [Padrão de UTM](19-mkt.md#utm) | Marketing, automação e medição | marca os links |
-| ← recebe de | [Tags de conversão (Pixel, Google…)](19-mkt.md#pixel) | Marketing, automação e medição | otimiza para venda |
-| ← recebe de | [Lucro por Venda (calculadora)](19-mkt.md#calc) | Marketing, automação e medição | custo máximo por clique |
+| → envia para | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | gasto |
+| → envia para | [Site pessoal + blog (Jekyll)](17-web.md#site) | Vitrine web (sites e domínio) | leva aos artigos |
+| → envia para | [Isca grátis + sequência de e-mails](20-mkt.md#isca) | Marketing, automação e medição | leva à isca grátis |
+| ← recebe de | [Regras de corte](20-mkt.md#regras) | Marketing, automação e medição | pausa ou escala |
+| ← recebe de | [Padrão de UTM](20-mkt.md#utm) | Marketing, automação e medição | marca os links |
+| ← recebe de | [Tags de conversão (Pixel, Google…)](20-mkt.md#pixel) | Marketing, automação e medição | otimiza para venda |
+| ← recebe de | [Lucro por Venda (calculadora)](20-mkt.md#calc) | Marketing, automação e medição | custo máximo por clique |
 
 <a id="infl"></a>
 
@@ -598,13 +598,13 @@ Post pago ou por desempenho no nicho de TI e educação; peça números reais e 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Banco de métricas (PostgreSQL)](19-mkt.md#metrics) | Marketing, automação e medição | custo do post |
-| → envia para | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | link com cupom |
-| → envia para | [Isca grátis + sequência de e-mails](19-mkt.md#isca) | Marketing, automação e medição | leva à isca grátis |
-| ← recebe de | [Lucro por Venda (calculadora)](19-mkt.md#calc) | Marketing, automação e medição | valor máximo do post |
-| ← recebe de | [Padrão de UTM](19-mkt.md#utm) | Marketing, automação e medição | marca os links |
-| ← recebe de | [Regras de corte](19-mkt.md#regras) | Marketing, automação e medição | renova ou encerra parceria |
+| → envia para | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | custo do post |
+| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | link com cupom |
+| → envia para | [Isca grátis + sequência de e-mails](20-mkt.md#isca) | Marketing, automação e medição | leva à isca grátis |
+| ← recebe de | [Lucro por Venda (calculadora)](20-mkt.md#calc) | Marketing, automação e medição | valor máximo do post |
+| ← recebe de | [Padrão de UTM](20-mkt.md#utm) | Marketing, automação e medição | marca os links |
+| ← recebe de | [Regras de corte](20-mkt.md#regras) | Marketing, automação e medição | renova ou encerra parceria |
 
 ---
 
-[↑ Camada 20 · Público e canais](20-pub.md) · [↓ Camada 18 · Plataformas de venda e recebimento](18-venda.md)
+[↑ Camada 21 · Público e canais](21-pub.md) · [↓ Camada 19 · Plataformas de venda e recebimento](19-venda.md)

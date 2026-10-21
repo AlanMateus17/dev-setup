@@ -2,6 +2,14 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.6.0] - 2026-10-21
+
+### Adicionado
+- `docs/negocios/`: os nove negócios do grupo em Barbacena (software, loja, peças, Maker, ponto de retirada, entregas e Flex, delivery, sushi, cafeteria, padaria), estrutura de CNPJs, ordem com portões, cardápios e desperdício, mínimo legal e sistemas.
+- `data/negocios.json` e `tools/negocios/financas.py`: motor financeiro com Simples por anexo, ponto de equilíbrio, rampa, retorno e capital mínimo, com testes no CI.
+- `docs/negocios/numeros.md`, gerado e conferido no CI.
+- Camada "Negócios do grupo", 18 blocos, 34 conexões e o fluxo "Abrir o próximo negócio".
+
 ## [1.5.0] - 2026-10-21
 
 ### Adicionado

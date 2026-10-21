@@ -306,7 +306,7 @@ Leitor de PDF leve para livros, apostilas e o PDF do Lógica e Máquina.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Livro Lógica e Máquina](15-prod.md#livro) | Produtos (o que você vende) | revisão do PDF |
+| → envia para | [Livro Lógica e Máquina](16-prod.md#livro) | Produtos (o que você vende) | revisão do PDF |
 
 <a id="sharex"></a>
 
@@ -318,8 +318,8 @@ Prints, GIFs e gravações curtas da tela para aulas, posts e issues do GitHub.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instagram](20-pub.md#ig) | Público e canais | GIFs e prints |
-| → envia para | [Mini-curso Lógica de Programação](15-prod.md#curso) | Produtos (o que você vende) | demonstrações |
+| → envia para | [Instagram](21-pub.md#ig) | Público e canais | GIFs e prints |
+| → envia para | [Mini-curso Lógica de Programação](16-prod.md#curso) | Produtos (o que você vende) | demonstrações |
 
 <a id="office"></a>
 
@@ -331,7 +331,7 @@ Abrir e editar .docx, .xlsx e .pptx que chegam da escola e de clientes.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Sites para pequenas empresas](15-prod.md#sites) | Produtos (o que você vende) | documentos de clientes |
+| → envia para | [Sites para pequenas empresas](16-prod.md#sites) | Produtos (o que você vende) | documentos de clientes |
 
 <a id="ffox"></a>
 
@@ -343,7 +343,7 @@ Testar os sites em outro motor de navegador e separar contas pessoais das da emp
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | teste em outro navegador |
+| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | teste em outro navegador |
 
 <a id="w11"></a>
 
@@ -387,9 +387,9 @@ Vault de estudo, roteiros e planejamento.
 |---|---|---|---|
 | → envia para | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | Obsidian Git |
 | → envia para | [Base de conhecimento (RAG) das suas notas](05-ia.md#rag) | Agentes de IA e sandbox | indexa as notas |
-| → envia para | [DIO (parceria)](18-venda.md#dio) | Plataformas de venda e recebimento | artigos e projetos |
-| → envia para | [Livro Lógica e Máquina](15-prod.md#livro) | Produtos (o que você vende) | capítulos |
-| → envia para | [Mini-curso Lógica de Programação](15-prod.md#curso) | Produtos (o que você vende) | roteiro |
+| → envia para | [DIO (parceria)](19-venda.md#dio) | Plataformas de venda e recebimento | artigos e projetos |
+| → envia para | [Livro Lógica e Máquina](16-prod.md#livro) | Produtos (o que você vende) | capítulos |
+| → envia para | [Mini-curso Lógica de Programação](16-prod.md#curso) | Produtos (o que você vende) | roteiro |
 | → envia para | [Fonte única (Markdown + Pandoc)](14-editora.md#fonte) | Editora AMS Silva (produção de livros) | rascunho |
 | ← recebe de | [Backup 3-2-1](02-seg.md#bkp) | Segurança e cofre | copia o vault |
 | ← recebe de | [Claude (app)](06-chat.md#capp2) | Assistentes de IA (chat, pesquisa e estudo) | roteiros e planos |
@@ -429,7 +429,7 @@ Testes, DevTools e acesso a todas as contas web.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Next.js + Aura Design System](10-app.md#front) | Aplicação: sistemas AM (Aura) | localhost:3000 |
-| → envia para | [Hotmart](18-venda.md#hotm) | Plataformas de venda e recebimento | painel web |
+| → envia para | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | painel web |
 | ← recebe de | [Claude in Chrome + uso do computador](07-clc.md#cchr) | Claude: recursos, conectores e plugins | opera o navegador |
 
 <a id="vbox"></a>

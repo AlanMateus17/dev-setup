@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** A API envia logs, métricas e traces pelo OpenTelemetry.
 
-**15 blocos** · 0 precisam de conta · 4 marcados como futuro
+**17 blocos** · 0 precisam de conta · 6 marcados como futuro
 
 ## Mapa de conexões
 
@@ -29,16 +29,28 @@ flowchart LR
     n_ai["IA: RAG + pgvector"]
     n_lic["aura-licensing"]
     n_status["aura-status"]
+    n_nkaix["AM Kaixara (PDV e cardápio)"]
+    n_nrot["AM Rotara (entregas)"]
   end
   subgraph L_venda["Plataformas de venda e recebimento"]
     n_pixa["Pix Automático + gateway (ex.: Asaas)"]
   end
   subgraph L_emp["Pessoa física: impostos e finanças"]
+    n_caixa["Caixa da Casa / AM Rendara"]
     n_nfapi["API de NFS-e (ex.: Focus NFe)"]
   end
   subgraph L_prod["Produtos (o que você vende)"]
     n_saas["Sistemas AM (SaaS)"]
     n_tmpl["Templates e código-fonte"]
+  end
+  subgraph L_neg["Negócios do grupo (Barbacena)"]
+    n_ncafe["Cafeteria"]
+    n_ndeliv["AM Delivery (várias empresas)"]
+    n_nentr["AM Entregas (moto e carro)"]
+    n_nloja["Loja AMtech (assistência)"]
+    n_npad["Padaria + café da manhã + almoço"]
+    n_nsoft["AMtech Software (projetos e SaaS)"]
+    n_nsushi["Sushi (delivery)"]
   end
   subgraph L_nuvem["Nuvem, código e entrega"]
     n_anth["Claude (assinatura e API)"]
@@ -80,6 +92,7 @@ flowchart LR
   n_oapi -->|"Bruno importa"| n_dbv
   n_gis -->|"extensão"| n_pg
   n_gis -->|"mapa"| n_front
+  n_gis -->|"mapas"| n_nrot
   n_story -->|"componentes"| n_front
   n_story -->|"demo do template"| n_tmpl
   n_clean -->|"organiza"| n_api
@@ -123,8 +136,19 @@ flowchart LR
   n_status -->|"Dependabot e repos"| n_gh
   n_status -->|"git status"| n_git
   n_dbot -->|"alertas"| n_status
+  n_nkaix -->|"ordens de serviço"| n_nloja
+  n_nkaix -->|"PDV e ficha técnica"| n_nsushi
+  n_nkaix -->|"PDV"| n_ncafe
+  n_nkaix -->|"PDV e previsão"| n_npad
+  n_nkaix -->|"vendas do dia"| n_caixa
+  n_nsoft -->|"constrói"| n_nkaix
+  n_saas -->|"vende por assinatura"| n_nkaix
+  n_nrot -->|"roteiriza"| n_nentr
+  n_nrot -->|"app e painel"| n_ndeliv
+  n_nrot -->|"repasses"| n_caixa
+  n_nsoft -->|"constrói"| n_nrot
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_oapi,n_gis,n_story,n_clean,n_ef,n_sig,n_rls,n_tests,n_shared,n_front,n_api,n_auth,n_ai,n_lic,n_status desta
+  class n_oapi,n_gis,n_story,n_clean,n_ef,n_sig,n_rls,n_tests,n_shared,n_front,n_api,n_auth,n_ai,n_lic,n_status,n_nkaix,n_nrot desta
 ```
 
 ## Blocos
@@ -146,6 +170,8 @@ flowchart LR
 | [IA: RAG + pgvector](#ai) | Local · futuro | Busca e assistente dentro dos sistemas (AM Projeta, aura-copilot). |
 | [aura-licensing](#lic) | Local · futuro | Cobrança por módulo dos sistemas AM. |
 | [aura-status](#status) | Local | Seu painel de repos, backup e Dependabot. |
+| [AM Kaixara (PDV e cardápio)](#nkaix) | Remoto · futuro | PDV, comandas, ordem de serviço, estoque, ficha técnica e engenharia de cardápio. Roda primeiro na loja e nos restaurantes do grupo. |
+| [AM Rotara (entregas)](#nrot) | Remoto · futuro | Pedidos, roteirização com PostGIS, app do entregador, prova de entrega e repasse semanal. Base da AM Entregas e do AM Delivery. |
 
 <a id="oapi"></a>
 
@@ -172,6 +198,7 @@ Mapas e geolocalização do AM Rotara. Lacuna já identificada nos cursos da Alu
 |---|---|---|---|
 | → envia para | [PostgreSQL](08-cnt.md#pg) | Containers, Kubernetes e infra como código | extensão |
 | → envia para | [Next.js + Aura Design System](10-app.md#front) | Aplicação: sistemas AM (Aura) | mapa |
+| → envia para | [AM Rotara (entregas)](10-app.md#nrot) | Aplicação: sistemas AM (Aura) | mapas |
 
 <a id="story"></a>
 
@@ -184,7 +211,7 @@ Vitrine dos componentes do aura-frontend-kit; vira demo pública e produto (temp
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Next.js + Aura Design System](10-app.md#front) | Aplicação: sistemas AM (Aura) | componentes |
-| → envia para | [Templates e código-fonte](15-prod.md#tmpl) | Produtos (o que você vende) | demo do template |
+| → envia para | [Templates e código-fonte](16-prod.md#tmpl) | Produtos (o que você vende) | demo do template |
 
 <a id="clean"></a>
 
@@ -308,7 +335,7 @@ Regras de negócio dos sistemas AM.
 | ← recebe de | [Seq (logs)](09-obs.md#seq) | Observabilidade | logs |
 | ← recebe de | [Mailpit](08-cnt.md#mailp) | Containers, Kubernetes e infra como código | SMTP de teste |
 | ← recebe de | [Kafka](08-cnt.md#kafka) | Containers, Kubernetes e infra como código | eventos |
-| ← recebe de | [API de NFS-e (ex.: Focus NFe)](17-emp.md#nfapi) | Pessoa física: impostos e finanças | IEmissorFiscal |
+| ← recebe de | [API de NFS-e (ex.: Focus NFe)](18-emp.md#nfapi) | Pessoa física: impostos e finanças | IEmissorFiscal |
 | ← recebe de | [E-mail transacional (Resend, SES…)](11-nuvem.md#tmail) | Nuvem, código e entrega | e-mails do sistema |
 | ← recebe de | [Armazenamento de arquivos (Blob/R2)](11-nuvem.md#blob) | Nuvem, código e entrega | arquivos |
 | ← recebe de | [OpenAPI + Scalar](10-app.md#oapi) | Aplicação: sistemas AM (Aura) | documenta |
@@ -356,8 +383,8 @@ Cobrança por módulo dos sistemas AM.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | libera módulos |
-| ← recebe de | [Pix Automático + gateway (ex.: Asaas)](18-venda.md#pixa) | Plataformas de venda e recebimento | cobrança recorrente |
-| ← recebe de | [Sistemas AM (SaaS)](15-prod.md#saas) | Produtos (o que você vende) | cobrança por módulo |
+| ← recebe de | [Pix Automático + gateway (ex.: Asaas)](19-venda.md#pixa) | Plataformas de venda e recebimento | cobrança recorrente |
+| ← recebe de | [Sistemas AM (SaaS)](16-prod.md#saas) | Produtos (o que você vende) | cobrança por módulo |
 
 <a id="status"></a>
 
@@ -372,6 +399,40 @@ Seu painel de repos, backup e Dependabot.
 | → envia para | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | Dependabot e repos |
 | → envia para | [Git + SSH + gh](04-lin.md#git) | Linux (Ubuntu no WSL2, Arch no 2º disco) | git status |
 | ← recebe de | [Dependabot + CodeQL](11-nuvem.md#dbot) | Nuvem, código e entrega | alertas |
+
+<a id="nkaix"></a>
+
+### AM Kaixara (PDV e cardápio)
+
+*Remoto · futuro*
+
+PDV, comandas, ordem de serviço, estoque, ficha técnica e engenharia de cardápio. Roda primeiro na loja e nos restaurantes do grupo.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Loja AMtech (assistência)](15-neg.md#nloja) | Negócios do grupo (Barbacena) | ordens de serviço |
+| → envia para | [Sushi (delivery)](15-neg.md#nsushi) | Negócios do grupo (Barbacena) | PDV e ficha técnica |
+| → envia para | [Cafeteria](15-neg.md#ncafe) | Negócios do grupo (Barbacena) | PDV |
+| → envia para | [Padaria + café da manhã + almoço](15-neg.md#npad) | Negócios do grupo (Barbacena) | PDV e previsão |
+| → envia para | [Caixa da Casa / AM Rendara](18-emp.md#caixa) | Pessoa física: impostos e finanças | vendas do dia |
+| ← recebe de | [AMtech Software (projetos e SaaS)](15-neg.md#nsoft) | Negócios do grupo (Barbacena) | constrói |
+| ← recebe de | [Sistemas AM (SaaS)](16-prod.md#saas) | Produtos (o que você vende) | vende por assinatura |
+
+<a id="nrot"></a>
+
+### AM Rotara (entregas)
+
+*Remoto · futuro*
+
+Pedidos, roteirização com PostGIS, app do entregador, prova de entrega e repasse semanal. Base da AM Entregas e do AM Delivery.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [AM Entregas (moto e carro)](15-neg.md#nentr) | Negócios do grupo (Barbacena) | roteiriza |
+| → envia para | [AM Delivery (várias empresas)](15-neg.md#ndeliv) | Negócios do grupo (Barbacena) | app e painel |
+| → envia para | [Caixa da Casa / AM Rendara](18-emp.md#caixa) | Pessoa física: impostos e finanças | repasses |
+| ← recebe de | [AMtech Software (projetos e SaaS)](15-neg.md#nsoft) | Negócios do grupo (Barbacena) | constrói |
+| ← recebe de | [PostGIS + MapLibre](10-app.md#gis) | Aplicação: sistemas AM (Aura) | mapas |
 
 ---
 

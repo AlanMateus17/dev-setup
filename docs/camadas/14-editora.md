@@ -209,7 +209,7 @@ Marca da editora usada nos livros, no seu CPF por enquanto. Vira empresa quando 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Registro de marca (INPI)](17-emp.md#inpi) | Pessoa física: impostos e finanças | registro de marca |
+| → envia para | [Registro de marca (INPI)](18-emp.md#inpi) | Pessoa física: impostos e finanças | registro de marca |
 | → envia para | [ISBN + código de barras (CBL)](14-editora.md#isbn) | Editora AMS Silva (produção de livros) | editora no ISBN |
 
 <a id="brepo"></a>
@@ -316,7 +316,7 @@ A cada mudança: compila e testa o código, confere gabaritos, revisa texto e li
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Livro Lógica e Máquina](15-prod.md#livro) | Produtos (o que você vende) | PDF, EPUB e impressão |
+| → envia para | [Livro Lógica e Máquina](16-prod.md#livro) | Produtos (o que você vende) | PDF, EPUB e impressão |
 | ← recebe de | [Seu modelo de criação](14-editora.md#modelo) | Editora AMS Silva (produção de livros) | regras conferidas |
 | ← recebe de | [Repositório do livro](14-editora.md#brepo) | Editora AMS Silva (produção de livros) | dispara |
 | ← recebe de | [Classe LaTeX do livro](14-editora.md#bcls) | Editora AMS Silva (produção de livros) | identidade visual |
@@ -416,7 +416,7 @@ Pelo menos 1 exemplar à Biblioteca Nacional até 30 dias após publicar (Lei 10
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [Livro Lógica e Máquina](15-prod.md#livro) | Produtos (o que você vende) | 1 exemplar |
+| ← recebe de | [Livro Lógica e Máquina](16-prod.md#livro) | Produtos (o que você vende) | 1 exemplar |
 
 <a id="kdp"></a>
 
@@ -428,8 +428,8 @@ Ebook com royalty de 35% ou 70% (no Brasil, 70% entre R$ 5,99 e R$ 31,99, com KD
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Carnê-leão (Receita Federal)](17-emp.md#nfse) | Pessoa física: impostos e finanças | carnê-leão (exterior) |
-| ← recebe de | [Livro Lógica e Máquina](15-prod.md#livro) | Produtos (o que você vende) | ebook e impresso |
+| → envia para | [Carnê-leão (Receita Federal)](18-emp.md#nfse) | Pessoa física: impostos e finanças | carnê-leão (exterior) |
+| ← recebe de | [Livro Lógica e Máquina](16-prod.md#livro) | Produtos (o que você vende) | ebook e impresso |
 
 <a id="pod"></a>
 
@@ -441,8 +441,8 @@ Livro impresso sem estoque; compare custo, prazo e cópia de prova.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Carnê-leão (Receita Federal)](17-emp.md#nfse) | Pessoa física: impostos e finanças | carnê-leão |
-| ← recebe de | [Livro Lógica e Máquina](15-prod.md#livro) | Produtos (o que você vende) | impresso |
+| → envia para | [Carnê-leão (Receita Federal)](18-emp.md#nfse) | Pessoa física: impostos e finanças | carnê-leão |
+| ← recebe de | [Livro Lógica e Máquina](16-prod.md#livro) | Produtos (o que você vende) | impresso |
 
 <a id="bkit"></a>
 
@@ -454,8 +454,8 @@ Tiragem limitada com capa dura, marcador e pôster, no modelo do VHSlins.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [Livro Lógica e Máquina](15-prod.md#livro) | Produtos (o que você vende) | tiragem especial |
-| ← recebe de | [Lucro por Venda (calculadora)](19-mkt.md#calc) | Marketing, automação e medição | preço e margem |
+| ← recebe de | [Livro Lógica e Máquina](16-prod.md#livro) | Produtos (o que você vende) | tiragem especial |
+| ← recebe de | [Lucro por Venda (calculadora)](20-mkt.md#calc) | Marketing, automação e medição | preço e margem |
 
 <a id="bcurso"></a>
 
@@ -467,11 +467,11 @@ Uma aula por seção na ordem do sumário, com voz clonada e tela.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Hotmart](18-venda.md#hotm) | Plataformas de venda e recebimento | venda |
+| → envia para | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | venda |
 | ← recebe de | [Exercícios em YAML](14-editora.md#exyaml) | Editora AMS Silva (produção de livros) | exercícios das aulas |
 | ← recebe de | [Voz clonada (ElevenLabs)](12-cont.md#voz) | Produção de conteúdo | narração |
 | ← recebe de | [DaVinci Resolve ou Kdenlive](12-cont.md#edit) | Produção de conteúdo | aulas |
-| ← recebe de | [Lucro por Venda (calculadora)](19-mkt.md#calc) | Marketing, automação e medição | preço e margem |
+| ← recebe de | [Lucro por Venda (calculadora)](20-mkt.md#calc) | Marketing, automação e medição | preço e margem |
 | ← recebe de | [Projeto do capítulo](14-editora.md#projcap) | Editora AMS Silva (produção de livros) | projeto das aulas |
 | ← recebe de | [Manim (animações)](14-editora.md#manim) | Editora AMS Silva (produção de livros) | animações |
 
@@ -485,8 +485,8 @@ Slides, planos de aula, avaliações e gabaritos; licença para escolas.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Sites para pequenas empresas](15-prod.md#sites) | Produtos (o que você vende) | licença para escolas |
-| ← recebe de | [Livro Lógica e Máquina](15-prod.md#livro) | Produtos (o que você vende) | material do professor |
+| → envia para | [Sites para pequenas empresas](16-prod.md#sites) | Produtos (o que você vende) | licença para escolas |
+| ← recebe de | [Livro Lógica e Máquina](16-prod.md#livro) | Produtos (o que você vende) | material do professor |
 
 <a id="trad"></a>
 
@@ -498,8 +498,8 @@ Tradução revisada por nativo; ebook e curso dublados.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Dublagem (YouTube + ElevenLabs)](19-mkt.md#dub) | Marketing, automação e medição | voz em outros idiomas |
-| ← recebe de | [Livro Lógica e Máquina](15-prod.md#livro) | Produtos (o que você vende) | outras línguas |
+| → envia para | [Dublagem (YouTube + ElevenLabs)](20-mkt.md#dub) | Marketing, automação e medição | voz em outros idiomas |
+| ← recebe de | [Livro Lógica e Máquina](16-prod.md#livro) | Produtos (o que você vende) | outras línguas |
 
 <a id="refs"></a>
 
@@ -701,4 +701,4 @@ Descrição de cada figura para o EPUB acessível; rascunho por IA, revisão sua
 
 ---
 
-[↑ Camada 15 · Produtos (o que você vende)](15-prod.md) · [↓ Camada 13 · Estudo e carreira](13-est.md)
+[↑ Camada 15 · Negócios do grupo (Barbacena)](15-neg.md) · [↓ Camada 13 · Estudo e carreira](13-est.md)

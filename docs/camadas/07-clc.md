@@ -157,7 +157,7 @@ Documentos, apresentações, planilhas e designs editáveis e compartilháveis. 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Caixa da Casa / AM Rendara](17-emp.md#caixa) | Pessoa física: impostos e finanças | app da família |
+| → envia para | [Caixa da Casa / AM Rendara](18-emp.md#caixa) | Pessoa física: impostos e finanças | app da família |
 | ← recebe de | [Claude (app)](06-chat.md#capp2) | Assistentes de IA (chat, pesquisa e estudo) | cria |
 
 <a id="resq"></a>
@@ -234,7 +234,7 @@ Já conectado. O Claude monta grupos, formulários e campanhas da newsletter.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [MailerLite](18-venda.md#mailer) | Plataformas de venda e recebimento | campanhas |
+| → envia para | [MailerLite](19-venda.md#mailer) | Plataformas de venda e recebimento | campanhas |
 
 <a id="cdev"></a>
 
@@ -260,7 +260,7 @@ Já conectado. Busca freelas e ajuda com propostas: renda extra com sites e sist
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Sites para pequenas empresas](15-prod.md#sites) | Produtos (o que você vende) | encontra clientes |
+| → envia para | [Sites para pequenas empresas](16-prod.md#sites) | Produtos (o que você vende) | encontra clientes |
 
 <a id="clov"></a>
 
@@ -272,7 +272,7 @@ Já conectados. Fora da sua stack, mas ótimos para validar antes de construir: 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | landing de validação |
+| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | landing de validação |
 
 <a id="cdup"></a>
 
@@ -294,9 +294,9 @@ Rotinas prontas de conteúdo, funil, SEO, propostas, cobrança e fechamento do m
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instagram](20-pub.md#ig) | Público e canais | conteúdo |
-| → envia para | [Hotmart](18-venda.md#hotm) | Plataformas de venda e recebimento | funil e lançamento |
-| → envia para | [Prospecção de parceiros](19-mkt.md#prosp) | Marketing, automação e medição | rascunho de propostas |
+| → envia para | [Instagram](21-pub.md#ig) | Público e canais | conteúdo |
+| → envia para | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | funil e lançamento |
+| → envia para | [Prospecção de parceiros](20-mkt.md#prosp) | Marketing, automação e medição | rascunho de propostas |
 
 <a id="peng"></a>
 
@@ -320,7 +320,7 @@ Demonstrativos e conciliação para a empresa; dados de empresas abertas para os
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Caixa da Casa / AM Rendara](17-emp.md#caixa) | Pessoa física: impostos e finanças | fechamento do mês |
+| → envia para | [Caixa da Casa / AM Rendara](18-emp.md#caixa) | Pessoa física: impostos e finanças | fechamento do mês |
 
 <a id="phst"></a>
 
@@ -332,7 +332,7 @@ Hostinger para os sites de clientes; Adobe e Cloudinary para editar e otimizar i
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Hostinger (clientes WP)](16-web.md#hostg) | Vitrine web (sites e domínio) | sites de clientes |
+| → envia para | [Hostinger (clientes WP)](17-web.md#hostg) | Vitrine web (sites e domínio) | sites de clientes |
 | → envia para | [DaVinci Resolve ou Kdenlive](12-cont.md#edit) | Produção de conteúdo | imagem e vídeo |
 
 <a id="ccf"></a>
@@ -357,8 +357,8 @@ Conectado. Palavras-chave, tendências, títulos e thumbnails para YouTube e Ins
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [YouTube](20-pub.md#yt) | Público e canais | tendências |
-| → envia para | [Prospecção de parceiros](19-mkt.md#prosp) | Marketing, automação e medição | canais semelhantes |
+| → envia para | [YouTube](21-pub.md#yt) | Público e canais | tendências |
+| → envia para | [Prospecção de parceiros](20-mkt.md#prosp) | Marketing, automação e medição | canais semelhantes |
 
 ---
 

@@ -31,6 +31,11 @@
    "ponte": "Cada produto nasce do conteúdo gravado, escrito ou programado."
   },
   {
+   "id": "neg",
+   "titulo": "Negócios do grupo (Barbacena)",
+   "ponte": "Os nove negócios físicos e de serviço usam os sistemas AM, a frota de entregas e o mesmo caixa de medição."
+  },
+  {
    "id": "editora",
    "titulo": "Editora AMS Silva (produção de livros)",
    "ponte": "Cada livro sai do pipeline como produto pronto para as plataformas e para a gráfica."
@@ -2468,6 +2473,168 @@
    "conta": false,
    "futuro": false,
    "descricao": "Descrição de cada figura para o EPUB acessível; rascunho por IA, revisão sua."
+  },
+  {
+   "id": "nsoft",
+   "camada": "neg",
+   "rotulo": "AMtech Software|(projetos e SaaS)",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Software sob encomenda, sites, manutenção e SaaS AM. Primeiro CNPJ do grupo (ME no Simples, Anexo III pelo Fator R). Ver docs/negocios/01."
+  },
+  {
+   "id": "nloja",
+   "camada": "neg",
+   "rotulo": "Loja AMtech|(assistência)",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Loja de 30 a 50 m² com bancada técnica, mostruário e balcão de pacotes. Une assistência, peças e ponto de retirada em um aluguel só."
+  },
+  {
+   "id": "npecas",
+   "camada": "neg",
+   "rotulo": "Peças sem estoque|(sob encomenda)",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Peças e acessórios comprados só depois do sinal do cliente ou enviados pelo fornecedor. A margem está no serviço, não na peça."
+  },
+  {
+   "id": "nponto",
+   "camada": "neg",
+   "rotulo": "Ponto de retirada|(Shopee e ML)",
+   "tipo": "fisico",
+   "conta": true,
+   "futuro": true,
+   "descricao": "Agência Shopee (R$ 0,70 a 0,60 por pacote nas primeiras faixas) e Agência Mercado Livre (valor na proposta). Rende pouco sozinho; o valor é o movimento na loja."
+  },
+  {
+   "id": "nmaker",
+   "camada": "neg",
+   "rotulo": "AMtech Maker|(robótica)",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Automação residencial, empresarial, rural e virtual, e kits de robótica educacional. Começa por serviço com aparelhos homologados; produto com rádio só depois da Anatel."
+  },
+  {
+   "id": "nentr",
+   "camada": "neg",
+   "rotulo": "AM Entregas|(moto e carro)",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Última milha em Barbacena: entregas para empresas, Flex dos vendedores locais, coleta para as agências e rotas fixas. Motofretistas pela Lei 12.009/2009."
+  },
+  {
+   "id": "nflex",
+   "camada": "neg",
+   "rotulo": "Mercado Envios Flex",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": true,
+   "descricao": "Entrega no mesmo dia dos vendedores do Mercado Livre da cidade, terceirizada para a AM Entregas e cobrada por pacote."
+  },
+  {
+   "id": "ndeliv",
+   "camada": "neg",
+   "rotulo": "AM Delivery|(várias empresas)",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": true,
+   "descricao": "App de pedidos de restaurantes e lojas da cidade com comissão de 8% e entrega pela AM Entregas. O lucro está na comissão, não na taxa de entrega."
+  },
+  {
+   "id": "nsushi",
+   "camada": "neg",
+   "rotulo": "Sushi (delivery)",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Delivery e retirada de quarta a domingo à noite, cardápio em torno do salmão com destino para filé, aparas e pele. Primeiro restaurante do grupo."
+  },
+  {
+   "id": "ncafe",
+   "camada": "neg",
+   "rotulo": "Cafeteria",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Cafés especiais de Minas, pão de queijo assado na hora e doces caseiros. Melhor dentro da padaria, onde o investimento cai para cerca de R$ 30 mil."
+  },
+  {
+   "id": "npad",
+   "camada": "neg",
+   "rotulo": "Padaria + café|da manhã + almoço",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Padaria de finalização com massa congelada, café da manhã mineiro, almoço por quilo, prato executivo do dia, marmitas e encomendas. Maior receita e maior capital do grupo."
+  },
+  {
+   "id": "ncnpj",
+   "camada": "neg",
+   "rotulo": "3 CNPJs por frente",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": true,
+   "descricao": "AMtech Tecnologia, AM Logística e AM Alimentação, cada um com os seus CNAEs, conta e caixa. Holding só quando houver patrimônio."
+  },
+  {
+   "id": "nplan",
+   "camada": "neg",
+   "rotulo": "Planejador do Grupo",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Artefato e motor tools/negocios/financas.py: investimento, ponto de equilíbrio, rampa, retorno e capital mínimo de cada negócio, com o mesmo cálculo."
+  },
+  {
+   "id": "nifood",
+   "camada": "neg",
+   "rotulo": "iFood (canal de|descoberta)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": true,
+   "descricao": "Usado para ser encontrado, não como canal principal: o plano Entrega cobra 23% + 3,2%. O canal próprio deixa o dobro de margem."
+  },
+  {
+   "id": "nvisa",
+   "camada": "neg",
+   "rotulo": "Vigilância sanitária|(RDC 216)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": true,
+   "descricao": "Alvará sanitário, Manual de Boas Práticas, POPs, curso dos manipuladores e controle de pragas. Em MG, o nível de risco define se há inspeção antes de abrir."
+  },
+  {
+   "id": "nanatel",
+   "camada": "neg",
+   "rotulo": "Anatel e Inmetro",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": true,
+   "descricao": "Homologação de produto próprio com Wi-Fi ou Bluetooth e, se o kit for brinquedo, certificação do Inmetro."
+  },
+  {
+   "id": "nkaix",
+   "camada": "app",
+   "rotulo": "AM Kaixara|(PDV e cardápio)",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": true,
+   "descricao": "PDV, comandas, ordem de serviço, estoque, ficha técnica e engenharia de cardápio. Roda primeiro na loja e nos restaurantes do grupo."
+  },
+  {
+   "id": "nrot",
+   "camada": "app",
+   "rotulo": "AM Rotara|(entregas)",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Pedidos, roteirização com PostGIS, app do entregador, prova de entrega e repasse semanal. Base da AM Entregas e do AM Delivery."
   }
  ],
  "conexoes": [
@@ -4705,6 +4872,176 @@
    "de": "tikz",
    "para": "manim",
    "rotulo": "pranchas animadas"
+  },
+  {
+   "de": "nsoft",
+   "para": "nkaix",
+   "rotulo": "constrói"
+  },
+  {
+   "de": "nsoft",
+   "para": "nrot",
+   "rotulo": "constrói"
+  },
+  {
+   "de": "sites",
+   "para": "nsoft",
+   "rotulo": "vira serviço da empresa"
+  },
+  {
+   "de": "saas",
+   "para": "nkaix",
+   "rotulo": "vende por assinatura"
+  },
+  {
+   "de": "nloja",
+   "para": "nponto",
+   "rotulo": "mesmo balcão"
+  },
+  {
+   "de": "npecas",
+   "para": "nloja",
+   "rotulo": "vendidas no balcão"
+  },
+  {
+   "de": "nmaker",
+   "para": "nloja",
+   "rotulo": "usa a bancada"
+  },
+  {
+   "de": "nanatel",
+   "para": "nmaker",
+   "rotulo": "homologação"
+  },
+  {
+   "de": "nponto",
+   "para": "nentr",
+   "rotulo": "vendedores da cidade"
+  },
+  {
+   "de": "nentr",
+   "para": "nflex",
+   "rotulo": "entrega o Flex"
+  },
+  {
+   "de": "nentr",
+   "para": "ndeliv",
+   "rotulo": "frota"
+  },
+  {
+   "de": "nrot",
+   "para": "nentr",
+   "rotulo": "roteiriza"
+  },
+  {
+   "de": "nrot",
+   "para": "ndeliv",
+   "rotulo": "app e painel"
+  },
+  {
+   "de": "gis",
+   "para": "nrot",
+   "rotulo": "mapas"
+  },
+  {
+   "de": "ndeliv",
+   "para": "nsushi",
+   "rotulo": "pedidos"
+  },
+  {
+   "de": "ndeliv",
+   "para": "ncafe",
+   "rotulo": "pedidos"
+  },
+  {
+   "de": "ndeliv",
+   "para": "npad",
+   "rotulo": "pedidos e marmitas"
+  },
+  {
+   "de": "npad",
+   "para": "ncafe",
+   "rotulo": "pães e doces"
+  },
+  {
+   "de": "nifood",
+   "para": "nsushi",
+   "rotulo": "pedidos de descoberta"
+  },
+  {
+   "de": "nkaix",
+   "para": "nloja",
+   "rotulo": "ordens de serviço"
+  },
+  {
+   "de": "nkaix",
+   "para": "nsushi",
+   "rotulo": "PDV e ficha técnica"
+  },
+  {
+   "de": "nkaix",
+   "para": "ncafe",
+   "rotulo": "PDV"
+  },
+  {
+   "de": "nkaix",
+   "para": "npad",
+   "rotulo": "PDV e previsão"
+  },
+  {
+   "de": "nvisa",
+   "para": "nsushi",
+   "rotulo": "alvará sanitário"
+  },
+  {
+   "de": "nvisa",
+   "para": "ncafe",
+   "rotulo": "alvará sanitário"
+  },
+  {
+   "de": "nvisa",
+   "para": "npad",
+   "rotulo": "alvará sanitário"
+  },
+  {
+   "de": "cnpj",
+   "para": "ncnpj",
+   "rotulo": "vira"
+  },
+  {
+   "de": "ncnpj",
+   "para": "nsoft",
+   "rotulo": "AMtech Tecnologia"
+  },
+  {
+   "de": "ncnpj",
+   "para": "nentr",
+   "rotulo": "AM Logística"
+  },
+  {
+   "de": "ncnpj",
+   "para": "nsushi",
+   "rotulo": "AM Alimentação"
+  },
+  {
+   "de": "nkaix",
+   "para": "caixa",
+   "rotulo": "vendas do dia"
+  },
+  {
+   "de": "nrot",
+   "para": "caixa",
+   "rotulo": "repasses"
+  },
+  {
+   "de": "caixa",
+   "para": "graf",
+   "rotulo": "DRE por negócio"
+  },
+  {
+   "de": "nplan",
+   "para": "ncnpj",
+   "rotulo": "portões entre fases"
   }
  ],
  "fluxos": [
@@ -5135,6 +5472,44 @@
     {
      "bloco": "bci",
      "descricao": "O pipeline confere tudo e monta o livro."
+    }
+   ]
+  },
+  {
+   "id": "negocio",
+   "titulo": "Abrir o próximo negócio",
+   "passos": [
+    {
+     "bloco": "nplan",
+     "descricao": "O planejador mostra investimento, rampa e capital mínimo do próximo negócio."
+    },
+    {
+     "bloco": "caixa",
+     "descricao": "O lucro do negócio anterior acumula o capital."
+    },
+    {
+     "bloco": "graf",
+     "descricao": "O painel confirma 3 meses seguidos acima do ponto de equilíbrio."
+    },
+    {
+     "bloco": "ncnpj",
+     "descricao": "O CNPJ da frente recebe os novos CNAEs ou nasce."
+    },
+    {
+     "bloco": "nvisa",
+     "descricao": "Licenças, bombeiros e vigilância sanitária antes de abrir."
+    },
+    {
+     "bloco": "nkaix",
+     "descricao": "O AM Kaixara entra com cardápio, fichas técnicas e estoque."
+    },
+    {
+     "bloco": "nrot",
+     "descricao": "O AM Rotara liga o delivery próprio e a frota."
+    },
+    {
+     "bloco": "nsushi",
+     "descricao": "A casa abre, e os números voltam para o painel."
     }
    ]
   }

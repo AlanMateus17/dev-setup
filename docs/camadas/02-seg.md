@@ -173,7 +173,7 @@ Cofre de todas as senhas das contas marcadas com o ponto dourado.
 |---|---|---|---|
 | → envia para | [App 2FA (celular)](02-seg.md#tfa) | Segurança e cofre | senha + 2FA de cada conta |
 | → envia para | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | senhas e tokens |
-| → envia para | [Hotmart](18-venda.md#hotm) | Plataformas de venda e recebimento | senhas |
+| → envia para | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | senhas |
 | → envia para | [Azure](11-nuvem.md#azure) | Nuvem, código e entrega | senhas |
 | ← recebe de | [Syncthing](04-lin.md#syncth) | Linux (Ubuntu no WSL2, Arch no 2º disco) | cofre de senhas |
 

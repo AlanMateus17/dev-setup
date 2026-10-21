@@ -260,7 +260,7 @@ Código, vault, ensino-ti e a org grupo-amtech-digital. É também o seu portfó
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [GitHub Actions](11-nuvem.md#gha) | Nuvem, código e entrega | dispara a cada push |
-| → envia para | [Recrutadores](20-pub.md#recr) | Público e canais | portfólio |
+| → envia para | [Recrutadores](21-pub.md#recr) | Público e canais | portfólio |
 | ← recebe de | [KeePassXC](02-seg.md#kee) | Segurança e cofre | senhas e tokens |
 | ← recebe de | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | Obsidian Git |
 | ← recebe de | [Git + SSH + gh](04-lin.md#git) | Linux (Ubuntu no WSL2, Arch no 2º disco) | push via SSH |
@@ -273,7 +273,7 @@ Código, vault, ensino-ti e a org grupo-amtech-digital. É também o seu portfó
 | ← recebe de | [Codex (OpenAI)](06-chat.md#codex) | Assistentes de IA (chat, pesquisa e estudo) | mesmos repos |
 | ← recebe de | [Agentes de código do Google](06-chat.md#gcode) | Assistentes de IA (chat, pesquisa e estudo) | mesmos repos |
 | ← recebe de | [aura-status](10-app.md#status) | Aplicação: sistemas AM (Aura) | Dependabot e repos |
-| ← recebe de | [Templates e código-fonte](15-prod.md#tmpl) | Produtos (o que você vende) | demo pública |
+| ← recebe de | [Templates e código-fonte](16-prod.md#tmpl) | Produtos (o que você vende) | demo pública |
 | ← recebe de | [Workstation com GPU](01-hw.md#ws) | Hardware | mesmos repositórios |
 | ← recebe de | [Repositório do livro](14-editora.md#brepo) | Editora AMS Silva (produção de livros) | hospedado |
 | ← recebe de | [Projeto do capítulo](14-editora.md#projcap) | Editora AMS Silva (produção de livros) | portfólio do aluno |
@@ -322,8 +322,8 @@ Hospeda site pessoal, blog e Catálogo do HTML.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | ← recebe de | [GitHub Actions](11-nuvem.md#gha) | Nuvem, código e entrega | publica sites |
-| ← recebe de | [Site pessoal + blog (Jekyll)](16-web.md#site) | Vitrine web (sites e domínio) | hospedado |
-| ← recebe de | [Catálogo do HTML](16-web.md#catal) | Vitrine web (sites e domínio) | hospedado |
+| ← recebe de | [Site pessoal + blog (Jekyll)](17-web.md#site) | Vitrine web (sites e domínio) | hospedado |
+| ← recebe de | [Catálogo do HTML](17-web.md#catal) | Vitrine web (sites e domínio) | hospedado |
 
 <a id="cf"></a>
 
@@ -338,9 +338,9 @@ DNS, HTTPS, proteção, hospedagem estática dos sites comerciais e redirecionam
 | ← recebe de | [Conector Cloudflare](07-clc.md#ccf) | Claude: recursos, conectores e plugins | DNS e Pages |
 | ← recebe de | [Terraform](08-cnt.md#tf) | Containers, Kubernetes e infra como código | DNS por código |
 | ← recebe de | [GitHub Actions](11-nuvem.md#gha) | Nuvem, código e entrega | publica Pages |
-| ← recebe de | [Domínio (Registro.br)](16-web.md#dom) | Vitrine web (sites e domínio) | nameservers |
-| ← recebe de | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | hospedado (Pages) |
-| ← recebe de | [Site Grupo AMtech](16-web.md#amsite) | Vitrine web (sites e domínio) | hospedado (Pages) |
+| ← recebe de | [Domínio (Registro.br)](17-web.md#dom) | Vitrine web (sites e domínio) | nameservers |
+| ← recebe de | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | hospedado (Pages) |
+| ← recebe de | [Site Grupo AMtech](17-web.md#amsite) | Vitrine web (sites e domínio) | hospedado (Pages) |
 
 <a id="vercel"></a>
 
@@ -372,7 +372,7 @@ Primeira nuvem para as APIs AM: App Service/Container Apps, PostgreSQL, Key Vaul
 | ← recebe de | [Terraform](08-cnt.md#tf) | Containers, Kubernetes e infra como código | cria recursos |
 | ← recebe de | [GitHub Actions](11-nuvem.md#gha) | Nuvem, código e entrega | deploy OIDC |
 | ← recebe de | [GHCR (imagens)](11-nuvem.md#ghcr) | Nuvem, código e entrega | imagem |
-| ← recebe de | [Sistemas AM (SaaS)](15-prod.md#saas) | Produtos (o que você vende) | roda na nuvem |
+| ← recebe de | [Sistemas AM (SaaS)](16-prod.md#saas) | Produtos (o que você vende) | roda na nuvem |
 
 <a id="aws"></a>
 

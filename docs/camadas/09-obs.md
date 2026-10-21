@@ -23,6 +23,9 @@ flowchart LR
     n_graf["Grafana"]
     n_aspire[".NET Aspire"]
   end
+  subgraph L_emp["Pessoa física: impostos e finanças"]
+    n_caixa["Caixa da Casa / AM Rendara"]
+  end
   subgraph L_web["Vitrine web (sites e domínio)"]
     n_inst["Instituto AMS"]
   end
@@ -46,6 +49,7 @@ flowchart LR
   n_api -->|"telemetria"| n_otel
   n_aspire -->|"painel de dev"| n_otel
   n_prom -->|"painéis"| n_graf
+  n_caixa -->|"DRE por negócio"| n_graf
   n_aspire -->|"sobe os serviços"| n_docker
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_sentry,n_kuma,n_seq,n_loki,n_otel,n_prom,n_graf,n_aspire desta
@@ -87,7 +91,7 @@ Verifica a cada minuto se os sites e APIs estão no ar e avisa no celular. Open 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | está no ar? |
+| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | está no ar? |
 | → envia para | [Celular](01-hw.md#cel) | Hardware | alerta |
 
 <a id="seq"></a>
@@ -153,6 +157,7 @@ Painéis e alertas.
 |---|---|---|---|
 | ← recebe de | [Loki + Tempo](09-obs.md#loki) | Observabilidade | consultas |
 | ← recebe de | [Prometheus](09-obs.md#prom) | Observabilidade | painéis |
+| ← recebe de | [Caixa da Casa / AM Rendara](18-emp.md#caixa) | Pessoa física: impostos e finanças | DRE por negócio |
 
 <a id="aspire"></a>
 

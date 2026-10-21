@@ -117,8 +117,8 @@ Edição de vídeo. Os dois têm versão grátis.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [YouTube](20-pub.md#yt) | Público e canais | vídeo final |
-| → envia para | [Mini-curso Lógica de Programação](15-prod.md#curso) | Produtos (o que você vende) | aulas editadas |
+| → envia para | [YouTube](21-pub.md#yt) | Público e canais | vídeo final |
+| → envia para | [Mini-curso Lógica de Programação](16-prod.md#curso) | Produtos (o que você vende) | aulas editadas |
 | → envia para | [Curso por seção](14-editora.md#bcurso) | Editora AMS Silva (produção de livros) | aulas |
 | ← recebe de | [Plugins: Hostinger · Adobe · Cloudinary](07-clc.md#phst) | Claude: recursos, conectores e plugins | imagem e vídeo |
 | ← recebe de | [OBS Studio](12-cont.md#obss) | Produção de conteúdo | gravação |
@@ -148,8 +148,8 @@ Capas, posts e thumbnails. Canva precisa de conta; Krita e Inkscape são open so
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instagram](20-pub.md#ig) | Público e canais | posts |
-| → envia para | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | capas |
+| → envia para | [Instagram](21-pub.md#ig) | Público e canais | posts |
+| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | capas |
 | → envia para | [Quadro de referências](14-editora.md#refs) | Editora AMS Silva (produção de livros) | rascunhos de ideia |
 | → envia para | [Filtro de licença e fichas](14-editora.md#licenca) | Editora AMS Silva (produção de livros) | ficha com prompt e ferramenta |
 | ← recebe de | [ChatGPT](06-chat.md#gpt) | Assistentes de IA (chat, pesquisa e estudo) | gera imagens |
@@ -179,7 +179,7 @@ Clonagem profissional da sua própria voz (plano Creator em diante, uso comercia
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [DaVinci Resolve ou Kdenlive](12-cont.md#edit) | Produção de conteúdo | narração |
-| → envia para | [Dublagem (YouTube + ElevenLabs)](19-mkt.md#dub) | Marketing, automação e medição | sua voz em outros idiomas |
+| → envia para | [Dublagem (YouTube + ElevenLabs)](20-mkt.md#dub) | Marketing, automação e medição | sua voz em outros idiomas |
 | → envia para | [Curso por seção](14-editora.md#bcurso) | Editora AMS Silva (produção de livros) | narração |
 | ← recebe de | [Workstation com GPU](01-hw.md#ws) | Hardware | voz e vídeo locais |
 | ← recebe de | [GPU na nuvem por hora](11-nuvem.md#gpuh) | Nuvem, código e entrega | modelos abertos |

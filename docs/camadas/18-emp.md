@@ -1,7 +1,7 @@
 <!-- Arquivo GERADO por tools/gerar_docs.py a partir de data/. Edite os dados, não este arquivo. -->
 
 
-# Camada 17 · Pessoa física: impostos e finanças
+# Camada 18 · Pessoa física: impostos e finanças
 
 [← Arquitetura](../arquitetura.md) · [Índice da documentação](../README.md)
 
@@ -44,6 +44,9 @@ flowchart LR
   subgraph L_prod["Produtos (o que você vende)"]
     n_sites["Sites para pequenas empresas"]
   end
+  subgraph L_neg["Negócios do grupo (Barbacena)"]
+    n_ncnpj["3 CNPJs por frente"]
+  end
   subgraph L_editora["Editora AMS Silva (produção de livros)"]
     n_kdp["Amazon KDP"]
     n_pod["Gráfica sob demanda (Brasil)"]
@@ -51,6 +54,11 @@ flowchart LR
   end
   subgraph L_app["Aplicação: sistemas AM (Aura)"]
     n_api["API ASP.NET Core"]
+    n_nkaix["AM Kaixara (PDV e cardápio)"]
+    n_nrot["AM Rotara (entregas)"]
+  end
+  subgraph L_obs["Observabilidade"]
+    n_graf["Grafana"]
   end
   subgraph L_clc["Claude: recursos, conectores e plugins"]
     n_arts["Artifacts (Docs, Slides, Sheets…)"]
@@ -65,6 +73,7 @@ flowchart LR
   n_cnpj -->|"acesso"| n_govbr
   n_cnpj -->|"titular"| n_banco
   n_cnpj -->|"titular do domínio"| n_dom
+  n_cnpj -->|"vira"| n_ncnpj
   n_govbr -->|"login"| n_nfse
   n_nfse -->|"importa"| n_irpf
   n_kiwi -->|"lança no carnê-leão"| n_nfse
@@ -83,8 +92,11 @@ flowchart LR
   n_pixa -->|"recebimento"| n_banco
   n_hotm -->|"saque"| n_banco
   n_mp -->|"saque"| n_banco
+  n_caixa -->|"DRE por negócio"| n_graf
   n_pfin -->|"fechamento do mês"| n_caixa
   n_arts -->|"app da família"| n_caixa
+  n_nkaix -->|"vendas do dia"| n_caixa
+  n_nrot -->|"repasses"| n_caixa
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_inpi,n_legal,n_ecnpj,n_nfapi,n_cnpj,n_govbr,n_nfse,n_irpf,n_banco,n_conta,n_caixa desta
 ```
@@ -115,7 +127,7 @@ Proteger AMtech, Instituto AMS e os nomes AM antes de investir na marca. Pode se
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [CNPJ (futuro)](17-emp.md#cnpj) | Pessoa física: impostos e finanças | titular da marca |
+| → envia para | [CNPJ (futuro)](18-emp.md#cnpj) | Pessoa física: impostos e finanças | titular da marca |
 | ← recebe de | [Selo Editora AMS Silva](14-editora.md#selo) | Editora AMS Silva (produção de livros) | registro de marca |
 
 <a id="legal"></a>
@@ -128,8 +140,8 @@ Termos de uso, política de privacidade nos sites e contrato padrão de serviço
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | termos e privacidade |
-| → envia para | [Sites para pequenas empresas](15-prod.md#sites) | Produtos (o que você vende) | contrato |
+| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | termos e privacidade |
+| → envia para | [Sites para pequenas empresas](16-prod.md#sites) | Produtos (o que você vende) | contrato |
 
 <a id="ecnpj"></a>
 
@@ -141,7 +153,7 @@ Só quando houver CNPJ: emissão de nota por API e assinatura de documentos da e
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API de NFS-e (ex.: Focus NFe)](17-emp.md#nfapi) | Pessoa física: impostos e finanças | autentica |
+| → envia para | [API de NFS-e (ex.: Focus NFe)](18-emp.md#nfapi) | Pessoa física: impostos e finanças | autentica |
 
 <a id="nfapi"></a>
 
@@ -154,7 +166,7 @@ Só quando houver CNPJ. Implementa o seu IEmissorFiscal: os sistemas AM emitem n
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | IEmissorFiscal |
-| ← recebe de | [Certificado digital (e-CNPJ)](17-emp.md#ecnpj) | Pessoa física: impostos e finanças | autentica |
+| ← recebe de | [Certificado digital (e-CNPJ)](18-emp.md#ecnpj) | Pessoa física: impostos e finanças | autentica |
 
 <a id="cnpj"></a>
 
@@ -166,10 +178,11 @@ Ainda não. Quando a renda crescer, MEI ou SLU. Até lá, tudo no seu CPF.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [gov.br (prata ou ouro)](17-emp.md#govbr) | Pessoa física: impostos e finanças | acesso |
-| → envia para | [Conta bancária separada (CPF)](17-emp.md#banco) | Pessoa física: impostos e finanças | titular |
-| → envia para | [Domínio (Registro.br)](16-web.md#dom) | Vitrine web (sites e domínio) | titular do domínio |
-| ← recebe de | [Registro de marca (INPI)](17-emp.md#inpi) | Pessoa física: impostos e finanças | titular da marca |
+| → envia para | [gov.br (prata ou ouro)](18-emp.md#govbr) | Pessoa física: impostos e finanças | acesso |
+| → envia para | [Conta bancária separada (CPF)](18-emp.md#banco) | Pessoa física: impostos e finanças | titular |
+| → envia para | [Domínio (Registro.br)](17-web.md#dom) | Vitrine web (sites e domínio) | titular do domínio |
+| → envia para | [3 CNPJs por frente](15-neg.md#ncnpj) | Negócios do grupo (Barbacena) | vira |
+| ← recebe de | [Registro de marca (INPI)](18-emp.md#inpi) | Pessoa física: impostos e finanças | titular da marca |
 
 <a id="govbr"></a>
 
@@ -181,8 +194,8 @@ Acesso ao carnê-leão online e à declaração do Imposto de Renda.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Carnê-leão (Receita Federal)](17-emp.md#nfse) | Pessoa física: impostos e finanças | login |
-| ← recebe de | [CNPJ (futuro)](17-emp.md#cnpj) | Pessoa física: impostos e finanças | acesso |
+| → envia para | [Carnê-leão (Receita Federal)](18-emp.md#nfse) | Pessoa física: impostos e finanças | login |
+| ← recebe de | [CNPJ (futuro)](18-emp.md#cnpj) | Pessoa física: impostos e finanças | acesso |
 
 <a id="nfse"></a>
 
@@ -194,15 +207,15 @@ Todo mês você lança o que recebeu de compradores (Hotmart, Kiwify, aulas, sit
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Declaração anual do IR](17-emp.md#irpf) | Pessoa física: impostos e finanças | importa |
-| ← recebe de | [Kiwify](18-venda.md#kiwi) | Plataformas de venda e recebimento | lança no carnê-leão |
-| ← recebe de | [Eduzz](18-venda.md#eduzz) | Plataformas de venda e recebimento | lança no carnê-leão |
-| ← recebe de | [Udemy](18-venda.md#udemy) | Plataformas de venda e recebimento | carnê-leão (exterior) |
-| ← recebe de | [Hotmart](18-venda.md#hotm) | Plataformas de venda e recebimento | lança no carnê-leão |
-| ← recebe de | [Mercado Pago](18-venda.md#mp) | Plataformas de venda e recebimento | lança no carnê-leão |
-| ← recebe de | [Contador](17-emp.md#conta) | Pessoa física: impostos e finanças | orienta impostos |
-| ← recebe de | [gov.br (prata ou ouro)](17-emp.md#govbr) | Pessoa física: impostos e finanças | login |
-| ← recebe de | [Banco de métricas (PostgreSQL)](19-mkt.md#metrics) | Marketing, automação e medição | base do carnê-leão |
+| → envia para | [Declaração anual do IR](18-emp.md#irpf) | Pessoa física: impostos e finanças | importa |
+| ← recebe de | [Kiwify](19-venda.md#kiwi) | Plataformas de venda e recebimento | lança no carnê-leão |
+| ← recebe de | [Eduzz](19-venda.md#eduzz) | Plataformas de venda e recebimento | lança no carnê-leão |
+| ← recebe de | [Udemy](19-venda.md#udemy) | Plataformas de venda e recebimento | carnê-leão (exterior) |
+| ← recebe de | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | lança no carnê-leão |
+| ← recebe de | [Mercado Pago](19-venda.md#mp) | Plataformas de venda e recebimento | lança no carnê-leão |
+| ← recebe de | [Contador](18-emp.md#conta) | Pessoa física: impostos e finanças | orienta impostos |
+| ← recebe de | [gov.br (prata ou ouro)](18-emp.md#govbr) | Pessoa física: impostos e finanças | login |
+| ← recebe de | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | base do carnê-leão |
 | ← recebe de | [Amazon KDP](14-editora.md#kdp) | Editora AMS Silva (produção de livros) | carnê-leão (exterior) |
 | ← recebe de | [Gráfica sob demanda (Brasil)](14-editora.md#pod) | Editora AMS Silva (produção de livros) | carnê-leão |
 
@@ -216,7 +229,7 @@ Os valores lançados no carnê-leão entram sozinhos na declaração.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [Carnê-leão (Receita Federal)](17-emp.md#nfse) | Pessoa física: impostos e finanças | importa |
+| ← recebe de | [Carnê-leão (Receita Federal)](18-emp.md#nfse) | Pessoa física: impostos e finanças | importa |
 
 <a id="banco"></a>
 
@@ -228,14 +241,14 @@ Uma conta só para receber vendas e serviços, separada do salário. Facilita o 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Caixa da Casa / AM Rendara](17-emp.md#caixa) | Pessoa física: impostos e finanças | extrato |
-| ← recebe de | [Kiwify](18-venda.md#kiwi) | Plataformas de venda e recebimento | saque |
-| ← recebe de | [Eduzz](18-venda.md#eduzz) | Plataformas de venda e recebimento | saque |
-| ← recebe de | [Udemy](18-venda.md#udemy) | Plataformas de venda e recebimento | PayPal ou Payoneer |
-| ← recebe de | [Pix Automático + gateway (ex.: Asaas)](18-venda.md#pixa) | Plataformas de venda e recebimento | recebimento |
-| ← recebe de | [Hotmart](18-venda.md#hotm) | Plataformas de venda e recebimento | saque |
-| ← recebe de | [Mercado Pago](18-venda.md#mp) | Plataformas de venda e recebimento | saque |
-| ← recebe de | [CNPJ (futuro)](17-emp.md#cnpj) | Pessoa física: impostos e finanças | titular |
+| → envia para | [Caixa da Casa / AM Rendara](18-emp.md#caixa) | Pessoa física: impostos e finanças | extrato |
+| ← recebe de | [Kiwify](19-venda.md#kiwi) | Plataformas de venda e recebimento | saque |
+| ← recebe de | [Eduzz](19-venda.md#eduzz) | Plataformas de venda e recebimento | saque |
+| ← recebe de | [Udemy](19-venda.md#udemy) | Plataformas de venda e recebimento | PayPal ou Payoneer |
+| ← recebe de | [Pix Automático + gateway (ex.: Asaas)](19-venda.md#pixa) | Plataformas de venda e recebimento | recebimento |
+| ← recebe de | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | saque |
+| ← recebe de | [Mercado Pago](19-venda.md#mp) | Plataformas de venda e recebimento | saque |
+| ← recebe de | [CNPJ (futuro)](18-emp.md#cnpj) | Pessoa física: impostos e finanças | titular |
 
 <a id="conta"></a>
 
@@ -247,7 +260,7 @@ Uma consulta para montar o carnê-leão do jeito certo e dizer a partir de que r
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Carnê-leão (Receita Federal)](17-emp.md#nfse) | Pessoa física: impostos e finanças | orienta impostos |
+| → envia para | [Carnê-leão (Receita Federal)](18-emp.md#nfse) | Pessoa física: impostos e finanças | orienta impostos |
 
 <a id="caixa"></a>
 
@@ -259,10 +272,13 @@ Controle financeiro pessoal e da empresa (seu sistema).
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
+| → envia para | [Grafana](09-obs.md#graf) | Observabilidade | DRE por negócio |
 | ← recebe de | [Plugins: finance + Fiscal.ai](07-clc.md#pfin) | Claude: recursos, conectores e plugins | fechamento do mês |
 | ← recebe de | [Artifacts (Docs, Slides, Sheets…)](07-clc.md#arts) | Claude: recursos, conectores e plugins | app da família |
-| ← recebe de | [Conta bancária separada (CPF)](17-emp.md#banco) | Pessoa física: impostos e finanças | extrato |
+| ← recebe de | [Conta bancária separada (CPF)](18-emp.md#banco) | Pessoa física: impostos e finanças | extrato |
+| ← recebe de | [AM Kaixara (PDV e cardápio)](10-app.md#nkaix) | Aplicação: sistemas AM (Aura) | vendas do dia |
+| ← recebe de | [AM Rotara (entregas)](10-app.md#nrot) | Aplicação: sistemas AM (Aura) | repasses |
 
 ---
 
-[↑ Camada 18 · Plataformas de venda e recebimento](18-venda.md) · [↓ Camada 16 · Vitrine web (sites e domínio)](16-web.md)
+[↑ Camada 19 · Plataformas de venda e recebimento](19-venda.md) · [↓ Camada 17 · Vitrine web (sites e domínio)](17-web.md)

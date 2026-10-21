@@ -1,7 +1,7 @@
 <!-- Arquivo GERADO por tools/gerar_docs.py a partir de data/. Edite os dados, não este arquivo. -->
 
 
-# Camada 20 · Público e canais
+# Camada 21 · Público e canais
 
 [← Arquitetura](../arquitetura.md) · [Índice da documentação](../README.md)
 
@@ -127,7 +127,7 @@ Agenda posts e reels do Instagram com antecedência e mostra as métricas. Grát
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instagram](20-pub.md#ig) | Público e canais | agenda posts |
+| → envia para | [Instagram](21-pub.md#ig) | Público e canais | agenda posts |
 
 <a id="ig"></a>
 
@@ -139,16 +139,16 @@ Canal principal de venda: posts, reels e link na bio para o Instituto AMS.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | link na bio |
-| → envia para | [WhatsApp Business](20-pub.md#wa) | Público e canais | contato direto |
+| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | link na bio |
+| → envia para | [WhatsApp Business](21-pub.md#wa) | Público e canais | contato direto |
 | ← recebe de | [Celular](01-hw.md#cel) | Hardware | posta reels |
 | ← recebe de | [ShareX](03-win.md#sharex) | Windows 11, apps e máquinas virtuais | GIFs e prints |
-| ← recebe de | [Meta Business Suite](20-pub.md#mbs) | Público e canais | agenda posts |
-| ← recebe de | [Meta Ads (Instagram, Facebook)](19-mkt.md#ads) | Marketing, automação e medição | alcance pago |
+| ← recebe de | [Meta Business Suite](21-pub.md#mbs) | Público e canais | agenda posts |
+| ← recebe de | [Meta Ads (Instagram, Facebook)](20-mkt.md#ads) | Marketing, automação e medição | alcance pago |
 | ← recebe de | [Plugins: small- business + marketing](07-clc.md#pbiz) | Claude: recursos, conectores e plugins | conteúdo |
 | ← recebe de | [Canva · Krita · Inkscape](12-cont.md#img) | Produção de conteúdo | posts |
-| ← recebe de | [Alunos e ex-alunos](20-pub.md#alunos) | Público e canais | seguem |
-| ← recebe de | [Postiz (agendador)](19-mkt.md#postiz) | Marketing, automação e medição | publica |
+| ← recebe de | [Alunos e ex-alunos](21-pub.md#alunos) | Público e canais | seguem |
+| ← recebe de | [Postiz (agendador)](20-mkt.md#postiz) | Marketing, automação e medição | publica |
 
 <a id="yt"></a>
 
@@ -160,14 +160,14 @@ Aulas e vídeos de vendas. Gera público para os cursos e para o livro.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [YouTube (membros)](18-venda.md#ytm) | Plataformas de venda e recebimento | membros |
-| → envia para | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | link na descrição |
+| → envia para | [YouTube (membros)](19-venda.md#ytm) | Plataformas de venda e recebimento | membros |
+| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | link na descrição |
 | ← recebe de | [Gemini (pago)](06-chat.md#gem) | Assistentes de IA (chat, pesquisa e estudo) | resume vídeos |
 | ← recebe de | [Conector vidIQ](07-clc.md#cvid) | Claude: recursos, conectores e plugins | tendências |
 | ← recebe de | [DaVinci Resolve ou Kdenlive](12-cont.md#edit) | Produção de conteúdo | vídeo final |
-| ← recebe de | [Postiz (agendador)](19-mkt.md#postiz) | Marketing, automação e medição | publica |
-| ← recebe de | [Dublagem (YouTube + ElevenLabs)](19-mkt.md#dub) | Marketing, automação e medição | faixas de áudio |
-| ← recebe de | [Spotify Ad Studio](19-mkt.md#spotads) | Marketing, automação e medição | lembrança da marca |
+| ← recebe de | [Postiz (agendador)](20-mkt.md#postiz) | Marketing, automação e medição | publica |
+| ← recebe de | [Dublagem (YouTube + ElevenLabs)](20-mkt.md#dub) | Marketing, automação e medição | faixas de áudio |
+| ← recebe de | [Spotify Ad Studio](20-mkt.md#spotads) | Marketing, automação e medição | lembrança da marca |
 
 <a id="li"></a>
 
@@ -179,10 +179,10 @@ Vitrine para a vaga de dev: projetos, posts técnicos e certificações.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Recrutadores](20-pub.md#recr) | Público e canais | perfil e posts |
-| → envia para | [Site pessoal + blog (Jekyll)](16-web.md#site) | Vitrine web (sites e domínio) | link |
+| → envia para | [Recrutadores](21-pub.md#recr) | Público e canais | perfil e posts |
+| → envia para | [Site pessoal + blog (Jekyll)](17-web.md#site) | Vitrine web (sites e domínio) | link |
 | ← recebe de | [Grok](06-chat.md#grok) | Assistentes de IA (chat, pesquisa e estudo) | tendências do setor |
-| ← recebe de | [Postiz (agendador)](19-mkt.md#postiz) | Marketing, automação e medição | publica |
+| ← recebe de | [Postiz (agendador)](20-mkt.md#postiz) | Marketing, automação e medição | publica |
 
 <a id="wa"></a>
 
@@ -194,9 +194,9 @@ Atendimento de alunos particulares e clientes de sites.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Aulas particulares](15-prod.md#aulas) | Produtos (o que você vende) | agenda |
+| → envia para | [Aulas particulares](16-prod.md#aulas) | Produtos (o que você vende) | agenda |
 | ← recebe de | [Celular](01-hw.md#cel) | Hardware | atendimento |
-| ← recebe de | [Instagram](20-pub.md#ig) | Público e canais | contato direto |
+| ← recebe de | [Instagram](21-pub.md#ig) | Público e canais | contato direto |
 
 <a id="seo"></a>
 
@@ -208,9 +208,9 @@ Pessoas chegando ao blog e aos sites pelos artigos.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Site pessoal + blog (Jekyll)](16-web.md#site) | Vitrine web (sites e domínio) | visitas |
-| → envia para | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | visitas |
-| ← recebe de | [Google Search Console](16-web.md#gsc) | Vitrine web (sites e domínio) | indexação |
+| → envia para | [Site pessoal + blog (Jekyll)](17-web.md#site) | Vitrine web (sites e domínio) | visitas |
+| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | visitas |
+| ← recebe de | [Google Search Console](17-web.md#gsc) | Vitrine web (sites e domínio) | indexação |
 
 <a id="alunos"></a>
 
@@ -222,8 +222,8 @@ Seu público inicial: alunos do EMTI, ex-alunos e contatos.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Catálogo do HTML](16-web.md#catal) | Vitrine web (sites e domínio) | usam o site |
-| → envia para | [Instagram](20-pub.md#ig) | Público e canais | seguem |
+| → envia para | [Catálogo do HTML](17-web.md#catal) | Vitrine web (sites e domínio) | usam o site |
+| → envia para | [Instagram](21-pub.md#ig) | Público e canais | seguem |
 
 <a id="recr"></a>
 
@@ -235,9 +235,9 @@ Quem decide a vaga de dev. Olham GitHub, LinkedIn e o site.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [LinkedIn](20-pub.md#li) | Público e canais | perfil e posts |
+| ← recebe de | [LinkedIn](21-pub.md#li) | Público e canais | perfil e posts |
 | ← recebe de | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | portfólio |
-| ← recebe de | [Site pessoal + blog (Jekyll)](16-web.md#site) | Vitrine web (sites e domínio) | currículo |
+| ← recebe de | [Site pessoal + blog (Jekyll)](17-web.md#site) | Vitrine web (sites e domínio) | currículo |
 
 <a id="tiktok"></a>
 
@@ -249,8 +249,8 @@ Cortes verticais diários. Conteúdo realista de IA precisa do rótulo de IA.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | link na bio |
-| ← recebe de | [Postiz (agendador)](19-mkt.md#postiz) | Marketing, automação e medição | publica |
+| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | link na bio |
+| ← recebe de | [Postiz (agendador)](20-mkt.md#postiz) | Marketing, automação e medição | publica |
 
 <a id="facebook"></a>
 
@@ -262,9 +262,9 @@ Reels e posts da página da marca; mesma conta de anúncios do Instagram.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instituto AMS](16-web.md#inst) | Vitrine web (sites e domínio) | link |
-| ← recebe de | [Postiz (agendador)](19-mkt.md#postiz) | Marketing, automação e medição | publica |
+| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | link |
+| ← recebe de | [Postiz (agendador)](20-mkt.md#postiz) | Marketing, automação e medição | publica |
 
 ---
 
-[↓ Camada 19 · Marketing, automação e medição](19-mkt.md)
+[↓ Camada 20 · Marketing, automação e medição](20-mkt.md)
