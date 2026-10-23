@@ -4,11 +4,13 @@
 
 [← Implantação](README.md)
 
-19 fases, 141 passos, cerca de **83 h 45 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+20 fases, 148 passos, cerca de **88 h 40 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
-**Cobertura:** os 322 blocos do [mapa do setup](../mapa.html) estão todos aqui: 235 entram nos passos, 9 são peças a construir, 3 não se instalam e 75 ficam para depois. O CI falha se um bloco novo do setup ficar fora do roteiro ([lista completa](#cobertura)).
+**Cobertura:** os 324 blocos do [mapa do setup](../mapa.html) estão todos aqui: 237 entram nos passos, 9 são peças a construir, 3 não se instalam e 75 ficam para depois. O CI falha se um bloco novo do setup ficar fora do roteiro ([lista completa](#cobertura)).
+
+**Dá para fazer hoje:** 135 dos 148 passos (75 h 30 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço ou ter um conteúdo seu pronto.
 
 | Fase | Objetivo | Passos | Tempo |
 |---|---|---:|---:|
@@ -18,19 +20,20 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [3 · GitHub e CI](#f3) | O repositório no ar, com testes automáticos verdes a cada envio e o trabalho organizado. | 5 | 55 min |
 | [4 · Agentes de IA](#f4) | O Claude Code trabalhando dentro da sandbox, com as suas regras, ferramentas e memória. | 7 | 2 h 27 min |
 | [5 · Backup e segurança](#f5) | Perder o notebook não faz você perder nada. | 4 | 1 h 45 min |
-| [6 · Claude e assistentes](#f6) | Cada recurso do Claude e cada assistente com um papel definido no setup. | 4 | 1 h 45 min |
-| [7 · Automação e medição](#f7) | n8n, banco de métricas, Grafana e Uptime Kuma rodando. | 7 | 57 min |
-| [8 · Pipeline de conteúdo](#f8) | Gravou ou escreveu, as peças aparecem na fila de aprovação. | 6 | 1 h 24 min |
-| [9 · Estúdio de conteúdo](#f9) | Gravar, editar e montar imagens no mesmo padrão toda semana, sem pensar. | 5 | 3 h 20 min |
-| [10 · Contas, canais e sites](#f10) | Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz. | 12 | 8 h 40 min |
-| [11 · Vendas e finanças no CPF](#f11) | Cada oferta pode ser vendida, recebida e declarada do jeito certo. | 20 | 12 h 10 min |
-| [12 · Vendas medidas](#f12) | Cada venda chega sozinha ao banco e aparece no painel de lucro. | 4 | 2 h 40 min |
-| [13 · Teste do núcleo](#f13) | Os três testes de ponta a ponta passam: daqui em diante, alimentar o sistema já faz tudo sozinho. | 4 | 1 h 00 min |
-| [14 · Base dos sistemas AM](#f14) | Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e deploy. | 7 | 5 h 40 min |
-| [15 · Nuvem e deploy](#f15) | As contas de nuvem criadas por código, com custo sob controle. | 7 | 6 h 15 min |
-| [16 · Editora](#f16) | O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão. | 8 | 8 h 30 min |
-| [17 · Dados, IA e pendrives](#f17) | O laboratório de dados e de treino no ar, um modelo seu rodando no Ollama e os pendrives de Kali e Arch dando boot. | 12 | 16 h 20 min |
-| [18 · Estudo contínuo](#f18) | As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém. | 4 | 1 h 25 min |
+| [6 · Acervo: tudo o que você já tem](#f6) | Todos os seus documentos convertidos em conhecimento organizado no Obsidian, os pessoais separados e a lista do que dá para vender. | 7 | 4 h 55 min |
+| [7 · Claude e assistentes](#f7) | Cada recurso do Claude e cada assistente com um papel definido no setup. | 4 | 1 h 45 min |
+| [8 · Automação e medição](#f8) | n8n, banco de métricas, Grafana e Uptime Kuma rodando. | 7 | 57 min |
+| [9 · Pipeline de conteúdo](#f9) | Gravou ou escreveu, as peças aparecem na fila de aprovação. | 6 | 1 h 24 min |
+| [10 · Estúdio de conteúdo](#f10) | Gravar, editar e montar imagens no mesmo padrão toda semana, sem pensar. | 5 | 3 h 20 min |
+| [11 · Contas, canais e sites](#f11) | Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz. | 12 | 8 h 40 min |
+| [12 · Vendas e finanças no CPF](#f12) | Cada oferta pode ser vendida, recebida e declarada do jeito certo. | 20 | 12 h 10 min |
+| [13 · Vendas medidas](#f13) | Cada venda chega sozinha ao banco e aparece no painel de lucro. | 4 | 2 h 40 min |
+| [14 · Teste do núcleo](#f14) | Os três testes de ponta a ponta passam: daqui em diante, alimentar o sistema já faz tudo sozinho. | 4 | 1 h 00 min |
+| [15 · Base dos sistemas AM](#f15) | Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e deploy. | 7 | 5 h 40 min |
+| [16 · Nuvem e deploy](#f16) | As contas de nuvem criadas por código, com custo sob controle. | 7 | 6 h 15 min |
+| [17 · Editora](#f17) | O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão. | 8 | 8 h 30 min |
+| [18 · Dados, IA e pendrives](#f18) | O laboratório de dados e de treino no ar, um modelo seu rodando no Ollama e os pendrives de Kali e Arch dando boot. | 12 | 16 h 20 min |
+| [19 · Estudo contínuo](#f19) | As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém. | 4 | 1 h 25 min |
 
 <a id="f0"></a>
 
@@ -51,6 +54,7 @@ Nada se perde, o hardware está no lugar e as contas estão protegidas antes de 
 
 - [ ] **Pronto quando:** Notebook no nobreak e na base, 2º monitor funcionando, disco e SSD externos reconhecidos
 - O que ainda não comprou fica anotado e não trava as próximas fases. O nobreak vem primeiro: protege o notebook e o backup de queda de energia.
+- **Precisa:** comprar algo
 - Implanta: Acer Nitro (32 GB, GTX 1650) · Nobreak · Base com cooler · 2º monitor · Disco externo · SSD externo (USB-C 10 Gbps) · Celular · Arduino · ESP32 · Pi
 
 ### 0.3 Atualizar o Windows, os drivers e o NitroSense
@@ -252,7 +256,12 @@ gh auth login && gh ssh-key add ~/.ssh/id_ed25519.pub --type authentication && g
 
 **Você** · 20 min
 
-- [ ] **Pronto quando:** Notas vão sozinhas para um repositório privado a cada 10 minutos
+```bash
+bash scripts/wsl/vault.sh
+```
+
+- [ ] **Pronto quando:** Cofre aberto no Obsidian com as pastas e modelos; notas vão sozinhas para um repositório privado a cada 10 minutos
+- No Obsidian do Windows, abra a pasta \\wsl.localhost\Ubuntu-24.04\home\SEU_USUARIO\dev\notas.
 - Implanta: Obsidian + Git
 
 ### 2.9 Ligar o Syncthing entre o celular e o notebook para as gravações (opcional)
@@ -437,18 +446,85 @@ restic -r /mnt/d/backup-restic init && restic -r /mnt/d/backup-restic backup ~/d
 
 <a id="f6"></a>
 
-## 6 · Claude e assistentes
+## 6 · Acervo: tudo o que você já tem
+
+Todos os seus documentos convertidos em conhecimento organizado no Obsidian, os pessoais separados e a lista do que dá para vender.
+
+### 6.1 Baixar uma cópia completa do Google Drive pelo Google Takeout
+
+**Você** · 45 min
+
+- [ ] **Pronto quando:** Os zips do Takeout extraídos numa pasta só, por exemplo C:\Users\SEU_USUARIO\Downloads\Takeout
+- Escolha só o Drive e, em formatos, Google Docs como .docx e Apresentações como .pptx. O Drive para computador mostra os Google Docs como atalhos sem conteúdo, por isso a primeira cópia vem do Takeout. Junte também os arquivos do notebook e dos pendrives na mesma pasta.
+- Implanta: Google Drive (seus documentos)
+
+### 6.2 Tirar da pasta os documentos pessoais (contracheques, extratos, IRPF, faturas)
+
+**Você** · 30 min
+
+- [ ] **Pronto quando:** Pasta Pessoal separada, guardada só no backup criptografado
+- O acervo.py também barra esses arquivos pelo nome e pelo conteúdo e lista o que achou, mas tirar antes é mais seguro.
+- Implanta: Backup 3-2-1
+
+### 6.3 Ver o que o acervo faria, sem escrever nada
+
+**Script** · 10 min
+
+```bash
+uv run tools/acervo/acervo.py --origem /mnt/c/Users/SEU_USUARIO/Downloads/Takeout --simular
+```
+
+- [ ] **Pronto quando:** Resumo com arquivos lidos, cópias repetidas, pessoais, de terceiros e da escola
+- Implanta: Acervo (seus documentos)
+
+### 6.4 Converter o acervo para o Obsidian e gerar o relatório de produtos
+
+**Script** · 30 min
+
+```bash
+uv run tools/acervo/acervo.py --origem /mnt/c/Users/SEU_USUARIO/Downloads/Takeout
+```
+
+- [ ] **Pronto quando:** 30-Acervo no Obsidian com os documentos em Markdown e 40-Produtos/Produtos do acervo.md
+- Roda no notebook; nada é enviado para fora. Pode rodar de novo quando chegarem documentos novos: o que já foi convertido não é refeito.
+- Implanta: Acervo (seus documentos) · Obsidian + Git
+
+### 6.5 Decidir cada alerta: dados de alunos, material de terceiros, material feito para a escola
+
+**Você** · 1 h 30 min
+
+- [ ] **Pronto quando:** Cada alerta com decisão anotada: apagar dados, só estudo, reescrever ou vender
+- Material de terceiros (livros, cursos) não vira produto nem treino de IA. Material feito para a escola: confira os direitos antes de vender; o caminho seguro é reescrever do zero, no seu tempo, sem a identidade da escola.
+- Implanta: Acervo (seus documentos)
+
+### 6.6 Indexar o acervo e as suas notas na base de conhecimento
+
+**Claude com você** · 30 min
+
+- [ ] **Pronto quando:** Pergunta sobre um documento antigo volta com a resposta e o arquivo de origem
+- Implanta: Base de conhecimento (RAG) das suas notas
+
+### 6.7 Escolher no relatório os 3 primeiros produtos e levar para o portfólio de ofertas
+
+**Claude com você** · 1 h 00 min
+
+- [ ] **Pronto quando:** 3 ofertas novas em data/portfolio.json com estágio, preço alvo e próximo passo
+- Implanta: Portfólio de ofertas · Esteira de ofertas
+
+<a id="f7"></a>
+
+## 7 · Claude e assistentes
 
 Cada recurso do Claude e cada assistente com um papel definido no setup.
 
-### 6.1 Organizar o app do Claude: um Project por frente, memória, artefatos, pesquisa e tarefas agendadas
+### 7.1 Organizar o app do Claude: um Project por frente, memória, artefatos, pesquisa e tarefas agendadas
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** Projects AMtech, Instituto, Editora e Setup criados; uma tarefa agendada de teste rodou
 - Implanta: Claude (app) · Projects + memória · Artifacts (Docs, Slides, Sheets…) · Pesquisa aprofundada · Tarefas agendadas
 
-### 6.2 Conferir os conectores: Google, Canva, Figma, MailerLite, Vercel, Microsoft Learn, Upwork, Lovable, Supabase, Cloudflare e vidIQ
+### 7.2 Conferir os conectores: Google, Canva, Figma, MailerLite, Vercel, Microsoft Learn, Upwork, Lovable, Supabase, Cloudflare e vidIQ
 
 **Você** · 30 min
 
@@ -456,27 +532,27 @@ Cada recurso do Claude e cada assistente com um papel definido no setup.
 - Notion, monday, GitBook e Stripe ficam de fora: repetem Obsidian, GitHub Projects, MkDocs e as plataformas de curso. Desconecte para não confundir.
 - Implanta: Conector Google (Gmail, Drive…) · Conectores Canva + Figma · Conector MailerLite · Vercel · AWS · Microsoft Learn · Conector Upwork · Lovable + Supabase · Conector Cloudflare · Conector vidIQ
 
-### 6.3 Ligar os plugins: small-business, marketing, engineering, design, finance, Hostinger, Adobe e Cloudinary
+### 7.3 Ligar os plugins: small-business, marketing, engineering, design, finance, Hostinger, Adobe e Cloudinary
 
 **Você** · 15 min
 
 - [ ] **Pronto quando:** Os comandos dos plugins aparecem no Claude
 - Implanta: Plugins: small- business + marketing · Plugins: engineering + design · Plugins: finance + Fiscal.ai · Plugins: Hostinger · Adobe · Cloudinary
 
-### 6.4 Entrar nos outros assistentes (ChatGPT, Gemini, Grok, DeepSeek, Perplexity, Codex, agentes do Google) e anotar quais são pagos
+### 7.4 Entrar nos outros assistentes (ChatGPT, Gemini, Grok, DeepSeek, Perplexity, Codex, agentes do Google) e anotar quais são pagos
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** Acessos no KeePassXC e assinaturas pagas lançadas na tabela ferramentas do banco de métricas
 - Implanta: ChatGPT · Gemini (pago) · Grok · DeepSeek · Perplexity · Codex (OpenAI) · Agentes de código do Google
 
-<a id="f7"></a>
+<a id="f8"></a>
 
-## 7 · Automação e medição
+## 8 · Automação e medição
 
 n8n, banco de métricas, Grafana e Uptime Kuma rodando.
 
-### 7.1 Gerar as senhas da stack e guardar no KeePassXC
+### 8.1 Gerar as senhas da stack e guardar no KeePassXC
 
 **Script** · 5 min
 
@@ -487,7 +563,7 @@ cd infra/automacao && bash gerar-senhas.sh
 - [ ] **Pronto quando:** .env criado com permissão 600
 - Implanta: n8n
 
-### 7.2 Subir a stack
+### 8.2 Subir a stack
 
 **Script** · 10 min
 
@@ -498,7 +574,7 @@ cd infra/automacao && docker compose up -d
 - [ ] **Pronto quando:** 'docker compose ps' com todos healthy
 - Implanta: Docker + Compose · n8n · Banco de métricas (PostgreSQL) · PostgreSQL
 
-### 7.3 Conferir os serviços
+### 8.3 Conferir os serviços
 
 **Script** · 2 min
 
@@ -509,7 +585,7 @@ bash scripts/wsl/verificar.sh --servicos
 - [ ] **Pronto quando:** verificar.sh --servicos sem FALTA na área servico
 - Implanta: Verificadores
 
-### 7.4 Entrar no Grafana (admin) e ver a fonte 'Métricas AMtech' conectada
+### 8.4 Entrar no Grafana (admin) e ver a fonte 'Métricas AMtech' conectada
 
 **Você** · 10 min
 
@@ -520,7 +596,7 @@ http://localhost:3001
 - [ ] **Pronto quando:** Explore > Métricas AMtech > 'select 1' responde
 - Implanta: Grafana
 
-### 7.5 Criar a conta do n8n
+### 8.5 Criar a conta do n8n
 
 **Você** · 5 min
 
@@ -531,7 +607,7 @@ http://localhost:5678
 - [ ] **Pronto quando:** Painel do n8n abre
 - Implanta: n8n
 
-### 7.6 Cadastrar no Uptime Kuma os monitores do n8n, Grafana e dos sites
+### 8.6 Cadastrar no Uptime Kuma os monitores do n8n, Grafana e dos sites
 
 **Você** · 15 min
 
@@ -542,20 +618,20 @@ http://localhost:3002
 - [ ] **Pronto quando:** Monitores verdes; aviso no Telegram configurado
 - Implanta: Uptime Kuma
 
-### 7.7 Decidir: Postiz agora ou agendador nativo das redes
+### 8.7 Decidir: Postiz agora ou agendador nativo das redes
 
 **Você** · 10 min
 
 - [ ] **Pronto quando:** Decisão anotada em infra/postiz/README.md
 - Implanta: Postiz (agendador)
 
-<a id="f8"></a>
+<a id="f9"></a>
 
-## 8 · Pipeline de conteúdo
+## 9 · Pipeline de conteúdo
 
 Gravou ou escreveu, as peças aparecem na fila de aprovação.
 
-### 8.1 Preencher o guia de marca
+### 9.1 Preencher o guia de marca
 
 **Você** · 40 min
 
@@ -563,7 +639,7 @@ Gravou ou escreveu, as peças aparecem na fila de aprovação.
 - O Claude pode rascunhar a partir dos documentos de marca e presença; você corrige.
 - Implanta: Marca pessoal Alan Mateus
 
-### 8.2 Criar a chave da API no console da Anthropic e colocar no conteudo.env
+### 9.2 Criar a chave da API no console da Anthropic e colocar no conteudo.env
 
 **Você** · 10 min
 
@@ -571,14 +647,14 @@ Gravou ou escreveu, as peças aparecem na fila de aprovação.
 - A API é cobrada por uso, separada da assinatura do Claude. Defina um limite de gasto mensal no console.
 - Implanta: Claude (assinatura e API)
 
-### 8.3 Criar o bot de aviso no Telegram (opcional)
+### 9.3 Criar o bot de aviso no Telegram (opcional)
 
 **Você** · 10 min
 
 - [ ] **Pronto quando:** Mensagem de teste chega no celular
 - Implanta: Telegram (avisos) · Aprovação no celular
 
-### 8.4 Testar o caminho sem gastar
+### 9.4 Testar o caminho sem gastar
 
 **Script** · 2 min
 
@@ -589,7 +665,7 @@ echo teste > ~/AMtech/entrada/ideias/teste.txt && touch -d '-2 min' ~/AMtech/ent
 - [ ] **Pronto quando:** Uma pasta [SIMULADO] aparece em ~/AMtech/fila
 - Implanta: Pipeline de conteúdo
 
-### 8.5 Ligar o timer de 15 minutos
+### 9.5 Ligar o timer de 15 minutos
 
 **Script** · 2 min
 
@@ -600,41 +676,41 @@ bash scripts/wsl/ativar-pipeline.sh
 - [ ] **Pronto quando:** verificar.sh --servicos mostra o timer OK
 - Implanta: Pipeline de conteúdo · Agente editor de conteúdo · Flywheel de conteúdo
 
-### 8.6 Colocar uma aula gravada de verdade em ~/AMtech/entrada/aulas
+### 9.6 Colocar uma aula gravada de verdade em ~/AMtech/entrada/aulas
 
 **Você** · 20 min
 
 - [ ] **Pronto quando:** Peças da aula na fila em até 15 minutos depois de transcrita
 - Implanta: Whisper (local) · Flywheel de conteúdo
 
-<a id="f9"></a>
+<a id="f10"></a>
 
-## 9 · Estúdio de conteúdo
+## 10 · Estúdio de conteúdo
 
 Gravar, editar e montar imagens no mesmo padrão toda semana, sem pensar.
 
-### 9.1 Montar no OBS as cenas de aula, tela com rosto e vídeo vertical
+### 10.1 Montar no OBS as cenas de aula, tela com rosto e vídeo vertical
 
 **Você** · 40 min
 
 - [ ] **Pronto quando:** Gravação de teste de 1 minuto com áudio limpo nas três cenas
 - Implanta: OBS Studio
 
-### 9.2 Criar no Audacity a cadeia de limpeza da sua voz (ruído, compressor, volume)
+### 10.2 Criar no Audacity a cadeia de limpeza da sua voz (ruído, compressor, volume)
 
 **Você** · 20 min
 
 - [ ] **Pronto quando:** A mesma limpeza aplicada com um clique numa gravação nova
 - Implanta: Audacity
 
-### 9.3 Criar no DaVinci ou Kdenlive o projeto modelo com abertura, legendas e formato vertical
+### 10.3 Criar no DaVinci ou Kdenlive o projeto modelo com abertura, legendas e formato vertical
 
 **Você** · 40 min
 
 - [ ] **Pronto quando:** Um corte de 30 segundos exportado a partir do modelo
 - Implanta: DaVinci Resolve ou Kdenlive
 
-### 9.4 Criar os modelos de capa, carrossel e thumbnail com a sua marca (Canva, Krita ou Inkscape)
+### 10.4 Criar os modelos de capa, carrossel e thumbnail com a sua marca (Canva, Krita ou Inkscape)
 
 **Claude com você** · 40 min
 
@@ -642,56 +718,59 @@ Gravar, editar e montar imagens no mesmo padrão toda semana, sem pensar.
 - O Claude cria os modelos no Canva pelo conector, a partir do config/marca.md.
 - Implanta: Canva · Krita · Inkscape · Conectores Canva + Figma
 
-### 9.5 Clonar a sua própria voz na ElevenLabs (opcional, plano pago)
+### 10.5 Clonar a sua própria voz na ElevenLabs (opcional, plano pago)
 
 **Você** · 1 h 00 min
 
 - [ ] **Pronto quando:** Trecho de teste com a sua voz clonada aprovado por você
 - Só a sua voz, com 30 minutos ou mais de áudio limpo. Avise o público quando a voz for gerada por IA. Voz de outra pessoa, nunca.
+- **Precisa:** pagar um serviço
 - Implanta: Voz clonada (ElevenLabs)
 
-<a id="f10"></a>
+<a id="f11"></a>
 
-## 10 · Contas, canais e sites
+## 11 · Contas, canais e sites
 
 Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 
-### 10.1 Completar Instagram, YouTube, TikTok, LinkedIn e Facebook com a mesma identidade
+### 11.1 Completar Instagram, YouTube, TikTok, LinkedIn e Facebook com a mesma identidade
 
 **Você** · 1 h 30 min
 
 - [ ] **Pronto quando:** Foto, nome, bio e link iguais nas cinco redes
 - Implanta: Instagram · YouTube · TikTok · LinkedIn · Facebook · Marca pessoal Alan Mateus
 
-### 10.2 Configurar o WhatsApp Business com catálogo, respostas rápidas e horário
+### 11.2 Configurar o WhatsApp Business com catálogo, respostas rápidas e horário
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** Mensagem de teste recebe a saudação automática
 - Implanta: WhatsApp Business
 
-### 10.3 Registrar o domínio no Registro.br e apontar para a Cloudflare
+### 11.3 Registrar o domínio no Registro.br e apontar para a Cloudflare
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** DNS ativo na Cloudflare
+- **Precisa:** pagar um serviço
 - Implanta: Domínio (Registro.br) · Cloudflare (DNS, Pages, e-mail)
 
-### 10.4 Criar o e-mail profissional do domínio
+### 11.4 Criar o e-mail profissional do domínio
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** Envia e recebe
+- **Precisa:** pagar um serviço
 - Implanta: E-mail profissional (enviar e receber)
 
-### 10.5 Criar o Gerenciador de Negócios da Meta, o Pixel e a conta de anúncios
+### 11.5 Criar o Gerenciador de Negócios da Meta, o Pixel e a conta de anúncios
 
 **Você** · 40 min
 
 - [ ] **Pronto quando:** Pixel instalado na página de vendas
 - Implanta: Meta Business Suite · Tags de conversão (Pixel, Google…)
 
-### 10.6 Montar no MailerLite os grupos, o formulário da isca e a sequência de boas-vindas
+### 11.6 Montar no MailerLite os grupos, o formulário da isca e a sequência de boas-vindas
 
 **Claude com você** · 30 min
 
@@ -699,14 +778,14 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 - O Claude faz pelo conector do MailerLite, com a sua aprovação.
 - Implanta: MailerLite · Isca grátis + sequência de e-mails · Conector MailerLite
 
-### 10.7 Publicar o site pessoal e blog no GitHub Pages (alanmateus17.github.io)
+### 11.7 Publicar o site pessoal e blog no GitHub Pages (alanmateus17.github.io)
 
 **Claude com você** · 1 h 00 min
 
 - [ ] **Pronto quando:** Site no ar com portfólio, blog e formulário da newsletter
 - Implanta: Site pessoal + blog (Jekyll) · GitHub Pages
 
-### 10.8 Publicar o site do Instituto AMS com a página de pré-venda na Cloudflare Pages
+### 11.8 Publicar o site do Instituto AMS com a página de pré-venda na Cloudflare Pages
 
 **Claude com você** · 1 h 00 min
 
@@ -714,28 +793,28 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 - Fica na Cloudflare Pages porque o plano grátis do Vercel não permite uso comercial. O Claude publica pelo conector da Cloudflare ou pelo Wrangler.
 - Implanta: Instituto AMS · Cloudflare (DNS, Pages, e-mail)
 
-### 10.9 Publicar o site do Grupo AMtech e o Catálogo do HTML
+### 11.9 Publicar o site do Grupo AMtech e o Catálogo do HTML
 
 **Claude com você** · 1 h 30 min
 
 - [ ] **Pronto quando:** Os dois sites no ar com domínio e HTTPS
 - Implanta: Site Grupo AMtech · Catálogo do HTML
 
-### 10.10 Ligar o Umami nos sites
+### 11.10 Ligar o Umami nos sites
 
 **Claude com você** · 20 min
 
 - [ ] **Pronto quando:** Uma visita de teste aparece no painel do Umami
 - Implanta: Umami (analytics)
 
-### 10.11 Ligar o Google Search Console no domínio e enviar o sitemap de cada site
+### 11.11 Ligar o Google Search Console no domínio e enviar o sitemap de cada site
 
 **Você** · 10 min
 
 - [ ] **Pronto quando:** Propriedade verificada e sitemaps lidos
 - Implanta: Google Search Console · Busca Google (SEO)
 
-### 10.12 Separar na Hostinger o espaço dos sites de clientes
+### 11.12 Separar na Hostinger o espaço dos sites de clientes
 
 **Claude com você** · 30 min
 
@@ -743,34 +822,35 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 - O Claude faz a auditoria pelo plugin da Hostinger e aponta o que precisa de atenção.
 - Implanta: Hostinger (clientes WP) · Sites para pequenas empresas
 
-<a id="f11"></a>
+<a id="f12"></a>
 
-## 11 · Vendas e finanças no CPF
+## 12 · Vendas e finanças no CPF
 
 Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 
-### 11.1 Subir a conta gov.br para prata ou ouro
+### 12.1 Subir a conta gov.br para prata ou ouro
 
 **Você** · 20 min
 
 - [ ] **Pronto quando:** Nível prata ou ouro aparece no app gov.br
 - Implanta: gov.br (prata ou ouro)
 
-### 11.2 Abrir a conta bancária separada para o que você vende (no CPF)
+### 12.2 Abrir a conta bancária separada para o que você vende (no CPF)
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** Conta aberta; todas as plataformas vão pagar nela
 - Implanta: Conta bancária separada (CPF)
 
-### 11.3 Fazer a consulta com o contador: carnê-leão e a partir de que renda abrir CNPJ
+### 12.3 Fazer a consulta com o contador: carnê-leão e a partir de que renda abrir CNPJ
 
 **Você** · 1 h 00 min
 
 - [ ] **Pronto quando:** Regras do carnê-leão anotadas e o valor de virada para o CNPJ definido
+- **Precisa:** pagar um serviço
 - Implanta: Contador
 
-### 11.4 Publicar termos de uso e política de privacidade (LGPD) e ter o contrato padrão de serviço
+### 12.4 Publicar termos de uso e política de privacidade (LGPD) e ter o contrato padrão de serviço
 
 **Claude com você** · 1 h 00 min
 
@@ -778,14 +858,14 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 - O Claude rascunha; antes de usar, peça para o contador ou um advogado revisar. Isto vem antes de coletar e-mail ou vender.
 - Implanta: Termos, privacidade (LGPD) e contratos
 
-### 11.5 Criar as contas da Hotmart e da Kiwify no CPF e cadastrar o mini-curso
+### 12.5 Criar as contas da Hotmart e da Kiwify no CPF e cadastrar o mini-curso
 
 **Você** · 1 h 00 min
 
 - [ ] **Pronto quando:** Produto em rascunho nas duas
 - Implanta: Hotmart · Kiwify · Mini-curso Lógica de Programação
 
-### 11.6 Abrir as contas na Eduzz e na Udemy e publicar artigos e projetos na DIO
+### 12.6 Abrir as contas na Eduzz e na Udemy e publicar artigos e projetos na DIO
 
 **Você** · 1 h 00 min
 
@@ -793,56 +873,56 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 - Na Udemy o recebimento é por PayPal ou Payoneer e vai para o carnê-leão como renda do exterior.
 - Implanta: Eduzz · Udemy · DIO (parceria)
 
-### 11.7 Ativar o Mercado Pago para Pix e cartão das aulas e dos sites
+### 12.7 Ativar o Mercado Pago para Pix e cartão das aulas e dos sites
 
 **Você** · 20 min
 
 - [ ] **Pronto quando:** Link de pagamento de teste pago e estornado
 - Implanta: Mercado Pago
 
-### 11.8 Criar a agenda online no Cal.com com pagamento para as aulas particulares
+### 12.8 Criar a agenda online no Cal.com com pagamento para as aulas particulares
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** Horário de teste marcado e cobrado
 - Implanta: Agenda online (Cal.com) · Aulas particulares
 
-### 11.9 Criar o CRM em planilha com origem e consentimento de cada cliente
+### 12.9 Criar o CRM em planilha com origem e consentimento de cada cliente
 
 **Claude com você** · 30 min
 
 - [ ] **Pronto quando:** Planilha com colunas de oferta, origem, consentimento LGPD e próximo passo
 - Implanta: CRM simples (planilha) · CRM único + LGPD
 
-### 11.10 Abrir a comunidade dos alunos (Discord ou grupo)
+### 12.10 Abrir a comunidade dos alunos (Discord ou grupo)
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** Regras publicadas e convite automático na compra
 - Implanta: Comunidade (Discord ou grupo)
 
-### 11.11 Entrar nos programas de afiliados (Amazon, Hotmart) e criar a lista de links
+### 12.11 Entrar nos programas de afiliados (Amazon, Hotmart) e criar a lista de links
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** Links de afiliado com UTM numa nota do Obsidian
 - Implanta: Afiliados (Amazon, Hotmart…)
 
-### 11.12 Adotar o padrão de UTM em todo link
+### 12.12 Adotar o padrão de UTM em todo link
 
 **Claude com você** · 15 min
 
 - [ ] **Pronto quando:** Gerador de links com UTM salvo e usado no primeiro post
 - Implanta: Padrão de UTM
 
-### 11.13 Calcular o lucro por venda de cada oferta e definir as regras de corte dos anúncios
+### 12.13 Calcular o lucro por venda de cada oferta e definir as regras de corte dos anúncios
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** CPA de empate e CPA da margem anotados para cada oferta ativa
 - Implanta: Lucro por Venda (calculadora) · Regras de corte
 
-### 11.14 Revisar o portfólio de ofertas: estágio, próximo passo e padrão de qualidade
+### 12.14 Revisar o portfólio de ofertas: estágio, próximo passo e padrão de qualidade
 
 **Claude com você** · 45 min
 
@@ -850,14 +930,14 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 - O Claude cria o comando /revisar-oferta, que confere um lançamento contra o padrão de qualidade antes de ir ao ar.
 - Implanta: Portfólio de ofertas · Esteira de ofertas · Padrão de qualidade · Revisor de oferta
 
-### 11.15 Ligar a pergunta de satisfação depois de cada compra ou serviço e o pedido de avaliação no Google
+### 12.15 Ligar a pergunta de satisfação depois de cada compra ou serviço e o pedido de avaliação no Google
 
 **Claude com você** · 30 min
 
 - [ ] **Pronto quando:** Compra de teste recebe a pergunta por e-mail
 - Implanta: NPS e avaliações
 
-### 11.16 Montar a lista de parceiros e a primeira mensagem de prospecção
+### 12.16 Montar a lista de parceiros e a primeira mensagem de prospecção
 
 **Claude com você** · 45 min
 
@@ -865,49 +945,51 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 - O Claude busca e qualifica; quem envia é você.
 - Implanta: Prospecção de parceiros
 
-### 11.17 Pesquisar e pedir o registro das marcas no INPI
+### 12.17 Pesquisar e pedir o registro das marcas no INPI
 
 **Você** · 1 h 00 min
 
 - [ ] **Pronto quando:** Pesquisa sem conflito e pedido protocolado (ou decisão de esperar, anotada)
+- **Precisa:** pagar um serviço
 - Implanta: Registro de marca (INPI)
 
-### 11.18 Fazer o primeiro carnê-leão do mês e marcar o lembrete mensal
+### 12.18 Fazer o primeiro carnê-leão do mês e marcar o lembrete mensal
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** DARF gerado (ou mês sem receita registrado) e lembrete todo dia 20
 - Implanta: Carnê-leão (Receita Federal)
 
-### 11.19 Separar a pasta da declaração anual do IR
+### 12.19 Separar a pasta da declaração anual do IR
 
 **Você** · 15 min
 
 - [ ] **Pronto quando:** Pasta com informes e carnês do ano, guardada no backup
 - Implanta: Declaração anual do IR
 
-### 11.20 Começar o Caixa da Casa numa planilha até o sistema AM Rendara existir
+### 12.20 Começar o Caixa da Casa numa planilha até o sistema AM Rendara existir
 
 **Claude com você** · 30 min
 
 - [ ] **Pronto quando:** Entradas e saídas do mês lançadas, separando casa e vendas
 - Implanta: Caixa da Casa / AM Rendara
 
-<a id="f12"></a>
+<a id="f13"></a>
 
-## 12 · Vendas medidas
+## 13 · Vendas medidas
 
 Cada venda chega sozinha ao banco e aparece no painel de lucro.
 
-### 12.1 Criar o túnel público para os webhooks (Cloudflare Tunnel) e preencher N8N_WEBHOOK_URL
+### 13.1 Criar o túnel público para os webhooks (Cloudflare Tunnel) e preencher N8N_WEBHOOK_URL
 
 **Você** · 40 min
 
 - [ ] **Pronto quando:** https://n8n.seu-dominio responde fora de casa
 - Só o caminho de webhook precisa ficar público; o painel do n8n fica protegido.
+- **Precisa:** pagar um serviço
 - Implanta: Cloudflare (DNS, Pages, e-mail) · Webhooks de venda
 
-### 12.2 Criar no n8n o fluxo: webhook Hotmart, Kiwify e Eduzz → tabela vendas
+### 13.2 Criar no n8n o fluxo: webhook Hotmart, Kiwify e Eduzz → tabela vendas
 
 **Claude com você** · 1 h 00 min
 
@@ -915,61 +997,61 @@ Cada venda chega sozinha ao banco e aparece no painel de lucro.
 - O Claude monta o fluxo com você no n8n; a tabela já tem a trava contra venda duplicada.
 - Implanta: Webhooks de venda
 
-### 12.3 Lançar os gastos de anúncio (manual no começo, depois pela API de cada rede)
+### 13.3 Lançar os gastos de anúncio (manual no começo, depois pela API de cada rede)
 
 **Você** · 15 min
 
 - [ ] **Pronto quando:** Tabela gastos com a primeira campanha
 - Implanta: Banco de métricas (PostgreSQL)
 
-### 12.4 Montar o painel de lucro no Grafana sobre a view lucro_por_produto_mes
+### 13.4 Montar o painel de lucro no Grafana sobre a view lucro_por_produto_mes
 
 **Claude com você** · 45 min
 
 - [ ] **Pronto quando:** Painel mostra receita, anúncio, lucro e CPA por produto
 - Implanta: Painel de lucro (Grafana) · Grafana
 
-<a id="f13"></a>
+<a id="f14"></a>
 
-## 13 · Teste do núcleo
+## 14 · Teste do núcleo
 
 Os três testes de ponta a ponta passam: daqui em diante, alimentar o sistema já faz tudo sozinho.
 
-### 13.1 Dev: mudar algo num repositório, commit assinado, push, CI verde
+### 14.1 Dev: mudar algo num repositório, commit assinado, push, CI verde
 
 **Você** · 15 min
 
 - [ ] **Pronto quando:** Selo Verified no commit e CI verde
 - Implanta: Commits assinados (chave SSH) · GitHub Actions
 
-### 13.2 Conteúdo: arquivo na entrada → peças na fila → aviso no Telegram
+### 14.2 Conteúdo: arquivo na entrada → peças na fila → aviso no Telegram
 
 **Você** · 20 min
 
 - [ ] **Pronto quando:** Pasta nova na fila e mensagem no celular
 - Implanta: Pipeline de conteúdo
 
-### 13.3 Venda: compra de teste na Hotmart → linha na tabela vendas → painel de lucro
+### 14.3 Venda: compra de teste na Hotmart → linha na tabela vendas → painel de lucro
 
 **Você** · 20 min
 
 - [ ] **Pronto quando:** Venda de teste no Grafana
 - Implanta: Webhooks de venda · Painel de lucro (Grafana)
 
-### 13.4 Rodar os três verificadores juntos
+### 14.4 Rodar os três verificadores juntos
 
 **Script** · 5 min
 
 - [ ] **Pronto quando:** verificar.ps1, verificar.sh e verificar.sh --servicos sem FALTA
 - Implanta: Verificadores · Roteiro de implantação
 
-<a id="f14"></a>
+<a id="f15"></a>
 
-## 14 · Base dos sistemas AM
+## 15 · Base dos sistemas AM
 
 Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e deploy.
 
-### 14.1 Gerar o modelo de sistema com /novo-sistema-aura
+### 15.1 Gerar o modelo de sistema com /novo-sistema-aura
 
 **Claude com você** · 2 h 00 min
 
@@ -977,28 +1059,28 @@ Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e depl
 - Clean Architecture + DDD, EF Core com Npgsql, multi-tenant com RLS, SignalR com Redis, OpenAPI com Scalar, Next.js com o Aura Design System e Storybook, testes com xUnit, Playwright e k6.
 - Implanta: Clean Arch + DDD · EF Core + Npgsql · SignalR · Multi-tenant (RLS) · API ASP.NET Core · Next.js + Aura Design System · OpenAPI + Scalar · Storybook · PostgreSQL · Redis · Testes: xUnit, Playwright, k6
 
-### 14.2 Ligar o login: Keycloak no dev e Entra ID na nuvem
+### 15.2 Ligar o login: Keycloak no dev e Entra ID na nuvem
 
 **Claude com você** · 1 h 00 min
 
 - [ ] **Pronto quando:** Usuário de teste entra e só vê os dados da própria empresa
 - Implanta: Keycloak / Entra ID
 
-### 14.3 Ligar a observabilidade do dev: .NET Aspire, OpenTelemetry, Prometheus, Seq, Mailpit e Caddy
+### 15.3 Ligar a observabilidade do dev: .NET Aspire, OpenTelemetry, Prometheus, Seq, Mailpit e Caddy
 
 **Claude com você** · 1 h 00 min
 
 - [ ] **Pronto quando:** Painel do Aspire mostra trace de uma requisição; e-mail de teste cai no Mailpit
 - Implanta: .NET Aspire · OpenTelemetry · Prometheus · Seq (logs) · Mailpit · Caddy (proxy + HTTPS)
 
-### 14.4 Criar o projeto no Sentry e ligar no modelo
+### 15.4 Criar o projeto no Sentry e ligar no modelo
 
 **Você** · 20 min
 
 - [ ] **Pronto quando:** Erro de teste aparece no Sentry
 - Implanta: Sentry (erros)
 
-### 14.5 Ligar o SonarQube Cloud no repositório do modelo
+### 15.5 Ligar o SonarQube Cloud no repositório do modelo
 
 **Você** · 20 min
 
@@ -1006,27 +1088,27 @@ Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e depl
 - O plano grátis cobre repositório público; confira o limite para privado antes de ligar.
 - Implanta: SonarQube Cloud
 
-### 14.6 Publicar a imagem Docker da API no GHCR pelo CI
+### 15.6 Publicar a imagem Docker da API no GHCR pelo CI
 
 **Claude com você** · 30 min
 
 - [ ] **Pronto quando:** Imagem com a tag do commit aparece nos pacotes do GitHub
 - Implanta: GHCR (imagens)
 
-### 14.7 Separar o que do modelo pode virar template à venda
+### 15.7 Separar o que do modelo pode virar template à venda
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** Lista de templates no portfólio de ofertas
 - Implanta: Templates e código-fonte
 
-<a id="f15"></a>
+<a id="f16"></a>
 
-## 15 · Nuvem e deploy
+## 16 · Nuvem e deploy
 
 As contas de nuvem criadas por código, com custo sob controle.
 
-### 15.1 Instalar Azure CLI, Terraform, Vercel CLI e Wrangler
+### 16.1 Instalar Azure CLI, Terraform, Vercel CLI e Wrangler
 
 **Script** · 15 min
 
@@ -1037,7 +1119,7 @@ bash scripts/wsl/nuvem.sh
 - [ ] **Pronto quando:** Termina com 'Pronto'; verificar.sh mostra as quatro ferramentas
 - Implanta: Azure CLI · AWS CLI · Terraform
 
-### 15.2 Criar a conta Azure com alerta de orçamento
+### 16.2 Criar a conta Azure com alerta de orçamento
 
 **Você** · 30 min
 
@@ -1045,111 +1127,116 @@ bash scripts/wsl/nuvem.sh
 - Ligue o alerta antes de criar qualquer recurso. O Microsoft Learn do conector ajuda a escolher o serviço mais barato.
 - Implanta: Azure
 
-### 15.3 Criar com Terraform o grupo de recursos, o banco e o Key Vault do primeiro sistema
+### 16.3 Criar com Terraform o grupo de recursos, o banco e o Key Vault do primeiro sistema
 
 **Claude com você** · 1 h 30 min
 
 - [ ] **Pronto quando:** 'terraform plan' sem diferenças depois do apply
 - Implanta: Terraform · Azure
 
-### 15.4 Criar o armazenamento de arquivos (R2 da Cloudflare ou Blob)
+### 16.4 Criar o armazenamento de arquivos (R2 da Cloudflare ou Blob)
 
 **Claude com você** · 30 min
 
 - [ ] **Pronto quando:** Upload de teste pelo sistema exemplo
 - Implanta: Armazenamento de arquivos (Blob/R2)
 
-### 15.5 Configurar o e-mail transacional (Resend) com o domínio verificado
+### 16.5 Configurar o e-mail transacional (Resend) com o domínio verificado
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** E-mail de confirmação de conta chega na caixa de entrada, não no spam
 - Implanta: E-mail transacional (Resend, SES…)
 
-### 15.6 Fazer o primeiro deploy do sistema exemplo
+### 16.6 Fazer o primeiro deploy do sistema exemplo
 
 **Claude com você** · 1 h 00 min
 
 - [ ] **Pronto quando:** Sistema no ar com HTTPS, login e erro de teste no Sentry
 - Implanta: Vercel · Azure · Cloudflare (DNS, Pages, e-mail)
 
-### 15.7 Criar o aura-status: painel de repositórios, backup e Dependabot
+### 16.7 Criar o aura-status: painel de repositórios, backup e Dependabot
 
 **Claude com você** · 2 h 00 min
 
 - [ ] **Pronto quando:** Painel mostra o estado de todos os repositórios
 - Implanta: aura-status
 
-<a id="f16"></a>
+<a id="f17"></a>
 
-## 16 · Editora
+## 17 · Editora
 
 O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.
 
-### 16.1 Entregar o seu modelo de criação e o seu método passo a passo
+### 17.1 Entregar o seu modelo de criação e o seu método passo a passo
 
 **Você** · 2 h 00 min
 
 - [ ] **Pronto quando:** metodo.yaml com cada etapa, entrada, saída e critério de conclusão; template de capítulo pronto
 - Implanta: Seu modelo de criação · Seu método (metodo.yaml) · Projeto do capítulo · Mapa de pré-requisitos
 
-### 16.2 Criar o repositório do livro com fonte única, classe LaTeX, exercícios em YAML e CI
+### 17.2 Criar o repositório do livro com fonte única, classe LaTeX, exercícios em YAML e CI
 
 **Claude com você** · 2 h 00 min
 
 - [ ] **Pronto quando:** Um push gera PDF, EPUB e o gabarito sem erro
 - Depende do capítulo 1 e do seu modelo. O conteúdo é seu; nada de material de terceiros.
+- **Precisa:** conteúdo seu pronto (livro, capítulo)
 - Implanta: Repositório do livro · Fonte única (Markdown + Pandoc) · Classe LaTeX do livro · Exercícios em YAML · Pipeline do livro (CI) · Revisão automática (LanguageTool, Vale) · Errata e edições · Livro Lógica e Máquina
 
-### 16.3 Montar a matriz de editais e o quadro de referências
+### 17.3 Montar a matriz de editais e o quadro de referências
 
 **Claude com você** · 1 h 00 min
 
 - [ ] **Pronto quando:** Cada tópico dos editais ligado a um capítulo; lacunas listadas
 - Implanta: Matriz de editais · Quadro de referências
 
-### 16.4 Definir o selo Editora AMS Silva (nome, logo e uso no CPF)
+### 17.4 Definir o selo Editora AMS Silva (nome, logo e uso no CPF)
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** Logo aprovado e aplicado na classe LaTeX
 - Implanta: Selo Editora AMS Silva
 
-### 16.5 Comprar os ISBNs na CBL e pedir a ficha catalográfica
+### 17.5 Comprar os ISBNs na CBL e pedir a ficha catalográfica
 
 **Você** · 1 h 00 min
 
 - [ ] **Pronto quando:** ISBN do impresso e do ebook, código de barras e ficha no verso da folha de rosto
+- **Precisa:** pagar um serviço, conteúdo seu pronto (livro, capítulo)
 - Implanta: ISBN + código de barras (CBL) · Ficha catalográfica
 
-### 16.6 Escolher 3 a 5 leitores beta e um revisor técnico
+### 17.6 Escolher 3 a 5 leitores beta e um revisor técnico
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** Nomes confirmados e formulário de retorno pronto
+- **Precisa:** conteúdo seu pronto (livro, capítulo)
 - Implanta: Leitores beta e revisão técnica
 
-### 16.7 Criar a conta no Amazon KDP e cadastrar o livro em rascunho
+### 17.7 Criar a conta no Amazon KDP e cadastrar o livro em rascunho
 
 **Você** · 1 h 00 min
 
 - [ ] **Pronto quando:** Livro em rascunho com capa, preço e prévia conferida
+- **Precisa:** conteúdo seu pronto (livro, capítulo)
 - Implanta: Amazon KDP
 
-### 16.8 Enviar o depósito legal à Biblioteca Nacional até 30 dias depois de publicar
+### 17.8 Enviar o depósito legal à Biblioteca Nacional até 30 dias depois de publicar
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** Comprovante de envio guardado
+- **Precisa:** conteúdo seu pronto (livro, capítulo)
 - Implanta: Depósito legal
 
-<a id="f17"></a>
+<a id="f18"></a>
 
-## 17 · Dados, IA e pendrives
+## 18 · Dados, IA e pendrives
 
 O laboratório de dados e de treino no ar, um modelo seu rodando no Ollama e os pendrives de Kali e Arch dando boot.
 
-### 17.1 Gravar o pendrive do Kali com persistência criptografada
+### 18.1 Gravar o pendrive do Kali com persistência criptografada
 
 **Você** · 1 h 30 min
 
@@ -1161,15 +1248,16 @@ winget install --id Rufus.Rufus -e
 - Siga kali.org/docs/usb. Antes do primeiro boot: suspenda o BitLocker, desligue o Secure Boot e, ao voltar ao Windows, religue o Secure Boot e reative o BitLocker (veja Secure Boot e BitLocker no mapa). Só contra alvos seus ou autorizados.
 - Implanta: Pendrive Kali (persistência) · Rufus (grava pendrives)
 
-### 17.2 Instalar o Arch num pendrive rápido ou SSD USB, pelo guia oficial
+### 18.2 Instalar o Arch num pendrive rápido ou SSD USB, pelo guia oficial
 
 **Você** · 3 h 00 min
 
 - [ ] **Pronto quando:** O Arch portátil dá boot e abre o terminal com os seus dotfiles
 - Use um pendrive para a ISO e outro (64 GB ou mais, USB 3) ou um SSD USB como disco do sistema. Mesmo cuidado com Secure Boot e BitLocker.
+- **Precisa:** comprar algo
 - Implanta: Pendrive Arch (instalação portátil)
 
-### 17.3 Conferir a GPU dentro do Ubuntu
+### 18.3 Conferir a GPU dentro do Ubuntu
 
 **Script** · 5 min
 
@@ -1180,7 +1268,7 @@ nvidia-smi
 - [ ] **Pronto quando:** Aparece a GTX 1650 com o driver do Windows
 - Implanta: PyTorch + CUDA (WSL2)
 
-### 17.4 Montar o laboratório de dados e de IA
+### 18.4 Montar o laboratório de dados e de IA
 
 **Script** · 30 min
 
@@ -1191,7 +1279,7 @@ bash scripts/wsl/lab-ia.sh
 - [ ] **Pronto quando:** Termina com 'Pronto' e mostra a GPU vista pelo PyTorch
 - Implanta: Python de dados (Polars, Jupyter) · DuckDB + Parquet · Spark (PySpark) · PyTorch + CUDA (WSL2) · MLflow (experimentos) · llama.cpp (GGUF)
 
-### 17.5 Rodar um modelo 8B no Ollama com parte na GPU
+### 18.5 Rodar um modelo 8B no Ollama com parte na GPU
 
 **Você** · 15 min
 
@@ -1203,7 +1291,7 @@ ollama run llama3.1:8b
 - Mais lento que um 3B ou 4B, que cabem inteiros na placa. Use o 8B quando a qualidade importar mais que a velocidade.
 - Implanta: Modelos locais: Qwen · Gemma · Llama · Ollama
 
-### 17.6 Fazer o Data Engineering Zoomcamp e os cursos de IA, um módulo por semana
+### 18.6 Fazer o Data Engineering Zoomcamp e os cursos de IA, um módulo por semana
 
 **Você** · 1 h 00 min
 
@@ -1211,21 +1299,21 @@ ollama run llama3.1:8b
 - O tempo é só para começar; o curso leva 10 semanas. Para a IA vão as suas anotações, nunca o material do curso.
 - Implanta: Zoomcamp de dados + cursos de IA
 
-### 17.7 Criar o projeto dbt sobre o banco de métricas
+### 18.7 Criar o projeto dbt sobre o banco de métricas
 
 **Claude com você** · 1 h 30 min
 
 - [ ] **Pronto quando:** 'dbt build' verde e o painel de lucro lendo os modelos
 - Implanta: dbt Core
 
-### 17.8 Subir o Airflow e agendar o dbt todo dia
+### 18.8 Subir o Airflow e agendar o dbt todo dia
 
 **Claude com você** · 1 h 30 min
 
 - [ ] **Pronto quando:** A rotina diária aparece verde no Airflow por 3 dias seguidos
 - Implanta: Airflow (orquestração)
 
-### 17.9 Criar as contas do Hugging Face e do Kaggle (e do RunPod, só se precisar)
+### 18.9 Criar as contas do Hugging Face e do Kaggle (e do RunPod, só se precisar)
 
 **Você** · 30 min
 
@@ -1233,7 +1321,7 @@ ollama run llama3.1:8b
 - No RunPod, só crédito pré-pago. Nunca ponha token em notebook público.
 - Implanta: Hugging Face (modelos e Hub) · Kaggle · Colab (GPU grátis) · GPU por hora (RunPod e afins)
 
-### 17.10 Montar o primeiro dataset só com conteúdo seu
+### 18.10 Montar o primeiro dataset só com conteúdo seu
 
 **Claude com você** · 2 h 00 min
 
@@ -1241,41 +1329,41 @@ ollama run llama3.1:8b
 - Fontes: suas notas, exercícios, livro e aulas que você gravou. Nada de cursos de terceiros; nada de dados de alunos sem consentimento.
 - Implanta: Seus datasets (só conteúdo seu) · Avaliação dos modelos
 
-### 17.11 Primeiro fine-tuning QLoRA de um 8B no Kaggle
+### 18.11 Primeiro fine-tuning QLoRA de um 8B no Kaggle
 
 **Claude com você** · 3 h 00 min
 
 - [ ] **Pronto quando:** Adaptador salvo no Hugging Face privado e o treino registrado no MLflow
 - Implanta: Unsloth (QLoRA) · Kaggle · Colab (GPU grátis)
 
-### 17.12 Avaliar contra o modelo base e levar o seu modelo para o Ollama
+### 18.12 Avaliar contra o modelo base e levar o seu modelo para o Ollama
 
 **Claude com você** · 1 h 30 min
 
 - [ ] **Pronto quando:** O seu modelo ganha do base no conjunto de teste e responde no Ollama do notebook
 - Implanta: Avaliação dos modelos · llama.cpp (GGUF) · Ollama
 
-<a id="f18"></a>
+<a id="f19"></a>
 
-## 18 · Estudo contínuo
+## 19 · Estudo contínuo
 
 As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 
-### 18.1 Pedir o GitHub Education como professor e ligar o Copilot
+### 19.1 Pedir o GitHub Education como professor e ligar o Copilot
 
 **Você** · 20 min
 
 - [ ] **Pronto quando:** Benefícios aprovados e Copilot ativo no VS Code
 - Implanta: GitHub Education · GitHub Copilot
 
-### 18.2 Montar as trilhas: Microsoft Learn, AWS Skill Builder, roadmap.sh e laboratórios do TryHackMe
+### 19.2 Montar as trilhas: Microsoft Learn, AWS Skill Builder, roadmap.sh e laboratórios do TryHackMe
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** Uma trilha de cada em andamento, anotada no Obsidian
 - Implanta: Microsoft Learn + AWS Skill Builder · roadmap.sh + Akita · TryHackMe / Hack The Box
 
-### 18.3 Organizar as contas de aluno (Alura, Rocketseat, DIO, Udemy)
+### 19.3 Organizar as contas de aluno (Alura, Rocketseat, DIO, Udemy)
 
 **Você** · 15 min
 
@@ -1283,7 +1371,7 @@ As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 - A licença é para assistir e estudar. Para a IA vão só as suas anotações e os seus projetos.
 - Implanta: Alura · Rocketseat · DIO · Udemy
 
-### 18.4 Criar os baralhos do Anki (comandos, conceitos, certificações, concurso)
+### 19.4 Criar os baralhos do Anki (comandos, conceitos, certificações, concurso)
 
 **Você** · 20 min
 

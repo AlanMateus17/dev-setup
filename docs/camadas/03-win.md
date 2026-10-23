@@ -40,6 +40,7 @@ flowchart LR
     n_rufus["Rufus (grava pendrives)"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
+    n_acv["Acervo (seus documentos)"]
     n_overif["Verificadores"]
   end
   subgraph L_pub["Público e canais"]
@@ -167,6 +168,7 @@ flowchart LR
   n_syncth -->|"vault"| n_obsd
   n_cdup -->|"substituídos pelo Obsidian"| n_obsd
   n_thm -->|"writeups"| n_obsd
+  n_acv -->|"Markdown no cofre"| n_obsd
   n_syncth -->|"sincroniza"| n_nas
   n_syncth -->|"cofre de senhas"| n_kee
   n_cel -->|"gravações do celular"| n_syncth
@@ -439,6 +441,7 @@ Vault de estudo, roteiros e planejamento.
 | ← recebe de | [Syncthing](03-win.md#syncth) | Windows 11, apps e máquinas virtuais | vault |
 | ← recebe de | [Notion · monday · GitBook · Stripe](08-clc.md#cdup) | Claude: recursos, conectores e plugins | substituídos pelo Obsidian |
 | ← recebe de | [TryHackMe / Hack The Box](14-est.md#thm) | Estudo e carreira | writeups |
+| ← recebe de | [Acervo (seus documentos)](23-oper.md#acv) | Operação do grupo (esteira, marca, qualidade) | Markdown no cofre |
 
 <a id="syncth"></a>
 

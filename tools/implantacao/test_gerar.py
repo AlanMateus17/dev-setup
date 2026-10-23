@@ -56,6 +56,12 @@ class TestImplantacao(unittest.TestCase):
         self.assertTrue(any("naoexiste" in e for e in erros))
         self.assertTrue(any("kee" in e and "também" in e for e in erros))
 
+    def test_precisa_invalido_e_resumo_de_hoje(self):
+        d = copy.deepcopy(self.d)
+        d["fases"][0]["passos"][0]["precisa"] = ["sorte"]
+        self.assertTrue(any("precisa inválido" in e for e in validar(d, self.eco)))
+        self.assertIn("Dá para fazer hoje", gerar_md(self.d, self.eco))
+
     def test_roteiro_e_pagina_mostram_cobertura(self):
         md, html = gerar_md(self.d, self.eco), gerar_html(self.d, self.eco)
         self.assertIn("## Cobertura do setup", md)

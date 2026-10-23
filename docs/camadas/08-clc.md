@@ -69,6 +69,7 @@ flowchart LR
     n_aws["AWS"]
     n_azure["Azure"]
     n_cf["Cloudflare (DNS, Pages, e-mail)"]
+    n_gdrv["Google Drive (seus documentos)"]
     n_vercel["Vercel"]
   end
   subgraph L_app["Aplicação: sistemas AM (Aura)"]
@@ -101,6 +102,7 @@ flowchart LR
   n_opipe -->|"API do Claude"| n_anth
   n_cgws -->|"mesmos dados Google"| n_gem
   n_cgws -->|"resumos de e-mail e agenda"| n_obsd
+  n_cgws -->|"o Claude lê o Drive"| n_gdrv
   n_ccan -->|"posts e capas"| n_img
   n_ccan -->|"telas do Figma"| n_front
   n_ccan -->|"quadros e capas"| n_refs
@@ -238,6 +240,7 @@ Já conectado. Lê e organiza e-mail, agenda de aulas, arquivos do Drive, Docs, 
 |---|---|---|---|
 | → envia para | [Gemini (pago)](07-chat.md#gem) | Assistentes de IA (chat, pesquisa e estudo) | mesmos dados Google |
 | → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | resumos de e-mail e agenda |
+| → envia para | [Google Drive (seus documentos)](12-nuvem.md#gdrv) | Nuvem, código e entrega | o Claude lê o Drive |
 
 <a id="ccan"></a>
 

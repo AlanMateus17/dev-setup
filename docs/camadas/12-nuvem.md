@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** git push via SSH leva o código ao GitHub; o Actions testa e publica.
 
-**16 blocos** · 11 precisam de conta · 3 marcados como futuro
+**17 blocos** · 12 precisam de conta · 3 marcados como futuro
 
 ## Mapa de conexões
 
@@ -30,6 +30,10 @@ flowchart LR
     n_aws["AWS"]
     n_b2["Backblaze B2 (backup)"]
     n_gpuh["GPU por hora (RunPod e afins)"]
+    n_gdrv["Google Drive (seus documentos)"]
+  end
+  subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
+    n_acv["Acervo (seus documentos)"]
   end
   subgraph L_pub["Público e canais"]
     n_recr["Recrutadores"]
@@ -70,6 +74,7 @@ flowchart LR
   subgraph L_clc["Claude: recursos, conectores e plugins"]
     n_ccf["Conector Cloudflare"]
     n_cdev["Vercel · AWS · Microsoft Learn"]
+    n_cgws["Conector Google (Gmail, Drive…)"]
   end
   subgraph L_chat["Assistentes de IA (chat, pesquisa e estudo)"]
     n_codex["Codex (OpenAI)"]
@@ -152,8 +157,10 @@ flowchart LR
   n_restic -->|"criptografado"| n_b2
   n_gpuh -->|"modelos abertos"| n_voz
   n_gpuh -->|"GPU de 24 GB"| n_unsl
+  n_gdrv -->|"cópia pelo Takeout"| n_acv
+  n_cgws -->|"o Claude lê o Drive"| n_gdrv
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_blob,n_tmail,n_sonar,n_ghproj,n_dbot,n_gcp,n_gh,n_gha,n_ghcr,n_ghp,n_cf,n_vercel,n_azure,n_aws,n_b2,n_gpuh desta
+  class n_blob,n_tmail,n_sonar,n_ghproj,n_dbot,n_gcp,n_gh,n_gha,n_ghcr,n_ghp,n_cf,n_vercel,n_azure,n_aws,n_b2,n_gpuh,n_gdrv desta
 ```
 
 ## Blocos
@@ -176,6 +183,7 @@ flowchart LR
 | [AWS](#aws) | Remoto · precisa de conta · futuro | Segunda nuvem, para o mercado maior. |
 | [Backblaze B2 (backup)](#b2) | Remoto · precisa de conta · futuro | Cópia fora de casa do backup, criptografada pelo restic. US$ 6,95 por TB/mês. |
 | [GPU por hora (RunPod e afins)](#gpuh) | Remoto · precisa de conta | Quando o Kaggle não bastar: GPU de 24 GB a partir de cerca de US$ 0,27 a 0,90 por hora no RunPod (out/2026). Um fine-tuning QLoRA de 8B costuma levar poucas horas. Use crédito pré-pago, sem cartão em débito automático. |
+| [Google Drive (seus documentos)](#gdrv) | Remoto · precisa de conta | Onde estão hoje as suas aulas, apostilas, provas, especificações e planos, misturados com cópias repetidas e documentos pessoais. O Google Takeout tira uma cópia completa para o acervo. |
 
 <a id="blob"></a>
 
@@ -417,6 +425,19 @@ Quando o Kaggle não bastar: GPU de 24 GB a partir de cerca de US$ 0,27 a 0,90 p
 |---|---|---|---|
 | → envia para | [Voz clonada (ElevenLabs)](13-cont.md#voz) | Produção de conteúdo | modelos abertos |
 | → envia para | [Unsloth (QLoRA)](06-dados.md#unsl) | Dados e treino de IA | GPU de 24 GB |
+
+<a id="gdrv"></a>
+
+### Google Drive (seus documentos)
+
+*Remoto · precisa de conta*
+
+Onde estão hoje as suas aulas, apostilas, provas, especificações e planos, misturados com cópias repetidas e documentos pessoais. O Google Takeout tira uma cópia completa para o acervo.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Acervo (seus documentos)](23-oper.md#acv) | Operação do grupo (esteira, marca, qualidade) | cópia pelo Takeout |
+| ← recebe de | [Conector Google (Gmail, Drive…)](08-clc.md#cgws) | Claude: recursos, conectores e plugins | o Claude lê o Drive |
 
 ---
 

@@ -249,6 +249,12 @@
  ],
  "pecas": [
   {
+   "nome": "Acervo AMtech",
+   "tipo": "Ferramenta Python",
+   "fase": "f1",
+   "descricao": "Converte todos os seus documentos para o Obsidian, separa pessoais, terceiros e escola, e sugere produtos. Já existe: tools/acervo/acervo.py."
+  },
+  {
    "nome": "CLAUDE.md padrão do Aura",
    "tipo": "Contexto do agente",
    "fase": "f1",

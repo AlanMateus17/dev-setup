@@ -462,3 +462,27 @@ flowchart LR
 6. **[dbt Core](camadas/06-dados.md#dbt)**: Os modelos ficam prontos.
 7. **[Painel de lucro (Grafana)](camadas/21-mkt.md#painel)**: O painel mostra lucro por produto, canal e campanha.
 8. **[Regras de corte](camadas/21-mkt.md#regras)**: As regras de corte decidem o que pausar e o que escalar.
+
+## Do documento antigo à venda
+
+```mermaid
+flowchart LR
+  s0["1. Google Drive (seus documentos)"]
+  s1["2. Acervo (seus documentos)"]
+  s2["3. Portfólio de ofertas"]
+  s3["4. Esteira de ofertas"]
+  s4["5. Mini-curso Lógica de Programação"]
+  s5["6. Hotmart"]
+  s0 --> s1
+  s1 --> s2
+  s2 --> s3
+  s3 --> s4
+  s4 --> s5
+```
+
+1. **[Google Drive (seus documentos)](camadas/12-nuvem.md#gdrv)**: Os documentos que você já tem saem do Drive pelo Takeout.
+2. **[Acervo (seus documentos)](camadas/23-oper.md#acv)**: O acervo separa pessoais, terceiros e escola, converte o resto e sugere produtos.
+3. **[Portfólio de ofertas](camadas/23-oper.md#ocatal)**: Os melhores candidatos entram no portfólio de ofertas.
+4. **[Esteira de ofertas](camadas/23-oper.md#oesteira)**: Passam pela esteira: validação, construção e lançamento.
+5. **[Mini-curso Lógica de Programação](camadas/17-prod.md#curso)**: O material vira curso, apostila, banco de questões ou kit do professor.
+6. **[Hotmart](camadas/20-venda.md#hotm)**: E vai para a venda.

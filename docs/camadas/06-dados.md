@@ -28,6 +28,9 @@ flowchart LR
     n_evals["Avaliação dos modelos"]
     n_gguf["llama.cpp (GGUF)"]
   end
+  subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
+    n_acv["Acervo (seus documentos)"]
+  end
   subgraph L_mkt["Marketing, automação e medição"]
     n_metrics["Banco de métricas (PostgreSQL)"]
     n_painel["Painel de lucro (Grafana)"]
@@ -79,6 +82,7 @@ flowchart LR
   n_exyaml -->|"exercícios com gabarito"| n_dset
   n_whis -->|"transcrições das suas aulas"| n_dset
   n_fonte -->|"texto do livro"| n_dset
+  n_acv -->|"só o que é seu"| n_dset
   n_torch -->|"base do treino"| n_unsl
   n_wsl -->|"CUDA no WSL2"| n_torch
   n_nb -->|"GTX 1650 (4 GB)"| n_torch
@@ -199,6 +203,7 @@ Pares de pergunta e resposta tirados das suas notas, exercícios, livro e aulas 
 | ← recebe de | [Exercícios em YAML](15-editora.md#exyaml) | Editora AMS Silva (produção de livros) | exercícios com gabarito |
 | ← recebe de | [Whisper (local)](13-cont.md#whis) | Produção de conteúdo | transcrições das suas aulas |
 | ← recebe de | [Fonte única (Markdown + Pandoc)](15-editora.md#fonte) | Editora AMS Silva (produção de livros) | texto do livro |
+| ← recebe de | [Acervo (seus documentos)](23-oper.md#acv) | Operação do grupo (esteira, marca, qualidade) | só o que é seu |
 
 <a id="torch"></a>
 

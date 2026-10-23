@@ -2341,6 +2341,15 @@
    "descricao": "Quando o Kaggle não bastar: GPU de 24 GB a partir de cerca de US$ 0,27 a 0,90 por hora no RunPod (out/2026). Um fine-tuning QLoRA de 8B costuma levar poucas horas. Use crédito pré-pago, sem cartão em débito automático."
   },
   {
+   "id": "gdrv",
+   "camada": "nuvem",
+   "rotulo": "Google Drive|(seus documentos)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Onde estão hoje as suas aulas, apostilas, provas, especificações e planos, misturados com cópias repetidas e documentos pessoais. O Google Takeout tira uma cópia completa para o acervo."
+  },
+  {
    "id": "selo",
    "camada": "editora",
    "rotulo": "Selo Editora|AMS Silva",
@@ -3014,6 +3023,15 @@
    "conta": false,
    "futuro": false,
    "descricao": "tools/conteudo/processar.py com timer de 15 min: entrada → transcrição → peças pelo guia de marca → fila de aprovação → aviso no Telegram."
+  },
+  {
+   "id": "acv",
+   "camada": "oper",
+   "rotulo": "Acervo (seus|documentos)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "tools/acervo/acervo.py: lê todos os seus documentos sem alterar nada, acha cópias, separa os pessoais, marca o que é de terceiros ou da escola, converte o resto para Markdown no Obsidian e sugere os produtos que dá para vender. Tudo no notebook."
   }
  ],
  "conexoes": [
@@ -6006,6 +6024,41 @@
    "de": "tpm",
    "para": "pkali",
    "rotulo": "Secure Boot desligado para o boot"
+  },
+  {
+   "de": "gdrv",
+   "para": "acv",
+   "rotulo": "cópia pelo Takeout"
+  },
+  {
+   "de": "acv",
+   "para": "obsd",
+   "rotulo": "Markdown no cofre"
+  },
+  {
+   "de": "acv",
+   "para": "rag",
+   "rotulo": "indexa"
+  },
+  {
+   "de": "acv",
+   "para": "ocatal",
+   "rotulo": "produtos candidatos"
+  },
+  {
+   "de": "acv",
+   "para": "dset",
+   "rotulo": "só o que é seu"
+  },
+  {
+   "de": "acv",
+   "para": "ofly",
+   "rotulo": "ideias de conteúdo"
+  },
+  {
+   "de": "cgws",
+   "para": "gdrv",
+   "rotulo": "o Claude lê o Drive"
   }
  ],
  "fluxos": [
@@ -6584,6 +6637,36 @@
     {
      "bloco": "regras",
      "descricao": "As regras de corte decidem o que pausar e o que escalar."
+    }
+   ]
+  },
+  {
+   "id": "acervo",
+   "titulo": "Do documento antigo à venda",
+   "passos": [
+    {
+     "bloco": "gdrv",
+     "descricao": "Os documentos que você já tem saem do Drive pelo Takeout."
+    },
+    {
+     "bloco": "acv",
+     "descricao": "O acervo separa pessoais, terceiros e escola, converte o resto e sugere produtos."
+    },
+    {
+     "bloco": "ocatal",
+     "descricao": "Os melhores candidatos entram no portfólio de ofertas."
+    },
+    {
+     "bloco": "oesteira",
+     "descricao": "Passam pela esteira: validação, construção e lançamento."
+    },
+    {
+     "bloco": "curso",
+     "descricao": "O material vira curso, apostila, banco de questões ou kit do professor."
+    },
+    {
+     "bloco": "hotm",
+     "descricao": "E vai para a venda."
     }
    ]
   }

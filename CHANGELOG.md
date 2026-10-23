@@ -2,6 +2,14 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.12.0] - 2026-10-23
+
+### Adicionado
+- `tools/acervo/acervo.py`: lê todos os seus documentos sem alterar a origem, acha cópias, separa os pessoais, marca material de terceiros e da escola e dados de alunos, converte o resto para Markdown no Obsidian e escreve o relatório de produtos candidatos. Regras em `regras.py`, 9 testes no CI e teste de verdade com .docx, .pptx e .pdf.
+- `scripts/wsl/vault.sh`: cofre do Obsidian em `~/dev/notas` com pastas de estudo, aulas, acervo, produtos e conteúdo, e modelos de nota.
+- Fase "Acervo: tudo o que você já tem" no roteiro (7 passos), blocos Google Drive e Acervo e o fluxo "Do documento antigo à venda".
+- Campo `precisa` nos passos (compra, pagamento, conteúdo) e o filtro "Só o que dá para fazer hoje" no acompanhamento: 135 dos 148 passos só precisam do notebook e de contas grátis.
+
 ## [1.11.0] - 2026-10-23
 
 ### Adicionado

@@ -8,7 +8,7 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 
 | Camadas | Blocos | Conexões | Fluxos | Contas necessárias |
 |---|---|---|---|---|
-| 23 | 322 | 598 | 15 | 103 |
+| 23 | 324 | 605 | 16 | 104 |
 
 ## Por onde começar
 
@@ -83,7 +83,7 @@ O Windows cuida só do que precisa de janela, GPU e segurança; todo o trabalho 
 
 | # | Camada | Blocos | Destaques |
 |---|---|---|---|
-| 23 | [Operação do grupo (esteira, marca, qualidade)](docs/camadas/23-oper.md) | 21 | Portfólio de ofertas, Esteira de ofertas, Padrão de qualidade, Marca pessoal Alan Mateus… |
+| 23 | [Operação do grupo (esteira, marca, qualidade)](docs/camadas/23-oper.md) | 22 | Portfólio de ofertas, Esteira de ofertas, Padrão de qualidade, Marca pessoal Alan Mateus… |
 | 22 | [Público e canais](docs/camadas/22-pub.md) | 12 | Meta Business Suite, Instagram, YouTube, LinkedIn… |
 | 21 | [Marketing, automação e medição](docs/camadas/21-mkt.md) | 26 | Meta Ads (Instagram, Facebook), Isca grátis + sequência de e-mails, MailerLite, Postiz (agendador)… |
 | 20 | [Plataformas de venda e recebimento](docs/camadas/20-venda.md) | 11 | Pix Automático + gateway (ex.: Asaas), Agenda online (Cal.com), CRM simples (planilha), Hotmart… |
@@ -94,7 +94,7 @@ O Windows cuida só do que precisa de janela, GPU e segurança; todo o trabalho 
 | 15 | [Editora AMS Silva (produção de livros)](docs/camadas/15-editora.md) | 36 | Selo Editora AMS Silva, Repositório do livro, Seu modelo de criação, Fonte única (Markdown + Pandoc)… |
 | 14 | [Estudo e carreira](docs/camadas/14-est.md) | 7 | Microsoft Learn + AWS Skill Builder, TryHackMe / Hack The Box, Alura · Rocketseat · DIO · Udemy, Anki… |
 | 13 | [Produção de conteúdo](docs/camadas/13-cont.md) | 6 | OBS Studio, DaVinci Resolve ou Kdenlive, Audacity, Canva · Krita · Inkscape… |
-| 12 | [Nuvem, código e entrega](docs/camadas/12-nuvem.md) | 16 | Armazenamento de arquivos (Blob/R2), E-mail transacional (Resend, SES…), SonarQube Cloud, Projects · ADRs · MkDocs… |
+| 12 | [Nuvem, código e entrega](docs/camadas/12-nuvem.md) | 17 | Armazenamento de arquivos (Blob/R2), E-mail transacional (Resend, SES…), SonarQube Cloud, Projects · ADRs · MkDocs… |
 | 11 | [Aplicação: sistemas AM (Aura)](docs/camadas/11-app.md) | 17 | OpenAPI + Scalar, PostGIS + MapLibre, Storybook, Clean Arch + DDD… |
 | 10 | [Observabilidade](docs/camadas/10-obs.md) | 8 | Sentry (erros), Uptime Kuma, Seq (logs), Loki + Tempo… |
 | 09 | [Containers, Kubernetes e infra como código](docs/camadas/09-cnt.md) | 12 | Caddy (proxy + HTTPS), Mailpit, Kafka, kubectl · Helm · k9s… |

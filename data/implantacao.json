@@ -31,6 +31,9 @@
       "ssdext",
       "cel",
       "rob"
+     ],
+     "precisa": [
+      "compra"
      ]
     },
     {
@@ -294,11 +297,13 @@
      "id": "obsidian-git",
      "titulo": "Criar o cofre do Obsidian em ~/dev/notas e ligar o plugin Obsidian Git",
      "quem": "voce",
-     "pronto": "Notas vão sozinhas para um repositório privado a cada 10 minutos",
+     "pronto": "Cofre aberto no Obsidian com as pastas e modelos; notas vão sozinhas para um repositório privado a cada 10 minutos",
      "tempo_min": 20,
      "blocos": [
       "obsd"
-     ]
+     ],
+     "comando": "bash scripts/wsl/vault.sh",
+     "nota": "No Obsidian do Windows, abra a pasta \\\\wsl.localhost\\Ubuntu-24.04\\home\\SEU_USUARIO\\dev\\notas."
     },
     {
      "id": "syncthing",
@@ -526,6 +531,91 @@
   },
   {
    "id": "f6",
+   "titulo": "Acervo: tudo o que você já tem",
+   "objetivo": "Todos os seus documentos convertidos em conhecimento organizado no Obsidian, os pessoais separados e a lista do que dá para vender.",
+   "passos": [
+    {
+     "id": "acervo-copia",
+     "titulo": "Baixar uma cópia completa do Google Drive pelo Google Takeout",
+     "quem": "voce",
+     "tempo_min": 45,
+     "pronto": "Os zips do Takeout extraídos numa pasta só, por exemplo C:\\Users\\SEU_USUARIO\\Downloads\\Takeout",
+     "nota": "Escolha só o Drive e, em formatos, Google Docs como .docx e Apresentações como .pptx. O Drive para computador mostra os Google Docs como atalhos sem conteúdo, por isso a primeira cópia vem do Takeout. Junte também os arquivos do notebook e dos pendrives na mesma pasta.",
+     "blocos": [
+      "gdrv"
+     ]
+    },
+    {
+     "id": "separar-pessoais",
+     "titulo": "Tirar da pasta os documentos pessoais (contracheques, extratos, IRPF, faturas)",
+     "quem": "voce",
+     "tempo_min": 30,
+     "pronto": "Pasta Pessoal separada, guardada só no backup criptografado",
+     "nota": "O acervo.py também barra esses arquivos pelo nome e pelo conteúdo e lista o que achou, mas tirar antes é mais seguro.",
+     "blocos": [
+      "bkp"
+     ]
+    },
+    {
+     "id": "acervo-simular",
+     "titulo": "Ver o que o acervo faria, sem escrever nada",
+     "quem": "script",
+     "tempo_min": 10,
+     "comando": "uv run tools/acervo/acervo.py --origem /mnt/c/Users/SEU_USUARIO/Downloads/Takeout --simular",
+     "pronto": "Resumo com arquivos lidos, cópias repetidas, pessoais, de terceiros e da escola",
+     "blocos": [
+      "acv"
+     ]
+    },
+    {
+     "id": "acervo-rodar",
+     "titulo": "Converter o acervo para o Obsidian e gerar o relatório de produtos",
+     "quem": "script",
+     "tempo_min": 30,
+     "comando": "uv run tools/acervo/acervo.py --origem /mnt/c/Users/SEU_USUARIO/Downloads/Takeout",
+     "pronto": "30-Acervo no Obsidian com os documentos em Markdown e 40-Produtos/Produtos do acervo.md",
+     "nota": "Roda no notebook; nada é enviado para fora. Pode rodar de novo quando chegarem documentos novos: o que já foi convertido não é refeito.",
+     "blocos": [
+      "acv",
+      "obsd"
+     ]
+    },
+    {
+     "id": "acervo-alertas",
+     "titulo": "Decidir cada alerta: dados de alunos, material de terceiros, material feito para a escola",
+     "quem": "voce",
+     "tempo_min": 90,
+     "pronto": "Cada alerta com decisão anotada: apagar dados, só estudo, reescrever ou vender",
+     "nota": "Material de terceiros (livros, cursos) não vira produto nem treino de IA. Material feito para a escola: confira os direitos antes de vender; o caminho seguro é reescrever do zero, no seu tempo, sem a identidade da escola.",
+     "blocos": [
+      "acv"
+     ]
+    },
+    {
+     "id": "acervo-rag",
+     "titulo": "Indexar o acervo e as suas notas na base de conhecimento",
+     "quem": "claude",
+     "tempo_min": 30,
+     "pronto": "Pergunta sobre um documento antigo volta com a resposta e o arquivo de origem",
+     "blocos": [
+      "rag"
+     ]
+    },
+    {
+     "id": "acervo-produtos",
+     "titulo": "Escolher no relatório os 3 primeiros produtos e levar para o portfólio de ofertas",
+     "quem": "claude",
+     "tempo_min": 60,
+     "pronto": "3 ofertas novas em data/portfolio.json com estágio, preço alvo e próximo passo",
+     "blocos": [
+      "ocatal",
+      "oesteira"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "f7",
    "titulo": "Claude e assistentes",
    "objetivo": "Cada recurso do Claude e cada assistente com um papel definido no setup.",
    "passos": [
@@ -593,7 +683,7 @@
    ]
   },
   {
-   "id": "f7",
+   "id": "f8",
    "titulo": "Automação e medição",
    "objetivo": "n8n, banco de métricas, Grafana e Uptime Kuma rodando.",
    "passos": [
@@ -679,7 +769,7 @@
    ]
   },
   {
-   "id": "f8",
+   "id": "f9",
    "titulo": "Pipeline de conteúdo",
    "objetivo": "Gravou ou escreveu, as peças aparecem na fila de aprovação.",
    "passos": [
@@ -754,7 +844,7 @@
    ]
   },
   {
-   "id": "f9",
+   "id": "f10",
    "titulo": "Estúdio de conteúdo",
    "objetivo": "Gravar, editar e montar imagens no mesmo padrão toda semana, sem pensar.",
    "passos": [
@@ -809,12 +899,15 @@
      "nota": "Só a sua voz, com 30 minutos ou mais de áudio limpo. Avise o público quando a voz for gerada por IA. Voz de outra pessoa, nunca.",
      "blocos": [
       "voz"
+     ],
+     "precisa": [
+      "pagamento"
      ]
     }
    ]
   },
   {
-   "id": "f10",
+   "id": "f11",
    "titulo": "Contas, canais e sites",
    "objetivo": "Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.",
    "passos": [
@@ -852,6 +945,9 @@
      "blocos": [
       "dom",
       "cf"
+     ],
+     "precisa": [
+      "pagamento"
      ]
     },
     {
@@ -862,6 +958,9 @@
      "tempo_min": 30,
      "blocos": [
       "mail"
+     ],
+     "precisa": [
+      "pagamento"
      ]
     },
     {
@@ -958,7 +1057,7 @@
    ]
   },
   {
-   "id": "f11",
+   "id": "f12",
    "titulo": "Vendas e finanças no CPF",
    "objetivo": "Cada oferta pode ser vendida, recebida e declarada do jeito certo.",
    "passos": [
@@ -990,6 +1089,9 @@
      "tempo_min": 60,
      "blocos": [
       "conta"
+     ],
+     "precisa": [
+      "pagamento"
      ]
     },
     {
@@ -1144,6 +1246,9 @@
      "tempo_min": 60,
      "blocos": [
       "inpi"
+     ],
+     "precisa": [
+      "pagamento"
      ]
     },
     {
@@ -1179,7 +1284,7 @@
    ]
   },
   {
-   "id": "f12",
+   "id": "f13",
    "titulo": "Vendas medidas",
    "objetivo": "Cada venda chega sozinha ao banco e aparece no painel de lucro.",
    "passos": [
@@ -1193,6 +1298,9 @@
      "blocos": [
       "cf",
       "hooks"
+     ],
+     "precisa": [
+      "pagamento"
      ]
     },
     {
@@ -1230,7 +1338,7 @@
    ]
   },
   {
-   "id": "f13",
+   "id": "f14",
    "titulo": "Teste do núcleo",
    "objetivo": "Os três testes de ponta a ponta passam: daqui em diante, alimentar o sistema já faz tudo sozinho.",
    "passos": [
@@ -1280,7 +1388,7 @@
    ]
   },
   {
-   "id": "f14",
+   "id": "f15",
    "titulo": "Base dos sistemas AM",
    "objetivo": "Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e deploy.",
    "passos": [
@@ -1374,7 +1482,7 @@
    ]
   },
   {
-   "id": "f15",
+   "id": "f16",
    "titulo": "Nuvem e deploy",
    "objetivo": "As contas de nuvem criadas por código, com custo sob controle.",
    "passos": [
@@ -1457,7 +1565,7 @@
    ]
   },
   {
-   "id": "f16",
+   "id": "f17",
    "titulo": "Editora",
    "objetivo": "O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.",
    "passos": [
@@ -1490,6 +1598,9 @@
       "lint",
       "errata",
       "livro"
+     ],
+     "precisa": [
+      "conteudo"
      ]
     },
     {
@@ -1522,6 +1633,10 @@
      "blocos": [
       "isbn",
       "ficha"
+     ],
+     "precisa": [
+      "pagamento",
+      "conteudo"
      ]
     },
     {
@@ -1532,6 +1647,9 @@
      "tempo_min": 30,
      "blocos": [
       "beta"
+     ],
+     "precisa": [
+      "conteudo"
      ]
     },
     {
@@ -1542,6 +1660,9 @@
      "tempo_min": 60,
      "blocos": [
       "kdp"
+     ],
+     "precisa": [
+      "conteudo"
      ]
     },
     {
@@ -1552,12 +1673,15 @@
      "tempo_min": 30,
      "blocos": [
       "deplegal"
+     ],
+     "precisa": [
+      "conteudo"
      ]
     }
    ]
   },
   {
-   "id": "f17",
+   "id": "f18",
    "titulo": "Dados, IA e pendrives",
    "objetivo": "O laboratório de dados e de treino no ar, um modelo seu rodando no Ollama e os pendrives de Kali e Arch dando boot.",
    "passos": [
@@ -1583,6 +1707,9 @@
      "nota": "Use um pendrive para a ISO e outro (64 GB ou mais, USB 3) ou um SSD USB como disco do sistema. Mesmo cuidado com Secure Boot e BitLocker.",
      "blocos": [
       "parch"
+     ],
+     "precisa": [
+      "compra"
      ]
     },
     {
@@ -1707,7 +1834,7 @@
    ]
   },
   {
-   "id": "f18",
+   "id": "f19",
    "titulo": "Estudo contínuo",
    "objetivo": "As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.",
    "passos": [

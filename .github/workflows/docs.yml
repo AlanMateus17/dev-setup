@@ -32,6 +32,7 @@ jobs:
         run: |
           python -m unittest discover -s tools/conteudo -v
           python -m unittest discover -s tools/implantacao -v
+          python -m unittest discover -s tools/acervo -v
           python tools/implantacao/gerar.py --check
 
   scripts:

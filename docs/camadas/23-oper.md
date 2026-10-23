@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** Toda oferta passa pela esteira e pelo padrão de qualidade antes de chegar ao público; cada venda e cada trabalho voltam como dado e conteúdo.
 
-**21 blocos** · 1 precisam de conta · 8 marcados como futuro
+**22 blocos** · 1 precisam de conta · 8 marcados como futuro
 
 ## Mapa de conexões
 
@@ -35,6 +35,7 @@ flowchart LR
     n_oinst["Instaladores (PowerShell e bash)"]
     n_overif["Verificadores"]
     n_opipe["Pipeline de conteúdo"]
+    n_acv["Acervo (seus documentos)"]
   end
   subgraph L_pub["Público e canais"]
     n_ig["Instagram"]
@@ -72,6 +73,9 @@ flowchart LR
     n_voz["Voz clonada (ElevenLabs)"]
     n_whis["Whisper (local)"]
   end
+  subgraph L_nuvem["Nuvem, código e entrega"]
+    n_gdrv["Google Drive (seus documentos)"]
+  end
   subgraph L_app["Aplicação: sistemas AM (Aura)"]
     n_nkaix["AM Kaixara (PDV e cardápio)"]
   end
@@ -84,14 +88,22 @@ flowchart LR
   subgraph L_clc["Claude: recursos, conectores e plugins"]
     n_anth["Claude (assinatura e API)"]
   end
+  subgraph L_dados["Dados e treino de IA"]
+    n_dset["Seus datasets (só conteúdo seu)"]
+  end
+  subgraph L_ia["Agentes de IA e sandbox"]
+    n_rag["Base de conhecimento (RAG) das suas notas"]
+  end
   subgraph L_lin["Linux (Ubuntu no WSL2, Arch no 2º disco)"]
     n_wsl["Ubuntu (WSL2)"]
   end
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
+    n_obsd["Obsidian + Git"]
     n_w11["Windows 11 Home"]
   end
   n_ocatal -->|"fila por pontuação"| n_oesteira
   n_ocatal -->|"negócios físicos"| n_nplan
+  n_acv -->|"produtos candidatos"| n_ocatal
   n_oesteira -->|"portão de lançamento"| n_oqual
   n_oesteira -->|"lança"| n_curso
   n_oesteira -->|"lança"| n_livro
@@ -110,6 +122,7 @@ flowchart LR
   n_ofly -->|"trabalho capturado"| n_oedit
   n_ofly -->|"decisões reais"| n_obuild
   n_ofly -->|"trabalho na pasta de entrada"| n_opipe
+  n_acv -->|"ideias de conteúdo"| n_ofly
   n_obuild -->|"vídeo semanal"| n_yt
   n_oatend -->|"responde"| n_wa
   n_n8n -->|"roda"| n_oatend
@@ -139,8 +152,12 @@ flowchart LR
   n_opipe -->|"API do Claude"| n_anth
   n_opipe -->|"aviso de peça pronta"| n_tg
   n_whis -->|"transcreve"| n_opipe
+  n_acv -->|"Markdown no cofre"| n_obsd
+  n_acv -->|"indexa"| n_rag
+  n_acv -->|"só o que é seu"| n_dset
+  n_gdrv -->|"cópia pelo Takeout"| n_acv
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_ocatal,n_oesteira,n_oqual,n_omarca,n_oaval,n_ocrm,n_ofly,n_obuild,n_oatend,n_oorc,n_ocob,n_opos,n_oedit,n_oanal,n_ofisc,n_orevo,n_ocomp,n_oimpl,n_oinst,n_overif,n_opipe desta
+  class n_ocatal,n_oesteira,n_oqual,n_omarca,n_oaval,n_ocrm,n_ofly,n_obuild,n_oatend,n_oorc,n_ocob,n_opos,n_oedit,n_oanal,n_ofisc,n_orevo,n_ocomp,n_oimpl,n_oinst,n_overif,n_opipe,n_acv desta
 ```
 
 ## Blocos
@@ -168,6 +185,7 @@ flowchart LR
 | [Instaladores (PowerShell e bash)](#oinst) | Local | instalar.ps1 (winget, WSL2, .wslconfig) e bootstrap.sh (ferramentas, linguagens, Claude Code, ai-jail, Git assinado). Seguros para rodar de novo. |
 | [Verificadores](#overif) | Local | verificar.ps1 e verificar.sh: somente leitura, dizem 'pronto' ou listam o que falta. Também conferem os serviços da automação. |
 | [Pipeline de conteúdo](#opipe) | Local | tools/conteudo/processar.py com timer de 15 min: entrada → transcrição → peças pelo guia de marca → fila de aprovação → aviso no Telegram. |
+| [Acervo (seus documentos)](#acv) | Local | tools/acervo/acervo.py: lê todos os seus documentos sem alterar nada, acha cópias, separa os pessoais, marca o que é de terceiros ou da escola, converte o resto para Markdown no Obsidian e sugere os produtos que dá para vender. Tudo no notebook. |
 
 <a id="ocatal"></a>
 
@@ -181,6 +199,7 @@ data/portfolio.json: todas as ofertas do grupo com estágio, notas, pontuação 
 |---|---|---|---|
 | → envia para | [Esteira de ofertas](23-oper.md#oesteira) | Operação do grupo (esteira, marca, qualidade) | fila por pontuação |
 | → envia para | [Planejador do Grupo](16-neg.md#nplan) | Negócios do grupo (Barbacena) | negócios físicos |
+| ← recebe de | [Acervo (seus documentos)](23-oper.md#acv) | Operação do grupo (esteira, marca, qualidade) | produtos candidatos |
 
 <a id="oesteira"></a>
 
@@ -268,6 +287,7 @@ Cada aula, capítulo, projeto, reparo ou prato vira várias peças: cortes, carr
 | → envia para | [Agente editor de conteúdo](23-oper.md#oedit) | Operação do grupo (esteira, marca, qualidade) | trabalho capturado |
 | → envia para | [Canal build in public](23-oper.md#obuild) | Operação do grupo (esteira, marca, qualidade) | decisões reais |
 | → envia para | [Pipeline de conteúdo](23-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | trabalho na pasta de entrada |
+| ← recebe de | [Acervo (seus documentos)](23-oper.md#acv) | Operação do grupo (esteira, marca, qualidade) | ideias de conteúdo |
 
 <a id="obuild"></a>
 
@@ -463,6 +483,23 @@ tools/conteudo/processar.py com timer de 15 min: entrada → transcrição → p
 | ← recebe de | [Flywheel de conteúdo](23-oper.md#ofly) | Operação do grupo (esteira, marca, qualidade) | trabalho na pasta de entrada |
 | ← recebe de | [Instaladores (PowerShell e bash)](23-oper.md#oinst) | Operação do grupo (esteira, marca, qualidade) | instala |
 | ← recebe de | [Marca pessoal Alan Mateus](23-oper.md#omarca) | Operação do grupo (esteira, marca, qualidade) | guia de marca |
+
+<a id="acv"></a>
+
+### Acervo (seus documentos)
+
+*Local*
+
+tools/acervo/acervo.py: lê todos os seus documentos sem alterar nada, acha cópias, separa os pessoais, marca o que é de terceiros ou da escola, converte o resto para Markdown no Obsidian e sugere os produtos que dá para vender. Tudo no notebook.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | Markdown no cofre |
+| → envia para | [Base de conhecimento (RAG) das suas notas](05-ia.md#rag) | Agentes de IA e sandbox | indexa |
+| → envia para | [Portfólio de ofertas](23-oper.md#ocatal) | Operação do grupo (esteira, marca, qualidade) | produtos candidatos |
+| → envia para | [Seus datasets (só conteúdo seu)](06-dados.md#dset) | Dados e treino de IA | só o que é seu |
+| → envia para | [Flywheel de conteúdo](23-oper.md#ofly) | Operação do grupo (esteira, marca, qualidade) | ideias de conteúdo |
+| ← recebe de | [Google Drive (seus documentos)](12-nuvem.md#gdrv) | Nuvem, código e entrega | cópia pelo Takeout |
 
 ---
 

@@ -22,6 +22,7 @@ HTML = RAIZ / "docs" / "implantacao" / "acompanhamento.html"
 TEMPLATE = RAIZ / "tools" / "implantacao" / "acompanhamento.template.html"
 AVISO = "<!-- Arquivo GERADO por tools/implantacao/gerar.py a partir de data/implantacao.json. Não edite à mão. -->\n"
 QUEM = {"voce": "Você", "script": "Script", "claude": "Claude com você"}
+PRECISA = {"compra": "comprar algo", "pagamento": "pagar um serviço", "conteudo": "conteúdo seu pronto (livro, capítulo)"}
 ID_RE = re.compile(r"^[a-z0-9-]+$")
 
 
@@ -79,6 +80,9 @@ def validar(d: dict, eco: dict | None = None) -> list[str]:
             for arq in re.findall(r"(scripts/[\w./-]+\.(?:ps1|sh)|tools/[\w./-]+\.py|infra/[\w./-]+)", p.get("comando", "").replace("\\", "/")):
                 if not (RAIZ / arq).exists():
                     erros.append(f"{p['id']}: o comando cita {arq}, que não existe")
+            for x in p.get("precisa", []):
+                if x not in PRECISA:
+                    erros.append(f"{p['id']}: precisa inválido {x} (use {', '.join(PRECISA)})")
             if not isinstance(p.get("blocos"), list):
                 erros.append(f"{p['id']}: falta a lista 'blocos' (o que este passo implanta)")
     c = cobertura(d, eco)
@@ -102,6 +106,8 @@ def gerar_md(d: dict, eco: dict | None = None) -> str:
     B = c["blocos"]
     camadas = {k["id"]: k["titulo"] for k in eco["camadas"]}
     total = sum(p["tempo_min"] for f in d["fases"] for p in f["passos"])
+    hoje = sum(1 for f in d["fases"] for p in f["passos"] if not p.get("precisa"))
+    t_hoje = sum(p["tempo_min"] for f in d["fases"] for p in f["passos"] if not p.get("precisa"))
     n = sum(len(f["passos"]) for f in d["fases"])
     o = [AVISO, "# Roteiro de implantação\n", "[← Implantação](README.md)\n",
          f"{len(d['fases'])} fases, {n} passos, cerca de **{horas(total)}** de trabalho no total. "
@@ -113,6 +119,8 @@ def gerar_md(d: dict, eco: dict | None = None) -> str:
          f"{len(c['nos_passos'] & set(B))} entram nos passos, {len(c['construir'])} são peças a construir, "
          f"{len(c['nao_instala'])} não se instalam e {len(c['depois'])} ficam para depois. "
          "O CI falha se um bloco novo do setup ficar fora do roteiro ([lista completa](#cobertura)).\n",
+         f"**Dá para fazer hoje:** {hoje} dos {n} passos ({horas(t_hoje)}) só precisam do notebook e de contas grátis. "
+         "Os outros dizem o que falta: comprar algo, pagar um serviço ou ter um conteúdo seu pronto.\n",
          "| Fase | Objetivo | Passos | Tempo |", "|---|---|---:|---:|"]
     for i, f in enumerate(d["fases"]):
         t = sum(p["tempo_min"] for p in f["passos"])
@@ -131,6 +139,8 @@ def gerar_md(d: dict, eco: dict | None = None) -> str:
             o.append(f"- [ ] **Pronto quando:** {p['pronto']}")
             if p.get("nota"):
                 o.append(f"- {p['nota']}")
+            if p.get("precisa"):
+                o.append("- **Precisa:** " + ", ".join(PRECISA[x] for x in p["precisa"]))
             if p.get("blocos"):
                 o.append("- Implanta: " + " · ".join(rotulo(B[b]) for b in p["blocos"]))
             o.append("")
@@ -161,7 +171,7 @@ def dados_html(d: dict, eco: dict) -> dict:
     por = {}
     for b in c["depois"]:
         por.setdefault(camadas.get(b["camada"], b["camada"]), []).append(rotulo(b))
-    return {"fases": fases, "cob": {
+    return {"precisa": PRECISA, "fases": fases, "cob": {
         "total": len(B), "nos_passos": len(c["nos_passos"] & set(B)),
         "construir": [[rotulo(B[b]), t] for b, t in c["construir"].items()],
         "nao_instala": [[rotulo(B[b]), t] for b, t in c["nao_instala"].items()],

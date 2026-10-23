@@ -4,16 +4,16 @@
 
 Como sair do planejamento para o setup funcionando: scripts que instalam, scripts que conferem e um roteiro com o critério de pronto de cada passo. Quando a última fase passar, alimentar o sistema é só colocar arquivos numa pasta.
 
-- [Roteiro de implantação](roteiro.md): 19 fases e 141 passos, na ordem, com o que cada passo implanta (gerado)
+- [Roteiro de implantação](roteiro.md): 20 fases e 148 passos, na ordem, com o que cada passo implanta (gerado)
 - [`acompanhamento.html`](acompanhamento.html): a mesma lista para marcar o progresso no navegador (gerado)
 
 ## Tudo o que está no setup está no roteiro
 
-Cada passo diz quais blocos do [mapa do setup](../mapa.html) ele implanta. Os 322 blocos têm lugar:
+Cada passo diz quais blocos do [mapa do setup](../mapa.html) ele implanta. Os 324 blocos têm lugar:
 
 | Onde | Blocos | O que significa |
 |---|---:|---|
-| Num passo do roteiro | 235 | Você instala, configura ou cria seguindo o passo |
+| Num passo do roteiro | 237 | Você instala, configura ou cria seguindo o passo |
 | Peça a construir | 9 | Ainda não existe como código: as peças do pipeline de imagens e os agentes da editora, que começam com o capítulo 1 |
 | Não se instala | 3 | Públicos (alunos, recrutadores) e os conectores que você decidiu não usar |
 | Para depois | 75 | Marcados como futuro no mapa: os 9 negócios físicos, CNPJ, anúncios pagos, AWS, Kubernetes, YubiKey e afins |
@@ -55,6 +55,7 @@ flowchart LR
 | Anotações de um reparo | `~/AMtech/entrada/reparos` | Post do Google Perfil, dica para Reels e pergunta frequente do site |
 | Uma decisão da semana | `~/AMtech/entrada/decisoes` | Roteiro do vídeo de build in public, post no LinkedIn e newsletter |
 | Uma ideia solta | `~/AMtech/entrada/ideias` | Ângulos de conteúdo, rascunho de post e a linha para o portfólio de ofertas |
+| Todos os documentos que você já tem | `uv run tools/acervo/acervo.py --origem PASTA` | Separa cópias, pessoais, material de terceiros e da escola; converte o resto para o Obsidian (30-Acervo) e escreve 40-Produtos/Produtos do acervo.md com o que dá para vender |
 | Uma venda | (chega sozinha) | Webhook da plataforma → n8n → tabela de vendas → painel de lucro por produto e campanha |
 
 Tudo segue o seu [guia de marca](../../config/marca.md). Arquivo que dá erro três vezes vai para `entrada/_com-erro` com o motivo, sem travar a fila.
@@ -79,6 +80,7 @@ Testado aqui, num Ubuntu 24.04 igual ao do WSL:
 - O pipeline de conteúdo com 10 testes automáticos (transcrição, fila, quarentena, nomes repetidos) e uma rodada simulada.
 - O `compose.yaml` validado pelo Docker Compose; os scripts passaram no ShellCheck e no PSScriptAnalyzer.
 - Os scripts do Windows rodaram no PowerShell 7 com `winget`, `wsl` e `code` simulados.
+- `acervo.py` rodado de verdade com .docx, .pptx, .pdf, .md e .zip parecidos com os do seu Drive: achou a cópia repetida, barrou o contracheque, marcou o livro de editora como terceiros e a prova com nome de aluno como escola com dado pessoal, e sugeriu mini-curso, apostila e estudo de caso. `vault.sh` rodado duas vezes sem sobrescrever nada.
 - `lab-ia.sh` rodado de verdade: instalou PyTorch 2.14 (CUDA 13), Transformers, PEFT, TRL, DuckDB, dbt, PySpark e MLflow; um job PySpark e uma consulta DuckDB rodaram; na segunda vez não refez nada.
 - `nuvem.sh` rodado de verdade duas vezes: instalou Azure CLI 2.91, Vercel CLI e Wrangler; na segunda vez não refez nada.
 
@@ -112,20 +114,25 @@ Não deu para testar aqui:
 | ISBN e ficha catalográfica | Por livro, na CBL, quando o primeiro livro estiver pronto |
 | Todo o resto (n8n, Grafana, PostgreSQL, Uptime Kuma, Postiz, ai-jail, restic) | Grátis, rodando no seu notebook |
 
+## Primeiro o que dá para fazer hoje
+
+No acompanhamento, o filtro **Só o que dá para fazer hoje** esconde os passos que precisam de compra, de pagamento ou de um conteúdo seu que ainda não existe (como o capítulo 1 do livro). São 135 dos 148 passos, cerca de 75 horas, só com o notebook e contas grátis. Os 13 restantes mostram exatamente o que falta.
+
 ## Ritmo sugerido
 
-São cerca de 84 horas no total: 46 no núcleo (fases 0 a 13) e 38 na expansão (14 a 18). No bloco de construção da sua semana (quinta e sexta de manhã, umas 5 horas):
+São cerca de 89 horas no total: 50 no núcleo (fases 0 a 14) e 38 na expansão (15 a 19). No bloco de construção da sua semana (quinta e sexta de manhã, umas 5 horas):
 
 | Semana | Fases |
 |---|---|
 | 1 | 0 Preparar, 1 Windows |
 | 2 | 2 Linux, 3 GitHub, 4 Agentes |
-| 3 | 5 Backup, 6 Claude e assistentes, 7 Automação |
-| 4 | 8 Pipeline de conteúdo, 9 Estúdio |
-| 5 e 6 | 10 Contas, canais e sites |
-| 7 a 9 | 11 Vendas e finanças no CPF |
-| 10 | 12 Vendas medidas, 13 Teste do núcleo |
-| Depois | 14 Sistemas AM e 15 Nuvem quando o primeiro sistema entrar na esteira; 16 Editora quando o capítulo 1 e o seu modelo estiverem prontos; 18 Estudo, contínuo |
-| Quando quiser, depois da fase 2 | 17 Dados, IA e pendrives: os pendrives e o laboratório não dependem de nada além do Linux pronto; o fine-tuning vem depois do dataset |
+| 3 | 5 Backup, começo do 6 Acervo |
+| 4 | Fim do 6 Acervo, 7 Claude e assistentes, 8 Automação |
+| 5 | 9 Pipeline de conteúdo, 10 Estúdio |
+| 6 e 7 | 11 Contas, canais e sites |
+| 8 a 10 | 12 Vendas e finanças no CPF |
+| 11 | 13 Vendas medidas, 14 Teste do núcleo |
+| Depois | 15 Sistemas AM e 16 Nuvem quando o primeiro sistema entrar na esteira; 17 Editora quando o capítulo 1 e o seu modelo estiverem prontos; 19 Estudo, contínuo |
+| Quando quiser, depois da fase 2 | 18 Dados, IA e pendrives: os pendrives e o laboratório não dependem de nada além do Linux pronto; o fine-tuning vem depois do dataset |
 
-O pipeline de conteúdo já funciona no fim da semana 4. Daí em diante, cada aula que você gravar já vira peças, enquanto as contas e as vendas vão sendo montadas.
+O acervo vem cedo de propósito: na semana 4 você já sabe tudo o que tem e o que dá para vender, e o pipeline de conteúdo da semana 5 passa a ter material para trabalhar.
