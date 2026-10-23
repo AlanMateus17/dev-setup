@@ -162,7 +162,7 @@ flowchart LR
 | [Organizador fiscal](#ofisc) | Local · futuro | Junta notas, extratos e vendas do mês para o contador e para o carnê-leão. |
 | [Revisor de oferta](#orevo) | Local | Confere cada lançamento contra o padrão de qualidade antes de ir ao ar. |
 | [Agente comprador](#ocomp) | Local · futuro | Sugere a lista de compras dos negócios de comida pelo estoque mínimo e pela previsão de produção. |
-| [Roteiro de implantação](#oimpl) | Local | data/implantacao.json: 11 fases e 58 passos com critério de pronto, gerando docs/implantacao/roteiro.md e a página de acompanhamento. |
+| [Roteiro de implantação](#oimpl) | Local | data/implantacao.json: fases e passos com critério de pronto, cada passo ligado aos blocos que implanta. Gera docs/implantacao/roteiro.md e a página de acompanhamento; o CI falha se um bloco do setup ficar de fora. |
 | [Instaladores (PowerShell e bash)](#oinst) | Local | instalar.ps1 (winget, WSL2, .wslconfig) e bootstrap.sh (ferramentas, linguagens, Claude Code, ai-jail, Git assinado). Seguros para rodar de novo. |
 | [Verificadores](#overif) | Local | verificar.ps1 e verificar.sh: somente leitura, dizem 'pronto' ou listam o que falta. Também conferem os serviços da automação. |
 | [Pipeline de conteúdo](#opipe) | Local | tools/conteudo/processar.py com timer de 15 min: entrada → transcrição → peças pelo guia de marca → fila de aprovação → aviso no Telegram. |
@@ -420,7 +420,7 @@ Sugere a lista de compras dos negócios de comida pelo estoque mínimo e pela pr
 
 *Local*
 
-data/implantacao.json: 11 fases e 58 passos com critério de pronto, gerando docs/implantacao/roteiro.md e a página de acompanhamento.
+data/implantacao.json: fases e passos com critério de pronto, cada passo ligado aos blocos que implanta. Gera docs/implantacao/roteiro.md e a página de acompanhamento; o CI falha se um bloco do setup ficar de fora.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

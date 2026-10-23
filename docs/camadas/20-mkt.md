@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** O que é publicado e anunciado aqui leva às plataformas de venda; cada venda volta como dado para o banco de métricas.
 
-**23 blocos** · 9 precisam de conta · 17 marcados como futuro
+**23 blocos** · 9 precisam de conta · 13 marcados como futuro
 
 ## Mapa de conexões
 
@@ -185,7 +185,7 @@ flowchart LR
 | [Meta Ads (Instagram, Facebook)](#ads) | Remoto · precisa de conta · futuro | Primeiro canal pago: anúncios da isca grátis e remarketing do mini-curso. Desde jan/2026 a fatura tem +12,15% de impostos sobre a mídia. |
 | [Isca grátis + sequência de e-mails](#isca) | Local | Aula ou PDF grátis que captura o e-mail e abre uma sequência de 5 a 7 e-mails até o mini-curso. |
 | [Postiz (agendador)](#postiz) | Local · futuro | Agendador open source (AGPL-3.0) que publica em mais de 28 redes. Roda no seu Docker com PostgreSQL e Redis; integra com o n8n. |
-| [Aprovação no celular](#aprov) | Local · futuro | Nenhum post sai sem o seu ok (Telegram ou e-mail). Protege o canal de erro da IA. |
+| [Aprovação no celular](#aprov) | Local | Nenhum post sai sem o seu ok (Telegram ou e-mail). Protege o canal de erro da IA. |
 | [Algoritmo de horário](#horario) | Local · futuro | Calcula o desempenho por rede, dia e hora com os seus dados; 80% dos posts nas melhores faixas, 20% testando faixas novas. |
 | [Tags de conversão (Pixel, Google…)](#pixel) | Remoto · precisa de conta | Pixel + API de Conversões da Meta, tag do Google Ads, pixel do TikTok e as tags de Kwai, Pinterest, LinkedIn e nativos. Sem a tag, o canal não aprende quem compra e a venda não chega ao painel. |
 | [Padrão de UTM](#utm) | Local | Todo link marcado com fonte, meio, campanha e criativo, para ligar cada venda ao anúncio ou post que a trouxe. |
@@ -193,9 +193,9 @@ flowchart LR
 | [TikTok Ads](#ttads) | Remoto · precisa de conta · futuro | Depois que os cortes orgânicos mostrarem tração. |
 | [Regras de corte](#regras) | Local | Pausa criativo ou conjunto quando o CPA passa do de empate; sobe 15% do orçamento quando fica abaixo do CPA da margem. |
 | [Lucro por Venda (calculadora)](#calc) | Remoto | Artefato com taxas das plataformas, imposto, CPA e ROAS de empate, simulador e o lucro real de cada campanha. |
-| [Webhooks de venda](#hooks) | Remoto · futuro | Hotmart, Kiwify e Eduzz avisam cada venda e reembolso; o n8n grava no banco. |
-| [Banco de métricas (PostgreSQL)](#metrics) | Local · futuro | Tabelas de produtos, vendas, gastos, ferramentas e impostos. |
-| [Painel de lucro (Grafana)](#painel) | Local · futuro | Lucro por produto, canal, campanha e país, atualizado sozinho. |
+| [Webhooks de venda](#hooks) | Remoto | Hotmart, Kiwify e Eduzz avisam cada venda e reembolso; o n8n grava no banco. |
+| [Banco de métricas (PostgreSQL)](#metrics) | Local | Tabelas de produtos, vendas, gastos, ferramentas e impostos. |
+| [Painel de lucro (Grafana)](#painel) | Local | Lucro por produto, canal, campanha e país, atualizado sozinho. |
 | [Programa de afiliados](#afprog) | Remoto · futuro | Comissão definida pela calculadora, aberta depois de 20 vendas próprias. |
 | [Prospecção de parceiros](#prosp) | Local | Busca e qualificação de parceiros com IA; mensagem revisada e enviada por você. |
 | [Dublagem (YouTube + ElevenLabs)](#dub) | Remoto · futuro | Dublagem automática do YouTube para vídeos; ElevenLabs para cursos fora do YouTube. Espanhol primeiro. |
@@ -270,7 +270,7 @@ Agendador open source (AGPL-3.0) que publica em mais de 28 redes. Roda no seu Do
 
 ### Aprovação no celular
 
-*Local · futuro*
+*Local*
 
 Nenhum post sai sem o seu ok (Telegram ou e-mail). Protege o canal de erro da IA.
 
@@ -416,7 +416,7 @@ Artefato com taxas das plataformas, imposto, CPA e ROAS de empate, simulador e o
 
 ### Webhooks de venda
 
-*Remoto · futuro*
+*Remoto*
 
 Hotmart, Kiwify e Eduzz avisam cada venda e reembolso; o n8n grava no banco.
 
@@ -431,7 +431,7 @@ Hotmart, Kiwify e Eduzz avisam cada venda e reembolso; o n8n grava no banco.
 
 ### Banco de métricas (PostgreSQL)
 
-*Local · futuro*
+*Local*
 
 Tabelas de produtos, vendas, gastos, ferramentas e impostos.
 
@@ -456,7 +456,7 @@ Tabelas de produtos, vendas, gastos, ferramentas e impostos.
 
 ### Painel de lucro (Grafana)
 
-*Local · futuro*
+*Local*
 
 Lucro por produto, canal, campanha e país, atualizado sozinho.
 

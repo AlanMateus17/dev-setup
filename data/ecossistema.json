@@ -1117,7 +1117,7 @@
    "rotulo": "n8n",
    "tipo": "local",
    "conta": false,
-   "futuro": true,
+   "futuro": false,
    "descricao": "Automação: novo aluno → e-mail, post agendado, aviso."
   },
   {
@@ -1936,7 +1936,7 @@
    "rotulo": "Aprovação no celular",
    "tipo": "local",
    "conta": false,
-   "futuro": true,
+   "futuro": false,
    "descricao": "Nenhum post sai sem o seu ok (Telegram ou e-mail). Protege o canal de erro da IA."
   },
   {
@@ -2008,7 +2008,7 @@
    "rotulo": "Webhooks de venda",
    "tipo": "remoto",
    "conta": false,
-   "futuro": true,
+   "futuro": false,
    "descricao": "Hotmart, Kiwify e Eduzz avisam cada venda e reembolso; o n8n grava no banco."
   },
   {
@@ -2017,7 +2017,7 @@
    "rotulo": "Banco de métricas|(PostgreSQL)",
    "tipo": "local",
    "conta": false,
-   "futuro": true,
+   "futuro": false,
    "descricao": "Tabelas de produtos, vendas, gastos, ferramentas e impostos."
   },
   {
@@ -2026,7 +2026,7 @@
    "rotulo": "Painel de lucro|(Grafana)",
    "tipo": "local",
    "conta": false,
-   "futuro": true,
+   "futuro": false,
    "descricao": "Lucro por produto, canal, campanha e país, atualizado sozinho."
   },
   {
@@ -2810,7 +2810,7 @@
    "tipo": "local",
    "conta": false,
    "futuro": false,
-   "descricao": "data/implantacao.json: 11 fases e 58 passos com critério de pronto, gerando docs/implantacao/roteiro.md e a página de acompanhamento."
+   "descricao": "data/implantacao.json: fases e passos com critério de pronto, cada passo ligado aos blocos que implanta. Gera docs/implantacao/roteiro.md e a página de acompanhamento; o CI falha se um bloco do setup ficar de fora."
   },
   {
    "id": "oinst",

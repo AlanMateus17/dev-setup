@@ -13,7 +13,7 @@
 - [Peças autorais](pecas-autorais.md) · [Fora do setup](fora-do-setup.md)
 - [Marketing, vendas e automação](marketing/README.md): funil, canais sem rosto com voz clonada, publicação automática, tráfego, parcerias, internacional e medição de lucro
 - [Editora AMS Silva](editora/README.md): estrutura legal, pipeline de produção dos livros, rigor editorial, identidade visual, avaliação, produtos, lançamento e roteiro
-- [Implantação](implantacao/README.md): roteiro com 58 passos, scripts que instalam e verificadores que conferem; pipeline de conteúdo e stack de automação
+- [Implantação](implantacao/README.md): roteiro que cobre todos os blocos do setup, scripts que instalam e verificadores que conferem; pipeline de conteúdo e stack de automação
 - [Operação do grupo](operacao/README.md): esteira de ofertas, portfólio pontuado, marca e presença, flywheel de conteúdo, automação, qualidade, clientes e ordem de execução
 - [Negócios do grupo](negocios/README.md): os nove negócios em Barbacena, estrutura de CNPJs, ordem de abertura, números, cardápios e mínimo legal
 - [Vários computadores, SSD externo e NAS](infra/README.md): como crescer o setup para mais máquinas e armazenamento local e em nuvem

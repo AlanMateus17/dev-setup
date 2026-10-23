@@ -47,6 +47,12 @@ cmd ai-jail ai-jail "bootstrap.sh"
 cmd "bubblewrap (sandbox)" bwrap "sudo apt install bubblewrap"
 cmd restic restic "sudo apt install restic"
 cmd pandoc pandoc "sudo apt install pandoc"
+cmd nmap nmap "sudo apt install nmap" 0
+cmd "dig (DNS)" dig "sudo apt install dnsutils" 0
+cmd "Azure CLI" az "bash scripts/wsl/nuvem.sh" 0
+cmd Terraform terraform "bash scripts/wsl/nuvem.sh" 0
+cmd "Vercel CLI" vercel "bash scripts/wsl/nuvem.sh" 0
+cmd "Wrangler (Cloudflare)" wrangler "bash scripts/wsl/nuvem.sh" 0
 cmd "TeX Live" latexmk "bootstrap.sh (sem --sem-tex)" 0
 cmd "Whisper local" whisper-ctranslate2 "bootstrap.sh --com-whisper" 0
 if command -v docker >/dev/null 2>&1 && docker info >/dev/null 2>&1; then r ferramenta Docker OK "$(docker version --format '{{.Server.Version}}' 2>/dev/null)"

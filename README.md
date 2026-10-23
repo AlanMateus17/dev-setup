@@ -141,8 +141,8 @@ docs/
   adr/                decisões de arquitetura
   index.html          diagrama interativo (gerado)
   mapa.html           sistemas, nuvens, pilha, mercado e ordem de estudo (gerado)
-scripts/windows/      instalar.ps1, verificar.ps1 e o inventário do Windows
-scripts/wsl/          bootstrap.sh, verificar.sh e ativar-pipeline.sh
+scripts/windows/      instalar.ps1, verificar.ps1, extensões do VS Code e o inventário do Windows
+scripts/wsl/          bootstrap.sh, nuvem.sh, verificar.sh e ativar-pipeline.sh
 infra/automacao/      n8n, banco de métricas, Grafana e Uptime Kuma (Docker Compose)
 config/marca.md       guia de marca usado pelo pipeline de conteúdo
 tools/                geradores, motor financeiro, pipeline de conteúdo e templates

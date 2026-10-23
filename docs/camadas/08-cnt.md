@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** A CLI docker e o kubectl no Ubuntu falam com a engine do Docker no WSL2.
 
-**13 blocos** · 0 precisam de conta · 6 marcados como futuro
+**13 blocos** · 0 precisam de conta · 5 marcados como futuro
 
 ## Mapa de conexões
 
@@ -143,7 +143,7 @@ flowchart LR
 | [RabbitMQ](#rmq) | Local · futuro | Fila de eventos entre sistemas. |
 | [Kubernetes local (kind)](#kind) | Local · futuro | Treino de Kubernetes sem pagar nuvem. |
 | [Terraform](#tf) | Local | Cria Azure, AWS e Cloudflare por código. |
-| [n8n](#n8n) | Local · futuro | Automação: novo aluno → e-mail, post agendado, aviso. |
+| [n8n](#n8n) | Local | Automação: novo aluno → e-mail, post agendado, aviso. |
 
 <a id="caddy"></a>
 
@@ -319,7 +319,7 @@ Cria Azure, AWS e Cloudflare por código.
 
 ### n8n
 
-*Local · futuro*
+*Local*
 
 Automação: novo aluno → e-mail, post agendado, aviso.
 

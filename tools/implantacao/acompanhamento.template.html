@@ -64,6 +64,15 @@ details.fase>summary::-webkit-details-marker{display:none}
 .pronto span{font:500 11px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--ok)}
 .nota{font-size:13px;color:var(--muted);margin-top:4px}
 .corpo{grid-column:2/3;min-width:0}
+.implanta{font-size:12px;color:var(--muted);margin-top:4px}
+.implanta span{font:500 11px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--aura)}
+.cob{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.cob h2{font-size:17px}
+.cob details{border-top:1px solid var(--line);padding-top:8px}
+.cob summary{cursor:pointer;font-weight:600}
+.cob dl{margin:8px 0 0;display:grid;gap:6px}
+.cob dt{font-weight:600;font-size:14px}
+.cob dd{margin:0 0 4px;font-size:13px;color:var(--muted)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
@@ -87,6 +96,8 @@ details.fase>summary::-webkit-details-marker{display:none}
   </div>
 
   <div id="fases" style="display:flex;flex-direction:column;gap:12px"></div>
+
+  <section class="cob" id="cob" aria-labelledby="cobt"></section>
 </div>
 
 <script>
@@ -107,7 +118,7 @@ function render(){
   $("resumo").textContent=`${ok} de ${total} passos · faltam cerca de ${hm(rest)}`;
   $("barra").style.width=(ok/total*100).toFixed(1)+"%";
   const prox=todos.find(p=>!feitos[p.id]);
-  $("proximo").innerHTML=prox?`<b>Próximo passo · fase ${prox.fi} · ${esc(QUEM[prox.quem])}</b><a href="#p-${prox.id}">${prox.num} ${esc(prox.titulo)}</a>`:`<b>Tudo pronto</b><span>Os três testes de ponta a ponta passaram. Agora é alimentar o sistema.</span>`;
+  $("proximo").innerHTML=prox?`<b>Próximo passo · fase ${prox.fi} · ${esc(QUEM[prox.quem])}</b><a href="#p-${prox.id}">${prox.num} ${esc(prox.titulo)}</a>`:`<b>Tudo pronto</b><span>Todas as fases concluídas. O setup inteiro está no ar.</span>`;
   $("fMeus").setAttribute("aria-pressed",soMeus);$("fFeitos").setAttribute("aria-pressed",escFeitos);
   const abertas=new Set([...document.querySelectorAll("details.fase[open]")].map(d=>d.id));
   const primeira=prox?prox.fase.id:null;
@@ -122,7 +133,8 @@ function render(){
         <div class="meta"><span class="quem ${p.quem}">${esc(QUEM[p.quem])}</span><span>${hm(p.tempo_min)}</span></div>
         ${p.comando?`<div class="cmd"><code id="k-${p.id}">${esc(p.comando)}</code><button class="copy" data-copy="${p.id}">Copiar</button></div>`:""}
         <p class="pronto"><span>Pronto quando</span> ${esc(p.pronto)}</p>
-        ${p.nota?`<p class="nota">${esc(p.nota)}</p>`:""}</div></li>`;}).join("")||'<li class="passo"><span></span><span class="nota">Nada aqui com esses filtros.</span></li>'}</ul></details>`;
+        ${p.nota?`<p class="nota">${esc(p.nota)}</p>`:""}
+        ${p.implanta.length?`<p class="implanta"><span>Implanta</span> ${esc(p.implanta.join(" · "))}</p>`:""}</div></li>`;}).join("")||'<li class="passo"><span></span><span class="nota">Nada aqui com esses filtros.</span></li>'}</ul></details>`;
   }).join("");
 }
 document.addEventListener("change",async e=>{
@@ -140,7 +152,15 @@ document.addEventListener("click",e=>{
 $("fMeus").onclick=()=>{soMeus=!soMeus;salvarFiltros();render();};
 $("fFeitos").onclick=()=>{escFeitos=!escFeitos;salvarFiltros();render();};
 function salvarFiltros(){try{localStorage.setItem("impl-filtros",JSON.stringify({soMeus,escFeitos}));}catch(e){}}
-render();
+function renderCob(){
+  const C=D.cob,lista=a=>`<dl>${a.map(([t,d])=>`<dt>${esc(t)}</dt><dd>${esc(Array.isArray(d)?d.join(" · "):d)}</dd>`).join("")}</dl>`;
+  $("cob").innerHTML=`<h2 id="cobt">Cobertura do setup</h2>
+  <p class="nota">Os ${C.total} blocos do mapa do setup têm lugar: ${C.nos_passos} entram nos passos acima, ${C.construir.length} são peças a construir, ${C.nao_instala.length} não se instalam e ${C.n_depois} ficam para depois. O CI do repositório falha se um bloco novo ficar de fora.</p>
+  <details><summary>Peças a construir (${C.construir.length})</summary>${lista(C.construir)}</details>
+  <details><summary>Não se instala (${C.nao_instala.length})</summary>${lista(C.nao_instala)}</details>
+  <details><summary>Para depois (${C.n_depois})</summary>${lista(C.depois)}</details>`;
+}
+render();renderCob();
 $("st").textContent="O progresso fica salvo neste navegador.";
 (async()=>{
   try{db=window.claude?await window.claude.use("db"):null;}catch(e){db=null;}

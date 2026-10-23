@@ -317,7 +317,7 @@ def gerar_indice_docs(eco: dict, por_camada: dict) -> str:
     out.append("- [Peças autorais](pecas-autorais.md) · [Fora do setup](fora-do-setup.md)")
     out.append("- [Marketing, vendas e automação](marketing/README.md): funil, canais sem rosto com voz clonada, publicação automática, tráfego, parcerias, internacional e medição de lucro")
     out.append("- [Editora AMS Silva](editora/README.md): estrutura legal, pipeline de produção dos livros, rigor editorial, identidade visual, avaliação, produtos, lançamento e roteiro")
-    out.append("- [Implantação](implantacao/README.md): roteiro com 58 passos, scripts que instalam e verificadores que conferem; pipeline de conteúdo e stack de automação")
+    out.append("- [Implantação](implantacao/README.md): roteiro que cobre todos os blocos do setup, scripts que instalam e verificadores que conferem; pipeline de conteúdo e stack de automação")
     out.append("- [Operação do grupo](operacao/README.md): esteira de ofertas, portfólio pontuado, marca e presença, flywheel de conteúdo, automação, qualidade, clientes e ordem de execução")
     out.append("- [Negócios do grupo](negocios/README.md): os nove negócios em Barbacena, estrutura de CNPJs, ordem de abertura, números, cardápios e mínimo legal")
     out.append("- [Vários computadores, SSD externo e NAS](infra/README.md): como crescer o setup para mais máquinas e armazenamento local e em nuvem")
@@ -397,8 +397,8 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
             "  adr/                decisões de arquitetura",
             "  index.html          diagrama interativo (gerado)",
             "  mapa.html           sistemas, nuvens, pilha, mercado e ordem de estudo (gerado)",
-            "scripts/windows/      instalar.ps1, verificar.ps1 e o inventário do Windows",
-            "scripts/wsl/          bootstrap.sh, verificar.sh e ativar-pipeline.sh",
+            "scripts/windows/      instalar.ps1, verificar.ps1, extensões do VS Code e o inventário do Windows",
+            "scripts/wsl/          bootstrap.sh, nuvem.sh, verificar.sh e ativar-pipeline.sh",
             "infra/automacao/      n8n, banco de métricas, Grafana e Uptime Kuma (Docker Compose)",
             "config/marca.md       guia de marca usado pelo pipeline de conteúdo",
             "tools/                geradores, motor financeiro, pipeline de conteúdo e templates",

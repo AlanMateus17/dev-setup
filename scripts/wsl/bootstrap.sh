@@ -61,7 +61,8 @@ fi
 
 # ------------------------------------------------------------------ 1. pacotes do sistema
 PACOTES=(build-essential curl wget git unzip zip jq ripgrep fzf tmux zsh ca-certificates gnupg
-         bubblewrap restic pandoc sqlite3 postgresql-client python3-venv shellcheck openssh-client)
+         bubblewrap restic pandoc sqlite3 postgresql-client python3-venv shellcheck openssh-client
+         nmap dnsutils)
 FALTAM=()
 for p in "${PACOTES[@]}"; do dpkg -s "$p" >/dev/null 2>&1 || FALTAM+=("$p"); done
 if [[ ${#FALTAM[@]} -eq 0 ]]; then linha "apt" "pacotes base (${#PACOTES[@]})" "JA TEM"

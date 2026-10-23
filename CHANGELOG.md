@@ -2,6 +2,19 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.9.0] - 2026-10-23
+
+### Corrigido
+- O roteiro de implantação cobria só parte do setup (cerca de 176 dos 303 blocos). Agora cada passo diz quais blocos implanta e todos os 303 têm lugar: 214 em passos, 9 peças a construir, 3 que não se instalam e 77 para depois.
+- Blocos n8n, banco de métricas, painel de lucro, webhooks de venda e aprovação no celular deixam de ser "futuro": a implantação já os coloca no ar.
+
+### Adicionado
+- Roteiro com 18 fases e 129 passos: hardware, Defender, Claude in Chrome, extensões do VS Code, dotfiles, Obsidian Git, Syncthing, ADRs, MCP, ai-memory, RAG, recursos do Claude, conectores e plugins, outros assistentes, estúdio de conteúdo, WhatsApp Business, sites, Umami, Hostinger, vendas e finanças no CPF (gov.br, banco, contador, LGPD, plataformas, Mercado Pago, agenda, CRM, comunidade, afiliados, UTM, ofertas, avaliações, prospecção, INPI, carnê-leão, IRPF, Caixa da Casa), base dos sistemas AM, nuvem e deploy, editora e estudo.
+- `tools/implantacao/gerar.py` falha se um bloco do setup ficar fora do roteiro, se um passo citar bloco que não existe ou se um bloco estiver em dois lugares; roteiro e acompanhamento mostram o que cada passo implanta e a cobertura completa. 5 testes novos.
+- `scripts/wsl/nuvem.sh`: Azure CLI, Terraform, Vercel CLI e Wrangler.
+- `scripts/windows/extensoes-vscode.ps1` com `vscode-extensoes.txt` e `.vscode/extensions.json`.
+- Wireshark no winget (o Unity Hub só pelo passo de decisão); nmap e dnsutils no `bootstrap.sh`; `verificar.sh` confere as ferramentas novas como opcionais.
+
 ## [1.8.0] - 2026-10-21
 
 ### Adicionado
