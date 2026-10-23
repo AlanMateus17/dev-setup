@@ -56,22 +56,23 @@ Saber exatamente o que o notebook já tem de hardware, segurança, programas, co
 
 **Quando:** Antes de tudo · semana 1 (out/2026)
 
-### 0.1 Baixar o dev-setup.zip e extrair numa pasta do Windows
+### 0.1 Baixar o dev-setup.zip e extrair (botão direito > Extrair tudo)
 
 **Você** · 5 min
 
-- [ ] **Pronto quando:** Pasta C:\Users\SEU_USUARIO\dev-setup com os arquivos; os comandos do Windows rodam de dentro dela
+- [ ] **Pronto quando:** Você abre a pasta extraída e vê RODAR-DIAGNOSTICO.cmd junto das pastas scripts, data e docs. Se aparecer só outra pasta dev-setup dentro, entre nela: essa é a pasta principal
+- O Windows costuma criar dev-setup\dev-setup ao extrair. A pasta certa é sempre a que tem RODAR-DIAGNOSTICO.cmd e a pasta scripts. Não rode comandos com Get-ChildItem -Recurse fora dela.
 
-### 0.2 Rodar o diagnóstico do notebook (PowerShell como Administrador)
+### 0.2 Rodar o diagnóstico: botão direito em RODAR-DIAGNOSTICO.cmd > Executar como administrador
 
 **Script** · 10 min
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\windows\diagnostico.ps1
+$s = Get-ChildItem $HOME -Recurse -Depth 6 -Filter diagnostico.ps1 -ErrorAction SilentlyContinue | Where-Object { $_.FullName -like '*\scripts\windows\diagnostico.ps1' } | Select-Object -First 1; if ($s) { powershell -ExecutionPolicy Bypass -File $s.FullName } else { Write-Host 'Nao achei: extraia o dev-setup.zip primeiro.' }
 ```
 
 - [ ] **Pronto quando:** Pasta diagnostico-AAAAMMDD com diagnostico.md: o que você tem e em que passo cada pendência se resolve
-- Somente leitura: não instala nem apaga nada. Mostra modelo, processador, memória e slots livres, placa de vídeo, discos e saúde, espaço livre, bateria, monitores, Secure Boot, TPM, criptografia, Defender, programas do setup que já tem e que faltam, WSL, Docker, modelos do Ollama e extensões do VS Code.
+- Somente leitura: não instala nem apaga nada. O comando acima é o plano B, para colar no PowerShell (Administrador) se o .cmd não abrir: ele só aceita o arquivo dentro de scripts\windows e não mexe em nenhuma outra pasta. Se o Windows avisar "O Windows protegeu o computador", clique em Mais informações > Executar assim mesmo. Mostra modelo, processador, memória e slots livres, placa de vídeo, discos e saúde, espaço livre, bateria, monitores, Secure Boot, TPM, criptografia, Defender, programas do setup que já tem e que faltam, WSL, Docker, modelos do Ollama e extensões do VS Code.
 - Implanta: Diagnóstico do notebook · Acer Nitro (32 GB, GTX 1650)
 
 ### 0.3 Rodar o inventário de espaço: pastas e arquivos que mais ocupam, programas que iniciam com o Windows

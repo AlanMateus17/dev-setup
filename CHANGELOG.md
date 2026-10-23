@@ -2,6 +2,12 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.14.1] - 2026-10-23
+
+### Corrigido
+- O diagnóstico agora roda com `RODAR-DIAGNOSTICO.cmd` na raiz (botão direito > Executar como administrador): ele entra sozinho na própria pasta, confere que `scripts\windows\diagnostico.ps1` está ali e não percorre nenhuma outra pasta. As instruções anteriores rodavam `Unblock-File` a partir da pasta onde o PowerShell abria (System32 ou a pasta do usuário).
+- O plano B do passo (comando para colar) só aceita o arquivo dentro de `scripts\windows` e não usa `Unblock-File`: com `-ExecutionPolicy Bypass` ele não é necessário.
+
 ## [1.14.0] - 2026-10-23
 
 ### Adicionado

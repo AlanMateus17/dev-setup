@@ -7,20 +7,21 @@
    "passos": [
     {
      "id": "diag-pasta",
-     "titulo": "Baixar o dev-setup.zip e extrair numa pasta do Windows",
+     "titulo": "Baixar o dev-setup.zip e extrair (botão direito > Extrair tudo)",
      "quem": "voce",
-     "pronto": "Pasta C:\\Users\\SEU_USUARIO\\dev-setup com os arquivos; os comandos do Windows rodam de dentro dela",
+     "pronto": "Você abre a pasta extraída e vê RODAR-DIAGNOSTICO.cmd junto das pastas scripts, data e docs. Se aparecer só outra pasta dev-setup dentro, entre nela: essa é a pasta principal",
      "tempo_min": 5,
-     "blocos": []
+     "blocos": [],
+     "nota": "O Windows costuma criar dev-setup\\dev-setup ao extrair. A pasta certa é sempre a que tem RODAR-DIAGNOSTICO.cmd e a pasta scripts. Não rode comandos com Get-ChildItem -Recurse fora dela."
     },
     {
      "id": "diag-rodar",
-     "titulo": "Rodar o diagnóstico do notebook (PowerShell como Administrador)",
+     "titulo": "Rodar o diagnóstico: botão direito em RODAR-DIAGNOSTICO.cmd > Executar como administrador",
      "quem": "script",
      "pronto": "Pasta diagnostico-AAAAMMDD com diagnostico.md: o que você tem e em que passo cada pendência se resolve",
      "tempo_min": 10,
-     "comando": "powershell -ExecutionPolicy Bypass -File .\\scripts\\windows\\diagnostico.ps1",
-     "nota": "Somente leitura: não instala nem apaga nada. Mostra modelo, processador, memória e slots livres, placa de vídeo, discos e saúde, espaço livre, bateria, monitores, Secure Boot, TPM, criptografia, Defender, programas do setup que já tem e que faltam, WSL, Docker, modelos do Ollama e extensões do VS Code.",
+     "comando": "$s = Get-ChildItem $HOME -Recurse -Depth 6 -Filter diagnostico.ps1 -ErrorAction SilentlyContinue | Where-Object { $_.FullName -like '*\\scripts\\windows\\diagnostico.ps1' } | Select-Object -First 1; if ($s) { powershell -ExecutionPolicy Bypass -File $s.FullName } else { Write-Host 'Nao achei: extraia o dev-setup.zip primeiro.' }",
+     "nota": "Somente leitura: não instala nem apaga nada. O comando acima é o plano B, para colar no PowerShell (Administrador) se o .cmd não abrir: ele só aceita o arquivo dentro de scripts\\windows e não mexe em nenhuma outra pasta. Se o Windows avisar \"O Windows protegeu o computador\", clique em Mais informações > Executar assim mesmo. Mostra modelo, processador, memória e slots livres, placa de vídeo, discos e saúde, espaço livre, bateria, monitores, Secure Boot, TPM, criptografia, Defender, programas do setup que já tem e que faltam, WSL, Docker, modelos do Ollama e extensões do VS Code.",
      "blocos": [
       "diag",
       "nb"

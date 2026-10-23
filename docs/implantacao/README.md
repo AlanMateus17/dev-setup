@@ -33,6 +33,8 @@ As datas são uma proposta para caber em umas 5 horas por semana; os gatilhos n�
 
 Antes de instalar qualquer coisa, `scripts/windows/diagnostico.ps1` lê o notebook (somente leitura): modelo, processador, memória e slots livres, placa de vídeo, discos e saúde, espaço livre, bateria, monitores, Secure Boot, TPM, criptografia, Defender, os programas do setup que já estão instalados e os que faltam, WSL, Docker, modelos do Ollama e extensões do VS Code. O relatório `diagnostico.md` diz em que passo do roteiro cada pendência se resolve. Junto com a lista das contas que você já tem e a contagem dos seus documentos, é dele que o resto do roteiro parte.
 
+Para rodar: extraia o `dev-setup.zip` (botão direito > Extrair tudo), entre na pasta que tem `RODAR-DIAGNOSTICO.cmd` e a pasta `scripts` (o Windows costuma criar `dev-setup\dev-setup`; a certa é a de dentro) e clique com o botão direito em `RODAR-DIAGNOSTICO.cmd` > Executar como administrador. Ele entra sozinho na pasta certa e não mexe em mais nada do computador. O relatório fica em `diagnostico-AAAAMMDD`, dentro da mesma pasta.
+
 ## O caminho até vender
 
 A primeira venda do mini-curso está na fase 16, mas o dinheiro pode entrar antes: aulas particulares com agenda e Pix, sites para pequenas empresas e links de afiliado ficam prontos na fase 13. Depois da primeira venda, a fase 21 põe as outras ofertas à venda uma por vez, começando pelas de maior pontuação (página 'meu setup', kit de aulas para professores, planilha do Caixa da Casa, automação com IA, banco de questões, baralhos Anki).
@@ -81,7 +83,7 @@ Três verificadores, todos somente leitura, que terminam dizendo "pronto" ou lis
 
 | Verificador | Onde roda | Confere |
 |---|---|---|
-| `scripts/windows/diagnostico.ps1` | PowerShell, antes de tudo | O que o notebook já tem de hardware, segurança e programas, e em que passo cada pendência se resolve |
+| `RODAR-DIAGNOSTICO.cmd` → `scripts/windows/diagnostico.ps1` | Botão direito > Executar como administrador, antes de tudo | O que o notebook já tem de hardware, segurança e programas, e em que passo cada pendência se resolve |
 | `scripts/windows/verificar.ps1` | PowerShell | Programas, WSL2, .wslconfig, Docker, Ollama e, como Administrador, Secure Boot, TPM e criptografia |
 | `scripts/wsl/verificar.sh` | Ubuntu | Ferramentas e versões (inclusive nmap, dig, Azure CLI, Terraform, Vercel CLI e Wrangler como opcionais), Git com commits assinados, login no GitHub, pastas |
 | `scripts/wsl/verificar.sh --servicos` | Ubuntu | n8n, banco de métricas, Grafana, Uptime Kuma, Postiz e o pipeline de conteúdo |

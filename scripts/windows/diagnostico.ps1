@@ -2,7 +2,8 @@
 # Ve o hardware, a seguranca e os programas que voce ja tem, compara com o setup
 # e diz em que passo do roteiro cada pendencia se resolve.
 #
-#   powershell -ExecutionPolicy Bypass -File .\scripts\windows\diagnostico.ps1
+#   Botao direito em RODAR-DIAGNOSTICO.cmd (na raiz) > Executar como administrador
+#   ou: powershell -ExecutionPolicy Bypass -File .\scripts\windows\diagnostico.ps1
 # (como Administrador ve tambem Secure Boot, TPM, BitLocker e a saude da bateria)
 #
 # Gera a pasta diagnostico-AAAAMMDD na raiz do repositorio com:
