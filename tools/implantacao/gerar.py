@@ -17,6 +17,7 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parents[2]
 DADOS = RAIZ / "data" / "implantacao.json"
 ECO = RAIZ / "data" / "ecossistema.json"
+PORTFOLIO = RAIZ / "data" / "portfolio.json"
 MD = RAIZ / "docs" / "implantacao" / "roteiro.md"
 HTML = RAIZ / "docs" / "implantacao" / "acompanhamento.html"
 TEMPLATE = RAIZ / "tools" / "implantacao" / "acompanhamento.template.html"
@@ -28,6 +29,10 @@ ID_RE = re.compile(r"^[a-z0-9-]+$")
 
 def carregar() -> dict:
     return json.loads(DADOS.read_text(encoding="utf-8"))
+
+
+def carregar_portfolio() -> dict:
+    return json.loads(PORTFOLIO.read_text(encoding="utf-8"))
 
 
 def carregar_eco() -> dict:
@@ -91,6 +96,12 @@ def validar(d: dict, eco: dict | None = None) -> list[str]:
     for f in d["fases"]:
         if not f.get("quando", "").strip():
             erros.append(f"fase {f['id']} ({f['titulo']}) sem 'quando'")
+    ofertas = {o["id"] for o in carregar_portfolio()["ofertas"]}
+    usadas = {o for f in d["fases"] for p in f["passos"] for o in p.get("ofertas", [])}
+    for o in sorted(usadas - ofertas):
+        erros.append(f"oferta {o} citada no roteiro não existe em data/portfolio.json")
+    for o in sorted(ofertas - usadas):
+        erros.append(f"oferta {o} do portfólio sem passo no roteiro: diga quando ela entra")
     if d.get("cobertura"):
         erros.append("'cobertura' não é mais usada: todo bloco entra num passo")
     return erros
@@ -104,6 +115,7 @@ def horas(minutos: int) -> str:
 def gerar_md(d: dict, eco: dict | None = None) -> str:
     eco = eco if eco is not None else carregar_eco()
     B = {b["id"]: b for b in eco["blocos"]}
+    OF = {o["id"]: o["nome"] for o in carregar_portfolio()["ofertas"]}
     qb = quando_por_bloco(d)
     todos = [(f, p) for f in d["fases"] for p in f["passos"]]
     total = sum(p["tempo_min"] for _, p in todos)
@@ -116,7 +128,8 @@ def gerar_md(d: dict, eco: dict | None = None) -> str:
          "Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), "
          "**Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).\n",
          f"**Todo o planejamento está aqui:** os {len(B)} blocos do [mapa do setup](../mapa.html), de todas as {len(eco['camadas'])} camadas, "
-         "entram em algum passo, com a data ou o gatilho de quando. Nada fica de fora; o CI falha se um bloco novo não tiver passo "
+         f"entram em algum passo, com a data ou o gatilho de quando, e cada uma das {len(OF)} ofertas do portfólio tem o passo em que entra à venda. "
+         "Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo "
          "([quando entra cada bloco](#quando-entra-cada-bloco)).\n",
          f"**Dá para fazer hoje:** {len(hoje)} dos {len(todos)} passos ({horas(t_hoje)}) só precisam do notebook e de contas grátis. "
          "Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.\n",
@@ -144,6 +157,8 @@ def gerar_md(d: dict, eco: dict | None = None) -> str:
                 o.append(f"- {p['nota']}")
             if p.get("precisa"):
                 o.append("- **Precisa:** " + ", ".join(PRECISA[x] for x in p["precisa"]))
+            if p.get("ofertas"):
+                o.append("- **Oferta:** " + " · ".join(OF[x] for x in p["ofertas"]))
             if p.get("blocos"):
                 o.append("- Implanta: " + " · ".join(rotulo(B[b]) for b in p["blocos"]))
             o.append("")
@@ -162,7 +177,9 @@ def gerar_md(d: dict, eco: dict | None = None) -> str:
 def dados_html(d: dict, eco: dict) -> dict:
     B = {b["id"]: b for b in eco["blocos"]}
     qb = quando_por_bloco(d)
-    fases = [{**f, "passos": [{**{k: v for k, v in p.items() if k != "blocos"}, "hoje": faz_hoje(f, p),
+    OF = {o["id"]: o["nome"] for o in carregar_portfolio()["ofertas"]}
+    fases = [{**f, "passos": [{**{k: v for k, v in p.items() if k not in ("blocos", "ofertas")}, "hoje": faz_hoje(f, p),
+                                "ofertas": [OF[x] for x in p.get("ofertas", [])],
                                 "implanta": [rotulo(B[b]) for b in p.get("blocos", [])]} for p in f["passos"]]}
              for f in d["fases"]]
     camadas = [{"t": c["titulo"], "b": [[rotulo(b), [[x["num"], x["id"]] for x in qb.get(b["id"], [])],

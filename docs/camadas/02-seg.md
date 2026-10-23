@@ -76,15 +76,15 @@ flowchart LR
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Commits assinados (chave SSH)](#sign) | Local | Selo Verified no GitHub: prova que o commit é seu. Usa a chave SSH que você já tem. | passo 2.6 · Semana 2 · nov/2026; passo 14.1 · Semana 11 · jan/2027 |
-| [restic (backup criptografado)](#restic) | Local | Backup criptografado e incremental para o disco externo e para a nuvem (ex.: armazenamento do seu plano Google). | passo 5.1 · Semana 3 · nov/2026; passo 5.4 · Semana 3 · nov/2026 |
-| [Chave física (YubiKey)](#ykey) | Físico · futuro | 2FA à prova de phishing para GitHub, Google e Microsoft. | passo 20.5 · 2027, conforme cada compra |
-| [TPM + Secure Boot](#tpm) | Físico | Só sistema assinado dá boot. Para usar os pendrives de Kali e Arch, o Secure Boot precisa ser desligado; suspenda o BitLocker antes, senão o Windows pede a chave de recuperação. | passo 1.4 · Semana 1 · out/2026 |
-| [BitLocker](#bitl) | Local | Disco criptografado; chave guardada fora da máquina. | passo 1.4 · Semana 1 · out/2026 |
-| [Defender + Firewall](#def) | Local | Antivírus e bloqueio de rede. | passo 1.5 · Semana 1 · out/2026 |
-| [KeePassXC](#kee) | Local | Cofre de todas as senhas das contas marcadas com o ponto dourado. | passo 1.3 · Semana 1 · out/2026 |
-| [App 2FA (celular)](#tfa) | Local | Segundo fator de todas as contas. | passo 0.4 · Semana 1 · out/2026 |
-| [Backup 3-2-1](#bkp) | Local | GitHub + disco externo + (depois) NAS. | passo 5.1 · Semana 3 · nov/2026; passo 5.2 · Semana 3 · nov/2026; passo 5.3 · Semana 3 · nov/2026; passo 6.2 · Semanas 3 e 4 · nov/2026 |
+| [Commits assinados (chave SSH)](#sign) | Local | Selo Verified no GitHub: prova que o commit é seu. Usa a chave SSH que você já tem. | passo 3.6 · Semana 2 · nov/2026; passo 15.1 · Semana 11 · jan/2027 |
+| [restic (backup criptografado)](#restic) | Local | Backup criptografado e incremental para o disco externo e para a nuvem (ex.: armazenamento do seu plano Google). | passo 6.1 · Semana 3 · nov/2026; passo 6.4 · Semana 3 · nov/2026; passo 9.7 · Semana 4 · nov/2026 |
+| [Chave física (YubiKey)](#ykey) | Físico · futuro | 2FA à prova de phishing para GitHub, Google e Microsoft. | passo 23.5 · 2027, conforme cada compra |
+| [TPM + Secure Boot](#tpm) | Físico | Só sistema assinado dá boot. Para usar os pendrives de Kali e Arch, o Secure Boot precisa ser desligado; suspenda o BitLocker antes, senão o Windows pede a chave de recuperação. | passo 2.4 · Semana 1 · out/2026 |
+| [BitLocker](#bitl) | Local | Disco criptografado; chave guardada fora da máquina. | passo 2.4 · Semana 1 · out/2026 |
+| [Defender + Firewall](#def) | Local | Antivírus e bloqueio de rede. | passo 2.5 · Semana 1 · out/2026 |
+| [KeePassXC](#kee) | Local | Cofre de todas as senhas das contas marcadas com o ponto dourado. | passo 2.3 · Semana 1 · out/2026 |
+| [App 2FA (celular)](#tfa) | Local | Segundo fator de todas as contas. | passo 1.4 · Semana 1 · out/2026 |
+| [Backup 3-2-1](#bkp) | Local | GitHub + disco externo + (depois) NAS. | passo 6.1 · Semana 3 · nov/2026; passo 6.2 · Semana 3 · nov/2026; passo 6.3 · Semana 3 · nov/2026; passo 7.2 · Semanas 3 e 4 · nov/2026 |
 
 <a id="sign"></a>
 
@@ -94,7 +94,7 @@ flowchart LR
 
 Selo Verified no GitHub: prova que o commit é seu. Usa a chave SSH que você já tem.
 
-**Quando entra:** passo 2.6 · Semana 2 · nov/2026; passo 14.1 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 3.6 · Semana 2 · nov/2026; passo 15.1 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -108,7 +108,7 @@ Selo Verified no GitHub: prova que o commit é seu. Usa a chave SSH que você j�
 
 Backup criptografado e incremental para o disco externo e para a nuvem (ex.: armazenamento do seu plano Google).
 
-**Quando entra:** passo 5.1 · Semana 3 · nov/2026; passo 5.4 · Semana 3 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 6.1 · Semana 3 · nov/2026; passo 6.4 · Semana 3 · nov/2026; passo 9.7 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -124,7 +124,7 @@ Backup criptografado e incremental para o disco externo e para a nuvem (ex.: arm
 
 2FA à prova de phishing para GitHub, Google e Microsoft.
 
-**Quando entra:** passo 20.5 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 23.5 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -138,7 +138,7 @@ Backup criptografado e incremental para o disco externo e para a nuvem (ex.: arm
 
 Só sistema assinado dá boot. Para usar os pendrives de Kali e Arch, o Secure Boot precisa ser desligado; suspenda o BitLocker antes, senão o Windows pede a chave de recuperação.
 
-**Quando entra:** passo 1.4 · Semana 1 · out/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 2.4 · Semana 1 · out/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -153,7 +153,7 @@ Só sistema assinado dá boot. Para usar os pendrives de Kali e Arch, o Secure B
 
 Disco criptografado; chave guardada fora da máquina.
 
-**Quando entra:** passo 1.4 · Semana 1 · out/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 2.4 · Semana 1 · out/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -168,7 +168,7 @@ Disco criptografado; chave guardada fora da máquina.
 
 Antivírus e bloqueio de rede.
 
-**Quando entra:** passo 1.5 · Semana 1 · out/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 2.5 · Semana 1 · out/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -182,7 +182,7 @@ Antivírus e bloqueio de rede.
 
 Cofre de todas as senhas das contas marcadas com o ponto dourado.
 
-**Quando entra:** passo 1.3 · Semana 1 · out/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 2.3 · Semana 1 · out/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -200,7 +200,7 @@ Cofre de todas as senhas das contas marcadas com o ponto dourado.
 
 Segundo fator de todas as contas.
 
-**Quando entra:** passo 0.4 · Semana 1 · out/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 1.4 · Semana 1 · out/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -215,7 +215,7 @@ Segundo fator de todas as contas.
 
 GitHub + disco externo + (depois) NAS.
 
-**Quando entra:** passo 5.1 · Semana 3 · nov/2026; passo 5.2 · Semana 3 · nov/2026; passo 5.3 · Semana 3 · nov/2026; passo 6.2 · Semanas 3 e 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 6.1 · Semana 3 · nov/2026; passo 6.2 · Semana 3 · nov/2026; passo 6.3 · Semana 3 · nov/2026; passo 7.2 · Semanas 3 e 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

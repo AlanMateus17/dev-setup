@@ -2998,6 +2998,15 @@
    "descricao": "Sugere a lista de compras dos negócios de comida pelo estoque mínimo e pela previsão de produção."
   },
   {
+   "id": "diag",
+   "camada": "oper",
+   "rotulo": "Diagnóstico do|notebook",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "scripts/windows/diagnostico.ps1: lê hardware, segurança, programas, WSL, Docker, Ollama e extensões, compara com o setup e diz em que passo cada pendência se resolve. Somente leitura; é a etapa 0 do roteiro."
+  },
+  {
    "id": "oimpl",
    "camada": "oper",
    "rotulo": "Roteiro de|implantação",
@@ -6073,6 +6082,21 @@
    "de": "mobile",
    "para": "api",
    "rotulo": "HTTP + SignalR"
+  },
+  {
+   "de": "nb",
+   "para": "diag",
+   "rotulo": "hardware lido"
+  },
+  {
+   "de": "diag",
+   "para": "oimpl",
+   "rotulo": "começa o roteiro"
+  },
+  {
+   "de": "diag",
+   "para": "oinst",
+   "rotulo": "o que falta instalar"
   }
  ],
  "fluxos": [
@@ -6681,6 +6705,48 @@
     {
      "bloco": "hotm",
      "descricao": "E vai para a venda."
+    }
+   ]
+  },
+  {
+   "id": "comeco",
+   "titulo": "Do notebook à primeira venda",
+   "passos": [
+    {
+     "bloco": "nb",
+     "descricao": "O diagnóstico lê o que o notebook já tem."
+    },
+    {
+     "bloco": "diag",
+     "descricao": "Diz o que falta e em que passo se resolve."
+    },
+    {
+     "bloco": "oimpl",
+     "descricao": "O roteiro começa a partir do que você já tem."
+    },
+    {
+     "bloco": "oinst",
+     "descricao": "Os instaladores põem só o que falta."
+    },
+    {
+     "bloco": "opipe",
+     "descricao": "O pipeline transforma as aulas gravadas em peças."
+    },
+    {
+     "bloco": "oedit",
+     "descricao": "O agente editor prepara posts e cortes."
+    },
+    {
+     "bloco": "aprov",
+     "descricao": "Você aprova."
+    },
+    {
+     "bloco": "n8n",
+     "descricao": "Os posts levam o público até a página."
+    },
+    {
+     "bloco": "metrics",
+     "descricao": "A primeira venda chega ao banco e ao painel."
     }
    ]
   }

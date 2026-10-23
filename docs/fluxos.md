@@ -486,3 +486,36 @@ flowchart LR
 4. **[Esteira de ofertas](camadas/23-oper.md#oesteira)**: Passam pela esteira: validação, construção e lançamento.
 5. **[Mini-curso Lógica de Programação](camadas/17-prod.md#curso)**: O material vira curso, apostila, banco de questões ou kit do professor.
 6. **[Hotmart](camadas/20-venda.md#hotm)**: E vai para a venda.
+
+## Do notebook à primeira venda
+
+```mermaid
+flowchart LR
+  s0["1. Acer Nitro (32 GB, GTX 1650)"]
+  s1["2. Diagnóstico do notebook"]
+  s2["3. Roteiro de implantação"]
+  s3["4. Instaladores (PowerShell e bash)"]
+  s4["5. Pipeline de conteúdo"]
+  s5["6. Agente editor de conteúdo"]
+  s6["7. Aprovação no celular"]
+  s7["8. n8n"]
+  s8["9. Banco de métricas (PostgreSQL)"]
+  s0 --> s1
+  s1 --> s2
+  s2 --> s3
+  s3 --> s4
+  s4 --> s5
+  s5 --> s6
+  s6 --> s7
+  s7 --> s8
+```
+
+1. **[Acer Nitro (32 GB, GTX 1650)](camadas/01-hw.md#nb)**: O diagnóstico lê o que o notebook já tem.
+2. **[Diagnóstico do notebook](camadas/23-oper.md#diag)**: Diz o que falta e em que passo se resolve.
+3. **[Roteiro de implantação](camadas/23-oper.md#oimpl)**: O roteiro começa a partir do que você já tem.
+4. **[Instaladores (PowerShell e bash)](camadas/23-oper.md#oinst)**: Os instaladores põem só o que falta.
+5. **[Pipeline de conteúdo](camadas/23-oper.md#opipe)**: O pipeline transforma as aulas gravadas em peças.
+6. **[Agente editor de conteúdo](camadas/23-oper.md#oedit)**: O agente editor prepara posts e cortes.
+7. **[Aprovação no celular](camadas/21-mkt.md#aprov)**: Você aprova.
+8. **[n8n](camadas/21-mkt.md#n8n)**: Os posts levam o público até a página.
+9. **[Banco de métricas (PostgreSQL)](camadas/21-mkt.md#metrics)**: A primeira venda chega ao banco e ao painel.

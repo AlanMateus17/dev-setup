@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** Toda oferta passa pela esteira e pelo padrão de qualidade antes de chegar ao público; cada venda e cada trabalho voltam como dado e conteúdo.
 
-**22 blocos** · 1 precisam de conta · 8 marcados como futuro
+**23 blocos** · 1 precisam de conta · 8 marcados como futuro
 
 ## Mapa de conexões
 
@@ -31,6 +31,7 @@ flowchart LR
     n_ofisc["Organizador fiscal"]
     n_orevo["Revisor de oferta"]
     n_ocomp["Agente comprador"]
+    n_diag["Diagnóstico do notebook"]
     n_oimpl["Roteiro de implantação"]
     n_oinst["Instaladores (PowerShell e bash)"]
     n_overif["Verificadores"]
@@ -101,6 +102,9 @@ flowchart LR
     n_obsd["Obsidian + Git"]
     n_w11["Windows 11 Home"]
   end
+  subgraph L_hw["Hardware"]
+    n_nb["Acer Nitro (32 GB, GTX 1650)"]
+  end
   n_ocatal -->|"fila por pontuação"| n_oesteira
   n_ocatal -->|"negócios físicos"| n_nplan
   n_acv -->|"produtos candidatos"| n_ocatal
@@ -141,6 +145,9 @@ flowchart LR
   n_ofisc -->|"carnê-leão"| n_nfse
   n_ofisc -->|"entrega ao contador"| n_conta
   n_ocomp -->|"estoque mínimo"| n_nkaix
+  n_diag -->|"começa o roteiro"| n_oimpl
+  n_diag -->|"o que falta instalar"| n_oinst
+  n_nb -->|"hardware lido"| n_diag
   n_oimpl -->|"passos com script"| n_oinst
   n_oinst -->|"depois confere"| n_overif
   n_oinst -->|"instala"| n_opipe
@@ -157,35 +164,36 @@ flowchart LR
   n_acv -->|"só o que é seu"| n_dset
   n_gdrv -->|"cópia pelo Takeout"| n_acv
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_ocatal,n_oesteira,n_oqual,n_omarca,n_oaval,n_ocrm,n_ofly,n_obuild,n_oatend,n_oorc,n_ocob,n_opos,n_oedit,n_oanal,n_ofisc,n_orevo,n_ocomp,n_oimpl,n_oinst,n_overif,n_opipe,n_acv desta
+  class n_ocatal,n_oesteira,n_oqual,n_omarca,n_oaval,n_ocrm,n_ofly,n_obuild,n_oatend,n_oorc,n_ocob,n_opos,n_oedit,n_oanal,n_ofisc,n_orevo,n_ocomp,n_diag,n_oimpl,n_oinst,n_overif,n_opipe,n_acv desta
 ```
 
 ## Blocos
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Portfólio de ofertas](#ocatal) | Local | data/portfolio.json: todas as ofertas do grupo com estágio, notas, pontuação e próximo passo. Gera docs/operacao/portfolio.md e o portfólio interativo. | passo 6.7 · Semanas 3 e 4 · nov/2026; passo 12.14 · Semanas 8 a 10 · dez/2026 a jan/2027 |
-| [Esteira de ofertas](#oesteira) | Local | Ideia, validação, construção, lançamento e escala, com portões objetivos. Uma oferta em construção e uma em validação por vez. | passo 6.7 · Semanas 3 e 4 · nov/2026; passo 12.14 · Semanas 8 a 10 · dez/2026 a jan/2027 |
-| [Padrão de qualidade](#oqual) | Local | Checklist de 'pronto' por tipo de oferta: infoproduto, livro, software, serviço, negócio físico e conteúdo. | passo 12.14 · Semanas 8 a 10 · dez/2026 a jan/2027 |
-| [Marca pessoal Alan Mateus](#omarca) | Remoto | O guarda-chuva de confiança do grupo: Instituto AMS, Editora AMS Silva, AMtech e os negócios locais apontam para você. | passo 9.1 · Semana 5 · nov/2026; passo 11.1 · Semanas 6 e 7 · dez/2026 |
-| [NPS e avaliações](#oaval) | Remoto | Uma pergunta depois de cada compra ou serviço e pedido de avaliação no Google. Reclamação vira issue da oferta. | passo 12.15 · Semanas 8 a 10 · dez/2026 a jan/2027 |
-| [CRM único + LGPD](#ocrm) | Local | Uma ficha por cliente com ofertas compradas, origem e consentimento. Começa em planilha e MailerLite; vira tabela no PostgreSQL do grupo. | passo 12.9 · Semanas 8 a 10 · dez/2026 a jan/2027 |
-| [Flywheel de conteúdo](#ofly) | Local | Cada aula, capítulo, projeto, reparo ou prato vira várias peças: cortes, carrossel, artigo, newsletter, questão, template. | passo 9.5 · Semana 5 · nov/2026; passo 9.6 · Semana 5 · nov/2026 |
-| [Canal build in public](#obuild) | Remoto · precisa de conta · futuro | Vídeo semanal com rosto mostrando decisões reais do grupo: números, setup, aulas. Gera confiança para todas as ofertas. | passo 19.7 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
-| [Agente atendente (WhatsApp)](#oatend) | Local · futuro | Responde perguntas frequentes, mostra catálogo e horários e agenda. Passa para você o que não souber. Nunca promete preço fora da tabela. | passo 24.2 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) |
-| [Agente orçamentista](#oorc) | Local · futuro | Monta propostas a partir dos pacotes e do histórico, para você aprovar. | passo 24.3 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) |
-| [Agente cobrador](#ocob) | Local · futuro | Lembra vencimentos e envia o Pix; avisa você nos atrasos. Não faz estorno nem acordo sozinho. | passo 24.4 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) |
-| [Agente pós-venda](#opos) | Local · futuro | Pergunta a nota, pede avaliação e oferece o próximo passo da jornada do cliente. | passo 24.5 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) |
-| [Agente editor de conteúdo](#oedit) | Local | Transforma transcrições em cortes, títulos, legendas, carrosséis, posts do Google e newsletter, seguindo o guia de estilo da marca. | passo 9.5 · Semana 5 · nov/2026 |
-| [Analista semanal](#oanal) | Local · futuro | Lê o painel toda segunda e manda 3 fatos e 1 sugestão de decisão. Só leitura. | passo 24.1 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) |
-| [Organizador fiscal](#ofisc) | Local · futuro | Junta notas, extratos e vendas do mês para o contador e para o carnê-leão. | passo 24.6 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) |
-| [Revisor de oferta](#orevo) | Local | Confere cada lançamento contra o padrão de qualidade antes de ir ao ar. | passo 12.14 · Semanas 8 a 10 · dez/2026 a jan/2027 |
-| [Agente comprador](#ocomp) | Local · futuro | Sugere a lista de compras dos negócios de comida pelo estoque mínimo e pela previsão de produção. | passo 24.7 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) |
-| [Roteiro de implantação](#oimpl) | Local | data/implantacao.json: fases e passos com critério de pronto, cada passo ligado aos blocos que implanta. Gera docs/implantacao/roteiro.md e a página de acompanhamento; o CI falha se um bloco do setup ficar de fora. | passo 14.4 · Semana 11 · jan/2027 |
-| [Instaladores (PowerShell e bash)](#oinst) | Local | instalar.ps1 (winget, WSL2, .wslconfig) e bootstrap.sh (ferramentas, linguagens, Claude Code, ai-jail, Git assinado). Seguros para rodar de novo. | passo 1.1 · Semana 1 · out/2026; passo 2.4 · Semana 2 · nov/2026 |
-| [Verificadores](#overif) | Local | verificar.ps1 e verificar.sh: somente leitura, dizem 'pronto' ou listam o que falta. Também conferem os serviços da automação. | passo 1.10 · Semana 1 · out/2026; passo 2.10 · Semana 2 · nov/2026; passo 8.3 · Semana 4 · nov/2026; passo 14.4 · Semana 11 · jan/2027 |
-| [Pipeline de conteúdo](#opipe) | Local | tools/conteudo/processar.py com timer de 15 min: entrada → transcrição → peças pelo guia de marca → fila de aprovação → aviso no Telegram. | passo 9.4 · Semana 5 · nov/2026; passo 9.5 · Semana 5 · nov/2026; passo 14.2 · Semana 11 · jan/2027 |
-| [Acervo (seus documentos)](#acv) | Local | tools/acervo/acervo.py: lê todos os seus documentos sem alterar nada, acha cópias, separa os pessoais, marca o que é de terceiros ou da escola, converte o resto para Markdown no Obsidian e sugere os produtos que dá para vender. Tudo no notebook. | passo 6.3 · Semanas 3 e 4 · nov/2026; passo 6.4 · Semanas 3 e 4 · nov/2026; passo 6.5 · Semanas 3 e 4 · nov/2026 |
+| [Portfólio de ofertas](#ocatal) | Local | data/portfolio.json: todas as ofertas do grupo com estágio, notas, pontuação e próximo passo. Gera docs/operacao/portfolio.md e o portfólio interativo. | passo 7.7 · Semanas 3 e 4 · nov/2026; passo 13.14 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 21.20 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [Esteira de ofertas](#oesteira) | Local | Ideia, validação, construção, lançamento e escala, com portões objetivos. Uma oferta em construção e uma em validação por vez. | passo 7.7 · Semanas 3 e 4 · nov/2026; passo 13.14 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Padrão de qualidade](#oqual) | Local | Checklist de 'pronto' por tipo de oferta: infoproduto, livro, software, serviço, negócio físico e conteúdo. | passo 13.14 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Marca pessoal Alan Mateus](#omarca) | Remoto | O guarda-chuva de confiança do grupo: Instituto AMS, Editora AMS Silva, AMtech e os negócios locais apontam para você. | passo 10.1 · Semana 5 · nov/2026; passo 12.1 · Semanas 6 e 7 · dez/2026 |
+| [NPS e avaliações](#oaval) | Remoto | Uma pergunta depois de cada compra ou serviço e pedido de avaliação no Google. Reclamação vira issue da oferta. | passo 13.15 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [CRM único + LGPD](#ocrm) | Local | Uma ficha por cliente com ofertas compradas, origem e consentimento. Começa em planilha e MailerLite; vira tabela no PostgreSQL do grupo. | passo 13.9 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Flywheel de conteúdo](#ofly) | Local | Cada aula, capítulo, projeto, reparo ou prato vira várias peças: cortes, carrossel, artigo, newsletter, questão, template. | passo 10.5 · Semana 5 · nov/2026; passo 10.6 · Semana 5 · nov/2026 |
+| [Canal build in public](#obuild) | Remoto · precisa de conta · futuro | Vídeo semanal com rosto mostrando decisões reais do grupo: números, setup, aulas. Gera confiança para todas as ofertas. | passo 22.7 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
+| [Agente atendente (WhatsApp)](#oatend) | Local · futuro | Responde perguntas frequentes, mostra catálogo e horários e agenda. Passa para você o que não souber. Nunca promete preço fora da tabela. | passo 21.5 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 27.2 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) |
+| [Agente orçamentista](#oorc) | Local · futuro | Monta propostas a partir dos pacotes e do histórico, para você aprovar. | passo 27.3 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) |
+| [Agente cobrador](#ocob) | Local · futuro | Lembra vencimentos e envia o Pix; avisa você nos atrasos. Não faz estorno nem acordo sozinho. | passo 27.4 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) |
+| [Agente pós-venda](#opos) | Local · futuro | Pergunta a nota, pede avaliação e oferece o próximo passo da jornada do cliente. | passo 27.5 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) |
+| [Agente editor de conteúdo](#oedit) | Local | Transforma transcrições em cortes, títulos, legendas, carrosséis, posts do Google e newsletter, seguindo o guia de estilo da marca. | passo 10.5 · Semana 5 · nov/2026; passo 21.14 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [Analista semanal](#oanal) | Local · futuro | Lê o painel toda segunda e manda 3 fatos e 1 sugestão de decisão. Só leitura. | passo 27.1 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) |
+| [Organizador fiscal](#ofisc) | Local · futuro | Junta notas, extratos e vendas do mês para o contador e para o carnê-leão. | passo 27.6 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) |
+| [Revisor de oferta](#orevo) | Local | Confere cada lançamento contra o padrão de qualidade antes de ir ao ar. | passo 13.14 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Agente comprador](#ocomp) | Local · futuro | Sugere a lista de compras dos negócios de comida pelo estoque mínimo e pela previsão de produção. | passo 27.7 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) |
+| [Diagnóstico do notebook](#diag) | Local | scripts/windows/diagnostico.ps1: lê hardware, segurança, programas, WSL, Docker, Ollama e extensões, compara com o setup e diz em que passo cada pendência se resolve. Somente leitura; é a etapa 0 do roteiro. | passo 0.2 · Antes de tudo · semana 1 (out/2026) |
+| [Roteiro de implantação](#oimpl) | Local | data/implantacao.json: fases e passos com critério de pronto, cada passo ligado aos blocos que implanta. Gera docs/implantacao/roteiro.md e a página de acompanhamento; o CI falha se um bloco do setup ficar de fora. | passo 0.6 · Antes de tudo · semana 1 (out/2026); passo 15.4 · Semana 11 · jan/2027 |
+| [Instaladores (PowerShell e bash)](#oinst) | Local | instalar.ps1 (winget, WSL2, .wslconfig) e bootstrap.sh (ferramentas, linguagens, Claude Code, ai-jail, Git assinado). Seguros para rodar de novo. | passo 2.1 · Semana 1 · out/2026; passo 3.4 · Semana 2 · nov/2026 |
+| [Verificadores](#overif) | Local | verificar.ps1 e verificar.sh: somente leitura, dizem 'pronto' ou listam o que falta. Também conferem os serviços da automação. | passo 2.10 · Semana 1 · out/2026; passo 3.10 · Semana 2 · nov/2026; passo 9.3 · Semana 4 · nov/2026; passo 15.4 · Semana 11 · jan/2027 |
+| [Pipeline de conteúdo](#opipe) | Local | tools/conteudo/processar.py com timer de 15 min: entrada → transcrição → peças pelo guia de marca → fila de aprovação → aviso no Telegram. | passo 10.4 · Semana 5 · nov/2026; passo 10.5 · Semana 5 · nov/2026; passo 15.2 · Semana 11 · jan/2027 |
+| [Acervo (seus documentos)](#acv) | Local | tools/acervo/acervo.py: lê todos os seus documentos sem alterar nada, acha cópias, separa os pessoais, marca o que é de terceiros ou da escola, converte o resto para Markdown no Obsidian e sugere os produtos que dá para vender. Tudo no notebook. | passo 7.3 · Semanas 3 e 4 · nov/2026; passo 7.4 · Semanas 3 e 4 · nov/2026; passo 7.5 · Semanas 3 e 4 · nov/2026; passo 21.3 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
 
 <a id="ocatal"></a>
 
@@ -195,7 +203,7 @@ flowchart LR
 
 data/portfolio.json: todas as ofertas do grupo com estágio, notas, pontuação e próximo passo. Gera docs/operacao/portfolio.md e o portfólio interativo.
 
-**Quando entra:** passo 6.7 · Semanas 3 e 4 · nov/2026; passo 12.14 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 7.7 · Semanas 3 e 4 · nov/2026; passo 13.14 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 21.20 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -211,7 +219,7 @@ data/portfolio.json: todas as ofertas do grupo com estágio, notas, pontuação 
 
 Ideia, validação, construção, lançamento e escala, com portões objetivos. Uma oferta em construção e uma em validação por vez.
 
-**Quando entra:** passo 6.7 · Semanas 3 e 4 · nov/2026; passo 12.14 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 7.7 · Semanas 3 e 4 · nov/2026; passo 13.14 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -229,7 +237,7 @@ Ideia, validação, construção, lançamento e escala, com portões objetivos. 
 
 Checklist de 'pronto' por tipo de oferta: infoproduto, livro, software, serviço, negócio físico e conteúdo.
 
-**Quando entra:** passo 12.14 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 13.14 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -245,7 +253,7 @@ Checklist de 'pronto' por tipo de oferta: infoproduto, livro, software, serviço
 
 O guarda-chuva de confiança do grupo: Instituto AMS, Editora AMS Silva, AMtech e os negócios locais apontam para você.
 
-**Quando entra:** passo 9.1 · Semana 5 · nov/2026; passo 11.1 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 10.1 · Semana 5 · nov/2026; passo 12.1 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -263,7 +271,7 @@ O guarda-chuva de confiança do grupo: Instituto AMS, Editora AMS Silva, AMtech 
 
 Uma pergunta depois de cada compra ou serviço e pedido de avaliação no Google. Reclamação vira issue da oferta.
 
-**Quando entra:** passo 12.15 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 13.15 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -278,7 +286,7 @@ Uma pergunta depois de cada compra ou serviço e pedido de avaliação no Google
 
 Uma ficha por cliente com ofertas compradas, origem e consentimento. Começa em planilha e MailerLite; vira tabela no PostgreSQL do grupo.
 
-**Quando entra:** passo 12.9 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 13.9 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -294,7 +302,7 @@ Uma ficha por cliente com ofertas compradas, origem e consentimento. Começa em 
 
 Cada aula, capítulo, projeto, reparo ou prato vira várias peças: cortes, carrossel, artigo, newsletter, questão, template.
 
-**Quando entra:** passo 9.5 · Semana 5 · nov/2026; passo 9.6 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 10.5 · Semana 5 · nov/2026; passo 10.6 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -311,7 +319,7 @@ Cada aula, capítulo, projeto, reparo ou prato vira várias peças: cortes, carr
 
 Vídeo semanal com rosto mostrando decisões reais do grupo: números, setup, aulas. Gera confiança para todas as ofertas.
 
-**Quando entra:** passo 19.7 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 22.7 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -327,7 +335,7 @@ Vídeo semanal com rosto mostrando decisões reais do grupo: números, setup, au
 
 Responde perguntas frequentes, mostra catálogo e horários e agenda. Passa para você o que não souber. Nunca promete preço fora da tabela.
 
-**Quando entra:** passo 24.2 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 21.5 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 27.2 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -342,7 +350,7 @@ Responde perguntas frequentes, mostra catálogo e horários e agenda. Passa para
 
 Monta propostas a partir dos pacotes e do histórico, para você aprovar.
 
-**Quando entra:** passo 24.3 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 27.3 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -356,7 +364,7 @@ Monta propostas a partir dos pacotes e do histórico, para você aprovar.
 
 Lembra vencimentos e envia o Pix; avisa você nos atrasos. Não faz estorno nem acordo sozinho.
 
-**Quando entra:** passo 24.4 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 27.4 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -372,7 +380,7 @@ Lembra vencimentos e envia o Pix; avisa você nos atrasos. Não faz estorno nem 
 
 Pergunta a nota, pede avaliação e oferece o próximo passo da jornada do cliente.
 
-**Quando entra:** passo 24.5 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 27.5 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -389,7 +397,7 @@ Pergunta a nota, pede avaliação e oferece o próximo passo da jornada do clien
 
 Transforma transcrições em cortes, títulos, legendas, carrosséis, posts do Google e newsletter, seguindo o guia de estilo da marca.
 
-**Quando entra:** passo 9.5 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 10.5 · Semana 5 · nov/2026; passo 21.14 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -407,7 +415,7 @@ Transforma transcrições em cortes, títulos, legendas, carrosséis, posts do G
 
 Lê o painel toda segunda e manda 3 fatos e 1 sugestão de decisão. Só leitura.
 
-**Quando entra:** passo 24.1 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 27.1 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -422,7 +430,7 @@ Lê o painel toda segunda e manda 3 fatos e 1 sugestão de decisão. Só leitura
 
 Junta notas, extratos e vendas do mês para o contador e para o carnê-leão.
 
-**Quando entra:** passo 24.6 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 27.6 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -437,7 +445,7 @@ Junta notas, extratos e vendas do mês para o contador e para o carnê-leão.
 
 Confere cada lançamento contra o padrão de qualidade antes de ir ao ar.
 
-**Quando entra:** passo 12.14 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 13.14 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -451,11 +459,27 @@ Confere cada lançamento contra o padrão de qualidade antes de ir ao ar.
 
 Sugere a lista de compras dos negócios de comida pelo estoque mínimo e pela previsão de produção.
 
-**Quando entra:** passo 24.7 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 27.7 · Junto com o primeiro CNPJ (começa quando: clientes e vendas recorrentes) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [AM Kaixara (PDV e cardápio)](11-app.md#nkaix) | Aplicação: sistemas AM (Aura) | estoque mínimo |
+
+<a id="diag"></a>
+
+### Diagnóstico do notebook
+
+*Local*
+
+scripts/windows/diagnostico.ps1: lê hardware, segurança, programas, WSL, Docker, Ollama e extensões, compara com o setup e diz em que passo cada pendência se resolve. Somente leitura; é a etapa 0 do roteiro.
+
+**Quando entra:** passo 0.2 · Antes de tudo · semana 1 (out/2026) ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Roteiro de implantação](23-oper.md#oimpl) | Operação do grupo (esteira, marca, qualidade) | começa o roteiro |
+| → envia para | [Instaladores (PowerShell e bash)](23-oper.md#oinst) | Operação do grupo (esteira, marca, qualidade) | o que falta instalar |
+| ← recebe de | [Acer Nitro (32 GB, GTX 1650)](01-hw.md#nb) | Hardware | hardware lido |
 
 <a id="oimpl"></a>
 
@@ -465,11 +489,12 @@ Sugere a lista de compras dos negócios de comida pelo estoque mínimo e pela pr
 
 data/implantacao.json: fases e passos com critério de pronto, cada passo ligado aos blocos que implanta. Gera docs/implantacao/roteiro.md e a página de acompanhamento; o CI falha se um bloco do setup ficar de fora.
 
-**Quando entra:** passo 14.4 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 0.6 · Antes de tudo · semana 1 (out/2026); passo 15.4 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Instaladores (PowerShell e bash)](23-oper.md#oinst) | Operação do grupo (esteira, marca, qualidade) | passos com script |
+| ← recebe de | [Diagnóstico do notebook](23-oper.md#diag) | Operação do grupo (esteira, marca, qualidade) | começa o roteiro |
 
 <a id="oinst"></a>
 
@@ -479,13 +504,14 @@ data/implantacao.json: fases e passos com critério de pronto, cada passo ligado
 
 instalar.ps1 (winget, WSL2, .wslconfig) e bootstrap.sh (ferramentas, linguagens, Claude Code, ai-jail, Git assinado). Seguros para rodar de novo.
 
-**Quando entra:** passo 1.1 · Semana 1 · out/2026; passo 2.4 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 2.1 · Semana 1 · out/2026; passo 3.4 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Verificadores](23-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | depois confere |
 | → envia para | [Pipeline de conteúdo](23-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | instala |
 | ← recebe de | [Roteiro de implantação](23-oper.md#oimpl) | Operação do grupo (esteira, marca, qualidade) | passos com script |
+| ← recebe de | [Diagnóstico do notebook](23-oper.md#diag) | Operação do grupo (esteira, marca, qualidade) | o que falta instalar |
 
 <a id="overif"></a>
 
@@ -495,7 +521,7 @@ instalar.ps1 (winget, WSL2, .wslconfig) e bootstrap.sh (ferramentas, linguagens,
 
 verificar.ps1 e verificar.sh: somente leitura, dizem 'pronto' ou listam o que falta. Também conferem os serviços da automação.
 
-**Quando entra:** passo 1.10 · Semana 1 · out/2026; passo 2.10 · Semana 2 · nov/2026; passo 8.3 · Semana 4 · nov/2026; passo 14.4 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 2.10 · Semana 1 · out/2026; passo 3.10 · Semana 2 · nov/2026; passo 9.3 · Semana 4 · nov/2026; passo 15.4 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -514,7 +540,7 @@ verificar.ps1 e verificar.sh: somente leitura, dizem 'pronto' ou listam o que fa
 
 tools/conteudo/processar.py com timer de 15 min: entrada → transcrição → peças pelo guia de marca → fila de aprovação → aviso no Telegram.
 
-**Quando entra:** passo 9.4 · Semana 5 · nov/2026; passo 9.5 · Semana 5 · nov/2026; passo 14.2 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 10.4 · Semana 5 · nov/2026; passo 10.5 · Semana 5 · nov/2026; passo 15.2 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -534,7 +560,7 @@ tools/conteudo/processar.py com timer de 15 min: entrada → transcrição → p
 
 tools/acervo/acervo.py: lê todos os seus documentos sem alterar nada, acha cópias, separa os pessoais, marca o que é de terceiros ou da escola, converte o resto para Markdown no Obsidian e sugere os produtos que dá para vender. Tudo no notebook.
 
-**Quando entra:** passo 6.3 · Semanas 3 e 4 · nov/2026; passo 6.4 · Semanas 3 e 4 · nov/2026; passo 6.5 · Semanas 3 e 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 7.3 · Semanas 3 e 4 · nov/2026; passo 7.4 · Semanas 3 e 4 · nov/2026; passo 7.5 · Semanas 3 e 4 · nov/2026; passo 21.3 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

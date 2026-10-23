@@ -94,22 +94,22 @@ flowchart LR
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [AMtech Software (projetos e SaaS)](#nsoft) | Remoto · futuro | Software sob encomenda, sites, manutenção e SaaS AM. Primeiro CNPJ do grupo (ME no Simples, Anexo III pelo Fator R). Ver docs/negocios/01. | passo 28.2 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
-| [Loja AMtech (assistência)](#nloja) | Físico · futuro | Loja de 30 a 50 m² com bancada técnica, mostruário e balcão de pacotes. Une assistência, peças e ponto de retirada em um aluguel só. | passo 28.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
-| [Peças sem estoque (sob encomenda)](#npecas) | Físico · futuro | Peças e acessórios comprados só depois do sinal do cliente ou enviados pelo fornecedor. A margem está no serviço, não na peça. | passo 28.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
-| [Ponto de retirada (Shopee e ML)](#nponto) | Físico · precisa de conta · futuro | Agência Shopee (R$ 0,70 a 0,60 por pacote nas primeiras faixas) e Agência Mercado Livre (valor na proposta). Rende pouco sozinho; o valor é o movimento na loja. | passo 28.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
-| [AMtech Maker (robótica)](#nmaker) | Físico · futuro | Automação residencial, empresarial, rural e virtual, e kits de robótica educacional. Começa por serviço com aparelhos homologados; produto com rádio só depois da Anatel. | passo 28.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
-| [AM Entregas (moto e carro)](#nentr) | Físico · futuro | Última milha em Barbacena: entregas para empresas, Flex dos vendedores locais, coleta para as agências e rotas fixas. Motofretistas pela Lei 12.009/2009. | passo 28.4 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
-| [Mercado Envios Flex](#nflex) | Remoto · precisa de conta · futuro | Entrega no mesmo dia dos vendedores do Mercado Livre da cidade, terceirizada para a AM Entregas e cobrada por pacote. | passo 28.4 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
-| [AM Delivery (várias empresas)](#ndeliv) | Remoto · futuro | App de pedidos de restaurantes e lojas da cidade com comissão de 8% e entrega pela AM Entregas. O lucro está na comissão, não na taxa de entrega. | passo 28.5 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
-| [Sushi (delivery)](#nsushi) | Físico · futuro | Delivery e retirada de quarta a domingo à noite, cardápio em torno do salmão com destino para filé, aparas e pele. Primeiro restaurante do grupo. | passo 28.6 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
-| [Cafeteria](#ncafe) | Físico · futuro | Cafés especiais de Minas, pão de queijo assado na hora e doces caseiros. Melhor dentro da padaria, onde o investimento cai para cerca de R$ 30 mil. | passo 28.8 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
-| [Padaria + café da manhã + almoço](#npad) | Físico · futuro | Padaria de finalização com massa congelada, café da manhã mineiro, almoço por quilo, prato executivo do dia, marmitas e encomendas. Maior receita e maior capital do grupo. | passo 28.7 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
-| [3 CNPJs por frente](#ncnpj) | Remoto · precisa de conta · futuro | AMtech Tecnologia, AM Logística e AM Alimentação, cada um com os seus CNAEs, conta e caixa. Holding só quando houver patrimônio. | passo 23.1 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
-| [Planejador do Grupo](#nplan) | Remoto · futuro | Artefato e motor tools/negocios/financas.py: investimento, ponto de equilíbrio, rampa, retorno e capital mínimo de cada negócio, com o mesmo cálculo. | passo 28.1 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
-| [iFood (canal de descoberta)](#nifood) | Remoto · precisa de conta · futuro | Usado para ser encontrado, não como canal principal: o plano Entrega cobra 23% + 3,2%. O canal próprio deixa o dobro de margem. | passo 28.6 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
-| [Vigilância sanitária (RDC 216)](#nvisa) | Remoto · precisa de conta · futuro | Alvará sanitário, Manual de Boas Práticas, POPs, curso dos manipuladores e controle de pragas. Em MG, o nível de risco define se há inspeção antes de abrir. | passo 28.6 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
-| [Anatel e Inmetro](#nanatel) | Remoto · precisa de conta · futuro | Homologação de produto próprio com Wi-Fi ou Bluetooth e, se o kit for brinquedo, certificação do Inmetro. | passo 28.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
+| [AMtech Software (projetos e SaaS)](#nsoft) | Remoto · futuro | Software sob encomenda, sites, manutenção e SaaS AM. Primeiro CNPJ do grupo (ME no Simples, Anexo III pelo Fator R). Ver docs/negocios/01. | passo 31.2 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
+| [Loja AMtech (assistência)](#nloja) | Físico · futuro | Loja de 30 a 50 m² com bancada técnica, mostruário e balcão de pacotes. Une assistência, peças e ponto de retirada em um aluguel só. | passo 31.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
+| [Peças sem estoque (sob encomenda)](#npecas) | Físico · futuro | Peças e acessórios comprados só depois do sinal do cliente ou enviados pelo fornecedor. A margem está no serviço, não na peça. | passo 31.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
+| [Ponto de retirada (Shopee e ML)](#nponto) | Físico · precisa de conta · futuro | Agência Shopee (R$ 0,70 a 0,60 por pacote nas primeiras faixas) e Agência Mercado Livre (valor na proposta). Rende pouco sozinho; o valor é o movimento na loja. | passo 31.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
+| [AMtech Maker (robótica)](#nmaker) | Físico · futuro | Automação residencial, empresarial, rural e virtual, e kits de robótica educacional. Começa por serviço com aparelhos homologados; produto com rádio só depois da Anatel. | passo 31.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
+| [AM Entregas (moto e carro)](#nentr) | Físico · futuro | Última milha em Barbacena: entregas para empresas, Flex dos vendedores locais, coleta para as agências e rotas fixas. Motofretistas pela Lei 12.009/2009. | passo 31.4 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
+| [Mercado Envios Flex](#nflex) | Remoto · precisa de conta · futuro | Entrega no mesmo dia dos vendedores do Mercado Livre da cidade, terceirizada para a AM Entregas e cobrada por pacote. | passo 31.4 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
+| [AM Delivery (várias empresas)](#ndeliv) | Remoto · futuro | App de pedidos de restaurantes e lojas da cidade com comissão de 8% e entrega pela AM Entregas. O lucro está na comissão, não na taxa de entrega. | passo 31.5 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
+| [Sushi (delivery)](#nsushi) | Físico · futuro | Delivery e retirada de quarta a domingo à noite, cardápio em torno do salmão com destino para filé, aparas e pele. Primeiro restaurante do grupo. | passo 31.6 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
+| [Cafeteria](#ncafe) | Físico · futuro | Cafés especiais de Minas, pão de queijo assado na hora e doces caseiros. Melhor dentro da padaria, onde o investimento cai para cerca de R$ 30 mil. | passo 31.8 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
+| [Padaria + café da manhã + almoço](#npad) | Físico · futuro | Padaria de finalização com massa congelada, café da manhã mineiro, almoço por quilo, prato executivo do dia, marmitas e encomendas. Maior receita e maior capital do grupo. | passo 31.7 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
+| [3 CNPJs por frente](#ncnpj) | Remoto · precisa de conta · futuro | AMtech Tecnologia, AM Logística e AM Alimentação, cada um com os seus CNAEs, conta e caixa. Holding só quando houver patrimônio. | passo 26.1 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
+| [Planejador do Grupo](#nplan) | Remoto · futuro | Artefato e motor tools/negocios/financas.py: investimento, ponto de equilíbrio, rampa, retorno e capital mínimo de cada negócio, com o mesmo cálculo. | passo 31.1 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
+| [iFood (canal de descoberta)](#nifood) | Remoto · precisa de conta · futuro | Usado para ser encontrado, não como canal principal: o plano Entrega cobra 23% + 3,2%. O canal próprio deixa o dobro de margem. | passo 31.6 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
+| [Vigilância sanitária (RDC 216)](#nvisa) | Remoto · precisa de conta · futuro | Alvará sanitário, Manual de Boas Práticas, POPs, curso dos manipuladores e controle de pragas. Em MG, o nível de risco define se há inspeção antes de abrir. | passo 31.6 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
+| [Anatel e Inmetro](#nanatel) | Remoto · precisa de conta · futuro | Homologação de produto próprio com Wi-Fi ou Bluetooth e, se o kit for brinquedo, certificação do Inmetro. | passo 31.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
 
 <a id="nsoft"></a>
 
@@ -119,7 +119,7 @@ flowchart LR
 
 Software sob encomenda, sites, manutenção e SaaS AM. Primeiro CNPJ do grupo (ME no Simples, Anexo III pelo Fator R). Ver docs/negocios/01.
 
-**Quando entra:** passo 28.2 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.2 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -137,7 +137,7 @@ Software sob encomenda, sites, manutenção e SaaS AM. Primeiro CNPJ do grupo (M
 
 Loja de 30 a 50 m² com bancada técnica, mostruário e balcão de pacotes. Une assistência, peças e ponto de retirada em um aluguel só.
 
-**Quando entra:** passo 28.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -155,7 +155,7 @@ Loja de 30 a 50 m² com bancada técnica, mostruário e balcão de pacotes. Une 
 
 Peças e acessórios comprados só depois do sinal do cliente ou enviados pelo fornecedor. A margem está no serviço, não na peça.
 
-**Quando entra:** passo 28.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -169,7 +169,7 @@ Peças e acessórios comprados só depois do sinal do cliente ou enviados pelo f
 
 Agência Shopee (R$ 0,70 a 0,60 por pacote nas primeiras faixas) e Agência Mercado Livre (valor na proposta). Rende pouco sozinho; o valor é o movimento na loja.
 
-**Quando entra:** passo 28.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -184,7 +184,7 @@ Agência Shopee (R$ 0,70 a 0,60 por pacote nas primeiras faixas) e Agência Merc
 
 Automação residencial, empresarial, rural e virtual, e kits de robótica educacional. Começa por serviço com aparelhos homologados; produto com rádio só depois da Anatel.
 
-**Quando entra:** passo 28.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -199,7 +199,7 @@ Automação residencial, empresarial, rural e virtual, e kits de robótica educa
 
 Última milha em Barbacena: entregas para empresas, Flex dos vendedores locais, coleta para as agências e rotas fixas. Motofretistas pela Lei 12.009/2009.
 
-**Quando entra:** passo 28.4 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.4 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -217,7 +217,7 @@ Automação residencial, empresarial, rural e virtual, e kits de robótica educa
 
 Entrega no mesmo dia dos vendedores do Mercado Livre da cidade, terceirizada para a AM Entregas e cobrada por pacote.
 
-**Quando entra:** passo 28.4 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.4 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -231,7 +231,7 @@ Entrega no mesmo dia dos vendedores do Mercado Livre da cidade, terceirizada par
 
 App de pedidos de restaurantes e lojas da cidade com comissão de 8% e entrega pela AM Entregas. O lucro está na comissão, não na taxa de entrega.
 
-**Quando entra:** passo 28.5 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.5 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -249,7 +249,7 @@ App de pedidos de restaurantes e lojas da cidade com comissão de 8% e entrega p
 
 Delivery e retirada de quarta a domingo à noite, cardápio em torno do salmão com destino para filé, aparas e pele. Primeiro restaurante do grupo.
 
-**Quando entra:** passo 28.6 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.6 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -268,7 +268,7 @@ Delivery e retirada de quarta a domingo à noite, cardápio em torno do salmão 
 
 Cafés especiais de Minas, pão de queijo assado na hora e doces caseiros. Melhor dentro da padaria, onde o investimento cai para cerca de R$ 30 mil.
 
-**Quando entra:** passo 28.8 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.8 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -285,7 +285,7 @@ Cafés especiais de Minas, pão de queijo assado na hora e doces caseiros. Melho
 
 Padaria de finalização com massa congelada, café da manhã mineiro, almoço por quilo, prato executivo do dia, marmitas e encomendas. Maior receita e maior capital do grupo.
 
-**Quando entra:** passo 28.7 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.7 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -303,7 +303,7 @@ Padaria de finalização com massa congelada, café da manhã mineiro, almoço p
 
 AMtech Tecnologia, AM Logística e AM Alimentação, cada um com os seus CNAEs, conta e caixa. Holding só quando houver patrimônio.
 
-**Quando entra:** passo 23.1 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 26.1 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -321,7 +321,7 @@ AMtech Tecnologia, AM Logística e AM Alimentação, cada um com os seus CNAEs, 
 
 Artefato e motor tools/negocios/financas.py: investimento, ponto de equilíbrio, rampa, retorno e capital mínimo de cada negócio, com o mesmo cálculo.
 
-**Quando entra:** passo 28.1 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.1 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -337,7 +337,7 @@ Artefato e motor tools/negocios/financas.py: investimento, ponto de equilíbrio,
 
 Usado para ser encontrado, não como canal principal: o plano Entrega cobra 23% + 3,2%. O canal próprio deixa o dobro de margem.
 
-**Quando entra:** passo 28.6 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.6 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -351,7 +351,7 @@ Usado para ser encontrado, não como canal principal: o plano Entrega cobra 23% 
 
 Alvará sanitário, Manual de Boas Práticas, POPs, curso dos manipuladores e controle de pragas. Em MG, o nível de risco define se há inspeção antes de abrir.
 
-**Quando entra:** passo 28.6 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.6 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -367,7 +367,7 @@ Alvará sanitário, Manual de Boas Práticas, POPs, curso dos manipuladores e co
 
 Homologação de produto próprio com Wi-Fi ou Bluetooth e, se o kit for brinquedo, certificação do Inmetro.
 
-**Quando entra:** passo 28.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

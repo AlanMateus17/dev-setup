@@ -125,6 +125,7 @@ function card(o){
       <div class="tags">${o.nova?'<span class="tag new">nova</span>':''}<span class="tag s-${o.estagio}">${esc(D.estagios[o.estagio])}</span><span class="tag">${esc(D.frentes[o.frente])}</span><span class="tag">${esc(o.escala)}</span></div></div>
       <div class="score" title="sinergia ${o.nota.sinergia} · escala ${o.nota.escala} · demanda ${o.nota.demanda} · esforço ${o.nota.esforco} · capital ${o.nota.capital}"><b>${o.pontos}</b><div class="meter" aria-hidden="true"><i style="width:${pct}%"></i></div></div></div>
     <div class="next"><span>Próximo passo</span>${esc(o.proximo_passo)}</div>
+    ${o.quando?`<div class="next"><span>Quando entra</span>${esc(o.quando)}</div>`:""}
     <div class="split"><div><h3>O setup automatiza</h3>${li(o.automatico)}</div><div><h3>Fica com você</h3>${li(o.humano)}</div></div>
     <div class="meta"><span><b>Receita:</b> ${esc(o.receita)}</span><span><b>Canais:</b> ${esc(o.canais.join(", ")||"—")}</span><span><b>Métrica:</b> ${esc(o.metrica)}</span>${o.deriva_de.length?`<span><b>Nasce de:</b> ${esc(o.deriva_de.map(d=>nomeDe[d]).join(", "))}</span>`:""}</div>
   </article>`;

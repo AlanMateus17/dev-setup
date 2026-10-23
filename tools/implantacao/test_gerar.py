@@ -56,6 +56,19 @@ class TestImplantacao(unittest.TestCase):
         self.assertTrue(any("naoexiste" in e for e in erros))
         self.assertTrue(any("sem 'quando'" in e for e in erros))
 
+    def test_toda_oferta_do_portfolio_tem_passo(self):
+        d = copy.deepcopy(self.d)
+        for f in d["fases"]:
+            for p in f["passos"]:
+                p["ofertas"] = [o for o in p.get("ofertas", []) if o != "minicurso"]
+        self.assertTrue(any("minicurso" in e and "sem passo" in e for e in validar(d, self.eco)))
+        d["fases"][0]["passos"][0]["ofertas"] = ["minicurso", "naoexiste"]
+        self.assertTrue(any("naoexiste" in e for e in validar(d, self.eco)))
+
+    def test_comeca_pelo_diagnostico_e_tem_primeira_venda(self):
+        self.assertTrue(self.d["fases"][0]["titulo"].startswith("Diagnóstico"))
+        self.assertTrue(any(p["id"] == "mc-primeira-venda" for f in self.d["fases"] for p in f["passos"]))
+
     def test_precisa_invalido_e_resumo_de_hoje(self):
         d = copy.deepcopy(self.d)
         d["fases"][0]["passos"][0]["precisa"] = ["sorte"]

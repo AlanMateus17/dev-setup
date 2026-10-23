@@ -1,7 +1,79 @@
 {
  "fases": [
   {
-   "id": "f0",
+   "titulo": "Diagnóstico: o que você já tem",
+   "quando": "Antes de tudo · semana 1 (out/2026)",
+   "objetivo": "Saber exatamente o que o notebook já tem de hardware, segurança, programas, contas e documentos, e começar o roteiro a partir daí.",
+   "passos": [
+    {
+     "id": "diag-pasta",
+     "titulo": "Baixar o dev-setup.zip e extrair numa pasta do Windows",
+     "quem": "voce",
+     "pronto": "Pasta C:\\Users\\SEU_USUARIO\\dev-setup com os arquivos; os comandos do Windows rodam de dentro dela",
+     "tempo_min": 5,
+     "blocos": []
+    },
+    {
+     "id": "diag-rodar",
+     "titulo": "Rodar o diagnóstico do notebook (PowerShell como Administrador)",
+     "quem": "script",
+     "pronto": "Pasta diagnostico-AAAAMMDD com diagnostico.md: o que você tem e em que passo cada pendência se resolve",
+     "tempo_min": 10,
+     "comando": "powershell -ExecutionPolicy Bypass -File .\\scripts\\windows\\diagnostico.ps1",
+     "nota": "Somente leitura: não instala nem apaga nada. Mostra modelo, processador, memória e slots livres, placa de vídeo, discos e saúde, espaço livre, bateria, monitores, Secure Boot, TPM, criptografia, Defender, programas do setup que já tem e que faltam, WSL, Docker, modelos do Ollama e extensões do VS Code.",
+     "blocos": [
+      "diag",
+      "nb"
+     ]
+    },
+    {
+     "id": "inventario",
+     "titulo": "Rodar o inventário de espaço: pastas e arquivos que mais ocupam, programas que iniciam com o Windows",
+     "quem": "script",
+     "pronto": "Pasta inventario-AAAAMMDD gerada; você decidiu o que desinstalar ou mover",
+     "tempo_min": 15,
+     "comando": "powershell -ExecutionPolicy Bypass -File .\\scripts\\windows\\inventario.ps1",
+     "blocos": [
+      "w11"
+     ]
+    },
+    {
+     "id": "diag-contas",
+     "titulo": "Listar as contas e assinaturas que você já tem, sem anotar senha",
+     "quem": "voce",
+     "pronto": "Nota no Obsidian (ou papel) com quais contas do setup já existem e quais assinaturas você paga",
+     "tempo_min": 30,
+     "nota": "A lista de contas do setup está no ecossistema, em Contas que você precisa ter. Senha nunca vai para nota: só para o KeePassXC, no passo dele.",
+     "blocos": [
+      "w11"
+     ]
+    },
+    {
+     "id": "diag-documentos",
+     "titulo": "Ver quantos documentos você já tem (só a contagem, sem abrir)",
+     "quem": "voce",
+     "pronto": "Você sabe por alto onde estão as aulas, apostilas, provas e projetos (Drive, notebook, pendrives)",
+     "tempo_min": 10,
+     "nota": "A organização de verdade vem na fase Acervo, depois do backup.",
+     "blocos": [
+      "gdrv"
+     ]
+    },
+    {
+     "id": "diag-claude",
+     "titulo": "Mandar a pasta do diagnóstico para o Claude e ajustar o roteiro",
+     "quem": "claude",
+     "pronto": "Passos que você já cumpre marcados no acompanhamento; compras e pendências confirmadas",
+     "tempo_min": 30,
+     "blocos": [
+      "oimpl"
+     ]
+    }
+   ],
+   "id": "f0"
+  },
+  {
+   "id": "f1",
    "titulo": "Preparar",
    "objetivo": "Nada se perde, o hardware está no lugar e as contas estão protegidas antes de mexer na máquina.",
    "passos": [
@@ -56,23 +128,12 @@
      "blocos": [
       "tfa"
      ]
-    },
-    {
-     "id": "inventario",
-     "titulo": "Rodar o inventário somente leitura do Windows",
-     "quem": "script",
-     "pronto": "Pasta inventario-AAAAMMDD gerada; decidir o que desinstalar",
-     "tempo_min": 15,
-     "comando": "powershell -ExecutionPolicy Bypass -File .\\scripts\\windows\\inventario.ps1",
-     "blocos": [
-      "w11"
-     ]
     }
    ],
    "quando": "Semana 1 · out/2026"
   },
   {
-   "id": "f1",
+   "id": "f2",
    "titulo": "Windows",
    "objetivo": "Os programas do setup instalados, o navegador com o Claude e o WSL2 pronto.",
    "passos": [
@@ -208,7 +269,7 @@
    "quando": "Semana 1 · out/2026"
   },
   {
-   "id": "f2",
+   "id": "f3",
    "titulo": "Linux (WSL2)",
    "objetivo": "O Ubuntu com tudo o que o código precisa, commits assinados e o ambiente versionado.",
    "passos": [
@@ -334,7 +395,7 @@
    "quando": "Semana 2 · nov/2026"
   },
   {
-   "id": "f3",
+   "id": "f4",
    "titulo": "GitHub e CI",
    "objetivo": "O repositório no ar, com testes automáticos verdes a cada envio e o trabalho organizado.",
    "passos": [
@@ -397,7 +458,7 @@
    "quando": "Semana 2 · nov/2026"
   },
   {
-   "id": "f4",
+   "id": "f5",
    "titulo": "Agentes de IA",
    "objetivo": "O Claude Code trabalhando dentro da sandbox, com as suas regras, ferramentas e memória.",
    "passos": [
@@ -483,7 +544,7 @@
    "quando": "Semana 2 · nov/2026"
   },
   {
-   "id": "f5",
+   "id": "f6",
    "titulo": "Backup e segurança",
    "objetivo": "Perder o notebook não faz você perder nada.",
    "passos": [
@@ -536,7 +597,7 @@
    "quando": "Semana 3 · nov/2026"
   },
   {
-   "id": "f6",
+   "id": "f7",
    "titulo": "Acervo: tudo o que você já tem",
    "objetivo": "Todos os seus documentos convertidos em conhecimento organizado no Obsidian, os pessoais separados e a lista do que dá para vender.",
    "passos": [
@@ -622,7 +683,7 @@
    "quando": "Semanas 3 e 4 · nov/2026"
   },
   {
-   "id": "f7",
+   "id": "f8",
    "titulo": "Claude e assistentes",
    "objetivo": "Cada recurso do Claude e cada assistente com um papel definido no setup.",
    "passos": [
@@ -692,7 +753,7 @@
    "quando": "Semana 4 · nov/2026"
   },
   {
-   "id": "f8",
+   "id": "f9",
    "titulo": "Automação e medição",
    "objetivo": "n8n, banco de métricas, Grafana e Uptime Kuma rodando.",
    "passos": [
@@ -766,6 +827,19 @@
      ]
     },
     {
+     "id": "backup-banco",
+     "titulo": "Pôr o banco de métricas e os fluxos do n8n no backup diário",
+     "quem": "claude",
+     "tempo_min": 45,
+     "pronto": "Dump diário do banco e export dos fluxos em ~/AMtech/backup-dados, copiados pelo restic; uma restauração de teste funcionou",
+     "nota": "Os dados ficam em volumes do Docker, fora das pastas que o restic copia. Sem este passo, perder o notebook leva junto o histórico de vendas.",
+     "blocos": [
+      "metrics",
+      "n8n",
+      "restic"
+     ]
+    },
+    {
      "id": "postiz-decisao",
      "titulo": "Decidir: Postiz agora ou agendador nativo das redes",
      "quem": "voce",
@@ -779,7 +853,7 @@
    "quando": "Semana 4 · nov/2026"
   },
   {
-   "id": "f9",
+   "id": "f10",
    "titulo": "Pipeline de conteúdo",
    "objetivo": "Gravou ou escreveu, as peças aparecem na fila de aprovação.",
    "passos": [
@@ -855,7 +929,7 @@
    "quando": "Semana 5 · nov/2026"
   },
   {
-   "id": "f10",
+   "id": "f11",
    "titulo": "Estúdio de conteúdo",
    "objetivo": "Gravar, editar e montar imagens no mesmo padrão toda semana, sem pensar.",
    "passos": [
@@ -919,7 +993,7 @@
    "quando": "Semana 5 · dez/2026"
   },
   {
-   "id": "f11",
+   "id": "f12",
    "titulo": "Contas, canais e sites",
    "objetivo": "Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.",
    "passos": [
@@ -1031,6 +1105,9 @@
      "blocos": [
       "amsite",
       "catal"
+     ],
+     "ofertas": [
+      "catalogo"
      ]
     },
     {
@@ -1075,13 +1152,16 @@
      "blocos": [
       "hostg",
       "sites"
+     ],
+     "ofertas": [
+      "sites"
      ]
     }
    ],
    "quando": "Semanas 6 e 7 · dez/2026"
   },
   {
-   "id": "f12",
+   "id": "f13",
    "titulo": "Vendas e finanças no CPF",
    "objetivo": "Cada oferta pode ser vendida, recebida e declarada do jeito certo.",
    "passos": [
@@ -1152,6 +1232,9 @@
       "eduzz",
       "udemy",
       "dio"
+     ],
+     "ofertas": [
+      "dio"
      ]
     },
     {
@@ -1172,6 +1255,9 @@
      "tempo_min": 30,
      "blocos": [
       "agenda",
+      "aulas"
+     ],
+     "ofertas": [
       "aulas"
      ]
     },
@@ -1204,6 +1290,9 @@
      "tempo_min": 30,
      "blocos": [
       "afil"
+     ],
+     "ofertas": [
+      "afiliados"
      ]
     },
     {
@@ -1303,13 +1392,16 @@
      "tempo_min": 30,
      "blocos": [
       "caixa"
+     ],
+     "ofertas": [
+      "rendara"
      ]
     }
    ],
    "quando": "Semanas 8 a 10 · dez/2026 a jan/2027"
   },
   {
-   "id": "f13",
+   "id": "f14",
    "titulo": "Vendas medidas",
    "objetivo": "Cada venda chega sozinha ao banco e aparece no painel de lucro.",
    "passos": [
@@ -1364,7 +1456,7 @@
    "quando": "Semana 11 · jan/2027"
   },
   {
-   "id": "f14",
+   "id": "f15",
    "titulo": "Teste do núcleo",
    "objetivo": "Os três testes de ponta a ponta passam: daqui em diante, alimentar o sistema já faz tudo sozinho.",
    "passos": [
@@ -1415,7 +1507,133 @@
    "quando": "Semana 11 · jan/2027"
   },
   {
-   "id": "f15",
+   "titulo": "Primeira venda: o mini-curso no ar",
+   "quando": "Semanas 12 a 15 · jan a fev/2027",
+   "objetivo": "A primeira venda real pela internet, com entrega, suporte, imposto e números no painel.",
+   "passos": [
+    {
+     "id": "mc-roteiro",
+     "titulo": "Fechar o roteiro das 5 primeiras aulas do mini-curso a partir do acervo",
+     "quem": "claude",
+     "pronto": "5 aulas com objetivo, exemplo e exercício, no Obsidian",
+     "tempo_min": 120,
+     "blocos": [
+      "curso"
+     ],
+     "ofertas": [
+      "minicurso"
+     ]
+    },
+    {
+     "id": "mc-gravar",
+     "titulo": "Gravar e editar as 5 aulas",
+     "quem": "voce",
+     "pronto": "5 vídeos finais exportados no modelo do estúdio",
+     "tempo_min": 600,
+     "blocos": [
+      "obss",
+      "edit"
+     ],
+     "ofertas": [
+      "minicurso"
+     ]
+    },
+    {
+     "id": "mc-hotmart",
+     "titulo": "Subir as aulas na Hotmart com preço e garantia de 7 dias",
+     "quem": "voce",
+     "pronto": "Produto aprovado na Hotmart, com checkout funcionando",
+     "tempo_min": 120,
+     "nota": "A garantia de 7 dias é o direito de arrependimento do Código de Defesa do Consumidor para compra pela internet.",
+     "blocos": [
+      "hotm"
+     ],
+     "ofertas": [
+      "minicurso"
+     ]
+    },
+    {
+     "id": "mc-pagina",
+     "titulo": "Página de vendas no Instituto AMS: promessa, conteúdo, preço e garantia",
+     "quem": "claude",
+     "pronto": "Página no ar levando ao checkout, com Pixel e UTM",
+     "tempo_min": 120,
+     "nota": "Sem depoimento inventado: só depoimentos reais, com autorização, quando existirem.",
+     "blocos": [
+      "inst",
+      "pixel",
+      "utm"
+     ],
+     "ofertas": [
+      "minicurso"
+     ]
+    },
+    {
+     "id": "mc-isca",
+     "titulo": "Isca grátis (aula 1) com a sequência de e-mails que leva à venda",
+     "quem": "claude",
+     "pronto": "Inscrição de teste recebe os 5 e-mails e o último leva ao checkout",
+     "tempo_min": 90,
+     "blocos": [
+      "isca",
+      "mailer"
+     ],
+     "ofertas": [
+      "minicurso",
+      "newsletter"
+     ]
+    },
+    {
+     "id": "mc-lancar",
+     "titulo": "Abrir a pré-venda: lista de e-mail, Instagram, WhatsApp e LinkedIn",
+     "quem": "voce",
+     "pronto": "Lançamento publicado em todos os canais, com UTM",
+     "tempo_min": 120,
+     "blocos": [
+      "ig",
+      "wa",
+      "li"
+     ],
+     "ofertas": [
+      "minicurso"
+     ]
+    },
+    {
+     "id": "mc-primeira-venda",
+     "titulo": "Primeira venda real: acesso, suporte, painel e carnê-leão",
+     "quem": "voce",
+     "pronto": "Venda paga, aluno com acesso, dúvida respondida em até 24 h, linha na tabela vendas e venda lançada no carnê-leão",
+     "tempo_min": 60,
+     "blocos": [
+      "hotm",
+      "hooks",
+      "nfse"
+     ],
+     "ofertas": [
+      "minicurso"
+     ]
+    },
+    {
+     "id": "mc-outras",
+     "titulo": "Publicar o mini-curso também na Kiwify, Eduzz e Udemy",
+     "quem": "voce",
+     "pronto": "Mini-curso à venda nas quatro plataformas",
+     "tempo_min": 120,
+     "blocos": [
+      "kiwi",
+      "eduzz",
+      "udemy"
+     ],
+     "ofertas": [
+      "minicurso",
+      "udemy"
+     ]
+    }
+   ],
+   "id": "f16"
+  },
+  {
+   "id": "f17",
    "titulo": "Base dos sistemas AM",
    "objetivo": "Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e deploy.",
    "passos": [
@@ -1504,6 +1722,9 @@
      "tempo_min": 30,
      "blocos": [
       "tmpl"
+     ],
+     "ofertas": [
+      "templates"
      ]
     },
     {
@@ -1520,7 +1741,7 @@
    "quando": "Jan a fev/2027"
   },
   {
-   "id": "f16",
+   "id": "f18",
    "titulo": "Nuvem e deploy",
    "objetivo": "As contas de nuvem criadas por código, com custo sob controle.",
    "passos": [
@@ -1604,7 +1825,7 @@
    "quando": "Fev a abr/2027"
   },
   {
-   "id": "f17",
+   "id": "f19",
    "titulo": "Editora",
    "objetivo": "O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.",
    "passos": [
@@ -1738,6 +1959,9 @@
      ],
      "precisa": [
       "conteudo"
+     ],
+     "ofertas": [
+      "livro"
      ]
     },
     {
@@ -1758,7 +1982,7 @@
    "gatilho": "O capítulo 1 e o seu modelo de criação prontos"
   },
   {
-   "id": "f18",
+   "id": "f20",
    "titulo": "Dados, IA e pendrives",
    "objetivo": "O laboratório de dados e de treino no ar, um modelo seu rodando no Ollama e os pendrives de Kali e Arch dando boot.",
    "passos": [
@@ -1912,6 +2136,288 @@
    "quando": "Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027"
   },
   {
+   "titulo": "Mais ofertas, uma por vez",
+   "quando": "Fev a dez/2027, uma oferta por vez",
+   "gatilho": "A primeira venda do mini-curso aconteceu",
+   "objetivo": "Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em construção e uma em validação por vez.",
+   "passos": [
+    {
+     "id": "of-meu-setup",
+     "titulo": "Página 'meu setup' com links de afiliado",
+     "quem": "claude",
+     "pronto": "Página publicada com links marcados com UTM",
+     "tempo_min": 90,
+     "blocos": [
+      "site",
+      "afil"
+     ],
+     "ofertas": [
+      "afiliados"
+     ]
+    },
+    {
+     "id": "of-catalogo",
+     "titulo": "Pôr no Catálogo do HTML a chamada para o mini-curso e para a newsletter",
+     "quem": "claude",
+     "pronto": "Chamadas no ar, medidas por UTM",
+     "tempo_min": 30,
+     "blocos": [
+      "catal"
+     ],
+     "ofertas": [
+      "catalogo"
+     ]
+    },
+    {
+     "id": "of-aulasprof",
+     "titulo": "Kit de aulas prontas para professores: uma disciplina que você já leciona",
+     "quem": "voce",
+     "pronto": "Kit de 1 disciplina (planos, slides, avaliações) à venda",
+     "tempo_min": 600,
+     "nota": "Material feito para a escola: reescreva do zero, no seu tempo e sem a identidade da escola, ou confirme os direitos.",
+     "blocos": [
+      "acv",
+      "hotm"
+     ],
+     "ofertas": [
+      "aulasprof"
+     ]
+    },
+    {
+     "id": "of-planilha",
+     "titulo": "Vender a planilha do Caixa da Casa antes de construir o AM Rendara",
+     "quem": "voce",
+     "pronto": "10 planilhas vendidas",
+     "tempo_min": 180,
+     "blocos": [
+      "caixa",
+      "hotm"
+     ],
+     "ofertas": [
+      "rendara"
+     ]
+    },
+    {
+     "id": "of-automacao",
+     "titulo": "Automação com IA para pequenos negócios: 1 implantação grátis em troca de caso",
+     "quem": "claude",
+     "pronto": "Um negócio usando a automação e um caso escrito com autorização",
+     "tempo_min": 600,
+     "blocos": [
+      "n8n",
+      "oatend"
+     ],
+     "ofertas": [
+      "automacaoia"
+     ]
+    },
+    {
+     "id": "of-simulados",
+     "titulo": "Banco de questões para concursos: 50 questões comentadas grátis para medir a procura",
+     "quem": "voce",
+     "pronto": "50 questões publicadas e a procura medida",
+     "tempo_min": 480,
+     "blocos": [
+      "exyaml"
+     ],
+     "ofertas": [
+      "simulados"
+     ]
+    },
+    {
+     "id": "of-anki",
+     "titulo": "Baralhos Anki de TI e concursos: o primeiro, do capítulo 1",
+     "quem": "voce",
+     "pronto": "Primeiro baralho à venda",
+     "tempo_min": 180,
+     "blocos": [
+      "anki",
+      "exyaml"
+     ],
+     "ofertas": [
+      "anki"
+     ]
+    },
+    {
+     "id": "of-newsletter",
+     "titulo": "Newsletter com patrocínio e vendas",
+     "quem": "voce",
+     "pronto": "Edição semanal por 8 semanas e o primeiro patrocinador",
+     "tempo_min": 120,
+     "blocos": [
+      "mailer"
+     ],
+     "ofertas": [
+      "newsletter"
+     ]
+    },
+    {
+     "id": "of-agencia",
+     "titulo": "Presença digital para comércio local, oferecida a 5 clientes de sites",
+     "quem": "voce",
+     "pronto": "Primeiro cliente mensal",
+     "tempo_min": 240,
+     "blocos": [
+      "ogbp",
+      "sites"
+     ],
+     "ofertas": [
+      "agencialocal"
+     ]
+    },
+    {
+     "id": "of-sites",
+     "titulo": "Sites: 3 pacotes fixos com preço público",
+     "quem": "voce",
+     "pronto": "Pacotes publicados e primeiro cliente fechado",
+     "tempo_min": 180,
+     "blocos": [
+      "sites",
+      "hostg"
+     ],
+     "ofertas": [
+      "sites"
+     ]
+    },
+    {
+     "id": "of-remoto",
+     "titulo": "Suporte remoto com plano mensal para empresas",
+     "quem": "voce",
+     "pronto": "3 empresas no plano mensal",
+     "tempo_min": 240,
+     "blocos": [
+      "tail"
+     ],
+     "ofertas": [
+      "remoto"
+     ]
+    },
+    {
+     "id": "of-consultoria",
+     "titulo": "Implantação de ficha técnica e engenharia de cardápio para restaurantes",
+     "quem": "voce",
+     "pronto": "Um estudo de caso, com autorização do dono",
+     "tempo_min": 480,
+     "blocos": [
+      "nkaix"
+     ],
+     "ofertas": [
+      "consultoriaresto"
+     ]
+    },
+    {
+     "id": "of-ammentor",
+     "titulo": "AM Mentor: banco de exercícios com correção, começando pelo capítulo 1",
+     "quem": "claude",
+     "pronto": "Primeiros alunos usando",
+     "tempo_min": 1200,
+     "blocos": [
+      "exyaml"
+     ],
+     "ofertas": [
+      "ammentor"
+     ]
+    },
+    {
+     "id": "of-dark",
+     "titulo": "Canais sem rosto: 3 vídeos por semana por 8 semanas e medir",
+     "quem": "voce",
+     "pronto": "24 vídeos publicados e o resultado medido",
+     "tempo_min": 1200,
+     "blocos": [
+      "oedit",
+      "yt"
+     ],
+     "ofertas": [
+      "dark"
+     ]
+    },
+    {
+     "id": "of-comunidade",
+     "titulo": "Comunidade paga do Instituto AMS",
+     "quem": "voce",
+     "pronto": "Comunidade aberta com os primeiros assinantes",
+     "tempo_min": 240,
+     "nota": "Só com 200 alunos pagantes.",
+     "blocos": [
+      "comu"
+     ],
+     "ofertas": [
+      "comunidade"
+     ]
+    },
+    {
+     "id": "of-oficinas",
+     "titulo": "Oficinas de robótica e programação para escolas: plano de 8 encontros",
+     "quem": "voce",
+     "pronto": "Primeira escola contratando",
+     "tempo_min": 600,
+     "blocos": [
+      "rob",
+      "ard"
+     ],
+     "ofertas": [
+      "oficinas"
+     ]
+    },
+    {
+     "id": "of-encomenda",
+     "titulo": "Sistemas sob encomenda, com 50% de entrada",
+     "quem": "voce",
+     "pronto": "Primeiro contrato assinado",
+     "tempo_min": 240,
+     "blocos": [
+      "api",
+      "front"
+     ],
+     "ofertas": [
+      "encomenda"
+     ]
+    },
+    {
+     "id": "of-aulasushi",
+     "titulo": "Aula de sushi e sushiman para eventos: 2 eventos de teste",
+     "quem": "voce",
+     "pronto": "2 eventos pagos, com as regras sanitárias conferidas",
+     "tempo_min": 240,
+     "blocos": [
+      "agenda"
+     ],
+     "ofertas": [
+      "aulasushi"
+     ]
+    },
+    {
+     "id": "of-workshop",
+     "titulo": "Workshop presencial para pequenos empresários: piloto com 10 vagas",
+     "quem": "voce",
+     "pronto": "Piloto realizado com 10 inscritos pagantes",
+     "tempo_min": 480,
+     "blocos": [
+      "agenda",
+      "mp"
+     ],
+     "ofertas": [
+      "workshop"
+     ]
+    },
+    {
+     "id": "of-pausadas",
+     "titulo": "Revisar a cada trimestre as ofertas pausadas (AM Taskoro)",
+     "quem": "voce",
+     "pronto": "Decisão anotada: retomar ou manter pausada",
+     "tempo_min": 30,
+     "blocos": [
+      "ocatal"
+     ],
+     "ofertas": [
+      "taskoro"
+     ]
+    }
+   ],
+   "id": "f21"
+  },
+  {
    "titulo": "Marketing pago e crescimento",
    "objetivo": "Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.",
    "quando": "A partir de fev/2027",
@@ -2002,6 +2508,9 @@
      "tempo_min": 60,
      "blocos": [
       "obuild"
+     ],
+     "ofertas": [
+      "buildpublic"
      ]
     },
     {
@@ -2025,6 +2534,9 @@
      "tempo_min": 30,
      "blocos": [
       "ytm"
+     ],
+     "ofertas": [
+      "monetizacao"
      ]
     },
     {
@@ -2035,10 +2547,15 @@
      "tempo_min": 1200,
      "blocos": [
       "form"
+     ],
+     "ofertas": [
+      "formti",
+      "formmat",
+      "financas"
      ]
     }
    ],
-   "id": "f19"
+   "id": "f22"
   },
   {
    "titulo": "Linux nativo e laboratório completo",
@@ -2120,7 +2637,7 @@
      ]
     }
    ],
-   "id": "f20"
+   "id": "f23"
   },
   {
    "titulo": "IA dentro dos sistemas AM",
@@ -2138,7 +2655,7 @@
      ]
     }
    ],
-   "id": "f21"
+   "id": "f24"
   },
   {
    "titulo": "Sistemas AM à venda",
@@ -2165,6 +2682,9 @@
      "tempo_min": 2400,
      "blocos": [
       "nkaix"
+     ],
+     "ofertas": [
+      "kaixara"
      ]
     },
     {
@@ -2176,6 +2696,9 @@
      "blocos": [
       "nrot",
       "gis"
+     ],
+     "ofertas": [
+      "rotara"
      ]
     },
     {
@@ -2188,9 +2711,23 @@
       "shared",
       "datomic"
      ]
+    },
+    {
+     "id": "whitelabel",
+     "titulo": "App de delivery com a marca do restaurante (white-label)",
+     "quem": "claude",
+     "pronto": "Primeiro restaurante usando o app com a marca dele",
+     "tempo_min": 1200,
+     "nota": "Comece oferecendo a 3 restaurantes que pagam 23% ao iFood.",
+     "blocos": [
+      "nrot"
+     ],
+     "ofertas": [
+      "whitelabel"
+     ]
     }
    ],
-   "id": "f22"
+   "id": "f25"
   },
   {
    "titulo": "CNPJ e formalização",
@@ -2246,7 +2783,7 @@
      ]
     }
    ],
-   "id": "f23"
+   "id": "f26"
   },
   {
    "titulo": "Agentes do grupo",
@@ -2325,7 +2862,7 @@
      ]
     }
    ],
-   "id": "f24"
+   "id": "f27"
   },
   {
    "titulo": "Editora: depois do primeiro livro",
@@ -2357,6 +2894,9 @@
      ],
      "blocos": [
       "bkit"
+     ],
+     "ofertas": [
+      "kitlivro"
      ]
     },
     {
@@ -2378,6 +2918,9 @@
      "tempo_min": 600,
      "blocos": [
       "prof"
+     ],
+     "ofertas": [
+      "adocao"
      ]
     },
     {
@@ -2391,10 +2934,13 @@
      ],
      "blocos": [
       "trad"
+     ],
+     "ofertas": [
+      "traducao"
      ]
     }
    ],
-   "id": "f25"
+   "id": "f28"
   },
   {
    "titulo": "Distribuído, plataforma e segunda nuvem",
@@ -2467,7 +3013,7 @@
      ]
     }
    ],
-   "id": "f26"
+   "id": "f29"
   },
   {
    "titulo": "Infraestrutura própria",
@@ -2511,7 +3057,7 @@
      ]
     }
    ],
-   "id": "f27"
+   "id": "f30"
   },
   {
    "titulo": "Negócios do grupo em Barbacena",
@@ -2559,6 +3105,12 @@
       "nmaker",
       "nanatel",
       "ogbp"
+     ],
+     "ofertas": [
+      "assist",
+      "pecas",
+      "ponto",
+      "maker"
      ]
     },
     {
@@ -2574,6 +3126,9 @@
      "blocos": [
       "nentr",
       "nflex"
+     ],
+     "ofertas": [
+      "entregas"
      ]
     },
     {
@@ -2587,6 +3142,10 @@
      ],
      "blocos": [
       "ndeliv"
+     ],
+     "ofertas": [
+      "delivery",
+      "licencadelivery"
      ]
     },
     {
@@ -2603,6 +3162,9 @@
       "nsushi",
       "nvisa",
       "nifood"
+     ],
+     "ofertas": [
+      "sushi"
      ]
     },
     {
@@ -2617,6 +3179,9 @@
      ],
      "blocos": [
       "npad"
+     ],
+     "ofertas": [
+      "padaria"
      ]
     },
     {
@@ -2631,13 +3196,16 @@
      ],
      "blocos": [
       "ncafe"
+     ],
+     "ofertas": [
+      "cafeteria"
      ]
     }
    ],
-   "id": "f28"
+   "id": "f31"
   },
   {
-   "id": "f29",
+   "id": "f32",
    "titulo": "Estudo contínuo",
    "objetivo": "As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.",
    "passos": [

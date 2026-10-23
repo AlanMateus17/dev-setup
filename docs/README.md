@@ -22,7 +22,7 @@
 
 ## Camadas
 
-- [23 · Operação do grupo (esteira, marca, qualidade)](camadas/23-oper.md) (22 blocos)
+- [23 · Operação do grupo (esteira, marca, qualidade)](camadas/23-oper.md) (23 blocos)
 - [22 · Público e canais](camadas/22-pub.md) (12 blocos)
 - [21 · Marketing, automação e medição](camadas/21-mkt.md) (26 blocos)
 - [20 · Plataformas de venda e recebimento](camadas/20-venda.md) (11 blocos)

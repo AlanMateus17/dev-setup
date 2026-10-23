@@ -2,6 +2,15 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.14.0] - 2026-10-23
+
+### Adicionado
+- Etapa 0 "Diagnóstico: o que você já tem" antes de tudo: `scripts/windows/diagnostico.ps1` (somente leitura) lê hardware, segurança, programas, WSL, Docker, Ollama e extensões, compara com o setup e diz em que passo do roteiro cada pendência se resolve; mais a lista das contas que você já tem e a contagem dos documentos. Roda no CI.
+- Fase "Primeira venda: o mini-curso no ar" (8 passos, da gravação à primeira venda com acesso, suporte, painel e carnê-leão) e fase "Mais ofertas, uma por vez" (20 ofertas na ordem da pontuação).
+- Cada uma das 47 ofertas do portfólio ligada ao passo em que entra à venda; o portfólio mostra "Quando entra"; o CI falha se uma oferta ficar sem passo.
+- Passo que põe o banco de métricas e os fluxos do n8n no backup diário (eles ficavam em volumes do Docker, fora do restic).
+- Bloco Diagnóstico do notebook e o fluxo "Do notebook à primeira venda".
+
 ## [1.13.0] - 2026-10-23
 
 ### Mudado

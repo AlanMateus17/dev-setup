@@ -8,7 +8,7 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 
 | Camadas | Blocos | Conexões | Fluxos | Contas necessárias |
 |---|---|---|---|---|
-| 23 | 325 | 606 | 16 | 104 |
+| 23 | 326 | 609 | 17 | 104 |
 
 ## Por onde começar
 
@@ -83,7 +83,7 @@ O Windows cuida só do que precisa de janela, GPU e segurança; todo o trabalho 
 
 | # | Camada | Blocos | Destaques |
 |---|---|---|---|
-| 23 | [Operação do grupo (esteira, marca, qualidade)](docs/camadas/23-oper.md) | 22 | Portfólio de ofertas, Esteira de ofertas, Padrão de qualidade, Marca pessoal Alan Mateus… |
+| 23 | [Operação do grupo (esteira, marca, qualidade)](docs/camadas/23-oper.md) | 23 | Portfólio de ofertas, Esteira de ofertas, Padrão de qualidade, Marca pessoal Alan Mateus… |
 | 22 | [Público e canais](docs/camadas/22-pub.md) | 12 | Meta Business Suite, Instagram, YouTube, LinkedIn… |
 | 21 | [Marketing, automação e medição](docs/camadas/21-mkt.md) | 26 | Meta Ads (Instagram, Facebook), Isca grátis + sequência de e-mails, MailerLite, Postiz (agendador)… |
 | 20 | [Plataformas de venda e recebimento](docs/camadas/20-venda.md) | 11 | Pix Automático + gateway (ex.: Asaas), Agenda online (Cal.com), CRM simples (planilha), Hotmart… |

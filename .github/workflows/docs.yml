@@ -49,6 +49,11 @@ jobs:
           $r = Invoke-ScriptAnalyzer -Path scripts/windows -Settings PSScriptAnalyzerSettings.psd1 -Severity Error,Warning
           $r | Format-Table -AutoSize
           if ($r) { exit 1 }
+      - name: Diagnóstico do Windows roda sem quebrar (dados vazios fora do Windows)
+        shell: pwsh
+        run: |
+          ./scripts/windows/diagnostico.ps1 -Saida "$env:RUNNER_TEMP/diag"
+          if (-not (Test-Path "$env:RUNNER_TEMP/diag/diagnostico.md")) { exit 1 }
       - name: Docker Compose da automação
         working-directory: infra/automacao
         env:

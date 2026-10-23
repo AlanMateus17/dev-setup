@@ -21,6 +21,7 @@ from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[2]
 DADOS = RAIZ / "data" / "portfolio.json"
+IMPLANTACAO = RAIZ / "data" / "implantacao.json"
 MD = RAIZ / "docs" / "operacao" / "portfolio.md"
 HTML = RAIZ / "docs" / "operacao" / "portfolio.html"
 TEMPLATE = RAIZ / "tools" / "portfolio" / "portfolio.template.html"
@@ -68,8 +69,22 @@ def validar(dados: dict) -> list[str]:
     return erros
 
 
+def quando_ofertas() -> dict[str, str]:
+    """'passo 15.3 · Semanas 11 a 13 · jan/2027' para cada oferta, a partir do roteiro de implantação."""
+    if not IMPLANTACAO.exists():
+        return {}
+    im = json.loads(IMPLANTACAO.read_text(encoding="utf-8"))
+    out: dict[str, str] = {}
+    for i, f in enumerate(im["fases"]):
+        for j, p in enumerate(f["passos"], 1):
+            for o in p.get("ofertas", []):
+                out.setdefault(o, f"passo {i}.{j} · {f.get('quando', '')}")
+    return out
+
+
 def ranking(dados: dict) -> list[dict]:
-    ofs = [dict(o, pontos=pontuar(o["nota"])) for o in dados["ofertas"]]
+    q = quando_ofertas()
+    ofs = [dict(o, pontos=pontuar(o["nota"]), quando=q.get(o["id"], "")) for o in dados["ofertas"]]
     return sorted(ofs, key=lambda o: (-o["pontos"], o["nome"]))
 
 
@@ -92,14 +107,14 @@ def gerar_md(dados: dict) -> str:
          "- **Esforço e capital:** horas e dinheiro até a primeira venda.\n",
          "A pontuação ordena; quem decide é a [ordem de execução](07-ordem-de-execucao.md), que respeita a sua agenda e os portões dos negócios físicos.\n",
          "## Ranking geral\n",
-         "| # | Oferta | Frente | Estágio | Escala | Pontos | Próximo passo |",
-         "|---:|---|---|---|---|---:|---|"]
+         "| # | Oferta | Frente | Estágio | Escala | Pontos | Próximo passo | Quando entra |",
+         "|---:|---|---|---|---|---:|---|---|"]
     for i, x in enumerate(rk, 1):
         nome = f"[{esc_md(x['nome'])}]({x['doc']})" if x.get("doc") else esc_md(x["nome"])
         if x["nova"]:
             nome += " · **nova**"
         o.append(f"| {i} | {nome} | {F[x['frente']]} | {ESTAGIOS[x['estagio']]} | {x['escala'].capitalize()} | "
-                 f"{x['pontos']} | {esc_md(x['proximo_passo'])} |")
+                 f"{x['pontos']} | {esc_md(x['proximo_passo'])} | {esc_md(x['quando'])} |")
     o.append("")
     o.append("## Fontes de renda novas\n")
     o.append("Ideias que nasceram do cruzamento entre os negócios, as aulas, o livro e o setup. Cada uma começa pela validação mais barata possível.\n")

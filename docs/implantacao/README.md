@@ -4,27 +4,38 @@
 
 Como sair do planejamento para o setup funcionando: scripts que instalam, scripts que conferem e um roteiro com o critério de pronto de cada passo. Quando a última fase passar, alimentar o sistema é só colocar arquivos numa pasta.
 
-- [Roteiro de implantação](roteiro.md): 30 fases e 207 passos, na ordem, com o que cada passo implanta (gerado)
+- [Roteiro de implantação](roteiro.md): 33 fases e 242 passos, na ordem, com o que cada passo implanta (gerado)
 - [`acompanhamento.html`](acompanhamento.html): a mesma lista para marcar o progresso no navegador (gerado)
 
 ## Todo o planejamento está no passo a passo
 
-Nada foi retirado. Cada um dos 325 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entra em algum passo do roteiro, e cada fase diz **quando**: a semana e o mês, ou o gatilho que precisa acontecer antes (o mini-curso vender, a renda passar do valor de virada, o capítulo 1 ficar pronto, o portão de cada negócio).
+Nada foi retirado. Cada um dos 326 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, e cada uma das 47 ofertas do [portfólio](../operacao/portfolio.md) entram em algum passo do roteiro. Cada fase diz **quando**: a semana e o mês, ou o gatilho que precisa acontecer antes (a primeira venda, a renda passar do valor de virada, o capítulo 1 ficar pronto, o portão de cada negócio).
 
 | Período | Fases |
 |---|---|
-| Semanas 1 a 11 (out/2026 a jan/2027) | 0 a 14: o núcleo, tudo o que o notebook já suporta |
-| Jan a abr/2027 | 15 Base dos sistemas AM, 16 Nuvem e deploy |
-| Quando o capítulo 1 estiver pronto | 17 Editora |
-| Semana 2 em diante e 2027 | 18 Dados, IA e pendrives |
-| 2027, por gatilho ou compra | 19 Marketing pago, 20 Linux nativo, 21 IA nos sistemas AM, 22 Sistemas AM à venda, 23 CNPJ, 24 Agentes do grupo, 25 Editora depois do primeiro livro |
-| 2028 | 26 Distribuído, plataforma e segunda nuvem, 27 Infraestrutura própria |
-| Fase A, B e C, pelos portões | 28 Negócios do grupo em Barbacena, um por vez |
-| Sempre | 29 Estudo contínuo |
+| Antes de tudo (semana 1) | 0 Diagnóstico: o que você já tem |
+| Semanas 1 a 11 (out/2026 a jan/2027) | 1 a 15: o núcleo, tudo o que o notebook já suporta |
+| Semanas 12 a 15 (jan a fev/2027) | 16 Primeira venda: o mini-curso no ar |
+| Jan a abr/2027 | 17 Base dos sistemas AM, 18 Nuvem e deploy |
+| Quando o capítulo 1 estiver pronto | 19 Editora |
+| Semana 2 em diante e 2027 | 20 Dados, IA e pendrives |
+| Fev a dez/2027, depois da primeira venda | 21 Mais ofertas, uma por vez (as 20 ofertas seguintes, na ordem da pontuação), 22 Marketing pago |
+| 2027, por gatilho ou compra | 23 Linux nativo, 24 IA nos sistemas AM, 25 Sistemas AM à venda, 26 CNPJ, 27 Agentes do grupo, 28 Editora depois do primeiro livro |
+| 2028 | 29 Distribuído, plataforma e segunda nuvem, 30 Infraestrutura própria |
+| Fase A, B e C, pelos portões | 31 Negócios do grupo em Barbacena, um por vez |
+| Sempre | 32 Estudo contínuo |
 
-No fim do [roteiro](roteiro.md#quando-entra-cada-bloco) e do acompanhamento há a tabela **Quando entra cada bloco**, camada por camada. No diagrama do ecossistema e no mapa, tocar num bloco mostra o passo e a data. O CI confere a cada envio: um bloco novo sem passo, ou uma fase sem data, faz o teste falhar.
+No fim do [roteiro](roteiro.md#quando-entra-cada-bloco) e do acompanhamento há a tabela **Quando entra cada bloco**, camada por camada. No diagrama do ecossistema e no mapa, tocar num bloco mostra o passo e a data; no portfólio, cada oferta mostra o passo em que entra à venda. O CI confere a cada envio: um bloco ou uma oferta sem passo, ou uma fase sem data, faz o teste falhar.
 
 As datas são uma proposta para caber em umas 5 horas por semana; os gatilhos não têm data porque dependem de resultado. O que não entra de jeito nenhum está em [Decisões](../fora-do-setup.md), com o motivo.
+
+## Etapa 0: o que você já tem
+
+Antes de instalar qualquer coisa, `scripts/windows/diagnostico.ps1` lê o notebook (somente leitura): modelo, processador, memória e slots livres, placa de vídeo, discos e saúde, espaço livre, bateria, monitores, Secure Boot, TPM, criptografia, Defender, os programas do setup que já estão instalados e os que faltam, WSL, Docker, modelos do Ollama e extensões do VS Code. O relatório `diagnostico.md` diz em que passo do roteiro cada pendência se resolve. Junto com a lista das contas que você já tem e a contagem dos seus documentos, é dele que o resto do roteiro parte.
+
+## O caminho até vender
+
+A primeira venda do mini-curso está na fase 16, mas o dinheiro pode entrar antes: aulas particulares com agenda e Pix, sites para pequenas empresas e links de afiliado ficam prontos na fase 13. Depois da primeira venda, a fase 21 põe as outras ofertas à venda uma por vez, começando pelas de maior pontuação (página 'meu setup', kit de aulas para professores, planilha do Caixa da Casa, automação com IA, banco de questões, baralhos Anki).
 
 ## O que fica funcionando no fim do núcleo
 
@@ -70,6 +81,7 @@ Três verificadores, todos somente leitura, que terminam dizendo "pronto" ou lis
 
 | Verificador | Onde roda | Confere |
 |---|---|---|
+| `scripts/windows/diagnostico.ps1` | PowerShell, antes de tudo | O que o notebook já tem de hardware, segurança e programas, e em que passo cada pendência se resolve |
 | `scripts/windows/verificar.ps1` | PowerShell | Programas, WSL2, .wslconfig, Docker, Ollama e, como Administrador, Secure Boot, TPM e criptografia |
 | `scripts/wsl/verificar.sh` | Ubuntu | Ferramentas e versões (inclusive nmap, dig, Azure CLI, Terraform, Vercel CLI e Wrangler como opcionais), Git com commits assinados, login no GitHub, pastas |
 | `scripts/wsl/verificar.sh --servicos` | Ubuntu | n8n, banco de métricas, Grafana, Uptime Kuma, Postiz e o pipeline de conteúdo |
@@ -84,6 +96,7 @@ Testado aqui, num Ubuntu 24.04 igual ao do WSL:
 - O pipeline de conteúdo com 10 testes automáticos (transcrição, fila, quarentena, nomes repetidos) e uma rodada simulada.
 - O `compose.yaml` validado pelo Docker Compose; os scripts passaram no ShellCheck e no PSScriptAnalyzer.
 - Os scripts do Windows rodaram no PowerShell 7 com `winget`, `wsl` e `code` simulados.
+- `diagnostico.ps1` rodado no PowerShell 7 fora do Windows (sem hardware para ler): termina sem erro e escreve o relatório; no CI ele roda a cada envio. A leitura de verdade do hardware só dá para conferir no seu notebook.
 - `acervo.py` rodado de verdade com .docx, .pptx, .pdf, .md e .zip parecidos com os do seu Drive: achou a cópia repetida, barrou o contracheque, marcou o livro de editora como terceiros e a prova com nome de aluno como escola com dado pessoal, e sugeriu mini-curso, apostila e estudo de caso. `vault.sh` rodado duas vezes sem sobrescrever nada.
 - `lab-ia.sh` rodado de verdade: instalou PyTorch 2.14 (CUDA 13), Transformers, PEFT, TRL, DuckDB, dbt, PySpark e MLflow; um job PySpark e uma consulta DuckDB rodaram; na segunda vez não refez nada.
 - `nuvem.sh` rodado de verdade duas vezes: instalou Azure CLI 2.91, Vercel CLI e Wrangler; na segunda vez não refez nada.
@@ -120,24 +133,23 @@ Não deu para testar aqui:
 
 ## Primeiro o que dá para fazer hoje
 
-No acompanhamento, o filtro **Só o que dá para fazer hoje** esconde os passos que precisam de compra, de pagamento, de um conteúdo seu que ainda não existe ou de um gatilho que ainda não aconteceu. Sobram 143 dos 207 passos, só com o notebook e contas grátis.
+No acompanhamento, o filtro **Só o que dá para fazer hoje** esconde os passos que precisam de compra, de pagamento, de um conteúdo seu que ainda não existe ou de um gatilho que ainda não aconteceu. Sobram 157 dos 242 passos, só com o notebook e contas grátis.
 
 ## Ritmo sugerido
 
-O núcleo (fases 0 a 14) leva cerca de 51 horas. Da 15 em diante o ritmo é o da sua renda e das suas compras: os tempos dessas fases são estimativas grosseiras do seu trabalho, e os negócios levam anos. No bloco de construção da sua semana (quinta e sexta de manhã, umas 5 horas):
+O caminho até a primeira venda (fases 0 a 16) leva cerca de 75 horas: umas 15 semanas no bloco de construção da sua semana (quinta e sexta de manhã, umas 5 horas). Da 17 em diante o ritmo é o da sua renda e das suas compras; os tempos dessas fases são estimativas grosseiras, e os negócios levam anos.
 
 | Semana | Fases |
 |---|---|
-| 1 | 0 Preparar, 1 Windows |
-| 2 | 2 Linux, 3 GitHub, 4 Agentes |
-| 3 | 5 Backup, começo do 6 Acervo |
-| 4 | Fim do 6 Acervo, 7 Claude e assistentes, 8 Automação |
-| 5 | 9 Pipeline de conteúdo, 10 Estúdio |
-| 6 e 7 | 11 Contas, canais e sites |
-| 8 a 10 | 12 Vendas e finanças no CPF |
-| 11 | 13 Vendas medidas, 14 Teste do núcleo |
-| Depois | 15 Sistemas AM e 16 Nuvem quando o primeiro sistema entrar na esteira; 17 Editora quando o capítulo 1 e o seu modelo estiverem prontos; 29 Estudo, contínuo |
-| 2027 em diante | 19 a 28, cada uma na data ou no gatilho da tabela acima |
-| Quando quiser, depois da fase 2 | 18 Dados, IA e pendrives: os pendrives e o laboratório não dependem de nada além do Linux pronto; o fine-tuning vem depois do dataset |
+| 1 | 0 Diagnóstico, 1 Preparar, 2 Windows |
+| 2 | 3 Linux, 4 GitHub, 5 Agentes |
+| 3 | 6 Backup, começo do 7 Acervo |
+| 4 | Fim do 7 Acervo, 8 Claude e assistentes, 9 Automação |
+| 5 | 10 Pipeline de conteúdo, 11 Estúdio |
+| 6 e 7 | 12 Contas, canais e sites |
+| 8 a 10 | 13 Vendas e finanças no CPF (aulas particulares e sites já podem vender aqui) |
+| 11 | 14 Vendas medidas, 15 Teste do núcleo |
+| 12 a 15 | 16 Primeira venda: o mini-curso no ar |
+| Depois | As fases 17 a 32, cada uma na data ou no gatilho da tabela acima |
 
 O acervo vem cedo de propósito: na semana 4 você já sabe tudo o que tem e o que dá para vender, e o pipeline de conteúdo da semana 5 passa a ter material para trabalhar.

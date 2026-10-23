@@ -139,6 +139,7 @@ function render(){
         ${p.comando?`<div class="cmd"><code id="k-${p.id}">${esc(p.comando)}</code><button class="copy" data-copy="${p.id}">Copiar</button></div>`:""}
         <p class="pronto"><span>Pronto quando</span> ${esc(p.pronto)}</p>
         ${p.nota?`<p class="nota">${esc(p.nota)}</p>`:""}
+        ${p.ofertas.length?`<p class="implanta"><span>Oferta</span> ${esc(p.ofertas.join(" · "))}</p>`:""}
         ${p.implanta.length?`<p class="implanta"><span>Implanta</span> ${esc(p.implanta.join(" · "))}</p>`:""}</div></li>`;}).join("")||'<li class="passo"><span></span><span class="nota">Nada aqui com esses filtros.</span></li>'}</ul></details>`;
   }).join("");
 }
