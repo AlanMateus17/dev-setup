@@ -34,6 +34,8 @@ flowchart LR
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_ocatal["Portfólio de ofertas"]
     n_oesteira["Esteira de ofertas"]
+  end
+  subgraph L_pub["Público e canais"]
     n_ogbp["Google Perfil da Empresa"]
   end
   subgraph L_emp["Pessoa física: impostos e finanças"]
@@ -45,6 +47,9 @@ flowchart LR
   subgraph L_app["Aplicação: sistemas AM (Aura)"]
     n_nkaix["AM Kaixara (PDV e cardápio)"]
     n_nrot["AM Rotara (entregas)"]
+  end
+  subgraph L_obs["Observabilidade"]
+    n_graf["Grafana"]
   end
   n_nsoft -->|"constrói"| n_nkaix
   n_nsoft -->|"constrói"| n_nrot
@@ -80,6 +85,7 @@ flowchart LR
   n_cnpj -->|"vira"| n_ncnpj
   n_nplan -->|"portões entre fases"| n_ncnpj
   n_ocatal -->|"negócios físicos"| n_nplan
+  n_graf -->|"resultado real"| n_nplan
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_nsoft,n_nloja,n_npecas,n_nponto,n_nmaker,n_nentr,n_nflex,n_ndeliv,n_nsushi,n_ncafe,n_npad,n_ncnpj,n_nplan,n_nifood,n_nvisa,n_nanatel desta
 ```
@@ -135,7 +141,7 @@ Loja de 30 a 50 m² com bancada técnica, mostruário e balcão de pacotes. Une 
 | ← recebe de | [Peças sem estoque (sob encomenda)](15-neg.md#npecas) | Negócios do grupo (Barbacena) | vendidas no balcão |
 | ← recebe de | [AMtech Maker (robótica)](15-neg.md#nmaker) | Negócios do grupo (Barbacena) | usa a bancada |
 | ← recebe de | [AM Kaixara (PDV e cardápio)](10-app.md#nkaix) | Aplicação: sistemas AM (Aura) | ordens de serviço |
-| ← recebe de | [Google Perfil da Empresa](22-oper.md#ogbp) | Operação do grupo (esteira, marca, qualidade) | presença local |
+| ← recebe de | [Google Perfil da Empresa](21-pub.md#ogbp) | Público e canais | presença local |
 
 <a id="npecas"></a>
 
@@ -234,7 +240,7 @@ Delivery e retirada de quarta a domingo à noite, cardápio em torno do salmão 
 | ← recebe de | [AM Kaixara (PDV e cardápio)](10-app.md#nkaix) | Aplicação: sistemas AM (Aura) | PDV e ficha técnica |
 | ← recebe de | [Vigilância sanitária (RDC 216)](15-neg.md#nvisa) | Negócios do grupo (Barbacena) | alvará sanitário |
 | ← recebe de | [3 CNPJs por frente](15-neg.md#ncnpj) | Negócios do grupo (Barbacena) | AM Alimentação |
-| ← recebe de | [Google Perfil da Empresa](22-oper.md#ogbp) | Operação do grupo (esteira, marca, qualidade) | presença local |
+| ← recebe de | [Google Perfil da Empresa](21-pub.md#ogbp) | Público e canais | presença local |
 
 <a id="ncafe"></a>
 
@@ -265,7 +271,7 @@ Padaria de finalização com massa congelada, café da manhã mineiro, almoço p
 | ← recebe de | [AM Delivery (várias empresas)](15-neg.md#ndeliv) | Negócios do grupo (Barbacena) | pedidos e marmitas |
 | ← recebe de | [AM Kaixara (PDV e cardápio)](10-app.md#nkaix) | Aplicação: sistemas AM (Aura) | PDV e previsão |
 | ← recebe de | [Vigilância sanitária (RDC 216)](15-neg.md#nvisa) | Negócios do grupo (Barbacena) | alvará sanitário |
-| ← recebe de | [Google Perfil da Empresa](22-oper.md#ogbp) | Operação do grupo (esteira, marca, qualidade) | presença local |
+| ← recebe de | [Google Perfil da Empresa](21-pub.md#ogbp) | Público e canais | presença local |
 
 <a id="ncnpj"></a>
 
@@ -295,6 +301,7 @@ Artefato e motor tools/negocios/financas.py: investimento, ponto de equilíbrio,
 |---|---|---|---|
 | → envia para | [3 CNPJs por frente](15-neg.md#ncnpj) | Negócios do grupo (Barbacena) | portões entre fases |
 | ← recebe de | [Portfólio de ofertas](22-oper.md#ocatal) | Operação do grupo (esteira, marca, qualidade) | negócios físicos |
+| ← recebe de | [Grafana](09-obs.md#graf) | Observabilidade | resultado real |
 
 <a id="nifood"></a>
 

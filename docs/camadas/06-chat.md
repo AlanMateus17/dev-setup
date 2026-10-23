@@ -39,10 +39,10 @@ flowchart LR
     n_img["Canva · Krita · Inkscape"]
   end
   subgraph L_nuvem["Nuvem, código e entrega"]
-    n_anth["Claude (assinatura e API)"]
     n_gh["GitHub"]
   end
   subgraph L_clc["Claude: recursos, conectores e plugins"]
+    n_anth["Claude (assinatura e API)"]
     n_arts["Artifacts (Docs, Slides, Sheets…)"]
     n_cgws["Conector Google (Gmail, Drive…)"]
     n_proj["Projects + memória"]
@@ -113,7 +113,7 @@ Seu assistente principal (assinatura paga): planejamento, escrita longa, revisã
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Claude (assinatura e API)](11-nuvem.md#anth) | Nuvem, código e entrega | assinatura |
+| → envia para | [Claude (assinatura e API)](07-clc.md#anth) | Claude: recursos, conectores e plugins | assinatura |
 | → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | roteiros e planos |
 | → envia para | [Claude Code](05-ia.md#cc) | Agentes de IA e sandbox | plano vira tarefa |
 | → envia para | [Projects + memória](07-clc.md#proj) | Claude: recursos, conectores e plugins | organiza |

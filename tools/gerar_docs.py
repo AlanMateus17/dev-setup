@@ -66,11 +66,25 @@ def validar(eco: dict) -> list[str]:
         par = (c["de"], c["para"])
         if par in vistos:
             erros.append(f"Conexão repetida: {c['de']} → {c['para']}")
+        if (c["para"], c["de"]) in vistos:
+            erros.append(f"Conexão nos dois sentidos (deixe uma só): {c['de']} ↔ {c['para']}")
+        if c["de"] == c["para"]:
+            erros.append(f"Conexão de um bloco com ele mesmo: {c['de']}")
+        if not c["rotulo"].strip():
+            erros.append(f"Conexão {c['de']} → {c['para']} sem rótulo")
         vistos.add(par)
+    ligados = {p for par in vistos for p in par}
+    for b in eco["blocos"]:
+        if b["id"] not in ligados:
+            erros.append(f"Bloco {b['id']} sem nenhuma conexão: ligue ao que ele alimenta ou de que depende")
     for f in eco["fluxos"]:
         for p in f["passos"]:
             if p["bloco"] not in ids:
                 erros.append(f"Fluxo {f['id']} usa bloco inexistente: {p['bloco']}")
+        s = [p["bloco"] for p in f["passos"]]
+        for a, b in zip(s, s[1:]):
+            if (a, b) not in vistos and (b, a) not in vistos:
+                erros.append(f"Fluxo {f['id']}: o passo {a} → {b} não tem conexão no desenho")
     return erros
 
 

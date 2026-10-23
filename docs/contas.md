@@ -23,7 +23,7 @@ Contas que o setup exige. Senhas no KeePassXC, 2FA no app autenticador e código
 | **ElevenLabs** | Plano Creator para clonar a própria voz; 2FA obrigatório. |
 | **Gerenciador de Negócios da Meta** | Pixel, API de Conversões e conta de anúncios; uma conta só. |
 | **TikTok e Facebook** | Perfis da marca, separados dos pessoais. |
-| **Telegram** | Bot de aprovação dos posts. |
+| **Telegram** | Bot de avisos: peça pronta para aprovar e serviço fora do ar. |
 | **Google Ads** | Pesquisa e YouTube; tag do Google no site. |
 | **TikTok Ads Manager** | Mínimo de US$ 20/dia por grupo de anúncios. |
 | **Kwai Ads** | Depois de Meta e TikTok. |
@@ -60,9 +60,8 @@ Contas que o setup exige. Senhas no KeePassXC, 2FA no app autenticador e código
 
 | Item | Observação |
 |---|---|
-| **Já conectados** | Google, Canva, Figma, MailerLite, Vercel, AWS, Microsoft Learn, Upwork, Lovable, Supabase, Notion, monday, GitBook, Stripe, Shopify, WordPress.com, Spotify. |
+| **Já conectados** | Google, Canva, Figma, MailerLite, Vercel, AWS, Microsoft Learn, Upwork, Lovable, Supabase, Cloudflare, vidIQ, Notion, monday, GitBook, Stripe, Shopify, WordPress.com, Spotify. |
 | **Revise as permissões** | Cada conector age na sua conta. Desligue os que não usa: Spotify, Shopify, WordPress.com e Notion (você ficou com o Obsidian). |
-| **Sugeridos** | Cloudflare e vidIQ. |
 
 ## Sites e domínio
 
@@ -73,6 +72,7 @@ Contas que o setup exige. Senhas no KeePassXC, 2FA no app autenticador e código
 | **Vercel** | Frontends de estudo e portfólio. Confira os termos antes de usar para venda. |
 | **Hostinger** | Você já tem; útil para sites WordPress de clientes. |
 | **Google Search Console** | Indexação dos sites. |
+| **Umami** | Visitas dos sites sem cookies invasivos: Umami Cloud grátis ou rodando no seu servidor. |
 
 ## Canais e conteúdo
 
@@ -94,6 +94,7 @@ Contas que o setup exige. Senhas no KeePassXC, 2FA no app autenticador e código
 | **Mercado Pago** | Pix e cartão para serviços e aulas. |
 | **MailerLite** | Newsletter; plano grátis já decidido. |
 | **Programas de afiliados** | Amazon Associados, Hotmart, Eduzz. |
+| **Cal.com e Discord** | Agenda com pagamento para as aulas e a comunidade dos alunos. |
 
 ## Pessoa física e impostos
 

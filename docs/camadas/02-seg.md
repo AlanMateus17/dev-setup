@@ -33,13 +33,12 @@ flowchart LR
     n_gh["GitHub"]
   end
   subgraph L_lin["Linux (Ubuntu no WSL2, Arch no 2º disco)"]
-    n_syncth["Syncthing"]
     n_wsl["Ubuntu (WSL2)"]
   end
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
     n_obsd["Obsidian + Git"]
+    n_syncth["Syncthing"]
     n_w11["Windows 11 Home"]
-    n_zip["7-Zip"]
   end
   subgraph L_hw["Hardware"]
     n_cel["Celular"]
@@ -56,7 +55,7 @@ flowchart LR
   n_tpm -->|"protege a chave"| n_bitl
   n_bitl -->|"criptografa o disco"| n_nb
   n_def -->|"protege"| n_w11
-  n_kee -->|"senha + 2FA de cada conta"| n_tfa
+  n_kee -->|"senha aqui, código no app"| n_tfa
   n_kee -->|"senhas e tokens"| n_gh
   n_kee -->|"senhas"| n_hotm
   n_kee -->|"senhas"| n_azure
@@ -66,7 +65,6 @@ flowchart LR
   n_bkp -->|"copia o vault"| n_obsd
   n_ext -->|"2ª cópia"| n_bkp
   n_nas -->|"3ª cópia (futuro)"| n_bkp
-  n_zip -->|"compacta"| n_bkp
   n_ssdext -->|"cópia portátil"| n_bkp
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_sign,n_restic,n_ykey,n_tpm,n_bitl,n_def,n_kee,n_tfa,n_bkp desta
@@ -171,11 +169,11 @@ Cofre de todas as senhas das contas marcadas com o ponto dourado.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [App 2FA (celular)](02-seg.md#tfa) | Segurança e cofre | senha + 2FA de cada conta |
+| → envia para | [App 2FA (celular)](02-seg.md#tfa) | Segurança e cofre | senha aqui, código no app |
 | → envia para | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | senhas e tokens |
 | → envia para | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | senhas |
 | → envia para | [Azure](11-nuvem.md#azure) | Nuvem, código e entrega | senhas |
-| ← recebe de | [Syncthing](04-lin.md#syncth) | Linux (Ubuntu no WSL2, Arch no 2º disco) | cofre de senhas |
+| ← recebe de | [Syncthing](03-win.md#syncth) | Windows 11, apps e máquinas virtuais | cofre de senhas |
 
 <a id="tfa"></a>
 
@@ -188,7 +186,7 @@ Segundo fator de todas as contas.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | ← recebe de | [Celular](01-hw.md#cel) | Hardware | gera os códigos |
-| ← recebe de | [KeePassXC](02-seg.md#kee) | Segurança e cofre | senha + 2FA de cada conta |
+| ← recebe de | [KeePassXC](02-seg.md#kee) | Segurança e cofre | senha aqui, código no app |
 
 <a id="bkp"></a>
 
@@ -204,7 +202,6 @@ GitHub + disco externo + (depois) NAS.
 | → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | copia o vault |
 | ← recebe de | [Disco externo](01-hw.md#ext) | Hardware | 2ª cópia |
 | ← recebe de | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | 3ª cópia (futuro) |
-| ← recebe de | [7-Zip](03-win.md#zip) | Windows 11, apps e máquinas virtuais | compacta |
 | ← recebe de | [restic (backup criptografado)](02-seg.md#restic) | Segurança e cofre | executa |
 | ← recebe de | [SSD externo (USB-C 10 Gbps)](01-hw.md#ssdext) | Hardware | cópia portátil |
 

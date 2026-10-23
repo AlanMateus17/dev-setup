@@ -8,7 +8,7 @@
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
-**Cobertura:** os 303 blocos do [mapa do setup](../mapa.html) estão todos aqui: 214 entram nos passos, 9 são peças a construir, 3 não se instalam e 77 ficam para depois. O CI falha se um bloco novo do setup ficar fora do roteiro ([lista completa](#cobertura)).
+**Cobertura:** os 305 blocos do [mapa do setup](../mapa.html) estão todos aqui: 217 entram nos passos, 9 são peças a construir, 3 não se instalam e 76 ficam para depois. O CI falha se um bloco novo do setup ficar fora do roteiro ([lista completa](#cobertura)).
 
 | Fase | Objetivo | Passos | Tempo |
 |---|---|---:|---:|
@@ -44,13 +44,13 @@ Nada se perde, o hardware está no lugar e as contas estão protegidas antes de 
 - [ ] **Pronto quando:** Disco externo com a cópia conferida (abra alguns arquivos)
 - Implanta: Disco externo
 
-### 0.2 Montar a mesa: nobreak, base com cooler, 2º monitor, disco e SSD externos
+### 0.2 Montar a mesa: nobreak, base com cooler, 2º monitor, disco e SSD externos, kits de robótica
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** Notebook no nobreak e na base, 2º monitor funcionando, disco e SSD externos reconhecidos
 - O que ainda não comprou fica anotado e não trava as próximas fases. O nobreak vem primeiro: protege o notebook e o backup de queda de energia.
-- Implanta: Acer Nitro (32 GB, GTX 1650) · Nobreak · Base com cooler · 2º monitor · Disco externo · SSD externo (USB-C 10 Gbps) · Celular
+- Implanta: Acer Nitro (32 GB, GTX 1650) · Nobreak · Base com cooler · 2º monitor · Disco externo · SSD externo (USB-C 10 Gbps) · Celular · Arduino · ESP32 · Pi
 
 ### 0.3 Atualizar o Windows, os drivers e o NitroSense
 
@@ -103,7 +103,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\windows\instalar.ps1 -Aplicar
 ```
 
 - [ ] **Pronto quando:** Termina com 'Pronto' e sem ERRO; reinicie o Windows
-- Implanta: Terminal · PowerShell · winget · VS Code · 7-Zip · PowerToys · SumatraPDF · ShareX · LibreOffice · Firefox (2º navegador) · Obsidian + Git · DBeaver · Bruno · Excalidraw / draw.io · VirtualBox · Arduino IDE 2 · .wslconfig + localhost · OBS Studio · Audacity · Canva · Krita · Inkscape · nmap · dig · curl · Wireshark · Syncthing · Anki
+- Implanta: Terminal · PowerShell · winget · VS Code · 7-Zip · PowerToys · SumatraPDF · ShareX · LibreOffice · Firefox (2º navegador) · Obsidian + Git · DBeaver · Bruno · Excalidraw / draw.io · VirtualBox · Arduino IDE 2 · .wslconfig + localhost · OBS Studio · Audacity · Canva · Krita · Inkscape · Wireshark · Syncthing · Anki
 
 ### 1.3 Criar o cofre do KeePassXC e migrar as senhas
 
@@ -215,7 +215,7 @@ bash scripts/wsl/bootstrap.sh --nome "Alan Mateus" --email SEU_EMAIL --com-whisp
 ```
 
 - [ ] **Pronto quando:** Termina com 'Pronto' e sem ERRO
-- Implanta: .NET 10 · Node · Python · TeX Live · gitleaks · Trivy · Git + SSH + gh · nmap · dig · curl · Wireshark · Whisper (local) · Pranchas TikZ e SVG · CircuiTikZ · Instaladores (PowerShell e bash)
+- Implanta: .NET 10 · Node · Python · TeX Live · gitleaks · Trivy · Git + SSH + gh · nmap · dig · curl · Whisper (local) · Pranchas TikZ e SVG · CircuiTikZ · Instaladores (PowerShell e bash)
 
 ### 2.5 Reiniciar o WSL para o systemd valer (PowerShell)
 
@@ -575,7 +575,7 @@ Gravou ou escreveu, as peças aparecem na fila de aprovação.
 **Você** · 10 min
 
 - [ ] **Pronto quando:** Mensagem de teste chega no celular
-- Implanta: Aprovação no celular
+- Implanta: Telegram (avisos) · Aprovação no celular
 
 ### 8.4 Testar o caminho sem gastar
 
@@ -1211,6 +1211,7 @@ Marcados como futuro no mapa: entram quando a renda, a decisão ou o negócio ju
 
 | Camada | Blocos |
 |---|---|
+| Público e canais | Google Perfil da Empresa |
 | Plataformas de venda e recebimento | Pix Automático + gateway (ex.: Asaas) · YouTube (membros) |
 | Marketing, automação e medição | Meta Ads (Instagram, Facebook) · Algoritmo de horário · Google e YouTube Ads · TikTok Ads · Programa de afiliados · Dublagem (YouTube + ElevenLabs) · Spotify Ad Studio · Kwai Ads · Pinterest Ads · LinkedIn Ads · Mídia nativa (Taboola, Outbrain) · Influenciadores e newsletters |
 | Pessoa física: impostos e finanças | Certificado digital (e-CNPJ) · API de NFS-e (ex.: Focus NFe) · CNPJ (futuro) |
@@ -1222,7 +1223,7 @@ Marcados como futuro no mapa: entram quando a renda, a decisão ou o negócio ju
 | Linux (Ubuntu no WSL2, Arch no 2º disco) | Neovim · Arch + Omarchy (2º NVMe) |
 | Windows 11, apps e máquinas virtuais | Tailscale (VPN) · Gerenciador de boot · VMs: Kali · Arch · Servidores |
 | Segurança e cofre | Chave física (YubiKey) |
-| Hardware | SSD SATA 2,5" · 2º NVMe (1–4 TB) · Microfone + câmera · Arduino · ESP32 · Pi · Servidor caseiro (NAS + serviços) · Workstation com GPU |
+| Hardware | SSD SATA 2,5" · 2º NVMe (1–4 TB) · Microfone + câmera · Servidor caseiro (NAS + serviços) · Workstation com GPU |
 | Editora AMS Silva (produção de livros) | Gráfica sob demanda (Brasil) · Kit edição especial · Curso por seção · Edição do professor · Traduções (espanhol, inglês) · Manim (animações) |
 | Negócios do grupo (Barbacena) | AMtech Software (projetos e SaaS) · Loja AMtech (assistência) · Peças sem estoque (sob encomenda) · Ponto de retirada (Shopee e ML) · AMtech Maker (robótica) · AM Entregas (moto e carro) · Mercado Envios Flex · AM Delivery (várias empresas) · Sushi (delivery) · Cafeteria · Padaria + café da manhã + almoço · 3 CNPJs por frente · Planejador do Grupo · iFood (canal de descoberta) · Vigilância sanitária (RDC 216) · Anatel e Inmetro |
-| Operação do grupo (esteira, marca, qualidade) | Google Perfil da Empresa · Canal build in public · Agente atendente (WhatsApp) · Agente orçamentista · Agente cobrador · Agente pós-venda · Analista semanal · Organizador fiscal · Agente comprador |
+| Operação do grupo (esteira, marca, qualidade) | Canal build in public · Agente atendente (WhatsApp) · Agente orçamentista · Agente cobrador · Agente pós-venda · Analista semanal · Organizador fiscal · Agente comprador |

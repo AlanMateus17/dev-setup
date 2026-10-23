@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** git push via SSH leva o código ao GitHub; o Actions testa e publica.
 
-**17 blocos** · 12 precisam de conta · 4 marcados como futuro
+**16 blocos** · 11 precisam de conta · 4 marcados como futuro
 
 ## Mapa de conexões
 
@@ -28,12 +28,14 @@ flowchart LR
     n_vercel["Vercel"]
     n_azure["Azure"]
     n_aws["AWS"]
-    n_anth["Claude (assinatura e API)"]
     n_b2["Backblaze B2 (backup)"]
     n_gpuh["GPU na nuvem por hora"]
   end
   subgraph L_pub["Público e canais"]
     n_recr["Recrutadores"]
+  end
+  subgraph L_mkt["Marketing, automação e medição"]
+    n_n8n["n8n"]
   end
   subgraph L_web["Vitrine web (sites e domínio)"]
     n_amsite["Site Grupo AMtech"]
@@ -57,7 +59,6 @@ flowchart LR
     n_voz["Voz clonada (ElevenLabs)"]
   end
   subgraph L_app["Aplicação: sistemas AM (Aura)"]
-    n_ai["IA: RAG + pgvector"]
     n_api["API ASP.NET Core"]
     n_status["aura-status"]
     n_tests["Testes: xUnit, Playwright, k6"]
@@ -71,12 +72,10 @@ flowchart LR
     n_cdev["Vercel · AWS · Microsoft Learn"]
   end
   subgraph L_chat["Assistentes de IA (chat, pesquisa e estudo)"]
-    n_capp2["Claude (app)"]
     n_codex["Codex (OpenAI)"]
     n_gcode["Agentes de código do Google"]
   end
   subgraph L_ia["Agentes de IA e sandbox"]
-    n_cc["Claude Code"]
     n_mcp["Servidores MCP"]
   end
   subgraph L_lin["Linux (Ubuntu no WSL2, Arch no 2º disco)"]
@@ -102,7 +101,7 @@ flowchart LR
   n_ghproj -->|"issues e board"| n_gh
   n_dbot -->|"PRs de segurança"| n_gh
   n_dbot -->|"alertas"| n_status
-  n_gcp -->|"cria recursos"| n_tf
+  n_tf -->|"cria recursos"| n_gcp
   n_gh -->|"dispara a cada push"| n_gha
   n_gh -->|"portfólio"| n_recr
   n_kee -->|"senhas e tokens"| n_gh
@@ -129,6 +128,7 @@ flowchart LR
   n_ghcr -->|"imagem"| n_aws
   n_site -->|"hospedado"| n_ghp
   n_catal -->|"hospedado"| n_ghp
+  n_cf -->|"túnel dos webhooks"| n_n8n
   n_ccf -->|"DNS e Pages"| n_cf
   n_tf -->|"DNS por código"| n_cf
   n_dom -->|"nameservers"| n_cf
@@ -144,14 +144,12 @@ flowchart LR
   n_clis -->|"comandos"| n_aws
   n_cdev -->|"documentação"| n_aws
   n_tf -->|"cria recursos"| n_aws
-  n_capp2 -->|"assinatura"| n_anth
-  n_cc -->|"modelo Claude"| n_anth
-  n_ai -->|"modelos"| n_anth
+  n_learn -->|"Skill Builder"| n_aws
   n_nas -->|"restic diário"| n_b2
   n_restic -->|"criptografado"| n_b2
   n_gpuh -->|"modelos abertos"| n_voz
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_blob,n_tmail,n_sonar,n_ghproj,n_dbot,n_gcp,n_gh,n_gha,n_ghcr,n_ghp,n_cf,n_vercel,n_azure,n_aws,n_anth,n_b2,n_gpuh desta
+  class n_blob,n_tmail,n_sonar,n_ghproj,n_dbot,n_gcp,n_gh,n_gha,n_ghcr,n_ghp,n_cf,n_vercel,n_azure,n_aws,n_b2,n_gpuh desta
 ```
 
 ## Blocos
@@ -168,11 +166,10 @@ flowchart LR
 | [GitHub Actions](#gha) | Remoto | CI/CD: build, testes, segurança e deploy. |
 | [GHCR (imagens)](#ghcr) | Remoto | Registro das imagens Docker das APIs. |
 | [GitHub Pages](#ghp) | Remoto | Hospeda site pessoal, blog e Catálogo do HTML. |
-| [Cloudflare (DNS, Pages, e-mail)](#cf) | Remoto · precisa de conta | DNS, HTTPS, proteção, hospedagem estática dos sites comerciais e redirecionamento de e-mail do domínio. |
+| [Cloudflare (DNS, Pages, e-mail)](#cf) | Remoto · precisa de conta | DNS, HTTPS, proteção, hospedagem estática dos sites comerciais e redirecionamento de e-mail do domínio. O Cloudflare Tunnel leva os webhooks de venda até o n8n sem abrir portas em casa. |
 | [Vercel](#vercel) | Remoto · precisa de conta | Frontends Next.js. O plano grátis é para uso pessoal e não comercial; confira os termos antes de pôr venda nele. |
 | [Azure](#azure) | Remoto · precisa de conta | Primeira nuvem para as APIs AM: App Service/Container Apps, PostgreSQL, Key Vault. |
 | [AWS](#aws) | Remoto · precisa de conta · futuro | Segunda nuvem, para o mercado maior. |
-| [Claude (assinatura e API)](#anth) | Remoto · precisa de conta | Assinatura usada pelo app e pelo Claude Code; API para as funções de IA dos sistemas. |
 | [Backblaze B2 (backup)](#b2) | Remoto · precisa de conta · futuro | Cópia fora de casa do backup, criptografada pelo restic. US$ 6,95 por TB/mês. |
 | [GPU na nuvem por hora](#gpuh) | Remoto · precisa de conta · futuro | Para treinar ou gerar voz e vídeo com modelos abertos quando a GTX 1650 não der conta. |
 
@@ -247,7 +244,7 @@ Terceira nuvem: só o básico, quando um projeto de IA ou dados pedir.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Terraform](08-cnt.md#tf) | Containers, Kubernetes e infra como código | cria recursos |
+| ← recebe de | [Terraform](08-cnt.md#tf) | Containers, Kubernetes e infra como código | cria recursos |
 
 <a id="gh"></a>
 
@@ -331,10 +328,11 @@ Hospeda site pessoal, blog e Catálogo do HTML.
 
 *Remoto · precisa de conta*
 
-DNS, HTTPS, proteção, hospedagem estática dos sites comerciais e redirecionamento de e-mail do domínio.
+DNS, HTTPS, proteção, hospedagem estática dos sites comerciais e redirecionamento de e-mail do domínio. O Cloudflare Tunnel leva os webhooks de venda até o n8n sem abrir portas em casa.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
+| → envia para | [n8n](20-mkt.md#n8n) | Marketing, automação e medição | túnel dos webhooks |
 | ← recebe de | [Conector Cloudflare](07-clc.md#ccf) | Claude: recursos, conectores e plugins | DNS e Pages |
 | ← recebe de | [Terraform](08-cnt.md#tf) | Containers, Kubernetes e infra como código | DNS por código |
 | ← recebe de | [GitHub Actions](11-nuvem.md#gha) | Nuvem, código e entrega | publica Pages |
@@ -388,20 +386,7 @@ Segunda nuvem, para o mercado maior.
 | ← recebe de | [Vercel · AWS · Microsoft Learn](07-clc.md#cdev) | Claude: recursos, conectores e plugins | documentação |
 | ← recebe de | [Terraform](08-cnt.md#tf) | Containers, Kubernetes e infra como código | cria recursos |
 | ← recebe de | [GHCR (imagens)](11-nuvem.md#ghcr) | Nuvem, código e entrega | imagem |
-
-<a id="anth"></a>
-
-### Claude (assinatura e API)
-
-*Remoto · precisa de conta*
-
-Assinatura usada pelo app e pelo Claude Code; API para as funções de IA dos sistemas.
-
-| Direção | Bloco | Camada | O que passa |
-|---|---|---|---|
-| ← recebe de | [Claude (app)](06-chat.md#capp2) | Assistentes de IA (chat, pesquisa e estudo) | assinatura |
-| ← recebe de | [Claude Code](05-ia.md#cc) | Agentes de IA e sandbox | modelo Claude |
-| ← recebe de | [IA: RAG + pgvector](10-app.md#ai) | Aplicação: sistemas AM (Aura) | modelos |
+| ← recebe de | [Microsoft Learn + AWS Skill Builder](13-est.md#learn) | Estudo e carreira | Skill Builder |
 
 <a id="b2"></a>
 

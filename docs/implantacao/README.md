@@ -9,14 +9,14 @@ Como sair do planejamento para o setup funcionando: scripts que instalam, script
 
 ## Tudo o que está no setup está no roteiro
 
-Cada passo diz quais blocos do [mapa do setup](../mapa.html) ele implanta. Os 303 blocos têm lugar:
+Cada passo diz quais blocos do [mapa do setup](../mapa.html) ele implanta. Os 305 blocos têm lugar:
 
 | Onde | Blocos | O que significa |
 |---|---:|---|
-| Num passo do roteiro | 214 | Você instala, configura ou cria seguindo o passo |
+| Num passo do roteiro | 217 | Você instala, configura ou cria seguindo o passo |
 | Peça a construir | 9 | Ainda não existe como código: as peças do pipeline de imagens e os agentes da editora, que começam com o capítulo 1 |
 | Não se instala | 3 | Públicos (alunos, recrutadores) e os conectores que você decidiu não usar |
-| Para depois | 77 | Marcados como futuro no mapa: os 9 negócios físicos, CNPJ, anúncios pagos, AWS, Kubernetes, YubiKey e afins |
+| Para depois | 76 | Marcados como futuro no mapa: os 9 negócios físicos, CNPJ, anúncios pagos, AWS, Kubernetes, YubiKey e afins |
 
 O CI confere isso a cada envio: se alguém acrescentar um bloco ao mapa e esquecer o roteiro, o teste falha e diz qual bloco ficou de fora. A lista completa está no fim do [roteiro](roteiro.md#cobertura) e do acompanhamento.
 

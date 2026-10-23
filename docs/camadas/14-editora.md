@@ -64,7 +64,6 @@ flowchart LR
   end
   subgraph L_prod["Produtos (o que você vende)"]
     n_livro["Livro Lógica e Máquina"]
-    n_sites["Sites para pequenas empresas"]
   end
   subgraph L_est["Estudo e carreira"]
     n_anki["Anki"]
@@ -116,6 +115,7 @@ flowchart LR
   n_ficha -->|"verso da folha de rosto"| n_bcls
   n_refs -->|"referências visuais"| n_bcls
   n_bci -->|"PDF, EPUB e impressão"| n_livro
+  n_bci -->|"PDF de prévia"| n_beta
   n_tex -->|"compila o PDF"| n_bci
   n_lint -->|"revisão"| n_bci
   n_editais -->|"cobertura conferida"| n_bci
@@ -128,6 +128,7 @@ flowchart LR
   n_alt -->|"EPUB acessível"| n_bci
   n_cc -->|"executa"| n_bagentes
   n_beta -->|"erros encontrados"| n_errata
+  n_errata -->|"nova edição"| n_livro
   n_livro -->|"1 exemplar"| n_deplegal
   n_kdp -->|"carnê-leão (exterior)"| n_nfse
   n_livro -->|"ebook e impresso"| n_kdp
@@ -141,13 +142,14 @@ flowchart LR
   n_calc -->|"preço e margem"| n_bcurso
   n_projcap -->|"projeto das aulas"| n_bcurso
   n_manim -->|"animações"| n_bcurso
-  n_prof -->|"licença para escolas"| n_sites
+  n_prof -->|"licença para escolas"| n_hotm
   n_livro -->|"material do professor"| n_prof
   n_trad -->|"voz em outros idiomas"| n_dub
   n_livro -->|"outras línguas"| n_trad
   n_img -->|"rascunhos de ideia"| n_refs
   n_ccan -->|"quadros e capas"| n_refs
   n_projcap -->|"portfólio do aluno"| n_gh
+  n_acervos -->|"candidatos e licenças"| n_licenca
   n_buscaimg -->|"consulta as APIs"| n_acervos
   n_buscaimg -->|"candidatos"| n_licenca
   n_licenca -->|"só o permitido"| n_contato
@@ -317,6 +319,7 @@ A cada mudança: compila e testa o código, confere gabaritos, revisa texto e li
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Livro Lógica e Máquina](16-prod.md#livro) | Produtos (o que você vende) | PDF, EPUB e impressão |
+| → envia para | [Leitores beta e revisão técnica](14-editora.md#beta) | Editora AMS Silva (produção de livros) | PDF de prévia |
 | ← recebe de | [Seu modelo de criação](14-editora.md#modelo) | Editora AMS Silva (produção de livros) | regras conferidas |
 | ← recebe de | [Repositório do livro](14-editora.md#brepo) | Editora AMS Silva (produção de livros) | dispara |
 | ← recebe de | [Classe LaTeX do livro](14-editora.md#bcls) | Editora AMS Silva (produção de livros) | identidade visual |
@@ -367,6 +370,7 @@ Revisor técnico, gerador de testes, verificador de gabarito, leitor iniciante e
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Errata e edições](14-editora.md#errata) | Editora AMS Silva (produção de livros) | erros encontrados |
+| ← recebe de | [Pipeline do livro (CI)](14-editora.md#bci) | Editora AMS Silva (produção de livros) | PDF de prévia |
 
 <a id="errata"></a>
 
@@ -379,6 +383,7 @@ Correções públicas e número de edição; o leitor reporta erros por formulá
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Repositório do livro](14-editora.md#brepo) | Editora AMS Silva (produção de livros) | correções |
+| → envia para | [Livro Lógica e Máquina](16-prod.md#livro) | Produtos (o que você vende) | nova edição |
 | ← recebe de | [Leitores beta e revisão técnica](14-editora.md#beta) | Editora AMS Silva (produção de livros) | erros encontrados |
 
 <a id="isbn"></a>
@@ -485,7 +490,7 @@ Slides, planos de aula, avaliações e gabaritos; licença para escolas.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Sites para pequenas empresas](16-prod.md#sites) | Produtos (o que você vende) | licença para escolas |
+| → envia para | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | licença para escolas |
 | ← recebe de | [Livro Lógica e Máquina](16-prod.md#livro) | Produtos (o que você vende) | material do professor |
 
 <a id="trad"></a>
@@ -578,6 +583,7 @@ Openverse, Wikimedia Commons, Smithsonian, The Met, Europeana, Library of Congre
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
+| → envia para | [Filtro de licença e fichas](14-editora.md#licenca) | Editora AMS Silva (produção de livros) | candidatos e licenças |
 | ← recebe de | [Busca automática de imagens](14-editora.md#buscaimg) | Editora AMS Silva (produção de livros) | consulta as APIs |
 
 <a id="buscaimg"></a>
@@ -607,6 +613,7 @@ Só passa domínio público, CC0, CC BY, CC BY-SA (com cuidado) e licenças de b
 | → envia para | [Folha de contato (artefato)](14-editora.md#contato) | Editora AMS Silva (produção de livros) | só o permitido |
 | ← recebe de | [Busca automática de imagens](14-editora.md#buscaimg) | Editora AMS Silva (produção de livros) | candidatos |
 | ← recebe de | [Canva · Krita · Inkscape](12-cont.md#img) | Produção de conteúdo | ficha com prompt e ferramenta |
+| ← recebe de | [Acervos de imagens (APIs)](14-editora.md#acervos) | Editora AMS Silva (produção de livros) | candidatos e licenças |
 
 <a id="contato"></a>
 

@@ -17,7 +17,7 @@ flowchart LR
   s3["4. Mini-curso Lógica de Programação"]
   s4["5. Hotmart"]
   s5["6. Instituto AMS"]
-  s6["7. Instagram"]
+  s6["7. Isca grátis + sequência de e-mails"]
   s7["8. MailerLite"]
   s8["9. Hotmart"]
   s9["10. Carnê-leão (Receita Federal)"]
@@ -41,28 +41,27 @@ flowchart LR
 3. **[DaVinci Resolve ou Kdenlive](camadas/12-cont.md#edit)**: A edição corta e finaliza.
 4. **[Mini-curso Lógica de Programação](camadas/16-prod.md#curso)**: O mini-curso é montado com as aulas.
 5. **[Hotmart](camadas/19-venda.md#hotm)**: Você cadastra o produto na Hotmart (ou Kiwify, Eduzz) e uma versão na Udemy.
-6. **[Instituto AMS](camadas/17-web.md#inst)**: A página no Instituto AMS leva ao checkout.
-7. **[Instagram](camadas/21-pub.md#ig)**: O Instagram leva o público até a página.
-8. **[MailerLite](camadas/19-venda.md#mailer)**: O MailerLite envia o lançamento para a lista.
-9. **[Hotmart](camadas/19-venda.md#hotm)**: A venda acontece no checkout.
-10. **[Carnê-leão (Receita Federal)](camadas/18-emp.md#nfse)**: Você lança as vendas do mês no carnê-leão.
-11. **[Conta bancária separada (CPF)](camadas/18-emp.md#banco)**: O dinheiro cai na sua conta separada.
+6. **[Instituto AMS](camadas/17-web.md#inst)**: A página do Instituto AMS leva ao checkout; Instagram e YouTube trazem visitas pelo link na bio.
+7. **[Isca grátis + sequência de e-mails](camadas/20-mkt.md#isca)**: Quem ainda não compra deixa o e-mail pela aula grátis.
+8. **[MailerLite](camadas/20-mkt.md#mailer)**: A sequência de e-mails leva ao mini-curso.
+9. **[Hotmart](camadas/19-venda.md#hotm)**: A venda acontece na plataforma.
+10. **[Carnê-leão (Receita Federal)](camadas/18-emp.md#nfse)**: Você lança a venda no carnê-leão do mês.
+11. **[Conta bancária separada (CPF)](camadas/18-emp.md#banco)**: O saque cai na conta separada, que paga o DARF.
 12. **[Caixa da Casa / AM Rendara](camadas/18-emp.md#caixa)**: O Caixa da Casa registra a entrada.
 
 ## Codar com agente e publicar
 
 ```mermaid
 flowchart LR
-  s0["1. VS Code"]
-  s1["2. Ubuntu (WSL2)"]
-  s2["3. CLAUDE.md, agentes e skills (seus)"]
-  s3["4. Claude Code"]
-  s4["5. ai-jail"]
-  s5["6. Git + SSH + gh"]
-  s6["7. GitHub"]
-  s7["8. GitHub Actions"]
-  s8["9. GHCR (imagens)"]
-  s9["10. Azure"]
+  s0["1. CLAUDE.md, agentes e skills (seus)"]
+  s1["2. Claude Code"]
+  s2["3. ai-jail"]
+  s3["4. Ubuntu (WSL2)"]
+  s4["5. Git + SSH + gh"]
+  s5["6. GitHub"]
+  s6["7. GitHub Actions"]
+  s7["8. GHCR (imagens)"]
+  s8["9. Azure"]
   s0 --> s1
   s1 --> s2
   s2 --> s3
@@ -71,27 +70,25 @@ flowchart LR
   s5 --> s6
   s6 --> s7
   s7 --> s8
-  s8 --> s9
 ```
 
-1. **[VS Code](camadas/03-win.md#vsc)**: Você abre o projeto no VS Code.
-2. **[Ubuntu (WSL2)](camadas/04-lin.md#wsl)**: O VS Code roda dentro do Ubuntu.
-3. **[CLAUDE.md, agentes e skills (seus)](camadas/05-ia.md#kit)**: O CLAUDE.md e seus agentes dão as regras.
-4. **[Claude Code](camadas/05-ia.md#cc)**: O Claude Code faz a tarefa.
-5. **[ai-jail](camadas/05-ia.md#jail)**: O ai-jail limita o agente à pasta do projeto.
-6. **[Git + SSH + gh](camadas/04-lin.md#git)**: Você revisa e faz o commit.
-7. **[GitHub](camadas/11-nuvem.md#gh)**: O push vai ao GitHub.
-8. **[GitHub Actions](camadas/11-nuvem.md#gha)**: O Actions testa e gera a imagem.
-9. **[GHCR (imagens)](camadas/11-nuvem.md#ghcr)**: A imagem vai para o GHCR.
-10. **[Azure](camadas/11-nuvem.md#azure)**: O deploy sobe no Azure.
+1. **[CLAUDE.md, agentes e skills (seus)](camadas/05-ia.md#kit)**: O CLAUDE.md e os seus agentes dão as regras.
+2. **[Claude Code](camadas/05-ia.md#cc)**: O Claude Code faz a tarefa.
+3. **[ai-jail](camadas/05-ia.md#jail)**: O ai-jail limita o agente à pasta do projeto.
+4. **[Ubuntu (WSL2)](camadas/04-lin.md#wsl)**: Tudo roda no Ubuntu do WSL2, aberto no VS Code.
+5. **[Git + SSH + gh](camadas/04-lin.md#git)**: Você revisa e faz o commit assinado.
+6. **[GitHub](camadas/11-nuvem.md#gh)**: O push vai ao GitHub.
+7. **[GitHub Actions](camadas/11-nuvem.md#gha)**: O Actions testa e gera a imagem.
+8. **[GHCR (imagens)](camadas/11-nuvem.md#ghcr)**: A imagem vai para o GHCR.
+9. **[Azure](camadas/11-nuvem.md#azure)**: O deploy sobe no Azure.
 
 ## Conseguir a vaga de dev
 
 ```mermaid
 flowchart LR
-  s0["1. API ASP.NET Core"]
-  s1["2. Next.js + Aura Design System"]
-  s2["3. GitHub"]
+  s0["1. Next.js + Aura Design System"]
+  s1["2. API ASP.NET Core"]
+  s2["3. Testes: xUnit, Playwright, k6"]
   s3["4. GitHub Actions"]
   s4["5. GitHub Pages"]
   s5["6. Site pessoal + blog (Jekyll)"]
@@ -106,10 +103,10 @@ flowchart LR
   s6 --> s7
 ```
 
-1. **[API ASP.NET Core](camadas/10-app.md#api)**: Você constrói a API de um sistema AM.
-2. **[Next.js + Aura Design System](camadas/10-app.md#front)**: E as telas em Next.js.
-3. **[GitHub](camadas/11-nuvem.md#gh)**: O código fica público no GitHub, com README.
-4. **[GitHub Actions](camadas/11-nuvem.md#gha)**: O Actions mostra testes passando (selo verde).
+1. **[Next.js + Aura Design System](camadas/10-app.md#front)**: As telas em Next.js com o Aura Design System.
+2. **[API ASP.NET Core](camadas/10-app.md#api)**: A API ASP.NET Core de um sistema AM.
+3. **[Testes: xUnit, Playwright, k6](camadas/10-app.md#tests)**: Testes de unidade, integração e tela.
+4. **[GitHub Actions](camadas/11-nuvem.md#gha)**: O Actions mostra os testes passando (selo verde).
 5. **[GitHub Pages](camadas/11-nuvem.md#ghp)**: O Pages publica o portfólio.
 6. **[Site pessoal + blog (Jekyll)](camadas/17-web.md#site)**: O site reúne projetos, blog e currículo.
 7. **[LinkedIn](camadas/21-pub.md#li)**: O LinkedIn divulga cada entrega.
@@ -120,91 +117,13 @@ flowchart LR
 ```mermaid
 flowchart LR
   s0["1. Obsidian + Git"]
-  s1["2. Livro Lógica e Máquina"]
-  s2["3. TeX Live"]
-  s3["4. Livro Lógica e Máquina"]
-  s4["5. Hotmart"]
-  s5["6. Instagram"]
-  s6["7. YouTube"]
-  s0 --> s1
-  s1 --> s2
-  s2 --> s3
-  s3 --> s4
-  s4 --> s5
-  s5 --> s6
-```
-
-1. **[Obsidian + Git](camadas/03-win.md#obsd)**: Você escreve os capítulos no Obsidian.
-2. **[Livro Lógica e Máquina](camadas/16-prod.md#livro)**: O texto vira o livro.
-3. **[TeX Live](camadas/04-lin.md#tex)**: O TeX Live gera o PDF.
-4. **[Livro Lógica e Máquina](camadas/16-prod.md#livro)**: O PDF final fica pronto.
-5. **[Hotmart](camadas/19-venda.md#hotm)**: A plataforma vende o PDF.
-6. **[Instagram](camadas/21-pub.md#ig)**: O Instagram divulga.
-7. **[YouTube](camadas/21-pub.md#yt)**: O YouTube mostra trechos em aula.
-
-## Estudar e preparar aula com IA
-
-```mermaid
-flowchart LR
-  s0["1. NotebookLM"]
-  s1["2. Perplexity"]
-  s2["3. ChatGPT"]
-  s3["4. Claude (app)"]
-  s4["5. Obsidian + Git"]
-  s5["6. Mini-curso Lógica de Programação"]
-  s0 --> s1
-  s1 --> s2
-  s2 --> s3
-  s3 --> s4
-  s4 --> s5
-```
-
-1. **[NotebookLM](camadas/06-chat.md#nblm)**: O NotebookLM responde com base nos seus PDFs.
-2. **[Perplexity](camadas/06-chat.md#perp)**: O Perplexity traz fontes atuais.
-3. **[ChatGPT](camadas/06-chat.md#gpt)**: O ChatGPT dá uma segunda explicação.
-4. **[Claude (app)](camadas/06-chat.md#capp2)**: O Claude organiza tudo em plano de aula.
-5. **[Obsidian + Git](camadas/03-win.md#obsd)**: O resultado fica no vault do Obsidian.
-6. **[Mini-curso Lógica de Programação](camadas/16-prod.md#curso)**: O conteúdo vira aula do mini-curso.
-
-## Laboratório de segurança
-
-```mermaid
-flowchart LR
-  s0["1. Acer Nitro (32 GB, GTX 1650)"]
-  s1["2. Windows 11 Home"]
-  s2["3. VirtualBox"]
-  s3["4. VMs: Kali · Arch · Servidores"]
-  s4["5. Obsidian + Git"]
-  s5["6. Site pessoal + blog (Jekyll)"]
-  s6["7. LinkedIn"]
-  s0 --> s1
-  s1 --> s2
-  s2 --> s3
-  s3 --> s4
-  s4 --> s5
-  s5 --> s6
-```
-
-1. **[Acer Nitro (32 GB, GTX 1650)](camadas/01-hw.md#nb)**: O notebook roda tudo.
-2. **[Windows 11 Home](camadas/03-win.md#w11)**: O Windows hospeda as VMs.
-3. **[VirtualBox](camadas/03-win.md#vbox)**: O VirtualBox executa.
-4. **[VMs: Kali · Arch · Servidores](camadas/03-win.md#vms)**: Kali ataca a VM alvo numa rede isolada.
-5. **[Obsidian + Git](camadas/03-win.md#obsd)**: Você documenta no Obsidian.
-6. **[Site pessoal + blog (Jekyll)](camadas/17-web.md#site)**: O writeup vira post no blog.
-7. **[LinkedIn](camadas/21-pub.md#li)**: O LinkedIn divulga para recrutadores.
-
-## Site para um cliente
-
-```mermaid
-flowchart LR
-  s0["1. WhatsApp Business"]
-  s1["2. Sites para pequenas empresas"]
-  s2["3. VS Code"]
-  s3["4. GitHub"]
-  s4["5. Hostinger (clientes WP)"]
-  s5["6. Mercado Pago"]
-  s6["7. Carnê-leão (Receita Federal)"]
-  s7["8. Conta bancária separada (CPF)"]
+  s1["2. Fonte única (Markdown + Pandoc)"]
+  s2["3. Repositório do livro"]
+  s3["4. Pipeline do livro (CI)"]
+  s4["5. Livro Lógica e Máquina"]
+  s5["6. Isca grátis + sequência de e-mails"]
+  s6["7. MailerLite"]
+  s7["8. Hotmart"]
   s0 --> s1
   s1 --> s2
   s2 --> s3
@@ -214,27 +133,102 @@ flowchart LR
   s6 --> s7
 ```
 
-1. **[WhatsApp Business](camadas/21-pub.md#wa)**: O cliente chega pelo WhatsApp.
-2. **[Sites para pequenas empresas](camadas/16-prod.md#sites)**: Você fecha o serviço de site.
-3. **[VS Code](camadas/03-win.md#vsc)**: Desenvolve no VS Code.
-4. **[GitHub](camadas/11-nuvem.md#gh)**: Versiona no GitHub.
-5. **[Hostinger (clientes WP)](camadas/17-web.md#hostg)**: Publica na Hostinger do cliente.
-6. **[Mercado Pago](camadas/19-venda.md#mp)**: Cobra pelo Mercado Pago.
-7. **[Carnê-leão (Receita Federal)](camadas/18-emp.md#nfse)**: Lança no carnê-leão.
-8. **[Conta bancária separada (CPF)](camadas/18-emp.md#banco)**: Recebe na conta separada.
+1. **[Obsidian + Git](camadas/03-win.md#obsd)**: Você rascunha no Obsidian.
+2. **[Fonte única (Markdown + Pandoc)](camadas/14-editora.md#fonte)**: O texto vai para a fonte única em Markdown.
+3. **[Repositório do livro](camadas/14-editora.md#brepo)**: Fica versionado no repositório do livro, com exercícios e figuras.
+4. **[Pipeline do livro (CI)](camadas/14-editora.md#bci)**: O pipeline confere tudo e monta PDF, EPUB e o arquivo de impressão.
+5. **[Livro Lógica e Máquina](camadas/16-prod.md#livro)**: O livro fica pronto, também para o KDP.
+6. **[Isca grátis + sequência de e-mails](camadas/20-mkt.md#isca)**: Um capítulo grátis captura o e-mail do leitor.
+7. **[MailerLite](camadas/20-mkt.md#mailer)**: A sequência apresenta o livro.
+8. **[Hotmart](camadas/19-venda.md#hotm)**: O leitor compra.
+
+## Estudar e preparar aula com IA
+
+```mermaid
+flowchart LR
+  s0["1. Perplexity"]
+  s1["2. Obsidian + Git"]
+  s2["3. Base de conhecimento (RAG) das suas notas"]
+  s3["4. NotebookLM"]
+  s4["5. Mini-curso Lógica de Programação"]
+  s0 --> s1
+  s1 --> s2
+  s2 --> s3
+  s3 --> s4
+```
+
+1. **[Perplexity](camadas/06-chat.md#perp)**: O Perplexity traz fontes atuais.
+2. **[Obsidian + Git](camadas/03-win.md#obsd)**: Você anota com as suas palavras no Obsidian.
+3. **[Base de conhecimento (RAG) das suas notas](camadas/05-ia.md#rag)**: As suas notas são indexadas.
+4. **[NotebookLM](camadas/06-chat.md#nblm)**: O NotebookLM responde com base nas suas notas e PDFs.
+5. **[Mini-curso Lógica de Programação](camadas/16-prod.md#curso)**: O conteúdo vira aula do mini-curso.
+
+## Laboratório de segurança
+
+```mermaid
+flowchart LR
+  s0["1. Acer Nitro (32 GB, GTX 1650)"]
+  s1["2. Windows 11 Home"]
+  s2["3. VirtualBox"]
+  s3["4. VMs: Kali · Arch · Servidores"]
+  s4["5. TryHackMe / Hack The Box"]
+  s5["6. Obsidian + Git"]
+  s6["7. Site pessoal + blog (Jekyll)"]
+  s7["8. LinkedIn"]
+  s0 --> s1
+  s1 --> s2
+  s2 --> s3
+  s3 --> s4
+  s4 --> s5
+  s5 --> s6
+  s6 --> s7
+```
+
+1. **[Acer Nitro (32 GB, GTX 1650)](camadas/01-hw.md#nb)**: O notebook roda tudo.
+2. **[Windows 11 Home](camadas/03-win.md#w11)**: O Windows hospeda as VMs.
+3. **[VirtualBox](camadas/03-win.md#vbox)**: O VirtualBox executa.
+4. **[VMs: Kali · Arch · Servidores](camadas/03-win.md#vms)**: Kali ataca a VM alvo numa rede isolada.
+5. **[TryHackMe / Hack The Box](camadas/13-est.md#thm)**: O TryHackMe guia o laboratório.
+6. **[Obsidian + Git](camadas/03-win.md#obsd)**: Você documenta o writeup no Obsidian.
+7. **[Site pessoal + blog (Jekyll)](camadas/17-web.md#site)**: O writeup vira post no blog.
+8. **[LinkedIn](camadas/21-pub.md#li)**: O LinkedIn divulga para recrutadores.
+
+## Site para um cliente
+
+```mermaid
+flowchart LR
+  s0["1. WhatsApp Business"]
+  s1["2. Sites para pequenas empresas"]
+  s2["3. Mercado Pago"]
+  s3["4. Carnê-leão (Receita Federal)"]
+  s4["5. Conta bancária separada (CPF)"]
+  s5["6. Caixa da Casa / AM Rendara"]
+  s0 --> s1
+  s1 --> s2
+  s2 --> s3
+  s3 --> s4
+  s4 --> s5
+```
+
+1. **[WhatsApp Business](camadas/21-pub.md#wa)**: O cliente pede orçamento pelo WhatsApp.
+2. **[Sites para pequenas empresas](camadas/16-prod.md#sites)**: Você fecha, desenvolve no VS Code, versiona no GitHub e publica na Hostinger do cliente.
+3. **[Mercado Pago](camadas/19-venda.md#mp)**: Cobra pelo Mercado Pago.
+4. **[Carnê-leão (Receita Federal)](camadas/18-emp.md#nfse)**: Lança no carnê-leão.
+5. **[Conta bancária separada (CPF)](camadas/18-emp.md#banco)**: Recebe na conta separada.
+6. **[Caixa da Casa / AM Rendara](camadas/18-emp.md#caixa)**: O Caixa da Casa registra a entrada.
 
 ## Publicar automaticamente no melhor horário
 
 ```mermaid
 flowchart LR
   s0["1. OBS Studio"]
-  s1["2. Voz clonada (ElevenLabs)"]
-  s2["3. DaVinci Resolve ou Kdenlive"]
-  s3["4. Aprovação no celular"]
-  s4["5. Algoritmo de horário"]
+  s1["2. Whisper (local)"]
+  s2["3. Pipeline de conteúdo"]
+  s3["4. Agente editor de conteúdo"]
+  s4["5. Aprovação no celular"]
   s5["6. n8n"]
   s6["7. Postiz (agendador)"]
-  s7["8. Banco de métricas (PostgreSQL)"]
+  s7["8. Instagram"]
   s0 --> s1
   s1 --> s2
   s2 --> s3
@@ -245,26 +239,29 @@ flowchart LR
 ```
 
 1. **[OBS Studio](camadas/12-cont.md#obss)**: Você grava a tela e o setup.
-2. **[Voz clonada (ElevenLabs)](camadas/12-cont.md#voz)**: A voz clonada narra o seu roteiro.
-3. **[DaVinci Resolve ou Kdenlive](camadas/12-cont.md#edit)**: A edição monta o vídeo e os cortes.
-4. **[Aprovação no celular](camadas/20-mkt.md#aprov)**: Você aprova pelo celular.
-5. **[Algoritmo de horário](camadas/20-mkt.md#horario)**: O algoritmo escolhe o horário de cada rede.
-6. **[n8n](camadas/08-cnt.md#n8n)**: O n8n gera título, descrição e hashtags.
-7. **[Postiz (agendador)](camadas/20-mkt.md#postiz)**: O Postiz publica em todas as redes.
-8. **[Banco de métricas (PostgreSQL)](camadas/20-mkt.md#metrics)**: O desempenho volta para o banco e ajusta os horários.
+2. **[Whisper (local)](camadas/12-cont.md#whis)**: O Whisper transcreve no notebook.
+3. **[Pipeline de conteúdo](camadas/22-oper.md#opipe)**: O pipeline de conteúdo pega a transcrição a cada 15 minutos.
+4. **[Agente editor de conteúdo](camadas/22-oper.md#oedit)**: O agente editor monta cortes, legendas, carrossel e posts.
+5. **[Aprovação no celular](camadas/20-mkt.md#aprov)**: Você aprova pelo Telegram, no celular.
+6. **[n8n](camadas/20-mkt.md#n8n)**: O n8n escolhe o horário pelo desempenho anterior.
+7. **[Postiz (agendador)](camadas/20-mkt.md#postiz)**: O Postiz publica (ou o agendador nativo de cada rede, até você decidir).
+8. **[Instagram](camadas/21-pub.md#ig)**: O post sai no Instagram e nas outras redes.
 
 ## Medir o lucro de uma campanha
 
 ```mermaid
 flowchart LR
-  s0["1. Lucro por Venda (calculadora)"]
-  s1["2. Padrão de UTM"]
-  s2["3. Meta Ads (Instagram, Facebook)"]
-  s3["4. Hotmart"]
-  s4["5. Webhooks de venda"]
-  s5["6. Banco de métricas (PostgreSQL)"]
-  s6["7. Painel de lucro (Grafana)"]
-  s7["8. Regras de corte"]
+  s0["1. Padrão de UTM"]
+  s1["2. Meta Ads (Instagram, Facebook)"]
+  s2["3. Isca grátis + sequência de e-mails"]
+  s3["4. MailerLite"]
+  s4["5. Hotmart"]
+  s5["6. Webhooks de venda"]
+  s6["7. n8n"]
+  s7["8. Banco de métricas (PostgreSQL)"]
+  s8["9. Painel de lucro (Grafana)"]
+  s9["10. Regras de corte"]
+  s10["11. Lucro por Venda (calculadora)"]
   s0 --> s1
   s1 --> s2
   s2 --> s3
@@ -272,25 +269,31 @@ flowchart LR
   s4 --> s5
   s5 --> s6
   s6 --> s7
+  s7 --> s8
+  s8 --> s9
+  s9 --> s10
 ```
 
-1. **[Lucro por Venda (calculadora)](camadas/20-mkt.md#calc)**: A calculadora define o CPA e o ROAS de empate.
-2. **[Padrão de UTM](camadas/20-mkt.md#utm)**: Os links do anúncio levam UTM.
-3. **[Meta Ads (Instagram, Facebook)](camadas/20-mkt.md#ads)**: A campanha roda com orçamento de teste.
-4. **[Hotmart](camadas/19-venda.md#hotm)**: A venda acontece na plataforma.
-5. **[Webhooks de venda](camadas/20-mkt.md#hooks)**: O webhook avisa a venda.
-6. **[Banco de métricas (PostgreSQL)](camadas/20-mkt.md#metrics)**: O banco junta venda, taxa e gasto.
-7. **[Painel de lucro (Grafana)](camadas/20-mkt.md#painel)**: O painel mostra o lucro real.
-8. **[Regras de corte](camadas/20-mkt.md#regras)**: As regras pausam ou escalam.
+1. **[Padrão de UTM](camadas/20-mkt.md#utm)**: Os links do anúncio levam UTM.
+2. **[Meta Ads (Instagram, Facebook)](camadas/20-mkt.md#ads)**: A campanha roda com orçamento de teste.
+3. **[Isca grátis + sequência de e-mails](camadas/20-mkt.md#isca)**: O anúncio leva à aula grátis.
+4. **[MailerLite](camadas/20-mkt.md#mailer)**: A sequência leva à oferta.
+5. **[Hotmart](camadas/19-venda.md#hotm)**: A venda acontece na plataforma.
+6. **[Webhooks de venda](camadas/20-mkt.md#hooks)**: O webhook avisa a venda.
+7. **[n8n](camadas/20-mkt.md#n8n)**: O n8n grava a venda.
+8. **[Banco de métricas (PostgreSQL)](camadas/20-mkt.md#metrics)**: O banco junta venda, taxa e gasto.
+9. **[Painel de lucro (Grafana)](camadas/20-mkt.md#painel)**: O painel mostra o lucro real.
+10. **[Regras de corte](camadas/20-mkt.md#regras)**: As regras pausam ou escalam.
+11. **[Lucro por Venda (calculadora)](camadas/20-mkt.md#calc)**: A calculadora compara com o CPA e o ROAS de empate.
 
 ## Produzir um capítulo do livro
 
 ```mermaid
 flowchart LR
-  s0["1. Seu modelo de criação"]
-  s1["2. Fonte única (Markdown + Pandoc)"]
-  s2["3. Exercícios em YAML"]
-  s3["4. Agentes da editora"]
+  s0["1. Seu método (metodo.yaml)"]
+  s1["2. Seu modelo de criação"]
+  s2["3. Fonte única (Markdown + Pandoc)"]
+  s3["4. Repositório do livro"]
   s4["5. Pipeline do livro (CI)"]
   s5["6. Leitores beta e revisão técnica"]
   s6["7. Errata e edições"]
@@ -306,12 +309,12 @@ flowchart LR
   s7 --> s8
 ```
 
-1. **[Seu modelo de criação](camadas/14-editora.md#modelo)**: O capítulo nasce do seu modelo de criação.
-2. **[Fonte única (Markdown + Pandoc)](camadas/14-editora.md#fonte)**: Você escreve o texto na fonte única.
-3. **[Exercícios em YAML](camadas/14-editora.md#exyaml)**: Os exercícios entram com gabarito e solução.
-4. **[Agentes da editora](camadas/14-editora.md#bagentes)**: Os agentes apontam passos pulados, erros e inconsistências.
+1. **[Seu método (metodo.yaml)](camadas/14-editora.md#metodo)**: O seu método define as etapas.
+2. **[Seu modelo de criação](camadas/14-editora.md#modelo)**: O capítulo nasce do seu modelo de criação.
+3. **[Fonte única (Markdown + Pandoc)](camadas/14-editora.md#fonte)**: Você escreve na fonte única.
+4. **[Repositório do livro](camadas/14-editora.md#brepo)**: Exercícios, figuras e código entram no repositório; os agentes apontam problemas.
 5. **[Pipeline do livro (CI)](camadas/14-editora.md#bci)**: O pipeline testa o código, confere gabaritos e revisa o texto.
-6. **[Leitores beta e revisão técnica](camadas/14-editora.md#beta)**: Leitores beta e revisor técnico leem.
+6. **[Leitores beta e revisão técnica](camadas/14-editora.md#beta)**: Leitores beta e revisor técnico leem a prévia.
 7. **[Errata e edições](camadas/14-editora.md#errata)**: As correções entram com número de edição.
 8. **[Livro Lógica e Máquina](camadas/16-prod.md#livro)**: Sai o PDF, o EPUB e o arquivo de impressão.
 9. **[Amazon KDP](camadas/14-editora.md#kdp)**: Publicado na Amazon e nas plataformas.
@@ -326,15 +329,13 @@ flowchart LR
   s3["4. Filtro de licença e fichas"]
   s4["5. Folha de contato (artefato)"]
   s5["6. Créditos e legendas"]
-  s6["7. Figuras por código (Matplotlib…)"]
-  s7["8. Pipeline do livro (CI)"]
+  s6["7. Pipeline do livro (CI)"]
   s0 --> s1
   s1 --> s2
   s2 --> s3
   s3 --> s4
   s4 --> s5
   s5 --> s6
-  s6 --> s7
 ```
 
 1. **[Fonte única (Markdown + Pandoc)](camadas/14-editora.md#fonte)**: O capítulo declara as figuras de que precisa.
@@ -343,21 +344,47 @@ flowchart LR
 4. **[Filtro de licença e fichas](camadas/14-editora.md#licenca)**: O filtro descarta licenças proibidas e baixa resolução.
 5. **[Folha de contato (artefato)](camadas/14-editora.md#contato)**: Você escolhe na folha de contato.
 6. **[Créditos e legendas](camadas/14-editora.md#creditos)**: Legenda e créditos são gerados.
-7. **[Figuras por código (Matplotlib…)](camadas/14-editora.md#figcod)**: As figuras técnicas saem do código.
-8. **[Pipeline do livro (CI)](camadas/14-editora.md#bci)**: O pipeline confere tudo e monta o livro.
+7. **[Pipeline do livro (CI)](camadas/14-editora.md#bci)**: O pipeline confere tudo e monta o livro.
 
 ## Abrir o próximo negócio
 
 ```mermaid
 flowchart LR
-  s0["1. Planejador do Grupo"]
-  s1["2. Caixa da Casa / AM Rendara"]
-  s2["3. Grafana"]
+  s0["1. Caixa da Casa / AM Rendara"]
+  s1["2. Grafana"]
+  s2["3. Planejador do Grupo"]
   s3["4. 3 CNPJs por frente"]
-  s4["5. Vigilância sanitária (RDC 216)"]
+  s4["5. Sushi (delivery)"]
   s5["6. AM Kaixara (PDV e cardápio)"]
-  s6["7. AM Rotara (entregas)"]
-  s7["8. Sushi (delivery)"]
+  s6["7. Caixa da Casa / AM Rendara"]
+  s0 --> s1
+  s1 --> s2
+  s2 --> s3
+  s3 --> s4
+  s4 --> s5
+  s5 --> s6
+```
+
+1. **[Caixa da Casa / AM Rendara](camadas/18-emp.md#caixa)**: O lucro do que já funciona acumula o capital.
+2. **[Grafana](camadas/09-obs.md#graf)**: O painel confirma 3 meses seguidos acima do ponto de equilíbrio.
+3. **[Planejador do Grupo](camadas/15-neg.md#nplan)**: O planejador mostra investimento, rampa e capital mínimo do próximo negócio.
+4. **[3 CNPJs por frente](camadas/15-neg.md#ncnpj)**: O CNPJ da frente recebe os novos CNAEs ou nasce.
+5. **[Sushi (delivery)](camadas/15-neg.md#nsushi)**: A casa abre, com alvará sanitário e bombeiros em dia.
+6. **[AM Kaixara (PDV e cardápio)](camadas/10-app.md#nkaix)**: O AM Kaixara cuida do cardápio, das fichas técnicas e do PDV.
+7. **[Caixa da Casa / AM Rendara](camadas/18-emp.md#caixa)**: As vendas do dia voltam para o caixa.
+
+## Do trabalho ao conteúdo
+
+```mermaid
+flowchart LR
+  s0["1. Flywheel de conteúdo"]
+  s1["2. Pipeline de conteúdo"]
+  s2["3. Whisper (local)"]
+  s3["4. Agente editor de conteúdo"]
+  s4["5. Aprovação no celular"]
+  s5["6. n8n"]
+  s6["7. Banco de métricas (PostgreSQL)"]
+  s7["8. Analista semanal"]
   s0 --> s1
   s1 --> s2
   s2 --> s3
@@ -367,38 +394,11 @@ flowchart LR
   s6 --> s7
 ```
 
-1. **[Planejador do Grupo](camadas/15-neg.md#nplan)**: O planejador mostra investimento, rampa e capital mínimo do próximo negócio.
-2. **[Caixa da Casa / AM Rendara](camadas/18-emp.md#caixa)**: O lucro do negócio anterior acumula o capital.
-3. **[Grafana](camadas/09-obs.md#graf)**: O painel confirma 3 meses seguidos acima do ponto de equilíbrio.
-4. **[3 CNPJs por frente](camadas/15-neg.md#ncnpj)**: O CNPJ da frente recebe os novos CNAEs ou nasce.
-5. **[Vigilância sanitária (RDC 216)](camadas/15-neg.md#nvisa)**: Licenças, bombeiros e vigilância sanitária antes de abrir.
-6. **[AM Kaixara (PDV e cardápio)](camadas/10-app.md#nkaix)**: O AM Kaixara entra com cardápio, fichas técnicas e estoque.
-7. **[AM Rotara (entregas)](camadas/10-app.md#nrot)**: O AM Rotara liga o delivery próprio e a frota.
-8. **[Sushi (delivery)](camadas/15-neg.md#nsushi)**: A casa abre, e os números voltam para o painel.
-
-## Do trabalho ao conteúdo
-
-```mermaid
-flowchart LR
-  s0["1. Flywheel de conteúdo"]
-  s1["2. Whisper (local)"]
-  s2["3. Agente editor de conteúdo"]
-  s3["4. Aprovação no celular"]
-  s4["5. Postiz (agendador)"]
-  s5["6. Banco de métricas (PostgreSQL)"]
-  s6["7. Analista semanal"]
-  s0 --> s1
-  s1 --> s2
-  s2 --> s3
-  s3 --> s4
-  s4 --> s5
-  s5 --> s6
-```
-
 1. **[Flywheel de conteúdo](camadas/22-oper.md#ofly)**: Você grava a aula, o reparo, o capítulo ou a decisão da semana.
-2. **[Whisper (local)](camadas/12-cont.md#whis)**: O Whisper transcreve no notebook.
-3. **[Agente editor de conteúdo](camadas/22-oper.md#oedit)**: O agente propõe cortes, legendas, carrossel, post do Google e newsletter.
-4. **[Aprovação no celular](camadas/20-mkt.md#aprov)**: Você aprova no celular.
-5. **[Postiz (agendador)](camadas/20-mkt.md#postiz)**: O Postiz publica no melhor horário de cada rede.
-6. **[Banco de métricas (PostgreSQL)](camadas/20-mkt.md#metrics)**: Retenção, cliques e vendas voltam para o banco.
-7. **[Analista semanal](camadas/22-oper.md#oanal)**: O analista semanal diz o que funcionou e o que mudar.
+2. **[Pipeline de conteúdo](camadas/22-oper.md#opipe)**: O pipeline pega o arquivo na pasta de entrada.
+3. **[Whisper (local)](camadas/12-cont.md#whis)**: O Whisper transcreve no notebook.
+4. **[Agente editor de conteúdo](camadas/22-oper.md#oedit)**: O agente propõe cortes, legendas, carrossel, post do Google e newsletter.
+5. **[Aprovação no celular](camadas/20-mkt.md#aprov)**: Você aprova no celular.
+6. **[n8n](camadas/20-mkt.md#n8n)**: O n8n agenda e registra a publicação.
+7. **[Banco de métricas (PostgreSQL)](camadas/20-mkt.md#metrics)**: Retenção, cliques e vendas voltam para o banco.
+8. **[Analista semanal](camadas/22-oper.md#oanal)**: O analista semanal diz o que funcionou e o que mudar.

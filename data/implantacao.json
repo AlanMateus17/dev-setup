@@ -17,7 +17,7 @@
     },
     {
      "id": "hardware",
-     "titulo": "Montar a mesa: nobreak, base com cooler, 2º monitor, disco e SSD externos",
+     "titulo": "Montar a mesa: nobreak, base com cooler, 2º monitor, disco e SSD externos, kits de robótica",
      "quem": "voce",
      "pronto": "Notebook no nobreak e na base, 2º monitor funcionando, disco e SSD externos reconhecidos",
      "tempo_min": 30,
@@ -29,7 +29,8 @@
       "mon",
       "ext",
       "ssdext",
-      "cel"
+      "cel",
+      "rob"
      ]
     },
     {
@@ -107,7 +108,7 @@
       "obss",
       "aud",
       "img",
-      "netw",
+      "wshark",
       "syncth",
       "anki"
      ]
@@ -711,6 +712,7 @@
      "pronto": "Mensagem de teste chega no celular",
      "tempo_min": 10,
      "blocos": [
+      "tg",
       "aprov"
      ]
     },

@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** Os sites mostram e vendem os produtos e o seu portfólio.
 
-**9 blocos** · 4 precisam de conta · 0 marcados como futuro
+**9 blocos** · 5 precisam de conta · 0 marcados como futuro
 
 ## Mapa de conexões
 
@@ -37,6 +37,7 @@ flowchart LR
   subgraph L_mkt["Marketing, automação e medição"]
     n_infl["Influenciadores e newsletters"]
     n_isca["Isca grátis + sequência de e-mails"]
+    n_mailer["MailerLite"]
     n_nativo["Mídia nativa (Taboola, Outbrain)"]
     n_pixel["Tags de conversão (Pixel, Google…)"]
   end
@@ -44,7 +45,6 @@ flowchart LR
     n_afil["Afiliados (Amazon, Hotmart…)"]
     n_hotm["Hotmart"]
     n_kiwi["Kiwify"]
-    n_mailer["MailerLite"]
   end
   subgraph L_emp["Pessoa física: impostos e finanças"]
     n_cnpj["CNPJ (futuro)"]
@@ -69,6 +69,7 @@ flowchart LR
   end
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
     n_ffox["Firefox (2º navegador)"]
+    n_obsd["Obsidian + Git"]
   end
   n_mail -->|"registros MX"| n_dom
   n_mail -->|"remetente"| n_mailer
@@ -83,6 +84,8 @@ flowchart LR
   n_seo -->|"visitas"| n_site
   n_li -->|"link"| n_site
   n_nativo -->|"leva aos artigos"| n_site
+  n_umami -->|"visitas"| n_site
+  n_obsd -->|"posts do blog"| n_site
   n_inst -->|"botão comprar"| n_kiwi
   n_inst -->|"hospedado (Pages)"| n_cf
   n_inst -->|"botão comprar"| n_hotm
@@ -102,6 +105,7 @@ flowchart LR
   n_facebook -->|"link"| n_inst
   n_infl -->|"link com cupom"| n_inst
   n_amsite -->|"hospedado (Pages)"| n_cf
+  n_umami -->|"visitas"| n_amsite
   n_catal -->|"hospedado"| n_ghp
   n_alunos -->|"usam o site"| n_catal
   n_gsc -->|"indexação"| n_seo
@@ -121,7 +125,7 @@ flowchart LR
 | [Instituto AMS](#inst) | Remoto | Site dos cursos: páginas de venda que levam ao checkout. |
 | [Site Grupo AMtech](#amsite) | Remoto | Site institucional da empresa: serviços, sistemas AM e contato. |
 | [Catálogo do HTML](#catal) | Remoto | Site didático para os alunos publicarem os próprios sites. |
-| [Umami (analytics)](#umami) | Remoto | Estatística de visitas sem cookies invasivos. Open source. |
+| [Umami (analytics)](#umami) | Remoto · precisa de conta | Estatística de visitas sem cookies invasivos. Open source. |
 | [Google Search Console](#gsc) | Remoto · precisa de conta | Mostra como o Google indexa os sites e quais buscas trazem visitas. |
 | [Hostinger (clientes WP)](#hostg) | Remoto · precisa de conta | Hospedagem WordPress que você já tem; serve para sites de clientes. |
 
@@ -136,7 +140,7 @@ contato@seu-dominio. O roteamento da Cloudflare só recebe; para enviar, é prec
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Domínio (Registro.br)](17-web.md#dom) | Vitrine web (sites e domínio) | registros MX |
-| → envia para | [MailerLite](19-venda.md#mailer) | Plataformas de venda e recebimento | remetente |
+| → envia para | [MailerLite](20-mkt.md#mailer) | Marketing, automação e medição | remetente |
 
 <a id="dom"></a>
 
@@ -165,12 +169,14 @@ alanmateus17.github.io: portfólio, blog e newsletter.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [GitHub Pages](11-nuvem.md#ghp) | Nuvem, código e entrega | hospedado |
-| → envia para | [MailerLite](19-venda.md#mailer) | Plataformas de venda e recebimento | formulário da newsletter |
+| → envia para | [MailerLite](20-mkt.md#mailer) | Marketing, automação e medição | formulário da newsletter |
 | → envia para | [Afiliados (Amazon, Hotmart…)](19-venda.md#afil) | Plataformas de venda e recebimento | links no blog |
 | → envia para | [Recrutadores](21-pub.md#recr) | Público e canais | currículo |
 | ← recebe de | [Busca Google (SEO)](21-pub.md#seo) | Público e canais | visitas |
 | ← recebe de | [LinkedIn](21-pub.md#li) | Público e canais | link |
 | ← recebe de | [Mídia nativa (Taboola, Outbrain)](20-mkt.md#nativo) | Marketing, automação e medição | leva aos artigos |
+| ← recebe de | [Umami (analytics)](17-web.md#umami) | Vitrine web (sites e domínio) | visitas |
+| ← recebe de | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | posts do blog |
 
 <a id="inst"></a>
 
@@ -193,7 +199,7 @@ Site dos cursos: páginas de venda que levam ao checkout.
 | ← recebe de | [Canva · Krita · Inkscape](12-cont.md#img) | Produção de conteúdo | capas |
 | ← recebe de | [Domínio (Registro.br)](17-web.md#dom) | Vitrine web (sites e domínio) | endereço |
 | ← recebe de | [Umami (analytics)](17-web.md#umami) | Vitrine web (sites e domínio) | visitas |
-| ← recebe de | [MailerLite](19-venda.md#mailer) | Plataformas de venda e recebimento | leva à página de venda |
+| ← recebe de | [MailerLite](20-mkt.md#mailer) | Marketing, automação e medição | leva à página de venda |
 | ← recebe de | [Instagram](21-pub.md#ig) | Público e canais | link na bio |
 | ← recebe de | [YouTube](21-pub.md#yt) | Público e canais | link na descrição |
 | ← recebe de | [Busca Google (SEO)](21-pub.md#seo) | Público e canais | visitas |
@@ -214,6 +220,7 @@ Site institucional da empresa: serviços, sistemas AM e contato.
 |---|---|---|---|
 | → envia para | [Cloudflare (DNS, Pages, e-mail)](11-nuvem.md#cf) | Nuvem, código e entrega | hospedado (Pages) |
 | ← recebe de | [Domínio (Registro.br)](17-web.md#dom) | Vitrine web (sites e domínio) | endereço |
+| ← recebe de | [Umami (analytics)](17-web.md#umami) | Vitrine web (sites e domínio) | visitas |
 
 <a id="catal"></a>
 
@@ -232,13 +239,15 @@ Site didático para os alunos publicarem os próprios sites.
 
 ### Umami (analytics)
 
-*Remoto*
+*Remoto · precisa de conta*
 
 Estatística de visitas sem cookies invasivos. Open source.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | visitas |
+| → envia para | [Site pessoal + blog (Jekyll)](17-web.md#site) | Vitrine web (sites e domínio) | visitas |
+| → envia para | [Site Grupo AMtech](17-web.md#amsite) | Vitrine web (sites e domínio) | visitas |
 
 <a id="gsc"></a>
 

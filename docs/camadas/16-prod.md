@@ -27,6 +27,7 @@ flowchart LR
     n_oorc["Agente orçamentista"]
   end
   subgraph L_pub["Público e canais"]
+    n_comu["Comunidade (Discord ou grupo)"]
     n_wa["WhatsApp Business"]
   end
   subgraph L_mkt["Marketing, automação e medição"]
@@ -34,7 +35,6 @@ flowchart LR
   end
   subgraph L_venda["Plataformas de venda e recebimento"]
     n_agenda["Agenda online (Cal.com)"]
-    n_comu["Comunidade (Discord ou grupo)"]
     n_crm["CRM simples (planilha)"]
     n_dio["DIO (parceria)"]
     n_eduzz["Eduzz"]
@@ -56,6 +56,7 @@ flowchart LR
     n_bci["Pipeline do livro (CI)"]
     n_bkit["Kit edição especial"]
     n_deplegal["Depósito legal"]
+    n_errata["Errata e edições"]
     n_kdp["Amazon KDP"]
     n_pod["Gráfica sob demanda (Brasil)"]
     n_prof["Edição do professor"]
@@ -79,14 +80,12 @@ flowchart LR
   subgraph L_chat["Assistentes de IA (chat, pesquisa e estudo)"]
     n_nblm["NotebookLM"]
   end
-  subgraph L_lin["Linux (Ubuntu no WSL2, Arch no 2º disco)"]
-    n_tex["TeX Live"]
-  end
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
     n_obsd["Obsidian + Git"]
     n_office["LibreOffice"]
     n_pdf["SumatraPDF"]
     n_sharex["ShareX"]
+    n_zip["7-Zip"]
   end
   n_curso -->|"produto"| n_kiwi
   n_curso -->|"versão para o marketplace"| n_udemy
@@ -102,6 +101,7 @@ flowchart LR
   n_form -->|"produto"| n_hotm
   n_tmpl -->|"download"| n_hotm
   n_tmpl -->|"demo pública"| n_gh
+  n_zip -->|"empacota o download"| n_tmpl
   n_story -->|"demo do template"| n_tmpl
   n_livro -->|"PDF"| n_hotm
   n_livro -->|"1 exemplar"| n_deplegal
@@ -110,12 +110,11 @@ flowchart LR
   n_livro -->|"tiragem especial"| n_bkit
   n_livro -->|"material do professor"| n_prof
   n_livro -->|"outras línguas"| n_trad
-  n_tex -->|"gera o PDF"| n_livro
+  n_livro -->|"capítulo grátis"| n_isca
   n_pdf -->|"revisão do PDF"| n_livro
-  n_obsd -->|"capítulos"| n_livro
   n_bci -->|"PDF, EPUB e impressão"| n_livro
-  n_isca -->|"capítulo grátis"| n_livro
   n_oesteira -->|"lança"| n_livro
+  n_errata -->|"nova edição"| n_livro
   n_aulas -->|"cobrança"| n_mp
   n_agenda -->|"horários"| n_aulas
   n_wa -->|"agenda"| n_aulas
@@ -126,8 +125,8 @@ flowchart LR
   n_crm -->|"propostas"| n_sites
   n_legal -->|"contrato"| n_sites
   n_cupw -->|"encontra clientes"| n_sites
-  n_prof -->|"licença para escolas"| n_sites
   n_oorc -->|"propostas"| n_sites
+  n_wa -->|"pedido de orçamento"| n_sites
   n_saas -->|"roda na nuvem"| n_azure
   n_saas -->|"cobrança por módulo"| n_lic
   n_saas -->|"vende por assinatura"| n_nkaix
@@ -163,7 +162,7 @@ Primeiro produto de lançamento, para validar antes de construir mais.
 | → envia para | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | produto cadastrado |
 | ← recebe de | [NotebookLM](06-chat.md#nblm) | Assistentes de IA (chat, pesquisa e estudo) | prepara as aulas |
 | ← recebe de | [ShareX](03-win.md#sharex) | Windows 11, apps e máquinas virtuais | demonstrações |
-| ← recebe de | [Comunidade (Discord ou grupo)](19-venda.md#comu) | Plataformas de venda e recebimento | suporte aos alunos |
+| ← recebe de | [Comunidade (Discord ou grupo)](21-pub.md#comu) | Público e canais | suporte aos alunos |
 | ← recebe de | [DaVinci Resolve ou Kdenlive](12-cont.md#edit) | Produção de conteúdo | aulas editadas |
 | ← recebe de | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | roteiro |
 | ← recebe de | [Esteira de ofertas](22-oper.md#oesteira) | Operação do grupo (esteira, marca, qualidade) | lança |
@@ -193,6 +192,7 @@ Frontends prontos e projetos vendidos como download.
 |---|---|---|---|
 | → envia para | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | download |
 | → envia para | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | demo pública |
+| ← recebe de | [7-Zip](03-win.md#zip) | Windows 11, apps e máquinas virtuais | empacota o download |
 | ← recebe de | [Storybook](10-app.md#story) | Aplicação: sistemas AM (Aura) | demo do template |
 
 <a id="livro"></a>
@@ -212,12 +212,11 @@ Lógica e Máquina, em 5 volumes, publicado pela Editora AMS Silva. Ebook, impre
 | → envia para | [Kit edição especial](14-editora.md#bkit) | Editora AMS Silva (produção de livros) | tiragem especial |
 | → envia para | [Edição do professor](14-editora.md#prof) | Editora AMS Silva (produção de livros) | material do professor |
 | → envia para | [Traduções (espanhol, inglês)](14-editora.md#trad) | Editora AMS Silva (produção de livros) | outras línguas |
-| ← recebe de | [TeX Live](04-lin.md#tex) | Linux (Ubuntu no WSL2, Arch no 2º disco) | gera o PDF |
+| → envia para | [Isca grátis + sequência de e-mails](20-mkt.md#isca) | Marketing, automação e medição | capítulo grátis |
 | ← recebe de | [SumatraPDF](03-win.md#pdf) | Windows 11, apps e máquinas virtuais | revisão do PDF |
-| ← recebe de | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | capítulos |
 | ← recebe de | [Pipeline do livro (CI)](14-editora.md#bci) | Editora AMS Silva (produção de livros) | PDF, EPUB e impressão |
-| ← recebe de | [Isca grátis + sequência de e-mails](20-mkt.md#isca) | Marketing, automação e medição | capítulo grátis |
 | ← recebe de | [Esteira de ofertas](22-oper.md#oesteira) | Operação do grupo (esteira, marca, qualidade) | lança |
+| ← recebe de | [Errata e edições](14-editora.md#errata) | Editora AMS Silva (produção de livros) | nova edição |
 
 <a id="aulas"></a>
 
@@ -250,8 +249,8 @@ Freelance em Barbacena: sites e lojas.
 | ← recebe de | [CRM simples (planilha)](19-venda.md#crm) | Plataformas de venda e recebimento | propostas |
 | ← recebe de | [Termos, privacidade (LGPD) e contratos](18-emp.md#legal) | Pessoa física: impostos e finanças | contrato |
 | ← recebe de | [Conector Upwork](07-clc.md#cupw) | Claude: recursos, conectores e plugins | encontra clientes |
-| ← recebe de | [Edição do professor](14-editora.md#prof) | Editora AMS Silva (produção de livros) | licença para escolas |
 | ← recebe de | [Agente orçamentista](22-oper.md#oorc) | Operação do grupo (esteira, marca, qualidade) | propostas |
+| ← recebe de | [WhatsApp Business](21-pub.md#wa) | Público e canais | pedido de orçamento |
 
 <a id="saas"></a>
 

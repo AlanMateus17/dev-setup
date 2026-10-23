@@ -42,24 +42,29 @@ h2{font-family:var(--display);font-weight:600;font-size:23px;margin:0 0 6px;colo
 .bar button{font:500 13px var(--sans);padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
 .bar button[aria-pressed="true"]{background:var(--aura);border-color:var(--aura);color:var(--bg)}
 .bar button:focus-visible,.nd:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.canvas{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--band2);-webkit-overflow-scrolling:touch}
-.canvas svg{display:block;width:1000px;max-width:none;height:auto}
-.canvas.fit svg{width:100%}
+.canvas{position:relative;border:1px solid var(--line);border-radius:12px;background:var(--band2);padding:10px}
 .hint{font-size:13px;color:var(--muted);margin:0}
-svg text{font-family:var(--sans)}
-.bandbg{fill:var(--band)} .bandtitle{font:600 13px var(--sans);fill:var(--aura)} .bandnum{font:500 12px var(--mono);fill:var(--gold)}
-.strip{font:400 12px var(--sans);fill:var(--muted)} .stripline{stroke:var(--gold);stroke-dasharray:4 4;stroke-width:1}
-.nd{cursor:pointer}
-.nd rect.b{stroke-width:1}
-.nd.local rect.b{fill:var(--local);stroke:var(--local-s)} .nd.remote rect.b{fill:var(--remote);stroke:var(--remote-s)} .nd.hw rect.b{fill:var(--hw);stroke:var(--hw-s)}
-.nd.fut rect.b{stroke-dasharray:4 3}
-.nd text{font:500 12px var(--sans);fill:var(--ink)}
-.nd circle.k{fill:var(--gold)}
-.edges path{fill:none;stroke:var(--edge);stroke-width:1;opacity:.13}
-.edges.off path{opacity:0}
-svg.sel .nd{opacity:.28} svg.sel .nd.on{opacity:1} svg.sel .nd.me rect.b{stroke:var(--hot);stroke-width:2.5}
-svg.sel .edges path{opacity:.04} svg.sel .edges path.on{opacity:.95;stroke:var(--hot);stroke-width:1.8}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:120px}
+.band{background:var(--band);border-radius:10px;padding:10px 12px 12px}
+.band h3{margin:0 0 8px;font:600 14px var(--sans);color:var(--aura);display:flex;gap:10px;align-items:baseline}
+.band h3 .bandnum{font:500 12px var(--mono);color:var(--gold)}
+.blocks{display:grid;grid-template-columns:repeat(auto-fill,minmax(136px,1fr));gap:8px}
+.strip{font-size:12px;color:var(--muted);margin:0;padding:6px 0 6px 18px;border-left:1px dashed var(--gold);margin-left:14px}
+.nd{position:relative;font:500 12px/1.3 var(--sans);color:var(--ink);text-align:center;padding:8px 14px;min-height:44px;border-radius:7px;border:1px solid;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:opacity .15s}
+.nd.local{background:var(--local);border-color:var(--local-s)} .nd.remote{background:var(--remote);border-color:var(--remote-s)} .nd.hw{background:var(--hw);border-color:var(--hw-s)}
+.nd.fut{border-style:dashed}
+.nd .k{position:absolute;top:5px;right:5px;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.nd:focus-visible,.bar button:focus-visible,.close:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.stack{display:flex;flex-direction:column;gap:0}
+.stack.sel .nd{opacity:.3} .stack.sel .nd.on{opacity:1} .stack.sel .nd.me{box-shadow:0 0 0 2.5px var(--hot)}
+#wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:2}
+#wires path{fill:none;stroke:var(--hot);stroke-width:2;opacity:.9}
+#wires .arrow{fill:var(--hot)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;position:fixed;left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px));bottom:max(12px,env(safe-area-inset-bottom,0px));max-height:46vh;overflow:auto;z-index:10;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.panel[hidden]{display:none}
+@media(min-width:900px){.panel{left:auto;width:400px;max-height:70vh}}
+.panel .ph{display:flex;gap:10px;align-items:flex-start}
+.panel .ph h3{flex:1}
+.close{font:500 13px var(--sans);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:4px 10px;cursor:pointer;flex:none}
 .panel h3{margin:0;font-size:18px;font-weight:600}
 .panel .meta{display:flex;flex-wrap:wrap;gap:6px}
 .tag{font:500 11px var(--mono);padding:2px 8px;border-radius:4px;background:var(--local);color:var(--ink);letter-spacing:.03em}
@@ -72,6 +77,7 @@ svg.sel .edges path{opacity:.04} svg.sel .edges path.on{opacity:.95;stroke:var(-
 .conn .lab{color:var(--muted)}
 .steps{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:4px;font-size:14px}
 .steps li::marker{font-family:var(--mono);color:var(--gold)}
+code{font-family:var(--mono);font-size:.88em;background:var(--local);padding:1px 5px;border-radius:4px}
 .acc{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
 .card h3{margin:0 0 8px;font-size:15px;font-weight:600}
@@ -108,7 +114,6 @@ details.ly li span{color:var(--muted)}
       <span><i class="key"></i>Precisa de conta</span>
     </div>
     <div class="bar" role="group" aria-label="Fluxos prontos">
-      <button id="fx-none" data-flow="" aria-pressed="true">Todas as conexões</button>
       <button id="fx-venda" data-flow="venda" aria-pressed="false">Vender o mini-curso</button>
       <button id="fx-dev" data-flow="dev" aria-pressed="false">Codar com agente e publicar</button>
       <button id="fx-vaga" data-flow="vaga" aria-pressed="false">Conseguir a vaga de dev</button>
@@ -123,24 +128,21 @@ details.ly li span{color:var(--muted)}
       <button id="fx-lab" data-flow="lab" aria-pressed="false">Laboratório de segurança</button>
       <button id="fx-free" data-flow="free" aria-pressed="false">Site para um cliente</button>
     </div>
-    <div class="bar">
-      <button id="fitbtn" aria-pressed="false">Ver o desenho inteiro na tela</button>
-    </div>
-    <p class="hint">No celular, arraste o desenho para os lados. "Ver inteiro" encolhe tudo para caber na tela.</p>
-    <div class="canvas" id="canvas"><svg id="svg" viewBox="0 0 1000 100" role="img" aria-label="Diagrama das camadas do ecossistema AMtech"></svg></div>
-    <div class="panel" id="panel" aria-live="polite"></div>
+    <p class="hint" id="idle"></p>
+    <div class="canvas" id="canvas"><div class="stack" id="stack"></div><svg id="wires" aria-hidden="true"><defs><marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0 0L10 5L0 10z"/></marker></defs><g id="wg"></g></svg></div>
+    <div class="panel" id="panel" aria-live="polite" hidden></div>
   </section>
 
   <section>
-    <div class="eyebrow">Auditoria · 20/out/2026</div>
-    <h2>O que faltava no setup</h2>
-    <p class="lede" style="margin-bottom:12px">Comparei o setup com o que um dev .NET pleno, um criador de cursos e uma pequena empresa de software precisam ter. Os itens novos já estão no desenho; aqui eles aparecem por urgência.</p>
-    <div class="acc" id="gaps"></div>
+    <div class="eyebrow">Implantação</div>
+    <h2>O que fazer, e em que ordem</h2>
+    <p class="lede">Cada bloco deste desenho tem lugar no roteiro de implantação: num passo, como peça a construir, como algo que não se instala ou para depois. O roteiro, com o critério de pronto de cada passo, está no acompanhamento da implantação e em <code>docs/implantacao/roteiro.md</code> no repositório.</p>
   </section>
 
   <section>
     <div class="eyebrow">Contas e conexões</div>
     <h2>Contas que você precisa ter</h2>
+    <p class="lede" id="ncontas" style="margin-bottom:12px"></p>
     <p class="note">Crie as contas da empresa com um e-mail do seu domínio (ex.: contato@…), não com o Gmail pessoal. Isso facilita passar para o CNPJ, separar pessoal de empresa e trocar de ferramenta depois. Toda conta com 2FA no app autenticador do celular, senha no KeePassXC e códigos de recuperação impressos.</p>
     <div class="acc" id="acc" style="margin-top:12px"></div>
   </section>
@@ -159,77 +161,56 @@ const LAYERS=DATA.camadas.map(c=>[c.id,c.titulo,c.ponte]);
 const N=DATA.blocos.map(b=>[b.id,b.camada,b.rotulo,{local:"l",remoto:"r",fisico:"h"}[b.tipo],b.conta?1:0,b.futuro?1:0,b.descricao]);
 const E=DATA.conexoes.map(c=>[c.de,c.para,c.rotulo]);
 const FLOWS=Object.fromEntries(DATA.fluxos.map(f=>[f.id,{t:f.titulo,s:f.passos.map(p=>p.bloco),d:f.passos.map(p=>p.descricao)}]));
-const ACC=DATA.contas.map(g=>[g.grupo,g.itens.map(x=>[x.nome,x.obs])]);
-const GAPS=DATA.auditoria.map(g=>[g.grupo,g.itens.map(x=>[x.nome,x.obs])]);
 const LN=Object.fromEntries(LAYERS.map((l,i)=>[l[0],i]));
 const byId=Object.fromEntries(N.map(n=>[n[0],n]));
-const W=1000,BW=148,BH=44,GX=12,GY=10,COLS=6,X0=(W-(COLS*BW+(COLS-1)*GX))/2,HEAD=32,STRIP=34;
-const pos={};let y=12;const bands=[];
-LAYERS.forEach(([id,t,strip],i)=>{
-  const items=N.filter(n=>n[1]===id);const rows=Math.ceil(items.length/COLS);
-  const h=HEAD+rows*(BH+GY)+4;bands.push({id,t,y,h,strip,i});
-  items.forEach((n,k)=>{const r=Math.floor(k/COLS),c=k%COLS;const inRow=Math.min(COLS,items.length-r*COLS);
-    const off=(COLS-inRow)*(BW+GX)/2;pos[n[0]]={x:X0+off+c*(BW+GX),y:y+HEAD+r*(BH+GY)};});
-  y+=h+(strip?STRIP:0);
-});
-const H=y+8;const svg=document.getElementById("svg");svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
-const NS="http://www.w3.org/2000/svg";const mk=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e};
-bands.forEach(b=>{
-  mk("rect",{x:6,y:b.y,width:W-12,height:b.h,rx:10,class:"bandbg"});
-  const tt=mk("text",{x:20,y:b.y+21,class:"bandnum"});tt.textContent=String(LAYERS.length-b.i).padStart(2,"0");
-  const t2=mk("text",{x:46,y:b.y+21,class:"bandtitle"});t2.textContent=b.t;
-  if(b.strip){const sy=b.y+b.h+STRIP/2;mk("line",{x1:28,y1:b.y+b.h+4,x2:28,y2:b.y+b.h+STRIP-4,class:"stripline"});
-    const st=mk("text",{x:40,y:sy+4,class:"strip"});st.textContent="↕ "+b.strip;}
-});
-const eg=mk("g",{class:"edges",id:"edges"});
-const ctr=id=>({x:pos[id].x+BW/2,y:pos[id].y+BH/2});
-const paths=E.map(([a,b,l])=>{
-  const A=pos[a],B=pos[b];if(!A||!B){console.warn(a,b);return null}
-  let d;
-  if(Math.abs(A.y-B.y)<2){const ax=A.x+BW/2,bx=B.x+BW/2,yy=A.y;d=`M${ax} ${yy} C${ax} ${yy-26},${bx} ${yy-26},${bx} ${yy}`;}
-  else{const down=A.y<B.y;const ax=A.x+BW/2,ay=down?A.y+BH:A.y,bx=B.x+BW/2,by=down?B.y:B.y+BH;const m=(by-ay)/2;d=`M${ax} ${ay} C${ax} ${ay+m},${bx} ${by-m},${bx} ${by}`;}
-  const p=mk("path",{d},eg);p.dataset.a=a;p.dataset.b=b;return p;
-}).filter(Boolean);
-const nodes={};
-N.forEach(([id,ly,lab,k,acc,fut])=>{
-  const P=pos[id];const g=mk("g",{class:`nd ${k==="l"?"local":k==="r"?"remote":"hw"}${fut?" fut":""}`,tabindex:0,role:"button","aria-label":lab.replace("|"," ")});
-  g.dataset.id=id;mk("rect",{x:P.x,y:P.y,width:BW,height:BH,rx:7,class:"b"},g);
-  const lines=lab.split("|");lines.forEach((ln,i)=>{const t=mk("text",{x:P.x+BW/2,y:P.y+BH/2+(i-(lines.length-1)/2)*15+4,"text-anchor":"middle"},g);t.textContent=ln;});
-  if(acc)mk("circle",{cx:P.x+BW-8,cy:P.y+8,r:4,class:"k"},g);
-  g.addEventListener("click",()=>select(id));g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();select(id)}});
-  nodes[id]=g;
-});
-const panel=document.getElementById("panel");
+const ESC=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const NM=id=>byId[id][2].replace("|"," ");
+const stack=document.getElementById("stack"),canvas=document.getElementById("canvas"),wg=document.getElementById("wg"),panel=document.getElementById("panel");
+stack.innerHTML=LAYERS.map(([id,t,ponte],i)=>`<section class="band" aria-label="${ESC(t)}"><h3><span class="bandnum">${String(LAYERS.length-i).padStart(2,"0")}</span>${ESC(t)}</h3><div class="blocks">${N.filter(n=>n[1]===id).map(([bid,,lab,k,acc,fut])=>`<button class="nd ${k==="l"?"local":k==="r"?"remote":"hw"}${fut?" fut":""}" data-id="${bid}" aria-label="${ESC(lab.replace("|"," "))}${acc?", precisa de conta":""}${fut?", futuro":""}">${lab.split("|").map(ESC).join("<br>")}${acc?'<i class="k" aria-hidden="true"></i>':""}</button>`).join("")}</div></section>${ponte?`<p class="strip">↕ ${ESC(ponte)}</p>`:""}`).join("");
+const nodes={};stack.querySelectorAll(".nd").forEach(el=>{nodes[el.dataset.id]=el;el.addEventListener("click",()=>select(el.dataset.id));});
+let ativos=[];
+function desenha(){
+  wg.innerHTML="";if(!ativos.length)return;
+  const c=canvas.getBoundingClientRect();
+  ativos.forEach(([a,b])=>{
+    const A=nodes[a].getBoundingClientRect(),Bq=nodes[b].getBoundingClientRect();
+    const ax=A.left-c.left+A.width/2,bx=Bq.left-c.left+Bq.width/2;let d;
+    if(Math.abs(A.top-Bq.top)<4){const y=A.top-c.top;d=`M${ax} ${y} C${ax} ${y-24},${bx} ${y-24},${bx} ${y}`;}
+    else{const down=A.top<Bq.top;const ay=(down?A.bottom:A.top)-c.top,by=(down?Bq.top:Bq.bottom)-c.top,m=(by-ay)/2;d=`M${ax} ${ay} C${ax} ${ay+m},${bx} ${by-m},${bx} ${by}`;}
+    const p=document.createElementNS("http://www.w3.org/2000/svg","path");p.setAttribute("d",d);p.setAttribute("marker-end","url(#seta)");wg.appendChild(p);
+  });
+}
+new ResizeObserver(desenha).observe(canvas);
+function limpa(){stack.classList.remove("sel");Object.values(nodes).forEach(n=>n.classList.remove("on","me"));ativos=[];desenha();}
+function fecha(){limpa();setFlowBtn("");panel.hidden=true;}
+function abre(html){panel.innerHTML=`<div class="ph">${html.h}<button class="close" id="fechar">Fechar</button></div>${html.b}`;panel.hidden=false;document.getElementById("fechar").onclick=fecha;
+  panel.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>{select(b.dataset.go);nodes[b.dataset.go].scrollIntoView({block:"center",behavior:"smooth"});}));}
 const lname=id=>LAYERS[LN[byId[id][1]]][1];
-function clearSel(){svg.classList.remove("sel");Object.values(nodes).forEach(n=>n.classList.remove("on","me"));paths.forEach(p=>p.classList.remove("on"));}
-function idle(){panel.innerHTML=`<h3>Toque em um bloco</h3><p>São ${N.length} blocos em ${LAYERS.length} camadas, com ${E.length} conexões. Toque em qualquer bloco para ver o que ele faz e com o que se conecta, ou escolha um fluxo acima para ver o caminho passo a passo.</p>`;}
 function select(id){
-  setFlowBtn("");clearSel();svg.classList.add("sel");nodes[id].classList.add("on","me");
-  const out=[],inn=[];
-  paths.forEach(p=>{if(p.dataset.a===id){p.classList.add("on");nodes[p.dataset.b].classList.add("on");out.push(p.dataset.b)}
-    if(p.dataset.b===id){p.classList.add("on");nodes[p.dataset.a].classList.add("on");inn.push(p.dataset.a)}});
-  const n=byId[id];const lab=e=>E.find(x=>x[0]===e[0]&&x[1]===e[1])[2];
-  const li=(o,dir,l)=>`<li><span class="dir">${dir}</span><span><button data-go="${o}">${byId[o][2].replace("|"," ")}</button> <span class="lab">· ${l}</span></span></li>`;
-  panel.innerHTML=`<h3>${n[2].replace("|"," ")}</h3><div class="meta"><span class="tag">${lname(id)}</span><span class="tag ${n[3]==="r"?"r":""}">${n[3]==="l"?"Local":n[3]==="r"?"Remoto":"Físico"}</span>${n[4]?'<span class="tag k">Precisa de conta</span>':""}${n[5]?'<span class="tag">Futuro</span>':""}</div><p>${n[6]}</p>
-  ${out.length||inn.length?`<ul class="conn">${out.map(o=>li(o,"→",lab([id,o]))).join("")}${inn.map(o=>li(o,"←",lab([o,id]))).join("")}</ul>`:""}`;
-  panel.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>{select(b.dataset.go);nodes[b.dataset.go].focus({preventScroll:true})}));
+  setFlowBtn("");limpa();stack.classList.add("sel");nodes[id].classList.add("on","me");
+  const out=E.filter(e=>e[0]===id),inn=E.filter(e=>e[1]===id);
+  out.forEach(e=>nodes[e[1]].classList.add("on"));inn.forEach(e=>nodes[e[0]].classList.add("on"));
+  ativos=[...out,...inn];desenha();
+  const n=byId[id];
+  const li=(o,dir,l)=>`<li><span class="dir">${dir}</span><span><button data-go="${o}">${ESC(NM(o))}</button> <span class="lab">· ${ESC(l)}</span></span></li>`;
+  abre({h:`<h3>${ESC(NM(id))}</h3>`,b:`<div class="meta"><span class="tag">${ESC(lname(id))}</span><span class="tag ${n[3]==="r"?"r":""}">${n[3]==="l"?"Local":n[3]==="r"?"Remoto":"Físico"}</span>${n[4]?'<span class="tag k">Precisa de conta</span>':""}${n[5]?'<span class="tag">Futuro</span>':""}</div><p>${ESC(n[6])}</p><ul class="conn">${out.map(e=>li(e[1],"→",e[2])).join("")}${inn.map(e=>li(e[0],"←",e[2])).join("")}</ul>`});
 }
 const fbtns=[...document.querySelectorAll("[data-flow]")];
 function setFlowBtn(f){fbtns.forEach(b=>b.setAttribute("aria-pressed",b.dataset.flow===f?"true":"false"))}
 function flow(f){
-  clearSel();setFlowBtn(f);if(!f){idle();return}
-  const F=FLOWS[f];svg.classList.add("sel");F.s.forEach(id=>nodes[id].classList.add("on"));
-  for(let i=0;i<F.s.length-1;i++){const a=F.s[i],b=F.s[i+1];paths.forEach(p=>{if((p.dataset.a===a&&p.dataset.b===b)||(p.dataset.a===b&&p.dataset.b===a))p.classList.add("on")})}
-  nodes[F.s[0]].classList.add("me");
-  panel.innerHTML=`<h3>${F.t}</h3><ol class="steps">${F.s.map((id,i)=>`<li><b>${byId[id][2].replace("|"," ")}</b>: ${F.d[i]}</li>`).join("")}</ol>`;
+  limpa();setFlowBtn(f);const F=FLOWS[f];stack.classList.add("sel");
+  F.s.forEach(id=>nodes[id].classList.add("on"));nodes[F.s[0]].classList.add("me");
+  ativos=[];for(let i=0;i<F.s.length-1;i++)ativos.push([F.s[i],F.s[i+1]]);desenha();
+  abre({h:`<h3>${ESC(F.t)}</h3>`,b:`<ol class="steps">${F.s.map((id,i)=>`<li><b>${ESC(NM(id))}</b>: ${ESC(F.d[i])}</li>`).join("")}</ol>`});
+  nodes[F.s[0]].scrollIntoView({block:"center",behavior:"smooth"});
 }
-fbtns.forEach(b=>b.addEventListener("click",()=>flow(b.dataset.flow)));
-const fit=document.getElementById("fitbtn");
-fit.addEventListener("click",()=>{const on=document.getElementById("canvas").classList.toggle("fit");fit.setAttribute("aria-pressed",on);fit.textContent=on?"Voltar ao tamanho normal":"Ver o desenho inteiro na tela";});
-idle();
-document.getElementById("gaps").innerHTML=GAPS.map(([t,l])=>`<div class="card"><h3>${t}</h3><ul>${l.map(([a,b])=>`<li><b>${a}</b><span>${b}</span></li>`).join("")}</ul></div>`).join("");
-document.getElementById("acc").innerHTML=ACC.map(([t,l])=>`<div class="card"><h3>${t}</h3><ul>${l.map(([a,b])=>`<li><b>${a}</b><span>${b}</span></li>`).join("")}</ul></div>`).join("");
-document.getElementById("list").innerHTML=LAYERS.map(([id,t],i)=>`<details class="ly"><summary><span class="bandnum">${String(LAYERS.length-i).padStart(2,"0")}</span>${t}</summary><ul>${N.filter(n=>n[1]===id).map(n=>`<li>${n[2].replace("|"," ")}${n[4]?" ●":""} <span>· ${n[6]}</span></li>`).join("")}</ul></details>`).join("");
+fbtns.forEach(b=>b.addEventListener("click",()=>b.getAttribute("aria-pressed")==="true"?fecha():flow(b.dataset.flow)));
+document.addEventListener("keydown",e=>{if(e.key==="Escape")fecha();});
+document.getElementById("idle").textContent=`São ${N.length} blocos em ${LAYERS.length} camadas, com ${E.length} conexões. Toque em um bloco para ver com o que ele se conecta, ou escolha um fluxo: as linhas aparecem só para o que você escolher, e cada seta se lê como uma frase: bloco, o que ele faz, outro bloco.`;
+const CONTAS=LAYERS.map(([id,t])=>[t,N.filter(n=>n[1]===id&&n[4])]).filter(([,l])=>l.length);
+document.getElementById("ncontas").textContent=`${CONTAS.reduce((s,[,l])=>s+l.length,0)} blocos do desenho precisam de conta (o ponto dourado). A lista vem do próprio desenho, então não fica desatualizada.`;
+document.getElementById("acc").innerHTML=CONTAS.map(([t,l])=>`<div class="card"><h3>${ESC(t)}</h3><ul>${l.map(n=>`<li><b>${ESC(n[2].replace("|"," "))}</b><span>${ESC(n[6])}</span></li>`).join("")}</ul></div>`).join("");
+document.getElementById("list").innerHTML=LAYERS.map(([id,t],i)=>`<details class="ly"><summary><span class="bandnum">${String(LAYERS.length-i).padStart(2,"0")}</span>${ESC(t)}</summary><ul>${N.filter(n=>n[1]===id).map(n=>`<li>${ESC(n[2].replace("|"," "))}${n[4]?" ●":""} <span>· ${ESC(n[6])}</span></li>`).join("")}</ul></details>`).join("");
 </script>
 
 </body>

@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** Toda oferta passa pela esteira e pelo padrão de qualidade antes de chegar ao público; cada venda e cada trabalho voltam como dado e conteúdo.
 
-**22 blocos** · 2 precisam de conta · 9 marcados como futuro
+**21 blocos** · 1 precisam de conta · 8 marcados como futuro
 
 ## Mapa de conexões
 
@@ -18,7 +18,6 @@ flowchart LR
     n_oesteira["Esteira de ofertas"]
     n_oqual["Padrão de qualidade"]
     n_omarca["Marca pessoal Alan Mateus"]
-    n_ogbp["Google Perfil da Empresa"]
     n_oaval["NPS e avaliações"]
     n_ocrm["CRM único + LGPD"]
     n_ofly["Flywheel de conteúdo"]
@@ -40,15 +39,19 @@ flowchart LR
   subgraph L_pub["Público e canais"]
     n_ig["Instagram"]
     n_li["LinkedIn"]
+    n_ogbp["Google Perfil da Empresa"]
     n_wa["WhatsApp Business"]
     n_yt["YouTube"]
   end
   subgraph L_mkt["Marketing, automação e medição"]
     n_aprov["Aprovação no celular"]
+    n_mailer["MailerLite"]
+    n_metrics["Banco de métricas (PostgreSQL)"]
+    n_n8n["n8n"]
+    n_tg["Telegram (avisos)"]
   end
   subgraph L_venda["Plataformas de venda e recebimento"]
     n_crm["CRM simples (planilha)"]
-    n_mailer["MailerLite"]
     n_mp["Mercado Pago"]
     n_pixa["Pix Automático + gateway (ex.: Asaas)"]
   end
@@ -62,11 +65,8 @@ flowchart LR
     n_sites["Sites para pequenas empresas"]
   end
   subgraph L_neg["Negócios do grupo (Barbacena)"]
-    n_nloja["Loja AMtech (assistência)"]
-    n_npad["Padaria + café da manhã + almoço"]
     n_nplan["Planejador do Grupo"]
     n_nsoft["AMtech Software (projetos e SaaS)"]
-    n_nsushi["Sushi (delivery)"]
   end
   subgraph L_cont["Produção de conteúdo"]
     n_voz["Voz clonada (ElevenLabs)"]
@@ -80,7 +80,9 @@ flowchart LR
   end
   subgraph L_cnt["Containers, Kubernetes e infra como código"]
     n_docker["Docker + Compose"]
-    n_n8n["n8n"]
+  end
+  subgraph L_clc["Claude: recursos, conectores e plugins"]
+    n_anth["Claude (assinatura e API)"]
   end
   subgraph L_lin["Linux (Ubuntu no WSL2, Arch no 2º disco)"]
     n_wsl["Ubuntu (WSL2)"]
@@ -100,17 +102,14 @@ flowchart LR
   n_omarca -->|"canal"| n_yt
   n_omarca -->|"carreira e B2B"| n_li
   n_omarca -->|"rosto"| n_obuild
-  n_ogbp -->|"presença local"| n_nloja
-  n_ogbp -->|"presença local"| n_nsushi
-  n_ogbp -->|"presença local"| n_npad
-  n_opos -->|"pede avaliação"| n_ogbp
+  n_omarca -->|"guia de marca"| n_opipe
   n_opos -->|"NPS"| n_oaval
   n_ocrm -->|"etiquetas"| n_mailer
   n_opos -->|"próximo passo"| n_ocrm
   n_crm -->|"vira"| n_ocrm
   n_ofly -->|"trabalho capturado"| n_oedit
   n_ofly -->|"decisões reais"| n_obuild
-  n_opipe -->|"alimentado por"| n_ofly
+  n_ofly -->|"trabalho na pasta de entrada"| n_opipe
   n_obuild -->|"vídeo semanal"| n_yt
   n_oatend -->|"responde"| n_wa
   n_n8n -->|"roda"| n_oatend
@@ -118,12 +117,14 @@ flowchart LR
   n_ocob -->|"Pix"| n_pixa
   n_ocob -->|"cobrança"| n_mp
   n_n8n -->|"roda"| n_ocob
+  n_opos -->|"pede avaliação"| n_ogbp
   n_n8n -->|"roda"| n_opos
   n_oedit -->|"fila de aprovação"| n_aprov
   n_oedit -->|"narração"| n_voz
   n_whis -->|"transcrição"| n_oedit
   n_opipe -->|"executa"| n_oedit
   n_oanal -->|"lê o painel"| n_graf
+  n_metrics -->|"dados da semana"| n_oanal
   n_ofisc -->|"carnê-leão"| n_nfse
   n_ofisc -->|"entrega ao contador"| n_conta
   n_ocomp -->|"estoque mínimo"| n_nkaix
@@ -135,9 +136,11 @@ flowchart LR
   n_overif -->|"confere"| n_w11
   n_overif -->|"confere"| n_n8n
   n_overif -->|"confere"| n_graf
+  n_opipe -->|"API do Claude"| n_anth
+  n_opipe -->|"aviso de peça pronta"| n_tg
   n_whis -->|"transcreve"| n_opipe
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_ocatal,n_oesteira,n_oqual,n_omarca,n_ogbp,n_oaval,n_ocrm,n_ofly,n_obuild,n_oatend,n_oorc,n_ocob,n_opos,n_oedit,n_oanal,n_ofisc,n_orevo,n_ocomp,n_oimpl,n_oinst,n_overif,n_opipe desta
+  class n_ocatal,n_oesteira,n_oqual,n_omarca,n_oaval,n_ocrm,n_ofly,n_obuild,n_oatend,n_oorc,n_ocob,n_opos,n_oedit,n_oanal,n_ofisc,n_orevo,n_ocomp,n_oimpl,n_oinst,n_overif,n_opipe desta
 ```
 
 ## Blocos
@@ -148,7 +151,6 @@ flowchart LR
 | [Esteira de ofertas](#oesteira) | Local | Ideia, validação, construção, lançamento e escala, com portões objetivos. Uma oferta em construção e uma em validação por vez. |
 | [Padrão de qualidade](#oqual) | Local | Checklist de 'pronto' por tipo de oferta: infoproduto, livro, software, serviço, negócio físico e conteúdo. |
 | [Marca pessoal Alan Mateus](#omarca) | Remoto | O guarda-chuva de confiança do grupo: Instituto AMS, Editora AMS Silva, AMtech e os negócios locais apontam para você. |
-| [Google Perfil da Empresa](#ogbp) | Remoto · precisa de conta · futuro | O canal local mais importante: loja, assistência e restaurantes. Post semanal, fotos, horários e resposta a avaliações em 24 h. |
 | [NPS e avaliações](#oaval) | Remoto | Uma pergunta depois de cada compra ou serviço e pedido de avaliação no Google. Reclamação vira issue da oferta. |
 | [CRM único + LGPD](#ocrm) | Local | Uma ficha por cliente com ofertas compradas, origem e consentimento. Começa em planilha e MailerLite; vira tabela no PostgreSQL do grupo. |
 | [Flywheel de conteúdo](#ofly) | Local | Cada aula, capítulo, projeto, reparo ou prato vira várias peças: cortes, carrossel, artigo, newsletter, questão, template. |
@@ -224,21 +226,7 @@ O guarda-chuva de confiança do grupo: Instituto AMS, Editora AMS Silva, AMtech 
 | → envia para | [YouTube](21-pub.md#yt) | Público e canais | canal |
 | → envia para | [LinkedIn](21-pub.md#li) | Público e canais | carreira e B2B |
 | → envia para | [Canal build in public](22-oper.md#obuild) | Operação do grupo (esteira, marca, qualidade) | rosto |
-
-<a id="ogbp"></a>
-
-### Google Perfil da Empresa
-
-*Remoto · precisa de conta · futuro*
-
-O canal local mais importante: loja, assistência e restaurantes. Post semanal, fotos, horários e resposta a avaliações em 24 h.
-
-| Direção | Bloco | Camada | O que passa |
-|---|---|---|---|
-| → envia para | [Loja AMtech (assistência)](15-neg.md#nloja) | Negócios do grupo (Barbacena) | presença local |
-| → envia para | [Sushi (delivery)](15-neg.md#nsushi) | Negócios do grupo (Barbacena) | presença local |
-| → envia para | [Padaria + café da manhã + almoço](15-neg.md#npad) | Negócios do grupo (Barbacena) | presença local |
-| ← recebe de | [Agente pós-venda](22-oper.md#opos) | Operação do grupo (esteira, marca, qualidade) | pede avaliação |
+| → envia para | [Pipeline de conteúdo](22-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | guia de marca |
 
 <a id="oaval"></a>
 
@@ -263,7 +251,7 @@ Uma ficha por cliente com ofertas compradas, origem e consentimento. Começa em 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [MailerLite](19-venda.md#mailer) | Plataformas de venda e recebimento | etiquetas |
+| → envia para | [MailerLite](20-mkt.md#mailer) | Marketing, automação e medição | etiquetas |
 | ← recebe de | [Agente pós-venda](22-oper.md#opos) | Operação do grupo (esteira, marca, qualidade) | próximo passo |
 | ← recebe de | [CRM simples (planilha)](19-venda.md#crm) | Plataformas de venda e recebimento | vira |
 
@@ -279,7 +267,7 @@ Cada aula, capítulo, projeto, reparo ou prato vira várias peças: cortes, carr
 |---|---|---|---|
 | → envia para | [Agente editor de conteúdo](22-oper.md#oedit) | Operação do grupo (esteira, marca, qualidade) | trabalho capturado |
 | → envia para | [Canal build in public](22-oper.md#obuild) | Operação do grupo (esteira, marca, qualidade) | decisões reais |
-| ← recebe de | [Pipeline de conteúdo](22-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | alimentado por |
+| → envia para | [Pipeline de conteúdo](22-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | trabalho na pasta de entrada |
 
 <a id="obuild"></a>
 
@@ -306,7 +294,7 @@ Responde perguntas frequentes, mostra catálogo e horários e agenda. Passa para
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [WhatsApp Business](21-pub.md#wa) | Público e canais | responde |
-| ← recebe de | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | roda |
+| ← recebe de | [n8n](20-mkt.md#n8n) | Marketing, automação e medição | roda |
 
 <a id="oorc"></a>
 
@@ -332,7 +320,7 @@ Lembra vencimentos e envia o Pix; avisa você nos atrasos. Não faz estorno nem 
 |---|---|---|---|
 | → envia para | [Pix Automático + gateway (ex.: Asaas)](19-venda.md#pixa) | Plataformas de venda e recebimento | Pix |
 | → envia para | [Mercado Pago](19-venda.md#mp) | Plataformas de venda e recebimento | cobrança |
-| ← recebe de | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | roda |
+| ← recebe de | [n8n](20-mkt.md#n8n) | Marketing, automação e medição | roda |
 
 <a id="opos"></a>
 
@@ -344,10 +332,10 @@ Pergunta a nota, pede avaliação e oferece o próximo passo da jornada do clien
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Google Perfil da Empresa](22-oper.md#ogbp) | Operação do grupo (esteira, marca, qualidade) | pede avaliação |
+| → envia para | [Google Perfil da Empresa](21-pub.md#ogbp) | Público e canais | pede avaliação |
 | → envia para | [NPS e avaliações](22-oper.md#oaval) | Operação do grupo (esteira, marca, qualidade) | NPS |
 | → envia para | [CRM único + LGPD](22-oper.md#ocrm) | Operação do grupo (esteira, marca, qualidade) | próximo passo |
-| ← recebe de | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | roda |
+| ← recebe de | [n8n](20-mkt.md#n8n) | Marketing, automação e medição | roda |
 
 <a id="oedit"></a>
 
@@ -376,6 +364,7 @@ Lê o painel toda segunda e manda 3 fatos e 1 sugestão de decisão. Só leitura
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Grafana](09-obs.md#graf) | Observabilidade | lê o painel |
+| ← recebe de | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | dados da semana |
 
 <a id="ofisc"></a>
 
@@ -453,7 +442,7 @@ verificar.ps1 e verificar.sh: somente leitura, dizem 'pronto' ou listam o que fa
 | → envia para | [Ubuntu (WSL2)](04-lin.md#wsl) | Linux (Ubuntu no WSL2, Arch no 2º disco) | confere |
 | → envia para | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | confere |
 | → envia para | [Windows 11 Home](03-win.md#w11) | Windows 11, apps e máquinas virtuais | confere |
-| → envia para | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | confere |
+| → envia para | [n8n](20-mkt.md#n8n) | Marketing, automação e medição | confere |
 | → envia para | [Grafana](09-obs.md#graf) | Observabilidade | confere |
 | ← recebe de | [Instaladores (PowerShell e bash)](22-oper.md#oinst) | Operação do grupo (esteira, marca, qualidade) | depois confere |
 
@@ -468,9 +457,12 @@ tools/conteudo/processar.py com timer de 15 min: entrada → transcrição → p
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Agente editor de conteúdo](22-oper.md#oedit) | Operação do grupo (esteira, marca, qualidade) | executa |
-| → envia para | [Flywheel de conteúdo](22-oper.md#ofly) | Operação do grupo (esteira, marca, qualidade) | alimentado por |
+| → envia para | [Claude (assinatura e API)](07-clc.md#anth) | Claude: recursos, conectores e plugins | API do Claude |
+| → envia para | [Telegram (avisos)](20-mkt.md#tg) | Marketing, automação e medição | aviso de peça pronta |
 | ← recebe de | [Whisper (local)](12-cont.md#whis) | Produção de conteúdo | transcreve |
+| ← recebe de | [Flywheel de conteúdo](22-oper.md#ofly) | Operação do grupo (esteira, marca, qualidade) | trabalho na pasta de entrada |
 | ← recebe de | [Instaladores (PowerShell e bash)](22-oper.md#oinst) | Operação do grupo (esteira, marca, qualidade) | instala |
+| ← recebe de | [Marca pessoal Alan Mateus](22-oper.md#omarca) | Operação do grupo (esteira, marca, qualidade) | guia de marca |
 
 ---
 

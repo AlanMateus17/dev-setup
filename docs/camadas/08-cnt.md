@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** A CLI docker e o kubectl no Ubuntu falam com a engine do Docker no WSL2.
 
-**13 blocos** · 0 precisam de conta · 5 marcados como futuro
+**12 blocos** · 0 precisam de conta · 5 marcados como futuro
 
 ## Mapa de conexões
 
@@ -26,24 +26,13 @@ flowchart LR
     n_rmq["RabbitMQ"]
     n_kind["Kubernetes local (kind)"]
     n_tf["Terraform"]
-    n_n8n["n8n"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
-    n_oatend["Agente atendente (WhatsApp)"]
-    n_ocob["Agente cobrador"]
-    n_opos["Agente pós-venda"]
     n_overif["Verificadores"]
   end
   subgraph L_mkt["Marketing, automação e medição"]
-    n_aprov["Aprovação no celular"]
-    n_hooks["Webhooks de venda"]
-    n_horario["Algoritmo de horário"]
     n_metrics["Banco de métricas (PostgreSQL)"]
-    n_postiz["Postiz (agendador)"]
-  end
-  subgraph L_venda["Plataformas de venda e recebimento"]
-    n_hotm["Hotmart"]
-    n_mailer["MailerLite"]
+    n_n8n["n8n"]
   end
   subgraph L_nuvem["Nuvem, código e entrega"]
     n_aws["AWS"]
@@ -62,11 +51,12 @@ flowchart LR
   end
   subgraph L_obs["Observabilidade"]
     n_aspire[".NET Aspire"]
+    n_graf["Grafana"]
+    n_kuma["Uptime Kuma"]
   end
   subgraph L_ia["Agentes de IA e sandbox"]
     n_mcp["Servidores MCP"]
     n_mem["ai-memory"]
-    n_oll["Ollama (3B–4B)"]
     n_rag["Base de conhecimento (RAG) das suas notas"]
   end
   subgraph L_lin["Linux (Ubuntu no WSL2, Arch no 2º disco)"]
@@ -75,13 +65,10 @@ flowchart LR
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
     n_dbv["DBeaver · Bruno"]
   end
-  subgraph L_hw["Hardware"]
-    n_nas["Servidor caseiro (NAS + serviços)"]
-  end
   n_caddy -->|"HTTPS"| n_api
-  n_mailp -->|"SMTP de teste"| n_api
+  n_api -->|"SMTP de teste"| n_mailp
   n_docker -->|"container"| n_mailp
-  n_kafka -->|"eventos"| n_api
+  n_api -->|"eventos"| n_kafka
   n_k8st -->|"opera"| n_kind
   n_clis -->|"comandos"| n_azure
   n_clis -->|"comandos"| n_aws
@@ -91,6 +78,9 @@ flowchart LR
   n_docker -->|"container"| n_rmq
   n_docker -->|"cluster local"| n_kind
   n_docker -->|"container"| n_n8n
+  n_docker -->|"container"| n_metrics
+  n_docker -->|"container"| n_graf
+  n_docker -->|"container"| n_kuma
   n_wsl -->|"socket da engine"| n_docker
   n_mem -->|"container"| n_docker
   n_aspire -->|"sobe os serviços"| n_docker
@@ -106,25 +96,12 @@ flowchart LR
   n_sig -->|"backplane"| n_redis
   n_api -->|"cache"| n_redis
   n_api -->|"eventos"| n_rmq
+  n_tf -->|"cria recursos"| n_gcp
   n_tf -->|"cria recursos"| n_azure
   n_tf -->|"cria recursos"| n_aws
   n_tf -->|"DNS por código"| n_cf
-  n_gcp -->|"cria recursos"| n_tf
-  n_n8n -->|"novo aluno → e-mail"| n_mailer
-  n_n8n -->|"webhook de venda"| n_hotm
-  n_n8n -->|"manda o post aprovado"| n_postiz
-  n_n8n -->|"grava"| n_metrics
-  n_n8n -->|"roda"| n_ocob
-  n_n8n -->|"roda"| n_opos
-  n_n8n -->|"roda"| n_oatend
-  n_oll -->|"IA local nas automações"| n_n8n
-  n_aprov -->|"libera"| n_n8n
-  n_horario -->|"escolhe o horário"| n_n8n
-  n_hooks -->|"dispara"| n_n8n
-  n_nas -->|"roda 24 h"| n_n8n
-  n_overif -->|"confere"| n_n8n
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_caddy,n_mailp,n_kafka,n_k8st,n_clis,n_datomic,n_docker,n_pg,n_redis,n_rmq,n_kind,n_tf,n_n8n desta
+  class n_caddy,n_mailp,n_kafka,n_k8st,n_clis,n_datomic,n_docker,n_pg,n_redis,n_rmq,n_kind,n_tf desta
 ```
 
 ## Blocos
@@ -143,7 +120,6 @@ flowchart LR
 | [RabbitMQ](#rmq) | Local · futuro | Fila de eventos entre sistemas. |
 | [Kubernetes local (kind)](#kind) | Local · futuro | Treino de Kubernetes sem pagar nuvem. |
 | [Terraform](#tf) | Local | Cria Azure, AWS e Cloudflare por código. |
-| [n8n](#n8n) | Local | Automação: novo aluno → e-mail, post agendado, aviso. |
 
 <a id="caddy"></a>
 
@@ -167,7 +143,7 @@ Caixa de e-mail falsa para testar os e-mails dos sistemas sem enviar nada de ver
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | SMTP de teste |
+| ← recebe de | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | SMTP de teste |
 | ← recebe de | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
 
 <a id="kafka"></a>
@@ -180,7 +156,7 @@ Mensageria padrão em empresa grande. Depois do RabbitMQ.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | eventos |
+| ← recebe de | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | eventos |
 
 <a id="k8st"></a>
 
@@ -234,7 +210,10 @@ Engine no WSL2; um compose por sistema.
 | → envia para | [Redis](08-cnt.md#redis) | Containers, Kubernetes e infra como código | container |
 | → envia para | [RabbitMQ](08-cnt.md#rmq) | Containers, Kubernetes e infra como código | container |
 | → envia para | [Kubernetes local (kind)](08-cnt.md#kind) | Containers, Kubernetes e infra como código | cluster local |
-| → envia para | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | container |
+| → envia para | [n8n](20-mkt.md#n8n) | Marketing, automação e medição | container |
+| → envia para | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | container |
+| → envia para | [Grafana](09-obs.md#graf) | Observabilidade | container |
+| → envia para | [Uptime Kuma](09-obs.md#kuma) | Observabilidade | container |
 | ← recebe de | [Ubuntu (WSL2)](04-lin.md#wsl) | Linux (Ubuntu no WSL2, Arch no 2º disco) | socket da engine |
 | ← recebe de | [ai-memory](05-ia.md#mem) | Agentes de IA e sandbox | container |
 | ← recebe de | [.NET Aspire](09-obs.md#aspire) | Observabilidade | sobe os serviços |
@@ -310,35 +289,10 @@ Cria Azure, AWS e Cloudflare por código.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
+| → envia para | [Google Cloud](11-nuvem.md#gcp) | Nuvem, código e entrega | cria recursos |
 | → envia para | [Azure](11-nuvem.md#azure) | Nuvem, código e entrega | cria recursos |
 | → envia para | [AWS](11-nuvem.md#aws) | Nuvem, código e entrega | cria recursos |
 | → envia para | [Cloudflare (DNS, Pages, e-mail)](11-nuvem.md#cf) | Nuvem, código e entrega | DNS por código |
-| ← recebe de | [Google Cloud](11-nuvem.md#gcp) | Nuvem, código e entrega | cria recursos |
-
-<a id="n8n"></a>
-
-### n8n
-
-*Local*
-
-Automação: novo aluno → e-mail, post agendado, aviso.
-
-| Direção | Bloco | Camada | O que passa |
-|---|---|---|---|
-| → envia para | [MailerLite](19-venda.md#mailer) | Plataformas de venda e recebimento | novo aluno → e-mail |
-| → envia para | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | webhook de venda |
-| → envia para | [Postiz (agendador)](20-mkt.md#postiz) | Marketing, automação e medição | manda o post aprovado |
-| → envia para | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | grava |
-| → envia para | [Agente cobrador](22-oper.md#ocob) | Operação do grupo (esteira, marca, qualidade) | roda |
-| → envia para | [Agente pós-venda](22-oper.md#opos) | Operação do grupo (esteira, marca, qualidade) | roda |
-| → envia para | [Agente atendente (WhatsApp)](22-oper.md#oatend) | Operação do grupo (esteira, marca, qualidade) | roda |
-| ← recebe de | [Ollama (3B–4B)](05-ia.md#oll) | Agentes de IA e sandbox | IA local nas automações |
-| ← recebe de | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
-| ← recebe de | [Aprovação no celular](20-mkt.md#aprov) | Marketing, automação e medição | libera |
-| ← recebe de | [Algoritmo de horário](20-mkt.md#horario) | Marketing, automação e medição | escolhe o horário |
-| ← recebe de | [Webhooks de venda](20-mkt.md#hooks) | Marketing, automação e medição | dispara |
-| ← recebe de | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | roda 24 h |
-| ← recebe de | [Verificadores](22-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | confere |
 
 ---
 

@@ -2,6 +2,20 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.10.0] - 2026-10-23
+
+### Corrigido
+- Diagrama do ecossistema: as 529 linhas apareciam todas juntas, atravessando o desenho; no celular os blocos ficavam cortados e o painel do bloco aparecia lá embaixo da página. Agora os blocos se reorganizam na largura da tela, as linhas aparecem só para o bloco ou o fluxo escolhido (com seta) e o painel fica fixo na tela.
+- Os 13 fluxos tinham 37 passos sem conexão entre si, então o destaque mostrava blocos soltos. Todos refeitos sobre conexões reais.
+- Conexões com o sentido trocado (Sentry, Seq, Mailpit, Kafka, Terraform → Google Cloud, Obsidian → Anki, livro → isca, flywheel → pipeline) e conexões erradas ou duplicadas (n8n → Hotmart, Obsidian → livro, TeX → livro, Arduino nos dois sentidos, 7-Zip → backup, edição do professor → sites).
+- Blocos na camada errada: n8n e MailerLite (marketing), comunidade e Google Perfil da Empresa (público), Syncthing (Windows), assinatura e API do Claude (Claude).
+- Mapa do setup: células vazias cinza no fim de cada camada, cartões de mercado com o texto empurrado para baixo e a lista de cortes desalinhada.
+- Contas: a lista agora sai dos próprios blocos marcados com conta; Umami e Anki passam a pedir conta; Cloudflare e vidIQ saem de "sugeridos" (já estão conectados).
+
+### Adicionado
+- Blocos Wireshark e Telegram (avisos); 38 conexões que faltavam (pipeline → API do Claude e Telegram, túnel da Cloudflare → n8n, MCP → banco de métricas, Uptime Kuma → n8n e Telegram, entre outras).
+- `gerar_docs.py` falha com bloco sem conexão, conexão nos dois sentidos, conexão sem rótulo e fluxo com passo sem conexão; `tools/test_gerar_docs.py` no CI.
+
 ## [1.9.0] - 2026-10-23
 
 ### Corrigido

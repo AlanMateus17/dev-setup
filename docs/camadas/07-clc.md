@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** Os conectores dão ao Claude acesso às suas contas, com permissão que você aprova; os plugins trazem rotinas prontas.
 
-**18 blocos** · 14 precisam de conta · 0 marcados como futuro
+**19 blocos** · 15 precisam de conta · 0 marcados como futuro
 
 ## Mapa de conexões
 
@@ -19,6 +19,7 @@ flowchart LR
     n_resq["Pesquisa aprofundada"]
     n_sched["Tarefas agendadas"]
     n_cchr["Claude in Chrome + uso do computador"]
+    n_anth["Claude (assinatura e API)"]
     n_cgws["Conector Google (Gmail, Drive…)"]
     n_ccan["Conectores Canva + Figma"]
     n_cml["Conector MailerLite"]
@@ -33,16 +34,19 @@ flowchart LR
     n_ccf["Conector Cloudflare"]
     n_cvid["Conector vidIQ"]
   end
+  subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
+    n_opipe["Pipeline de conteúdo"]
+  end
   subgraph L_pub["Público e canais"]
     n_ig["Instagram"]
     n_yt["YouTube"]
   end
   subgraph L_mkt["Marketing, automação e medição"]
+    n_mailer["MailerLite"]
     n_prosp["Prospecção de parceiros"]
   end
   subgraph L_venda["Plataformas de venda e recebimento"]
     n_hotm["Hotmart"]
-    n_mailer["MailerLite"]
   end
   subgraph L_emp["Pessoa física: impostos e finanças"]
     n_caixa["Caixa da Casa / AM Rendara"]
@@ -68,12 +72,16 @@ flowchart LR
     n_vercel["Vercel"]
   end
   subgraph L_app["Aplicação: sistemas AM (Aura)"]
+    n_ai["IA: RAG + pgvector"]
     n_api["API ASP.NET Core"]
     n_front["Next.js + Aura Design System"]
   end
   subgraph L_chat["Assistentes de IA (chat, pesquisa e estudo)"]
     n_capp2["Claude (app)"]
     n_gem["Gemini (pago)"]
+  end
+  subgraph L_ia["Agentes de IA e sandbox"]
+    n_cc["Claude Code"]
   end
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
     n_nav["Navegador + Claude in Chrome"]
@@ -87,6 +95,10 @@ flowchart LR
   n_sched -->|"roda sozinho"| n_capp2
   n_cchr -->|"opera o navegador"| n_nav
   n_cchr -->|"opera apps"| n_w11
+  n_capp2 -->|"assinatura"| n_anth
+  n_cc -->|"modelo Claude"| n_anth
+  n_ai -->|"modelos"| n_anth
+  n_opipe -->|"API do Claude"| n_anth
   n_cgws -->|"mesmos dados Google"| n_gem
   n_cgws -->|"resumos de e-mail e agenda"| n_obsd
   n_ccan -->|"posts e capas"| n_img
@@ -98,6 +110,7 @@ flowchart LR
   n_cdev -->|"documentação"| n_azure
   n_cupw -->|"encontra clientes"| n_sites
   n_clov -->|"landing de validação"| n_inst
+  n_cdup -->|"substituídos pelo Obsidian"| n_obsd
   n_pbiz -->|"conteúdo"| n_ig
   n_pbiz -->|"funil e lançamento"| n_hotm
   n_pbiz -->|"rascunho de propostas"| n_prosp
@@ -109,7 +122,7 @@ flowchart LR
   n_cvid -->|"tendências"| n_yt
   n_cvid -->|"canais semelhantes"| n_prosp
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_proj,n_arts,n_resq,n_sched,n_cchr,n_cgws,n_ccan,n_cml,n_cdev,n_cupw,n_clov,n_cdup,n_pbiz,n_peng,n_pfin,n_phst,n_ccf,n_cvid desta
+  class n_proj,n_arts,n_resq,n_sched,n_cchr,n_anth,n_cgws,n_ccan,n_cml,n_cdev,n_cupw,n_clov,n_cdup,n_pbiz,n_peng,n_pfin,n_phst,n_ccf,n_cvid desta
 ```
 
 ## Blocos
@@ -121,13 +134,14 @@ flowchart LR
 | [Pesquisa aprofundada](#resq) | Remoto · precisa de conta | Relatório com dezenas de fontes: mercado de cursos, concorrentes, editais. |
 | [Tarefas agendadas](#sched) | Remoto · precisa de conta | O Claude executa sozinho em horário marcado: resumo semanal dos repositórios, rascunho de post, revisão do plano de estudos. |
 | [Claude in Chrome + uso do computador](#cchr) | Remoto · precisa de conta | O Claude opera o navegador e os apps do Windows por você, pedindo aprovação nas ações sensíveis. |
+| [Claude (assinatura e API)](#anth) | Remoto · precisa de conta | Assinatura usada pelo app e pelo Claude Code; API para as funções de IA dos sistemas. |
 | [Conector Google (Gmail, Drive…)](#cgws) | Remoto · precisa de conta | Já conectado. Lê e organiza e-mail, agenda de aulas, arquivos do Drive, Docs, Sheets e Slides. |
 | [Conectores Canva + Figma](#ccan) | Remoto · precisa de conta | Já conectados. Canva para posts e capas; Figma para as telas dos sistemas e do Instituto AMS. |
 | [Conector MailerLite](#cml) | Remoto · precisa de conta | Já conectado. O Claude monta grupos, formulários e campanhas da newsletter. |
 | [Vercel · AWS · Microsoft Learn](#cdev) | Remoto · precisa de conta | Já conectados. Deploy e logs na Vercel; documentação oficial da AWS e da Microsoft (Azure, .NET) direto na conversa. |
 | [Conector Upwork](#cupw) | Remoto · precisa de conta | Já conectado. Busca freelas e ajuda com propostas: renda extra com sites e sistemas. |
 | [Lovable + Supabase](#clov) | Remoto · precisa de conta | Já conectados. Fora da sua stack, mas ótimos para validar antes de construir: uma landing ou protótipo em horas para testar se vende. |
-| [Notion · monday · GitBook · Stripe](#cdup) | Remoto · precisa de conta | Já conectados, mas repetem o que você já tem. Decidido: Notion sai, fica o Obsidian. monday, GitBook e Stripe também repetem GitHub Projects, MkDocs e as plataformas de curso. |
+| [Notion · monday · GitBook · Stripe](#cdup) | Remoto · precisa de conta | Conectados, mas fora do setup por decisão sua: repetem o Obsidian, o GitHub Projects, o MkDocs e as plataformas de curso. Desconecte para não confundir. |
 | [Plugins: small- business + marketing](#pbiz) | Remoto | Rotinas prontas de conteúdo, funil, SEO, propostas, cobrança e fechamento do mês. |
 | [Plugins: engineering + design](#peng) | Remoto | Revisão de código, arquitetura, ADR, testes, incidentes, crítica de design e acessibilidade. |
 | [Plugins: finance + Fiscal.ai](#pfin) | Remoto | Demonstrativos e conciliação para a empresa; dados de empresas abertas para os seus estudos de investimento. |
@@ -197,6 +211,21 @@ O Claude opera o navegador e os apps do Windows por você, pedindo aprovação n
 | → envia para | [Navegador + Claude in Chrome](03-win.md#nav) | Windows 11, apps e máquinas virtuais | opera o navegador |
 | → envia para | [Windows 11 Home](03-win.md#w11) | Windows 11, apps e máquinas virtuais | opera apps |
 
+<a id="anth"></a>
+
+### Claude (assinatura e API)
+
+*Remoto · precisa de conta*
+
+Assinatura usada pelo app e pelo Claude Code; API para as funções de IA dos sistemas.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| ← recebe de | [Claude (app)](06-chat.md#capp2) | Assistentes de IA (chat, pesquisa e estudo) | assinatura |
+| ← recebe de | [Claude Code](05-ia.md#cc) | Agentes de IA e sandbox | modelo Claude |
+| ← recebe de | [IA: RAG + pgvector](10-app.md#ai) | Aplicação: sistemas AM (Aura) | modelos |
+| ← recebe de | [Pipeline de conteúdo](22-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | API do Claude |
+
 <a id="cgws"></a>
 
 ### Conector Google (Gmail, Drive…)
@@ -234,7 +263,7 @@ Já conectado. O Claude monta grupos, formulários e campanhas da newsletter.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [MailerLite](19-venda.md#mailer) | Plataformas de venda e recebimento | campanhas |
+| → envia para | [MailerLite](20-mkt.md#mailer) | Marketing, automação e medição | campanhas |
 
 <a id="cdev"></a>
 
@@ -280,9 +309,11 @@ Já conectados. Fora da sua stack, mas ótimos para validar antes de construir: 
 
 *Remoto · precisa de conta*
 
-Já conectados, mas repetem o que você já tem. Decidido: Notion sai, fica o Obsidian. monday, GitBook e Stripe também repetem GitHub Projects, MkDocs e as plataformas de curso.
+Conectados, mas fora do setup por decisão sua: repetem o Obsidian, o GitHub Projects, o MkDocs e as plataformas de curso. Desconecte para não confundir.
 
-_Sem conexões registradas._
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | substituídos pelo Obsidian |
 
 <a id="pbiz"></a>
 

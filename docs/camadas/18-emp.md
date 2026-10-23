@@ -33,6 +33,7 @@ flowchart LR
     n_metrics["Banco de métricas (PostgreSQL)"]
   end
   subgraph L_venda["Plataformas de venda e recebimento"]
+    n_afil["Afiliados (Amazon, Hotmart…)"]
     n_eduzz["Eduzz"]
     n_hotm["Hotmart"]
     n_kiwi["Kiwify"]
@@ -67,7 +68,7 @@ flowchart LR
     n_arts["Artifacts (Docs, Slides, Sheets…)"]
     n_pfin["Plugins: finance + Fiscal.ai"]
   end
-  n_inpi -->|"titular da marca"| n_cnpj
+  n_inpi -->|"marca passa para a empresa"| n_cnpj
   n_selo -->|"registro de marca"| n_inpi
   n_legal -->|"termos e privacidade"| n_inst
   n_legal -->|"contrato"| n_sites
@@ -89,6 +90,9 @@ flowchart LR
   n_kdp -->|"carnê-leão (exterior)"| n_nfse
   n_pod -->|"carnê-leão"| n_nfse
   n_ofisc -->|"carnê-leão"| n_nfse
+  n_afil -->|"comissões no carnê-leão"| n_nfse
+  n_banco -->|"paga o DARF"| n_nfse
+  n_conta -->|"declaração anual"| n_irpf
   n_banco -->|"extrato"| n_caixa
   n_kiwi -->|"saque"| n_banco
   n_eduzz -->|"saque"| n_banco
@@ -132,7 +136,7 @@ Proteger AMtech, Instituto AMS e os nomes AM antes de investir na marca. Pode se
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [CNPJ (futuro)](18-emp.md#cnpj) | Pessoa física: impostos e finanças | titular da marca |
+| → envia para | [CNPJ (futuro)](18-emp.md#cnpj) | Pessoa física: impostos e finanças | marca passa para a empresa |
 | ← recebe de | [Selo Editora AMS Silva](14-editora.md#selo) | Editora AMS Silva (produção de livros) | registro de marca |
 
 <a id="legal"></a>
@@ -187,7 +191,7 @@ Ainda não. Quando a renda crescer, MEI ou SLU. Até lá, tudo no seu CPF.
 | → envia para | [Conta bancária separada (CPF)](18-emp.md#banco) | Pessoa física: impostos e finanças | titular |
 | → envia para | [Domínio (Registro.br)](17-web.md#dom) | Vitrine web (sites e domínio) | titular do domínio |
 | → envia para | [3 CNPJs por frente](15-neg.md#ncnpj) | Negócios do grupo (Barbacena) | vira |
-| ← recebe de | [Registro de marca (INPI)](18-emp.md#inpi) | Pessoa física: impostos e finanças | titular da marca |
+| ← recebe de | [Registro de marca (INPI)](18-emp.md#inpi) | Pessoa física: impostos e finanças | marca passa para a empresa |
 
 <a id="govbr"></a>
 
@@ -224,6 +228,8 @@ Todo mês você lança o que recebeu de compradores (Hotmart, Kiwify, aulas, sit
 | ← recebe de | [Amazon KDP](14-editora.md#kdp) | Editora AMS Silva (produção de livros) | carnê-leão (exterior) |
 | ← recebe de | [Gráfica sob demanda (Brasil)](14-editora.md#pod) | Editora AMS Silva (produção de livros) | carnê-leão |
 | ← recebe de | [Organizador fiscal](22-oper.md#ofisc) | Operação do grupo (esteira, marca, qualidade) | carnê-leão |
+| ← recebe de | [Afiliados (Amazon, Hotmart…)](19-venda.md#afil) | Plataformas de venda e recebimento | comissões no carnê-leão |
+| ← recebe de | [Conta bancária separada (CPF)](18-emp.md#banco) | Pessoa física: impostos e finanças | paga o DARF |
 
 <a id="irpf"></a>
 
@@ -236,6 +242,7 @@ Os valores lançados no carnê-leão entram sozinhos na declaração.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | ← recebe de | [Carnê-leão (Receita Federal)](18-emp.md#nfse) | Pessoa física: impostos e finanças | importa |
+| ← recebe de | [Contador](18-emp.md#conta) | Pessoa física: impostos e finanças | declaração anual |
 
 <a id="banco"></a>
 
@@ -248,6 +255,7 @@ Uma conta só para receber vendas e serviços, separada do salário. Facilita o 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Caixa da Casa / AM Rendara](18-emp.md#caixa) | Pessoa física: impostos e finanças | extrato |
+| → envia para | [Carnê-leão (Receita Federal)](18-emp.md#nfse) | Pessoa física: impostos e finanças | paga o DARF |
 | ← recebe de | [Kiwify](19-venda.md#kiwi) | Plataformas de venda e recebimento | saque |
 | ← recebe de | [Eduzz](19-venda.md#eduzz) | Plataformas de venda e recebimento | saque |
 | ← recebe de | [Udemy](19-venda.md#udemy) | Plataformas de venda e recebimento | PayPal ou Payoneer |
@@ -267,6 +275,7 @@ Uma consulta para montar o carnê-leão do jeito certo e dizer a partir de que r
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Carnê-leão (Receita Federal)](18-emp.md#nfse) | Pessoa física: impostos e finanças | orienta impostos |
+| → envia para | [Declaração anual do IR](18-emp.md#irpf) | Pessoa física: impostos e finanças | declaração anual |
 | ← recebe de | [Organizador fiscal](22-oper.md#ofisc) | Operação do grupo (esteira, marca, qualidade) | entrega ao contador |
 
 <a id="caixa"></a>

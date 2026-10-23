@@ -27,11 +27,19 @@ flowchart LR
     n_oanal["Analista semanal"]
     n_overif["Verificadores"]
   end
+  subgraph L_mkt["Marketing, automação e medição"]
+    n_n8n["n8n"]
+    n_painel["Painel de lucro (Grafana)"]
+    n_tg["Telegram (avisos)"]
+  end
   subgraph L_emp["Pessoa física: impostos e finanças"]
     n_caixa["Caixa da Casa / AM Rendara"]
   end
   subgraph L_web["Vitrine web (sites e domínio)"]
     n_inst["Instituto AMS"]
+  end
+  subgraph L_neg["Negócios do grupo (Barbacena)"]
+    n_nplan["Planejador do Grupo"]
   end
   subgraph L_app["Aplicação: sistemas AM (Aura)"]
     n_api["API ASP.NET Core"]
@@ -40,22 +48,24 @@ flowchart LR
   subgraph L_cnt["Containers, Kubernetes e infra como código"]
     n_docker["Docker + Compose"]
   end
-  subgraph L_hw["Hardware"]
-    n_cel["Celular"]
-  end
-  n_sentry -->|"erros"| n_api
-  n_sentry -->|"erros"| n_front
+  n_api -->|"erros"| n_sentry
+  n_front -->|"erros"| n_sentry
   n_kuma -->|"está no ar?"| n_inst
-  n_kuma -->|"alerta"| n_cel
-  n_seq -->|"logs"| n_api
+  n_kuma -->|"alerta"| n_tg
+  n_kuma -->|"está no ar?"| n_n8n
+  n_docker -->|"container"| n_kuma
+  n_api -->|"logs"| n_seq
   n_loki -->|"consultas"| n_graf
   n_otel -->|"métricas"| n_prom
   n_api -->|"telemetria"| n_otel
   n_aspire -->|"painel de dev"| n_otel
   n_prom -->|"painéis"| n_graf
+  n_graf -->|"resultado real"| n_nplan
   n_caixa -->|"DRE por negócio"| n_graf
   n_oanal -->|"lê o painel"| n_graf
   n_overif -->|"confere"| n_graf
+  n_painel -->|"roda no Grafana"| n_graf
+  n_docker -->|"container"| n_graf
   n_aspire -->|"sobe os serviços"| n_docker
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_sentry,n_kuma,n_seq,n_loki,n_otel,n_prom,n_graf,n_aspire desta
@@ -84,8 +94,8 @@ Avisa quando um erro acontece em produção, com o ponto exato no código. Plano
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | erros |
-| → envia para | [Next.js + Aura Design System](10-app.md#front) | Aplicação: sistemas AM (Aura) | erros |
+| ← recebe de | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | erros |
+| ← recebe de | [Next.js + Aura Design System](10-app.md#front) | Aplicação: sistemas AM (Aura) | erros |
 
 <a id="kuma"></a>
 
@@ -98,7 +108,9 @@ Verifica a cada minuto se os sites e APIs estão no ar e avisa no celular. Open 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | está no ar? |
-| → envia para | [Celular](01-hw.md#cel) | Hardware | alerta |
+| → envia para | [Telegram (avisos)](20-mkt.md#tg) | Marketing, automação e medição | alerta |
+| → envia para | [n8n](20-mkt.md#n8n) | Marketing, automação e medição | está no ar? |
+| ← recebe de | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
 
 <a id="seq"></a>
 
@@ -110,7 +122,7 @@ Visualizador de logs simples para começar, antes da stack Grafana.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | logs |
+| ← recebe de | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | logs |
 
 <a id="loki"></a>
 
@@ -161,11 +173,14 @@ Painéis e alertas.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
+| → envia para | [Planejador do Grupo](15-neg.md#nplan) | Negócios do grupo (Barbacena) | resultado real |
 | ← recebe de | [Loki + Tempo](09-obs.md#loki) | Observabilidade | consultas |
 | ← recebe de | [Prometheus](09-obs.md#prom) | Observabilidade | painéis |
 | ← recebe de | [Caixa da Casa / AM Rendara](18-emp.md#caixa) | Pessoa física: impostos e finanças | DRE por negócio |
 | ← recebe de | [Analista semanal](22-oper.md#oanal) | Operação do grupo (esteira, marca, qualidade) | lê o painel |
 | ← recebe de | [Verificadores](22-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | confere |
+| ← recebe de | [Painel de lucro (Grafana)](20-mkt.md#painel) | Marketing, automação e medição | roda no Grafana |
+| ← recebe de | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
 
 <a id="aspire"></a>
 

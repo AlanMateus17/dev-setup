@@ -158,6 +158,24 @@
    "descricao": "Atendimento de alunos particulares e clientes de sites."
   },
   {
+   "id": "ogbp",
+   "camada": "pub",
+   "rotulo": "Google Perfil|da Empresa",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": true,
+   "descricao": "O canal local mais importante: loja, assistência e restaurantes. Post semanal, fotos, horários e resposta a avaliações em 24 h."
+  },
+  {
+   "id": "comu",
+   "camada": "pub",
+   "rotulo": "Comunidade|(Discord ou grupo)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Alunos do curso juntos: tira-dúvidas, retenção e indicação."
+  },
+  {
    "id": "seo",
    "camada": "pub",
    "rotulo": "Busca Google (SEO)",
@@ -201,15 +219,6 @@
    "conta": true,
    "futuro": false,
    "descricao": "Aluno particular escolhe horário sozinho e já paga. Open source, com plano grátis."
-  },
-  {
-   "id": "comu",
-   "camada": "venda",
-   "rotulo": "Comunidade|(Discord ou grupo)",
-   "tipo": "remoto",
-   "conta": true,
-   "futuro": false,
-   "descricao": "Alunos do curso juntos: tira-dúvidas, retenção e indicação."
   },
   {
    "id": "ads",
@@ -291,15 +300,6 @@
    "conta": true,
    "futuro": false,
    "descricao": "Pix e cartão para aulas particulares e serviços de sites."
-  },
-  {
-   "id": "mailer",
-   "camada": "venda",
-   "rotulo": "MailerLite",
-   "tipo": "remoto",
-   "conta": true,
-   "futuro": false,
-   "descricao": "Newsletter do blog com grupos por tema e funil de lançamento. Você já escolheu o plano grátis."
   },
   {
    "id": "afil",
@@ -468,7 +468,7 @@
    "camada": "web",
    "rotulo": "Umami (analytics)",
    "tipo": "remoto",
-   "conta": false,
+   "conta": true,
    "futuro": false,
    "descricao": "Estatística de visitas sem cookies invasivos. Open source."
   },
@@ -585,9 +585,9 @@
    "camada": "est",
    "rotulo": "Anki",
    "tipo": "local",
-   "conta": false,
+   "conta": true,
    "futuro": false,
-   "descricao": "Repetição espaçada para comandos, conceitos, certificações e concurso. Open source."
+   "descricao": "Repetição espaçada para comandos, conceitos, certificações e concurso. Open source. A conta grátis do AnkiWeb sincroniza notebook e celular."
   },
   {
    "id": "road",
@@ -758,7 +758,7 @@
    "tipo": "remoto",
    "conta": true,
    "futuro": false,
-   "descricao": "DNS, HTTPS, proteção, hospedagem estática dos sites comerciais e redirecionamento de e-mail do domínio."
+   "descricao": "DNS, HTTPS, proteção, hospedagem estática dos sites comerciais e redirecionamento de e-mail do domínio. O Cloudflare Tunnel leva os webhooks de venda até o n8n sem abrir portas em casa."
   },
   {
    "id": "vercel",
@@ -786,15 +786,6 @@
    "conta": true,
    "futuro": true,
    "descricao": "Segunda nuvem, para o mercado maior."
-  },
-  {
-   "id": "anth",
-   "camada": "nuvem",
-   "rotulo": "Claude (assinatura|e API)",
-   "tipo": "remoto",
-   "conta": true,
-   "futuro": false,
-   "descricao": "Assinatura usada pelo app e pelo Claude Code; API para as funções de IA dos sistemas."
   },
   {
    "id": "oapi",
@@ -1112,15 +1103,6 @@
    "descricao": "Cria Azure, AWS e Cloudflare por código."
   },
   {
-   "id": "n8n",
-   "camada": "cnt",
-   "rotulo": "n8n",
-   "tipo": "local",
-   "conta": false,
-   "futuro": false,
-   "descricao": "Automação: novo aluno → e-mail, post agendado, aviso."
-  },
-  {
    "id": "proj",
    "camada": "clc",
    "rotulo": "Projects + memória",
@@ -1164,6 +1146,15 @@
    "conta": true,
    "futuro": false,
    "descricao": "O Claude opera o navegador e os apps do Windows por você, pedindo aprovação nas ações sensíveis."
+  },
+  {
+   "id": "anth",
+   "camada": "clc",
+   "rotulo": "Claude (assinatura|e API)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Assinatura usada pelo app e pelo Claude Code; API para as funções de IA dos sistemas."
   },
   {
    "id": "cgws",
@@ -1226,7 +1217,7 @@
    "tipo": "remoto",
    "conta": true,
    "futuro": false,
-   "descricao": "Já conectados, mas repetem o que você já tem. Decidido: Notion sai, fica o Obsidian. monday, GitBook e Stripe também repetem GitHub Projects, MkDocs e as plataformas de curso."
+   "descricao": "Conectados, mas fora do setup por decisão sua: repetem o Obsidian, o GitHub Projects, o MkDocs e as plataformas de curso. Desconecte para não confundir."
   },
   {
    "id": "pbiz",
@@ -1456,11 +1447,11 @@
   {
    "id": "netw",
    "camada": "lin",
-   "rotulo": "nmap · dig · curl ·|Wireshark",
+   "rotulo": "nmap · dig · curl",
    "tipo": "local",
    "conta": false,
    "futuro": false,
-   "descricao": "Trilha de redes e diagnóstico de containers. Só contra seus próprios alvos."
+   "descricao": "Diagnóstico de rede no Ubuntu: portas, DNS e requisições HTTP. Instalados pelo bootstrap.sh."
   },
   {
    "id": "wsl",
@@ -1670,6 +1661,15 @@
    "descricao": "Vault de estudo, roteiros e planejamento."
   },
   {
+   "id": "syncth",
+   "camada": "win",
+   "rotulo": "Syncthing",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Sincroniza vault, projetos de vídeo e o cofre do KeePassXC entre as máquinas, sem nuvem no meio. Open source."
+  },
+  {
    "id": "dbv",
    "camada": "win",
    "rotulo": "DBeaver · Bruno",
@@ -1695,6 +1695,15 @@
    "conta": false,
    "futuro": false,
    "descricao": "Roda as VMs de estudo."
+  },
+  {
+   "id": "wshark",
+   "camada": "win",
+   "rotulo": "Wireshark",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Captura e lê o tráfego de rede no laboratório de segurança. Instalado pelo winget."
   },
   {
    "id": "vms",
@@ -1882,7 +1891,7 @@
    "rotulo": "Arduino · ESP32 · Pi",
    "tipo": "fisico",
    "conta": false,
-   "futuro": true,
+   "futuro": false,
    "descricao": "Aulas, projeto agro e automação."
   },
   {
@@ -1922,6 +1931,15 @@
    "descricao": "Aula ou PDF grátis que captura o e-mail e abre uma sequência de 5 a 7 e-mails até o mini-curso."
   },
   {
+   "id": "mailer",
+   "camada": "mkt",
+   "rotulo": "MailerLite",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Newsletter do blog com grupos por tema e funil de lançamento. Você já escolheu o plano grátis."
+  },
+  {
    "id": "postiz",
    "camada": "mkt",
    "rotulo": "Postiz (agendador)",
@@ -1937,7 +1955,25 @@
    "tipo": "local",
    "conta": false,
    "futuro": false,
-   "descricao": "Nenhum post sai sem o seu ok (Telegram ou e-mail). Protege o canal de erro da IA."
+   "descricao": "Nenhum post sai sem o seu ok: a peça chega pelo Telegram e você aprova no celular. Protege o canal de erro da IA."
+  },
+  {
+   "id": "tg",
+   "camada": "mkt",
+   "rotulo": "Telegram (avisos)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Bot que avisa no celular: peça pronta para aprovar, serviço fora do ar. Grátis."
+  },
+  {
+   "id": "n8n",
+   "camada": "mkt",
+   "rotulo": "n8n",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Automação: novo aluno → e-mail, post agendado, aviso."
   },
   {
    "id": "horario",
@@ -2127,15 +2163,6 @@
    "conta": false,
    "futuro": true,
    "descricao": "Segundo computador com 12 GB ou mais de memória de vídeo para voz, vídeo e IA locais. Só se sair mais barato que assinaturas e GPU por hora."
-  },
-  {
-   "id": "syncth",
-   "camada": "lin",
-   "rotulo": "Syncthing",
-   "tipo": "local",
-   "conta": false,
-   "futuro": false,
-   "descricao": "Sincroniza vault, projetos de vídeo e o cofre do KeePassXC entre as máquinas, sem nuvem no meio. Open source."
   },
   {
    "id": "b2",
@@ -2678,15 +2705,6 @@
    "descricao": "O guarda-chuva de confiança do grupo: Instituto AMS, Editora AMS Silva, AMtech e os negócios locais apontam para você."
   },
   {
-   "id": "ogbp",
-   "camada": "oper",
-   "rotulo": "Google Perfil|da Empresa",
-   "tipo": "remoto",
-   "conta": true,
-   "futuro": true,
-   "descricao": "O canal local mais importante: loja, assistência e restaurantes. Post semanal, fotos, horários e resposta a avaliações em 24 h."
-  },
-  {
    "id": "oaval",
    "camada": "oper",
    "rotulo": "NPS e avaliações",
@@ -2887,11 +2905,6 @@
    "rotulo": "3ª cópia (futuro)"
   },
   {
-   "de": "rob",
-   "para": "ard",
-   "rotulo": "USB serial"
-  },
-  {
    "de": "tpm",
    "para": "bitl",
    "rotulo": "protege a chave"
@@ -2909,7 +2922,7 @@
   {
    "de": "kee",
    "para": "tfa",
-   "rotulo": "senha + 2FA de cada conta"
+   "rotulo": "senha aqui, código no app"
   },
   {
    "de": "kee",
@@ -3010,11 +3023,6 @@
    "de": "git",
    "para": "gh",
    "rotulo": "push via SSH"
-  },
-  {
-   "de": "tex",
-   "para": "livro",
-   "rotulo": "gera o PDF"
   },
   {
    "de": "sec",
@@ -3243,8 +3251,8 @@
   },
   {
    "de": "zip",
-   "para": "bkp",
-   "rotulo": "compacta"
+   "para": "tmpl",
+   "rotulo": "empacota o download"
   },
   {
    "de": "ptoys",
@@ -3292,8 +3300,8 @@
    "rotulo": "alertas"
   },
   {
-   "de": "gcp",
-   "para": "tf",
+   "de": "tf",
+   "para": "gcp",
    "rotulo": "cria recursos"
   },
   {
@@ -3352,8 +3360,8 @@
    "rotulo": "HTTP"
   },
   {
-   "de": "seq",
-   "para": "api",
+   "de": "api",
+   "para": "seq",
    "rotulo": "logs"
   },
   {
@@ -3362,8 +3370,8 @@
    "rotulo": "consultas"
   },
   {
-   "de": "mailp",
-   "para": "api",
+   "de": "api",
+   "para": "mailp",
    "rotulo": "SMTP de teste"
   },
   {
@@ -3372,8 +3380,8 @@
    "rotulo": "container"
   },
   {
-   "de": "kafka",
-   "para": "api",
+   "de": "api",
+   "para": "kafka",
    "rotulo": "eventos"
   },
   {
@@ -3479,7 +3487,7 @@
   {
    "de": "inpi",
    "para": "cnpj",
-   "rotulo": "titular da marca"
+   "rotulo": "marca passa para a empresa"
   },
   {
    "de": "legal",
@@ -3557,24 +3565,19 @@
    "rotulo": "demo do template"
   },
   {
-   "de": "sentry",
-   "para": "api",
+   "de": "api",
+   "para": "sentry",
    "rotulo": "erros"
   },
   {
-   "de": "sentry",
-   "para": "front",
+   "de": "front",
+   "para": "sentry",
    "rotulo": "erros"
   },
   {
    "de": "kuma",
    "para": "inst",
    "rotulo": "está no ar?"
-  },
-  {
-   "de": "kuma",
-   "para": "cel",
-   "rotulo": "alerta"
   },
   {
    "de": "caddy",
@@ -3627,9 +3630,9 @@
    "rotulo": "prática"
   },
   {
-   "de": "anki",
-   "para": "obsd",
-   "rotulo": "cartões"
+   "de": "obsd",
+   "para": "anki",
+   "rotulo": "notas viram cartões"
   },
   {
    "de": "ghed",
@@ -3827,11 +3830,6 @@
    "rotulo": "novo aluno → e-mail"
   },
   {
-   "de": "n8n",
-   "para": "hotm",
-   "rotulo": "webhook de venda"
-  },
-  {
    "de": "api",
    "para": "otel",
    "rotulo": "telemetria"
@@ -4005,11 +4003,6 @@
    "de": "img",
    "para": "inst",
    "rotulo": "capas"
-  },
-  {
-   "de": "obsd",
-   "para": "livro",
-   "rotulo": "capítulos"
   },
   {
    "de": "obsd",
@@ -4903,7 +4896,7 @@
   },
   {
    "de": "prof",
-   "para": "sites",
+   "para": "hotm",
    "rotulo": "licença para escolas"
   },
   {
@@ -4947,8 +4940,8 @@
    "rotulo": "preço e margem"
   },
   {
-   "de": "isca",
-   "para": "livro",
+   "de": "livro",
+   "para": "isca",
    "rotulo": "capítulo grátis"
   },
   {
@@ -5467,9 +5460,9 @@
    "rotulo": "transcreve"
   },
   {
-   "de": "opipe",
-   "para": "ofly",
-   "rotulo": "alimentado por"
+   "de": "ofly",
+   "para": "opipe",
+   "rotulo": "trabalho na pasta de entrada"
   },
   {
    "de": "oinst",
@@ -5485,6 +5478,196 @@
    "de": "overif",
    "para": "graf",
    "rotulo": "confere"
+  },
+  {
+   "de": "opipe",
+   "para": "anth",
+   "rotulo": "API do Claude"
+  },
+  {
+   "de": "opipe",
+   "para": "tg",
+   "rotulo": "aviso de peça pronta"
+  },
+  {
+   "de": "omarca",
+   "para": "opipe",
+   "rotulo": "guia de marca"
+  },
+  {
+   "de": "tg",
+   "para": "aprov",
+   "rotulo": "aprovar ou recusar"
+  },
+  {
+   "de": "tg",
+   "para": "cel",
+   "rotulo": "notificação"
+  },
+  {
+   "de": "kuma",
+   "para": "tg",
+   "rotulo": "alerta"
+  },
+  {
+   "de": "kuma",
+   "para": "n8n",
+   "rotulo": "está no ar?"
+  },
+  {
+   "de": "cf",
+   "para": "n8n",
+   "rotulo": "túnel dos webhooks"
+  },
+  {
+   "de": "mcp",
+   "para": "metrics",
+   "rotulo": "leitura (usuário do Grafana)"
+  },
+  {
+   "de": "painel",
+   "para": "graf",
+   "rotulo": "roda no Grafana"
+  },
+  {
+   "de": "docker",
+   "para": "metrics",
+   "rotulo": "container"
+  },
+  {
+   "de": "docker",
+   "para": "graf",
+   "rotulo": "container"
+  },
+  {
+   "de": "docker",
+   "para": "kuma",
+   "rotulo": "container"
+  },
+  {
+   "de": "cel",
+   "para": "syncth",
+   "rotulo": "gravações do celular"
+  },
+  {
+   "de": "wshark",
+   "para": "vms",
+   "rotulo": "captura o tráfego do lab"
+  },
+  {
+   "de": "mbs",
+   "para": "facebook",
+   "rotulo": "agenda posts"
+  },
+  {
+   "de": "hotm",
+   "para": "comu",
+   "rotulo": "convite na compra"
+  },
+  {
+   "de": "afil",
+   "para": "nfse",
+   "rotulo": "comissões no carnê-leão"
+  },
+  {
+   "de": "yt",
+   "para": "afil",
+   "rotulo": "links na descrição"
+  },
+  {
+   "de": "conta",
+   "para": "irpf",
+   "rotulo": "declaração anual"
+  },
+  {
+   "de": "umami",
+   "para": "site",
+   "rotulo": "visitas"
+  },
+  {
+   "de": "umami",
+   "para": "amsite",
+   "rotulo": "visitas"
+  },
+  {
+   "de": "learn",
+   "para": "aws",
+   "rotulo": "Skill Builder"
+  },
+  {
+   "de": "auth",
+   "para": "front",
+   "rotulo": "login"
+  },
+  {
+   "de": "rt",
+   "para": "api",
+   "rotulo": "compila e roda"
+  },
+  {
+   "de": "unity",
+   "para": "rob",
+   "rotulo": "simulação nas aulas de robótica"
+  },
+  {
+   "de": "cdup",
+   "para": "obsd",
+   "rotulo": "substituídos pelo Obsidian"
+  },
+  {
+   "de": "banco",
+   "para": "nfse",
+   "rotulo": "paga o DARF"
+  },
+  {
+   "de": "cc",
+   "para": "git",
+   "rotulo": "commit com sua revisão"
+  },
+  {
+   "de": "w11",
+   "para": "vbox",
+   "rotulo": "hipervisor"
+  },
+  {
+   "de": "thm",
+   "para": "obsd",
+   "rotulo": "writeups"
+  },
+  {
+   "de": "obsd",
+   "para": "site",
+   "rotulo": "posts do blog"
+  },
+  {
+   "de": "wa",
+   "para": "sites",
+   "rotulo": "pedido de orçamento"
+  },
+  {
+   "de": "acervos",
+   "para": "licenca",
+   "rotulo": "candidatos e licenças"
+  },
+  {
+   "de": "bci",
+   "para": "beta",
+   "rotulo": "PDF de prévia"
+  },
+  {
+   "de": "errata",
+   "para": "livro",
+   "rotulo": "nova edição"
+  },
+  {
+   "de": "graf",
+   "para": "nplan",
+   "rotulo": "resultado real"
+  },
+  {
+   "de": "metrics",
+   "para": "oanal",
+   "rotulo": "dados da semana"
   }
  ],
  "fluxos": [
@@ -5514,27 +5697,27 @@
     },
     {
      "bloco": "inst",
-     "descricao": "A página no Instituto AMS leva ao checkout."
+     "descricao": "A página do Instituto AMS leva ao checkout; Instagram e YouTube trazem visitas pelo link na bio."
     },
     {
-     "bloco": "ig",
-     "descricao": "O Instagram leva o público até a página."
+     "bloco": "isca",
+     "descricao": "Quem ainda não compra deixa o e-mail pela aula grátis."
     },
     {
      "bloco": "mailer",
-     "descricao": "O MailerLite envia o lançamento para a lista."
+     "descricao": "A sequência de e-mails leva ao mini-curso."
     },
     {
      "bloco": "hotm",
-     "descricao": "A venda acontece no checkout."
+     "descricao": "A venda acontece na plataforma."
     },
     {
      "bloco": "nfse",
-     "descricao": "Você lança as vendas do mês no carnê-leão."
+     "descricao": "Você lança a venda no carnê-leão do mês."
     },
     {
      "bloco": "banco",
-     "descricao": "O dinheiro cai na sua conta separada."
+     "descricao": "O saque cai na conta separada, que paga o DARF."
     },
     {
      "bloco": "caixa",
@@ -5547,16 +5730,8 @@
    "titulo": "Codar com agente e publicar",
    "passos": [
     {
-     "bloco": "vsc",
-     "descricao": "Você abre o projeto no VS Code."
-    },
-    {
-     "bloco": "wsl",
-     "descricao": "O VS Code roda dentro do Ubuntu."
-    },
-    {
      "bloco": "kit",
-     "descricao": "O CLAUDE.md e seus agentes dão as regras."
+     "descricao": "O CLAUDE.md e os seus agentes dão as regras."
     },
     {
      "bloco": "cc",
@@ -5567,8 +5742,12 @@
      "descricao": "O ai-jail limita o agente à pasta do projeto."
     },
     {
+     "bloco": "wsl",
+     "descricao": "Tudo roda no Ubuntu do WSL2, aberto no VS Code."
+    },
+    {
      "bloco": "git",
-     "descricao": "Você revisa e faz o commit."
+     "descricao": "Você revisa e faz o commit assinado."
     },
     {
      "bloco": "gh",
@@ -5593,20 +5772,20 @@
    "titulo": "Conseguir a vaga de dev",
    "passos": [
     {
-     "bloco": "api",
-     "descricao": "Você constrói a API de um sistema AM."
-    },
-    {
      "bloco": "front",
-     "descricao": "E as telas em Next.js."
+     "descricao": "As telas em Next.js com o Aura Design System."
     },
     {
-     "bloco": "gh",
-     "descricao": "O código fica público no GitHub, com README."
+     "bloco": "api",
+     "descricao": "A API ASP.NET Core de um sistema AM."
+    },
+    {
+     "bloco": "tests",
+     "descricao": "Testes de unidade, integração e tela."
     },
     {
      "bloco": "gha",
-     "descricao": "O Actions mostra testes passando (selo verde)."
+     "descricao": "O Actions mostra os testes passando (selo verde)."
     },
     {
      "bloco": "ghp",
@@ -5632,31 +5811,35 @@
    "passos": [
     {
      "bloco": "obsd",
-     "descricao": "Você escreve os capítulos no Obsidian."
+     "descricao": "Você rascunha no Obsidian."
+    },
+    {
+     "bloco": "fonte",
+     "descricao": "O texto vai para a fonte única em Markdown."
+    },
+    {
+     "bloco": "brepo",
+     "descricao": "Fica versionado no repositório do livro, com exercícios e figuras."
+    },
+    {
+     "bloco": "bci",
+     "descricao": "O pipeline confere tudo e monta PDF, EPUB e o arquivo de impressão."
     },
     {
      "bloco": "livro",
-     "descricao": "O texto vira o livro."
+     "descricao": "O livro fica pronto, também para o KDP."
     },
     {
-     "bloco": "tex",
-     "descricao": "O TeX Live gera o PDF."
+     "bloco": "isca",
+     "descricao": "Um capítulo grátis captura o e-mail do leitor."
     },
     {
-     "bloco": "livro",
-     "descricao": "O PDF final fica pronto."
+     "bloco": "mailer",
+     "descricao": "A sequência apresenta o livro."
     },
     {
      "bloco": "hotm",
-     "descricao": "A plataforma vende o PDF."
-    },
-    {
-     "bloco": "ig",
-     "descricao": "O Instagram divulga."
-    },
-    {
-     "bloco": "yt",
-     "descricao": "O YouTube mostra trechos em aula."
+     "descricao": "O leitor compra."
     }
    ]
   },
@@ -5665,24 +5848,20 @@
    "titulo": "Estudar e preparar aula com IA",
    "passos": [
     {
-     "bloco": "nblm",
-     "descricao": "O NotebookLM responde com base nos seus PDFs."
-    },
-    {
      "bloco": "perp",
      "descricao": "O Perplexity traz fontes atuais."
     },
     {
-     "bloco": "gpt",
-     "descricao": "O ChatGPT dá uma segunda explicação."
-    },
-    {
-     "bloco": "capp2",
-     "descricao": "O Claude organiza tudo em plano de aula."
-    },
-    {
      "bloco": "obsd",
-     "descricao": "O resultado fica no vault do Obsidian."
+     "descricao": "Você anota com as suas palavras no Obsidian."
+    },
+    {
+     "bloco": "rag",
+     "descricao": "As suas notas são indexadas."
+    },
+    {
+     "bloco": "nblm",
+     "descricao": "O NotebookLM responde com base nas suas notas e PDFs."
     },
     {
      "bloco": "curso",
@@ -5711,8 +5890,12 @@
      "descricao": "Kali ataca a VM alvo numa rede isolada."
     },
     {
+     "bloco": "thm",
+     "descricao": "O TryHackMe guia o laboratório."
+    },
+    {
      "bloco": "obsd",
-     "descricao": "Você documenta no Obsidian."
+     "descricao": "Você documenta o writeup no Obsidian."
     },
     {
      "bloco": "site",
@@ -5730,23 +5913,11 @@
    "passos": [
     {
      "bloco": "wa",
-     "descricao": "O cliente chega pelo WhatsApp."
+     "descricao": "O cliente pede orçamento pelo WhatsApp."
     },
     {
      "bloco": "sites",
-     "descricao": "Você fecha o serviço de site."
-    },
-    {
-     "bloco": "vsc",
-     "descricao": "Desenvolve no VS Code."
-    },
-    {
-     "bloco": "gh",
-     "descricao": "Versiona no GitHub."
-    },
-    {
-     "bloco": "hostg",
-     "descricao": "Publica na Hostinger do cliente."
+     "descricao": "Você fecha, desenvolve no VS Code, versiona no GitHub e publica na Hostinger do cliente."
     },
     {
      "bloco": "mp",
@@ -5759,6 +5930,10 @@
     {
      "bloco": "banco",
      "descricao": "Recebe na conta separada."
+    },
+    {
+     "bloco": "caixa",
+     "descricao": "O Caixa da Casa registra a entrada."
     }
    ]
   },
@@ -5771,32 +5946,32 @@
      "descricao": "Você grava a tela e o setup."
     },
     {
-     "bloco": "voz",
-     "descricao": "A voz clonada narra o seu roteiro."
+     "bloco": "whis",
+     "descricao": "O Whisper transcreve no notebook."
     },
     {
-     "bloco": "edit",
-     "descricao": "A edição monta o vídeo e os cortes."
+     "bloco": "opipe",
+     "descricao": "O pipeline de conteúdo pega a transcrição a cada 15 minutos."
+    },
+    {
+     "bloco": "oedit",
+     "descricao": "O agente editor monta cortes, legendas, carrossel e posts."
     },
     {
      "bloco": "aprov",
-     "descricao": "Você aprova pelo celular."
-    },
-    {
-     "bloco": "horario",
-     "descricao": "O algoritmo escolhe o horário de cada rede."
+     "descricao": "Você aprova pelo Telegram, no celular."
     },
     {
      "bloco": "n8n",
-     "descricao": "O n8n gera título, descrição e hashtags."
+     "descricao": "O n8n escolhe o horário pelo desempenho anterior."
     },
     {
      "bloco": "postiz",
-     "descricao": "O Postiz publica em todas as redes."
+     "descricao": "O Postiz publica (ou o agendador nativo de cada rede, até você decidir)."
     },
     {
-     "bloco": "metrics",
-     "descricao": "O desempenho volta para o banco e ajusta os horários."
+     "bloco": "ig",
+     "descricao": "O post sai no Instagram e nas outras redes."
     }
    ]
   },
@@ -5804,10 +5979,6 @@
    "id": "medir",
    "titulo": "Medir o lucro de uma campanha",
    "passos": [
-    {
-     "bloco": "calc",
-     "descricao": "A calculadora define o CPA e o ROAS de empate."
-    },
     {
      "bloco": "utm",
      "descricao": "Os links do anúncio levam UTM."
@@ -5817,12 +5988,24 @@
      "descricao": "A campanha roda com orçamento de teste."
     },
     {
+     "bloco": "isca",
+     "descricao": "O anúncio leva à aula grátis."
+    },
+    {
+     "bloco": "mailer",
+     "descricao": "A sequência leva à oferta."
+    },
+    {
      "bloco": "hotm",
      "descricao": "A venda acontece na plataforma."
     },
     {
      "bloco": "hooks",
      "descricao": "O webhook avisa a venda."
+    },
+    {
+     "bloco": "n8n",
+     "descricao": "O n8n grava a venda."
     },
     {
      "bloco": "metrics",
@@ -5835,6 +6018,10 @@
     {
      "bloco": "regras",
      "descricao": "As regras pausam ou escalam."
+    },
+    {
+     "bloco": "calc",
+     "descricao": "A calculadora compara com o CPA e o ROAS de empate."
     }
    ]
   },
@@ -5843,20 +6030,20 @@
    "titulo": "Produzir um capítulo do livro",
    "passos": [
     {
+     "bloco": "metodo",
+     "descricao": "O seu método define as etapas."
+    },
+    {
      "bloco": "modelo",
      "descricao": "O capítulo nasce do seu modelo de criação."
     },
     {
      "bloco": "fonte",
-     "descricao": "Você escreve o texto na fonte única."
+     "descricao": "Você escreve na fonte única."
     },
     {
-     "bloco": "exyaml",
-     "descricao": "Os exercícios entram com gabarito e solução."
-    },
-    {
-     "bloco": "bagentes",
-     "descricao": "Os agentes apontam passos pulados, erros e inconsistências."
+     "bloco": "brepo",
+     "descricao": "Exercícios, figuras e código entram no repositório; os agentes apontam problemas."
     },
     {
      "bloco": "bci",
@@ -5864,7 +6051,7 @@
     },
     {
      "bloco": "beta",
-     "descricao": "Leitores beta e revisor técnico leem."
+     "descricao": "Leitores beta e revisor técnico leem a prévia."
     },
     {
      "bloco": "errata",
@@ -5909,10 +6096,6 @@
      "descricao": "Legenda e créditos são gerados."
     },
     {
-     "bloco": "figcod",
-     "descricao": "As figuras técnicas saem do código."
-    },
-    {
      "bloco": "bci",
      "descricao": "O pipeline confere tudo e monta o livro."
     }
@@ -5923,36 +6106,32 @@
    "titulo": "Abrir o próximo negócio",
    "passos": [
     {
-     "bloco": "nplan",
-     "descricao": "O planejador mostra investimento, rampa e capital mínimo do próximo negócio."
-    },
-    {
      "bloco": "caixa",
-     "descricao": "O lucro do negócio anterior acumula o capital."
+     "descricao": "O lucro do que já funciona acumula o capital."
     },
     {
      "bloco": "graf",
      "descricao": "O painel confirma 3 meses seguidos acima do ponto de equilíbrio."
     },
     {
+     "bloco": "nplan",
+     "descricao": "O planejador mostra investimento, rampa e capital mínimo do próximo negócio."
+    },
+    {
      "bloco": "ncnpj",
      "descricao": "O CNPJ da frente recebe os novos CNAEs ou nasce."
     },
     {
-     "bloco": "nvisa",
-     "descricao": "Licenças, bombeiros e vigilância sanitária antes de abrir."
+     "bloco": "nsushi",
+     "descricao": "A casa abre, com alvará sanitário e bombeiros em dia."
     },
     {
      "bloco": "nkaix",
-     "descricao": "O AM Kaixara entra com cardápio, fichas técnicas e estoque."
+     "descricao": "O AM Kaixara cuida do cardápio, das fichas técnicas e do PDV."
     },
     {
-     "bloco": "nrot",
-     "descricao": "O AM Rotara liga o delivery próprio e a frota."
-    },
-    {
-     "bloco": "nsushi",
-     "descricao": "A casa abre, e os números voltam para o painel."
+     "bloco": "caixa",
+     "descricao": "As vendas do dia voltam para o caixa."
     }
    ]
   },
@@ -5963,6 +6142,10 @@
     {
      "bloco": "ofly",
      "descricao": "Você grava a aula, o reparo, o capítulo ou a decisão da semana."
+    },
+    {
+     "bloco": "opipe",
+     "descricao": "O pipeline pega o arquivo na pasta de entrada."
     },
     {
      "bloco": "whis",
@@ -5977,8 +6160,8 @@
      "descricao": "Você aprova no celular."
     },
     {
-     "bloco": "postiz",
-     "descricao": "O Postiz publica no melhor horário de cada rede."
+     "bloco": "n8n",
+     "descricao": "O n8n agenda e registra a publicação."
     },
     {
      "bloco": "metrics",
@@ -6030,7 +6213,7 @@
     },
     {
      "nome": "Telegram",
-     "obs": "Bot de aprovação dos posts."
+     "obs": "Bot de avisos: peça pronta para aprovar e serviço fora do ar."
     },
     {
      "nome": "Google Ads",
@@ -6133,15 +6316,11 @@
    "itens": [
     {
      "nome": "Já conectados",
-     "obs": "Google, Canva, Figma, MailerLite, Vercel, AWS, Microsoft Learn, Upwork, Lovable, Supabase, Notion, monday, GitBook, Stripe, Shopify, WordPress.com, Spotify."
+     "obs": "Google, Canva, Figma, MailerLite, Vercel, AWS, Microsoft Learn, Upwork, Lovable, Supabase, Cloudflare, vidIQ, Notion, monday, GitBook, Stripe, Shopify, WordPress.com, Spotify."
     },
     {
      "nome": "Revise as permissões",
      "obs": "Cada conector age na sua conta. Desligue os que não usa: Spotify, Shopify, WordPress.com e Notion (você ficou com o Obsidian)."
-    },
-    {
-     "nome": "Sugeridos",
-     "obs": "Cloudflare e vidIQ."
     }
    ]
   },
@@ -6167,6 +6346,10 @@
     {
      "nome": "Google Search Console",
      "obs": "Indexação dos sites."
+    },
+    {
+     "nome": "Umami",
+     "obs": "Visitas dos sites sem cookies invasivos: Umami Cloud grátis ou rodando no seu servidor."
     }
    ]
   },
@@ -6221,6 +6404,10 @@
     {
      "nome": "Programas de afiliados",
      "obs": "Amazon Associados, Hotmart, Eduzz."
+    },
+    {
+     "nome": "Cal.com e Discord",
+     "obs": "Agenda com pagamento para as aulas e a comunidade dos alunos."
     }
    ]
   },

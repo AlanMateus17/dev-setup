@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** O que é publicado e anunciado aqui leva às plataformas de venda; cada venda volta como dado para o banco de métricas.
 
-**23 blocos** · 9 precisam de conta · 13 marcados como futuro
+**26 blocos** · 11 precisam de conta · 13 marcados como futuro
 
 ## Mapa de conexões
 
@@ -16,8 +16,11 @@ flowchart LR
   subgraph L_mkt["Marketing, automação e medição"]
     n_ads["Meta Ads (Instagram, Facebook)"]
     n_isca["Isca grátis + sequência de e-mails"]
+    n_mailer["MailerLite"]
     n_postiz["Postiz (agendador)"]
     n_aprov["Aprovação no celular"]
+    n_tg["Telegram (avisos)"]
+    n_n8n["n8n"]
     n_horario["Algoritmo de horário"]
     n_pixel["Tags de conversão (Pixel, Google…)"]
     n_utm["Padrão de UTM"]
@@ -39,7 +42,14 @@ flowchart LR
     n_infl["Influenciadores e newsletters"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
+    n_oanal["Analista semanal"]
+    n_oatend["Agente atendente (WhatsApp)"]
+    n_ocob["Agente cobrador"]
+    n_ocrm["CRM único + LGPD"]
     n_oedit["Agente editor de conteúdo"]
+    n_opipe["Pipeline de conteúdo"]
+    n_opos["Agente pós-venda"]
+    n_overif["Verificadores"]
   end
   subgraph L_pub["Público e canais"]
     n_facebook["Facebook"]
@@ -52,13 +62,13 @@ flowchart LR
     n_eduzz["Eduzz"]
     n_hotm["Hotmart"]
     n_kiwi["Kiwify"]
-    n_mailer["MailerLite"]
   end
   subgraph L_emp["Pessoa física: impostos e finanças"]
     n_nfse["Carnê-leão (Receita Federal)"]
   end
   subgraph L_web["Vitrine web (sites e domínio)"]
     n_inst["Instituto AMS"]
+    n_mail["E-mail profissional (enviar e receber)"]
     n_site["Site pessoal + blog (Jekyll)"]
   end
   subgraph L_prod["Produtos (o que você vende)"]
@@ -72,14 +82,27 @@ flowchart LR
   subgraph L_cont["Produção de conteúdo"]
     n_voz["Voz clonada (ElevenLabs)"]
   end
+  subgraph L_nuvem["Nuvem, código e entrega"]
+    n_cf["Cloudflare (DNS, Pages, e-mail)"]
+  end
+  subgraph L_obs["Observabilidade"]
+    n_graf["Grafana"]
+    n_kuma["Uptime Kuma"]
+  end
   subgraph L_cnt["Containers, Kubernetes e infra como código"]
-    n_n8n["n8n"]
+    n_docker["Docker + Compose"]
   end
   subgraph L_clc["Claude: recursos, conectores e plugins"]
+    n_cml["Conector MailerLite"]
     n_cvid["Conector vidIQ"]
     n_pbiz["Plugins: small- business + marketing"]
   end
+  subgraph L_ia["Agentes de IA e sandbox"]
+    n_mcp["Servidores MCP"]
+    n_oll["Ollama (3B–4B)"]
+  end
   subgraph L_hw["Hardware"]
+    n_cel["Celular"]
     n_nas["Servidor caseiro (NAS + serviços)"]
   end
   n_ads -->|"alcance pago"| n_ig
@@ -90,7 +113,6 @@ flowchart LR
   n_regras -->|"pausa ou escala"| n_ads
   n_calc -->|"custo máximo por clique"| n_ads
   n_isca -->|"sequência"| n_mailer
-  n_isca -->|"capítulo grátis"| n_livro
   n_inst -->|"captura o e-mail"| n_isca
   n_gads -->|"leva à isca grátis"| n_isca
   n_ttads -->|"leva à isca grátis"| n_isca
@@ -100,6 +122,14 @@ flowchart LR
   n_liads -->|"leva à isca grátis"| n_isca
   n_nativo -->|"leva à isca grátis"| n_isca
   n_infl -->|"leva à isca grátis"| n_isca
+  n_livro -->|"capítulo grátis"| n_isca
+  n_mailer -->|"leva à página de venda"| n_inst
+  n_mailer -->|"lançamento"| n_hotm
+  n_mail -->|"remetente"| n_mailer
+  n_cml -->|"campanhas"| n_mailer
+  n_n8n -->|"novo aluno → e-mail"| n_mailer
+  n_site -->|"formulário da newsletter"| n_mailer
+  n_ocrm -->|"etiquetas"| n_mailer
   n_postiz -->|"publica"| n_yt
   n_postiz -->|"publica"| n_ig
   n_postiz -->|"publica"| n_tiktok
@@ -110,7 +140,22 @@ flowchart LR
   n_nas -->|"roda 24 h"| n_postiz
   n_aprov -->|"libera"| n_n8n
   n_oedit -->|"fila de aprovação"| n_aprov
+  n_tg -->|"aprovar ou recusar"| n_aprov
+  n_tg -->|"notificação"| n_cel
+  n_opipe -->|"aviso de peça pronta"| n_tg
+  n_kuma -->|"alerta"| n_tg
+  n_n8n -->|"grava"| n_metrics
+  n_n8n -->|"roda"| n_ocob
+  n_n8n -->|"roda"| n_opos
+  n_n8n -->|"roda"| n_oatend
+  n_oll -->|"IA local nas automações"| n_n8n
+  n_docker -->|"container"| n_n8n
   n_horario -->|"escolhe o horário"| n_n8n
+  n_hooks -->|"dispara"| n_n8n
+  n_nas -->|"roda 24 h"| n_n8n
+  n_overif -->|"confere"| n_n8n
+  n_kuma -->|"está no ar?"| n_n8n
+  n_cf -->|"túnel dos webhooks"| n_n8n
   n_metrics -->|"desempenho por horário"| n_horario
   n_pixel -->|"eventos de compra"| n_inst
   n_pixel -->|"otimiza para venda"| n_gads
@@ -150,13 +195,12 @@ flowchart LR
   n_calc -->|"custo máximo por clique"| n_nativo
   n_calc -->|"preço e margem"| n_bkit
   n_calc -->|"preço e margem"| n_bcurso
-  n_hooks -->|"dispara"| n_n8n
   n_hotm -->|"venda e reembolso"| n_hooks
   n_kiwi -->|"venda e reembolso"| n_hooks
   n_eduzz -->|"venda e reembolso"| n_hooks
   n_metrics -->|"consultas"| n_painel
   n_metrics -->|"base do carnê-leão"| n_nfse
-  n_n8n -->|"grava"| n_metrics
+  n_metrics -->|"dados da semana"| n_oanal
   n_spotads -->|"gasto"| n_metrics
   n_kwaiads -->|"gasto"| n_metrics
   n_pinads -->|"gasto"| n_metrics
@@ -164,6 +208,9 @@ flowchart LR
   n_nativo -->|"gasto"| n_metrics
   n_infl -->|"custo do post"| n_metrics
   n_nas -->|"roda 24 h"| n_metrics
+  n_mcp -->|"leitura (usuário do Grafana)"| n_metrics
+  n_docker -->|"container"| n_metrics
+  n_painel -->|"roda no Grafana"| n_graf
   n_afprog -->|"afiliados cadastrados"| n_hotm
   n_prosp -->|"novos afiliados"| n_afprog
   n_cvid -->|"canais semelhantes"| n_prosp
@@ -175,7 +222,7 @@ flowchart LR
   n_nativo -->|"leva aos artigos"| n_site
   n_infl -->|"link com cupom"| n_inst
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_ads,n_isca,n_postiz,n_aprov,n_horario,n_pixel,n_utm,n_gads,n_ttads,n_regras,n_calc,n_hooks,n_metrics,n_painel,n_afprog,n_prosp,n_dub,n_spotads,n_kwaiads,n_pinads,n_liads,n_nativo,n_infl desta
+  class n_ads,n_isca,n_mailer,n_postiz,n_aprov,n_tg,n_n8n,n_horario,n_pixel,n_utm,n_gads,n_ttads,n_regras,n_calc,n_hooks,n_metrics,n_painel,n_afprog,n_prosp,n_dub,n_spotads,n_kwaiads,n_pinads,n_liads,n_nativo,n_infl desta
 ```
 
 ## Blocos
@@ -184,8 +231,11 @@ flowchart LR
 |---|---|---|
 | [Meta Ads (Instagram, Facebook)](#ads) | Remoto · precisa de conta · futuro | Primeiro canal pago: anúncios da isca grátis e remarketing do mini-curso. Desde jan/2026 a fatura tem +12,15% de impostos sobre a mídia. |
 | [Isca grátis + sequência de e-mails](#isca) | Local | Aula ou PDF grátis que captura o e-mail e abre uma sequência de 5 a 7 e-mails até o mini-curso. |
+| [MailerLite](#mailer) | Remoto · precisa de conta | Newsletter do blog com grupos por tema e funil de lançamento. Você já escolheu o plano grátis. |
 | [Postiz (agendador)](#postiz) | Local · futuro | Agendador open source (AGPL-3.0) que publica em mais de 28 redes. Roda no seu Docker com PostgreSQL e Redis; integra com o n8n. |
-| [Aprovação no celular](#aprov) | Local | Nenhum post sai sem o seu ok (Telegram ou e-mail). Protege o canal de erro da IA. |
+| [Aprovação no celular](#aprov) | Local | Nenhum post sai sem o seu ok: a peça chega pelo Telegram e você aprova no celular. Protege o canal de erro da IA. |
+| [Telegram (avisos)](#tg) | Remoto · precisa de conta | Bot que avisa no celular: peça pronta para aprovar, serviço fora do ar. Grátis. |
+| [n8n](#n8n) | Local | Automação: novo aluno → e-mail, post agendado, aviso. |
 | [Algoritmo de horário](#horario) | Local · futuro | Calcula o desempenho por rede, dia e hora com os seus dados; 80% dos posts nas melhores faixas, 20% testando faixas novas. |
 | [Tags de conversão (Pixel, Google…)](#pixel) | Remoto · precisa de conta | Pixel + API de Conversões da Meta, tag do Google Ads, pixel do TikTok e as tags de Kwai, Pinterest, LinkedIn e nativos. Sem a tag, o canal não aprende quem compra e a venda não chega ao painel. |
 | [Padrão de UTM](#utm) | Local | Todo link marcado com fonte, meio, campanha e criativo, para ligar cada venda ao anúncio ou post que a trouxe. |
@@ -234,8 +284,7 @@ Aula ou PDF grátis que captura o e-mail e abre uma sequência de 5 a 7 e-mails 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [MailerLite](19-venda.md#mailer) | Plataformas de venda e recebimento | sequência |
-| → envia para | [Livro Lógica e Máquina](16-prod.md#livro) | Produtos (o que você vende) | capítulo grátis |
+| → envia para | [MailerLite](20-mkt.md#mailer) | Marketing, automação e medição | sequência |
 | ← recebe de | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | captura o e-mail |
 | ← recebe de | [Meta Ads (Instagram, Facebook)](20-mkt.md#ads) | Marketing, automação e medição | leva à isca grátis |
 | ← recebe de | [Google e YouTube Ads](20-mkt.md#gads) | Marketing, automação e medição | leva à isca grátis |
@@ -246,6 +295,26 @@ Aula ou PDF grátis que captura o e-mail e abre uma sequência de 5 a 7 e-mails 
 | ← recebe de | [LinkedIn Ads](20-mkt.md#liads) | Marketing, automação e medição | leva à isca grátis |
 | ← recebe de | [Mídia nativa (Taboola, Outbrain)](20-mkt.md#nativo) | Marketing, automação e medição | leva à isca grátis |
 | ← recebe de | [Influenciadores e newsletters](20-mkt.md#infl) | Marketing, automação e medição | leva à isca grátis |
+| ← recebe de | [Livro Lógica e Máquina](16-prod.md#livro) | Produtos (o que você vende) | capítulo grátis |
+
+<a id="mailer"></a>
+
+### MailerLite
+
+*Remoto · precisa de conta*
+
+Newsletter do blog com grupos por tema e funil de lançamento. Você já escolheu o plano grátis.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | leva à página de venda |
+| → envia para | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | lançamento |
+| ← recebe de | [E-mail profissional (enviar e receber)](17-web.md#mail) | Vitrine web (sites e domínio) | remetente |
+| ← recebe de | [Conector MailerLite](07-clc.md#cml) | Claude: recursos, conectores e plugins | campanhas |
+| ← recebe de | [n8n](20-mkt.md#n8n) | Marketing, automação e medição | novo aluno → e-mail |
+| ← recebe de | [Site pessoal + blog (Jekyll)](17-web.md#site) | Vitrine web (sites e domínio) | formulário da newsletter |
+| ← recebe de | [Isca grátis + sequência de e-mails](20-mkt.md#isca) | Marketing, automação e medição | sequência |
+| ← recebe de | [CRM único + LGPD](22-oper.md#ocrm) | Operação do grupo (esteira, marca, qualidade) | etiquetas |
 
 <a id="postiz"></a>
 
@@ -262,7 +331,7 @@ Agendador open source (AGPL-3.0) que publica em mais de 28 redes. Roda no seu Do
 | → envia para | [TikTok](21-pub.md#tiktok) | Público e canais | publica |
 | → envia para | [Facebook](21-pub.md#facebook) | Público e canais | publica |
 | → envia para | [LinkedIn](21-pub.md#li) | Público e canais | publica |
-| ← recebe de | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | manda o post aprovado |
+| ← recebe de | [n8n](20-mkt.md#n8n) | Marketing, automação e medição | manda o post aprovado |
 | ← recebe de | [Padrão de UTM](20-mkt.md#utm) | Marketing, automação e medição | marca os links |
 | ← recebe de | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | roda 24 h |
 
@@ -272,12 +341,54 @@ Agendador open source (AGPL-3.0) que publica em mais de 28 redes. Roda no seu Do
 
 *Local*
 
-Nenhum post sai sem o seu ok (Telegram ou e-mail). Protege o canal de erro da IA.
+Nenhum post sai sem o seu ok: a peça chega pelo Telegram e você aprova no celular. Protege o canal de erro da IA.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | libera |
+| → envia para | [n8n](20-mkt.md#n8n) | Marketing, automação e medição | libera |
 | ← recebe de | [Agente editor de conteúdo](22-oper.md#oedit) | Operação do grupo (esteira, marca, qualidade) | fila de aprovação |
+| ← recebe de | [Telegram (avisos)](20-mkt.md#tg) | Marketing, automação e medição | aprovar ou recusar |
+
+<a id="tg"></a>
+
+### Telegram (avisos)
+
+*Remoto · precisa de conta*
+
+Bot que avisa no celular: peça pronta para aprovar, serviço fora do ar. Grátis.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Aprovação no celular](20-mkt.md#aprov) | Marketing, automação e medição | aprovar ou recusar |
+| → envia para | [Celular](01-hw.md#cel) | Hardware | notificação |
+| ← recebe de | [Pipeline de conteúdo](22-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | aviso de peça pronta |
+| ← recebe de | [Uptime Kuma](09-obs.md#kuma) | Observabilidade | alerta |
+
+<a id="n8n"></a>
+
+### n8n
+
+*Local*
+
+Automação: novo aluno → e-mail, post agendado, aviso.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [MailerLite](20-mkt.md#mailer) | Marketing, automação e medição | novo aluno → e-mail |
+| → envia para | [Postiz (agendador)](20-mkt.md#postiz) | Marketing, automação e medição | manda o post aprovado |
+| → envia para | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | grava |
+| → envia para | [Agente cobrador](22-oper.md#ocob) | Operação do grupo (esteira, marca, qualidade) | roda |
+| → envia para | [Agente pós-venda](22-oper.md#opos) | Operação do grupo (esteira, marca, qualidade) | roda |
+| → envia para | [Agente atendente (WhatsApp)](22-oper.md#oatend) | Operação do grupo (esteira, marca, qualidade) | roda |
+| ← recebe de | [Ollama (3B–4B)](05-ia.md#oll) | Agentes de IA e sandbox | IA local nas automações |
+| ← recebe de | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
+| ← recebe de | [Aprovação no celular](20-mkt.md#aprov) | Marketing, automação e medição | libera |
+| ← recebe de | [Algoritmo de horário](20-mkt.md#horario) | Marketing, automação e medição | escolhe o horário |
+| ← recebe de | [Webhooks de venda](20-mkt.md#hooks) | Marketing, automação e medição | dispara |
+| ← recebe de | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | roda 24 h |
+| ← recebe de | [Verificadores](22-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | confere |
+| ← recebe de | [Uptime Kuma](09-obs.md#kuma) | Observabilidade | está no ar? |
+| ← recebe de | [Cloudflare (DNS, Pages, e-mail)](11-nuvem.md#cf) | Nuvem, código e entrega | túnel dos webhooks |
 
 <a id="horario"></a>
 
@@ -289,7 +400,7 @@ Calcula o desempenho por rede, dia e hora com os seus dados; 80% dos posts nas m
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | escolhe o horário |
+| → envia para | [n8n](20-mkt.md#n8n) | Marketing, automação e medição | escolhe o horário |
 | ← recebe de | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | desempenho por horário |
 
 <a id="pixel"></a>
@@ -422,7 +533,7 @@ Hotmart, Kiwify e Eduzz avisam cada venda e reembolso; o n8n grava no banco.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | dispara |
+| → envia para | [n8n](20-mkt.md#n8n) | Marketing, automação e medição | dispara |
 | ← recebe de | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | venda e reembolso |
 | ← recebe de | [Kiwify](19-venda.md#kiwi) | Plataformas de venda e recebimento | venda e reembolso |
 | ← recebe de | [Eduzz](19-venda.md#eduzz) | Plataformas de venda e recebimento | venda e reembolso |
@@ -440,7 +551,8 @@ Tabelas de produtos, vendas, gastos, ferramentas e impostos.
 | → envia para | [Painel de lucro (Grafana)](20-mkt.md#painel) | Marketing, automação e medição | consultas |
 | → envia para | [Algoritmo de horário](20-mkt.md#horario) | Marketing, automação e medição | desempenho por horário |
 | → envia para | [Carnê-leão (Receita Federal)](18-emp.md#nfse) | Pessoa física: impostos e finanças | base do carnê-leão |
-| ← recebe de | [n8n](08-cnt.md#n8n) | Containers, Kubernetes e infra como código | grava |
+| → envia para | [Analista semanal](22-oper.md#oanal) | Operação do grupo (esteira, marca, qualidade) | dados da semana |
+| ← recebe de | [n8n](20-mkt.md#n8n) | Marketing, automação e medição | grava |
 | ← recebe de | [Meta Ads (Instagram, Facebook)](20-mkt.md#ads) | Marketing, automação e medição | gasto por campanha |
 | ← recebe de | [Google e YouTube Ads](20-mkt.md#gads) | Marketing, automação e medição | gasto |
 | ← recebe de | [TikTok Ads](20-mkt.md#ttads) | Marketing, automação e medição | gasto |
@@ -451,6 +563,8 @@ Tabelas de produtos, vendas, gastos, ferramentas e impostos.
 | ← recebe de | [Mídia nativa (Taboola, Outbrain)](20-mkt.md#nativo) | Marketing, automação e medição | gasto |
 | ← recebe de | [Influenciadores e newsletters](20-mkt.md#infl) | Marketing, automação e medição | custo do post |
 | ← recebe de | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | roda 24 h |
+| ← recebe de | [Servidores MCP](05-ia.md#mcp) | Agentes de IA e sandbox | leitura (usuário do Grafana) |
+| ← recebe de | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
 
 <a id="painel"></a>
 
@@ -463,6 +577,7 @@ Lucro por produto, canal, campanha e país, atualizado sozinho.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Regras de corte](20-mkt.md#regras) | Marketing, automação e medição | dispara alertas |
+| → envia para | [Grafana](09-obs.md#graf) | Observabilidade | roda no Grafana |
 | ← recebe de | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | consultas |
 
 <a id="afprog"></a>
