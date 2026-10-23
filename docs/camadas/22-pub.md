@@ -1,7 +1,7 @@
 <!-- Arquivo GERADO por tools/gerar_docs.py a partir de data/. Edite os dados, não este arquivo. -->
 
 
-# Camada 21 · Público e canais
+# Camada 22 · Público e canais
 
 [← Arquitetura](../arquitetura.md) · [Índice da documentação](../README.md)
 
@@ -160,8 +160,8 @@ Agenda posts e reels do Instagram com antecedência e mostra as métricas. Grát
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instagram](21-pub.md#ig) | Público e canais | agenda posts |
-| → envia para | [Facebook](21-pub.md#facebook) | Público e canais | agenda posts |
+| → envia para | [Instagram](22-pub.md#ig) | Público e canais | agenda posts |
+| → envia para | [Facebook](22-pub.md#facebook) | Público e canais | agenda posts |
 
 <a id="ig"></a>
 
@@ -173,17 +173,17 @@ Canal principal de venda: posts, reels e link na bio para o Instituto AMS.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | link na bio |
-| → envia para | [WhatsApp Business](21-pub.md#wa) | Público e canais | contato direto |
+| → envia para | [Instituto AMS](18-web.md#inst) | Vitrine web (sites e domínio) | link na bio |
+| → envia para | [WhatsApp Business](22-pub.md#wa) | Público e canais | contato direto |
 | ← recebe de | [Celular](01-hw.md#cel) | Hardware | posta reels |
 | ← recebe de | [ShareX](03-win.md#sharex) | Windows 11, apps e máquinas virtuais | GIFs e prints |
-| ← recebe de | [Meta Business Suite](21-pub.md#mbs) | Público e canais | agenda posts |
-| ← recebe de | [Meta Ads (Instagram, Facebook)](20-mkt.md#ads) | Marketing, automação e medição | alcance pago |
-| ← recebe de | [Plugins: small- business + marketing](07-clc.md#pbiz) | Claude: recursos, conectores e plugins | conteúdo |
-| ← recebe de | [Canva · Krita · Inkscape](12-cont.md#img) | Produção de conteúdo | posts |
-| ← recebe de | [Alunos e ex-alunos](21-pub.md#alunos) | Público e canais | seguem |
-| ← recebe de | [Postiz (agendador)](20-mkt.md#postiz) | Marketing, automação e medição | publica |
-| ← recebe de | [Marca pessoal Alan Mateus](22-oper.md#omarca) | Operação do grupo (esteira, marca, qualidade) | perfil |
+| ← recebe de | [Meta Business Suite](22-pub.md#mbs) | Público e canais | agenda posts |
+| ← recebe de | [Meta Ads (Instagram, Facebook)](21-mkt.md#ads) | Marketing, automação e medição | alcance pago |
+| ← recebe de | [Plugins: small- business + marketing](08-clc.md#pbiz) | Claude: recursos, conectores e plugins | conteúdo |
+| ← recebe de | [Canva · Krita · Inkscape](13-cont.md#img) | Produção de conteúdo | posts |
+| ← recebe de | [Alunos e ex-alunos](22-pub.md#alunos) | Público e canais | seguem |
+| ← recebe de | [Postiz (agendador)](21-mkt.md#postiz) | Marketing, automação e medição | publica |
+| ← recebe de | [Marca pessoal Alan Mateus](23-oper.md#omarca) | Operação do grupo (esteira, marca, qualidade) | perfil |
 
 <a id="yt"></a>
 
@@ -195,17 +195,17 @@ Aulas e vídeos de vendas. Gera público para os cursos e para o livro.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [YouTube (membros)](19-venda.md#ytm) | Plataformas de venda e recebimento | membros |
-| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | link na descrição |
-| → envia para | [Afiliados (Amazon, Hotmart…)](19-venda.md#afil) | Plataformas de venda e recebimento | links na descrição |
-| ← recebe de | [Gemini (pago)](06-chat.md#gem) | Assistentes de IA (chat, pesquisa e estudo) | resume vídeos |
-| ← recebe de | [Conector vidIQ](07-clc.md#cvid) | Claude: recursos, conectores e plugins | tendências |
-| ← recebe de | [DaVinci Resolve ou Kdenlive](12-cont.md#edit) | Produção de conteúdo | vídeo final |
-| ← recebe de | [Postiz (agendador)](20-mkt.md#postiz) | Marketing, automação e medição | publica |
-| ← recebe de | [Dublagem (YouTube + ElevenLabs)](20-mkt.md#dub) | Marketing, automação e medição | faixas de áudio |
-| ← recebe de | [Spotify Ad Studio](20-mkt.md#spotads) | Marketing, automação e medição | lembrança da marca |
-| ← recebe de | [Canal build in public](22-oper.md#obuild) | Operação do grupo (esteira, marca, qualidade) | vídeo semanal |
-| ← recebe de | [Marca pessoal Alan Mateus](22-oper.md#omarca) | Operação do grupo (esteira, marca, qualidade) | canal |
+| → envia para | [YouTube (membros)](20-venda.md#ytm) | Plataformas de venda e recebimento | membros |
+| → envia para | [Instituto AMS](18-web.md#inst) | Vitrine web (sites e domínio) | link na descrição |
+| → envia para | [Afiliados (Amazon, Hotmart…)](20-venda.md#afil) | Plataformas de venda e recebimento | links na descrição |
+| ← recebe de | [Gemini (pago)](07-chat.md#gem) | Assistentes de IA (chat, pesquisa e estudo) | resume vídeos |
+| ← recebe de | [Conector vidIQ](08-clc.md#cvid) | Claude: recursos, conectores e plugins | tendências |
+| ← recebe de | [DaVinci Resolve ou Kdenlive](13-cont.md#edit) | Produção de conteúdo | vídeo final |
+| ← recebe de | [Postiz (agendador)](21-mkt.md#postiz) | Marketing, automação e medição | publica |
+| ← recebe de | [Dublagem (YouTube + ElevenLabs)](21-mkt.md#dub) | Marketing, automação e medição | faixas de áudio |
+| ← recebe de | [Spotify Ad Studio](21-mkt.md#spotads) | Marketing, automação e medição | lembrança da marca |
+| ← recebe de | [Canal build in public](23-oper.md#obuild) | Operação do grupo (esteira, marca, qualidade) | vídeo semanal |
+| ← recebe de | [Marca pessoal Alan Mateus](23-oper.md#omarca) | Operação do grupo (esteira, marca, qualidade) | canal |
 
 <a id="li"></a>
 
@@ -217,11 +217,11 @@ Vitrine para a vaga de dev: projetos, posts técnicos e certificações.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Recrutadores](21-pub.md#recr) | Público e canais | perfil e posts |
-| → envia para | [Site pessoal + blog (Jekyll)](17-web.md#site) | Vitrine web (sites e domínio) | link |
-| ← recebe de | [Grok](06-chat.md#grok) | Assistentes de IA (chat, pesquisa e estudo) | tendências do setor |
-| ← recebe de | [Postiz (agendador)](20-mkt.md#postiz) | Marketing, automação e medição | publica |
-| ← recebe de | [Marca pessoal Alan Mateus](22-oper.md#omarca) | Operação do grupo (esteira, marca, qualidade) | carreira e B2B |
+| → envia para | [Recrutadores](22-pub.md#recr) | Público e canais | perfil e posts |
+| → envia para | [Site pessoal + blog (Jekyll)](18-web.md#site) | Vitrine web (sites e domínio) | link |
+| ← recebe de | [Grok](07-chat.md#grok) | Assistentes de IA (chat, pesquisa e estudo) | tendências do setor |
+| ← recebe de | [Postiz (agendador)](21-mkt.md#postiz) | Marketing, automação e medição | publica |
+| ← recebe de | [Marca pessoal Alan Mateus](23-oper.md#omarca) | Operação do grupo (esteira, marca, qualidade) | carreira e B2B |
 
 <a id="wa"></a>
 
@@ -233,11 +233,11 @@ Atendimento de alunos particulares e clientes de sites.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Aulas particulares](16-prod.md#aulas) | Produtos (o que você vende) | agenda |
-| → envia para | [Sites para pequenas empresas](16-prod.md#sites) | Produtos (o que você vende) | pedido de orçamento |
+| → envia para | [Aulas particulares](17-prod.md#aulas) | Produtos (o que você vende) | agenda |
+| → envia para | [Sites para pequenas empresas](17-prod.md#sites) | Produtos (o que você vende) | pedido de orçamento |
 | ← recebe de | [Celular](01-hw.md#cel) | Hardware | atendimento |
-| ← recebe de | [Instagram](21-pub.md#ig) | Público e canais | contato direto |
-| ← recebe de | [Agente atendente (WhatsApp)](22-oper.md#oatend) | Operação do grupo (esteira, marca, qualidade) | responde |
+| ← recebe de | [Instagram](22-pub.md#ig) | Público e canais | contato direto |
+| ← recebe de | [Agente atendente (WhatsApp)](23-oper.md#oatend) | Operação do grupo (esteira, marca, qualidade) | responde |
 
 <a id="ogbp"></a>
 
@@ -249,10 +249,10 @@ O canal local mais importante: loja, assistência e restaurantes. Post semanal, 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Loja AMtech (assistência)](15-neg.md#nloja) | Negócios do grupo (Barbacena) | presença local |
-| → envia para | [Sushi (delivery)](15-neg.md#nsushi) | Negócios do grupo (Barbacena) | presença local |
-| → envia para | [Padaria + café da manhã + almoço](15-neg.md#npad) | Negócios do grupo (Barbacena) | presença local |
-| ← recebe de | [Agente pós-venda](22-oper.md#opos) | Operação do grupo (esteira, marca, qualidade) | pede avaliação |
+| → envia para | [Loja AMtech (assistência)](16-neg.md#nloja) | Negócios do grupo (Barbacena) | presença local |
+| → envia para | [Sushi (delivery)](16-neg.md#nsushi) | Negócios do grupo (Barbacena) | presença local |
+| → envia para | [Padaria + café da manhã + almoço](16-neg.md#npad) | Negócios do grupo (Barbacena) | presença local |
+| ← recebe de | [Agente pós-venda](23-oper.md#opos) | Operação do grupo (esteira, marca, qualidade) | pede avaliação |
 
 <a id="comu"></a>
 
@@ -264,8 +264,8 @@ Alunos do curso juntos: tira-dúvidas, retenção e indicação.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Mini-curso Lógica de Programação](16-prod.md#curso) | Produtos (o que você vende) | suporte aos alunos |
-| ← recebe de | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | convite na compra |
+| → envia para | [Mini-curso Lógica de Programação](17-prod.md#curso) | Produtos (o que você vende) | suporte aos alunos |
+| ← recebe de | [Hotmart](20-venda.md#hotm) | Plataformas de venda e recebimento | convite na compra |
 
 <a id="seo"></a>
 
@@ -277,9 +277,9 @@ Pessoas chegando ao blog e aos sites pelos artigos.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Site pessoal + blog (Jekyll)](17-web.md#site) | Vitrine web (sites e domínio) | visitas |
-| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | visitas |
-| ← recebe de | [Google Search Console](17-web.md#gsc) | Vitrine web (sites e domínio) | indexação |
+| → envia para | [Site pessoal + blog (Jekyll)](18-web.md#site) | Vitrine web (sites e domínio) | visitas |
+| → envia para | [Instituto AMS](18-web.md#inst) | Vitrine web (sites e domínio) | visitas |
+| ← recebe de | [Google Search Console](18-web.md#gsc) | Vitrine web (sites e domínio) | indexação |
 
 <a id="alunos"></a>
 
@@ -291,8 +291,8 @@ Seu público inicial: alunos do EMTI, ex-alunos e contatos.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Catálogo do HTML](17-web.md#catal) | Vitrine web (sites e domínio) | usam o site |
-| → envia para | [Instagram](21-pub.md#ig) | Público e canais | seguem |
+| → envia para | [Catálogo do HTML](18-web.md#catal) | Vitrine web (sites e domínio) | usam o site |
+| → envia para | [Instagram](22-pub.md#ig) | Público e canais | seguem |
 
 <a id="recr"></a>
 
@@ -304,9 +304,9 @@ Quem decide a vaga de dev. Olham GitHub, LinkedIn e o site.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [LinkedIn](21-pub.md#li) | Público e canais | perfil e posts |
-| ← recebe de | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | portfólio |
-| ← recebe de | [Site pessoal + blog (Jekyll)](17-web.md#site) | Vitrine web (sites e domínio) | currículo |
+| ← recebe de | [LinkedIn](22-pub.md#li) | Público e canais | perfil e posts |
+| ← recebe de | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | portfólio |
+| ← recebe de | [Site pessoal + blog (Jekyll)](18-web.md#site) | Vitrine web (sites e domínio) | currículo |
 
 <a id="tiktok"></a>
 
@@ -318,8 +318,8 @@ Cortes verticais diários. Conteúdo realista de IA precisa do rótulo de IA.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | link na bio |
-| ← recebe de | [Postiz (agendador)](20-mkt.md#postiz) | Marketing, automação e medição | publica |
+| → envia para | [Instituto AMS](18-web.md#inst) | Vitrine web (sites e domínio) | link na bio |
+| ← recebe de | [Postiz (agendador)](21-mkt.md#postiz) | Marketing, automação e medição | publica |
 
 <a id="facebook"></a>
 
@@ -331,10 +331,10 @@ Reels e posts da página da marca; mesma conta de anúncios do Instagram.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | link |
-| ← recebe de | [Postiz (agendador)](20-mkt.md#postiz) | Marketing, automação e medição | publica |
-| ← recebe de | [Meta Business Suite](21-pub.md#mbs) | Público e canais | agenda posts |
+| → envia para | [Instituto AMS](18-web.md#inst) | Vitrine web (sites e domínio) | link |
+| ← recebe de | [Postiz (agendador)](21-mkt.md#postiz) | Marketing, automação e medição | publica |
+| ← recebe de | [Meta Business Suite](22-pub.md#mbs) | Público e canais | agenda posts |
 
 ---
 
-[↑ Camada 22 · Operação do grupo (esteira, marca, qualidade)](22-oper.md) · [↓ Camada 20 · Marketing, automação e medição](20-mkt.md)
+[↑ Camada 23 · Operação do grupo (esteira, marca, qualidade)](23-oper.md) · [↓ Camada 21 · Marketing, automação e medição](21-mkt.md)

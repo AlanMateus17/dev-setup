@@ -8,7 +8,7 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 
 | Camadas | Blocos | Conexões | Fluxos | Contas necessárias |
 |---|---|---|---|---|
-| 22 | 305 | 562 | 13 | 101 |
+| 23 | 322 | 598 | 15 | 103 |
 
 ## Por onde começar
 
@@ -26,23 +26,24 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 
 ```mermaid
 flowchart TB
-  L_oper["22 · Operação do grupo (esteira, marca, qualidade)"]
-  L_pub["21 · Público e canais"]
-  L_mkt["20 · Marketing, automação e medição"]
-  L_venda["19 · Plataformas de venda e recebimento"]
-  L_emp["18 · Pessoa física: impostos e finanças"]
-  L_web["17 · Vitrine web (sites e domínio)"]
-  L_prod["16 · Produtos (o que você vende)"]
-  L_neg["15 · Negócios do grupo (Barbacena)"]
-  L_editora["14 · Editora AMS Silva (produção de livros)"]
-  L_est["13 · Estudo e carreira"]
-  L_cont["12 · Produção de conteúdo"]
-  L_nuvem["11 · Nuvem, código e entrega"]
-  L_app["10 · Aplicação: sistemas AM (Aura)"]
-  L_obs["09 · Observabilidade"]
-  L_cnt["08 · Containers, Kubernetes e infra como código"]
-  L_clc["07 · Claude: recursos, conectores e plugins"]
-  L_chat["06 · Assistentes de IA (chat, pesquisa e estudo)"]
+  L_oper["23 · Operação do grupo (esteira, marca, qualidade)"]
+  L_pub["22 · Público e canais"]
+  L_mkt["21 · Marketing, automação e medição"]
+  L_venda["20 · Plataformas de venda e recebimento"]
+  L_emp["19 · Pessoa física: impostos e finanças"]
+  L_web["18 · Vitrine web (sites e domínio)"]
+  L_prod["17 · Produtos (o que você vende)"]
+  L_neg["16 · Negócios do grupo (Barbacena)"]
+  L_editora["15 · Editora AMS Silva (produção de livros)"]
+  L_est["14 · Estudo e carreira"]
+  L_cont["13 · Produção de conteúdo"]
+  L_nuvem["12 · Nuvem, código e entrega"]
+  L_app["11 · Aplicação: sistemas AM (Aura)"]
+  L_obs["10 · Observabilidade"]
+  L_cnt["09 · Containers, Kubernetes e infra como código"]
+  L_clc["08 · Claude: recursos, conectores e plugins"]
+  L_chat["07 · Assistentes de IA (chat, pesquisa e estudo)"]
+  L_dados["06 · Dados e treino de IA"]
   L_ia["05 · Agentes de IA e sandbox"]
   L_lin["04 · Linux (Ubuntu no WSL2, Arch no 2º disco)"]
   L_win["03 · Windows 11, apps e máquinas virtuais"]
@@ -64,13 +65,14 @@ flowchart TB
   L_obs --- L_cnt
   L_cnt --- L_clc
   L_clc --- L_chat
-  L_chat --- L_ia
+  L_chat --- L_dados
+  L_dados --- L_ia
   L_ia --- L_lin
   L_lin --- L_win
   L_win --- L_seg
   L_seg --- L_hw
   classDef cam fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class L_oper,L_pub,L_mkt,L_venda,L_emp,L_web,L_prod,L_neg,L_editora,L_est,L_cont,L_nuvem,L_app,L_obs,L_cnt,L_clc,L_chat,L_ia,L_lin,L_win,L_seg,L_hw cam
+  class L_oper,L_pub,L_mkt,L_venda,L_emp,L_web,L_prod,L_neg,L_editora,L_est,L_cont,L_nuvem,L_app,L_obs,L_cnt,L_clc,L_chat,L_dados,L_ia,L_lin,L_win,L_seg,L_hw cam
 ```
 
 ## A ideia em uma frase
@@ -81,28 +83,29 @@ O Windows cuida só do que precisa de janela, GPU e segurança; todo o trabalho 
 
 | # | Camada | Blocos | Destaques |
 |---|---|---|---|
-| 22 | [Operação do grupo (esteira, marca, qualidade)](docs/camadas/22-oper.md) | 21 | Portfólio de ofertas, Esteira de ofertas, Padrão de qualidade, Marca pessoal Alan Mateus… |
-| 21 | [Público e canais](docs/camadas/21-pub.md) | 12 | Meta Business Suite, Instagram, YouTube, LinkedIn… |
-| 20 | [Marketing, automação e medição](docs/camadas/20-mkt.md) | 26 | Meta Ads (Instagram, Facebook), Isca grátis + sequência de e-mails, MailerLite, Postiz (agendador)… |
-| 19 | [Plataformas de venda e recebimento](docs/camadas/19-venda.md) | 11 | Pix Automático + gateway (ex.: Asaas), Agenda online (Cal.com), CRM simples (planilha), Hotmart… |
-| 18 | [Pessoa física: impostos e finanças](docs/camadas/18-emp.md) | 11 | Registro de marca (INPI), Termos, privacidade (LGPD) e contratos, Certificado digital (e-CNPJ), API de NFS-e (ex.: Focus NFe)… |
-| 17 | [Vitrine web (sites e domínio)](docs/camadas/17-web.md) | 9 | E-mail profissional (enviar e receber), Domínio (Registro.br), Site pessoal + blog (Jekyll), Instituto AMS… |
-| 16 | [Produtos (o que você vende)](docs/camadas/16-prod.md) | 7 | Mini-curso Lógica de Programação, Formações (TI, Matemática, Finanças), Templates e código-fonte, Livro Lógica e Máquina… |
-| 15 | [Negócios do grupo (Barbacena)](docs/camadas/15-neg.md) | 16 | AMtech Software (projetos e SaaS), Loja AMtech (assistência), Peças sem estoque (sob encomenda), Ponto de retirada (Shopee e ML)… |
-| 14 | [Editora AMS Silva (produção de livros)](docs/camadas/14-editora.md) | 36 | Selo Editora AMS Silva, Repositório do livro, Seu modelo de criação, Fonte única (Markdown + Pandoc)… |
-| 13 | [Estudo e carreira](docs/camadas/13-est.md) | 6 | Microsoft Learn + AWS Skill Builder, TryHackMe / Hack The Box, Alura · Rocketseat · DIO · Udemy, Anki… |
-| 12 | [Produção de conteúdo](docs/camadas/12-cont.md) | 6 | OBS Studio, DaVinci Resolve ou Kdenlive, Audacity, Canva · Krita · Inkscape… |
-| 11 | [Nuvem, código e entrega](docs/camadas/11-nuvem.md) | 16 | Armazenamento de arquivos (Blob/R2), E-mail transacional (Resend, SES…), SonarQube Cloud, Projects · ADRs · MkDocs… |
-| 10 | [Aplicação: sistemas AM (Aura)](docs/camadas/10-app.md) | 17 | OpenAPI + Scalar, PostGIS + MapLibre, Storybook, Clean Arch + DDD… |
-| 09 | [Observabilidade](docs/camadas/09-obs.md) | 8 | Sentry (erros), Uptime Kuma, Seq (logs), Loki + Tempo… |
-| 08 | [Containers, Kubernetes e infra como código](docs/camadas/08-cnt.md) | 12 | Caddy (proxy + HTTPS), Mailpit, Kafka, kubectl · Helm · k9s… |
-| 07 | [Claude: recursos, conectores e plugins](docs/camadas/07-clc.md) | 19 | Projects + memória, Artifacts (Docs, Slides, Sheets…), Pesquisa aprofundada, Tarefas agendadas… |
-| 06 | [Assistentes de IA (chat, pesquisa e estudo)](docs/camadas/06-chat.md) | 10 | Claude (app), ChatGPT, Gemini (pago), NotebookLM… |
+| 23 | [Operação do grupo (esteira, marca, qualidade)](docs/camadas/23-oper.md) | 21 | Portfólio de ofertas, Esteira de ofertas, Padrão de qualidade, Marca pessoal Alan Mateus… |
+| 22 | [Público e canais](docs/camadas/22-pub.md) | 12 | Meta Business Suite, Instagram, YouTube, LinkedIn… |
+| 21 | [Marketing, automação e medição](docs/camadas/21-mkt.md) | 26 | Meta Ads (Instagram, Facebook), Isca grátis + sequência de e-mails, MailerLite, Postiz (agendador)… |
+| 20 | [Plataformas de venda e recebimento](docs/camadas/20-venda.md) | 11 | Pix Automático + gateway (ex.: Asaas), Agenda online (Cal.com), CRM simples (planilha), Hotmart… |
+| 19 | [Pessoa física: impostos e finanças](docs/camadas/19-emp.md) | 11 | Registro de marca (INPI), Termos, privacidade (LGPD) e contratos, Certificado digital (e-CNPJ), API de NFS-e (ex.: Focus NFe)… |
+| 18 | [Vitrine web (sites e domínio)](docs/camadas/18-web.md) | 9 | E-mail profissional (enviar e receber), Domínio (Registro.br), Site pessoal + blog (Jekyll), Instituto AMS… |
+| 17 | [Produtos (o que você vende)](docs/camadas/17-prod.md) | 7 | Mini-curso Lógica de Programação, Formações (TI, Matemática, Finanças), Templates e código-fonte, Livro Lógica e Máquina… |
+| 16 | [Negócios do grupo (Barbacena)](docs/camadas/16-neg.md) | 16 | AMtech Software (projetos e SaaS), Loja AMtech (assistência), Peças sem estoque (sob encomenda), Ponto de retirada (Shopee e ML)… |
+| 15 | [Editora AMS Silva (produção de livros)](docs/camadas/15-editora.md) | 36 | Selo Editora AMS Silva, Repositório do livro, Seu modelo de criação, Fonte única (Markdown + Pandoc)… |
+| 14 | [Estudo e carreira](docs/camadas/14-est.md) | 7 | Microsoft Learn + AWS Skill Builder, TryHackMe / Hack The Box, Alura · Rocketseat · DIO · Udemy, Anki… |
+| 13 | [Produção de conteúdo](docs/camadas/13-cont.md) | 6 | OBS Studio, DaVinci Resolve ou Kdenlive, Audacity, Canva · Krita · Inkscape… |
+| 12 | [Nuvem, código e entrega](docs/camadas/12-nuvem.md) | 16 | Armazenamento de arquivos (Blob/R2), E-mail transacional (Resend, SES…), SonarQube Cloud, Projects · ADRs · MkDocs… |
+| 11 | [Aplicação: sistemas AM (Aura)](docs/camadas/11-app.md) | 17 | OpenAPI + Scalar, PostGIS + MapLibre, Storybook, Clean Arch + DDD… |
+| 10 | [Observabilidade](docs/camadas/10-obs.md) | 8 | Sentry (erros), Uptime Kuma, Seq (logs), Loki + Tempo… |
+| 09 | [Containers, Kubernetes e infra como código](docs/camadas/09-cnt.md) | 12 | Caddy (proxy + HTTPS), Mailpit, Kafka, kubectl · Helm · k9s… |
+| 08 | [Claude: recursos, conectores e plugins](docs/camadas/08-clc.md) | 19 | Projects + memória, Artifacts (Docs, Slides, Sheets…), Pesquisa aprofundada, Tarefas agendadas… |
+| 07 | [Assistentes de IA (chat, pesquisa e estudo)](docs/camadas/07-chat.md) | 10 | Claude (app), ChatGPT, Gemini (pago), NotebookLM… |
+| 06 | [Dados e treino de IA](docs/camadas/06-dados.md) | 13 | Python de dados (Polars, Jupyter), DuckDB + Parquet, dbt Core, Airflow (orquestração)… |
 | 05 | [Agentes de IA e sandbox](docs/camadas/05-ia.md) | 8 | Modelos locais: Qwen · Gemma · Llama, Base de conhecimento (RAG) das suas notas, Claude Code, ai-jail… |
 | 04 | [Linux (Ubuntu no WSL2, Arch no 2º disco)](docs/camadas/04-lin.md) | 9 | Neovim, nmap · dig · curl, Ubuntu (WSL2), Git + SSH + gh… |
-| 03 | [Windows 11, apps e máquinas virtuais](docs/camadas/03-win.md) | 23 | Tailscale (VPN), .wslconfig + localhost, Terminal · PowerShell · winget, Excalidraw / draw.io… |
+| 03 | [Windows 11, apps e máquinas virtuais](docs/camadas/03-win.md) | 24 | Tailscale (VPN), .wslconfig + localhost, Terminal · PowerShell · winget, Excalidraw / draw.io… |
 | 02 | [Segurança e cofre](docs/camadas/02-seg.md) | 9 | Commits assinados (chave SSH), restic (backup criptografado), Chave física (YubiKey), TPM + Secure Boot… |
-| 01 | [Hardware](docs/camadas/01-hw.md) | 13 | Nobreak, Base com cooler, SSD SATA 2,5", Acer Nitro (32 GB, GTX 1650)… |
+| 01 | [Hardware](docs/camadas/01-hw.md) | 15 | Nobreak, Base com cooler, SSD SATA 2,5", Acer Nitro (32 GB, GTX 1650)… |
 
 ## Stack fixa dos sistemas
 
@@ -113,7 +116,7 @@ C#/.NET 10 · ASP.NET Core (Controllers) · Clean Architecture + DDD · PostgreS
 ```mermaid
 flowchart LR
   D["data/ecossistema.json<br/>data/mapa.json"] --> G["tools/gerar_docs.py"]
-  G --> M["docs/*.md<br/>22 páginas de camada"]
+  G --> M["docs/*.md<br/>23 páginas de camada"]
   G --> H["docs/index.html<br/>diagrama interativo"]
   G --> R["README.md"]
   CI["GitHub Actions"] -->|"valida e confere"| G

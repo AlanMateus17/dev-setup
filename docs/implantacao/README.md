@@ -4,19 +4,19 @@
 
 Como sair do planejamento para o setup funcionando: scripts que instalam, scripts que conferem e um roteiro com o critério de pronto de cada passo. Quando a última fase passar, alimentar o sistema é só colocar arquivos numa pasta.
 
-- [Roteiro de implantação](roteiro.md): 18 fases e 129 passos, na ordem, com o que cada passo implanta (gerado)
+- [Roteiro de implantação](roteiro.md): 19 fases e 141 passos, na ordem, com o que cada passo implanta (gerado)
 - [`acompanhamento.html`](acompanhamento.html): a mesma lista para marcar o progresso no navegador (gerado)
 
 ## Tudo o que está no setup está no roteiro
 
-Cada passo diz quais blocos do [mapa do setup](../mapa.html) ele implanta. Os 305 blocos têm lugar:
+Cada passo diz quais blocos do [mapa do setup](../mapa.html) ele implanta. Os 322 blocos têm lugar:
 
 | Onde | Blocos | O que significa |
 |---|---:|---|
-| Num passo do roteiro | 217 | Você instala, configura ou cria seguindo o passo |
+| Num passo do roteiro | 235 | Você instala, configura ou cria seguindo o passo |
 | Peça a construir | 9 | Ainda não existe como código: as peças do pipeline de imagens e os agentes da editora, que começam com o capítulo 1 |
 | Não se instala | 3 | Públicos (alunos, recrutadores) e os conectores que você decidiu não usar |
-| Para depois | 76 | Marcados como futuro no mapa: os 9 negócios físicos, CNPJ, anúncios pagos, AWS, Kubernetes, YubiKey e afins |
+| Para depois | 75 | Marcados como futuro no mapa: os 9 negócios físicos, CNPJ, anúncios pagos, AWS, Kubernetes, YubiKey e afins |
 
 O CI confere isso a cada envio: se alguém acrescentar um bloco ao mapa e esquecer o roteiro, o teste falha e diz qual bloco ficou de fora. A lista completa está no fim do [roteiro](roteiro.md#cobertura) e do acompanhamento.
 
@@ -79,6 +79,7 @@ Testado aqui, num Ubuntu 24.04 igual ao do WSL:
 - O pipeline de conteúdo com 10 testes automáticos (transcrição, fila, quarentena, nomes repetidos) e uma rodada simulada.
 - O `compose.yaml` validado pelo Docker Compose; os scripts passaram no ShellCheck e no PSScriptAnalyzer.
 - Os scripts do Windows rodaram no PowerShell 7 com `winget`, `wsl` e `code` simulados.
+- `lab-ia.sh` rodado de verdade: instalou PyTorch 2.14 (CUDA 13), Transformers, PEFT, TRL, DuckDB, dbt, PySpark e MLflow; um job PySpark e uma consulta DuckDB rodaram; na segunda vez não refez nada.
 - `nuvem.sh` rodado de verdade duas vezes: instalou Azure CLI 2.91, Vercel CLI e Wrangler; na segunda vez não refez nada.
 
 Não deu para testar aqui:
@@ -86,6 +87,7 @@ Não deu para testar aqui:
 - O Windows de verdade (winget, WSL, criptografia). Por isso todo script do Windows tem o modo que só mostra o que faria, e o verificador confere depois.
 - Baixar as imagens Docker e subir a stack (o ambiente daqui bloqueia os registros de imagens). O primeiro `docker compose up -d` no seu notebook é o teste.
 - O instalador do Node pelo fnm e o do Claude Code, que dependem de sites bloqueados aqui.
+- A GPU: aqui não há placa NVIDIA, então o PyTorch rodou na CPU. No notebook, `nvidia-smi` dentro do Ubuntu e o próprio `lab-ia.sh` mostram se a GTX 1650 foi vista; para o CUDA 13 o driver da NVIDIA no Windows precisa estar atualizado.
 - O Terraform, que vem do repositório da HashiCorp, também bloqueado aqui. O `nuvem.sh` avisa com ERRO se falhar no seu notebook.
 - Os nomes das extensões do VS Code no Marketplace (bloqueado aqui). Se algum mudou, o script mostra ERRO só naquela extensão e segue.
 - A chamada real à API do Claude e ao Telegram, que precisam das suas chaves.
@@ -106,12 +108,13 @@ Não deu para testar aqui:
 | Domínio .com.br | Anuidade do Registro.br |
 | Azure, Resend, Sentry, SonarQube Cloud | Começam no plano grátis; ligue o alerta de orçamento da Azure antes de criar qualquer recurso |
 | ElevenLabs (voz clonada) | Plano pago, só se decidir usar |
+| GPU para treinar | Kaggle grátis (30 horas por semana de T4 de 16 GB); se faltar, RunPod com crédito pré-pago, de cerca de US$ 0,27 a 0,90 por hora em GPU de 24 GB (out/2026) |
 | ISBN e ficha catalográfica | Por livro, na CBL, quando o primeiro livro estiver pronto |
 | Todo o resto (n8n, Grafana, PostgreSQL, Uptime Kuma, Postiz, ai-jail, restic) | Grátis, rodando no seu notebook |
 
 ## Ritmo sugerido
 
-São cerca de 67 horas no total: 46 no núcleo (fases 0 a 13) e 21 na expansão (14 a 17). No bloco de construção da sua semana (quinta e sexta de manhã, umas 5 horas):
+São cerca de 84 horas no total: 46 no núcleo (fases 0 a 13) e 38 na expansão (14 a 18). No bloco de construção da sua semana (quinta e sexta de manhã, umas 5 horas):
 
 | Semana | Fases |
 |---|---|
@@ -122,6 +125,7 @@ São cerca de 67 horas no total: 46 no núcleo (fases 0 a 13) e 21 na expansão 
 | 5 e 6 | 10 Contas, canais e sites |
 | 7 a 9 | 11 Vendas e finanças no CPF |
 | 10 | 12 Vendas medidas, 13 Teste do núcleo |
-| Depois | 14 Sistemas AM e 15 Nuvem quando o primeiro sistema entrar na esteira; 16 Editora quando o capítulo 1 e o seu modelo estiverem prontos; 17 Estudo, contínuo |
+| Depois | 14 Sistemas AM e 15 Nuvem quando o primeiro sistema entrar na esteira; 16 Editora quando o capítulo 1 e o seu modelo estiverem prontos; 18 Estudo, contínuo |
+| Quando quiser, depois da fase 2 | 17 Dados, IA e pendrives: os pendrives e o laboratório não dependem de nada além do Linux pronto; o fine-tuning vem depois do dataset |
 
 O pipeline de conteúdo já funciona no fim da semana 4. Daí em diante, cada aula que você gravar já vira peças, enquanto as contas e as vendas vão sendo montadas.

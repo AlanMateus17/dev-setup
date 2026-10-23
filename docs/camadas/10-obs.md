@@ -1,7 +1,7 @@
 <!-- Arquivo GERADO por tools/gerar_docs.py a partir de data/. Edite os dados, não este arquivo. -->
 
 
-# Camada 09 · Observabilidade
+# Camada 10 · Observabilidade
 
 [← Arquitetura](../arquitetura.md) · [Índice da documentação](../README.md)
 
@@ -94,8 +94,8 @@ Avisa quando um erro acontece em produção, com o ponto exato no código. Plano
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | erros |
-| ← recebe de | [Next.js + Aura Design System](10-app.md#front) | Aplicação: sistemas AM (Aura) | erros |
+| ← recebe de | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | erros |
+| ← recebe de | [Next.js + Aura Design System](11-app.md#front) | Aplicação: sistemas AM (Aura) | erros |
 
 <a id="kuma"></a>
 
@@ -107,10 +107,10 @@ Verifica a cada minuto se os sites e APIs estão no ar e avisa no celular. Open 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | está no ar? |
-| → envia para | [Telegram (avisos)](20-mkt.md#tg) | Marketing, automação e medição | alerta |
-| → envia para | [n8n](20-mkt.md#n8n) | Marketing, automação e medição | está no ar? |
-| ← recebe de | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
+| → envia para | [Instituto AMS](18-web.md#inst) | Vitrine web (sites e domínio) | está no ar? |
+| → envia para | [Telegram (avisos)](21-mkt.md#tg) | Marketing, automação e medição | alerta |
+| → envia para | [n8n](21-mkt.md#n8n) | Marketing, automação e medição | está no ar? |
+| ← recebe de | [Docker + Compose](09-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
 
 <a id="seq"></a>
 
@@ -122,7 +122,7 @@ Visualizador de logs simples para começar, antes da stack Grafana.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | logs |
+| ← recebe de | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | logs |
 
 <a id="loki"></a>
 
@@ -134,7 +134,7 @@ Logs e rastreamento de requisições entre serviços, consultados no Grafana.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Grafana](09-obs.md#graf) | Observabilidade | consultas |
+| → envia para | [Grafana](10-obs.md#graf) | Observabilidade | consultas |
 
 <a id="otel"></a>
 
@@ -146,9 +146,9 @@ Coleta logs, métricas e traces da API.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Prometheus](09-obs.md#prom) | Observabilidade | métricas |
-| ← recebe de | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | telemetria |
-| ← recebe de | [.NET Aspire](09-obs.md#aspire) | Observabilidade | painel de dev |
+| → envia para | [Prometheus](10-obs.md#prom) | Observabilidade | métricas |
+| ← recebe de | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | telemetria |
+| ← recebe de | [.NET Aspire](10-obs.md#aspire) | Observabilidade | painel de dev |
 
 <a id="prom"></a>
 
@@ -160,8 +160,8 @@ Guarda as métricas.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Grafana](09-obs.md#graf) | Observabilidade | painéis |
-| ← recebe de | [OpenTelemetry](09-obs.md#otel) | Observabilidade | métricas |
+| → envia para | [Grafana](10-obs.md#graf) | Observabilidade | painéis |
+| ← recebe de | [OpenTelemetry](10-obs.md#otel) | Observabilidade | métricas |
 
 <a id="graf"></a>
 
@@ -173,14 +173,14 @@ Painéis e alertas.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Planejador do Grupo](15-neg.md#nplan) | Negócios do grupo (Barbacena) | resultado real |
-| ← recebe de | [Loki + Tempo](09-obs.md#loki) | Observabilidade | consultas |
-| ← recebe de | [Prometheus](09-obs.md#prom) | Observabilidade | painéis |
-| ← recebe de | [Caixa da Casa / AM Rendara](18-emp.md#caixa) | Pessoa física: impostos e finanças | DRE por negócio |
-| ← recebe de | [Analista semanal](22-oper.md#oanal) | Operação do grupo (esteira, marca, qualidade) | lê o painel |
-| ← recebe de | [Verificadores](22-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | confere |
-| ← recebe de | [Painel de lucro (Grafana)](20-mkt.md#painel) | Marketing, automação e medição | roda no Grafana |
-| ← recebe de | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
+| → envia para | [Planejador do Grupo](16-neg.md#nplan) | Negócios do grupo (Barbacena) | resultado real |
+| ← recebe de | [Loki + Tempo](10-obs.md#loki) | Observabilidade | consultas |
+| ← recebe de | [Prometheus](10-obs.md#prom) | Observabilidade | painéis |
+| ← recebe de | [Caixa da Casa / AM Rendara](19-emp.md#caixa) | Pessoa física: impostos e finanças | DRE por negócio |
+| ← recebe de | [Analista semanal](23-oper.md#oanal) | Operação do grupo (esteira, marca, qualidade) | lê o painel |
+| ← recebe de | [Verificadores](23-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | confere |
+| ← recebe de | [Painel de lucro (Grafana)](21-mkt.md#painel) | Marketing, automação e medição | roda no Grafana |
+| ← recebe de | [Docker + Compose](09-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
 
 <a id="aspire"></a>
 
@@ -192,9 +192,9 @@ Sobe o sistema inteiro no dev com painel próprio.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [OpenTelemetry](09-obs.md#otel) | Observabilidade | painel de dev |
-| → envia para | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | sobe os serviços |
+| → envia para | [OpenTelemetry](10-obs.md#otel) | Observabilidade | painel de dev |
+| → envia para | [Docker + Compose](09-cnt.md#docker) | Containers, Kubernetes e infra como código | sobe os serviços |
 
 ---
 
-[↑ Camada 10 · Aplicação: sistemas AM (Aura)](10-app.md) · [↓ Camada 08 · Containers, Kubernetes e infra como código](08-cnt.md)
+[↑ Camada 11 · Aplicação: sistemas AM (Aura)](11-app.md) · [↓ Camada 09 · Containers, Kubernetes e infra como código](09-cnt.md)

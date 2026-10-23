@@ -4,11 +4,11 @@
 
 [← Implantação](README.md)
 
-18 fases, 129 passos, cerca de **67 h 25 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+19 fases, 141 passos, cerca de **83 h 45 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
-**Cobertura:** os 305 blocos do [mapa do setup](../mapa.html) estão todos aqui: 217 entram nos passos, 9 são peças a construir, 3 não se instalam e 76 ficam para depois. O CI falha se um bloco novo do setup ficar fora do roteiro ([lista completa](#cobertura)).
+**Cobertura:** os 322 blocos do [mapa do setup](../mapa.html) estão todos aqui: 235 entram nos passos, 9 são peças a construir, 3 não se instalam e 75 ficam para depois. O CI falha se um bloco novo do setup ficar fora do roteiro ([lista completa](#cobertura)).
 
 | Fase | Objetivo | Passos | Tempo |
 |---|---|---:|---:|
@@ -29,7 +29,8 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [14 · Base dos sistemas AM](#f14) | Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e deploy. | 7 | 5 h 40 min |
 | [15 · Nuvem e deploy](#f15) | As contas de nuvem criadas por código, com custo sob controle. | 7 | 6 h 15 min |
 | [16 · Editora](#f16) | O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão. | 8 | 8 h 30 min |
-| [17 · Estudo contínuo](#f17) | As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém. | 4 | 1 h 25 min |
+| [17 · Dados, IA e pendrives](#f17) | O laboratório de dados e de treino no ar, um modelo seu rodando no Ollama e os pendrives de Kali e Arch dando boot. | 12 | 16 h 20 min |
+| [18 · Estudo contínuo](#f18) | As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém. | 4 | 1 h 25 min |
 
 <a id="f0"></a>
 
@@ -370,7 +371,7 @@ ollama pull <nome do modelo escolhido no catálogo do Ollama>
 ```
 
 - [ ] **Pronto quando:** verificar.ps1 mostra Ollama OK com 1 modelo
-- Implanta: Ollama (3B–4B) · Modelos locais: Qwen · Gemma · Llama
+- Implanta: Ollama · Modelos locais: Qwen · Gemma · Llama
 
 ### 4.5 Ligar os servidores MCP do Claude Code: GitHub e o banco de métricas só para leitura
 
@@ -1144,25 +1145,137 @@ O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.
 
 <a id="f17"></a>
 
-## 17 · Estudo contínuo
+## 17 · Dados, IA e pendrives
+
+O laboratório de dados e de treino no ar, um modelo seu rodando no Ollama e os pendrives de Kali e Arch dando boot.
+
+### 17.1 Gravar o pendrive do Kali com persistência criptografada
+
+**Você** · 1 h 30 min
+
+```bash
+winget install --id Rufus.Rufus -e
+```
+
+- [ ] **Pronto quando:** O Kali abre pelo F12 e um arquivo salvo continua lá depois de reiniciar
+- Siga kali.org/docs/usb. Antes do primeiro boot: suspenda o BitLocker, desligue o Secure Boot e, ao voltar ao Windows, religue o Secure Boot e reative o BitLocker (veja Secure Boot e BitLocker no mapa). Só contra alvos seus ou autorizados.
+- Implanta: Pendrive Kali (persistência) · Rufus (grava pendrives)
+
+### 17.2 Instalar o Arch num pendrive rápido ou SSD USB, pelo guia oficial
+
+**Você** · 3 h 00 min
+
+- [ ] **Pronto quando:** O Arch portátil dá boot e abre o terminal com os seus dotfiles
+- Use um pendrive para a ISO e outro (64 GB ou mais, USB 3) ou um SSD USB como disco do sistema. Mesmo cuidado com Secure Boot e BitLocker.
+- Implanta: Pendrive Arch (instalação portátil)
+
+### 17.3 Conferir a GPU dentro do Ubuntu
+
+**Script** · 5 min
+
+```bash
+nvidia-smi
+```
+
+- [ ] **Pronto quando:** Aparece a GTX 1650 com o driver do Windows
+- Implanta: PyTorch + CUDA (WSL2)
+
+### 17.4 Montar o laboratório de dados e de IA
+
+**Script** · 30 min
+
+```bash
+bash scripts/wsl/lab-ia.sh
+```
+
+- [ ] **Pronto quando:** Termina com 'Pronto' e mostra a GPU vista pelo PyTorch
+- Implanta: Python de dados (Polars, Jupyter) · DuckDB + Parquet · Spark (PySpark) · PyTorch + CUDA (WSL2) · MLflow (experimentos) · llama.cpp (GGUF)
+
+### 17.5 Rodar um modelo 8B no Ollama com parte na GPU
+
+**Você** · 15 min
+
+```bash
+ollama run llama3.1:8b
+```
+
+- [ ] **Pronto quando:** 'ollama ps' mostra o modelo dividido entre CPU e GPU e ele responde
+- Mais lento que um 3B ou 4B, que cabem inteiros na placa. Use o 8B quando a qualidade importar mais que a velocidade.
+- Implanta: Modelos locais: Qwen · Gemma · Llama · Ollama
+
+### 17.6 Fazer o Data Engineering Zoomcamp e os cursos de IA, um módulo por semana
+
+**Você** · 1 h 00 min
+
+- [ ] **Pronto quando:** Módulo 1 entregue no GitHub e anotado no Obsidian
+- O tempo é só para começar; o curso leva 10 semanas. Para a IA vão as suas anotações, nunca o material do curso.
+- Implanta: Zoomcamp de dados + cursos de IA
+
+### 17.7 Criar o projeto dbt sobre o banco de métricas
+
+**Claude com você** · 1 h 30 min
+
+- [ ] **Pronto quando:** 'dbt build' verde e o painel de lucro lendo os modelos
+- Implanta: dbt Core
+
+### 17.8 Subir o Airflow e agendar o dbt todo dia
+
+**Claude com você** · 1 h 30 min
+
+- [ ] **Pronto quando:** A rotina diária aparece verde no Airflow por 3 dias seguidos
+- Implanta: Airflow (orquestração)
+
+### 17.9 Criar as contas do Hugging Face e do Kaggle (e do RunPod, só se precisar)
+
+**Você** · 30 min
+
+- [ ] **Pronto quando:** Token do Hugging Face no KeePassXC; Kaggle com telefone verificado para liberar a GPU
+- No RunPod, só crédito pré-pago. Nunca ponha token em notebook público.
+- Implanta: Hugging Face (modelos e Hub) · Kaggle · Colab (GPU grátis) · GPU por hora (RunPod e afins)
+
+### 17.10 Montar o primeiro dataset só com conteúdo seu
+
+**Claude com você** · 2 h 00 min
+
+- [ ] **Pronto quando:** Algumas centenas de pares de pergunta e resposta revisados por você, com conjunto de teste separado
+- Fontes: suas notas, exercícios, livro e aulas que você gravou. Nada de cursos de terceiros; nada de dados de alunos sem consentimento.
+- Implanta: Seus datasets (só conteúdo seu) · Avaliação dos modelos
+
+### 17.11 Primeiro fine-tuning QLoRA de um 8B no Kaggle
+
+**Claude com você** · 3 h 00 min
+
+- [ ] **Pronto quando:** Adaptador salvo no Hugging Face privado e o treino registrado no MLflow
+- Implanta: Unsloth (QLoRA) · Kaggle · Colab (GPU grátis)
+
+### 17.12 Avaliar contra o modelo base e levar o seu modelo para o Ollama
+
+**Claude com você** · 1 h 30 min
+
+- [ ] **Pronto quando:** O seu modelo ganha do base no conjunto de teste e responde no Ollama do notebook
+- Implanta: Avaliação dos modelos · llama.cpp (GGUF) · Ollama
+
+<a id="f18"></a>
+
+## 18 · Estudo contínuo
 
 As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 
-### 17.1 Pedir o GitHub Education como professor e ligar o Copilot
+### 18.1 Pedir o GitHub Education como professor e ligar o Copilot
 
 **Você** · 20 min
 
 - [ ] **Pronto quando:** Benefícios aprovados e Copilot ativo no VS Code
 - Implanta: GitHub Education · GitHub Copilot
 
-### 17.2 Montar as trilhas: Microsoft Learn, AWS Skill Builder, roadmap.sh e laboratórios do TryHackMe
+### 18.2 Montar as trilhas: Microsoft Learn, AWS Skill Builder, roadmap.sh e laboratórios do TryHackMe
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** Uma trilha de cada em andamento, anotada no Obsidian
 - Implanta: Microsoft Learn + AWS Skill Builder · roadmap.sh + Akita · TryHackMe / Hack The Box
 
-### 17.3 Organizar as contas de aluno (Alura, Rocketseat, DIO, Udemy)
+### 18.3 Organizar as contas de aluno (Alura, Rocketseat, DIO, Udemy)
 
 **Você** · 15 min
 
@@ -1170,7 +1283,7 @@ As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 - A licença é para assistir e estudar. Para a IA vão só as suas anotações e os seus projetos.
 - Implanta: Alura · Rocketseat · DIO · Udemy
 
-### 17.4 Criar os baralhos do Anki (comandos, conceitos, certificações, concurso)
+### 18.4 Criar os baralhos do Anki (comandos, conceitos, certificações, concurso)
 
 **Você** · 20 min
 
@@ -1216,7 +1329,7 @@ Marcados como futuro no mapa: entram quando a renda, a decisão ou o negócio ju
 | Marketing, automação e medição | Meta Ads (Instagram, Facebook) · Algoritmo de horário · Google e YouTube Ads · TikTok Ads · Programa de afiliados · Dublagem (YouTube + ElevenLabs) · Spotify Ad Studio · Kwai Ads · Pinterest Ads · LinkedIn Ads · Mídia nativa (Taboola, Outbrain) · Influenciadores e newsletters |
 | Pessoa física: impostos e finanças | Certificado digital (e-CNPJ) · API de NFS-e (ex.: Focus NFe) · CNPJ (futuro) |
 | Produtos (o que você vende) | Formações (TI, Matemática, Finanças) · Sistemas AM (SaaS) |
-| Nuvem, código e entrega | Google Cloud · AWS · GPU na nuvem por hora |
+| Nuvem, código e entrega | Google Cloud · AWS |
 | Aplicação: sistemas AM (Aura) | PostGIS + MapLibre · Serviços aura- (10) · IA: RAG + pgvector · aura-licensing · AM Kaixara (PDV e cardápio) · AM Rotara (entregas) |
 | Observabilidade | Loki + Tempo |
 | Containers, Kubernetes e infra como código | Kafka · kubectl · Helm · k9s · Datomic local · RabbitMQ · Kubernetes local (kind) |

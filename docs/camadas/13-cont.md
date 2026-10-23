@@ -1,7 +1,7 @@
 <!-- Arquivo GERADO por tools/gerar_docs.py a partir de data/. Edite os dados, não este arquivo. -->
 
 
-# Camada 12 · Produção de conteúdo
+# Camada 13 · Produção de conteúdo
 
 [← Arquitetura](../arquitetura.md) · [Índice da documentação](../README.md)
 
@@ -44,7 +44,7 @@ flowchart LR
     n_refs["Quadro de referências"]
   end
   subgraph L_nuvem["Nuvem, código e entrega"]
-    n_gpuh["GPU na nuvem por hora"]
+    n_gpuh["GPU por hora (RunPod e afins)"]
   end
   subgraph L_clc["Claude: recursos, conectores e plugins"]
     n_ccan["Conectores Canva + Figma"]
@@ -52,6 +52,9 @@ flowchart LR
   end
   subgraph L_chat["Assistentes de IA (chat, pesquisa e estudo)"]
     n_gpt["ChatGPT"]
+  end
+  subgraph L_dados["Dados e treino de IA"]
+    n_dset["Seus datasets (só conteúdo seu)"]
   end
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
     n_obsd["Obsidian + Git"]
@@ -80,6 +83,7 @@ flowchart LR
   n_whis -->|"transcrição"| n_obsd
   n_whis -->|"transcrição"| n_oedit
   n_whis -->|"transcreve"| n_opipe
+  n_whis -->|"transcrições das suas aulas"| n_dset
   n_voz -->|"sua voz em outros idiomas"| n_dub
   n_voz -->|"narração"| n_bcurso
   n_ws -->|"voz e vídeo locais"| n_voz
@@ -110,8 +114,8 @@ Grava tela, câmera e áudio das aulas e vídeos.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [DaVinci Resolve ou Kdenlive](12-cont.md#edit) | Produção de conteúdo | gravação |
-| → envia para | [Whisper (local)](12-cont.md#whis) | Produção de conteúdo | áudio |
+| → envia para | [DaVinci Resolve ou Kdenlive](13-cont.md#edit) | Produção de conteúdo | gravação |
+| → envia para | [Whisper (local)](13-cont.md#whis) | Produção de conteúdo | áudio |
 | ← recebe de | [Microfone + câmera](01-hw.md#mic) | Hardware | áudio e vídeo USB |
 
 <a id="edit"></a>
@@ -124,13 +128,13 @@ Edição de vídeo. Os dois têm versão grátis.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [YouTube](21-pub.md#yt) | Público e canais | vídeo final |
-| → envia para | [Mini-curso Lógica de Programação](16-prod.md#curso) | Produtos (o que você vende) | aulas editadas |
-| → envia para | [Curso por seção](14-editora.md#bcurso) | Editora AMS Silva (produção de livros) | aulas |
-| ← recebe de | [Plugins: Hostinger · Adobe · Cloudinary](07-clc.md#phst) | Claude: recursos, conectores e plugins | imagem e vídeo |
-| ← recebe de | [OBS Studio](12-cont.md#obss) | Produção de conteúdo | gravação |
-| ← recebe de | [Audacity](12-cont.md#aud) | Produção de conteúdo | áudio limpo |
-| ← recebe de | [Voz clonada (ElevenLabs)](12-cont.md#voz) | Produção de conteúdo | narração |
+| → envia para | [YouTube](22-pub.md#yt) | Público e canais | vídeo final |
+| → envia para | [Mini-curso Lógica de Programação](17-prod.md#curso) | Produtos (o que você vende) | aulas editadas |
+| → envia para | [Curso por seção](15-editora.md#bcurso) | Editora AMS Silva (produção de livros) | aulas |
+| ← recebe de | [Plugins: Hostinger · Adobe · Cloudinary](08-clc.md#phst) | Claude: recursos, conectores e plugins | imagem e vídeo |
+| ← recebe de | [OBS Studio](13-cont.md#obss) | Produção de conteúdo | gravação |
+| ← recebe de | [Audacity](13-cont.md#aud) | Produção de conteúdo | áudio limpo |
+| ← recebe de | [Voz clonada (ElevenLabs)](13-cont.md#voz) | Produção de conteúdo | narração |
 | ← recebe de | [SSD externo (USB-C 10 Gbps)](01-hw.md#ssdext) | Hardware | projetos de vídeo |
 
 <a id="aud"></a>
@@ -143,7 +147,7 @@ Limpa ruído e ajusta o áudio.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [DaVinci Resolve ou Kdenlive](12-cont.md#edit) | Produção de conteúdo | áudio limpo |
+| → envia para | [DaVinci Resolve ou Kdenlive](13-cont.md#edit) | Produção de conteúdo | áudio limpo |
 
 <a id="img"></a>
 
@@ -155,12 +159,12 @@ Capas, posts e thumbnails. Canva precisa de conta; Krita e Inkscape são open so
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instagram](21-pub.md#ig) | Público e canais | posts |
-| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | capas |
-| → envia para | [Quadro de referências](14-editora.md#refs) | Editora AMS Silva (produção de livros) | rascunhos de ideia |
-| → envia para | [Filtro de licença e fichas](14-editora.md#licenca) | Editora AMS Silva (produção de livros) | ficha com prompt e ferramenta |
-| ← recebe de | [ChatGPT](06-chat.md#gpt) | Assistentes de IA (chat, pesquisa e estudo) | gera imagens |
-| ← recebe de | [Conectores Canva + Figma](07-clc.md#ccan) | Claude: recursos, conectores e plugins | posts e capas |
+| → envia para | [Instagram](22-pub.md#ig) | Público e canais | posts |
+| → envia para | [Instituto AMS](18-web.md#inst) | Vitrine web (sites e domínio) | capas |
+| → envia para | [Quadro de referências](15-editora.md#refs) | Editora AMS Silva (produção de livros) | rascunhos de ideia |
+| → envia para | [Filtro de licença e fichas](15-editora.md#licenca) | Editora AMS Silva (produção de livros) | ficha com prompt e ferramenta |
+| ← recebe de | [ChatGPT](07-chat.md#gpt) | Assistentes de IA (chat, pesquisa e estudo) | gera imagens |
+| ← recebe de | [Conectores Canva + Figma](08-clc.md#ccan) | Claude: recursos, conectores e plugins | posts e capas |
 
 <a id="whis"></a>
 
@@ -173,9 +177,10 @@ Transcreve as aulas para legenda, artigo e capítulo.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | transcrição |
-| → envia para | [Agente editor de conteúdo](22-oper.md#oedit) | Operação do grupo (esteira, marca, qualidade) | transcrição |
-| → envia para | [Pipeline de conteúdo](22-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | transcreve |
-| ← recebe de | [OBS Studio](12-cont.md#obss) | Produção de conteúdo | áudio |
+| → envia para | [Agente editor de conteúdo](23-oper.md#oedit) | Operação do grupo (esteira, marca, qualidade) | transcrição |
+| → envia para | [Pipeline de conteúdo](23-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | transcreve |
+| → envia para | [Seus datasets (só conteúdo seu)](06-dados.md#dset) | Dados e treino de IA | transcrições das suas aulas |
+| ← recebe de | [OBS Studio](13-cont.md#obss) | Produção de conteúdo | áudio |
 
 <a id="voz"></a>
 
@@ -187,13 +192,13 @@ Clonagem profissional da sua própria voz (plano Creator em diante, uso comercia
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [DaVinci Resolve ou Kdenlive](12-cont.md#edit) | Produção de conteúdo | narração |
-| → envia para | [Dublagem (YouTube + ElevenLabs)](20-mkt.md#dub) | Marketing, automação e medição | sua voz em outros idiomas |
-| → envia para | [Curso por seção](14-editora.md#bcurso) | Editora AMS Silva (produção de livros) | narração |
+| → envia para | [DaVinci Resolve ou Kdenlive](13-cont.md#edit) | Produção de conteúdo | narração |
+| → envia para | [Dublagem (YouTube + ElevenLabs)](21-mkt.md#dub) | Marketing, automação e medição | sua voz em outros idiomas |
+| → envia para | [Curso por seção](15-editora.md#bcurso) | Editora AMS Silva (produção de livros) | narração |
 | ← recebe de | [Workstation com GPU](01-hw.md#ws) | Hardware | voz e vídeo locais |
-| ← recebe de | [GPU na nuvem por hora](11-nuvem.md#gpuh) | Nuvem, código e entrega | modelos abertos |
-| ← recebe de | [Agente editor de conteúdo](22-oper.md#oedit) | Operação do grupo (esteira, marca, qualidade) | narração |
+| ← recebe de | [GPU por hora (RunPod e afins)](12-nuvem.md#gpuh) | Nuvem, código e entrega | modelos abertos |
+| ← recebe de | [Agente editor de conteúdo](23-oper.md#oedit) | Operação do grupo (esteira, marca, qualidade) | narração |
 
 ---
 
-[↑ Camada 13 · Estudo e carreira](13-est.md) · [↓ Camada 11 · Nuvem, código e entrega](11-nuvem.md)
+[↑ Camada 14 · Estudo e carreira](14-est.md) · [↓ Camada 12 · Nuvem, código e entrega](12-nuvem.md)

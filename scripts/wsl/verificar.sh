@@ -53,6 +53,9 @@ cmd "Azure CLI" az "bash scripts/wsl/nuvem.sh" 0
 cmd Terraform terraform "bash scripts/wsl/nuvem.sh" 0
 cmd "Vercel CLI" vercel "bash scripts/wsl/nuvem.sh" 0
 cmd "Wrangler (Cloudflare)" wrangler "bash scripts/wsl/nuvem.sh" 0
+if command -v nvidia-smi >/dev/null 2>&1 && nvidia-smi >/dev/null 2>&1; then r ferramenta "GPU no WSL" OK "$(nvidia-smi --query-gpu=name --format=csv,noheader 2>/dev/null | head -1)" 0
+else r ferramenta "GPU no WSL" AVISO "atualize o driver NVIDIA no Windows" 0; fi
+[[ -f "$HOME/dev/lab-ia/pyproject.toml" ]] && r ferramenta "Laboratório de dados e IA" OK "~/dev/lab-ia" 0 || r ferramenta "Laboratório de dados e IA" AVISO "bash scripts/wsl/lab-ia.sh" 0
 cmd "TeX Live" latexmk "bootstrap.sh (sem --sem-tex)" 0
 cmd "Whisper local" whisper-ctranslate2 "bootstrap.sh --com-whisper" 0
 if command -v docker >/dev/null 2>&1 && docker info >/dev/null 2>&1; then r ferramenta Docker OK "$(docker version --format '{{.Server.Version}}' 2>/dev/null)"

@@ -73,6 +73,11 @@
           "id": "WiresharkFoundation.Wireshark",
           "nome": "Wireshark",
           "obrigatorio": false
+        },
+        {
+          "id": "Rufus.Rufus",
+          "nome": "Rufus (pendrives do Kali e do Arch)",
+          "obrigatorio": false
         }
       ]
     },

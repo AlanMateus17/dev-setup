@@ -1,7 +1,7 @@
 <!-- Arquivo GERADO por tools/gerar_docs.py a partir de data/. Edite os dados, não este arquivo. -->
 
 
-# Camada 10 · Aplicação: sistemas AM (Aura)
+# Camada 11 · Aplicação: sistemas AM (Aura)
 
 [← Arquitetura](../arquitetura.md) · [Índice da documentação](../README.md)
 
@@ -82,7 +82,7 @@ flowchart LR
     n_peng["Plugins: engineering + design"]
   end
   subgraph L_ia["Agentes de IA e sandbox"]
-    n_oll["Ollama (3B–4B)"]
+    n_oll["Ollama"]
   end
   subgraph L_lin["Linux (Ubuntu no WSL2, Arch no 2º disco)"]
     n_git["Git + SSH + gh"]
@@ -190,7 +190,7 @@ Documentação interativa da API. No .NET 9 em diante, o Swagger saiu do modelo 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | documenta |
+| → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | documenta |
 | → envia para | [DBeaver · Bruno](03-win.md#dbv) | Windows 11, apps e máquinas virtuais | Bruno importa |
 
 <a id="gis"></a>
@@ -203,9 +203,9 @@ Mapas e geolocalização do AM Rotara. Lacuna já identificada nos cursos da Alu
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [PostgreSQL](08-cnt.md#pg) | Containers, Kubernetes e infra como código | extensão |
-| → envia para | [Next.js + Aura Design System](10-app.md#front) | Aplicação: sistemas AM (Aura) | mapa |
-| → envia para | [AM Rotara (entregas)](10-app.md#nrot) | Aplicação: sistemas AM (Aura) | mapas |
+| → envia para | [PostgreSQL](09-cnt.md#pg) | Containers, Kubernetes e infra como código | extensão |
+| → envia para | [Next.js + Aura Design System](11-app.md#front) | Aplicação: sistemas AM (Aura) | mapa |
+| → envia para | [AM Rotara (entregas)](11-app.md#nrot) | Aplicação: sistemas AM (Aura) | mapas |
 
 <a id="story"></a>
 
@@ -217,8 +217,8 @@ Vitrine dos componentes do aura-frontend-kit; vira demo pública e produto (temp
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Next.js + Aura Design System](10-app.md#front) | Aplicação: sistemas AM (Aura) | componentes |
-| → envia para | [Templates e código-fonte](16-prod.md#tmpl) | Produtos (o que você vende) | demo do template |
+| → envia para | [Next.js + Aura Design System](11-app.md#front) | Aplicação: sistemas AM (Aura) | componentes |
+| → envia para | [Templates e código-fonte](17-prod.md#tmpl) | Produtos (o que você vende) | demo do template |
 
 <a id="clean"></a>
 
@@ -230,7 +230,7 @@ Domain, Application, Infrastructure e Api. O domínio não conhece banco nem web
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | organiza |
+| → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | organiza |
 
 <a id="ef"></a>
 
@@ -242,8 +242,8 @@ ORM do .NET para PostgreSQL, com migrations versionadas.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [PostgreSQL](08-cnt.md#pg) | Containers, Kubernetes e infra como código | Npgsql |
-| ← recebe de | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | usa |
+| → envia para | [PostgreSQL](09-cnt.md#pg) | Containers, Kubernetes e infra como código | Npgsql |
+| ← recebe de | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | usa |
 
 <a id="sig"></a>
 
@@ -255,9 +255,9 @@ Tempo real: pedido mudou de status no AM Rotara, venda nova no AM Kaixara.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Next.js + Aura Design System](10-app.md#front) | Aplicação: sistemas AM (Aura) | WebSocket |
-| → envia para | [Redis](08-cnt.md#redis) | Containers, Kubernetes e infra como código | backplane |
-| ← recebe de | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | emite |
+| → envia para | [Next.js + Aura Design System](11-app.md#front) | Aplicação: sistemas AM (Aura) | WebSocket |
+| → envia para | [Redis](09-cnt.md#redis) | Containers, Kubernetes e infra como código | backplane |
+| ← recebe de | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | emite |
 
 <a id="rls"></a>
 
@@ -269,8 +269,8 @@ tenant_id + Row-Level Security: cada cliente só vê os próprios dados, garanti
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [PostgreSQL](08-cnt.md#pg) | Containers, Kubernetes e infra como código | políticas |
-| ← recebe de | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | define o tenant |
+| → envia para | [PostgreSQL](09-cnt.md#pg) | Containers, Kubernetes e infra como código | políticas |
+| ← recebe de | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | define o tenant |
 
 <a id="tests"></a>
 
@@ -282,8 +282,8 @@ Unidade, integração com banco real, testes de tela no navegador e teste de car
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | testa |
-| → envia para | [GitHub Actions](11-nuvem.md#gha) | Nuvem, código e entrega | roda no CI |
+| → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | testa |
+| → envia para | [GitHub Actions](12-nuvem.md#gha) | Nuvem, código e entrega | roda no CI |
 
 <a id="shared"></a>
 
@@ -295,8 +295,8 @@ aura-copilot, aura-historico (Clojure/Datomic), aura-analytics (Python/FastAPI) 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | HTTP |
-| ← recebe de | [Datomic local](08-cnt.md#datomic) | Containers, Kubernetes e infra como código | aura-historico |
+| → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | HTTP |
+| ← recebe de | [Datomic local](09-cnt.md#datomic) | Containers, Kubernetes e infra como código | aura-historico |
 
 <a id="front"></a>
 
@@ -308,14 +308,14 @@ Telas dos sistemas e, no futuro, dos sites próprios.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Sentry (erros)](09-obs.md#sentry) | Observabilidade | erros |
-| → envia para | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | HTTP + SignalR |
+| → envia para | [Sentry (erros)](10-obs.md#sentry) | Observabilidade | erros |
+| → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | HTTP + SignalR |
 | ← recebe de | [Navegador + Claude in Chrome](03-win.md#nav) | Windows 11, apps e máquinas virtuais | localhost:3000 |
-| ← recebe de | [SignalR](10-app.md#sig) | Aplicação: sistemas AM (Aura) | WebSocket |
-| ← recebe de | [PostGIS + MapLibre](10-app.md#gis) | Aplicação: sistemas AM (Aura) | mapa |
-| ← recebe de | [Storybook](10-app.md#story) | Aplicação: sistemas AM (Aura) | componentes |
-| ← recebe de | [Conectores Canva + Figma](07-clc.md#ccan) | Claude: recursos, conectores e plugins | telas do Figma |
-| ← recebe de | [Keycloak / Entra ID](10-app.md#auth) | Aplicação: sistemas AM (Aura) | login |
+| ← recebe de | [SignalR](11-app.md#sig) | Aplicação: sistemas AM (Aura) | WebSocket |
+| ← recebe de | [PostGIS + MapLibre](11-app.md#gis) | Aplicação: sistemas AM (Aura) | mapa |
+| ← recebe de | [Storybook](11-app.md#story) | Aplicação: sistemas AM (Aura) | componentes |
+| ← recebe de | [Conectores Canva + Figma](08-clc.md#ccan) | Claude: recursos, conectores e plugins | telas do Figma |
+| ← recebe de | [Keycloak / Entra ID](11-app.md#auth) | Aplicação: sistemas AM (Aura) | login |
 
 <a id="api"></a>
 
@@ -327,31 +327,31 @@ Regras de negócio dos sistemas AM.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [EF Core + Npgsql](10-app.md#ef) | Aplicação: sistemas AM (Aura) | usa |
-| → envia para | [SignalR](10-app.md#sig) | Aplicação: sistemas AM (Aura) | emite |
-| → envia para | [Multi-tenant (RLS)](10-app.md#rls) | Aplicação: sistemas AM (Aura) | define o tenant |
-| → envia para | [Seq (logs)](09-obs.md#seq) | Observabilidade | logs |
-| → envia para | [Mailpit](08-cnt.md#mailp) | Containers, Kubernetes e infra como código | SMTP de teste |
-| → envia para | [Kafka](08-cnt.md#kafka) | Containers, Kubernetes e infra como código | eventos |
-| → envia para | [Sentry (erros)](09-obs.md#sentry) | Observabilidade | erros |
-| → envia para | [OpenTelemetry](09-obs.md#otel) | Observabilidade | telemetria |
-| → envia para | [PostgreSQL](08-cnt.md#pg) | Containers, Kubernetes e infra como código | Npgsql |
-| → envia para | [Redis](08-cnt.md#redis) | Containers, Kubernetes e infra como código | cache |
-| → envia para | [RabbitMQ](08-cnt.md#rmq) | Containers, Kubernetes e infra como código | eventos |
-| → envia para | [Keycloak / Entra ID](10-app.md#auth) | Aplicação: sistemas AM (Aura) | valida JWT |
-| → envia para | [IA: RAG + pgvector](10-app.md#ai) | Aplicação: sistemas AM (Aura) | usa |
+| → envia para | [EF Core + Npgsql](11-app.md#ef) | Aplicação: sistemas AM (Aura) | usa |
+| → envia para | [SignalR](11-app.md#sig) | Aplicação: sistemas AM (Aura) | emite |
+| → envia para | [Multi-tenant (RLS)](11-app.md#rls) | Aplicação: sistemas AM (Aura) | define o tenant |
+| → envia para | [Seq (logs)](10-obs.md#seq) | Observabilidade | logs |
+| → envia para | [Mailpit](09-cnt.md#mailp) | Containers, Kubernetes e infra como código | SMTP de teste |
+| → envia para | [Kafka](09-cnt.md#kafka) | Containers, Kubernetes e infra como código | eventos |
+| → envia para | [Sentry (erros)](10-obs.md#sentry) | Observabilidade | erros |
+| → envia para | [OpenTelemetry](10-obs.md#otel) | Observabilidade | telemetria |
+| → envia para | [PostgreSQL](09-cnt.md#pg) | Containers, Kubernetes e infra como código | Npgsql |
+| → envia para | [Redis](09-cnt.md#redis) | Containers, Kubernetes e infra como código | cache |
+| → envia para | [RabbitMQ](09-cnt.md#rmq) | Containers, Kubernetes e infra como código | eventos |
+| → envia para | [Keycloak / Entra ID](11-app.md#auth) | Aplicação: sistemas AM (Aura) | valida JWT |
+| → envia para | [IA: RAG + pgvector](11-app.md#ai) | Aplicação: sistemas AM (Aura) | usa |
 | ← recebe de | [DBeaver · Bruno](03-win.md#dbv) | Windows 11, apps e máquinas virtuais | HTTP (Bruno) |
-| ← recebe de | [Clean Arch + DDD](10-app.md#clean) | Aplicação: sistemas AM (Aura) | organiza |
-| ← recebe de | [Testes: xUnit, Playwright, k6](10-app.md#tests) | Aplicação: sistemas AM (Aura) | testa |
-| ← recebe de | [Serviços aura- (10)](10-app.md#shared) | Aplicação: sistemas AM (Aura) | HTTP |
-| ← recebe de | [API de NFS-e (ex.: Focus NFe)](18-emp.md#nfapi) | Pessoa física: impostos e finanças | IEmissorFiscal |
-| ← recebe de | [E-mail transacional (Resend, SES…)](11-nuvem.md#tmail) | Nuvem, código e entrega | e-mails do sistema |
-| ← recebe de | [Armazenamento de arquivos (Blob/R2)](11-nuvem.md#blob) | Nuvem, código e entrega | arquivos |
-| ← recebe de | [OpenAPI + Scalar](10-app.md#oapi) | Aplicação: sistemas AM (Aura) | documenta |
-| ← recebe de | [Caddy (proxy + HTTPS)](08-cnt.md#caddy) | Containers, Kubernetes e infra como código | HTTPS |
-| ← recebe de | [Plugins: engineering + design](07-clc.md#peng) | Claude: recursos, conectores e plugins | revisão e arquitetura |
-| ← recebe de | [Next.js + Aura Design System](10-app.md#front) | Aplicação: sistemas AM (Aura) | HTTP + SignalR |
-| ← recebe de | [aura-licensing](10-app.md#lic) | Aplicação: sistemas AM (Aura) | libera módulos |
+| ← recebe de | [Clean Arch + DDD](11-app.md#clean) | Aplicação: sistemas AM (Aura) | organiza |
+| ← recebe de | [Testes: xUnit, Playwright, k6](11-app.md#tests) | Aplicação: sistemas AM (Aura) | testa |
+| ← recebe de | [Serviços aura- (10)](11-app.md#shared) | Aplicação: sistemas AM (Aura) | HTTP |
+| ← recebe de | [API de NFS-e (ex.: Focus NFe)](19-emp.md#nfapi) | Pessoa física: impostos e finanças | IEmissorFiscal |
+| ← recebe de | [E-mail transacional (Resend, SES…)](12-nuvem.md#tmail) | Nuvem, código e entrega | e-mails do sistema |
+| ← recebe de | [Armazenamento de arquivos (Blob/R2)](12-nuvem.md#blob) | Nuvem, código e entrega | arquivos |
+| ← recebe de | [OpenAPI + Scalar](11-app.md#oapi) | Aplicação: sistemas AM (Aura) | documenta |
+| ← recebe de | [Caddy (proxy + HTTPS)](09-cnt.md#caddy) | Containers, Kubernetes e infra como código | HTTPS |
+| ← recebe de | [Plugins: engineering + design](08-clc.md#peng) | Claude: recursos, conectores e plugins | revisão e arquitetura |
+| ← recebe de | [Next.js + Aura Design System](11-app.md#front) | Aplicação: sistemas AM (Aura) | HTTP + SignalR |
+| ← recebe de | [aura-licensing](11-app.md#lic) | Aplicação: sistemas AM (Aura) | libera módulos |
 | ← recebe de | [.NET 10 · Node · Python](04-lin.md#rt) | Linux (Ubuntu no WSL2, Arch no 2º disco) | compila e roda |
 
 <a id="auth"></a>
@@ -364,8 +364,8 @@ Login e permissões (OAuth2/OIDC).
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Next.js + Aura Design System](10-app.md#front) | Aplicação: sistemas AM (Aura) | login |
-| ← recebe de | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | valida JWT |
+| → envia para | [Next.js + Aura Design System](11-app.md#front) | Aplicação: sistemas AM (Aura) | login |
+| ← recebe de | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | valida JWT |
 
 <a id="ai"></a>
 
@@ -377,10 +377,10 @@ Busca e assistente dentro dos sistemas (AM Projeta, aura-copilot).
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [PostgreSQL](08-cnt.md#pg) | Containers, Kubernetes e infra como código | pgvector |
-| → envia para | [Claude (assinatura e API)](07-clc.md#anth) | Claude: recursos, conectores e plugins | modelos |
-| → envia para | [Ollama (3B–4B)](05-ia.md#oll) | Agentes de IA e sandbox | modelo local |
-| ← recebe de | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | usa |
+| → envia para | [PostgreSQL](09-cnt.md#pg) | Containers, Kubernetes e infra como código | pgvector |
+| → envia para | [Claude (assinatura e API)](08-clc.md#anth) | Claude: recursos, conectores e plugins | modelos |
+| → envia para | [Ollama](05-ia.md#oll) | Agentes de IA e sandbox | modelo local |
+| ← recebe de | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | usa |
 
 <a id="lic"></a>
 
@@ -392,9 +392,9 @@ Cobrança por módulo dos sistemas AM.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | libera módulos |
-| ← recebe de | [Pix Automático + gateway (ex.: Asaas)](19-venda.md#pixa) | Plataformas de venda e recebimento | cobrança recorrente |
-| ← recebe de | [Sistemas AM (SaaS)](16-prod.md#saas) | Produtos (o que você vende) | cobrança por módulo |
+| → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | libera módulos |
+| ← recebe de | [Pix Automático + gateway (ex.: Asaas)](20-venda.md#pixa) | Plataformas de venda e recebimento | cobrança recorrente |
+| ← recebe de | [Sistemas AM (SaaS)](17-prod.md#saas) | Produtos (o que você vende) | cobrança por módulo |
 
 <a id="status"></a>
 
@@ -406,9 +406,9 @@ Seu painel de repos, backup e Dependabot.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | Dependabot e repos |
+| → envia para | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | Dependabot e repos |
 | → envia para | [Git + SSH + gh](04-lin.md#git) | Linux (Ubuntu no WSL2, Arch no 2º disco) | git status |
-| ← recebe de | [Dependabot + CodeQL](11-nuvem.md#dbot) | Nuvem, código e entrega | alertas |
+| ← recebe de | [Dependabot + CodeQL](12-nuvem.md#dbot) | Nuvem, código e entrega | alertas |
 
 <a id="nkaix"></a>
 
@@ -420,14 +420,14 @@ PDV, comandas, ordem de serviço, estoque, ficha técnica e engenharia de cardá
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Loja AMtech (assistência)](15-neg.md#nloja) | Negócios do grupo (Barbacena) | ordens de serviço |
-| → envia para | [Sushi (delivery)](15-neg.md#nsushi) | Negócios do grupo (Barbacena) | PDV e ficha técnica |
-| → envia para | [Cafeteria](15-neg.md#ncafe) | Negócios do grupo (Barbacena) | PDV |
-| → envia para | [Padaria + café da manhã + almoço](15-neg.md#npad) | Negócios do grupo (Barbacena) | PDV e previsão |
-| → envia para | [Caixa da Casa / AM Rendara](18-emp.md#caixa) | Pessoa física: impostos e finanças | vendas do dia |
-| ← recebe de | [AMtech Software (projetos e SaaS)](15-neg.md#nsoft) | Negócios do grupo (Barbacena) | constrói |
-| ← recebe de | [Sistemas AM (SaaS)](16-prod.md#saas) | Produtos (o que você vende) | vende por assinatura |
-| ← recebe de | [Agente comprador](22-oper.md#ocomp) | Operação do grupo (esteira, marca, qualidade) | estoque mínimo |
+| → envia para | [Loja AMtech (assistência)](16-neg.md#nloja) | Negócios do grupo (Barbacena) | ordens de serviço |
+| → envia para | [Sushi (delivery)](16-neg.md#nsushi) | Negócios do grupo (Barbacena) | PDV e ficha técnica |
+| → envia para | [Cafeteria](16-neg.md#ncafe) | Negócios do grupo (Barbacena) | PDV |
+| → envia para | [Padaria + café da manhã + almoço](16-neg.md#npad) | Negócios do grupo (Barbacena) | PDV e previsão |
+| → envia para | [Caixa da Casa / AM Rendara](19-emp.md#caixa) | Pessoa física: impostos e finanças | vendas do dia |
+| ← recebe de | [AMtech Software (projetos e SaaS)](16-neg.md#nsoft) | Negócios do grupo (Barbacena) | constrói |
+| ← recebe de | [Sistemas AM (SaaS)](17-prod.md#saas) | Produtos (o que você vende) | vende por assinatura |
+| ← recebe de | [Agente comprador](23-oper.md#ocomp) | Operação do grupo (esteira, marca, qualidade) | estoque mínimo |
 
 <a id="nrot"></a>
 
@@ -439,12 +439,12 @@ Pedidos, roteirização com PostGIS, app do entregador, prova de entrega e repas
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [AM Entregas (moto e carro)](15-neg.md#nentr) | Negócios do grupo (Barbacena) | roteiriza |
-| → envia para | [AM Delivery (várias empresas)](15-neg.md#ndeliv) | Negócios do grupo (Barbacena) | app e painel |
-| → envia para | [Caixa da Casa / AM Rendara](18-emp.md#caixa) | Pessoa física: impostos e finanças | repasses |
-| ← recebe de | [AMtech Software (projetos e SaaS)](15-neg.md#nsoft) | Negócios do grupo (Barbacena) | constrói |
-| ← recebe de | [PostGIS + MapLibre](10-app.md#gis) | Aplicação: sistemas AM (Aura) | mapas |
+| → envia para | [AM Entregas (moto e carro)](16-neg.md#nentr) | Negócios do grupo (Barbacena) | roteiriza |
+| → envia para | [AM Delivery (várias empresas)](16-neg.md#ndeliv) | Negócios do grupo (Barbacena) | app e painel |
+| → envia para | [Caixa da Casa / AM Rendara](19-emp.md#caixa) | Pessoa física: impostos e finanças | repasses |
+| ← recebe de | [AMtech Software (projetos e SaaS)](16-neg.md#nsoft) | Negócios do grupo (Barbacena) | constrói |
+| ← recebe de | [PostGIS + MapLibre](11-app.md#gis) | Aplicação: sistemas AM (Aura) | mapas |
 
 ---
 
-[↑ Camada 11 · Nuvem, código e entrega](11-nuvem.md) · [↓ Camada 09 · Observabilidade](09-obs.md)
+[↑ Camada 12 · Nuvem, código e entrega](12-nuvem.md) · [↓ Camada 10 · Observabilidade](10-obs.md)

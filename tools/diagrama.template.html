@@ -113,21 +113,7 @@ details.ly li span{color:var(--muted)}
       <span><i class="sw f"></i>Futuro</span>
       <span><i class="key"></i>Precisa de conta</span>
     </div>
-    <div class="bar" role="group" aria-label="Fluxos prontos">
-      <button id="fx-venda" data-flow="venda" aria-pressed="false">Vender o mini-curso</button>
-      <button id="fx-dev" data-flow="dev" aria-pressed="false">Codar com agente e publicar</button>
-      <button id="fx-vaga" data-flow="vaga" aria-pressed="false">Conseguir a vaga de dev</button>
-      <button id="fx-livro" data-flow="livro" aria-pressed="false">Do livro ao leitor</button>
-      <button id="fx-estudo" data-flow="estudo" aria-pressed="false">Estudar com IA</button>
-      <button id="fx-auto" data-flow="auto" aria-pressed="false">Publicar automaticamente</button>
-      <button id="fx-medir" data-flow="medir" aria-pressed="false">Medir uma campanha</button>
-      <button id="fx-capitulo" data-flow="capitulo" aria-pressed="false">Produzir um capítulo</button>
-      <button id="fx-imagem" data-flow="imagem" aria-pressed="false">Ilustrar um capítulo</button>
-      <button id="fx-conteudo" data-flow="conteudo" aria-pressed="false">Do trabalho ao conteúdo</button>
-      <button id="fx-negocio" data-flow="negocio" aria-pressed="false">Abrir o próximo negócio</button>
-      <button id="fx-lab" data-flow="lab" aria-pressed="false">Laboratório de segurança</button>
-      <button id="fx-free" data-flow="free" aria-pressed="false">Site para um cliente</button>
-    </div>
+    <div class="bar" role="group" aria-label="Fluxos prontos" id="fluxos"></div>
     <p class="hint" id="idle"></p>
     <div class="canvas" id="canvas"><div class="stack" id="stack"></div><svg id="wires" aria-hidden="true"><defs><marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0 0L10 5L0 10z"/></marker></defs><g id="wg"></g></svg></div>
     <div class="panel" id="panel" aria-live="polite" hidden></div>
@@ -195,6 +181,7 @@ function select(id){
   const li=(o,dir,l)=>`<li><span class="dir">${dir}</span><span><button data-go="${o}">${ESC(NM(o))}</button> <span class="lab">· ${ESC(l)}</span></span></li>`;
   abre({h:`<h3>${ESC(NM(id))}</h3>`,b:`<div class="meta"><span class="tag">${ESC(lname(id))}</span><span class="tag ${n[3]==="r"?"r":""}">${n[3]==="l"?"Local":n[3]==="r"?"Remoto":"Físico"}</span>${n[4]?'<span class="tag k">Precisa de conta</span>':""}${n[5]?'<span class="tag">Futuro</span>':""}</div><p>${ESC(n[6])}</p><ul class="conn">${out.map(e=>li(e[1],"→",e[2])).join("")}${inn.map(e=>li(e[0],"←",e[2])).join("")}</ul>`});
 }
+document.getElementById("fluxos").innerHTML=DATA.fluxos.map(f=>`<button data-flow="${f.id}" aria-pressed="false">${ESC(f.titulo)}</button>`).join("");
 const fbtns=[...document.querySelectorAll("[data-flow]")];
 function setFlowBtn(f){fbtns.forEach(b=>b.setAttribute("aria-pressed",b.dataset.flow===f?"true":"false"))}
 function flow(f){

@@ -40,6 +40,10 @@ flowchart LR
   subgraph L_cnt["Containers, Kubernetes e infra como código"]
     n_docker["Docker + Compose"]
   end
+  subgraph L_dados["Dados e treino de IA"]
+    n_pyds["Python de dados (Polars, Jupyter)"]
+    n_torch["PyTorch + CUDA (WSL2)"]
+  end
   subgraph L_ia["Agentes de IA e sandbox"]
     n_cc["Claude Code"]
     n_jail["ai-jail"]
@@ -57,12 +61,14 @@ flowchart LR
   end
   subgraph L_hw["Hardware"]
     n_nvme["2º NVMe (1–4 TB)"]
+    n_parch["Pendrive Arch (instalação portátil)"]
   end
   n_nvim -->|"editor"| n_wsl
   n_netw -->|"diagnóstico"| n_vms
   n_wsl -->|"terminal"| n_git
   n_wsl -->|"executa"| n_rt
   n_wsl -->|"socket da engine"| n_docker
+  n_wsl -->|"CUDA no WSL2"| n_torch
   n_bkp -->|"copia ~/dev"| n_wsl
   n_w11 -->|"WSL2"| n_wsl
   n_vsc -->|"Remote – WSL"| n_wsl
@@ -75,11 +81,14 @@ flowchart LR
   n_status -->|"git status"| n_git
   n_cc -->|"commit com sua revisão"| n_git
   n_rt -->|"compila e roda"| n_api
+  n_rt -->|"Python + uv"| n_pyds
   n_tex -->|"compila o PDF"| n_bci
   n_dot -->|"versionado"| n_gh
+  n_dot -->|"mesmos dotfiles"| n_parch
   n_arch -->|"mesmos dotfiles"| n_dot
   n_nvme -->|"disco próprio"| n_arch
   n_boot -->|"boot"| n_arch
+  n_parch -->|"treino antes do 2º NVMe"| n_arch
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_nvim,n_netw,n_wsl,n_git,n_rt,n_tex,n_sec,n_dot,n_arch desta
 ```
@@ -96,7 +105,7 @@ flowchart LR
 | [TeX Live](#tex) | Local | Compila o livro e as apostilas. |
 | [gitleaks · Trivy](#sec) | Local | Barra senha no commit e acha vulnerabilidades em imagens. |
 | [dotfiles](#dot) | Local | Configuração versionada do ambiente. |
-| [Arch + Omarchy (2º NVMe)](#arch) | Local · futuro | Linux nativo com boot próprio, sem tocar no Windows. |
+| [Arch + Omarchy (2º NVMe)](#arch) | Local · futuro | Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portátil em pendrive ou SSD USB. |
 
 <a id="nvim"></a>
 
@@ -134,7 +143,8 @@ Onde o código vive e roda.
 |---|---|---|---|
 | → envia para | [Git + SSH + gh](04-lin.md#git) | Linux (Ubuntu no WSL2, Arch no 2º disco) | terminal |
 | → envia para | [.NET 10 · Node · Python](04-lin.md#rt) | Linux (Ubuntu no WSL2, Arch no 2º disco) | executa |
-| → envia para | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | socket da engine |
+| → envia para | [Docker + Compose](09-cnt.md#docker) | Containers, Kubernetes e infra como código | socket da engine |
+| → envia para | [PyTorch + CUDA (WSL2)](06-dados.md#torch) | Dados e treino de IA | CUDA no WSL2 |
 | ← recebe de | [Backup 3-2-1](02-seg.md#bkp) | Segurança e cofre | copia ~/dev |
 | ← recebe de | [Windows 11 Home](03-win.md#w11) | Windows 11, apps e máquinas virtuais | WSL2 |
 | ← recebe de | [VS Code](03-win.md#vsc) | Windows 11, apps e máquinas virtuais | Remote – WSL |
@@ -142,7 +152,7 @@ Onde o código vive e roda.
 | ← recebe de | [Neovim](04-lin.md#nvim) | Linux (Ubuntu no WSL2, Arch no 2º disco) | editor |
 | ← recebe de | [.wslconfig + localhost](03-win.md#wslcfg) | Windows 11, apps e máquinas virtuais | limite de RAM |
 | ← recebe de | [Terminal · PowerShell · winget](03-win.md#wterm) | Windows 11, apps e máquinas virtuais | abre o Ubuntu |
-| ← recebe de | [Verificadores](22-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | confere |
+| ← recebe de | [Verificadores](23-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | confere |
 
 <a id="git"></a>
 
@@ -154,10 +164,10 @@ Versionamento e acesso ao GitHub.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | push via SSH |
+| → envia para | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | push via SSH |
 | ← recebe de | [Ubuntu (WSL2)](04-lin.md#wsl) | Linux (Ubuntu no WSL2, Arch no 2º disco) | terminal |
 | ← recebe de | [gitleaks · Trivy](04-lin.md#sec) | Linux (Ubuntu no WSL2, Arch no 2º disco) | pre-commit |
-| ← recebe de | [aura-status](10-app.md#status) | Aplicação: sistemas AM (Aura) | git status |
+| ← recebe de | [aura-status](11-app.md#status) | Aplicação: sistemas AM (Aura) | git status |
 | ← recebe de | [Claude Code](05-ia.md#cc) | Agentes de IA e sandbox | commit com sua revisão |
 
 <a id="rt"></a>
@@ -170,7 +180,8 @@ Runtimes das APIs, do front e dos scripts.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | compila e roda |
+| → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | compila e roda |
+| → envia para | [Python de dados (Polars, Jupyter)](06-dados.md#pyds) | Dados e treino de IA | Python + uv |
 | ← recebe de | [Ubuntu (WSL2)](04-lin.md#wsl) | Linux (Ubuntu no WSL2, Arch no 2º disco) | executa |
 
 <a id="tex"></a>
@@ -183,7 +194,7 @@ Compila o livro e as apostilas.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Pipeline do livro (CI)](14-editora.md#bci) | Editora AMS Silva (produção de livros) | compila o PDF |
+| → envia para | [Pipeline do livro (CI)](15-editora.md#bci) | Editora AMS Silva (produção de livros) | compila o PDF |
 
 <a id="sec"></a>
 
@@ -207,7 +218,8 @@ Configuração versionada do ambiente.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | versionado |
+| → envia para | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | versionado |
+| → envia para | [Pendrive Arch (instalação portátil)](01-hw.md#parch) | Hardware | mesmos dotfiles |
 | ← recebe de | [Arch + Omarchy (2º NVMe)](04-lin.md#arch) | Linux (Ubuntu no WSL2, Arch no 2º disco) | mesmos dotfiles |
 
 <a id="arch"></a>
@@ -216,13 +228,14 @@ Configuração versionada do ambiente.
 
 *Local · futuro*
 
-Linux nativo com boot próprio, sem tocar no Windows.
+Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portátil em pendrive ou SSD USB.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [dotfiles](04-lin.md#dot) | Linux (Ubuntu no WSL2, Arch no 2º disco) | mesmos dotfiles |
 | ← recebe de | [2º NVMe (1–4 TB)](01-hw.md#nvme) | Hardware | disco próprio |
 | ← recebe de | [Gerenciador de boot](03-win.md#boot) | Windows 11, apps e máquinas virtuais | boot |
+| ← recebe de | [Pendrive Arch (instalação portátil)](01-hw.md#parch) | Hardware | treino antes do 2º NVMe |
 
 ---
 

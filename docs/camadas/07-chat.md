@@ -1,7 +1,7 @@
 <!-- Arquivo GERADO por tools/gerar_docs.py a partir de data/. Edite os dados, não este arquivo. -->
 
 
-# Camada 06 · Assistentes de IA (chat, pesquisa e estudo)
+# Camada 07 · Assistentes de IA (chat, pesquisa e estudo)
 
 [← Arquitetura](../arquitetura.md) · [Índice da documentação](../README.md)
 
@@ -113,13 +113,13 @@ Seu assistente principal (assinatura paga): planejamento, escrita longa, revisã
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Claude (assinatura e API)](07-clc.md#anth) | Claude: recursos, conectores e plugins | assinatura |
+| → envia para | [Claude (assinatura e API)](08-clc.md#anth) | Claude: recursos, conectores e plugins | assinatura |
 | → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | roteiros e planos |
 | → envia para | [Claude Code](05-ia.md#cc) | Agentes de IA e sandbox | plano vira tarefa |
-| → envia para | [Projects + memória](07-clc.md#proj) | Claude: recursos, conectores e plugins | organiza |
-| → envia para | [Artifacts (Docs, Slides, Sheets…)](07-clc.md#arts) | Claude: recursos, conectores e plugins | cria |
-| → envia para | [Pesquisa aprofundada](07-clc.md#resq) | Claude: recursos, conectores e plugins | pesquisa |
-| ← recebe de | [Tarefas agendadas](07-clc.md#sched) | Claude: recursos, conectores e plugins | roda sozinho |
+| → envia para | [Projects + memória](08-clc.md#proj) | Claude: recursos, conectores e plugins | organiza |
+| → envia para | [Artifacts (Docs, Slides, Sheets…)](08-clc.md#arts) | Claude: recursos, conectores e plugins | cria |
+| → envia para | [Pesquisa aprofundada](08-clc.md#resq) | Claude: recursos, conectores e plugins | pesquisa |
+| ← recebe de | [Tarefas agendadas](08-clc.md#sched) | Claude: recursos, conectores e plugins | roda sozinho |
 
 <a id="gpt"></a>
 
@@ -132,7 +132,7 @@ Assistente geral da OpenAI: segunda opinião em código e texto, imagens e conve
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | respostas salvas no vault |
-| → envia para | [Canva · Krita · Inkscape](12-cont.md#img) | Produção de conteúdo | gera imagens |
+| → envia para | [Canva · Krita · Inkscape](13-cont.md#img) | Produção de conteúdo | gera imagens |
 | ← recebe de | [Celular](01-hw.md#cel) | Hardware | app no celular |
 
 <a id="gem"></a>
@@ -145,8 +145,8 @@ Sua segunda assinatura paga. Ligado a Gmail, Drive, Docs e YouTube: pesquisa apr
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [YouTube](21-pub.md#yt) | Público e canais | resume vídeos |
-| ← recebe de | [Conector Google (Gmail, Drive…)](07-clc.md#cgws) | Claude: recursos, conectores e plugins | mesmos dados Google |
+| → envia para | [YouTube](22-pub.md#yt) | Público e canais | resume vídeos |
+| ← recebe de | [Conector Google (Gmail, Drive…)](08-clc.md#cgws) | Claude: recursos, conectores e plugins | mesmos dados Google |
 
 <a id="nblm"></a>
 
@@ -159,7 +159,7 @@ Do Google: você envia PDFs (livro do VHSlins, apostilas, editais) e ele respond
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | resumos de estudo |
-| → envia para | [Mini-curso Lógica de Programação](16-prod.md#curso) | Produtos (o que você vende) | prepara as aulas |
+| → envia para | [Mini-curso Lógica de Programação](17-prod.md#curso) | Produtos (o que você vende) | prepara as aulas |
 | ← recebe de | [Base de conhecimento (RAG) das suas notas](05-ia.md#rag) | Agentes de IA e sandbox | mesmos PDFs e notas |
 
 <a id="grok"></a>
@@ -172,7 +172,7 @@ Assistente da xAI, ligado ao X. Útil para acompanhar notícias e tendências em
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [LinkedIn](21-pub.md#li) | Público e canais | tendências do setor |
+| → envia para | [LinkedIn](22-pub.md#li) | Público e canais | tendências do setor |
 
 <a id="ds"></a>
 
@@ -196,7 +196,7 @@ Agente de código da OpenAI (terminal, VS Code e nuvem). Está incluído até no
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | mesmos repos |
+| → envia para | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | mesmos repos |
 | → envia para | [VS Code](03-win.md#vsc) | Windows 11, apps e máquinas virtuais | extensão |
 
 <a id="gcode"></a>
@@ -209,7 +209,7 @@ Jules e o CLI do Google. As regras mudaram em 2026: o CLI deixou de ser grátis 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | mesmos repos |
+| → envia para | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | mesmos repos |
 
 <a id="perp"></a>
 
@@ -234,8 +234,8 @@ Autocompletar e chat dentro do VS Code. Professores verificados no GitHub Educat
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [VS Code](03-win.md#vsc) | Windows 11, apps e máquinas virtuais | autocompletar |
-| ← recebe de | [GitHub Education](13-est.md#ghed) | Estudo e carreira | Copilot Pro |
+| ← recebe de | [GitHub Education](14-est.md#ghed) | Estudo e carreira | Copilot Pro |
 
 ---
 
-[↑ Camada 07 · Claude: recursos, conectores e plugins](07-clc.md) · [↓ Camada 05 · Agentes de IA e sandbox](05-ia.md)
+[↑ Camada 08 · Claude: recursos, conectores e plugins](08-clc.md) · [↓ Camada 06 · Dados e treino de IA](06-dados.md)

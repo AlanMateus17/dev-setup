@@ -1558,6 +1558,156 @@
   },
   {
    "id": "f17",
+   "titulo": "Dados, IA e pendrives",
+   "objetivo": "O laboratório de dados e de treino no ar, um modelo seu rodando no Ollama e os pendrives de Kali e Arch dando boot.",
+   "passos": [
+    {
+     "id": "pendrive-kali",
+     "titulo": "Gravar o pendrive do Kali com persistência criptografada",
+     "quem": "voce",
+     "tempo_min": 90,
+     "comando": "winget install --id Rufus.Rufus -e",
+     "pronto": "O Kali abre pelo F12 e um arquivo salvo continua lá depois de reiniciar",
+     "nota": "Siga kali.org/docs/usb. Antes do primeiro boot: suspenda o BitLocker, desligue o Secure Boot e, ao voltar ao Windows, religue o Secure Boot e reative o BitLocker (veja Secure Boot e BitLocker no mapa). Só contra alvos seus ou autorizados.",
+     "blocos": [
+      "pkali",
+      "rufus"
+     ]
+    },
+    {
+     "id": "pendrive-arch",
+     "titulo": "Instalar o Arch num pendrive rápido ou SSD USB, pelo guia oficial",
+     "quem": "voce",
+     "tempo_min": 180,
+     "pronto": "O Arch portátil dá boot e abre o terminal com os seus dotfiles",
+     "nota": "Use um pendrive para a ISO e outro (64 GB ou mais, USB 3) ou um SSD USB como disco do sistema. Mesmo cuidado com Secure Boot e BitLocker.",
+     "blocos": [
+      "parch"
+     ]
+    },
+    {
+     "id": "gpu-wsl",
+     "titulo": "Conferir a GPU dentro do Ubuntu",
+     "quem": "script",
+     "tempo_min": 5,
+     "comando": "nvidia-smi",
+     "pronto": "Aparece a GTX 1650 com o driver do Windows",
+     "blocos": [
+      "torch"
+     ]
+    },
+    {
+     "id": "lab-ia",
+     "titulo": "Montar o laboratório de dados e de IA",
+     "quem": "script",
+     "tempo_min": 30,
+     "comando": "bash scripts/wsl/lab-ia.sh",
+     "pronto": "Termina com 'Pronto' e mostra a GPU vista pelo PyTorch",
+     "blocos": [
+      "pyds",
+      "duck",
+      "spark",
+      "torch",
+      "mlflow",
+      "gguf"
+     ]
+    },
+    {
+     "id": "ollama-8b",
+     "titulo": "Rodar um modelo 8B no Ollama com parte na GPU",
+     "quem": "voce",
+     "tempo_min": 15,
+     "comando": "ollama run llama3.1:8b",
+     "pronto": "'ollama ps' mostra o modelo dividido entre CPU e GPU e ele responde",
+     "nota": "Mais lento que um 3B ou 4B, que cabem inteiros na placa. Use o 8B quando a qualidade importar mais que a velocidade.",
+     "blocos": [
+      "lmods",
+      "oll"
+     ]
+    },
+    {
+     "id": "zoomcamp",
+     "titulo": "Fazer o Data Engineering Zoomcamp e os cursos de IA, um módulo por semana",
+     "quem": "voce",
+     "tempo_min": 60,
+     "pronto": "Módulo 1 entregue no GitHub e anotado no Obsidian",
+     "nota": "O tempo é só para começar; o curso leva 10 semanas. Para a IA vão as suas anotações, nunca o material do curso.",
+     "blocos": [
+      "dez"
+     ]
+    },
+    {
+     "id": "dbt-metricas",
+     "titulo": "Criar o projeto dbt sobre o banco de métricas",
+     "quem": "claude",
+     "tempo_min": 90,
+     "pronto": "'dbt build' verde e o painel de lucro lendo os modelos",
+     "blocos": [
+      "dbt"
+     ]
+    },
+    {
+     "id": "airflow",
+     "titulo": "Subir o Airflow e agendar o dbt todo dia",
+     "quem": "claude",
+     "tempo_min": 90,
+     "pronto": "A rotina diária aparece verde no Airflow por 3 dias seguidos",
+     "blocos": [
+      "orq"
+     ]
+    },
+    {
+     "id": "contas-ia",
+     "titulo": "Criar as contas do Hugging Face e do Kaggle (e do RunPod, só se precisar)",
+     "quem": "voce",
+     "tempo_min": 30,
+     "pronto": "Token do Hugging Face no KeePassXC; Kaggle com telefone verificado para liberar a GPU",
+     "nota": "No RunPod, só crédito pré-pago. Nunca ponha token em notebook público.",
+     "blocos": [
+      "hf",
+      "kgl",
+      "gpuh"
+     ]
+    },
+    {
+     "id": "dataset",
+     "titulo": "Montar o primeiro dataset só com conteúdo seu",
+     "quem": "claude",
+     "tempo_min": 120,
+     "pronto": "Algumas centenas de pares de pergunta e resposta revisados por você, com conjunto de teste separado",
+     "nota": "Fontes: suas notas, exercícios, livro e aulas que você gravou. Nada de cursos de terceiros; nada de dados de alunos sem consentimento.",
+     "blocos": [
+      "dset",
+      "evals"
+     ]
+    },
+    {
+     "id": "fine-tune",
+     "titulo": "Primeiro fine-tuning QLoRA de um 8B no Kaggle",
+     "quem": "claude",
+     "tempo_min": 180,
+     "pronto": "Adaptador salvo no Hugging Face privado e o treino registrado no MLflow",
+     "blocos": [
+      "unsl",
+      "kgl"
+     ]
+    },
+    {
+     "id": "modelo-no-ollama",
+     "titulo": "Avaliar contra o modelo base e levar o seu modelo para o Ollama",
+     "quem": "claude",
+     "tempo_min": 90,
+     "pronto": "O seu modelo ganha do base no conjunto de teste e responde no Ollama do notebook",
+     "blocos": [
+      "evals",
+      "gguf",
+      "oll"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "f18",
    "titulo": "Estudo contínuo",
    "objetivo": "As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.",
    "passos": [

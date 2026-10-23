@@ -1,7 +1,7 @@
 <!-- Arquivo GERADO por tools/gerar_docs.py a partir de data/. Edite os dados, não este arquivo. -->
 
 
-# Camada 08 · Containers, Kubernetes e infra como código
+# Camada 09 · Containers, Kubernetes e infra como código
 
 [← Arquitetura](../arquitetura.md) · [Índice da documentação](../README.md)
 
@@ -54,6 +54,10 @@ flowchart LR
     n_graf["Grafana"]
     n_kuma["Uptime Kuma"]
   end
+  subgraph L_dados["Dados e treino de IA"]
+    n_orq["Airflow (orquestração)"]
+    n_spark["Spark (PySpark)"]
+  end
   subgraph L_ia["Agentes de IA e sandbox"]
     n_mcp["Servidores MCP"]
     n_mem["ai-memory"]
@@ -68,6 +72,7 @@ flowchart LR
   n_caddy -->|"HTTPS"| n_api
   n_api -->|"SMTP de teste"| n_mailp
   n_docker -->|"container"| n_mailp
+  n_kafka -->|"streaming"| n_spark
   n_api -->|"eventos"| n_kafka
   n_k8st -->|"opera"| n_kind
   n_clis -->|"comandos"| n_azure
@@ -81,6 +86,7 @@ flowchart LR
   n_docker -->|"container"| n_metrics
   n_docker -->|"container"| n_graf
   n_docker -->|"container"| n_kuma
+  n_docker -->|"container"| n_orq
   n_wsl -->|"socket da engine"| n_docker
   n_mem -->|"container"| n_docker
   n_aspire -->|"sobe os serviços"| n_docker
@@ -131,7 +137,7 @@ Fica na frente das APIs e emite o certificado HTTPS sozinho. Usado no servidor e
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | HTTPS |
+| → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | HTTPS |
 
 <a id="mailp"></a>
 
@@ -143,8 +149,8 @@ Caixa de e-mail falsa para testar os e-mails dos sistemas sem enviar nada de ver
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | SMTP de teste |
-| ← recebe de | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
+| ← recebe de | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | SMTP de teste |
+| ← recebe de | [Docker + Compose](09-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
 
 <a id="kafka"></a>
 
@@ -156,7 +162,8 @@ Mensageria padrão em empresa grande. Depois do RabbitMQ.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | eventos |
+| → envia para | [Spark (PySpark)](06-dados.md#spark) | Dados e treino de IA | streaming |
+| ← recebe de | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | eventos |
 
 <a id="k8st"></a>
 
@@ -168,7 +175,7 @@ Ferramentas para operar o Kubernetes: comandos, pacotes e painel no terminal.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Kubernetes local (kind)](08-cnt.md#kind) | Containers, Kubernetes e infra como código | opera |
+| → envia para | [Kubernetes local (kind)](09-cnt.md#kind) | Containers, Kubernetes e infra como código | opera |
 
 <a id="clis"></a>
 
@@ -180,8 +187,8 @@ Linha de comando das nuvens; usadas pelo Terraform.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Azure](11-nuvem.md#azure) | Nuvem, código e entrega | comandos |
-| → envia para | [AWS](11-nuvem.md#aws) | Nuvem, código e entrega | comandos |
+| → envia para | [Azure](12-nuvem.md#azure) | Nuvem, código e entrega | comandos |
+| → envia para | [AWS](12-nuvem.md#aws) | Nuvem, código e entrega | comandos |
 
 <a id="datomic"></a>
 
@@ -193,7 +200,7 @@ Só quando o aura-historico existir (desvio intencional da stack).
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Serviços aura- (10)](10-app.md#shared) | Aplicação: sistemas AM (Aura) | aura-historico |
+| → envia para | [Serviços aura- (10)](11-app.md#shared) | Aplicação: sistemas AM (Aura) | aura-historico |
 
 <a id="docker"></a>
 
@@ -205,19 +212,20 @@ Engine no WSL2; um compose por sistema.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Mailpit](08-cnt.md#mailp) | Containers, Kubernetes e infra como código | container |
-| → envia para | [PostgreSQL](08-cnt.md#pg) | Containers, Kubernetes e infra como código | container |
-| → envia para | [Redis](08-cnt.md#redis) | Containers, Kubernetes e infra como código | container |
-| → envia para | [RabbitMQ](08-cnt.md#rmq) | Containers, Kubernetes e infra como código | container |
-| → envia para | [Kubernetes local (kind)](08-cnt.md#kind) | Containers, Kubernetes e infra como código | cluster local |
-| → envia para | [n8n](20-mkt.md#n8n) | Marketing, automação e medição | container |
-| → envia para | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | container |
-| → envia para | [Grafana](09-obs.md#graf) | Observabilidade | container |
-| → envia para | [Uptime Kuma](09-obs.md#kuma) | Observabilidade | container |
+| → envia para | [Mailpit](09-cnt.md#mailp) | Containers, Kubernetes e infra como código | container |
+| → envia para | [PostgreSQL](09-cnt.md#pg) | Containers, Kubernetes e infra como código | container |
+| → envia para | [Redis](09-cnt.md#redis) | Containers, Kubernetes e infra como código | container |
+| → envia para | [RabbitMQ](09-cnt.md#rmq) | Containers, Kubernetes e infra como código | container |
+| → envia para | [Kubernetes local (kind)](09-cnt.md#kind) | Containers, Kubernetes e infra como código | cluster local |
+| → envia para | [n8n](21-mkt.md#n8n) | Marketing, automação e medição | container |
+| → envia para | [Banco de métricas (PostgreSQL)](21-mkt.md#metrics) | Marketing, automação e medição | container |
+| → envia para | [Grafana](10-obs.md#graf) | Observabilidade | container |
+| → envia para | [Uptime Kuma](10-obs.md#kuma) | Observabilidade | container |
+| → envia para | [Airflow (orquestração)](06-dados.md#orq) | Dados e treino de IA | container |
 | ← recebe de | [Ubuntu (WSL2)](04-lin.md#wsl) | Linux (Ubuntu no WSL2, Arch no 2º disco) | socket da engine |
 | ← recebe de | [ai-memory](05-ia.md#mem) | Agentes de IA e sandbox | container |
-| ← recebe de | [.NET Aspire](09-obs.md#aspire) | Observabilidade | sobe os serviços |
-| ← recebe de | [Verificadores](22-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | confere |
+| ← recebe de | [.NET Aspire](10-obs.md#aspire) | Observabilidade | sobe os serviços |
+| ← recebe de | [Verificadores](23-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | confere |
 
 <a id="pg"></a>
 
@@ -232,12 +240,12 @@ Banco de todos os sistemas (com pgvector para IA).
 | ← recebe de | [DBeaver · Bruno](03-win.md#dbv) | Windows 11, apps e máquinas virtuais | porta 5432 |
 | ← recebe de | [Servidores MCP](05-ia.md#mcp) | Agentes de IA e sandbox | leitura do banco de dev |
 | ← recebe de | [Base de conhecimento (RAG) das suas notas](05-ia.md#rag) | Agentes de IA e sandbox | pgvector |
-| ← recebe de | [EF Core + Npgsql](10-app.md#ef) | Aplicação: sistemas AM (Aura) | Npgsql |
-| ← recebe de | [Multi-tenant (RLS)](10-app.md#rls) | Aplicação: sistemas AM (Aura) | políticas |
-| ← recebe de | [PostGIS + MapLibre](10-app.md#gis) | Aplicação: sistemas AM (Aura) | extensão |
-| ← recebe de | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
-| ← recebe de | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | Npgsql |
-| ← recebe de | [IA: RAG + pgvector](10-app.md#ai) | Aplicação: sistemas AM (Aura) | pgvector |
+| ← recebe de | [EF Core + Npgsql](11-app.md#ef) | Aplicação: sistemas AM (Aura) | Npgsql |
+| ← recebe de | [Multi-tenant (RLS)](11-app.md#rls) | Aplicação: sistemas AM (Aura) | políticas |
+| ← recebe de | [PostGIS + MapLibre](11-app.md#gis) | Aplicação: sistemas AM (Aura) | extensão |
+| ← recebe de | [Docker + Compose](09-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
+| ← recebe de | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | Npgsql |
+| ← recebe de | [IA: RAG + pgvector](11-app.md#ai) | Aplicação: sistemas AM (Aura) | pgvector |
 
 <a id="redis"></a>
 
@@ -249,9 +257,9 @@ Cache e backplane do SignalR.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [SignalR](10-app.md#sig) | Aplicação: sistemas AM (Aura) | backplane |
-| ← recebe de | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
-| ← recebe de | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | cache |
+| ← recebe de | [SignalR](11-app.md#sig) | Aplicação: sistemas AM (Aura) | backplane |
+| ← recebe de | [Docker + Compose](09-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
+| ← recebe de | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | cache |
 
 <a id="rmq"></a>
 
@@ -263,8 +271,8 @@ Fila de eventos entre sistemas.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
-| ← recebe de | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | eventos |
+| ← recebe de | [Docker + Compose](09-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
+| ← recebe de | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | eventos |
 
 <a id="kind"></a>
 
@@ -276,8 +284,8 @@ Treino de Kubernetes sem pagar nuvem.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [kubectl · Helm · k9s](08-cnt.md#k8st) | Containers, Kubernetes e infra como código | opera |
-| ← recebe de | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | cluster local |
+| ← recebe de | [kubectl · Helm · k9s](09-cnt.md#k8st) | Containers, Kubernetes e infra como código | opera |
+| ← recebe de | [Docker + Compose](09-cnt.md#docker) | Containers, Kubernetes e infra como código | cluster local |
 
 <a id="tf"></a>
 
@@ -289,11 +297,11 @@ Cria Azure, AWS e Cloudflare por código.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Google Cloud](11-nuvem.md#gcp) | Nuvem, código e entrega | cria recursos |
-| → envia para | [Azure](11-nuvem.md#azure) | Nuvem, código e entrega | cria recursos |
-| → envia para | [AWS](11-nuvem.md#aws) | Nuvem, código e entrega | cria recursos |
-| → envia para | [Cloudflare (DNS, Pages, e-mail)](11-nuvem.md#cf) | Nuvem, código e entrega | DNS por código |
+| → envia para | [Google Cloud](12-nuvem.md#gcp) | Nuvem, código e entrega | cria recursos |
+| → envia para | [Azure](12-nuvem.md#azure) | Nuvem, código e entrega | cria recursos |
+| → envia para | [AWS](12-nuvem.md#aws) | Nuvem, código e entrega | cria recursos |
+| → envia para | [Cloudflare (DNS, Pages, e-mail)](12-nuvem.md#cf) | Nuvem, código e entrega | DNS por código |
 
 ---
 
-[↑ Camada 09 · Observabilidade](09-obs.md) · [↓ Camada 07 · Claude: recursos, conectores e plugins](07-clc.md)
+[↑ Camada 10 · Observabilidade](10-obs.md) · [↓ Camada 08 · Claude: recursos, conectores e plugins](08-clc.md)

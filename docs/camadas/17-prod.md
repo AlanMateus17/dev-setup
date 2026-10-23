@@ -1,7 +1,7 @@
 <!-- Arquivo GERADO por tools/gerar_docs.py a partir de data/. Edite os dados, não este arquivo. -->
 
 
-# Camada 16 · Produtos (o que você vende)
+# Camada 17 · Produtos (o que você vende)
 
 [← Arquitetura](../arquitetura.md) · [Índice da documentação](../README.md)
 
@@ -156,16 +156,16 @@ Primeiro produto de lançamento, para validar antes de construir mais.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Kiwify](19-venda.md#kiwi) | Plataformas de venda e recebimento | produto |
-| → envia para | [Udemy](19-venda.md#udemy) | Plataformas de venda e recebimento | versão para o marketplace |
-| → envia para | [Eduzz](19-venda.md#eduzz) | Plataformas de venda e recebimento | produto |
-| → envia para | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | produto cadastrado |
-| ← recebe de | [NotebookLM](06-chat.md#nblm) | Assistentes de IA (chat, pesquisa e estudo) | prepara as aulas |
+| → envia para | [Kiwify](20-venda.md#kiwi) | Plataformas de venda e recebimento | produto |
+| → envia para | [Udemy](20-venda.md#udemy) | Plataformas de venda e recebimento | versão para o marketplace |
+| → envia para | [Eduzz](20-venda.md#eduzz) | Plataformas de venda e recebimento | produto |
+| → envia para | [Hotmart](20-venda.md#hotm) | Plataformas de venda e recebimento | produto cadastrado |
+| ← recebe de | [NotebookLM](07-chat.md#nblm) | Assistentes de IA (chat, pesquisa e estudo) | prepara as aulas |
 | ← recebe de | [ShareX](03-win.md#sharex) | Windows 11, apps e máquinas virtuais | demonstrações |
-| ← recebe de | [Comunidade (Discord ou grupo)](21-pub.md#comu) | Público e canais | suporte aos alunos |
-| ← recebe de | [DaVinci Resolve ou Kdenlive](12-cont.md#edit) | Produção de conteúdo | aulas editadas |
+| ← recebe de | [Comunidade (Discord ou grupo)](22-pub.md#comu) | Público e canais | suporte aos alunos |
+| ← recebe de | [DaVinci Resolve ou Kdenlive](13-cont.md#edit) | Produção de conteúdo | aulas editadas |
 | ← recebe de | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | roteiro |
-| ← recebe de | [Esteira de ofertas](22-oper.md#oesteira) | Operação do grupo (esteira, marca, qualidade) | lança |
+| ← recebe de | [Esteira de ofertas](23-oper.md#oesteira) | Operação do grupo (esteira, marca, qualidade) | lança |
 
 <a id="form"></a>
 
@@ -177,8 +177,8 @@ Cursos completos, depois que o mini-curso vender.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [DIO (parceria)](19-venda.md#dio) | Plataformas de venda e recebimento | proposta de parceria |
-| → envia para | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | produto |
+| → envia para | [DIO (parceria)](20-venda.md#dio) | Plataformas de venda e recebimento | proposta de parceria |
+| → envia para | [Hotmart](20-venda.md#hotm) | Plataformas de venda e recebimento | produto |
 
 <a id="tmpl"></a>
 
@@ -190,10 +190,10 @@ Frontends prontos e projetos vendidos como download.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | download |
-| → envia para | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | demo pública |
+| → envia para | [Hotmart](20-venda.md#hotm) | Plataformas de venda e recebimento | download |
+| → envia para | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | demo pública |
 | ← recebe de | [7-Zip](03-win.md#zip) | Windows 11, apps e máquinas virtuais | empacota o download |
-| ← recebe de | [Storybook](10-app.md#story) | Aplicação: sistemas AM (Aura) | demo do template |
+| ← recebe de | [Storybook](11-app.md#story) | Aplicação: sistemas AM (Aura) | demo do template |
 
 <a id="livro"></a>
 
@@ -205,18 +205,18 @@ Lógica e Máquina, em 5 volumes, publicado pela Editora AMS Silva. Ebook, impre
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | PDF |
-| → envia para | [Depósito legal](14-editora.md#deplegal) | Editora AMS Silva (produção de livros) | 1 exemplar |
-| → envia para | [Amazon KDP](14-editora.md#kdp) | Editora AMS Silva (produção de livros) | ebook e impresso |
-| → envia para | [Gráfica sob demanda (Brasil)](14-editora.md#pod) | Editora AMS Silva (produção de livros) | impresso |
-| → envia para | [Kit edição especial](14-editora.md#bkit) | Editora AMS Silva (produção de livros) | tiragem especial |
-| → envia para | [Edição do professor](14-editora.md#prof) | Editora AMS Silva (produção de livros) | material do professor |
-| → envia para | [Traduções (espanhol, inglês)](14-editora.md#trad) | Editora AMS Silva (produção de livros) | outras línguas |
-| → envia para | [Isca grátis + sequência de e-mails](20-mkt.md#isca) | Marketing, automação e medição | capítulo grátis |
+| → envia para | [Hotmart](20-venda.md#hotm) | Plataformas de venda e recebimento | PDF |
+| → envia para | [Depósito legal](15-editora.md#deplegal) | Editora AMS Silva (produção de livros) | 1 exemplar |
+| → envia para | [Amazon KDP](15-editora.md#kdp) | Editora AMS Silva (produção de livros) | ebook e impresso |
+| → envia para | [Gráfica sob demanda (Brasil)](15-editora.md#pod) | Editora AMS Silva (produção de livros) | impresso |
+| → envia para | [Kit edição especial](15-editora.md#bkit) | Editora AMS Silva (produção de livros) | tiragem especial |
+| → envia para | [Edição do professor](15-editora.md#prof) | Editora AMS Silva (produção de livros) | material do professor |
+| → envia para | [Traduções (espanhol, inglês)](15-editora.md#trad) | Editora AMS Silva (produção de livros) | outras línguas |
+| → envia para | [Isca grátis + sequência de e-mails](21-mkt.md#isca) | Marketing, automação e medição | capítulo grátis |
 | ← recebe de | [SumatraPDF](03-win.md#pdf) | Windows 11, apps e máquinas virtuais | revisão do PDF |
-| ← recebe de | [Pipeline do livro (CI)](14-editora.md#bci) | Editora AMS Silva (produção de livros) | PDF, EPUB e impressão |
-| ← recebe de | [Esteira de ofertas](22-oper.md#oesteira) | Operação do grupo (esteira, marca, qualidade) | lança |
-| ← recebe de | [Errata e edições](14-editora.md#errata) | Editora AMS Silva (produção de livros) | nova edição |
+| ← recebe de | [Pipeline do livro (CI)](15-editora.md#bci) | Editora AMS Silva (produção de livros) | PDF, EPUB e impressão |
+| ← recebe de | [Esteira de ofertas](23-oper.md#oesteira) | Operação do grupo (esteira, marca, qualidade) | lança |
+| ← recebe de | [Errata e edições](15-editora.md#errata) | Editora AMS Silva (produção de livros) | nova edição |
 
 <a id="aulas"></a>
 
@@ -228,9 +228,9 @@ Seus estudos viram aula paga.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Mercado Pago](19-venda.md#mp) | Plataformas de venda e recebimento | cobrança |
-| ← recebe de | [Agenda online (Cal.com)](19-venda.md#agenda) | Plataformas de venda e recebimento | horários |
-| ← recebe de | [WhatsApp Business](21-pub.md#wa) | Público e canais | agenda |
+| → envia para | [Mercado Pago](20-venda.md#mp) | Plataformas de venda e recebimento | cobrança |
+| ← recebe de | [Agenda online (Cal.com)](20-venda.md#agenda) | Plataformas de venda e recebimento | horários |
+| ← recebe de | [WhatsApp Business](22-pub.md#wa) | Público e canais | agenda |
 
 <a id="sites"></a>
 
@@ -242,15 +242,15 @@ Freelance em Barbacena: sites e lojas.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Mercado Pago](19-venda.md#mp) | Plataformas de venda e recebimento | cobrança |
-| → envia para | [Hostinger (clientes WP)](17-web.md#hostg) | Vitrine web (sites e domínio) | hospedagem do cliente |
-| → envia para | [AMtech Software (projetos e SaaS)](15-neg.md#nsoft) | Negócios do grupo (Barbacena) | vira serviço da empresa |
+| → envia para | [Mercado Pago](20-venda.md#mp) | Plataformas de venda e recebimento | cobrança |
+| → envia para | [Hostinger (clientes WP)](18-web.md#hostg) | Vitrine web (sites e domínio) | hospedagem do cliente |
+| → envia para | [AMtech Software (projetos e SaaS)](16-neg.md#nsoft) | Negócios do grupo (Barbacena) | vira serviço da empresa |
 | ← recebe de | [LibreOffice](03-win.md#office) | Windows 11, apps e máquinas virtuais | documentos de clientes |
-| ← recebe de | [CRM simples (planilha)](19-venda.md#crm) | Plataformas de venda e recebimento | propostas |
-| ← recebe de | [Termos, privacidade (LGPD) e contratos](18-emp.md#legal) | Pessoa física: impostos e finanças | contrato |
-| ← recebe de | [Conector Upwork](07-clc.md#cupw) | Claude: recursos, conectores e plugins | encontra clientes |
-| ← recebe de | [Agente orçamentista](22-oper.md#oorc) | Operação do grupo (esteira, marca, qualidade) | propostas |
-| ← recebe de | [WhatsApp Business](21-pub.md#wa) | Público e canais | pedido de orçamento |
+| ← recebe de | [CRM simples (planilha)](20-venda.md#crm) | Plataformas de venda e recebimento | propostas |
+| ← recebe de | [Termos, privacidade (LGPD) e contratos](19-emp.md#legal) | Pessoa física: impostos e finanças | contrato |
+| ← recebe de | [Conector Upwork](08-clc.md#cupw) | Claude: recursos, conectores e plugins | encontra clientes |
+| ← recebe de | [Agente orçamentista](23-oper.md#oorc) | Operação do grupo (esteira, marca, qualidade) | propostas |
+| ← recebe de | [WhatsApp Business](22-pub.md#wa) | Público e canais | pedido de orçamento |
 
 <a id="saas"></a>
 
@@ -262,10 +262,10 @@ AM Kaixara, AM Rendara e os demais, vendidos por assinatura.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Azure](11-nuvem.md#azure) | Nuvem, código e entrega | roda na nuvem |
-| → envia para | [aura-licensing](10-app.md#lic) | Aplicação: sistemas AM (Aura) | cobrança por módulo |
-| → envia para | [AM Kaixara (PDV e cardápio)](10-app.md#nkaix) | Aplicação: sistemas AM (Aura) | vende por assinatura |
+| → envia para | [Azure](12-nuvem.md#azure) | Nuvem, código e entrega | roda na nuvem |
+| → envia para | [aura-licensing](11-app.md#lic) | Aplicação: sistemas AM (Aura) | cobrança por módulo |
+| → envia para | [AM Kaixara (PDV e cardápio)](11-app.md#nkaix) | Aplicação: sistemas AM (Aura) | vende por assinatura |
 
 ---
 
-[↑ Camada 17 · Vitrine web (sites e domínio)](17-web.md) · [↓ Camada 15 · Negócios do grupo (Barbacena)](15-neg.md)
+[↑ Camada 18 · Vitrine web (sites e domínio)](18-web.md) · [↓ Camada 16 · Negócios do grupo (Barbacena)](16-neg.md)

@@ -2,6 +2,18 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.11.0] - 2026-10-23
+
+### Adicionado
+- Camada nova "Dados e treino de IA" com 13 blocos: Python de dados, DuckDB, dbt, Airflow, PySpark, PyTorch com CUDA no WSL2, Hugging Face, Unsloth, Kaggle e Colab, MLflow, avaliação, GGUF e os seus datasets (só conteúdo seu). Fluxos "Treinar uma IA sua" e "Dados de venda viram decisão".
+- Pendrives de Kali (persistência criptografada) e de Arch (instalação portátil), Rufus no winget e o cuidado com Secure Boot e BitLocker no mapa.
+- `scripts/wsl/lab-ia.sh`: laboratório de dados e de IA em `~/dev/lab-ia` (opção `--so-dados`); `verificar.sh` confere a GPU e o laboratório.
+- Fase "Dados, IA e pendrives" no roteiro (12 passos, do pendrive ao seu modelo no Ollama) e duas etapas novas na ordem de estudo: engenharia de dados e IA profunda.
+
+### Mudado
+- "LLM 8B na GPU / fine-tuning" e "Engenharia de dados" saem de "cortado". Fica cortado só treinar um 8B na GTX 1650 (pede 6 GB de VRAM, a placa tem 4): o 8B roda no notebook dividido entre GPU e RAM, e o treino vai para a nuvem.
+- Os botões de fluxo do diagrama saem dos dados, não do HTML.
+
 ## [1.10.0] - 2026-10-23
 
 ### Corrigido

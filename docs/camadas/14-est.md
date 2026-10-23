@@ -1,13 +1,13 @@
 <!-- Arquivo GERADO por tools/gerar_docs.py a partir de data/. Edite os dados, não este arquivo. -->
 
 
-# Camada 13 · Estudo e carreira
+# Camada 14 · Estudo e carreira
 
 [← Arquitetura](../arquitetura.md) · [Índice da documentação](../README.md)
 
 > **Ligação com a camada de baixo:** O que você estuda vira produto, aula, post e linha no currículo.
 
-**6 blocos** · 5 precisam de conta · 0 marcados como futuro
+**7 blocos** · 5 precisam de conta · 0 marcados como futuro
 
 ## Mapa de conexões
 
@@ -20,6 +20,7 @@ flowchart LR
     n_anki["Anki"]
     n_road["roadmap.sh + Akita"]
     n_ghed["GitHub Education"]
+    n_dez["Zoomcamp de dados + cursos de IA"]
   end
   subgraph L_editora["Editora AMS Silva (produção de livros)"]
     n_exyaml["Exercícios em YAML"]
@@ -31,21 +32,31 @@ flowchart LR
   subgraph L_chat["Assistentes de IA (chat, pesquisa e estudo)"]
     n_copi["GitHub Copilot"]
   end
+  subgraph L_dados["Dados e treino de IA"]
+    n_pyds["Python de dados (Polars, Jupyter)"]
+    n_torch["PyTorch + CUDA (WSL2)"]
+  end
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
     n_obsd["Obsidian + Git"]
     n_vms["VMs: Kali · Arch · Servidores"]
+  end
+  subgraph L_hw["Hardware"]
+    n_pkali["Pendrive Kali (persistência)"]
   end
   n_learn -->|"certificação"| n_azure
   n_learn -->|"Skill Builder"| n_aws
   n_thm -->|"prática"| n_vms
   n_thm -->|"writeups"| n_obsd
+  n_thm -->|"laboratórios"| n_pkali
   n_plat -->|"suas anotações"| n_obsd
   n_obsd -->|"notas viram cartões"| n_anki
   n_exyaml -->|"baralhos"| n_anki
   n_road -->|"roteiro"| n_obsd
   n_ghed -->|"Copilot Pro"| n_copi
+  n_dez -->|"projetos dos módulos"| n_pyds
+  n_dez -->|"exercícios de redes neurais"| n_torch
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_learn,n_thm,n_plat,n_anki,n_road,n_ghed desta
+  class n_learn,n_thm,n_plat,n_anki,n_road,n_ghed,n_dez desta
 ```
 
 ## Blocos
@@ -58,6 +69,7 @@ flowchart LR
 | [Anki](#anki) | Local · precisa de conta | Repetição espaçada para comandos, conceitos, certificações e concurso. Open source. A conta grátis do AnkiWeb sincroniza notebook e celular. |
 | [roadmap.sh + Akita](#road) | Remoto | Roteiros de estudo e referência da trilha Linux. |
 | [GitHub Education](#ghed) | Remoto · precisa de conta | Pacote para professores: Copilot Pro e outros benefícios. Peça a verificação. |
+| [Zoomcamp de dados + cursos de IA](#dez) | Remoto | Data Engineering Zoomcamp (DataTalksClub, grátis, 10 semanas), curso de LLM da Hugging Face, fast.ai e Neural Networks: Zero to Hero. Para a IA vão só as suas anotações e os seus projetos. |
 
 <a id="learn"></a>
 
@@ -69,8 +81,8 @@ Trilhas oficiais e gratuitas para AZ-900, AZ-204 e AWS.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Azure](11-nuvem.md#azure) | Nuvem, código e entrega | certificação |
-| → envia para | [AWS](11-nuvem.md#aws) | Nuvem, código e entrega | Skill Builder |
+| → envia para | [Azure](12-nuvem.md#azure) | Nuvem, código e entrega | certificação |
+| → envia para | [AWS](12-nuvem.md#aws) | Nuvem, código e entrega | Skill Builder |
 
 <a id="thm"></a>
 
@@ -84,6 +96,7 @@ Laboratórios guiados de segurança para Security+, eJPT e OSCP.
 |---|---|---|---|
 | → envia para | [VMs: Kali · Arch · Servidores](03-win.md#vms) | Windows 11, apps e máquinas virtuais | prática |
 | → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | writeups |
+| → envia para | [Pendrive Kali (persistência)](01-hw.md#pkali) | Hardware | laboratórios |
 
 <a id="plat"></a>
 
@@ -108,7 +121,7 @@ Repetição espaçada para comandos, conceitos, certificações e concurso. Open
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | ← recebe de | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | notas viram cartões |
-| ← recebe de | [Exercícios em YAML](14-editora.md#exyaml) | Editora AMS Silva (produção de livros) | baralhos |
+| ← recebe de | [Exercícios em YAML](15-editora.md#exyaml) | Editora AMS Silva (produção de livros) | baralhos |
 
 <a id="road"></a>
 
@@ -132,8 +145,21 @@ Pacote para professores: Copilot Pro e outros benefícios. Peça a verificação
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [GitHub Copilot](06-chat.md#copi) | Assistentes de IA (chat, pesquisa e estudo) | Copilot Pro |
+| → envia para | [GitHub Copilot](07-chat.md#copi) | Assistentes de IA (chat, pesquisa e estudo) | Copilot Pro |
+
+<a id="dez"></a>
+
+### Zoomcamp de dados + cursos de IA
+
+*Remoto*
+
+Data Engineering Zoomcamp (DataTalksClub, grátis, 10 semanas), curso de LLM da Hugging Face, fast.ai e Neural Networks: Zero to Hero. Para a IA vão só as suas anotações e os seus projetos.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Python de dados (Polars, Jupyter)](06-dados.md#pyds) | Dados e treino de IA | projetos dos módulos |
+| → envia para | [PyTorch + CUDA (WSL2)](06-dados.md#torch) | Dados e treino de IA | exercícios de redes neurais |
 
 ---
 
-[↑ Camada 14 · Editora AMS Silva (produção de livros)](14-editora.md) · [↓ Camada 12 · Produção de conteúdo](12-cont.md)
+[↑ Camada 15 · Editora AMS Silva (produção de livros)](15-editora.md) · [↓ Camada 13 · Produção de conteúdo](13-cont.md)

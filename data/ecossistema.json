@@ -86,6 +86,11 @@
    "ponte": "O que é código vai para o agente; o que é pesquisa e estudo fica nos assistentes e termina salvo no vault."
   },
   {
+   "id": "dados",
+   "titulo": "Dados e treino de IA",
+   "ponte": "Os seus dados viram tabelas limpas e datasets; o treino pesado roda numa GPU da nuvem e o modelo volta para o Ollama do notebook."
+  },
+  {
    "id": "ia",
    "titulo": "Agentes de IA e sandbox",
    "ponte": "O agente roda dentro do ai-jail e só enxerga ~/dev/<projeto>."
@@ -606,6 +611,15 @@
    "conta": true,
    "futuro": false,
    "descricao": "Pacote para professores: Copilot Pro e outros benefícios. Peça a verificação."
+  },
+  {
+   "id": "dez",
+   "camada": "est",
+   "rotulo": "Zoomcamp de dados|+ cursos de IA",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Data Engineering Zoomcamp (DataTalksClub, grátis, 10 semanas), curso de LLM da Hugging Face, fast.ai e Neural Networks: Zero to Hero. Para a IA vão só as suas anotações e os seus projetos."
   },
   {
    "id": "obss",
@@ -1364,13 +1378,130 @@
    "descricao": "Autocompletar e chat dentro do VS Code. Professores verificados no GitHub Education ganham o plano Pro grátis."
   },
   {
+   "id": "pyds",
+   "camada": "dados",
+   "rotulo": "Python de dados|(Polars, Jupyter)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Polars, pandas e JupyterLab num projeto uv em ~/dev/lab-ia. A base de toda a trilha de dados e de IA."
+  },
+  {
+   "id": "duck",
+   "camada": "dados",
+   "rotulo": "DuckDB + Parquet",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Banco analítico que roda dentro do Python e lê Parquet direto. Faz no notebook o que muita empresa faz num data warehouse."
+  },
+  {
+   "id": "dbt",
+   "camada": "dados",
+   "rotulo": "dbt Core",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Transforma as tabelas brutas (vendas, gastos, publicações) em modelos limpos e testados, com SQL versionado no Git."
+  },
+  {
+   "id": "orq",
+   "camada": "dados",
+   "rotulo": "Airflow|(orquestração)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Agenda e acompanha as rotinas de dados: extrair das plataformas, rodar o dbt, avisar se falhar. É o orquestrador mais pedido em vaga. Roda em Docker."
+  },
+  {
+   "id": "spark",
+   "camada": "dados",
+   "rotulo": "Spark (PySpark)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Processamento distribuído. No notebook roda em modo local, o suficiente para aprender a API que as empresas usam com volumes grandes."
+  },
+  {
+   "id": "dset",
+   "camada": "dados",
+   "rotulo": "Seus datasets|(só conteúdo seu)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Pares de pergunta e resposta tirados das suas notas, exercícios, livro e aulas que você gravou. Nada de aulas da Udemy, DIO, Alura ou de terceiros; dados de alunos só com consentimento, e de menores só com autorização dos responsáveis."
+  },
+  {
+   "id": "torch",
+   "camada": "dados",
+   "rotulo": "PyTorch + CUDA|(WSL2)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Base do treino de redes neurais. A GTX 1650 (Turing, 4 GB) tem suporte no CUDA do WSL2: serve para aprender, treinar modelos pequenos e testar código antes de pagar GPU."
+  },
+  {
+   "id": "hf",
+   "camada": "dados",
+   "rotulo": "Hugging Face|(modelos e Hub)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Transformers, PEFT, TRL e Datasets; no Hub ficam os modelos base e, em repositórios privados, os seus datasets e adaptadores."
+  },
+  {
+   "id": "unsl",
+   "camada": "dados",
+   "rotulo": "Unsloth (QLoRA)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Fine-tuning com pouca memória. Um 8B em QLoRA pede no mínimo 6 GB de VRAM: não cabe nos 4 GB da GTX 1650, então o treino do 8B roda no Kaggle ou numa GPU alugada."
+  },
+  {
+   "id": "kgl",
+   "camada": "dados",
+   "rotulo": "Kaggle · Colab|(GPU grátis)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Notebooks com GPU T4 de 16 GB sem pagar: o Kaggle dá 30 horas por semana, com sessões de até 9 horas. Suficiente para o primeiro fine-tuning de um 8B."
+  },
+  {
+   "id": "mlflow",
+   "camada": "dados",
+   "rotulo": "MLflow|(experimentos)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Registra cada treino: dados usados, parâmetros, métricas e o modelo gerado. Sem isso você não sabe qual versão ficou melhor."
+  },
+  {
+   "id": "evals",
+   "camada": "dados",
+   "rotulo": "Avaliação dos|modelos",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Um conjunto de perguntas com respostas certas, separado do treino. O modelo novo só substitui o anterior se ganhar nele."
+  },
+  {
+   "id": "gguf",
+   "camada": "dados",
+   "rotulo": "llama.cpp (GGUF)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Converte e quantiza o modelo treinado para GGUF, o formato que o Ollama carrega no notebook."
+  },
+  {
    "id": "lmods",
    "camada": "ia",
    "rotulo": "Modelos locais:|Qwen · Gemma · Llama",
    "tipo": "local",
    "conta": false,
    "futuro": false,
-   "descricao": "Modelos abertos baixados pelo Ollama. Versões de 3B a 4B cabem na GTX 1650; inclui versões pequenas do DeepSeek-R1. Rodam offline, então servem para dados sensíveis."
+   "descricao": "Modelos abertos baixados pelo Ollama. De 3B a 4B cabem inteiros na GTX 1650. Um 8B (cerca de 4,9 GB em Q4) também roda: o Ollama põe parte na GPU e o resto nos 32 GB de RAM, mais devagar. Rodam offline, então servem para dados sensíveis."
   },
   {
    "id": "rag",
@@ -1429,11 +1560,11 @@
   {
    "id": "oll",
    "camada": "ia",
-   "rotulo": "Ollama (3B–4B)",
+   "rotulo": "Ollama",
    "tipo": "local",
    "conta": false,
    "futuro": false,
-   "descricao": "IA local na GTX 1650; API em localhost:11434."
+   "descricao": "IA local na GTX 1650; API em localhost:11434. Carrega os modelos prontos e os que você treinar, em GGUF."
   },
   {
    "id": "nvim",
@@ -1514,7 +1645,7 @@
    "tipo": "local",
    "conta": false,
    "futuro": true,
-   "descricao": "Linux nativo com boot próprio, sem tocar no Windows."
+   "descricao": "Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portátil em pendrive ou SSD USB."
   },
   {
    "id": "tail",
@@ -1712,7 +1843,7 @@
    "tipo": "local",
    "conta": false,
    "futuro": true,
-   "descricao": "Kali (segurança), Arch (treino da instalação), Ubuntu Server (deploy), Windows Server com Active Directory e RHEL/Rocky (corporativo)."
+   "descricao": "Kali (segurança), Arch (treino da instalação), Ubuntu Server (deploy), Windows Server com Active Directory e RHEL/Rocky (corporativo). Kali e Arch também ficam em pendrive."
   },
   {
    "id": "ard",
@@ -1722,6 +1853,15 @@
    "conta": false,
    "futuro": false,
    "descricao": "Programação das placas de robótica."
+  },
+  {
+   "id": "rufus",
+   "camada": "win",
+   "rotulo": "Rufus (grava|pendrives)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Grava as ISOs do Kali e do Arch nos pendrives. Instalado pelo winget."
   },
   {
    "id": "sign",
@@ -1757,7 +1897,7 @@
    "tipo": "fisico",
    "conta": false,
    "futuro": false,
-   "descricao": "Só sistema assinado dá boot."
+   "descricao": "Só sistema assinado dá boot. Para usar os pendrives de Kali e Arch, o Secure Boot precisa ser desligado; suspenda o BitLocker antes, senão o Windows pede a chave de recuperação."
   },
   {
    "id": "bitl",
@@ -1884,6 +2024,24 @@
    "conta": false,
    "futuro": false,
    "descricao": "Segunda cópia do backup."
+  },
+  {
+   "id": "pkali",
+   "camada": "hw",
+   "rotulo": "Pendrive Kali|(persistência)",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Kali Live com persistência criptografada (LUKS), 32 GB ou mais. Para estudar e fazer laboratório, só contra alvos seus ou de plataformas autorizadas. Dá boot pelo menu F12 com o Secure Boot desligado."
+  },
+  {
+   "id": "parch",
+   "camada": "hw",
+   "rotulo": "Pendrive Arch|(instalação portátil)",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Um pendrive com a ISO para treinar a instalação e um pendrive rápido ou SSD USB (64 GB ou mais) com o Arch instalado de verdade, portátil. Pendrive comum fica lento como sistema."
   },
   {
    "id": "rob",
@@ -2176,11 +2334,11 @@
   {
    "id": "gpuh",
    "camada": "nuvem",
-   "rotulo": "GPU na nuvem|por hora",
+   "rotulo": "GPU por hora|(RunPod e afins)",
    "tipo": "remoto",
    "conta": true,
-   "futuro": true,
-   "descricao": "Para treinar ou gerar voz e vídeo com modelos abertos quando a GTX 1650 não der conta."
+   "futuro": false,
+   "descricao": "Quando o Kaggle não bastar: GPU de 24 GB a partir de cerca de US$ 0,27 a 0,90 por hora no RunPod (out/2026). Um fine-tuning QLoRA de 8B costuma levar poucas horas. Use crédito pré-pago, sem cartão em débito automático."
   },
   {
    "id": "selo",
@@ -5668,6 +5826,186 @@
    "de": "metrics",
    "para": "oanal",
    "rotulo": "dados da semana"
+  },
+  {
+   "de": "rt",
+   "para": "pyds",
+   "rotulo": "Python + uv"
+  },
+  {
+   "de": "pyds",
+   "para": "duck",
+   "rotulo": "consulta Parquet"
+  },
+  {
+   "de": "metrics",
+   "para": "dbt",
+   "rotulo": "tabelas brutas"
+  },
+  {
+   "de": "dbt",
+   "para": "duck",
+   "rotulo": "modelos locais"
+  },
+  {
+   "de": "dbt",
+   "para": "painel",
+   "rotulo": "modelos limpos"
+  },
+  {
+   "de": "orq",
+   "para": "dbt",
+   "rotulo": "roda todo dia"
+  },
+  {
+   "de": "orq",
+   "para": "pyds",
+   "rotulo": "extrações agendadas"
+  },
+  {
+   "de": "docker",
+   "para": "orq",
+   "rotulo": "container"
+  },
+  {
+   "de": "spark",
+   "para": "duck",
+   "rotulo": "mesmos Parquet"
+  },
+  {
+   "de": "kafka",
+   "para": "spark",
+   "rotulo": "streaming"
+  },
+  {
+   "de": "obsd",
+   "para": "dset",
+   "rotulo": "suas notas"
+  },
+  {
+   "de": "exyaml",
+   "para": "dset",
+   "rotulo": "exercícios com gabarito"
+  },
+  {
+   "de": "whis",
+   "para": "dset",
+   "rotulo": "transcrições das suas aulas"
+  },
+  {
+   "de": "fonte",
+   "para": "dset",
+   "rotulo": "texto do livro"
+  },
+  {
+   "de": "wsl",
+   "para": "torch",
+   "rotulo": "CUDA no WSL2"
+  },
+  {
+   "de": "nb",
+   "para": "torch",
+   "rotulo": "GTX 1650 (4 GB)"
+  },
+  {
+   "de": "torch",
+   "para": "unsl",
+   "rotulo": "base do treino"
+  },
+  {
+   "de": "hf",
+   "para": "unsl",
+   "rotulo": "modelos base; guarda o adaptador"
+  },
+  {
+   "de": "dset",
+   "para": "unsl",
+   "rotulo": "treina com"
+  },
+  {
+   "de": "kgl",
+   "para": "unsl",
+   "rotulo": "GPU grátis (T4 16 GB)"
+  },
+  {
+   "de": "gpuh",
+   "para": "unsl",
+   "rotulo": "GPU de 24 GB"
+  },
+  {
+   "de": "unsl",
+   "para": "mlflow",
+   "rotulo": "registra o treino"
+  },
+  {
+   "de": "unsl",
+   "para": "evals",
+   "rotulo": "modelo treinado"
+  },
+  {
+   "de": "evals",
+   "para": "gguf",
+   "rotulo": "aprovado"
+  },
+  {
+   "de": "gguf",
+   "para": "oll",
+   "rotulo": "importa o modelo"
+  },
+  {
+   "de": "dset",
+   "para": "hf",
+   "rotulo": "dataset privado"
+  },
+  {
+   "de": "dez",
+   "para": "pyds",
+   "rotulo": "projetos dos módulos"
+  },
+  {
+   "de": "dez",
+   "para": "torch",
+   "rotulo": "exercícios de redes neurais"
+  },
+  {
+   "de": "rufus",
+   "para": "pkali",
+   "rotulo": "grava a ISO"
+  },
+  {
+   "de": "rufus",
+   "para": "parch",
+   "rotulo": "grava a ISO"
+  },
+  {
+   "de": "pkali",
+   "para": "nb",
+   "rotulo": "boot pelo F12"
+  },
+  {
+   "de": "parch",
+   "para": "nb",
+   "rotulo": "boot pelo F12"
+  },
+  {
+   "de": "thm",
+   "para": "pkali",
+   "rotulo": "laboratórios"
+  },
+  {
+   "de": "parch",
+   "para": "arch",
+   "rotulo": "treino antes do 2º NVMe"
+  },
+  {
+   "de": "dot",
+   "para": "parch",
+   "rotulo": "mesmos dotfiles"
+  },
+  {
+   "de": "tpm",
+   "para": "pkali",
+   "rotulo": "Secure Boot desligado para o boot"
   }
  ],
  "fluxos": [
@@ -6170,6 +6508,82 @@
     {
      "bloco": "oanal",
      "descricao": "O analista semanal diz o que funcionou e o que mudar."
+    }
+   ]
+  },
+  {
+   "id": "treino",
+   "titulo": "Treinar uma IA sua",
+   "passos": [
+    {
+     "bloco": "obsd",
+     "descricao": "As suas notas, exercícios, livro e aulas são a matéria-prima."
+    },
+    {
+     "bloco": "dset",
+     "descricao": "Viram um dataset de perguntas e respostas, só com conteúdo seu."
+    },
+    {
+     "bloco": "unsl",
+     "descricao": "O fine-tuning QLoRA ajusta um modelo base de 8B."
+    },
+    {
+     "bloco": "kgl",
+     "descricao": "O treino roda na GPU grátis do Kaggle (ou numa GPU alugada)."
+    },
+    {
+     "bloco": "unsl",
+     "descricao": "Sai um adaptador com o que o modelo aprendeu."
+    },
+    {
+     "bloco": "evals",
+     "descricao": "Ele é testado contra o modelo base em perguntas separadas."
+    },
+    {
+     "bloco": "gguf",
+     "descricao": "Aprovado, vira GGUF quantizado."
+    },
+    {
+     "bloco": "oll",
+     "descricao": "E roda no Ollama do notebook, offline."
+    }
+   ]
+  },
+  {
+   "id": "dados",
+   "titulo": "Dados de venda viram decisão",
+   "passos": [
+    {
+     "bloco": "hooks",
+     "descricao": "Cada venda chega pelo webhook."
+    },
+    {
+     "bloco": "n8n",
+     "descricao": "O n8n grava a venda bruta."
+    },
+    {
+     "bloco": "metrics",
+     "descricao": "O banco guarda vendas, gastos e publicações."
+    },
+    {
+     "bloco": "dbt",
+     "descricao": "O dbt limpa, junta e testa as tabelas."
+    },
+    {
+     "bloco": "orq",
+     "descricao": "O Airflow roda tudo todo dia e avisa se falhar."
+    },
+    {
+     "bloco": "dbt",
+     "descricao": "Os modelos ficam prontos."
+    },
+    {
+     "bloco": "painel",
+     "descricao": "O painel mostra lucro por produto, canal e campanha."
+    },
+    {
+     "bloco": "regras",
+     "descricao": "As regras de corte decidem o que pausar e o que escalar."
     }
    ]
   }

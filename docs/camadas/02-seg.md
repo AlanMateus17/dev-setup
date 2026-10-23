@@ -45,6 +45,7 @@ flowchart LR
     n_ext["Disco externo"]
     n_nas["Servidor caseiro (NAS + serviços)"]
     n_nb["Acer Nitro (32 GB, GTX 1650)"]
+    n_pkali["Pendrive Kali (persistência)"]
     n_ssdext["SSD externo (USB-C 10 Gbps)"]
   end
   n_sign -->|"Verified"| n_gh
@@ -53,6 +54,7 @@ flowchart LR
   n_restic -->|"criptografado"| n_b2
   n_ykey -->|"2FA"| n_gh
   n_tpm -->|"protege a chave"| n_bitl
+  n_tpm -->|"Secure Boot desligado para o boot"| n_pkali
   n_bitl -->|"criptografa o disco"| n_nb
   n_def -->|"protege"| n_w11
   n_kee -->|"senha aqui, código no app"| n_tfa
@@ -77,7 +79,7 @@ flowchart LR
 | [Commits assinados (chave SSH)](#sign) | Local | Selo Verified no GitHub: prova que o commit é seu. Usa a chave SSH que você já tem. |
 | [restic (backup criptografado)](#restic) | Local | Backup criptografado e incremental para o disco externo e para a nuvem (ex.: armazenamento do seu plano Google). |
 | [Chave física (YubiKey)](#ykey) | Físico · futuro | 2FA à prova de phishing para GitHub, Google e Microsoft. |
-| [TPM + Secure Boot](#tpm) | Físico | Só sistema assinado dá boot. |
+| [TPM + Secure Boot](#tpm) | Físico | Só sistema assinado dá boot. Para usar os pendrives de Kali e Arch, o Secure Boot precisa ser desligado; suspenda o BitLocker antes, senão o Windows pede a chave de recuperação. |
 | [BitLocker](#bitl) | Local | Disco criptografado; chave guardada fora da máquina. |
 | [Defender + Firewall](#def) | Local | Antivírus e bloqueio de rede. |
 | [KeePassXC](#kee) | Local | Cofre de todas as senhas das contas marcadas com o ponto dourado. |
@@ -94,7 +96,7 @@ Selo Verified no GitHub: prova que o commit é seu. Usa a chave SSH que você j�
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | Verified |
+| → envia para | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | Verified |
 
 <a id="restic"></a>
 
@@ -108,7 +110,7 @@ Backup criptografado e incremental para o disco externo e para a nuvem (ex.: arm
 |---|---|---|---|
 | → envia para | [Disco externo](01-hw.md#ext) | Hardware | cópia local |
 | → envia para | [Backup 3-2-1](02-seg.md#bkp) | Segurança e cofre | executa |
-| → envia para | [Backblaze B2 (backup)](11-nuvem.md#b2) | Nuvem, código e entrega | criptografado |
+| → envia para | [Backblaze B2 (backup)](12-nuvem.md#b2) | Nuvem, código e entrega | criptografado |
 
 <a id="ykey"></a>
 
@@ -120,7 +122,7 @@ Backup criptografado e incremental para o disco externo e para a nuvem (ex.: arm
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | 2FA |
+| → envia para | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | 2FA |
 
 <a id="tpm"></a>
 
@@ -128,11 +130,12 @@ Backup criptografado e incremental para o disco externo e para a nuvem (ex.: arm
 
 *Físico*
 
-Só sistema assinado dá boot.
+Só sistema assinado dá boot. Para usar os pendrives de Kali e Arch, o Secure Boot precisa ser desligado; suspenda o BitLocker antes, senão o Windows pede a chave de recuperação.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [BitLocker](02-seg.md#bitl) | Segurança e cofre | protege a chave |
+| → envia para | [Pendrive Kali (persistência)](01-hw.md#pkali) | Hardware | Secure Boot desligado para o boot |
 
 <a id="bitl"></a>
 
@@ -170,9 +173,9 @@ Cofre de todas as senhas das contas marcadas com o ponto dourado.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [App 2FA (celular)](02-seg.md#tfa) | Segurança e cofre | senha aqui, código no app |
-| → envia para | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | senhas e tokens |
-| → envia para | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | senhas |
-| → envia para | [Azure](11-nuvem.md#azure) | Nuvem, código e entrega | senhas |
+| → envia para | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | senhas e tokens |
+| → envia para | [Hotmart](20-venda.md#hotm) | Plataformas de venda e recebimento | senhas |
+| → envia para | [Azure](12-nuvem.md#azure) | Nuvem, código e entrega | senhas |
 | ← recebe de | [Syncthing](03-win.md#syncth) | Windows 11, apps e máquinas virtuais | cofre de senhas |
 
 <a id="tfa"></a>

@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** O Windows depende de TPM, BitLocker e Defender para ficar protegido.
 
-**23 blocos** · 2 precisam de conta · 3 marcados como futuro
+**24 blocos** · 2 precisam de conta · 3 marcados como futuro
 
 ## Mapa de conexões
 
@@ -37,6 +37,7 @@ flowchart LR
     n_wshark["Wireshark"]
     n_vms["VMs: Kali · Arch · Servidores"]
     n_ard["Arduino IDE 2"]
+    n_rufus["Rufus (grava pendrives)"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_overif["Verificadores"]
@@ -94,6 +95,9 @@ flowchart LR
     n_nblm["NotebookLM"]
     n_perp["Perplexity"]
   end
+  subgraph L_dados["Dados e treino de IA"]
+    n_dset["Seus datasets (só conteúdo seu)"]
+  end
   subgraph L_ia["Agentes de IA e sandbox"]
     n_rag["Base de conhecimento (RAG) das suas notas"]
   end
@@ -112,6 +116,8 @@ flowchart LR
     n_mon["2º monitor"]
     n_nas["Servidor caseiro (NAS + serviços)"]
     n_nb["Acer Nitro (32 GB, GTX 1650)"]
+    n_parch["Pendrive Arch (instalação portátil)"]
+    n_pkali["Pendrive Kali (persistência)"]
     n_rob["Arduino · ESP32 · Pi"]
     n_sata["SSD SATA 2,5#quot;"]
     n_ws["Workstation com GPU"]
@@ -148,6 +154,7 @@ flowchart LR
   n_obsd -->|"roteiro"| n_curso
   n_obsd -->|"rascunho"| n_fonte
   n_obsd -->|"posts do blog"| n_site
+  n_obsd -->|"suas notas"| n_dset
   n_bkp -->|"copia o vault"| n_obsd
   n_capp2 -->|"roteiros e planos"| n_obsd
   n_gpt -->|"respostas salvas no vault"| n_obsd
@@ -175,8 +182,10 @@ flowchart LR
   n_sata -->|"discos das VMs"| n_vms
   n_thm -->|"prática"| n_vms
   n_ard -->|"grava o firmware"| n_rob
+  n_rufus -->|"grava a ISO"| n_pkali
+  n_rufus -->|"grava a ISO"| n_parch
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_tail,n_wslcfg,n_wterm,n_draw,n_unity,n_boot,n_nitro,n_zip,n_ptoys,n_pdf,n_sharex,n_office,n_ffox,n_w11,n_vsc,n_obsd,n_syncth,n_dbv,n_nav,n_vbox,n_wshark,n_vms,n_ard desta
+  class n_tail,n_wslcfg,n_wterm,n_draw,n_unity,n_boot,n_nitro,n_zip,n_ptoys,n_pdf,n_sharex,n_office,n_ffox,n_w11,n_vsc,n_obsd,n_syncth,n_dbv,n_nav,n_vbox,n_wshark,n_vms,n_ard,n_rufus desta
 ```
 
 ## Blocos
@@ -204,8 +213,9 @@ flowchart LR
 | [Navegador + Claude in Chrome](#nav) | Local | Testes, DevTools e acesso a todas as contas web. |
 | [VirtualBox](#vbox) | Local | Roda as VMs de estudo. |
 | [Wireshark](#wshark) | Local | Captura e lê o tráfego de rede no laboratório de segurança. Instalado pelo winget. |
-| [VMs: Kali · Arch · Servidores](#vms) | Local · futuro | Kali (segurança), Arch (treino da instalação), Ubuntu Server (deploy), Windows Server com Active Directory e RHEL/Rocky (corporativo). |
+| [VMs: Kali · Arch · Servidores](#vms) | Local · futuro | Kali (segurança), Arch (treino da instalação), Ubuntu Server (deploy), Windows Server com Active Directory e RHEL/Rocky (corporativo). Kali e Arch também ficam em pendrive. |
 | [Arduino IDE 2](#ard) | Local | Programação das placas de robótica. |
+| [Rufus (grava pendrives)](#rufus) | Local | Grava as ISOs do Kali e do Arch nos pendrives. Instalado pelo winget. |
 
 <a id="tail"></a>
 
@@ -303,7 +313,7 @@ Abre e cria .zip, .7z e .tar (ISOs, backups, materiais de aula).
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Templates e código-fonte](16-prod.md#tmpl) | Produtos (o que você vende) | empacota o download |
+| → envia para | [Templates e código-fonte](17-prod.md#tmpl) | Produtos (o que você vende) | empacota o download |
 
 <a id="ptoys"></a>
 
@@ -327,7 +337,7 @@ Leitor de PDF leve para livros, apostilas e o PDF do Lógica e Máquina.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Livro Lógica e Máquina](16-prod.md#livro) | Produtos (o que você vende) | revisão do PDF |
+| → envia para | [Livro Lógica e Máquina](17-prod.md#livro) | Produtos (o que você vende) | revisão do PDF |
 
 <a id="sharex"></a>
 
@@ -339,8 +349,8 @@ Prints, GIFs e gravações curtas da tela para aulas, posts e issues do GitHub.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instagram](21-pub.md#ig) | Público e canais | GIFs e prints |
-| → envia para | [Mini-curso Lógica de Programação](16-prod.md#curso) | Produtos (o que você vende) | demonstrações |
+| → envia para | [Instagram](22-pub.md#ig) | Público e canais | GIFs e prints |
+| → envia para | [Mini-curso Lógica de Programação](17-prod.md#curso) | Produtos (o que você vende) | demonstrações |
 
 <a id="office"></a>
 
@@ -352,7 +362,7 @@ Abrir e editar .docx, .xlsx e .pptx que chegam da escola e de clientes.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Sites para pequenas empresas](16-prod.md#sites) | Produtos (o que você vende) | documentos de clientes |
+| → envia para | [Sites para pequenas empresas](17-prod.md#sites) | Produtos (o que você vende) | documentos de clientes |
 
 <a id="ffox"></a>
 
@@ -364,7 +374,7 @@ Testar os sites em outro motor de navegador e separar contas pessoais das da emp
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | teste em outro navegador |
+| → envia para | [Instituto AMS](18-web.md#inst) | Vitrine web (sites e domínio) | teste em outro navegador |
 
 <a id="w11"></a>
 
@@ -381,8 +391,8 @@ Host do dia a dia (conta local, sem conta Microsoft).
 | ← recebe de | [Acer Nitro (32 GB, GTX 1650)](01-hw.md#nb) | Hardware | roda o Windows |
 | ← recebe de | [Defender + Firewall](02-seg.md#def) | Segurança e cofre | protege |
 | ← recebe de | [Gerenciador de boot](03-win.md#boot) | Windows 11, apps e máquinas virtuais | boot |
-| ← recebe de | [Claude in Chrome + uso do computador](07-clc.md#cchr) | Claude: recursos, conectores e plugins | opera apps |
-| ← recebe de | [Verificadores](22-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | confere |
+| ← recebe de | [Claude in Chrome + uso do computador](08-clc.md#cchr) | Claude: recursos, conectores e plugins | opera apps |
+| ← recebe de | [Verificadores](23-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | confere |
 
 <a id="vsc"></a>
 
@@ -395,8 +405,8 @@ Editor; abre os projetos dentro do Linux.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Ubuntu (WSL2)](04-lin.md#wsl) | Linux (Ubuntu no WSL2, Arch no 2º disco) | Remote – WSL |
-| ← recebe de | [GitHub Copilot](06-chat.md#copi) | Assistentes de IA (chat, pesquisa e estudo) | autocompletar |
-| ← recebe de | [Codex (OpenAI)](06-chat.md#codex) | Assistentes de IA (chat, pesquisa e estudo) | extensão |
+| ← recebe de | [GitHub Copilot](07-chat.md#copi) | Assistentes de IA (chat, pesquisa e estudo) | autocompletar |
+| ← recebe de | [Codex (OpenAI)](07-chat.md#codex) | Assistentes de IA (chat, pesquisa e estudo) | extensão |
 
 <a id="obsd"></a>
 
@@ -408,26 +418,27 @@ Vault de estudo, roteiros e planejamento.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | Obsidian Git |
+| → envia para | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | Obsidian Git |
 | → envia para | [Base de conhecimento (RAG) das suas notas](05-ia.md#rag) | Agentes de IA e sandbox | indexa as notas |
-| → envia para | [DIO (parceria)](19-venda.md#dio) | Plataformas de venda e recebimento | artigos e projetos |
-| → envia para | [Anki](13-est.md#anki) | Estudo e carreira | notas viram cartões |
-| → envia para | [Mini-curso Lógica de Programação](16-prod.md#curso) | Produtos (o que você vende) | roteiro |
-| → envia para | [Fonte única (Markdown + Pandoc)](14-editora.md#fonte) | Editora AMS Silva (produção de livros) | rascunho |
-| → envia para | [Site pessoal + blog (Jekyll)](17-web.md#site) | Vitrine web (sites e domínio) | posts do blog |
+| → envia para | [DIO (parceria)](20-venda.md#dio) | Plataformas de venda e recebimento | artigos e projetos |
+| → envia para | [Anki](14-est.md#anki) | Estudo e carreira | notas viram cartões |
+| → envia para | [Mini-curso Lógica de Programação](17-prod.md#curso) | Produtos (o que você vende) | roteiro |
+| → envia para | [Fonte única (Markdown + Pandoc)](15-editora.md#fonte) | Editora AMS Silva (produção de livros) | rascunho |
+| → envia para | [Site pessoal + blog (Jekyll)](18-web.md#site) | Vitrine web (sites e domínio) | posts do blog |
+| → envia para | [Seus datasets (só conteúdo seu)](06-dados.md#dset) | Dados e treino de IA | suas notas |
 | ← recebe de | [Backup 3-2-1](02-seg.md#bkp) | Segurança e cofre | copia o vault |
-| ← recebe de | [Claude (app)](06-chat.md#capp2) | Assistentes de IA (chat, pesquisa e estudo) | roteiros e planos |
-| ← recebe de | [ChatGPT](06-chat.md#gpt) | Assistentes de IA (chat, pesquisa e estudo) | respostas salvas no vault |
-| ← recebe de | [NotebookLM](06-chat.md#nblm) | Assistentes de IA (chat, pesquisa e estudo) | resumos de estudo |
-| ← recebe de | [Perplexity](06-chat.md#perp) | Assistentes de IA (chat, pesquisa e estudo) | pesquisa com fontes |
-| ← recebe de | [Alura · Rocketseat · DIO · Udemy](13-est.md#plat) | Estudo e carreira | suas anotações |
+| ← recebe de | [Claude (app)](07-chat.md#capp2) | Assistentes de IA (chat, pesquisa e estudo) | roteiros e planos |
+| ← recebe de | [ChatGPT](07-chat.md#gpt) | Assistentes de IA (chat, pesquisa e estudo) | respostas salvas no vault |
+| ← recebe de | [NotebookLM](07-chat.md#nblm) | Assistentes de IA (chat, pesquisa e estudo) | resumos de estudo |
+| ← recebe de | [Perplexity](07-chat.md#perp) | Assistentes de IA (chat, pesquisa e estudo) | pesquisa com fontes |
+| ← recebe de | [Alura · Rocketseat · DIO · Udemy](14-est.md#plat) | Estudo e carreira | suas anotações |
 | ← recebe de | [Excalidraw / draw.io](03-win.md#draw) | Windows 11, apps e máquinas virtuais | diagramas |
-| ← recebe de | [roadmap.sh + Akita](13-est.md#road) | Estudo e carreira | roteiro |
-| ← recebe de | [Conector Google (Gmail, Drive…)](07-clc.md#cgws) | Claude: recursos, conectores e plugins | resumos de e-mail e agenda |
-| ← recebe de | [Whisper (local)](12-cont.md#whis) | Produção de conteúdo | transcrição |
+| ← recebe de | [roadmap.sh + Akita](14-est.md#road) | Estudo e carreira | roteiro |
+| ← recebe de | [Conector Google (Gmail, Drive…)](08-clc.md#cgws) | Claude: recursos, conectores e plugins | resumos de e-mail e agenda |
+| ← recebe de | [Whisper (local)](13-cont.md#whis) | Produção de conteúdo | transcrição |
 | ← recebe de | [Syncthing](03-win.md#syncth) | Windows 11, apps e máquinas virtuais | vault |
-| ← recebe de | [Notion · monday · GitBook · Stripe](07-clc.md#cdup) | Claude: recursos, conectores e plugins | substituídos pelo Obsidian |
-| ← recebe de | [TryHackMe / Hack The Box](13-est.md#thm) | Estudo e carreira | writeups |
+| ← recebe de | [Notion · monday · GitBook · Stripe](08-clc.md#cdup) | Claude: recursos, conectores e plugins | substituídos pelo Obsidian |
+| ← recebe de | [TryHackMe / Hack The Box](14-est.md#thm) | Estudo e carreira | writeups |
 
 <a id="syncth"></a>
 
@@ -454,9 +465,9 @@ Banco de dados e testes de API.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [PostgreSQL](08-cnt.md#pg) | Containers, Kubernetes e infra como código | porta 5432 |
-| → envia para | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | HTTP (Bruno) |
-| ← recebe de | [OpenAPI + Scalar](10-app.md#oapi) | Aplicação: sistemas AM (Aura) | Bruno importa |
+| → envia para | [PostgreSQL](09-cnt.md#pg) | Containers, Kubernetes e infra como código | porta 5432 |
+| → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | HTTP (Bruno) |
+| ← recebe de | [OpenAPI + Scalar](11-app.md#oapi) | Aplicação: sistemas AM (Aura) | Bruno importa |
 
 <a id="nav"></a>
 
@@ -468,9 +479,9 @@ Testes, DevTools e acesso a todas as contas web.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Next.js + Aura Design System](10-app.md#front) | Aplicação: sistemas AM (Aura) | localhost:3000 |
-| → envia para | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | painel web |
-| ← recebe de | [Claude in Chrome + uso do computador](07-clc.md#cchr) | Claude: recursos, conectores e plugins | opera o navegador |
+| → envia para | [Next.js + Aura Design System](11-app.md#front) | Aplicação: sistemas AM (Aura) | localhost:3000 |
+| → envia para | [Hotmart](20-venda.md#hotm) | Plataformas de venda e recebimento | painel web |
+| ← recebe de | [Claude in Chrome + uso do computador](08-clc.md#cchr) | Claude: recursos, conectores e plugins | opera o navegador |
 
 <a id="vbox"></a>
 
@@ -503,14 +514,14 @@ Captura e lê o tráfego de rede no laboratório de segurança. Instalado pelo w
 
 *Local · futuro*
 
-Kali (segurança), Arch (treino da instalação), Ubuntu Server (deploy), Windows Server com Active Directory e RHEL/Rocky (corporativo).
+Kali (segurança), Arch (treino da instalação), Ubuntu Server (deploy), Windows Server com Active Directory e RHEL/Rocky (corporativo). Kali e Arch também ficam em pendrive.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | ← recebe de | [VirtualBox](03-win.md#vbox) | Windows 11, apps e máquinas virtuais | executa |
 | ← recebe de | [nmap · dig · curl](04-lin.md#netw) | Linux (Ubuntu no WSL2, Arch no 2º disco) | diagnóstico |
 | ← recebe de | [SSD SATA 2,5"](01-hw.md#sata) | Hardware | discos das VMs |
-| ← recebe de | [TryHackMe / Hack The Box](13-est.md#thm) | Estudo e carreira | prática |
+| ← recebe de | [TryHackMe / Hack The Box](14-est.md#thm) | Estudo e carreira | prática |
 | ← recebe de | [Wireshark](03-win.md#wshark) | Windows 11, apps e máquinas virtuais | captura o tráfego do lab |
 
 <a id="ard"></a>
@@ -524,6 +535,19 @@ Programação das placas de robótica.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Arduino · ESP32 · Pi](01-hw.md#rob) | Hardware | grava o firmware |
+
+<a id="rufus"></a>
+
+### Rufus (grava pendrives)
+
+*Local*
+
+Grava as ISOs do Kali e do Arch nos pendrives. Instalado pelo winget.
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Pendrive Kali (persistência)](01-hw.md#pkali) | Hardware | grava a ISO |
+| → envia para | [Pendrive Arch (instalação portátil)](01-hw.md#parch) | Hardware | grava a ISO |
 
 ---
 

@@ -21,3 +21,5 @@ Agentes, skills, hooks e ferramentas que fazem parte do setup e são construído
 | **aura-status** | Ferramenta C# | Próximos 3 meses | Painel de repos, backup, Dependabot e estudos. Depois, módulo da Waybar no Arch. |
 | **Laboratório de segurança** | Repositório + VMs | 3 a 12 meses | Configuração das VMs e writeups das máquinas resolvidas. |
 | **AMtech Dev Edition** | Scripts sobre o Omarchy | Depois de 12 meses | Sua edição do Arch com tema Aura e ambiente .NET. |
+| **Pipeline de treino AMtech** | Repositório Python | 3 a 12 meses | Gera o dataset a partir das suas fontes, treina no Kaggle, avalia, registra no MLflow e publica o GGUF no Ollama. Um comando por etapa. |
+| **Projeto dbt das métricas** | Repositório dbt | Próximos 3 meses | Modelos de vendas, gastos e publicações com testes; o painel de lucro passa a ler daqui. |

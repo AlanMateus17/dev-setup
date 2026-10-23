@@ -1,13 +1,13 @@
 <!-- Arquivo GERADO por tools/gerar_docs.py a partir de data/. Edite os dados, não este arquivo. -->
 
 
-# Camada 11 · Nuvem, código e entrega
+# Camada 12 · Nuvem, código e entrega
 
 [← Arquitetura](../arquitetura.md) · [Índice da documentação](../README.md)
 
 > **Ligação com a camada de baixo:** git push via SSH leva o código ao GitHub; o Actions testa e publica.
 
-**16 blocos** · 11 precisam de conta · 4 marcados como futuro
+**16 blocos** · 11 precisam de conta · 3 marcados como futuro
 
 ## Mapa de conexões
 
@@ -29,7 +29,7 @@ flowchart LR
     n_azure["Azure"]
     n_aws["AWS"]
     n_b2["Backblaze B2 (backup)"]
-    n_gpuh["GPU na nuvem por hora"]
+    n_gpuh["GPU por hora (RunPod e afins)"]
   end
   subgraph L_pub["Público e canais"]
     n_recr["Recrutadores"]
@@ -74,6 +74,9 @@ flowchart LR
   subgraph L_chat["Assistentes de IA (chat, pesquisa e estudo)"]
     n_codex["Codex (OpenAI)"]
     n_gcode["Agentes de código do Google"]
+  end
+  subgraph L_dados["Dados e treino de IA"]
+    n_unsl["Unsloth (QLoRA)"]
   end
   subgraph L_ia["Agentes de IA e sandbox"]
     n_mcp["Servidores MCP"]
@@ -148,6 +151,7 @@ flowchart LR
   n_nas -->|"restic diário"| n_b2
   n_restic -->|"criptografado"| n_b2
   n_gpuh -->|"modelos abertos"| n_voz
+  n_gpuh -->|"GPU de 24 GB"| n_unsl
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_blob,n_tmail,n_sonar,n_ghproj,n_dbot,n_gcp,n_gh,n_gha,n_ghcr,n_ghp,n_cf,n_vercel,n_azure,n_aws,n_b2,n_gpuh desta
 ```
@@ -171,7 +175,7 @@ flowchart LR
 | [Azure](#azure) | Remoto · precisa de conta | Primeira nuvem para as APIs AM: App Service/Container Apps, PostgreSQL, Key Vault. |
 | [AWS](#aws) | Remoto · precisa de conta · futuro | Segunda nuvem, para o mercado maior. |
 | [Backblaze B2 (backup)](#b2) | Remoto · precisa de conta · futuro | Cópia fora de casa do backup, criptografada pelo restic. US$ 6,95 por TB/mês. |
-| [GPU na nuvem por hora](#gpuh) | Remoto · precisa de conta · futuro | Para treinar ou gerar voz e vídeo com modelos abertos quando a GTX 1650 não der conta. |
+| [GPU por hora (RunPod e afins)](#gpuh) | Remoto · precisa de conta | Quando o Kaggle não bastar: GPU de 24 GB a partir de cerca de US$ 0,27 a 0,90 por hora no RunPod (out/2026). Um fine-tuning QLoRA de 8B costuma levar poucas horas. Use crédito pré-pago, sem cartão em débito automático. |
 
 <a id="blob"></a>
 
@@ -183,7 +187,7 @@ Fotos de produtos, anexos e PDFs dos sistemas AM fora do banco de dados.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | arquivos |
+| → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | arquivos |
 
 <a id="tmail"></a>
 
@@ -195,7 +199,7 @@ E-mails automáticos dos sistemas: confirmação de conta, senha, recibo.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | e-mails do sistema |
+| → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | e-mails do sistema |
 
 <a id="sonar"></a>
 
@@ -207,7 +211,7 @@ Nota de qualidade e segurança do código a cada PR. Grátis para repositório p
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [GitHub Actions](11-nuvem.md#gha) | Nuvem, código e entrega | análise no PR |
+| → envia para | [GitHub Actions](12-nuvem.md#gha) | Nuvem, código e entrega | análise no PR |
 
 <a id="ghproj"></a>
 
@@ -219,7 +223,7 @@ GitHub Projects espelhando o EPIC-01, decisões de arquitetura registradas e doc
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | issues e board |
+| → envia para | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | issues e board |
 
 <a id="dbot"></a>
 
@@ -231,8 +235,8 @@ Dependabot atualiza pacotes vulneráveis; CodeQL procura falhas no seu código. 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | PRs de segurança |
-| → envia para | [aura-status](10-app.md#status) | Aplicação: sistemas AM (Aura) | alertas |
+| → envia para | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | PRs de segurança |
+| → envia para | [aura-status](11-app.md#status) | Aplicação: sistemas AM (Aura) | alertas |
 
 <a id="gcp"></a>
 
@@ -244,7 +248,7 @@ Terceira nuvem: só o básico, quando um projeto de IA ou dados pedir.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [Terraform](08-cnt.md#tf) | Containers, Kubernetes e infra como código | cria recursos |
+| ← recebe de | [Terraform](09-cnt.md#tf) | Containers, Kubernetes e infra como código | cria recursos |
 
 <a id="gh"></a>
 
@@ -256,24 +260,24 @@ Código, vault, ensino-ti e a org grupo-amtech-digital. É também o seu portfó
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [GitHub Actions](11-nuvem.md#gha) | Nuvem, código e entrega | dispara a cada push |
-| → envia para | [Recrutadores](21-pub.md#recr) | Público e canais | portfólio |
+| → envia para | [GitHub Actions](12-nuvem.md#gha) | Nuvem, código e entrega | dispara a cada push |
+| → envia para | [Recrutadores](22-pub.md#recr) | Público e canais | portfólio |
 | ← recebe de | [KeePassXC](02-seg.md#kee) | Segurança e cofre | senhas e tokens |
 | ← recebe de | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | Obsidian Git |
 | ← recebe de | [Git + SSH + gh](04-lin.md#git) | Linux (Ubuntu no WSL2, Arch no 2º disco) | push via SSH |
 | ← recebe de | [dotfiles](04-lin.md#dot) | Linux (Ubuntu no WSL2, Arch no 2º disco) | versionado |
 | ← recebe de | [Servidores MCP](05-ia.md#mcp) | Agentes de IA e sandbox | issues e PRs |
-| ← recebe de | [Projects · ADRs · MkDocs](11-nuvem.md#ghproj) | Nuvem, código e entrega | issues e board |
-| ← recebe de | [Dependabot + CodeQL](11-nuvem.md#dbot) | Nuvem, código e entrega | PRs de segurança |
+| ← recebe de | [Projects · ADRs · MkDocs](12-nuvem.md#ghproj) | Nuvem, código e entrega | issues e board |
+| ← recebe de | [Dependabot + CodeQL](12-nuvem.md#dbot) | Nuvem, código e entrega | PRs de segurança |
 | ← recebe de | [Commits assinados (chave SSH)](02-seg.md#sign) | Segurança e cofre | Verified |
 | ← recebe de | [Chave física (YubiKey)](02-seg.md#ykey) | Segurança e cofre | 2FA |
-| ← recebe de | [Codex (OpenAI)](06-chat.md#codex) | Assistentes de IA (chat, pesquisa e estudo) | mesmos repos |
-| ← recebe de | [Agentes de código do Google](06-chat.md#gcode) | Assistentes de IA (chat, pesquisa e estudo) | mesmos repos |
-| ← recebe de | [aura-status](10-app.md#status) | Aplicação: sistemas AM (Aura) | Dependabot e repos |
-| ← recebe de | [Templates e código-fonte](16-prod.md#tmpl) | Produtos (o que você vende) | demo pública |
+| ← recebe de | [Codex (OpenAI)](07-chat.md#codex) | Assistentes de IA (chat, pesquisa e estudo) | mesmos repos |
+| ← recebe de | [Agentes de código do Google](07-chat.md#gcode) | Assistentes de IA (chat, pesquisa e estudo) | mesmos repos |
+| ← recebe de | [aura-status](11-app.md#status) | Aplicação: sistemas AM (Aura) | Dependabot e repos |
+| ← recebe de | [Templates e código-fonte](17-prod.md#tmpl) | Produtos (o que você vende) | demo pública |
 | ← recebe de | [Workstation com GPU](01-hw.md#ws) | Hardware | mesmos repositórios |
-| ← recebe de | [Repositório do livro](14-editora.md#brepo) | Editora AMS Silva (produção de livros) | hospedado |
-| ← recebe de | [Projeto do capítulo](14-editora.md#projcap) | Editora AMS Silva (produção de livros) | portfólio do aluno |
+| ← recebe de | [Repositório do livro](15-editora.md#brepo) | Editora AMS Silva (produção de livros) | hospedado |
+| ← recebe de | [Projeto do capítulo](15-editora.md#projcap) | Editora AMS Silva (produção de livros) | portfólio do aluno |
 
 <a id="gha"></a>
 
@@ -285,14 +289,14 @@ CI/CD: build, testes, segurança e deploy.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [GHCR (imagens)](11-nuvem.md#ghcr) | Nuvem, código e entrega | publica imagem |
-| → envia para | [Azure](11-nuvem.md#azure) | Nuvem, código e entrega | deploy OIDC |
-| → envia para | [Vercel](11-nuvem.md#vercel) | Nuvem, código e entrega | deploy front |
-| → envia para | [GitHub Pages](11-nuvem.md#ghp) | Nuvem, código e entrega | publica sites |
-| → envia para | [Cloudflare (DNS, Pages, e-mail)](11-nuvem.md#cf) | Nuvem, código e entrega | publica Pages |
-| ← recebe de | [Testes: xUnit, Playwright, k6](10-app.md#tests) | Aplicação: sistemas AM (Aura) | roda no CI |
-| ← recebe de | [SonarQube Cloud](11-nuvem.md#sonar) | Nuvem, código e entrega | análise no PR |
-| ← recebe de | [GitHub](11-nuvem.md#gh) | Nuvem, código e entrega | dispara a cada push |
+| → envia para | [GHCR (imagens)](12-nuvem.md#ghcr) | Nuvem, código e entrega | publica imagem |
+| → envia para | [Azure](12-nuvem.md#azure) | Nuvem, código e entrega | deploy OIDC |
+| → envia para | [Vercel](12-nuvem.md#vercel) | Nuvem, código e entrega | deploy front |
+| → envia para | [GitHub Pages](12-nuvem.md#ghp) | Nuvem, código e entrega | publica sites |
+| → envia para | [Cloudflare (DNS, Pages, e-mail)](12-nuvem.md#cf) | Nuvem, código e entrega | publica Pages |
+| ← recebe de | [Testes: xUnit, Playwright, k6](11-app.md#tests) | Aplicação: sistemas AM (Aura) | roda no CI |
+| ← recebe de | [SonarQube Cloud](12-nuvem.md#sonar) | Nuvem, código e entrega | análise no PR |
+| ← recebe de | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | dispara a cada push |
 
 <a id="ghcr"></a>
 
@@ -304,9 +308,9 @@ Registro das imagens Docker das APIs.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Azure](11-nuvem.md#azure) | Nuvem, código e entrega | imagem |
-| → envia para | [AWS](11-nuvem.md#aws) | Nuvem, código e entrega | imagem |
-| ← recebe de | [GitHub Actions](11-nuvem.md#gha) | Nuvem, código e entrega | publica imagem |
+| → envia para | [Azure](12-nuvem.md#azure) | Nuvem, código e entrega | imagem |
+| → envia para | [AWS](12-nuvem.md#aws) | Nuvem, código e entrega | imagem |
+| ← recebe de | [GitHub Actions](12-nuvem.md#gha) | Nuvem, código e entrega | publica imagem |
 
 <a id="ghp"></a>
 
@@ -318,9 +322,9 @@ Hospeda site pessoal, blog e Catálogo do HTML.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [GitHub Actions](11-nuvem.md#gha) | Nuvem, código e entrega | publica sites |
-| ← recebe de | [Site pessoal + blog (Jekyll)](17-web.md#site) | Vitrine web (sites e domínio) | hospedado |
-| ← recebe de | [Catálogo do HTML](17-web.md#catal) | Vitrine web (sites e domínio) | hospedado |
+| ← recebe de | [GitHub Actions](12-nuvem.md#gha) | Nuvem, código e entrega | publica sites |
+| ← recebe de | [Site pessoal + blog (Jekyll)](18-web.md#site) | Vitrine web (sites e domínio) | hospedado |
+| ← recebe de | [Catálogo do HTML](18-web.md#catal) | Vitrine web (sites e domínio) | hospedado |
 
 <a id="cf"></a>
 
@@ -332,13 +336,13 @@ DNS, HTTPS, proteção, hospedagem estática dos sites comerciais e redirecionam
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [n8n](20-mkt.md#n8n) | Marketing, automação e medição | túnel dos webhooks |
-| ← recebe de | [Conector Cloudflare](07-clc.md#ccf) | Claude: recursos, conectores e plugins | DNS e Pages |
-| ← recebe de | [Terraform](08-cnt.md#tf) | Containers, Kubernetes e infra como código | DNS por código |
-| ← recebe de | [GitHub Actions](11-nuvem.md#gha) | Nuvem, código e entrega | publica Pages |
-| ← recebe de | [Domínio (Registro.br)](17-web.md#dom) | Vitrine web (sites e domínio) | nameservers |
-| ← recebe de | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | hospedado (Pages) |
-| ← recebe de | [Site Grupo AMtech](17-web.md#amsite) | Vitrine web (sites e domínio) | hospedado (Pages) |
+| → envia para | [n8n](21-mkt.md#n8n) | Marketing, automação e medição | túnel dos webhooks |
+| ← recebe de | [Conector Cloudflare](08-clc.md#ccf) | Claude: recursos, conectores e plugins | DNS e Pages |
+| ← recebe de | [Terraform](09-cnt.md#tf) | Containers, Kubernetes e infra como código | DNS por código |
+| ← recebe de | [GitHub Actions](12-nuvem.md#gha) | Nuvem, código e entrega | publica Pages |
+| ← recebe de | [Domínio (Registro.br)](18-web.md#dom) | Vitrine web (sites e domínio) | nameservers |
+| ← recebe de | [Instituto AMS](18-web.md#inst) | Vitrine web (sites e domínio) | hospedado (Pages) |
+| ← recebe de | [Site Grupo AMtech](18-web.md#amsite) | Vitrine web (sites e domínio) | hospedado (Pages) |
 
 <a id="vercel"></a>
 
@@ -350,8 +354,8 @@ Frontends Next.js. O plano grátis é para uso pessoal e não comercial; confira
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [Vercel · AWS · Microsoft Learn](07-clc.md#cdev) | Claude: recursos, conectores e plugins | deploy e logs |
-| ← recebe de | [GitHub Actions](11-nuvem.md#gha) | Nuvem, código e entrega | deploy front |
+| ← recebe de | [Vercel · AWS · Microsoft Learn](08-clc.md#cdev) | Claude: recursos, conectores e plugins | deploy e logs |
+| ← recebe de | [GitHub Actions](12-nuvem.md#gha) | Nuvem, código e entrega | deploy front |
 
 <a id="azure"></a>
 
@@ -364,13 +368,13 @@ Primeira nuvem para as APIs AM: App Service/Container Apps, PostgreSQL, Key Vaul
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | ← recebe de | [KeePassXC](02-seg.md#kee) | Segurança e cofre | senhas |
-| ← recebe de | [Azure CLI · AWS CLI](08-cnt.md#clis) | Containers, Kubernetes e infra como código | comandos |
-| ← recebe de | [Microsoft Learn + AWS Skill Builder](13-est.md#learn) | Estudo e carreira | certificação |
-| ← recebe de | [Vercel · AWS · Microsoft Learn](07-clc.md#cdev) | Claude: recursos, conectores e plugins | documentação |
-| ← recebe de | [Terraform](08-cnt.md#tf) | Containers, Kubernetes e infra como código | cria recursos |
-| ← recebe de | [GitHub Actions](11-nuvem.md#gha) | Nuvem, código e entrega | deploy OIDC |
-| ← recebe de | [GHCR (imagens)](11-nuvem.md#ghcr) | Nuvem, código e entrega | imagem |
-| ← recebe de | [Sistemas AM (SaaS)](16-prod.md#saas) | Produtos (o que você vende) | roda na nuvem |
+| ← recebe de | [Azure CLI · AWS CLI](09-cnt.md#clis) | Containers, Kubernetes e infra como código | comandos |
+| ← recebe de | [Microsoft Learn + AWS Skill Builder](14-est.md#learn) | Estudo e carreira | certificação |
+| ← recebe de | [Vercel · AWS · Microsoft Learn](08-clc.md#cdev) | Claude: recursos, conectores e plugins | documentação |
+| ← recebe de | [Terraform](09-cnt.md#tf) | Containers, Kubernetes e infra como código | cria recursos |
+| ← recebe de | [GitHub Actions](12-nuvem.md#gha) | Nuvem, código e entrega | deploy OIDC |
+| ← recebe de | [GHCR (imagens)](12-nuvem.md#ghcr) | Nuvem, código e entrega | imagem |
+| ← recebe de | [Sistemas AM (SaaS)](17-prod.md#saas) | Produtos (o que você vende) | roda na nuvem |
 
 <a id="aws"></a>
 
@@ -382,11 +386,11 @@ Segunda nuvem, para o mercado maior.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [Azure CLI · AWS CLI](08-cnt.md#clis) | Containers, Kubernetes e infra como código | comandos |
-| ← recebe de | [Vercel · AWS · Microsoft Learn](07-clc.md#cdev) | Claude: recursos, conectores e plugins | documentação |
-| ← recebe de | [Terraform](08-cnt.md#tf) | Containers, Kubernetes e infra como código | cria recursos |
-| ← recebe de | [GHCR (imagens)](11-nuvem.md#ghcr) | Nuvem, código e entrega | imagem |
-| ← recebe de | [Microsoft Learn + AWS Skill Builder](13-est.md#learn) | Estudo e carreira | Skill Builder |
+| ← recebe de | [Azure CLI · AWS CLI](09-cnt.md#clis) | Containers, Kubernetes e infra como código | comandos |
+| ← recebe de | [Vercel · AWS · Microsoft Learn](08-clc.md#cdev) | Claude: recursos, conectores e plugins | documentação |
+| ← recebe de | [Terraform](09-cnt.md#tf) | Containers, Kubernetes e infra como código | cria recursos |
+| ← recebe de | [GHCR (imagens)](12-nuvem.md#ghcr) | Nuvem, código e entrega | imagem |
+| ← recebe de | [Microsoft Learn + AWS Skill Builder](14-est.md#learn) | Estudo e carreira | Skill Builder |
 
 <a id="b2"></a>
 
@@ -403,16 +407,17 @@ Cópia fora de casa do backup, criptografada pelo restic. US$ 6,95 por TB/mês.
 
 <a id="gpuh"></a>
 
-### GPU na nuvem por hora
+### GPU por hora (RunPod e afins)
 
-*Remoto · precisa de conta · futuro*
+*Remoto · precisa de conta*
 
-Para treinar ou gerar voz e vídeo com modelos abertos quando a GTX 1650 não der conta.
+Quando o Kaggle não bastar: GPU de 24 GB a partir de cerca de US$ 0,27 a 0,90 por hora no RunPod (out/2026). Um fine-tuning QLoRA de 8B costuma levar poucas horas. Use crédito pré-pago, sem cartão em débito automático.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Voz clonada (ElevenLabs)](12-cont.md#voz) | Produção de conteúdo | modelos abertos |
+| → envia para | [Voz clonada (ElevenLabs)](13-cont.md#voz) | Produção de conteúdo | modelos abertos |
+| → envia para | [Unsloth (QLoRA)](06-dados.md#unsl) | Dados e treino de IA | GPU de 24 GB |
 
 ---
 
-[↑ Camada 12 · Produção de conteúdo](12-cont.md) · [↓ Camada 10 · Aplicação: sistemas AM (Aura)](10-app.md)
+[↑ Camada 13 · Produção de conteúdo](13-cont.md) · [↓ Camada 11 · Aplicação: sistemas AM (Aura)](11-app.md)

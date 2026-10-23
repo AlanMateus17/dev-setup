@@ -1,7 +1,7 @@
 <!-- Arquivo GERADO por tools/gerar_docs.py a partir de data/. Edite os dados, não este arquivo. -->
 
 
-# Camada 15 · Negócios do grupo (Barbacena)
+# Camada 16 · Negócios do grupo (Barbacena)
 
 [← Arquitetura](../arquitetura.md) · [Índice da documentação](../README.md)
 
@@ -121,11 +121,11 @@ Software sob encomenda, sites, manutenção e SaaS AM. Primeiro CNPJ do grupo (M
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [AM Kaixara (PDV e cardápio)](10-app.md#nkaix) | Aplicação: sistemas AM (Aura) | constrói |
-| → envia para | [AM Rotara (entregas)](10-app.md#nrot) | Aplicação: sistemas AM (Aura) | constrói |
-| ← recebe de | [Sites para pequenas empresas](16-prod.md#sites) | Produtos (o que você vende) | vira serviço da empresa |
-| ← recebe de | [3 CNPJs por frente](15-neg.md#ncnpj) | Negócios do grupo (Barbacena) | AMtech Tecnologia |
-| ← recebe de | [Esteira de ofertas](22-oper.md#oesteira) | Operação do grupo (esteira, marca, qualidade) | lança |
+| → envia para | [AM Kaixara (PDV e cardápio)](11-app.md#nkaix) | Aplicação: sistemas AM (Aura) | constrói |
+| → envia para | [AM Rotara (entregas)](11-app.md#nrot) | Aplicação: sistemas AM (Aura) | constrói |
+| ← recebe de | [Sites para pequenas empresas](17-prod.md#sites) | Produtos (o que você vende) | vira serviço da empresa |
+| ← recebe de | [3 CNPJs por frente](16-neg.md#ncnpj) | Negócios do grupo (Barbacena) | AMtech Tecnologia |
+| ← recebe de | [Esteira de ofertas](23-oper.md#oesteira) | Operação do grupo (esteira, marca, qualidade) | lança |
 
 <a id="nloja"></a>
 
@@ -137,11 +137,11 @@ Loja de 30 a 50 m² com bancada técnica, mostruário e balcão de pacotes. Une 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Ponto de retirada (Shopee e ML)](15-neg.md#nponto) | Negócios do grupo (Barbacena) | mesmo balcão |
-| ← recebe de | [Peças sem estoque (sob encomenda)](15-neg.md#npecas) | Negócios do grupo (Barbacena) | vendidas no balcão |
-| ← recebe de | [AMtech Maker (robótica)](15-neg.md#nmaker) | Negócios do grupo (Barbacena) | usa a bancada |
-| ← recebe de | [AM Kaixara (PDV e cardápio)](10-app.md#nkaix) | Aplicação: sistemas AM (Aura) | ordens de serviço |
-| ← recebe de | [Google Perfil da Empresa](21-pub.md#ogbp) | Público e canais | presença local |
+| → envia para | [Ponto de retirada (Shopee e ML)](16-neg.md#nponto) | Negócios do grupo (Barbacena) | mesmo balcão |
+| ← recebe de | [Peças sem estoque (sob encomenda)](16-neg.md#npecas) | Negócios do grupo (Barbacena) | vendidas no balcão |
+| ← recebe de | [AMtech Maker (robótica)](16-neg.md#nmaker) | Negócios do grupo (Barbacena) | usa a bancada |
+| ← recebe de | [AM Kaixara (PDV e cardápio)](11-app.md#nkaix) | Aplicação: sistemas AM (Aura) | ordens de serviço |
+| ← recebe de | [Google Perfil da Empresa](22-pub.md#ogbp) | Público e canais | presença local |
 
 <a id="npecas"></a>
 
@@ -153,7 +153,7 @@ Peças e acessórios comprados só depois do sinal do cliente ou enviados pelo f
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Loja AMtech (assistência)](15-neg.md#nloja) | Negócios do grupo (Barbacena) | vendidas no balcão |
+| → envia para | [Loja AMtech (assistência)](16-neg.md#nloja) | Negócios do grupo (Barbacena) | vendidas no balcão |
 
 <a id="nponto"></a>
 
@@ -165,8 +165,8 @@ Agência Shopee (R$ 0,70 a 0,60 por pacote nas primeiras faixas) e Agência Merc
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [AM Entregas (moto e carro)](15-neg.md#nentr) | Negócios do grupo (Barbacena) | vendedores da cidade |
-| ← recebe de | [Loja AMtech (assistência)](15-neg.md#nloja) | Negócios do grupo (Barbacena) | mesmo balcão |
+| → envia para | [AM Entregas (moto e carro)](16-neg.md#nentr) | Negócios do grupo (Barbacena) | vendedores da cidade |
+| ← recebe de | [Loja AMtech (assistência)](16-neg.md#nloja) | Negócios do grupo (Barbacena) | mesmo balcão |
 
 <a id="nmaker"></a>
 
@@ -178,8 +178,8 @@ Automação residencial, empresarial, rural e virtual, e kits de robótica educa
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Loja AMtech (assistência)](15-neg.md#nloja) | Negócios do grupo (Barbacena) | usa a bancada |
-| ← recebe de | [Anatel e Inmetro](15-neg.md#nanatel) | Negócios do grupo (Barbacena) | homologação |
+| → envia para | [Loja AMtech (assistência)](16-neg.md#nloja) | Negócios do grupo (Barbacena) | usa a bancada |
+| ← recebe de | [Anatel e Inmetro](16-neg.md#nanatel) | Negócios do grupo (Barbacena) | homologação |
 
 <a id="nentr"></a>
 
@@ -191,11 +191,11 @@ Automação residencial, empresarial, rural e virtual, e kits de robótica educa
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Mercado Envios Flex](15-neg.md#nflex) | Negócios do grupo (Barbacena) | entrega o Flex |
-| → envia para | [AM Delivery (várias empresas)](15-neg.md#ndeliv) | Negócios do grupo (Barbacena) | frota |
-| ← recebe de | [Ponto de retirada (Shopee e ML)](15-neg.md#nponto) | Negócios do grupo (Barbacena) | vendedores da cidade |
-| ← recebe de | [AM Rotara (entregas)](10-app.md#nrot) | Aplicação: sistemas AM (Aura) | roteiriza |
-| ← recebe de | [3 CNPJs por frente](15-neg.md#ncnpj) | Negócios do grupo (Barbacena) | AM Logística |
+| → envia para | [Mercado Envios Flex](16-neg.md#nflex) | Negócios do grupo (Barbacena) | entrega o Flex |
+| → envia para | [AM Delivery (várias empresas)](16-neg.md#ndeliv) | Negócios do grupo (Barbacena) | frota |
+| ← recebe de | [Ponto de retirada (Shopee e ML)](16-neg.md#nponto) | Negócios do grupo (Barbacena) | vendedores da cidade |
+| ← recebe de | [AM Rotara (entregas)](11-app.md#nrot) | Aplicação: sistemas AM (Aura) | roteiriza |
+| ← recebe de | [3 CNPJs por frente](16-neg.md#ncnpj) | Negócios do grupo (Barbacena) | AM Logística |
 
 <a id="nflex"></a>
 
@@ -207,7 +207,7 @@ Entrega no mesmo dia dos vendedores do Mercado Livre da cidade, terceirizada par
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [AM Entregas (moto e carro)](15-neg.md#nentr) | Negócios do grupo (Barbacena) | entrega o Flex |
+| ← recebe de | [AM Entregas (moto e carro)](16-neg.md#nentr) | Negócios do grupo (Barbacena) | entrega o Flex |
 
 <a id="ndeliv"></a>
 
@@ -219,11 +219,11 @@ App de pedidos de restaurantes e lojas da cidade com comissão de 8% e entrega p
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Sushi (delivery)](15-neg.md#nsushi) | Negócios do grupo (Barbacena) | pedidos |
-| → envia para | [Cafeteria](15-neg.md#ncafe) | Negócios do grupo (Barbacena) | pedidos |
-| → envia para | [Padaria + café da manhã + almoço](15-neg.md#npad) | Negócios do grupo (Barbacena) | pedidos e marmitas |
-| ← recebe de | [AM Entregas (moto e carro)](15-neg.md#nentr) | Negócios do grupo (Barbacena) | frota |
-| ← recebe de | [AM Rotara (entregas)](10-app.md#nrot) | Aplicação: sistemas AM (Aura) | app e painel |
+| → envia para | [Sushi (delivery)](16-neg.md#nsushi) | Negócios do grupo (Barbacena) | pedidos |
+| → envia para | [Cafeteria](16-neg.md#ncafe) | Negócios do grupo (Barbacena) | pedidos |
+| → envia para | [Padaria + café da manhã + almoço](16-neg.md#npad) | Negócios do grupo (Barbacena) | pedidos e marmitas |
+| ← recebe de | [AM Entregas (moto e carro)](16-neg.md#nentr) | Negócios do grupo (Barbacena) | frota |
+| ← recebe de | [AM Rotara (entregas)](11-app.md#nrot) | Aplicação: sistemas AM (Aura) | app e painel |
 
 <a id="nsushi"></a>
 
@@ -235,12 +235,12 @@ Delivery e retirada de quarta a domingo à noite, cardápio em torno do salmão 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [AM Delivery (várias empresas)](15-neg.md#ndeliv) | Negócios do grupo (Barbacena) | pedidos |
-| ← recebe de | [iFood (canal de descoberta)](15-neg.md#nifood) | Negócios do grupo (Barbacena) | pedidos de descoberta |
-| ← recebe de | [AM Kaixara (PDV e cardápio)](10-app.md#nkaix) | Aplicação: sistemas AM (Aura) | PDV e ficha técnica |
-| ← recebe de | [Vigilância sanitária (RDC 216)](15-neg.md#nvisa) | Negócios do grupo (Barbacena) | alvará sanitário |
-| ← recebe de | [3 CNPJs por frente](15-neg.md#ncnpj) | Negócios do grupo (Barbacena) | AM Alimentação |
-| ← recebe de | [Google Perfil da Empresa](21-pub.md#ogbp) | Público e canais | presença local |
+| ← recebe de | [AM Delivery (várias empresas)](16-neg.md#ndeliv) | Negócios do grupo (Barbacena) | pedidos |
+| ← recebe de | [iFood (canal de descoberta)](16-neg.md#nifood) | Negócios do grupo (Barbacena) | pedidos de descoberta |
+| ← recebe de | [AM Kaixara (PDV e cardápio)](11-app.md#nkaix) | Aplicação: sistemas AM (Aura) | PDV e ficha técnica |
+| ← recebe de | [Vigilância sanitária (RDC 216)](16-neg.md#nvisa) | Negócios do grupo (Barbacena) | alvará sanitário |
+| ← recebe de | [3 CNPJs por frente](16-neg.md#ncnpj) | Negócios do grupo (Barbacena) | AM Alimentação |
+| ← recebe de | [Google Perfil da Empresa](22-pub.md#ogbp) | Público e canais | presença local |
 
 <a id="ncafe"></a>
 
@@ -252,10 +252,10 @@ Cafés especiais de Minas, pão de queijo assado na hora e doces caseiros. Melho
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [AM Delivery (várias empresas)](15-neg.md#ndeliv) | Negócios do grupo (Barbacena) | pedidos |
-| ← recebe de | [Padaria + café da manhã + almoço](15-neg.md#npad) | Negócios do grupo (Barbacena) | pães e doces |
-| ← recebe de | [AM Kaixara (PDV e cardápio)](10-app.md#nkaix) | Aplicação: sistemas AM (Aura) | PDV |
-| ← recebe de | [Vigilância sanitária (RDC 216)](15-neg.md#nvisa) | Negócios do grupo (Barbacena) | alvará sanitário |
+| ← recebe de | [AM Delivery (várias empresas)](16-neg.md#ndeliv) | Negócios do grupo (Barbacena) | pedidos |
+| ← recebe de | [Padaria + café da manhã + almoço](16-neg.md#npad) | Negócios do grupo (Barbacena) | pães e doces |
+| ← recebe de | [AM Kaixara (PDV e cardápio)](11-app.md#nkaix) | Aplicação: sistemas AM (Aura) | PDV |
+| ← recebe de | [Vigilância sanitária (RDC 216)](16-neg.md#nvisa) | Negócios do grupo (Barbacena) | alvará sanitário |
 
 <a id="npad"></a>
 
@@ -267,11 +267,11 @@ Padaria de finalização com massa congelada, café da manhã mineiro, almoço p
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Cafeteria](15-neg.md#ncafe) | Negócios do grupo (Barbacena) | pães e doces |
-| ← recebe de | [AM Delivery (várias empresas)](15-neg.md#ndeliv) | Negócios do grupo (Barbacena) | pedidos e marmitas |
-| ← recebe de | [AM Kaixara (PDV e cardápio)](10-app.md#nkaix) | Aplicação: sistemas AM (Aura) | PDV e previsão |
-| ← recebe de | [Vigilância sanitária (RDC 216)](15-neg.md#nvisa) | Negócios do grupo (Barbacena) | alvará sanitário |
-| ← recebe de | [Google Perfil da Empresa](21-pub.md#ogbp) | Público e canais | presença local |
+| → envia para | [Cafeteria](16-neg.md#ncafe) | Negócios do grupo (Barbacena) | pães e doces |
+| ← recebe de | [AM Delivery (várias empresas)](16-neg.md#ndeliv) | Negócios do grupo (Barbacena) | pedidos e marmitas |
+| ← recebe de | [AM Kaixara (PDV e cardápio)](11-app.md#nkaix) | Aplicação: sistemas AM (Aura) | PDV e previsão |
+| ← recebe de | [Vigilância sanitária (RDC 216)](16-neg.md#nvisa) | Negócios do grupo (Barbacena) | alvará sanitário |
+| ← recebe de | [Google Perfil da Empresa](22-pub.md#ogbp) | Público e canais | presença local |
 
 <a id="ncnpj"></a>
 
@@ -283,11 +283,11 @@ AMtech Tecnologia, AM Logística e AM Alimentação, cada um com os seus CNAEs, 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [AMtech Software (projetos e SaaS)](15-neg.md#nsoft) | Negócios do grupo (Barbacena) | AMtech Tecnologia |
-| → envia para | [AM Entregas (moto e carro)](15-neg.md#nentr) | Negócios do grupo (Barbacena) | AM Logística |
-| → envia para | [Sushi (delivery)](15-neg.md#nsushi) | Negócios do grupo (Barbacena) | AM Alimentação |
-| ← recebe de | [CNPJ (futuro)](18-emp.md#cnpj) | Pessoa física: impostos e finanças | vira |
-| ← recebe de | [Planejador do Grupo](15-neg.md#nplan) | Negócios do grupo (Barbacena) | portões entre fases |
+| → envia para | [AMtech Software (projetos e SaaS)](16-neg.md#nsoft) | Negócios do grupo (Barbacena) | AMtech Tecnologia |
+| → envia para | [AM Entregas (moto e carro)](16-neg.md#nentr) | Negócios do grupo (Barbacena) | AM Logística |
+| → envia para | [Sushi (delivery)](16-neg.md#nsushi) | Negócios do grupo (Barbacena) | AM Alimentação |
+| ← recebe de | [CNPJ (futuro)](19-emp.md#cnpj) | Pessoa física: impostos e finanças | vira |
+| ← recebe de | [Planejador do Grupo](16-neg.md#nplan) | Negócios do grupo (Barbacena) | portões entre fases |
 
 <a id="nplan"></a>
 
@@ -299,9 +299,9 @@ Artefato e motor tools/negocios/financas.py: investimento, ponto de equilíbrio,
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [3 CNPJs por frente](15-neg.md#ncnpj) | Negócios do grupo (Barbacena) | portões entre fases |
-| ← recebe de | [Portfólio de ofertas](22-oper.md#ocatal) | Operação do grupo (esteira, marca, qualidade) | negócios físicos |
-| ← recebe de | [Grafana](09-obs.md#graf) | Observabilidade | resultado real |
+| → envia para | [3 CNPJs por frente](16-neg.md#ncnpj) | Negócios do grupo (Barbacena) | portões entre fases |
+| ← recebe de | [Portfólio de ofertas](23-oper.md#ocatal) | Operação do grupo (esteira, marca, qualidade) | negócios físicos |
+| ← recebe de | [Grafana](10-obs.md#graf) | Observabilidade | resultado real |
 
 <a id="nifood"></a>
 
@@ -313,7 +313,7 @@ Usado para ser encontrado, não como canal principal: o plano Entrega cobra 23% 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Sushi (delivery)](15-neg.md#nsushi) | Negócios do grupo (Barbacena) | pedidos de descoberta |
+| → envia para | [Sushi (delivery)](16-neg.md#nsushi) | Negócios do grupo (Barbacena) | pedidos de descoberta |
 
 <a id="nvisa"></a>
 
@@ -325,9 +325,9 @@ Alvará sanitário, Manual de Boas Práticas, POPs, curso dos manipuladores e co
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Sushi (delivery)](15-neg.md#nsushi) | Negócios do grupo (Barbacena) | alvará sanitário |
-| → envia para | [Cafeteria](15-neg.md#ncafe) | Negócios do grupo (Barbacena) | alvará sanitário |
-| → envia para | [Padaria + café da manhã + almoço](15-neg.md#npad) | Negócios do grupo (Barbacena) | alvará sanitário |
+| → envia para | [Sushi (delivery)](16-neg.md#nsushi) | Negócios do grupo (Barbacena) | alvará sanitário |
+| → envia para | [Cafeteria](16-neg.md#ncafe) | Negócios do grupo (Barbacena) | alvará sanitário |
+| → envia para | [Padaria + café da manhã + almoço](16-neg.md#npad) | Negócios do grupo (Barbacena) | alvará sanitário |
 
 <a id="nanatel"></a>
 
@@ -339,8 +339,8 @@ Homologação de produto próprio com Wi-Fi ou Bluetooth e, se o kit for brinque
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [AMtech Maker (robótica)](15-neg.md#nmaker) | Negócios do grupo (Barbacena) | homologação |
+| → envia para | [AMtech Maker (robótica)](16-neg.md#nmaker) | Negócios do grupo (Barbacena) | homologação |
 
 ---
 
-[↑ Camada 16 · Produtos (o que você vende)](16-prod.md) · [↓ Camada 14 · Editora AMS Silva (produção de livros)](14-editora.md)
+[↑ Camada 17 · Produtos (o que você vende)](17-prod.md) · [↓ Camada 15 · Editora AMS Silva (produção de livros)](15-editora.md)

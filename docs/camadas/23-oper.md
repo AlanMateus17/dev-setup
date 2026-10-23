@@ -1,7 +1,7 @@
 <!-- Arquivo GERADO por tools/gerar_docs.py a partir de data/. Edite os dados, não este arquivo. -->
 
 
-# Camada 22 · Operação do grupo (esteira, marca, qualidade)
+# Camada 23 · Operação do grupo (esteira, marca, qualidade)
 
 [← Arquitetura](../arquitetura.md) · [Índice da documentação](../README.md)
 
@@ -179,8 +179,8 @@ data/portfolio.json: todas as ofertas do grupo com estágio, notas, pontuação 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Esteira de ofertas](22-oper.md#oesteira) | Operação do grupo (esteira, marca, qualidade) | fila por pontuação |
-| → envia para | [Planejador do Grupo](15-neg.md#nplan) | Negócios do grupo (Barbacena) | negócios físicos |
+| → envia para | [Esteira de ofertas](23-oper.md#oesteira) | Operação do grupo (esteira, marca, qualidade) | fila por pontuação |
+| → envia para | [Planejador do Grupo](16-neg.md#nplan) | Negócios do grupo (Barbacena) | negócios físicos |
 
 <a id="oesteira"></a>
 
@@ -192,11 +192,11 @@ Ideia, validação, construção, lançamento e escala, com portões objetivos. 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Padrão de qualidade](22-oper.md#oqual) | Operação do grupo (esteira, marca, qualidade) | portão de lançamento |
-| → envia para | [Mini-curso Lógica de Programação](16-prod.md#curso) | Produtos (o que você vende) | lança |
-| → envia para | [Livro Lógica e Máquina](16-prod.md#livro) | Produtos (o que você vende) | lança |
-| → envia para | [AMtech Software (projetos e SaaS)](15-neg.md#nsoft) | Negócios do grupo (Barbacena) | lança |
-| ← recebe de | [Portfólio de ofertas](22-oper.md#ocatal) | Operação do grupo (esteira, marca, qualidade) | fila por pontuação |
+| → envia para | [Padrão de qualidade](23-oper.md#oqual) | Operação do grupo (esteira, marca, qualidade) | portão de lançamento |
+| → envia para | [Mini-curso Lógica de Programação](17-prod.md#curso) | Produtos (o que você vende) | lança |
+| → envia para | [Livro Lógica e Máquina](17-prod.md#livro) | Produtos (o que você vende) | lança |
+| → envia para | [AMtech Software (projetos e SaaS)](16-neg.md#nsoft) | Negócios do grupo (Barbacena) | lança |
+| ← recebe de | [Portfólio de ofertas](23-oper.md#ocatal) | Operação do grupo (esteira, marca, qualidade) | fila por pontuação |
 
 <a id="oqual"></a>
 
@@ -208,9 +208,9 @@ Checklist de 'pronto' por tipo de oferta: infoproduto, livro, software, serviço
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [Esteira de ofertas](22-oper.md#oesteira) | Operação do grupo (esteira, marca, qualidade) | portão de lançamento |
-| ← recebe de | [Revisor de oferta](22-oper.md#orevo) | Operação do grupo (esteira, marca, qualidade) | confere |
-| ← recebe de | [NPS e avaliações](22-oper.md#oaval) | Operação do grupo (esteira, marca, qualidade) | melhoria |
+| ← recebe de | [Esteira de ofertas](23-oper.md#oesteira) | Operação do grupo (esteira, marca, qualidade) | portão de lançamento |
+| ← recebe de | [Revisor de oferta](23-oper.md#orevo) | Operação do grupo (esteira, marca, qualidade) | confere |
+| ← recebe de | [NPS e avaliações](23-oper.md#oaval) | Operação do grupo (esteira, marca, qualidade) | melhoria |
 
 <a id="omarca"></a>
 
@@ -222,11 +222,11 @@ O guarda-chuva de confiança do grupo: Instituto AMS, Editora AMS Silva, AMtech 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instagram](21-pub.md#ig) | Público e canais | perfil |
-| → envia para | [YouTube](21-pub.md#yt) | Público e canais | canal |
-| → envia para | [LinkedIn](21-pub.md#li) | Público e canais | carreira e B2B |
-| → envia para | [Canal build in public](22-oper.md#obuild) | Operação do grupo (esteira, marca, qualidade) | rosto |
-| → envia para | [Pipeline de conteúdo](22-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | guia de marca |
+| → envia para | [Instagram](22-pub.md#ig) | Público e canais | perfil |
+| → envia para | [YouTube](22-pub.md#yt) | Público e canais | canal |
+| → envia para | [LinkedIn](22-pub.md#li) | Público e canais | carreira e B2B |
+| → envia para | [Canal build in public](23-oper.md#obuild) | Operação do grupo (esteira, marca, qualidade) | rosto |
+| → envia para | [Pipeline de conteúdo](23-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | guia de marca |
 
 <a id="oaval"></a>
 
@@ -238,8 +238,8 @@ Uma pergunta depois de cada compra ou serviço e pedido de avaliação no Google
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Padrão de qualidade](22-oper.md#oqual) | Operação do grupo (esteira, marca, qualidade) | melhoria |
-| ← recebe de | [Agente pós-venda](22-oper.md#opos) | Operação do grupo (esteira, marca, qualidade) | NPS |
+| → envia para | [Padrão de qualidade](23-oper.md#oqual) | Operação do grupo (esteira, marca, qualidade) | melhoria |
+| ← recebe de | [Agente pós-venda](23-oper.md#opos) | Operação do grupo (esteira, marca, qualidade) | NPS |
 
 <a id="ocrm"></a>
 
@@ -251,9 +251,9 @@ Uma ficha por cliente com ofertas compradas, origem e consentimento. Começa em 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [MailerLite](20-mkt.md#mailer) | Marketing, automação e medição | etiquetas |
-| ← recebe de | [Agente pós-venda](22-oper.md#opos) | Operação do grupo (esteira, marca, qualidade) | próximo passo |
-| ← recebe de | [CRM simples (planilha)](19-venda.md#crm) | Plataformas de venda e recebimento | vira |
+| → envia para | [MailerLite](21-mkt.md#mailer) | Marketing, automação e medição | etiquetas |
+| ← recebe de | [Agente pós-venda](23-oper.md#opos) | Operação do grupo (esteira, marca, qualidade) | próximo passo |
+| ← recebe de | [CRM simples (planilha)](20-venda.md#crm) | Plataformas de venda e recebimento | vira |
 
 <a id="ofly"></a>
 
@@ -265,9 +265,9 @@ Cada aula, capítulo, projeto, reparo ou prato vira várias peças: cortes, carr
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Agente editor de conteúdo](22-oper.md#oedit) | Operação do grupo (esteira, marca, qualidade) | trabalho capturado |
-| → envia para | [Canal build in public](22-oper.md#obuild) | Operação do grupo (esteira, marca, qualidade) | decisões reais |
-| → envia para | [Pipeline de conteúdo](22-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | trabalho na pasta de entrada |
+| → envia para | [Agente editor de conteúdo](23-oper.md#oedit) | Operação do grupo (esteira, marca, qualidade) | trabalho capturado |
+| → envia para | [Canal build in public](23-oper.md#obuild) | Operação do grupo (esteira, marca, qualidade) | decisões reais |
+| → envia para | [Pipeline de conteúdo](23-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | trabalho na pasta de entrada |
 
 <a id="obuild"></a>
 
@@ -279,9 +279,9 @@ Vídeo semanal com rosto mostrando decisões reais do grupo: números, setup, au
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [YouTube](21-pub.md#yt) | Público e canais | vídeo semanal |
-| ← recebe de | [Flywheel de conteúdo](22-oper.md#ofly) | Operação do grupo (esteira, marca, qualidade) | decisões reais |
-| ← recebe de | [Marca pessoal Alan Mateus](22-oper.md#omarca) | Operação do grupo (esteira, marca, qualidade) | rosto |
+| → envia para | [YouTube](22-pub.md#yt) | Público e canais | vídeo semanal |
+| ← recebe de | [Flywheel de conteúdo](23-oper.md#ofly) | Operação do grupo (esteira, marca, qualidade) | decisões reais |
+| ← recebe de | [Marca pessoal Alan Mateus](23-oper.md#omarca) | Operação do grupo (esteira, marca, qualidade) | rosto |
 
 <a id="oatend"></a>
 
@@ -293,8 +293,8 @@ Responde perguntas frequentes, mostra catálogo e horários e agenda. Passa para
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [WhatsApp Business](21-pub.md#wa) | Público e canais | responde |
-| ← recebe de | [n8n](20-mkt.md#n8n) | Marketing, automação e medição | roda |
+| → envia para | [WhatsApp Business](22-pub.md#wa) | Público e canais | responde |
+| ← recebe de | [n8n](21-mkt.md#n8n) | Marketing, automação e medição | roda |
 
 <a id="oorc"></a>
 
@@ -306,7 +306,7 @@ Monta propostas a partir dos pacotes e do histórico, para você aprovar.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Sites para pequenas empresas](16-prod.md#sites) | Produtos (o que você vende) | propostas |
+| → envia para | [Sites para pequenas empresas](17-prod.md#sites) | Produtos (o que você vende) | propostas |
 
 <a id="ocob"></a>
 
@@ -318,9 +318,9 @@ Lembra vencimentos e envia o Pix; avisa você nos atrasos. Não faz estorno nem 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Pix Automático + gateway (ex.: Asaas)](19-venda.md#pixa) | Plataformas de venda e recebimento | Pix |
-| → envia para | [Mercado Pago](19-venda.md#mp) | Plataformas de venda e recebimento | cobrança |
-| ← recebe de | [n8n](20-mkt.md#n8n) | Marketing, automação e medição | roda |
+| → envia para | [Pix Automático + gateway (ex.: Asaas)](20-venda.md#pixa) | Plataformas de venda e recebimento | Pix |
+| → envia para | [Mercado Pago](20-venda.md#mp) | Plataformas de venda e recebimento | cobrança |
+| ← recebe de | [n8n](21-mkt.md#n8n) | Marketing, automação e medição | roda |
 
 <a id="opos"></a>
 
@@ -332,10 +332,10 @@ Pergunta a nota, pede avaliação e oferece o próximo passo da jornada do clien
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Google Perfil da Empresa](21-pub.md#ogbp) | Público e canais | pede avaliação |
-| → envia para | [NPS e avaliações](22-oper.md#oaval) | Operação do grupo (esteira, marca, qualidade) | NPS |
-| → envia para | [CRM único + LGPD](22-oper.md#ocrm) | Operação do grupo (esteira, marca, qualidade) | próximo passo |
-| ← recebe de | [n8n](20-mkt.md#n8n) | Marketing, automação e medição | roda |
+| → envia para | [Google Perfil da Empresa](22-pub.md#ogbp) | Público e canais | pede avaliação |
+| → envia para | [NPS e avaliações](23-oper.md#oaval) | Operação do grupo (esteira, marca, qualidade) | NPS |
+| → envia para | [CRM único + LGPD](23-oper.md#ocrm) | Operação do grupo (esteira, marca, qualidade) | próximo passo |
+| ← recebe de | [n8n](21-mkt.md#n8n) | Marketing, automação e medição | roda |
 
 <a id="oedit"></a>
 
@@ -347,11 +347,11 @@ Transforma transcrições em cortes, títulos, legendas, carrosséis, posts do G
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Aprovação no celular](20-mkt.md#aprov) | Marketing, automação e medição | fila de aprovação |
-| → envia para | [Voz clonada (ElevenLabs)](12-cont.md#voz) | Produção de conteúdo | narração |
-| ← recebe de | [Flywheel de conteúdo](22-oper.md#ofly) | Operação do grupo (esteira, marca, qualidade) | trabalho capturado |
-| ← recebe de | [Whisper (local)](12-cont.md#whis) | Produção de conteúdo | transcrição |
-| ← recebe de | [Pipeline de conteúdo](22-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | executa |
+| → envia para | [Aprovação no celular](21-mkt.md#aprov) | Marketing, automação e medição | fila de aprovação |
+| → envia para | [Voz clonada (ElevenLabs)](13-cont.md#voz) | Produção de conteúdo | narração |
+| ← recebe de | [Flywheel de conteúdo](23-oper.md#ofly) | Operação do grupo (esteira, marca, qualidade) | trabalho capturado |
+| ← recebe de | [Whisper (local)](13-cont.md#whis) | Produção de conteúdo | transcrição |
+| ← recebe de | [Pipeline de conteúdo](23-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | executa |
 
 <a id="oanal"></a>
 
@@ -363,8 +363,8 @@ Lê o painel toda segunda e manda 3 fatos e 1 sugestão de decisão. Só leitura
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Grafana](09-obs.md#graf) | Observabilidade | lê o painel |
-| ← recebe de | [Banco de métricas (PostgreSQL)](20-mkt.md#metrics) | Marketing, automação e medição | dados da semana |
+| → envia para | [Grafana](10-obs.md#graf) | Observabilidade | lê o painel |
+| ← recebe de | [Banco de métricas (PostgreSQL)](21-mkt.md#metrics) | Marketing, automação e medição | dados da semana |
 
 <a id="ofisc"></a>
 
@@ -376,8 +376,8 @@ Junta notas, extratos e vendas do mês para o contador e para o carnê-leão.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Carnê-leão (Receita Federal)](18-emp.md#nfse) | Pessoa física: impostos e finanças | carnê-leão |
-| → envia para | [Contador](18-emp.md#conta) | Pessoa física: impostos e finanças | entrega ao contador |
+| → envia para | [Carnê-leão (Receita Federal)](19-emp.md#nfse) | Pessoa física: impostos e finanças | carnê-leão |
+| → envia para | [Contador](19-emp.md#conta) | Pessoa física: impostos e finanças | entrega ao contador |
 
 <a id="orevo"></a>
 
@@ -389,7 +389,7 @@ Confere cada lançamento contra o padrão de qualidade antes de ir ao ar.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Padrão de qualidade](22-oper.md#oqual) | Operação do grupo (esteira, marca, qualidade) | confere |
+| → envia para | [Padrão de qualidade](23-oper.md#oqual) | Operação do grupo (esteira, marca, qualidade) | confere |
 
 <a id="ocomp"></a>
 
@@ -401,7 +401,7 @@ Sugere a lista de compras dos negócios de comida pelo estoque mínimo e pela pr
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [AM Kaixara (PDV e cardápio)](10-app.md#nkaix) | Aplicação: sistemas AM (Aura) | estoque mínimo |
+| → envia para | [AM Kaixara (PDV e cardápio)](11-app.md#nkaix) | Aplicação: sistemas AM (Aura) | estoque mínimo |
 
 <a id="oimpl"></a>
 
@@ -413,7 +413,7 @@ data/implantacao.json: fases e passos com critério de pronto, cada passo ligado
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instaladores (PowerShell e bash)](22-oper.md#oinst) | Operação do grupo (esteira, marca, qualidade) | passos com script |
+| → envia para | [Instaladores (PowerShell e bash)](23-oper.md#oinst) | Operação do grupo (esteira, marca, qualidade) | passos com script |
 
 <a id="oinst"></a>
 
@@ -425,9 +425,9 @@ instalar.ps1 (winget, WSL2, .wslconfig) e bootstrap.sh (ferramentas, linguagens,
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Verificadores](22-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | depois confere |
-| → envia para | [Pipeline de conteúdo](22-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | instala |
-| ← recebe de | [Roteiro de implantação](22-oper.md#oimpl) | Operação do grupo (esteira, marca, qualidade) | passos com script |
+| → envia para | [Verificadores](23-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | depois confere |
+| → envia para | [Pipeline de conteúdo](23-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | instala |
+| ← recebe de | [Roteiro de implantação](23-oper.md#oimpl) | Operação do grupo (esteira, marca, qualidade) | passos com script |
 
 <a id="overif"></a>
 
@@ -440,11 +440,11 @@ verificar.ps1 e verificar.sh: somente leitura, dizem 'pronto' ou listam o que fa
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Ubuntu (WSL2)](04-lin.md#wsl) | Linux (Ubuntu no WSL2, Arch no 2º disco) | confere |
-| → envia para | [Docker + Compose](08-cnt.md#docker) | Containers, Kubernetes e infra como código | confere |
+| → envia para | [Docker + Compose](09-cnt.md#docker) | Containers, Kubernetes e infra como código | confere |
 | → envia para | [Windows 11 Home](03-win.md#w11) | Windows 11, apps e máquinas virtuais | confere |
-| → envia para | [n8n](20-mkt.md#n8n) | Marketing, automação e medição | confere |
-| → envia para | [Grafana](09-obs.md#graf) | Observabilidade | confere |
-| ← recebe de | [Instaladores (PowerShell e bash)](22-oper.md#oinst) | Operação do grupo (esteira, marca, qualidade) | depois confere |
+| → envia para | [n8n](21-mkt.md#n8n) | Marketing, automação e medição | confere |
+| → envia para | [Grafana](10-obs.md#graf) | Observabilidade | confere |
+| ← recebe de | [Instaladores (PowerShell e bash)](23-oper.md#oinst) | Operação do grupo (esteira, marca, qualidade) | depois confere |
 
 <a id="opipe"></a>
 
@@ -456,14 +456,14 @@ tools/conteudo/processar.py com timer de 15 min: entrada → transcrição → p
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Agente editor de conteúdo](22-oper.md#oedit) | Operação do grupo (esteira, marca, qualidade) | executa |
-| → envia para | [Claude (assinatura e API)](07-clc.md#anth) | Claude: recursos, conectores e plugins | API do Claude |
-| → envia para | [Telegram (avisos)](20-mkt.md#tg) | Marketing, automação e medição | aviso de peça pronta |
-| ← recebe de | [Whisper (local)](12-cont.md#whis) | Produção de conteúdo | transcreve |
-| ← recebe de | [Flywheel de conteúdo](22-oper.md#ofly) | Operação do grupo (esteira, marca, qualidade) | trabalho na pasta de entrada |
-| ← recebe de | [Instaladores (PowerShell e bash)](22-oper.md#oinst) | Operação do grupo (esteira, marca, qualidade) | instala |
-| ← recebe de | [Marca pessoal Alan Mateus](22-oper.md#omarca) | Operação do grupo (esteira, marca, qualidade) | guia de marca |
+| → envia para | [Agente editor de conteúdo](23-oper.md#oedit) | Operação do grupo (esteira, marca, qualidade) | executa |
+| → envia para | [Claude (assinatura e API)](08-clc.md#anth) | Claude: recursos, conectores e plugins | API do Claude |
+| → envia para | [Telegram (avisos)](21-mkt.md#tg) | Marketing, automação e medição | aviso de peça pronta |
+| ← recebe de | [Whisper (local)](13-cont.md#whis) | Produção de conteúdo | transcreve |
+| ← recebe de | [Flywheel de conteúdo](23-oper.md#ofly) | Operação do grupo (esteira, marca, qualidade) | trabalho na pasta de entrada |
+| ← recebe de | [Instaladores (PowerShell e bash)](23-oper.md#oinst) | Operação do grupo (esteira, marca, qualidade) | instala |
+| ← recebe de | [Marca pessoal Alan Mateus](23-oper.md#omarca) | Operação do grupo (esteira, marca, qualidade) | guia de marca |
 
 ---
 
-[↓ Camada 21 · Público e canais](21-pub.md)
+[↓ Camada 22 · Público e canais](22-pub.md)

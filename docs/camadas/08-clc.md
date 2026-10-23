@@ -1,7 +1,7 @@
 <!-- Arquivo GERADO por tools/gerar_docs.py a partir de data/. Edite os dados, não este arquivo. -->
 
 
-# Camada 07 · Claude: recursos, conectores e plugins
+# Camada 08 · Claude: recursos, conectores e plugins
 
 [← Arquitetura](../arquitetura.md) · [Índice da documentação](../README.md)
 
@@ -159,7 +159,7 @@ Um Project por frente (Aura, aulas, livro, infoprodutos) com arquivos e instruç
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [Claude (app)](06-chat.md#capp2) | Assistentes de IA (chat, pesquisa e estudo) | organiza |
+| ← recebe de | [Claude (app)](07-chat.md#capp2) | Assistentes de IA (chat, pesquisa e estudo) | organiza |
 
 <a id="arts"></a>
 
@@ -171,8 +171,8 @@ Documentos, apresentações, planilhas e designs editáveis e compartilháveis. 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Caixa da Casa / AM Rendara](18-emp.md#caixa) | Pessoa física: impostos e finanças | app da família |
-| ← recebe de | [Claude (app)](06-chat.md#capp2) | Assistentes de IA (chat, pesquisa e estudo) | cria |
+| → envia para | [Caixa da Casa / AM Rendara](19-emp.md#caixa) | Pessoa física: impostos e finanças | app da família |
+| ← recebe de | [Claude (app)](07-chat.md#capp2) | Assistentes de IA (chat, pesquisa e estudo) | cria |
 
 <a id="resq"></a>
 
@@ -184,7 +184,7 @@ Relatório com dezenas de fontes: mercado de cursos, concorrentes, editais.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [Claude (app)](06-chat.md#capp2) | Assistentes de IA (chat, pesquisa e estudo) | pesquisa |
+| ← recebe de | [Claude (app)](07-chat.md#capp2) | Assistentes de IA (chat, pesquisa e estudo) | pesquisa |
 
 <a id="sched"></a>
 
@@ -196,7 +196,7 @@ O Claude executa sozinho em horário marcado: resumo semanal dos repositórios, 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Claude (app)](06-chat.md#capp2) | Assistentes de IA (chat, pesquisa e estudo) | roda sozinho |
+| → envia para | [Claude (app)](07-chat.md#capp2) | Assistentes de IA (chat, pesquisa e estudo) | roda sozinho |
 
 <a id="cchr"></a>
 
@@ -221,10 +221,10 @@ Assinatura usada pelo app e pelo Claude Code; API para as funções de IA dos si
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [Claude (app)](06-chat.md#capp2) | Assistentes de IA (chat, pesquisa e estudo) | assinatura |
+| ← recebe de | [Claude (app)](07-chat.md#capp2) | Assistentes de IA (chat, pesquisa e estudo) | assinatura |
 | ← recebe de | [Claude Code](05-ia.md#cc) | Agentes de IA e sandbox | modelo Claude |
-| ← recebe de | [IA: RAG + pgvector](10-app.md#ai) | Aplicação: sistemas AM (Aura) | modelos |
-| ← recebe de | [Pipeline de conteúdo](22-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | API do Claude |
+| ← recebe de | [IA: RAG + pgvector](11-app.md#ai) | Aplicação: sistemas AM (Aura) | modelos |
+| ← recebe de | [Pipeline de conteúdo](23-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | API do Claude |
 
 <a id="cgws"></a>
 
@@ -236,7 +236,7 @@ Já conectado. Lê e organiza e-mail, agenda de aulas, arquivos do Drive, Docs, 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Gemini (pago)](06-chat.md#gem) | Assistentes de IA (chat, pesquisa e estudo) | mesmos dados Google |
+| → envia para | [Gemini (pago)](07-chat.md#gem) | Assistentes de IA (chat, pesquisa e estudo) | mesmos dados Google |
 | → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | resumos de e-mail e agenda |
 
 <a id="ccan"></a>
@@ -249,9 +249,9 @@ Já conectados. Canva para posts e capas; Figma para as telas dos sistemas e do 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Canva · Krita · Inkscape](12-cont.md#img) | Produção de conteúdo | posts e capas |
-| → envia para | [Next.js + Aura Design System](10-app.md#front) | Aplicação: sistemas AM (Aura) | telas do Figma |
-| → envia para | [Quadro de referências](14-editora.md#refs) | Editora AMS Silva (produção de livros) | quadros e capas |
+| → envia para | [Canva · Krita · Inkscape](13-cont.md#img) | Produção de conteúdo | posts e capas |
+| → envia para | [Next.js + Aura Design System](11-app.md#front) | Aplicação: sistemas AM (Aura) | telas do Figma |
+| → envia para | [Quadro de referências](15-editora.md#refs) | Editora AMS Silva (produção de livros) | quadros e capas |
 
 <a id="cml"></a>
 
@@ -263,7 +263,7 @@ Já conectado. O Claude monta grupos, formulários e campanhas da newsletter.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [MailerLite](20-mkt.md#mailer) | Marketing, automação e medição | campanhas |
+| → envia para | [MailerLite](21-mkt.md#mailer) | Marketing, automação e medição | campanhas |
 
 <a id="cdev"></a>
 
@@ -275,9 +275,9 @@ Já conectados. Deploy e logs na Vercel; documentação oficial da AWS e da Micr
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Vercel](11-nuvem.md#vercel) | Nuvem, código e entrega | deploy e logs |
-| → envia para | [AWS](11-nuvem.md#aws) | Nuvem, código e entrega | documentação |
-| → envia para | [Azure](11-nuvem.md#azure) | Nuvem, código e entrega | documentação |
+| → envia para | [Vercel](12-nuvem.md#vercel) | Nuvem, código e entrega | deploy e logs |
+| → envia para | [AWS](12-nuvem.md#aws) | Nuvem, código e entrega | documentação |
+| → envia para | [Azure](12-nuvem.md#azure) | Nuvem, código e entrega | documentação |
 
 <a id="cupw"></a>
 
@@ -289,7 +289,7 @@ Já conectado. Busca freelas e ajuda com propostas: renda extra com sites e sist
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Sites para pequenas empresas](16-prod.md#sites) | Produtos (o que você vende) | encontra clientes |
+| → envia para | [Sites para pequenas empresas](17-prod.md#sites) | Produtos (o que você vende) | encontra clientes |
 
 <a id="clov"></a>
 
@@ -301,7 +301,7 @@ Já conectados. Fora da sua stack, mas ótimos para validar antes de construir: 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instituto AMS](17-web.md#inst) | Vitrine web (sites e domínio) | landing de validação |
+| → envia para | [Instituto AMS](18-web.md#inst) | Vitrine web (sites e domínio) | landing de validação |
 
 <a id="cdup"></a>
 
@@ -325,9 +325,9 @@ Rotinas prontas de conteúdo, funil, SEO, propostas, cobrança e fechamento do m
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Instagram](21-pub.md#ig) | Público e canais | conteúdo |
-| → envia para | [Hotmart](19-venda.md#hotm) | Plataformas de venda e recebimento | funil e lançamento |
-| → envia para | [Prospecção de parceiros](20-mkt.md#prosp) | Marketing, automação e medição | rascunho de propostas |
+| → envia para | [Instagram](22-pub.md#ig) | Público e canais | conteúdo |
+| → envia para | [Hotmart](20-venda.md#hotm) | Plataformas de venda e recebimento | funil e lançamento |
+| → envia para | [Prospecção de parceiros](21-mkt.md#prosp) | Marketing, automação e medição | rascunho de propostas |
 
 <a id="peng"></a>
 
@@ -339,7 +339,7 @@ Revisão de código, arquitetura, ADR, testes, incidentes, crítica de design e 
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API ASP.NET Core](10-app.md#api) | Aplicação: sistemas AM (Aura) | revisão e arquitetura |
+| → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | revisão e arquitetura |
 
 <a id="pfin"></a>
 
@@ -351,7 +351,7 @@ Demonstrativos e conciliação para a empresa; dados de empresas abertas para os
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Caixa da Casa / AM Rendara](18-emp.md#caixa) | Pessoa física: impostos e finanças | fechamento do mês |
+| → envia para | [Caixa da Casa / AM Rendara](19-emp.md#caixa) | Pessoa física: impostos e finanças | fechamento do mês |
 
 <a id="phst"></a>
 
@@ -363,8 +363,8 @@ Hostinger para os sites de clientes; Adobe e Cloudinary para editar e otimizar i
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Hostinger (clientes WP)](17-web.md#hostg) | Vitrine web (sites e domínio) | sites de clientes |
-| → envia para | [DaVinci Resolve ou Kdenlive](12-cont.md#edit) | Produção de conteúdo | imagem e vídeo |
+| → envia para | [Hostinger (clientes WP)](18-web.md#hostg) | Vitrine web (sites e domínio) | sites de clientes |
+| → envia para | [DaVinci Resolve ou Kdenlive](13-cont.md#edit) | Produção de conteúdo | imagem e vídeo |
 
 <a id="ccf"></a>
 
@@ -376,7 +376,7 @@ Conectado. Este conector avisa que está descontinuado; troque pelo Cloudflare A
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [Cloudflare (DNS, Pages, e-mail)](11-nuvem.md#cf) | Nuvem, código e entrega | DNS e Pages |
+| → envia para | [Cloudflare (DNS, Pages, e-mail)](12-nuvem.md#cf) | Nuvem, código e entrega | DNS e Pages |
 
 <a id="cvid"></a>
 
@@ -388,9 +388,9 @@ Conectado. Palavras-chave, tendências, títulos e thumbnails para YouTube e Ins
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [YouTube](21-pub.md#yt) | Público e canais | tendências |
-| → envia para | [Prospecção de parceiros](20-mkt.md#prosp) | Marketing, automação e medição | canais semelhantes |
+| → envia para | [YouTube](22-pub.md#yt) | Público e canais | tendências |
+| → envia para | [Prospecção de parceiros](21-mkt.md#prosp) | Marketing, automação e medição | canais semelhantes |
 
 ---
 
-[↑ Camada 08 · Containers, Kubernetes e infra como código](08-cnt.md) · [↓ Camada 06 · Assistentes de IA (chat, pesquisa e estudo)](06-chat.md)
+[↑ Camada 09 · Containers, Kubernetes e infra como código](09-cnt.md) · [↓ Camada 07 · Assistentes de IA (chat, pesquisa e estudo)](07-chat.md)
