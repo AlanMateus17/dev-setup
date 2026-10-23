@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** A API envia logs, métricas e traces pelo OpenTelemetry.
 
-**17 blocos** · 0 precisam de conta · 6 marcados como futuro
+**18 blocos** · 0 precisam de conta · 7 marcados como futuro
 
 ## Mapa de conexões
 
@@ -31,6 +31,7 @@ flowchart LR
     n_status["aura-status"]
     n_nkaix["AM Kaixara (PDV e cardápio)"]
     n_nrot["AM Rotara (entregas)"]
+    n_mobile["App mobile (.NET MAUI)"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_ocomp["Agente comprador"]
@@ -134,6 +135,7 @@ flowchart LR
   n_peng -->|"revisão e arquitetura"| n_api
   n_lic -->|"libera módulos"| n_api
   n_rt -->|"compila e roda"| n_api
+  n_mobile -->|"HTTP + SignalR"| n_api
   n_ai -->|"pgvector"| n_pg
   n_ai -->|"modelos"| n_anth
   n_ai -->|"modelo local"| n_oll
@@ -155,30 +157,31 @@ flowchart LR
   n_nrot -->|"repasses"| n_caixa
   n_nsoft -->|"constrói"| n_nrot
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_oapi,n_gis,n_story,n_clean,n_ef,n_sig,n_rls,n_tests,n_shared,n_front,n_api,n_auth,n_ai,n_lic,n_status,n_nkaix,n_nrot desta
+  class n_oapi,n_gis,n_story,n_clean,n_ef,n_sig,n_rls,n_tests,n_shared,n_front,n_api,n_auth,n_ai,n_lic,n_status,n_nkaix,n_nrot,n_mobile desta
 ```
 
 ## Blocos
 
-| Bloco | Tipo | O que faz |
-|---|---|---|
-| [OpenAPI + Scalar](#oapi) | Local | Documentação interativa da API. No .NET 9 em diante, o Swagger saiu do modelo padrão e o Scalar é a escolha comum. |
-| [PostGIS + MapLibre](#gis) | Local · futuro | Mapas e geolocalização do AM Rotara. Lacuna já identificada nos cursos da Alura e da Rocketseat. |
-| [Storybook](#story) | Local | Vitrine dos componentes do aura-frontend-kit; vira demo pública e produto (template). |
-| [Clean Arch + DDD](#clean) | Local | Domain, Application, Infrastructure e Api. O domínio não conhece banco nem web. |
-| [EF Core + Npgsql](#ef) | Local | ORM do .NET para PostgreSQL, com migrations versionadas. |
-| [SignalR](#sig) | Local | Tempo real: pedido mudou de status no AM Rotara, venda nova no AM Kaixara. |
-| [Multi-tenant (RLS)](#rls) | Local | tenant_id + Row-Level Security: cada cliente só vê os próprios dados, garantido pelo banco. |
-| [Testes: xUnit, Playwright, k6](#tests) | Local | Unidade, integração com banco real, testes de tela no navegador e teste de carga. |
-| [Serviços aura- (10)](#shared) | Local · futuro | aura-copilot, aura-historico (Clojure/Datomic), aura-analytics (Python/FastAPI) e os demais. Só nascem quando um sistema precisar. |
-| [Next.js + Aura Design System](#front) | Local | Telas dos sistemas e, no futuro, dos sites próprios. |
-| [API ASP.NET Core](#api) | Local | Regras de negócio dos sistemas AM. |
-| [Keycloak / Entra ID](#auth) | Local | Login e permissões (OAuth2/OIDC). |
-| [IA: RAG + pgvector](#ai) | Local · futuro | Busca e assistente dentro dos sistemas (AM Projeta, aura-copilot). |
-| [aura-licensing](#lic) | Local · futuro | Cobrança por módulo dos sistemas AM. |
-| [aura-status](#status) | Local | Seu painel de repos, backup e Dependabot. |
-| [AM Kaixara (PDV e cardápio)](#nkaix) | Remoto · futuro | PDV, comandas, ordem de serviço, estoque, ficha técnica e engenharia de cardápio. Roda primeiro na loja e nos restaurantes do grupo. |
-| [AM Rotara (entregas)](#nrot) | Remoto · futuro | Pedidos, roteirização com PostGIS, app do entregador, prova de entrega e repasse semanal. Base da AM Entregas e do AM Delivery. |
+| Bloco | Tipo | O que faz | Quando entra |
+|---|---|---|---|
+| [OpenAPI + Scalar](#oapi) | Local | Documentação interativa da API. No .NET 9 em diante, o Swagger saiu do modelo padrão e o Scalar é a escolha comum. | passo 15.1 · Jan a fev/2027 |
+| [PostGIS + MapLibre](#gis) | Local · futuro | Mapas e geolocalização do AM Rotara. Lacuna já identificada nos cursos da Alura e da Rocketseat. | passo 22.3 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
+| [Storybook](#story) | Local | Vitrine dos componentes do aura-frontend-kit; vira demo pública e produto (template). | passo 15.1 · Jan a fev/2027 |
+| [Clean Arch + DDD](#clean) | Local | Domain, Application, Infrastructure e Api. O domínio não conhece banco nem web. | passo 15.1 · Jan a fev/2027 |
+| [EF Core + Npgsql](#ef) | Local | ORM do .NET para PostgreSQL, com migrations versionadas. | passo 15.1 · Jan a fev/2027 |
+| [SignalR](#sig) | Local | Tempo real: pedido mudou de status no AM Rotara, venda nova no AM Kaixara. | passo 15.1 · Jan a fev/2027 |
+| [Multi-tenant (RLS)](#rls) | Local | tenant_id + Row-Level Security: cada cliente só vê os próprios dados, garantido pelo banco. | passo 15.1 · Jan a fev/2027 |
+| [Testes: xUnit, Playwright, k6](#tests) | Local | Unidade, integração com banco real, testes de tela no navegador e teste de carga. | passo 15.1 · Jan a fev/2027 |
+| [Serviços aura- (10)](#shared) | Local · futuro | aura-copilot, aura-historico (Clojure/Datomic), aura-analytics (Python/FastAPI) e os demais. Só nascem quando um sistema precisar. | passo 22.4 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
+| [Next.js + Aura Design System](#front) | Local | Telas dos sistemas e, no futuro, dos sites próprios. | passo 15.1 · Jan a fev/2027 |
+| [API ASP.NET Core](#api) | Local | Regras de negócio dos sistemas AM. | passo 15.1 · Jan a fev/2027 |
+| [Keycloak / Entra ID](#auth) | Local | Login e permissões (OAuth2/OIDC). | passo 15.2 · Jan a fev/2027 |
+| [IA: RAG + pgvector](#ai) | Local · futuro | Busca e assistente dentro dos sistemas (AM Projeta, aura-copilot). | passo 21.1 · Mai a jul/2027 |
+| [aura-licensing](#lic) | Local · futuro | Cobrança por módulo dos sistemas AM. | passo 22.1 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
+| [aura-status](#status) | Local | Seu painel de repos, backup e Dependabot. | passo 16.7 · Fev a abr/2027 |
+| [AM Kaixara (PDV e cardápio)](#nkaix) | Remoto · futuro | PDV, comandas, ordem de serviço, estoque, ficha técnica e engenharia de cardápio. Roda primeiro na loja e nos restaurantes do grupo. | passo 22.2 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
+| [AM Rotara (entregas)](#nrot) | Remoto · futuro | Pedidos, roteirização com PostGIS, app do entregador, prova de entrega e repasse semanal. Base da AM Entregas e do AM Delivery. | passo 22.3 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
+| [App mobile (.NET MAUI)](#mobile) | Local · futuro | App dos sistemas AM no celular, em C# como o resto do Aura. Entra em 2028; Kotlin, Swift e Flutter ficam fora para não abrir outra stack. | passo 26.6 · 2028 |
 
 <a id="oapi"></a>
 
@@ -187,6 +190,8 @@ flowchart LR
 *Local*
 
 Documentação interativa da API. No .NET 9 em diante, o Swagger saiu do modelo padrão e o Scalar é a escolha comum.
+
+**Quando entra:** passo 15.1 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -200,6 +205,8 @@ Documentação interativa da API. No .NET 9 em diante, o Swagger saiu do modelo 
 *Local · futuro*
 
 Mapas e geolocalização do AM Rotara. Lacuna já identificada nos cursos da Alura e da Rocketseat.
+
+**Quando entra:** passo 22.3 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -215,6 +222,8 @@ Mapas e geolocalização do AM Rotara. Lacuna já identificada nos cursos da Alu
 
 Vitrine dos componentes do aura-frontend-kit; vira demo pública e produto (template).
 
+**Quando entra:** passo 15.1 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Next.js + Aura Design System](11-app.md#front) | Aplicação: sistemas AM (Aura) | componentes |
@@ -228,6 +237,8 @@ Vitrine dos componentes do aura-frontend-kit; vira demo pública e produto (temp
 
 Domain, Application, Infrastructure e Api. O domínio não conhece banco nem web.
 
+**Quando entra:** passo 15.1 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | organiza |
@@ -239,6 +250,8 @@ Domain, Application, Infrastructure e Api. O domínio não conhece banco nem web
 *Local*
 
 ORM do .NET para PostgreSQL, com migrations versionadas.
+
+**Quando entra:** passo 15.1 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -252,6 +265,8 @@ ORM do .NET para PostgreSQL, com migrations versionadas.
 *Local*
 
 Tempo real: pedido mudou de status no AM Rotara, venda nova no AM Kaixara.
+
+**Quando entra:** passo 15.1 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -267,6 +282,8 @@ Tempo real: pedido mudou de status no AM Rotara, venda nova no AM Kaixara.
 
 tenant_id + Row-Level Security: cada cliente só vê os próprios dados, garantido pelo banco.
 
+**Quando entra:** passo 15.1 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [PostgreSQL](09-cnt.md#pg) | Containers, Kubernetes e infra como código | políticas |
@@ -279,6 +296,8 @@ tenant_id + Row-Level Security: cada cliente só vê os próprios dados, garanti
 *Local*
 
 Unidade, integração com banco real, testes de tela no navegador e teste de carga.
+
+**Quando entra:** passo 15.1 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -293,6 +312,8 @@ Unidade, integração com banco real, testes de tela no navegador e teste de car
 
 aura-copilot, aura-historico (Clojure/Datomic), aura-analytics (Python/FastAPI) e os demais. Só nascem quando um sistema precisar.
 
+**Quando entra:** passo 22.4 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | HTTP |
@@ -305,6 +326,8 @@ aura-copilot, aura-historico (Clojure/Datomic), aura-analytics (Python/FastAPI) 
 *Local*
 
 Telas dos sistemas e, no futuro, dos sites próprios.
+
+**Quando entra:** passo 15.1 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -324,6 +347,8 @@ Telas dos sistemas e, no futuro, dos sites próprios.
 *Local*
 
 Regras de negócio dos sistemas AM.
+
+**Quando entra:** passo 15.1 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -353,6 +378,7 @@ Regras de negócio dos sistemas AM.
 | ← recebe de | [Next.js + Aura Design System](11-app.md#front) | Aplicação: sistemas AM (Aura) | HTTP + SignalR |
 | ← recebe de | [aura-licensing](11-app.md#lic) | Aplicação: sistemas AM (Aura) | libera módulos |
 | ← recebe de | [.NET 10 · Node · Python](04-lin.md#rt) | Linux (Ubuntu no WSL2, Arch no 2º disco) | compila e roda |
+| ← recebe de | [App mobile (.NET MAUI)](11-app.md#mobile) | Aplicação: sistemas AM (Aura) | HTTP + SignalR |
 
 <a id="auth"></a>
 
@@ -361,6 +387,8 @@ Regras de negócio dos sistemas AM.
 *Local*
 
 Login e permissões (OAuth2/OIDC).
+
+**Quando entra:** passo 15.2 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -374,6 +402,8 @@ Login e permissões (OAuth2/OIDC).
 *Local · futuro*
 
 Busca e assistente dentro dos sistemas (AM Projeta, aura-copilot).
+
+**Quando entra:** passo 21.1 · Mai a jul/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -390,6 +420,8 @@ Busca e assistente dentro dos sistemas (AM Projeta, aura-copilot).
 
 Cobrança por módulo dos sistemas AM.
 
+**Quando entra:** passo 22.1 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | libera módulos |
@@ -404,6 +436,8 @@ Cobrança por módulo dos sistemas AM.
 
 Seu painel de repos, backup e Dependabot.
 
+**Quando entra:** passo 16.7 · Fev a abr/2027 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | Dependabot e repos |
@@ -417,6 +451,8 @@ Seu painel de repos, backup e Dependabot.
 *Remoto · futuro*
 
 PDV, comandas, ordem de serviço, estoque, ficha técnica e engenharia de cardápio. Roda primeiro na loja e nos restaurantes do grupo.
+
+**Quando entra:** passo 22.2 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -437,6 +473,8 @@ PDV, comandas, ordem de serviço, estoque, ficha técnica e engenharia de cardá
 
 Pedidos, roteirização com PostGIS, app do entregador, prova de entrega e repasse semanal. Base da AM Entregas e do AM Delivery.
 
+**Quando entra:** passo 22.3 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [AM Entregas (moto e carro)](16-neg.md#nentr) | Negócios do grupo (Barbacena) | roteiriza |
@@ -444,6 +482,20 @@ Pedidos, roteirização com PostGIS, app do entregador, prova de entrega e repas
 | → envia para | [Caixa da Casa / AM Rendara](19-emp.md#caixa) | Pessoa física: impostos e finanças | repasses |
 | ← recebe de | [AMtech Software (projetos e SaaS)](16-neg.md#nsoft) | Negócios do grupo (Barbacena) | constrói |
 | ← recebe de | [PostGIS + MapLibre](11-app.md#gis) | Aplicação: sistemas AM (Aura) | mapas |
+
+<a id="mobile"></a>
+
+### App mobile (.NET MAUI)
+
+*Local · futuro*
+
+App dos sistemas AM no celular, em C# como o resto do Aura. Entra em 2028; Kotlin, Swift e Flutter ficam fora para não abrir outra stack.
+
+**Quando entra:** passo 26.6 · 2028 ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | HTTP + SignalR |
 
 ---
 

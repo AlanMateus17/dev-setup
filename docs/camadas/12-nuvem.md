@@ -165,25 +165,25 @@ flowchart LR
 
 ## Blocos
 
-| Bloco | Tipo | O que faz |
-|---|---|---|
-| [Armazenamento de arquivos (Blob/R2)](#blob) | Remoto · precisa de conta | Fotos de produtos, anexos e PDFs dos sistemas AM fora do banco de dados. |
-| [E-mail transacional (Resend, SES…)](#tmail) | Remoto · precisa de conta | E-mails automáticos dos sistemas: confirmação de conta, senha, recibo. |
-| [SonarQube Cloud](#sonar) | Remoto · precisa de conta | Nota de qualidade e segurança do código a cada PR. Grátis para repositório público; recrutador vê o selo. |
-| [Projects · ADRs · MkDocs](#ghproj) | Remoto | GitHub Projects espelhando o EPIC-01, decisões de arquitetura registradas e documentação publicada no Pages. |
-| [Dependabot + CodeQL](#dbot) | Remoto | Dependabot atualiza pacotes vulneráveis; CodeQL procura falhas no seu código. Grátis em repositório público. |
-| [Google Cloud](#gcp) | Remoto · precisa de conta · futuro | Terceira nuvem: só o básico, quando um projeto de IA ou dados pedir. |
-| [GitHub](#gh) | Remoto · precisa de conta | Código, vault, ensino-ti e a org grupo-amtech-digital. É também o seu portfólio. |
-| [GitHub Actions](#gha) | Remoto | CI/CD: build, testes, segurança e deploy. |
-| [GHCR (imagens)](#ghcr) | Remoto | Registro das imagens Docker das APIs. |
-| [GitHub Pages](#ghp) | Remoto | Hospeda site pessoal, blog e Catálogo do HTML. |
-| [Cloudflare (DNS, Pages, e-mail)](#cf) | Remoto · precisa de conta | DNS, HTTPS, proteção, hospedagem estática dos sites comerciais e redirecionamento de e-mail do domínio. O Cloudflare Tunnel leva os webhooks de venda até o n8n sem abrir portas em casa. |
-| [Vercel](#vercel) | Remoto · precisa de conta | Frontends Next.js. O plano grátis é para uso pessoal e não comercial; confira os termos antes de pôr venda nele. |
-| [Azure](#azure) | Remoto · precisa de conta | Primeira nuvem para as APIs AM: App Service/Container Apps, PostgreSQL, Key Vault. |
-| [AWS](#aws) | Remoto · precisa de conta · futuro | Segunda nuvem, para o mercado maior. |
-| [Backblaze B2 (backup)](#b2) | Remoto · precisa de conta · futuro | Cópia fora de casa do backup, criptografada pelo restic. US$ 6,95 por TB/mês. |
-| [GPU por hora (RunPod e afins)](#gpuh) | Remoto · precisa de conta | Quando o Kaggle não bastar: GPU de 24 GB a partir de cerca de US$ 0,27 a 0,90 por hora no RunPod (out/2026). Um fine-tuning QLoRA de 8B costuma levar poucas horas. Use crédito pré-pago, sem cartão em débito automático. |
-| [Google Drive (seus documentos)](#gdrv) | Remoto · precisa de conta | Onde estão hoje as suas aulas, apostilas, provas, especificações e planos, misturados com cópias repetidas e documentos pessoais. O Google Takeout tira uma cópia completa para o acervo. |
+| Bloco | Tipo | O que faz | Quando entra |
+|---|---|---|---|
+| [Armazenamento de arquivos (Blob/R2)](#blob) | Remoto · precisa de conta | Fotos de produtos, anexos e PDFs dos sistemas AM fora do banco de dados. | passo 16.4 · Fev a abr/2027 |
+| [E-mail transacional (Resend, SES…)](#tmail) | Remoto · precisa de conta | E-mails automáticos dos sistemas: confirmação de conta, senha, recibo. | passo 16.5 · Fev a abr/2027 |
+| [SonarQube Cloud](#sonar) | Remoto · precisa de conta | Nota de qualidade e segurança do código a cada PR. Grátis para repositório público; recrutador vê o selo. | passo 15.5 · Jan a fev/2027 |
+| [Projects · ADRs · MkDocs](#ghproj) | Remoto | GitHub Projects espelhando o EPIC-01, decisões de arquitetura registradas e documentação publicada no Pages. | passo 3.5 · Semana 2 · nov/2026 |
+| [Dependabot + CodeQL](#dbot) | Remoto | Dependabot atualiza pacotes vulneráveis; CodeQL procura falhas no seu código. Grátis em repositório público. | passo 3.3 · Semana 2 · nov/2026 |
+| [Google Cloud](#gcp) | Remoto · precisa de conta · futuro | Terceira nuvem: só o básico, quando um projeto de IA ou dados pedir. | passo 26.5 · 2028 |
+| [GitHub](#gh) | Remoto · precisa de conta | Código, vault, ensino-ti e a org grupo-amtech-digital. É também o seu portfólio. | passo 3.1 · Semana 2 · nov/2026; passo 3.4 · Semana 2 · nov/2026 |
+| [GitHub Actions](#gha) | Remoto | CI/CD: build, testes, segurança e deploy. | passo 3.2 · Semana 2 · nov/2026; passo 14.1 · Semana 11 · jan/2027 |
+| [GHCR (imagens)](#ghcr) | Remoto | Registro das imagens Docker das APIs. | passo 15.6 · Jan a fev/2027 |
+| [GitHub Pages](#ghp) | Remoto | Hospeda site pessoal, blog e Catálogo do HTML. | passo 11.7 · Semanas 6 e 7 · dez/2026 |
+| [Cloudflare (DNS, Pages, e-mail)](#cf) | Remoto · precisa de conta | DNS, HTTPS, proteção, hospedagem estática dos sites comerciais e redirecionamento de e-mail do domínio. O Cloudflare Tunnel leva os webhooks de venda até o n8n sem abrir portas em casa. | passo 11.3 · Semanas 6 e 7 · dez/2026; passo 11.8 · Semanas 6 e 7 · dez/2026; passo 13.1 · Semana 11 · jan/2027; passo 16.6 · Fev a abr/2027 |
+| [Vercel](#vercel) | Remoto · precisa de conta | Frontends Next.js. O plano grátis é para uso pessoal e não comercial; confira os termos antes de pôr venda nele. | passo 16.6 · Fev a abr/2027 |
+| [Azure](#azure) | Remoto · precisa de conta | Primeira nuvem para as APIs AM: App Service/Container Apps, PostgreSQL, Key Vault. | passo 16.2 · Fev a abr/2027; passo 16.3 · Fev a abr/2027; passo 16.6 · Fev a abr/2027 |
+| [AWS](#aws) | Remoto · precisa de conta · futuro | Segunda nuvem, para o mercado maior. | passo 26.4 · 2028 |
+| [Backblaze B2 (backup)](#b2) | Remoto · precisa de conta · futuro | Cópia fora de casa do backup, criptografada pelo restic. US$ 6,95 por TB/mês. | passo 5.2 · Semana 3 · nov/2026 |
+| [GPU por hora (RunPod e afins)](#gpuh) | Remoto · precisa de conta | Quando o Kaggle não bastar: GPU de 24 GB a partir de cerca de US$ 0,27 a 0,90 por hora no RunPod (out/2026). Um fine-tuning QLoRA de 8B costuma levar poucas horas. Use crédito pré-pago, sem cartão em débito automático. | passo 18.9 · Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| [Google Drive (seus documentos)](#gdrv) | Remoto · precisa de conta | Onde estão hoje as suas aulas, apostilas, provas, especificações e planos, misturados com cópias repetidas e documentos pessoais. O Google Takeout tira uma cópia completa para o acervo. | passo 6.1 · Semanas 3 e 4 · nov/2026 |
 
 <a id="blob"></a>
 
@@ -192,6 +192,8 @@ flowchart LR
 *Remoto · precisa de conta*
 
 Fotos de produtos, anexos e PDFs dos sistemas AM fora do banco de dados.
+
+**Quando entra:** passo 16.4 · Fev a abr/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -205,6 +207,8 @@ Fotos de produtos, anexos e PDFs dos sistemas AM fora do banco de dados.
 
 E-mails automáticos dos sistemas: confirmação de conta, senha, recibo.
 
+**Quando entra:** passo 16.5 · Fev a abr/2027 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | e-mails do sistema |
@@ -216,6 +220,8 @@ E-mails automáticos dos sistemas: confirmação de conta, senha, recibo.
 *Remoto · precisa de conta*
 
 Nota de qualidade e segurança do código a cada PR. Grátis para repositório público; recrutador vê o selo.
+
+**Quando entra:** passo 15.5 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -229,6 +235,8 @@ Nota de qualidade e segurança do código a cada PR. Grátis para repositório p
 
 GitHub Projects espelhando o EPIC-01, decisões de arquitetura registradas e documentação publicada no Pages.
 
+**Quando entra:** passo 3.5 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | issues e board |
@@ -240,6 +248,8 @@ GitHub Projects espelhando o EPIC-01, decisões de arquitetura registradas e doc
 *Remoto*
 
 Dependabot atualiza pacotes vulneráveis; CodeQL procura falhas no seu código. Grátis em repositório público.
+
+**Quando entra:** passo 3.3 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -254,6 +264,8 @@ Dependabot atualiza pacotes vulneráveis; CodeQL procura falhas no seu código. 
 
 Terceira nuvem: só o básico, quando um projeto de IA ou dados pedir.
 
+**Quando entra:** passo 26.5 · 2028 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | ← recebe de | [Terraform](09-cnt.md#tf) | Containers, Kubernetes e infra como código | cria recursos |
@@ -265,6 +277,8 @@ Terceira nuvem: só o básico, quando um projeto de IA ou dados pedir.
 *Remoto · precisa de conta*
 
 Código, vault, ensino-ti e a org grupo-amtech-digital. É também o seu portfólio.
+
+**Quando entra:** passo 3.1 · Semana 2 · nov/2026; passo 3.4 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -295,6 +309,8 @@ Código, vault, ensino-ti e a org grupo-amtech-digital. É também o seu portfó
 
 CI/CD: build, testes, segurança e deploy.
 
+**Quando entra:** passo 3.2 · Semana 2 · nov/2026; passo 14.1 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [GHCR (imagens)](12-nuvem.md#ghcr) | Nuvem, código e entrega | publica imagem |
@@ -314,6 +330,8 @@ CI/CD: build, testes, segurança e deploy.
 
 Registro das imagens Docker das APIs.
 
+**Quando entra:** passo 15.6 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Azure](12-nuvem.md#azure) | Nuvem, código e entrega | imagem |
@@ -328,6 +346,8 @@ Registro das imagens Docker das APIs.
 
 Hospeda site pessoal, blog e Catálogo do HTML.
 
+**Quando entra:** passo 11.7 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | ← recebe de | [GitHub Actions](12-nuvem.md#gha) | Nuvem, código e entrega | publica sites |
@@ -341,6 +361,8 @@ Hospeda site pessoal, blog e Catálogo do HTML.
 *Remoto · precisa de conta*
 
 DNS, HTTPS, proteção, hospedagem estática dos sites comerciais e redirecionamento de e-mail do domínio. O Cloudflare Tunnel leva os webhooks de venda até o n8n sem abrir portas em casa.
+
+**Quando entra:** passo 11.3 · Semanas 6 e 7 · dez/2026; passo 11.8 · Semanas 6 e 7 · dez/2026; passo 13.1 · Semana 11 · jan/2027; passo 16.6 · Fev a abr/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -360,6 +382,8 @@ DNS, HTTPS, proteção, hospedagem estática dos sites comerciais e redirecionam
 
 Frontends Next.js. O plano grátis é para uso pessoal e não comercial; confira os termos antes de pôr venda nele.
 
+**Quando entra:** passo 16.6 · Fev a abr/2027 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | ← recebe de | [Vercel · AWS · Microsoft Learn](08-clc.md#cdev) | Claude: recursos, conectores e plugins | deploy e logs |
@@ -372,6 +396,8 @@ Frontends Next.js. O plano grátis é para uso pessoal e não comercial; confira
 *Remoto · precisa de conta*
 
 Primeira nuvem para as APIs AM: App Service/Container Apps, PostgreSQL, Key Vault.
+
+**Quando entra:** passo 16.2 · Fev a abr/2027; passo 16.3 · Fev a abr/2027; passo 16.6 · Fev a abr/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -392,6 +418,8 @@ Primeira nuvem para as APIs AM: App Service/Container Apps, PostgreSQL, Key Vaul
 
 Segunda nuvem, para o mercado maior.
 
+**Quando entra:** passo 26.4 · 2028 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | ← recebe de | [Azure CLI · AWS CLI](09-cnt.md#clis) | Containers, Kubernetes e infra como código | comandos |
@@ -408,6 +436,8 @@ Segunda nuvem, para o mercado maior.
 
 Cópia fora de casa do backup, criptografada pelo restic. US$ 6,95 por TB/mês.
 
+**Quando entra:** passo 5.2 · Semana 3 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | ← recebe de | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | restic diário |
@@ -421,6 +451,8 @@ Cópia fora de casa do backup, criptografada pelo restic. US$ 6,95 por TB/mês.
 
 Quando o Kaggle não bastar: GPU de 24 GB a partir de cerca de US$ 0,27 a 0,90 por hora no RunPod (out/2026). Um fine-tuning QLoRA de 8B costuma levar poucas horas. Use crédito pré-pago, sem cartão em débito automático.
 
+**Quando entra:** passo 18.9 · Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Voz clonada (ElevenLabs)](13-cont.md#voz) | Produção de conteúdo | modelos abertos |
@@ -433,6 +465,8 @@ Quando o Kaggle não bastar: GPU de 24 GB a partir de cerca de US$ 0,27 a 0,90 p
 *Remoto · precisa de conta*
 
 Onde estão hoje as suas aulas, apostilas, provas, especificações e planos, misturados com cópias repetidas e documentos pessoais. O Google Takeout tira uma cópia completa para o acervo.
+
+**Quando entra:** passo 6.1 · Semanas 3 e 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

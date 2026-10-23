@@ -2836,6 +2836,15 @@
    "descricao": "Pedidos, roteirização com PostGIS, app do entregador, prova de entrega e repasse semanal. Base da AM Entregas e do AM Delivery."
   },
   {
+   "id": "mobile",
+   "camada": "app",
+   "rotulo": "App mobile|(.NET MAUI)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "App dos sistemas AM no celular, em C# como o resto do Aura. Entra em 2028; Kotlin, Swift e Flutter ficam fora para não abrir outra stack."
+  },
+  {
    "id": "ocatal",
    "camada": "oper",
    "rotulo": "Portfólio de ofertas",
@@ -6059,6 +6068,11 @@
    "de": "cgws",
    "para": "gdrv",
    "rotulo": "o Claude lê o Drive"
+  },
+  {
+   "de": "mobile",
+   "para": "api",
+   "rotulo": "HTTP + SignalR"
   }
  ],
  "fluxos": [

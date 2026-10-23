@@ -95,14 +95,14 @@ flowchart LR
 
 ## Blocos
 
-| Bloco | Tipo | O que faz |
-|---|---|---|
-| [OBS Studio](#obss) | Local | Grava tela, câmera e áudio das aulas e vídeos. |
-| [DaVinci Resolve ou Kdenlive](#edit) | Local | Edição de vídeo. Os dois têm versão grátis. |
-| [Audacity](#aud) | Local | Limpa ruído e ajusta o áudio. |
-| [Canva · Krita · Inkscape](#img) | Local · precisa de conta | Capas, posts e thumbnails. Canva precisa de conta; Krita e Inkscape são open source. |
-| [Whisper (local)](#whis) | Local | Transcreve as aulas para legenda, artigo e capítulo. |
-| [Voz clonada (ElevenLabs)](#voz) | Remoto · precisa de conta | Clonagem profissional da sua própria voz (plano Creator em diante, uso comercial nos planos pagos). Treino com 30 minutos ou mais de áudio limpo. Avise o público que a voz é gerada por IA. |
+| Bloco | Tipo | O que faz | Quando entra |
+|---|---|---|---|
+| [OBS Studio](#obss) | Local | Grava tela, câmera e áudio das aulas e vídeos. | passo 1.2 · Semana 1 · out/2026; passo 10.1 · Semana 5 · dez/2026 |
+| [DaVinci Resolve ou Kdenlive](#edit) | Local | Edição de vídeo. Os dois têm versão grátis. | passo 1.8 · Semana 1 · out/2026; passo 10.3 · Semana 5 · dez/2026 |
+| [Audacity](#aud) | Local | Limpa ruído e ajusta o áudio. | passo 1.2 · Semana 1 · out/2026; passo 10.2 · Semana 5 · dez/2026 |
+| [Canva · Krita · Inkscape](#img) | Local · precisa de conta | Capas, posts e thumbnails. Canva precisa de conta; Krita e Inkscape são open source. | passo 1.2 · Semana 1 · out/2026; passo 10.4 · Semana 5 · dez/2026 |
+| [Whisper (local)](#whis) | Local | Transcreve as aulas para legenda, artigo e capítulo. | passo 2.4 · Semana 2 · nov/2026; passo 9.6 · Semana 5 · nov/2026 |
+| [Voz clonada (ElevenLabs)](#voz) | Remoto · precisa de conta | Clonagem profissional da sua própria voz (plano Creator em diante, uso comercial nos planos pagos). Treino com 30 minutos ou mais de áudio limpo. Avise o público que a voz é gerada por IA. | passo 10.5 · Semana 5 · dez/2026 |
 
 <a id="obss"></a>
 
@@ -111,6 +111,8 @@ flowchart LR
 *Local*
 
 Grava tela, câmera e áudio das aulas e vídeos.
+
+**Quando entra:** passo 1.2 · Semana 1 · out/2026; passo 10.1 · Semana 5 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -125,6 +127,8 @@ Grava tela, câmera e áudio das aulas e vídeos.
 *Local*
 
 Edição de vídeo. Os dois têm versão grátis.
+
+**Quando entra:** passo 1.8 · Semana 1 · out/2026; passo 10.3 · Semana 5 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -145,6 +149,8 @@ Edição de vídeo. Os dois têm versão grátis.
 
 Limpa ruído e ajusta o áudio.
 
+**Quando entra:** passo 1.2 · Semana 1 · out/2026; passo 10.2 · Semana 5 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [DaVinci Resolve ou Kdenlive](13-cont.md#edit) | Produção de conteúdo | áudio limpo |
@@ -156,6 +162,8 @@ Limpa ruído e ajusta o áudio.
 *Local · precisa de conta*
 
 Capas, posts e thumbnails. Canva precisa de conta; Krita e Inkscape são open source.
+
+**Quando entra:** passo 1.2 · Semana 1 · out/2026; passo 10.4 · Semana 5 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -174,6 +182,8 @@ Capas, posts e thumbnails. Canva precisa de conta; Krita e Inkscape são open so
 
 Transcreve as aulas para legenda, artigo e capítulo.
 
+**Quando entra:** passo 2.4 · Semana 2 · nov/2026; passo 9.6 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | transcrição |
@@ -189,6 +199,8 @@ Transcreve as aulas para legenda, artigo e capítulo.
 *Remoto · precisa de conta*
 
 Clonagem profissional da sua própria voz (plano Creator em diante, uso comercial nos planos pagos). Treino com 30 minutos ou mais de áudio limpo. Avise o público que a voz é gerada por IA.
+
+**Quando entra:** passo 10.5 · Semana 5 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

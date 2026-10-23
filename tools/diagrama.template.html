@@ -58,6 +58,7 @@ h2{font-family:var(--display);font-weight:600;font-size:23px;margin:0 0 6px;colo
 .stack.sel .nd{opacity:.3} .stack.sel .nd.on{opacity:1} .stack.sel .nd.me{box-shadow:0 0 0 2.5px var(--hot)}
 #wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:2}
 #wires path{fill:none;stroke:var(--hot);stroke-width:2;opacity:.9}
+#wg.todas path{stroke:var(--edge);stroke-width:1;opacity:.18;marker-end:none}
 #wires .arrow{fill:var(--hot)}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;position:fixed;left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px));bottom:max(12px,env(safe-area-inset-bottom,0px));max-height:46vh;overflow:auto;z-index:10;box-shadow:0 10px 30px rgba(0,0,0,.18)}
 .panel[hidden]{display:none}
@@ -70,6 +71,7 @@ h2{font-family:var(--display);font-weight:600;font-size:23px;margin:0 0 6px;colo
 .tag{font:500 11px var(--mono);padding:2px 8px;border-radius:4px;background:var(--local);color:var(--ink);letter-spacing:.03em}
 .tag.r{background:var(--remote)} .tag.k{background:var(--gold);color:var(--bg)}
 .panel p{margin:0;max-width:70ch}
+.panel .quando{font-size:14px;color:var(--gold)}
 .conn{display:flex;flex-direction:column;gap:4px;margin:0;padding:0;list-style:none}
 .conn li{display:flex;gap:8px;align-items:baseline;font-size:14px}
 .conn button{font:500 14px var(--sans);background:none;border:0;padding:0;color:var(--aura);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
@@ -114,6 +116,7 @@ details.ly li span{color:var(--muted)}
       <span><i class="key"></i>Precisa de conta</span>
     </div>
     <div class="bar" role="group" aria-label="Fluxos prontos" id="fluxos"></div>
+    <div class="bar"><button id="todas" aria-pressed="false">Ver todas as conexões</button></div>
     <p class="hint" id="idle"></p>
     <div class="canvas" id="canvas"><div class="stack" id="stack"></div><svg id="wires" aria-hidden="true"><defs><marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0 0L10 5L0 10z"/></marker></defs><g id="wg"></g></svg></div>
     <div class="panel" id="panel" aria-live="polite" hidden></div>
@@ -123,6 +126,13 @@ details.ly li span{color:var(--muted)}
     <div class="eyebrow">Implantação</div>
     <h2>O que fazer, e em que ordem</h2>
     <p class="lede">Cada bloco deste desenho tem lugar no roteiro de implantação: num passo, como peça a construir, como algo que não se instala ou para depois. O roteiro, com o critério de pronto de cada passo, está no acompanhamento da implantação e em <code>docs/implantacao/roteiro.md</code> no repositório.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Auditoria · 20/out/2026</div>
+    <h2>O que faltava no setup</h2>
+    <p class="lede" style="margin-bottom:12px">Comparei o setup com o que um dev .NET pleno, um criador de cursos e uma pequena empresa de software precisam ter. Os itens novos já estão no desenho e no roteiro; aqui eles aparecem por urgência.</p>
+    <div class="acc" id="gaps"></div>
   </section>
 
   <section>
@@ -144,7 +154,7 @@ details.ly li span{color:var(--muted)}
 <script>
 const DATA=__DATA__;
 const LAYERS=DATA.camadas.map(c=>[c.id,c.titulo,c.ponte]);
-const N=DATA.blocos.map(b=>[b.id,b.camada,b.rotulo,{local:"l",remoto:"r",fisico:"h"}[b.tipo],b.conta?1:0,b.futuro?1:0,b.descricao]);
+const N=DATA.blocos.map(b=>[b.id,b.camada,b.rotulo,{local:"l",remoto:"r",fisico:"h"}[b.tipo],b.conta?1:0,b.futuro?1:0,b.descricao,b.quando||""]);
 const E=DATA.conexoes.map(c=>[c.de,c.para,c.rotulo]);
 const FLOWS=Object.fromEntries(DATA.fluxos.map(f=>[f.id,{t:f.titulo,s:f.passos.map(p=>p.bloco),d:f.passos.map(p=>p.descricao)}]));
 const LN=Object.fromEntries(LAYERS.map((l,i)=>[l[0],i]));
@@ -167,7 +177,7 @@ function desenha(){
   });
 }
 new ResizeObserver(desenha).observe(canvas);
-function limpa(){stack.classList.remove("sel");Object.values(nodes).forEach(n=>n.classList.remove("on","me"));ativos=[];desenha();}
+function limpa(){wg.classList.remove("todas");if(typeof btTodas!=="undefined")btTodas.setAttribute("aria-pressed","false");stack.classList.remove("sel");Object.values(nodes).forEach(n=>n.classList.remove("on","me"));ativos=[];desenha();}
 function fecha(){limpa();setFlowBtn("");panel.hidden=true;}
 function abre(html){panel.innerHTML=`<div class="ph">${html.h}<button class="close" id="fechar">Fechar</button></div>${html.b}`;panel.hidden=false;document.getElementById("fechar").onclick=fecha;
   panel.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>{select(b.dataset.go);nodes[b.dataset.go].scrollIntoView({block:"center",behavior:"smooth"});}));}
@@ -179,7 +189,7 @@ function select(id){
   ativos=[...out,...inn];desenha();
   const n=byId[id];
   const li=(o,dir,l)=>`<li><span class="dir">${dir}</span><span><button data-go="${o}">${ESC(NM(o))}</button> <span class="lab">· ${ESC(l)}</span></span></li>`;
-  abre({h:`<h3>${ESC(NM(id))}</h3>`,b:`<div class="meta"><span class="tag">${ESC(lname(id))}</span><span class="tag ${n[3]==="r"?"r":""}">${n[3]==="l"?"Local":n[3]==="r"?"Remoto":"Físico"}</span>${n[4]?'<span class="tag k">Precisa de conta</span>':""}${n[5]?'<span class="tag">Futuro</span>':""}</div><p>${ESC(n[6])}</p><ul class="conn">${out.map(e=>li(e[1],"→",e[2])).join("")}${inn.map(e=>li(e[0],"←",e[2])).join("")}</ul>`});
+  abre({h:`<h3>${ESC(NM(id))}</h3>`,b:`<div class="meta"><span class="tag">${ESC(lname(id))}</span><span class="tag ${n[3]==="r"?"r":""}">${n[3]==="l"?"Local":n[3]==="r"?"Remoto":"Físico"}</span>${n[4]?'<span class="tag k">Precisa de conta</span>':""}${n[5]?'<span class="tag">Futuro</span>':""}</div><p>${ESC(n[6])}</p>${n[7]?`<p class="quando"><b>Quando entra:</b> ${ESC(n[7])}</p>`:""}<ul class="conn">${out.map(e=>li(e[1],"→",e[2])).join("")}${inn.map(e=>li(e[0],"←",e[2])).join("")}</ul>`});
 }
 document.getElementById("fluxos").innerHTML=DATA.fluxos.map(f=>`<button data-flow="${f.id}" aria-pressed="false">${ESC(f.titulo)}</button>`).join("");
 const fbtns=[...document.querySelectorAll("[data-flow]")];
@@ -193,11 +203,14 @@ function flow(f){
 }
 fbtns.forEach(b=>b.addEventListener("click",()=>b.getAttribute("aria-pressed")==="true"?fecha():flow(b.dataset.flow)));
 document.addEventListener("keydown",e=>{if(e.key==="Escape")fecha();});
+const btTodas=document.getElementById("todas");
+btTodas.addEventListener("click",()=>{const on=btTodas.getAttribute("aria-pressed")!=="true";fecha();if(on){ativos=E.map(e=>[e[0],e[1]]);desenha();wg.classList.add("todas");}btTodas.setAttribute("aria-pressed",on);});
 document.getElementById("idle").textContent=`São ${N.length} blocos em ${LAYERS.length} camadas, com ${E.length} conexões. Toque em um bloco para ver com o que ele se conecta, ou escolha um fluxo: as linhas aparecem só para o que você escolher, e cada seta se lê como uma frase: bloco, o que ele faz, outro bloco.`;
 const CONTAS=LAYERS.map(([id,t])=>[t,N.filter(n=>n[1]===id&&n[4])]).filter(([,l])=>l.length);
 document.getElementById("ncontas").textContent=`${CONTAS.reduce((s,[,l])=>s+l.length,0)} blocos do desenho precisam de conta (o ponto dourado). A lista vem do próprio desenho, então não fica desatualizada.`;
 document.getElementById("acc").innerHTML=CONTAS.map(([t,l])=>`<div class="card"><h3>${ESC(t)}</h3><ul>${l.map(n=>`<li><b>${ESC(n[2].replace("|"," "))}</b><span>${ESC(n[6])}</span></li>`).join("")}</ul></div>`).join("");
-document.getElementById("list").innerHTML=LAYERS.map(([id,t],i)=>`<details class="ly"><summary><span class="bandnum">${String(LAYERS.length-i).padStart(2,"0")}</span>${ESC(t)}</summary><ul>${N.filter(n=>n[1]===id).map(n=>`<li>${ESC(n[2].replace("|"," "))}${n[4]?" ●":""} <span>· ${ESC(n[6])}</span></li>`).join("")}</ul></details>`).join("");
+document.getElementById("gaps").innerHTML=DATA.auditoria.map(g=>`<div class="card"><h3>${ESC(g.grupo)}</h3><ul>${g.itens.map(x=>`<li><b>${ESC(x.nome)}</b><span>${ESC(x.obs)}</span></li>`).join("")}</ul></div>`).join("");
+document.getElementById("list").innerHTML=LAYERS.map(([id,t],i)=>`<details class="ly"><summary><span class="bandnum">${String(LAYERS.length-i).padStart(2,"0")}</span>${ESC(t)}</summary><ul>${N.filter(n=>n[1]===id).map(n=>`<li>${ESC(n[2].replace("|"," "))}${n[4]?" ●":""} <span>· ${ESC(n[6])}${n[7]?` <b>Quando:</b> ${ESC(n[7])}`:""}</span></li>`).join("")}</ul></details>`).join("");
 </script>
 
 </body>

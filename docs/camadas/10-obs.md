@@ -73,16 +73,16 @@ flowchart LR
 
 ## Blocos
 
-| Bloco | Tipo | O que faz |
-|---|---|---|
-| [Sentry (erros)](#sentry) | Remoto · precisa de conta | Avisa quando um erro acontece em produção, com o ponto exato no código. Plano grátis para um dev. |
-| [Uptime Kuma](#kuma) | Local | Verifica a cada minuto se os sites e APIs estão no ar e avisa no celular. Open source. |
-| [Seq (logs)](#seq) | Local | Visualizador de logs simples para começar, antes da stack Grafana. |
-| [Loki + Tempo](#loki) | Local · futuro | Logs e rastreamento de requisições entre serviços, consultados no Grafana. |
-| [OpenTelemetry](#otel) | Local | Coleta logs, métricas e traces da API. |
-| [Prometheus](#prom) | Local | Guarda as métricas. |
-| [Grafana](#graf) | Local | Painéis e alertas. |
-| [.NET Aspire](#aspire) | Local | Sobe o sistema inteiro no dev com painel próprio. |
+| Bloco | Tipo | O que faz | Quando entra |
+|---|---|---|---|
+| [Sentry (erros)](#sentry) | Remoto · precisa de conta | Avisa quando um erro acontece em produção, com o ponto exato no código. Plano grátis para um dev. | passo 15.4 · Jan a fev/2027 |
+| [Uptime Kuma](#kuma) | Local | Verifica a cada minuto se os sites e APIs estão no ar e avisa no celular. Open source. | passo 8.6 · Semana 4 · nov/2026 |
+| [Seq (logs)](#seq) | Local | Visualizador de logs simples para começar, antes da stack Grafana. | passo 15.3 · Jan a fev/2027 |
+| [Loki + Tempo](#loki) | Local · futuro | Logs e rastreamento de requisições entre serviços, consultados no Grafana. | passo 26.3 · 2028 |
+| [OpenTelemetry](#otel) | Local | Coleta logs, métricas e traces da API. | passo 15.3 · Jan a fev/2027 |
+| [Prometheus](#prom) | Local | Guarda as métricas. | passo 15.3 · Jan a fev/2027 |
+| [Grafana](#graf) | Local | Painéis e alertas. | passo 8.4 · Semana 4 · nov/2026; passo 13.4 · Semana 11 · jan/2027 |
+| [.NET Aspire](#aspire) | Local | Sobe o sistema inteiro no dev com painel próprio. | passo 15.3 · Jan a fev/2027 |
 
 <a id="sentry"></a>
 
@@ -91,6 +91,8 @@ flowchart LR
 *Remoto · precisa de conta*
 
 Avisa quando um erro acontece em produção, com o ponto exato no código. Plano grátis para um dev.
+
+**Quando entra:** passo 15.4 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -104,6 +106,8 @@ Avisa quando um erro acontece em produção, com o ponto exato no código. Plano
 *Local*
 
 Verifica a cada minuto se os sites e APIs estão no ar e avisa no celular. Open source.
+
+**Quando entra:** passo 8.6 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -120,6 +124,8 @@ Verifica a cada minuto se os sites e APIs estão no ar e avisa no celular. Open 
 
 Visualizador de logs simples para começar, antes da stack Grafana.
 
+**Quando entra:** passo 15.3 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | ← recebe de | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | logs |
@@ -132,6 +138,8 @@ Visualizador de logs simples para começar, antes da stack Grafana.
 
 Logs e rastreamento de requisições entre serviços, consultados no Grafana.
 
+**Quando entra:** passo 26.3 · 2028 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Grafana](10-obs.md#graf) | Observabilidade | consultas |
@@ -143,6 +151,8 @@ Logs e rastreamento de requisições entre serviços, consultados no Grafana.
 *Local*
 
 Coleta logs, métricas e traces da API.
+
+**Quando entra:** passo 15.3 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -158,6 +168,8 @@ Coleta logs, métricas e traces da API.
 
 Guarda as métricas.
 
+**Quando entra:** passo 15.3 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Grafana](10-obs.md#graf) | Observabilidade | painéis |
@@ -170,6 +182,8 @@ Guarda as métricas.
 *Local*
 
 Painéis e alertas.
+
+**Quando entra:** passo 8.4 · Semana 4 · nov/2026; passo 13.4 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -189,6 +203,8 @@ Painéis e alertas.
 *Local*
 
 Sobe o sistema inteiro no dev com painel próprio.
+
+**Quando entra:** passo 15.3 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

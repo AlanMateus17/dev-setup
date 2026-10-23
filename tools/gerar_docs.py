@@ -171,9 +171,9 @@ def gerar_camada(eco: dict, camada: dict, por_id: dict, saidas: dict, entradas: 
     out.append("\n".join(linhas))
 
     out.append("## Blocos\n")
-    out.append("| Bloco | Tipo | O que faz |\n|---|---|---|")
+    out.append("| Bloco | Tipo | O que faz | Quando entra |\n|---|---|---|---|")
     for b in blocos:
-        out.append(f"| [{nome(b)}](#{b['id']}) | {selos(b)} | {b['descricao']} |")
+        out.append(f"| [{nome(b)}](#{b['id']}) | {selos(b)} | {b['descricao']} | {b.get('quando', '')} |")
     out.append("")
 
     for b in blocos:
@@ -181,6 +181,8 @@ def gerar_camada(eco: dict, camada: dict, por_id: dict, saidas: dict, entradas: 
         out.append(f"### {nome(b)}\n")
         out.append(f"*{selos(b)}*\n")
         out.append(f"{b['descricao']}\n")
+        if b.get("quando"):
+            out.append(f"**Quando entra:** {b['quando']} ([roteiro](../implantacao/roteiro.md))\n")
         if saidas[b["id"]] or entradas[b["id"]]:
             out.append("| Direção | Bloco | Camada | O que passa |\n|---|---|---|---|")
             for c in saidas[b["id"]]:
@@ -227,7 +229,7 @@ def gerar_arquitetura(eco: dict, por_camada: dict) -> str:
     out.append("- O Windows cuida só do que precisa de janela, GPU e segurança; o código vive e roda no Linux (Ubuntu no WSL2). Ver [ADR 0001](adr/0001-wsl2-em-vez-de-dual-boot.md).")
     out.append("- Agentes de IA trabalham dentro de sandbox e só enxergam a pasta do projeto. Ver [ADR 0002](adr/0002-agentes-de-ia-em-sandbox.md).")
     out.append("- Infraestrutura por código, Azure primeiro e AWS depois. Ver [ADR 0003](adr/0003-azure-primeiro.md).")
-    out.append("- Uma ferramenta por função: o que repete outra fica de fora ([o que foi cortado](fora-do-setup.md)).")
+    out.append("- Uma ferramenta por função: o que repete outra fica de fora ([decisões](fora-do-setup.md)).")
     out.append("- Segredos só no KeePassXC; nunca no repositório.\n")
     return "\n".join(out)
 
@@ -313,8 +315,10 @@ def gerar_planejamento(mapa: dict) -> dict[str, str]:
         o.append(f"| **{p['nome']}** | {p['tipo']} | {FASE[p['fase']]} | {p['descricao']} |")
     arq["pecas-autorais.md"] = "\n".join(o) + "\n"
 
-    o = [AVISO, "# Fora do setup\n", "[← Índice da documentação](README.md)\n"]
-    o.append("| Item | Por que ficou de fora |\n|---|---|")
+    o = [AVISO, "# Decisões: o que entra de outro jeito e o que fica de fora\n", "[← Índice da documentação](README.md)\n",
+         "Nada do planejamento foi retirado. Os quatro primeiros entram por outro caminho, com passo e data no "
+         "[roteiro](implantacao/roteiro.md); os outros são decisões suas ou de segurança, e voltam se você mudar de ideia.\n"]
+    o.append("| Item | Decisão |\n|---|---|")
     for c in mapa["fora"]:
         o.append(f"| {c['item']} | {c['motivo']} |")
     arq["fora-do-setup.md"] = "\n".join(o) + "\n"
@@ -328,7 +332,7 @@ def gerar_indice_docs(eco: dict, por_camada: dict) -> str:
     out.append("- [Contas e conexões](contas.md)")
     out.append("- [Auditoria: o que faltava](auditoria.md)")
     out.append("- [Sistemas operacionais](sistemas-operacionais.md) · [Nuvem](nuvem.md) · [Mercado](mercado.md) · [Roteiro de estudo](roteiro.md)")
-    out.append("- [Peças autorais](pecas-autorais.md) · [Fora do setup](fora-do-setup.md)")
+    out.append("- [Peças autorais](pecas-autorais.md) · [Decisões](fora-do-setup.md)")
     out.append("- [Marketing, vendas e automação](marketing/README.md): funil, canais sem rosto com voz clonada, publicação automática, tráfego, parcerias, internacional e medição de lucro")
     out.append("- [Editora AMS Silva](editora/README.md): estrutura legal, pipeline de produção dos livros, rigor editorial, identidade visual, avaliação, produtos, lançamento e roteiro")
     out.append("- [Implantação](implantacao/README.md): roteiro que cobre todos os blocos do setup, scripts que instalam e verificadores que conferem; pipeline de conteúdo e stack de automação")
@@ -439,7 +443,26 @@ def gerar_mapa_html(eco: dict, mapa: dict) -> str:
 
 # ---------------------------------------------------------------- principal
 
+def quando_no_roteiro() -> dict[str, str]:
+    """'6.7 · Semanas 3 e 4 · nov/2026' para cada bloco, a partir de data/implantacao.json."""
+    arq = DADOS / "implantacao.json"
+    if not arq.exists():
+        return {}
+    im = json.loads(arq.read_text(encoding="utf-8"))
+    out: dict[str, list[str]] = defaultdict(list)
+    for i, f in enumerate(im["fases"]):
+        for j, p in enumerate(f["passos"], 1):
+            for b in p.get("blocos", []):
+                q = f.get("quando", "")
+                if f.get("gatilho"):
+                    q += f" (começa quando: {f['gatilho'][0].lower() + f['gatilho'][1:]})"
+                out[b].append(f"passo {i}.{j} · {q}")
+    return {b: "; ".join(dict.fromkeys(v)) for b, v in out.items()}
+
+
 def gerar_tudo(eco: dict, mapa: dict) -> dict[Path, str]:
+    qr = quando_no_roteiro()
+    eco = {**eco, "blocos": [{**b, "quando": qr.get(b["id"], "")} for b in eco["blocos"]]}
     por_id = {b["id"]: b for b in eco["blocos"]}
     por_camada: dict[str, list] = defaultdict(list)
     for b in eco["blocos"]:

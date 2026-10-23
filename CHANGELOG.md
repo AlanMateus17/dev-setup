@@ -2,6 +2,18 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.13.0] - 2026-10-23
+
+### Mudado
+- Todo o planejamento entra no passo a passo: os 87 blocos que estavam como "para depois", "peça a construir" ou "não se instala" ganharam passo, e cada uma das 30 fases tem **quando** (semana e mês) e, quando depende de resultado, o **gatilho**. Fases novas: marketing pago, Linux nativo, IA nos sistemas AM, sistemas AM à venda, CNPJ, agentes do grupo, editora depois do primeiro livro, plataforma e segunda nuvem, infraestrutura própria e os 9 negócios pelos portões.
+- O roteiro e o acompanhamento terminam com "Quando entra cada bloco", camada por camada; o diagrama, o mapa e os documentos de cada camada mostram o passo e a data de cada bloco.
+- O CI falha se um bloco, mesmo futuro, não tiver passo, ou se uma fase não tiver data.
+- "Fora do setup" vira "Decisões": dual boot, Kali, mobile e o treino do 8B entram por outro caminho, com passo; ficam de fora só OpenClaw (segurança) e o que você mesmo rejeitou.
+- O diagrama volta a ter a seção de auditoria e a opção "Ver todas as conexões".
+
+### Adicionado
+- Bloco App mobile (.NET MAUI), em 2028.
+
 ## [1.12.0] - 2026-10-23
 
 ### Adicionado

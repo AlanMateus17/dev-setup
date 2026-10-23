@@ -201,8 +201,9 @@ code{font-family:var(--mono);font-size:.88em;background:var(--aura-soft);padding
   </section>
 
   <section>
-    <div class="eyebrow">Fora do setup</div>
-    <h2>Cortado ou adiado, e por quê</h2>
+    <div class="eyebrow">Decisões</div>
+    <h2>Decisões: o que entra de outro jeito e o que fica de fora</h2>
+    <p class="lede" style="margin-bottom:6px">Nada do planejamento foi retirado. Os quatro primeiros entram por outro caminho, com passo e data no roteiro; os outros são decisões suas ou de segurança, e voltam se você mudar de ideia.</p>
     <dl class="cut" style="margin-top:10px" id="cut"></dl>
   </section>
 </div>
@@ -224,7 +225,7 @@ const SAI={},ENT={};E.conexoes.forEach(c=>{(SAI[c.de]=SAI[c.de]||[]).push(c);(EN
 const L=E.camadas.map((c,i)=>({id:c.id,n:String(E.camadas.length-i).padStart(2,"0"),t:c.titulo,r:"",c:c.id==="win"?"win":c.id==="lin"?"lin":"",
   items:E.blocos.filter(x=>x.camada===c.id).map(x=>{
     const con=[...(SAI[x.id]||[]).map(k=>"→ "+ESC(NOME[k.para])+" <span class=\"lab\">("+ESC(k.rotulo)+")</span>"),...(ENT[x.id]||[]).map(k=>"← "+ESC(NOME[k.de])+" <span class=\"lab\">("+ESC(k.rotulo)+")</span>")];
-    return [ESC(NOME[x.id])+(x.conta?" <span class=\"key\" title=\"Precisa de conta\"></span>":""),x.tipo,x.futuro?"fut":"f1",ESC(x.descricao),con.length?con.join("<br>"):"Ainda sem conexões no desenho.",x.conta];
+    return [ESC(NOME[x.id])+(x.conta?" <span class=\"key\" title=\"Precisa de conta\"></span>":""),x.tipo,x.futuro?"fut":"f1",ESC(x.descricao),con.length?con.join("<br>"):"Ainda sem conexões no desenho.",x.conta,ESC(x.quando||"")];
   })}));
 const B=Object.fromEntries(E.camadas.filter(c=>c.ponte).map(c=>[c.id,ESC(c.ponte)]));
 const FL=E.fluxos.map(f=>({t:ESC(f.titulo),w:f.passos.length+" passos",s:f.passos.map(p=>"<strong>"+ESC(NOME[p.bloco])+"</strong>: "+ESC(p.descricao))}));
@@ -237,9 +238,9 @@ L.forEach(ly=>{
   sec.className="layer "+ly.c;
   sec.innerHTML=`<header><span class="num">${ly.n}</span><div><h3>${ly.t}</h3><p class="role">${ly.items.length} blocos</p></div></header><div class="items"></div><p class="empty" hidden>Nada nesta camada com esse filtro.</p>`;
   const box=sec.querySelector(".items");
-  ly.items.forEach(([n,src,f,o,c,conta])=>{
+  ly.items.forEach(([n,src,f,o,c,conta,q])=>{
     const d=document.createElement("details");d.className="it";d.dataset.f=f;d.dataset.src=src;d.dataset.conta=conta?"1":"";
-    d.innerHTML=`<summary><i class="src ${src}"></i><span class="n">${n}</span><span class="badge ${f}">${labStack[f]}</span></summary><div class="body"><div><b>O que faz</b>${o}</div><div><b>Conversa com</b>${c}</div></div>`;
+    d.innerHTML=`<summary><i class="src ${src}"></i><span class="n">${n}</span><span class="badge ${f}">${labStack[f]}</span></summary><div class="body"><div><b>O que faz</b>${o}</div>${q?`<div><b>Quando entra</b>${q}</div>`:""}<div><b>Conversa com</b>${c}</div></div>`;
     box.appendChild(d);
   });
   st.appendChild(sec);

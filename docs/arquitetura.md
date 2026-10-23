@@ -21,7 +21,7 @@ flowchart TB
   L_est["14 · Estudo e carreira<br/>7 blocos"]
   L_cont["13 · Produção de conteúdo<br/>6 blocos"]
   L_nuvem["12 · Nuvem, código e entrega<br/>17 blocos"]
-  L_app["11 · Aplicação: sistemas AM (Aura)<br/>17 blocos"]
+  L_app["11 · Aplicação: sistemas AM (Aura)<br/>18 blocos"]
   L_obs["10 · Observabilidade<br/>8 blocos"]
   L_cnt["09 · Containers, Kubernetes e infra como código<br/>12 blocos"]
   L_clc["08 · Claude: recursos, conectores e plugins<br/>19 blocos"]
@@ -74,7 +74,7 @@ flowchart TB
 | 14 | [Estudo e carreira](camadas/14-est.md) | 7 | O que você estuda vira produto, aula, post e linha no currículo. |
 | 13 | [Produção de conteúdo](camadas/13-cont.md) | 6 | Gravação e edição rodam no notebook; os arquivos finais sobem para as plataformas. |
 | 12 | [Nuvem, código e entrega](camadas/12-nuvem.md) | 17 | git push via SSH leva o código ao GitHub; o Actions testa e publica. |
-| 11 | [Aplicação: sistemas AM (Aura)](camadas/11-app.md) | 17 | A API envia logs, métricas e traces pelo OpenTelemetry. |
+| 11 | [Aplicação: sistemas AM (Aura)](camadas/11-app.md) | 18 | A API envia logs, métricas e traces pelo OpenTelemetry. |
 | 10 | [Observabilidade](camadas/10-obs.md) | 8 | Coletor, Prometheus e Grafana rodam como containers. |
 | 09 | [Containers, Kubernetes e infra como código](camadas/09-cnt.md) | 12 | A CLI docker e o kubectl no Ubuntu falam com a engine do Docker no WSL2. |
 | 08 | [Claude: recursos, conectores e plugins](camadas/08-clc.md) | 19 | Os conectores dão ao Claude acesso às suas contas, com permissão que você aprova; os plugins trazem rotinas prontas. |
@@ -91,5 +91,5 @@ flowchart TB
 - O Windows cuida só do que precisa de janela, GPU e segurança; o código vive e roda no Linux (Ubuntu no WSL2). Ver [ADR 0001](adr/0001-wsl2-em-vez-de-dual-boot.md).
 - Agentes de IA trabalham dentro de sandbox e só enxergam a pasta do projeto. Ver [ADR 0002](adr/0002-agentes-de-ia-em-sandbox.md).
 - Infraestrutura por código, Azure primeiro e AWS depois. Ver [ADR 0003](adr/0003-azure-primeiro.md).
-- Uma ferramenta por função: o que repete outra fica de fora ([o que foi cortado](fora-do-setup.md)).
+- Uma ferramenta por função: o que repete outra fica de fora ([decisões](fora-do-setup.md)).
 - Segredos só no KeePassXC; nunca no repositório.

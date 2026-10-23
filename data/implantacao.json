@@ -68,7 +68,8 @@
       "w11"
      ]
     }
-   ]
+   ],
+   "quando": "Semana 1 · out/2026"
   },
   {
    "id": "f1",
@@ -203,7 +204,8 @@
       "overif"
      ]
     }
-   ]
+   ],
+   "quando": "Semana 1 · out/2026"
   },
   {
    "id": "f2",
@@ -328,7 +330,8 @@
       "overif"
      ]
     }
-   ]
+   ],
+   "quando": "Semana 2 · nov/2026"
   },
   {
    "id": "f3",
@@ -390,7 +393,8 @@
       "ghproj"
      ]
     }
-   ]
+   ],
+   "quando": "Semana 2 · nov/2026"
   },
   {
    "id": "f4",
@@ -475,7 +479,8 @@
       "nblm"
      ]
     }
-   ]
+   ],
+   "quando": "Semana 2 · nov/2026"
   },
   {
    "id": "f5",
@@ -527,7 +532,8 @@
       "restic"
      ]
     }
-   ]
+   ],
+   "quando": "Semana 3 · nov/2026"
   },
   {
    "id": "f6",
@@ -612,7 +618,8 @@
       "oesteira"
      ]
     }
-   ]
+   ],
+   "quando": "Semanas 3 e 4 · nov/2026"
   },
   {
    "id": "f7",
@@ -648,7 +655,8 @@
       "cupw",
       "clov",
       "ccf",
-      "cvid"
+      "cvid",
+      "cdup"
      ]
     },
     {
@@ -680,7 +688,8 @@
       "gcode"
      ]
     }
-   ]
+   ],
+   "quando": "Semana 4 · nov/2026"
   },
   {
    "id": "f8",
@@ -766,7 +775,8 @@
       "postiz"
      ]
     }
-   ]
+   ],
+   "quando": "Semana 4 · nov/2026"
   },
   {
    "id": "f9",
@@ -841,7 +851,8 @@
       "ofly"
      ]
     }
-   ]
+   ],
+   "quando": "Semana 5 · nov/2026"
   },
   {
    "id": "f10",
@@ -904,7 +915,8 @@
       "pagamento"
      ]
     }
-   ]
+   ],
+   "quando": "Semana 5 · dez/2026"
   },
   {
    "id": "f11",
@@ -1022,6 +1034,17 @@
      ]
     },
     {
+     "id": "catalogo-alunos",
+     "titulo": "Mostrar o Catálogo do HTML aos alunos e ex-alunos",
+     "quem": "voce",
+     "pronto": "Alunos publicando os próprios sites pelo Catálogo",
+     "tempo_min": 20,
+     "nota": "É material grátis da escola, não venda. Nada de oferecer produto pago a aluno menor de idade; ex-alunos adultos podem seguir as redes.",
+     "blocos": [
+      "alunos"
+     ]
+    },
+    {
      "id": "umami",
      "titulo": "Ligar o Umami nos sites",
      "quem": "claude",
@@ -1054,7 +1077,8 @@
       "sites"
      ]
     }
-   ]
+   ],
+   "quando": "Semanas 6 e 7 · dez/2026"
   },
   {
    "id": "f12",
@@ -1281,7 +1305,8 @@
       "caixa"
      ]
     }
-   ]
+   ],
+   "quando": "Semanas 8 a 10 · dez/2026 a jan/2027"
   },
   {
    "id": "f13",
@@ -1335,7 +1360,8 @@
       "graf"
      ]
     }
-   ]
+   ],
+   "quando": "Semana 11 · jan/2027"
   },
   {
    "id": "f14",
@@ -1385,7 +1411,8 @@
       "oimpl"
      ]
     }
-   ]
+   ],
+   "quando": "Semana 11 · jan/2027"
   },
   {
    "id": "f15",
@@ -1478,8 +1505,19 @@
      "blocos": [
       "tmpl"
      ]
+    },
+    {
+     "id": "vaga",
+     "titulo": "Candidatar-se às vagas de dev .NET com GitHub, LinkedIn e site prontos",
+     "quem": "voce",
+     "pronto": "10 candidaturas enviadas com o portfólio do sistema exemplo",
+     "tempo_min": 120,
+     "blocos": [
+      "recr"
+     ]
     }
-   ]
+   ],
+   "quando": "Jan a fev/2027"
   },
   {
    "id": "f16",
@@ -1562,7 +1600,8 @@
       "status"
      ]
     }
-   ]
+   ],
+   "quando": "Fev a abr/2027"
   },
   {
    "id": "f17",
@@ -1601,6 +1640,42 @@
      ],
      "precisa": [
       "conteudo"
+     ]
+    },
+    {
+     "id": "editora-imagens",
+     "titulo": "Construir o pipeline de imagens do livro: busca nos acervos, filtro de licença, folha de contato e créditos",
+     "quem": "claude",
+     "pronto": "Uma figura do capítulo 1 sai com licença conferida, ficha e crédito; o build falha se faltar ficha",
+     "tempo_min": 240,
+     "blocos": [
+      "acervos",
+      "buscaimg",
+      "licenca",
+      "contato",
+      "creditos"
+     ]
+    },
+    {
+     "id": "editora-figuras",
+     "titulo": "Figuras, tabelas e texto alternativo gerados por código",
+     "quem": "claude",
+     "pronto": "Gráficos e tabelas do capítulo 1 gerados no build, com texto alternativo revisado por você",
+     "tempo_min": 180,
+     "blocos": [
+      "figcod",
+      "gerad",
+      "alt"
+     ]
+    },
+    {
+     "id": "editora-agentes",
+     "titulo": "Criar os agentes da editora: revisor técnico, gabarito, leitor iniciante e consistência",
+     "quem": "claude",
+     "pronto": "Os agentes apontam problemas reais no capítulo 1 e você corrige",
+     "tempo_min": 180,
+     "blocos": [
+      "bagentes"
      ]
     },
     {
@@ -1678,7 +1753,9 @@
       "conteudo"
      ]
     }
-   ]
+   ],
+   "quando": "Quando o capítulo 1 estiver pronto",
+   "gatilho": "O capítulo 1 e o seu modelo de criação prontos"
   },
   {
    "id": "f18",
@@ -1831,10 +1908,736 @@
       "oll"
      ]
     }
-   ]
+   ],
+   "quando": "Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027"
   },
   {
-   "id": "f19",
+   "titulo": "Marketing pago e crescimento",
+   "objetivo": "Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.",
+   "quando": "A partir de fev/2027",
+   "gatilho": "O mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar",
+   "passos": [
+    {
+     "id": "ads-meta",
+     "titulo": "Primeira campanha na Meta com orçamento de teste",
+     "quem": "voce",
+     "pronto": "Campanha com CPA abaixo do de empate por 2 semanas",
+     "tempo_min": 120,
+     "precisa": [
+      "pagamento"
+     ],
+     "blocos": [
+      "ads"
+     ]
+    },
+    {
+     "id": "ads-google-tiktok",
+     "titulo": "Google e YouTube Ads, depois TikTok Ads",
+     "quem": "voce",
+     "pronto": "Cada canal com a primeira campanha medida no painel",
+     "tempo_min": 180,
+     "precisa": [
+      "pagamento"
+     ],
+     "blocos": [
+      "gads",
+      "ttads"
+     ]
+    },
+    {
+     "id": "ads-outros",
+     "titulo": "Kwai, Pinterest, LinkedIn, Spotify e mídia nativa, um por vez",
+     "quem": "voce",
+     "pronto": "Cada canal testado e mantido ou cortado pelas regras",
+     "tempo_min": 240,
+     "precisa": [
+      "pagamento"
+     ],
+     "blocos": [
+      "kwaiads",
+      "pinads",
+      "liads",
+      "spotads",
+      "nativo"
+     ]
+    },
+    {
+     "id": "influenciadores",
+     "titulo": "Influenciadores e newsletters parceiras com cupom",
+     "quem": "voce",
+     "pronto": "Primeira parceria medida por cupom e UTM",
+     "tempo_min": 120,
+     "precisa": [
+      "pagamento"
+     ],
+     "blocos": [
+      "infl"
+     ]
+    },
+    {
+     "id": "afiliados-proprios",
+     "titulo": "Abrir o programa de afiliados do mini-curso",
+     "quem": "voce",
+     "pronto": "Primeiro afiliado vendendo",
+     "tempo_min": 60,
+     "blocos": [
+      "afprog"
+     ]
+    },
+    {
+     "id": "horario",
+     "titulo": "Ligar o algoritmo de horário com 3 meses de dados de publicação",
+     "quem": "claude",
+     "pronto": "80% dos posts nas melhores faixas, 20% testando",
+     "tempo_min": 120,
+     "blocos": [
+      "horario"
+     ]
+    },
+    {
+     "id": "build-in-public",
+     "titulo": "Canal build in public: um vídeo por semana das decisões reais",
+     "quem": "voce",
+     "pronto": "4 vídeos seguidos publicados",
+     "tempo_min": 60,
+     "blocos": [
+      "obuild"
+     ]
+    },
+    {
+     "id": "dublagem",
+     "titulo": "Dublar os melhores vídeos para outros idiomas",
+     "quem": "voce",
+     "pronto": "Um vídeo com faixa de áudio em inglês ou espanhol",
+     "tempo_min": 120,
+     "precisa": [
+      "pagamento"
+     ],
+     "blocos": [
+      "dub"
+     ]
+    },
+    {
+     "id": "membros",
+     "titulo": "Membros do YouTube quando o canal for elegível",
+     "quem": "voce",
+     "pronto": "Assinatura de membros ativa",
+     "tempo_min": 30,
+     "blocos": [
+      "ytm"
+     ]
+    },
+    {
+     "id": "formacao",
+     "titulo": "Primeira formação completa (TI, Matemática ou Finanças)",
+     "quem": "voce",
+     "pronto": "Formação gravada e à venda",
+     "tempo_min": 1200,
+     "blocos": [
+      "form"
+     ]
+    }
+   ],
+   "id": "f19"
+  },
+  {
+   "titulo": "Linux nativo e laboratório completo",
+   "objetivo": "Arch com boot próprio, VMs de laboratório e a segurança física em dia.",
+   "quando": "2027, conforme cada compra",
+   "passos": [
+    {
+     "id": "nvme-arch",
+     "titulo": "Instalar o 2º NVMe e o Arch + Omarchy com boot próprio",
+     "quem": "voce",
+     "pronto": "Escolha entre Windows e Arch ao ligar, cada um no seu disco",
+     "tempo_min": 300,
+     "precisa": [
+      "compra"
+     ],
+     "blocos": [
+      "nvme",
+      "arch",
+      "boot"
+     ]
+    },
+    {
+     "id": "neovim",
+     "titulo": "Aprender o Neovim aos poucos",
+     "quem": "voce",
+     "pronto": "Uma semana editando só no Neovim",
+     "tempo_min": 300,
+     "blocos": [
+      "nvim"
+     ]
+    },
+    {
+     "id": "vms-lab",
+     "titulo": "Montar as VMs do laboratório: Kali, Arch, Ubuntu Server, Windows Server e Rocky",
+     "quem": "voce",
+     "pronto": "Duas VMs numa rede isolada, atacante e alvo",
+     "tempo_min": 300,
+     "blocos": [
+      "vms"
+     ]
+    },
+    {
+     "id": "ssd-sata",
+     "titulo": "SSD SATA na baia livre para as VMs",
+     "quem": "voce",
+     "pronto": "VMs rodando do SSD novo",
+     "tempo_min": 60,
+     "precisa": [
+      "compra"
+     ],
+     "blocos": [
+      "sata"
+     ]
+    },
+    {
+     "id": "yubikey",
+     "titulo": "Chave física no GitHub, Google e Microsoft",
+     "quem": "voce",
+     "pronto": "Login com a chave nas três contas",
+     "tempo_min": 60,
+     "precisa": [
+      "compra"
+     ],
+     "blocos": [
+      "ykey"
+     ]
+    },
+    {
+     "id": "mic-camera",
+     "titulo": "Microfone e câmera",
+     "quem": "voce",
+     "pronto": "Gravação de teste com áudio limpo sem pós-produção",
+     "tempo_min": 60,
+     "precisa": [
+      "compra"
+     ],
+     "blocos": [
+      "mic"
+     ]
+    }
+   ],
+   "id": "f20"
+  },
+  {
+   "titulo": "IA dentro dos sistemas AM",
+   "objetivo": "Busca e assistente com os seus dados dentro de um sistema AM.",
+   "quando": "Mai a jul/2027",
+   "passos": [
+    {
+     "id": "rag-sistema",
+     "titulo": "RAG com pgvector dentro do primeiro sistema AM",
+     "quem": "claude",
+     "pronto": "O sistema responde perguntas com base nos dados do cliente, citando a origem",
+     "tempo_min": 480,
+     "blocos": [
+      "ai"
+     ]
+    }
+   ],
+   "id": "f21"
+  },
+  {
+   "titulo": "Sistemas AM à venda",
+   "objetivo": "Os sistemas viram produto por assinatura.",
+   "quando": "2027",
+   "gatilho": "O primeiro sistema AM pronto e testado com um cliente",
+   "passos": [
+    {
+     "id": "saas",
+     "titulo": "Lançar o primeiro sistema AM como SaaS, com cobrança por módulo",
+     "quem": "claude",
+     "pronto": "Primeiro cliente pagando por assinatura",
+     "tempo_min": 600,
+     "blocos": [
+      "saas",
+      "lic"
+     ]
+    },
+    {
+     "id": "kaixara",
+     "titulo": "AM Kaixara: PDV, cardápio, fichas técnicas e estoque",
+     "quem": "claude",
+     "pronto": "Rodando num negócio real",
+     "tempo_min": 2400,
+     "blocos": [
+      "nkaix"
+     ]
+    },
+    {
+     "id": "rotara",
+     "titulo": "AM Rotara: pedidos, rotas e mapas",
+     "quem": "claude",
+     "pronto": "Entregas rastreadas no mapa em tempo real",
+     "tempo_min": 2400,
+     "blocos": [
+      "nrot",
+      "gis"
+     ]
+    },
+    {
+     "id": "servicos-aura",
+     "titulo": "Serviços aura- compartilhados, só quando um sistema precisar",
+     "quem": "claude",
+     "pronto": "Um serviço compartilhado usado por dois sistemas",
+     "tempo_min": 600,
+     "blocos": [
+      "shared",
+      "datomic"
+     ]
+    }
+   ],
+   "id": "f22"
+  },
+  {
+   "titulo": "CNPJ e formalização",
+   "objetivo": "Sair do CPF na hora certa, com nota fiscal e cobrança automáticas.",
+   "quando": "Quando a renda pedir",
+   "gatilho": "A renda passou do valor de virada definido com o contador",
+   "passos": [
+    {
+     "id": "cnpj",
+     "titulo": "Abrir a AMtech Tecnologia (ME no Simples, sócio único)",
+     "quem": "voce",
+     "pronto": "CNPJ ativo, conta PJ aberta e contador contratado",
+     "tempo_min": 240,
+     "precisa": [
+      "pagamento"
+     ],
+     "blocos": [
+      "cnpj",
+      "ncnpj"
+     ]
+    },
+    {
+     "id": "ecnpj",
+     "titulo": "Certificado digital e-CNPJ",
+     "quem": "voce",
+     "pronto": "Certificado instalado e guardado no KeePassXC",
+     "tempo_min": 60,
+     "precisa": [
+      "pagamento"
+     ],
+     "blocos": [
+      "ecnpj"
+     ]
+    },
+    {
+     "id": "nfse-api",
+     "titulo": "Nota fiscal automática pela API de NFS-e",
+     "quem": "claude",
+     "pronto": "Venda de teste emite nota sozinha",
+     "tempo_min": 240,
+     "blocos": [
+      "nfapi"
+     ]
+    },
+    {
+     "id": "pix-automatico",
+     "titulo": "Cobrança recorrente por Pix Automático",
+     "quem": "claude",
+     "pronto": "Assinatura de teste cobrada por Pix",
+     "tempo_min": 240,
+     "blocos": [
+      "pixa"
+     ]
+    }
+   ],
+   "id": "f23"
+  },
+  {
+   "titulo": "Agentes do grupo",
+   "objetivo": "Atendimento, orçamento, cobrança e análise rodando com a sua aprovação.",
+   "quando": "Junto com o primeiro CNPJ",
+   "gatilho": "Clientes e vendas recorrentes",
+   "passos": [
+    {
+     "id": "ag-analista",
+     "titulo": "Analista semanal: o que funcionou e o que mudar",
+     "quem": "claude",
+     "pronto": "Relatório toda segunda no Telegram",
+     "tempo_min": 120,
+     "blocos": [
+      "oanal"
+     ]
+    },
+    {
+     "id": "ag-atendente",
+     "titulo": "Atendente do WhatsApp com passagem para você",
+     "quem": "claude",
+     "pronto": "Dúvida comum respondida sozinha; o resto chega para você",
+     "tempo_min": 240,
+     "blocos": [
+      "oatend"
+     ]
+    },
+    {
+     "id": "ag-orcamento",
+     "titulo": "Orçamentista de sites e sistemas",
+     "quem": "claude",
+     "pronto": "Rascunho de orçamento em 5 minutos, revisado por você",
+     "tempo_min": 180,
+     "blocos": [
+      "oorc"
+     ]
+    },
+    {
+     "id": "ag-cobranca",
+     "titulo": "Cobrador educado (lembrete antes e depois do vencimento)",
+     "quem": "claude",
+     "pronto": "Atraso cai pela metade",
+     "tempo_min": 120,
+     "blocos": [
+      "ocob"
+     ]
+    },
+    {
+     "id": "ag-posvenda",
+     "titulo": "Pós-venda: NPS e pedido de avaliação",
+     "quem": "claude",
+     "pronto": "NPS medido em cada venda",
+     "tempo_min": 120,
+     "blocos": [
+      "opos"
+     ]
+    },
+    {
+     "id": "ag-fiscal",
+     "titulo": "Organizador fiscal para o contador",
+     "quem": "claude",
+     "pronto": "Pasta do mês pronta no dia 5",
+     "tempo_min": 120,
+     "blocos": [
+      "ofisc"
+     ]
+    },
+    {
+     "id": "ag-comprador",
+     "titulo": "Comprador com estoque mínimo",
+     "quem": "claude",
+     "pronto": "Pedido de reposição sugerido antes de faltar",
+     "tempo_min": 180,
+     "blocos": [
+      "ocomp"
+     ]
+    }
+   ],
+   "id": "f24"
+  },
+  {
+   "titulo": "Editora: depois do primeiro livro",
+   "objetivo": "O mesmo livro em mais formatos, públicos e idiomas.",
+   "quando": "Depois do primeiro livro",
+   "gatilho": "O primeiro livro publicado",
+   "passos": [
+    {
+     "id": "grafica",
+     "titulo": "Gráfica sob demanda no Brasil",
+     "quem": "voce",
+     "pronto": "Cópia de prova aprovada",
+     "tempo_min": 120,
+     "precisa": [
+      "pagamento"
+     ],
+     "blocos": [
+      "pod"
+     ]
+    },
+    {
+     "id": "kit-especial",
+     "titulo": "Kit edição especial",
+     "quem": "voce",
+     "pronto": "Primeira tiragem vendida",
+     "tempo_min": 240,
+     "precisa": [
+      "pagamento"
+     ],
+     "blocos": [
+      "bkit"
+     ]
+    },
+    {
+     "id": "curso-secao",
+     "titulo": "Curso por seção do livro, com animações",
+     "quem": "voce",
+     "pronto": "Primeira seção gravada e à venda",
+     "tempo_min": 1200,
+     "blocos": [
+      "bcurso",
+      "manim"
+     ]
+    },
+    {
+     "id": "edicao-professor",
+     "titulo": "Edição do professor com licença para escolas",
+     "quem": "claude",
+     "pronto": "Primeira escola licenciada",
+     "tempo_min": 600,
+     "blocos": [
+      "prof"
+     ]
+    },
+    {
+     "id": "traducoes",
+     "titulo": "Traduções para espanhol e inglês",
+     "quem": "claude",
+     "pronto": "Primeiro volume traduzido e revisado",
+     "tempo_min": 1200,
+     "precisa": [
+      "pagamento"
+     ],
+     "blocos": [
+      "trad"
+     ]
+    }
+   ],
+   "id": "f25"
+  },
+  {
+   "titulo": "Distribuído, plataforma e segunda nuvem",
+   "objetivo": "O que pesa em vaga pleno e sênior.",
+   "quando": "2028",
+   "passos": [
+    {
+     "id": "mensageria",
+     "titulo": "RabbitMQ e depois Kafka entre dois sistemas AM",
+     "quem": "claude",
+     "pronto": "Evento de um sistema chega no outro sem chamada direta",
+     "tempo_min": 600,
+     "blocos": [
+      "rmq",
+      "kafka"
+     ]
+    },
+    {
+     "id": "kubernetes",
+     "titulo": "Kubernetes local com kind, kubectl, Helm e k9s",
+     "quem": "voce",
+     "pronto": "Um sistema AM rodando no cluster local",
+     "tempo_min": 600,
+     "blocos": [
+      "kind",
+      "k8st"
+     ]
+    },
+    {
+     "id": "loki-tempo",
+     "titulo": "Logs e rastreamento com Loki e Tempo no Grafana",
+     "quem": "claude",
+     "pronto": "Uma requisição seguida de ponta a ponta",
+     "tempo_min": 240,
+     "blocos": [
+      "loki"
+     ]
+    },
+    {
+     "id": "aws",
+     "titulo": "AWS: Cloud Practitioner e o mesmo sistema rodando lá",
+     "quem": "voce",
+     "pronto": "Certificação e post comparando Azure e AWS",
+     "tempo_min": 1200,
+     "precisa": [
+      "pagamento"
+     ],
+     "blocos": [
+      "aws"
+     ]
+    },
+    {
+     "id": "gcp",
+     "titulo": "Google Cloud só o básico, quando um projeto de IA ou dados pedir",
+     "quem": "voce",
+     "pronto": "Um serviço usado num projeto real",
+     "tempo_min": 300,
+     "blocos": [
+      "gcp"
+     ]
+    },
+    {
+     "id": "mobile",
+     "titulo": "App mobile dos sistemas AM com .NET MAUI",
+     "quem": "claude",
+     "pronto": "App publicado para teste interno",
+     "tempo_min": 1200,
+     "blocos": [
+      "mobile"
+     ]
+    }
+   ],
+   "id": "f26"
+  },
+  {
+   "titulo": "Infraestrutura própria",
+   "objetivo": "Servidor em casa e máquina de IA quando o grupo pedir.",
+   "quando": "2028, quando o grupo pedir",
+   "passos": [
+    {
+     "id": "nas",
+     "titulo": "Servidor caseiro com backup local e os serviços 24 horas",
+     "quem": "voce",
+     "pronto": "n8n, banco e painel rodando no servidor; notebook livre",
+     "tempo_min": 480,
+     "precisa": [
+      "compra"
+     ],
+     "blocos": [
+      "nas"
+     ]
+    },
+    {
+     "id": "tailscale",
+     "titulo": "Tailscale entre notebook, celular e servidor",
+     "quem": "voce",
+     "pronto": "Acesso ao servidor de fora de casa sem abrir porta",
+     "tempo_min": 60,
+     "blocos": [
+      "tail"
+     ]
+    },
+    {
+     "id": "workstation",
+     "titulo": "Workstation com GPU para treinar e gerar voz e vídeo em casa",
+     "quem": "voce",
+     "pronto": "Fine-tuning de 8B rodando local",
+     "tempo_min": 480,
+     "precisa": [
+      "compra"
+     ],
+     "blocos": [
+      "ws"
+     ]
+    }
+   ],
+   "id": "f27"
+  },
+  {
+   "titulo": "Negócios do grupo em Barbacena",
+   "objetivo": "Um negócio por vez, cada um só depois que o anterior passa no portão.",
+   "quando": "Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano",
+   "gatilho": "Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta",
+   "passos": [
+    {
+     "id": "planejador-real",
+     "titulo": "Planejador do grupo com os números reais",
+     "quem": "claude",
+     "pronto": "Capital mínimo e portões calculados com os seus dados",
+     "tempo_min": 120,
+     "blocos": [
+      "nplan"
+     ]
+    },
+    {
+     "id": "neg-a1",
+     "titulo": "A1 · AMtech Software",
+     "quem": "voce",
+     "pronto": "3 meses seguidos com lucro e 10 clientes pagantes",
+     "tempo_min": 2400,
+     "precisa": [
+      "pagamento"
+     ],
+     "blocos": [
+      "nsoft"
+     ]
+    },
+    {
+     "id": "neg-a2",
+     "titulo": "A2 · Loja AMtech, peças sob encomenda, ponto de retirada e Maker",
+     "quem": "voce",
+     "pronto": "Loja acima do equilíbrio por 3 meses e técnico que abre e fecha sem você",
+     "tempo_min": 4800,
+     "precisa": [
+      "compra",
+      "pagamento"
+     ],
+     "blocos": [
+      "nloja",
+      "npecas",
+      "nponto",
+      "nmaker",
+      "nanatel",
+      "ogbp"
+     ]
+    },
+    {
+     "id": "neg-b1",
+     "titulo": "B1 · AM Entregas e Mercado Envios Flex",
+     "quem": "voce",
+     "pronto": "1.000 entregas por mês e 5 contratos fixos",
+     "tempo_min": 4800,
+     "precisa": [
+      "compra",
+      "pagamento"
+     ],
+     "blocos": [
+      "nentr",
+      "nflex"
+     ]
+    },
+    {
+     "id": "neg-b2",
+     "titulo": "B2 · AM Delivery",
+     "quem": "voce",
+     "pronto": "20 lojistas ativos e 1.500 pedidos por mês",
+     "tempo_min": 4800,
+     "precisa": [
+      "pagamento"
+     ],
+     "blocos": [
+      "ndeliv"
+     ]
+    },
+    {
+     "id": "neg-c1",
+     "titulo": "C1 · Sushi, delivery primeiro",
+     "quem": "voce",
+     "pronto": "Lucro por 3 meses e sushiman que toca a noite sem você",
+     "tempo_min": 4800,
+     "precisa": [
+      "compra",
+      "pagamento"
+     ],
+     "blocos": [
+      "nsushi",
+      "nvisa",
+      "nifood"
+     ]
+    },
+    {
+     "id": "neg-c2",
+     "titulo": "C2 · Padaria com café da manhã e almoço",
+     "quem": "voce",
+     "pronto": "Gerente no comando e CMV dentro da meta por 3 meses",
+     "tempo_min": 4800,
+     "precisa": [
+      "compra",
+      "pagamento"
+     ],
+     "blocos": [
+      "npad"
+     ]
+    },
+    {
+     "id": "neg-c3",
+     "titulo": "C3 · Cafeteria",
+     "quem": "voce",
+     "pronto": "Cafeteria acima do equilíbrio",
+     "tempo_min": 2400,
+     "precisa": [
+      "compra",
+      "pagamento"
+     ],
+     "blocos": [
+      "ncafe"
+     ]
+    }
+   ],
+   "id": "f28"
+  },
+  {
+   "id": "f29",
    "titulo": "Estudo contínuo",
    "objetivo": "As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.",
    "passos": [
@@ -1882,25 +2685,8 @@
       "anki"
      ]
     }
-   ]
+   ],
+   "quando": "Contínuo, desde a semana 2"
   }
- ],
- "cobertura": {
-  "construir": {
-   "bagentes": "Com o Claude Code, no repositório do livro, depois do capítulo 1.",
-   "acervos": "Pipeline de imagens do livro: começa quando o capítulo 1 tiver a lista de figuras (figuras.yaml).",
-   "buscaimg": "Pipeline de imagens do livro, junto com os acervos.",
-   "licenca": "Pipeline de imagens do livro: roda antes de qualquer imagem entrar.",
-   "contato": "Pipeline de imagens do livro: artefato com os candidatos para você escolher.",
-   "creditos": "Pipeline de imagens do livro: gerados das fichas; o build falha se faltar ficha.",
-   "figcod": "No repositório do livro, quando o capítulo 1 pedir o primeiro gráfico.",
-   "gerad": "Ampliar o exemplo de tools/editora no repositório do livro.",
-   "alt": "Entra no CI do livro antes do primeiro EPUB; rascunho por IA, revisão sua."
-  },
-  "nao_instala": {
-   "alunos": "É público, não ferramenta: chega pelos canais e sites das fases de contas e vendas.",
-   "recr": "É público, não ferramenta: chega pelo LinkedIn, GitHub e site pessoal.",
-   "cdup": "Decidido não usar: repete Obsidian, GitHub Projects, MkDocs e as plataformas de curso."
-  }
- }
+ ]
 }

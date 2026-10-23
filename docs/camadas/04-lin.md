@@ -95,17 +95,17 @@ flowchart LR
 
 ## Blocos
 
-| Bloco | Tipo | O que faz |
-|---|---|---|
-| [Neovim](#nvim) | Local · futuro | Editor de terminal da trilha Arch e Akita. Aprender aos poucos; não substitui o VS Code no começo. |
-| [nmap · dig · curl](#netw) | Local | Diagnóstico de rede no Ubuntu: portas, DNS e requisições HTTP. Instalados pelo bootstrap.sh. |
-| [Ubuntu (WSL2)](#wsl) | Local | Onde o código vive e roda. |
-| [Git + SSH + gh](#git) | Local | Versionamento e acesso ao GitHub. |
-| [.NET 10 · Node · Python](#rt) | Local | Runtimes das APIs, do front e dos scripts. |
-| [TeX Live](#tex) | Local | Compila o livro e as apostilas. |
-| [gitleaks · Trivy](#sec) | Local | Barra senha no commit e acha vulnerabilidades em imagens. |
-| [dotfiles](#dot) | Local | Configuração versionada do ambiente. |
-| [Arch + Omarchy (2º NVMe)](#arch) | Local · futuro | Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portátil em pendrive ou SSD USB. |
+| Bloco | Tipo | O que faz | Quando entra |
+|---|---|---|---|
+| [Neovim](#nvim) | Local · futuro | Editor de terminal da trilha Arch e Akita. Aprender aos poucos; não substitui o VS Code no começo. | passo 20.2 · 2027, conforme cada compra |
+| [nmap · dig · curl](#netw) | Local | Diagnóstico de rede no Ubuntu: portas, DNS e requisições HTTP. Instalados pelo bootstrap.sh. | passo 2.4 · Semana 2 · nov/2026 |
+| [Ubuntu (WSL2)](#wsl) | Local | Onde o código vive e roda. | passo 2.1 · Semana 2 · nov/2026; passo 2.5 · Semana 2 · nov/2026 |
+| [Git + SSH + gh](#git) | Local | Versionamento e acesso ao GitHub. | passo 2.4 · Semana 2 · nov/2026; passo 2.6 · Semana 2 · nov/2026 |
+| [.NET 10 · Node · Python](#rt) | Local | Runtimes das APIs, do front e dos scripts. | passo 2.4 · Semana 2 · nov/2026 |
+| [TeX Live](#tex) | Local | Compila o livro e as apostilas. | passo 2.4 · Semana 2 · nov/2026 |
+| [gitleaks · Trivy](#sec) | Local | Barra senha no commit e acha vulnerabilidades em imagens. | passo 2.4 · Semana 2 · nov/2026 |
+| [dotfiles](#dot) | Local | Configuração versionada do ambiente. | passo 2.7 · Semana 2 · nov/2026 |
+| [Arch + Omarchy (2º NVMe)](#arch) | Local · futuro | Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portátil em pendrive ou SSD USB. | passo 20.1 · 2027, conforme cada compra |
 
 <a id="nvim"></a>
 
@@ -114,6 +114,8 @@ flowchart LR
 *Local · futuro*
 
 Editor de terminal da trilha Arch e Akita. Aprender aos poucos; não substitui o VS Code no começo.
+
+**Quando entra:** passo 20.2 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -127,6 +129,8 @@ Editor de terminal da trilha Arch e Akita. Aprender aos poucos; não substitui o
 
 Diagnóstico de rede no Ubuntu: portas, DNS e requisições HTTP. Instalados pelo bootstrap.sh.
 
+**Quando entra:** passo 2.4 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [VMs: Kali · Arch · Servidores](03-win.md#vms) | Windows 11, apps e máquinas virtuais | diagnóstico |
@@ -138,6 +142,8 @@ Diagnóstico de rede no Ubuntu: portas, DNS e requisições HTTP. Instalados pel
 *Local*
 
 Onde o código vive e roda.
+
+**Quando entra:** passo 2.1 · Semana 2 · nov/2026; passo 2.5 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -162,6 +168,8 @@ Onde o código vive e roda.
 
 Versionamento e acesso ao GitHub.
 
+**Quando entra:** passo 2.4 · Semana 2 · nov/2026; passo 2.6 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | push via SSH |
@@ -178,6 +186,8 @@ Versionamento e acesso ao GitHub.
 
 Runtimes das APIs, do front e dos scripts.
 
+**Quando entra:** passo 2.4 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | compila e roda |
@@ -192,6 +202,8 @@ Runtimes das APIs, do front e dos scripts.
 
 Compila o livro e as apostilas.
 
+**Quando entra:** passo 2.4 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Pipeline do livro (CI)](15-editora.md#bci) | Editora AMS Silva (produção de livros) | compila o PDF |
@@ -204,6 +216,8 @@ Compila o livro e as apostilas.
 
 Barra senha no commit e acha vulnerabilidades em imagens.
 
+**Quando entra:** passo 2.4 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Git + SSH + gh](04-lin.md#git) | Linux (Ubuntu no WSL2, Arch no 2º disco) | pre-commit |
@@ -215,6 +229,8 @@ Barra senha no commit e acha vulnerabilidades em imagens.
 *Local*
 
 Configuração versionada do ambiente.
+
+**Quando entra:** passo 2.7 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -229,6 +245,8 @@ Configuração versionada do ambiente.
 *Local · futuro*
 
 Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portátil em pendrive ou SSD USB.
+
+**Quando entra:** passo 20.1 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

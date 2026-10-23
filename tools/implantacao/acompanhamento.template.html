@@ -47,6 +47,8 @@ details.fase>summary{list-style:none;cursor:pointer;padding:14px 16px;display:gr
 details.fase>summary::-webkit-details-marker{display:none}
 .fnum{font:600 14px var(--mono);color:var(--gold-ink)}
 .fobj{grid-column:2/3;font-size:13px;color:var(--muted)}
+.fquando{grid-column:2/4;font-size:12px;color:var(--gold-ink)}
+.fquando b{font-weight:600}
 .fcount{font:500 13px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
 .fcount.done{color:var(--ok)}
 .passos{list-style:none;margin:0;padding:0 0 6px}
@@ -73,6 +75,7 @@ details.fase>summary::-webkit-details-marker{display:none}
 .cob summary{cursor:pointer;font-weight:600}
 .cob dl{margin:8px 0 0;display:grid;gap:6px}
 .cob dt{font-weight:600;font-size:14px}
+.cob dt a{color:var(--aura);font-family:var(--mono);font-size:13px}
 .cob dd{margin:0 0 4px;font-size:13px;color:var(--muted)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -125,10 +128,10 @@ function render(){
   const abertas=new Set([...document.querySelectorAll("details.fase[open]")].map(d=>d.id));
   const primeira=prox?prox.fase.id:null;
   $("fases").innerHTML=D.fases.map((f,i)=>{
-    const ps=f.passos.filter(p=>(!soMeus||p.quem==="voce")&&(!escFeitos||!feitos[p.id])&&(!soHoje||!(p.precisa||[]).length));
+    const ps=f.passos.filter(p=>(!soMeus||p.quem==="voce")&&(!escFeitos||!feitos[p.id])&&(!soHoje||p.hoje));
     const n=f.passos.filter(p=>feitos[p.id]).length;const done=n===f.passos.length;
     const aberto=abertas.size?abertas.has("f-"+f.id):f.id===primeira;
-    return `<details class="fase" id="f-${f.id}" ${aberto?"open":""}><summary><span class="fnum">${i}</span><h2>${esc(f.titulo)}</h2><span class="fcount${done?" done":""}">${n}/${f.passos.length}</span><span class="fobj">${esc(f.objetivo)}</span></summary>
+    return `<details class="fase" id="f-${f.id}" ${aberto?"open":""}><summary><span class="fnum">${i}</span><h2>${esc(f.titulo)}</h2><span class="fcount${done?" done":""}">${n}/${f.passos.length}</span><span class="fobj">${esc(f.objetivo)}</span><span class="fquando"><b>Quando:</b> ${esc(f.quando)}${f.gatilho?` · <b>começa quando:</b> ${esc(f.gatilho)}`:""}</span></summary>
       <ul class="passos">${ps.map(p=>{const num=`${i}.${f.passos.indexOf(p)+1}`;return `<li class="passo${feitos[p.id]?" feito":""}" id="p-${p.id}">
         <input type="checkbox" id="c-${p.id}" data-id="${p.id}" ${feitos[p.id]?"checked":""} ${readOnly?"disabled":""} aria-label="Marcar ${esc(p.titulo)} como feito">
         <div class="corpo"><label for="c-${p.id}" class="ptit">${num} ${esc(p.titulo)}</label>
@@ -156,13 +159,13 @@ $("fFeitos").onclick=()=>{escFeitos=!escFeitos;salvarFiltros();render();};
 $("fHoje").onclick=()=>{soHoje=!soHoje;salvarFiltros();render();};
 function salvarFiltros(){try{localStorage.setItem("impl-filtros",JSON.stringify({soMeus,escFeitos,soHoje}));}catch(e){}}
 function renderCob(){
-  const C=D.cob,lista=a=>`<dl>${a.map(([t,d])=>`<dt>${esc(t)}</dt><dd>${esc(Array.isArray(d)?d.join(" · "):d)}</dd>`).join("")}</dl>`;
-  $("cob").innerHTML=`<h2 id="cobt">Cobertura do setup</h2>
-  <p class="nota">Os ${C.total} blocos do mapa do setup têm lugar: ${C.nos_passos} entram nos passos acima, ${C.construir.length} são peças a construir, ${C.nao_instala.length} não se instalam e ${C.n_depois} ficam para depois. O CI do repositório falha se um bloco novo ficar de fora.</p>
-  <details><summary>Peças a construir (${C.construir.length})</summary>${lista(C.construir)}</details>
-  <details><summary>Não se instala (${C.nao_instala.length})</summary>${lista(C.nao_instala)}</details>
-  <details><summary>Para depois (${C.n_depois})</summary>${lista(C.depois)}</details>`;
+  $("cob").innerHTML=`<h2 id="cobt">Quando entra cada bloco</h2>
+  <p class="nota">Todos os ${D.total_blocos} blocos do mapa do setup, de todas as camadas, estão em algum passo acima. O número é o passo; toque nele para ir até lá.</p>
+  ${D.camadas.map(c=>`<details><summary>${esc(c.t)} (${c.b.length})</summary><dl>${c.b.map(([n,ps,q])=>`<dt>${esc(n)} · ${ps.map(([n,id])=>`<a href="#p-${id}" data-ir="${id}">${n}</a>`).join(", ")}</dt><dd>${esc(q)}</dd>`).join("")}</dl></details>`).join("")}`;
 }
+document.addEventListener("click",e=>{const a=e.target.closest("[data-ir]");if(!a)return;e.preventDefault();
+  if(soMeus||escFeitos||soHoje){soMeus=escFeitos=soHoje=false;salvarFiltros();render();}
+  const el=$("p-"+a.dataset.ir);if(!el)return;const det=el.closest("details");if(det)det.open=true;el.scrollIntoView({block:"center",behavior:"smooth"});});
 render();renderCob();
 $("st").textContent="O progresso fica salvo neste navegador.";
 (async()=>{

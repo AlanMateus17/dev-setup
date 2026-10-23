@@ -112,19 +112,19 @@ flowchart LR
 
 ## Blocos
 
-| Bloco | Tipo | O que faz |
-|---|---|---|
-| [Registro de marca (INPI)](#inpi) | Remoto · precisa de conta | Proteger AMtech, Instituto AMS e os nomes AM antes de investir na marca. Pode ser pedido no seu CPF; confira no INPI o desconto disponível para pessoa física. |
-| [Termos, privacidade (LGPD) e contratos](#legal) | Local | Termos de uso, política de privacidade nos sites e contrato padrão de serviço. Obrigatório antes de coletar e-mail ou vender. |
-| [Certificado digital (e-CNPJ)](#ecnpj) | Remoto · precisa de conta · futuro | Só quando houver CNPJ: emissão de nota por API e assinatura de documentos da empresa. |
-| [API de NFS-e (ex.: Focus NFe)](#nfapi) | Remoto · precisa de conta · futuro | Só quando houver CNPJ. Implementa o seu IEmissorFiscal: os sistemas AM emitem nota sozinhos. |
-| [CNPJ (futuro)](#cnpj) | Remoto · precisa de conta · futuro | Ainda não. Quando a renda crescer, MEI ou SLU. Até lá, tudo no seu CPF. |
-| [gov.br (prata ou ouro)](#govbr) | Remoto · precisa de conta | Acesso ao carnê-leão online e à declaração do Imposto de Renda. |
-| [Carnê-leão (Receita Federal)](#nfse) | Remoto · precisa de conta | Todo mês você lança o que recebeu de compradores (Hotmart, Kiwify, aulas, sites) e do exterior (Udemy) e paga o DARF até o último dia útil do mês seguinte. |
-| [Declaração anual do IR](#irpf) | Remoto · precisa de conta | Os valores lançados no carnê-leão entram sozinhos na declaração. |
-| [Conta bancária separada (CPF)](#banco) | Remoto · precisa de conta | Uma conta só para receber vendas e serviços, separada do salário. Facilita o carnê-leão e a futura passagem para CNPJ. |
-| [Contador](#conta) | Físico | Uma consulta para montar o carnê-leão do jeito certo e dizer a partir de que renda vale abrir CNPJ. |
-| [Caixa da Casa / AM Rendara](#caixa) | Local | Controle financeiro pessoal e da empresa (seu sistema). |
+| Bloco | Tipo | O que faz | Quando entra |
+|---|---|---|---|
+| [Registro de marca (INPI)](#inpi) | Remoto · precisa de conta | Proteger AMtech, Instituto AMS e os nomes AM antes de investir na marca. Pode ser pedido no seu CPF; confira no INPI o desconto disponível para pessoa física. | passo 12.17 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Termos, privacidade (LGPD) e contratos](#legal) | Local | Termos de uso, política de privacidade nos sites e contrato padrão de serviço. Obrigatório antes de coletar e-mail ou vender. | passo 12.4 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Certificado digital (e-CNPJ)](#ecnpj) | Remoto · precisa de conta · futuro | Só quando houver CNPJ: emissão de nota por API e assinatura de documentos da empresa. | passo 23.2 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
+| [API de NFS-e (ex.: Focus NFe)](#nfapi) | Remoto · precisa de conta · futuro | Só quando houver CNPJ. Implementa o seu IEmissorFiscal: os sistemas AM emitem nota sozinhos. | passo 23.3 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
+| [CNPJ (futuro)](#cnpj) | Remoto · precisa de conta · futuro | Ainda não. Quando a renda crescer, MEI ou SLU. Até lá, tudo no seu CPF. | passo 23.1 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
+| [gov.br (prata ou ouro)](#govbr) | Remoto · precisa de conta | Acesso ao carnê-leão online e à declaração do Imposto de Renda. | passo 12.1 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Carnê-leão (Receita Federal)](#nfse) | Remoto · precisa de conta | Todo mês você lança o que recebeu de compradores (Hotmart, Kiwify, aulas, sites) e do exterior (Udemy) e paga o DARF até o último dia útil do mês seguinte. | passo 12.18 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Declaração anual do IR](#irpf) | Remoto · precisa de conta | Os valores lançados no carnê-leão entram sozinhos na declaração. | passo 12.19 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Conta bancária separada (CPF)](#banco) | Remoto · precisa de conta | Uma conta só para receber vendas e serviços, separada do salário. Facilita o carnê-leão e a futura passagem para CNPJ. | passo 12.2 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Contador](#conta) | Físico | Uma consulta para montar o carnê-leão do jeito certo e dizer a partir de que renda vale abrir CNPJ. | passo 12.3 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Caixa da Casa / AM Rendara](#caixa) | Local | Controle financeiro pessoal e da empresa (seu sistema). | passo 12.20 · Semanas 8 a 10 · dez/2026 a jan/2027 |
 
 <a id="inpi"></a>
 
@@ -133,6 +133,8 @@ flowchart LR
 *Remoto · precisa de conta*
 
 Proteger AMtech, Instituto AMS e os nomes AM antes de investir na marca. Pode ser pedido no seu CPF; confira no INPI o desconto disponível para pessoa física.
+
+**Quando entra:** passo 12.17 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -147,6 +149,8 @@ Proteger AMtech, Instituto AMS e os nomes AM antes de investir na marca. Pode se
 
 Termos de uso, política de privacidade nos sites e contrato padrão de serviço. Obrigatório antes de coletar e-mail ou vender.
 
+**Quando entra:** passo 12.4 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Instituto AMS](18-web.md#inst) | Vitrine web (sites e domínio) | termos e privacidade |
@@ -160,6 +164,8 @@ Termos de uso, política de privacidade nos sites e contrato padrão de serviço
 
 Só quando houver CNPJ: emissão de nota por API e assinatura de documentos da empresa.
 
+**Quando entra:** passo 23.2 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [API de NFS-e (ex.: Focus NFe)](19-emp.md#nfapi) | Pessoa física: impostos e finanças | autentica |
@@ -171,6 +177,8 @@ Só quando houver CNPJ: emissão de nota por API e assinatura de documentos da e
 *Remoto · precisa de conta · futuro*
 
 Só quando houver CNPJ. Implementa o seu IEmissorFiscal: os sistemas AM emitem nota sozinhos.
+
+**Quando entra:** passo 23.3 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -184,6 +192,8 @@ Só quando houver CNPJ. Implementa o seu IEmissorFiscal: os sistemas AM emitem n
 *Remoto · precisa de conta · futuro*
 
 Ainda não. Quando a renda crescer, MEI ou SLU. Até lá, tudo no seu CPF.
+
+**Quando entra:** passo 23.1 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -201,6 +211,8 @@ Ainda não. Quando a renda crescer, MEI ou SLU. Até lá, tudo no seu CPF.
 
 Acesso ao carnê-leão online e à declaração do Imposto de Renda.
 
+**Quando entra:** passo 12.1 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Carnê-leão (Receita Federal)](19-emp.md#nfse) | Pessoa física: impostos e finanças | login |
@@ -213,6 +225,8 @@ Acesso ao carnê-leão online e à declaração do Imposto de Renda.
 *Remoto · precisa de conta*
 
 Todo mês você lança o que recebeu de compradores (Hotmart, Kiwify, aulas, sites) e do exterior (Udemy) e paga o DARF até o último dia útil do mês seguinte.
+
+**Quando entra:** passo 12.18 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -239,6 +253,8 @@ Todo mês você lança o que recebeu de compradores (Hotmart, Kiwify, aulas, sit
 
 Os valores lançados no carnê-leão entram sozinhos na declaração.
 
+**Quando entra:** passo 12.19 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | ← recebe de | [Carnê-leão (Receita Federal)](19-emp.md#nfse) | Pessoa física: impostos e finanças | importa |
@@ -251,6 +267,8 @@ Os valores lançados no carnê-leão entram sozinhos na declaração.
 *Remoto · precisa de conta*
 
 Uma conta só para receber vendas e serviços, separada do salário. Facilita o carnê-leão e a futura passagem para CNPJ.
+
+**Quando entra:** passo 12.2 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -272,6 +290,8 @@ Uma conta só para receber vendas e serviços, separada do salário. Facilita o 
 
 Uma consulta para montar o carnê-leão do jeito certo e dizer a partir de que renda vale abrir CNPJ.
 
+**Quando entra:** passo 12.3 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Carnê-leão (Receita Federal)](19-emp.md#nfse) | Pessoa física: impostos e finanças | orienta impostos |
@@ -285,6 +305,8 @@ Uma consulta para montar o carnê-leão do jeito certo e dizer a partir de que r
 *Local*
 
 Controle financeiro pessoal e da empresa (seu sistema).
+
+**Quando entra:** passo 12.20 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

@@ -38,23 +38,19 @@ def rotulo(b: dict) -> str:
     return b["rotulo"].replace("|", " ").replace("  ", " ")
 
 
-def cobertura(d: dict, eco: dict) -> dict:
-    """Onde cada bloco do setup entra: num passo, a construir, fora de propósito ou para depois (futuro)."""
-    blocos = {b["id"]: b for b in eco["blocos"]}
-    nos_passos = {x for f in d["fases"] for p in f["passos"] for x in p.get("blocos", [])}
-    cob = d.get("cobertura", {})
-    construir, nao = cob.get("construir", {}), cob.get("nao_instala", {})
-    classificados = nos_passos | set(construir) | set(nao)
-    return {
-        "blocos": blocos,
-        "nos_passos": nos_passos,
-        "construir": construir,
-        "nao_instala": nao,
-        "depois": [b for b in eco["blocos"] if b["futuro"] and b["id"] not in classificados],
-        "faltando": [b for b in eco["blocos"] if not b["futuro"] and b["id"] not in classificados],
-        "inexistentes": sorted(classificados - set(blocos)),
-        "duplicados": sorted((nos_passos & (set(construir) | set(nao))) | (set(construir) & set(nao))),
-    }
+def quando_por_bloco(d: dict) -> dict[str, list[dict]]:
+    """Para cada bloco, os passos em que ele entra, com a fase e quando."""
+    out: dict[str, list[dict]] = {}
+    for i, f in enumerate(d["fases"]):
+        for j, p in enumerate(f["passos"], 1):
+            for b in p.get("blocos", []):
+                out.setdefault(b, []).append({"fase": i, "num": f"{i}.{j}", "id": p["id"], "fase_titulo": f["titulo"], "passo": p["titulo"],
+                                              "quando": f.get("quando", ""), "gatilho": f.get("gatilho", "")})
+    return out
+
+
+def faz_hoje(f: dict, p: dict) -> bool:
+    return not p.get("precisa") and not f.get("gatilho")
 
 
 def validar(d: dict, eco: dict | None = None) -> list[str]:
@@ -85,13 +81,18 @@ def validar(d: dict, eco: dict | None = None) -> list[str]:
                     erros.append(f"{p['id']}: precisa inválido {x} (use {', '.join(PRECISA)})")
             if not isinstance(p.get("blocos"), list):
                 erros.append(f"{p['id']}: falta a lista 'blocos' (o que este passo implanta)")
-    c = cobertura(d, eco)
-    for b in c["inexistentes"]:
+    ids = {b["id"]: b for b in eco["blocos"]}
+    qb = quando_por_bloco(d)
+    for b in sorted(set(qb) - set(ids)):
         erros.append(f"bloco {b} citado no roteiro não existe em data/ecossistema.json")
-    for b in c["duplicados"]:
-        erros.append(f"bloco {b} está num passo e também em 'construir' ou 'nao_instala'")
-    for b in c["faltando"]:
-        erros.append(f"bloco {b} ({rotulo(b)}) está no setup e fora do roteiro: ponha num passo, em 'construir' ou em 'nao_instala'")
+    for b in eco["blocos"]:
+        if b["id"] not in qb:
+            erros.append(f"bloco {b['id']} ({rotulo(b)}) está no setup e fora do roteiro: ponha num passo, com fase e data")
+    for f in d["fases"]:
+        if not f.get("quando", "").strip():
+            erros.append(f"fase {f['id']} ({f['titulo']}) sem 'quando'")
+    if d.get("cobertura"):
+        erros.append("'cobertura' não é mais usada: todo bloco entra num passo")
     return erros
 
 
@@ -102,39 +103,41 @@ def horas(minutos: int) -> str:
 
 def gerar_md(d: dict, eco: dict | None = None) -> str:
     eco = eco if eco is not None else carregar_eco()
-    c = cobertura(d, eco)
-    B = c["blocos"]
-    camadas = {k["id"]: k["titulo"] for k in eco["camadas"]}
-    total = sum(p["tempo_min"] for f in d["fases"] for p in f["passos"])
-    hoje = sum(1 for f in d["fases"] for p in f["passos"] if not p.get("precisa"))
-    t_hoje = sum(p["tempo_min"] for f in d["fases"] for p in f["passos"] if not p.get("precisa"))
-    n = sum(len(f["passos"]) for f in d["fases"])
+    B = {b["id"]: b for b in eco["blocos"]}
+    qb = quando_por_bloco(d)
+    todos = [(f, p) for f in d["fases"] for p in f["passos"]]
+    total = sum(p["tempo_min"] for _, p in todos)
+    hoje = [(f, p) for f, p in todos if faz_hoje(f, p)]
+    t_hoje = sum(p["tempo_min"] for _, p in hoje)
     o = [AVISO, "# Roteiro de implantação\n", "[← Implantação](README.md)\n",
-         f"{len(d['fases'])} fases, {n} passos, cerca de **{horas(total)}** de trabalho no total. "
+         f"{len(d['fases'])} fases, {len(todos)} passos, cerca de **{horas(total)}** de trabalho no total. "
          "Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o "
          "[`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).\n",
          "Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), "
          "**Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).\n",
-         f"**Cobertura:** os {len(B)} blocos do [mapa do setup](../mapa.html) estão todos aqui: "
-         f"{len(c['nos_passos'] & set(B))} entram nos passos, {len(c['construir'])} são peças a construir, "
-         f"{len(c['nao_instala'])} não se instalam e {len(c['depois'])} ficam para depois. "
-         "O CI falha se um bloco novo do setup ficar fora do roteiro ([lista completa](#cobertura)).\n",
-         f"**Dá para fazer hoje:** {hoje} dos {n} passos ({horas(t_hoje)}) só precisam do notebook e de contas grátis. "
-         "Os outros dizem o que falta: comprar algo, pagar um serviço ou ter um conteúdo seu pronto.\n",
-         "| Fase | Objetivo | Passos | Tempo |", "|---|---|---:|---:|"]
+         f"**Todo o planejamento está aqui:** os {len(B)} blocos do [mapa do setup](../mapa.html), de todas as {len(eco['camadas'])} camadas, "
+         "entram em algum passo, com a data ou o gatilho de quando. Nada fica de fora; o CI falha se um bloco novo não tiver passo "
+         "([quando entra cada bloco](#quando-entra-cada-bloco)).\n",
+         f"**Dá para fazer hoje:** {len(hoje)} dos {len(todos)} passos ({horas(t_hoje)}) só precisam do notebook e de contas grátis. "
+         "Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.\n",
+         "| Fase | Quando | Passos | Tempo |", "|---|---|---:|---:|"]
     for i, f in enumerate(d["fases"]):
         t = sum(p["tempo_min"] for p in f["passos"])
-        o.append(f"| [{i} · {f['titulo']}](#{f['id']}) | {f['objetivo']} | {len(f['passos'])} | {horas(t)} |")
+        q = f["quando"] + (f" · **gatilho:** {f['gatilho']}" if f.get("gatilho") else "")
+        o.append(f"| [{i} · {f['titulo']}](#{f['id']}) | {q} | {len(f['passos'])} | {horas(t)} |")
     o.append("")
     for i, f in enumerate(d["fases"]):
         o.append(f'<a id="{f["id"]}"></a>\n')
         o.append(f"## {i} · {f['titulo']}\n")
         o.append(f"{f['objetivo']}\n")
+        o.append(f"**Quando:** {f['quando']}\n")
+        if f.get("gatilho"):
+            o.append(f"**Começa quando:** {f['gatilho']}\n")
         for j, p in enumerate(f["passos"], 1):
             o.append(f"### {i}.{j} {p['titulo']}\n")
             o.append(f"**{QUEM[p['quem']]}** · {horas(p['tempo_min'])}\n")
             if p.get("comando"):
-                lang = "powershell" if "powershell" in p["comando"] or p["comando"].startswith("wsl ") else ("text" if p["comando"].startswith("http") else "bash")
+                lang = "powershell" if "powershell" in p["comando"] or p["comando"].startswith(("wsl ", "winget ")) else ("text" if p["comando"].startswith("http") else "bash")
                 o.append(f"```{lang}\n{p['comando']}\n```\n")
             o.append(f"- [ ] **Pronto quando:** {p['pronto']}")
             if p.get("nota"):
@@ -144,38 +147,28 @@ def gerar_md(d: dict, eco: dict | None = None) -> str:
             if p.get("blocos"):
                 o.append("- Implanta: " + " · ".join(rotulo(B[b]) for b in p["blocos"]))
             o.append("")
-    o += ['<a id="cobertura"></a>\n', "## Cobertura do setup\n",
-          "Todo bloco do mapa do setup tem lugar: num passo acima, como peça a construir, como algo que não se instala ou para depois.\n",
-          "### Peças a construir\n", "| Bloco | Onde e quando |", "|---|---|"]
-    o += [f"| {rotulo(B[b])} | {t} |" for b, t in c["construir"].items()]
-    o += ["", "### Não se instala\n", "| Bloco | Por quê |", "|---|---|"]
-    o += [f"| {rotulo(B[b])} | {t} |" for b, t in c["nao_instala"].items()]
-    o += ["", "### Para depois\n",
-          "Marcados como futuro no mapa: entram quando a renda, a decisão ou o negócio justificar. Cada um vira passo neste roteiro quando chegar a hora.\n",
-          "| Camada | Blocos |", "|---|---|"]
-    por = {}
-    for b in c["depois"]:
-        por.setdefault(b["camada"], []).append(rotulo(b))
-    o += [f"| {camadas.get(k, k)} | {' · '.join(v)} |" for k, v in por.items()]
-    o.append("")
+    o += ['<a id="quando-entra-cada-bloco"></a>\n', "## Quando entra cada bloco\n",
+          "Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.\n"]
+    for c in eco["camadas"]:
+        bs = [b for b in eco["blocos"] if b["camada"] == c["id"]]
+        o += [f"### {c['titulo']}\n", "| Bloco | Passo | Quando |", "|---|---|---|"]
+        for b in bs:
+            ps = qb.get(b["id"], [])
+            o.append(f"| {rotulo(b)} | {', '.join(x['num'] for x in ps)} | {'; '.join(dict.fromkeys(x['quando'] for x in ps))} |")
+        o.append("")
     return "\n".join(o)
 
 
 def dados_html(d: dict, eco: dict) -> dict:
-    c = cobertura(d, eco)
-    B = c["blocos"]
-    camadas = {k["id"]: k["titulo"] for k in eco["camadas"]}
-    fases = [{**f, "passos": [{**{k: v for k, v in p.items() if k != "blocos"},
+    B = {b["id"]: b for b in eco["blocos"]}
+    qb = quando_por_bloco(d)
+    fases = [{**f, "passos": [{**{k: v for k, v in p.items() if k != "blocos"}, "hoje": faz_hoje(f, p),
                                 "implanta": [rotulo(B[b]) for b in p.get("blocos", [])]} for p in f["passos"]]}
              for f in d["fases"]]
-    por = {}
-    for b in c["depois"]:
-        por.setdefault(camadas.get(b["camada"], b["camada"]), []).append(rotulo(b))
-    return {"precisa": PRECISA, "fases": fases, "cob": {
-        "total": len(B), "nos_passos": len(c["nos_passos"] & set(B)),
-        "construir": [[rotulo(B[b]), t] for b, t in c["construir"].items()],
-        "nao_instala": [[rotulo(B[b]), t] for b, t in c["nao_instala"].items()],
-        "depois": [[k, v] for k, v in por.items()], "n_depois": len(c["depois"])}}
+    camadas = [{"t": c["titulo"], "b": [[rotulo(b), [[x["num"], x["id"]] for x in qb.get(b["id"], [])],
+                                          "; ".join(dict.fromkeys(x["quando"] for x in qb.get(b["id"], [])))]
+                                         for b in eco["blocos"] if b["camada"] == c["id"]]} for c in eco["camadas"]]
+    return {"precisa": PRECISA, "fases": fases, "camadas": camadas, "total_blocos": len(B)}
 
 
 def gerar_html(d: dict, eco: dict | None = None) -> str:

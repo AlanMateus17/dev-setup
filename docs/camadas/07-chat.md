@@ -90,18 +90,18 @@ flowchart LR
 
 ## Blocos
 
-| Bloco | Tipo | O que faz |
-|---|---|---|
-| [Claude (app)](#capp2) | Remoto · precisa de conta | Seu assistente principal (assinatura paga): planejamento, escrita longa, revisão e análise de documentos. |
-| [ChatGPT](#gpt) | Remoto · precisa de conta | Assistente geral da OpenAI: segunda opinião em código e texto, imagens e conversa por voz. O plano grátis basta. |
-| [Gemini (pago)](#gem) | Remoto · precisa de conta | Sua segunda assinatura paga. Ligado a Gmail, Drive, Docs e YouTube: pesquisa aprofundada, resumo de vídeos longos e limites maiores no NotebookLM. Use para tudo que vive no ecossistema Google. |
-| [NotebookLM](#nblm) | Remoto · precisa de conta | Do Google: você envia PDFs (livro do VHSlins, apostilas, editais) e ele responde só com base neles, com citações. Ótimo para estudar e preparar aulas. |
-| [Grok](#grok) | Remoto · precisa de conta | Assistente da xAI, ligado ao X. Útil para acompanhar notícias e tendências em tempo real. Use a versão grátis. |
-| [DeepSeek](#ds) | Remoto · precisa de conta | Modelo chinês forte em raciocínio e código, com chat grátis. Os dados enviados ficam em servidores na China: nada de dados de clientes, alunos ou da empresa. Para uso sensível, rode a versão pequena no Ollama. |
-| [Codex (OpenAI)](#codex) | Remoto · precisa de conta | Agente de código da OpenAI (terminal, VS Code e nuvem). Está incluído até no plano grátis do ChatGPT, com limite. Use como segunda opinião ao Claude Code, nos mesmos repositórios. |
-| [Agentes de código do Google](#gcode) | Remoto · precisa de conta | Jules e o CLI do Google. As regras mudaram em 2026: o CLI deixou de ser grátis para contas pessoais. Confira o que o seu plano do Gemini inclui antes de montar um fluxo em cima dele. |
-| [Perplexity](#perp) | Remoto · precisa de conta | Busca com fontes citadas. Bom para pesquisa de mercado e para checar fatos antes de publicar. |
-| [GitHub Copilot](#copi) | Remoto · precisa de conta | Autocompletar e chat dentro do VS Code. Professores verificados no GitHub Education ganham o plano Pro grátis. |
+| Bloco | Tipo | O que faz | Quando entra |
+|---|---|---|---|
+| [Claude (app)](#capp2) | Remoto · precisa de conta | Seu assistente principal (assinatura paga): planejamento, escrita longa, revisão e análise de documentos. | passo 7.1 · Semana 4 · nov/2026 |
+| [ChatGPT](#gpt) | Remoto · precisa de conta | Assistente geral da OpenAI: segunda opinião em código e texto, imagens e conversa por voz. O plano grátis basta. | passo 7.4 · Semana 4 · nov/2026 |
+| [Gemini (pago)](#gem) | Remoto · precisa de conta | Sua segunda assinatura paga. Ligado a Gmail, Drive, Docs e YouTube: pesquisa aprofundada, resumo de vídeos longos e limites maiores no NotebookLM. Use para tudo que vive no ecossistema Google. | passo 7.4 · Semana 4 · nov/2026 |
+| [NotebookLM](#nblm) | Remoto · precisa de conta | Do Google: você envia PDFs (livro do VHSlins, apostilas, editais) e ele responde só com base neles, com citações. Ótimo para estudar e preparar aulas. | passo 4.7 · Semana 2 · nov/2026 |
+| [Grok](#grok) | Remoto · precisa de conta | Assistente da xAI, ligado ao X. Útil para acompanhar notícias e tendências em tempo real. Use a versão grátis. | passo 7.4 · Semana 4 · nov/2026 |
+| [DeepSeek](#ds) | Remoto · precisa de conta | Modelo chinês forte em raciocínio e código, com chat grátis. Os dados enviados ficam em servidores na China: nada de dados de clientes, alunos ou da empresa. Para uso sensível, rode a versão pequena no Ollama. | passo 7.4 · Semana 4 · nov/2026 |
+| [Codex (OpenAI)](#codex) | Remoto · precisa de conta | Agente de código da OpenAI (terminal, VS Code e nuvem). Está incluído até no plano grátis do ChatGPT, com limite. Use como segunda opinião ao Claude Code, nos mesmos repositórios. | passo 7.4 · Semana 4 · nov/2026 |
+| [Agentes de código do Google](#gcode) | Remoto · precisa de conta | Jules e o CLI do Google. As regras mudaram em 2026: o CLI deixou de ser grátis para contas pessoais. Confira o que o seu plano do Gemini inclui antes de montar um fluxo em cima dele. | passo 7.4 · Semana 4 · nov/2026 |
+| [Perplexity](#perp) | Remoto · precisa de conta | Busca com fontes citadas. Bom para pesquisa de mercado e para checar fatos antes de publicar. | passo 7.4 · Semana 4 · nov/2026 |
+| [GitHub Copilot](#copi) | Remoto · precisa de conta | Autocompletar e chat dentro do VS Code. Professores verificados no GitHub Education ganham o plano Pro grátis. | passo 29.1 · Contínuo, desde a semana 2 |
 
 <a id="capp2"></a>
 
@@ -110,6 +110,8 @@ flowchart LR
 *Remoto · precisa de conta*
 
 Seu assistente principal (assinatura paga): planejamento, escrita longa, revisão e análise de documentos.
+
+**Quando entra:** passo 7.1 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -129,6 +131,8 @@ Seu assistente principal (assinatura paga): planejamento, escrita longa, revisã
 
 Assistente geral da OpenAI: segunda opinião em código e texto, imagens e conversa por voz. O plano grátis basta.
 
+**Quando entra:** passo 7.4 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | respostas salvas no vault |
@@ -143,6 +147,8 @@ Assistente geral da OpenAI: segunda opinião em código e texto, imagens e conve
 
 Sua segunda assinatura paga. Ligado a Gmail, Drive, Docs e YouTube: pesquisa aprofundada, resumo de vídeos longos e limites maiores no NotebookLM. Use para tudo que vive no ecossistema Google.
 
+**Quando entra:** passo 7.4 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [YouTube](22-pub.md#yt) | Público e canais | resume vídeos |
@@ -155,6 +161,8 @@ Sua segunda assinatura paga. Ligado a Gmail, Drive, Docs e YouTube: pesquisa apr
 *Remoto · precisa de conta*
 
 Do Google: você envia PDFs (livro do VHSlins, apostilas, editais) e ele responde só com base neles, com citações. Ótimo para estudar e preparar aulas.
+
+**Quando entra:** passo 4.7 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -170,6 +178,8 @@ Do Google: você envia PDFs (livro do VHSlins, apostilas, editais) e ele respond
 
 Assistente da xAI, ligado ao X. Útil para acompanhar notícias e tendências em tempo real. Use a versão grátis.
 
+**Quando entra:** passo 7.4 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [LinkedIn](22-pub.md#li) | Público e canais | tendências do setor |
@@ -182,6 +192,8 @@ Assistente da xAI, ligado ao X. Útil para acompanhar notícias e tendências em
 
 Modelo chinês forte em raciocínio e código, com chat grátis. Os dados enviados ficam em servidores na China: nada de dados de clientes, alunos ou da empresa. Para uso sensível, rode a versão pequena no Ollama.
 
+**Quando entra:** passo 7.4 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Modelos locais: Qwen · Gemma · Llama](05-ia.md#lmods) | Agentes de IA e sandbox | mesma família, versão local |
@@ -193,6 +205,8 @@ Modelo chinês forte em raciocínio e código, com chat grátis. Os dados enviad
 *Remoto · precisa de conta*
 
 Agente de código da OpenAI (terminal, VS Code e nuvem). Está incluído até no plano grátis do ChatGPT, com limite. Use como segunda opinião ao Claude Code, nos mesmos repositórios.
+
+**Quando entra:** passo 7.4 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -207,6 +221,8 @@ Agente de código da OpenAI (terminal, VS Code e nuvem). Está incluído até no
 
 Jules e o CLI do Google. As regras mudaram em 2026: o CLI deixou de ser grátis para contas pessoais. Confira o que o seu plano do Gemini inclui antes de montar um fluxo em cima dele.
 
+**Quando entra:** passo 7.4 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | mesmos repos |
@@ -219,6 +235,8 @@ Jules e o CLI do Google. As regras mudaram em 2026: o CLI deixou de ser grátis 
 
 Busca com fontes citadas. Bom para pesquisa de mercado e para checar fatos antes de publicar.
 
+**Quando entra:** passo 7.4 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | pesquisa com fontes |
@@ -230,6 +248,8 @@ Busca com fontes citadas. Bom para pesquisa de mercado e para checar fatos antes
 *Remoto · precisa de conta*
 
 Autocompletar e chat dentro do VS Code. Professores verificados no GitHub Education ganham o plano Pro grátis.
+
+**Quando entra:** passo 29.1 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

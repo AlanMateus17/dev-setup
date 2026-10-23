@@ -342,27 +342,27 @@
  "fora": [
   {
    "item": "Dual boot no SSD atual",
-   "motivo": "Risco de perder dados; o Arch vai para o segundo NVMe."
+   "motivo": "Não no SSD do Windows, pelo risco de perder dados. O Arch entra do mesmo jeito: em pendrive agora e no 2º NVMe, com boot próprio, quando você comprar o disco (fase Linux nativo do roteiro)."
   },
   {
    "item": "Kali como sistema principal",
-   "motivo": "É caixa de ferramentas de pentest, não ambiente de dev. Fica em VM."
+   "motivo": "Kali é caixa de ferramentas de pentest, não ambiente de dev. Ele entra em pendrive com persistência e em VM (fases Dados, IA e pendrives e Linux nativo)."
+  },
+  {
+   "item": "Treinar um 8B na GTX 1650",
+   "motivo": "A placa tem 4 GB e o QLoRA de 8B pede 6 GB. O treino entra pelo Kaggle e por GPU alugada em 2027, e em casa quando a workstation com GPU chegar (fase Infraestrutura própria)."
+  },
+  {
+   "item": "Mobile nativo (Kotlin, Swift, Flutter)",
+   "motivo": "Abriria outra stack. O app mobile entra em 2028 com .NET MAUI, na mesma linguagem do Aura (fase Distribuído, plataforma e segunda nuvem)."
   },
   {
    "item": "OpenClaw",
    "motivo": "Histórico sério de instâncias expostas e execução de código não confiável."
   },
   {
-   "item": "Treinar um 8B na GTX 1650",
-   "motivo": "O QLoRA de 8B pede no mínimo 6 GB de VRAM e a placa tem 4 GB. O 8B roda no notebook (GPU + RAM); o treino dele vai para o Kaggle ou GPU alugada."
-  },
-  {
    "item": "Bun, Hono, Rust, Tauri, gRPC",
    "motivo": "Rejeitados por você para o Aura."
-  },
-  {
-   "item": "Mobile nativo (Kotlin, Swift, Flutter)",
-   "motivo": "Fora do foco dos 12 meses."
   },
   {
    "item": "Postman, IDEs pagas, SaaS pagos",

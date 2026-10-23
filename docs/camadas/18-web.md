@@ -117,17 +117,17 @@ flowchart LR
 
 ## Blocos
 
-| Bloco | Tipo | O que faz |
-|---|---|---|
-| [E-mail profissional (enviar e receber)](#mail) | Remoto · precisa de conta | contato@seu-dominio. O roteamento da Cloudflare só recebe; para enviar, é preciso um provedor de e-mail. |
-| [Domínio (Registro.br)](#dom) | Remoto · precisa de conta | Seu domínio .com.br, registrado no seu CPF. Os nameservers apontam para a Cloudflare. |
-| [Site pessoal + blog (Jekyll)](#site) | Remoto | alanmateus17.github.io: portfólio, blog e newsletter. |
-| [Instituto AMS](#inst) | Remoto | Site dos cursos: páginas de venda que levam ao checkout. |
-| [Site Grupo AMtech](#amsite) | Remoto | Site institucional da empresa: serviços, sistemas AM e contato. |
-| [Catálogo do HTML](#catal) | Remoto | Site didático para os alunos publicarem os próprios sites. |
-| [Umami (analytics)](#umami) | Remoto · precisa de conta | Estatística de visitas sem cookies invasivos. Open source. |
-| [Google Search Console](#gsc) | Remoto · precisa de conta | Mostra como o Google indexa os sites e quais buscas trazem visitas. |
-| [Hostinger (clientes WP)](#hostg) | Remoto · precisa de conta | Hospedagem WordPress que você já tem; serve para sites de clientes. |
+| Bloco | Tipo | O que faz | Quando entra |
+|---|---|---|---|
+| [E-mail profissional (enviar e receber)](#mail) | Remoto · precisa de conta | contato@seu-dominio. O roteamento da Cloudflare só recebe; para enviar, é preciso um provedor de e-mail. | passo 11.4 · Semanas 6 e 7 · dez/2026 |
+| [Domínio (Registro.br)](#dom) | Remoto · precisa de conta | Seu domínio .com.br, registrado no seu CPF. Os nameservers apontam para a Cloudflare. | passo 11.3 · Semanas 6 e 7 · dez/2026 |
+| [Site pessoal + blog (Jekyll)](#site) | Remoto | alanmateus17.github.io: portfólio, blog e newsletter. | passo 11.7 · Semanas 6 e 7 · dez/2026 |
+| [Instituto AMS](#inst) | Remoto | Site dos cursos: páginas de venda que levam ao checkout. | passo 11.8 · Semanas 6 e 7 · dez/2026 |
+| [Site Grupo AMtech](#amsite) | Remoto | Site institucional da empresa: serviços, sistemas AM e contato. | passo 11.9 · Semanas 6 e 7 · dez/2026 |
+| [Catálogo do HTML](#catal) | Remoto | Site didático para os alunos publicarem os próprios sites. | passo 11.9 · Semanas 6 e 7 · dez/2026 |
+| [Umami (analytics)](#umami) | Remoto · precisa de conta | Estatística de visitas sem cookies invasivos. Open source. | passo 11.11 · Semanas 6 e 7 · dez/2026 |
+| [Google Search Console](#gsc) | Remoto · precisa de conta | Mostra como o Google indexa os sites e quais buscas trazem visitas. | passo 11.12 · Semanas 6 e 7 · dez/2026 |
+| [Hostinger (clientes WP)](#hostg) | Remoto · precisa de conta | Hospedagem WordPress que você já tem; serve para sites de clientes. | passo 11.13 · Semanas 6 e 7 · dez/2026 |
 
 <a id="mail"></a>
 
@@ -136,6 +136,8 @@ flowchart LR
 *Remoto · precisa de conta*
 
 contato@seu-dominio. O roteamento da Cloudflare só recebe; para enviar, é preciso um provedor de e-mail.
+
+**Quando entra:** passo 11.4 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -149,6 +151,8 @@ contato@seu-dominio. O roteamento da Cloudflare só recebe; para enviar, é prec
 *Remoto · precisa de conta*
 
 Seu domínio .com.br, registrado no seu CPF. Os nameservers apontam para a Cloudflare.
+
+**Quando entra:** passo 11.3 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -165,6 +169,8 @@ Seu domínio .com.br, registrado no seu CPF. Os nameservers apontam para a Cloud
 *Remoto*
 
 alanmateus17.github.io: portfólio, blog e newsletter.
+
+**Quando entra:** passo 11.7 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -185,6 +191,8 @@ alanmateus17.github.io: portfólio, blog e newsletter.
 *Remoto*
 
 Site dos cursos: páginas de venda que levam ao checkout.
+
+**Quando entra:** passo 11.8 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -216,6 +224,8 @@ Site dos cursos: páginas de venda que levam ao checkout.
 
 Site institucional da empresa: serviços, sistemas AM e contato.
 
+**Quando entra:** passo 11.9 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Cloudflare (DNS, Pages, e-mail)](12-nuvem.md#cf) | Nuvem, código e entrega | hospedado (Pages) |
@@ -230,6 +240,8 @@ Site institucional da empresa: serviços, sistemas AM e contato.
 
 Site didático para os alunos publicarem os próprios sites.
 
+**Quando entra:** passo 11.9 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [GitHub Pages](12-nuvem.md#ghp) | Nuvem, código e entrega | hospedado |
@@ -242,6 +254,8 @@ Site didático para os alunos publicarem os próprios sites.
 *Remoto · precisa de conta*
 
 Estatística de visitas sem cookies invasivos. Open source.
+
+**Quando entra:** passo 11.11 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -257,6 +271,8 @@ Estatística de visitas sem cookies invasivos. Open source.
 
 Mostra como o Google indexa os sites e quais buscas trazem visitas.
 
+**Quando entra:** passo 11.12 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Busca Google (SEO)](22-pub.md#seo) | Público e canais | indexação |
@@ -268,6 +284,8 @@ Mostra como o Google indexa os sites e quais buscas trazem visitas.
 *Remoto · precisa de conta*
 
 Hospedagem WordPress que você já tem; serve para sites de clientes.
+
+**Quando entra:** passo 11.13 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

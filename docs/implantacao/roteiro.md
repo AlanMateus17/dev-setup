@@ -4,42 +4,54 @@
 
 [← Implantação](README.md)
 
-20 fases, 148 passos, cerca de **88 h 40 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+30 fases, 207 passos, cerca de **919 h 30 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
-**Cobertura:** os 324 blocos do [mapa do setup](../mapa.html) estão todos aqui: 237 entram nos passos, 9 são peças a construir, 3 não se instalam e 75 ficam para depois. O CI falha se um bloco novo do setup ficar fora do roteiro ([lista completa](#cobertura)).
+**Todo o planejamento está aqui:** os 325 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando. Nada fica de fora; o CI falha se um bloco novo não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 135 dos 148 passos (75 h 30 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço ou ter um conteúdo seu pronto.
+**Dá para fazer hoje:** 143 dos 207 passos (142 h 20 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
-| Fase | Objetivo | Passos | Tempo |
+| Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
-| [0 · Preparar](#f0) | Nada se perde, o hardware está no lugar e as contas estão protegidas antes de mexer na máquina. | 5 | 2 h 55 min |
-| [1 · Windows](#f1) | Os programas do setup instalados, o navegador com o Claude e o WSL2 pronto. | 10 | 3 h 15 min |
-| [2 · Linux (WSL2)](#f2) | O Ubuntu com tudo o que o código precisa, commits assinados e o ambiente versionado. | 10 | 2 h 22 min |
-| [3 · GitHub e CI](#f3) | O repositório no ar, com testes automáticos verdes a cada envio e o trabalho organizado. | 5 | 55 min |
-| [4 · Agentes de IA](#f4) | O Claude Code trabalhando dentro da sandbox, com as suas regras, ferramentas e memória. | 7 | 2 h 27 min |
-| [5 · Backup e segurança](#f5) | Perder o notebook não faz você perder nada. | 4 | 1 h 45 min |
-| [6 · Acervo: tudo o que você já tem](#f6) | Todos os seus documentos convertidos em conhecimento organizado no Obsidian, os pessoais separados e a lista do que dá para vender. | 7 | 4 h 55 min |
-| [7 · Claude e assistentes](#f7) | Cada recurso do Claude e cada assistente com um papel definido no setup. | 4 | 1 h 45 min |
-| [8 · Automação e medição](#f8) | n8n, banco de métricas, Grafana e Uptime Kuma rodando. | 7 | 57 min |
-| [9 · Pipeline de conteúdo](#f9) | Gravou ou escreveu, as peças aparecem na fila de aprovação. | 6 | 1 h 24 min |
-| [10 · Estúdio de conteúdo](#f10) | Gravar, editar e montar imagens no mesmo padrão toda semana, sem pensar. | 5 | 3 h 20 min |
-| [11 · Contas, canais e sites](#f11) | Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz. | 12 | 8 h 40 min |
-| [12 · Vendas e finanças no CPF](#f12) | Cada oferta pode ser vendida, recebida e declarada do jeito certo. | 20 | 12 h 10 min |
-| [13 · Vendas medidas](#f13) | Cada venda chega sozinha ao banco e aparece no painel de lucro. | 4 | 2 h 40 min |
-| [14 · Teste do núcleo](#f14) | Os três testes de ponta a ponta passam: daqui em diante, alimentar o sistema já faz tudo sozinho. | 4 | 1 h 00 min |
-| [15 · Base dos sistemas AM](#f15) | Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e deploy. | 7 | 5 h 40 min |
-| [16 · Nuvem e deploy](#f16) | As contas de nuvem criadas por código, com custo sob controle. | 7 | 6 h 15 min |
-| [17 · Editora](#f17) | O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão. | 8 | 8 h 30 min |
-| [18 · Dados, IA e pendrives](#f18) | O laboratório de dados e de treino no ar, um modelo seu rodando no Ollama e os pendrives de Kali e Arch dando boot. | 12 | 16 h 20 min |
-| [19 · Estudo contínuo](#f19) | As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém. | 4 | 1 h 25 min |
+| [0 · Preparar](#f0) | Semana 1 · out/2026 | 5 | 2 h 55 min |
+| [1 · Windows](#f1) | Semana 1 · out/2026 | 10 | 3 h 15 min |
+| [2 · Linux (WSL2)](#f2) | Semana 2 · nov/2026 | 10 | 2 h 22 min |
+| [3 · GitHub e CI](#f3) | Semana 2 · nov/2026 | 5 | 55 min |
+| [4 · Agentes de IA](#f4) | Semana 2 · nov/2026 | 7 | 2 h 27 min |
+| [5 · Backup e segurança](#f5) | Semana 3 · nov/2026 | 4 | 1 h 45 min |
+| [6 · Acervo: tudo o que você já tem](#f6) | Semanas 3 e 4 · nov/2026 | 7 | 4 h 55 min |
+| [7 · Claude e assistentes](#f7) | Semana 4 · nov/2026 | 4 | 1 h 45 min |
+| [8 · Automação e medição](#f8) | Semana 4 · nov/2026 | 7 | 57 min |
+| [9 · Pipeline de conteúdo](#f9) | Semana 5 · nov/2026 | 6 | 1 h 24 min |
+| [10 · Estúdio de conteúdo](#f10) | Semana 5 · dez/2026 | 5 | 3 h 20 min |
+| [11 · Contas, canais e sites](#f11) | Semanas 6 e 7 · dez/2026 | 13 | 9 h 00 min |
+| [12 · Vendas e finanças no CPF](#f12) | Semanas 8 a 10 · dez/2026 a jan/2027 | 20 | 12 h 10 min |
+| [13 · Vendas medidas](#f13) | Semana 11 · jan/2027 | 4 | 2 h 40 min |
+| [14 · Teste do núcleo](#f14) | Semana 11 · jan/2027 | 4 | 1 h 00 min |
+| [15 · Base dos sistemas AM](#f15) | Jan a fev/2027 | 8 | 7 h 40 min |
+| [16 · Nuvem e deploy](#f16) | Fev a abr/2027 | 7 | 6 h 15 min |
+| [17 · Editora](#f17) | Quando o capítulo 1 estiver pronto · **gatilho:** O capítulo 1 e o seu modelo de criação prontos | 11 | 18 h 30 min |
+| [18 · Dados, IA e pendrives](#f18) | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 | 12 | 16 h 20 min |
+| [19 · Marketing pago e crescimento](#f19) | A partir de fev/2027 · **gatilho:** O mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar | 10 | 37 h 30 min |
+| [20 · Linux nativo e laboratório completo](#f20) | 2027, conforme cada compra | 6 | 18 h 00 min |
+| [21 · IA dentro dos sistemas AM](#f21) | Mai a jul/2027 | 1 | 8 h 00 min |
+| [22 · Sistemas AM à venda](#f22) | 2027 · **gatilho:** O primeiro sistema AM pronto e testado com um cliente | 4 | 100 h 00 min |
+| [23 · CNPJ e formalização](#f23) | Quando a renda pedir · **gatilho:** A renda passou do valor de virada definido com o contador | 4 | 13 h 00 min |
+| [24 · Agentes do grupo](#f24) | Junto com o primeiro CNPJ · **gatilho:** Clientes e vendas recorrentes | 7 | 18 h 00 min |
+| [25 · Editora: depois do primeiro livro](#f25) | Depois do primeiro livro · **gatilho:** O primeiro livro publicado | 5 | 56 h 00 min |
+| [26 · Distribuído, plataforma e segunda nuvem](#f26) | 2028 | 6 | 69 h 00 min |
+| [27 · Infraestrutura própria](#f27) | 2028, quando o grupo pedir | 3 | 17 h 00 min |
+| [28 · Negócios do grupo em Barbacena](#f28) | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano · **gatilho:** Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta | 8 | 482 h 00 min |
+| [29 · Estudo contínuo](#f29) | Contínuo, desde a semana 2 | 4 | 1 h 25 min |
 
 <a id="f0"></a>
 
 ## 0 · Preparar
 
 Nada se perde, o hardware está no lugar e as contas estão protegidas antes de mexer na máquina.
+
+**Quando:** Semana 1 · out/2026
 
 ### 0.1 Copiar documentos, fotos e projetos para um disco externo
 
@@ -87,6 +99,8 @@ powershell -ExecutionPolicy Bypass -File .\scripts\windows\inventario.ps1
 ## 1 · Windows
 
 Os programas do setup instalados, o navegador com o Claude e o WSL2 pronto.
+
+**Quando:** Semana 1 · out/2026
 
 ### 1.1 Ver o que o instalador faria
 
@@ -162,7 +176,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\windows\extensoes-vscode.ps1 
 
 **Você** · 10 min
 
-```bash
+```powershell
 winget install --id Unity.UnityHub -e
 ```
 
@@ -185,6 +199,8 @@ powershell -ExecutionPolicy Bypass -File .\scripts\windows\verificar.ps1
 ## 2 · Linux (WSL2)
 
 O Ubuntu com tudo o que o código precisa, commits assinados e o ambiente versionado.
+
+**Quando:** Semana 2 · nov/2026
 
 ### 2.1 Abrir 'Ubuntu 24.04' no menu Iniciar e criar seu usuário Linux
 
@@ -289,6 +305,8 @@ bash scripts/wsl/verificar.sh
 
 O repositório no ar, com testes automáticos verdes a cada envio e o trabalho organizado.
 
+**Quando:** Semana 2 · nov/2026
+
 ### 3.1 Criar o repositório privado e enviar o setup
 
 **Script** · 5 min
@@ -340,6 +358,8 @@ gh run list --limit 1
 ## 4 · Agentes de IA
 
 O Claude Code trabalhando dentro da sandbox, com as suas regras, ferramentas e memória.
+
+**Quando:** Semana 2 · nov/2026
 
 ### 4.1 Entrar no Claude Code
 
@@ -411,6 +431,8 @@ ollama pull <nome do modelo escolhido no catálogo do Ollama>
 
 Perder o notebook não faz você perder nada.
 
+**Quando:** Semana 3 · nov/2026
+
 ### 5.1 Criar o repositório restic no disco externo e o primeiro backup
 
 **Script** · 30 min
@@ -449,6 +471,8 @@ restic -r /mnt/d/backup-restic init && restic -r /mnt/d/backup-restic backup ~/d
 ## 6 · Acervo: tudo o que você já tem
 
 Todos os seus documentos convertidos em conhecimento organizado no Obsidian, os pessoais separados e a lista do que dá para vender.
+
+**Quando:** Semanas 3 e 4 · nov/2026
 
 ### 6.1 Baixar uma cópia completa do Google Drive pelo Google Takeout
 
@@ -517,6 +541,8 @@ uv run tools/acervo/acervo.py --origem /mnt/c/Users/SEU_USUARIO/Downloads/Takeou
 
 Cada recurso do Claude e cada assistente com um papel definido no setup.
 
+**Quando:** Semana 4 · nov/2026
+
 ### 7.1 Organizar o app do Claude: um Project por frente, memória, artefatos, pesquisa e tarefas agendadas
 
 **Você** · 30 min
@@ -530,7 +556,7 @@ Cada recurso do Claude e cada assistente com um papel definido no setup.
 
 - [ ] **Pronto quando:** Cada conector usado responde a um pedido simples; o da Cloudflare trocado pelo Cloudflare API MCP
 - Notion, monday, GitBook e Stripe ficam de fora: repetem Obsidian, GitHub Projects, MkDocs e as plataformas de curso. Desconecte para não confundir.
-- Implanta: Conector Google (Gmail, Drive…) · Conectores Canva + Figma · Conector MailerLite · Vercel · AWS · Microsoft Learn · Conector Upwork · Lovable + Supabase · Conector Cloudflare · Conector vidIQ
+- Implanta: Conector Google (Gmail, Drive…) · Conectores Canva + Figma · Conector MailerLite · Vercel · AWS · Microsoft Learn · Conector Upwork · Lovable + Supabase · Conector Cloudflare · Conector vidIQ · Notion · monday · GitBook · Stripe
 
 ### 7.3 Ligar os plugins: small-business, marketing, engineering, design, finance, Hostinger, Adobe e Cloudinary
 
@@ -551,6 +577,8 @@ Cada recurso do Claude e cada assistente com um papel definido no setup.
 ## 8 · Automação e medição
 
 n8n, banco de métricas, Grafana e Uptime Kuma rodando.
+
+**Quando:** Semana 4 · nov/2026
 
 ### 8.1 Gerar as senhas da stack e guardar no KeePassXC
 
@@ -631,6 +659,8 @@ http://localhost:3002
 
 Gravou ou escreveu, as peças aparecem na fila de aprovação.
 
+**Quando:** Semana 5 · nov/2026
+
 ### 9.1 Preencher o guia de marca
 
 **Você** · 40 min
@@ -689,6 +719,8 @@ bash scripts/wsl/ativar-pipeline.sh
 
 Gravar, editar e montar imagens no mesmo padrão toda semana, sem pensar.
 
+**Quando:** Semana 5 · dez/2026
+
 ### 10.1 Montar no OBS as cenas de aula, tela com rosto e vídeo vertical
 
 **Você** · 40 min
@@ -732,6 +764,8 @@ Gravar, editar e montar imagens no mesmo padrão toda semana, sem pensar.
 ## 11 · Contas, canais e sites
 
 Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
+
+**Quando:** Semanas 6 e 7 · dez/2026
 
 ### 11.1 Completar Instagram, YouTube, TikTok, LinkedIn e Facebook com a mesma identidade
 
@@ -800,21 +834,29 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 - [ ] **Pronto quando:** Os dois sites no ar com domínio e HTTPS
 - Implanta: Site Grupo AMtech · Catálogo do HTML
 
-### 11.10 Ligar o Umami nos sites
+### 11.10 Mostrar o Catálogo do HTML aos alunos e ex-alunos
+
+**Você** · 20 min
+
+- [ ] **Pronto quando:** Alunos publicando os próprios sites pelo Catálogo
+- É material grátis da escola, não venda. Nada de oferecer produto pago a aluno menor de idade; ex-alunos adultos podem seguir as redes.
+- Implanta: Alunos e ex-alunos
+
+### 11.11 Ligar o Umami nos sites
 
 **Claude com você** · 20 min
 
 - [ ] **Pronto quando:** Uma visita de teste aparece no painel do Umami
 - Implanta: Umami (analytics)
 
-### 11.11 Ligar o Google Search Console no domínio e enviar o sitemap de cada site
+### 11.12 Ligar o Google Search Console no domínio e enviar o sitemap de cada site
 
 **Você** · 10 min
 
 - [ ] **Pronto quando:** Propriedade verificada e sitemaps lidos
 - Implanta: Google Search Console · Busca Google (SEO)
 
-### 11.12 Separar na Hostinger o espaço dos sites de clientes
+### 11.13 Separar na Hostinger o espaço dos sites de clientes
 
 **Claude com você** · 30 min
 
@@ -827,6 +869,8 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 ## 12 · Vendas e finanças no CPF
 
 Cada oferta pode ser vendida, recebida e declarada do jeito certo.
+
+**Quando:** Semanas 8 a 10 · dez/2026 a jan/2027
 
 ### 12.1 Subir a conta gov.br para prata ou ouro
 
@@ -980,6 +1024,8 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 
 Cada venda chega sozinha ao banco e aparece no painel de lucro.
 
+**Quando:** Semana 11 · jan/2027
+
 ### 13.1 Criar o túnel público para os webhooks (Cloudflare Tunnel) e preencher N8N_WEBHOOK_URL
 
 **Você** · 40 min
@@ -1017,6 +1063,8 @@ Cada venda chega sozinha ao banco e aparece no painel de lucro.
 
 Os três testes de ponta a ponta passam: daqui em diante, alimentar o sistema já faz tudo sozinho.
 
+**Quando:** Semana 11 · jan/2027
+
 ### 14.1 Dev: mudar algo num repositório, commit assinado, push, CI verde
 
 **Você** · 15 min
@@ -1050,6 +1098,8 @@ Os três testes de ponta a ponta passam: daqui em diante, alimentar o sistema j�
 ## 15 · Base dos sistemas AM
 
 Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e deploy.
+
+**Quando:** Jan a fev/2027
 
 ### 15.1 Gerar o modelo de sistema com /novo-sistema-aura
 
@@ -1102,11 +1152,20 @@ Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e depl
 - [ ] **Pronto quando:** Lista de templates no portfólio de ofertas
 - Implanta: Templates e código-fonte
 
+### 15.8 Candidatar-se às vagas de dev .NET com GitHub, LinkedIn e site prontos
+
+**Você** · 2 h 00 min
+
+- [ ] **Pronto quando:** 10 candidaturas enviadas com o portfólio do sistema exemplo
+- Implanta: Recrutadores
+
 <a id="f16"></a>
 
 ## 16 · Nuvem e deploy
 
 As contas de nuvem criadas por código, com custo sob controle.
+
+**Quando:** Fev a abr/2027
 
 ### 16.1 Instalar Azure CLI, Terraform, Vercel CLI e Wrangler
 
@@ -1168,6 +1227,10 @@ bash scripts/wsl/nuvem.sh
 
 O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.
 
+**Quando:** Quando o capítulo 1 estiver pronto
+
+**Começa quando:** O capítulo 1 e o seu modelo de criação prontos
+
 ### 17.1 Entregar o seu modelo de criação e o seu método passo a passo
 
 **Você** · 2 h 00 min
@@ -1184,21 +1247,42 @@ O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.
 - **Precisa:** conteúdo seu pronto (livro, capítulo)
 - Implanta: Repositório do livro · Fonte única (Markdown + Pandoc) · Classe LaTeX do livro · Exercícios em YAML · Pipeline do livro (CI) · Revisão automática (LanguageTool, Vale) · Errata e edições · Livro Lógica e Máquina
 
-### 17.3 Montar a matriz de editais e o quadro de referências
+### 17.3 Construir o pipeline de imagens do livro: busca nos acervos, filtro de licença, folha de contato e créditos
+
+**Claude com você** · 4 h 00 min
+
+- [ ] **Pronto quando:** Uma figura do capítulo 1 sai com licença conferida, ficha e crédito; o build falha se faltar ficha
+- Implanta: Acervos de imagens (APIs) · Busca automática de imagens · Filtro de licença e fichas · Folha de contato (artefato) · Créditos e legendas
+
+### 17.4 Figuras, tabelas e texto alternativo gerados por código
+
+**Claude com você** · 3 h 00 min
+
+- [ ] **Pronto quando:** Gráficos e tabelas do capítulo 1 gerados no build, com texto alternativo revisado por você
+- Implanta: Figuras por código (Matplotlib…) · Geradores de tabelas · Texto alternativo
+
+### 17.5 Criar os agentes da editora: revisor técnico, gabarito, leitor iniciante e consistência
+
+**Claude com você** · 3 h 00 min
+
+- [ ] **Pronto quando:** Os agentes apontam problemas reais no capítulo 1 e você corrige
+- Implanta: Agentes da editora
+
+### 17.6 Montar a matriz de editais e o quadro de referências
 
 **Claude com você** · 1 h 00 min
 
 - [ ] **Pronto quando:** Cada tópico dos editais ligado a um capítulo; lacunas listadas
 - Implanta: Matriz de editais · Quadro de referências
 
-### 17.4 Definir o selo Editora AMS Silva (nome, logo e uso no CPF)
+### 17.7 Definir o selo Editora AMS Silva (nome, logo e uso no CPF)
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** Logo aprovado e aplicado na classe LaTeX
 - Implanta: Selo Editora AMS Silva
 
-### 17.5 Comprar os ISBNs na CBL e pedir a ficha catalográfica
+### 17.8 Comprar os ISBNs na CBL e pedir a ficha catalográfica
 
 **Você** · 1 h 00 min
 
@@ -1206,7 +1290,7 @@ O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.
 - **Precisa:** pagar um serviço, conteúdo seu pronto (livro, capítulo)
 - Implanta: ISBN + código de barras (CBL) · Ficha catalográfica
 
-### 17.6 Escolher 3 a 5 leitores beta e um revisor técnico
+### 17.9 Escolher 3 a 5 leitores beta e um revisor técnico
 
 **Você** · 30 min
 
@@ -1214,7 +1298,7 @@ O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.
 - **Precisa:** conteúdo seu pronto (livro, capítulo)
 - Implanta: Leitores beta e revisão técnica
 
-### 17.7 Criar a conta no Amazon KDP e cadastrar o livro em rascunho
+### 17.10 Criar a conta no Amazon KDP e cadastrar o livro em rascunho
 
 **Você** · 1 h 00 min
 
@@ -1222,7 +1306,7 @@ O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.
 - **Precisa:** conteúdo seu pronto (livro, capítulo)
 - Implanta: Amazon KDP
 
-### 17.8 Enviar o depósito legal à Biblioteca Nacional até 30 dias depois de publicar
+### 17.11 Enviar o depósito legal à Biblioteca Nacional até 30 dias depois de publicar
 
 **Você** · 30 min
 
@@ -1236,11 +1320,13 @@ O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.
 
 O laboratório de dados e de treino no ar, um modelo seu rodando no Ollama e os pendrives de Kali e Arch dando boot.
 
+**Quando:** Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027
+
 ### 18.1 Gravar o pendrive do Kali com persistência criptografada
 
 **Você** · 1 h 30 min
 
-```bash
+```powershell
 winget install --id Rufus.Rufus -e
 ```
 
@@ -1345,25 +1431,521 @@ ollama run llama3.1:8b
 
 <a id="f19"></a>
 
-## 19 · Estudo contínuo
+## 19 · Marketing pago e crescimento
+
+Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.
+
+**Quando:** A partir de fev/2027
+
+**Começa quando:** O mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar
+
+### 19.1 Primeira campanha na Meta com orçamento de teste
+
+**Você** · 2 h 00 min
+
+- [ ] **Pronto quando:** Campanha com CPA abaixo do de empate por 2 semanas
+- **Precisa:** pagar um serviço
+- Implanta: Meta Ads (Instagram, Facebook)
+
+### 19.2 Google e YouTube Ads, depois TikTok Ads
+
+**Você** · 3 h 00 min
+
+- [ ] **Pronto quando:** Cada canal com a primeira campanha medida no painel
+- **Precisa:** pagar um serviço
+- Implanta: Google e YouTube Ads · TikTok Ads
+
+### 19.3 Kwai, Pinterest, LinkedIn, Spotify e mídia nativa, um por vez
+
+**Você** · 4 h 00 min
+
+- [ ] **Pronto quando:** Cada canal testado e mantido ou cortado pelas regras
+- **Precisa:** pagar um serviço
+- Implanta: Kwai Ads · Pinterest Ads · LinkedIn Ads · Spotify Ad Studio · Mídia nativa (Taboola, Outbrain)
+
+### 19.4 Influenciadores e newsletters parceiras com cupom
+
+**Você** · 2 h 00 min
+
+- [ ] **Pronto quando:** Primeira parceria medida por cupom e UTM
+- **Precisa:** pagar um serviço
+- Implanta: Influenciadores e newsletters
+
+### 19.5 Abrir o programa de afiliados do mini-curso
+
+**Você** · 1 h 00 min
+
+- [ ] **Pronto quando:** Primeiro afiliado vendendo
+- Implanta: Programa de afiliados
+
+### 19.6 Ligar o algoritmo de horário com 3 meses de dados de publicação
+
+**Claude com você** · 2 h 00 min
+
+- [ ] **Pronto quando:** 80% dos posts nas melhores faixas, 20% testando
+- Implanta: Algoritmo de horário
+
+### 19.7 Canal build in public: um vídeo por semana das decisões reais
+
+**Você** · 1 h 00 min
+
+- [ ] **Pronto quando:** 4 vídeos seguidos publicados
+- Implanta: Canal build in public
+
+### 19.8 Dublar os melhores vídeos para outros idiomas
+
+**Você** · 2 h 00 min
+
+- [ ] **Pronto quando:** Um vídeo com faixa de áudio em inglês ou espanhol
+- **Precisa:** pagar um serviço
+- Implanta: Dublagem (YouTube + ElevenLabs)
+
+### 19.9 Membros do YouTube quando o canal for elegível
+
+**Você** · 30 min
+
+- [ ] **Pronto quando:** Assinatura de membros ativa
+- Implanta: YouTube (membros)
+
+### 19.10 Primeira formação completa (TI, Matemática ou Finanças)
+
+**Você** · 20 h 00 min
+
+- [ ] **Pronto quando:** Formação gravada e à venda
+- Implanta: Formações (TI, Matemática, Finanças)
+
+<a id="f20"></a>
+
+## 20 · Linux nativo e laboratório completo
+
+Arch com boot próprio, VMs de laboratório e a segurança física em dia.
+
+**Quando:** 2027, conforme cada compra
+
+### 20.1 Instalar o 2º NVMe e o Arch + Omarchy com boot próprio
+
+**Você** · 5 h 00 min
+
+- [ ] **Pronto quando:** Escolha entre Windows e Arch ao ligar, cada um no seu disco
+- **Precisa:** comprar algo
+- Implanta: 2º NVMe (1–4 TB) · Arch + Omarchy (2º NVMe) · Gerenciador de boot
+
+### 20.2 Aprender o Neovim aos poucos
+
+**Você** · 5 h 00 min
+
+- [ ] **Pronto quando:** Uma semana editando só no Neovim
+- Implanta: Neovim
+
+### 20.3 Montar as VMs do laboratório: Kali, Arch, Ubuntu Server, Windows Server e Rocky
+
+**Você** · 5 h 00 min
+
+- [ ] **Pronto quando:** Duas VMs numa rede isolada, atacante e alvo
+- Implanta: VMs: Kali · Arch · Servidores
+
+### 20.4 SSD SATA na baia livre para as VMs
+
+**Você** · 1 h 00 min
+
+- [ ] **Pronto quando:** VMs rodando do SSD novo
+- **Precisa:** comprar algo
+- Implanta: SSD SATA 2,5"
+
+### 20.5 Chave física no GitHub, Google e Microsoft
+
+**Você** · 1 h 00 min
+
+- [ ] **Pronto quando:** Login com a chave nas três contas
+- **Precisa:** comprar algo
+- Implanta: Chave física (YubiKey)
+
+### 20.6 Microfone e câmera
+
+**Você** · 1 h 00 min
+
+- [ ] **Pronto quando:** Gravação de teste com áudio limpo sem pós-produção
+- **Precisa:** comprar algo
+- Implanta: Microfone + câmera
+
+<a id="f21"></a>
+
+## 21 · IA dentro dos sistemas AM
+
+Busca e assistente com os seus dados dentro de um sistema AM.
+
+**Quando:** Mai a jul/2027
+
+### 21.1 RAG com pgvector dentro do primeiro sistema AM
+
+**Claude com você** · 8 h 00 min
+
+- [ ] **Pronto quando:** O sistema responde perguntas com base nos dados do cliente, citando a origem
+- Implanta: IA: RAG + pgvector
+
+<a id="f22"></a>
+
+## 22 · Sistemas AM à venda
+
+Os sistemas viram produto por assinatura.
+
+**Quando:** 2027
+
+**Começa quando:** O primeiro sistema AM pronto e testado com um cliente
+
+### 22.1 Lançar o primeiro sistema AM como SaaS, com cobrança por módulo
+
+**Claude com você** · 10 h 00 min
+
+- [ ] **Pronto quando:** Primeiro cliente pagando por assinatura
+- Implanta: Sistemas AM (SaaS) · aura-licensing
+
+### 22.2 AM Kaixara: PDV, cardápio, fichas técnicas e estoque
+
+**Claude com você** · 40 h 00 min
+
+- [ ] **Pronto quando:** Rodando num negócio real
+- Implanta: AM Kaixara (PDV e cardápio)
+
+### 22.3 AM Rotara: pedidos, rotas e mapas
+
+**Claude com você** · 40 h 00 min
+
+- [ ] **Pronto quando:** Entregas rastreadas no mapa em tempo real
+- Implanta: AM Rotara (entregas) · PostGIS + MapLibre
+
+### 22.4 Serviços aura- compartilhados, só quando um sistema precisar
+
+**Claude com você** · 10 h 00 min
+
+- [ ] **Pronto quando:** Um serviço compartilhado usado por dois sistemas
+- Implanta: Serviços aura- (10) · Datomic local
+
+<a id="f23"></a>
+
+## 23 · CNPJ e formalização
+
+Sair do CPF na hora certa, com nota fiscal e cobrança automáticas.
+
+**Quando:** Quando a renda pedir
+
+**Começa quando:** A renda passou do valor de virada definido com o contador
+
+### 23.1 Abrir a AMtech Tecnologia (ME no Simples, sócio único)
+
+**Você** · 4 h 00 min
+
+- [ ] **Pronto quando:** CNPJ ativo, conta PJ aberta e contador contratado
+- **Precisa:** pagar um serviço
+- Implanta: CNPJ (futuro) · 3 CNPJs por frente
+
+### 23.2 Certificado digital e-CNPJ
+
+**Você** · 1 h 00 min
+
+- [ ] **Pronto quando:** Certificado instalado e guardado no KeePassXC
+- **Precisa:** pagar um serviço
+- Implanta: Certificado digital (e-CNPJ)
+
+### 23.3 Nota fiscal automática pela API de NFS-e
+
+**Claude com você** · 4 h 00 min
+
+- [ ] **Pronto quando:** Venda de teste emite nota sozinha
+- Implanta: API de NFS-e (ex.: Focus NFe)
+
+### 23.4 Cobrança recorrente por Pix Automático
+
+**Claude com você** · 4 h 00 min
+
+- [ ] **Pronto quando:** Assinatura de teste cobrada por Pix
+- Implanta: Pix Automático + gateway (ex.: Asaas)
+
+<a id="f24"></a>
+
+## 24 · Agentes do grupo
+
+Atendimento, orçamento, cobrança e análise rodando com a sua aprovação.
+
+**Quando:** Junto com o primeiro CNPJ
+
+**Começa quando:** Clientes e vendas recorrentes
+
+### 24.1 Analista semanal: o que funcionou e o que mudar
+
+**Claude com você** · 2 h 00 min
+
+- [ ] **Pronto quando:** Relatório toda segunda no Telegram
+- Implanta: Analista semanal
+
+### 24.2 Atendente do WhatsApp com passagem para você
+
+**Claude com você** · 4 h 00 min
+
+- [ ] **Pronto quando:** Dúvida comum respondida sozinha; o resto chega para você
+- Implanta: Agente atendente (WhatsApp)
+
+### 24.3 Orçamentista de sites e sistemas
+
+**Claude com você** · 3 h 00 min
+
+- [ ] **Pronto quando:** Rascunho de orçamento em 5 minutos, revisado por você
+- Implanta: Agente orçamentista
+
+### 24.4 Cobrador educado (lembrete antes e depois do vencimento)
+
+**Claude com você** · 2 h 00 min
+
+- [ ] **Pronto quando:** Atraso cai pela metade
+- Implanta: Agente cobrador
+
+### 24.5 Pós-venda: NPS e pedido de avaliação
+
+**Claude com você** · 2 h 00 min
+
+- [ ] **Pronto quando:** NPS medido em cada venda
+- Implanta: Agente pós-venda
+
+### 24.6 Organizador fiscal para o contador
+
+**Claude com você** · 2 h 00 min
+
+- [ ] **Pronto quando:** Pasta do mês pronta no dia 5
+- Implanta: Organizador fiscal
+
+### 24.7 Comprador com estoque mínimo
+
+**Claude com você** · 3 h 00 min
+
+- [ ] **Pronto quando:** Pedido de reposição sugerido antes de faltar
+- Implanta: Agente comprador
+
+<a id="f25"></a>
+
+## 25 · Editora: depois do primeiro livro
+
+O mesmo livro em mais formatos, públicos e idiomas.
+
+**Quando:** Depois do primeiro livro
+
+**Começa quando:** O primeiro livro publicado
+
+### 25.1 Gráfica sob demanda no Brasil
+
+**Você** · 2 h 00 min
+
+- [ ] **Pronto quando:** Cópia de prova aprovada
+- **Precisa:** pagar um serviço
+- Implanta: Gráfica sob demanda (Brasil)
+
+### 25.2 Kit edição especial
+
+**Você** · 4 h 00 min
+
+- [ ] **Pronto quando:** Primeira tiragem vendida
+- **Precisa:** pagar um serviço
+- Implanta: Kit edição especial
+
+### 25.3 Curso por seção do livro, com animações
+
+**Você** · 20 h 00 min
+
+- [ ] **Pronto quando:** Primeira seção gravada e à venda
+- Implanta: Curso por seção · Manim (animações)
+
+### 25.4 Edição do professor com licença para escolas
+
+**Claude com você** · 10 h 00 min
+
+- [ ] **Pronto quando:** Primeira escola licenciada
+- Implanta: Edição do professor
+
+### 25.5 Traduções para espanhol e inglês
+
+**Claude com você** · 20 h 00 min
+
+- [ ] **Pronto quando:** Primeiro volume traduzido e revisado
+- **Precisa:** pagar um serviço
+- Implanta: Traduções (espanhol, inglês)
+
+<a id="f26"></a>
+
+## 26 · Distribuído, plataforma e segunda nuvem
+
+O que pesa em vaga pleno e sênior.
+
+**Quando:** 2028
+
+### 26.1 RabbitMQ e depois Kafka entre dois sistemas AM
+
+**Claude com você** · 10 h 00 min
+
+- [ ] **Pronto quando:** Evento de um sistema chega no outro sem chamada direta
+- Implanta: RabbitMQ · Kafka
+
+### 26.2 Kubernetes local com kind, kubectl, Helm e k9s
+
+**Você** · 10 h 00 min
+
+- [ ] **Pronto quando:** Um sistema AM rodando no cluster local
+- Implanta: Kubernetes local (kind) · kubectl · Helm · k9s
+
+### 26.3 Logs e rastreamento com Loki e Tempo no Grafana
+
+**Claude com você** · 4 h 00 min
+
+- [ ] **Pronto quando:** Uma requisição seguida de ponta a ponta
+- Implanta: Loki + Tempo
+
+### 26.4 AWS: Cloud Practitioner e o mesmo sistema rodando lá
+
+**Você** · 20 h 00 min
+
+- [ ] **Pronto quando:** Certificação e post comparando Azure e AWS
+- **Precisa:** pagar um serviço
+- Implanta: AWS
+
+### 26.5 Google Cloud só o básico, quando um projeto de IA ou dados pedir
+
+**Você** · 5 h 00 min
+
+- [ ] **Pronto quando:** Um serviço usado num projeto real
+- Implanta: Google Cloud
+
+### 26.6 App mobile dos sistemas AM com .NET MAUI
+
+**Claude com você** · 20 h 00 min
+
+- [ ] **Pronto quando:** App publicado para teste interno
+- Implanta: App mobile (.NET MAUI)
+
+<a id="f27"></a>
+
+## 27 · Infraestrutura própria
+
+Servidor em casa e máquina de IA quando o grupo pedir.
+
+**Quando:** 2028, quando o grupo pedir
+
+### 27.1 Servidor caseiro com backup local e os serviços 24 horas
+
+**Você** · 8 h 00 min
+
+- [ ] **Pronto quando:** n8n, banco e painel rodando no servidor; notebook livre
+- **Precisa:** comprar algo
+- Implanta: Servidor caseiro (NAS + serviços)
+
+### 27.2 Tailscale entre notebook, celular e servidor
+
+**Você** · 1 h 00 min
+
+- [ ] **Pronto quando:** Acesso ao servidor de fora de casa sem abrir porta
+- Implanta: Tailscale (VPN)
+
+### 27.3 Workstation com GPU para treinar e gerar voz e vídeo em casa
+
+**Você** · 8 h 00 min
+
+- [ ] **Pronto quando:** Fine-tuning de 8B rodando local
+- **Precisa:** comprar algo
+- Implanta: Workstation com GPU
+
+<a id="f28"></a>
+
+## 28 · Negócios do grupo em Barbacena
+
+Um negócio por vez, cada um só depois que o anterior passa no portão.
+
+**Quando:** Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano
+
+**Começa quando:** Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta
+
+### 28.1 Planejador do grupo com os números reais
+
+**Claude com você** · 2 h 00 min
+
+- [ ] **Pronto quando:** Capital mínimo e portões calculados com os seus dados
+- Implanta: Planejador do Grupo
+
+### 28.2 A1 · AMtech Software
+
+**Você** · 40 h 00 min
+
+- [ ] **Pronto quando:** 3 meses seguidos com lucro e 10 clientes pagantes
+- **Precisa:** pagar um serviço
+- Implanta: AMtech Software (projetos e SaaS)
+
+### 28.3 A2 · Loja AMtech, peças sob encomenda, ponto de retirada e Maker
+
+**Você** · 80 h 00 min
+
+- [ ] **Pronto quando:** Loja acima do equilíbrio por 3 meses e técnico que abre e fecha sem você
+- **Precisa:** comprar algo, pagar um serviço
+- Implanta: Loja AMtech (assistência) · Peças sem estoque (sob encomenda) · Ponto de retirada (Shopee e ML) · AMtech Maker (robótica) · Anatel e Inmetro · Google Perfil da Empresa
+
+### 28.4 B1 · AM Entregas e Mercado Envios Flex
+
+**Você** · 80 h 00 min
+
+- [ ] **Pronto quando:** 1.000 entregas por mês e 5 contratos fixos
+- **Precisa:** comprar algo, pagar um serviço
+- Implanta: AM Entregas (moto e carro) · Mercado Envios Flex
+
+### 28.5 B2 · AM Delivery
+
+**Você** · 80 h 00 min
+
+- [ ] **Pronto quando:** 20 lojistas ativos e 1.500 pedidos por mês
+- **Precisa:** pagar um serviço
+- Implanta: AM Delivery (várias empresas)
+
+### 28.6 C1 · Sushi, delivery primeiro
+
+**Você** · 80 h 00 min
+
+- [ ] **Pronto quando:** Lucro por 3 meses e sushiman que toca a noite sem você
+- **Precisa:** comprar algo, pagar um serviço
+- Implanta: Sushi (delivery) · Vigilância sanitária (RDC 216) · iFood (canal de descoberta)
+
+### 28.7 C2 · Padaria com café da manhã e almoço
+
+**Você** · 80 h 00 min
+
+- [ ] **Pronto quando:** Gerente no comando e CMV dentro da meta por 3 meses
+- **Precisa:** comprar algo, pagar um serviço
+- Implanta: Padaria + café da manhã + almoço
+
+### 28.8 C3 · Cafeteria
+
+**Você** · 40 h 00 min
+
+- [ ] **Pronto quando:** Cafeteria acima do equilíbrio
+- **Precisa:** comprar algo, pagar um serviço
+- Implanta: Cafeteria
+
+<a id="f29"></a>
+
+## 29 · Estudo contínuo
 
 As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 
-### 19.1 Pedir o GitHub Education como professor e ligar o Copilot
+**Quando:** Contínuo, desde a semana 2
+
+### 29.1 Pedir o GitHub Education como professor e ligar o Copilot
 
 **Você** · 20 min
 
 - [ ] **Pronto quando:** Benefícios aprovados e Copilot ativo no VS Code
 - Implanta: GitHub Education · GitHub Copilot
 
-### 19.2 Montar as trilhas: Microsoft Learn, AWS Skill Builder, roadmap.sh e laboratórios do TryHackMe
+### 29.2 Montar as trilhas: Microsoft Learn, AWS Skill Builder, roadmap.sh e laboratórios do TryHackMe
 
 **Você** · 30 min
 
 - [ ] **Pronto quando:** Uma trilha de cada em andamento, anotada no Obsidian
 - Implanta: Microsoft Learn + AWS Skill Builder · roadmap.sh + Akita · TryHackMe / Hack The Box
 
-### 19.3 Organizar as contas de aluno (Alura, Rocketseat, DIO, Udemy)
+### 29.3 Organizar as contas de aluno (Alura, Rocketseat, DIO, Udemy)
 
 **Você** · 15 min
 
@@ -1371,60 +1953,455 @@ As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 - A licença é para assistir e estudar. Para a IA vão só as suas anotações e os seus projetos.
 - Implanta: Alura · Rocketseat · DIO · Udemy
 
-### 19.4 Criar os baralhos do Anki (comandos, conceitos, certificações, concurso)
+### 29.4 Criar os baralhos do Anki (comandos, conceitos, certificações, concurso)
 
 **Você** · 20 min
 
 - [ ] **Pronto quando:** Revisão do dia feita no notebook e no celular
 - Implanta: Anki
 
-<a id="cobertura"></a>
+<a id="quando-entra-cada-bloco"></a>
 
-## Cobertura do setup
+## Quando entra cada bloco
 
-Todo bloco do mapa do setup tem lugar: num passo acima, como peça a construir, como algo que não se instala ou para depois.
+Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 
-### Peças a construir
+### Operação do grupo (esteira, marca, qualidade)
 
-| Bloco | Onde e quando |
-|---|---|
-| Agentes da editora | Com o Claude Code, no repositório do livro, depois do capítulo 1. |
-| Acervos de imagens (APIs) | Pipeline de imagens do livro: começa quando o capítulo 1 tiver a lista de figuras (figuras.yaml). |
-| Busca automática de imagens | Pipeline de imagens do livro, junto com os acervos. |
-| Filtro de licença e fichas | Pipeline de imagens do livro: roda antes de qualquer imagem entrar. |
-| Folha de contato (artefato) | Pipeline de imagens do livro: artefato com os candidatos para você escolher. |
-| Créditos e legendas | Pipeline de imagens do livro: gerados das fichas; o build falha se faltar ficha. |
-| Figuras por código (Matplotlib…) | No repositório do livro, quando o capítulo 1 pedir o primeiro gráfico. |
-| Geradores de tabelas | Ampliar o exemplo de tools/editora no repositório do livro. |
-| Texto alternativo | Entra no CI do livro antes do primeiro EPUB; rascunho por IA, revisão sua. |
+| Bloco | Passo | Quando |
+|---|---|---|
+| Portfólio de ofertas | 6.7, 12.14 | Semanas 3 e 4 · nov/2026; Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Esteira de ofertas | 6.7, 12.14 | Semanas 3 e 4 · nov/2026; Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Padrão de qualidade | 12.14 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Marca pessoal Alan Mateus | 9.1, 11.1 | Semana 5 · nov/2026; Semanas 6 e 7 · dez/2026 |
+| NPS e avaliações | 12.15 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| CRM único + LGPD | 12.9 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Flywheel de conteúdo | 9.5, 9.6 | Semana 5 · nov/2026 |
+| Canal build in public | 19.7 | A partir de fev/2027 |
+| Agente atendente (WhatsApp) | 24.2 | Junto com o primeiro CNPJ |
+| Agente orçamentista | 24.3 | Junto com o primeiro CNPJ |
+| Agente cobrador | 24.4 | Junto com o primeiro CNPJ |
+| Agente pós-venda | 24.5 | Junto com o primeiro CNPJ |
+| Agente editor de conteúdo | 9.5 | Semana 5 · nov/2026 |
+| Analista semanal | 24.1 | Junto com o primeiro CNPJ |
+| Organizador fiscal | 24.6 | Junto com o primeiro CNPJ |
+| Revisor de oferta | 12.14 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Agente comprador | 24.7 | Junto com o primeiro CNPJ |
+| Roteiro de implantação | 14.4 | Semana 11 · jan/2027 |
+| Instaladores (PowerShell e bash) | 1.1, 2.4 | Semana 1 · out/2026; Semana 2 · nov/2026 |
+| Verificadores | 1.10, 2.10, 8.3, 14.4 | Semana 1 · out/2026; Semana 2 · nov/2026; Semana 4 · nov/2026; Semana 11 · jan/2027 |
+| Pipeline de conteúdo | 9.4, 9.5, 14.2 | Semana 5 · nov/2026; Semana 11 · jan/2027 |
+| Acervo (seus documentos) | 6.3, 6.4, 6.5 | Semanas 3 e 4 · nov/2026 |
 
-### Não se instala
+### Público e canais
 
-| Bloco | Por quê |
-|---|---|
-| Alunos e ex-alunos | É público, não ferramenta: chega pelos canais e sites das fases de contas e vendas. |
-| Recrutadores | É público, não ferramenta: chega pelo LinkedIn, GitHub e site pessoal. |
-| Notion · monday · GitBook · Stripe | Decidido não usar: repete Obsidian, GitHub Projects, MkDocs e as plataformas de curso. |
+| Bloco | Passo | Quando |
+|---|---|---|
+| Meta Business Suite | 11.5 | Semanas 6 e 7 · dez/2026 |
+| Instagram | 11.1 | Semanas 6 e 7 · dez/2026 |
+| YouTube | 11.1 | Semanas 6 e 7 · dez/2026 |
+| LinkedIn | 11.1 | Semanas 6 e 7 · dez/2026 |
+| WhatsApp Business | 11.2 | Semanas 6 e 7 · dez/2026 |
+| Google Perfil da Empresa | 28.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Comunidade (Discord ou grupo) | 12.10 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Busca Google (SEO) | 11.12 | Semanas 6 e 7 · dez/2026 |
+| Alunos e ex-alunos | 11.10 | Semanas 6 e 7 · dez/2026 |
+| Recrutadores | 15.8 | Jan a fev/2027 |
+| TikTok | 11.1 | Semanas 6 e 7 · dez/2026 |
+| Facebook | 11.1 | Semanas 6 e 7 · dez/2026 |
 
-### Para depois
+### Marketing, automação e medição
 
-Marcados como futuro no mapa: entram quando a renda, a decisão ou o negócio justificar. Cada um vira passo neste roteiro quando chegar a hora.
+| Bloco | Passo | Quando |
+|---|---|---|
+| Meta Ads (Instagram, Facebook) | 19.1 | A partir de fev/2027 |
+| Isca grátis + sequência de e-mails | 11.6 | Semanas 6 e 7 · dez/2026 |
+| MailerLite | 11.6 | Semanas 6 e 7 · dez/2026 |
+| Postiz (agendador) | 8.7 | Semana 4 · nov/2026 |
+| Aprovação no celular | 9.3 | Semana 5 · nov/2026 |
+| Telegram (avisos) | 9.3 | Semana 5 · nov/2026 |
+| n8n | 8.1, 8.2, 8.5 | Semana 4 · nov/2026 |
+| Algoritmo de horário | 19.6 | A partir de fev/2027 |
+| Tags de conversão (Pixel, Google…) | 11.5 | Semanas 6 e 7 · dez/2026 |
+| Padrão de UTM | 12.12 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Google e YouTube Ads | 19.2 | A partir de fev/2027 |
+| TikTok Ads | 19.2 | A partir de fev/2027 |
+| Regras de corte | 12.13 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Lucro por Venda (calculadora) | 12.13 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Webhooks de venda | 13.1, 13.2, 14.3 | Semana 11 · jan/2027 |
+| Banco de métricas (PostgreSQL) | 8.2, 13.3 | Semana 4 · nov/2026; Semana 11 · jan/2027 |
+| Painel de lucro (Grafana) | 13.4, 14.3 | Semana 11 · jan/2027 |
+| Programa de afiliados | 19.5 | A partir de fev/2027 |
+| Prospecção de parceiros | 12.16 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Dublagem (YouTube + ElevenLabs) | 19.8 | A partir de fev/2027 |
+| Spotify Ad Studio | 19.3 | A partir de fev/2027 |
+| Kwai Ads | 19.3 | A partir de fev/2027 |
+| Pinterest Ads | 19.3 | A partir de fev/2027 |
+| LinkedIn Ads | 19.3 | A partir de fev/2027 |
+| Mídia nativa (Taboola, Outbrain) | 19.3 | A partir de fev/2027 |
+| Influenciadores e newsletters | 19.4 | A partir de fev/2027 |
 
-| Camada | Blocos |
-|---|---|
-| Público e canais | Google Perfil da Empresa |
-| Plataformas de venda e recebimento | Pix Automático + gateway (ex.: Asaas) · YouTube (membros) |
-| Marketing, automação e medição | Meta Ads (Instagram, Facebook) · Algoritmo de horário · Google e YouTube Ads · TikTok Ads · Programa de afiliados · Dublagem (YouTube + ElevenLabs) · Spotify Ad Studio · Kwai Ads · Pinterest Ads · LinkedIn Ads · Mídia nativa (Taboola, Outbrain) · Influenciadores e newsletters |
-| Pessoa física: impostos e finanças | Certificado digital (e-CNPJ) · API de NFS-e (ex.: Focus NFe) · CNPJ (futuro) |
-| Produtos (o que você vende) | Formações (TI, Matemática, Finanças) · Sistemas AM (SaaS) |
-| Nuvem, código e entrega | Google Cloud · AWS |
-| Aplicação: sistemas AM (Aura) | PostGIS + MapLibre · Serviços aura- (10) · IA: RAG + pgvector · aura-licensing · AM Kaixara (PDV e cardápio) · AM Rotara (entregas) |
-| Observabilidade | Loki + Tempo |
-| Containers, Kubernetes e infra como código | Kafka · kubectl · Helm · k9s · Datomic local · RabbitMQ · Kubernetes local (kind) |
-| Linux (Ubuntu no WSL2, Arch no 2º disco) | Neovim · Arch + Omarchy (2º NVMe) |
-| Windows 11, apps e máquinas virtuais | Tailscale (VPN) · Gerenciador de boot · VMs: Kali · Arch · Servidores |
-| Segurança e cofre | Chave física (YubiKey) |
-| Hardware | SSD SATA 2,5" · 2º NVMe (1–4 TB) · Microfone + câmera · Servidor caseiro (NAS + serviços) · Workstation com GPU |
-| Editora AMS Silva (produção de livros) | Gráfica sob demanda (Brasil) · Kit edição especial · Curso por seção · Edição do professor · Traduções (espanhol, inglês) · Manim (animações) |
-| Negócios do grupo (Barbacena) | AMtech Software (projetos e SaaS) · Loja AMtech (assistência) · Peças sem estoque (sob encomenda) · Ponto de retirada (Shopee e ML) · AMtech Maker (robótica) · AM Entregas (moto e carro) · Mercado Envios Flex · AM Delivery (várias empresas) · Sushi (delivery) · Cafeteria · Padaria + café da manhã + almoço · 3 CNPJs por frente · Planejador do Grupo · iFood (canal de descoberta) · Vigilância sanitária (RDC 216) · Anatel e Inmetro |
-| Operação do grupo (esteira, marca, qualidade) | Canal build in public · Agente atendente (WhatsApp) · Agente orçamentista · Agente cobrador · Agente pós-venda · Analista semanal · Organizador fiscal · Agente comprador |
+### Plataformas de venda e recebimento
+
+| Bloco | Passo | Quando |
+|---|---|---|
+| Pix Automático + gateway (ex.: Asaas) | 23.4 | Quando a renda pedir |
+| Agenda online (Cal.com) | 12.8 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| CRM simples (planilha) | 12.9 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Hotmart | 12.5 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Kiwify | 12.5 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Eduzz | 12.6 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Udemy | 12.6 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| DIO (parceria) | 12.6 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| YouTube (membros) | 19.9 | A partir de fev/2027 |
+| Mercado Pago | 12.7 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Afiliados (Amazon, Hotmart…) | 12.11 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+
+### Pessoa física: impostos e finanças
+
+| Bloco | Passo | Quando |
+|---|---|---|
+| Registro de marca (INPI) | 12.17 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Termos, privacidade (LGPD) e contratos | 12.4 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Certificado digital (e-CNPJ) | 23.2 | Quando a renda pedir |
+| API de NFS-e (ex.: Focus NFe) | 23.3 | Quando a renda pedir |
+| CNPJ (futuro) | 23.1 | Quando a renda pedir |
+| gov.br (prata ou ouro) | 12.1 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Carnê-leão (Receita Federal) | 12.18 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Declaração anual do IR | 12.19 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Conta bancária separada (CPF) | 12.2 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Contador | 12.3 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Caixa da Casa / AM Rendara | 12.20 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+
+### Vitrine web (sites e domínio)
+
+| Bloco | Passo | Quando |
+|---|---|---|
+| E-mail profissional (enviar e receber) | 11.4 | Semanas 6 e 7 · dez/2026 |
+| Domínio (Registro.br) | 11.3 | Semanas 6 e 7 · dez/2026 |
+| Site pessoal + blog (Jekyll) | 11.7 | Semanas 6 e 7 · dez/2026 |
+| Instituto AMS | 11.8 | Semanas 6 e 7 · dez/2026 |
+| Site Grupo AMtech | 11.9 | Semanas 6 e 7 · dez/2026 |
+| Catálogo do HTML | 11.9 | Semanas 6 e 7 · dez/2026 |
+| Umami (analytics) | 11.11 | Semanas 6 e 7 · dez/2026 |
+| Google Search Console | 11.12 | Semanas 6 e 7 · dez/2026 |
+| Hostinger (clientes WP) | 11.13 | Semanas 6 e 7 · dez/2026 |
+
+### Produtos (o que você vende)
+
+| Bloco | Passo | Quando |
+|---|---|---|
+| Mini-curso Lógica de Programação | 12.5 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Formações (TI, Matemática, Finanças) | 19.10 | A partir de fev/2027 |
+| Templates e código-fonte | 15.7 | Jan a fev/2027 |
+| Livro Lógica e Máquina | 17.2 | Quando o capítulo 1 estiver pronto |
+| Aulas particulares | 12.8 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Sites para pequenas empresas | 11.13 | Semanas 6 e 7 · dez/2026 |
+| Sistemas AM (SaaS) | 22.1 | 2027 |
+
+### Negócios do grupo (Barbacena)
+
+| Bloco | Passo | Quando |
+|---|---|---|
+| AMtech Software (projetos e SaaS) | 28.2 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Loja AMtech (assistência) | 28.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Peças sem estoque (sob encomenda) | 28.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Ponto de retirada (Shopee e ML) | 28.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| AMtech Maker (robótica) | 28.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| AM Entregas (moto e carro) | 28.4 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Mercado Envios Flex | 28.4 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| AM Delivery (várias empresas) | 28.5 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Sushi (delivery) | 28.6 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Cafeteria | 28.8 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Padaria + café da manhã + almoço | 28.7 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| 3 CNPJs por frente | 23.1 | Quando a renda pedir |
+| Planejador do Grupo | 28.1 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| iFood (canal de descoberta) | 28.6 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Vigilância sanitária (RDC 216) | 28.6 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Anatel e Inmetro | 28.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+
+### Editora AMS Silva (produção de livros)
+
+| Bloco | Passo | Quando |
+|---|---|---|
+| Selo Editora AMS Silva | 17.7 | Quando o capítulo 1 estiver pronto |
+| Repositório do livro | 17.2 | Quando o capítulo 1 estiver pronto |
+| Seu modelo de criação | 17.1 | Quando o capítulo 1 estiver pronto |
+| Fonte única (Markdown + Pandoc) | 17.2 | Quando o capítulo 1 estiver pronto |
+| Exercícios em YAML | 17.2 | Quando o capítulo 1 estiver pronto |
+| Pranchas TikZ e SVG | 2.4 | Semana 2 · nov/2026 |
+| Classe LaTeX do livro | 17.2 | Quando o capítulo 1 estiver pronto |
+| Pipeline do livro (CI) | 17.2 | Quando o capítulo 1 estiver pronto |
+| Revisão automática (LanguageTool, Vale) | 17.2 | Quando o capítulo 1 estiver pronto |
+| Agentes da editora | 17.5 | Quando o capítulo 1 estiver pronto |
+| Leitores beta e revisão técnica | 17.9 | Quando o capítulo 1 estiver pronto |
+| Errata e edições | 17.2 | Quando o capítulo 1 estiver pronto |
+| ISBN + código de barras (CBL) | 17.8 | Quando o capítulo 1 estiver pronto |
+| Ficha catalográfica | 17.8 | Quando o capítulo 1 estiver pronto |
+| Depósito legal | 17.11 | Quando o capítulo 1 estiver pronto |
+| Amazon KDP | 17.10 | Quando o capítulo 1 estiver pronto |
+| Gráfica sob demanda (Brasil) | 25.1 | Depois do primeiro livro |
+| Kit edição especial | 25.2 | Depois do primeiro livro |
+| Curso por seção | 25.3 | Depois do primeiro livro |
+| Edição do professor | 25.4 | Depois do primeiro livro |
+| Traduções (espanhol, inglês) | 25.5 | Depois do primeiro livro |
+| Quadro de referências | 17.6 | Quando o capítulo 1 estiver pronto |
+| Matriz de editais | 17.6 | Quando o capítulo 1 estiver pronto |
+| Projeto do capítulo | 17.1 | Quando o capítulo 1 estiver pronto |
+| Mapa de pré-requisitos | 17.1 | Quando o capítulo 1 estiver pronto |
+| Seu método (metodo.yaml) | 17.1 | Quando o capítulo 1 estiver pronto |
+| Acervos de imagens (APIs) | 17.3 | Quando o capítulo 1 estiver pronto |
+| Busca automática de imagens | 17.3 | Quando o capítulo 1 estiver pronto |
+| Filtro de licença e fichas | 17.3 | Quando o capítulo 1 estiver pronto |
+| Folha de contato (artefato) | 17.3 | Quando o capítulo 1 estiver pronto |
+| Créditos e legendas | 17.3 | Quando o capítulo 1 estiver pronto |
+| Figuras por código (Matplotlib…) | 17.4 | Quando o capítulo 1 estiver pronto |
+| CircuiTikZ | 2.4 | Semana 2 · nov/2026 |
+| Geradores de tabelas | 17.4 | Quando o capítulo 1 estiver pronto |
+| Manim (animações) | 25.3 | Depois do primeiro livro |
+| Texto alternativo | 17.4 | Quando o capítulo 1 estiver pronto |
+
+### Estudo e carreira
+
+| Bloco | Passo | Quando |
+|---|---|---|
+| Microsoft Learn + AWS Skill Builder | 29.2 | Contínuo, desde a semana 2 |
+| TryHackMe / Hack The Box | 29.2 | Contínuo, desde a semana 2 |
+| Alura · Rocketseat · DIO · Udemy | 29.3 | Contínuo, desde a semana 2 |
+| Anki | 1.2, 29.4 | Semana 1 · out/2026; Contínuo, desde a semana 2 |
+| roadmap.sh + Akita | 29.2 | Contínuo, desde a semana 2 |
+| GitHub Education | 29.1 | Contínuo, desde a semana 2 |
+| Zoomcamp de dados + cursos de IA | 18.6 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+
+### Produção de conteúdo
+
+| Bloco | Passo | Quando |
+|---|---|---|
+| OBS Studio | 1.2, 10.1 | Semana 1 · out/2026; Semana 5 · dez/2026 |
+| DaVinci Resolve ou Kdenlive | 1.8, 10.3 | Semana 1 · out/2026; Semana 5 · dez/2026 |
+| Audacity | 1.2, 10.2 | Semana 1 · out/2026; Semana 5 · dez/2026 |
+| Canva · Krita · Inkscape | 1.2, 10.4 | Semana 1 · out/2026; Semana 5 · dez/2026 |
+| Whisper (local) | 2.4, 9.6 | Semana 2 · nov/2026; Semana 5 · nov/2026 |
+| Voz clonada (ElevenLabs) | 10.5 | Semana 5 · dez/2026 |
+
+### Nuvem, código e entrega
+
+| Bloco | Passo | Quando |
+|---|---|---|
+| Armazenamento de arquivos (Blob/R2) | 16.4 | Fev a abr/2027 |
+| E-mail transacional (Resend, SES…) | 16.5 | Fev a abr/2027 |
+| SonarQube Cloud | 15.5 | Jan a fev/2027 |
+| Projects · ADRs · MkDocs | 3.5 | Semana 2 · nov/2026 |
+| Dependabot + CodeQL | 3.3 | Semana 2 · nov/2026 |
+| Google Cloud | 26.5 | 2028 |
+| GitHub | 3.1, 3.4 | Semana 2 · nov/2026 |
+| GitHub Actions | 3.2, 14.1 | Semana 2 · nov/2026; Semana 11 · jan/2027 |
+| GHCR (imagens) | 15.6 | Jan a fev/2027 |
+| GitHub Pages | 11.7 | Semanas 6 e 7 · dez/2026 |
+| Cloudflare (DNS, Pages, e-mail) | 11.3, 11.8, 13.1, 16.6 | Semanas 6 e 7 · dez/2026; Semana 11 · jan/2027; Fev a abr/2027 |
+| Vercel | 16.6 | Fev a abr/2027 |
+| Azure | 16.2, 16.3, 16.6 | Fev a abr/2027 |
+| AWS | 26.4 | 2028 |
+| Backblaze B2 (backup) | 5.2 | Semana 3 · nov/2026 |
+| GPU por hora (RunPod e afins) | 18.9 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| Google Drive (seus documentos) | 6.1 | Semanas 3 e 4 · nov/2026 |
+
+### Aplicação: sistemas AM (Aura)
+
+| Bloco | Passo | Quando |
+|---|---|---|
+| OpenAPI + Scalar | 15.1 | Jan a fev/2027 |
+| PostGIS + MapLibre | 22.3 | 2027 |
+| Storybook | 15.1 | Jan a fev/2027 |
+| Clean Arch + DDD | 15.1 | Jan a fev/2027 |
+| EF Core + Npgsql | 15.1 | Jan a fev/2027 |
+| SignalR | 15.1 | Jan a fev/2027 |
+| Multi-tenant (RLS) | 15.1 | Jan a fev/2027 |
+| Testes: xUnit, Playwright, k6 | 15.1 | Jan a fev/2027 |
+| Serviços aura- (10) | 22.4 | 2027 |
+| Next.js + Aura Design System | 15.1 | Jan a fev/2027 |
+| API ASP.NET Core | 15.1 | Jan a fev/2027 |
+| Keycloak / Entra ID | 15.2 | Jan a fev/2027 |
+| IA: RAG + pgvector | 21.1 | Mai a jul/2027 |
+| aura-licensing | 22.1 | 2027 |
+| aura-status | 16.7 | Fev a abr/2027 |
+| AM Kaixara (PDV e cardápio) | 22.2 | 2027 |
+| AM Rotara (entregas) | 22.3 | 2027 |
+| App mobile (.NET MAUI) | 26.6 | 2028 |
+
+### Observabilidade
+
+| Bloco | Passo | Quando |
+|---|---|---|
+| Sentry (erros) | 15.4 | Jan a fev/2027 |
+| Uptime Kuma | 8.6 | Semana 4 · nov/2026 |
+| Seq (logs) | 15.3 | Jan a fev/2027 |
+| Loki + Tempo | 26.3 | 2028 |
+| OpenTelemetry | 15.3 | Jan a fev/2027 |
+| Prometheus | 15.3 | Jan a fev/2027 |
+| Grafana | 8.4, 13.4 | Semana 4 · nov/2026; Semana 11 · jan/2027 |
+| .NET Aspire | 15.3 | Jan a fev/2027 |
+
+### Containers, Kubernetes e infra como código
+
+| Bloco | Passo | Quando |
+|---|---|---|
+| Caddy (proxy + HTTPS) | 15.3 | Jan a fev/2027 |
+| Mailpit | 15.3 | Jan a fev/2027 |
+| Kafka | 26.1 | 2028 |
+| kubectl · Helm · k9s | 26.2 | 2028 |
+| Azure CLI · AWS CLI | 16.1 | Fev a abr/2027 |
+| Datomic local | 22.4 | 2027 |
+| Docker + Compose | 2.2, 8.2 | Semana 2 · nov/2026; Semana 4 · nov/2026 |
+| PostgreSQL | 8.2, 15.1 | Semana 4 · nov/2026; Jan a fev/2027 |
+| Redis | 15.1 | Jan a fev/2027 |
+| RabbitMQ | 26.1 | 2028 |
+| Kubernetes local (kind) | 26.2 | 2028 |
+| Terraform | 16.1, 16.3 | Fev a abr/2027 |
+
+### Claude: recursos, conectores e plugins
+
+| Bloco | Passo | Quando |
+|---|---|---|
+| Projects + memória | 7.1 | Semana 4 · nov/2026 |
+| Artifacts (Docs, Slides, Sheets…) | 7.1 | Semana 4 · nov/2026 |
+| Pesquisa aprofundada | 7.1 | Semana 4 · nov/2026 |
+| Tarefas agendadas | 7.1 | Semana 4 · nov/2026 |
+| Claude in Chrome + uso do computador | 1.7 | Semana 1 · out/2026 |
+| Claude (assinatura e API) | 9.2 | Semana 5 · nov/2026 |
+| Conector Google (Gmail, Drive…) | 7.2 | Semana 4 · nov/2026 |
+| Conectores Canva + Figma | 7.2, 10.4 | Semana 4 · nov/2026; Semana 5 · dez/2026 |
+| Conector MailerLite | 7.2, 11.6 | Semana 4 · nov/2026; Semanas 6 e 7 · dez/2026 |
+| Vercel · AWS · Microsoft Learn | 7.2 | Semana 4 · nov/2026 |
+| Conector Upwork | 7.2 | Semana 4 · nov/2026 |
+| Lovable + Supabase | 7.2 | Semana 4 · nov/2026 |
+| Notion · monday · GitBook · Stripe | 7.2 | Semana 4 · nov/2026 |
+| Plugins: small- business + marketing | 7.3 | Semana 4 · nov/2026 |
+| Plugins: engineering + design | 7.3 | Semana 4 · nov/2026 |
+| Plugins: finance + Fiscal.ai | 7.3 | Semana 4 · nov/2026 |
+| Plugins: Hostinger · Adobe · Cloudinary | 7.3 | Semana 4 · nov/2026 |
+| Conector Cloudflare | 7.2 | Semana 4 · nov/2026 |
+| Conector vidIQ | 7.2 | Semana 4 · nov/2026 |
+
+### Assistentes de IA (chat, pesquisa e estudo)
+
+| Bloco | Passo | Quando |
+|---|---|---|
+| Claude (app) | 7.1 | Semana 4 · nov/2026 |
+| ChatGPT | 7.4 | Semana 4 · nov/2026 |
+| Gemini (pago) | 7.4 | Semana 4 · nov/2026 |
+| NotebookLM | 4.7 | Semana 2 · nov/2026 |
+| Grok | 7.4 | Semana 4 · nov/2026 |
+| DeepSeek | 7.4 | Semana 4 · nov/2026 |
+| Codex (OpenAI) | 7.4 | Semana 4 · nov/2026 |
+| Agentes de código do Google | 7.4 | Semana 4 · nov/2026 |
+| Perplexity | 7.4 | Semana 4 · nov/2026 |
+| GitHub Copilot | 29.1 | Contínuo, desde a semana 2 |
+
+### Dados e treino de IA
+
+| Bloco | Passo | Quando |
+|---|---|---|
+| Python de dados (Polars, Jupyter) | 18.4 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| DuckDB + Parquet | 18.4 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| dbt Core | 18.7 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| Airflow (orquestração) | 18.8 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| Spark (PySpark) | 18.4 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| Seus datasets (só conteúdo seu) | 18.10 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| PyTorch + CUDA (WSL2) | 18.3, 18.4 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| Hugging Face (modelos e Hub) | 18.9 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| Unsloth (QLoRA) | 18.11 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| Kaggle · Colab (GPU grátis) | 18.9, 18.11 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| MLflow (experimentos) | 18.4 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| Avaliação dos modelos | 18.10, 18.12 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| llama.cpp (GGUF) | 18.4, 18.12 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+
+### Agentes de IA e sandbox
+
+| Bloco | Passo | Quando |
+|---|---|---|
+| Modelos locais: Qwen · Gemma · Llama | 4.4, 18.5 | Semana 2 · nov/2026; Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| Base de conhecimento (RAG) das suas notas | 4.7, 6.6 | Semana 2 · nov/2026; Semanas 3 e 4 · nov/2026 |
+| Claude Code | 4.1 | Semana 2 · nov/2026 |
+| ai-jail | 4.2 | Semana 2 · nov/2026 |
+| ai-memory | 4.6 | Semana 2 · nov/2026 |
+| Servidores MCP | 4.5 | Semana 2 · nov/2026 |
+| CLAUDE.md, agentes e skills (seus) | 4.3 | Semana 2 · nov/2026 |
+| Ollama | 4.4, 18.5, 18.12 | Semana 2 · nov/2026; Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+
+### Linux (Ubuntu no WSL2, Arch no 2º disco)
+
+| Bloco | Passo | Quando |
+|---|---|---|
+| Neovim | 20.2 | 2027, conforme cada compra |
+| nmap · dig · curl | 2.4 | Semana 2 · nov/2026 |
+| Ubuntu (WSL2) | 2.1, 2.5 | Semana 2 · nov/2026 |
+| Git + SSH + gh | 2.4, 2.6 | Semana 2 · nov/2026 |
+| .NET 10 · Node · Python | 2.4 | Semana 2 · nov/2026 |
+| TeX Live | 2.4 | Semana 2 · nov/2026 |
+| gitleaks · Trivy | 2.4 | Semana 2 · nov/2026 |
+| dotfiles | 2.7 | Semana 2 · nov/2026 |
+| Arch + Omarchy (2º NVMe) | 20.1 | 2027, conforme cada compra |
+
+### Windows 11, apps e máquinas virtuais
+
+| Bloco | Passo | Quando |
+|---|---|---|
+| Tailscale (VPN) | 27.2 | 2028, quando o grupo pedir |
+| .wslconfig + localhost | 1.2 | Semana 1 · out/2026 |
+| Terminal · PowerShell · winget | 1.2 | Semana 1 · out/2026 |
+| Excalidraw / draw.io | 1.2 | Semana 1 · out/2026 |
+| Unity · Cocos | 1.9 | Semana 1 · out/2026 |
+| Gerenciador de boot | 20.1 | 2027, conforme cada compra |
+| NitroSense + drivers AMD e NVIDIA | 0.3 | Semana 1 · out/2026 |
+| 7-Zip | 1.2 | Semana 1 · out/2026 |
+| PowerToys | 1.2 | Semana 1 · out/2026 |
+| SumatraPDF | 1.2 | Semana 1 · out/2026 |
+| ShareX | 1.2 | Semana 1 · out/2026 |
+| LibreOffice | 1.2 | Semana 1 · out/2026 |
+| Firefox (2º navegador) | 1.2 | Semana 1 · out/2026 |
+| Windows 11 Home | 0.3, 0.5 | Semana 1 · out/2026 |
+| VS Code | 1.2, 1.6 | Semana 1 · out/2026 |
+| Obsidian + Git | 1.2, 2.8, 6.4 | Semana 1 · out/2026; Semana 2 · nov/2026; Semanas 3 e 4 · nov/2026 |
+| Syncthing | 1.2, 2.9 | Semana 1 · out/2026; Semana 2 · nov/2026 |
+| DBeaver · Bruno | 1.2 | Semana 1 · out/2026 |
+| Navegador + Claude in Chrome | 1.7 | Semana 1 · out/2026 |
+| VirtualBox | 1.2 | Semana 1 · out/2026 |
+| Wireshark | 1.2 | Semana 1 · out/2026 |
+| VMs: Kali · Arch · Servidores | 20.3 | 2027, conforme cada compra |
+| Arduino IDE 2 | 1.2 | Semana 1 · out/2026 |
+| Rufus (grava pendrives) | 18.1 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+
+### Segurança e cofre
+
+| Bloco | Passo | Quando |
+|---|---|---|
+| Commits assinados (chave SSH) | 2.6, 14.1 | Semana 2 · nov/2026; Semana 11 · jan/2027 |
+| restic (backup criptografado) | 5.1, 5.4 | Semana 3 · nov/2026 |
+| Chave física (YubiKey) | 20.5 | 2027, conforme cada compra |
+| TPM + Secure Boot | 1.4 | Semana 1 · out/2026 |
+| BitLocker | 1.4 | Semana 1 · out/2026 |
+| Defender + Firewall | 1.5 | Semana 1 · out/2026 |
+| KeePassXC | 1.3 | Semana 1 · out/2026 |
+| App 2FA (celular) | 0.4 | Semana 1 · out/2026 |
+| Backup 3-2-1 | 5.1, 5.2, 5.3, 6.2 | Semana 3 · nov/2026; Semanas 3 e 4 · nov/2026 |
+
+### Hardware
+
+| Bloco | Passo | Quando |
+|---|---|---|
+| Nobreak | 0.2 | Semana 1 · out/2026 |
+| Base com cooler | 0.2 | Semana 1 · out/2026 |
+| SSD SATA 2,5" | 20.4 | 2027, conforme cada compra |
+| Acer Nitro (32 GB, GTX 1650) | 0.2 | Semana 1 · out/2026 |
+| 2º NVMe (1–4 TB) | 20.1 | 2027, conforme cada compra |
+| 2º monitor | 0.2 | Semana 1 · out/2026 |
+| Microfone + câmera | 20.6 | 2027, conforme cada compra |
+| Celular | 0.2, 2.9 | Semana 1 · out/2026; Semana 2 · nov/2026 |
+| Disco externo | 0.1, 0.2, 5.1 | Semana 1 · out/2026; Semana 3 · nov/2026 |
+| Pendrive Kali (persistência) | 18.1 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| Pendrive Arch (instalação portátil) | 18.2 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| Arduino · ESP32 · Pi | 0.2 | Semana 1 · out/2026 |
+| Servidor caseiro (NAS + serviços) | 27.1 | 2028, quando o grupo pedir |
+| SSD externo (USB-C 10 Gbps) | 0.2 | Semana 1 · out/2026 |
+| Workstation com GPU | 27.3 | 2028, quando o grupo pedir |

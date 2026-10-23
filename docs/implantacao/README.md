@@ -4,23 +4,27 @@
 
 Como sair do planejamento para o setup funcionando: scripts que instalam, scripts que conferem e um roteiro com o critério de pronto de cada passo. Quando a última fase passar, alimentar o sistema é só colocar arquivos numa pasta.
 
-- [Roteiro de implantação](roteiro.md): 20 fases e 148 passos, na ordem, com o que cada passo implanta (gerado)
+- [Roteiro de implantação](roteiro.md): 30 fases e 207 passos, na ordem, com o que cada passo implanta (gerado)
 - [`acompanhamento.html`](acompanhamento.html): a mesma lista para marcar o progresso no navegador (gerado)
 
-## Tudo o que está no setup está no roteiro
+## Todo o planejamento está no passo a passo
 
-Cada passo diz quais blocos do [mapa do setup](../mapa.html) ele implanta. Os 324 blocos têm lugar:
+Nada foi retirado. Cada um dos 325 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entra em algum passo do roteiro, e cada fase diz **quando**: a semana e o mês, ou o gatilho que precisa acontecer antes (o mini-curso vender, a renda passar do valor de virada, o capítulo 1 ficar pronto, o portão de cada negócio).
 
-| Onde | Blocos | O que significa |
-|---|---:|---|
-| Num passo do roteiro | 237 | Você instala, configura ou cria seguindo o passo |
-| Peça a construir | 9 | Ainda não existe como código: as peças do pipeline de imagens e os agentes da editora, que começam com o capítulo 1 |
-| Não se instala | 3 | Públicos (alunos, recrutadores) e os conectores que você decidiu não usar |
-| Para depois | 75 | Marcados como futuro no mapa: os 9 negócios físicos, CNPJ, anúncios pagos, AWS, Kubernetes, YubiKey e afins |
+| Período | Fases |
+|---|---|
+| Semanas 1 a 11 (out/2026 a jan/2027) | 0 a 14: o núcleo, tudo o que o notebook já suporta |
+| Jan a abr/2027 | 15 Base dos sistemas AM, 16 Nuvem e deploy |
+| Quando o capítulo 1 estiver pronto | 17 Editora |
+| Semana 2 em diante e 2027 | 18 Dados, IA e pendrives |
+| 2027, por gatilho ou compra | 19 Marketing pago, 20 Linux nativo, 21 IA nos sistemas AM, 22 Sistemas AM à venda, 23 CNPJ, 24 Agentes do grupo, 25 Editora depois do primeiro livro |
+| 2028 | 26 Distribuído, plataforma e segunda nuvem, 27 Infraestrutura própria |
+| Fase A, B e C, pelos portões | 28 Negócios do grupo em Barbacena, um por vez |
+| Sempre | 29 Estudo contínuo |
 
-O CI confere isso a cada envio: se alguém acrescentar um bloco ao mapa e esquecer o roteiro, o teste falha e diz qual bloco ficou de fora. A lista completa está no fim do [roteiro](roteiro.md#cobertura) e do acompanhamento.
+No fim do [roteiro](roteiro.md#quando-entra-cada-bloco) e do acompanhamento há a tabela **Quando entra cada bloco**, camada por camada. No diagrama do ecossistema e no mapa, tocar num bloco mostra o passo e a data. O CI confere a cada envio: um bloco novo sem passo, ou uma fase sem data, faz o teste falhar.
 
-Os 9 negócios ficam em "para depois" de propósito: cada um tem o próprio plano de abertura em [Negócios](../negocios/README.md), com o mínimo para abrir e o momento certo. O roteiro deixa pronta a base que todos usam.
+As datas são uma proposta para caber em umas 5 horas por semana; os gatilhos não têm data porque dependem de resultado. O que não entra de jeito nenhum está em [Decisões](../fora-do-setup.md), com o motivo.
 
 ## O que fica funcionando no fim do núcleo
 
@@ -116,11 +120,11 @@ Não deu para testar aqui:
 
 ## Primeiro o que dá para fazer hoje
 
-No acompanhamento, o filtro **Só o que dá para fazer hoje** esconde os passos que precisam de compra, de pagamento ou de um conteúdo seu que ainda não existe (como o capítulo 1 do livro). São 135 dos 148 passos, cerca de 75 horas, só com o notebook e contas grátis. Os 13 restantes mostram exatamente o que falta.
+No acompanhamento, o filtro **Só o que dá para fazer hoje** esconde os passos que precisam de compra, de pagamento, de um conteúdo seu que ainda não existe ou de um gatilho que ainda não aconteceu. Sobram 143 dos 207 passos, só com o notebook e contas grátis.
 
 ## Ritmo sugerido
 
-São cerca de 89 horas no total: 50 no núcleo (fases 0 a 14) e 38 na expansão (15 a 19). No bloco de construção da sua semana (quinta e sexta de manhã, umas 5 horas):
+O núcleo (fases 0 a 14) leva cerca de 51 horas. Da 15 em diante o ritmo é o da sua renda e das suas compras: os tempos dessas fases são estimativas grosseiras do seu trabalho, e os negócios levam anos. No bloco de construção da sua semana (quinta e sexta de manhã, umas 5 horas):
 
 | Semana | Fases |
 |---|---|
@@ -132,7 +136,8 @@ São cerca de 89 horas no total: 50 no núcleo (fases 0 a 14) e 38 na expansão 
 | 6 e 7 | 11 Contas, canais e sites |
 | 8 a 10 | 12 Vendas e finanças no CPF |
 | 11 | 13 Vendas medidas, 14 Teste do núcleo |
-| Depois | 15 Sistemas AM e 16 Nuvem quando o primeiro sistema entrar na esteira; 17 Editora quando o capítulo 1 e o seu modelo estiverem prontos; 19 Estudo, contínuo |
+| Depois | 15 Sistemas AM e 16 Nuvem quando o primeiro sistema entrar na esteira; 17 Editora quando o capítulo 1 e o seu modelo estiverem prontos; 29 Estudo, contínuo |
+| 2027 em diante | 19 a 28, cada uma na data ou no gatilho da tabela acima |
 | Quando quiser, depois da fase 2 | 18 Dados, IA e pendrives: os pendrives e o laboratório não dependem de nada além do Linux pronto; o fine-tuning vem depois do dataset |
 
 O acervo vem cedo de propósito: na semana 4 você já sabe tudo o que tem e o que dá para vender, e o pipeline de conteúdo da semana 5 passa a ter material para trabalhar.

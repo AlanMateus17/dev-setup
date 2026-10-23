@@ -10,7 +10,7 @@
 - [Contas e conexões](contas.md)
 - [Auditoria: o que faltava](auditoria.md)
 - [Sistemas operacionais](sistemas-operacionais.md) · [Nuvem](nuvem.md) · [Mercado](mercado.md) · [Roteiro de estudo](roteiro.md)
-- [Peças autorais](pecas-autorais.md) · [Fora do setup](fora-do-setup.md)
+- [Peças autorais](pecas-autorais.md) · [Decisões](fora-do-setup.md)
 - [Marketing, vendas e automação](marketing/README.md): funil, canais sem rosto com voz clonada, publicação automática, tráfego, parcerias, internacional e medição de lucro
 - [Editora AMS Silva](editora/README.md): estrutura legal, pipeline de produção dos livros, rigor editorial, identidade visual, avaliação, produtos, lançamento e roteiro
 - [Implantação](implantacao/README.md): roteiro que cobre todos os blocos do setup, scripts que instalam e verificadores que conferem; pipeline de conteúdo e stack de automação
@@ -34,7 +34,7 @@
 - [14 · Estudo e carreira](camadas/14-est.md) (7 blocos)
 - [13 · Produção de conteúdo](camadas/13-cont.md) (6 blocos)
 - [12 · Nuvem, código e entrega](camadas/12-nuvem.md) (17 blocos)
-- [11 · Aplicação: sistemas AM (Aura)](camadas/11-app.md) (17 blocos)
+- [11 · Aplicação: sistemas AM (Aura)](camadas/11-app.md) (18 blocos)
 - [10 · Observabilidade](camadas/10-obs.md) (8 blocos)
 - [09 · Containers, Kubernetes e infra como código](camadas/09-cnt.md) (12 blocos)
 - [08 · Claude: recursos, conectores e plugins](camadas/08-clc.md) (19 blocos)

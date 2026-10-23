@@ -136,15 +136,15 @@ flowchart LR
 
 ## Blocos
 
-| Bloco | Tipo | O que faz |
-|---|---|---|
-| [Mini-curso Lógica de Programação](#curso) | Local | Primeiro produto de lançamento, para validar antes de construir mais. |
-| [Formações (TI, Matemática, Finanças)](#form) | Local · futuro | Cursos completos, depois que o mini-curso vender. |
-| [Templates e código-fonte](#tmpl) | Local | Frontends prontos e projetos vendidos como download. |
-| [Livro Lógica e Máquina](#livro) | Local | Lógica e Máquina, em 5 volumes, publicado pela Editora AMS Silva. Ebook, impresso, kit, curso e site saem da mesma fonte. |
-| [Aulas particulares](#aulas) | Físico | Seus estudos viram aula paga. |
-| [Sites para pequenas empresas](#sites) | Local | Freelance em Barbacena: sites e lojas. |
-| [Sistemas AM (SaaS)](#saas) | Remoto · futuro | AM Kaixara, AM Rendara e os demais, vendidos por assinatura. |
+| Bloco | Tipo | O que faz | Quando entra |
+|---|---|---|---|
+| [Mini-curso Lógica de Programação](#curso) | Local | Primeiro produto de lançamento, para validar antes de construir mais. | passo 12.5 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Formações (TI, Matemática, Finanças)](#form) | Local · futuro | Cursos completos, depois que o mini-curso vender. | passo 19.10 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
+| [Templates e código-fonte](#tmpl) | Local | Frontends prontos e projetos vendidos como download. | passo 15.7 · Jan a fev/2027 |
+| [Livro Lógica e Máquina](#livro) | Local | Lógica e Máquina, em 5 volumes, publicado pela Editora AMS Silva. Ebook, impresso, kit, curso e site saem da mesma fonte. | passo 17.2 · Quando o capítulo 1 estiver pronto (começa quando: o capítulo 1 e o seu modelo de criação prontos) |
+| [Aulas particulares](#aulas) | Físico | Seus estudos viram aula paga. | passo 12.8 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Sites para pequenas empresas](#sites) | Local | Freelance em Barbacena: sites e lojas. | passo 11.13 · Semanas 6 e 7 · dez/2026 |
+| [Sistemas AM (SaaS)](#saas) | Remoto · futuro | AM Kaixara, AM Rendara e os demais, vendidos por assinatura. | passo 22.1 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
 
 <a id="curso"></a>
 
@@ -153,6 +153,8 @@ flowchart LR
 *Local*
 
 Primeiro produto de lançamento, para validar antes de construir mais.
+
+**Quando entra:** passo 12.5 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -175,6 +177,8 @@ Primeiro produto de lançamento, para validar antes de construir mais.
 
 Cursos completos, depois que o mini-curso vender.
 
+**Quando entra:** passo 19.10 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [DIO (parceria)](20-venda.md#dio) | Plataformas de venda e recebimento | proposta de parceria |
@@ -187,6 +191,8 @@ Cursos completos, depois que o mini-curso vender.
 *Local*
 
 Frontends prontos e projetos vendidos como download.
+
+**Quando entra:** passo 15.7 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -202,6 +208,8 @@ Frontends prontos e projetos vendidos como download.
 *Local*
 
 Lógica e Máquina, em 5 volumes, publicado pela Editora AMS Silva. Ebook, impresso, kit, curso e site saem da mesma fonte.
+
+**Quando entra:** passo 17.2 · Quando o capítulo 1 estiver pronto (começa quando: o capítulo 1 e o seu modelo de criação prontos) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -226,6 +234,8 @@ Lógica e Máquina, em 5 volumes, publicado pela Editora AMS Silva. Ebook, impre
 
 Seus estudos viram aula paga.
 
+**Quando entra:** passo 12.8 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Mercado Pago](20-venda.md#mp) | Plataformas de venda e recebimento | cobrança |
@@ -239,6 +249,8 @@ Seus estudos viram aula paga.
 *Local*
 
 Freelance em Barbacena: sites e lojas.
+
+**Quando entra:** passo 11.13 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -259,6 +271,8 @@ Freelance em Barbacena: sites e lojas.
 *Remoto · futuro*
 
 AM Kaixara, AM Rendara e os demais, vendidos por assinatura.
+
+**Quando entra:** passo 22.1 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

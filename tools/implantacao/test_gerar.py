@@ -1,7 +1,7 @@
 import copy
 import unittest
 
-from gerar import carregar, carregar_eco, cobertura, gerar_html, gerar_md, validar
+from gerar import carregar, carregar_eco, gerar_html, gerar_md, quando_por_bloco, validar
 
 
 class TestImplantacao(unittest.TestCase):
@@ -29,11 +29,11 @@ class TestImplantacao(unittest.TestCase):
                 self.assertIn(p["titulo"], md)
                 self.assertIn(p["pronto"], md)
 
-    def test_todo_bloco_do_setup_tem_lugar(self):
-        c = cobertura(self.d, self.eco)
-        self.assertEqual([b["id"] for b in c["faltando"]], [])
-        soma = len(c["nos_passos"]) + len(c["construir"]) + len(c["nao_instala"]) + len(c["depois"])
-        self.assertEqual(soma, len(self.eco["blocos"]))
+    def test_todo_bloco_do_setup_esta_num_passo_com_quando(self):
+        qb = quando_por_bloco(self.d)
+        faltam = [b["id"] for b in self.eco["blocos"] if b["id"] not in qb]
+        self.assertEqual(faltam, [])
+        self.assertTrue(all(f.get("quando") for f in self.d["fases"]))
 
     def test_detecta_bloco_fora_do_roteiro(self):
         d = copy.deepcopy(self.d)
@@ -42,19 +42,19 @@ class TestImplantacao(unittest.TestCase):
                 p["blocos"] = [b for b in p["blocos"] if b != "kee"]
         self.assertTrue(any("kee" in e and "fora do roteiro" in e for e in validar(d, self.eco)))
 
-    def test_detecta_bloco_novo_no_setup(self):
+    def test_detecta_bloco_novo_no_setup_mesmo_futuro(self):
         eco = copy.deepcopy(self.eco)
         eco["blocos"].append({"id": "novo", "camada": "win", "rotulo": "Programa novo", "tipo": "local",
-                              "conta": False, "futuro": False, "descricao": "x"})
+                              "conta": False, "futuro": True, "descricao": "x"})
         self.assertTrue(any("novo" in e for e in validar(self.d, eco)))
 
-    def test_detecta_bloco_inexistente_e_duplicado(self):
+    def test_detecta_bloco_inexistente_e_fase_sem_quando(self):
         d = copy.deepcopy(self.d)
         d["fases"][0]["passos"][0]["blocos"].append("naoexiste")
-        d["cobertura"]["construir"]["kee"] = "x"
+        d["fases"][1]["quando"] = ""
         erros = validar(d, self.eco)
         self.assertTrue(any("naoexiste" in e for e in erros))
-        self.assertTrue(any("kee" in e and "também" in e for e in erros))
+        self.assertTrue(any("sem 'quando'" in e for e in erros))
 
     def test_precisa_invalido_e_resumo_de_hoje(self):
         d = copy.deepcopy(self.d)
@@ -64,7 +64,7 @@ class TestImplantacao(unittest.TestCase):
 
     def test_roteiro_e_pagina_mostram_cobertura(self):
         md, html = gerar_md(self.d, self.eco), gerar_html(self.d, self.eco)
-        self.assertIn("## Cobertura do setup", md)
+        self.assertIn("## Quando entra cada bloco", md)
         self.assertIn("Implanta: KeePassXC", md)
         self.assertIn('"implanta"', html)
         self.assertNotIn("__DATA__", html)
