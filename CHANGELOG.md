@@ -10,6 +10,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 - Conexões com o sentido trocado (Sentry, Seq, Mailpit, Kafka, Terraform → Google Cloud, Obsidian → Anki, livro → isca, flywheel → pipeline) e conexões erradas ou duplicadas (n8n → Hotmart, Obsidian → livro, TeX → livro, Arduino nos dois sentidos, 7-Zip → backup, edição do professor → sites).
 - Blocos na camada errada: n8n e MailerLite (marketing), comunidade e Google Perfil da Empresa (público), Syncthing (Windows), assinatura e API do Claude (Claude).
 - Mapa do setup: células vazias cinza no fim de cada camada, cartões de mercado com o texto empurrado para baixo e a lista de cortes desalinhada.
+- Roteiro: a página de vendas do Instituto AMS ia para o Vercel, cujo plano grátis não permite uso comercial; agora vai para a Cloudflare Pages, como o mapa já indicava.
 - Contas: a lista agora sai dos próprios blocos marcados com conta; Umami e Anki passam a pedir conta; Cloudflare e vidIQ saem de "sugeridos" (já estão conectados).
 
 ### Adicionado

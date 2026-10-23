@@ -901,14 +901,14 @@
     },
     {
      "id": "vercel-pagina",
-     "titulo": "Publicar o site do Instituto AMS com a página de pré-venda no Vercel",
+     "titulo": "Publicar o site do Instituto AMS com a página de pré-venda na Cloudflare Pages",
      "quem": "claude",
      "pronto": "Página no ar com o domínio e o Pixel",
      "tempo_min": 60,
-     "nota": "Depende de aprovar o acesso do conector do Vercel à sua equipe.",
+     "nota": "Fica na Cloudflare Pages porque o plano grátis do Vercel não permite uso comercial. O Claude publica pelo conector da Cloudflare ou pelo Wrangler.",
      "blocos": [
-      "vercel",
-      "inst"
+      "inst",
+      "cf"
      ]
     },
     {

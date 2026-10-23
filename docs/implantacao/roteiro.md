@@ -705,13 +705,13 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 - [ ] **Pronto quando:** Site no ar com portfólio, blog e formulário da newsletter
 - Implanta: Site pessoal + blog (Jekyll) · GitHub Pages
 
-### 10.8 Publicar o site do Instituto AMS com a página de pré-venda no Vercel
+### 10.8 Publicar o site do Instituto AMS com a página de pré-venda na Cloudflare Pages
 
 **Claude com você** · 1 h 00 min
 
 - [ ] **Pronto quando:** Página no ar com o domínio e o Pixel
-- Depende de aprovar o acesso do conector do Vercel à sua equipe.
-- Implanta: Vercel · Instituto AMS
+- Fica na Cloudflare Pages porque o plano grátis do Vercel não permite uso comercial. O Claude publica pelo conector da Cloudflare ou pelo Wrangler.
+- Implanta: Instituto AMS · Cloudflare (DNS, Pages, e-mail)
 
 ### 10.9 Publicar o site do Grupo AMtech e o Catálogo do HTML
 
