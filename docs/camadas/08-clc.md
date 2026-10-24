@@ -131,25 +131,25 @@ flowchart LR
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Projects + memória](#proj) | Remoto · precisa de conta | Um Project por frente (Aura, aulas, livro, infoprodutos) com arquivos e instruções fixas. A memória lembra o contexto entre conversas. | passo 8.1 · Semana 4 · nov/2026 |
-| [Artifacts (Docs, Slides, Sheets…)](#arts) | Remoto · precisa de conta | Documentos, apresentações, planilhas e designs editáveis e compartilháveis. O Caixa da Casa e este diagrama são artifacts. | passo 8.1 · Semana 4 · nov/2026 |
-| [Pesquisa aprofundada](#resq) | Remoto · precisa de conta | Relatório com dezenas de fontes: mercado de cursos, concorrentes, editais. | passo 8.1 · Semana 4 · nov/2026 |
-| [Tarefas agendadas](#sched) | Remoto · precisa de conta | O Claude executa sozinho em horário marcado: resumo semanal dos repositórios, rascunho de post, revisão do plano de estudos. | passo 8.1 · Semana 4 · nov/2026 |
-| [Claude in Chrome + uso do computador](#cchr) | Remoto · precisa de conta | O Claude opera o navegador e os apps do Windows por você, pedindo aprovação nas ações sensíveis. | passo 2.7 · Semana 1 · out/2026 |
-| [Claude (assinatura e API)](#anth) | Remoto · precisa de conta | Assinatura usada pelo app e pelo Claude Code; API para as funções de IA dos sistemas. | passo 10.2 · Semana 5 · nov/2026 |
-| [Conector Google (Gmail, Drive…)](#cgws) | Remoto · precisa de conta | Já conectado. Lê e organiza e-mail, agenda de aulas, arquivos do Drive, Docs, Sheets e Slides. | passo 8.2 · Semana 4 · nov/2026 |
-| [Conectores Canva + Figma](#ccan) | Remoto · precisa de conta | Já conectados. Canva para posts e capas; Figma para as telas dos sistemas e do Instituto AMS. | passo 8.2 · Semana 4 · nov/2026; passo 11.4 · Semana 5 · dez/2026 |
-| [Conector MailerLite](#cml) | Remoto · precisa de conta | Já conectado. O Claude monta grupos, formulários e campanhas da newsletter. | passo 8.2 · Semana 4 · nov/2026; passo 12.6 · Semanas 6 e 7 · dez/2026 |
-| [Vercel · AWS · Microsoft Learn](#cdev) | Remoto · precisa de conta | Já conectados. Deploy e logs na Vercel; documentação oficial da AWS e da Microsoft (Azure, .NET) direto na conversa. | passo 8.2 · Semana 4 · nov/2026 |
-| [Conector Upwork](#cupw) | Remoto · precisa de conta | Já conectado. Busca freelas e ajuda com propostas: renda extra com sites e sistemas. | passo 8.2 · Semana 4 · nov/2026 |
-| [Lovable + Supabase](#clov) | Remoto · precisa de conta | Já conectados. Fora da sua stack, mas ótimos para validar antes de construir: uma landing ou protótipo em horas para testar se vende. | passo 8.2 · Semana 4 · nov/2026 |
-| [Notion · monday · GitBook · Stripe](#cdup) | Remoto · precisa de conta | Conectados, mas fora do setup por decisão sua: repetem o Obsidian, o GitHub Projects, o MkDocs e as plataformas de curso. Desconecte para não confundir. | passo 8.2 · Semana 4 · nov/2026 |
-| [Plugins: small- business + marketing](#pbiz) | Remoto | Rotinas prontas de conteúdo, funil, SEO, propostas, cobrança e fechamento do mês. | passo 8.3 · Semana 4 · nov/2026 |
-| [Plugins: engineering + design](#peng) | Remoto | Revisão de código, arquitetura, ADR, testes, incidentes, crítica de design e acessibilidade. | passo 8.3 · Semana 4 · nov/2026 |
-| [Plugins: finance + Fiscal.ai](#pfin) | Remoto | Demonstrativos e conciliação para a empresa; dados de empresas abertas para os seus estudos de investimento. | passo 8.3 · Semana 4 · nov/2026 |
-| [Plugins: Hostinger · Adobe · Cloudinary](#phst) | Remoto | Hostinger para os sites de clientes; Adobe e Cloudinary para editar e otimizar imagens e vídeos. | passo 8.3 · Semana 4 · nov/2026 |
-| [Conector Cloudflare](#ccf) | Remoto · precisa de conta | Conectado. Este conector avisa que está descontinuado; troque pelo Cloudflare API MCP (mcp.cloudflare.com/mcp), que cobre DNS, Pages e R2. | passo 8.2 · Semana 4 · nov/2026 |
-| [Conector vidIQ](#cvid) | Remoto · precisa de conta | Conectado. Palavras-chave, tendências, títulos e thumbnails para YouTube e Instagram. | passo 8.2 · Semana 4 · nov/2026 |
+| [Projects + memória](#proj) | Remoto · precisa de conta | Um Project por frente (Aura, aulas, livro, infoprodutos) com arquivos e instruções fixas. A memória lembra o contexto entre conversas. | passo 9.1 · Semana 4 · nov/2026 |
+| [Artifacts (Docs, Slides, Sheets…)](#arts) | Remoto · precisa de conta | Documentos, apresentações, planilhas e designs editáveis e compartilháveis. O Caixa da Casa e este diagrama são artifacts. | passo 9.1 · Semana 4 · nov/2026 |
+| [Pesquisa aprofundada](#resq) | Remoto · precisa de conta | Relatório com dezenas de fontes: mercado de cursos, concorrentes, editais. | passo 9.1 · Semana 4 · nov/2026 |
+| [Tarefas agendadas](#sched) | Remoto · precisa de conta | O Claude executa sozinho em horário marcado: resumo semanal dos repositórios, rascunho de post, revisão do plano de estudos. | passo 9.1 · Semana 4 · nov/2026 |
+| [Claude in Chrome + uso do computador](#cchr) | Remoto · precisa de conta | O Claude opera o navegador e os apps do Windows por você, pedindo aprovação nas ações sensíveis. | passo 3.6 · Semana 1 · out/2026 |
+| [Claude (assinatura e API)](#anth) | Remoto · precisa de conta | Assinatura usada pelo app e pelo Claude Code; API para as funções de IA dos sistemas. | passo 11.2 · Semana 5 · nov/2026 |
+| [Conector Google (Gmail, Drive…)](#cgws) | Remoto · precisa de conta | Já conectado. Lê e organiza e-mail, agenda de aulas, arquivos do Drive, Docs, Sheets e Slides. | passo 2.3 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 9.2 · Semana 4 · nov/2026 |
+| [Conectores Canva + Figma](#ccan) | Remoto · precisa de conta | Já conectados. Canva para posts e capas; Figma para as telas dos sistemas e do Instituto AMS. | passo 9.2 · Semana 4 · nov/2026; passo 12.4 · Semana 5 · dez/2026 |
+| [Conector MailerLite](#cml) | Remoto · precisa de conta | Já conectado. O Claude monta grupos, formulários e campanhas da newsletter. | passo 9.2 · Semana 4 · nov/2026; passo 13.6 · Semanas 6 e 7 · dez/2026 |
+| [Vercel · AWS · Microsoft Learn](#cdev) | Remoto · precisa de conta | Já conectados. Deploy e logs na Vercel; documentação oficial da AWS e da Microsoft (Azure, .NET) direto na conversa. | passo 9.2 · Semana 4 · nov/2026 |
+| [Conector Upwork](#cupw) | Remoto · precisa de conta | Já conectado. Busca freelas e ajuda com propostas: renda extra com sites e sistemas. | passo 9.2 · Semana 4 · nov/2026 |
+| [Lovable + Supabase](#clov) | Remoto · precisa de conta | Já conectados. Fora da sua stack, mas ótimos para validar antes de construir: uma landing ou protótipo em horas para testar se vende. | passo 9.2 · Semana 4 · nov/2026 |
+| [Notion · monday · GitBook · Stripe](#cdup) | Remoto · precisa de conta | Conectados, mas fora do setup por decisão sua: repetem o Obsidian, o GitHub Projects, o MkDocs e as plataformas de curso. Desconecte para não confundir. | passo 9.2 · Semana 4 · nov/2026 |
+| [Plugins: small- business + marketing](#pbiz) | Remoto | Rotinas prontas de conteúdo, funil, SEO, propostas, cobrança e fechamento do mês. | passo 9.3 · Semana 4 · nov/2026 |
+| [Plugins: engineering + design](#peng) | Remoto | Revisão de código, arquitetura, ADR, testes, incidentes, crítica de design e acessibilidade. | passo 9.3 · Semana 4 · nov/2026 |
+| [Plugins: finance + Fiscal.ai](#pfin) | Remoto | Demonstrativos e conciliação para a empresa; dados de empresas abertas para os seus estudos de investimento. | passo 9.3 · Semana 4 · nov/2026 |
+| [Plugins: Hostinger · Adobe · Cloudinary](#phst) | Remoto | Hostinger para os sites de clientes; Adobe e Cloudinary para editar e otimizar imagens e vídeos. | passo 9.3 · Semana 4 · nov/2026 |
+| [Conector Cloudflare](#ccf) | Remoto · precisa de conta | Conectado. Este conector avisa que está descontinuado; troque pelo Cloudflare API MCP (mcp.cloudflare.com/mcp), que cobre DNS, Pages e R2. | passo 9.2 · Semana 4 · nov/2026 |
+| [Conector vidIQ](#cvid) | Remoto · precisa de conta | Conectado. Palavras-chave, tendências, títulos e thumbnails para YouTube e Instagram. | passo 9.2 · Semana 4 · nov/2026 |
 
 <a id="proj"></a>
 
@@ -159,7 +159,7 @@ flowchart LR
 
 Um Project por frente (Aura, aulas, livro, infoprodutos) com arquivos e instruções fixas. A memória lembra o contexto entre conversas.
 
-**Quando entra:** passo 8.1 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 9.1 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -173,7 +173,7 @@ Um Project por frente (Aura, aulas, livro, infoprodutos) com arquivos e instruç
 
 Documentos, apresentações, planilhas e designs editáveis e compartilháveis. O Caixa da Casa e este diagrama são artifacts.
 
-**Quando entra:** passo 8.1 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 9.1 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -188,7 +188,7 @@ Documentos, apresentações, planilhas e designs editáveis e compartilháveis. 
 
 Relatório com dezenas de fontes: mercado de cursos, concorrentes, editais.
 
-**Quando entra:** passo 8.1 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 9.1 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -202,7 +202,7 @@ Relatório com dezenas de fontes: mercado de cursos, concorrentes, editais.
 
 O Claude executa sozinho em horário marcado: resumo semanal dos repositórios, rascunho de post, revisão do plano de estudos.
 
-**Quando entra:** passo 8.1 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 9.1 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -216,7 +216,7 @@ O Claude executa sozinho em horário marcado: resumo semanal dos repositórios, 
 
 O Claude opera o navegador e os apps do Windows por você, pedindo aprovação nas ações sensíveis.
 
-**Quando entra:** passo 2.7 · Semana 1 · out/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 3.6 · Semana 1 · out/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -231,7 +231,7 @@ O Claude opera o navegador e os apps do Windows por você, pedindo aprovação n
 
 Assinatura usada pelo app e pelo Claude Code; API para as funções de IA dos sistemas.
 
-**Quando entra:** passo 10.2 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 11.2 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -248,7 +248,7 @@ Assinatura usada pelo app e pelo Claude Code; API para as funções de IA dos si
 
 Já conectado. Lê e organiza e-mail, agenda de aulas, arquivos do Drive, Docs, Sheets e Slides.
 
-**Quando entra:** passo 8.2 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 2.3 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 9.2 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -264,7 +264,7 @@ Já conectado. Lê e organiza e-mail, agenda de aulas, arquivos do Drive, Docs, 
 
 Já conectados. Canva para posts e capas; Figma para as telas dos sistemas e do Instituto AMS.
 
-**Quando entra:** passo 8.2 · Semana 4 · nov/2026; passo 11.4 · Semana 5 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 9.2 · Semana 4 · nov/2026; passo 12.4 · Semana 5 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -280,7 +280,7 @@ Já conectados. Canva para posts e capas; Figma para as telas dos sistemas e do 
 
 Já conectado. O Claude monta grupos, formulários e campanhas da newsletter.
 
-**Quando entra:** passo 8.2 · Semana 4 · nov/2026; passo 12.6 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 9.2 · Semana 4 · nov/2026; passo 13.6 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -294,7 +294,7 @@ Já conectado. O Claude monta grupos, formulários e campanhas da newsletter.
 
 Já conectados. Deploy e logs na Vercel; documentação oficial da AWS e da Microsoft (Azure, .NET) direto na conversa.
 
-**Quando entra:** passo 8.2 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 9.2 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -310,7 +310,7 @@ Já conectados. Deploy e logs na Vercel; documentação oficial da AWS e da Micr
 
 Já conectado. Busca freelas e ajuda com propostas: renda extra com sites e sistemas.
 
-**Quando entra:** passo 8.2 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 9.2 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -324,7 +324,7 @@ Já conectado. Busca freelas e ajuda com propostas: renda extra com sites e sist
 
 Já conectados. Fora da sua stack, mas ótimos para validar antes de construir: uma landing ou protótipo em horas para testar se vende.
 
-**Quando entra:** passo 8.2 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 9.2 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -338,7 +338,7 @@ Já conectados. Fora da sua stack, mas ótimos para validar antes de construir: 
 
 Conectados, mas fora do setup por decisão sua: repetem o Obsidian, o GitHub Projects, o MkDocs e as plataformas de curso. Desconecte para não confundir.
 
-**Quando entra:** passo 8.2 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 9.2 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -352,7 +352,7 @@ Conectados, mas fora do setup por decisão sua: repetem o Obsidian, o GitHub Pro
 
 Rotinas prontas de conteúdo, funil, SEO, propostas, cobrança e fechamento do mês.
 
-**Quando entra:** passo 8.3 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 9.3 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -368,7 +368,7 @@ Rotinas prontas de conteúdo, funil, SEO, propostas, cobrança e fechamento do m
 
 Revisão de código, arquitetura, ADR, testes, incidentes, crítica de design e acessibilidade.
 
-**Quando entra:** passo 8.3 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 9.3 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -382,7 +382,7 @@ Revisão de código, arquitetura, ADR, testes, incidentes, crítica de design e 
 
 Demonstrativos e conciliação para a empresa; dados de empresas abertas para os seus estudos de investimento.
 
-**Quando entra:** passo 8.3 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 9.3 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -396,7 +396,7 @@ Demonstrativos e conciliação para a empresa; dados de empresas abertas para os
 
 Hostinger para os sites de clientes; Adobe e Cloudinary para editar e otimizar imagens e vídeos.
 
-**Quando entra:** passo 8.3 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 9.3 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -411,7 +411,7 @@ Hostinger para os sites de clientes; Adobe e Cloudinary para editar e otimizar i
 
 Conectado. Este conector avisa que está descontinuado; troque pelo Cloudflare API MCP (mcp.cloudflare.com/mcp), que cobre DNS, Pages e R2.
 
-**Quando entra:** passo 8.2 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 9.2 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -425,7 +425,7 @@ Conectado. Este conector avisa que está descontinuado; troque pelo Cloudflare A
 
 Conectado. Palavras-chave, tendências, títulos e thumbnails para YouTube e Instagram.
 
-**Quando entra:** passo 8.2 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 9.2 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

@@ -1,8 +1,8 @@
 {
  "fases": [
   {
+   "id": "f0",
    "titulo": "Diagnóstico: o que você já tem",
-   "quando": "Antes de tudo · semana 1 (out/2026)",
    "objetivo": "Saber exatamente o que o notebook já tem de hardware, segurança, programas, contas e documentos, e começar o roteiro a partir daí.",
    "passos": [
     {
@@ -71,7 +71,7 @@
      ]
     }
    ],
-   "id": "f0"
+   "quando": "Antes de tudo · semana 1 (out/2026)"
   },
   {
    "id": "f1",
@@ -135,6 +135,157 @@
   },
   {
    "id": "f2",
+   "titulo": "Senhas: recuperar, trocar e guardar",
+   "objetivo": "Toda conta com senha única guardada no KeePassXC, verificação em duas etapas nas críticas e um jeito de recuperar tudo se perder o notebook ou o celular.",
+   "passos": [
+    {
+     "id": "keepass",
+     "titulo": "Instalar o KeePassXC e criar o cofre com uma senha mestra de 6 palavras",
+     "quem": "voce",
+     "pronto": "Arquivo Cofre.kdbx em Documentos\\Cofre abre com a senha mestra; bloqueio automático depois de 5 minutos parado",
+     "tempo_min": 30,
+     "blocos": [
+      "kee"
+     ],
+     "comando": "winget install --id KeePassXCTeam.KeePassXC -e",
+     "nota": "Gere a senha mestra no próprio KeePassXC (Ferramentas > Gerador de senhas > Frase-senha, 6 palavras) e decore nos primeiros dias. Ela é a única senha que você precisa saber de cor e não pode ser usada em nenhum outro lugar. Não use arquivo-chave: se perder o arquivo, perde o cofre. Ninguém, nem o Claude, precisa ver o cofre ou a senha mestra."
+    },
+    {
+     "id": "senhas-kit",
+     "titulo": "Montar o kit de emergência em papel",
+     "quem": "voce",
+     "pronto": "Envelope guardado em casa (fora da carteira e da mochila) com a senha mestra, a senha do e-mail principal e os códigos de recuperação do Google",
+     "tempo_min": 15,
+     "nota": "É o que salva você se esquecer a senha mestra ou perder o notebook e o celular juntos. Papel, não foto: foto vai para a nuvem do celular.",
+     "blocos": [
+      "kee"
+     ]
+    },
+    {
+     "id": "senhas-email",
+     "titulo": "Recuperar e trocar primeiro a senha do e-mail principal (conta Google)",
+     "quem": "voce",
+     "pronto": "Senha nova gerada no KeePassXC; verificação em duas etapas pelo app; telefone e e-mail de recuperação conferidos; códigos de backup salvos no cofre; aparelhos desconhecidos desconectados",
+     "tempo_min": 30,
+     "nota": "Vem antes de tudo porque todo 'Esqueci minha senha' manda o link para esse e-mail: quem controla o e-mail controla as outras contas. Faça em myaccount.google.com > Segurança e rode a Verificação de segurança no fim. Se não lembrar a senha atual, use g.co/recover no notebook e na rede de casa, onde o Google já reconhece você.",
+     "blocos": [
+      "kee",
+      "tfa",
+      "cgws"
+     ]
+    },
+    {
+     "id": "senhas-importar",
+     "titulo": "Trazer para o cofre as senhas salvas no Chrome, no Edge e no Google",
+     "quem": "voce",
+     "pronto": "Senhas importadas no KeePassXC (Banco de dados > Importar > CSV); o arquivo CSV apagado de vez; navegadores sem salvar senha",
+     "tempo_min": 30,
+     "nota": "Exporte em chrome://password-manager/settings, edge://wallet/passwords e passwords.google.com. O CSV é a lista de todas as suas senhas em texto puro: importe na hora, apague com Shift+Delete e não deixe em Downloads, no Drive, no e-mail nem no repositório. Não mande esse arquivo para ninguém, nem para o Claude. Só depois de conferir o cofre apague as senhas dos navegadores e desligue 'Oferecer para salvar senhas'.",
+     "blocos": [
+      "kee",
+      "nav"
+     ]
+    },
+    {
+     "id": "senhas-relatorio",
+     "titulo": "Ver no KeePassXC quais senhas são fracas, repetidas ou já vazaram",
+     "quem": "voce",
+     "pronto": "Lista, em ordem, das contas para trocar (Banco de dados > Relatórios > Integridade e Have I Been Pwned)",
+     "tempo_min": 15,
+     "nota": "A checagem de vazamento manda só um pedaço do resumo da senha, nunca a senha. Senha que aparece como vazada vai para o topo da lista.",
+     "blocos": [
+      "kee"
+     ]
+    },
+    {
+     "id": "senhas-criticas",
+     "titulo": "Trocar as senhas críticas, uma por vez: gov.br, bancos, Microsoft, celular, WhatsApp, GitHub, Meta, Mercado Livre e plataformas de venda",
+     "quem": "voce",
+     "pronto": "Cada conta crítica com senha nova gerada no cofre, verificação em duas etapas ligada e códigos de backup salvos na entrada dela",
+     "tempo_min": 120,
+     "nota": "Para cada uma: gere a senha no KeePassXC (20 caracteres ou mais), troque no site, salve no cofre antes de fechar a página e saia de todos os outros aparelhos. Banco, troque pelo app oficial. No WhatsApp é o PIN da confirmação em duas etapas. A senha de 4 dígitos do cartão não vai para o cofre: essa você decora.",
+     "blocos": [
+      "kee",
+      "tfa",
+      "govbr",
+      "banco",
+      "gh"
+     ]
+    },
+    {
+     "id": "senhas-esquecidas",
+     "titulo": "Recuperar as contas cuja senha você esqueceu e fechar as que não usa mais",
+     "quem": "voce",
+     "pronto": "Toda conta da sua lista de contas está no cofre, foi recuperada ou foi excluída",
+     "tempo_min": 60,
+     "nota": "Use 'Esqueci minha senha' com o e-mail já protegido. Se o e-mail ou o telefone de recuperação forem antigos, cada serviço tem um formulário próprio (Meta: 'Precisa de ajuda?' na tela de login; gov.br: pelo app com reconhecimento facial ou pelo banco). Conta parada que guarda dado seu é risco: exclua.",
+     "blocos": [
+      "kee"
+     ]
+    },
+    {
+     "id": "senhas-celular",
+     "titulo": "Levar o cofre para o celular (KeePassDX no Android ou KeePassium no iPhone)",
+     "quem": "voce",
+     "pronto": "O cofre abre no celular com a senha mestra; uma senha criada no notebook aparece no celular",
+     "tempo_min": 20,
+     "nota": "Sincronize o arquivo Cofre.kdbx pelo Syncthing, ou pelo Drive (o arquivo vai criptografado). Edite num aparelho de cada vez para não criar cópias em conflito.",
+     "blocos": [
+      "kee",
+      "cel",
+      "syncth"
+     ]
+    },
+    {
+     "id": "senhas-navegador",
+     "titulo": "Ligar o KeePassXC-Browser para preencher senha e código no navegador",
+     "quem": "voce",
+     "pronto": "No login de teste, o navegador preenche a senha a partir do cofre",
+     "tempo_min": 15,
+     "nota": "No KeePassXC: Configurações > Integração com navegador, marque o seu navegador e instale a extensão KeePassXC-Browser.",
+     "blocos": [
+      "kee",
+      "nav"
+     ]
+    },
+    {
+     "id": "senhas-backup",
+     "titulo": "Pôr o cofre no backup e testar abrir a cópia",
+     "quem": "voce",
+     "pronto": "Cópia do Cofre.kdbx no disco externo abre com a senha mestra; quando o restic entrar, a pasta Documentos\\Cofre está no backup diário",
+     "tempo_min": 15,
+     "nota": "No WSL o caminho é /mnt/c/Users/SEU_USUARIO/Documents/Cofre: acrescente ao comando do restic no passo do backup.",
+     "blocos": [
+      "kee",
+      "ext",
+      "bkp"
+     ]
+    },
+    {
+     "id": "senhas-resto",
+     "titulo": "Trocar o resto aos poucos: 5 contas por semana, das mais usadas às menos usadas",
+     "quem": "voce",
+     "pronto": "Relatório de integridade do KeePassXC sem senha fraca, repetida ou vazada",
+     "tempo_min": 20,
+     "blocos": [
+      "kee"
+     ]
+    },
+    {
+     "id": "senhas-revisao",
+     "titulo": "Marcar a revisão a cada 3 meses: relatório do cofre, aparelhos conectados no Google e códigos de backup",
+     "quem": "voce",
+     "pronto": "Lembrete trimestral no calendário",
+     "tempo_min": 10,
+     "blocos": [
+      "kee"
+     ]
+    }
+   ],
+   "quando": "Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026"
+  },
+  {
+   "id": "f3",
    "titulo": "Windows",
    "objetivo": "Os programas do setup instalados, o navegador com o Claude e o WSL2 pronto.",
    "passos": [
@@ -177,16 +328,6 @@
       "wshark",
       "syncth",
       "anki"
-     ]
-    },
-    {
-     "id": "keepass",
-     "titulo": "Criar o cofre do KeePassXC e migrar as senhas",
-     "quem": "voce",
-     "pronto": "Cofre com senha mestra forte e cópia do arquivo no disco externo",
-     "tempo_min": 45,
-     "blocos": [
-      "kee"
      ]
     },
     {
@@ -270,7 +411,7 @@
    "quando": "Semana 1 · out/2026"
   },
   {
-   "id": "f3",
+   "id": "f4",
    "titulo": "Linux (WSL2)",
    "objetivo": "O Ubuntu com tudo o que o código precisa, commits assinados e o ambiente versionado.",
    "passos": [
@@ -396,7 +537,7 @@
    "quando": "Semana 2 · nov/2026"
   },
   {
-   "id": "f4",
+   "id": "f5",
    "titulo": "GitHub e CI",
    "objetivo": "O repositório no ar, com testes automáticos verdes a cada envio e o trabalho organizado.",
    "passos": [
@@ -459,7 +600,7 @@
    "quando": "Semana 2 · nov/2026"
   },
   {
-   "id": "f5",
+   "id": "f6",
    "titulo": "Agentes de IA",
    "objetivo": "O Claude Code trabalhando dentro da sandbox, com as suas regras, ferramentas e memória.",
    "passos": [
@@ -545,7 +686,7 @@
    "quando": "Semana 2 · nov/2026"
   },
   {
-   "id": "f6",
+   "id": "f7",
    "titulo": "Backup e segurança",
    "objetivo": "Perder o notebook não faz você perder nada.",
    "passos": [
@@ -598,7 +739,7 @@
    "quando": "Semana 3 · nov/2026"
   },
   {
-   "id": "f7",
+   "id": "f8",
    "titulo": "Acervo: tudo o que você já tem",
    "objetivo": "Todos os seus documentos convertidos em conhecimento organizado no Obsidian, os pessoais separados e a lista do que dá para vender.",
    "passos": [
@@ -684,7 +825,7 @@
    "quando": "Semanas 3 e 4 · nov/2026"
   },
   {
-   "id": "f8",
+   "id": "f9",
    "titulo": "Claude e assistentes",
    "objetivo": "Cada recurso do Claude e cada assistente com um papel definido no setup.",
    "passos": [
@@ -754,7 +895,7 @@
    "quando": "Semana 4 · nov/2026"
   },
   {
-   "id": "f9",
+   "id": "f10",
    "titulo": "Automação e medição",
    "objetivo": "n8n, banco de métricas, Grafana e Uptime Kuma rodando.",
    "passos": [
@@ -854,7 +995,7 @@
    "quando": "Semana 4 · nov/2026"
   },
   {
-   "id": "f10",
+   "id": "f11",
    "titulo": "Pipeline de conteúdo",
    "objetivo": "Gravou ou escreveu, as peças aparecem na fila de aprovação.",
    "passos": [
@@ -930,7 +1071,7 @@
    "quando": "Semana 5 · nov/2026"
   },
   {
-   "id": "f11",
+   "id": "f12",
    "titulo": "Estúdio de conteúdo",
    "objetivo": "Gravar, editar e montar imagens no mesmo padrão toda semana, sem pensar.",
    "passos": [
@@ -994,7 +1135,7 @@
    "quando": "Semana 5 · dez/2026"
   },
   {
-   "id": "f12",
+   "id": "f13",
    "titulo": "Contas, canais e sites",
    "objetivo": "Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.",
    "passos": [
@@ -1162,7 +1303,7 @@
    "quando": "Semanas 6 e 7 · dez/2026"
   },
   {
-   "id": "f13",
+   "id": "f14",
    "titulo": "Vendas e finanças no CPF",
    "objetivo": "Cada oferta pode ser vendida, recebida e declarada do jeito certo.",
    "passos": [
@@ -1402,7 +1543,7 @@
    "quando": "Semanas 8 a 10 · dez/2026 a jan/2027"
   },
   {
-   "id": "f14",
+   "id": "f15",
    "titulo": "Vendas medidas",
    "objetivo": "Cada venda chega sozinha ao banco e aparece no painel de lucro.",
    "passos": [
@@ -1457,7 +1598,7 @@
    "quando": "Semana 11 · jan/2027"
   },
   {
-   "id": "f15",
+   "id": "f16",
    "titulo": "Teste do núcleo",
    "objetivo": "Os três testes de ponta a ponta passam: daqui em diante, alimentar o sistema já faz tudo sozinho.",
    "passos": [
@@ -1508,8 +1649,8 @@
    "quando": "Semana 11 · jan/2027"
   },
   {
+   "id": "f17",
    "titulo": "Primeira venda: o mini-curso no ar",
-   "quando": "Semanas 12 a 15 · jan a fev/2027",
    "objetivo": "A primeira venda real pela internet, com entrega, suporte, imposto e números no painel.",
    "passos": [
     {
@@ -1631,10 +1772,10 @@
      ]
     }
    ],
-   "id": "f16"
+   "quando": "Semanas 12 a 15 · jan a fev/2027"
   },
   {
-   "id": "f17",
+   "id": "f18",
    "titulo": "Base dos sistemas AM",
    "objetivo": "Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e deploy.",
    "passos": [
@@ -1742,7 +1883,7 @@
    "quando": "Jan a fev/2027"
   },
   {
-   "id": "f18",
+   "id": "f19",
    "titulo": "Nuvem e deploy",
    "objetivo": "As contas de nuvem criadas por código, com custo sob controle.",
    "passos": [
@@ -1826,7 +1967,7 @@
    "quando": "Fev a abr/2027"
   },
   {
-   "id": "f19",
+   "id": "f20",
    "titulo": "Editora",
    "objetivo": "O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.",
    "passos": [
@@ -1983,7 +2124,7 @@
    "gatilho": "O capítulo 1 e o seu modelo de criação prontos"
   },
   {
-   "id": "f20",
+   "id": "f21",
    "titulo": "Dados, IA e pendrives",
    "objetivo": "O laboratório de dados e de treino no ar, um modelo seu rodando no Ollama e os pendrives de Kali e Arch dando boot.",
    "passos": [
@@ -2137,9 +2278,8 @@
    "quando": "Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027"
   },
   {
+   "id": "f22",
    "titulo": "Mais ofertas, uma por vez",
-   "quando": "Fev a dez/2027, uma oferta por vez",
-   "gatilho": "A primeira venda do mini-curso aconteceu",
    "objetivo": "Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em construção e uma em validação por vez.",
    "passos": [
     {
@@ -2416,13 +2556,13 @@
      ]
     }
    ],
-   "id": "f21"
+   "quando": "Fev a dez/2027, uma oferta por vez",
+   "gatilho": "A primeira venda do mini-curso aconteceu"
   },
   {
+   "id": "f23",
    "titulo": "Marketing pago e crescimento",
    "objetivo": "Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.",
-   "quando": "A partir de fev/2027",
-   "gatilho": "O mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar",
    "passos": [
     {
      "id": "ads-meta",
@@ -2556,12 +2696,13 @@
      ]
     }
    ],
-   "id": "f22"
+   "quando": "A partir de fev/2027",
+   "gatilho": "O mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar"
   },
   {
+   "id": "f24",
    "titulo": "Linux nativo e laboratório completo",
    "objetivo": "Arch com boot próprio, VMs de laboratório e a segurança física em dia.",
-   "quando": "2027, conforme cada compra",
    "passos": [
     {
      "id": "nvme-arch",
@@ -2638,12 +2779,12 @@
      ]
     }
    ],
-   "id": "f23"
+   "quando": "2027, conforme cada compra"
   },
   {
+   "id": "f25",
    "titulo": "IA dentro dos sistemas AM",
    "objetivo": "Busca e assistente com os seus dados dentro de um sistema AM.",
-   "quando": "Mai a jul/2027",
    "passos": [
     {
      "id": "rag-sistema",
@@ -2656,13 +2797,12 @@
      ]
     }
    ],
-   "id": "f24"
+   "quando": "Mai a jul/2027"
   },
   {
+   "id": "f26",
    "titulo": "Sistemas AM à venda",
    "objetivo": "Os sistemas viram produto por assinatura.",
-   "quando": "2027",
-   "gatilho": "O primeiro sistema AM pronto e testado com um cliente",
    "passos": [
     {
      "id": "saas",
@@ -2728,13 +2868,13 @@
      ]
     }
    ],
-   "id": "f25"
+   "quando": "2027",
+   "gatilho": "O primeiro sistema AM pronto e testado com um cliente"
   },
   {
+   "id": "f27",
    "titulo": "CNPJ e formalização",
    "objetivo": "Sair do CPF na hora certa, com nota fiscal e cobrança automáticas.",
-   "quando": "Quando a renda pedir",
-   "gatilho": "A renda passou do valor de virada definido com o contador",
    "passos": [
     {
      "id": "cnpj",
@@ -2784,13 +2924,13 @@
      ]
     }
    ],
-   "id": "f26"
+   "quando": "Quando a renda pedir",
+   "gatilho": "A renda passou do valor de virada definido com o contador"
   },
   {
+   "id": "f28",
    "titulo": "Agentes do grupo",
    "objetivo": "Atendimento, orçamento, cobrança e análise rodando com a sua aprovação.",
-   "quando": "Junto com o primeiro CNPJ",
-   "gatilho": "Clientes e vendas recorrentes",
    "passos": [
     {
      "id": "ag-analista",
@@ -2863,13 +3003,13 @@
      ]
     }
    ],
-   "id": "f27"
+   "quando": "Junto com o primeiro CNPJ",
+   "gatilho": "Clientes e vendas recorrentes"
   },
   {
+   "id": "f29",
    "titulo": "Editora: depois do primeiro livro",
    "objetivo": "O mesmo livro em mais formatos, públicos e idiomas.",
-   "quando": "Depois do primeiro livro",
-   "gatilho": "O primeiro livro publicado",
    "passos": [
     {
      "id": "grafica",
@@ -2941,12 +3081,13 @@
      ]
     }
    ],
-   "id": "f28"
+   "quando": "Depois do primeiro livro",
+   "gatilho": "O primeiro livro publicado"
   },
   {
+   "id": "f30",
    "titulo": "Distribuído, plataforma e segunda nuvem",
    "objetivo": "O que pesa em vaga pleno e sênior.",
-   "quando": "2028",
    "passos": [
     {
      "id": "mensageria",
@@ -3014,12 +3155,12 @@
      ]
     }
    ],
-   "id": "f29"
+   "quando": "2028"
   },
   {
+   "id": "f31",
    "titulo": "Infraestrutura própria",
    "objetivo": "Servidor em casa e máquina de IA quando o grupo pedir.",
-   "quando": "2028, quando o grupo pedir",
    "passos": [
     {
      "id": "nas",
@@ -3058,13 +3199,12 @@
      ]
     }
    ],
-   "id": "f30"
+   "quando": "2028, quando o grupo pedir"
   },
   {
+   "id": "f32",
    "titulo": "Negócios do grupo em Barbacena",
    "objetivo": "Um negócio por vez, cada um só depois que o anterior passa no portão.",
-   "quando": "Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano",
-   "gatilho": "Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta",
    "passos": [
     {
      "id": "planejador-real",
@@ -3203,10 +3343,11 @@
      ]
     }
    ],
-   "id": "f31"
+   "quando": "Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano",
+   "gatilho": "Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta"
   },
   {
-   "id": "f32",
+   "id": "f33",
    "titulo": "Estudo contínuo",
    "objetivo": "As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.",
    "passos": [

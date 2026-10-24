@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.15.0] - 2026-10-24
+
+### Adicionado
+- Fase "Senhas: recuperar, trocar e guardar" logo depois de Preparar (12 passos): cofre do KeePassXC com senha mestra de 6 palavras, kit de emergência em papel, o e-mail principal primeiro, importação das senhas do Chrome, Edge e Google com o CSV apagado na hora, relatório de senhas fracas, repetidas e vazadas, troca das contas críticas com verificação em duas etapas, recuperação das esquecidas, cofre no celular, preenchimento no navegador, backup e revisão a cada 3 meses. O passo do KeePassXC sai da fase Windows e abre essa fase.
+
 ## [1.14.1] - 2026-10-23
 
 ### Corrigido

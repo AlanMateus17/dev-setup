@@ -75,14 +75,14 @@ flowchart LR
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Sentry (erros)](#sentry) | Remoto · precisa de conta | Avisa quando um erro acontece em produção, com o ponto exato no código. Plano grátis para um dev. | passo 17.4 · Jan a fev/2027 |
-| [Uptime Kuma](#kuma) | Local | Verifica a cada minuto se os sites e APIs estão no ar e avisa no celular. Open source. | passo 9.6 · Semana 4 · nov/2026 |
-| [Seq (logs)](#seq) | Local | Visualizador de logs simples para começar, antes da stack Grafana. | passo 17.3 · Jan a fev/2027 |
-| [Loki + Tempo](#loki) | Local · futuro | Logs e rastreamento de requisições entre serviços, consultados no Grafana. | passo 29.3 · 2028 |
-| [OpenTelemetry](#otel) | Local | Coleta logs, métricas e traces da API. | passo 17.3 · Jan a fev/2027 |
-| [Prometheus](#prom) | Local | Guarda as métricas. | passo 17.3 · Jan a fev/2027 |
-| [Grafana](#graf) | Local | Painéis e alertas. | passo 9.4 · Semana 4 · nov/2026; passo 14.4 · Semana 11 · jan/2027 |
-| [.NET Aspire](#aspire) | Local | Sobe o sistema inteiro no dev com painel próprio. | passo 17.3 · Jan a fev/2027 |
+| [Sentry (erros)](#sentry) | Remoto · precisa de conta | Avisa quando um erro acontece em produção, com o ponto exato no código. Plano grátis para um dev. | passo 18.4 · Jan a fev/2027 |
+| [Uptime Kuma](#kuma) | Local | Verifica a cada minuto se os sites e APIs estão no ar e avisa no celular. Open source. | passo 10.6 · Semana 4 · nov/2026 |
+| [Seq (logs)](#seq) | Local | Visualizador de logs simples para começar, antes da stack Grafana. | passo 18.3 · Jan a fev/2027 |
+| [Loki + Tempo](#loki) | Local · futuro | Logs e rastreamento de requisições entre serviços, consultados no Grafana. | passo 30.3 · 2028 |
+| [OpenTelemetry](#otel) | Local | Coleta logs, métricas e traces da API. | passo 18.3 · Jan a fev/2027 |
+| [Prometheus](#prom) | Local | Guarda as métricas. | passo 18.3 · Jan a fev/2027 |
+| [Grafana](#graf) | Local | Painéis e alertas. | passo 10.4 · Semana 4 · nov/2026; passo 15.4 · Semana 11 · jan/2027 |
+| [.NET Aspire](#aspire) | Local | Sobe o sistema inteiro no dev com painel próprio. | passo 18.3 · Jan a fev/2027 |
 
 <a id="sentry"></a>
 
@@ -92,7 +92,7 @@ flowchart LR
 
 Avisa quando um erro acontece em produção, com o ponto exato no código. Plano grátis para um dev.
 
-**Quando entra:** passo 17.4 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 18.4 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -107,7 +107,7 @@ Avisa quando um erro acontece em produção, com o ponto exato no código. Plano
 
 Verifica a cada minuto se os sites e APIs estão no ar e avisa no celular. Open source.
 
-**Quando entra:** passo 9.6 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 10.6 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -124,7 +124,7 @@ Verifica a cada minuto se os sites e APIs estão no ar e avisa no celular. Open 
 
 Visualizador de logs simples para começar, antes da stack Grafana.
 
-**Quando entra:** passo 17.3 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 18.3 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -138,7 +138,7 @@ Visualizador de logs simples para começar, antes da stack Grafana.
 
 Logs e rastreamento de requisições entre serviços, consultados no Grafana.
 
-**Quando entra:** passo 29.3 · 2028 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 30.3 · 2028 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -152,7 +152,7 @@ Logs e rastreamento de requisições entre serviços, consultados no Grafana.
 
 Coleta logs, métricas e traces da API.
 
-**Quando entra:** passo 17.3 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 18.3 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -168,7 +168,7 @@ Coleta logs, métricas e traces da API.
 
 Guarda as métricas.
 
-**Quando entra:** passo 17.3 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 18.3 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -183,7 +183,7 @@ Guarda as métricas.
 
 Painéis e alertas.
 
-**Quando entra:** passo 9.4 · Semana 4 · nov/2026; passo 14.4 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 10.4 · Semana 4 · nov/2026; passo 15.4 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -204,7 +204,7 @@ Painéis e alertas.
 
 Sobe o sistema inteiro no dev com painel próprio.
 
-**Quando entra:** passo 17.3 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 18.3 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

@@ -114,18 +114,18 @@ flowchart LR
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Caddy (proxy + HTTPS)](#caddy) | Local | Fica na frente das APIs e emite o certificado HTTPS sozinho. Usado no servidor e no homelab. | passo 17.3 · Jan a fev/2027 |
-| [Mailpit](#mailp) | Local | Caixa de e-mail falsa para testar os e-mails dos sistemas sem enviar nada de verdade. | passo 17.3 · Jan a fev/2027 |
-| [Kafka](#kafka) | Local · futuro | Mensageria padrão em empresa grande. Depois do RabbitMQ. | passo 29.1 · 2028 |
-| [kubectl · Helm · k9s](#k8st) | Local · futuro | Ferramentas para operar o Kubernetes: comandos, pacotes e painel no terminal. | passo 29.2 · 2028 |
-| [Azure CLI · AWS CLI](#clis) | Local | Linha de comando das nuvens; usadas pelo Terraform. | passo 18.1 · Fev a abr/2027 |
-| [Datomic local](#datomic) | Local · futuro | Só quando o aura-historico existir (desvio intencional da stack). | passo 25.4 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
-| [Docker + Compose](#docker) | Local | Engine no WSL2; um compose por sistema. | passo 3.2 · Semana 2 · nov/2026; passo 9.2 · Semana 4 · nov/2026 |
-| [PostgreSQL](#pg) | Local | Banco de todos os sistemas (com pgvector para IA). | passo 9.2 · Semana 4 · nov/2026; passo 17.1 · Jan a fev/2027 |
-| [Redis](#redis) | Local | Cache e backplane do SignalR. | passo 17.1 · Jan a fev/2027 |
-| [RabbitMQ](#rmq) | Local · futuro | Fila de eventos entre sistemas. | passo 29.1 · 2028 |
-| [Kubernetes local (kind)](#kind) | Local · futuro | Treino de Kubernetes sem pagar nuvem. | passo 29.2 · 2028 |
-| [Terraform](#tf) | Local | Cria Azure, AWS e Cloudflare por código. | passo 18.1 · Fev a abr/2027; passo 18.3 · Fev a abr/2027 |
+| [Caddy (proxy + HTTPS)](#caddy) | Local | Fica na frente das APIs e emite o certificado HTTPS sozinho. Usado no servidor e no homelab. | passo 18.3 · Jan a fev/2027 |
+| [Mailpit](#mailp) | Local | Caixa de e-mail falsa para testar os e-mails dos sistemas sem enviar nada de verdade. | passo 18.3 · Jan a fev/2027 |
+| [Kafka](#kafka) | Local · futuro | Mensageria padrão em empresa grande. Depois do RabbitMQ. | passo 30.1 · 2028 |
+| [kubectl · Helm · k9s](#k8st) | Local · futuro | Ferramentas para operar o Kubernetes: comandos, pacotes e painel no terminal. | passo 30.2 · 2028 |
+| [Azure CLI · AWS CLI](#clis) | Local | Linha de comando das nuvens; usadas pelo Terraform. | passo 19.1 · Fev a abr/2027 |
+| [Datomic local](#datomic) | Local · futuro | Só quando o aura-historico existir (desvio intencional da stack). | passo 26.4 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
+| [Docker + Compose](#docker) | Local | Engine no WSL2; um compose por sistema. | passo 4.2 · Semana 2 · nov/2026; passo 10.2 · Semana 4 · nov/2026 |
+| [PostgreSQL](#pg) | Local | Banco de todos os sistemas (com pgvector para IA). | passo 10.2 · Semana 4 · nov/2026; passo 18.1 · Jan a fev/2027 |
+| [Redis](#redis) | Local | Cache e backplane do SignalR. | passo 18.1 · Jan a fev/2027 |
+| [RabbitMQ](#rmq) | Local · futuro | Fila de eventos entre sistemas. | passo 30.1 · 2028 |
+| [Kubernetes local (kind)](#kind) | Local · futuro | Treino de Kubernetes sem pagar nuvem. | passo 30.2 · 2028 |
+| [Terraform](#tf) | Local | Cria Azure, AWS e Cloudflare por código. | passo 19.1 · Fev a abr/2027; passo 19.3 · Fev a abr/2027 |
 
 <a id="caddy"></a>
 
@@ -135,7 +135,7 @@ flowchart LR
 
 Fica na frente das APIs e emite o certificado HTTPS sozinho. Usado no servidor e no homelab.
 
-**Quando entra:** passo 17.3 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 18.3 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -149,7 +149,7 @@ Fica na frente das APIs e emite o certificado HTTPS sozinho. Usado no servidor e
 
 Caixa de e-mail falsa para testar os e-mails dos sistemas sem enviar nada de verdade.
 
-**Quando entra:** passo 17.3 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 18.3 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -164,7 +164,7 @@ Caixa de e-mail falsa para testar os e-mails dos sistemas sem enviar nada de ver
 
 Mensageria padrão em empresa grande. Depois do RabbitMQ.
 
-**Quando entra:** passo 29.1 · 2028 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 30.1 · 2028 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -179,7 +179,7 @@ Mensageria padrão em empresa grande. Depois do RabbitMQ.
 
 Ferramentas para operar o Kubernetes: comandos, pacotes e painel no terminal.
 
-**Quando entra:** passo 29.2 · 2028 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 30.2 · 2028 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -193,7 +193,7 @@ Ferramentas para operar o Kubernetes: comandos, pacotes e painel no terminal.
 
 Linha de comando das nuvens; usadas pelo Terraform.
 
-**Quando entra:** passo 18.1 · Fev a abr/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 19.1 · Fev a abr/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -208,7 +208,7 @@ Linha de comando das nuvens; usadas pelo Terraform.
 
 Só quando o aura-historico existir (desvio intencional da stack).
 
-**Quando entra:** passo 25.4 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 26.4 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -222,7 +222,7 @@ Só quando o aura-historico existir (desvio intencional da stack).
 
 Engine no WSL2; um compose por sistema.
 
-**Quando entra:** passo 3.2 · Semana 2 · nov/2026; passo 9.2 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 4.2 · Semana 2 · nov/2026; passo 10.2 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -249,7 +249,7 @@ Engine no WSL2; um compose por sistema.
 
 Banco de todos os sistemas (com pgvector para IA).
 
-**Quando entra:** passo 9.2 · Semana 4 · nov/2026; passo 17.1 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 10.2 · Semana 4 · nov/2026; passo 18.1 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -271,7 +271,7 @@ Banco de todos os sistemas (com pgvector para IA).
 
 Cache e backplane do SignalR.
 
-**Quando entra:** passo 17.1 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 18.1 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -287,7 +287,7 @@ Cache e backplane do SignalR.
 
 Fila de eventos entre sistemas.
 
-**Quando entra:** passo 29.1 · 2028 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 30.1 · 2028 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -302,7 +302,7 @@ Fila de eventos entre sistemas.
 
 Treino de Kubernetes sem pagar nuvem.
 
-**Quando entra:** passo 29.2 · 2028 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 30.2 · 2028 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -317,7 +317,7 @@ Treino de Kubernetes sem pagar nuvem.
 
 Cria Azure, AWS e Cloudflare por código.
 
-**Quando entra:** passo 18.1 · Fev a abr/2027; passo 18.3 · Fev a abr/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 19.1 · Fev a abr/2027; passo 19.3 · Fev a abr/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

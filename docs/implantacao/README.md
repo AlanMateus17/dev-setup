@@ -4,7 +4,7 @@
 
 Como sair do planejamento para o setup funcionando: scripts que instalam, scripts que conferem e um roteiro com o critério de pronto de cada passo. Quando a última fase passar, alimentar o sistema é só colocar arquivos numa pasta.
 
-- [Roteiro de implantação](roteiro.md): 33 fases e 242 passos, na ordem, com o que cada passo implanta (gerado)
+- [Roteiro de implantação](roteiro.md): 34 fases e 253 passos, na ordem, com o que cada passo implanta (gerado)
 - [`acompanhamento.html`](acompanhamento.html): a mesma lista para marcar o progresso no navegador (gerado)
 
 ## Todo o planejamento está no passo a passo
@@ -35,9 +35,13 @@ Antes de instalar qualquer coisa, `scripts/windows/diagnostico.ps1` lê o notebo
 
 Para rodar: extraia o `dev-setup.zip` (botão direito > Extrair tudo), entre na pasta que tem `RODAR-DIAGNOSTICO.cmd` e a pasta `scripts` (o Windows costuma criar `dev-setup\dev-setup`; a certa é a de dentro) e clique com o botão direito em `RODAR-DIAGNOSTICO.cmd` > Executar como administrador. Ele entra sozinho na pasta certa e não mexe em mais nada do computador. O relatório fica em `diagnostico-AAAAMMDD`, dentro da mesma pasta.
 
+## Senhas: recuperar, trocar e guardar
+
+Logo depois de preparar a máquina vem a fase das senhas, porque o resto do roteiro cria dezenas de contas. O KeePassXC guarda todas, com uma senha mestra de 6 palavras que é a única que você decora, e um kit de emergência em papel garante que perder o notebook e o celular não tranca você para fora. A ordem importa: primeiro o e-mail principal (todo "Esqueci minha senha" passa por ele), depois as senhas salvas nos navegadores vão para o cofre, o relatório do KeePassXC aponta as fracas, repetidas e vazadas, e as contas críticas são trocadas uma por uma com verificação em duas etapas. O resto vai 5 contas por semana. O Claude não vê nem guarda nenhuma senha: quem digita é sempre você.
+
 ## O caminho até vender
 
-A primeira venda do mini-curso está na fase 16, mas o dinheiro pode entrar antes: aulas particulares com agenda e Pix, sites para pequenas empresas e links de afiliado ficam prontos na fase 13. Depois da primeira venda, a fase 21 põe as outras ofertas à venda uma por vez, começando pelas de maior pontuação (página 'meu setup', kit de aulas para professores, planilha do Caixa da Casa, automação com IA, banco de questões, baralhos Anki).
+A primeira venda do mini-curso está na fase 17, mas o dinheiro pode entrar antes: aulas particulares com agenda e Pix, sites para pequenas empresas e links de afiliado ficam prontos na fase 14. Depois da primeira venda, a fase 22 põe as outras ofertas à venda uma por vez, começando pelas de maior pontuação (página 'meu setup', kit de aulas para professores, planilha do Caixa da Casa, automação com IA, banco de questões, baralhos Anki).
 
 ## O que fica funcionando no fim do núcleo
 
@@ -118,7 +122,7 @@ Não deu para testar aqui:
 - Criar contas, senhas, 2FA e aprovar pagamentos.
 - Aprovar as peças antes de publicar. O pipeline deixa tudo pronto na fila; publicar sem revisão é exatamente o risco que o setup evita.
 - Publicar no TikTok pela API sem a auditoria do app (só sai como privado).
-- Conectar os webhooks de venda: o n8n precisa de um endereço público (túnel), e o fluxo é montado com você na fase 12.
+- Conectar os webhooks de venda: o n8n precisa de um endereço público (túnel), e o fluxo é montado com você na fase 15.
 
 ## Custos novos
 
@@ -135,11 +139,11 @@ Não deu para testar aqui:
 
 ## Primeiro o que dá para fazer hoje
 
-No acompanhamento, o filtro **Só o que dá para fazer hoje** esconde os passos que precisam de compra, de pagamento, de um conteúdo seu que ainda não existe ou de um gatilho que ainda não aconteceu. Sobram 157 dos 242 passos, só com o notebook e contas grátis.
+No acompanhamento, o filtro **Só o que dá para fazer hoje** esconde os passos que precisam de compra, de pagamento, de um conteúdo seu que ainda não existe ou de um gatilho que ainda não aconteceu. Sobram 168 dos 253 passos, só com o notebook e contas grátis.
 
 ## Ritmo sugerido
 
-O caminho até a primeira venda (fases 0 a 16) leva cerca de 75 horas: umas 15 semanas no bloco de construção da sua semana (quinta e sexta de manhã, umas 5 horas). Da 17 em diante o ritmo é o da sua renda e das suas compras; os tempos dessas fases são estimativas grosseiras, e os negócios levam anos.
+O caminho até a primeira venda (fases 0 a 17) leva cerca de 81 horas: umas 16 semanas no bloco de construção da sua semana (quinta e sexta de manhã, umas 5 horas). Da 18 em diante o ritmo é o da sua renda e das suas compras; os tempos dessas fases são estimativas grosseiras, e os negócios levam anos.
 
 | Semana | Fases |
 |---|---|
@@ -152,6 +156,6 @@ O caminho até a primeira venda (fases 0 a 16) leva cerca de 75 horas: umas 15 s
 | 8 a 10 | 13 Vendas e finanças no CPF (aulas particulares e sites já podem vender aqui) |
 | 11 | 14 Vendas medidas, 15 Teste do núcleo |
 | 12 a 15 | 16 Primeira venda: o mini-curso no ar |
-| Depois | As fases 17 a 32, cada uma na data ou no gatilho da tabela acima |
+| Depois | As fases 18 a 33, cada uma na data ou no gatilho da tabela acima |
 
 O acervo vem cedo de propósito: na semana 4 você já sabe tudo o que tem e o que dá para vender, e o pipeline de conteúdo da semana 5 passa a ter material para trabalhar.
