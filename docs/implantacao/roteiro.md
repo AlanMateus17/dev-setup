@@ -57,23 +57,23 @@ Saber exatamente o que o notebook já tem de hardware, segurança, programas, co
 
 **Quando:** Antes de tudo · semana 1 (out/2026)
 
-### 0.1 Baixar o dev-setup.zip e extrair (botão direito > Extrair tudo)
+### 0.1 Extrair o dev-setup.zip e deixar a pasta em C:\Users\SEU_USUARIO\dev-setup
 
 **Você** · 5 min
 
-- [ ] **Pronto quando:** Você abre a pasta extraída e vê RODAR-DIAGNOSTICO.cmd junto das pastas scripts, data e docs. Se aparecer só outra pasta dev-setup dentro, entre nela: essa é a pasta principal
-- O Windows costuma criar dev-setup\dev-setup ao extrair. A pasta certa é sempre a que tem RODAR-DIAGNOSTICO.cmd e a pasta scripts. Não rode comandos com Get-ChildItem -Recurse fora dela.
+- [ ] **Pronto quando:** Pasta C:\Users\SEU_USUARIO\dev-setup com RODAR-DIAGNOSTICO.cmd e as pastas scripts, data e docs logo dentro dela; nenhuma outra cópia em Downloads
+- Botão direito no zip > Extrair tudo. O Windows costuma criar dev-setup\dev-setup: recorte a pasta de dentro (a que tem a pasta scripts) e cole em C:\Users\SEU_USUARIO, a pasta com o seu nome. Apague as cópias que sobraram em Downloads, como "dev-setup (1)". Todos os comandos do Windows deste roteiro apontam para esse lugar, então funcionam de qualquer pasta, até da System32 onde o PowerShell de Administrador abre.
 
 ### 0.2 Rodar o diagnóstico: botão direito em RODAR-DIAGNOSTICO.cmd > Executar como administrador
 
 **Script** · 10 min
 
 ```powershell
-$s = Get-ChildItem $HOME -Recurse -Depth 6 -Filter diagnostico.ps1 -ErrorAction SilentlyContinue | Where-Object { $_.FullName -like '*\scripts\windows\diagnostico.ps1' } | Select-Object -First 1; if ($s) { powershell -ExecutionPolicy Bypass -File $s.FullName } else { Write-Host 'Nao achei: extraia o dev-setup.zip primeiro.' }
+powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\diagnostico.ps1
 ```
 
 - [ ] **Pronto quando:** Pasta diagnostico-AAAAMMDD com diagnostico.md: o que você tem e em que passo cada pendência se resolve
-- Somente leitura: não instala nem apaga nada. O comando acima é o plano B, para colar no PowerShell (Administrador) se o .cmd não abrir: ele só aceita o arquivo dentro de scripts\windows e não mexe em nenhuma outra pasta. Se o Windows avisar "O Windows protegeu o computador", clique em Mais informações > Executar assim mesmo. Mostra modelo, processador, memória e slots livres, placa de vídeo, discos e saúde, espaço livre, bateria, monitores, Secure Boot, TPM, criptografia, Defender, programas do setup que já tem e que faltam, WSL, Docker, modelos do Ollama e extensões do VS Code.
+- Somente leitura: não instala nem apaga nada. Em vez do comando, pode clicar com o botão direito em RODAR-DIAGNOSTICO.cmd > Executar como administrador. Se o Windows avisar "O Windows protegeu o computador", clique em Mais informações > Executar assim mesmo. Mostra modelo, processador, memória e slots livres, placa de vídeo, discos e saúde, espaço livre, bateria, monitores, Secure Boot, TPM, criptografia, Defender, programas do setup que já tem e que faltam, WSL, Docker, modelos do Ollama e extensões do VS Code.
 - Implanta: Diagnóstico do notebook · Acer Nitro (32 GB, GTX 1650)
 
 ### 0.3 Rodar o inventário de espaço: pastas e arquivos que mais ocupam, programas que iniciam com o Windows
@@ -81,7 +81,7 @@ $s = Get-ChildItem $HOME -Recurse -Depth 6 -Filter diagnostico.ps1 -ErrorAction 
 **Script** · 15 min
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\windows\inventario.ps1
+powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\inventario.ps1
 ```
 
 - [ ] **Pronto quando:** Pasta inventario-AAAAMMDD gerada; você decidiu o que desinstalar ou mover
@@ -108,6 +108,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\windows\inventario.ps1
 **Claude com você** · 30 min
 
 - [ ] **Pronto quando:** Passos que você já cumpre marcados no acompanhamento; compras e pendências confirmadas
+- Anexe na conversa os dois arquivos da pasta C:\Users\SEU_USUARIO\dev-setup\diagnostico-AAAAMMDD: diagnostico.md e diagnostico.json. Eles não têm senha nem documento seu, só hardware e programas.
 - Implanta: Roteiro de implantação
 
 <a id="f1"></a>
@@ -267,7 +268,7 @@ Os programas do setup instalados, o navegador com o Claude e o WSL2 pronto.
 **Script** · 5 min
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\windows\instalar.ps1
+powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\instalar.ps1
 ```
 
 - [ ] **Pronto quando:** Lista de INSTALARIA conferida
@@ -278,7 +279,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\windows\instalar.ps1
 **Script** · 1 h 00 min
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\windows\instalar.ps1 -Aplicar
+powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\instalar.ps1 -Aplicar
 ```
 
 - [ ] **Pronto quando:** Termina com 'Pronto' e sem ERRO; reinicie o Windows
@@ -304,7 +305,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\windows\instalar.ps1 -Aplicar
 **Script** · 10 min
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\windows\extensoes-vscode.ps1 -Aplicar
+powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\extensoes-vscode.ps1 -Aplicar
 ```
 
 - [ ] **Pronto quando:** Termina com 'Pronto'
@@ -341,7 +342,7 @@ winget install --id Unity.UnityHub -e
 **Script** · 5 min
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\windows\verificar.ps1
+powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\verificar.ps1
 ```
 
 - [ ] **Pronto quando:** verificar.ps1 termina com 'Windows pronto'
@@ -374,7 +375,7 @@ O Ubuntu com tudo o que o código precisa, commits assinados e o ambiente versio
 **Você** · 5 min
 
 ```bash
-mkdir -p ~/dev && cd ~/dev && unzip /mnt/c/Users/SEU_USUARIO/Downloads/dev-setup.zip
+mkdir -p ~/dev && cp -r /mnt/c/Users/SEU_USUARIO/dev-setup ~/dev/dev-setup
 ```
 
 - [ ] **Pronto quando:** Pasta ~/dev/dev-setup com os arquivos

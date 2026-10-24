@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.15.1] - 2026-10-24
+
+### Corrigido
+- Os comandos do Windows usavam `.\scripts\windows\...` e falhavam quando o PowerShell de Administrador abria em System32. Agora apontam para `$HOME\dev-setup\scripts\windows\...`, e o primeiro passo deixa a pasta em `C:\Users\SEU_USUARIO\dev-setup`. O passo de copiar para o WSL usa essa mesma pasta.
+
 ## [1.15.0] - 2026-10-24
 
 ### Adicionado
