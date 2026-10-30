@@ -82,9 +82,15 @@ else rodar "linguagem" ".NET 10 SDK" bash -c "$SUDO apt-get update -y && $SUDO e
 
 if tem fnm; then linha "linguagem" "fnm (Node)" "JA TEM"
 else rodar "linguagem" "fnm (Node)" bash -c 'd=$(mktemp -d) && curl -fsSL -o "$d/fnm.zip" https://github.com/Schniz/fnm/releases/latest/download/fnm-linux.zip && unzip -qo "$d/fnm.zip" -d "$d" && install -m755 "$d/fnm" "$HOME/.local/bin/fnm" && rm -rf "$d"'; fi
+tem fnm && eval "$(fnm env --shell bash 2>/dev/null)"
 if tem node && [[ "$(node -v | tr -d v | cut -d. -f1)" -ge 22 ]]; then linha "linguagem" "Node LTS" "JA TEM" "$(node -v)"
 else rodar "linguagem" "Node LTS" bash -c 'eval "$(fnm env)" && fnm install --lts && fnm default lts-latest'; fi
-grep -q 'fnm env' "$HOME/.bashrc" 2>/dev/null || { [[ $SIMULAR -eq 1 ]] || echo 'eval "$(fnm env --use-on-cd --shell bash)"' >> "$HOME/.bashrc"; }
+# A linha do fnm no .bashrc põe ~/.local/bin no PATH antes: no shell de login do WSL o .bashrc roda antes do .profile acrescentar a pasta.
+FNM_LINHA='export PATH="$HOME/.local/bin:$PATH"; command -v fnm >/dev/null && eval "$(fnm env --use-on-cd --shell bash)"'
+if [[ $SIMULAR -eq 0 ]] && ! grep -qxF "$FNM_LINHA" "$HOME/.bashrc" 2>/dev/null; then
+  grep -v 'fnm env' "$HOME/.bashrc" > "$HOME/.bashrc.tmp" 2>/dev/null; cat "$HOME/.bashrc.tmp" > "$HOME/.bashrc"; rm -f "$HOME/.bashrc.tmp"
+  echo "$FNM_LINHA" >> "$HOME/.bashrc"
+fi
 
 if tem uv; then linha "linguagem" "uv (Python)" "JA TEM" "$(uv --version)"
 else rodar "linguagem" "uv (Python)" bash -c "curl -LsSf https://astral.sh/uv/install.sh | sh"; fi

@@ -5,6 +5,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 ## [1.16.3] - 2026-10-30
 
 ### Corrigido
+- "fnm: command not found" ao abrir o Ubuntu: a linha do fnm no .bashrc agora põe ~/.local/bin no PATH antes, e o bootstrap carrega o fnm antes de checar o Node (parava de reinstalar o Node a cada rodada).
 - bootstrap.sh instala bind9-dnsutils (o pacote dnsutils não existe mais no Ubuntu 26.04).
 
 ## [1.16.2] - 2026-10-30
