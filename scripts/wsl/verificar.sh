@@ -48,7 +48,7 @@ cmd "bubblewrap (sandbox)" bwrap "sudo apt install bubblewrap"
 cmd restic restic "sudo apt install restic"
 cmd pandoc pandoc "sudo apt install pandoc"
 cmd nmap nmap "sudo apt install nmap" 0
-cmd "dig (DNS)" dig "sudo apt install dnsutils" 0
+cmd "dig (DNS)" dig "sudo apt install bind9-dnsutils" 0
 cmd "Azure CLI" az "bash scripts/wsl/nuvem.sh" 0
 cmd Terraform terraform "bash scripts/wsl/nuvem.sh" 0
 cmd "Vercel CLI" vercel "bash scripts/wsl/nuvem.sh" 0

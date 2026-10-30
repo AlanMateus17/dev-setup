@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.16.3] - 2026-10-30
+
+### Corrigido
+- bootstrap.sh instala bind9-dnsutils (o pacote dnsutils não existe mais no Ubuntu 26.04).
+
 ## [1.16.2] - 2026-10-30
 
 ### Corrigido
