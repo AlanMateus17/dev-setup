@@ -89,8 +89,8 @@
      "quem": "voce",
      "pronto": "Disco externo com a cópia conferida (abra alguns arquivos)",
      "tempo_min": 60,
-     "comando": "$d = 'E:'; foreach ($p in 'Documents','Pictures','Desktop','Videos','Music') { if (Test-Path \"$HOME\\$p\") { robocopy \"$HOME\\$p\" \"$d\\backup-inicial\\$p\" /E /R:1 /W:1 /XJ /NFL /NDL /NP } }",
-     "nota": "Troque E: pela letra do disco externo (o Explorador mostra). O robocopy copia sem apagar nada do notebook; rodar de novo só copia o que mudou. Se as suas pastas estiverem no OneDrive, troque $HOME\\$p por $HOME\\OneDrive\\$p.",
+     "comando": "$d = 'E:'; if (-not (Test-Path \"$d\\\")) { Write-Host \"Nao existe o disco $d. Conecte o disco externo e veja a letra com: Get-Volume\" } else { foreach ($p in 'Desktop','Downloads','Documents','Pictures','Videos','Music','dev','dev-setup','source') { if (Test-Path \"$HOME\\$p\") { robocopy \"$HOME\\$p\" \"$d\\backup-inicial\\$p\" /E /R:1 /W:1 /XJ /NFL /NDL /NP } } }",
+     "nota": "Troque E: pela letra do disco externo (Get-Volume lista os discos; o seu notebook só tem o C:). Acrescente à lista as pastas suas que ficam direto na pasta do usuário, como o cofre do Obsidian. O robocopy copia sem apagar nada do notebook; rodar de novo só copia o que mudou. Se as suas pastas estiverem no OneDrive, troque $HOME\\$p por $HOME\\OneDrive\\$p.",
      "blocos": [
       "ext"
      ]
