@@ -81,6 +81,8 @@ def validar(d: dict, eco: dict | None = None) -> list[str]:
             for arq in re.findall(r"(scripts/[\w./-]+\.(?:ps1|sh)|tools/[\w./-]+\.py|infra/[\w./-]+)", p.get("comando", "").replace("\\", "/")):
                 if not (RAIZ / arq).exists():
                     erros.append(f"{p['id']}: o comando cita {arq}, que não existe")
+            if not p.get("comando") and not p.get("fora", "").strip():
+                erros.append(f"{p['id']}: sem comando de terminal e sem 'fora' (o motivo de não ter comando)")
             for x in p.get("precisa", []):
                 if x not in PRECISA:
                     erros.append(f"{p['id']}: precisa inválido {x} (use {', '.join(PRECISA)})")
@@ -152,6 +154,8 @@ def gerar_md(d: dict, eco: dict | None = None) -> str:
             if p.get("comando"):
                 lang = "powershell" if "powershell" in p["comando"] or p["comando"].startswith(("wsl ", "winget ")) else ("text" if p["comando"].startswith("http") else "bash")
                 o.append(f"```{lang}\n{p['comando']}\n```\n")
+            if p.get("fora"):
+                o.append(f"- **Fora do terminal:** {p['fora']}")
             o.append(f"- [ ] **Pronto quando:** {p['pronto']}")
             if p.get("nota"):
                 o.append(f"- {p['nota']}")

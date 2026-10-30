@@ -61,8 +61,12 @@ Saber exatamente o que o notebook já tem de hardware, segurança, programas, co
 
 **Você** · 5 min
 
+```bash
+if (Test-Path $HOME\dev-setup) { Write-Host "Ja existe $HOME\dev-setup" } else { Expand-Archive "$HOME\Downloads\dev-setup.zip" "$env:TEMP\dsx" -Force; Move-Item "$env:TEMP\dsx\dev-setup" "$HOME\dev-setup"; Remove-Item "$env:TEMP\dsx" -Recurse; Write-Host "Pronto: $HOME\dev-setup" }
+```
+
 - [ ] **Pronto quando:** Pasta C:\Users\SEU_USUARIO\dev-setup com RODAR-DIAGNOSTICO.cmd e as pastas scripts, data e docs logo dentro dela; nenhuma outra cópia em Downloads
-- Botão direito no zip > Extrair tudo. O Windows costuma criar dev-setup\dev-setup: recorte a pasta de dentro (a que tem a pasta scripts) e cole em C:\Users\SEU_USUARIO, a pasta com o seu nome. Apague as cópias que sobraram em Downloads, como "dev-setup (1)". Todos os comandos do Windows deste roteiro apontam para esse lugar, então funcionam de qualquer pasta, até da System32 onde o PowerShell de Administrador abre.
+- Botão direito no zip > Extrair tudo. O Windows costuma criar dev-setup\dev-setup: recorte a pasta de dentro (a que tem a pasta scripts) e cole em C:\Users\SEU_USUARIO, a pasta com o seu nome. Apague as cópias que sobraram em Downloads, como "dev-setup (1)". Todos os comandos do Windows deste roteiro apontam para esse lugar, então funcionam de qualquer pasta, até da System32 onde o PowerShell de Administrador abre. O comando extrai o zip que está em Downloads e põe a pasta no lugar; baixar o zip da conversa é pelo navegador.
 
 ### 0.2 Rodar o diagnóstico: botão direito em RODAR-DIAGNOSTICO.cmd > Executar como administrador
 
@@ -91,6 +95,7 @@ powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\inventa
 
 **Você** · 30 min
 
+- **Fora do terminal:** As contas vêm do seu e-mail e da fatura: o Claude lê só os remetentes pelo conector do Gmail; os valores das assinaturas você confere no cartão.
 - [ ] **Pronto quando:** Nota no Obsidian (ou papel) com quais contas do setup já existem e quais assinaturas você paga
 - A lista de contas do setup está no ecossistema, em Contas que você precisa ter. Senha nunca vai para nota: só para o KeePassXC, no passo dele.
 - Implanta: Windows 11 Home
@@ -99,6 +104,10 @@ powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\inventa
 
 **Você** · 10 min
 
+```bash
+Get-ChildItem $HOME -Recurse -File -Include *.docx,*.doc,*.pdf,*.pptx,*.ppt,*.xlsx,*.odt,*.md -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch '\\AppData\\|\\node_modules\\|\\\.vscode\\' } | Group-Object Extension | Sort-Object Count -Descending | Select-Object Name,Count
+```
+
 - [ ] **Pronto quando:** Você sabe por alto onde estão as aulas, apostilas, provas e projetos (Drive, notebook, pendrives)
 - A organização de verdade vem na fase Acervo, depois do backup.
 - Implanta: Google Drive (seus documentos)
@@ -106,6 +115,10 @@ powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\inventa
 ### 0.6 Mandar a pasta do diagnóstico para o Claude e ajustar o roteiro
 
 **Claude com você** · 30 min
+
+```bash
+explorer (Get-ChildItem $HOME\dev-setup -Directory -Filter 'diagnostico-*' | Sort-Object Name | Select-Object -Last 1).FullName
+```
 
 - [ ] **Pronto quando:** Passos que você já cumpre marcados no acompanhamento; compras e pendências confirmadas
 - Anexe na conversa os dois arquivos da pasta C:\Users\SEU_USUARIO\dev-setup\diagnostico-AAAAMMDD: diagnostico.md e diagnostico.json. Eles não têm senha nem documento seu, só hardware e programas.
@@ -123,13 +136,19 @@ Nada se perde, o hardware está no lugar e as contas estão protegidas antes de 
 
 **Você** · 1 h 00 min
 
+```bash
+$d = 'E:'; foreach ($p in 'Documents','Pictures','Desktop','Videos','Music') { if (Test-Path "$HOME\$p") { robocopy "$HOME\$p" "$d\backup-inicial\$p" /E /R:1 /W:1 /XJ /NFL /NDL /NP } }
+```
+
 - [ ] **Pronto quando:** Disco externo com a cópia conferida (abra alguns arquivos)
+- Troque E: pela letra do disco externo (o Explorador mostra). O robocopy copia sem apagar nada do notebook; rodar de novo só copia o que mudou. Se as suas pastas estiverem no OneDrive, troque $HOME\$p por $HOME\OneDrive\$p.
 - Implanta: Disco externo
 
 ### 1.2 Montar a mesa: nobreak, base com cooler, 2º monitor, disco e SSD externos, kits de robótica
 
 **Você** · 30 min
 
+- **Fora do terminal:** Montagem física da mesa. Depois o diagnóstico confere monitores e discos.
 - [ ] **Pronto quando:** Notebook no nobreak e na base, 2º monitor funcionando, disco e SSD externos reconhecidos
 - O que ainda não comprou fica anotado e não trava as próximas fases. O nobreak vem primeiro: protege o notebook e o backup de queda de energia.
 - **Precisa:** comprar algo
@@ -139,13 +158,19 @@ Nada se perde, o hardware está no lugar e as contas estão protegidas antes de 
 
 **Você** · 40 min
 
+```powershell
+winget upgrade --all --accept-source-agreements --accept-package-agreements; Install-PackageProvider NuGet -Force -Scope CurrentUser | Out-Null; Install-Module PSWindowsUpdate -Force -Scope CurrentUser; Import-Module PSWindowsUpdate; Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -IgnoreReboot
+```
+
 - [ ] **Pronto quando:** Windows Update sem pendências
+- O PSWindowsUpdate é um módulo da PowerShell Gallery, o mais usado para isso. O NitroSense atualiza pela Microsoft Store: winget upgrade também pega ele se veio da loja.
 - Implanta: Windows 11 Home · NitroSense + drivers AMD e NVIDIA
 
 ### 1.4 Instalar o app de 2FA no celular e ligar a verificação em duas etapas no GitHub, Google e e-mail
 
 **Você** · 30 min
 
+- **Fora do terminal:** Cada site liga a verificação em duas etapas na própria página, lendo o QR code com o celular; nenhum deixa fazer isso por terminal.
 - [ ] **Pronto quando:** 2FA ativo nas três contas, com códigos de recuperação impressos
 - Implanta: App 2FA (celular)
 
@@ -162,17 +187,18 @@ Toda conta com senha única guardada no KeePassXC, verificação em duas etapas 
 **Você** · 30 min
 
 ```powershell
-winget install --id KeePassXCTeam.KeePassXC -e
+winget install --id KeePassXCTeam.KeePassXC -e; New-Item -ItemType Directory -Force "$HOME\Documents\Cofre" | Out-Null; & "$env:ProgramFiles\KeePassXC\keepassxc-cli.exe" db-create --set-password "$HOME\Documents\Cofre\Cofre.kdbx"
 ```
 
 - [ ] **Pronto quando:** Arquivo Cofre.kdbx em Documentos\Cofre abre com a senha mestra; bloqueio automático depois de 5 minutos parado
-- Gere a senha mestra no próprio KeePassXC (Ferramentas > Gerador de senhas > Frase-senha, 6 palavras) e decore nos primeiros dias. Ela é a única senha que você precisa saber de cor e não pode ser usada em nenhum outro lugar. Não use arquivo-chave: se perder o arquivo, perde o cofre. Ninguém, nem o Claude, precisa ver o cofre ou a senha mestra.
+- Gere a senha mestra no próprio KeePassXC (Ferramentas > Gerador de senhas > Frase-senha, 6 palavras) e decore nos primeiros dias. Ela é a única senha que você precisa saber de cor e não pode ser usada em nenhum outro lugar. Não use arquivo-chave: se perder o arquivo, perde o cofre. Ninguém, nem o Claude, precisa ver o cofre ou a senha mestra. Para gerar a senha mestra no terminal: & "$env:ProgramFiles\KeePassXC\keepassxc-cli.exe" diceware -W 6 (anote no papel do kit e rode cls para limpar a tela). O db-create pergunta a senha sem mostrar nem gravar no histórico.
 - Implanta: KeePassXC
 
 ### 2.2 Montar o kit de emergência em papel
 
 **Você** · 15 min
 
+- **Fora do terminal:** Papel e caneta, de propósito: o kit não pode depender do computador.
 - [ ] **Pronto quando:** Envelope guardado em casa (fora da carteira e da mochila) com a senha mestra, a senha do e-mail principal e os códigos de recuperação do Google
 - É o que salva você se esquecer a senha mestra ou perder o notebook e o celular juntos. Papel, não foto: foto vai para a nuvem do celular.
 - Implanta: KeePassXC
@@ -181,6 +207,11 @@ winget install --id KeePassXCTeam.KeePassXC -e
 
 **Você** · 30 min
 
+```bash
+Start-Process 'https://myaccount.google.com/security-checkup'
+```
+
+- **Fora do terminal:** O comando abre a página; trocar a senha e ligar a verificação é no site do Google, com o celular.
 - [ ] **Pronto quando:** Senha nova gerada no KeePassXC; verificação em duas etapas pelo app; telefone e e-mail de recuperação conferidos; códigos de backup salvos no cofre; aparelhos desconhecidos desconectados
 - Vem antes de tudo porque todo 'Esqueci minha senha' manda o link para esse e-mail: quem controla o e-mail controla as outras contas. Faça em myaccount.google.com > Segurança e rode a Verificação de segurança no fim. Se não lembrar a senha atual, use g.co/recover no notebook e na rede de casa, onde o Google já reconhece você.
 - Implanta: KeePassXC · App 2FA (celular) · Conector Google (Gmail, Drive…)
@@ -189,6 +220,11 @@ winget install --id KeePassXCTeam.KeePassXC -e
 
 **Você** · 30 min
 
+```bash
+Start-Process chrome 'chrome://password-manager/settings'
+```
+
+- **Fora do terminal:** Os navegadores só exportam senhas pela janela de configurações, e o KeePassXC só importa CSV pela janela dele (Banco de dados > Importar).
 - [ ] **Pronto quando:** Senhas importadas no KeePassXC (Banco de dados > Importar > CSV); o arquivo CSV apagado de vez; navegadores sem salvar senha
 - Exporte em chrome://password-manager/settings, edge://wallet/passwords e passwords.google.com. O CSV é a lista de todas as suas senhas em texto puro: importe na hora, apague com Shift+Delete e não deixe em Downloads, no Drive, no e-mail nem no repositório. Não mande esse arquivo para ninguém, nem para o Claude. Só depois de conferir o cofre apague as senhas dos navegadores e desligue 'Oferecer para salvar senhas'.
 - Implanta: KeePassXC · Navegador + Claude in Chrome
@@ -197,6 +233,7 @@ winget install --id KeePassXCTeam.KeePassXC -e
 
 **Você** · 15 min
 
+- **Fora do terminal:** A checagem de vazamento online só existe na janela do KeePassXC (Banco de dados > Relatórios).
 - [ ] **Pronto quando:** Lista, em ordem, das contas para trocar (Banco de dados > Relatórios > Integridade e Have I Been Pwned)
 - A checagem de vazamento manda só um pedaço do resumo da senha, nunca a senha. Senha que aparece como vazada vai para o topo da lista.
 - Implanta: KeePassXC
@@ -205,6 +242,7 @@ winget install --id KeePassXCTeam.KeePassXC -e
 
 **Você** · 2 h 00 min
 
+- **Fora do terminal:** Cada serviço troca a senha no próprio site ou app; o cofre gera a senha (keepassxc-cli generate -L 24) e você cola lá.
 - [ ] **Pronto quando:** Cada conta crítica com senha nova gerada no cofre, verificação em duas etapas ligada e códigos de backup salvos na entrada dela
 - Para cada uma: gere a senha no KeePassXC (20 caracteres ou mais), troque no site, salve no cofre antes de fechar a página e saia de todos os outros aparelhos. Banco, troque pelo app oficial. No WhatsApp é o PIN da confirmação em duas etapas. A senha de 4 dígitos do cartão não vai para o cofre: essa você decora.
 - Implanta: KeePassXC · App 2FA (celular) · gov.br (prata ou ouro) · Conta bancária separada (CPF) · GitHub
@@ -213,6 +251,7 @@ winget install --id KeePassXCTeam.KeePassXC -e
 
 **Você** · 1 h 00 min
 
+- **Fora do terminal:** Recuperação de conta é sempre pelo site do serviço, com e-mail ou celular.
 - [ ] **Pronto quando:** Toda conta da sua lista de contas está no cofre, foi recuperada ou foi excluída
 - Use 'Esqueci minha senha' com o e-mail já protegido. Se o e-mail ou o telefone de recuperação forem antigos, cada serviço tem um formulário próprio (Meta: 'Precisa de ajuda?' na tela de login; gov.br: pelo app com reconhecimento facial ou pelo banco). Conta parada que guarda dado seu é risco: exclua.
 - Implanta: KeePassXC
@@ -221,6 +260,7 @@ winget install --id KeePassXCTeam.KeePassXC -e
 
 **Você** · 20 min
 
+- **Fora do terminal:** Instalar e abrir o app é no celular.
 - [ ] **Pronto quando:** O cofre abre no celular com a senha mestra; uma senha criada no notebook aparece no celular
 - Sincronize o arquivo Cofre.kdbx pelo Syncthing, ou pelo Drive (o arquivo vai criptografado). Edite num aparelho de cada vez para não criar cópias em conflito.
 - Implanta: KeePassXC · Celular · Syncthing
@@ -229,6 +269,7 @@ winget install --id KeePassXCTeam.KeePassXC -e
 
 **Você** · 15 min
 
+- **Fora do terminal:** Extensão de navegador e a opção de integração do KeePassXC só se ligam pelas janelas deles.
 - [ ] **Pronto quando:** No login de teste, o navegador preenche a senha a partir do cofre
 - No KeePassXC: Configurações > Integração com navegador, marque o seu navegador e instale a extensão KeePassXC-Browser.
 - Implanta: KeePassXC · Navegador + Claude in Chrome
@@ -236,6 +277,10 @@ winget install --id KeePassXCTeam.KeePassXC -e
 ### 2.10 Pôr o cofre no backup e testar abrir a cópia
 
 **Você** · 15 min
+
+```bash
+$d = 'E:'; New-Item -ItemType Directory -Force "$d\Cofre" | Out-Null; Copy-Item "$HOME\Documents\Cofre\Cofre.kdbx" "$d\Cofre\"; & "$env:ProgramFiles\KeePassXC\keepassxc-cli.exe" db-info "$d\Cofre\Cofre.kdbx"
+```
 
 - [ ] **Pronto quando:** Cópia do Cofre.kdbx no disco externo abre com a senha mestra; quando o restic entrar, a pasta Documentos\Cofre está no backup diário
 - No WSL o caminho é /mnt/c/Users/SEU_USUARIO/Documents/Cofre: acrescente ao comando do restic no passo do backup.
@@ -245,6 +290,7 @@ winget install --id KeePassXCTeam.KeePassXC -e
 
 **Você** · 20 min
 
+- **Fora do terminal:** Mesmo caso das críticas: a troca é no site de cada serviço.
 - [ ] **Pronto quando:** Relatório de integridade do KeePassXC sem senha fraca, repetida ou vazada
 - Implanta: KeePassXC
 
@@ -252,6 +298,7 @@ winget install --id KeePassXCTeam.KeePassXC -e
 
 **Você** · 10 min
 
+- **Fora do terminal:** Lembrete no calendário: peça ao Claude que crie pelo conector do Google Agenda.
 - [ ] **Pronto quando:** Lembrete trimestral no calendário
 - Implanta: KeePassXC
 
@@ -289,13 +336,21 @@ powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\instala
 
 **Você** · 15 min
 
+```bash
+manage-bde -status C:; manage-bde -protectors -get C:
+```
+
 - [ ] **Pronto quando:** verificar.ps1 como Administrador mostra criptografia OK
-- No Windows 11 Home a opção se chama Criptografia do dispositivo e depende do hardware. Se não aparecer, anote e siga.
+- No Windows 11 Home a opção se chama Criptografia do dispositivo e depende do hardware. Se não aparecer, anote e siga. O segundo comando mostra a chave de recuperação (48 números): copie para uma entrada do KeePassXC. Se aparecer 'Proteção desligada', ligue em Configurações > Privacidade e segurança > Criptografia do dispositivo.
 - Implanta: BitLocker · TPM + Secure Boot
 
 ### 3.4 Conferir Defender e Firewall ligados
 
 **Você** · 10 min
+
+```bash
+Get-MpComputerStatus | Select-Object AMServiceEnabled,AntivirusEnabled,RealTimeProtectionEnabled,AntivirusSignatureLastUpdated; Get-NetFirewallProfile | Select-Object Name,Enabled
+```
 
 - [ ] **Pronto quando:** verificar.ps1 como Administrador mostra Defender OK
 - Implanta: Defender + Firewall
@@ -315,6 +370,7 @@ powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\extenso
 
 **Você** · 15 min
 
+- **Fora do terminal:** Extensão do Chrome se instala pela Chrome Web Store, no navegador.
 - [ ] **Pronto quando:** O painel do Claude abre numa aba do navegador
 - O uso do computador pelo Claude fica no app do Claude para desktop; ligue só quando for usar e acompanhe o que ele faz.
 - Implanta: Navegador + Claude in Chrome · Claude in Chrome + uso do computador
@@ -323,6 +379,7 @@ powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\extenso
 
 **Você** · 20 min
 
+- **Fora do terminal:** A Blackmagic só libera o instalador depois de um cadastro no site.
 - [ ] **Pronto quando:** Abre e reconhece a GPU
 - Implanta: DaVinci Resolve ou Kdenlive
 
@@ -360,6 +417,10 @@ O Ubuntu com tudo o que o código precisa, commits assinados e o ambiente versio
 
 **Você** · 10 min
 
+```powershell
+wsl -d Ubuntu-24.04
+```
+
 - [ ] **Pronto quando:** Prompt do Ubuntu aberto
 - Implanta: Ubuntu (WSL2)
 
@@ -367,6 +428,11 @@ O Ubuntu com tudo o que o código precisa, commits assinados e o ambiente versio
 
 **Você** · 5 min
 
+```bash
+docker run --rm hello-world
+```
+
+- **Fora do terminal:** A integração com o Ubuntu é uma opção da janela do Docker Desktop (Settings > Resources > WSL integration); o comando confere se funcionou.
 - [ ] **Pronto quando:** 'docker run hello-world' funciona dentro do Ubuntu
 - Implanta: Docker + Compose
 
@@ -418,6 +484,10 @@ gh auth login && gh ssh-key add ~/.ssh/id_ed25519.pub --type authentication && g
 
 **Claude com você** · 30 min
 
+```bash
+cd ~ && gh repo create dotfiles --private --clone && cd dotfiles && for f in .bashrc .gitconfig .tmux.conf; do [ -f ~/$f ] && cp ~/$f .; done && git add -A && git commit -m 'dotfiles iniciais' && git push -u origin HEAD
+```
+
 - [ ] **Pronto quando:** Repositório dotfiles privado; clonar e rodar o script de links recria o terminal
 - Nunca coloque chaves ou tokens nos dotfiles. O gitleaks do CI confere a cada envio.
 - Implanta: dotfiles
@@ -438,6 +508,7 @@ bash scripts/wsl/vault.sh
 
 **Você** · 15 min
 
+- **Fora do terminal:** Parear com o celular é lendo o QR code no app do Syncthing.
 - [ ] **Pronto quando:** Vídeo gravado no celular aparece na pasta Gravacoes do Windows
 - Para o pipeline pegar, mova o vídeo para ~/AMtech/entrada/aulas. Vídeo com aluno menor de idade só com autorização do responsável.
 - Implanta: Syncthing · Celular
@@ -488,20 +559,29 @@ gh run list --limit 1
 
 **Claude com você** · 15 min
 
+```bash
+cd ~/dev/dev-setup && gh api -X PUT 'repos/{owner}/{repo}/vulnerability-alerts' && gh api -X PUT 'repos/{owner}/{repo}/automated-security-fixes' && gh api -X PATCH 'repos/{owner}/{repo}/code-scanning/default-setup' -f state=configured
+```
+
 - [ ] **Pronto quando:** Dependabot e CodeQL ativos; push direto no main exige CI verde
-- Peça ao Claude Code no repositório; ele faz pelo gh api com a sua aprovação.
+- Peça ao Claude Code no repositório; ele faz pelo gh api com a sua aprovação. Proteger o branch main e o CodeQL em repositório privado exigem GitHub Pro; o GitHub Education de professor costuma liberar. Sem ele, o comando liga o Dependabot e o CodeQL responde que não está disponível.
 - Implanta: Dependabot + CodeQL
 
 ### 5.4 Criar a organização grupo-amtech-digital no GitHub
 
 **Você** · 10 min
 
+- **Fora do terminal:** O GitHub só deixa criar organização pelo site.
 - [ ] **Pronto quando:** Organização criada, com 2FA obrigatório para membros
 - Implanta: GitHub
 
 ### 5.5 Criar o GitHub Project do setup e a pasta de decisões (ADRs)
 
 **Claude com você** · 20 min
+
+```bash
+gh auth refresh -s project && gh project create --owner @me --title 'Setup AMtech' && mkdir -p ~/dev/dev-setup/docs/adr
+```
 
 - [ ] **Pronto quando:** Quadro com as fases deste roteiro e docs/adr/0001 registrado
 - O MkDocs publica a documentação no GitHub Pages quando você quiser tornar algo público; o setup continua privado.
@@ -541,6 +621,10 @@ cd ~/dev/dev-setup && ai-jail --dry-run claude
 
 **Claude com você** · 30 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo claude-md do roteiro: Criar o CLAUDE.md padrão do Aura e os comandos /commit e /novo-sistema-aura"
+```
+
 - [ ] **Pronto quando:** Arquivos no repositório de cada sistema
 - Peça ao Claude Code: o conteúdo está em docs/pecas-autorais.md.
 - Implanta: CLAUDE.md, agentes e skills (seus)
@@ -550,7 +634,7 @@ cd ~/dev/dev-setup && ai-jail --dry-run claude
 **Você** · 15 min
 
 ```bash
-ollama pull <nome do modelo escolhido no catálogo do Ollama>
+ollama pull llama3.2:3b && ollama run llama3.2:3b 'Responda em uma frase: o que é uma variável?'
 ```
 
 - [ ] **Pronto quando:** verificar.ps1 mostra Ollama OK com 1 modelo
@@ -560,6 +644,10 @@ ollama pull <nome do modelo escolhido no catálogo do Ollama>
 
 **Claude com você** · 20 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo mcp do roteiro: Ligar os servidores MCP do Claude Code: GitHub e o banco de métricas só para leitura"
+```
+
 - [ ] **Pronto quando:** 'claude mcp list' mostra os servidores conectados
 - O banco entra com o usuário leitor do Grafana, que não apaga nada. Tokens ficam no KeePassXC e em variáveis de ambiente, nunca no repositório.
 - Implanta: Servidores MCP
@@ -568,12 +656,20 @@ ollama pull <nome do modelo escolhido no catálogo do Ollama>
 
 **Claude com você** · 15 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo ai-memory do roteiro: Ligar o ai-memory para o agente lembrar das decisões entre sessões"
+```
+
 - [ ] **Pronto quando:** Uma decisão anotada numa sessão aparece na seguinte
 - Implanta: ai-memory
 
 ### 6.7 Montar a base de conhecimento das suas notas (Ollama + pgvector, ou NotebookLM e Projects)
 
 **Claude com você** · 1 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo rag do roteiro: Montar a base de conhecimento das suas notas (Ollama + pgvector, ou NotebookLM e Projects)"
+```
 
 - [ ] **Pronto quando:** Pergunta sobre uma anotação sua volta com a resposta e a nota de origem
 - Entram só as suas anotações, resumos com suas palavras, exercícios resolvidos e aulas que você gravou. Aulas da Udemy, DIO, Alura e afins não entram.
@@ -603,6 +699,7 @@ restic -r /mnt/d/backup-restic init && restic -r /mnt/d/backup-restic backup ~/d
 
 **Você** · 40 min
 
+- **Fora do terminal:** Criar a conta e a chave da Backblaze é no site; depois o restic usa a chave pelo terminal.
 - [ ] **Pronto quando:** Segundo repositório restic com snapshot
 - Implanta: Backblaze B2 (backup) · Backup 3-2-1
 
@@ -610,12 +707,20 @@ restic -r /mnt/d/backup-restic init && restic -r /mnt/d/backup-restic backup ~/d
 
 **Você** · 15 min
 
+```bash
+restic -r /mnt/d/backup-restic restore latest --target /tmp/teste-restauracao --include "$HOME/dev/dev-setup/README.md" && find /tmp/teste-restauracao -name README.md
+```
+
 - [ ] **Pronto quando:** Arquivo restaurado abre normalmente
 - Implanta: Backup 3-2-1
 
 ### 7.4 Agendar o backup diário
 
 **Claude com você** · 20 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo agendar-backup do roteiro: Agendar o backup diário"
+```
 
 - [ ] **Pronto quando:** Timer do backup ativo
 - Implanta: restic (backup criptografado)
@@ -632,6 +737,7 @@ Todos os seus documentos convertidos em conhecimento organizado no Obsidian, os 
 
 **Você** · 45 min
 
+- **Fora do terminal:** O Google Takeout só funciona pelo site.
 - [ ] **Pronto quando:** Os zips do Takeout extraídos numa pasta só, por exemplo C:\Users\SEU_USUARIO\Downloads\Takeout
 - Escolha só o Drive e, em formatos, Google Docs como .docx e Apresentações como .pptx. O Drive para computador mostra os Google Docs como atalhos sem conteúdo, por isso a primeira cópia vem do Takeout. Junte também os arquivos do notebook e dos pendrives na mesma pasta.
 - Implanta: Google Drive (seus documentos)
@@ -640,6 +746,7 @@ Todos os seus documentos convertidos em conhecimento organizado no Obsidian, os 
 
 **Você** · 30 min
 
+- **Fora do terminal:** Decisão sua, arquivo por arquivo; o acervo já ignora os nomes típicos de documento pessoal.
 - [ ] **Pronto quando:** Pasta Pessoal separada, guardada só no backup criptografado
 - O acervo.py também barra esses arquivos pelo nome e pelo conteúdo e lista o que achou, mas tirar antes é mais seguro.
 - Implanta: Backup 3-2-1
@@ -671,6 +778,7 @@ uv run tools/acervo/acervo.py --origem /mnt/c/Users/SEU_USUARIO/Downloads/Takeou
 
 **Você** · 1 h 30 min
 
+- **Fora do terminal:** Decisão sua para cada alerta.
 - [ ] **Pronto quando:** Cada alerta com decisão anotada: apagar dados, só estudo, reescrever ou vender
 - Material de terceiros (livros, cursos) não vira produto nem treino de IA. Material feito para a escola: confira os direitos antes de vender; o caminho seguro é reescrever do zero, no seu tempo, sem a identidade da escola.
 - Implanta: Acervo (seus documentos)
@@ -679,12 +787,20 @@ uv run tools/acervo/acervo.py --origem /mnt/c/Users/SEU_USUARIO/Downloads/Takeou
 
 **Claude com você** · 30 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo acervo-rag do roteiro: Indexar o acervo e as suas notas na base de conhecimento"
+```
+
 - [ ] **Pronto quando:** Pergunta sobre um documento antigo volta com a resposta e o arquivo de origem
 - Implanta: Base de conhecimento (RAG) das suas notas
 
 ### 8.7 Escolher no relatório os 3 primeiros produtos e levar para o portfólio de ofertas
 
 **Claude com você** · 1 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo acervo-produtos do roteiro: Escolher no relatório os 3 primeiros produtos e levar para o portfólio de ofertas"
+```
 
 - [ ] **Pronto quando:** 3 ofertas novas em data/portfolio.json com estágio, preço alvo e próximo passo
 - Implanta: Portfólio de ofertas · Esteira de ofertas
@@ -701,6 +817,7 @@ Cada recurso do Claude e cada assistente com um papel definido no setup.
 
 **Você** · 30 min
 
+- **Fora do terminal:** Projects, memória e tarefas agendadas ficam no app do Claude.
 - [ ] **Pronto quando:** Projects AMtech, Instituto, Editora e Setup criados; uma tarefa agendada de teste rodou
 - Implanta: Claude (app) · Projects + memória · Artifacts (Docs, Slides, Sheets…) · Pesquisa aprofundada · Tarefas agendadas
 
@@ -708,6 +825,7 @@ Cada recurso do Claude e cada assistente com um papel definido no setup.
 
 **Você** · 30 min
 
+- **Fora do terminal:** Conectores se ligam e desligam nas configurações do app do Claude.
 - [ ] **Pronto quando:** Cada conector usado responde a um pedido simples; o da Cloudflare trocado pelo Cloudflare API MCP
 - Notion, monday, GitBook e Stripe ficam de fora: repetem Obsidian, GitHub Projects, MkDocs e as plataformas de curso. Desconecte para não confundir.
 - Implanta: Conector Google (Gmail, Drive…) · Conectores Canva + Figma · Conector MailerLite · Vercel · AWS · Microsoft Learn · Conector Upwork · Lovable + Supabase · Conector Cloudflare · Conector vidIQ · Notion · monday · GitBook · Stripe
@@ -716,6 +834,7 @@ Cada recurso do Claude e cada assistente com um papel definido no setup.
 
 **Você** · 15 min
 
+- **Fora do terminal:** Plugins se ligam no app do Claude.
 - [ ] **Pronto quando:** Os comandos dos plugins aparecem no Claude
 - Implanta: Plugins: small- business + marketing · Plugins: engineering + design · Plugins: finance + Fiscal.ai · Plugins: Hostinger · Adobe · Cloudinary
 
@@ -723,6 +842,7 @@ Cada recurso do Claude e cada assistente com um papel definido no setup.
 
 **Você** · 30 min
 
+- **Fora do terminal:** Cada assistente tem o próprio site ou app.
 - [ ] **Pronto quando:** Acessos no KeePassXC e assinaturas pagas lançadas na tabela ferramentas do banco de métricas
 - Implanta: ChatGPT · Gemini (pago) · Grok · DeepSeek · Perplexity · Codex (OpenAI) · Agentes de código do Google
 
@@ -804,6 +924,10 @@ http://localhost:3002
 
 **Claude com você** · 45 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo backup-banco do roteiro: Pôr o banco de métricas e os fluxos do n8n no backup diário"
+```
+
 - [ ] **Pronto quando:** Dump diário do banco e export dos fluxos em ~/AMtech/backup-dados, copiados pelo restic; uma restauração de teste funcionou
 - Os dados ficam em volumes do Docker, fora das pastas que o restic copia. Sem este passo, perder o notebook leva junto o histórico de vendas.
 - Implanta: Banco de métricas (PostgreSQL) · n8n · restic (backup criptografado)
@@ -812,6 +936,7 @@ http://localhost:3002
 
 **Você** · 10 min
 
+- **Fora do terminal:** Decisão sua.
 - [ ] **Pronto quando:** Decisão anotada em infra/postiz/README.md
 - Implanta: Postiz (agendador)
 
@@ -827,6 +952,10 @@ Gravou ou escreveu, as peças aparecem na fila de aprovação.
 
 **Você** · 40 min
 
+```bash
+code ~/dev/dev-setup/config/marca.md
+```
+
 - [ ] **Pronto quando:** config/marca.md sem colchetes
 - O Claude pode rascunhar a partir dos documentos de marca e presença; você corrige.
 - Implanta: Marca pessoal Alan Mateus
@@ -835,6 +964,7 @@ Gravou ou escreveu, as peças aparecem na fila de aprovação.
 
 **Você** · 10 min
 
+- **Fora do terminal:** A chave é criada no site console.anthropic.com; colar no arquivo: nano ~/.config/amtech/conteudo.env.
 - [ ] **Pronto quando:** ANTHROPIC_API_KEY preenchida em ~/.config/amtech/conteudo.env
 - A API é cobrada por uso, separada da assinatura do Claude. Defina um limite de gasto mensal no console.
 - Implanta: Claude (assinatura e API)
@@ -843,6 +973,7 @@ Gravou ou escreveu, as peças aparecem na fila de aprovação.
 
 **Você** · 10 min
 
+- **Fora do terminal:** O bot é criado conversando com o @BotFather no app do Telegram.
 - [ ] **Pronto quando:** Mensagem de teste chega no celular
 - Implanta: Telegram (avisos) · Aprovação no celular
 
@@ -872,6 +1003,10 @@ bash scripts/wsl/ativar-pipeline.sh
 
 **Você** · 20 min
 
+```bash
+cp /mnt/c/Users/SEU_USUARIO/Videos/NOME-DA-AULA.mp4 ~/AMtech/entrada/aulas/
+```
+
 - [ ] **Pronto quando:** Peças da aula na fila em até 15 minutos depois de transcrita
 - Implanta: Whisper (local) · Flywheel de conteúdo
 
@@ -887,6 +1022,7 @@ Gravar, editar e montar imagens no mesmo padrão toda semana, sem pensar.
 
 **Você** · 40 min
 
+- **Fora do terminal:** Feito dentro do programa (OBS, Audacity, DaVinci), que não tem modo terminal para isso.
 - [ ] **Pronto quando:** Gravação de teste de 1 minuto com áudio limpo nas três cenas
 - Implanta: OBS Studio
 
@@ -894,6 +1030,7 @@ Gravar, editar e montar imagens no mesmo padrão toda semana, sem pensar.
 
 **Você** · 20 min
 
+- **Fora do terminal:** Feito dentro do programa (OBS, Audacity, DaVinci), que não tem modo terminal para isso.
 - [ ] **Pronto quando:** A mesma limpeza aplicada com um clique numa gravação nova
 - Implanta: Audacity
 
@@ -901,12 +1038,17 @@ Gravar, editar e montar imagens no mesmo padrão toda semana, sem pensar.
 
 **Você** · 40 min
 
+- **Fora do terminal:** Feito dentro do programa (OBS, Audacity, DaVinci), que não tem modo terminal para isso.
 - [ ] **Pronto quando:** Um corte de 30 segundos exportado a partir do modelo
 - Implanta: DaVinci Resolve ou Kdenlive
 
 ### 12.4 Criar os modelos de capa, carrossel e thumbnail com a sua marca (Canva, Krita ou Inkscape)
 
 **Claude com você** · 40 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo imagens-modelos do roteiro: Criar os modelos de capa, carrossel e thumbnail com a sua marca (Canva, Krita ou Inkscape)"
+```
 
 - [ ] **Pronto quando:** Três modelos salvos; uma peça da fila montada com eles
 - O Claude cria os modelos no Canva pelo conector, a partir do config/marca.md.
@@ -916,6 +1058,7 @@ Gravar, editar e montar imagens no mesmo padrão toda semana, sem pensar.
 
 **Você** · 1 h 00 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** Trecho de teste com a sua voz clonada aprovado por você
 - Só a sua voz, com 30 minutos ou mais de áudio limpo. Avise o público quando a voz for gerada por IA. Voz de outra pessoa, nunca.
 - **Precisa:** pagar um serviço
@@ -933,6 +1076,7 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 
 **Você** · 1 h 30 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** Foto, nome, bio e link iguais nas cinco redes
 - Implanta: Instagram · YouTube · TikTok · LinkedIn · Facebook · Marca pessoal Alan Mateus
 
@@ -940,6 +1084,7 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 
 **Você** · 30 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** Mensagem de teste recebe a saudação automática
 - Implanta: WhatsApp Business
 
@@ -947,6 +1092,7 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 
 **Você** · 30 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** DNS ativo na Cloudflare
 - **Precisa:** pagar um serviço
 - Implanta: Domínio (Registro.br) · Cloudflare (DNS, Pages, e-mail)
@@ -955,6 +1101,7 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 
 **Você** · 30 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** Envia e recebe
 - **Precisa:** pagar um serviço
 - Implanta: E-mail profissional (enviar e receber)
@@ -963,12 +1110,17 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 
 **Você** · 40 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** Pixel instalado na página de vendas
 - Implanta: Meta Business Suite · Tags de conversão (Pixel, Google…)
 
 ### 13.6 Montar no MailerLite os grupos, o formulário da isca e a sequência de boas-vindas
 
 **Claude com você** · 30 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo mailerlite do roteiro: Montar no MailerLite os grupos, o formulário da isca e a sequência de boas-vindas"
+```
 
 - [ ] **Pronto quando:** Inscrição de teste recebe o primeiro e-mail
 - O Claude faz pelo conector do MailerLite, com a sua aprovação.
@@ -978,12 +1130,20 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 
 **Claude com você** · 1 h 00 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo site-pessoal do roteiro: Publicar o site pessoal e blog no GitHub Pages (alanmateus17.github.io)"
+```
+
 - [ ] **Pronto quando:** Site no ar com portfólio, blog e formulário da newsletter
 - Implanta: Site pessoal + blog (Jekyll) · GitHub Pages
 
 ### 13.8 Publicar o site do Instituto AMS com a página de pré-venda na Cloudflare Pages
 
 **Claude com você** · 1 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo vercel-pagina do roteiro: Publicar o site do Instituto AMS com a página de pré-venda na Cloudflare Pages"
+```
 
 - [ ] **Pronto quando:** Página no ar com o domínio e o Pixel
 - Fica na Cloudflare Pages porque o plano grátis do Vercel não permite uso comercial. O Claude publica pelo conector da Cloudflare ou pelo Wrangler.
@@ -993,6 +1153,10 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 
 **Claude com você** · 1 h 30 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo site-grupo do roteiro: Publicar o site do Grupo AMtech e o Catálogo do HTML"
+```
+
 - [ ] **Pronto quando:** Os dois sites no ar com domínio e HTTPS
 - **Oferta:** Catálogo do HTML (gratuito)
 - Implanta: Site Grupo AMtech · Catálogo do HTML
@@ -1001,6 +1165,7 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 
 **Você** · 20 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** Alunos publicando os próprios sites pelo Catálogo
 - É material grátis da escola, não venda. Nada de oferecer produto pago a aluno menor de idade; ex-alunos adultos podem seguir as redes.
 - Implanta: Alunos e ex-alunos
@@ -1009,6 +1174,10 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 
 **Claude com você** · 20 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo umami do roteiro: Ligar o Umami nos sites"
+```
+
 - [ ] **Pronto quando:** Uma visita de teste aparece no painel do Umami
 - Implanta: Umami (analytics)
 
@@ -1016,12 +1185,17 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 
 **Você** · 10 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** Propriedade verificada e sitemaps lidos
 - Implanta: Google Search Console · Busca Google (SEO)
 
 ### 13.13 Separar na Hostinger o espaço dos sites de clientes
 
 **Claude com você** · 30 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo hostinger do roteiro: Separar na Hostinger o espaço dos sites de clientes"
+```
 
 - [ ] **Pronto quando:** Auditoria da Hostinger sem pendências e um site modelo pronto para copiar
 - O Claude faz a auditoria pelo plugin da Hostinger e aponta o que precisa de atenção.
@@ -1040,6 +1214,7 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 
 **Você** · 20 min
 
+- **Fora do terminal:** Órgão público, contador ou entidade: feito no site do governo ou com atendimento.
 - [ ] **Pronto quando:** Nível prata ou ouro aparece no app gov.br
 - Implanta: gov.br (prata ou ouro)
 
@@ -1047,6 +1222,7 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 
 **Você** · 30 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** Conta aberta; todas as plataformas vão pagar nela
 - Implanta: Conta bancária separada (CPF)
 
@@ -1054,6 +1230,7 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 
 **Você** · 1 h 00 min
 
+- **Fora do terminal:** Órgão público, contador ou entidade: feito no site do governo ou com atendimento.
 - [ ] **Pronto quando:** Regras do carnê-leão anotadas e o valor de virada para o CNPJ definido
 - **Precisa:** pagar um serviço
 - Implanta: Contador
@@ -1061,6 +1238,10 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 ### 14.4 Publicar termos de uso e política de privacidade (LGPD) e ter o contrato padrão de serviço
 
 **Claude com você** · 1 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo legal do roteiro: Publicar termos de uso e política de privacidade (LGPD) e ter o contrato padrão de serviço"
+```
 
 - [ ] **Pronto quando:** Links de termos e privacidade no rodapé de todos os sites; contrato em modelo editável
 - O Claude rascunha; antes de usar, peça para o contador ou um advogado revisar. Isto vem antes de coletar e-mail ou vender.
@@ -1070,6 +1251,7 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 
 **Você** · 1 h 00 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** Produto em rascunho nas duas
 - Implanta: Hotmart · Kiwify · Mini-curso Lógica de Programação
 
@@ -1077,6 +1259,7 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 
 **Você** · 1 h 00 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** Contas aprovadas; formulário fiscal da Udemy enviado; primeiro artigo publicado na DIO
 - Na Udemy o recebimento é por PayPal ou Payoneer e vai para o carnê-leão como renda do exterior.
 - **Oferta:** Parceria DIO
@@ -1086,6 +1269,7 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 
 **Você** · 20 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** Link de pagamento de teste pago e estornado
 - Implanta: Mercado Pago
 
@@ -1093,6 +1277,7 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 
 **Você** · 30 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** Horário de teste marcado e cobrado
 - **Oferta:** Aulas particulares
 - Implanta: Agenda online (Cal.com) · Aulas particulares
@@ -1101,6 +1286,10 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 
 **Claude com você** · 30 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo crm do roteiro: Criar o CRM em planilha com origem e consentimento de cada cliente"
+```
+
 - [ ] **Pronto quando:** Planilha com colunas de oferta, origem, consentimento LGPD e próximo passo
 - Implanta: CRM simples (planilha) · CRM único + LGPD
 
@@ -1108,6 +1297,7 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 
 **Você** · 30 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** Regras publicadas e convite automático na compra
 - Implanta: Comunidade (Discord ou grupo)
 
@@ -1115,6 +1305,7 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 
 **Você** · 30 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** Links de afiliado com UTM numa nota do Obsidian
 - **Oferta:** Afiliados (ferramentas, livros, equipamentos que você usa)
 - Implanta: Afiliados (Amazon, Hotmart…)
@@ -1123,6 +1314,10 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 
 **Claude com você** · 15 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo utm do roteiro: Adotar o padrão de UTM em todo link"
+```
+
 - [ ] **Pronto quando:** Gerador de links com UTM salvo e usado no primeiro post
 - Implanta: Padrão de UTM
 
@@ -1130,12 +1325,17 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 
 **Você** · 30 min
 
+- **Fora do terminal:** Decisão sua; os números e as opções já estão no roteiro e no portfólio.
 - [ ] **Pronto quando:** CPA de empate e CPA da margem anotados para cada oferta ativa
 - Implanta: Lucro por Venda (calculadora) · Regras de corte
 
 ### 14.14 Revisar o portfólio de ofertas: estágio, próximo passo e padrão de qualidade
 
 **Claude com você** · 45 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo ofertas do roteiro: Revisar o portfólio de ofertas: estágio, próximo passo e padrão de qualidade"
+```
 
 - [ ] **Pronto quando:** Uma oferta em construção e uma em validação, cada uma com o checklist de pronto
 - O Claude cria o comando /revisar-oferta, que confere um lançamento contra o padrão de qualidade antes de ir ao ar.
@@ -1145,12 +1345,20 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 
 **Claude com você** · 30 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo avaliacoes do roteiro: Ligar a pergunta de satisfação depois de cada compra ou serviço e o pedido de avaliação no Google"
+```
+
 - [ ] **Pronto quando:** Compra de teste recebe a pergunta por e-mail
 - Implanta: NPS e avaliações
 
 ### 14.16 Montar a lista de parceiros e a primeira mensagem de prospecção
 
 **Claude com você** · 45 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo prospeccao do roteiro: Montar a lista de parceiros e a primeira mensagem de prospecção"
+```
 
 - [ ] **Pronto quando:** 10 parceiros qualificados e a mensagem revisada por você
 - O Claude busca e qualifica; quem envia é você.
@@ -1160,6 +1368,7 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 
 **Você** · 1 h 00 min
 
+- **Fora do terminal:** Órgão público, contador ou entidade: feito no site do governo ou com atendimento.
 - [ ] **Pronto quando:** Pesquisa sem conflito e pedido protocolado (ou decisão de esperar, anotada)
 - **Precisa:** pagar um serviço
 - Implanta: Registro de marca (INPI)
@@ -1168,6 +1377,7 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 
 **Você** · 30 min
 
+- **Fora do terminal:** Órgão público, contador ou entidade: feito no site do governo ou com atendimento.
 - [ ] **Pronto quando:** DARF gerado (ou mês sem receita registrado) e lembrete todo dia 20
 - Implanta: Carnê-leão (Receita Federal)
 
@@ -1175,12 +1385,17 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 
 **Você** · 15 min
 
+- **Fora do terminal:** Órgão público, contador ou entidade: feito no site do governo ou com atendimento.
 - [ ] **Pronto quando:** Pasta com informes e carnês do ano, guardada no backup
 - Implanta: Declaração anual do IR
 
 ### 14.20 Começar o Caixa da Casa numa planilha até o sistema AM Rendara existir
 
 **Claude com você** · 30 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo caixa do roteiro: Começar o Caixa da Casa numa planilha até o sistema AM Rendara existir"
+```
 
 - [ ] **Pronto quando:** Entradas e saídas do mês lançadas, separando casa e vendas
 - **Oferta:** AM Rendara (finanças), começando pela planilha
@@ -1198,14 +1413,22 @@ Cada venda chega sozinha ao banco e aparece no painel de lucro.
 
 **Você** · 40 min
 
+```bash
+curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o /tmp/cloudflared.deb && sudo dpkg -i /tmp/cloudflared.deb && cloudflared tunnel login && cloudflared tunnel create amtech-n8n && cloudflared tunnel route dns amtech-n8n n8n.SEU-DOMINIO
+```
+
 - [ ] **Pronto quando:** https://n8n.seu-dominio responde fora de casa
-- Só o caminho de webhook precisa ficar público; o painel do n8n fica protegido.
+- Só o caminho de webhook precisa ficar público; o painel do n8n fica protegido. Troque SEU-DOMINIO pelo domínio do passo do Registro.br. O cloudflared login abre o navegador uma vez para autorizar.
 - **Precisa:** pagar um serviço
 - Implanta: Cloudflare (DNS, Pages, e-mail) · Webhooks de venda
 
 ### 15.2 Criar no n8n o fluxo: webhook Hotmart, Kiwify e Eduzz → tabela vendas
 
 **Claude com você** · 1 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo fluxo-vendas do roteiro: Criar no n8n o fluxo: webhook Hotmart, Kiwify e Eduzz → tabela vendas"
+```
 
 - [ ] **Pronto quando:** Venda de teste aparece na tabela vendas
 - O Claude monta o fluxo com você no n8n; a tabela já tem a trava contra venda duplicada.
@@ -1215,12 +1438,17 @@ Cada venda chega sozinha ao banco e aparece no painel de lucro.
 
 **Você** · 15 min
 
+- **Fora do terminal:** Feito no painel da plataforma, que não tem terminal para isso.
 - [ ] **Pronto quando:** Tabela gastos com a primeira campanha
 - Implanta: Banco de métricas (PostgreSQL)
 
 ### 15.4 Montar o painel de lucro no Grafana sobre a view lucro_por_produto_mes
 
 **Claude com você** · 45 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo painel-lucro do roteiro: Montar o painel de lucro no Grafana sobre a view lucro_por_produto_mes"
+```
 
 - [ ] **Pronto quando:** Painel mostra receita, anúncio, lucro e CPA por produto
 - Implanta: Painel de lucro (Grafana) · Grafana
@@ -1237,6 +1465,10 @@ Os três testes de ponta a ponta passam: daqui em diante, alimentar o sistema j�
 
 **Você** · 15 min
 
+```bash
+cd ~/dev/dev-setup && git commit --allow-empty -S -m 'teste: commit assinado' && git push && gh run watch && git log --show-signature -1
+```
+
 - [ ] **Pronto quando:** Selo Verified no commit e CI verde
 - Implanta: Commits assinados (chave SSH) · GitHub Actions
 
@@ -1244,6 +1476,7 @@ Os três testes de ponta a ponta passam: daqui em diante, alimentar o sistema j�
 
 **Você** · 20 min
 
+- **Fora do terminal:** Teste de ponta a ponta: um pedaço é no celular (aviso do Telegram) ou na plataforma (compra de teste).
 - [ ] **Pronto quando:** Pasta nova na fila e mensagem no celular
 - Implanta: Pipeline de conteúdo
 
@@ -1251,12 +1484,17 @@ Os três testes de ponta a ponta passam: daqui em diante, alimentar o sistema j�
 
 **Você** · 20 min
 
+- **Fora do terminal:** Teste de ponta a ponta: um pedaço é no celular (aviso do Telegram) ou na plataforma (compra de teste).
 - [ ] **Pronto quando:** Venda de teste no Grafana
 - Implanta: Webhooks de venda · Painel de lucro (Grafana)
 
 ### 16.4 Rodar os três verificadores juntos
 
 **Script** · 5 min
+
+```powershell
+bash ~/dev/dev-setup/scripts/wsl/verificar.sh && bash ~/dev/dev-setup/scripts/wsl/verificar.sh --servicos && powershell.exe -ExecutionPolicy Bypass -File "$(wslpath -w ~/dev/dev-setup/scripts/windows/verificar.ps1)"
+```
 
 - [ ] **Pronto quando:** verificar.ps1, verificar.sh e verificar.sh --servicos sem FALTA
 - Implanta: Verificadores · Roteiro de implantação
@@ -1273,6 +1511,10 @@ A primeira venda real pela internet, com entrega, suporte, imposto e números no
 
 **Claude com você** · 2 h 00 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo mc-roteiro do roteiro: Fechar o roteiro das 5 primeiras aulas do mini-curso a partir do acervo"
+```
+
 - [ ] **Pronto quando:** 5 aulas com objetivo, exemplo e exercício, no Obsidian
 - **Oferta:** Mini-curso Lógica de Programação
 - Implanta: Mini-curso Lógica de Programação
@@ -1281,6 +1523,7 @@ A primeira venda real pela internet, com entrega, suporte, imposto e números no
 
 **Você** · 10 h 00 min
 
+- **Fora do terminal:** Conteúdo seu: gravar, escrever ou explicar o seu método.
 - [ ] **Pronto quando:** 5 vídeos finais exportados no modelo do estúdio
 - **Oferta:** Mini-curso Lógica de Programação
 - Implanta: OBS Studio · DaVinci Resolve ou Kdenlive
@@ -1289,6 +1532,7 @@ A primeira venda real pela internet, com entrega, suporte, imposto e números no
 
 **Você** · 2 h 00 min
 
+- **Fora do terminal:** Feito no painel da plataforma, que não tem terminal para isso.
 - [ ] **Pronto quando:** Produto aprovado na Hotmart, com checkout funcionando
 - A garantia de 7 dias é o direito de arrependimento do Código de Defesa do Consumidor para compra pela internet.
 - **Oferta:** Mini-curso Lógica de Programação
@@ -1297,6 +1541,10 @@ A primeira venda real pela internet, com entrega, suporte, imposto e números no
 ### 17.4 Página de vendas no Instituto AMS: promessa, conteúdo, preço e garantia
 
 **Claude com você** · 2 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo mc-pagina do roteiro: Página de vendas no Instituto AMS: promessa, conteúdo, preço e garantia"
+```
 
 - [ ] **Pronto quando:** Página no ar levando ao checkout, com Pixel e UTM
 - Sem depoimento inventado: só depoimentos reais, com autorização, quando existirem.
@@ -1307,6 +1555,10 @@ A primeira venda real pela internet, com entrega, suporte, imposto e números no
 
 **Claude com você** · 1 h 30 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo mc-isca do roteiro: Isca grátis (aula 1) com a sequência de e-mails que leva à venda"
+```
+
 - [ ] **Pronto quando:** Inscrição de teste recebe os 5 e-mails e o último leva ao checkout
 - **Oferta:** Mini-curso Lógica de Programação · Newsletter (patrocínio e vendas)
 - Implanta: Isca grátis + sequência de e-mails · MailerLite
@@ -1315,6 +1567,7 @@ A primeira venda real pela internet, com entrega, suporte, imposto e números no
 
 **Você** · 2 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** Lançamento publicado em todos os canais, com UTM
 - **Oferta:** Mini-curso Lógica de Programação
 - Implanta: Instagram · WhatsApp Business · LinkedIn
@@ -1323,6 +1576,7 @@ A primeira venda real pela internet, com entrega, suporte, imposto e números no
 
 **Você** · 1 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** Venda paga, aluno com acesso, dúvida respondida em até 24 h, linha na tabela vendas e venda lançada no carnê-leão
 - **Oferta:** Mini-curso Lógica de Programação
 - Implanta: Hotmart · Webhooks de venda · Carnê-leão (Receita Federal)
@@ -1331,6 +1585,7 @@ A primeira venda real pela internet, com entrega, suporte, imposto e números no
 
 **Você** · 2 h 00 min
 
+- **Fora do terminal:** Feito no painel da plataforma, que não tem terminal para isso.
 - [ ] **Pronto quando:** Mini-curso à venda nas quatro plataformas
 - **Oferta:** Mini-curso Lógica de Programação · Versões dos cursos na Udemy (português e inglês)
 - Implanta: Kiwify · Eduzz · Udemy
@@ -1347,6 +1602,10 @@ Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e depl
 
 **Claude com você** · 2 h 00 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo template-aura do roteiro: Gerar o modelo de sistema com /novo-sistema-aura"
+```
+
 - [ ] **Pronto quando:** Sistema exemplo sobe com 'dotnet run' e passa nos testes
 - Clean Architecture + DDD, EF Core com Npgsql, multi-tenant com RLS, SignalR com Redis, OpenAPI com Scalar, Next.js com o Aura Design System e Storybook, testes com xUnit, Playwright e k6.
 - Implanta: Clean Arch + DDD · EF Core + Npgsql · SignalR · Multi-tenant (RLS) · API ASP.NET Core · Next.js + Aura Design System · OpenAPI + Scalar · Storybook · PostgreSQL · Redis · Testes: xUnit, Playwright, k6
@@ -1355,12 +1614,20 @@ Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e depl
 
 **Claude com você** · 1 h 00 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo auth do roteiro: Ligar o login: Keycloak no dev e Entra ID na nuvem"
+```
+
 - [ ] **Pronto quando:** Usuário de teste entra e só vê os dados da própria empresa
 - Implanta: Keycloak / Entra ID
 
 ### 18.3 Ligar a observabilidade do dev: .NET Aspire, OpenTelemetry, Prometheus, Seq, Mailpit e Caddy
 
 **Claude com você** · 1 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo observabilidade-dev do roteiro: Ligar a observabilidade do dev: .NET Aspire, OpenTelemetry, Prometheus, Seq, Mailpit e Caddy"
+```
 
 - [ ] **Pronto quando:** Painel do Aspire mostra trace de uma requisição; e-mail de teste cai no Mailpit
 - Implanta: .NET Aspire · OpenTelemetry · Prometheus · Seq (logs) · Mailpit · Caddy (proxy + HTTPS)
@@ -1369,6 +1636,7 @@ Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e depl
 
 **Você** · 20 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** Erro de teste aparece no Sentry
 - Implanta: Sentry (erros)
 
@@ -1376,6 +1644,7 @@ Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e depl
 
 **Você** · 20 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** Nota de qualidade aparece no pull request
 - O plano grátis cobre repositório público; confira o limite para privado antes de ligar.
 - Implanta: SonarQube Cloud
@@ -1384,6 +1653,10 @@ Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e depl
 
 **Claude com você** · 30 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo ghcr do roteiro: Publicar a imagem Docker da API no GHCR pelo CI"
+```
+
 - [ ] **Pronto quando:** Imagem com a tag do commit aparece nos pacotes do GitHub
 - Implanta: GHCR (imagens)
 
@@ -1391,6 +1664,7 @@ Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e depl
 
 **Você** · 30 min
 
+- **Fora do terminal:** Decisão sua; os números e as opções já estão no roteiro e no portfólio.
 - [ ] **Pronto quando:** Lista de templates no portfólio de ofertas
 - **Oferta:** Templates e código-fonte
 - Implanta: Templates e código-fonte
@@ -1399,6 +1673,7 @@ Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e depl
 
 **Você** · 2 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** 10 candidaturas enviadas com o portfólio do sistema exemplo
 - Implanta: Recrutadores
 
@@ -1425,6 +1700,11 @@ bash scripts/wsl/nuvem.sh
 
 **Você** · 30 min
 
+```bash
+az login && az account show
+```
+
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** 'az login' entra e o alerta de gasto está ligado
 - Ligue o alerta antes de criar qualquer recurso. O Microsoft Learn do conector ajuda a escolher o serviço mais barato.
 - Implanta: Azure
@@ -1433,12 +1713,20 @@ bash scripts/wsl/nuvem.sh
 
 **Claude com você** · 1 h 30 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo terraform-base do roteiro: Criar com Terraform o grupo de recursos, o banco e o Key Vault do primeiro sistema"
+```
+
 - [ ] **Pronto quando:** 'terraform plan' sem diferenças depois do apply
 - Implanta: Terraform · Azure
 
 ### 19.4 Criar o armazenamento de arquivos (R2 da Cloudflare ou Blob)
 
 **Claude com você** · 30 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo arquivos-nuvem do roteiro: Criar o armazenamento de arquivos (R2 da Cloudflare ou Blob)"
+```
 
 - [ ] **Pronto quando:** Upload de teste pelo sistema exemplo
 - Implanta: Armazenamento de arquivos (Blob/R2)
@@ -1447,6 +1735,7 @@ bash scripts/wsl/nuvem.sh
 
 **Você** · 30 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** E-mail de confirmação de conta chega na caixa de entrada, não no spam
 - Implanta: E-mail transacional (Resend, SES…)
 
@@ -1454,12 +1743,20 @@ bash scripts/wsl/nuvem.sh
 
 **Claude com você** · 1 h 00 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo deploy-teste do roteiro: Fazer o primeiro deploy do sistema exemplo"
+```
+
 - [ ] **Pronto quando:** Sistema no ar com HTTPS, login e erro de teste no Sentry
 - Implanta: Vercel · Azure · Cloudflare (DNS, Pages, e-mail)
 
 ### 19.7 Criar o aura-status: painel de repositórios, backup e Dependabot
 
 **Claude com você** · 2 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo aura-status do roteiro: Criar o aura-status: painel de repositórios, backup e Dependabot"
+```
 
 - [ ] **Pronto quando:** Painel mostra o estado de todos os repositórios
 - Implanta: aura-status
@@ -1478,12 +1775,17 @@ O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.
 
 **Você** · 2 h 00 min
 
+- **Fora do terminal:** Conteúdo seu: gravar, escrever ou explicar o seu método.
 - [ ] **Pronto quando:** metodo.yaml com cada etapa, entrada, saída e critério de conclusão; template de capítulo pronto
 - Implanta: Seu modelo de criação · Seu método (metodo.yaml) · Projeto do capítulo · Mapa de pré-requisitos
 
 ### 20.2 Criar o repositório do livro com fonte única, classe LaTeX, exercícios em YAML e CI
 
 **Claude com você** · 2 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo livro-repo do roteiro: Criar o repositório do livro com fonte única, classe LaTeX, exercícios em YAML e CI"
+```
 
 - [ ] **Pronto quando:** Um push gera PDF, EPUB e o gabarito sem erro
 - Depende do capítulo 1 e do seu modelo. O conteúdo é seu; nada de material de terceiros.
@@ -1494,12 +1796,20 @@ O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.
 
 **Claude com você** · 4 h 00 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo editora-imagens do roteiro: Construir o pipeline de imagens do livro: busca nos acervos, filtro de licença, folha de contato e créditos"
+```
+
 - [ ] **Pronto quando:** Uma figura do capítulo 1 sai com licença conferida, ficha e crédito; o build falha se faltar ficha
 - Implanta: Acervos de imagens (APIs) · Busca automática de imagens · Filtro de licença e fichas · Folha de contato (artefato) · Créditos e legendas
 
 ### 20.4 Figuras, tabelas e texto alternativo gerados por código
 
 **Claude com você** · 3 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo editora-figuras do roteiro: Figuras, tabelas e texto alternativo gerados por código"
+```
 
 - [ ] **Pronto quando:** Gráficos e tabelas do capítulo 1 gerados no build, com texto alternativo revisado por você
 - Implanta: Figuras por código (Matplotlib…) · Geradores de tabelas · Texto alternativo
@@ -1508,12 +1818,20 @@ O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.
 
 **Claude com você** · 3 h 00 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo editora-agentes do roteiro: Criar os agentes da editora: revisor técnico, gabarito, leitor iniciante e consistência"
+```
+
 - [ ] **Pronto quando:** Os agentes apontam problemas reais no capítulo 1 e você corrige
 - Implanta: Agentes da editora
 
 ### 20.6 Montar a matriz de editais e o quadro de referências
 
 **Claude com você** · 1 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo editais do roteiro: Montar a matriz de editais e o quadro de referências"
+```
 
 - [ ] **Pronto quando:** Cada tópico dos editais ligado a um capítulo; lacunas listadas
 - Implanta: Matriz de editais · Quadro de referências
@@ -1522,6 +1840,7 @@ O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.
 
 **Você** · 30 min
 
+- **Fora do terminal:** Decisão sua; os números e as opções já estão no roteiro e no portfólio.
 - [ ] **Pronto quando:** Logo aprovado e aplicado na classe LaTeX
 - Implanta: Selo Editora AMS Silva
 
@@ -1529,6 +1848,7 @@ O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.
 
 **Você** · 1 h 00 min
 
+- **Fora do terminal:** Órgão público, contador ou entidade: feito no site do governo ou com atendimento.
 - [ ] **Pronto quando:** ISBN do impresso e do ebook, código de barras e ficha no verso da folha de rosto
 - **Precisa:** pagar um serviço, conteúdo seu pronto (livro, capítulo)
 - Implanta: ISBN + código de barras (CBL) · Ficha catalográfica
@@ -1537,6 +1857,7 @@ O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.
 
 **Você** · 30 min
 
+- **Fora do terminal:** Decisão sua; os números e as opções já estão no roteiro e no portfólio.
 - [ ] **Pronto quando:** Nomes confirmados e formulário de retorno pronto
 - **Precisa:** conteúdo seu pronto (livro, capítulo)
 - Implanta: Leitores beta e revisão técnica
@@ -1545,6 +1866,7 @@ O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.
 
 **Você** · 1 h 00 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** Livro em rascunho com capa, preço e prévia conferida
 - **Precisa:** conteúdo seu pronto (livro, capítulo)
 - **Oferta:** Livro Lógica e Máquina
@@ -1554,6 +1876,7 @@ O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.
 
 **Você** · 30 min
 
+- **Fora do terminal:** Órgão público, contador ou entidade: feito no site do governo ou com atendimento.
 - [ ] **Pronto quando:** Comprovante de envio guardado
 - **Precisa:** conteúdo seu pronto (livro, capítulo)
 - Implanta: Depósito legal
@@ -1582,6 +1905,7 @@ winget install --id Rufus.Rufus -e
 
 **Você** · 3 h 00 min
 
+- **Fora do terminal:** O Rufus grava o pendrive pela janela dele; a instalação do Arch é no terminal, mas no boot do pendrive, seguindo o guia oficial.
 - [ ] **Pronto quando:** O Arch portátil dá boot e abre o terminal com os seus dotfiles
 - Use um pendrive para a ISO e outro (64 GB ou mais, USB 3) ou um SSD USB como disco do sistema. Mesmo cuidado com Secure Boot e BitLocker.
 - **Precisa:** comprar algo
@@ -1625,6 +1949,7 @@ ollama run llama3.1:8b
 
 **Você** · 1 h 00 min
 
+- **Fora do terminal:** Estudo: assistir, praticar e anotar.
 - [ ] **Pronto quando:** Módulo 1 entregue no GitHub e anotado no Obsidian
 - O tempo é só para começar; o curso leva 10 semanas. Para a IA vão as suas anotações, nunca o material do curso.
 - Implanta: Zoomcamp de dados + cursos de IA
@@ -1633,12 +1958,20 @@ ollama run llama3.1:8b
 
 **Claude com você** · 1 h 30 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo dbt-metricas do roteiro: Criar o projeto dbt sobre o banco de métricas"
+```
+
 - [ ] **Pronto quando:** 'dbt build' verde e o painel de lucro lendo os modelos
 - Implanta: dbt Core
 
 ### 21.8 Subir o Airflow e agendar o dbt todo dia
 
 **Claude com você** · 1 h 30 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo airflow do roteiro: Subir o Airflow e agendar o dbt todo dia"
+```
 
 - [ ] **Pronto quando:** A rotina diária aparece verde no Airflow por 3 dias seguidos
 - Implanta: Airflow (orquestração)
@@ -1647,6 +1980,7 @@ ollama run llama3.1:8b
 
 **Você** · 30 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** Token do Hugging Face no KeePassXC; Kaggle com telefone verificado para liberar a GPU
 - No RunPod, só crédito pré-pago. Nunca ponha token em notebook público.
 - Implanta: Hugging Face (modelos e Hub) · Kaggle · Colab (GPU grátis) · GPU por hora (RunPod e afins)
@@ -1654,6 +1988,10 @@ ollama run llama3.1:8b
 ### 21.10 Montar o primeiro dataset só com conteúdo seu
 
 **Claude com você** · 2 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo dataset do roteiro: Montar o primeiro dataset só com conteúdo seu"
+```
 
 - [ ] **Pronto quando:** Algumas centenas de pares de pergunta e resposta revisados por você, com conjunto de teste separado
 - Fontes: suas notas, exercícios, livro e aulas que você gravou. Nada de cursos de terceiros; nada de dados de alunos sem consentimento.
@@ -1663,12 +2001,20 @@ ollama run llama3.1:8b
 
 **Claude com você** · 3 h 00 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo fine-tune do roteiro: Primeiro fine-tuning QLoRA de um 8B no Kaggle"
+```
+
 - [ ] **Pronto quando:** Adaptador salvo no Hugging Face privado e o treino registrado no MLflow
 - Implanta: Unsloth (QLoRA) · Kaggle · Colab (GPU grátis)
 
 ### 21.12 Avaliar contra o modelo base e levar o seu modelo para o Ollama
 
 **Claude com você** · 1 h 30 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo modelo-no-ollama do roteiro: Avaliar contra o modelo base e levar o seu modelo para o Ollama"
+```
 
 - [ ] **Pronto quando:** O seu modelo ganha do base no conjunto de teste e responde no Ollama do notebook
 - Implanta: Avaliação dos modelos · llama.cpp (GGUF) · Ollama
@@ -1687,6 +2033,10 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 
 **Claude com você** · 1 h 30 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo of-meu-setup do roteiro: Página 'meu setup' com links de afiliado"
+```
+
 - [ ] **Pronto quando:** Página publicada com links marcados com UTM
 - **Oferta:** Afiliados (ferramentas, livros, equipamentos que você usa)
 - Implanta: Site pessoal + blog (Jekyll) · Afiliados (Amazon, Hotmart…)
@@ -1694,6 +2044,10 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 ### 22.2 Pôr no Catálogo do HTML a chamada para o mini-curso e para a newsletter
 
 **Claude com você** · 30 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo of-catalogo do roteiro: Pôr no Catálogo do HTML a chamada para o mini-curso e para a newsletter"
+```
 
 - [ ] **Pronto quando:** Chamadas no ar, medidas por UTM
 - **Oferta:** Catálogo do HTML (gratuito)
@@ -1703,6 +2057,7 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 
 **Você** · 10 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** Kit de 1 disciplina (planos, slides, avaliações) à venda
 - Material feito para a escola: reescreva do zero, no seu tempo e sem a identidade da escola, ou confirme os direitos.
 - **Oferta:** Pacote de aulas prontas para professores de informática
@@ -1712,6 +2067,7 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 
 **Você** · 3 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** 10 planilhas vendidas
 - **Oferta:** AM Rendara (finanças), começando pela planilha
 - Implanta: Caixa da Casa / AM Rendara · Hotmart
@@ -1719,6 +2075,10 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 ### 22.5 Automação com IA para pequenos negócios: 1 implantação grátis em troca de caso
 
 **Claude com você** · 10 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo of-automacao do roteiro: Automação com IA para pequenos negócios: 1 implantação grátis em troca de caso"
+```
 
 - [ ] **Pronto quando:** Um negócio usando a automação e um caso escrito com autorização
 - **Oferta:** Automação com IA para pequenos negócios (WhatsApp, n8n, agenda)
@@ -1728,6 +2088,7 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 
 **Você** · 8 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** 50 questões publicadas e a procura medida
 - **Oferta:** Banco de questões de TI para concursos (PF, PRF, Forças Armadas)
 - Implanta: Exercícios em YAML
@@ -1736,6 +2097,7 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 
 **Você** · 3 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** Primeiro baralho à venda
 - **Oferta:** Baralhos Anki de TI e concursos
 - Implanta: Anki · Exercícios em YAML
@@ -1744,6 +2106,7 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 
 **Você** · 2 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** Edição semanal por 8 semanas e o primeiro patrocinador
 - **Oferta:** Newsletter (patrocínio e vendas)
 - Implanta: MailerLite
@@ -1752,6 +2115,7 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 
 **Você** · 4 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** Primeiro cliente mensal
 - **Oferta:** Presença digital para comércio local (Google Perfil, redes, avaliações)
 - Implanta: Google Perfil da Empresa · Sites para pequenas empresas
@@ -1760,6 +2124,7 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 
 **Você** · 3 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** Pacotes publicados e primeiro cliente fechado
 - **Oferta:** Sites e lojas para pequenas empresas
 - Implanta: Sites para pequenas empresas · Hostinger (clientes WP)
@@ -1768,6 +2133,7 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 
 **Você** · 4 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** 3 empresas no plano mensal
 - **Oferta:** Suporte remoto e planos mensais para empresas
 - Implanta: Tailscale (VPN)
@@ -1776,6 +2142,7 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 
 **Você** · 8 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** Um estudo de caso, com autorização do dono
 - **Oferta:** Implantação de ficha técnica e engenharia de cardápio
 - Implanta: AM Kaixara (PDV e cardápio)
@@ -1783,6 +2150,10 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 ### 22.13 AM Mentor: banco de exercícios com correção, começando pelo capítulo 1
 
 **Claude com você** · 20 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo of-ammentor do roteiro: AM Mentor: banco de exercícios com correção, começando pelo capítulo 1"
+```
 
 - [ ] **Pronto quando:** Primeiros alunos usando
 - **Oferta:** AM Mentor: banco de exercícios com correção
@@ -1792,6 +2163,7 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 
 **Você** · 20 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** 24 vídeos publicados e o resultado medido
 - **Oferta:** Canais sem rosto (YouTube, TikTok, Instagram, Facebook)
 - Implanta: Agente editor de conteúdo · YouTube
@@ -1800,6 +2172,7 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 
 **Você** · 4 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** Comunidade aberta com os primeiros assinantes
 - Só com 200 alunos pagantes.
 - **Oferta:** Comunidade paga do Instituto AMS
@@ -1809,6 +2182,7 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 
 **Você** · 10 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** Primeira escola contratando
 - **Oferta:** Oficinas de robótica e programação para escolas
 - Implanta: Arduino · ESP32 · Pi · Arduino IDE 2
@@ -1817,6 +2191,7 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 
 **Você** · 4 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** Primeiro contrato assinado
 - **Oferta:** Sistemas sob encomenda
 - Implanta: API ASP.NET Core · Next.js + Aura Design System
@@ -1825,6 +2200,7 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 
 **Você** · 4 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** 2 eventos pagos, com as regras sanitárias conferidas
 - **Oferta:** Aula de sushi e sushiman para eventos
 - Implanta: Agenda online (Cal.com)
@@ -1833,6 +2209,7 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 
 **Você** · 8 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** Piloto realizado com 10 inscritos pagantes
 - **Oferta:** Workshops presenciais para pequenos empresários (IA, planilhas, presença digital)
 - Implanta: Agenda online (Cal.com) · Mercado Pago
@@ -1841,6 +2218,7 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 
 **Você** · 30 min
 
+- **Fora do terminal:** Decisão sua; os números e as opções já estão no roteiro e no portfólio.
 - [ ] **Pronto quando:** Decisão anotada: retomar ou manter pausada
 - **Oferta:** AM Taskoro (gestão de projetos ágeis)
 - Implanta: Portfólio de ofertas
@@ -1859,6 +2237,7 @@ Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.
 
 **Você** · 2 h 00 min
 
+- **Fora do terminal:** Campanha montada no painel de anúncios de cada rede, com cartão.
 - [ ] **Pronto quando:** Campanha com CPA abaixo do de empate por 2 semanas
 - **Precisa:** pagar um serviço
 - Implanta: Meta Ads (Instagram, Facebook)
@@ -1867,6 +2246,7 @@ Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.
 
 **Você** · 3 h 00 min
 
+- **Fora do terminal:** Campanha montada no painel de anúncios de cada rede, com cartão.
 - [ ] **Pronto quando:** Cada canal com a primeira campanha medida no painel
 - **Precisa:** pagar um serviço
 - Implanta: Google e YouTube Ads · TikTok Ads
@@ -1875,6 +2255,7 @@ Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.
 
 **Você** · 4 h 00 min
 
+- **Fora do terminal:** Campanha montada no painel de anúncios de cada rede, com cartão.
 - [ ] **Pronto quando:** Cada canal testado e mantido ou cortado pelas regras
 - **Precisa:** pagar um serviço
 - Implanta: Kwai Ads · Pinterest Ads · LinkedIn Ads · Spotify Ad Studio · Mídia nativa (Taboola, Outbrain)
@@ -1883,6 +2264,7 @@ Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.
 
 **Você** · 2 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** Primeira parceria medida por cupom e UTM
 - **Precisa:** pagar um serviço
 - Implanta: Influenciadores e newsletters
@@ -1891,12 +2273,17 @@ Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.
 
 **Você** · 1 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** Primeiro afiliado vendendo
 - Implanta: Programa de afiliados
 
 ### 23.6 Ligar o algoritmo de horário com 3 meses de dados de publicação
 
 **Claude com você** · 2 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo horario do roteiro: Ligar o algoritmo de horário com 3 meses de dados de publicação"
+```
 
 - [ ] **Pronto quando:** 80% dos posts nas melhores faixas, 20% testando
 - Implanta: Algoritmo de horário
@@ -1905,6 +2292,7 @@ Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.
 
 **Você** · 1 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** 4 vídeos seguidos publicados
 - **Oferta:** Canal com rosto: construindo o Grupo AMtech em público
 - Implanta: Canal build in public
@@ -1913,6 +2301,7 @@ Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.
 
 **Você** · 2 h 00 min
 
+- **Fora do terminal:** Conteúdo seu: gravar, escrever ou explicar o seu método.
 - [ ] **Pronto quando:** Um vídeo com faixa de áudio em inglês ou espanhol
 - **Precisa:** pagar um serviço
 - Implanta: Dublagem (YouTube + ElevenLabs)
@@ -1921,6 +2310,7 @@ Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.
 
 **Você** · 30 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** Assinatura de membros ativa
 - **Oferta:** Monetização das plataformas (YouTube, Instagram)
 - Implanta: YouTube (membros)
@@ -1929,6 +2319,7 @@ Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.
 
 **Você** · 20 h 00 min
 
+- **Fora do terminal:** Conteúdo seu: gravar, escrever ou explicar o seu método.
 - [ ] **Pronto quando:** Formação gravada e à venda
 - **Oferta:** Formação Téc. em Desenvolvimento de Sistemas (13 disciplinas) · Formação em Matemática · Curso de finanças pessoais (conteúdo próprio)
 - Implanta: Formações (TI, Matemática, Finanças)
@@ -1945,6 +2336,7 @@ Arch com boot próprio, VMs de laboratório e a segurança física em dia.
 
 **Você** · 5 h 00 min
 
+- **Fora do terminal:** Compra e montagem física (ou instalação por janela de VM); depois os verificadores conferem pelo terminal.
 - [ ] **Pronto quando:** Escolha entre Windows e Arch ao ligar, cada um no seu disco
 - **Precisa:** comprar algo
 - Implanta: 2º NVMe (1–4 TB) · Arch + Omarchy (2º NVMe) · Gerenciador de boot
@@ -1953,6 +2345,10 @@ Arch com boot próprio, VMs de laboratório e a segurança física em dia.
 
 **Você** · 5 h 00 min
 
+```bash
+sudo apt install -y neovim && nvim +Tutor
+```
+
 - [ ] **Pronto quando:** Uma semana editando só no Neovim
 - Implanta: Neovim
 
@@ -1960,6 +2356,7 @@ Arch com boot próprio, VMs de laboratório e a segurança física em dia.
 
 **Você** · 5 h 00 min
 
+- **Fora do terminal:** Compra e montagem física (ou instalação por janela de VM); depois os verificadores conferem pelo terminal.
 - [ ] **Pronto quando:** Duas VMs numa rede isolada, atacante e alvo
 - Implanta: VMs: Kali · Arch · Servidores
 
@@ -1967,6 +2364,7 @@ Arch com boot próprio, VMs de laboratório e a segurança física em dia.
 
 **Você** · 1 h 00 min
 
+- **Fora do terminal:** Compra e montagem física (ou instalação por janela de VM); depois os verificadores conferem pelo terminal.
 - [ ] **Pronto quando:** VMs rodando do SSD novo
 - **Precisa:** comprar algo
 - Implanta: SSD SATA 2,5"
@@ -1975,6 +2373,7 @@ Arch com boot próprio, VMs de laboratório e a segurança física em dia.
 
 **Você** · 1 h 00 min
 
+- **Fora do terminal:** Compra e montagem física (ou instalação por janela de VM); depois os verificadores conferem pelo terminal.
 - [ ] **Pronto quando:** Login com a chave nas três contas
 - **Precisa:** comprar algo
 - Implanta: Chave física (YubiKey)
@@ -1983,6 +2382,7 @@ Arch com boot próprio, VMs de laboratório e a segurança física em dia.
 
 **Você** · 1 h 00 min
 
+- **Fora do terminal:** Compra e montagem física (ou instalação por janela de VM); depois os verificadores conferem pelo terminal.
 - [ ] **Pronto quando:** Gravação de teste com áudio limpo sem pós-produção
 - **Precisa:** comprar algo
 - Implanta: Microfone + câmera
@@ -1998,6 +2398,10 @@ Busca e assistente com os seus dados dentro de um sistema AM.
 ### 25.1 RAG com pgvector dentro do primeiro sistema AM
 
 **Claude com você** · 8 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo rag-sistema do roteiro: RAG com pgvector dentro do primeiro sistema AM"
+```
 
 - [ ] **Pronto quando:** O sistema responde perguntas com base nos dados do cliente, citando a origem
 - Implanta: IA: RAG + pgvector
@@ -2016,12 +2420,20 @@ Os sistemas viram produto por assinatura.
 
 **Claude com você** · 10 h 00 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo saas do roteiro: Lançar o primeiro sistema AM como SaaS, com cobrança por módulo"
+```
+
 - [ ] **Pronto quando:** Primeiro cliente pagando por assinatura
 - Implanta: Sistemas AM (SaaS) · aura-licensing
 
 ### 26.2 AM Kaixara: PDV, cardápio, fichas técnicas e estoque
 
 **Claude com você** · 40 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo kaixara do roteiro: AM Kaixara: PDV, cardápio, fichas técnicas e estoque"
+```
 
 - [ ] **Pronto quando:** Rodando num negócio real
 - **Oferta:** AM Kaixara (PDV, ficha técnica, cardápio)
@@ -2031,6 +2443,10 @@ Os sistemas viram produto por assinatura.
 
 **Claude com você** · 40 h 00 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo rotara do roteiro: AM Rotara: pedidos, rotas e mapas"
+```
+
 - [ ] **Pronto quando:** Entregas rastreadas no mapa em tempo real
 - **Oferta:** AM Rotara (pedidos e entregas)
 - Implanta: AM Rotara (entregas) · PostGIS + MapLibre
@@ -2039,12 +2455,20 @@ Os sistemas viram produto por assinatura.
 
 **Claude com você** · 10 h 00 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo servicos-aura do roteiro: Serviços aura- compartilhados, só quando um sistema precisar"
+```
+
 - [ ] **Pronto quando:** Um serviço compartilhado usado por dois sistemas
 - Implanta: Serviços aura- (10) · Datomic local
 
 ### 26.5 App de delivery com a marca do restaurante (white-label)
 
 **Claude com você** · 20 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo whitelabel do roteiro: App de delivery com a marca do restaurante (white-label)"
+```
 
 - [ ] **Pronto quando:** Primeiro restaurante usando o app com a marca dele
 - Comece oferecendo a 3 restaurantes que pagam 23% ao iFood.
@@ -2065,6 +2489,7 @@ Sair do CPF na hora certa, com nota fiscal e cobrança automáticas.
 
 **Você** · 4 h 00 min
 
+- **Fora do terminal:** Órgão público, contador ou entidade: feito no site do governo ou com atendimento.
 - [ ] **Pronto quando:** CNPJ ativo, conta PJ aberta e contador contratado
 - **Precisa:** pagar um serviço
 - Implanta: CNPJ (futuro) · 3 CNPJs por frente
@@ -2073,6 +2498,7 @@ Sair do CPF na hora certa, com nota fiscal e cobrança automáticas.
 
 **Você** · 1 h 00 min
 
+- **Fora do terminal:** Órgão público, contador ou entidade: feito no site do governo ou com atendimento.
 - [ ] **Pronto quando:** Certificado instalado e guardado no KeePassXC
 - **Precisa:** pagar um serviço
 - Implanta: Certificado digital (e-CNPJ)
@@ -2081,12 +2507,20 @@ Sair do CPF na hora certa, com nota fiscal e cobrança automáticas.
 
 **Claude com você** · 4 h 00 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo nfse-api do roteiro: Nota fiscal automática pela API de NFS-e"
+```
+
 - [ ] **Pronto quando:** Venda de teste emite nota sozinha
 - Implanta: API de NFS-e (ex.: Focus NFe)
 
 ### 27.4 Cobrança recorrente por Pix Automático
 
 **Claude com você** · 4 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo pix-automatico do roteiro: Cobrança recorrente por Pix Automático"
+```
 
 - [ ] **Pronto quando:** Assinatura de teste cobrada por Pix
 - Implanta: Pix Automático + gateway (ex.: Asaas)
@@ -2105,12 +2539,20 @@ Atendimento, orçamento, cobrança e análise rodando com a sua aprovação.
 
 **Claude com você** · 2 h 00 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo ag-analista do roteiro: Analista semanal: o que funcionou e o que mudar"
+```
+
 - [ ] **Pronto quando:** Relatório toda segunda no Telegram
 - Implanta: Analista semanal
 
 ### 28.2 Atendente do WhatsApp com passagem para você
 
 **Claude com você** · 4 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo ag-atendente do roteiro: Atendente do WhatsApp com passagem para você"
+```
 
 - [ ] **Pronto quando:** Dúvida comum respondida sozinha; o resto chega para você
 - Implanta: Agente atendente (WhatsApp)
@@ -2119,12 +2561,20 @@ Atendimento, orçamento, cobrança e análise rodando com a sua aprovação.
 
 **Claude com você** · 3 h 00 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo ag-orcamento do roteiro: Orçamentista de sites e sistemas"
+```
+
 - [ ] **Pronto quando:** Rascunho de orçamento em 5 minutos, revisado por você
 - Implanta: Agente orçamentista
 
 ### 28.4 Cobrador educado (lembrete antes e depois do vencimento)
 
 **Claude com você** · 2 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo ag-cobranca do roteiro: Cobrador educado (lembrete antes e depois do vencimento)"
+```
 
 - [ ] **Pronto quando:** Atraso cai pela metade
 - Implanta: Agente cobrador
@@ -2133,6 +2583,10 @@ Atendimento, orçamento, cobrança e análise rodando com a sua aprovação.
 
 **Claude com você** · 2 h 00 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo ag-posvenda do roteiro: Pós-venda: NPS e pedido de avaliação"
+```
+
 - [ ] **Pronto quando:** NPS medido em cada venda
 - Implanta: Agente pós-venda
 
@@ -2140,12 +2594,20 @@ Atendimento, orçamento, cobrança e análise rodando com a sua aprovação.
 
 **Claude com você** · 2 h 00 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo ag-fiscal do roteiro: Organizador fiscal para o contador"
+```
+
 - [ ] **Pronto quando:** Pasta do mês pronta no dia 5
 - Implanta: Organizador fiscal
 
 ### 28.7 Comprador com estoque mínimo
 
 **Claude com você** · 3 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo ag-comprador do roteiro: Comprador com estoque mínimo"
+```
 
 - [ ] **Pronto quando:** Pedido de reposição sugerido antes de faltar
 - Implanta: Agente comprador
@@ -2164,6 +2626,7 @@ O mesmo livro em mais formatos, públicos e idiomas.
 
 **Você** · 2 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** Cópia de prova aprovada
 - **Precisa:** pagar um serviço
 - Implanta: Gráfica sob demanda (Brasil)
@@ -2172,6 +2635,7 @@ O mesmo livro em mais formatos, públicos e idiomas.
 
 **Você** · 4 h 00 min
 
+- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** Primeira tiragem vendida
 - **Precisa:** pagar um serviço
 - **Oferta:** Kit do livro e edição do professor
@@ -2181,12 +2645,17 @@ O mesmo livro em mais formatos, públicos e idiomas.
 
 **Você** · 20 h 00 min
 
+- **Fora do terminal:** Conteúdo seu: gravar, escrever ou explicar o seu método.
 - [ ] **Pronto quando:** Primeira seção gravada e à venda
 - Implanta: Curso por seção · Manim (animações)
 
 ### 29.4 Edição do professor com licença para escolas
 
 **Claude com você** · 10 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo edicao-professor do roteiro: Edição do professor com licença para escolas"
+```
 
 - [ ] **Pronto quando:** Primeira escola licenciada
 - **Oferta:** Adoção do livro por escolas
@@ -2195,6 +2664,10 @@ O mesmo livro em mais formatos, públicos e idiomas.
 ### 29.5 Traduções para espanhol e inglês
 
 **Claude com você** · 20 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo traducoes do roteiro: Traduções para espanhol e inglês"
+```
 
 - [ ] **Pronto quando:** Primeiro volume traduzido e revisado
 - **Precisa:** pagar um serviço
@@ -2213,12 +2686,20 @@ O que pesa em vaga pleno e sênior.
 
 **Claude com você** · 10 h 00 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo mensageria do roteiro: RabbitMQ e depois Kafka entre dois sistemas AM"
+```
+
 - [ ] **Pronto quando:** Evento de um sistema chega no outro sem chamada direta
 - Implanta: RabbitMQ · Kafka
 
 ### 30.2 Kubernetes local com kind, kubectl, Helm e k9s
 
 **Você** · 10 h 00 min
+
+```bash
+mkdir -p ~/.local/bin && curl -Lo ~/.local/bin/kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64 && chmod +x ~/.local/bin/kind && sudo snap install kubectl --classic && sudo snap install helm --classic && kind create cluster --name lab && kubectl get nodes
+```
 
 - [ ] **Pronto quando:** Um sistema AM rodando no cluster local
 - Implanta: Kubernetes local (kind) · kubectl · Helm · k9s
@@ -2227,6 +2708,10 @@ O que pesa em vaga pleno e sênior.
 
 **Claude com você** · 4 h 00 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo loki-tempo do roteiro: Logs e rastreamento com Loki e Tempo no Grafana"
+```
+
 - [ ] **Pronto quando:** Uma requisição seguida de ponta a ponta
 - Implanta: Loki + Tempo
 
@@ -2234,6 +2719,7 @@ O que pesa em vaga pleno e sênior.
 
 **Você** · 20 h 00 min
 
+- **Fora do terminal:** Criar a conta é no site; depois tudo pelo aws e gcloud no terminal.
 - [ ] **Pronto quando:** Certificação e post comparando Azure e AWS
 - **Precisa:** pagar um serviço
 - Implanta: AWS
@@ -2242,12 +2728,17 @@ O que pesa em vaga pleno e sênior.
 
 **Você** · 5 h 00 min
 
+- **Fora do terminal:** Criar a conta é no site; depois tudo pelo aws e gcloud no terminal.
 - [ ] **Pronto quando:** Um serviço usado num projeto real
 - Implanta: Google Cloud
 
 ### 30.6 App mobile dos sistemas AM com .NET MAUI
 
 **Claude com você** · 20 h 00 min
+
+```bash
+cd ~/dev/dev-setup && claude "Passo mobile do roteiro: App mobile dos sistemas AM com .NET MAUI"
+```
 
 - [ ] **Pronto quando:** App publicado para teste interno
 - Implanta: App mobile (.NET MAUI)
@@ -2264,6 +2755,7 @@ Servidor em casa e máquina de IA quando o grupo pedir.
 
 **Você** · 8 h 00 min
 
+- **Fora do terminal:** Compra e montagem física (ou instalação por janela de VM); depois os verificadores conferem pelo terminal.
 - [ ] **Pronto quando:** n8n, banco e painel rodando no servidor; notebook livre
 - **Precisa:** comprar algo
 - Implanta: Servidor caseiro (NAS + serviços)
@@ -2272,6 +2764,7 @@ Servidor em casa e máquina de IA quando o grupo pedir.
 
 **Você** · 1 h 00 min
 
+- **Fora do terminal:** Entrar na conta do Tailscale é pelo navegador; depois: tailscale status.
 - [ ] **Pronto quando:** Acesso ao servidor de fora de casa sem abrir porta
 - Implanta: Tailscale (VPN)
 
@@ -2279,6 +2772,7 @@ Servidor em casa e máquina de IA quando o grupo pedir.
 
 **Você** · 8 h 00 min
 
+- **Fora do terminal:** Compra e montagem física (ou instalação por janela de VM); depois os verificadores conferem pelo terminal.
 - [ ] **Pronto quando:** Fine-tuning de 8B rodando local
 - **Precisa:** comprar algo
 - Implanta: Workstation com GPU
@@ -2297,6 +2791,10 @@ Um negócio por vez, cada um só depois que o anterior passa no portão.
 
 **Claude com você** · 2 h 00 min
 
+```bash
+cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do grupo com os números reais"
+```
+
 - [ ] **Pronto quando:** Capital mínimo e portões calculados com os seus dados
 - Implanta: Planejador do Grupo
 
@@ -2304,6 +2802,7 @@ Um negócio por vez, cada um só depois que o anterior passa no portão.
 
 **Você** · 40 h 00 min
 
+- **Fora do terminal:** Negócio físico: ponto, alvará, compras e pessoas. O Claude faz os números e os documentos.
 - [ ] **Pronto quando:** 3 meses seguidos com lucro e 10 clientes pagantes
 - **Precisa:** pagar um serviço
 - Implanta: AMtech Software (projetos e SaaS)
@@ -2312,6 +2811,7 @@ Um negócio por vez, cada um só depois que o anterior passa no portão.
 
 **Você** · 80 h 00 min
 
+- **Fora do terminal:** Negócio físico: ponto, alvará, compras e pessoas. O Claude faz os números e os documentos.
 - [ ] **Pronto quando:** Loja acima do equilíbrio por 3 meses e técnico que abre e fecha sem você
 - **Precisa:** comprar algo, pagar um serviço
 - **Oferta:** Assistência técnica · Peças e acessórios sem estoque · Ponto de retirada (Shopee e Mercado Livre) · AMtech Maker (robótica e automação)
@@ -2321,6 +2821,7 @@ Um negócio por vez, cada um só depois que o anterior passa no portão.
 
 **Você** · 80 h 00 min
 
+- **Fora do terminal:** Negócio físico: ponto, alvará, compras e pessoas. O Claude faz os números e os documentos.
 - [ ] **Pronto quando:** 1.000 entregas por mês e 5 contratos fixos
 - **Precisa:** comprar algo, pagar um serviço
 - **Oferta:** AM Entregas
@@ -2330,6 +2831,7 @@ Um negócio por vez, cada um só depois que o anterior passa no portão.
 
 **Você** · 80 h 00 min
 
+- **Fora do terminal:** Negócio físico: ponto, alvará, compras e pessoas. O Claude faz os números e os documentos.
 - [ ] **Pronto quando:** 20 lojistas ativos e 1.500 pedidos por mês
 - **Precisa:** pagar um serviço
 - **Oferta:** AM Delivery · Licença do AM Delivery para outras cidades
@@ -2339,6 +2841,7 @@ Um negócio por vez, cada um só depois que o anterior passa no portão.
 
 **Você** · 80 h 00 min
 
+- **Fora do terminal:** Negócio físico: ponto, alvará, compras e pessoas. O Claude faz os números e os documentos.
 - [ ] **Pronto quando:** Lucro por 3 meses e sushiman que toca a noite sem você
 - **Precisa:** comprar algo, pagar um serviço
 - **Oferta:** Sushi (delivery)
@@ -2348,6 +2851,7 @@ Um negócio por vez, cada um só depois que o anterior passa no portão.
 
 **Você** · 80 h 00 min
 
+- **Fora do terminal:** Negócio físico: ponto, alvará, compras e pessoas. O Claude faz os números e os documentos.
 - [ ] **Pronto quando:** Gerente no comando e CMV dentro da meta por 3 meses
 - **Precisa:** comprar algo, pagar um serviço
 - **Oferta:** Padaria com café da manhã e almoço
@@ -2357,6 +2861,7 @@ Um negócio por vez, cada um só depois que o anterior passa no portão.
 
 **Você** · 40 h 00 min
 
+- **Fora do terminal:** Negócio físico: ponto, alvará, compras e pessoas. O Claude faz os números e os documentos.
 - [ ] **Pronto quando:** Cafeteria acima do equilíbrio
 - **Precisa:** comprar algo, pagar um serviço
 - **Oferta:** Cafeteria
@@ -2374,6 +2879,10 @@ As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 
 **Você** · 20 min
 
+```bash
+Start-Process 'https://education.github.com/discount_requests/application'
+```
+
 - [ ] **Pronto quando:** Benefícios aprovados e Copilot ativo no VS Code
 - Implanta: GitHub Education · GitHub Copilot
 
@@ -2381,6 +2890,7 @@ As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 
 **Você** · 30 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** Uma trilha de cada em andamento, anotada no Obsidian
 - Implanta: Microsoft Learn + AWS Skill Builder · roadmap.sh + Akita · TryHackMe / Hack The Box
 
@@ -2388,6 +2898,7 @@ As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 
 **Você** · 15 min
 
+- **Fora do terminal:** Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.
 - [ ] **Pronto quando:** Acessos no KeePassXC e cursos em andamento listados no Obsidian
 - A licença é para assistir e estudar. Para a IA vão só as suas anotações e os seus projetos.
 - Implanta: Alura · Rocketseat · DIO · Udemy
@@ -2396,6 +2907,7 @@ As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 
 **Você** · 20 min
 
+- **Fora do terminal:** Estudo: assistir, praticar e anotar.
 - [ ] **Pronto quando:** Revisão do dia feita no notebook e no celular
 - Implanta: Anki
 

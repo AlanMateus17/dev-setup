@@ -11,8 +11,9 @@
      "quem": "voce",
      "pronto": "Pasta C:\\Users\\SEU_USUARIO\\dev-setup com RODAR-DIAGNOSTICO.cmd e as pastas scripts, data e docs logo dentro dela; nenhuma outra cópia em Downloads",
      "tempo_min": 5,
-     "blocos": [],
-     "nota": "Botão direito no zip > Extrair tudo. O Windows costuma criar dev-setup\\dev-setup: recorte a pasta de dentro (a que tem a pasta scripts) e cole em C:\\Users\\SEU_USUARIO, a pasta com o seu nome. Apague as cópias que sobraram em Downloads, como \"dev-setup (1)\". Todos os comandos do Windows deste roteiro apontam para esse lugar, então funcionam de qualquer pasta, até da System32 onde o PowerShell de Administrador abre."
+     "comando": "if (Test-Path $HOME\\dev-setup) { Write-Host \"Ja existe $HOME\\dev-setup\" } else { Expand-Archive \"$HOME\\Downloads\\dev-setup.zip\" \"$env:TEMP\\dsx\" -Force; Move-Item \"$env:TEMP\\dsx\\dev-setup\" \"$HOME\\dev-setup\"; Remove-Item \"$env:TEMP\\dsx\" -Recurse; Write-Host \"Pronto: $HOME\\dev-setup\" }",
+     "nota": "Botão direito no zip > Extrair tudo. O Windows costuma criar dev-setup\\dev-setup: recorte a pasta de dentro (a que tem a pasta scripts) e cole em C:\\Users\\SEU_USUARIO, a pasta com o seu nome. Apague as cópias que sobraram em Downloads, como \"dev-setup (1)\". Todos os comandos do Windows deste roteiro apontam para esse lugar, então funcionam de qualquer pasta, até da System32 onde o PowerShell de Administrador abre. O comando extrai o zip que está em Downloads e põe a pasta no lugar; baixar o zip da conversa é pelo navegador.",
+     "blocos": []
     },
     {
      "id": "diag-rodar",
@@ -44,6 +45,7 @@
      "quem": "voce",
      "pronto": "Nota no Obsidian (ou papel) com quais contas do setup já existem e quais assinaturas você paga",
      "tempo_min": 30,
+     "fora": "As contas vêm do seu e-mail e da fatura: o Claude lê só os remetentes pelo conector do Gmail; os valores das assinaturas você confere no cartão.",
      "nota": "A lista de contas do setup está no ecossistema, em Contas que você precisa ter. Senha nunca vai para nota: só para o KeePassXC, no passo dele.",
      "blocos": [
       "w11"
@@ -55,6 +57,7 @@
      "quem": "voce",
      "pronto": "Você sabe por alto onde estão as aulas, apostilas, provas e projetos (Drive, notebook, pendrives)",
      "tempo_min": 10,
+     "comando": "Get-ChildItem $HOME -Recurse -File -Include *.docx,*.doc,*.pdf,*.pptx,*.ppt,*.xlsx,*.odt,*.md -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch '\\\\AppData\\\\|\\\\node_modules\\\\|\\\\\\.vscode\\\\' } | Group-Object Extension | Sort-Object Count -Descending | Select-Object Name,Count",
      "nota": "A organização de verdade vem na fase Acervo, depois do backup.",
      "blocos": [
       "gdrv"
@@ -66,10 +69,11 @@
      "quem": "claude",
      "pronto": "Passos que você já cumpre marcados no acompanhamento; compras e pendências confirmadas",
      "tempo_min": 30,
+     "comando": "explorer (Get-ChildItem $HOME\\dev-setup -Directory -Filter 'diagnostico-*' | Sort-Object Name | Select-Object -Last 1).FullName",
+     "nota": "Anexe na conversa os dois arquivos da pasta C:\\Users\\SEU_USUARIO\\dev-setup\\diagnostico-AAAAMMDD: diagnostico.md e diagnostico.json. Eles não têm senha nem documento seu, só hardware e programas.",
      "blocos": [
       "oimpl"
-     ],
-     "nota": "Anexe na conversa os dois arquivos da pasta C:\\Users\\SEU_USUARIO\\dev-setup\\diagnostico-AAAAMMDD: diagnostico.md e diagnostico.json. Eles não têm senha nem documento seu, só hardware e programas."
+     ]
     }
    ],
    "quando": "Antes de tudo · semana 1 (out/2026)"
@@ -85,6 +89,8 @@
      "quem": "voce",
      "pronto": "Disco externo com a cópia conferida (abra alguns arquivos)",
      "tempo_min": 60,
+     "comando": "$d = 'E:'; foreach ($p in 'Documents','Pictures','Desktop','Videos','Music') { if (Test-Path \"$HOME\\$p\") { robocopy \"$HOME\\$p\" \"$d\\backup-inicial\\$p\" /E /R:1 /W:1 /XJ /NFL /NDL /NP } }",
+     "nota": "Troque E: pela letra do disco externo (o Explorador mostra). O robocopy copia sem apagar nada do notebook; rodar de novo só copia o que mudou. Se as suas pastas estiverem no OneDrive, troque $HOME\\$p por $HOME\\OneDrive\\$p.",
      "blocos": [
       "ext"
      ]
@@ -95,7 +101,11 @@
      "quem": "voce",
      "pronto": "Notebook no nobreak e na base, 2º monitor funcionando, disco e SSD externos reconhecidos",
      "tempo_min": 30,
+     "fora": "Montagem física da mesa. Depois o diagnóstico confere monitores e discos.",
      "nota": "O que ainda não comprou fica anotado e não trava as próximas fases. O nobreak vem primeiro: protege o notebook e o backup de queda de energia.",
+     "precisa": [
+      "compra"
+     ],
      "blocos": [
       "nb",
       "ups",
@@ -105,9 +115,6 @@
       "ssdext",
       "cel",
       "rob"
-     ],
-     "precisa": [
-      "compra"
      ]
     },
     {
@@ -116,6 +123,8 @@
      "quem": "voce",
      "pronto": "Windows Update sem pendências",
      "tempo_min": 40,
+     "comando": "winget upgrade --all --accept-source-agreements --accept-package-agreements; Install-PackageProvider NuGet -Force -Scope CurrentUser | Out-Null; Install-Module PSWindowsUpdate -Force -Scope CurrentUser; Import-Module PSWindowsUpdate; Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -IgnoreReboot",
+     "nota": "O PSWindowsUpdate é um módulo da PowerShell Gallery, o mais usado para isso. O NitroSense atualiza pela Microsoft Store: winget upgrade também pega ele se veio da loja.",
      "blocos": [
       "w11",
       "nitro"
@@ -127,6 +136,7 @@
      "quem": "voce",
      "pronto": "2FA ativo nas três contas, com códigos de recuperação impressos",
      "tempo_min": 30,
+     "fora": "Cada site liga a verificação em duas etapas na própria página, lendo o QR code com o celular; nenhum deixa fazer isso por terminal.",
      "blocos": [
       "tfa"
      ]
@@ -145,11 +155,11 @@
      "quem": "voce",
      "pronto": "Arquivo Cofre.kdbx em Documentos\\Cofre abre com a senha mestra; bloqueio automático depois de 5 minutos parado",
      "tempo_min": 30,
+     "comando": "winget install --id KeePassXCTeam.KeePassXC -e; New-Item -ItemType Directory -Force \"$HOME\\Documents\\Cofre\" | Out-Null; & \"$env:ProgramFiles\\KeePassXC\\keepassxc-cli.exe\" db-create --set-password \"$HOME\\Documents\\Cofre\\Cofre.kdbx\"",
+     "nota": "Gere a senha mestra no próprio KeePassXC (Ferramentas > Gerador de senhas > Frase-senha, 6 palavras) e decore nos primeiros dias. Ela é a única senha que você precisa saber de cor e não pode ser usada em nenhum outro lugar. Não use arquivo-chave: se perder o arquivo, perde o cofre. Ninguém, nem o Claude, precisa ver o cofre ou a senha mestra. Para gerar a senha mestra no terminal: & \"$env:ProgramFiles\\KeePassXC\\keepassxc-cli.exe\" diceware -W 6 (anote no papel do kit e rode cls para limpar a tela). O db-create pergunta a senha sem mostrar nem gravar no histórico.",
      "blocos": [
       "kee"
-     ],
-     "comando": "winget install --id KeePassXCTeam.KeePassXC -e",
-     "nota": "Gere a senha mestra no próprio KeePassXC (Ferramentas > Gerador de senhas > Frase-senha, 6 palavras) e decore nos primeiros dias. Ela é a única senha que você precisa saber de cor e não pode ser usada em nenhum outro lugar. Não use arquivo-chave: se perder o arquivo, perde o cofre. Ninguém, nem o Claude, precisa ver o cofre ou a senha mestra."
+     ]
     },
     {
      "id": "senhas-kit",
@@ -157,6 +167,7 @@
      "quem": "voce",
      "pronto": "Envelope guardado em casa (fora da carteira e da mochila) com a senha mestra, a senha do e-mail principal e os códigos de recuperação do Google",
      "tempo_min": 15,
+     "fora": "Papel e caneta, de propósito: o kit não pode depender do computador.",
      "nota": "É o que salva você se esquecer a senha mestra ou perder o notebook e o celular juntos. Papel, não foto: foto vai para a nuvem do celular.",
      "blocos": [
       "kee"
@@ -168,6 +179,8 @@
      "quem": "voce",
      "pronto": "Senha nova gerada no KeePassXC; verificação em duas etapas pelo app; telefone e e-mail de recuperação conferidos; códigos de backup salvos no cofre; aparelhos desconhecidos desconectados",
      "tempo_min": 30,
+     "comando": "Start-Process 'https://myaccount.google.com/security-checkup'",
+     "fora": "O comando abre a página; trocar a senha e ligar a verificação é no site do Google, com o celular.",
      "nota": "Vem antes de tudo porque todo 'Esqueci minha senha' manda o link para esse e-mail: quem controla o e-mail controla as outras contas. Faça em myaccount.google.com > Segurança e rode a Verificação de segurança no fim. Se não lembrar a senha atual, use g.co/recover no notebook e na rede de casa, onde o Google já reconhece você.",
      "blocos": [
       "kee",
@@ -181,6 +194,8 @@
      "quem": "voce",
      "pronto": "Senhas importadas no KeePassXC (Banco de dados > Importar > CSV); o arquivo CSV apagado de vez; navegadores sem salvar senha",
      "tempo_min": 30,
+     "comando": "Start-Process chrome 'chrome://password-manager/settings'",
+     "fora": "Os navegadores só exportam senhas pela janela de configurações, e o KeePassXC só importa CSV pela janela dele (Banco de dados > Importar).",
      "nota": "Exporte em chrome://password-manager/settings, edge://wallet/passwords e passwords.google.com. O CSV é a lista de todas as suas senhas em texto puro: importe na hora, apague com Shift+Delete e não deixe em Downloads, no Drive, no e-mail nem no repositório. Não mande esse arquivo para ninguém, nem para o Claude. Só depois de conferir o cofre apague as senhas dos navegadores e desligue 'Oferecer para salvar senhas'.",
      "blocos": [
       "kee",
@@ -193,6 +208,7 @@
      "quem": "voce",
      "pronto": "Lista, em ordem, das contas para trocar (Banco de dados > Relatórios > Integridade e Have I Been Pwned)",
      "tempo_min": 15,
+     "fora": "A checagem de vazamento online só existe na janela do KeePassXC (Banco de dados > Relatórios).",
      "nota": "A checagem de vazamento manda só um pedaço do resumo da senha, nunca a senha. Senha que aparece como vazada vai para o topo da lista.",
      "blocos": [
       "kee"
@@ -204,6 +220,7 @@
      "quem": "voce",
      "pronto": "Cada conta crítica com senha nova gerada no cofre, verificação em duas etapas ligada e códigos de backup salvos na entrada dela",
      "tempo_min": 120,
+     "fora": "Cada serviço troca a senha no próprio site ou app; o cofre gera a senha (keepassxc-cli generate -L 24) e você cola lá.",
      "nota": "Para cada uma: gere a senha no KeePassXC (20 caracteres ou mais), troque no site, salve no cofre antes de fechar a página e saia de todos os outros aparelhos. Banco, troque pelo app oficial. No WhatsApp é o PIN da confirmação em duas etapas. A senha de 4 dígitos do cartão não vai para o cofre: essa você decora.",
      "blocos": [
       "kee",
@@ -219,6 +236,7 @@
      "quem": "voce",
      "pronto": "Toda conta da sua lista de contas está no cofre, foi recuperada ou foi excluída",
      "tempo_min": 60,
+     "fora": "Recuperação de conta é sempre pelo site do serviço, com e-mail ou celular.",
      "nota": "Use 'Esqueci minha senha' com o e-mail já protegido. Se o e-mail ou o telefone de recuperação forem antigos, cada serviço tem um formulário próprio (Meta: 'Precisa de ajuda?' na tela de login; gov.br: pelo app com reconhecimento facial ou pelo banco). Conta parada que guarda dado seu é risco: exclua.",
      "blocos": [
       "kee"
@@ -230,6 +248,7 @@
      "quem": "voce",
      "pronto": "O cofre abre no celular com a senha mestra; uma senha criada no notebook aparece no celular",
      "tempo_min": 20,
+     "fora": "Instalar e abrir o app é no celular.",
      "nota": "Sincronize o arquivo Cofre.kdbx pelo Syncthing, ou pelo Drive (o arquivo vai criptografado). Edite num aparelho de cada vez para não criar cópias em conflito.",
      "blocos": [
       "kee",
@@ -243,6 +262,7 @@
      "quem": "voce",
      "pronto": "No login de teste, o navegador preenche a senha a partir do cofre",
      "tempo_min": 15,
+     "fora": "Extensão de navegador e a opção de integração do KeePassXC só se ligam pelas janelas deles.",
      "nota": "No KeePassXC: Configurações > Integração com navegador, marque o seu navegador e instale a extensão KeePassXC-Browser.",
      "blocos": [
       "kee",
@@ -255,6 +275,7 @@
      "quem": "voce",
      "pronto": "Cópia do Cofre.kdbx no disco externo abre com a senha mestra; quando o restic entrar, a pasta Documentos\\Cofre está no backup diário",
      "tempo_min": 15,
+     "comando": "$d = 'E:'; New-Item -ItemType Directory -Force \"$d\\Cofre\" | Out-Null; Copy-Item \"$HOME\\Documents\\Cofre\\Cofre.kdbx\" \"$d\\Cofre\\\"; & \"$env:ProgramFiles\\KeePassXC\\keepassxc-cli.exe\" db-info \"$d\\Cofre\\Cofre.kdbx\"",
      "nota": "No WSL o caminho é /mnt/c/Users/SEU_USUARIO/Documents/Cofre: acrescente ao comando do restic no passo do backup.",
      "blocos": [
       "kee",
@@ -268,6 +289,7 @@
      "quem": "voce",
      "pronto": "Relatório de integridade do KeePassXC sem senha fraca, repetida ou vazada",
      "tempo_min": 20,
+     "fora": "Mesmo caso das críticas: a troca é no site de cada serviço.",
      "blocos": [
       "kee"
      ]
@@ -278,6 +300,7 @@
      "quem": "voce",
      "pronto": "Lembrete trimestral no calendário",
      "tempo_min": 10,
+     "fora": "Lembrete no calendário: peça ao Claude que crie pelo conector do Google Agenda.",
      "blocos": [
       "kee"
      ]
@@ -337,7 +360,8 @@
      "quem": "voce",
      "pronto": "verificar.ps1 como Administrador mostra criptografia OK",
      "tempo_min": 15,
-     "nota": "No Windows 11 Home a opção se chama Criptografia do dispositivo e depende do hardware. Se não aparecer, anote e siga.",
+     "comando": "manage-bde -status C:; manage-bde -protectors -get C:",
+     "nota": "No Windows 11 Home a opção se chama Criptografia do dispositivo e depende do hardware. Se não aparecer, anote e siga. O segundo comando mostra a chave de recuperação (48 números): copie para uma entrada do KeePassXC. Se aparecer 'Proteção desligada', ligue em Configurações > Privacidade e segurança > Criptografia do dispositivo.",
      "blocos": [
       "bitl",
       "tpm"
@@ -349,6 +373,7 @@
      "quem": "voce",
      "pronto": "verificar.ps1 como Administrador mostra Defender OK",
      "tempo_min": 10,
+     "comando": "Get-MpComputerStatus | Select-Object AMServiceEnabled,AntivirusEnabled,RealTimeProtectionEnabled,AntivirusSignatureLastUpdated; Get-NetFirewallProfile | Select-Object Name,Enabled",
      "blocos": [
       "def"
      ]
@@ -370,6 +395,7 @@
      "quem": "voce",
      "pronto": "O painel do Claude abre numa aba do navegador",
      "tempo_min": 15,
+     "fora": "Extensão do Chrome se instala pela Chrome Web Store, no navegador.",
      "nota": "O uso do computador pelo Claude fica no app do Claude para desktop; ligue só quando for usar e acompanhe o que ele faz.",
      "blocos": [
       "nav",
@@ -382,6 +408,7 @@
      "quem": "voce",
      "pronto": "Abre e reconhece a GPU",
      "tempo_min": 20,
+     "fora": "A Blackmagic só libera o instalador depois de um cadastro no site.",
      "blocos": [
       "edit"
      ]
@@ -422,6 +449,7 @@
      "quem": "voce",
      "pronto": "Prompt do Ubuntu aberto",
      "tempo_min": 10,
+     "comando": "wsl -d Ubuntu-24.04",
      "blocos": [
       "wsl"
      ]
@@ -432,6 +460,8 @@
      "quem": "voce",
      "pronto": "'docker run hello-world' funciona dentro do Ubuntu",
      "tempo_min": 5,
+     "comando": "docker run --rm hello-world",
+     "fora": "A integração com o Ubuntu é uma opção da janela do Docker Desktop (Settings > Resources > WSL integration); o comando confere se funcionou.",
      "blocos": [
       "docker"
      ]
@@ -494,6 +524,7 @@
      "quem": "claude",
      "pronto": "Repositório dotfiles privado; clonar e rodar o script de links recria o terminal",
      "tempo_min": 30,
+     "comando": "cd ~ && gh repo create dotfiles --private --clone && cd dotfiles && for f in .bashrc .gitconfig .tmux.conf; do [ -f ~/$f ] && cp ~/$f .; done && git add -A && git commit -m 'dotfiles iniciais' && git push -u origin HEAD",
      "nota": "Nunca coloque chaves ou tokens nos dotfiles. O gitleaks do CI confere a cada envio.",
      "blocos": [
       "dot"
@@ -505,11 +536,11 @@
      "quem": "voce",
      "pronto": "Cofre aberto no Obsidian com as pastas e modelos; notas vão sozinhas para um repositório privado a cada 10 minutos",
      "tempo_min": 20,
+     "comando": "bash scripts/wsl/vault.sh",
+     "nota": "No Obsidian do Windows, abra a pasta \\\\wsl.localhost\\Ubuntu-24.04\\home\\SEU_USUARIO\\dev\\notas.",
      "blocos": [
       "obsd"
-     ],
-     "comando": "bash scripts/wsl/vault.sh",
-     "nota": "No Obsidian do Windows, abra a pasta \\\\wsl.localhost\\Ubuntu-24.04\\home\\SEU_USUARIO\\dev\\notas."
+     ]
     },
     {
      "id": "syncthing",
@@ -517,6 +548,7 @@
      "quem": "voce",
      "pronto": "Vídeo gravado no celular aparece na pasta Gravacoes do Windows",
      "tempo_min": 15,
+     "fora": "Parear com o celular é lendo o QR code no app do Syncthing.",
      "nota": "Para o pipeline pegar, mova o vídeo para ~/AMtech/entrada/aulas. Vídeo com aluno menor de idade só com autorização do responsável.",
      "blocos": [
       "syncth",
@@ -571,7 +603,8 @@
      "quem": "claude",
      "pronto": "Dependabot e CodeQL ativos; push direto no main exige CI verde",
      "tempo_min": 15,
-     "nota": "Peça ao Claude Code no repositório; ele faz pelo gh api com a sua aprovação.",
+     "comando": "cd ~/dev/dev-setup && gh api -X PUT 'repos/{owner}/{repo}/vulnerability-alerts' && gh api -X PUT 'repos/{owner}/{repo}/automated-security-fixes' && gh api -X PATCH 'repos/{owner}/{repo}/code-scanning/default-setup' -f state=configured",
+     "nota": "Peça ao Claude Code no repositório; ele faz pelo gh api com a sua aprovação. Proteger o branch main e o CodeQL em repositório privado exigem GitHub Pro; o GitHub Education de professor costuma liberar. Sem ele, o comando liga o Dependabot e o CodeQL responde que não está disponível.",
      "blocos": [
       "dbot"
      ]
@@ -582,6 +615,7 @@
      "quem": "voce",
      "pronto": "Organização criada, com 2FA obrigatório para membros",
      "tempo_min": 10,
+     "fora": "O GitHub só deixa criar organização pelo site.",
      "blocos": [
       "gh"
      ]
@@ -592,6 +626,7 @@
      "quem": "claude",
      "pronto": "Quadro com as fases deste roteiro e docs/adr/0001 registrado",
      "tempo_min": 20,
+     "comando": "gh auth refresh -s project && gh project create --owner @me --title 'Setup AMtech' && mkdir -p ~/dev/dev-setup/docs/adr",
      "nota": "O MkDocs publica a documentação no GitHub Pages quando você quiser tornar algo público; o setup continua privado.",
      "blocos": [
       "ghproj"
@@ -633,6 +668,7 @@
      "quem": "claude",
      "pronto": "Arquivos no repositório de cada sistema",
      "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo claude-md do roteiro: Criar o CLAUDE.md padrão do Aura e os comandos /commit e /novo-sistema-aura\"",
      "nota": "Peça ao Claude Code: o conteúdo está em docs/pecas-autorais.md.",
      "blocos": [
       "kit"
@@ -644,7 +680,7 @@
      "quem": "voce",
      "pronto": "verificar.ps1 mostra Ollama OK com 1 modelo",
      "tempo_min": 15,
-     "comando": "ollama pull <nome do modelo escolhido no catálogo do Ollama>",
+     "comando": "ollama pull llama3.2:3b && ollama run llama3.2:3b 'Responda em uma frase: o que é uma variável?'",
      "blocos": [
       "oll",
       "lmods"
@@ -656,6 +692,7 @@
      "quem": "claude",
      "pronto": "'claude mcp list' mostra os servidores conectados",
      "tempo_min": 20,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo mcp do roteiro: Ligar os servidores MCP do Claude Code: GitHub e o banco de métricas só para leitura\"",
      "nota": "O banco entra com o usuário leitor do Grafana, que não apaga nada. Tokens ficam no KeePassXC e em variáveis de ambiente, nunca no repositório.",
      "blocos": [
       "mcp"
@@ -667,6 +704,7 @@
      "quem": "claude",
      "pronto": "Uma decisão anotada numa sessão aparece na seguinte",
      "tempo_min": 15,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo ai-memory do roteiro: Ligar o ai-memory para o agente lembrar das decisões entre sessões\"",
      "blocos": [
       "mem"
      ]
@@ -677,6 +715,7 @@
      "quem": "claude",
      "pronto": "Pergunta sobre uma anotação sua volta com a resposta e a nota de origem",
      "tempo_min": 60,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo rag do roteiro: Montar a base de conhecimento das suas notas (Ollama + pgvector, ou NotebookLM e Projects)\"",
      "nota": "Entram só as suas anotações, resumos com suas palavras, exercícios resolvidos e aulas que você gravou. Aulas da Udemy, DIO, Alura e afins não entram.",
      "blocos": [
       "rag",
@@ -711,6 +750,7 @@
      "quem": "voce",
      "pronto": "Segundo repositório restic com snapshot",
      "tempo_min": 40,
+     "fora": "Criar a conta e a chave da Backblaze é no site; depois o restic usa a chave pelo terminal.",
      "blocos": [
       "b2",
       "bkp"
@@ -722,6 +762,7 @@
      "quem": "voce",
      "pronto": "Arquivo restaurado abre normalmente",
      "tempo_min": 15,
+     "comando": "restic -r /mnt/d/backup-restic restore latest --target /tmp/teste-restauracao --include \"$HOME/dev/dev-setup/README.md\" && find /tmp/teste-restauracao -name README.md",
      "blocos": [
       "bkp"
      ]
@@ -732,6 +773,7 @@
      "quem": "claude",
      "pronto": "Timer do backup ativo",
      "tempo_min": 20,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo agendar-backup do roteiro: Agendar o backup diário\"",
      "blocos": [
       "restic"
      ]
@@ -748,8 +790,9 @@
      "id": "acervo-copia",
      "titulo": "Baixar uma cópia completa do Google Drive pelo Google Takeout",
      "quem": "voce",
-     "tempo_min": 45,
      "pronto": "Os zips do Takeout extraídos numa pasta só, por exemplo C:\\Users\\SEU_USUARIO\\Downloads\\Takeout",
+     "tempo_min": 45,
+     "fora": "O Google Takeout só funciona pelo site.",
      "nota": "Escolha só o Drive e, em formatos, Google Docs como .docx e Apresentações como .pptx. O Drive para computador mostra os Google Docs como atalhos sem conteúdo, por isso a primeira cópia vem do Takeout. Junte também os arquivos do notebook e dos pendrives na mesma pasta.",
      "blocos": [
       "gdrv"
@@ -759,8 +802,9 @@
      "id": "separar-pessoais",
      "titulo": "Tirar da pasta os documentos pessoais (contracheques, extratos, IRPF, faturas)",
      "quem": "voce",
-     "tempo_min": 30,
      "pronto": "Pasta Pessoal separada, guardada só no backup criptografado",
+     "tempo_min": 30,
+     "fora": "Decisão sua, arquivo por arquivo; o acervo já ignora os nomes típicos de documento pessoal.",
      "nota": "O acervo.py também barra esses arquivos pelo nome e pelo conteúdo e lista o que achou, mas tirar antes é mais seguro.",
      "blocos": [
       "bkp"
@@ -770,9 +814,9 @@
      "id": "acervo-simular",
      "titulo": "Ver o que o acervo faria, sem escrever nada",
      "quem": "script",
+     "pronto": "Resumo com arquivos lidos, cópias repetidas, pessoais, de terceiros e da escola",
      "tempo_min": 10,
      "comando": "uv run tools/acervo/acervo.py --origem /mnt/c/Users/SEU_USUARIO/Downloads/Takeout --simular",
-     "pronto": "Resumo com arquivos lidos, cópias repetidas, pessoais, de terceiros e da escola",
      "blocos": [
       "acv"
      ]
@@ -781,9 +825,9 @@
      "id": "acervo-rodar",
      "titulo": "Converter o acervo para o Obsidian e gerar o relatório de produtos",
      "quem": "script",
+     "pronto": "30-Acervo no Obsidian com os documentos em Markdown e 40-Produtos/Produtos do acervo.md",
      "tempo_min": 30,
      "comando": "uv run tools/acervo/acervo.py --origem /mnt/c/Users/SEU_USUARIO/Downloads/Takeout",
-     "pronto": "30-Acervo no Obsidian com os documentos em Markdown e 40-Produtos/Produtos do acervo.md",
      "nota": "Roda no notebook; nada é enviado para fora. Pode rodar de novo quando chegarem documentos novos: o que já foi convertido não é refeito.",
      "blocos": [
       "acv",
@@ -794,8 +838,9 @@
      "id": "acervo-alertas",
      "titulo": "Decidir cada alerta: dados de alunos, material de terceiros, material feito para a escola",
      "quem": "voce",
-     "tempo_min": 90,
      "pronto": "Cada alerta com decisão anotada: apagar dados, só estudo, reescrever ou vender",
+     "tempo_min": 90,
+     "fora": "Decisão sua para cada alerta.",
      "nota": "Material de terceiros (livros, cursos) não vira produto nem treino de IA. Material feito para a escola: confira os direitos antes de vender; o caminho seguro é reescrever do zero, no seu tempo, sem a identidade da escola.",
      "blocos": [
       "acv"
@@ -805,8 +850,9 @@
      "id": "acervo-rag",
      "titulo": "Indexar o acervo e as suas notas na base de conhecimento",
      "quem": "claude",
-     "tempo_min": 30,
      "pronto": "Pergunta sobre um documento antigo volta com a resposta e o arquivo de origem",
+     "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo acervo-rag do roteiro: Indexar o acervo e as suas notas na base de conhecimento\"",
      "blocos": [
       "rag"
      ]
@@ -815,8 +861,9 @@
      "id": "acervo-produtos",
      "titulo": "Escolher no relatório os 3 primeiros produtos e levar para o portfólio de ofertas",
      "quem": "claude",
-     "tempo_min": 60,
      "pronto": "3 ofertas novas em data/portfolio.json com estágio, preço alvo e próximo passo",
+     "tempo_min": 60,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo acervo-produtos do roteiro: Escolher no relatório os 3 primeiros produtos e levar para o portfólio de ofertas\"",
      "blocos": [
       "ocatal",
       "oesteira"
@@ -836,6 +883,7 @@
      "quem": "voce",
      "pronto": "Projects AMtech, Instituto, Editora e Setup criados; uma tarefa agendada de teste rodou",
      "tempo_min": 30,
+     "fora": "Projects, memória e tarefas agendadas ficam no app do Claude.",
      "blocos": [
       "capp2",
       "proj",
@@ -850,6 +898,7 @@
      "quem": "voce",
      "pronto": "Cada conector usado responde a um pedido simples; o da Cloudflare trocado pelo Cloudflare API MCP",
      "tempo_min": 30,
+     "fora": "Conectores se ligam e desligam nas configurações do app do Claude.",
      "nota": "Notion, monday, GitBook e Stripe ficam de fora: repetem Obsidian, GitHub Projects, MkDocs e as plataformas de curso. Desconecte para não confundir.",
      "blocos": [
       "cgws",
@@ -869,6 +918,7 @@
      "quem": "voce",
      "pronto": "Os comandos dos plugins aparecem no Claude",
      "tempo_min": 15,
+     "fora": "Plugins se ligam no app do Claude.",
      "blocos": [
       "pbiz",
       "peng",
@@ -882,6 +932,7 @@
      "quem": "voce",
      "pronto": "Acessos no KeePassXC e assinaturas pagas lançadas na tabela ferramentas do banco de métricas",
      "tempo_min": 30,
+     "fora": "Cada assistente tem o próprio site ou app.",
      "blocos": [
       "gpt",
       "gem",
@@ -973,8 +1024,9 @@
      "id": "backup-banco",
      "titulo": "Pôr o banco de métricas e os fluxos do n8n no backup diário",
      "quem": "claude",
-     "tempo_min": 45,
      "pronto": "Dump diário do banco e export dos fluxos em ~/AMtech/backup-dados, copiados pelo restic; uma restauração de teste funcionou",
+     "tempo_min": 45,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo backup-banco do roteiro: Pôr o banco de métricas e os fluxos do n8n no backup diário\"",
      "nota": "Os dados ficam em volumes do Docker, fora das pastas que o restic copia. Sem este passo, perder o notebook leva junto o histórico de vendas.",
      "blocos": [
       "metrics",
@@ -988,6 +1040,7 @@
      "quem": "voce",
      "pronto": "Decisão anotada em infra/postiz/README.md",
      "tempo_min": 10,
+     "fora": "Decisão sua.",
      "blocos": [
       "postiz"
      ]
@@ -1006,6 +1059,7 @@
      "quem": "voce",
      "pronto": "config/marca.md sem colchetes",
      "tempo_min": 40,
+     "comando": "code ~/dev/dev-setup/config/marca.md",
      "nota": "O Claude pode rascunhar a partir dos documentos de marca e presença; você corrige.",
      "blocos": [
       "omarca"
@@ -1017,6 +1071,7 @@
      "quem": "voce",
      "pronto": "ANTHROPIC_API_KEY preenchida em ~/.config/amtech/conteudo.env",
      "tempo_min": 10,
+     "fora": "A chave é criada no site console.anthropic.com; colar no arquivo: nano ~/.config/amtech/conteudo.env.",
      "nota": "A API é cobrada por uso, separada da assinatura do Claude. Defina um limite de gasto mensal no console.",
      "blocos": [
       "anth"
@@ -1028,6 +1083,7 @@
      "quem": "voce",
      "pronto": "Mensagem de teste chega no celular",
      "tempo_min": 10,
+     "fora": "O bot é criado conversando com o @BotFather no app do Telegram.",
      "blocos": [
       "tg",
       "aprov"
@@ -1063,6 +1119,7 @@
      "quem": "voce",
      "pronto": "Peças da aula na fila em até 15 minutos depois de transcrita",
      "tempo_min": 20,
+     "comando": "cp /mnt/c/Users/SEU_USUARIO/Videos/NOME-DA-AULA.mp4 ~/AMtech/entrada/aulas/",
      "blocos": [
       "whis",
       "ofly"
@@ -1082,6 +1139,7 @@
      "quem": "voce",
      "pronto": "Gravação de teste de 1 minuto com áudio limpo nas três cenas",
      "tempo_min": 40,
+     "fora": "Feito dentro do programa (OBS, Audacity, DaVinci), que não tem modo terminal para isso.",
      "blocos": [
       "obss"
      ]
@@ -1092,6 +1150,7 @@
      "quem": "voce",
      "pronto": "A mesma limpeza aplicada com um clique numa gravação nova",
      "tempo_min": 20,
+     "fora": "Feito dentro do programa (OBS, Audacity, DaVinci), que não tem modo terminal para isso.",
      "blocos": [
       "aud"
      ]
@@ -1102,6 +1161,7 @@
      "quem": "voce",
      "pronto": "Um corte de 30 segundos exportado a partir do modelo",
      "tempo_min": 40,
+     "fora": "Feito dentro do programa (OBS, Audacity, DaVinci), que não tem modo terminal para isso.",
      "blocos": [
       "edit"
      ]
@@ -1112,6 +1172,7 @@
      "quem": "claude",
      "pronto": "Três modelos salvos; uma peça da fila montada com eles",
      "tempo_min": 40,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo imagens-modelos do roteiro: Criar os modelos de capa, carrossel e thumbnail com a sua marca (Canva, Krita ou Inkscape)\"",
      "nota": "O Claude cria os modelos no Canva pelo conector, a partir do config/marca.md.",
      "blocos": [
       "img",
@@ -1124,12 +1185,13 @@
      "quem": "voce",
      "pronto": "Trecho de teste com a sua voz clonada aprovado por você",
      "tempo_min": 60,
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "nota": "Só a sua voz, com 30 minutos ou mais de áudio limpo. Avise o público quando a voz for gerada por IA. Voz de outra pessoa, nunca.",
-     "blocos": [
-      "voz"
-     ],
      "precisa": [
       "pagamento"
+     ],
+     "blocos": [
+      "voz"
      ]
     }
    ],
@@ -1146,6 +1208,7 @@
      "quem": "voce",
      "pronto": "Foto, nome, bio e link iguais nas cinco redes",
      "tempo_min": 90,
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "blocos": [
       "ig",
       "yt",
@@ -1161,6 +1224,7 @@
      "quem": "voce",
      "pronto": "Mensagem de teste recebe a saudação automática",
      "tempo_min": 30,
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "blocos": [
       "wa"
      ]
@@ -1171,12 +1235,13 @@
      "quem": "voce",
      "pronto": "DNS ativo na Cloudflare",
      "tempo_min": 30,
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
+     "precisa": [
+      "pagamento"
+     ],
      "blocos": [
       "dom",
       "cf"
-     ],
-     "precisa": [
-      "pagamento"
      ]
     },
     {
@@ -1185,11 +1250,12 @@
      "quem": "voce",
      "pronto": "Envia e recebe",
      "tempo_min": 30,
-     "blocos": [
-      "mail"
-     ],
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "precisa": [
       "pagamento"
+     ],
+     "blocos": [
+      "mail"
      ]
     },
     {
@@ -1198,6 +1264,7 @@
      "quem": "voce",
      "pronto": "Pixel instalado na página de vendas",
      "tempo_min": 40,
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "blocos": [
       "mbs",
       "pixel"
@@ -1209,6 +1276,7 @@
      "quem": "claude",
      "pronto": "Inscrição de teste recebe o primeiro e-mail",
      "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo mailerlite do roteiro: Montar no MailerLite os grupos, o formulário da isca e a sequência de boas-vindas\"",
      "nota": "O Claude faz pelo conector do MailerLite, com a sua aprovação.",
      "blocos": [
       "mailer",
@@ -1222,6 +1290,7 @@
      "quem": "claude",
      "pronto": "Site no ar com portfólio, blog e formulário da newsletter",
      "tempo_min": 60,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo site-pessoal do roteiro: Publicar o site pessoal e blog no GitHub Pages (alanmateus17.github.io)\"",
      "blocos": [
       "site",
       "ghp"
@@ -1233,6 +1302,7 @@
      "quem": "claude",
      "pronto": "Página no ar com o domínio e o Pixel",
      "tempo_min": 60,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo vercel-pagina do roteiro: Publicar o site do Instituto AMS com a página de pré-venda na Cloudflare Pages\"",
      "nota": "Fica na Cloudflare Pages porque o plano grátis do Vercel não permite uso comercial. O Claude publica pelo conector da Cloudflare ou pelo Wrangler.",
      "blocos": [
       "inst",
@@ -1245,6 +1315,7 @@
      "quem": "claude",
      "pronto": "Os dois sites no ar com domínio e HTTPS",
      "tempo_min": 90,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo site-grupo do roteiro: Publicar o site do Grupo AMtech e o Catálogo do HTML\"",
      "blocos": [
       "amsite",
       "catal"
@@ -1259,6 +1330,7 @@
      "quem": "voce",
      "pronto": "Alunos publicando os próprios sites pelo Catálogo",
      "tempo_min": 20,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "nota": "É material grátis da escola, não venda. Nada de oferecer produto pago a aluno menor de idade; ex-alunos adultos podem seguir as redes.",
      "blocos": [
       "alunos"
@@ -1270,6 +1342,7 @@
      "quem": "claude",
      "pronto": "Uma visita de teste aparece no painel do Umami",
      "tempo_min": 20,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo umami do roteiro: Ligar o Umami nos sites\"",
      "blocos": [
       "umami"
      ]
@@ -1280,6 +1353,7 @@
      "quem": "voce",
      "pronto": "Propriedade verificada e sitemaps lidos",
      "tempo_min": 10,
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "blocos": [
       "gsc",
       "seo"
@@ -1291,6 +1365,7 @@
      "quem": "claude",
      "pronto": "Auditoria da Hostinger sem pendências e um site modelo pronto para copiar",
      "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo hostinger do roteiro: Separar na Hostinger o espaço dos sites de clientes\"",
      "nota": "O Claude faz a auditoria pelo plugin da Hostinger e aponta o que precisa de atenção.",
      "blocos": [
       "hostg",
@@ -1314,6 +1389,7 @@
      "quem": "voce",
      "pronto": "Nível prata ou ouro aparece no app gov.br",
      "tempo_min": 20,
+     "fora": "Órgão público, contador ou entidade: feito no site do governo ou com atendimento.",
      "blocos": [
       "govbr"
      ]
@@ -1324,6 +1400,7 @@
      "quem": "voce",
      "pronto": "Conta aberta; todas as plataformas vão pagar nela",
      "tempo_min": 30,
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "blocos": [
       "banco"
      ]
@@ -1334,11 +1411,12 @@
      "quem": "voce",
      "pronto": "Regras do carnê-leão anotadas e o valor de virada para o CNPJ definido",
      "tempo_min": 60,
-     "blocos": [
-      "conta"
-     ],
+     "fora": "Órgão público, contador ou entidade: feito no site do governo ou com atendimento.",
      "precisa": [
       "pagamento"
+     ],
+     "blocos": [
+      "conta"
      ]
     },
     {
@@ -1347,6 +1425,7 @@
      "quem": "claude",
      "pronto": "Links de termos e privacidade no rodapé de todos os sites; contrato em modelo editável",
      "tempo_min": 60,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo legal do roteiro: Publicar termos de uso e política de privacidade (LGPD) e ter o contrato padrão de serviço\"",
      "nota": "O Claude rascunha; antes de usar, peça para o contador ou um advogado revisar. Isto vem antes de coletar e-mail ou vender.",
      "blocos": [
       "legal"
@@ -1358,6 +1437,7 @@
      "quem": "voce",
      "pronto": "Produto em rascunho nas duas",
      "tempo_min": 60,
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "blocos": [
       "hotm",
       "kiwi",
@@ -1370,6 +1450,7 @@
      "quem": "voce",
      "pronto": "Contas aprovadas; formulário fiscal da Udemy enviado; primeiro artigo publicado na DIO",
      "tempo_min": 60,
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "nota": "Na Udemy o recebimento é por PayPal ou Payoneer e vai para o carnê-leão como renda do exterior.",
      "blocos": [
       "eduzz",
@@ -1386,6 +1467,7 @@
      "quem": "voce",
      "pronto": "Link de pagamento de teste pago e estornado",
      "tempo_min": 20,
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "blocos": [
       "mp"
      ]
@@ -1396,6 +1478,7 @@
      "quem": "voce",
      "pronto": "Horário de teste marcado e cobrado",
      "tempo_min": 30,
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "blocos": [
       "agenda",
       "aulas"
@@ -1410,6 +1493,7 @@
      "quem": "claude",
      "pronto": "Planilha com colunas de oferta, origem, consentimento LGPD e próximo passo",
      "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo crm do roteiro: Criar o CRM em planilha com origem e consentimento de cada cliente\"",
      "blocos": [
       "crm",
       "ocrm"
@@ -1421,6 +1505,7 @@
      "quem": "voce",
      "pronto": "Regras publicadas e convite automático na compra",
      "tempo_min": 30,
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "blocos": [
       "comu"
      ]
@@ -1431,6 +1516,7 @@
      "quem": "voce",
      "pronto": "Links de afiliado com UTM numa nota do Obsidian",
      "tempo_min": 30,
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "blocos": [
       "afil"
      ],
@@ -1444,6 +1530,7 @@
      "quem": "claude",
      "pronto": "Gerador de links com UTM salvo e usado no primeiro post",
      "tempo_min": 15,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo utm do roteiro: Adotar o padrão de UTM em todo link\"",
      "blocos": [
       "utm"
      ]
@@ -1454,6 +1541,7 @@
      "quem": "voce",
      "pronto": "CPA de empate e CPA da margem anotados para cada oferta ativa",
      "tempo_min": 30,
+     "fora": "Decisão sua; os números e as opções já estão no roteiro e no portfólio.",
      "blocos": [
       "calc",
       "regras"
@@ -1465,6 +1553,7 @@
      "quem": "claude",
      "pronto": "Uma oferta em construção e uma em validação, cada uma com o checklist de pronto",
      "tempo_min": 45,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo ofertas do roteiro: Revisar o portfólio de ofertas: estágio, próximo passo e padrão de qualidade\"",
      "nota": "O Claude cria o comando /revisar-oferta, que confere um lançamento contra o padrão de qualidade antes de ir ao ar.",
      "blocos": [
       "ocatal",
@@ -1479,6 +1568,7 @@
      "quem": "claude",
      "pronto": "Compra de teste recebe a pergunta por e-mail",
      "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo avaliacoes do roteiro: Ligar a pergunta de satisfação depois de cada compra ou serviço e o pedido de avaliação no Google\"",
      "blocos": [
       "oaval"
      ]
@@ -1489,6 +1579,7 @@
      "quem": "claude",
      "pronto": "10 parceiros qualificados e a mensagem revisada por você",
      "tempo_min": 45,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo prospeccao do roteiro: Montar a lista de parceiros e a primeira mensagem de prospecção\"",
      "nota": "O Claude busca e qualifica; quem envia é você.",
      "blocos": [
       "prosp"
@@ -1500,11 +1591,12 @@
      "quem": "voce",
      "pronto": "Pesquisa sem conflito e pedido protocolado (ou decisão de esperar, anotada)",
      "tempo_min": 60,
-     "blocos": [
-      "inpi"
-     ],
+     "fora": "Órgão público, contador ou entidade: feito no site do governo ou com atendimento.",
      "precisa": [
       "pagamento"
+     ],
+     "blocos": [
+      "inpi"
      ]
     },
     {
@@ -1513,6 +1605,7 @@
      "quem": "voce",
      "pronto": "DARF gerado (ou mês sem receita registrado) e lembrete todo dia 20",
      "tempo_min": 30,
+     "fora": "Órgão público, contador ou entidade: feito no site do governo ou com atendimento.",
      "blocos": [
       "nfse"
      ]
@@ -1523,6 +1616,7 @@
      "quem": "voce",
      "pronto": "Pasta com informes e carnês do ano, guardada no backup",
      "tempo_min": 15,
+     "fora": "Órgão público, contador ou entidade: feito no site do governo ou com atendimento.",
      "blocos": [
       "irpf"
      ]
@@ -1533,6 +1627,7 @@
      "quem": "claude",
      "pronto": "Entradas e saídas do mês lançadas, separando casa e vendas",
      "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo caixa do roteiro: Começar o Caixa da Casa numa planilha até o sistema AM Rendara existir\"",
      "blocos": [
       "caixa"
      ],
@@ -1554,13 +1649,14 @@
      "quem": "voce",
      "pronto": "https://n8n.seu-dominio responde fora de casa",
      "tempo_min": 40,
-     "nota": "Só o caminho de webhook precisa ficar público; o painel do n8n fica protegido.",
+     "comando": "curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o /tmp/cloudflared.deb && sudo dpkg -i /tmp/cloudflared.deb && cloudflared tunnel login && cloudflared tunnel create amtech-n8n && cloudflared tunnel route dns amtech-n8n n8n.SEU-DOMINIO",
+     "nota": "Só o caminho de webhook precisa ficar público; o painel do n8n fica protegido. Troque SEU-DOMINIO pelo domínio do passo do Registro.br. O cloudflared login abre o navegador uma vez para autorizar.",
+     "precisa": [
+      "pagamento"
+     ],
      "blocos": [
       "cf",
       "hooks"
-     ],
-     "precisa": [
-      "pagamento"
      ]
     },
     {
@@ -1569,6 +1665,7 @@
      "quem": "claude",
      "pronto": "Venda de teste aparece na tabela vendas",
      "tempo_min": 60,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo fluxo-vendas do roteiro: Criar no n8n o fluxo: webhook Hotmart, Kiwify e Eduzz → tabela vendas\"",
      "nota": "O Claude monta o fluxo com você no n8n; a tabela já tem a trava contra venda duplicada.",
      "blocos": [
       "hooks"
@@ -1580,6 +1677,7 @@
      "quem": "voce",
      "pronto": "Tabela gastos com a primeira campanha",
      "tempo_min": 15,
+     "fora": "Feito no painel da plataforma, que não tem terminal para isso.",
      "blocos": [
       "metrics"
      ]
@@ -1590,6 +1688,7 @@
      "quem": "claude",
      "pronto": "Painel mostra receita, anúncio, lucro e CPA por produto",
      "tempo_min": 45,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo painel-lucro do roteiro: Montar o painel de lucro no Grafana sobre a view lucro_por_produto_mes\"",
      "blocos": [
       "painel",
       "graf"
@@ -1609,6 +1708,7 @@
      "quem": "voce",
      "pronto": "Selo Verified no commit e CI verde",
      "tempo_min": 15,
+     "comando": "cd ~/dev/dev-setup && git commit --allow-empty -S -m 'teste: commit assinado' && git push && gh run watch && git log --show-signature -1",
      "blocos": [
       "sign",
       "gha"
@@ -1620,6 +1720,7 @@
      "quem": "voce",
      "pronto": "Pasta nova na fila e mensagem no celular",
      "tempo_min": 20,
+     "fora": "Teste de ponta a ponta: um pedaço é no celular (aviso do Telegram) ou na plataforma (compra de teste).",
      "blocos": [
       "opipe"
      ]
@@ -1630,6 +1731,7 @@
      "quem": "voce",
      "pronto": "Venda de teste no Grafana",
      "tempo_min": 20,
+     "fora": "Teste de ponta a ponta: um pedaço é no celular (aviso do Telegram) ou na plataforma (compra de teste).",
      "blocos": [
       "hooks",
       "painel"
@@ -1641,6 +1743,7 @@
      "quem": "script",
      "pronto": "verificar.ps1, verificar.sh e verificar.sh --servicos sem FALTA",
      "tempo_min": 5,
+     "comando": "bash ~/dev/dev-setup/scripts/wsl/verificar.sh && bash ~/dev/dev-setup/scripts/wsl/verificar.sh --servicos && powershell.exe -ExecutionPolicy Bypass -File \"$(wslpath -w ~/dev/dev-setup/scripts/windows/verificar.ps1)\"",
      "blocos": [
       "overif",
       "oimpl"
@@ -1660,6 +1763,7 @@
      "quem": "claude",
      "pronto": "5 aulas com objetivo, exemplo e exercício, no Obsidian",
      "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo mc-roteiro do roteiro: Fechar o roteiro das 5 primeiras aulas do mini-curso a partir do acervo\"",
      "blocos": [
       "curso"
      ],
@@ -1673,6 +1777,7 @@
      "quem": "voce",
      "pronto": "5 vídeos finais exportados no modelo do estúdio",
      "tempo_min": 600,
+     "fora": "Conteúdo seu: gravar, escrever ou explicar o seu método.",
      "blocos": [
       "obss",
       "edit"
@@ -1687,6 +1792,7 @@
      "quem": "voce",
      "pronto": "Produto aprovado na Hotmart, com checkout funcionando",
      "tempo_min": 120,
+     "fora": "Feito no painel da plataforma, que não tem terminal para isso.",
      "nota": "A garantia de 7 dias é o direito de arrependimento do Código de Defesa do Consumidor para compra pela internet.",
      "blocos": [
       "hotm"
@@ -1701,6 +1807,7 @@
      "quem": "claude",
      "pronto": "Página no ar levando ao checkout, com Pixel e UTM",
      "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo mc-pagina do roteiro: Página de vendas no Instituto AMS: promessa, conteúdo, preço e garantia\"",
      "nota": "Sem depoimento inventado: só depoimentos reais, com autorização, quando existirem.",
      "blocos": [
       "inst",
@@ -1717,6 +1824,7 @@
      "quem": "claude",
      "pronto": "Inscrição de teste recebe os 5 e-mails e o último leva ao checkout",
      "tempo_min": 90,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo mc-isca do roteiro: Isca grátis (aula 1) com a sequência de e-mails que leva à venda\"",
      "blocos": [
       "isca",
       "mailer"
@@ -1732,6 +1840,7 @@
      "quem": "voce",
      "pronto": "Lançamento publicado em todos os canais, com UTM",
      "tempo_min": 120,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "blocos": [
       "ig",
       "wa",
@@ -1747,6 +1856,7 @@
      "quem": "voce",
      "pronto": "Venda paga, aluno com acesso, dúvida respondida em até 24 h, linha na tabela vendas e venda lançada no carnê-leão",
      "tempo_min": 60,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "blocos": [
       "hotm",
       "hooks",
@@ -1762,6 +1872,7 @@
      "quem": "voce",
      "pronto": "Mini-curso à venda nas quatro plataformas",
      "tempo_min": 120,
+     "fora": "Feito no painel da plataforma, que não tem terminal para isso.",
      "blocos": [
       "kiwi",
       "eduzz",
@@ -1786,6 +1897,7 @@
      "quem": "claude",
      "pronto": "Sistema exemplo sobe com 'dotnet run' e passa nos testes",
      "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo template-aura do roteiro: Gerar o modelo de sistema com /novo-sistema-aura\"",
      "nota": "Clean Architecture + DDD, EF Core com Npgsql, multi-tenant com RLS, SignalR com Redis, OpenAPI com Scalar, Next.js com o Aura Design System e Storybook, testes com xUnit, Playwright e k6.",
      "blocos": [
       "clean",
@@ -1807,6 +1919,7 @@
      "quem": "claude",
      "pronto": "Usuário de teste entra e só vê os dados da própria empresa",
      "tempo_min": 60,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo auth do roteiro: Ligar o login: Keycloak no dev e Entra ID na nuvem\"",
      "blocos": [
       "auth"
      ]
@@ -1817,6 +1930,7 @@
      "quem": "claude",
      "pronto": "Painel do Aspire mostra trace de uma requisição; e-mail de teste cai no Mailpit",
      "tempo_min": 60,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo observabilidade-dev do roteiro: Ligar a observabilidade do dev: .NET Aspire, OpenTelemetry, Prometheus, Seq, Mailpit e Caddy\"",
      "blocos": [
       "aspire",
       "otel",
@@ -1832,6 +1946,7 @@
      "quem": "voce",
      "pronto": "Erro de teste aparece no Sentry",
      "tempo_min": 20,
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "blocos": [
       "sentry"
      ]
@@ -1842,6 +1957,7 @@
      "quem": "voce",
      "pronto": "Nota de qualidade aparece no pull request",
      "tempo_min": 20,
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "nota": "O plano grátis cobre repositório público; confira o limite para privado antes de ligar.",
      "blocos": [
       "sonar"
@@ -1853,6 +1969,7 @@
      "quem": "claude",
      "pronto": "Imagem com a tag do commit aparece nos pacotes do GitHub",
      "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo ghcr do roteiro: Publicar a imagem Docker da API no GHCR pelo CI\"",
      "blocos": [
       "ghcr"
      ]
@@ -1863,6 +1980,7 @@
      "quem": "voce",
      "pronto": "Lista de templates no portfólio de ofertas",
      "tempo_min": 30,
+     "fora": "Decisão sua; os números e as opções já estão no roteiro e no portfólio.",
      "blocos": [
       "tmpl"
      ],
@@ -1876,6 +1994,7 @@
      "quem": "voce",
      "pronto": "10 candidaturas enviadas com o portfólio do sistema exemplo",
      "tempo_min": 120,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "blocos": [
       "recr"
      ]
@@ -1906,6 +2025,8 @@
      "quem": "voce",
      "pronto": "'az login' entra e o alerta de gasto está ligado",
      "tempo_min": 30,
+     "comando": "az login && az account show",
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "nota": "Ligue o alerta antes de criar qualquer recurso. O Microsoft Learn do conector ajuda a escolher o serviço mais barato.",
      "blocos": [
       "azure"
@@ -1917,6 +2038,7 @@
      "quem": "claude",
      "pronto": "'terraform plan' sem diferenças depois do apply",
      "tempo_min": 90,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo terraform-base do roteiro: Criar com Terraform o grupo de recursos, o banco e o Key Vault do primeiro sistema\"",
      "blocos": [
       "tf",
       "azure"
@@ -1928,6 +2050,7 @@
      "quem": "claude",
      "pronto": "Upload de teste pelo sistema exemplo",
      "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo arquivos-nuvem do roteiro: Criar o armazenamento de arquivos (R2 da Cloudflare ou Blob)\"",
      "blocos": [
       "blob"
      ]
@@ -1938,6 +2061,7 @@
      "quem": "voce",
      "pronto": "E-mail de confirmação de conta chega na caixa de entrada, não no spam",
      "tempo_min": 30,
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "blocos": [
       "tmail"
      ]
@@ -1948,6 +2072,7 @@
      "quem": "claude",
      "pronto": "Sistema no ar com HTTPS, login e erro de teste no Sentry",
      "tempo_min": 60,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo deploy-teste do roteiro: Fazer o primeiro deploy do sistema exemplo\"",
      "blocos": [
       "vercel",
       "azure",
@@ -1960,6 +2085,7 @@
      "quem": "claude",
      "pronto": "Painel mostra o estado de todos os repositórios",
      "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo aura-status do roteiro: Criar o aura-status: painel de repositórios, backup e Dependabot\"",
      "blocos": [
       "status"
      ]
@@ -1978,6 +2104,7 @@
      "quem": "voce",
      "pronto": "metodo.yaml com cada etapa, entrada, saída e critério de conclusão; template de capítulo pronto",
      "tempo_min": 120,
+     "fora": "Conteúdo seu: gravar, escrever ou explicar o seu método.",
      "blocos": [
       "modelo",
       "metodo",
@@ -1991,7 +2118,11 @@
      "quem": "claude",
      "pronto": "Um push gera PDF, EPUB e o gabarito sem erro",
      "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo livro-repo do roteiro: Criar o repositório do livro com fonte única, classe LaTeX, exercícios em YAML e CI\"",
      "nota": "Depende do capítulo 1 e do seu modelo. O conteúdo é seu; nada de material de terceiros.",
+     "precisa": [
+      "conteudo"
+     ],
      "blocos": [
       "brepo",
       "fonte",
@@ -2001,9 +2132,6 @@
       "lint",
       "errata",
       "livro"
-     ],
-     "precisa": [
-      "conteudo"
      ]
     },
     {
@@ -2012,6 +2140,7 @@
      "quem": "claude",
      "pronto": "Uma figura do capítulo 1 sai com licença conferida, ficha e crédito; o build falha se faltar ficha",
      "tempo_min": 240,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo editora-imagens do roteiro: Construir o pipeline de imagens do livro: busca nos acervos, filtro de licença, folha de contato e créditos\"",
      "blocos": [
       "acervos",
       "buscaimg",
@@ -2026,6 +2155,7 @@
      "quem": "claude",
      "pronto": "Gráficos e tabelas do capítulo 1 gerados no build, com texto alternativo revisado por você",
      "tempo_min": 180,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo editora-figuras do roteiro: Figuras, tabelas e texto alternativo gerados por código\"",
      "blocos": [
       "figcod",
       "gerad",
@@ -2038,6 +2168,7 @@
      "quem": "claude",
      "pronto": "Os agentes apontam problemas reais no capítulo 1 e você corrige",
      "tempo_min": 180,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo editora-agentes do roteiro: Criar os agentes da editora: revisor técnico, gabarito, leitor iniciante e consistência\"",
      "blocos": [
       "bagentes"
      ]
@@ -2048,6 +2179,7 @@
      "quem": "claude",
      "pronto": "Cada tópico dos editais ligado a um capítulo; lacunas listadas",
      "tempo_min": 60,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo editais do roteiro: Montar a matriz de editais e o quadro de referências\"",
      "blocos": [
       "editais",
       "refs"
@@ -2059,6 +2191,7 @@
      "quem": "voce",
      "pronto": "Logo aprovado e aplicado na classe LaTeX",
      "tempo_min": 30,
+     "fora": "Decisão sua; os números e as opções já estão no roteiro e no portfólio.",
      "blocos": [
       "selo"
      ]
@@ -2069,13 +2202,14 @@
      "quem": "voce",
      "pronto": "ISBN do impresso e do ebook, código de barras e ficha no verso da folha de rosto",
      "tempo_min": 60,
-     "blocos": [
-      "isbn",
-      "ficha"
-     ],
+     "fora": "Órgão público, contador ou entidade: feito no site do governo ou com atendimento.",
      "precisa": [
       "pagamento",
       "conteudo"
+     ],
+     "blocos": [
+      "isbn",
+      "ficha"
      ]
     },
     {
@@ -2084,11 +2218,12 @@
      "quem": "voce",
      "pronto": "Nomes confirmados e formulário de retorno pronto",
      "tempo_min": 30,
-     "blocos": [
-      "beta"
-     ],
+     "fora": "Decisão sua; os números e as opções já estão no roteiro e no portfólio.",
      "precisa": [
       "conteudo"
+     ],
+     "blocos": [
+      "beta"
      ]
     },
     {
@@ -2097,11 +2232,12 @@
      "quem": "voce",
      "pronto": "Livro em rascunho com capa, preço e prévia conferida",
      "tempo_min": 60,
-     "blocos": [
-      "kdp"
-     ],
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "precisa": [
       "conteudo"
+     ],
+     "blocos": [
+      "kdp"
      ],
      "ofertas": [
       "livro"
@@ -2113,11 +2249,12 @@
      "quem": "voce",
      "pronto": "Comprovante de envio guardado",
      "tempo_min": 30,
-     "blocos": [
-      "deplegal"
-     ],
+     "fora": "Órgão público, contador ou entidade: feito no site do governo ou com atendimento.",
      "precisa": [
       "conteudo"
+     ],
+     "blocos": [
+      "deplegal"
      ]
     }
    ],
@@ -2133,9 +2270,9 @@
      "id": "pendrive-kali",
      "titulo": "Gravar o pendrive do Kali com persistência criptografada",
      "quem": "voce",
+     "pronto": "O Kali abre pelo F12 e um arquivo salvo continua lá depois de reiniciar",
      "tempo_min": 90,
      "comando": "winget install --id Rufus.Rufus -e",
-     "pronto": "O Kali abre pelo F12 e um arquivo salvo continua lá depois de reiniciar",
      "nota": "Siga kali.org/docs/usb. Antes do primeiro boot: suspenda o BitLocker, desligue o Secure Boot e, ao voltar ao Windows, religue o Secure Boot e reative o BitLocker (veja Secure Boot e BitLocker no mapa). Só contra alvos seus ou autorizados.",
      "blocos": [
       "pkali",
@@ -2146,23 +2283,24 @@
      "id": "pendrive-arch",
      "titulo": "Instalar o Arch num pendrive rápido ou SSD USB, pelo guia oficial",
      "quem": "voce",
-     "tempo_min": 180,
      "pronto": "O Arch portátil dá boot e abre o terminal com os seus dotfiles",
+     "tempo_min": 180,
+     "fora": "O Rufus grava o pendrive pela janela dele; a instalação do Arch é no terminal, mas no boot do pendrive, seguindo o guia oficial.",
      "nota": "Use um pendrive para a ISO e outro (64 GB ou mais, USB 3) ou um SSD USB como disco do sistema. Mesmo cuidado com Secure Boot e BitLocker.",
-     "blocos": [
-      "parch"
-     ],
      "precisa": [
       "compra"
+     ],
+     "blocos": [
+      "parch"
      ]
     },
     {
      "id": "gpu-wsl",
      "titulo": "Conferir a GPU dentro do Ubuntu",
      "quem": "script",
+     "pronto": "Aparece a GTX 1650 com o driver do Windows",
      "tempo_min": 5,
      "comando": "nvidia-smi",
-     "pronto": "Aparece a GTX 1650 com o driver do Windows",
      "blocos": [
       "torch"
      ]
@@ -2171,9 +2309,9 @@
      "id": "lab-ia",
      "titulo": "Montar o laboratório de dados e de IA",
      "quem": "script",
+     "pronto": "Termina com 'Pronto' e mostra a GPU vista pelo PyTorch",
      "tempo_min": 30,
      "comando": "bash scripts/wsl/lab-ia.sh",
-     "pronto": "Termina com 'Pronto' e mostra a GPU vista pelo PyTorch",
      "blocos": [
       "pyds",
       "duck",
@@ -2187,9 +2325,9 @@
      "id": "ollama-8b",
      "titulo": "Rodar um modelo 8B no Ollama com parte na GPU",
      "quem": "voce",
+     "pronto": "'ollama ps' mostra o modelo dividido entre CPU e GPU e ele responde",
      "tempo_min": 15,
      "comando": "ollama run llama3.1:8b",
-     "pronto": "'ollama ps' mostra o modelo dividido entre CPU e GPU e ele responde",
      "nota": "Mais lento que um 3B ou 4B, que cabem inteiros na placa. Use o 8B quando a qualidade importar mais que a velocidade.",
      "blocos": [
       "lmods",
@@ -2200,8 +2338,9 @@
      "id": "zoomcamp",
      "titulo": "Fazer o Data Engineering Zoomcamp e os cursos de IA, um módulo por semana",
      "quem": "voce",
-     "tempo_min": 60,
      "pronto": "Módulo 1 entregue no GitHub e anotado no Obsidian",
+     "tempo_min": 60,
+     "fora": "Estudo: assistir, praticar e anotar.",
      "nota": "O tempo é só para começar; o curso leva 10 semanas. Para a IA vão as suas anotações, nunca o material do curso.",
      "blocos": [
       "dez"
@@ -2211,8 +2350,9 @@
      "id": "dbt-metricas",
      "titulo": "Criar o projeto dbt sobre o banco de métricas",
      "quem": "claude",
-     "tempo_min": 90,
      "pronto": "'dbt build' verde e o painel de lucro lendo os modelos",
+     "tempo_min": 90,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo dbt-metricas do roteiro: Criar o projeto dbt sobre o banco de métricas\"",
      "blocos": [
       "dbt"
      ]
@@ -2221,8 +2361,9 @@
      "id": "airflow",
      "titulo": "Subir o Airflow e agendar o dbt todo dia",
      "quem": "claude",
-     "tempo_min": 90,
      "pronto": "A rotina diária aparece verde no Airflow por 3 dias seguidos",
+     "tempo_min": 90,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo airflow do roteiro: Subir o Airflow e agendar o dbt todo dia\"",
      "blocos": [
       "orq"
      ]
@@ -2231,8 +2372,9 @@
      "id": "contas-ia",
      "titulo": "Criar as contas do Hugging Face e do Kaggle (e do RunPod, só se precisar)",
      "quem": "voce",
-     "tempo_min": 30,
      "pronto": "Token do Hugging Face no KeePassXC; Kaggle com telefone verificado para liberar a GPU",
+     "tempo_min": 30,
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "nota": "No RunPod, só crédito pré-pago. Nunca ponha token em notebook público.",
      "blocos": [
       "hf",
@@ -2244,8 +2386,9 @@
      "id": "dataset",
      "titulo": "Montar o primeiro dataset só com conteúdo seu",
      "quem": "claude",
-     "tempo_min": 120,
      "pronto": "Algumas centenas de pares de pergunta e resposta revisados por você, com conjunto de teste separado",
+     "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo dataset do roteiro: Montar o primeiro dataset só com conteúdo seu\"",
      "nota": "Fontes: suas notas, exercícios, livro e aulas que você gravou. Nada de cursos de terceiros; nada de dados de alunos sem consentimento.",
      "blocos": [
       "dset",
@@ -2256,8 +2399,9 @@
      "id": "fine-tune",
      "titulo": "Primeiro fine-tuning QLoRA de um 8B no Kaggle",
      "quem": "claude",
-     "tempo_min": 180,
      "pronto": "Adaptador salvo no Hugging Face privado e o treino registrado no MLflow",
+     "tempo_min": 180,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo fine-tune do roteiro: Primeiro fine-tuning QLoRA de um 8B no Kaggle\"",
      "blocos": [
       "unsl",
       "kgl"
@@ -2267,8 +2411,9 @@
      "id": "modelo-no-ollama",
      "titulo": "Avaliar contra o modelo base e levar o seu modelo para o Ollama",
      "quem": "claude",
-     "tempo_min": 90,
      "pronto": "O seu modelo ganha do base no conjunto de teste e responde no Ollama do notebook",
+     "tempo_min": 90,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo modelo-no-ollama do roteiro: Avaliar contra o modelo base e levar o seu modelo para o Ollama\"",
      "blocos": [
       "evals",
       "gguf",
@@ -2289,6 +2434,7 @@
      "quem": "claude",
      "pronto": "Página publicada com links marcados com UTM",
      "tempo_min": 90,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo of-meu-setup do roteiro: Página 'meu setup' com links de afiliado\"",
      "blocos": [
       "site",
       "afil"
@@ -2303,6 +2449,7 @@
      "quem": "claude",
      "pronto": "Chamadas no ar, medidas por UTM",
      "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo of-catalogo do roteiro: Pôr no Catálogo do HTML a chamada para o mini-curso e para a newsletter\"",
      "blocos": [
       "catal"
      ],
@@ -2316,6 +2463,7 @@
      "quem": "voce",
      "pronto": "Kit de 1 disciplina (planos, slides, avaliações) à venda",
      "tempo_min": 600,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "nota": "Material feito para a escola: reescreva do zero, no seu tempo e sem a identidade da escola, ou confirme os direitos.",
      "blocos": [
       "acv",
@@ -2331,6 +2479,7 @@
      "quem": "voce",
      "pronto": "10 planilhas vendidas",
      "tempo_min": 180,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "blocos": [
       "caixa",
       "hotm"
@@ -2345,6 +2494,7 @@
      "quem": "claude",
      "pronto": "Um negócio usando a automação e um caso escrito com autorização",
      "tempo_min": 600,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo of-automacao do roteiro: Automação com IA para pequenos negócios: 1 implantação grátis em troca de caso\"",
      "blocos": [
       "n8n",
       "oatend"
@@ -2359,6 +2509,7 @@
      "quem": "voce",
      "pronto": "50 questões publicadas e a procura medida",
      "tempo_min": 480,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "blocos": [
       "exyaml"
      ],
@@ -2372,6 +2523,7 @@
      "quem": "voce",
      "pronto": "Primeiro baralho à venda",
      "tempo_min": 180,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "blocos": [
       "anki",
       "exyaml"
@@ -2386,6 +2538,7 @@
      "quem": "voce",
      "pronto": "Edição semanal por 8 semanas e o primeiro patrocinador",
      "tempo_min": 120,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "blocos": [
       "mailer"
      ],
@@ -2399,6 +2552,7 @@
      "quem": "voce",
      "pronto": "Primeiro cliente mensal",
      "tempo_min": 240,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "blocos": [
       "ogbp",
       "sites"
@@ -2413,6 +2567,7 @@
      "quem": "voce",
      "pronto": "Pacotes publicados e primeiro cliente fechado",
      "tempo_min": 180,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "blocos": [
       "sites",
       "hostg"
@@ -2427,6 +2582,7 @@
      "quem": "voce",
      "pronto": "3 empresas no plano mensal",
      "tempo_min": 240,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "blocos": [
       "tail"
      ],
@@ -2440,6 +2596,7 @@
      "quem": "voce",
      "pronto": "Um estudo de caso, com autorização do dono",
      "tempo_min": 480,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "blocos": [
       "nkaix"
      ],
@@ -2453,6 +2610,7 @@
      "quem": "claude",
      "pronto": "Primeiros alunos usando",
      "tempo_min": 1200,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo of-ammentor do roteiro: AM Mentor: banco de exercícios com correção, começando pelo capítulo 1\"",
      "blocos": [
       "exyaml"
      ],
@@ -2466,6 +2624,7 @@
      "quem": "voce",
      "pronto": "24 vídeos publicados e o resultado medido",
      "tempo_min": 1200,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "blocos": [
       "oedit",
       "yt"
@@ -2480,6 +2639,7 @@
      "quem": "voce",
      "pronto": "Comunidade aberta com os primeiros assinantes",
      "tempo_min": 240,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "nota": "Só com 200 alunos pagantes.",
      "blocos": [
       "comu"
@@ -2494,6 +2654,7 @@
      "quem": "voce",
      "pronto": "Primeira escola contratando",
      "tempo_min": 600,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "blocos": [
       "rob",
       "ard"
@@ -2508,6 +2669,7 @@
      "quem": "voce",
      "pronto": "Primeiro contrato assinado",
      "tempo_min": 240,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "blocos": [
       "api",
       "front"
@@ -2522,6 +2684,7 @@
      "quem": "voce",
      "pronto": "2 eventos pagos, com as regras sanitárias conferidas",
      "tempo_min": 240,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "blocos": [
       "agenda"
      ],
@@ -2535,6 +2698,7 @@
      "quem": "voce",
      "pronto": "Piloto realizado com 10 inscritos pagantes",
      "tempo_min": 480,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "blocos": [
       "agenda",
       "mp"
@@ -2549,6 +2713,7 @@
      "quem": "voce",
      "pronto": "Decisão anotada: retomar ou manter pausada",
      "tempo_min": 30,
+     "fora": "Decisão sua; os números e as opções já estão no roteiro e no portfólio.",
      "blocos": [
       "ocatal"
      ],
@@ -2571,6 +2736,7 @@
      "quem": "voce",
      "pronto": "Campanha com CPA abaixo do de empate por 2 semanas",
      "tempo_min": 120,
+     "fora": "Campanha montada no painel de anúncios de cada rede, com cartão.",
      "precisa": [
       "pagamento"
      ],
@@ -2584,6 +2750,7 @@
      "quem": "voce",
      "pronto": "Cada canal com a primeira campanha medida no painel",
      "tempo_min": 180,
+     "fora": "Campanha montada no painel de anúncios de cada rede, com cartão.",
      "precisa": [
       "pagamento"
      ],
@@ -2598,6 +2765,7 @@
      "quem": "voce",
      "pronto": "Cada canal testado e mantido ou cortado pelas regras",
      "tempo_min": 240,
+     "fora": "Campanha montada no painel de anúncios de cada rede, com cartão.",
      "precisa": [
       "pagamento"
      ],
@@ -2615,6 +2783,7 @@
      "quem": "voce",
      "pronto": "Primeira parceria medida por cupom e UTM",
      "tempo_min": 120,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "precisa": [
       "pagamento"
      ],
@@ -2628,6 +2797,7 @@
      "quem": "voce",
      "pronto": "Primeiro afiliado vendendo",
      "tempo_min": 60,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "blocos": [
       "afprog"
      ]
@@ -2638,6 +2808,7 @@
      "quem": "claude",
      "pronto": "80% dos posts nas melhores faixas, 20% testando",
      "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo horario do roteiro: Ligar o algoritmo de horário com 3 meses de dados de publicação\"",
      "blocos": [
       "horario"
      ]
@@ -2648,6 +2819,7 @@
      "quem": "voce",
      "pronto": "4 vídeos seguidos publicados",
      "tempo_min": 60,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "blocos": [
       "obuild"
      ],
@@ -2661,6 +2833,7 @@
      "quem": "voce",
      "pronto": "Um vídeo com faixa de áudio em inglês ou espanhol",
      "tempo_min": 120,
+     "fora": "Conteúdo seu: gravar, escrever ou explicar o seu método.",
      "precisa": [
       "pagamento"
      ],
@@ -2674,6 +2847,7 @@
      "quem": "voce",
      "pronto": "Assinatura de membros ativa",
      "tempo_min": 30,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "blocos": [
       "ytm"
      ],
@@ -2687,6 +2861,7 @@
      "quem": "voce",
      "pronto": "Formação gravada e à venda",
      "tempo_min": 1200,
+     "fora": "Conteúdo seu: gravar, escrever ou explicar o seu método.",
      "blocos": [
       "form"
      ],
@@ -2711,6 +2886,7 @@
      "quem": "voce",
      "pronto": "Escolha entre Windows e Arch ao ligar, cada um no seu disco",
      "tempo_min": 300,
+     "fora": "Compra e montagem física (ou instalação por janela de VM); depois os verificadores conferem pelo terminal.",
      "precisa": [
       "compra"
      ],
@@ -2726,6 +2902,7 @@
      "quem": "voce",
      "pronto": "Uma semana editando só no Neovim",
      "tempo_min": 300,
+     "comando": "sudo apt install -y neovim && nvim +Tutor",
      "blocos": [
       "nvim"
      ]
@@ -2736,6 +2913,7 @@
      "quem": "voce",
      "pronto": "Duas VMs numa rede isolada, atacante e alvo",
      "tempo_min": 300,
+     "fora": "Compra e montagem física (ou instalação por janela de VM); depois os verificadores conferem pelo terminal.",
      "blocos": [
       "vms"
      ]
@@ -2746,6 +2924,7 @@
      "quem": "voce",
      "pronto": "VMs rodando do SSD novo",
      "tempo_min": 60,
+     "fora": "Compra e montagem física (ou instalação por janela de VM); depois os verificadores conferem pelo terminal.",
      "precisa": [
       "compra"
      ],
@@ -2759,6 +2938,7 @@
      "quem": "voce",
      "pronto": "Login com a chave nas três contas",
      "tempo_min": 60,
+     "fora": "Compra e montagem física (ou instalação por janela de VM); depois os verificadores conferem pelo terminal.",
      "precisa": [
       "compra"
      ],
@@ -2772,6 +2952,7 @@
      "quem": "voce",
      "pronto": "Gravação de teste com áudio limpo sem pós-produção",
      "tempo_min": 60,
+     "fora": "Compra e montagem física (ou instalação por janela de VM); depois os verificadores conferem pelo terminal.",
      "precisa": [
       "compra"
      ],
@@ -2793,6 +2974,7 @@
      "quem": "claude",
      "pronto": "O sistema responde perguntas com base nos dados do cliente, citando a origem",
      "tempo_min": 480,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo rag-sistema do roteiro: RAG com pgvector dentro do primeiro sistema AM\"",
      "blocos": [
       "ai"
      ]
@@ -2811,6 +2993,7 @@
      "quem": "claude",
      "pronto": "Primeiro cliente pagando por assinatura",
      "tempo_min": 600,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo saas do roteiro: Lançar o primeiro sistema AM como SaaS, com cobrança por módulo\"",
      "blocos": [
       "saas",
       "lic"
@@ -2822,6 +3005,7 @@
      "quem": "claude",
      "pronto": "Rodando num negócio real",
      "tempo_min": 2400,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo kaixara do roteiro: AM Kaixara: PDV, cardápio, fichas técnicas e estoque\"",
      "blocos": [
       "nkaix"
      ],
@@ -2835,6 +3019,7 @@
      "quem": "claude",
      "pronto": "Entregas rastreadas no mapa em tempo real",
      "tempo_min": 2400,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo rotara do roteiro: AM Rotara: pedidos, rotas e mapas\"",
      "blocos": [
       "nrot",
       "gis"
@@ -2849,6 +3034,7 @@
      "quem": "claude",
      "pronto": "Um serviço compartilhado usado por dois sistemas",
      "tempo_min": 600,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo servicos-aura do roteiro: Serviços aura- compartilhados, só quando um sistema precisar\"",
      "blocos": [
       "shared",
       "datomic"
@@ -2860,6 +3046,7 @@
      "quem": "claude",
      "pronto": "Primeiro restaurante usando o app com a marca dele",
      "tempo_min": 1200,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo whitelabel do roteiro: App de delivery com a marca do restaurante (white-label)\"",
      "nota": "Comece oferecendo a 3 restaurantes que pagam 23% ao iFood.",
      "blocos": [
       "nrot"
@@ -2883,6 +3070,7 @@
      "quem": "voce",
      "pronto": "CNPJ ativo, conta PJ aberta e contador contratado",
      "tempo_min": 240,
+     "fora": "Órgão público, contador ou entidade: feito no site do governo ou com atendimento.",
      "precisa": [
       "pagamento"
      ],
@@ -2897,6 +3085,7 @@
      "quem": "voce",
      "pronto": "Certificado instalado e guardado no KeePassXC",
      "tempo_min": 60,
+     "fora": "Órgão público, contador ou entidade: feito no site do governo ou com atendimento.",
      "precisa": [
       "pagamento"
      ],
@@ -2910,6 +3099,7 @@
      "quem": "claude",
      "pronto": "Venda de teste emite nota sozinha",
      "tempo_min": 240,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo nfse-api do roteiro: Nota fiscal automática pela API de NFS-e\"",
      "blocos": [
       "nfapi"
      ]
@@ -2920,6 +3110,7 @@
      "quem": "claude",
      "pronto": "Assinatura de teste cobrada por Pix",
      "tempo_min": 240,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo pix-automatico do roteiro: Cobrança recorrente por Pix Automático\"",
      "blocos": [
       "pixa"
      ]
@@ -2939,6 +3130,7 @@
      "quem": "claude",
      "pronto": "Relatório toda segunda no Telegram",
      "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo ag-analista do roteiro: Analista semanal: o que funcionou e o que mudar\"",
      "blocos": [
       "oanal"
      ]
@@ -2949,6 +3141,7 @@
      "quem": "claude",
      "pronto": "Dúvida comum respondida sozinha; o resto chega para você",
      "tempo_min": 240,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo ag-atendente do roteiro: Atendente do WhatsApp com passagem para você\"",
      "blocos": [
       "oatend"
      ]
@@ -2959,6 +3152,7 @@
      "quem": "claude",
      "pronto": "Rascunho de orçamento em 5 minutos, revisado por você",
      "tempo_min": 180,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo ag-orcamento do roteiro: Orçamentista de sites e sistemas\"",
      "blocos": [
       "oorc"
      ]
@@ -2969,6 +3163,7 @@
      "quem": "claude",
      "pronto": "Atraso cai pela metade",
      "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo ag-cobranca do roteiro: Cobrador educado (lembrete antes e depois do vencimento)\"",
      "blocos": [
       "ocob"
      ]
@@ -2979,6 +3174,7 @@
      "quem": "claude",
      "pronto": "NPS medido em cada venda",
      "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo ag-posvenda do roteiro: Pós-venda: NPS e pedido de avaliação\"",
      "blocos": [
       "opos"
      ]
@@ -2989,6 +3185,7 @@
      "quem": "claude",
      "pronto": "Pasta do mês pronta no dia 5",
      "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo ag-fiscal do roteiro: Organizador fiscal para o contador\"",
      "blocos": [
       "ofisc"
      ]
@@ -2999,6 +3196,7 @@
      "quem": "claude",
      "pronto": "Pedido de reposição sugerido antes de faltar",
      "tempo_min": 180,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo ag-comprador do roteiro: Comprador com estoque mínimo\"",
      "blocos": [
       "ocomp"
      ]
@@ -3018,6 +3216,7 @@
      "quem": "voce",
      "pronto": "Cópia de prova aprovada",
      "tempo_min": 120,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "precisa": [
       "pagamento"
      ],
@@ -3031,6 +3230,7 @@
      "quem": "voce",
      "pronto": "Primeira tiragem vendida",
      "tempo_min": 240,
+     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
      "precisa": [
       "pagamento"
      ],
@@ -3047,6 +3247,7 @@
      "quem": "voce",
      "pronto": "Primeira seção gravada e à venda",
      "tempo_min": 1200,
+     "fora": "Conteúdo seu: gravar, escrever ou explicar o seu método.",
      "blocos": [
       "bcurso",
       "manim"
@@ -3058,6 +3259,7 @@
      "quem": "claude",
      "pronto": "Primeira escola licenciada",
      "tempo_min": 600,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo edicao-professor do roteiro: Edição do professor com licença para escolas\"",
      "blocos": [
       "prof"
      ],
@@ -3071,6 +3273,7 @@
      "quem": "claude",
      "pronto": "Primeiro volume traduzido e revisado",
      "tempo_min": 1200,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo traducoes do roteiro: Traduções para espanhol e inglês\"",
      "precisa": [
       "pagamento"
      ],
@@ -3096,6 +3299,7 @@
      "quem": "claude",
      "pronto": "Evento de um sistema chega no outro sem chamada direta",
      "tempo_min": 600,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo mensageria do roteiro: RabbitMQ e depois Kafka entre dois sistemas AM\"",
      "blocos": [
       "rmq",
       "kafka"
@@ -3107,6 +3311,7 @@
      "quem": "voce",
      "pronto": "Um sistema AM rodando no cluster local",
      "tempo_min": 600,
+     "comando": "mkdir -p ~/.local/bin && curl -Lo ~/.local/bin/kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64 && chmod +x ~/.local/bin/kind && sudo snap install kubectl --classic && sudo snap install helm --classic && kind create cluster --name lab && kubectl get nodes",
      "blocos": [
       "kind",
       "k8st"
@@ -3118,6 +3323,7 @@
      "quem": "claude",
      "pronto": "Uma requisição seguida de ponta a ponta",
      "tempo_min": 240,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo loki-tempo do roteiro: Logs e rastreamento com Loki e Tempo no Grafana\"",
      "blocos": [
       "loki"
      ]
@@ -3128,6 +3334,7 @@
      "quem": "voce",
      "pronto": "Certificação e post comparando Azure e AWS",
      "tempo_min": 1200,
+     "fora": "Criar a conta é no site; depois tudo pelo aws e gcloud no terminal.",
      "precisa": [
       "pagamento"
      ],
@@ -3141,6 +3348,7 @@
      "quem": "voce",
      "pronto": "Um serviço usado num projeto real",
      "tempo_min": 300,
+     "fora": "Criar a conta é no site; depois tudo pelo aws e gcloud no terminal.",
      "blocos": [
       "gcp"
      ]
@@ -3151,6 +3359,7 @@
      "quem": "claude",
      "pronto": "App publicado para teste interno",
      "tempo_min": 1200,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo mobile do roteiro: App mobile dos sistemas AM com .NET MAUI\"",
      "blocos": [
       "mobile"
      ]
@@ -3169,6 +3378,7 @@
      "quem": "voce",
      "pronto": "n8n, banco e painel rodando no servidor; notebook livre",
      "tempo_min": 480,
+     "fora": "Compra e montagem física (ou instalação por janela de VM); depois os verificadores conferem pelo terminal.",
      "precisa": [
       "compra"
      ],
@@ -3182,6 +3392,7 @@
      "quem": "voce",
      "pronto": "Acesso ao servidor de fora de casa sem abrir porta",
      "tempo_min": 60,
+     "fora": "Entrar na conta do Tailscale é pelo navegador; depois: tailscale status.",
      "blocos": [
       "tail"
      ]
@@ -3192,6 +3403,7 @@
      "quem": "voce",
      "pronto": "Fine-tuning de 8B rodando local",
      "tempo_min": 480,
+     "fora": "Compra e montagem física (ou instalação por janela de VM); depois os verificadores conferem pelo terminal.",
      "precisa": [
       "compra"
      ],
@@ -3213,6 +3425,7 @@
      "quem": "claude",
      "pronto": "Capital mínimo e portões calculados com os seus dados",
      "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo planejador-real do roteiro: Planejador do grupo com os números reais\"",
      "blocos": [
       "nplan"
      ]
@@ -3223,6 +3436,7 @@
      "quem": "voce",
      "pronto": "3 meses seguidos com lucro e 10 clientes pagantes",
      "tempo_min": 2400,
+     "fora": "Negócio físico: ponto, alvará, compras e pessoas. O Claude faz os números e os documentos.",
      "precisa": [
       "pagamento"
      ],
@@ -3236,6 +3450,7 @@
      "quem": "voce",
      "pronto": "Loja acima do equilíbrio por 3 meses e técnico que abre e fecha sem você",
      "tempo_min": 4800,
+     "fora": "Negócio físico: ponto, alvará, compras e pessoas. O Claude faz os números e os documentos.",
      "precisa": [
       "compra",
       "pagamento"
@@ -3261,6 +3476,7 @@
      "quem": "voce",
      "pronto": "1.000 entregas por mês e 5 contratos fixos",
      "tempo_min": 4800,
+     "fora": "Negócio físico: ponto, alvará, compras e pessoas. O Claude faz os números e os documentos.",
      "precisa": [
       "compra",
       "pagamento"
@@ -3279,6 +3495,7 @@
      "quem": "voce",
      "pronto": "20 lojistas ativos e 1.500 pedidos por mês",
      "tempo_min": 4800,
+     "fora": "Negócio físico: ponto, alvará, compras e pessoas. O Claude faz os números e os documentos.",
      "precisa": [
       "pagamento"
      ],
@@ -3296,6 +3513,7 @@
      "quem": "voce",
      "pronto": "Lucro por 3 meses e sushiman que toca a noite sem você",
      "tempo_min": 4800,
+     "fora": "Negócio físico: ponto, alvará, compras e pessoas. O Claude faz os números e os documentos.",
      "precisa": [
       "compra",
       "pagamento"
@@ -3315,6 +3533,7 @@
      "quem": "voce",
      "pronto": "Gerente no comando e CMV dentro da meta por 3 meses",
      "tempo_min": 4800,
+     "fora": "Negócio físico: ponto, alvará, compras e pessoas. O Claude faz os números e os documentos.",
      "precisa": [
       "compra",
       "pagamento"
@@ -3332,6 +3551,7 @@
      "quem": "voce",
      "pronto": "Cafeteria acima do equilíbrio",
      "tempo_min": 2400,
+     "fora": "Negócio físico: ponto, alvará, compras e pessoas. O Claude faz os números e os documentos.",
      "precisa": [
       "compra",
       "pagamento"
@@ -3358,6 +3578,7 @@
      "quem": "voce",
      "pronto": "Benefícios aprovados e Copilot ativo no VS Code",
      "tempo_min": 20,
+     "comando": "Start-Process 'https://education.github.com/discount_requests/application'",
      "blocos": [
       "ghed",
       "copi"
@@ -3369,6 +3590,7 @@
      "quem": "voce",
      "pronto": "Uma trilha de cada em andamento, anotada no Obsidian",
      "tempo_min": 30,
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "blocos": [
       "learn",
       "road",
@@ -3381,6 +3603,7 @@
      "quem": "voce",
      "pronto": "Acessos no KeePassXC e cursos em andamento listados no Obsidian",
      "tempo_min": 15,
+     "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "nota": "A licença é para assistir e estudar. Para a IA vão só as suas anotações e os seus projetos.",
      "blocos": [
       "plat"
@@ -3392,6 +3615,7 @@
      "quem": "voce",
      "pronto": "Revisão do dia feita no notebook e no celular",
      "tempo_min": 20,
+     "fora": "Estudo: assistir, praticar e anotar.",
      "blocos": [
       "anki"
      ]

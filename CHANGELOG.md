@@ -2,6 +2,12 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.16.0] - 2026-10-30
+
+### Adicionado
+- Comando de terminal em mais 96 passos (agora 131 de 253): extrair e pôr a pasta no lugar, contar os documentos, backup inicial com robocopy, Windows Update pelo PSWindowsUpdate, cofre criado com keepassxc-cli, cópia do cofre conferida, criptografia e chave de recuperação, Defender e Firewall, dotfiles, Dependabot e CodeQL pelo gh, projeto do GitHub, modelo do Ollama, teste de restauração, túnel da Cloudflare, teste de commit assinado, verificadores juntos, Kubernetes local, e `claude "Passo ..."` em todo passo feito pelo Claude.
+- Campo **Fora do terminal**: os passos sem comando dizem por quê (site do serviço, celular, órgão público, hardware, conteúdo ou decisão sua). O CI falha se um passo ficar sem comando e sem motivo.
+
 ## [1.15.1] - 2026-10-24
 
 ### Corrigido

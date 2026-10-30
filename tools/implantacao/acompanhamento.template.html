@@ -66,6 +66,8 @@ details.fase>summary::-webkit-details-marker{display:none}
 .pronto{font-size:14px;margin-top:6px}
 .pronto span{font:500 11px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--ok)}
 .nota{font-size:13px;color:var(--muted);margin-top:4px}
+.fora{font-size:13px;margin-top:6px}
+.fora span{font:500 11px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-right:4px}
 .corpo{grid-column:2/3;min-width:0}
 .implanta{font-size:12px;color:var(--muted);margin-top:4px}
 .implanta span{font:500 11px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--aura)}
@@ -137,6 +139,7 @@ function render(){
         <div class="corpo"><label for="c-${p.id}" class="ptit">${num} ${esc(p.titulo)}</label>
         <div class="meta"><span class="quem ${p.quem}">${esc(QUEM[p.quem])}</span><span>${hm(p.tempo_min)}</span>${(p.precisa||[]).map(x=>`<span class="prec">Precisa ${esc(D.precisa[x])}</span>`).join("")}</div>
         ${p.comando?`<div class="cmd"><code id="k-${p.id}">${esc(p.comando)}</code><button class="copy" data-copy="${p.id}">Copiar</button></div>`:""}
+        ${p.fora?`<p class="fora"><span>Fora do terminal</span> ${esc(p.fora)}</p>`:""}
         <p class="pronto"><span>Pronto quando</span> ${esc(p.pronto)}</p>
         ${p.nota?`<p class="nota">${esc(p.nota)}</p>`:""}
         ${p.ofertas.length?`<p class="implanta"><span>Oferta</span> ${esc(p.ofertas.join(" · "))}</p>`:""}
