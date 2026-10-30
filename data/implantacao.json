@@ -1990,7 +1990,7 @@
     },
     {
      "id": "vaga",
-     "titulo": "Candidatar-se às vagas de dev .NET com GitHub, LinkedIn e site prontos",
+     "titulo": "Candidatar-se às vagas de dev .NET com GitHub, LinkedIn e site prontos — quando o Passo 8 da trilha de estudo estiver feito (≈ jul a dez/2027)",
      "quem": "voce",
      "pronto": "10 candidaturas enviadas com o portfólio do sistema exemplo",
      "tempo_min": 120,
@@ -2000,7 +2000,7 @@
      ]
     }
    ],
-   "quando": "Jan a fev/2027"
+   "quando": "Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6"
   },
   {
    "id": "f19",
@@ -2091,7 +2091,7 @@
      ]
     }
    ],
-   "quando": "Fev a abr/2027"
+   "quando": "Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028)"
   },
   {
    "id": "f20",
@@ -2421,7 +2421,7 @@
      ]
     }
    ],
-   "quando": "Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027"
+   "quando": "Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029)"
   },
   {
    "id": "f22",
@@ -2980,7 +2980,7 @@
      ]
     }
    ],
-   "quando": "Mai a jul/2027"
+   "quando": "Depois do Passo 9 e do IA0 da Trilha de Dados e IA (≈ 2028), junto do IA5"
   },
   {
    "id": "f26",
@@ -3611,7 +3611,7 @@
     },
     {
      "id": "anki",
-     "titulo": "Criar os baralhos do Anki (comandos, conceitos, certificações, concurso)",
+     "titulo": "Criar os baralhos do Anki (comandos, conceitos, certificações)",
      "quem": "voce",
      "pronto": "Revisão do dia feita no notebook e no celular",
      "tempo_min": 20,

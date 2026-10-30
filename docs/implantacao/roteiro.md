@@ -32,14 +32,14 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [15 · Vendas medidas](#f15) | Semana 11 · jan/2027 | 4 | 2 h 40 min |
 | [16 · Teste do núcleo](#f16) | Semana 11 · jan/2027 | 4 | 1 h 00 min |
 | [17 · Primeira venda: o mini-curso no ar](#f17) | Semanas 12 a 15 · jan a fev/2027 | 8 | 22 h 30 min |
-| [18 · Base dos sistemas AM](#f18) | Jan a fev/2027 | 8 | 7 h 40 min |
-| [19 · Nuvem e deploy](#f19) | Fev a abr/2027 | 7 | 6 h 15 min |
+| [18 · Base dos sistemas AM](#f18) | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 | 8 | 7 h 40 min |
+| [19 · Nuvem e deploy](#f19) | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) | 7 | 6 h 15 min |
 | [20 · Editora](#f20) | Quando o capítulo 1 estiver pronto · **gatilho:** O capítulo 1 e o seu modelo de criação prontos | 11 | 18 h 30 min |
-| [21 · Dados, IA e pendrives](#f21) | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 | 12 | 16 h 20 min |
+| [21 · Dados, IA e pendrives](#f21) | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) | 12 | 16 h 20 min |
 | [22 · Mais ofertas, uma por vez](#f22) | Fev a dez/2027, uma oferta por vez · **gatilho:** A primeira venda do mini-curso aconteceu | 20 | 127 h 30 min |
 | [23 · Marketing pago e crescimento](#f23) | A partir de fev/2027 · **gatilho:** O mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar | 10 | 37 h 30 min |
 | [24 · Linux nativo e laboratório completo](#f24) | 2027, conforme cada compra | 6 | 18 h 00 min |
-| [25 · IA dentro dos sistemas AM](#f25) | Mai a jul/2027 | 1 | 8 h 00 min |
+| [25 · IA dentro dos sistemas AM](#f25) | Depois do Passo 9 e do IA0 da Trilha de Dados e IA (≈ 2028), junto do IA5 | 1 | 8 h 00 min |
 | [26 · Sistemas AM à venda](#f26) | 2027 · **gatilho:** O primeiro sistema AM pronto e testado com um cliente | 5 | 120 h 00 min |
 | [27 · CNPJ e formalização](#f27) | Quando a renda pedir · **gatilho:** A renda passou do valor de virada definido com o contador | 4 | 13 h 00 min |
 | [28 · Agentes do grupo](#f28) | Junto com o primeiro CNPJ · **gatilho:** Clientes e vendas recorrentes | 7 | 18 h 00 min |
@@ -1596,7 +1596,7 @@ cd ~/dev/dev-setup && claude "Passo mc-isca do roteiro: Isca grátis (aula 1) co
 
 Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e deploy.
 
-**Quando:** Jan a fev/2027
+**Quando:** Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6
 
 ### 18.1 Gerar o modelo de sistema com /novo-sistema-aura
 
@@ -1669,7 +1669,7 @@ cd ~/dev/dev-setup && claude "Passo ghcr do roteiro: Publicar a imagem Docker da
 - **Oferta:** Templates e código-fonte
 - Implanta: Templates e código-fonte
 
-### 18.8 Candidatar-se às vagas de dev .NET com GitHub, LinkedIn e site prontos
+### 18.8 Candidatar-se às vagas de dev .NET com GitHub, LinkedIn e site prontos — quando o Passo 8 da trilha de estudo estiver feito (≈ jul a dez/2027)
 
 **Você** · 2 h 00 min
 
@@ -1683,7 +1683,7 @@ cd ~/dev/dev-setup && claude "Passo ghcr do roteiro: Publicar a imagem Docker da
 
 As contas de nuvem criadas por código, com custo sob controle.
 
-**Quando:** Fev a abr/2027
+**Quando:** Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028)
 
 ### 19.1 Instalar Azure CLI, Terraform, Vercel CLI e Wrangler
 
@@ -1887,7 +1887,7 @@ cd ~/dev/dev-setup && claude "Passo editais do roteiro: Montar a matriz de edita
 
 O laboratório de dados e de treino no ar, um modelo seu rodando no Ollama e os pendrives de Kali e Arch dando boot.
 
-**Quando:** Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027
+**Quando:** Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029)
 
 ### 21.1 Gravar o pendrive do Kali com persistência criptografada
 
@@ -2393,7 +2393,7 @@ sudo apt install -y neovim && nvim +Tutor
 
 Busca e assistente com os seus dados dentro de um sistema AM.
 
-**Quando:** Mai a jul/2027
+**Quando:** Depois do Passo 9 e do IA0 da Trilha de Dados e IA (≈ 2028), junto do IA5
 
 ### 25.1 RAG com pgvector dentro do primeiro sistema AM
 
@@ -2903,7 +2903,7 @@ Start-Process 'https://education.github.com/discount_requests/application'
 - A licença é para assistir e estudar. Para a IA vão só as suas anotações e os seus projetos.
 - Implanta: Alura · Rocketseat · DIO · Udemy
 
-### 33.4 Criar os baralhos do Anki (comandos, conceitos, certificações, concurso)
+### 33.4 Criar os baralhos do Anki (comandos, conceitos, certificações)
 
 **Você** · 20 min
 
@@ -2958,7 +2958,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Comunidade (Discord ou grupo) | 14.10, 22.15 | Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
 | Busca Google (SEO) | 13.12 | Semanas 6 e 7 · dez/2026 |
 | Alunos e ex-alunos | 13.10 | Semanas 6 e 7 · dez/2026 |
-| Recrutadores | 18.8 | Jan a fev/2027 |
+| Recrutadores | 18.8 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
 | TikTok | 13.1 | Semanas 6 e 7 · dez/2026 |
 | Facebook | 13.1 | Semanas 6 e 7 · dez/2026 |
 
@@ -3045,7 +3045,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 |---|---|---|
 | Mini-curso Lógica de Programação | 14.5, 17.1 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027 |
 | Formações (TI, Matemática, Finanças) | 23.10 | A partir de fev/2027 |
-| Templates e código-fonte | 18.7 | Jan a fev/2027 |
+| Templates e código-fonte | 18.7 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
 | Livro Lógica e Máquina | 20.2 | Quando o capítulo 1 estiver pronto |
 | Aulas particulares | 14.8 | Semanas 8 a 10 · dez/2026 a jan/2027 |
 | Sites para pequenas empresas | 13.13, 22.9, 22.10 | Semanas 6 e 7 · dez/2026; Fev a dez/2027, uma oferta por vez |
@@ -3123,7 +3123,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Anki | 3.2, 22.7, 33.4 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez; Contínuo, desde a semana 2 |
 | roadmap.sh + Akita | 33.2 | Contínuo, desde a semana 2 |
 | GitHub Education | 33.1 | Contínuo, desde a semana 2 |
-| Zoomcamp de dados + cursos de IA | 21.6 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| Zoomcamp de dados + cursos de IA | 21.6 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 
 ### Produção de conteúdo
 
@@ -3140,43 +3140,43 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Armazenamento de arquivos (Blob/R2) | 19.4 | Fev a abr/2027 |
-| E-mail transacional (Resend, SES…) | 19.5 | Fev a abr/2027 |
-| SonarQube Cloud | 18.5 | Jan a fev/2027 |
+| Armazenamento de arquivos (Blob/R2) | 19.4 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| E-mail transacional (Resend, SES…) | 19.5 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| SonarQube Cloud | 18.5 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
 | Projects · ADRs · MkDocs | 5.5 | Semana 2 · nov/2026 |
 | Dependabot + CodeQL | 5.3 | Semana 2 · nov/2026 |
 | Google Cloud | 30.5 | 2028 |
 | GitHub | 2.6, 5.1, 5.4 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 2 · nov/2026 |
 | GitHub Actions | 5.2, 16.1 | Semana 2 · nov/2026; Semana 11 · jan/2027 |
-| GHCR (imagens) | 18.6 | Jan a fev/2027 |
+| GHCR (imagens) | 18.6 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
 | GitHub Pages | 13.7 | Semanas 6 e 7 · dez/2026 |
-| Cloudflare (DNS, Pages, e-mail) | 13.3, 13.8, 15.1, 19.6 | Semanas 6 e 7 · dez/2026; Semana 11 · jan/2027; Fev a abr/2027 |
-| Vercel | 19.6 | Fev a abr/2027 |
-| Azure | 19.2, 19.3, 19.6 | Fev a abr/2027 |
+| Cloudflare (DNS, Pages, e-mail) | 13.3, 13.8, 15.1, 19.6 | Semanas 6 e 7 · dez/2026; Semana 11 · jan/2027; Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| Vercel | 19.6 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| Azure | 19.2, 19.3, 19.6 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
 | AWS | 30.4 | 2028 |
 | Backblaze B2 (backup) | 7.2 | Semana 3 · nov/2026 |
-| GPU por hora (RunPod e afins) | 21.9 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| GPU por hora (RunPod e afins) | 21.9 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 | Google Drive (seus documentos) | 0.5, 8.1 | Antes de tudo · semana 1 (out/2026); Semanas 3 e 4 · nov/2026 |
 
 ### Aplicação: sistemas AM (Aura)
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| OpenAPI + Scalar | 18.1 | Jan a fev/2027 |
+| OpenAPI + Scalar | 18.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
 | PostGIS + MapLibre | 26.3 | 2027 |
-| Storybook | 18.1 | Jan a fev/2027 |
-| Clean Arch + DDD | 18.1 | Jan a fev/2027 |
-| EF Core + Npgsql | 18.1 | Jan a fev/2027 |
-| SignalR | 18.1 | Jan a fev/2027 |
-| Multi-tenant (RLS) | 18.1 | Jan a fev/2027 |
-| Testes: xUnit, Playwright, k6 | 18.1 | Jan a fev/2027 |
+| Storybook | 18.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| Clean Arch + DDD | 18.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| EF Core + Npgsql | 18.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| SignalR | 18.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| Multi-tenant (RLS) | 18.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| Testes: xUnit, Playwright, k6 | 18.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
 | Serviços aura- (10) | 26.4 | 2027 |
-| Next.js + Aura Design System | 18.1, 22.17 | Jan a fev/2027; Fev a dez/2027, uma oferta por vez |
-| API ASP.NET Core | 18.1, 22.17 | Jan a fev/2027; Fev a dez/2027, uma oferta por vez |
-| Keycloak / Entra ID | 18.2 | Jan a fev/2027 |
-| IA: RAG + pgvector | 25.1 | Mai a jul/2027 |
+| Next.js + Aura Design System | 18.1, 22.17 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6; Fev a dez/2027, uma oferta por vez |
+| API ASP.NET Core | 18.1, 22.17 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6; Fev a dez/2027, uma oferta por vez |
+| Keycloak / Entra ID | 18.2 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| IA: RAG + pgvector | 25.1 | Depois do Passo 9 e do IA0 da Trilha de Dados e IA (≈ 2028), junto do IA5 |
 | aura-licensing | 26.1 | 2027 |
-| aura-status | 19.7 | Fev a abr/2027 |
+| aura-status | 19.7 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
 | AM Kaixara (PDV e cardápio) | 22.12, 26.2 | Fev a dez/2027, uma oferta por vez; 2027 |
 | AM Rotara (entregas) | 26.3, 26.5 | 2027 |
 | App mobile (.NET MAUI) | 30.6 | 2028 |
@@ -3185,31 +3185,31 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Sentry (erros) | 18.4 | Jan a fev/2027 |
+| Sentry (erros) | 18.4 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
 | Uptime Kuma | 10.6 | Semana 4 · nov/2026 |
-| Seq (logs) | 18.3 | Jan a fev/2027 |
+| Seq (logs) | 18.3 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
 | Loki + Tempo | 30.3 | 2028 |
-| OpenTelemetry | 18.3 | Jan a fev/2027 |
-| Prometheus | 18.3 | Jan a fev/2027 |
+| OpenTelemetry | 18.3 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| Prometheus | 18.3 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
 | Grafana | 10.4, 15.4 | Semana 4 · nov/2026; Semana 11 · jan/2027 |
-| .NET Aspire | 18.3 | Jan a fev/2027 |
+| .NET Aspire | 18.3 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
 
 ### Containers, Kubernetes e infra como código
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Caddy (proxy + HTTPS) | 18.3 | Jan a fev/2027 |
-| Mailpit | 18.3 | Jan a fev/2027 |
+| Caddy (proxy + HTTPS) | 18.3 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| Mailpit | 18.3 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
 | Kafka | 30.1 | 2028 |
 | kubectl · Helm · k9s | 30.2 | 2028 |
-| Azure CLI · AWS CLI | 19.1 | Fev a abr/2027 |
+| Azure CLI · AWS CLI | 19.1 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
 | Datomic local | 26.4 | 2027 |
 | Docker + Compose | 4.2, 10.2 | Semana 2 · nov/2026; Semana 4 · nov/2026 |
-| PostgreSQL | 10.2, 18.1 | Semana 4 · nov/2026; Jan a fev/2027 |
-| Redis | 18.1 | Jan a fev/2027 |
+| PostgreSQL | 10.2, 18.1 | Semana 4 · nov/2026; Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| Redis | 18.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
 | RabbitMQ | 30.1 | 2028 |
 | Kubernetes local (kind) | 30.2 | 2028 |
-| Terraform | 19.1, 19.3 | Fev a abr/2027 |
+| Terraform | 19.1, 19.3 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
 
 ### Claude: recursos, conectores e plugins
 
@@ -3254,32 +3254,32 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Python de dados (Polars, Jupyter) | 21.4 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
-| DuckDB + Parquet | 21.4 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
-| dbt Core | 21.7 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
-| Airflow (orquestração) | 21.8 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
-| Spark (PySpark) | 21.4 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
-| Seus datasets (só conteúdo seu) | 21.10 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
-| PyTorch + CUDA (WSL2) | 21.3, 21.4 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
-| Hugging Face (modelos e Hub) | 21.9 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
-| Unsloth (QLoRA) | 21.11 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
-| Kaggle · Colab (GPU grátis) | 21.9, 21.11 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
-| MLflow (experimentos) | 21.4 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
-| Avaliação dos modelos | 21.10, 21.12 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
-| llama.cpp (GGUF) | 21.4, 21.12 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| Python de dados (Polars, Jupyter) | 21.4 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| DuckDB + Parquet | 21.4 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| dbt Core | 21.7 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Airflow (orquestração) | 21.8 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Spark (PySpark) | 21.4 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Seus datasets (só conteúdo seu) | 21.10 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| PyTorch + CUDA (WSL2) | 21.3, 21.4 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Hugging Face (modelos e Hub) | 21.9 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Unsloth (QLoRA) | 21.11 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Kaggle · Colab (GPU grátis) | 21.9, 21.11 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| MLflow (experimentos) | 21.4 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Avaliação dos modelos | 21.10, 21.12 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| llama.cpp (GGUF) | 21.4, 21.12 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 
 ### Agentes de IA e sandbox
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Modelos locais: Qwen · Gemma · Llama | 6.4, 21.5 | Semana 2 · nov/2026; Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| Modelos locais: Qwen · Gemma · Llama | 6.4, 21.5 | Semana 2 · nov/2026; Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 | Base de conhecimento (RAG) das suas notas | 6.7, 8.6 | Semana 2 · nov/2026; Semanas 3 e 4 · nov/2026 |
 | Claude Code | 6.1 | Semana 2 · nov/2026 |
 | ai-jail | 6.2 | Semana 2 · nov/2026 |
 | ai-memory | 6.6 | Semana 2 · nov/2026 |
 | Servidores MCP | 6.5 | Semana 2 · nov/2026 |
 | CLAUDE.md, agentes e skills (seus) | 6.3 | Semana 2 · nov/2026 |
-| Ollama | 6.4, 21.5, 21.12 | Semana 2 · nov/2026; Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| Ollama | 6.4, 21.5, 21.12 | Semana 2 · nov/2026; Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 
 ### Linux (Ubuntu no WSL2, Arch no 2º disco)
 
@@ -3322,7 +3322,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Wireshark | 3.2 | Semana 1 · out/2026 |
 | VMs: Kali · Arch · Servidores | 24.3 | 2027, conforme cada compra |
 | Arduino IDE 2 | 3.2, 22.16 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez |
-| Rufus (grava pendrives) | 21.1 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| Rufus (grava pendrives) | 21.1 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 
 ### Segurança e cofre
 
@@ -3351,8 +3351,8 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Microfone + câmera | 24.6 | 2027, conforme cada compra |
 | Celular | 1.2, 2.8, 4.9 | Semana 1 · out/2026; Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 2 · nov/2026 |
 | Disco externo | 1.1, 1.2, 2.10, 7.1 | Semana 1 · out/2026; Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 3 · nov/2026 |
-| Pendrive Kali (persistência) | 21.1 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
-| Pendrive Arch (instalação portátil) | 21.2 | Pendrives e laboratório a partir da semana 2; dados de fev a jun/2027; treino de ago a dez/2027 |
+| Pendrive Kali (persistência) | 21.1 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Pendrive Arch (instalação portátil) | 21.2 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 | Arduino · ESP32 · Pi | 1.2, 22.16 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez |
 | Servidor caseiro (NAS + serviços) | 31.1 | 2028, quando o grupo pedir |
 | SSD externo (USB-C 10 Gbps) | 1.2 | Semana 1 · out/2026 |

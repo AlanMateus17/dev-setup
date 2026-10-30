@@ -146,7 +146,7 @@ flowchart LR
 | [Comunidade (Discord ou grupo)](#comu) | Remoto · precisa de conta | Alunos do curso juntos: tira-dúvidas, retenção e indicação. | passo 14.10 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 22.15 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
 | [Busca Google (SEO)](#seo) | Remoto | Pessoas chegando ao blog e aos sites pelos artigos. | passo 13.12 · Semanas 6 e 7 · dez/2026 |
 | [Alunos e ex-alunos](#alunos) | Físico | Seu público inicial: alunos do EMTI, ex-alunos e contatos. | passo 13.10 · Semanas 6 e 7 · dez/2026 |
-| [Recrutadores](#recr) | Físico | Quem decide a vaga de dev. Olham GitHub, LinkedIn e o site. | passo 18.8 · Jan a fev/2027 |
+| [Recrutadores](#recr) | Físico | Quem decide a vaga de dev. Olham GitHub, LinkedIn e o site. | passo 18.8 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
 | [TikTok](#tiktok) | Remoto · precisa de conta | Cortes verticais diários. Conteúdo realista de IA precisa do rótulo de IA. | passo 13.1 · Semanas 6 e 7 · dez/2026 |
 | [Facebook](#facebook) | Remoto · precisa de conta | Reels e posts da página da marca; mesma conta de anúncios do Instagram. | passo 13.1 · Semanas 6 e 7 · dez/2026 |
 
@@ -320,7 +320,7 @@ Seu público inicial: alunos do EMTI, ex-alunos e contatos.
 
 Quem decide a vaga de dev. Olham GitHub, LinkedIn e o site.
 
-**Quando entra:** passo 18.8 · Jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 18.8 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
