@@ -208,42 +208,42 @@
  "roteiro": [
   {
    "etapa": "Fundação",
-   "quando": "Agora até jan/2027",
+   "quando": "Agora até dez/2027 · Passos 1 a 8 da trilha de estudo do vault",
    "o_que": "Terminar o núcleo do setup; C#/.NET, SQL, Python, Git, Docker Compose e testes. Entregar o primeiro sistema AM com CI no GitHub Actions. Isso já atende a maioria das vagas júnior .NET."
   },
   {
    "etapa": "Nuvem Azure",
-   "quando": "Fev a abr/2027",
+   "quando": "Conta e deploy do sistema exemplo com o Passo 5 (≈ abr a jun/2027); produção do AM Kaixara no Passo 10 (≈ 2028)",
    "o_que": "AZ-900 e deploy do AM Kaixara no Azure com Terraform, Key Vault e OIDC. Começar a observabilidade com OpenTelemetry e Aspire."
   },
   {
    "etapa": "Engenharia de dados",
-   "quando": "Fev a jun/2027, 1 noite por semana",
+   "quando": "Depois do Passo 8 e das Finanças F4–F5 (≈ 2028), 1 noite por semana · IA2 da Trilha de Dados e IA",
    "o_que": "Data Engineering Zoomcamp usando os seus próprios dados de venda: DuckDB, dbt sobre o banco de métricas, Airflow agendando, PySpark local. Fecha com o painel de lucro lendo modelos dbt testados."
   },
   {
    "etapa": "IA aplicada",
-   "quando": "Mai a jul/2027",
+   "quando": "Depois do Passo 9 e do IA0 (≈ 2028) · IA5 da Trilha de Dados e IA",
    "o_que": "RAG com pgvector dentro de um sistema AM, um servidor MCP próprio e os agentes do Claude Code."
   },
   {
    "etapa": "IA profunda e treino",
-   "quando": "Ago a dez/2027",
+   "quando": "Depois do IA3 (≈ 2029) · IA4 e IA6 da Trilha de Dados e IA",
    "o_que": "PyTorch e redes neurais do zero (Zero to Hero, fast.ai), Transformers e o curso de LLM da Hugging Face. Primeiro fine-tuning QLoRA de um 8B no Kaggle com um dataset só seu, avaliação contra o modelo base e o resultado rodando no Ollama. A matemática da licenciatura (álgebra linear, cálculo, probabilidade) entra aqui."
   },
   {
    "etapa": "Linux e segurança",
-   "quando": "Em paralelo, 1 a 2 noites por semana",
+   "quando": "Pendrives e Linux em paralelo desde já, 1 a 2 noites por semana; Security+ → eJPT na vez da trilha de Pentest, depois do Passo 8",
    "o_que": "Kali em pendrive com persistência e em VM para a trilha Security+ → eJPT; Arch instalado num pendrive ou SSD USB, depois no segundo NVMe."
   },
   {
    "etapa": "Distribuído e plataforma",
-   "quando": "2028",
+   "quando": "2028 · junto do Passo 12 (plataforma interna)",
    "o_que": "RabbitMQ e Kafka, autenticação OIDC, Kubernetes local (kind). AZ-204."
   },
   {
    "etapa": "Segunda nuvem e sênior",
-   "quando": "2028",
+   "quando": "2029 em diante · Passos 13 e 14 e a fase sênior",
    "o_que": "AWS (Cloud Practitioner → Developer Associate), Windows Server/AD para OSCP, homelab com Ubuntu Server."
   }
  ],
