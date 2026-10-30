@@ -163,7 +163,7 @@ winget upgrade --all --accept-source-agreements --accept-package-agreements; Ins
 ```
 
 - [ ] **Pronto quando:** Windows Update sem pendências
-- O PSWindowsUpdate é um módulo da PowerShell Gallery, o mais usado para isso. O NitroSense atualiza pela Microsoft Store: winget upgrade também pega ele se veio da loja.
+- O PSWindowsUpdate é um módulo da PowerShell Gallery, o mais usado para isso. O NitroSense atualiza pela Microsoft Store: winget upgrade também pega ele se veio da loja. O driver da NVIDIA não vem pelo Windows Update: instale o NVIDIA App da Microsoft Store com winget install --id XP8CLZL93F5Z4P --source msstore e, nele, Drivers > Baixar > Instalação expressa. Confira com nvidia-smi.
 - Implanta: Windows 11 Home · NitroSense + drivers AMD e NVIDIA
 
 ### 1.4 Instalar o app de 2FA no celular e ligar a verificação em duas etapas no GitHub, Google e e-mail
