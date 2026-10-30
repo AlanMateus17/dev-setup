@@ -4,7 +4,7 @@
 #   bash scripts/wsl/vault.sh             # cria ou completa
 #   bash scripts/wsl/vault.sh --simular   # mostra o que faria
 #   bash scripts/wsl/vault.sh --pasta DIR
-# No Windows, abra no Obsidian a pasta \\wsl.localhost\Ubuntu-24.04\home\SEU_USUARIO\dev\notas
+# No Windows, abra no Obsidian a pasta \\wsl.localhost\<nome do seu Ubuntu>\home\SEU_USUARIO\dev\notas
 set -euo pipefail
 
 SIMULAR=0; V="$HOME/dev/notas"
@@ -135,4 +135,4 @@ else git -C "$V" init -q && git -C "$V" add -A && git -C "$V" commit -qm "chore:
 
 echo
 if [[ $SIMULAR -eq 1 ]]; then echo "Simulação pronta."
-else echo "Pronto ($feito item(ns) novos). Abra no Obsidian: \\\\wsl.localhost\\Ubuntu-24.04$(echo "$V" | tr '/' '\\')"; fi
+else echo "Pronto ($feito item(ns) novos). Abra no Obsidian: \\\\wsl.localhost\\${WSL_DISTRO_NAME:-Ubuntu}$(echo "$V" | tr '/' '\\')"; fi

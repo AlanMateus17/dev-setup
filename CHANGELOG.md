@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.16.1] - 2026-10-30
+
+### Mudado
+- O setup aceita o Ubuntu que já existe no WSL, 24.04 ou mais novo (o seu é o 26.04): passo, bootstrap, cofre do Obsidian e integração do Docker usam o nome da sua distro, e o repositório da HashiCorp cai para o do 24.04 quando o da sua versão ainda não existe.
+
 ## [1.16.0] - 2026-10-30
 
 ### Adicionado

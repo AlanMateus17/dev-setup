@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Prepara o Ubuntu 24.04 do WSL2 para o setup: ferramentas, linguagens, segurança, agentes e pastas.
+# Prepara o Ubuntu (24.04 ou mais novo) do WSL2 para o setup: ferramentas, linguagens, segurança, agentes e pastas.
 # Seguro para rodar várias vezes: o que já está pronto é pulado.
 #
 #   bash scripts/wsl/bootstrap.sh --simular                      # mostra o que faria, sem mudar nada
@@ -157,7 +157,7 @@ else mkdir -p "${PASTAS[@]}"; linha "pastas" "pastas dev e AMtech" "CRIADO" "$FA
 
 # ------------------------------------------------------------------ 9. Docker (vem do Docker Desktop)
 if tem docker && docker info >/dev/null 2>&1; then linha "docker" "Docker no WSL" "OK" "$(docker version --format '{{.Server.Version}}' 2>/dev/null)"
-else linha "docker" "Docker no WSL" "MANUAL" "Docker Desktop > Settings > Resources > WSL integration > Ubuntu-24.04"; fi
+else linha "docker" "Docker no WSL" "MANUAL" "Docker Desktop > Settings > Resources > WSL integration > ${WSL_DISTRO_NAME:-Ubuntu}"; fi
 
 echo
 if [[ $SIMULAR -eq 1 ]]; then echo "Simulação pronta. Rode sem --simular para aplicar."

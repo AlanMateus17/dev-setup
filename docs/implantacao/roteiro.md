@@ -321,7 +321,7 @@ powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\instala
 - [ ] **Pronto quando:** Lista de INSTALARIA conferida
 - Implanta: Instaladores (PowerShell e bash)
 
-### 3.2 Instalar programas, WSL2 com Ubuntu 24.04 e .wslconfig (PowerShell como Administrador)
+### 3.2 Instalar programas, WSL2 com Ubuntu (instala o 24.04 só se não houver nenhum) e .wslconfig (PowerShell como Administrador)
 
 **Script** · 1 h 00 min
 
@@ -413,15 +413,16 @@ O Ubuntu com tudo o que o código precisa, commits assinados e o ambiente versio
 
 **Quando:** Semana 2 · nov/2026
 
-### 4.1 Abrir 'Ubuntu 24.04' no menu Iniciar e criar seu usuário Linux
+### 4.1 Abrir o Ubuntu do WSL e criar (ou confirmar) seu usuário Linux
 
 **Você** · 10 min
 
 ```powershell
-wsl -d Ubuntu-24.04
+wsl -l -v; wsl -d Ubuntu
 ```
 
 - [ ] **Pronto quando:** Prompt do Ubuntu aberto
+- Serve Ubuntu 24.04 ou mais novo (26.04 também). Se a sua distro tiver outro nome na lista, troque Ubuntu pelo nome que aparece. Se já existe usuário, o terminal abre direto nele.
 - Implanta: Ubuntu (WSL2)
 
 ### 4.2 Ligar o Docker Desktop no Ubuntu: Settings > Resources > WSL integration
@@ -501,7 +502,7 @@ bash scripts/wsl/vault.sh
 ```
 
 - [ ] **Pronto quando:** Cofre aberto no Obsidian com as pastas e modelos; notas vão sozinhas para um repositório privado a cada 10 minutos
-- No Obsidian do Windows, abra a pasta \\wsl.localhost\Ubuntu-24.04\home\SEU_USUARIO\dev\notas.
+- No Obsidian do Windows, abra a pasta \\wsl.localhost\Ubuntu (ou o nome do seu Ubuntu)\home\SEU_USUARIO\dev\notas.
 - Implanta: Obsidian + Git
 
 ### 4.9 Ligar o Syncthing entre o celular e o notebook para as gravações (opcional)

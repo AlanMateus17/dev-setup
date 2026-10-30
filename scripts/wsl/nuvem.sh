@@ -40,7 +40,8 @@ fi
 if tem terraform; then linha iac Terraform "JA TEM" "$(terraform version | head -1)"
 else rodar iac Terraform bash -c "
   curl -fsSL https://apt.releases.hashicorp.com/gpg | $SUDO gpg --dearmor --yes -o /usr/share/keyrings/hashicorp.gpg &&
-  echo \"deb [signed-by=/usr/share/keyrings/hashicorp.gpg] https://apt.releases.hashicorp.com \$(. /etc/os-release && echo \"\$VERSION_CODENAME\") main\" | $SUDO tee /etc/apt/sources.list.d/hashicorp.list >/dev/null &&
+  cod=\$(. /etc/os-release && echo \"\$VERSION_CODENAME\") && { curl -fsI https://apt.releases.hashicorp.com/dists/\$cod/Release >/dev/null || cod=noble; } &&
+  echo \"deb [signed-by=/usr/share/keyrings/hashicorp.gpg] https://apt.releases.hashicorp.com \$cod main\" | $SUDO tee /etc/apt/sources.list.d/hashicorp.list >/dev/null &&
   $SUDO apt-get update -y && $SUDO env $APT install terraform"; fi
 
 # Vercel CLI e Wrangler: precisam do Node 22+ do bootstrap

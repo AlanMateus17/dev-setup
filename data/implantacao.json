@@ -326,7 +326,7 @@
     },
     {
      "id": "win-aplicar",
-     "titulo": "Instalar programas, WSL2 com Ubuntu 24.04 e .wslconfig (PowerShell como Administrador)",
+     "titulo": "Instalar programas, WSL2 com Ubuntu (instala o 24.04 só se não houver nenhum) e .wslconfig (PowerShell como Administrador)",
      "quem": "script",
      "pronto": "Termina com 'Pronto' e sem ERRO; reinicie o Windows",
      "tempo_min": 60,
@@ -445,14 +445,15 @@
    "passos": [
     {
      "id": "ubuntu-usuario",
-     "titulo": "Abrir 'Ubuntu 24.04' no menu Iniciar e criar seu usuário Linux",
+     "titulo": "Abrir o Ubuntu do WSL e criar (ou confirmar) seu usuário Linux",
      "quem": "voce",
      "pronto": "Prompt do Ubuntu aberto",
      "tempo_min": 10,
-     "comando": "wsl -d Ubuntu-24.04",
+     "comando": "wsl -l -v; wsl -d Ubuntu",
      "blocos": [
       "wsl"
-     ]
+     ],
+     "nota": "Serve Ubuntu 24.04 ou mais novo (26.04 também). Se a sua distro tiver outro nome na lista, troque Ubuntu pelo nome que aparece. Se já existe usuário, o terminal abre direto nele."
     },
     {
      "id": "docker-wsl",
@@ -537,7 +538,7 @@
      "pronto": "Cofre aberto no Obsidian com as pastas e modelos; notas vão sozinhas para um repositório privado a cada 10 minutos",
      "tempo_min": 20,
      "comando": "bash scripts/wsl/vault.sh",
-     "nota": "No Obsidian do Windows, abra a pasta \\\\wsl.localhost\\Ubuntu-24.04\\home\\SEU_USUARIO\\dev\\notas.",
+     "nota": "No Obsidian do Windows, abra a pasta \\\\wsl.localhost\\Ubuntu (ou o nome do seu Ubuntu)\\home\\SEU_USUARIO\\dev\\notas.",
      "blocos": [
       "obsd"
      ]
