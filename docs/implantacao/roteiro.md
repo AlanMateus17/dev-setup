@@ -425,16 +425,16 @@ wsl -l -v; wsl -d Ubuntu
 - Serve Ubuntu 24.04 ou mais novo (26.04 também). Se a sua distro tiver outro nome na lista, troque Ubuntu pelo nome que aparece. Se já existe usuário, o terminal abre direto nele.
 - Implanta: Ubuntu (WSL2)
 
-### 4.2 Ligar o Docker Desktop no Ubuntu: Settings > Resources > WSL integration
+### 4.2 Ligar o Docker Desktop dentro do Ubuntu (integração com o WSL)
 
 **Você** · 5 min
 
 ```bash
-docker run --rm hello-world
+$f="$env:APPDATA\Docker\settings-store.json"; if (-not (Test-Path $f)) { Write-Host "Nao achei $f : abra o Docker Desktop uma vez e rode de novo" } else { Copy-Item $f "$f.bak" -Force; $j=Get-Content $f -Raw | ConvertFrom-Json; $j | Add-Member -Force NoteProperty EnableIntegrationWithDefaultWslDistro $true; $j | Add-Member -Force NoteProperty IntegratedWslDistros @('Ubuntu'); [IO.File]::WriteAllText($f, ($j | ConvertTo-Json -Depth 10)); Get-Process 'Docker Desktop' -ErrorAction SilentlyContinue | Stop-Process -Force; Start-Sleep 3; Start-Process "$env:ProgramFiles\Docker\Docker\Docker Desktop.exe"; $i=0; do { Start-Sleep 5; $i++; docker info *> $null } until ($LASTEXITCODE -eq 0 -or $i -ge 36); if ($LASTEXITCODE -eq 0) { Write-Host "Docker pronto com o Ubuntu ligado" } else { Write-Host "Docker nao respondeu em 3 min: veja a janela dele" } }
 ```
 
-- **Fora do terminal:** A integração com o Ubuntu é uma opção da janela do Docker Desktop (Settings > Resources > WSL integration); o comando confere se funcionou.
 - [ ] **Pronto quando:** 'docker run hello-world' funciona dentro do Ubuntu
+- Rode no PowerShell (PS C:\>), não dentro do Ubuntu. Ele guarda uma cópia da configuração (settings-store.json.bak), liga a integração com o Ubuntu e reinicia o Docker Desktop. Depois, no Ubuntu: docker run --rm hello-world. Se o nome da sua distro não for Ubuntu (wsl -l -v), troque no comando.
 - Implanta: Docker + Compose
 
 ### 4.3 Copiar este repositório para ~/dev/dev-setup
