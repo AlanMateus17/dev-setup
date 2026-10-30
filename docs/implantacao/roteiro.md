@@ -341,7 +341,7 @@ manage-bde -status C:; manage-bde -protectors -get C:
 ```
 
 - [ ] **Pronto quando:** verificar.ps1 como Administrador mostra criptografia OK
-- No Windows 11 Home a opção se chama Criptografia do dispositivo e depende do hardware. Se não aparecer, anote e siga. O segundo comando mostra a chave de recuperação (48 números): copie para uma entrada do KeePassXC. Se aparecer 'Proteção desligada', ligue em Configurações > Privacidade e segurança > Criptografia do dispositivo.
+- No Windows 11 Home a opção se chama Criptografia do dispositivo e depende do hardware. Se não aparecer, anote e siga. O segundo comando mostra a chave de recuperação (48 números): copie para uma entrada do KeePassXC. Se aparecer 'Proteção Desativada' com 'Nenhum protetor localizado', o disco já está criptografado mas sem chave: ligue em Configurações > Privacidade e segurança > Criptografia do dispositivo (pede a conta Microsoft, que guarda uma cópia da chave) e rode o comando de novo para copiar a chave para o KeePassXC.
 - Implanta: BitLocker · TPM + Secure Boot
 
 ### 3.4 Conferir Defender e Firewall ligados

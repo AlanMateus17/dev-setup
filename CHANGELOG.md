@@ -2,6 +2,12 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.16.2] - 2026-10-30
+
+### Corrigido
+- extensoes-vscode.ps1 parava na primeira extensão: o aviso do Node que o code.cmd escreve no stderr virava erro no Windows PowerShell 5.1. Agora chama o code pelo cmd.
+- Passo da criptografia explica o caso "Proteção Desativada, nenhum protetor": disco criptografado esperando a chave.
+
 ## [1.16.1] - 2026-10-30
 
 ### Mudado
