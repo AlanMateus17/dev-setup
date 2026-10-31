@@ -61,7 +61,9 @@ Saber exatamente o que o notebook já tem de hardware, segurança, programas, co
 
 **Você** · 5 min
 
-```bash
+No **PowerShell** do Windows (linha `PS C:\>`):
+
+```powershell
 if (Test-Path $HOME\dev-setup) { Write-Host "Ja existe $HOME\dev-setup" } else { Expand-Archive "$HOME\Downloads\dev-setup.zip" "$env:TEMP\dsx" -Force; Move-Item "$env:TEMP\dsx\dev-setup" "$HOME\dev-setup"; Remove-Item "$env:TEMP\dsx" -Recurse; Write-Host "Pronto: $HOME\dev-setup" }
 ```
 
@@ -71,6 +73,8 @@ if (Test-Path $HOME\dev-setup) { Write-Host "Ja existe $HOME\dev-setup" } else {
 ### 0.2 Rodar o diagnóstico: botão direito em RODAR-DIAGNOSTICO.cmd > Executar como administrador
 
 **Script** · 10 min
+
+No **PowerShell** do Windows (linha `PS C:\>`):
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\diagnostico.ps1
@@ -83,6 +87,8 @@ powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\diagnos
 ### 0.3 Rodar o inventário de espaço: pastas e arquivos que mais ocupam, programas que iniciam com o Windows
 
 **Script** · 15 min
+
+No **PowerShell** do Windows (linha `PS C:\>`):
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\inventario.ps1
@@ -104,7 +110,9 @@ powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\inventa
 
 **Você** · 10 min
 
-```bash
+No **PowerShell** do Windows (linha `PS C:\>`):
+
+```powershell
 Get-ChildItem $HOME -Recurse -File -Include *.docx,*.doc,*.pdf,*.pptx,*.ppt,*.xlsx,*.odt,*.md -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch '\\AppData\\|\\node_modules\\|\\\.vscode\\' } | Group-Object Extension | Sort-Object Count -Descending | Select-Object Name,Count
 ```
 
@@ -116,7 +124,9 @@ Get-ChildItem $HOME -Recurse -File -Include *.docx,*.doc,*.pdf,*.pptx,*.ppt,*.xl
 
 **Claude com você** · 30 min
 
-```bash
+No **PowerShell** do Windows (linha `PS C:\>`):
+
+```powershell
 explorer (Get-ChildItem $HOME\dev-setup -Directory -Filter 'diagnostico-*' | Sort-Object Name | Select-Object -Last 1).FullName
 ```
 
@@ -136,7 +146,9 @@ Nada se perde, o hardware está no lugar e as contas estão protegidas antes de 
 
 **Você** · 1 h 00 min
 
-```bash
+No **PowerShell** do Windows (linha `PS C:\>`):
+
+```powershell
 $d = 'E:'; if (-not (Test-Path "$d\")) { Write-Host "Nao existe o disco $d. Conecte o disco externo e veja a letra com: Get-Volume" } else { foreach ($p in 'Desktop','Downloads','Documents','Pictures','Videos','Music','dev','dev-setup','source') { if (Test-Path "$HOME\$p") { robocopy "$HOME\$p" "$d\backup-inicial\$p" /E /R:1 /W:1 /XJ /NFL /NDL /NP } } }
 ```
 
@@ -157,6 +169,8 @@ $d = 'E:'; if (-not (Test-Path "$d\")) { Write-Host "Nao existe o disco $d. Cone
 ### 1.3 Atualizar o Windows, os drivers e o NitroSense
 
 **Você** · 40 min
+
+No **PowerShell** do Windows (linha `PS C:\>`):
 
 ```powershell
 winget upgrade --all --accept-source-agreements --accept-package-agreements; Install-PackageProvider NuGet -Force -Scope CurrentUser | Out-Null; Install-Module PSWindowsUpdate -Force -Scope CurrentUser; Import-Module PSWindowsUpdate; Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -IgnoreReboot
@@ -186,6 +200,8 @@ Toda conta com senha única guardada no KeePassXC, verificação em duas etapas 
 
 **Você** · 30 min
 
+No **PowerShell** do Windows (linha `PS C:\>`):
+
 ```powershell
 winget install --id KeePassXCTeam.KeePassXC -e; New-Item -ItemType Directory -Force "$HOME\Documents\Cofre" | Out-Null; & "$env:ProgramFiles\KeePassXC\keepassxc-cli.exe" db-create --set-password "$HOME\Documents\Cofre\Cofre.kdbx"
 ```
@@ -207,7 +223,9 @@ winget install --id KeePassXCTeam.KeePassXC -e; New-Item -ItemType Directory -Fo
 
 **Você** · 30 min
 
-```bash
+No **PowerShell** do Windows (linha `PS C:\>`):
+
+```powershell
 Start-Process 'https://myaccount.google.com/security-checkup'
 ```
 
@@ -220,7 +238,9 @@ Start-Process 'https://myaccount.google.com/security-checkup'
 
 **Você** · 30 min
 
-```bash
+No **PowerShell** do Windows (linha `PS C:\>`):
+
+```powershell
 Start-Process chrome 'chrome://password-manager/settings'
 ```
 
@@ -278,7 +298,9 @@ Start-Process chrome 'chrome://password-manager/settings'
 
 **Você** · 15 min
 
-```bash
+No **PowerShell** do Windows (linha `PS C:\>`):
+
+```powershell
 $d = 'E:'; New-Item -ItemType Directory -Force "$d\Cofre" | Out-Null; Copy-Item "$HOME\Documents\Cofre\Cofre.kdbx" "$d\Cofre\"; & "$env:ProgramFiles\KeePassXC\keepassxc-cli.exe" db-info "$d\Cofre\Cofre.kdbx"
 ```
 
@@ -314,6 +336,8 @@ Os programas do setup instalados, o navegador com o Claude e o WSL2 pronto.
 
 **Script** · 5 min
 
+No **PowerShell** do Windows (linha `PS C:\>`):
+
 ```powershell
 powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\instalar.ps1
 ```
@@ -324,6 +348,8 @@ powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\instala
 ### 3.2 Instalar programas, WSL2 com Ubuntu (instala o 24.04 só se não houver nenhum) e .wslconfig (PowerShell como Administrador)
 
 **Script** · 1 h 00 min
+
+No **PowerShell** do Windows (linha `PS C:\>`):
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\instalar.ps1 -Aplicar
@@ -336,7 +362,9 @@ powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\instala
 
 **Você** · 15 min
 
-```bash
+No **PowerShell** do Windows (linha `PS C:\>`):
+
+```powershell
 manage-bde -status C:; manage-bde -protectors -get C:
 ```
 
@@ -348,7 +376,9 @@ manage-bde -status C:; manage-bde -protectors -get C:
 
 **Você** · 10 min
 
-```bash
+No **PowerShell** do Windows (linha `PS C:\>`):
+
+```powershell
 Get-MpComputerStatus | Select-Object AMServiceEnabled,AntivirusEnabled,RealTimeProtectionEnabled,AntivirusSignatureLastUpdated; Get-NetFirewallProfile | Select-Object Name,Enabled
 ```
 
@@ -358,6 +388,8 @@ Get-MpComputerStatus | Select-Object AMServiceEnabled,AntivirusEnabled,RealTimeP
 ### 3.5 Instalar as extensões do VS Code (WSL, Claude Code, .NET, LaTeX, revisão em português)
 
 **Script** · 10 min
+
+No **PowerShell** do Windows (linha `PS C:\>`):
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\extensoes-vscode.ps1 -Aplicar
@@ -387,6 +419,8 @@ powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\extenso
 
 **Você** · 10 min
 
+No **PowerShell** do Windows (linha `PS C:\>`):
+
 ```powershell
 winget install --id Unity.UnityHub -e
 ```
@@ -397,6 +431,8 @@ winget install --id Unity.UnityHub -e
 ### 3.9 Conferir o Windows
 
 **Script** · 5 min
+
+No **PowerShell** do Windows (linha `PS C:\>`):
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\verificar.ps1
@@ -417,6 +453,8 @@ O Ubuntu com tudo o que o código precisa, commits assinados e o ambiente versio
 
 **Você** · 10 min
 
+No **PowerShell** do Windows (linha `PS C:\>`):
+
 ```powershell
 wsl -l -v; wsl -d Ubuntu
 ```
@@ -429,7 +467,9 @@ wsl -l -v; wsl -d Ubuntu
 
 **Você** · 5 min
 
-```bash
+No **PowerShell** do Windows (linha `PS C:\>`):
+
+```powershell
 $f="$env:APPDATA\Docker\settings-store.json"; if (-not (Test-Path $f)) { Write-Host "Nao achei $f : abra o Docker Desktop uma vez e rode de novo" } else { Copy-Item $f "$f.bak" -Force; $j=Get-Content $f -Raw | ConvertFrom-Json; $j | Add-Member -Force NoteProperty EnableIntegrationWithDefaultWslDistro $true; $j | Add-Member -Force NoteProperty IntegratedWslDistros @('Ubuntu'); [IO.File]::WriteAllText($f, ($j | ConvertTo-Json -Depth 10)); Get-Process 'Docker Desktop' -ErrorAction SilentlyContinue | Stop-Process -Force; Start-Sleep 3; Start-Process "$env:ProgramFiles\Docker\Docker\Docker Desktop.exe"; $i=0; do { Start-Sleep 5; $i++; docker info *> $null } until ($LASTEXITCODE -eq 0 -or $i -ge 36); if ($LASTEXITCODE -eq 0) { Write-Host "Docker pronto com o Ubuntu ligado" } else { Write-Host "Docker nao respondeu em 3 min: veja a janela dele" } }
 ```
 
@@ -440,6 +480,8 @@ $f="$env:APPDATA\Docker\settings-store.json"; if (-not (Test-Path $f)) { Write-H
 ### 4.3 Copiar este repositório para ~/dev/dev-setup
 
 **Você** · 5 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 mkdir -p ~/dev && cp -r /mnt/c/Users/SEU_USUARIO/dev-setup ~/dev/dev-setup
@@ -452,6 +494,8 @@ mkdir -p ~/dev && cp -r /mnt/c/Users/SEU_USUARIO/dev-setup ~/dev/dev-setup
 
 **Script** · 40 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 bash scripts/wsl/bootstrap.sh --nome "Alan Mateus" --email SEU_EMAIL --com-whisper
 ```
@@ -462,6 +506,8 @@ bash scripts/wsl/bootstrap.sh --nome "Alan Mateus" --email SEU_EMAIL --com-whisp
 ### 4.5 Reiniciar o WSL para o systemd valer (PowerShell)
 
 **Você** · 2 min
+
+No **PowerShell** do Windows (linha `PS C:\>`):
 
 ```powershell
 wsl --shutdown
@@ -474,6 +520,8 @@ wsl --shutdown
 
 **Você** · 10 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 gh auth login && gh ssh-key add ~/.ssh/id_ed25519.pub --type authentication && gh ssh-key add ~/.ssh/id_ed25519.pub --type signing
 ```
@@ -484,6 +532,8 @@ gh auth login && gh ssh-key add ~/.ssh/id_ed25519.pub --type authentication && g
 ### 4.7 Guardar os dotfiles (.bashrc, .gitconfig, .tmux.conf) num repositório privado
 
 **Claude com você** · 30 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~ && gh repo create dotfiles --private --clone && cd dotfiles && for f in .bashrc .gitconfig .tmux.conf; do [ -f ~/$f ] && cp ~/$f .; done && git add -A && git commit -m 'dotfiles iniciais' && git push -u origin HEAD
@@ -496,6 +546,8 @@ cd ~ && gh repo create dotfiles --private --clone && cd dotfiles && for f in .ba
 ### 4.8 Criar o cofre do Obsidian em ~/dev/notas e ligar o plugin Obsidian Git
 
 **Você** · 20 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 bash scripts/wsl/vault.sh
@@ -518,6 +570,8 @@ bash scripts/wsl/vault.sh
 
 **Script** · 5 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 bash scripts/wsl/verificar.sh
 ```
@@ -537,6 +591,8 @@ O repositório no ar, com testes automáticos verdes a cada envio e o trabalho o
 
 **Script** · 5 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && git init -q 2>/dev/null; git add -A && git commit -qm 'chore: setup inicial' ; gh repo create AlanMateus17/dev-setup --private --source . --push
 ```
@@ -549,6 +605,8 @@ cd ~/dev/dev-setup && git init -q 2>/dev/null; git add -A && git commit -qm 'cho
 
 **Script** · 5 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 gh run list --limit 1
 ```
@@ -559,6 +617,8 @@ gh run list --limit 1
 ### 5.3 Ligar Dependabot e CodeQL e proteger o branch main
 
 **Claude com você** · 15 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && gh api -X PUT 'repos/{owner}/{repo}/vulnerability-alerts' && gh api -X PUT 'repos/{owner}/{repo}/automated-security-fixes' && gh api -X PATCH 'repos/{owner}/{repo}/code-scanning/default-setup' -f state=configured
@@ -580,6 +640,8 @@ cd ~/dev/dev-setup && gh api -X PUT 'repos/{owner}/{repo}/vulnerability-alerts' 
 
 **Claude com você** · 20 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 gh auth refresh -s project && gh project create --owner @me --title 'Setup AMtech' && mkdir -p ~/dev/dev-setup/docs/adr
 ```
@@ -600,6 +662,8 @@ O Claude Code trabalhando dentro da sandbox, com as suas regras, ferramentas e m
 
 **Você** · 5 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 claude
 ```
@@ -611,6 +675,8 @@ claude
 
 **Script** · 2 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && ai-jail --dry-run claude
 ```
@@ -621,6 +687,8 @@ cd ~/dev/dev-setup && ai-jail --dry-run claude
 ### 6.3 Criar o CLAUDE.md padrão do Aura e os comandos /commit e /novo-sistema-aura
 
 **Claude com você** · 30 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo claude-md do roteiro: Criar o CLAUDE.md padrão do Aura e os comandos /commit e /novo-sistema-aura"
@@ -634,6 +702,8 @@ cd ~/dev/dev-setup && claude "Passo claude-md do roteiro: Criar o CLAUDE.md padr
 
 **Você** · 15 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 ollama pull llama3.2:3b && ollama run llama3.2:3b 'Responda em uma frase: o que é uma variável?'
 ```
@@ -644,6 +714,8 @@ ollama pull llama3.2:3b && ollama run llama3.2:3b 'Responda em uma frase: o que 
 ### 6.5 Ligar os servidores MCP do Claude Code: GitHub e o banco de métricas só para leitura
 
 **Claude com você** · 20 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo mcp do roteiro: Ligar os servidores MCP do Claude Code: GitHub e o banco de métricas só para leitura"
@@ -657,6 +729,8 @@ cd ~/dev/dev-setup && claude "Passo mcp do roteiro: Ligar os servidores MCP do C
 
 **Claude com você** · 15 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo ai-memory do roteiro: Ligar o ai-memory para o agente lembrar das decisões entre sessões"
 ```
@@ -667,6 +741,8 @@ cd ~/dev/dev-setup && claude "Passo ai-memory do roteiro: Ligar o ai-memory para
 ### 6.7 Montar a base de conhecimento das suas notas (Ollama + pgvector, ou NotebookLM e Projects)
 
 **Claude com você** · 1 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo rag do roteiro: Montar a base de conhecimento das suas notas (Ollama + pgvector, ou NotebookLM e Projects)"
@@ -688,6 +764,8 @@ Perder o notebook não faz você perder nada.
 
 **Script** · 30 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 restic -r /mnt/d/backup-restic init && restic -r /mnt/d/backup-restic backup ~/dev ~/AMtech ~/.config/amtech
 ```
@@ -708,6 +786,8 @@ restic -r /mnt/d/backup-restic init && restic -r /mnt/d/backup-restic backup ~/d
 
 **Você** · 15 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 restic -r /mnt/d/backup-restic restore latest --target /tmp/teste-restauracao --include "$HOME/dev/dev-setup/README.md" && find /tmp/teste-restauracao -name README.md
 ```
@@ -718,6 +798,8 @@ restic -r /mnt/d/backup-restic restore latest --target /tmp/teste-restauracao --
 ### 7.4 Agendar o backup diário
 
 **Claude com você** · 20 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo agendar-backup do roteiro: Agendar o backup diário"
@@ -756,6 +838,8 @@ Todos os seus documentos convertidos em conhecimento organizado no Obsidian, os 
 
 **Script** · 10 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 uv run tools/acervo/acervo.py --origem /mnt/c/Users/SEU_USUARIO/Downloads/Takeout --simular
 ```
@@ -766,6 +850,8 @@ uv run tools/acervo/acervo.py --origem /mnt/c/Users/SEU_USUARIO/Downloads/Takeou
 ### 8.4 Converter o acervo para o Obsidian e gerar o relatório de produtos
 
 **Script** · 30 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 uv run tools/acervo/acervo.py --origem /mnt/c/Users/SEU_USUARIO/Downloads/Takeout
@@ -788,6 +874,8 @@ uv run tools/acervo/acervo.py --origem /mnt/c/Users/SEU_USUARIO/Downloads/Takeou
 
 **Claude com você** · 30 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo acervo-rag do roteiro: Indexar o acervo e as suas notas na base de conhecimento"
 ```
@@ -798,6 +886,8 @@ cd ~/dev/dev-setup && claude "Passo acervo-rag do roteiro: Indexar o acervo e as
 ### 8.7 Escolher no relatório os 3 primeiros produtos e levar para o portfólio de ofertas
 
 **Claude com você** · 1 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo acervo-produtos do roteiro: Escolher no relatório os 3 primeiros produtos e levar para o portfólio de ofertas"
@@ -859,6 +949,8 @@ n8n, banco de métricas, Grafana e Uptime Kuma rodando.
 
 **Script** · 5 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd infra/automacao && bash gerar-senhas.sh
 ```
@@ -869,6 +961,8 @@ cd infra/automacao && bash gerar-senhas.sh
 ### 10.2 Subir a stack
 
 **Script** · 10 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd infra/automacao && docker compose up -d
@@ -881,6 +975,8 @@ cd infra/automacao && docker compose up -d
 
 **Script** · 2 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 bash scripts/wsl/verificar.sh --servicos
 ```
@@ -891,6 +987,8 @@ bash scripts/wsl/verificar.sh --servicos
 ### 10.4 Entrar no Grafana (admin) e ver a fonte 'Métricas AMtech' conectada
 
 **Você** · 10 min
+
+No **navegador**:
 
 ```text
 http://localhost:3001
@@ -903,6 +1001,8 @@ http://localhost:3001
 
 **Você** · 5 min
 
+No **navegador**:
+
 ```text
 http://localhost:5678
 ```
@@ -914,6 +1014,8 @@ http://localhost:5678
 
 **Você** · 15 min
 
+No **navegador**:
+
 ```text
 http://localhost:3002
 ```
@@ -924,6 +1026,8 @@ http://localhost:3002
 ### 10.7 Pôr o banco de métricas e os fluxos do n8n no backup diário
 
 **Claude com você** · 45 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo backup-banco do roteiro: Pôr o banco de métricas e os fluxos do n8n no backup diário"
@@ -952,6 +1056,8 @@ Gravou ou escreveu, as peças aparecem na fila de aprovação.
 ### 11.1 Preencher o guia de marca
 
 **Você** · 40 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 code ~/dev/dev-setup/config/marca.md
@@ -982,6 +1088,8 @@ code ~/dev/dev-setup/config/marca.md
 
 **Script** · 2 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 echo teste > ~/AMtech/entrada/ideias/teste.txt && touch -d '-2 min' ~/AMtech/entrada/ideias/teste.txt && python3 tools/conteudo/processar.py --uma-vez --simular
 ```
@@ -993,6 +1101,8 @@ echo teste > ~/AMtech/entrada/ideias/teste.txt && touch -d '-2 min' ~/AMtech/ent
 
 **Script** · 2 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 bash scripts/wsl/ativar-pipeline.sh
 ```
@@ -1003,6 +1113,8 @@ bash scripts/wsl/ativar-pipeline.sh
 ### 11.6 Colocar uma aula gravada de verdade em ~/AMtech/entrada/aulas
 
 **Você** · 20 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cp /mnt/c/Users/SEU_USUARIO/Videos/NOME-DA-AULA.mp4 ~/AMtech/entrada/aulas/
@@ -1046,6 +1158,8 @@ Gravar, editar e montar imagens no mesmo padrão toda semana, sem pensar.
 ### 12.4 Criar os modelos de capa, carrossel e thumbnail com a sua marca (Canva, Krita ou Inkscape)
 
 **Claude com você** · 40 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo imagens-modelos do roteiro: Criar os modelos de capa, carrossel e thumbnail com a sua marca (Canva, Krita ou Inkscape)"
@@ -1119,6 +1233,8 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 
 **Claude com você** · 30 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo mailerlite do roteiro: Montar no MailerLite os grupos, o formulário da isca e a sequência de boas-vindas"
 ```
@@ -1131,6 +1247,8 @@ cd ~/dev/dev-setup && claude "Passo mailerlite do roteiro: Montar no MailerLite 
 
 **Claude com você** · 1 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo site-pessoal do roteiro: Publicar o site pessoal e blog no GitHub Pages (alanmateus17.github.io)"
 ```
@@ -1141,6 +1259,8 @@ cd ~/dev/dev-setup && claude "Passo site-pessoal do roteiro: Publicar o site pes
 ### 13.8 Publicar o site do Instituto AMS com a página de pré-venda na Cloudflare Pages
 
 **Claude com você** · 1 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo vercel-pagina do roteiro: Publicar o site do Instituto AMS com a página de pré-venda na Cloudflare Pages"
@@ -1153,6 +1273,8 @@ cd ~/dev/dev-setup && claude "Passo vercel-pagina do roteiro: Publicar o site do
 ### 13.9 Publicar o site do Grupo AMtech e o Catálogo do HTML
 
 **Claude com você** · 1 h 30 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo site-grupo do roteiro: Publicar o site do Grupo AMtech e o Catálogo do HTML"
@@ -1175,6 +1297,8 @@ cd ~/dev/dev-setup && claude "Passo site-grupo do roteiro: Publicar o site do Gr
 
 **Claude com você** · 20 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo umami do roteiro: Ligar o Umami nos sites"
 ```
@@ -1193,6 +1317,8 @@ cd ~/dev/dev-setup && claude "Passo umami do roteiro: Ligar o Umami nos sites"
 ### 13.13 Separar na Hostinger o espaço dos sites de clientes
 
 **Claude com você** · 30 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo hostinger do roteiro: Separar na Hostinger o espaço dos sites de clientes"
@@ -1239,6 +1365,8 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 ### 14.4 Publicar termos de uso e política de privacidade (LGPD) e ter o contrato padrão de serviço
 
 **Claude com você** · 1 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo legal do roteiro: Publicar termos de uso e política de privacidade (LGPD) e ter o contrato padrão de serviço"
@@ -1287,6 +1415,8 @@ cd ~/dev/dev-setup && claude "Passo legal do roteiro: Publicar termos de uso e p
 
 **Claude com você** · 30 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo crm do roteiro: Criar o CRM em planilha com origem e consentimento de cada cliente"
 ```
@@ -1315,6 +1445,8 @@ cd ~/dev/dev-setup && claude "Passo crm do roteiro: Criar o CRM em planilha com 
 
 **Claude com você** · 15 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo utm do roteiro: Adotar o padrão de UTM em todo link"
 ```
@@ -1334,6 +1466,8 @@ cd ~/dev/dev-setup && claude "Passo utm do roteiro: Adotar o padrão de UTM em t
 
 **Claude com você** · 45 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo ofertas do roteiro: Revisar o portfólio de ofertas: estágio, próximo passo e padrão de qualidade"
 ```
@@ -1346,6 +1480,8 @@ cd ~/dev/dev-setup && claude "Passo ofertas do roteiro: Revisar o portfólio de 
 
 **Claude com você** · 30 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo avaliacoes do roteiro: Ligar a pergunta de satisfação depois de cada compra ou serviço e o pedido de avaliação no Google"
 ```
@@ -1356,6 +1492,8 @@ cd ~/dev/dev-setup && claude "Passo avaliacoes do roteiro: Ligar a pergunta de s
 ### 14.16 Montar a lista de parceiros e a primeira mensagem de prospecção
 
 **Claude com você** · 45 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo prospeccao do roteiro: Montar a lista de parceiros e a primeira mensagem de prospecção"
@@ -1394,6 +1532,8 @@ cd ~/dev/dev-setup && claude "Passo prospeccao do roteiro: Montar a lista de par
 
 **Claude com você** · 30 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo caixa do roteiro: Começar o Caixa da Casa numa planilha até o sistema AM Rendara existir"
 ```
@@ -1414,6 +1554,8 @@ Cada venda chega sozinha ao banco e aparece no painel de lucro.
 
 **Você** · 40 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o /tmp/cloudflared.deb && sudo dpkg -i /tmp/cloudflared.deb && cloudflared tunnel login && cloudflared tunnel create amtech-n8n && cloudflared tunnel route dns amtech-n8n n8n.SEU-DOMINIO
 ```
@@ -1426,6 +1568,8 @@ curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloud
 ### 15.2 Criar no n8n o fluxo: webhook Hotmart, Kiwify e Eduzz → tabela vendas
 
 **Claude com você** · 1 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo fluxo-vendas do roteiro: Criar no n8n o fluxo: webhook Hotmart, Kiwify e Eduzz → tabela vendas"
@@ -1447,6 +1591,8 @@ cd ~/dev/dev-setup && claude "Passo fluxo-vendas do roteiro: Criar no n8n o flux
 
 **Claude com você** · 45 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo painel-lucro do roteiro: Montar o painel de lucro no Grafana sobre a view lucro_por_produto_mes"
 ```
@@ -1465,6 +1611,8 @@ Os três testes de ponta a ponta passam: daqui em diante, alimentar o sistema j�
 ### 16.1 Dev: mudar algo num repositório, commit assinado, push, CI verde
 
 **Você** · 15 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && git commit --allow-empty -S -m 'teste: commit assinado' && git push && gh run watch && git log --show-signature -1
@@ -1493,7 +1641,9 @@ cd ~/dev/dev-setup && git commit --allow-empty -S -m 'teste: commit assinado' &&
 
 **Script** · 5 min
 
-```powershell
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
 bash ~/dev/dev-setup/scripts/wsl/verificar.sh && bash ~/dev/dev-setup/scripts/wsl/verificar.sh --servicos && powershell.exe -ExecutionPolicy Bypass -File "$(wslpath -w ~/dev/dev-setup/scripts/windows/verificar.ps1)"
 ```
 
@@ -1511,6 +1661,8 @@ A primeira venda real pela internet, com entrega, suporte, imposto e números no
 ### 17.1 Fechar o roteiro das 5 primeiras aulas do mini-curso a partir do acervo
 
 **Claude com você** · 2 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo mc-roteiro do roteiro: Fechar o roteiro das 5 primeiras aulas do mini-curso a partir do acervo"
@@ -1543,6 +1695,8 @@ cd ~/dev/dev-setup && claude "Passo mc-roteiro do roteiro: Fechar o roteiro das 
 
 **Claude com você** · 2 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo mc-pagina do roteiro: Página de vendas no Instituto AMS: promessa, conteúdo, preço e garantia"
 ```
@@ -1555,6 +1709,8 @@ cd ~/dev/dev-setup && claude "Passo mc-pagina do roteiro: Página de vendas no I
 ### 17.5 Isca grátis (aula 1) com a sequência de e-mails que leva à venda
 
 **Claude com você** · 1 h 30 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo mc-isca do roteiro: Isca grátis (aula 1) com a sequência de e-mails que leva à venda"
@@ -1603,6 +1759,8 @@ Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e depl
 
 **Claude com você** · 2 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo template-aura do roteiro: Gerar o modelo de sistema com /novo-sistema-aura"
 ```
@@ -1615,6 +1773,8 @@ cd ~/dev/dev-setup && claude "Passo template-aura do roteiro: Gerar o modelo de 
 
 **Claude com você** · 1 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo auth do roteiro: Ligar o login: Keycloak no dev e Entra ID na nuvem"
 ```
@@ -1625,6 +1785,8 @@ cd ~/dev/dev-setup && claude "Passo auth do roteiro: Ligar o login: Keycloak no 
 ### 18.3 Ligar a observabilidade do dev: .NET Aspire, OpenTelemetry, Prometheus, Seq, Mailpit e Caddy
 
 **Claude com você** · 1 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo observabilidade-dev do roteiro: Ligar a observabilidade do dev: .NET Aspire, OpenTelemetry, Prometheus, Seq, Mailpit e Caddy"
@@ -1653,6 +1815,8 @@ cd ~/dev/dev-setup && claude "Passo observabilidade-dev do roteiro: Ligar a obse
 ### 18.6 Publicar a imagem Docker da API no GHCR pelo CI
 
 **Claude com você** · 30 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo ghcr do roteiro: Publicar a imagem Docker da API no GHCR pelo CI"
@@ -1690,6 +1854,8 @@ As contas de nuvem criadas por código, com custo sob controle.
 
 **Script** · 15 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 bash scripts/wsl/nuvem.sh
 ```
@@ -1700,6 +1866,8 @@ bash scripts/wsl/nuvem.sh
 ### 19.2 Criar a conta Azure com alerta de orçamento
 
 **Você** · 30 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 az login && az account show
@@ -1714,6 +1882,8 @@ az login && az account show
 
 **Claude com você** · 1 h 30 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo terraform-base do roteiro: Criar com Terraform o grupo de recursos, o banco e o Key Vault do primeiro sistema"
 ```
@@ -1724,6 +1894,8 @@ cd ~/dev/dev-setup && claude "Passo terraform-base do roteiro: Criar com Terrafo
 ### 19.4 Criar o armazenamento de arquivos (R2 da Cloudflare ou Blob)
 
 **Claude com você** · 30 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo arquivos-nuvem do roteiro: Criar o armazenamento de arquivos (R2 da Cloudflare ou Blob)"
@@ -1744,6 +1916,8 @@ cd ~/dev/dev-setup && claude "Passo arquivos-nuvem do roteiro: Criar o armazenam
 
 **Claude com você** · 1 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo deploy-teste do roteiro: Fazer o primeiro deploy do sistema exemplo"
 ```
@@ -1754,6 +1928,8 @@ cd ~/dev/dev-setup && claude "Passo deploy-teste do roteiro: Fazer o primeiro de
 ### 19.7 Criar o aura-status: painel de repositórios, backup e Dependabot
 
 **Claude com você** · 2 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo aura-status do roteiro: Criar o aura-status: painel de repositórios, backup e Dependabot"
@@ -1784,6 +1960,8 @@ O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.
 
 **Claude com você** · 2 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo livro-repo do roteiro: Criar o repositório do livro com fonte única, classe LaTeX, exercícios em YAML e CI"
 ```
@@ -1797,6 +1975,8 @@ cd ~/dev/dev-setup && claude "Passo livro-repo do roteiro: Criar o repositório 
 
 **Claude com você** · 4 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo editora-imagens do roteiro: Construir o pipeline de imagens do livro: busca nos acervos, filtro de licença, folha de contato e créditos"
 ```
@@ -1807,6 +1987,8 @@ cd ~/dev/dev-setup && claude "Passo editora-imagens do roteiro: Construir o pipe
 ### 20.4 Figuras, tabelas e texto alternativo gerados por código
 
 **Claude com você** · 3 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo editora-figuras do roteiro: Figuras, tabelas e texto alternativo gerados por código"
@@ -1819,6 +2001,8 @@ cd ~/dev/dev-setup && claude "Passo editora-figuras do roteiro: Figuras, tabelas
 
 **Claude com você** · 3 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo editora-agentes do roteiro: Criar os agentes da editora: revisor técnico, gabarito, leitor iniciante e consistência"
 ```
@@ -1829,6 +2013,8 @@ cd ~/dev/dev-setup && claude "Passo editora-agentes do roteiro: Criar os agentes
 ### 20.6 Montar a matriz de editais e o quadro de referências
 
 **Claude com você** · 1 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo editais do roteiro: Montar a matriz de editais e o quadro de referências"
@@ -1894,6 +2080,8 @@ O laboratório de dados e de treino no ar, um modelo seu rodando no Ollama e os 
 
 **Você** · 1 h 30 min
 
+No **PowerShell** do Windows (linha `PS C:\>`):
+
 ```powershell
 winget install --id Rufus.Rufus -e
 ```
@@ -1916,6 +2104,8 @@ winget install --id Rufus.Rufus -e
 
 **Script** · 5 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 nvidia-smi
 ```
@@ -1927,6 +2117,8 @@ nvidia-smi
 
 **Script** · 30 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 bash scripts/wsl/lab-ia.sh
 ```
@@ -1937,6 +2129,8 @@ bash scripts/wsl/lab-ia.sh
 ### 21.5 Rodar um modelo 8B no Ollama com parte na GPU
 
 **Você** · 15 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 ollama run llama3.1:8b
@@ -1959,6 +2153,8 @@ ollama run llama3.1:8b
 
 **Claude com você** · 1 h 30 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo dbt-metricas do roteiro: Criar o projeto dbt sobre o banco de métricas"
 ```
@@ -1969,6 +2165,8 @@ cd ~/dev/dev-setup && claude "Passo dbt-metricas do roteiro: Criar o projeto dbt
 ### 21.8 Subir o Airflow e agendar o dbt todo dia
 
 **Claude com você** · 1 h 30 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo airflow do roteiro: Subir o Airflow e agendar o dbt todo dia"
@@ -1990,6 +2188,8 @@ cd ~/dev/dev-setup && claude "Passo airflow do roteiro: Subir o Airflow e agenda
 
 **Claude com você** · 2 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo dataset do roteiro: Montar o primeiro dataset só com conteúdo seu"
 ```
@@ -2002,6 +2202,8 @@ cd ~/dev/dev-setup && claude "Passo dataset do roteiro: Montar o primeiro datase
 
 **Claude com você** · 3 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo fine-tune do roteiro: Primeiro fine-tuning QLoRA de um 8B no Kaggle"
 ```
@@ -2012,6 +2214,8 @@ cd ~/dev/dev-setup && claude "Passo fine-tune do roteiro: Primeiro fine-tuning Q
 ### 21.12 Avaliar contra o modelo base e levar o seu modelo para o Ollama
 
 **Claude com você** · 1 h 30 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo modelo-no-ollama do roteiro: Avaliar contra o modelo base e levar o seu modelo para o Ollama"
@@ -2034,6 +2238,8 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 
 **Claude com você** · 1 h 30 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo of-meu-setup do roteiro: Página 'meu setup' com links de afiliado"
 ```
@@ -2045,6 +2251,8 @@ cd ~/dev/dev-setup && claude "Passo of-meu-setup do roteiro: Página 'meu setup'
 ### 22.2 Pôr no Catálogo do HTML a chamada para o mini-curso e para a newsletter
 
 **Claude com você** · 30 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo of-catalogo do roteiro: Pôr no Catálogo do HTML a chamada para o mini-curso e para a newsletter"
@@ -2076,6 +2284,8 @@ cd ~/dev/dev-setup && claude "Passo of-catalogo do roteiro: Pôr no Catálogo do
 ### 22.5 Automação com IA para pequenos negócios: 1 implantação grátis em troca de caso
 
 **Claude com você** · 10 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo of-automacao do roteiro: Automação com IA para pequenos negócios: 1 implantação grátis em troca de caso"
@@ -2151,6 +2361,8 @@ cd ~/dev/dev-setup && claude "Passo of-automacao do roteiro: Automação com IA 
 ### 22.13 AM Mentor: banco de exercícios com correção, começando pelo capítulo 1
 
 **Claude com você** · 20 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo of-ammentor do roteiro: AM Mentor: banco de exercícios com correção, começando pelo capítulo 1"
@@ -2282,6 +2494,8 @@ Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.
 
 **Claude com você** · 2 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo horario do roteiro: Ligar o algoritmo de horário com 3 meses de dados de publicação"
 ```
@@ -2346,6 +2560,8 @@ Arch com boot próprio, VMs de laboratório e a segurança física em dia.
 
 **Você** · 5 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 sudo apt install -y neovim && nvim +Tutor
 ```
@@ -2400,6 +2616,8 @@ Busca e assistente com os seus dados dentro de um sistema AM.
 
 **Claude com você** · 8 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo rag-sistema do roteiro: RAG com pgvector dentro do primeiro sistema AM"
 ```
@@ -2421,6 +2639,8 @@ Os sistemas viram produto por assinatura.
 
 **Claude com você** · 10 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo saas do roteiro: Lançar o primeiro sistema AM como SaaS, com cobrança por módulo"
 ```
@@ -2431,6 +2651,8 @@ cd ~/dev/dev-setup && claude "Passo saas do roteiro: Lançar o primeiro sistema 
 ### 26.2 AM Kaixara: PDV, cardápio, fichas técnicas e estoque
 
 **Claude com você** · 40 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo kaixara do roteiro: AM Kaixara: PDV, cardápio, fichas técnicas e estoque"
@@ -2444,6 +2666,8 @@ cd ~/dev/dev-setup && claude "Passo kaixara do roteiro: AM Kaixara: PDV, cardáp
 
 **Claude com você** · 40 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo rotara do roteiro: AM Rotara: pedidos, rotas e mapas"
 ```
@@ -2456,6 +2680,8 @@ cd ~/dev/dev-setup && claude "Passo rotara do roteiro: AM Rotara: pedidos, rotas
 
 **Claude com você** · 10 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo servicos-aura do roteiro: Serviços aura- compartilhados, só quando um sistema precisar"
 ```
@@ -2466,6 +2692,8 @@ cd ~/dev/dev-setup && claude "Passo servicos-aura do roteiro: Serviços aura- co
 ### 26.5 App de delivery com a marca do restaurante (white-label)
 
 **Claude com você** · 20 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo whitelabel do roteiro: App de delivery com a marca do restaurante (white-label)"
@@ -2508,6 +2736,8 @@ Sair do CPF na hora certa, com nota fiscal e cobrança automáticas.
 
 **Claude com você** · 4 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo nfse-api do roteiro: Nota fiscal automática pela API de NFS-e"
 ```
@@ -2518,6 +2748,8 @@ cd ~/dev/dev-setup && claude "Passo nfse-api do roteiro: Nota fiscal automática
 ### 27.4 Cobrança recorrente por Pix Automático
 
 **Claude com você** · 4 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo pix-automatico do roteiro: Cobrança recorrente por Pix Automático"
@@ -2540,6 +2772,8 @@ Atendimento, orçamento, cobrança e análise rodando com a sua aprovação.
 
 **Claude com você** · 2 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo ag-analista do roteiro: Analista semanal: o que funcionou e o que mudar"
 ```
@@ -2550,6 +2784,8 @@ cd ~/dev/dev-setup && claude "Passo ag-analista do roteiro: Analista semanal: o 
 ### 28.2 Atendente do WhatsApp com passagem para você
 
 **Claude com você** · 4 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo ag-atendente do roteiro: Atendente do WhatsApp com passagem para você"
@@ -2562,6 +2798,8 @@ cd ~/dev/dev-setup && claude "Passo ag-atendente do roteiro: Atendente do WhatsA
 
 **Claude com você** · 3 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo ag-orcamento do roteiro: Orçamentista de sites e sistemas"
 ```
@@ -2572,6 +2810,8 @@ cd ~/dev/dev-setup && claude "Passo ag-orcamento do roteiro: Orçamentista de si
 ### 28.4 Cobrador educado (lembrete antes e depois do vencimento)
 
 **Claude com você** · 2 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo ag-cobranca do roteiro: Cobrador educado (lembrete antes e depois do vencimento)"
@@ -2584,6 +2824,8 @@ cd ~/dev/dev-setup && claude "Passo ag-cobranca do roteiro: Cobrador educado (le
 
 **Claude com você** · 2 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo ag-posvenda do roteiro: Pós-venda: NPS e pedido de avaliação"
 ```
@@ -2595,6 +2837,8 @@ cd ~/dev/dev-setup && claude "Passo ag-posvenda do roteiro: Pós-venda: NPS e pe
 
 **Claude com você** · 2 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo ag-fiscal do roteiro: Organizador fiscal para o contador"
 ```
@@ -2605,6 +2849,8 @@ cd ~/dev/dev-setup && claude "Passo ag-fiscal do roteiro: Organizador fiscal par
 ### 28.7 Comprador com estoque mínimo
 
 **Claude com você** · 3 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo ag-comprador do roteiro: Comprador com estoque mínimo"
@@ -2654,6 +2900,8 @@ O mesmo livro em mais formatos, públicos e idiomas.
 
 **Claude com você** · 10 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo edicao-professor do roteiro: Edição do professor com licença para escolas"
 ```
@@ -2665,6 +2913,8 @@ cd ~/dev/dev-setup && claude "Passo edicao-professor do roteiro: Edição do pro
 ### 29.5 Traduções para espanhol e inglês
 
 **Claude com você** · 20 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo traducoes do roteiro: Traduções para espanhol e inglês"
@@ -2687,6 +2937,8 @@ O que pesa em vaga pleno e sênior.
 
 **Claude com você** · 10 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 cd ~/dev/dev-setup && claude "Passo mensageria do roteiro: RabbitMQ e depois Kafka entre dois sistemas AM"
 ```
@@ -2698,6 +2950,8 @@ cd ~/dev/dev-setup && claude "Passo mensageria do roteiro: RabbitMQ e depois Kaf
 
 **Você** · 10 h 00 min
 
+No **Ubuntu** (linha `alanmateus@...$`):
+
 ```bash
 mkdir -p ~/.local/bin && curl -Lo ~/.local/bin/kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64 && chmod +x ~/.local/bin/kind && sudo snap install kubectl --classic && sudo snap install helm --classic && kind create cluster --name lab && kubectl get nodes
 ```
@@ -2708,6 +2962,8 @@ mkdir -p ~/.local/bin && curl -Lo ~/.local/bin/kind https://kind.sigs.k8s.io/dl/
 ### 30.3 Logs e rastreamento com Loki e Tempo no Grafana
 
 **Claude com você** · 4 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo loki-tempo do roteiro: Logs e rastreamento com Loki e Tempo no Grafana"
@@ -2736,6 +2992,8 @@ cd ~/dev/dev-setup && claude "Passo loki-tempo do roteiro: Logs e rastreamento c
 ### 30.6 App mobile dos sistemas AM com .NET MAUI
 
 **Claude com você** · 20 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo mobile do roteiro: App mobile dos sistemas AM com .NET MAUI"
@@ -2791,6 +3049,8 @@ Um negócio por vez, cada um só depois que o anterior passa no portão.
 ### 32.1 Planejador do grupo com os números reais
 
 **Claude com você** · 2 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
 cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do grupo com os números reais"
@@ -2880,7 +3140,9 @@ As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 
 **Você** · 20 min
 
-```bash
+No **PowerShell** do Windows (linha `PS C:\>`):
+
+```powershell
 Start-Process 'https://education.github.com/discount_requests/application'
 ```
 

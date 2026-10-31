@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.17.0] - 2026-10-31
+
+### Adicionado
+- Cada comando do roteiro e do acompanhamento diz onde rodar: no PowerShell do Windows (linha PS C:\>), no Ubuntu (linha alanmateus@...$) ou no navegador.
+
 ## [1.16.3] - 2026-10-30
 
 ### Corrigido

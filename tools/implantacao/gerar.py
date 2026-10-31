@@ -152,7 +152,9 @@ def gerar_md(d: dict, eco: dict | None = None) -> str:
             o.append(f"### {i}.{j} {p['titulo']}\n")
             o.append(f"**{QUEM[p['quem']]}** · {horas(p['tempo_min'])}\n")
             if p.get("comando"):
-                lang = "powershell" if "powershell" in p["comando"] or p["comando"].startswith(("wsl ", "winget ")) else ("text" if p["comando"].startswith("http") else "bash")
+                lugar = onde_rodar(p["comando"])
+                lang = {"powershell": "powershell", "navegador": "text"}.get(lugar, "bash")
+                o.append({"powershell": "No **PowerShell** do Windows (linha `PS C:\\>`):\n", "ubuntu": "No **Ubuntu** (linha `alanmateus@...$`):\n", "navegador": "No **navegador**:\n"}[lugar])
                 o.append(f"```{lang}\n{p['comando']}\n```\n")
             if p.get("fora"):
                 o.append(f"- **Fora do terminal:** {p['fora']}")
@@ -178,11 +180,25 @@ def gerar_md(d: dict, eco: dict | None = None) -> str:
     return "\n".join(o)
 
 
+PS_INICIO = ("powershell", "winget ", "wsl ", "wsl -", "$", "Get-", "Start-Process", "Test-Path", "if (Test-Path", "if (-not", "manage-bde",
+             "robocopy", "explorer (", "New-Item", "Import-Module", "Install-", "Restart-Computer", "shutdown ")
+
+
+def onde_rodar(cmd: str) -> str:
+    """Em que terminal o comando roda: o PowerShell do Windows, o Ubuntu do WSL ou o navegador."""
+    c = cmd.strip()
+    if c.startswith("http"):
+        return "navegador"
+    if c.startswith(PS_INICIO):
+        return "powershell"
+    return "ubuntu"
+
+
 def dados_html(d: dict, eco: dict) -> dict:
     B = {b["id"]: b for b in eco["blocos"]}
     qb = quando_por_bloco(d)
     OF = {o["id"]: o["nome"] for o in carregar_portfolio()["ofertas"]}
-    fases = [{**f, "passos": [{**{k: v for k, v in p.items() if k not in ("blocos", "ofertas")}, "hoje": faz_hoje(f, p),
+    fases = [{**f, "passos": [{**{k: v for k, v in p.items() if k not in ("blocos", "ofertas")}, "hoje": faz_hoje(f, p), "onde": onde_rodar(p["comando"]) if p.get("comando") else "",
                                 "ofertas": [OF[x] for x in p.get("ofertas", [])],
                                 "implanta": [rotulo(B[b]) for b in p.get("blocos", [])]} for p in f["passos"]]}
              for f in d["fases"]]
