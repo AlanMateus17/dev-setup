@@ -1584,14 +1584,14 @@
   {
    "id": "f-investimentos",
    "titulo": "Investimentos com as suas metodologias",
-   "objetivo": "As suas regras (ARCA, Barsi, Bazin, Graham, Buffett, Sena) aplicadas por script, uma carteira por metodologia e comparação com o índice. Não é recomendação: a decisão é sua.",
+   "objetivo": "Todas as metodologias ao mesmo tempo nas quatro classes do ARCA (ações, FIIs, renda fixa e internacional): consenso por ativo, ARCA em dois níveis e carteira por metodologia contra o índice. Não é recomendação: a decisão é sua.",
    "quando": "Dez/2026",
    "passos": [
     {
      "id": "inv-iniciar",
      "titulo": "Copiar os modelos de investimento para ~/financas",
      "quem": "script",
-     "pronto": "investimentos.toml, indicadores.csv, carteira.csv e carteiras.csv em ~/financas",
+     "pronto": "investimentos.toml, os 4 indicadores_*.csv, carteira.csv e carteiras.csv em ~/financas",
      "tempo_min": 5,
      "blocos": [
       "caixa"
@@ -1600,7 +1600,7 @@
     },
     {
      "id": "inv-politica",
-     "titulo": "Preencher a política de investimentos e o investimentos.toml (portão, ARCA dentro de ações, limites)",
+     "titulo": "Preencher a política e o investimentos.toml (portão, ARCA por classe, metodologias por classe, limites, NTN-B do mês)",
      "quem": "voce",
      "pronto": "Política assinada por você e o portão refletindo o cartão e a reserva de hoje",
      "tempo_min": 40,
@@ -1622,31 +1622,31 @@
     },
     {
      "id": "inv-indicadores",
-     "titulo": "Montar o indicadores.csv das empresas que você acompanha",
+     "titulo": "Montar os 4 CSVs de indicadores (ações, FIIs, renda fixa, internacional) dos ativos que você acompanha",
      "quem": "voce",
      "pronto": "Planilha com os indicadores conferidos na fonte (RI da empresa ou CVM)",
      "tempo_min": 60,
      "blocos": [
       "caixa"
      ],
-     "fora": "Exporte do site que você usa e confira os números que decidem a compra na demonstração da empresa."
+     "fora": "Colunas de cada classe em docs/investimentos.md. Confira na fonte os números que decidem a compra (RI, CVM, relatório do fundo, Tesouro)."
     },
     {
      "id": "inv-avaliar",
-     "titulo": "Rodar a avaliação e decidir as compras do mês",
+     "titulo": "Rodar a avaliação das 4 classes e a divisão do aporte",
      "quem": "script",
-     "pronto": "Lista de quem passa em cada metodologia e a divisão do aporte",
+     "pronto": "Consenso de cada ativo e a divisão do aporte por classe e por metodologia",
      "tempo_min": 15,
      "blocos": [
       "caixa"
      ],
-     "comando": "python ~/dev/dev-setup/tools/investimentos/investimentos.py avaliar ~/financas/indicadores.csv && python ~/dev/dev-setup/tools/investimentos/investimentos.py aporte ~/financas/carteira.csv 800"
+     "comando": "cd ~/dev/dev-setup && for c in acoes fiis caixa internacional; do python tools/investimentos/investimentos.py avaliar $c ~/financas/indicadores_$c.csv; done && python tools/investimentos/investimentos.py aporte ~/financas/carteira.csv 800"
     },
     {
      "id": "inv-carteiras",
-     "titulo": "Criar uma carteira por metodologia (real ou simulada) e uma do índice",
+     "titulo": "Criar uma carteira por metodologia e uma do índice em cada classe (reais ou simuladas)",
      "quem": "voce",
-     "pronto": "carteiras.csv com uma linha por carteira, incluindo 'indice'",
+     "pronto": "carteiras.csv com classe, carteira, investido e valor atual, incluindo 'indice' em cada classe",
      "tempo_min": 30,
      "blocos": [
       "caixa"
@@ -1666,14 +1666,14 @@
     },
     {
      "id": "inv-novas",
-     "titulo": "Testar as metodologias novas (Fórmula Mágica, Piotroski) só na carteira simulada por 12 meses",
+     "titulo": "Simular também as alocações gerais (Graham defensivo, Portfólio permanente, Bogle) contra o seu ARCA",
      "quem": "voce",
-     "pronto": "Decisão de manter ou cortar cada uma, registrada",
+     "pronto": "Uma carteira simulada de cada estratégia em carteiras.csv (classe 'geral')",
      "tempo_min": 20,
      "blocos": [
       "caixa"
      ],
-     "fora": "Lynch e Gordon ficam como 'avaliar' até você estudar o capítulo correspondente."
+     "fora": "Todas as metodologias por classe já rodam juntas; aqui é a comparação no nível do ARCA."
     },
     {
      "id": "inv-cnpi",

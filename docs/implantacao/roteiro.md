@@ -1590,7 +1590,7 @@ python3 ~/dev/dev-setup/tools/financeiro/financeiro.py mes $(date +%Y-%m)
 
 ## 16 · Investimentos com as suas metodologias
 
-As suas regras (ARCA, Barsi, Bazin, Graham, Buffett, Sena) aplicadas por script, uma carteira por metodologia e comparação com o índice. Não é recomendação: a decisão é sua.
+Todas as metodologias ao mesmo tempo nas quatro classes do ARCA (ações, FIIs, renda fixa e internacional): consenso por ativo, ARCA em dois níveis e carteira por metodologia contra o índice. Não é recomendação: a decisão é sua.
 
 **Quando:** Dez/2026
 
@@ -1604,10 +1604,10 @@ No **Ubuntu** (linha `alanmateus@...$`):
 python ~/dev/dev-setup/tools/investimentos/investimentos.py iniciar
 ```
 
-- [ ] **Pronto quando:** investimentos.toml, indicadores.csv, carteira.csv e carteiras.csv em ~/financas
+- [ ] **Pronto quando:** investimentos.toml, os 4 indicadores_*.csv, carteira.csv e carteiras.csv em ~/financas
 - Implanta: Caixa da Casa / AM Rendara
 
-### 16.2 Preencher a política de investimentos e o investimentos.toml (portão, ARCA dentro de ações, limites)
+### 16.2 Preencher a política e o investimentos.toml (portão, ARCA por classe, metodologias por classe, limites, NTN-B do mês)
 
 **Você** · 40 min
 
@@ -1623,33 +1623,33 @@ python ~/dev/dev-setup/tools/investimentos/investimentos.py iniciar
 - [ ] **Pronto quando:** Lista [sena] preenchida com as suas palavras
 - Implanta: Caixa da Casa / AM Rendara
 
-### 16.4 Montar o indicadores.csv das empresas que você acompanha
+### 16.4 Montar os 4 CSVs de indicadores (ações, FIIs, renda fixa, internacional) dos ativos que você acompanha
 
 **Você** · 1 h 00 min
 
-- **Fora do terminal:** Exporte do site que você usa e confira os números que decidem a compra na demonstração da empresa.
+- **Fora do terminal:** Colunas de cada classe em docs/investimentos.md. Confira na fonte os números que decidem a compra (RI, CVM, relatório do fundo, Tesouro).
 - [ ] **Pronto quando:** Planilha com os indicadores conferidos na fonte (RI da empresa ou CVM)
 - Implanta: Caixa da Casa / AM Rendara
 
-### 16.5 Rodar a avaliação e decidir as compras do mês
+### 16.5 Rodar a avaliação das 4 classes e a divisão do aporte
 
 **Script** · 15 min
 
 No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
-python ~/dev/dev-setup/tools/investimentos/investimentos.py avaliar ~/financas/indicadores.csv && python ~/dev/dev-setup/tools/investimentos/investimentos.py aporte ~/financas/carteira.csv 800
+cd ~/dev/dev-setup && for c in acoes fiis caixa internacional; do python tools/investimentos/investimentos.py avaliar $c ~/financas/indicadores_$c.csv; done && python tools/investimentos/investimentos.py aporte ~/financas/carteira.csv 800
 ```
 
-- [ ] **Pronto quando:** Lista de quem passa em cada metodologia e a divisão do aporte
+- [ ] **Pronto quando:** Consenso de cada ativo e a divisão do aporte por classe e por metodologia
 - Implanta: Caixa da Casa / AM Rendara
 
-### 16.6 Criar uma carteira por metodologia (real ou simulada) e uma do índice
+### 16.6 Criar uma carteira por metodologia e uma do índice em cada classe (reais ou simuladas)
 
 **Você** · 30 min
 
 - **Fora do terminal:** Simulada = anotada com preço e data, sem comprar.
-- [ ] **Pronto quando:** carteiras.csv com uma linha por carteira, incluindo 'indice'
+- [ ] **Pronto quando:** carteiras.csv com classe, carteira, investido e valor atual, incluindo 'indice' em cada classe
 - Implanta: Caixa da Casa / AM Rendara
 
 ### 16.7 Comparar as carteiras contra o índice todo mês
@@ -1665,12 +1665,12 @@ python ~/dev/dev-setup/tools/investimentos/investimentos.py comparar ~/financas/
 - [ ] **Pronto quando:** Resultado anotado no Caixa da Casa; metodologia que perder do índice por 3 anos é revista
 - Implanta: Caixa da Casa / AM Rendara
 
-### 16.8 Testar as metodologias novas (Fórmula Mágica, Piotroski) só na carteira simulada por 12 meses
+### 16.8 Simular também as alocações gerais (Graham defensivo, Portfólio permanente, Bogle) contra o seu ARCA
 
 **Você** · 20 min
 
-- **Fora do terminal:** Lynch e Gordon ficam como 'avaliar' até você estudar o capítulo correspondente.
-- [ ] **Pronto quando:** Decisão de manter ou cortar cada uma, registrada
+- **Fora do terminal:** Todas as metodologias por classe já rodam juntas; aqui é a comparação no nível do ARCA.
+- [ ] **Pronto quando:** Uma carteira simulada de cada estratégia em carteiras.csv (classe 'geral')
 - Implanta: Caixa da Casa / AM Rendara
 
 ### 16.9 Marcar a prova CB da CNPI quando a verba de estudo permitir

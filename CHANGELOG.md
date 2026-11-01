@@ -2,6 +2,15 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.2.0] - 2026-11-01
+
+### Alterado
+- Investimentos nas quatro classes do ARCA, com todas as metodologias ao mesmo tempo: Ações (9: Barsi, Bazin, Graham, Buffett, Sena, Fórmula Mágica, Piotroski, Lynch, Gordon), FIIs (7: desconto P/VP, Bazin, Barsi, prêmio sobre a NTN-B, qualidade, crédito de FII de papel, Sena), renda fixa (4: liquidez com garantia, IPCA+, escada, segurança do emissor) e Internacional (7: Bogle, aristocratas, Buffett, Graham e Bazin lá fora, REITs, Sena).
+- Cada ativo recebe o resultado de cada metodologia que se aplica e um consenso (forte, médio, fraco); metodologia que não se aplica ao tipo de ativo não conta.
+- Aporte em dois níveis (ARCA por classe → metodologia dentro da classe), com mínimo por compra para não virar migalha, limites por ativo e setor, aviso de FGC acima de R$ 250 mil por instituição e escada com menos de 3 degraus.
+- Renda fixa compara título isento com tributado pela tabela regressiva; regras de imposto em vigor (MP 1303 caducou em 08/10/2025; Lei 14.754 no exterior; Lei 15.270 nos dividendos altos) documentadas.
+- Comparação por classe contra o índice e alocações gerais para simular (Graham defensivo, Portfólio permanente, Bogle).
+
 ## [2.1.0] - 2026-11-01
 
 ### Adicionado
