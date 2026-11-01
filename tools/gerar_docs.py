@@ -358,6 +358,7 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
            "Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardware ao deploy na nuvem, da criação de conteúdo à venda de cursos. Cada ferramenta tem um motivo, um lugar e conexões definidas, e toda a documentação é gerada a partir de uma única fonte de dados.\n",
            f"| Camadas | Blocos | Conexões | Fluxos | Contas necessárias |\n|---|---|---|---|---|\n| {len(eco['camadas'])} | {total_b} | {total_c} | {len(eco['fluxos'])} | {contas} |\n",
            "## Por onde começar\n",
+           "- **Continuar numa conversa nova com o Claude**: cole o [CONTINUAR.md](CONTINUAR.md) (ou `python3 tools/sessao/contexto.py --inicio | clip.exe`) e diga qual passo vai fazer. As decisões recentes ficam no [ESTADO.md](ESTADO.md).",
            "- **Comece aqui, no Windows**: extraia o zip, entre na pasta que tem `RODAR-DIAGNOSTICO.cmd` e clique com o botão direito nele > Executar como administrador. Ele só lê o notebook e diz por qual passo do roteiro começar.",
            "- **[Arquitetura](docs/arquitetura.md)**: a pilha inteira, camada por camada, com o diagrama de cada uma.",
            "- **[Fluxos de ponta a ponta](docs/fluxos.md)**: codar com agente e publicar, vender um curso, publicar automaticamente, medir uma campanha e outros.",

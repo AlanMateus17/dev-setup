@@ -3,6 +3,7 @@
 
     python3 tools/sessao/contexto.py --passo ia-mcp          # um passo do roteiro, com tudo que ele precisa
     python3 tools/sessao/contexto.py --resumo                # estado geral do setup em poucas linhas
+    python3 tools/sessao/contexto.py --inicio | clip.exe     # primeira mensagem de uma conversa nova (CONTINUAR.md + estado)
     python3 tools/sessao/contexto.py --passo fa-plano | clip.exe   # copia para a área de transferência do Windows
 
 Conversa curta = limite que dura. Comece cada tarefa com este pacote; termine pedindo o resumo para o ESTADO.md.
@@ -68,8 +69,12 @@ def main() -> int:
     g = ap.add_mutually_exclusive_group(required=True)
     g.add_argument("--passo")
     g.add_argument("--resumo", action="store_true")
+    g.add_argument("--inicio", action="store_true", help="CONTINUAR.md + estado atual: primeira mensagem de uma conversa nova")
     a = ap.parse_args()
-    txt = pacote_passo(a.passo) if a.passo else pacote_resumo()
+    if a.inicio:
+        txt = (RAIZ / "CONTINUAR.md").read_text(encoding="utf-8") + "\n\n" + pacote_resumo()
+    else:
+        txt = pacote_passo(a.passo) if a.passo else pacote_resumo()
     sys.stdout.write(txt + "\n")
     print(f"\n(~{len(txt) // 4} tokens)", file=sys.stderr)
     return 0

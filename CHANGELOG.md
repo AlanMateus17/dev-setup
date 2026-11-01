@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.29.0] - 2026-11-01
+
+### Adicionado
+- CONTINUAR.md: contexto completo para começar qualquer conversa nova (regras, onde está tudo, decisões, pendências, como pedir ajuda); `tools/sessao/contexto.py --inicio` junta o CONTINUAR.md com o estado atual. Link no README.
+
 ## [1.28.0] - 2026-11-01
 
 ### Adicionado

@@ -16,6 +16,11 @@ class TestContexto(unittest.TestCase):
     def test_resumo(self):
         self.assertIn("fases", pacote_resumo())
 
+    def test_continuar_existe_e_tem_regras(self):
+        txt = (Path(__file__).resolve().parents[2] / "CONTINUAR.md").read_text(encoding="utf-8")
+        self.assertIn("KeePassXC", txt)
+        self.assertIn("contexto.py", txt)
+
     def test_passo_inexistente(self):
         with self.assertRaises(SystemExit):
             pacote_passo("nao-existe")
