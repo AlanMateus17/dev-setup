@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-46 fases, 343 passos, cerca de **1178 h 21 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+46 fases, 346 passos, cerca de **1179 h 41 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
-**Todo o planejamento está aqui:** os 355 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 100 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
+**Todo o planejamento está aqui:** os 352 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 100 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 251 dos 343 passos (246 h 11 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 254 dos 346 passos (247 h 31 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -33,7 +33,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [16 · Rotina automatizada](#f-rotina) | Semana 4 · nov/2026 | 5 | 34 min |
 | [17 · Comandos remotos pelo Telegram](#f-remoto) | Semana 5 · nov/2026 | 5 | 35 min |
 | [18 · Casa e vida](#f-casa) | Dez/2026 | 6 | 2 h 55 min |
-| [19 · Padrão de elite em todo repositório](#f-elite) | Semana 5 · nov/2026 | 6 | 1 h 30 min |
+| [19 · Padrão de elite em todo repositório](#f-elite) | Semana 5 · nov/2026 | 9 | 2 h 50 min |
 | [20 · Agentes e IA com qualidade medida](#f-ia-elite) | Semana 6 · nov/2026 a dez/2026 | 7 | 6 h 05 min |
 | [21 · Modelos grandes sem computador maior](#f-ia-grande) | 2027, depois do primeiro fine-tuning de 8B | 5 | 21 h 00 min |
 | [22 · Rede própria entre os seus computadores](#f-rede) | Semana 6 · nov/2026 | 6 | 3 h 10 min |
@@ -1761,7 +1761,7 @@ cd ~/dev/dev-setup && bash scripts/wsl/padronizar-repo.sh --todos
 
 - [ ] **Pronto quando:** Todos os repositórios com hooks e CI de qualidade
 - Só cria o que falta. Revise com git status, faça commit e push em cada um.
-- Implanta: Repositório padrão · gitleaks (segredos) · Trivy + Semgrep
+- Implanta: Repositório padrão · gitleaks · Trivy
 
 ### 19.3 Varrer o histórico de todos os repositórios atrás de segredos
 
@@ -1775,7 +1775,7 @@ cd ~/dev && for r in */; do echo "== $r"; docker run --rm -v "$PWD/$r:/repo" zri
 
 - [ ] **Pronto quando:** Nenhum segredo encontrado (ou trocado e removido)
 - Se achar algo: troque a senha ou chave na hora (o histórico do GitHub guarda cópia).
-- Implanta: gitleaks (segredos)
+- Implanta: gitleaks · Trivy
 
 ### 19.4 Rodar serviços com segredos vindos do KeePassXC
 
@@ -1812,6 +1812,30 @@ bash ~/dev/dev-setup/scripts/wsl/teste-restauracao.sh
 - **Fora do terminal:** Hábito de 30 minutos no primeiro sábado do mês.
 - [ ] **Pronto quando:** Checklist do mês feito
 - Implanta: Agente revisor de qualidade
+
+### 19.7 Aplicar os cortes de custo agora (IAs pagas repetidas, Vercel em projeto comercial, Sonar privado)
+
+**Você** · 30 min
+
+- **Fora do terminal:** Cancelamentos são nas contas de cada serviço, no navegador. A lista está em docs/custos.md.
+- [ ] **Pronto quando:** Assinaturas canceladas ou trocadas conforme docs/custos.md
+- Implanta: Claude (assinatura e API)
+
+### 19.8 Pedir o GitHub Education (Copilot e créditos grátis de estudante)
+
+**Você** · 20 min
+
+- **Fora do terminal:** Pedido no site do GitHub Education com comprovante de matrícula.
+- [ ] **Pronto quando:** Pacote de estudante aprovado
+- Implanta: GitHub Education · GitHub Copilot
+
+### 19.9 Auditoria de custos a cada 3 meses
+
+**Você** · 30 min
+
+- **Fora do terminal:** Revisão trimestral; peça ao Claude para atualizar data/custos.json com o que mudou.
+- [ ] **Pronto quando:** docs/custos.md revisado e Caixa da Casa conferido
+- Implanta: Caixa da Casa / AM Rendara
 
 <a id="f-ia-elite"></a>
 
@@ -4385,7 +4409,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Declaração anual do IR | 26.19 | Semanas 8 a 10 · dez/2026 a jan/2027 |
 | Conta bancária separada (CPF) | 2.7, 26.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semanas 8 a 10 · dez/2026 a jan/2027 |
 | Contador | 26.3 | Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Caixa da Casa / AM Rendara | 26.20, 34.4 | Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
+| Caixa da Casa / AM Rendara | 19.9, 26.20, 34.4 | Semana 5 · nov/2026; Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
 | Financeiro local | 15.1, 15.2, 15.3, 15.4 | Dez/2026 |
 
 ### Vitrine web (sites e domínio)
@@ -4488,7 +4512,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Alura · Rocketseat · DIO · Udemy | 45.3 | Contínuo, desde a semana 2 |
 | Anki | 3.2, 34.7, 45.4 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez; Contínuo, desde a semana 2 |
 | roadmap.sh + Akita | 45.2 | Contínuo, desde a semana 2 |
-| GitHub Education | 45.1 | Contínuo, desde a semana 2 |
+| GitHub Education | 19.8, 45.1 | Semana 5 · nov/2026; Contínuo, desde a semana 2 |
 | Zoomcamp de dados + cursos de IA | 33.6 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 | GPT do zero (estudo) | 21.1 | 2027, depois do primeiro fine-tuning de 8B |
 | Laboratório de redes | 22.5 | Semana 6 · nov/2026 |
@@ -4590,7 +4614,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Pesquisa aprofundada | 9.1 | Semana 4 · nov/2026 |
 | Tarefas agendadas | 9.1 | Semana 4 · nov/2026 |
 | Claude in Chrome + uso do computador | 3.6 | Semana 1 · out/2026 |
-| Claude (assinatura e API) | 23.2 | Semana 5 · nov/2026 |
+| Claude (assinatura e API) | 19.7, 23.2 | Semana 5 · nov/2026 |
 | Conector Google (Gmail, Drive…) | 2.3, 9.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 4 · nov/2026 |
 | Conectores Canva + Figma | 9.2, 24.4 | Semana 4 · nov/2026; Semana 5 · dez/2026 |
 | Conector MailerLite | 9.2, 25.6 | Semana 4 · nov/2026; Semanas 6 e 7 · dez/2026 |
@@ -4618,7 +4642,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Codex (OpenAI) | 9.4 | Semana 4 · nov/2026 |
 | Agentes de código do Google | 9.4 | Semana 4 · nov/2026 |
 | Perplexity | 9.4 | Semana 4 · nov/2026 |
-| GitHub Copilot | 45.1 | Contínuo, desde a semana 2 |
+| GitHub Copilot | 19.8, 45.1 | Semana 5 · nov/2026; Contínuo, desde a semana 2 |
 
 ### Dados e treino de IA
 
@@ -4670,7 +4694,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Git + SSH + gh | 4.4, 4.6 | Semana 2 · nov/2026 |
 | .NET 10 · Node · Python | 4.4 | Semana 2 · nov/2026 |
 | TeX Live | 4.4 | Semana 2 · nov/2026 |
-| gitleaks · Trivy | 4.4 | Semana 2 · nov/2026 |
+| gitleaks · Trivy | 4.4, 19.2, 19.3 | Semana 2 · nov/2026; Semana 5 · nov/2026 |
 | dotfiles | 4.7 | Semana 2 · nov/2026 |
 | Arch + Omarchy (2º NVMe) | 36.1 | 2027, conforme cada compra |
 | Rotinas agendadas | 16.3, 16.4, 16.5 | Semana 4 · nov/2026 |
@@ -4697,7 +4721,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Windows 11 Home | 0.3, 0.4, 1.3 | Antes de tudo · semana 1 (out/2026); Semana 1 · out/2026 |
 | VS Code | 3.2, 3.5 | Semana 1 · out/2026 |
 | Obsidian + Git | 3.2, 4.8, 8.4 | Semana 1 · out/2026; Semana 2 · nov/2026; Semanas 3 e 4 · nov/2026 |
-| Syncthing | 2.9, 3.2, 4.9 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 1 · out/2026; Semana 2 · nov/2026 |
+| Syncthing | 2.9, 3.2, 4.9, 22.3 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 1 · out/2026; Semana 2 · nov/2026; Semana 6 · nov/2026 |
 | DBeaver · Bruno | 3.2 | Semana 1 · out/2026 |
 | Navegador + Claude in Chrome | 2.5, 2.10, 3.6 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 1 · out/2026 |
 | VirtualBox | 3.2 | Semana 1 · out/2026 |
@@ -4706,7 +4730,6 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Arduino IDE 2 | 3.2, 34.16 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez |
 | Rufus (grava pendrives) | 33.1 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 | ActivityWatch | 16.1 | Semana 4 · nov/2026 |
-| Syncthing | 22.3 | Semana 6 · nov/2026 |
 
 ### Segurança e cofre
 
@@ -4722,8 +4745,6 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | App 2FA (celular) | 1.4, 2.3, 2.7 | Semana 1 · out/2026; Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026 |
 | Backup 3-2-1 | 2.11, 7.1, 7.2, 7.3, 8.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 3 · nov/2026; Semanas 3 e 4 · nov/2026 |
 | Organizadores | 2.4, 16.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 4 · nov/2026 |
-| gitleaks (segredos) | 19.2, 19.3 | Semana 5 · nov/2026 |
-| Trivy + Semgrep | 19.2 | Semana 5 · nov/2026 |
 | Segredos do cofre (keepassxc-cli) | 19.4 | Semana 5 · nov/2026 |
 | Teste de restauração | 19.5 | Semana 5 · nov/2026 |
 

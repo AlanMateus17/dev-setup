@@ -92,16 +92,15 @@ flowchart LR
   subgraph L_lin["Linux (Ubuntu no WSL2, Arch no 2º disco)"]
     n_dot["dotfiles"]
     n_git["Git + SSH + gh"]
+    n_sec["gitleaks · Trivy"]
   end
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
     n_obsd["Obsidian + Git"]
   end
   subgraph L_seg["Segurança e cofre"]
-    n_gitleaks["gitleaks (segredos)"]
     n_kee["KeePassXC"]
     n_restic["restic (backup criptografado)"]
     n_sign["Commits assinados (chave SSH)"]
-    n_trivy["Trivy + Semgrep"]
     n_ykey["Chave física (YubiKey)"]
   end
   subgraph L_hw["Hardware"]
@@ -166,8 +165,7 @@ flowchart LR
   n_vllm -->|"roda em"| n_gpuh
   n_gdrv -->|"cópia pelo Takeout"| n_acv
   n_cgws -->|"o Claude lê o Drive"| n_gdrv
-  n_repopadrao -->|"inclui"| n_gitleaks
-  n_repopadrao -->|"inclui"| n_trivy
+  n_repopadrao -->|"inclui"| n_sec
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_blob,n_tmail,n_sonar,n_ghproj,n_dbot,n_gcp,n_gh,n_gha,n_ghcr,n_ghp,n_cf,n_vercel,n_azure,n_aws,n_b2,n_gpuh,n_gdrv,n_repopadrao desta
 ```
@@ -497,8 +495,7 @@ Modelo com pre-commit, CI de qualidade, Definition of Done, ADRs e CHANGELOG par
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [gitleaks (segredos)](02-seg.md#gitleaks) | Segurança e cofre | inclui |
-| → envia para | [Trivy + Semgrep](02-seg.md#trivy) | Segurança e cofre | inclui |
+| → envia para | [gitleaks · Trivy](04-lin.md#sec) | Linux (Ubuntu no WSL2, Arch no 2º disco) | inclui |
 
 ---
 

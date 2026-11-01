@@ -29,8 +29,8 @@ flowchart TB
   L_dados["06 · Dados e treino de IA<br/>17 blocos"]
   L_ia["05 · Agentes de IA e sandbox<br/>13 blocos"]
   L_lin["04 · Linux (Ubuntu no WSL2, Arch no 2º disco)<br/>12 blocos"]
-  L_win["03 · Windows 11, apps e máquinas virtuais<br/>26 blocos"]
-  L_seg["02 · Segurança e cofre<br/>14 blocos"]
+  L_win["03 · Windows 11, apps e máquinas virtuais<br/>25 blocos"]
+  L_seg["02 · Segurança e cofre<br/>12 blocos"]
   L_hw["01 · Hardware<br/>16 blocos"]
   L_oper --- L_pub
   L_pub --- L_mkt
@@ -82,8 +82,8 @@ flowchart TB
 | 06 | [Dados e treino de IA](camadas/06-dados.md) | 17 | Os seus dados viram tabelas limpas e datasets; o treino pesado roda numa GPU da nuvem e o modelo volta para o Ollama do notebook. |
 | 05 | [Agentes de IA e sandbox](camadas/05-ia.md) | 13 | O agente roda dentro do ai-jail e só enxerga ~/dev/<projeto>. |
 | 04 | [Linux (Ubuntu no WSL2, Arch no 2º disco)](camadas/04-lin.md) | 12 | O código fica no ext4 do Linux; o Windows enxerga pela ponte do WSL2. |
-| 03 | [Windows 11, apps e máquinas virtuais](camadas/03-win.md) | 26 | O Windows depende de TPM, BitLocker e Defender para ficar protegido. |
-| 02 | [Segurança e cofre](camadas/02-seg.md) | 14 | Drivers AMD e NVIDIA ligam o sistema ao hardware. |
+| 03 | [Windows 11, apps e máquinas virtuais](camadas/03-win.md) | 25 | O Windows depende de TPM, BitLocker e Defender para ficar protegido. |
+| 02 | [Segurança e cofre](camadas/02-seg.md) | 12 | Drivers AMD e NVIDIA ligam o sistema ao hardware. |
 | 01 | [Hardware](camadas/01-hw.md) | 16 | — |
 
 ## Princípios

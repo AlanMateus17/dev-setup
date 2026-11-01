@@ -11,7 +11,7 @@
 - [Auditoria: o que faltava](auditoria.md)
 - [Sistemas operacionais](sistemas-operacionais.md) · [Nuvem](nuvem.md) · [Mercado](mercado.md) · [Roteiro de estudo](roteiro.md)
 - [Peças autorais](pecas-autorais.md) · [Decisões](fora-do-setup.md)
-- [Arquitetura de IA: modelos grandes sem computador maior](ia/README.md) · [Rede própria entre os seus computadores](rede/README.md)
+- [Arquitetura de IA: modelos grandes sem computador maior](ia/README.md) · [Rede própria entre os seus computadores](rede/README.md) · [Custos: construir, abrir ou pagar](custos.md)
 - [Marketing, vendas e automação](marketing/README.md): funil, canais sem rosto com voz clonada, publicação automática, tráfego, parcerias, internacional e medição de lucro
 - [Editora AMS Silva](editora/README.md): estrutura legal, pipeline de produção dos livros, rigor editorial, identidade visual, avaliação, produtos, lançamento e roteiro
 - [Implantação](implantacao/README.md): roteiro que cobre todos os blocos do setup, scripts que instalam e verificadores que conferem; pipeline de conteúdo e stack de automação
@@ -43,6 +43,6 @@
 - [06 · Dados e treino de IA](camadas/06-dados.md) (17 blocos)
 - [05 · Agentes de IA e sandbox](camadas/05-ia.md) (13 blocos)
 - [04 · Linux (Ubuntu no WSL2, Arch no 2º disco)](camadas/04-lin.md) (12 blocos)
-- [03 · Windows 11, apps e máquinas virtuais](camadas/03-win.md) (26 blocos)
-- [02 · Segurança e cofre](camadas/02-seg.md) (14 blocos)
+- [03 · Windows 11, apps e máquinas virtuais](camadas/03-win.md) (25 blocos)
+- [02 · Segurança e cofre](camadas/02-seg.md) (12 blocos)
 - [01 · Hardware](camadas/01-hw.md) (16 blocos)

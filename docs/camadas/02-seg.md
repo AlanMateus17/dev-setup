@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** Drivers AMD e NVIDIA ligam o sistema ao hardware.
 
-**14 blocos** · 0 precisam de conta · 1 marcados como futuro
+**12 blocos** · 0 precisam de conta · 1 marcados como futuro
 
 ## Mapa de conexões
 
@@ -24,8 +24,6 @@ flowchart LR
     n_tfa["App 2FA (celular)"]
     n_bkp["Backup 3-2-1"]
     n_organizar["Organizadores"]
-    n_gitleaks["gitleaks (segredos)"]
-    n_trivy["Trivy + Semgrep"]
     n_segredos["Segredos do cofre (keepassxc-cli)"]
     n_restauracao["Teste de restauração"]
   end
@@ -39,7 +37,6 @@ flowchart LR
     n_azure["Azure"]
     n_b2["Backblaze B2 (backup)"]
     n_gh["GitHub"]
-    n_repopadrao["Repositório padrão"]
   end
   subgraph L_lin["Linux (Ubuntu no WSL2, Arch no 2º disco)"]
     n_wsl["Ubuntu (WSL2)"]
@@ -79,11 +76,9 @@ flowchart LR
   n_ext -->|"2ª cópia"| n_bkp
   n_nas -->|"3ª cópia (futuro)"| n_bkp
   n_ssdext -->|"cópia portátil"| n_bkp
-  n_repopadrao -->|"inclui"| n_gitleaks
-  n_repopadrao -->|"inclui"| n_trivy
   n_restauracao -->|"resultado do teste"| n_painel
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_sign,n_restic,n_ykey,n_tpm,n_bitl,n_def,n_kee,n_tfa,n_bkp,n_organizar,n_gitleaks,n_trivy,n_segredos,n_restauracao desta
+  class n_sign,n_restic,n_ykey,n_tpm,n_bitl,n_def,n_kee,n_tfa,n_bkp,n_organizar,n_segredos,n_restauracao desta
 ```
 
 ## Blocos
@@ -100,8 +95,6 @@ flowchart LR
 | [App 2FA (celular)](#tfa) | Local | Segundo fator de todas as contas. | passo 1.4 · Semana 1 · out/2026; passo 2.3 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 2.7 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026 |
 | [Backup 3-2-1](#bkp) | Local | GitHub + disco externo + (depois) NAS. | passo 2.11 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 7.1 · Semana 3 · nov/2026; passo 7.2 · Semana 3 · nov/2026; passo 7.3 · Semana 3 · nov/2026; passo 8.2 · Semanas 3 e 4 · nov/2026 |
 | [Organizadores](#organizar) | Local | Downloads por tipo (sem apagar nada) e exportação de senhas pronta para o KeePassXC. | passo 2.4 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 16.2 · Semana 4 · nov/2026 |
-| [gitleaks (segredos)](#gitleaks) | Local | Bloqueia senha ou chave em commit e varre o histórico. | passo 19.2 · Semana 5 · nov/2026; passo 19.3 · Semana 5 · nov/2026 |
-| [Trivy + Semgrep](#trivy) | Local | Vulnerabilidades em dependências, containers e código, no CI de todo repositório. | passo 19.2 · Semana 5 · nov/2026 |
 | [Segredos do cofre (keepassxc-cli)](#segredos) | Local | O comando recebe o segredo direto do KeePassXC, sem .env em texto puro. | passo 19.4 · Semana 5 · nov/2026 |
 | [Teste de restauração](#restauracao) | Local | Restaura o último backup numa pasta temporária e confere. Backup não testado não conta. | passo 19.5 · Semana 5 · nov/2026 |
 
@@ -260,34 +253,6 @@ Downloads por tipo (sem apagar nada) e exportação de senhas pronta para o KeeP
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [KeePassXC](02-seg.md#kee) | Segurança e cofre | importa senhas |
-
-<a id="gitleaks"></a>
-
-### gitleaks (segredos)
-
-*Local*
-
-Bloqueia senha ou chave em commit e varre o histórico.
-
-**Quando entra:** passo 19.2 · Semana 5 · nov/2026; passo 19.3 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
-
-| Direção | Bloco | Camada | O que passa |
-|---|---|---|---|
-| ← recebe de | [Repositório padrão](12-nuvem.md#repopadrao) | Nuvem, código e entrega | inclui |
-
-<a id="trivy"></a>
-
-### Trivy + Semgrep
-
-*Local*
-
-Vulnerabilidades em dependências, containers e código, no CI de todo repositório.
-
-**Quando entra:** passo 19.2 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
-
-| Direção | Bloco | Camada | O que passa |
-|---|---|---|---|
-| ← recebe de | [Repositório padrão](12-nuvem.md#repopadrao) | Nuvem, código e entrega | inclui |
 
 <a id="segredos"></a>
 

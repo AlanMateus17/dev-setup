@@ -2,6 +2,14 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.24.0] - 2026-11-01
+
+### Adicionado
+- Auditoria de custos (data/custos.json → docs/custos.md): regra de construir, pegar aberto ou pagar; 45 itens com decisão (cortar, trocar, adiar, limitar, manter grátis, manter) e alternativa; modelos abertos por tarefa com licença. Passos para aplicar os cortes, pedir o GitHub Education e revisar a cada 3 meses.
+
+### Corrigido
+- Blocos repetidos criados na versão anterior: Syncthing (já existia) e gitleaks/Trivy (já existiam como "gitleaks · Trivy"). Passos e conexões apontam para os blocos originais.
+
 ## [1.23.0] - 2026-11-01
 
 ### Adicionado

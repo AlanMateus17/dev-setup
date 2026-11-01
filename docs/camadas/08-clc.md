@@ -136,7 +136,7 @@ flowchart LR
 | [Pesquisa aprofundada](#resq) | Remoto · precisa de conta | Relatório com dezenas de fontes: mercado de cursos, concorrentes, editais. | passo 9.1 · Semana 4 · nov/2026 |
 | [Tarefas agendadas](#sched) | Remoto · precisa de conta | O Claude executa sozinho em horário marcado: resumo semanal dos repositórios, rascunho de post, revisão do plano de estudos. | passo 9.1 · Semana 4 · nov/2026 |
 | [Claude in Chrome + uso do computador](#cchr) | Remoto · precisa de conta | O Claude opera o navegador e os apps do Windows por você, pedindo aprovação nas ações sensíveis. | passo 3.6 · Semana 1 · out/2026 |
-| [Claude (assinatura e API)](#anth) | Remoto · precisa de conta | Assinatura usada pelo app e pelo Claude Code; API para as funções de IA dos sistemas. | passo 23.2 · Semana 5 · nov/2026 |
+| [Claude (assinatura e API)](#anth) | Remoto · precisa de conta | Assinatura usada pelo app e pelo Claude Code; API para as funções de IA dos sistemas. | passo 19.7 · Semana 5 · nov/2026; passo 23.2 · Semana 5 · nov/2026 |
 | [Conector Google (Gmail, Drive…)](#cgws) | Remoto · precisa de conta | Já conectado. Lê e organiza e-mail, agenda de aulas, arquivos do Drive, Docs, Sheets e Slides. | passo 2.3 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 9.2 · Semana 4 · nov/2026 |
 | [Conectores Canva + Figma](#ccan) | Remoto · precisa de conta | Já conectados. Canva para posts e capas; Figma para as telas dos sistemas e do Instituto AMS. | passo 9.2 · Semana 4 · nov/2026; passo 24.4 · Semana 5 · dez/2026 |
 | [Conector MailerLite](#cml) | Remoto · precisa de conta | Já conectado. O Claude monta grupos, formulários e campanhas da newsletter. | passo 9.2 · Semana 4 · nov/2026; passo 25.6 · Semanas 6 e 7 · dez/2026 |
@@ -231,7 +231,7 @@ O Claude opera o navegador e os apps do Windows por você, pedindo aprovação n
 
 Assinatura usada pelo app e pelo Claude Code; API para as funções de IA dos sistemas.
 
-**Quando entra:** passo 23.2 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 19.7 · Semana 5 · nov/2026; passo 23.2 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

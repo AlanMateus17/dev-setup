@@ -8,7 +8,7 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 
 | Camadas | Blocos | Conexões | Fluxos | Contas necessárias |
 |---|---|---|---|---|
-| 23 | 355 | 640 | 17 | 104 |
+| 23 | 352 | 639 | 17 | 104 |
 
 ## Por onde começar
 
@@ -104,8 +104,8 @@ O Windows cuida só do que precisa de janela, GPU e segurança; todo o trabalho 
 | 06 | [Dados e treino de IA](docs/camadas/06-dados.md) | 17 | Python de dados (Polars, Jupyter), DuckDB + Parquet, dbt Core, Airflow (orquestração)… |
 | 05 | [Agentes de IA e sandbox](docs/camadas/05-ia.md) | 13 | Modelos locais: Qwen · Gemma · Llama, Base de conhecimento (RAG) das suas notas, Claude Code, ai-jail… |
 | 04 | [Linux (Ubuntu no WSL2, Arch no 2º disco)](docs/camadas/04-lin.md) | 12 | Neovim, nmap · dig · curl, Ubuntu (WSL2), Git + SSH + gh… |
-| 03 | [Windows 11, apps e máquinas virtuais](docs/camadas/03-win.md) | 26 | Tailscale (VPN), .wslconfig + localhost, Terminal · PowerShell · winget, Excalidraw / draw.io… |
-| 02 | [Segurança e cofre](docs/camadas/02-seg.md) | 14 | Commits assinados (chave SSH), restic (backup criptografado), Chave física (YubiKey), TPM + Secure Boot… |
+| 03 | [Windows 11, apps e máquinas virtuais](docs/camadas/03-win.md) | 25 | Tailscale (VPN), .wslconfig + localhost, Terminal · PowerShell · winget, Excalidraw / draw.io… |
+| 02 | [Segurança e cofre](docs/camadas/02-seg.md) | 12 | Commits assinados (chave SSH), restic (backup criptografado), Chave física (YubiKey), TPM + Secure Boot… |
 | 01 | [Hardware](docs/camadas/01-hw.md) | 16 | Nobreak, Base com cooler, SSD SATA 2,5", Acer Nitro (32 GB, GTX 1650)… |
 
 ## Stack fixa dos sistemas

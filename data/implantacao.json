@@ -1761,8 +1761,7 @@
      "tempo_min": 10,
      "blocos": [
       "repopadrao",
-      "gitleaks",
-      "trivy"
+      "sec"
      ],
      "comando": "cd ~/dev/dev-setup && bash scripts/wsl/padronizar-repo.sh --todos",
      "nota": "Só cria o que falta. Revise com git status, faça commit e push em cada um."
@@ -1774,7 +1773,7 @@
      "pronto": "Nenhum segredo encontrado (ou trocado e removido)",
      "tempo_min": 15,
      "blocos": [
-      "gitleaks"
+      "sec"
      ],
      "comando": "cd ~/dev && for r in */; do echo \"== $r\"; docker run --rm -v \"$PWD/$r:/repo\" zricethezav/gitleaks:latest detect -s /repo --no-banner; done",
      "nota": "Se achar algo: troque a senha ou chave na hora (o histórico do GitHub guarda cópia)."
@@ -1813,6 +1812,40 @@
       "revisor"
      ],
      "fora": "Hábito de 30 minutos no primeiro sábado do mês."
+    },
+    {
+     "id": "ct-cortes",
+     "titulo": "Aplicar os cortes de custo agora (IAs pagas repetidas, Vercel em projeto comercial, Sonar privado)",
+     "quem": "voce",
+     "pronto": "Assinaturas canceladas ou trocadas conforme docs/custos.md",
+     "tempo_min": 30,
+     "blocos": [
+      "anth"
+     ],
+     "fora": "Cancelamentos são nas contas de cada serviço, no navegador. A lista está em docs/custos.md."
+    },
+    {
+     "id": "ct-copilot",
+     "titulo": "Pedir o GitHub Education (Copilot e créditos grátis de estudante)",
+     "quem": "voce",
+     "pronto": "Pacote de estudante aprovado",
+     "tempo_min": 20,
+     "blocos": [
+      "ghed",
+      "copi"
+     ],
+     "fora": "Pedido no site do GitHub Education com comprovante de matrícula."
+    },
+    {
+     "id": "ct-auditoria",
+     "titulo": "Auditoria de custos a cada 3 meses",
+     "quem": "voce",
+     "pronto": "docs/custos.md revisado e Caixa da Casa conferido",
+     "tempo_min": 30,
+     "blocos": [
+      "caixa"
+     ],
+     "fora": "Revisão trimestral; peça ao Claude para atualizar data/custos.json com o que mudou."
     }
    ]
   },
@@ -2019,7 +2052,7 @@
      "pronto": "Pasta de teste sincronizando nos dois",
      "tempo_min": 20,
      "blocos": [
-      "syncthing"
+      "syncth"
      ],
      "comando": "winget install --id Syncthing.Syncthing -e"
     },

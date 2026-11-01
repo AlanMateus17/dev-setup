@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** O Windows depende de TPM, BitLocker e Defender para ficar protegido.
 
-**26 blocos** · 2 precisam de conta · 3 marcados como futuro
+**25 blocos** · 2 precisam de conta · 3 marcados como futuro
 
 ## Mapa de conexões
 
@@ -39,7 +39,6 @@ flowchart LR
     n_ard["Arduino IDE 2"]
     n_rufus["Rufus (grava pendrives)"]
     n_aw["ActivityWatch"]
-    n_syncthing["Syncthing"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_acv["Acervo (seus documentos)"]
@@ -135,7 +134,7 @@ flowchart LR
   n_tail -->|"acesso remoto"| n_nas
   n_ws -->|"rede privada"| n_tail
   n_iacluster -->|"pela rede privada"| n_tail
-  n_syncthing -->|"pela rede privada"| n_tail
+  n_syncth -->|"pela rede privada"| n_tail
   n_adguard -->|"DNS da rede"| n_tail
   n_labrede -->|"pratica antes"| n_tail
   n_wireguard -->|"base de"| n_tail
@@ -202,7 +201,7 @@ flowchart LR
   n_rufus -->|"grava a ISO"| n_parch
   n_aw -->|"horas por renda"| n_painel
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_tail,n_wslcfg,n_wterm,n_draw,n_unity,n_boot,n_nitro,n_zip,n_ptoys,n_pdf,n_sharex,n_office,n_ffox,n_w11,n_vsc,n_obsd,n_syncth,n_dbv,n_nav,n_vbox,n_wshark,n_vms,n_ard,n_rufus,n_aw,n_syncthing desta
+  class n_tail,n_wslcfg,n_wterm,n_draw,n_unity,n_boot,n_nitro,n_zip,n_ptoys,n_pdf,n_sharex,n_office,n_ffox,n_w11,n_vsc,n_obsd,n_syncth,n_dbv,n_nav,n_vbox,n_wshark,n_vms,n_ard,n_rufus,n_aw desta
 ```
 
 ## Blocos
@@ -225,7 +224,7 @@ flowchart LR
 | [Windows 11 Home](#w11) | Local · precisa de conta | Host do dia a dia (conta local, sem conta Microsoft). | passo 0.3 · Antes de tudo · semana 1 (out/2026); passo 0.4 · Antes de tudo · semana 1 (out/2026); passo 1.3 · Semana 1 · out/2026 |
 | [VS Code](#vsc) | Local | Editor; abre os projetos dentro do Linux. | passo 3.2 · Semana 1 · out/2026; passo 3.5 · Semana 1 · out/2026 |
 | [Obsidian + Git](#obsd) | Local | Vault de estudo, roteiros e planejamento. | passo 3.2 · Semana 1 · out/2026; passo 4.8 · Semana 2 · nov/2026; passo 8.4 · Semanas 3 e 4 · nov/2026 |
-| [Syncthing](#syncth) | Local | Sincroniza vault, projetos de vídeo e o cofre do KeePassXC entre as máquinas, sem nuvem no meio. Open source. | passo 2.9 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 3.2 · Semana 1 · out/2026; passo 4.9 · Semana 2 · nov/2026 |
+| [Syncthing](#syncth) | Local | Sincroniza vault, projetos de vídeo e o cofre do KeePassXC entre as máquinas, sem nuvem no meio. Open source. | passo 2.9 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 3.2 · Semana 1 · out/2026; passo 4.9 · Semana 2 · nov/2026; passo 22.3 · Semana 6 · nov/2026 |
 | [DBeaver · Bruno](#dbv) | Local | Banco de dados e testes de API. | passo 3.2 · Semana 1 · out/2026 |
 | [Navegador + Claude in Chrome](#nav) | Local | Testes, DevTools e acesso a todas as contas web. | passo 2.5 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 2.10 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 3.6 · Semana 1 · out/2026 |
 | [VirtualBox](#vbox) | Local | Roda as VMs de estudo. | passo 3.2 · Semana 1 · out/2026 |
@@ -234,7 +233,6 @@ flowchart LR
 | [Arduino IDE 2](#ard) | Local | Programação das placas de robótica. | passo 3.2 · Semana 1 · out/2026; passo 34.16 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
 | [Rufus (grava pendrives)](#rufus) | Local | Grava as ISOs do Kali e do Arch nos pendrives. Instalado pelo winget. | passo 33.1 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 | [ActivityWatch](#aw) | Local | Mede sozinho em que programas e sites vai o seu tempo. Base do retorno por hora de cada renda. Fica no seu PC. | passo 16.1 · Semana 4 · nov/2026 |
-| [Syncthing](#syncthing) | Local | Pastas sincronizadas entre os seus aparelhos, direto, sem nuvem. | passo 22.3 · Semana 6 · nov/2026 |
 
 <a id="tail"></a>
 
@@ -251,7 +249,7 @@ Acesso seguro ao homelab e ao notebook de qualquer lugar, sem abrir porta no rot
 | → envia para | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | acesso remoto |
 | ← recebe de | [Workstation com GPU](01-hw.md#ws) | Hardware | rede privada |
 | ← recebe de | [Cluster de IA na rede](05-ia.md#iacluster) | Agentes de IA e sandbox | pela rede privada |
-| ← recebe de | [Syncthing](03-win.md#syncthing) | Windows 11, apps e máquinas virtuais | pela rede privada |
+| ← recebe de | [Syncthing](03-win.md#syncth) | Windows 11, apps e máquinas virtuais | pela rede privada |
 | ← recebe de | [AdGuard Home (DNS)](04-lin.md#adguard) | Linux (Ubuntu no WSL2, Arch no 2º disco) | DNS da rede |
 | ← recebe de | [Laboratório de redes](14-est.md#labrede) | Estudo e carreira | pratica antes |
 | ← recebe de | [WireGuard (na mão)](04-lin.md#wireguard) | Linux (Ubuntu no WSL2, Arch no 2º disco) | base de |
@@ -505,13 +503,14 @@ Vault de estudo, roteiros e planejamento.
 
 Sincroniza vault, projetos de vídeo e o cofre do KeePassXC entre as máquinas, sem nuvem no meio. Open source.
 
-**Quando entra:** passo 2.9 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 3.2 · Semana 1 · out/2026; passo 4.9 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 2.9 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 3.2 · Semana 1 · out/2026; passo 4.9 · Semana 2 · nov/2026; passo 22.3 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | sincroniza |
 | → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | vault |
 | → envia para | [KeePassXC](02-seg.md#kee) | Segurança e cofre | cofre de senhas |
+| → envia para | [Tailscale (VPN)](03-win.md#tail) | Windows 11, apps e máquinas virtuais | pela rede privada |
 | ← recebe de | [Celular](01-hw.md#cel) | Hardware | gravações do celular |
 
 <a id="dbv"></a>
@@ -635,20 +634,6 @@ Mede sozinho em que programas e sites vai o seu tempo. Base do retorno por hora 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Painel de lucro (Grafana)](21-mkt.md#painel) | Marketing, automação e medição | horas por renda |
-
-<a id="syncthing"></a>
-
-### Syncthing
-
-*Local*
-
-Pastas sincronizadas entre os seus aparelhos, direto, sem nuvem.
-
-**Quando entra:** passo 22.3 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
-
-| Direção | Bloco | Camada | O que passa |
-|---|---|---|---|
-| → envia para | [Tailscale (VPN)](03-win.md#tail) | Windows 11, apps e máquinas virtuais | pela rede privada |
 
 ---
 

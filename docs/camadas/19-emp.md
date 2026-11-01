@@ -127,7 +127,7 @@ flowchart LR
 | [Declaração anual do IR](#irpf) | Remoto · precisa de conta | Os valores lançados no carnê-leão entram sozinhos na declaração. | passo 26.19 · Semanas 8 a 10 · dez/2026 a jan/2027 |
 | [Conta bancária separada (CPF)](#banco) | Remoto · precisa de conta | Uma conta só para receber vendas e serviços, separada do salário. Facilita o carnê-leão e a futura passagem para CNPJ. | passo 2.7 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 26.2 · Semanas 8 a 10 · dez/2026 a jan/2027 |
 | [Contador](#conta) | Físico | Uma consulta para montar o carnê-leão do jeito certo e dizer a partir de que renda vale abrir CNPJ. | passo 26.3 · Semanas 8 a 10 · dez/2026 a jan/2027 |
-| [Caixa da Casa / AM Rendara](#caixa) | Local | Controle financeiro pessoal e da empresa (seu sistema). | passo 26.20 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 34.4 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [Caixa da Casa / AM Rendara](#caixa) | Local | Controle financeiro pessoal e da empresa (seu sistema). | passo 19.9 · Semana 5 · nov/2026; passo 26.20 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 34.4 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
 | [Financeiro local](#financas) | Local | Importa extratos, categoriza, resume o mês e aplica a sua cascata. Dados em ~/financas, fora do GitHub. | passo 15.1 · Dez/2026; passo 15.2 · Dez/2026; passo 15.3 · Dez/2026; passo 15.4 · Dez/2026 |
 
 <a id="inpi"></a>
@@ -310,7 +310,7 @@ Uma consulta para montar o carnê-leão do jeito certo e dizer a partir de que r
 
 Controle financeiro pessoal e da empresa (seu sistema).
 
-**Quando entra:** passo 26.20 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 34.4 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 19.9 · Semana 5 · nov/2026; passo 26.20 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 34.4 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

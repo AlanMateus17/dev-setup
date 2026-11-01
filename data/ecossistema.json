@@ -3205,24 +3205,6 @@
    "descricao": "Modelo com pre-commit, CI de qualidade, Definition of Done, ADRs e CHANGELOG para todo repositório."
   },
   {
-   "id": "gitleaks",
-   "camada": "seg",
-   "rotulo": "gitleaks (segredos)",
-   "tipo": "local",
-   "conta": false,
-   "futuro": false,
-   "descricao": "Bloqueia senha ou chave em commit e varre o histórico."
-  },
-  {
-   "id": "trivy",
-   "camada": "seg",
-   "rotulo": "Trivy + Semgrep",
-   "tipo": "local",
-   "conta": false,
-   "futuro": false,
-   "descricao": "Vulnerabilidades em dependências, containers e código, no CI de todo repositório."
-  },
-  {
    "id": "segredos",
    "camada": "seg",
    "rotulo": "Segredos do cofre|(keepassxc-cli)",
@@ -3275,15 +3257,6 @@
    "conta": false,
    "futuro": false,
    "descricao": "Tokenizador, atenção e treino de um GPT pequeno no Kaggle, para dominar a arquitetura."
-  },
-  {
-   "id": "syncthing",
-   "camada": "win",
-   "rotulo": "Syncthing",
-   "tipo": "local",
-   "conta": false,
-   "futuro": false,
-   "descricao": "Pastas sincronizadas entre os seus aparelhos, direto, sem nuvem."
   },
   {
    "id": "adguard",
@@ -6456,12 +6429,7 @@
   },
   {
    "de": "repopadrao",
-   "para": "gitleaks",
-   "rotulo": "inclui"
-  },
-  {
-   "de": "repopadrao",
-   "para": "trivy",
+   "para": "sec",
    "rotulo": "inclui"
   },
   {
@@ -6495,7 +6463,7 @@
    "rotulo": "treina em"
   },
   {
-   "de": "syncthing",
+   "de": "syncth",
    "para": "tail",
    "rotulo": "pela rede privada"
   },

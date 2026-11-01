@@ -333,7 +333,7 @@ def gerar_indice_docs(eco: dict, por_camada: dict) -> str:
     out.append("- [Auditoria: o que faltava](auditoria.md)")
     out.append("- [Sistemas operacionais](sistemas-operacionais.md) · [Nuvem](nuvem.md) · [Mercado](mercado.md) · [Roteiro de estudo](roteiro.md)")
     out.append("- [Peças autorais](pecas-autorais.md) · [Decisões](fora-do-setup.md)")
-    out.append("- [Arquitetura de IA: modelos grandes sem computador maior](ia/README.md) · [Rede própria entre os seus computadores](rede/README.md)")
+    out.append("- [Arquitetura de IA: modelos grandes sem computador maior](ia/README.md) · [Rede própria entre os seus computadores](rede/README.md) · [Custos: construir, abrir ou pagar](custos.md)")
     out.append("- [Marketing, vendas e automação](marketing/README.md): funil, canais sem rosto com voz clonada, publicação automática, tráfego, parcerias, internacional e medição de lucro")
     out.append("- [Editora AMS Silva](editora/README.md): estrutura legal, pipeline de produção dos livros, rigor editorial, identidade visual, avaliação, produtos, lançamento e roteiro")
     out.append("- [Implantação](implantacao/README.md): roteiro que cobre todos os blocos do setup, scripts que instalam e verificadores que conferem; pipeline de conteúdo e stack de automação")

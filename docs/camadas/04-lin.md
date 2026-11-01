@@ -38,6 +38,7 @@ flowchart LR
   end
   subgraph L_nuvem["Nuvem, código e entrega"]
     n_gh["GitHub"]
+    n_repopadrao["Repositório padrão"]
   end
   subgraph L_app["Aplicação: sistemas AM (Aura)"]
     n_api["API ASP.NET Core"]
@@ -90,6 +91,7 @@ flowchart LR
   n_rt -->|"compila e roda"| n_api
   n_rt -->|"Python + uv"| n_pyds
   n_tex -->|"compila o PDF"| n_bci
+  n_repopadrao -->|"inclui"| n_sec
   n_dot -->|"versionado"| n_gh
   n_dot -->|"mesmos dotfiles"| n_parch
   n_arch -->|"mesmos dotfiles"| n_dot
@@ -113,7 +115,7 @@ flowchart LR
 | [Git + SSH + gh](#git) | Local | Versionamento e acesso ao GitHub. | passo 4.4 · Semana 2 · nov/2026; passo 4.6 · Semana 2 · nov/2026 |
 | [.NET 10 · Node · Python](#rt) | Local | Runtimes das APIs, do front e dos scripts. | passo 4.4 · Semana 2 · nov/2026 |
 | [TeX Live](#tex) | Local | Compila o livro e as apostilas. | passo 4.4 · Semana 2 · nov/2026 |
-| [gitleaks · Trivy](#sec) | Local | Barra senha no commit e acha vulnerabilidades em imagens. | passo 4.4 · Semana 2 · nov/2026 |
+| [gitleaks · Trivy](#sec) | Local | Barra senha no commit e acha vulnerabilidades em imagens. | passo 4.4 · Semana 2 · nov/2026; passo 19.2 · Semana 5 · nov/2026; passo 19.3 · Semana 5 · nov/2026 |
 | [dotfiles](#dot) | Local | Configuração versionada do ambiente. | passo 4.7 · Semana 2 · nov/2026 |
 | [Arch + Omarchy (2º NVMe)](#arch) | Local · futuro | Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portátil em pendrive ou SSD USB. | passo 36.1 · 2027, conforme cada compra |
 | [Rotinas agendadas](#rotinas) | Local | Resumo da manhã no Telegram e manutenção semanal, pelo cron do Ubuntu. | passo 16.3 · Semana 4 · nov/2026; passo 16.4 · Semana 4 · nov/2026; passo 16.5 · Semana 4 · nov/2026 |
@@ -229,11 +231,12 @@ Compila o livro e as apostilas.
 
 Barra senha no commit e acha vulnerabilidades em imagens.
 
-**Quando entra:** passo 4.4 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 4.4 · Semana 2 · nov/2026; passo 19.2 · Semana 5 · nov/2026; passo 19.3 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Git + SSH + gh](04-lin.md#git) | Linux (Ubuntu no WSL2, Arch no 2º disco) | pre-commit |
+| ← recebe de | [Repositório padrão](12-nuvem.md#repopadrao) | Nuvem, código e entrega | inclui |
 
 <a id="dot"></a>
 
