@@ -23,7 +23,7 @@
 
 ## Camadas
 
-- [23 · Operação do grupo (esteira, marca, qualidade)](camadas/23-oper.md) (24 blocos)
+- [23 · Operação do grupo (esteira, marca, qualidade)](camadas/23-oper.md) (26 blocos)
 - [22 · Público e canais](camadas/22-pub.md) (12 blocos)
 - [21 · Marketing, automação e medição](camadas/21-mkt.md) (26 blocos)
 - [20 · Plataformas de venda e recebimento](camadas/20-venda.md) (11 blocos)
@@ -34,7 +34,7 @@
 - [15 · Editora AMS Silva (produção de livros)](camadas/15-editora.md) (36 blocos)
 - [14 · Estudo e carreira](camadas/14-est.md) (9 blocos)
 - [13 · Produção de conteúdo](camadas/13-cont.md) (7 blocos)
-- [12 · Nuvem, código e entrega](camadas/12-nuvem.md) (18 blocos)
+- [12 · Nuvem, código e entrega](camadas/12-nuvem.md) (20 blocos)
 - [11 · Aplicação: sistemas AM (Aura)](camadas/11-app.md) (18 blocos)
 - [10 · Observabilidade](camadas/10-obs.md) (8 blocos)
 - [09 · Containers, Kubernetes e infra como código](camadas/09-cnt.md) (12 blocos)

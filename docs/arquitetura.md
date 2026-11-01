@@ -9,7 +9,7 @@ A pilha vai do público (topo) ao hardware (base). Cada linha é a ligação ent
 
 ```mermaid
 flowchart TB
-  L_oper["23 · Operação do grupo (esteira, marca, qualidade)<br/>24 blocos"]
+  L_oper["23 · Operação do grupo (esteira, marca, qualidade)<br/>26 blocos"]
   L_pub["22 · Público e canais<br/>12 blocos"]
   L_mkt["21 · Marketing, automação e medição<br/>26 blocos"]
   L_venda["20 · Plataformas de venda e recebimento<br/>11 blocos"]
@@ -20,7 +20,7 @@ flowchart TB
   L_editora["15 · Editora AMS Silva (produção de livros)<br/>36 blocos"]
   L_est["14 · Estudo e carreira<br/>9 blocos"]
   L_cont["13 · Produção de conteúdo<br/>7 blocos"]
-  L_nuvem["12 · Nuvem, código e entrega<br/>18 blocos"]
+  L_nuvem["12 · Nuvem, código e entrega<br/>20 blocos"]
   L_app["11 · Aplicação: sistemas AM (Aura)<br/>18 blocos"]
   L_obs["10 · Observabilidade<br/>8 blocos"]
   L_cnt["09 · Containers, Kubernetes e infra como código<br/>12 blocos"]
@@ -62,7 +62,7 @@ flowchart TB
 
 | # | Camada | Blocos | Como se liga à camada de baixo |
 |---|---|---|---|
-| 23 | [Operação do grupo (esteira, marca, qualidade)](camadas/23-oper.md) | 24 | Toda oferta passa pela esteira e pelo padrão de qualidade antes de chegar ao público; cada venda e cada trabalho voltam como dado e conteúdo. |
+| 23 | [Operação do grupo (esteira, marca, qualidade)](camadas/23-oper.md) | 26 | Toda oferta passa pela esteira e pelo padrão de qualidade antes de chegar ao público; cada venda e cada trabalho voltam como dado e conteúdo. |
 | 22 | [Público e canais](camadas/22-pub.md) | 12 | Link na bio, vídeo, post, busca e indicação levam a pessoa até o site ou o WhatsApp. |
 | 21 | [Marketing, automação e medição](camadas/21-mkt.md) | 26 | O que é publicado e anunciado aqui leva às plataformas de venda; cada venda volta como dado para o banco de métricas. |
 | 20 | [Plataformas de venda e recebimento](camadas/20-venda.md) | 11 | Cada venda é lançada no carnê-leão e o dinheiro cai na sua conta separada. |
@@ -73,7 +73,7 @@ flowchart TB
 | 15 | [Editora AMS Silva (produção de livros)](camadas/15-editora.md) | 36 | Cada livro sai do pipeline como produto pronto para as plataformas e para a gráfica. |
 | 14 | [Estudo e carreira](camadas/14-est.md) | 9 | O que você estuda vira produto, aula, post e linha no currículo. |
 | 13 | [Produção de conteúdo](camadas/13-cont.md) | 7 | Gravação e edição rodam no notebook; os arquivos finais sobem para as plataformas. |
-| 12 | [Nuvem, código e entrega](camadas/12-nuvem.md) | 18 | git push via SSH leva o código ao GitHub; o Actions testa e publica. |
+| 12 | [Nuvem, código e entrega](camadas/12-nuvem.md) | 20 | git push via SSH leva o código ao GitHub; o Actions testa e publica. |
 | 11 | [Aplicação: sistemas AM (Aura)](camadas/11-app.md) | 18 | A API envia logs, métricas e traces pelo OpenTelemetry. |
 | 10 | [Observabilidade](camadas/10-obs.md) | 8 | Coletor, Prometheus e Grafana rodam como containers. |
 | 09 | [Containers, Kubernetes e infra como código](camadas/09-cnt.md) | 12 | A CLI docker e o kubectl no Ubuntu falam com a engine do Docker no WSL2. |

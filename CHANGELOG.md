@@ -2,6 +2,13 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.26.0] - 2026-11-01
+
+### Adicionado
+- Lucro e prejuízo por ferramenta e por renda (tools/roi/roi.py): atribuição proporcional ao custo, retorno por hora contra a hora mínima, alerta de prejuízo há 2 meses; dados em ~/financas/roi.toml.
+- Vigia semanal no GitHub Actions (.github/workflows/vigia.yml): sites dos clientes de data/vigia.json e segredos no histórico, sem depender do notebook ligado.
+- Operação 24 horas (docs/operacao/24-horas.md) e fase no roteiro: VM grátis da Oracle (limite reduzido em jun/2026), migração de n8n, bot, Kuma e gateway, prospector com aprovação, evals mensais e no máximo 2 tarefas agendadas do Claude. 4 blocos novos.
+
 ## [1.25.0] - 2026-11-01
 
 ### Alterado

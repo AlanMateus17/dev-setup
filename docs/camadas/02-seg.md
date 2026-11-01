@@ -85,9 +85,9 @@ flowchart LR
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Commits assinados (chave SSH)](#sign) | Local | Selo Verified no GitHub: prova que o commit é seu. Usa a chave SSH que você já tem. | passo 4.6 · Semana 2 · nov/2026; passo 28.1 · Semana 11 · jan/2027 |
+| [Commits assinados (chave SSH)](#sign) | Local | Selo Verified no GitHub: prova que o commit é seu. Usa a chave SSH que você já tem. | passo 4.6 · Semana 2 · nov/2026; passo 29.1 · Semana 11 · jan/2027 |
 | [restic (backup criptografado)](#restic) | Local | Backup criptografado e incremental para o disco externo e para a nuvem (ex.: armazenamento do seu plano Google). | passo 7.1 · Semana 3 · nov/2026; passo 7.4 · Semana 3 · nov/2026; passo 10.7 · Semana 4 · nov/2026 |
-| [Chave física (YubiKey)](#ykey) | Físico · futuro | 2FA à prova de phishing para GitHub, Google e Microsoft. | passo 36.5 · 2027, conforme cada compra |
+| [Chave física (YubiKey)](#ykey) | Físico · futuro | 2FA à prova de phishing para GitHub, Google e Microsoft. | passo 37.5 · 2027, conforme cada compra |
 | [TPM + Secure Boot](#tpm) | Físico | Só sistema assinado dá boot. Para usar os pendrives de Kali e Arch, o Secure Boot precisa ser desligado; suspenda o BitLocker antes, senão o Windows pede a chave de recuperação. | passo 3.3 · Semana 1 · out/2026 |
 | [BitLocker](#bitl) | Local | Disco criptografado; chave guardada fora da máquina. | passo 3.3 · Semana 1 · out/2026 |
 | [Defender + Firewall](#def) | Local | Antivírus e bloqueio de rede. | passo 3.4 · Semana 1 · out/2026 |
@@ -106,7 +106,7 @@ flowchart LR
 
 Selo Verified no GitHub: prova que o commit é seu. Usa a chave SSH que você já tem.
 
-**Quando entra:** passo 4.6 · Semana 2 · nov/2026; passo 28.1 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 4.6 · Semana 2 · nov/2026; passo 29.1 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -136,7 +136,7 @@ Backup criptografado e incremental para o disco externo e para a nuvem (ex.: arm
 
 2FA à prova de phishing para GitHub, Google e Microsoft.
 
-**Quando entra:** passo 36.5 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.5 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

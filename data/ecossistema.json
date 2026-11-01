@@ -3284,6 +3284,42 @@
    "conta": false,
    "futuro": false,
    "descricao": "Túnel montado à mão entre duas máquinas, para entender o que o Tailscale faz."
+  },
+  {
+   "id": "roi",
+   "camada": "oper",
+   "rotulo": "Lucro por ferramenta",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Lucro e prejuízo de cada ferramenta paga e de cada renda, mês a mês, contra a hora mínima."
+  },
+  {
+   "id": "vigia",
+   "camada": "nuvem",
+   "rotulo": "Vigia semanal|(GitHub Actions)",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Roda no GitHub sem o notebook ligado: confere os sites dos clientes e procura segredos."
+  },
+  {
+   "id": "vm247",
+   "camada": "nuvem",
+   "rotulo": "VM sempre ligada|(Oracle grátis)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "2 núcleos e 12 GB grátis para n8n, bot, Uptime Kuma e gateway rodarem 24 horas."
+  },
+  {
+   "id": "prospector",
+   "camada": "oper",
+   "rotulo": "Prospector com|aprovação",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Monta listas de negócios a partir de dados públicos e rascunha a abordagem; você aprova cada contato."
   }
  ],
  "conexoes": [
@@ -6481,6 +6517,31 @@
    "de": "wireguard",
    "para": "tail",
    "rotulo": "base de"
+  },
+  {
+   "de": "roi",
+   "para": "painel",
+   "rotulo": "resultado por ferramenta"
+  },
+  {
+   "de": "vigia",
+   "para": "kitsites",
+   "rotulo": "usa o conferir"
+  },
+  {
+   "de": "vm247",
+   "para": "n8n",
+   "rotulo": "roda 24 h"
+  },
+  {
+   "de": "vm247",
+   "para": "tail",
+   "rotulo": "pela rede privada"
+  },
+  {
+   "de": "prospector",
+   "para": "ocrm",
+   "rotulo": "leads aprovados"
   }
  ],
  "fluxos": [

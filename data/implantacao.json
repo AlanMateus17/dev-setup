@@ -2140,6 +2140,112 @@
    ]
   },
   {
+   "id": "f-247",
+   "titulo": "Operação 24 horas",
+   "objetivo": "O que pode rodar sozinho roda o tempo todo: vigia, avisos, prospecção com aprovação, lucro por ferramenta. Sem gastar com o que não dá retorno.",
+   "quando": "Dez/2026 a jan/2027",
+   "passos": [
+    {
+     "id": "op-mapa",
+     "titulo": "Entender o que roda onde: notebook, GitHub e VM",
+     "quem": "voce",
+     "pronto": "Você sabe o que para quando o notebook desliga",
+     "tempo_min": 10,
+     "blocos": [
+      "vigia",
+      "vm247"
+     ],
+     "fora": "Leitura: docs/operacao/24-horas no fim deste passo. Notebook desligado = WSL, n8n local e cron parados; GitHub Actions e a VM continuam."
+    },
+    {
+     "id": "op-vigia",
+     "titulo": "Ligar o vigia semanal no GitHub (sites dos clientes e segredos)",
+     "quem": "voce",
+     "pronto": "Execução manual do workflow 'vigia' verde",
+     "tempo_min": 10,
+     "blocos": [
+      "vigia"
+     ],
+     "fora": "Já está no repositório. Coloque as URLs dos sites dos clientes em data/vigia.json e rode em Actions > vigia > Run workflow."
+    },
+    {
+     "id": "op-roi",
+     "titulo": "Preencher o lucro do mês e ver o resultado de cada ferramenta",
+     "quem": "script",
+     "pronto": "Relatório com prejuízos marcados",
+     "tempo_min": 15,
+     "blocos": [
+      "roi"
+     ],
+     "comando": "mkdir -p ~/financas && cp -n ~/dev/dev-setup/tools/roi/roi.example.toml ~/financas/roi.toml && nano ~/financas/roi.toml && python3 ~/dev/dev-setup/tools/roi/roi.py",
+     "nota": "Todo dia 1: receita, custos e horas (do ActivityWatch) de cada renda. Ferramenta no prejuízo por 2 meses: cortar, trocar ou adiar."
+    },
+    {
+     "id": "op-vm",
+     "titulo": "Criar a VM grátis da Oracle (2 núcleos, 12 GB) e pôr no Tailscale",
+     "quem": "voce",
+     "pronto": "VM acessível pelo Tailscale, sem porta aberta na internet",
+     "tempo_min": 60,
+     "blocos": [
+      "vm247",
+      "tail"
+     ],
+     "fora": "Cadastro no navegador (pede cartão para verificação; o plano Always Free não cobra). A Oracle reduziu o limite grátis em jun/2026: confira antes."
+    },
+    {
+     "id": "op-migrar",
+     "titulo": "Levar n8n, bot do Telegram, Uptime Kuma e gateway para a VM",
+     "quem": "claude",
+     "pronto": "Avisos e automações funcionando com o notebook desligado",
+     "tempo_min": 180,
+     "blocos": [
+      "vm247",
+      "n8n",
+      "tg",
+      "kuma",
+      "litellm"
+     ],
+     "comando": "cd ~/dev/dev-setup && claude \"Passo op-migrar do roteiro: Levar n8n, bot do Telegram, Uptime Kuma e LiteLLM para a VM da Oracle pelo Tailscale, com backup e segredos do KeePassXC\""
+    },
+    {
+     "id": "op-prospector",
+     "titulo": "Prospector: lista de negócios de dados públicos e abordagem para você aprovar",
+     "quem": "claude",
+     "pronto": "Lista semanal com 20 negócios e rascunhos; nada enviado sem você",
+     "tempo_min": 120,
+     "blocos": [
+      "prospector",
+      "ocrm"
+     ],
+     "comando": "cd ~/dev/dev-setup && claude \"Passo op-prospector do roteiro: Construir o prospector: lista de negócios locais a partir de dados públicos, rascunho de abordagem, aprovação manual e registro no CRM com base legal LGPD\"",
+     "nota": "Nada de disparo em massa no WhatsApp: viola as regras e bloqueia o número. Contato um a um, com opção de não receber mais."
+    },
+    {
+     "id": "op-treino",
+     "titulo": "Manter os agentes afiados: reindexar as notas e rodar os evals todo mês",
+     "quem": "voce",
+     "pronto": "Evals do mês iguais ou melhores",
+     "tempo_min": 30,
+     "blocos": [
+      "promptfoo",
+      "rag"
+     ],
+     "fora": "Hábito mensal. Treino (fine-tuning) só a cada trimestre e só se os evals mostrarem ganho."
+    },
+    {
+     "id": "op-tarefas",
+     "titulo": "Escolher no máximo 2 tarefas agendadas do Claude (ex.: analista semanal)",
+     "quem": "voce",
+     "pronto": "Tarefas criadas e com resultado útil",
+     "tempo_min": 20,
+     "blocos": [
+      "sched"
+     ],
+     "fora": "Tarefas agendadas gastam o mesmo limite do Claude: só as que pagam o próprio gasto. Peça numa conversa nova para criar."
+    }
+   ]
+  },
+  {
    "id": "f11",
    "titulo": "Pipeline de conteúdo",
    "objetivo": "Gravou ou escreveu, as peças aparecem na fila de aprovação.",

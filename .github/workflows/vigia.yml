@@ -1,0 +1,42 @@
+# Vigia 24 horas que não depende do seu notebook ligado: roda no GitHub toda segunda às 6h (Brasília)
+# e quando você pedir. Confere os sites dos clientes listados em data/vigia.json (só sites SEUS e de clientes,
+# nunca de terceiros) e procura segredos no histórico deste repositório. Se algo falhar, o GitHub te avisa por e-mail.
+name: vigia
+on:
+  schedule:
+    - cron: "0 9 * * 1"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  vigia:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Sites dos clientes
+        run: |
+          python - <<'PY'
+          import json, subprocess, sys
+          sites = json.load(open("data/vigia.json"))["sites"]
+          falhas = 0
+          for i, url in enumerate(sites):
+              r = subprocess.run([sys.executable, "tools/kitsites/conferir.py", url, "--saida", f"laudo-{i}.md", "--minimo", "70"])
+              falhas += r.returncode != 0
+          print(f"{len(sites)} sites conferidos, {falhas} abaixo de 70.")
+          sys.exit(1 if falhas else 0)
+          PY
+      - name: Segredos no histórico
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: laudos
+          path: laudo-*.md
+          if-no-files-found: ignore
