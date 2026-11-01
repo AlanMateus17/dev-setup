@@ -401,7 +401,7 @@ Primeiro as que destravam as rendas de agora e as próximas; depois as que destr
 | 74 | Plugin WordPress com versão Pro · **nova** | AMtech Software | Ideia | Digital | 9 | Escolher o problema a partir dos pedidos dos clientes de sites | passo 38.21 · Fev a dez/2027, uma oferta por vez |
 | 75 | Avaliação de respostas de IA (DataAnnotation, Outlier) · **nova** | AMtech Digital (serviços remotos e B2B) | Ideia | Local | 8 | Fazer o cadastro e o teste de entrada (quem pede pagamento para você entrar é golpe) | passo 11.3 · Semana 4 · nov/2026 |
 | 76 | Colônia de férias tech (robótica e programação) · **nova** | AMtech Educação · Instituto AMS | Ideia | Local | 8 | Só em 2027, em janeiro ou julho | passo 48.9 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| 77 | Consultoria de investimentos (AM Rendara premium, com sócia certificada) · **nova** | AMtech Economia (finanças e empreendedorismo) | Ideia | Produtizado | 8 | Só quando a sócia estiver certificada e registrada | passo 49.6 · Contínuo, desde a semana 2 |
+| 77 | Consultoria de investimentos (AM Rendara premium, com sócia certificada) · **nova** | AMtech Economia (finanças e empreendedorismo) | Ideia | Produtizado | 8 | Só quando a sócia estiver certificada e registrada | passo 49.5 · Contínuo, desde a semana 2 |
 | 78 | Edição de vídeo para lojas e criadores · **nova** | AMtech Digital (serviços remotos e B2B) | Ideia | Produtizado | 8 | Nenhum: a IA de corte fica só no seu canal | passo 11.8 · Semana 4 · nov/2026 |
 | 79 | Kits e placas de robótica (Tindie e Mercado Livre) · **nova** | AMtech Campo (presencial, por parceiros) | Ideia | Produtizado | 8 | Validar 1 kit com pré-venda | passo 48.10 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
 | 80 | Licença do ByteSDCoin para escolas (sem aposta) · **nova** | AMtech Educação · Instituto AMS | Ideia | Produtizado | 8 | Revisão jurídica e um piloto em outra escola | passo 38.21 · Fev a dez/2027, uma oferta por vez |
@@ -418,12 +418,12 @@ Primeiro as que destravam as rendas de agora e as próximas; depois as que destr
 | 91 | Português para estrangeiros (Preply, italki) · **nova** | AMtech Educação · Instituto AMS | Ideia | Local | 5 | Perfil quando o inglês chegar ao básico | passo 38.22 · Fev a dez/2027, uma oferta por vez |
 | 92 | Sites de nicho com anúncios · **nova** | AMtech Mídia | Ideia | Digital | 5 | Nenhum | passo 11.8 · Semana 4 · nov/2026 |
 | 93 | Aplicador e fiscal de provas · **nova** | AMtech Digital (serviços remotos e B2B) | Ideia | Local | 4 | Nenhum | passo 11.8 · Semana 4 · nov/2026 |
-| 94 | Bug bounty e pentest · **nova** | AMtech Digital (serviços remotos e B2B) | Ideia | Local | 4 | Concluir o eJPT | passo 49.5 · Contínuo, desde a semana 2 |
+| 94 | Bug bounty e pentest · **nova** | AMtech Digital (serviços remotos e B2B) | Ideia | Local | 4 | Concluir o eJPT | passo 49.4 · Contínuo, desde a semana 2 |
 | 95 | [Sushi (delivery)](../negocios/07-sushi.md) | Negócios físicos | Ideia | Local | 4 | Fase C1 | passo 48.6 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
 | 96 | [Cafeteria](../negocios/08-cafeteria.md) | Negócios físicos | Ideia | Local | 3 | Fase C3, dentro da padaria | passo 48.8 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
 | 97 | Casa inteligente para clientes (Home Assistant) · **nova** | AMtech Campo (presencial, por parceiros) | Ideia | Produtizado | 3 | Montar primeiro a sua casa | passo 48.9 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
 | 98 | Fotos de produto para lojas do Mercado Livre · **nova** | AMtech Campo (presencial, por parceiros) | Ideia | Local | 3 | Nenhum | passo 11.8 · Semana 4 · nov/2026 |
-| 99 | Perito em informática judicial · **nova** | AMtech Digital (serviços remotos e B2B) | Ideia | Local | 3 | Estudar perícia forense | passo 49.5 · Contínuo, desde a semana 2 |
+| 99 | Perito em informática judicial · **nova** | AMtech Digital (serviços remotos e B2B) | Ideia | Local | 3 | Estudar perícia forense | passo 49.4 · Contínuo, desde a semana 2 |
 | 100 | Testes de software pagos por bug · **nova** | AMtech Digital (serviços remotos e B2B) | Ideia | Local | 3 | Nenhum | passo 11.8 · Semana 4 · nov/2026 |
 | 101 | [Padaria com café da manhã e almoço](../negocios/09-padaria-e-almoco.md) | Negócios físicos | Ideia | Local | 1 | Fase C2 | passo 48.7 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
 | 102 | Motos e carros: compra e revenda · **nova** | Negócios físicos | Ideia | Local | -1 | Nenhum antes de capital próprio, CNPJ e vistoria cautelar | passo 48.10 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
