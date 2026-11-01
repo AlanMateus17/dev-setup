@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-48 fases, 373 passos, cerca de **1201 h 03 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+48 fases, 378 passos, cerca de **1207 h 08 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
 **Todo o planejamento está aqui:** os 369 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 102 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 281 dos 373 passos (268 h 53 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 286 dos 378 passos (274 h 58 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -28,7 +28,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [11 · Arsenal de rendas: regras e as 3 de agora](#f-arsenal) | Semana 4 · nov/2026 | 8 | 7 h 50 min |
 | [12 · Automações do arsenal](#f-automacoes) | Nov/2026 em diante, uma por vez, na ordem de desbloqueio | 12 | 24 h 00 min |
 | [13 · Kit de sites com IA da Hostinger](#f-sites) | Semanas 4 e 5 · nov/2026 | 5 | 5 h 00 min |
-| [14 · Escola: Fábrica de aulas e documentos](#f-escola) | Semanas 5 e 6 · nov/2026 | 7 | 2 h 42 min |
+| [14 · Escola: Fábrica de aulas e documentos](#f-escola) | Semanas 5 e 6 · nov/2026 | 9 | 7 h 42 min |
 | [15 · Departamento financeiro pessoal](#f-financeiro) | Dez/2026 | 4 | 1 h 12 min |
 | [16 · Rotina automatizada](#f-rotina) | Semana 4 · nov/2026 | 5 | 34 min |
 | [17 · Comandos remotos pelo Telegram](#f-remoto) | Semana 5 · nov/2026 | 5 | 35 min |
@@ -39,7 +39,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [22 · Rede própria entre os seus computadores](#f-rede) | Semana 6 · nov/2026 | 6 | 3 h 10 min |
 | [23 · Operação 24 horas](#f-247) | Dez/2026 a jan/2027 | 8 | 7 h 25 min |
 | [24 · Dados e crescimento: medir, testar e vender mais](#f-crescimento) | Com a primeira página de venda no ar (jan/2027) e por etapas | 8 | 9 h 30 min |
-| [25 · Pipeline de conteúdo](#f11) | Semana 5 · nov/2026 | 6 | 1 h 24 min |
+| [25 · Pipeline de conteúdo](#f11) | Semana 5 · nov/2026 | 7 | 1 h 54 min |
 | [26 · Estúdio de conteúdo](#f12) | Semana 5 · dez/2026 | 5 | 3 h 20 min |
 | [27 · Contas, canais e sites](#f13) | Semanas 6 e 7 · dez/2026 | 13 | 9 h 00 min |
 | [28 · Vendas e finanças no CPF](#f14) | Semanas 8 a 10 · dez/2026 a jan/2027 | 20 | 12 h 10 min |
@@ -61,7 +61,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [44 · Distribuído, plataforma e segunda nuvem](#f30) | 2028 | 6 | 69 h 00 min |
 | [45 · Infraestrutura própria](#f31) | 2028, quando o grupo pedir | 3 | 17 h 00 min |
 | [46 · Negócios do grupo em Barbacena](#f32) | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano · **gatilho:** Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta | 10 | 483 h 00 min |
-| [47 · Estudo contínuo](#f33) | Contínuo, desde a semana 2 | 11 | 3 h 15 min |
+| [47 · Estudo contínuo](#f33) | Contínuo, desde a semana 2 | 13 | 3 h 50 min |
 
 <a id="f0"></a>
 
@@ -1503,6 +1503,32 @@ python3 ~/dev/dev-setup/tools/documentos/verificar.py ~/Downloads/trabalho.docx 
 - **Oferta:** Verificador e formatador ABNT automático (TCC, artigos, relatórios) · Conferência automática de documentos para coordenações e escolas
 - Implanta: Fábrica de aulas
 
+### 14.8 Revisão de fim de ano das turmas (material de revisão e avaliação, sem dados de aluno)
+
+**Claude com você** · 2 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/aulas && claude "Passo fa-revisao-ano do roteiro: Montar a revisão de fim de ano de cada disciplina a partir das ementas, no modelo da escola, sem nenhum dado de aluno"
+```
+
+- [ ] **Pronto quando:** Material de revisão de cada disciplina pronto e conferido
+- Implanta: Fábrica de aulas
+
+### 14.9 Continuar as apostilas de Noções de Robótica depois da Aula 40, pela Fábrica
+
+**Claude com você** · 3 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/ensino-ti && claude "Passo fa-robotica do roteiro: Continuar as apostilas de Noções de Robótica a partir da Aula 41, no mesmo padrão das anteriores, com código Arduino testado"
+```
+
+- [ ] **Pronto quando:** Apostilas do próximo bimestre no mesmo padrão visual, no repositório ensino-ti
+- Implanta: Fábrica de aulas
+
 <a id="f-financeiro"></a>
 
 ## 15 · Departamento financeiro pessoal
@@ -2469,6 +2495,14 @@ cp /mnt/c/Users/SEU_USUARIO/Videos/NOME-DA-AULA.mp4 ~/AMtech/entrada/aulas/
 
 - [ ] **Pronto quando:** Peças da aula na fila em até 15 minutos depois de transcrita
 - Implanta: Whisper (local) · Flywheel de conteúdo
+
+### 25.7 Revisar e publicar os posts sobre o setup (feed, story e capa do blog)
+
+**Você** · 30 min
+
+- **Fora do terminal:** As imagens estão no artefato de design 'Post: montando meu setup'. Publicação só com a sua aprovação, sem revelar a arquitetura do setup.
+- [ ] **Pronto quando:** Posts revisados por você e publicados nas suas redes e no blog
+- Implanta: Pipeline de conteúdo
 
 <a id="f12"></a>
 
@@ -4612,6 +4646,20 @@ Start-Process 'https://education.github.com/discount_requests/application'
 - **Fora do terminal:** Horizonte longo; entra depois do Passo 9 do plano de estudos.
 - [ ] **Pronto quando:** Marco do ano definido
 
+### 47.12 Vigiar editais de professor EBTT (IF Sudeste MG, campus Barbacena) e de professor efetivo de MG
+
+**Você** · 20 min
+
+- **Fora do terminal:** A busca semanal de editais (passo au-editais) inclui esses concursos. Decisão sua: 40 h com dedicação exclusiva limita as outras rendas; existem vagas de 20 h.
+- [ ] **Pronto quando:** Editais na busca semanal e decisão registrada a cada edital
+
+### 47.13 Encaixar as atividades da Licenciatura em Matemática na Rotina
+
+**Você** · 15 min
+
+- **Fora do terminal:** Rotina do Caixa da Casa (artefato), fora do terminal.
+- [ ] **Pronto quando:** Aulas, atividades e provas da faculdade na Rotina do Caixa da Casa
+
 <a id="quando-entra-cada-bloco"></a>
 
 ## Quando entra cada bloco
@@ -4643,7 +4691,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Roteiro de implantação | 0.6, 30.4 | Antes de tudo · semana 1 (out/2026); Semana 11 · jan/2027 |
 | Instaladores (PowerShell e bash) | 3.1, 4.4 | Semana 1 · out/2026; Semana 2 · nov/2026 |
 | Verificadores | 3.9, 4.10, 10.3, 30.4 | Semana 1 · out/2026; Semana 2 · nov/2026; Semana 4 · nov/2026; Semana 11 · jan/2027 |
-| Pipeline de conteúdo | 25.4, 25.5, 30.2 | Semana 5 · nov/2026; Semana 11 · jan/2027 |
+| Pipeline de conteúdo | 25.4, 25.5, 25.7, 30.2 | Semana 5 · nov/2026; Semana 11 · jan/2027 |
 | Acervo (seus documentos) | 8.3, 8.4, 8.5, 36.3 | Semanas 3 e 4 · nov/2026; Fev a dez/2027, uma oferta por vez |
 | Agente revisor de qualidade | 19.6, 20.5 | Semana 5 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
 | Lucro por ferramenta | 23.3 | Dez/2026 a jan/2027 |
@@ -4851,7 +4899,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Canva · Krita · Inkscape | 3.2, 26.4 | Semana 1 · out/2026; Semana 5 · dez/2026 |
 | Whisper (local) | 4.4, 25.6 | Semana 2 · nov/2026; Semana 5 · nov/2026 |
 | Voz clonada (ElevenLabs) | 26.5 | Semana 5 · dez/2026 |
-| Fábrica de aulas | 14.1, 14.2, 14.3, 14.4, 14.5, 14.6, 14.7 | Semanas 5 e 6 · nov/2026 |
+| Fábrica de aulas | 14.1, 14.2, 14.3, 14.4, 14.5, 14.6, 14.7, 14.8, 14.9 | Semanas 5 e 6 · nov/2026 |
 | Penpot (design) | 24.8 | Com a primeira página de venda no ar (jan/2027) e por etapas |
 
 ### Nuvem, código e entrega

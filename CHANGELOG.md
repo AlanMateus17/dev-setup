@@ -2,6 +2,12 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.31.0] - 2026-11-01
+
+### Adicionado
+- Passos que faltavam: revisão de fim de ano das turmas (fa-revisao-ano), apostilas de robótica a partir da Aula 41 (fa-robotica), publicação dos posts do setup (ct-posts-setup), editais de professor EBTT e efetivo de MG (est-ebtt) e Licenciatura na Rotina (est-licenciatura).
+- CONTINUAR.md reescrito: contexto completo (regras, onde está tudo, o que já foi feito, decisões, ferramentas com comandos, todas as fases, pendências e como pedir ajuda).
+
 ## [1.30.0] - 2026-11-01
 
 ### Adicionado

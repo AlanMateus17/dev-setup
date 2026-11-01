@@ -1,46 +1,122 @@
-# CONTINUAR: contexto para começar qualquer conversa nova
+# CONTINUAR: contexto completo para qualquer conversa nova
 
-Cole este arquivo (ou a saída de `python3 tools/sessao/contexto.py --inicio`) na primeira mensagem de uma conversa nova com o Claude ou outra IA. Atualize-o quando uma decisão grande mudar; as decisões do dia a dia vão para o ESTADO.md.
+Cole este arquivo na primeira mensagem de uma conversa nova (ou rode `python3 ~/dev/dev-setup/tools/sessao/contexto.py --inicio | clip.exe`). Decisões do dia a dia vão para o ESTADO.md; este arquivo muda quando algo grande muda. Última revisão: 01/11/2026.
 
-## Quem sou e como trabalhar comigo
-- Alan Mateus, professor de informática (EMTI) em Barbacena-MG, também trabalho num restaurante, fundador da Grupo AMtech Digital. Tenho TDAH.
-- Seja direto e honesto: diga quando algo não é possível.
-- Comandos de uma linha, sempre dizendo onde rodar: PowerShell (PS C:\>) ou Ubuntu (alanmateus@...$). Eu já errei muito rodando comando no terminal errado.
-- Senhas são digitadas à mão no terminal, nunca coladas. Nunca peça nem leia minhas senhas. Segredos ficam só no KeePassXC.
-- Nada de dado de aluno em IA. Nada publicado ou enviado em meu nome sem aprovação. Não é assessoria financeira.
-- Uma conversa = uma tarefa. No fim, me dê 5 linhas para o ESTADO.md.
+## 1. Quem sou e como trabalhar comigo
+- Alan Mateus, Barbacena-MG. Professor de informática numa escola EMTI (9 disciplinas, Técnico em Informática e em Desenvolvimento de Sistemas), trabalho também num restaurante (terça a domingo à noite), fundador da Grupo AMtech Digital. Formado em ADS, cursando Licenciatura em Matemática. Tenho TDAH.
+- Seja direto e honesto: diga quando algo não é possível ou não vale a pena. Sem enrolação.
+- Comandos de UMA linha, sempre dizendo ONDE rodar: PowerShell do Windows (PS C:\>) ou Ubuntu do WSL (alanmateus@...$). Já errei muito rodando comando no terminal errado.
+- Não sugerir Ctrl+C para copiar dentro do terminal (cancela). Senhas são digitadas à mão, nunca coladas.
+- Nunca peça, leia ou guarde minhas senhas, códigos de recuperação ou chave do BitLocker. Segredos só no KeePassXC.
+- Nada de dado de aluno (nome, nota, foto, voz) em IA. Não vender para alunos menores. Nada publicado ou enviado em meu nome sem aprovação.
+- Não é assessoria financeira: aplique as MINHAS regras (cascata, ARCA, Barsi, Bazin, Graham, Buffett); a decisão é minha.
+- Documentos financeiros pessoais (contracheques, extratos, IRPF) não vão para o GitHub nem para IA na nuvem.
+- Não copiar conteúdo de VHSlins, livros ou cursos pagos (Udemy, DIO, Alura) para treinar IA ou produtos.
+- Mudar configurações do GitHub (ex.: Dependabot) só com o meu "pode ligar".
+- Commits terminam com as linhas de coautoria do Claude e da sessão.
+- Uma conversa = uma tarefa. Termine me dando 5 linhas para o ESTADO.md.
 
-## O setup (fonte da verdade)
-- Repositório privado github.com/AlanMateus17/dev-setup (branch main, CI verde). No PC: ~/dev/dev-setup no Ubuntu (WSL) e C:\Users\alanmateus\dev-setup no Windows.
-- Dados em data/*.json geram a documentação (não editar arquivo gerado). Números atuais: `python3 tools/sessao/contexto.py --resumo`.
-- Acompanhamento (artefato com o progresso marcado): https://claude.ai/artifact/CJ27fg9sycvhqZ2s9GSbjd
-- Portfólio (100 rendas com veredito): https://claude.ai/artifact/Mbj1yj6LRmUnf3SJLrTfaB
-- Mapa: https://claude.ai/artifact/BTUyCQfojw6cngvR5W5oAB · Ecossistema: https://claude.ai/artifact/4Ze2J4Y1oKgAkjuQmbAAG1
-- Pacote de contexto de um passo: `python3 ~/dev/dev-setup/tools/sessao/contexto.py --passo ID | clip.exe` (ou `--resumo`).
+## 2. Onde está tudo
+- Repositório privado: github.com/AlanMateus17/dev-setup (branch main, CI verde). No PC: ~/dev/dev-setup (Ubuntu/WSL) e C:\Users\alanmateus\dev-setup (Windows).
+- Regra do repositório: data/*.json → geradores → docs/. Nunca editar arquivo gerado. Toda mudança: dados ou ferramenta, geradores, testes, CHANGELOG, commit, push, CI verde.
+- Números agora: 48 fases, 378 passos, 369 blocos, 102 rendas, 71 softwares. O CI recusa passo sem comando ou motivo, bloco fora do roteiro e renda sem passo.
+- Artefatos: Acompanhamento (progresso marcado) https://claude.ai/artifact/CJ27fg9sycvhqZ2s9GSbjd · Portfólio de rendas https://claude.ai/artifact/Mbj1yj6LRmUnf3SJLrTfaB · Mapa https://claude.ai/artifact/BTUyCQfojw6cngvR5W5oAB · Ecossistema https://claude.ai/artifact/4Ze2J4Y1oKgAkjuQmbAAG1 · Plano de automação (documento) https://claude.ai/artifact/XCzSQNb28yFgPCymRV9wrL · Posts do setup (design) https://claude.ai/artifact/V8826RzNePgWKuy6GuYPvd
+- Guias no repositório: docs/implantacao/roteiro.md (passo a passo), docs/operacao/portfolio.md (rendas e automações), docs/operacao/softwares.md, docs/operacao/kit-sites.md, docs/custos.md (o que pagar, rotas de IA), docs/operacao/24-horas.md, docs/operacao/sessoes-curtas.md, docs/ia/README.md, docs/rede/README.md.
 
-## Já feito no meu notebook
-Fases 0, 3, 4 e 5 (diagnóstico, Windows, Linux/WSL com Docker e gh, GitHub e CI), backup inicial, Windows Update, 2FA do GitHub, KeePassXC instalado com os cofres copiados para o pendrive.
+## 3. Já feito no meu notebook (Acer Nitro, 32 GB, GTX 1650)
+Fases 0, 3, 4 e 5 completas: diagnóstico, Windows (winget, BitLocker, Defender, extensões do VS Code), Ubuntu no WSL com Docker, gh e SSH, repositório no GitHub com CI. Também: backup inicial, Windows Update, 2FA do GitHub, KeePassXC instalado com os cofres copiados para o pendrive D:\Cofre. Falta: senhas (2.2 a 2.4), mesa (1.2), e todas as fases a partir da 6.
 
-## Decisões principais
-- Arsenal: 100 fontes de renda. Só 3 em "agora": mini-curso, sites com manutenção mensal, avaliação de IA. Próximas: AM Mentor, aulas em turma, revenda de notebooks, Fábrica para professores, Setup profissional, plano de negócios.
-- Regras: hora mínima R$ 45 (a confirmar), teto de 7 h extras por semana (quinta 13h–16h30 negócio, sábado 9h30–12h30 produção), portão de 3 meses se pagando, corte abaixo da hora mínima por 2 meses.
-- Marcas: AMtech Educação, Software, Digital, Campo (presencial por parceiros), Mídia, Economia, Patrimônio.
-- IAs: Claude Pro principal; Google AI Plus no lugar do Google One; ChatGPT Go grátis pelo Nubank; DeepSeek/OpenRouter/Gemini API grátis só para rascunho sem dado sensível; Grok cortado; Claude Max só quando uma renda passar no portão.
-- Custos: construir o que diferencia, código aberto para infraestrutura, pagar só o que vale mais que minhas horas (docs/custos.md).
-- Ferramentas prontas no repositório: kit de sites (Hostinger IA, 26 prompts, conferir.py, contrato modelo), avaliador de templates, radar de revenda, organizadores (Downloads, CSV de senhas para o KeePassXC), bot do Telegram, financeiro local (~/financas), Fábrica de aulas (preencher .docx da escola), rotinas (resumo da manhã, manutenção), repositório padrão (pre-commit, gitleaks, Trivy, Semgrep), segredos via keepassxc-cli, teste de restauração, gateway LiteLLM com evals, calculadora de modelos (cabe.py), lucro por ferramenta (roi.py), vigia semanal no GitHub Actions.
+## 4. Decisões principais
+- Arsenal de 102 rendas, cada uma com veredito (agora, próxima, fila, 2027, decidir, descartar), % automático e motivo.
+- AGORA (máximo 3): Mini-curso Lógica de Programação, Sites e lojas para pequenas empresas, Avaliação de respostas de IA (DataAnnotation, Outlier).
+- PRÓXIMAS, em ordem: 1. AM Mentor: banco de exercícios com correção; 2. Aulas particulares; 3. Notebooks e PCs: comprar, consertar e revender; 4. Fábrica de documentos para professores de MG (assinatura); 5. Setup profissional (curso, template e configuração remota); 6. Plano de negócios e viabilidade financeira para quem vai abrir empresa; 7. Verificador e formatador ABNT automático (TCC, artigos, relatórios).
+- Regras: hora mínima R$ 45 por hora minha (a confirmar), teto de 7 h extras por semana (quinta 13h–16h30 negócio, sábado 9h30–12h30 produção), portão = 3 meses se pagando, corte = abaixo da hora mínima por 2 meses. Domingo, sono e cães são intocáveis.
+- Marcas: AMtech Educação, Software, Digital, Campo (presencial por parceiros), Mídia, Economia, Patrimônio; Editora AMS Silva à parte.
+- Harumakis/congelados: RETIRADOS do plano.
+- Documentos da escola e TCC: Fábrica de documentos para professores (assinatura), verificador e formatador ABNT online (por documento) e conferência para coordenações. Só formatar e conferir; nunca escrever trabalho por aluno.
+- IAs: Claude Pro principal; Google AI Plus (R$ 24,99, 200 GB) no lugar do Google One; ChatGPT Go grátis pelo Nubank; NotebookLM para rascunho de aulas; DeepSeek, OpenRouter e Gemini API grátis só para rascunho sem dado sensível; Z.AI GLM para testar como reserva de código; Perplexity grátis; Grok cortado; Claude Max só quando uma renda passar no portão.
+- Custos: construir o que me diferencia, código aberto para infraestrutura, pagar só o que vale mais que minhas horas. Cortar IAs pagas repetidas; Vercel não serve para projeto comercial (usar Cloudflare Pages, GitHub Pages ou Hostinger); GitHub Education (estudante) para Copilot grátis.
+- 24 horas sem pagar: GitHub Actions (vigia semanal já ativo), VM grátis da Oracle (2 núcleos, 12 GB desde jun/2026) para n8n, bot, Uptime Kuma e gateway; notebook para estudo e modelos locais.
+- Modelos grandes sem PC maior: quantização, MoE, cluster na rede (llama.cpp RPC), QLoRA no Kaggle ou GPU alugada com teto, destilação; Strata (do Akita) só com GPU de 12 GB+.
+- Prospecção: lista semanal de dados públicos com aprovação minha; nunca disparo em massa no WhatsApp. "Procurar buracos" só nos meus sistemas e de clientes com contrato.
 
-## Pendências minhas (confira o ESTADO.md para a versão mais nova)
-1. Senhas: passo kp-organizar e 2.4 (exportar do Chrome, importar no KeePassXC, apagar o CSV, copiar o cofre para o pendrive).
-2. ActivityWatch (winget) e cadastro na avaliação de IA (passo ar-ia).
-3. Confirmar R$ 45 e 7 h.
-4. Templates do Rei dos Sites: comprei? onde estão? (o avaliador está pronto; repositório só privado).
+## 5. Ferramentas prontas no repositório (comandos no Ubuntu)
+- Pacote de contexto: tools/sessao/contexto.py (--inicio, --resumo, --passo ID)
+- Kit de sites: tools/kitsites/conferir.py URL (laudo); prompts e pacotes em docs/operacao/kit-sites.md; contrato em docs/operacao/contrato-sites-modelo.md
+- Avaliador de templates: tools/avaliador/avaliar.py ~/templates (não roda código de terceiros)
+- Verificador de documentos: tools/documentos/verificar.py arquivo.docx [--corrigir] [--perfil escola]
+- Fábrica de aulas: tools/fabrica/plano_semanal.py e preencher.py; esqueleto do repositório privado "aulas" em infra/templates/repo-aulas
+- Radar de revenda: tools/radar/radar.py anuncios.csv (preços em ~/.config/amtech/radar.toml)
+- Organizadores: tools/organizar/downloads.py e senhas_csv.py (prepara o CSV do Chrome para o KeePassXC sem mostrar senhas)
+- Bot do Telegram: tools/remoto/bot.py (só o meu chat, comandos fixos)
+- Financeiro local: tools/financeiro/financeiro.py iniciar | importar | mes (dados em ~/financas)
+- Lucro por ferramenta: tools/roi/roi.py (dados em ~/financas/roi.toml)
+- Calculadora de modelos: tools/ia/cabe.py 32
+- Rotinas: scripts/wsl/resumo-manha.sh, manutencao-semanal.sh, agendar.sh --aplicar
+- Padrão de elite: scripts/wsl/padronizar-repo.sh --todos, segredos.sh, teste-restauracao.sh, regras-ia.sh
+- Serviços Docker: infra/automacao (n8n, Grafana...), infra/ia (gateway LiteLLM), infra/casa (Home Assistant, Paperless, Grocy), infra/rede (AdGuard), infra/dados (Metabase)
+
+## 6. Fases do roteiro
+| # | Fase | Quando | Passos |
+|---:|---|---|---:|
+| 0 | Diagnóstico: o que você já tem | Antes de tudo · semana 1 (out/2026) | 6 |
+| 1 | Preparar | Semana 1 · out/2026 | 4 |
+| 2 | Senhas: recuperar, trocar e guardar | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026 | 16 |
+| 3 | Windows | Semana 1 · out/2026 | 9 |
+| 4 | Linux (WSL2) | Semana 2 · nov/2026 | 10 |
+| 5 | GitHub e CI | Semana 2 · nov/2026 | 5 |
+| 6 | Agentes de IA | Semana 2 · nov/2026 | 7 |
+| 7 | Backup e segurança | Semana 3 · nov/2026 | 4 |
+| 8 | Acervo: tudo o que você já tem | Semanas 3 e 4 · nov/2026 | 7 |
+| 9 | Claude e assistentes | Semana 4 · nov/2026 | 4 |
+| 10 | Automação e medição | Semana 4 · nov/2026 | 8 |
+| 11 | Arsenal de rendas: regras e as 3 de agora | Semana 4 · nov/2026 | 8 |
+| 12 | Automações do arsenal | Nov/2026 em diante, uma por vez, na ordem de desbloqueio | 12 |
+| 13 | Kit de sites com IA da Hostinger | Semanas 4 e 5 · nov/2026 | 5 |
+| 14 | Escola: Fábrica de aulas e documentos | Semanas 5 e 6 · nov/2026 | 9 |
+| 15 | Departamento financeiro pessoal | Dez/2026 | 4 |
+| 16 | Rotina automatizada | Semana 4 · nov/2026 | 5 |
+| 17 | Comandos remotos pelo Telegram | Semana 5 · nov/2026 | 5 |
+| 18 | Casa e vida | Dez/2026 | 6 |
+| 19 | Padrão de elite em todo repositório | Semana 5 · nov/2026 | 9 |
+| 20 | Agentes e IA com qualidade medida | Semana 6 · nov/2026 a dez/2026 | 15 |
+| 21 | Modelos grandes sem computador maior | 2027, depois do primeiro fine-tuning de 8B | 6 |
+| 22 | Rede própria entre os seus computadores | Semana 6 · nov/2026 | 6 |
+| 23 | Operação 24 horas | Dez/2026 a jan/2027 | 8 |
+| 24 | Dados e crescimento: medir, testar e vender mais | Com a primeira página de venda no ar (jan/2027) e por etapas | 8 |
+| 25 | Pipeline de conteúdo | Semana 5 · nov/2026 | 7 |
+| 26 | Estúdio de conteúdo | Semana 5 · dez/2026 | 5 |
+| 27 | Contas, canais e sites | Semanas 6 e 7 · dez/2026 | 13 |
+| 28 | Vendas e finanças no CPF | Semanas 8 a 10 · dez/2026 a jan/2027 | 20 |
+| 29 | Vendas medidas | Semana 11 · jan/2027 | 4 |
+| 30 | Teste do núcleo | Semana 11 · jan/2027 | 4 |
+| 31 | Primeira venda: o mini-curso no ar | Semanas 12 a 15 · jan a fev/2027 | 8 |
+| 32 | Base dos sistemas AM | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 | 8 |
+| 33 | Nuvem e deploy | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) | 7 |
+| 34 | Editora | Quando o capítulo 1 estiver pronto | 11 |
+| 35 | Dados, IA e pendrives | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) | 12 |
+| 36 | Mais ofertas, uma por vez | Fev a dez/2027, uma oferta por vez | 23 |
+| 37 | Marketing pago e crescimento | A partir de fev/2027 | 10 |
+| 38 | Linux nativo e laboratório completo | 2027, conforme cada compra | 6 |
+| 39 | IA dentro dos sistemas AM | Depois do Passo 9 e do IA0 da Trilha de Dados e IA (≈ 2028), junto do IA5 | 1 |
+| 40 | Sistemas AM à venda | 2027 | 5 |
+| 41 | CNPJ e formalização | Quando a renda pedir | 4 |
+| 42 | Agentes do grupo | Junto com o primeiro CNPJ | 7 |
+| 43 | Editora: depois do primeiro livro | Depois do primeiro livro | 5 |
+| 44 | Distribuído, plataforma e segunda nuvem | 2028 | 6 |
+| 45 | Infraestrutura própria | 2028, quando o grupo pedir | 3 |
+| 46 | Negócios do grupo em Barbacena | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano | 10 |
+| 47 | Estudo contínuo | Contínuo, desde a semana 2 | 13 |
+
+## 7. Minhas pendências (ver também ESTADO.md)
+1. Senhas: passo kp-organizar, depois 2.4 (exportar do Chrome, importar no KeePassXC, apagar os CSVs, copiar o cofre para o pendrive).
+2. ActivityWatch (PowerShell: winget install --id ActivityWatch.ActivityWatch -e) e cadastro na avaliação de IA (passo ar-ia).
+3. Confirmar hora mínima R$ 45 e teto de 7 h.
+4. Templates do Rei dos Sites: comprei? onde estão os arquivos? (repositório só privado e só se a licença permitir).
 5. Modelos .docx da escola e uma ementa para a Fábrica.
-6. Hardware da mesa (passo 1.2).
+6. Mesa (passo 1.2) e trocas de assinatura (ct-cortes, ia-segunda).
 
-## Próximo passo
-Parar de adicionar áreas e executar até a primeira venda. Começar pelo passo kp-organizar (senhas).
-
-## Como pedir ajuda numa conversa nova
+## 8. Como pedir ajuda numa conversa nova
 1. Cole este arquivo e o pacote do passo: `python3 ~/dev/dev-setup/tools/sessao/contexto.py --passo ID | clip.exe`.
-2. Peça ao Claude para abrir o repositório AlanMateus17/dev-setup (GitHub conectado) e marcar o passo no acompanhamento quando terminar.
-3. Toda mudança no setup: editar data/*.json ou a ferramenta, rodar os geradores e testes, CHANGELOG, commit e push; o CI tem de ficar verde.
+2. Peça ao Claude para abrir o repositório AlanMateus17/dev-setup (GitHub conectado) e, ao terminar, marcar o passo no Acompanhamento.
+3. Foco: executar até a primeira venda. Áreas novas só depois disso.

@@ -111,7 +111,7 @@ flowchart LR
 | [Canva · Krita · Inkscape](#img) | Local · precisa de conta | Capas, posts e thumbnails. Canva precisa de conta; Krita e Inkscape são open source. | passo 3.2 · Semana 1 · out/2026; passo 26.4 · Semana 5 · dez/2026 |
 | [Whisper (local)](#whis) | Local | Transcreve as aulas para legenda, artigo e capítulo. | passo 4.4 · Semana 2 · nov/2026; passo 25.6 · Semana 5 · nov/2026 |
 | [Voz clonada (ElevenLabs)](#voz) | Remoto · precisa de conta | Clonagem profissional da sua própria voz (plano Creator em diante, uso comercial nos planos pagos). Treino com 30 minutos ou mais de áudio limpo. Avise o público que a voz é gerada por IA. | passo 26.5 · Semana 5 · dez/2026 |
-| [Fábrica de aulas](#fabrica) | Local | Gera planejamentos e documentos da escola no modelo exigido, a partir da ementa e das suas regras. Sem dados de aluno. | passo 14.1 · Semanas 5 e 6 · nov/2026; passo 14.2 · Semanas 5 e 6 · nov/2026; passo 14.3 · Semanas 5 e 6 · nov/2026; passo 14.4 · Semanas 5 e 6 · nov/2026; passo 14.5 · Semanas 5 e 6 · nov/2026; passo 14.6 · Semanas 5 e 6 · nov/2026; passo 14.7 · Semanas 5 e 6 · nov/2026 |
+| [Fábrica de aulas](#fabrica) | Local | Gera planejamentos e documentos da escola no modelo exigido, a partir da ementa e das suas regras. Sem dados de aluno. | passo 14.1 · Semanas 5 e 6 · nov/2026; passo 14.2 · Semanas 5 e 6 · nov/2026; passo 14.3 · Semanas 5 e 6 · nov/2026; passo 14.4 · Semanas 5 e 6 · nov/2026; passo 14.5 · Semanas 5 e 6 · nov/2026; passo 14.6 · Semanas 5 e 6 · nov/2026; passo 14.7 · Semanas 5 e 6 · nov/2026; passo 14.8 · Semanas 5 e 6 · nov/2026; passo 14.9 · Semanas 5 e 6 · nov/2026 |
 | [Penpot (design)](#penpot) | Local | Design de telas e protótipos, aberto, alternativa ao Figma pago. | passo 24.8 · Com a primeira página de venda no ar (jan/2027) e por etapas |
 
 <a id="obss"></a>
@@ -229,7 +229,7 @@ Clonagem profissional da sua própria voz (plano Creator em diante, uso comercia
 
 Gera planejamentos e documentos da escola no modelo exigido, a partir da ementa e das suas regras. Sem dados de aluno.
 
-**Quando entra:** passo 14.1 · Semanas 5 e 6 · nov/2026; passo 14.2 · Semanas 5 e 6 · nov/2026; passo 14.3 · Semanas 5 e 6 · nov/2026; passo 14.4 · Semanas 5 e 6 · nov/2026; passo 14.5 · Semanas 5 e 6 · nov/2026; passo 14.6 · Semanas 5 e 6 · nov/2026; passo 14.7 · Semanas 5 e 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 14.1 · Semanas 5 e 6 · nov/2026; passo 14.2 · Semanas 5 e 6 · nov/2026; passo 14.3 · Semanas 5 e 6 · nov/2026; passo 14.4 · Semanas 5 e 6 · nov/2026; passo 14.5 · Semanas 5 e 6 · nov/2026; passo 14.6 · Semanas 5 e 6 · nov/2026; passo 14.7 · Semanas 5 e 6 · nov/2026; passo 14.8 · Semanas 5 e 6 · nov/2026; passo 14.9 · Semanas 5 e 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

@@ -204,7 +204,7 @@ flowchart LR
 | [Roteiro de implantação](#oimpl) | Local | data/implantacao.json: fases e passos com critério de pronto, cada passo ligado aos blocos que implanta. Gera docs/implantacao/roteiro.md e a página de acompanhamento; o CI falha se um bloco do setup ficar de fora. | passo 0.6 · Antes de tudo · semana 1 (out/2026); passo 30.4 · Semana 11 · jan/2027 |
 | [Instaladores (PowerShell e bash)](#oinst) | Local | instalar.ps1 (winget, WSL2, .wslconfig) e bootstrap.sh (ferramentas, linguagens, Claude Code, ai-jail, Git assinado). Seguros para rodar de novo. | passo 3.1 · Semana 1 · out/2026; passo 4.4 · Semana 2 · nov/2026 |
 | [Verificadores](#overif) | Local | verificar.ps1 e verificar.sh: somente leitura, dizem 'pronto' ou listam o que falta. Também conferem os serviços da automação. | passo 3.9 · Semana 1 · out/2026; passo 4.10 · Semana 2 · nov/2026; passo 10.3 · Semana 4 · nov/2026; passo 30.4 · Semana 11 · jan/2027 |
-| [Pipeline de conteúdo](#opipe) | Local | tools/conteudo/processar.py com timer de 15 min: entrada → transcrição → peças pelo guia de marca → fila de aprovação → aviso no Telegram. | passo 25.4 · Semana 5 · nov/2026; passo 25.5 · Semana 5 · nov/2026; passo 30.2 · Semana 11 · jan/2027 |
+| [Pipeline de conteúdo](#opipe) | Local | tools/conteudo/processar.py com timer de 15 min: entrada → transcrição → peças pelo guia de marca → fila de aprovação → aviso no Telegram. | passo 25.4 · Semana 5 · nov/2026; passo 25.5 · Semana 5 · nov/2026; passo 25.7 · Semana 5 · nov/2026; passo 30.2 · Semana 11 · jan/2027 |
 | [Acervo (seus documentos)](#acv) | Local | tools/acervo/acervo.py: lê todos os seus documentos sem alterar nada, acha cópias, separa os pessoais, marca o que é de terceiros ou da escola, converte o resto para Markdown no Obsidian e sugere os produtos que dá para vender. Tudo no notebook. | passo 8.3 · Semanas 3 e 4 · nov/2026; passo 8.4 · Semanas 3 e 4 · nov/2026; passo 8.5 · Semanas 3 e 4 · nov/2026; passo 36.3 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
 | [Agente revisor de qualidade](#revisor) | Local | Confere cada entrega contra o padrão de qualidade da oferta antes de chegar ao cliente. | passo 19.6 · Semana 5 · nov/2026; passo 20.5 · Semana 6 · nov/2026 a dez/2026 |
 | [Lucro por ferramenta](#roi) | Local | Lucro e prejuízo de cada ferramenta paga e de cada renda, mês a mês, contra a hora mínima. | passo 23.3 · Dez/2026 a jan/2027 |
@@ -558,7 +558,7 @@ verificar.ps1 e verificar.sh: somente leitura, dizem 'pronto' ou listam o que fa
 
 tools/conteudo/processar.py com timer de 15 min: entrada → transcrição → peças pelo guia de marca → fila de aprovação → aviso no Telegram.
 
-**Quando entra:** passo 25.4 · Semana 5 · nov/2026; passo 25.5 · Semana 5 · nov/2026; passo 30.2 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 25.4 · Semana 5 · nov/2026; passo 25.5 · Semana 5 · nov/2026; passo 25.7 · Semana 5 · nov/2026; passo 30.2 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

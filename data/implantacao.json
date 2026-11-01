@@ -1504,6 +1504,28 @@
       "docs-escolas"
      ],
      "nota": "Só formatação e conferência. A versão web (Horizons) usa a mesma verificação; nunca escrever o trabalho por ninguém."
+    },
+    {
+     "id": "fa-revisao-ano",
+     "titulo": "Revisão de fim de ano das turmas (material de revisão e avaliação, sem dados de aluno)",
+     "quem": "claude",
+     "pronto": "Material de revisão de cada disciplina pronto e conferido",
+     "tempo_min": 120,
+     "blocos": [
+      "fabrica"
+     ],
+     "comando": "cd ~/dev/aulas && claude \"Passo fa-revisao-ano do roteiro: Montar a revisão de fim de ano de cada disciplina a partir das ementas, no modelo da escola, sem nenhum dado de aluno\""
+    },
+    {
+     "id": "fa-robotica",
+     "titulo": "Continuar as apostilas de Noções de Robótica depois da Aula 40, pela Fábrica",
+     "quem": "claude",
+     "pronto": "Apostilas do próximo bimestre no mesmo padrão visual, no repositório ensino-ti",
+     "tempo_min": 180,
+     "blocos": [
+      "fabrica"
+     ],
+     "comando": "cd ~/dev/ensino-ti && claude \"Passo fa-robotica do roteiro: Continuar as apostilas de Noções de Robótica a partir da Aula 41, no mesmo padrão das anteriores, com código Arduino testado\""
     }
    ]
   },
@@ -2509,6 +2531,17 @@
       "whis",
       "ofly"
      ]
+    },
+    {
+     "id": "ct-posts-setup",
+     "titulo": "Revisar e publicar os posts sobre o setup (feed, story e capa do blog)",
+     "quem": "voce",
+     "pronto": "Posts revisados por você e publicados nas suas redes e no blog",
+     "tempo_min": 30,
+     "blocos": [
+      "opipe"
+     ],
+     "fora": "As imagens estão no artefato de design 'Post: montando meu setup'. Publicação só com a sua aprovação, sem revelar a arquitetura do setup."
     }
    ],
    "quando": "Semana 5 · nov/2026"
@@ -5165,6 +5198,24 @@
      "tempo_min": 15,
      "blocos": [],
      "fora": "Horizonte longo; entra depois do Passo 9 do plano de estudos."
+    },
+    {
+     "id": "est-ebtt",
+     "titulo": "Vigiar editais de professor EBTT (IF Sudeste MG, campus Barbacena) e de professor efetivo de MG",
+     "quem": "voce",
+     "pronto": "Editais na busca semanal e decisão registrada a cada edital",
+     "tempo_min": 20,
+     "blocos": [],
+     "fora": "A busca semanal de editais (passo au-editais) inclui esses concursos. Decisão sua: 40 h com dedicação exclusiva limita as outras rendas; existem vagas de 20 h."
+    },
+    {
+     "id": "est-licenciatura",
+     "titulo": "Encaixar as atividades da Licenciatura em Matemática na Rotina",
+     "quem": "voce",
+     "pronto": "Aulas, atividades e provas da faculdade na Rotina do Caixa da Casa",
+     "tempo_min": 15,
+     "blocos": [],
+     "fora": "Rotina do Caixa da Casa (artefato), fora do terminal."
     }
    ],
    "quando": "Contínuo, desde a semana 2"
