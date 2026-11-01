@@ -2,6 +2,20 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.22.0] - 2026-11-01
+
+### Adicionado
+- Kit de sites com IA da Hostinger: 3 pacotes, ficha do cliente, 26 prompts por tipo de negócio, checklist de entrega, relatório mensal (tools/kitsites/gerar.py → docs/operacao/kit-sites.md), conferência automática do site com laudo (tools/kitsites/conferir.py) e modelo de contrato para revisão de advogado.
+- Avaliador de templates (tools/avaliador/avaliar.py): útil, adaptar ou descartar, tecnologia, licença, módulos e tipos de negócio, sem rodar código de terceiros; recusa .zip com caminhos suspeitos.
+- Radar de revenda (tools/radar/radar.py): lucro por hora contra a hora mínima, sinais de golpe, preço baixo demais e checklist por categoria; referências de preço em ~/.config/amtech/radar.toml, fora do repositório.
+- Organizadores: Downloads por tipo, simulando antes e sem apagar (tools/organizar/downloads.py); exportação de senhas pronta para o KeePassXC, sem mostrar senhas (tools/organizar/senhas_csv.py).
+- Bot do Telegram (tools/remoto/bot.py): só o seu chat, só comandos fixos (/status, /resumo, /radar), configuração com permissão 600.
+- Financeiro local (tools/financeiro/financeiro.py): importa extratos Nubank ou CSV sem duplicar, resume o mês e aplica a cascata; modelos de regras, caixas e Política de Investimentos; dados em ~/financas.
+- Fábrica de aulas: preenche modelos .docx da escola com campos {{assim}} (tools/fabrica/preencher.py) e monta o planejamento semanal com no máximo 3 objetivos (tools/fabrica/plano_semanal.py); recusa dados de aluno. Esqueleto do repositório privado "aulas" em infra/templates/repo-aulas.
+- Rotinas: resumo da manhã, manutenção semanal (simula por padrão) e agendamento no cron (scripts/wsl/resumo-manha.sh, manutencao-semanal.sh, agendar.sh).
+- Casa e vida: Home Assistant, Paperless-ngx e Grocy em infra/casa/compose.yaml.
+- Roteiro: fases Kit de sites, Escola, Departamento financeiro, Rotina automatizada, Comandos remotos e Casa e vida; passos de KeePassXC (organizar a exportação, agente SSH, Auto-Type, segundo fator) e de estudo (esteira, Economia, certificações, idiomas, AM-OS). 10 blocos novos no ecossistema.
+
 ## [1.21.0] - 2026-11-01
 
 ### Adicionado

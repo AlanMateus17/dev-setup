@@ -189,6 +189,19 @@
      ]
     },
     {
+     "id": "kp-organizar",
+     "titulo": "Preparar o CSV exportado do Chrome/Google para o KeePassXC",
+     "quem": "script",
+     "pronto": "keepassxc-importar.csv pronto e lista de senhas repetidas (só nomes de sites)",
+     "tempo_min": 5,
+     "blocos": [
+      "organizar",
+      "kee"
+     ],
+     "comando": "python3 ~/dev/dev-setup/tools/organizar/senhas_csv.py \"/mnt/c/Users/SEU_USUARIO/Downloads/Chrome Passwords.csv\"",
+     "nota": "Nenhuma senha aparece na tela. Depois de importar, apague os dois CSVs."
+    },
+    {
      "id": "senhas-importar",
      "titulo": "Trazer para o cofre as senhas salvas no Chrome, no Edge e no Google",
      "quem": "voce",
@@ -304,6 +317,39 @@
      "blocos": [
       "kee"
      ]
+    },
+    {
+     "id": "kp-ssh",
+     "titulo": "Usar o KeePassXC como agente SSH",
+     "quem": "voce",
+     "pronto": "Chave SSH carregada pelo cofre",
+     "tempo_min": 15,
+     "blocos": [
+      "kee"
+     ],
+     "fora": "Configurações > Agente SSH, na tela do KeePassXC."
+    },
+    {
+     "id": "kp-autotype",
+     "titulo": "Ativar o auto-preenchimento (Auto-Type) com atalho",
+     "quem": "voce",
+     "pronto": "Login preenchido pelo atalho",
+     "tempo_min": 10,
+     "blocos": [
+      "kee"
+     ],
+     "fora": "Configurações > Auto-Type, na tela do KeePassXC."
+    },
+    {
+     "id": "kp-chave",
+     "titulo": "Avaliar arquivo-chave ou chave física como segundo fator do cofre",
+     "quem": "voce",
+     "pronto": "Decisão registrada (e cópia do arquivo-chave no pendrive, se usar)",
+     "tempo_min": 15,
+     "blocos": [
+      "kee"
+     ],
+     "fora": "Decisão sua. Perder a chave = perder o cofre: guarde cópia."
     }
    ],
    "quando": "Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026"
@@ -1300,6 +1346,393 @@
      "blocos": [
       "n8n"
      ]
+    }
+   ]
+  },
+  {
+   "id": "f-sites",
+   "titulo": "Kit de sites com IA da Hostinger",
+   "objetivo": "Site de cliente em poucas horas, conferido por script e com mensalidade.",
+   "quando": "Semanas 4 e 5 · nov/2026",
+   "passos": [
+    {
+     "id": "ks-kit",
+     "titulo": "Ler o kit e definir os preços dos 3 pacotes",
+     "quem": "voce",
+     "pronto": "Preços de criação e mensalidade definidos pela hora mínima",
+     "tempo_min": 30,
+     "blocos": [
+      "kitsites"
+     ],
+     "fora": "Decisão sua; o kit está em docs/operacao/kit-sites.md.",
+     "ofertas": [
+      "sites"
+     ]
+    },
+    {
+     "id": "ks-primeiro",
+     "titulo": "Montar o primeiro site com a ficha e o prompt do tipo de negócio",
+     "quem": "voce",
+     "pronto": "Site no ar no Website Builder ou no Horizons",
+     "tempo_min": 180,
+     "blocos": [
+      "kitsites"
+     ],
+     "fora": "A montagem é no editor da Hostinger, no navegador; o prompt pronto está no kit."
+    },
+    {
+     "id": "ks-conferir",
+     "titulo": "Conferir o site e gerar o laudo antes de entregar",
+     "quem": "script",
+     "pronto": "Nota 80 ou mais no laudo",
+     "tempo_min": 10,
+     "blocos": [
+      "kitsites"
+     ],
+     "comando": "cd ~/dev/dev-setup && python3 tools/kitsites/conferir.py https://ENDERECO-DO-SITE --saida ~/laudo-site.md",
+     "nota": "Troque ENDERECO-DO-SITE. Com o Playwright instalado, acrescente --fotos para as fotos de celular e computador."
+    },
+    {
+     "id": "ks-contrato",
+     "titulo": "Levar o modelo de contrato a um advogado",
+     "quem": "voce",
+     "pronto": "Contrato revisado e pronto para assinar",
+     "tempo_min": 60,
+     "blocos": [
+      "kitsites"
+     ],
+     "fora": "Revisão jurídica, fora do terminal. Modelo em docs/operacao/contrato-sites-modelo.md."
+    },
+    {
+     "id": "ks-templates",
+     "titulo": "Avaliar os templates que você comprou (só se a licença permitir)",
+     "quem": "script",
+     "pronto": "avaliacao-templates.md com útil, adaptar ou descartar",
+     "tempo_min": 20,
+     "blocos": [
+      "avaliador"
+     ],
+     "comando": "cd ~/dev/dev-setup && python3 tools/avaliador/avaliar.py ~/templates",
+     "nota": "Ponha cada template (pasta ou .zip) em ~/templates. Guarde-os só num repositório PRIVADO: gh repo create templates-sites --private. O avaliador não roda código dos templates."
+    }
+   ]
+  },
+  {
+   "id": "f-escola",
+   "titulo": "Escola: Fábrica de aulas e documentos",
+   "objetivo": "Planejamentos e documentos da escola gerados no modelo exigido; você só revisa.",
+   "quando": "Semanas 5 e 6 · nov/2026",
+   "passos": [
+    {
+     "id": "fa-repo",
+     "titulo": "Criar o repositório privado 'aulas' com o esqueleto da Fábrica",
+     "quem": "script",
+     "pronto": "Repositório aulas no GitHub, privado, com regras, ementas e modelos",
+     "tempo_min": 10,
+     "blocos": [
+      "fabrica"
+     ],
+     "comando": "cd ~/dev && gh repo create aulas --private --clone && cp -r ~/dev/dev-setup/infra/templates/repo-aulas/. aulas/ && cd aulas && git add -A && git commit -m 'Esqueleto da Fábrica de aulas' && git push -u origin HEAD"
+    },
+    {
+     "id": "fa-modelos",
+     "titulo": "Colocar os modelos .docx da escola com os campos {{assim}}",
+     "quem": "voce",
+     "pronto": "Modelos em aulas/modelos-escola",
+     "tempo_min": 40,
+     "blocos": [
+      "fabrica"
+     ],
+     "fora": "Os modelos são da escola; você abre no Word e escreve os campos entre chaves duplas."
+    },
+    {
+     "id": "fa-ementa",
+     "titulo": "Escrever a ementa da primeira disciplina",
+     "quem": "claude",
+     "pronto": "ementas/<disciplina>.toml com as semanas do bimestre",
+     "tempo_min": 60,
+     "blocos": [
+      "fabrica"
+     ],
+     "comando": "cd ~/dev/aulas && claude \"Passo fa-ementa do roteiro: escrever a ementa da primeira disciplina em ementas/, no formato de ementas/exemplo.toml, seguindo regras/alan.toml\""
+    },
+    {
+     "id": "fa-plano",
+     "titulo": "Gerar o primeiro planejamento semanal",
+     "quem": "script",
+     "pronto": "Planejamento .docx preenchido em aulas/documentos",
+     "tempo_min": 10,
+     "blocos": [
+      "fabrica"
+     ],
+     "comando": "cd ~/dev/aulas && python3 ~/dev/dev-setup/tools/fabrica/plano_semanal.py ementas/exemplo.toml regras/alan.toml 1 > /tmp/ctx.toml && python3 ~/dev/dev-setup/tools/fabrica/preencher.py modelos-escola/planejamento.docx /tmp/ctx.toml documentos/planejamento-s1.docx"
+    },
+    {
+     "id": "fa-regra",
+     "titulo": "Cada correção sua vira uma regra em regras/alan.toml",
+     "quem": "voce",
+     "pronto": "Regras atualizadas a cada revisão",
+     "tempo_min": 10,
+     "blocos": [
+      "fabrica"
+     ],
+     "fora": "Hábito de revisão: a Fábrica aprende com o que você corrige."
+    }
+   ]
+  },
+  {
+   "id": "f-financeiro",
+   "titulo": "Departamento financeiro pessoal",
+   "objetivo": "Extratos importados, mês resumido e a cascata aplicada pelas suas regras, com os dados só no seu PC.",
+   "quando": "Dez/2026",
+   "passos": [
+    {
+     "id": "fi-iniciar",
+     "titulo": "Criar a pasta ~/financas com os modelos",
+     "quem": "script",
+     "pronto": "~/financas com regras.toml, caixas.toml e politica-investimentos.md",
+     "tempo_min": 5,
+     "blocos": [
+      "financas"
+     ],
+     "comando": "python3 ~/dev/dev-setup/tools/financeiro/financeiro.py iniciar"
+    },
+    {
+     "id": "fi-politica",
+     "titulo": "Preencher a sua Política de Investimentos e as metas da cascata",
+     "quem": "voce",
+     "pronto": "Política e caixas preenchidas por você",
+     "tempo_min": 60,
+     "blocos": [
+      "financas"
+     ],
+     "fora": "Decisões suas; o arquivo fica em ~/financas, nunca no GitHub. Não é recomendação de investimento."
+    },
+    {
+     "id": "fi-importar",
+     "titulo": "Importar o extrato do mês (Nubank ou CSV)",
+     "quem": "script",
+     "pronto": "Lançamentos no banco local, sem duplicar",
+     "tempo_min": 5,
+     "blocos": [
+      "financas"
+     ],
+     "comando": "python3 ~/dev/dev-setup/tools/financeiro/financeiro.py importar /mnt/c/Users/SEU_USUARIO/Downloads/extrato.csv"
+    },
+    {
+     "id": "fi-mes",
+     "titulo": "Ver o resumo do mês e a cascata",
+     "quem": "script",
+     "pronto": "Resumo com sobra e destino de cada real",
+     "tempo_min": 2,
+     "blocos": [
+      "financas"
+     ],
+     "comando": "python3 ~/dev/dev-setup/tools/financeiro/financeiro.py mes $(date +%Y-%m)"
+    }
+   ]
+  },
+  {
+   "id": "f-rotina",
+   "titulo": "Rotina automatizada",
+   "objetivo": "O setup se cuida sozinho e só te chama quando precisa.",
+   "quando": "Semana 4 · nov/2026",
+   "passos": [
+    {
+     "id": "ro-aw",
+     "titulo": "Instalar o ActivityWatch para medir as horas",
+     "quem": "script",
+     "pronto": "ActivityWatch rodando no Windows",
+     "tempo_min": 10,
+     "blocos": [
+      "aw"
+     ],
+     "comando": "winget install --id ActivityWatch.ActivityWatch -e"
+    },
+    {
+     "id": "ro-downloads",
+     "titulo": "Organizar a pasta Downloads (primeiro simula)",
+     "quem": "script",
+     "pronto": "Downloads separado por tipo, nada apagado",
+     "tempo_min": 5,
+     "blocos": [
+      "organizar"
+     ],
+     "comando": "python3 ~/dev/dev-setup/tools/organizar/downloads.py",
+     "nota": "Confira a lista e rode de novo com --aplicar."
+    },
+    {
+     "id": "ro-resumo",
+     "titulo": "Ver o resumo da manhã",
+     "quem": "script",
+     "pronto": "Resumo mostra disco, backup, repositórios e radar",
+     "tempo_min": 2,
+     "blocos": [
+      "rotinas"
+     ],
+     "comando": "bash ~/dev/dev-setup/scripts/wsl/resumo-manha.sh"
+    },
+    {
+     "id": "ro-agendar",
+     "titulo": "Agendar o resumo diário e a manutenção semanal",
+     "quem": "script",
+     "pronto": "crontab com as 2 linhas do setup",
+     "tempo_min": 2,
+     "blocos": [
+      "rotinas"
+     ],
+     "comando": "bash ~/dev/dev-setup/scripts/wsl/agendar.sh --aplicar",
+     "nota": "Depois do bot do Telegram configurado. Para tirar: --remover."
+    },
+    {
+     "id": "ro-manutencao",
+     "titulo": "Rodar a manutenção semanal (simula; depois --aplicar)",
+     "quem": "script",
+     "pronto": "Manutenção sem erros",
+     "tempo_min": 15,
+     "blocos": [
+      "rotinas"
+     ],
+     "comando": "bash ~/dev/dev-setup/scripts/wsl/manutencao-semanal.sh"
+    }
+   ]
+  },
+  {
+   "id": "f-remoto",
+   "titulo": "Comandos remotos pelo Telegram",
+   "objetivo": "Status, resumo e radar no celular, respondendo só ao seu chat.",
+   "quando": "Semana 5 · nov/2026",
+   "passos": [
+    {
+     "id": "re-bot",
+     "titulo": "Criar o bot no @BotFather e guardar o token no KeePassXC",
+     "quem": "voce",
+     "pronto": "Token guardado no cofre",
+     "tempo_min": 10,
+     "blocos": [
+      "tg",
+      "kee"
+     ],
+     "fora": "Feito no app do Telegram; o token é segredo e vai para o KeePassXC."
+    },
+    {
+     "id": "re-env",
+     "titulo": "Criar o arquivo de configuração do bot (permissão 600)",
+     "quem": "voce",
+     "pronto": "~/.config/amtech/telegram.env com o token",
+     "tempo_min": 5,
+     "blocos": [
+      "tg"
+     ],
+     "comando": "mkdir -p ~/.config/amtech && touch ~/.config/amtech/telegram.env && chmod 600 ~/.config/amtech/telegram.env && nano ~/.config/amtech/telegram.env",
+     "nota": "Escreva TELEGRAM_TOKEN=... e salve (Ctrl+O, Enter, Ctrl+X)."
+    },
+    {
+     "id": "re-id",
+     "titulo": "Descobrir o seu chat id e completar a configuração",
+     "quem": "script",
+     "pronto": "TELEGRAM_CHAT_ID preenchido",
+     "tempo_min": 5,
+     "blocos": [
+      "tg"
+     ],
+     "comando": "python3 ~/dev/dev-setup/tools/remoto/bot.py",
+     "nota": "Mande /start para o bot no celular; ele responde com o seu id. Ctrl+C no terminal para parar, ponha TELEGRAM_CHAT_ID=... no arquivo."
+    },
+    {
+     "id": "re-servico",
+     "titulo": "Deixar o bot rodando como serviço",
+     "quem": "script",
+     "pronto": "systemctl --user status amtech-bot ativo",
+     "tempo_min": 5,
+     "blocos": [
+      "tg"
+     ],
+     "comando": "mkdir -p ~/.config/systemd/user && printf '[Unit]\\nDescription=Bot AMtech\\n[Service]\\nExecStart=/usr/bin/python3 %%h/dev/dev-setup/tools/remoto/bot.py\\nRestart=always\\n[Install]\\nWantedBy=default.target\\n' > ~/.config/systemd/user/amtech-bot.service && systemctl --user daemon-reload && systemctl --user enable --now amtech-bot"
+    },
+    {
+     "id": "re-whatsapp",
+     "titulo": "WhatsApp Cloud API: só depois de 1 mês de Telegram estável",
+     "quem": "voce",
+     "pronto": "Decisão registrada",
+     "tempo_min": 10,
+     "blocos": [
+      "tg"
+     ],
+     "fora": "Exige conta Meta Business e número próprio; decisão depois do Telegram."
+    }
+   ]
+  },
+  {
+   "id": "f-casa",
+   "titulo": "Casa e vida",
+   "objetivo": "Casa, documentos, cães, veículos, sono e treino organizados e com aviso automático.",
+   "quando": "Dez/2026",
+   "passos": [
+    {
+     "id": "ca-subir",
+     "titulo": "Subir Home Assistant, Paperless e Grocy",
+     "quem": "script",
+     "pronto": "Os três abrindo no navegador (8123, 8010, 9283)",
+     "tempo_min": 20,
+     "blocos": [
+      "ha",
+      "paperless",
+      "grocy"
+     ],
+     "comando": "cd ~/dev/dev-setup/infra/casa && cp -n casa.env.example .env && nano .env && docker compose up -d",
+     "nota": "No .env, troque SEU_USUARIO e cole uma chave gerada por openssl rand -hex 32 (guarde no KeePassXC)."
+    },
+    {
+     "id": "ca-documentos",
+     "titulo": "Pôr os documentos da casa e da escola na entrada do Paperless",
+     "quem": "voce",
+     "pronto": "Documentos com busca no texto",
+     "tempo_min": 30,
+     "blocos": [
+      "paperless"
+     ],
+     "fora": "Você escolhe os documentos; ficam só no seu PC."
+    },
+    {
+     "id": "ca-caes",
+     "titulo": "Cadastrar ração, remédios e vacinas dos cães no Grocy com alerta",
+     "quem": "voce",
+     "pronto": "Avisos antes de acabar e antes do vencimento",
+     "tempo_min": 30,
+     "blocos": [
+      "grocy"
+     ],
+     "fora": "Cadastro na tela do Grocy."
+    },
+    {
+     "id": "ca-veiculos",
+     "titulo": "Veículos e metas de compra no Caixa da Casa",
+     "quem": "voce",
+     "pronto": "Veículos e metas preenchidos",
+     "tempo_min": 20,
+     "blocos": [],
+     "fora": "O Caixa da Casa é um artefato; fora do terminal."
+    },
+    {
+     "id": "ca-sono",
+     "titulo": "Sono, natação e MTB na Rotina, com aviso de sono abaixo de 7 h",
+     "quem": "voce",
+     "pronto": "Blocos na Rotina",
+     "tempo_min": 15,
+     "blocos": [],
+     "fora": "Rotina do Caixa da Casa."
+    },
+    {
+     "id": "ca-ha",
+     "titulo": "Primeira automação da casa no Home Assistant",
+     "quem": "voce",
+     "pronto": "Uma automação funcionando",
+     "tempo_min": 60,
+     "blocos": [
+      "ha"
+     ],
+     "fora": "Configurada na tela do Home Assistant; os projetos ESP32 entram depois."
     }
    ]
   },
@@ -3990,6 +4423,51 @@
      "ofertas": [
       "consultoriainv"
      ]
+    },
+    {
+     "id": "est-esteira",
+     "titulo": "Estudo vira produto: rodar a esteira depois de cada bloco de estudo",
+     "quem": "voce",
+     "pronto": "Aula, exercícios, cartões e roteiro gerados para revisar",
+     "tempo_min": 15,
+     "blocos": [],
+     "fora": "Usa a automação au-esteira, quando construída; a revisão é sua."
+    },
+    {
+     "id": "est-economia",
+     "titulo": "Decidir quando começar a graduação em Economia",
+     "quem": "voce",
+     "pronto": "Decisão com data e custo no Caixa da Casa",
+     "tempo_min": 20,
+     "blocos": [],
+     "fora": "Decisão de formação; fora do terminal."
+    },
+    {
+     "id": "est-certificacoes",
+     "titulo": "Trilha de certificações do mercado financeiro (CPA → CNPI → CGA → CFA)",
+     "quem": "voce",
+     "pronto": "Primeira prova marcada quando a cascata permitir",
+     "tempo_min": 20,
+     "blocos": [],
+     "fora": "Estudo e prova; conferir as regras atuais da ANBIMA e da APIMEC antes de pagar."
+    },
+    {
+     "id": "est-idiomas",
+     "titulo": "Rotina diária de inglês; espanhol no B1 e mandarim no B2",
+     "quem": "voce",
+     "pronto": "25 a 30 min de inglês por dia na Rotina",
+     "tempo_min": 10,
+     "blocos": [],
+     "fora": "Rotina de estudo; os gatilhos de espanhol e mandarim seguem o seu plano de idiomas."
+    },
+    {
+     "id": "est-amos",
+     "titulo": "AM-OS e AM Linux: trilha de 10 anos de sistemas",
+     "quem": "voce",
+     "pronto": "Marco do ano definido",
+     "tempo_min": 15,
+     "blocos": [],
+     "fora": "Horizonte longo; entra depois do Passo 9 do plano de estudos."
     }
    ],
    "quando": "Contínuo, desde a semana 2"

@@ -3059,6 +3059,96 @@
    "conta": false,
    "futuro": false,
    "descricao": "Lê os alertas de busca salvos (OLX, Mercado Livre, Facebook, Estante Virtual) que chegam ao Gmail, compara com o preço de referência e avisa no Telegram só o que passa da hora mínima. Nunca compra nem fala com vendedor."
+  },
+  {
+   "id": "aw",
+   "camada": "win",
+   "rotulo": "ActivityWatch",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Mede sozinho em que programas e sites vai o seu tempo. Base do retorno por hora de cada renda. Fica no seu PC."
+  },
+  {
+   "id": "ha",
+   "camada": "hw",
+   "rotulo": "Home Assistant",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Casa inteligente local: sensores, luzes, avisos e a base da robótica pessoal."
+  },
+  {
+   "id": "paperless",
+   "camada": "dados",
+   "rotulo": "Paperless-ngx",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Arquivo de documentos da casa e da escola com busca no texto (OCR em português). Local."
+  },
+  {
+   "id": "grocy",
+   "camada": "dados",
+   "rotulo": "Grocy",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Estoque da casa, ração e remédios dos cães, validade e lista de compras."
+  },
+  {
+   "id": "fabrica",
+   "camada": "cont",
+   "rotulo": "Fábrica de aulas",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Gera planejamentos e documentos da escola no modelo exigido, a partir da ementa e das suas regras. Sem dados de aluno."
+  },
+  {
+   "id": "kitsites",
+   "camada": "web",
+   "rotulo": "Kit de sites|(Hostinger IA)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Pacotes, ficha do cliente, 26 prompts por tipo de negócio, conferência automática, checklist e relatório mensal."
+  },
+  {
+   "id": "avaliador",
+   "camada": "web",
+   "rotulo": "Avaliador de|templates",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Lê uma pasta de templates e diz qual é útil, qual adaptar e qual descartar, sem rodar código de terceiros."
+  },
+  {
+   "id": "financas",
+   "camada": "emp",
+   "rotulo": "Financeiro local",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Importa extratos, categoriza, resume o mês e aplica a sua cascata. Dados em ~/financas, fora do GitHub."
+  },
+  {
+   "id": "rotinas",
+   "camada": "lin",
+   "rotulo": "Rotinas agendadas",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Resumo da manhã no Telegram e manutenção semanal, pelo cron do Ubuntu."
+  },
+  {
+   "id": "organizar",
+   "camada": "seg",
+   "rotulo": "Organizadores",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Downloads por tipo (sem apagar nada) e exportação de senhas pronta para o KeePassXC."
   }
  ],
  "conexoes": [
@@ -6111,6 +6201,61 @@
    "de": "radar",
    "para": "painel",
    "rotulo": "lucro por hora"
+  },
+  {
+   "de": "kitsites",
+   "para": "kuma",
+   "rotulo": "monitora os sites"
+  },
+  {
+   "de": "avaliador",
+   "para": "kitsites",
+   "rotulo": "templates aprovados"
+  },
+  {
+   "de": "rotinas",
+   "para": "tg",
+   "rotulo": "resumo da manhã"
+  },
+  {
+   "de": "organizar",
+   "para": "kee",
+   "rotulo": "importa senhas"
+  },
+  {
+   "de": "aw",
+   "para": "painel",
+   "rotulo": "horas por renda"
+  },
+  {
+   "de": "financas",
+   "para": "painel",
+   "rotulo": "sobra do mês"
+  },
+  {
+   "de": "docker",
+   "para": "ha",
+   "rotulo": "roda"
+  },
+  {
+   "de": "docker",
+   "para": "paperless",
+   "rotulo": "roda"
+  },
+  {
+   "de": "docker",
+   "para": "grocy",
+   "rotulo": "roda"
+  },
+  {
+   "de": "fabrica",
+   "para": "aulas",
+   "rotulo": "material das aulas"
+  },
+  {
+   "de": "grocy",
+   "para": "tg",
+   "rotulo": "avisa ração e remédios"
   }
  ],
  "fluxos": [

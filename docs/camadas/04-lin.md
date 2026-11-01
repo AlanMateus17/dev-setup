@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** O código fica no ext4 do Linux; o Windows enxerga pela ponte do WSL2.
 
-**9 blocos** · 0 precisam de conta · 2 marcados como futuro
+**10 blocos** · 0 precisam de conta · 2 marcados como futuro
 
 ## Mapa de conexões
 
@@ -23,9 +23,13 @@ flowchart LR
     n_sec["gitleaks · Trivy"]
     n_dot["dotfiles"]
     n_arch["Arch + Omarchy (2º NVMe)"]
+    n_rotinas["Rotinas agendadas"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_overif["Verificadores"]
+  end
+  subgraph L_mkt["Marketing, automação e medição"]
+    n_tg["Telegram (avisos)"]
   end
   subgraph L_editora["Editora AMS Silva (produção de livros)"]
     n_bci["Pipeline do livro (CI)"]
@@ -89,15 +93,16 @@ flowchart LR
   n_nvme -->|"disco próprio"| n_arch
   n_boot -->|"boot"| n_arch
   n_parch -->|"treino antes do 2º NVMe"| n_arch
+  n_rotinas -->|"resumo da manhã"| n_tg
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_nvim,n_netw,n_wsl,n_git,n_rt,n_tex,n_sec,n_dot,n_arch desta
+  class n_nvim,n_netw,n_wsl,n_git,n_rt,n_tex,n_sec,n_dot,n_arch,n_rotinas desta
 ```
 
 ## Blocos
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Neovim](#nvim) | Local · futuro | Editor de terminal da trilha Arch e Akita. Aprender aos poucos; não substitui o VS Code no começo. | passo 26.2 · 2027, conforme cada compra |
+| [Neovim](#nvim) | Local · futuro | Editor de terminal da trilha Arch e Akita. Aprender aos poucos; não substitui o VS Code no começo. | passo 32.2 · 2027, conforme cada compra |
 | [nmap · dig · curl](#netw) | Local | Diagnóstico de rede no Ubuntu: portas, DNS e requisições HTTP. Instalados pelo bootstrap.sh. | passo 4.4 · Semana 2 · nov/2026 |
 | [Ubuntu (WSL2)](#wsl) | Local | Onde o código vive e roda. | passo 4.1 · Semana 2 · nov/2026; passo 4.5 · Semana 2 · nov/2026 |
 | [Git + SSH + gh](#git) | Local | Versionamento e acesso ao GitHub. | passo 4.4 · Semana 2 · nov/2026; passo 4.6 · Semana 2 · nov/2026 |
@@ -105,7 +110,8 @@ flowchart LR
 | [TeX Live](#tex) | Local | Compila o livro e as apostilas. | passo 4.4 · Semana 2 · nov/2026 |
 | [gitleaks · Trivy](#sec) | Local | Barra senha no commit e acha vulnerabilidades em imagens. | passo 4.4 · Semana 2 · nov/2026 |
 | [dotfiles](#dot) | Local | Configuração versionada do ambiente. | passo 4.7 · Semana 2 · nov/2026 |
-| [Arch + Omarchy (2º NVMe)](#arch) | Local · futuro | Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portátil em pendrive ou SSD USB. | passo 26.1 · 2027, conforme cada compra |
+| [Arch + Omarchy (2º NVMe)](#arch) | Local · futuro | Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portátil em pendrive ou SSD USB. | passo 32.1 · 2027, conforme cada compra |
+| [Rotinas agendadas](#rotinas) | Local | Resumo da manhã no Telegram e manutenção semanal, pelo cron do Ubuntu. | passo 16.3 · Semana 4 · nov/2026; passo 16.4 · Semana 4 · nov/2026; passo 16.5 · Semana 4 · nov/2026 |
 
 <a id="nvim"></a>
 
@@ -115,7 +121,7 @@ flowchart LR
 
 Editor de terminal da trilha Arch e Akita. Aprender aos poucos; não substitui o VS Code no começo.
 
-**Quando entra:** passo 26.2 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 32.2 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -246,7 +252,7 @@ Configuração versionada do ambiente.
 
 Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portátil em pendrive ou SSD USB.
 
-**Quando entra:** passo 26.1 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 32.1 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -254,6 +260,20 @@ Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portát
 | ← recebe de | [2º NVMe (1–4 TB)](01-hw.md#nvme) | Hardware | disco próprio |
 | ← recebe de | [Gerenciador de boot](03-win.md#boot) | Windows 11, apps e máquinas virtuais | boot |
 | ← recebe de | [Pendrive Arch (instalação portátil)](01-hw.md#parch) | Hardware | treino antes do 2º NVMe |
+
+<a id="rotinas"></a>
+
+### Rotinas agendadas
+
+*Local*
+
+Resumo da manhã no Telegram e manutenção semanal, pelo cron do Ubuntu.
+
+**Quando entra:** passo 16.3 · Semana 4 · nov/2026; passo 16.4 · Semana 4 · nov/2026; passo 16.5 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Telegram (avisos)](21-mkt.md#tg) | Marketing, automação e medição | resumo da manhã |
 
 ---
 
