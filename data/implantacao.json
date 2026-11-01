@@ -2871,6 +2871,23 @@
       "portugues",
       "recuperacao"
      ]
+    },
+    {
+     "id": "of-fila-economia",
+     "titulo": "Fila da AMtech Economia (plano de negócios, BPO financeiro, crédito e editais, mentoria, modelos, calculadoras)",
+     "quem": "voce",
+     "pronto": "Cada uma ativada na ordem, uma de cada vez",
+     "tempo_min": 30,
+     "fora": "Entra só quando uma renda ativa passar no portão (3 meses se pagando). A ordem é o ranking de facilidade do portfólio.",
+     "blocos": [],
+     "ofertas": [
+      "planonegocio",
+      "bpofin",
+      "credito-editais",
+      "mentoriafin",
+      "modelosfin",
+      "calculadoras"
+     ]
     }
    ],
    "quando": "Fev a dez/2027, uma oferta por vez",
@@ -3816,6 +3833,18 @@
      "ofertas": [
       "bugbounty",
       "perito"
+     ]
+    },
+    {
+     "id": "est-consultoria",
+     "titulo": "Consultoria de investimentos só com a sócia certificada e registrada",
+     "quem": "voce",
+     "pronto": "Certificação e registro conferidos",
+     "tempo_min": 15,
+     "fora": "Portão regulatório (CVM); fora do terminal.",
+     "blocos": [],
+     "ofertas": [
+      "consultoriainv"
      ]
     }
    ],

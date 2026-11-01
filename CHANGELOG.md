@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.19.0] - 2026-11-01
+
+### Adicionado
+- Marca AMtech Economia (finanças e empreendedorismo) com 7 ofertas: plano de negócios e viabilidade, BPO financeiro, captação de crédito e editais, mentoria financeira sem recomendar ativos, modelos financeiros para empresas, calculadoras online e consultoria de investimentos (só com sócia certificada). O catálogo chega a 100 ofertas.
+
 ## [1.18.0] - 2026-11-01
 
 ### Adicionado

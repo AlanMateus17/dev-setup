@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-35 fases, 266 passos, cerca de **1107 h 20 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+35 fases, 268 passos, cerca de **1108 h 05 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
-**Todo o planejamento está aqui:** os 327 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 93 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
+**Todo o planejamento está aqui:** os 327 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 100 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 177 dos 266 passos (180 h 40 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 178 dos 268 passos (180 h 55 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -37,7 +37,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [20 · Nuvem e deploy](#f19) | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) | 7 | 6 h 15 min |
 | [21 · Editora](#f20) | Quando o capítulo 1 estiver pronto · **gatilho:** O capítulo 1 e o seu modelo de criação prontos | 11 | 18 h 30 min |
 | [22 · Dados, IA e pendrives](#f21) | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) | 12 | 16 h 20 min |
-| [23 · Mais ofertas, uma por vez](#f22) | Fev a dez/2027, uma oferta por vez · **gatilho:** A primeira venda do mini-curso aconteceu | 22 | 128 h 30 min |
+| [23 · Mais ofertas, uma por vez](#f22) | Fev a dez/2027, uma oferta por vez · **gatilho:** A primeira venda do mini-curso aconteceu | 23 | 129 h 00 min |
 | [24 · Marketing pago e crescimento](#f23) | A partir de fev/2027 · **gatilho:** O mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar | 10 | 37 h 30 min |
 | [25 · Linux nativo e laboratório completo](#f24) | 2027, conforme cada compra | 6 | 18 h 00 min |
 | [26 · IA dentro dos sistemas AM](#f25) | Depois do Passo 9 e do IA0 da Trilha de Dados e IA (≈ 2028), junto do IA5 | 1 | 8 h 00 min |
@@ -48,7 +48,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [31 · Distribuído, plataforma e segunda nuvem](#f30) | 2028 | 6 | 69 h 00 min |
 | [32 · Infraestrutura própria](#f31) | 2028, quando o grupo pedir | 3 | 17 h 00 min |
 | [33 · Negócios do grupo em Barbacena](#f32) | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano · **gatilho:** Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta | 10 | 483 h 00 min |
-| [34 · Estudo contínuo](#f33) | Contínuo, desde a semana 2 | 5 | 1 h 40 min |
+| [34 · Estudo contínuo](#f33) | Contínuo, desde a semana 2 | 6 | 1 h 55 min |
 
 <a id="f0"></a>
 
@@ -2535,6 +2535,14 @@ cd ~/dev/dev-setup && claude "Passo of-ammentor do roteiro: AM Mentor: banco de 
 - [ ] **Pronto quando:** Cada uma ativada na ordem, uma de cada vez
 - **Oferta:** Professor conteudista EAD · Elaboração e revisão de questões · Formatação ABNT de TCC (só formatar e revisar) · Segurança digital para pequenas empresas · Freela internacional em dólar (Upwork) · Parceiro de ERP (Bling, Tiny, Omie): implantação e comissão · Português para estrangeiros (Preply, italki) · Recuperação de dados (intermediação com laboratório)
 
+### 23.23 Fila da AMtech Economia (plano de negócios, BPO financeiro, crédito e editais, mentoria, modelos, calculadoras)
+
+**Você** · 30 min
+
+- **Fora do terminal:** Entra só quando uma renda ativa passar no portão (3 meses se pagando). A ordem é o ranking de facilidade do portfólio.
+- [ ] **Pronto quando:** Cada uma ativada na ordem, uma de cada vez
+- **Oferta:** Plano de negócios e viabilidade financeira para quem vai abrir empresa · BPO financeiro para pequenas empresas (contas, conciliação, fluxo de caixa) · Captação de crédito e editais para pequenos negócios (Pronampe, BDMG, Sebrae, FAPEMIG) · Mentoria de organização financeira e palestras em empresas (sem recomendar ativos) · Modelos financeiros para empresas (fluxo de caixa, DRE gerencial, precificação, valuation simples) · Calculadoras financeiras online (CLT x PJ, MEI, financiamento, independência financeira)
+
 <a id="f23"></a>
 
 ## 24 · Marketing pago e crescimento
@@ -3296,6 +3304,14 @@ Start-Process 'https://education.github.com/discount_requests/application'
 - **Fora do terminal:** Dependem de certificação e estudo; entram pela trilha de estudo.
 - [ ] **Pronto quando:** Portão de formação cumprido
 - **Oferta:** Bug bounty e pentest · Perito em informática judicial
+
+### 34.6 Consultoria de investimentos só com a sócia certificada e registrada
+
+**Você** · 15 min
+
+- **Fora do terminal:** Portão regulatório (CVM); fora do terminal.
+- [ ] **Pronto quando:** Certificação e registro conferidos
+- **Oferta:** Consultoria de investimentos (AM Rendara premium, com sócia certificada)
 
 <a id="quando-entra-cada-bloco"></a>
 

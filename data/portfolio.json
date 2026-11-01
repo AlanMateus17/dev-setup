@@ -7,6 +7,7 @@
   "campo": "AMtech Campo (presencial, por parceiros)",
   "fisico": "Negócios físicos",
   "midia": "AMtech Mídia",
+  "economia": "AMtech Economia (finanças e empreendedorismo)",
   "patrimonio": "Patrimônio (investimentos)"
  },
  "ofertas": [
@@ -3572,6 +3573,285 @@
    "automacao": 95,
    "veredito": "fila",
    "motivo": "A cascata manda: só depois do cartão quitado e da reserva cheia. As decisões são suas.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "planonegocio",
+   "nome": "Plano de negócios e viabilidade financeira para quem vai abrir empresa",
+   "frente": "economia",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "por plano",
+   "escala": "produtizado",
+   "canais": [
+    "Sebrae",
+    "contadores",
+    "Instagram"
+   ],
+   "automatico": [
+    "projeção de receita, custos e ponto de equilíbrio pelo motor financeiro dos negócios",
+    "documento pronto para revisar"
+   ],
+   "humano": [
+    "entrevista com o cliente",
+    "revisão final"
+   ],
+   "deriva_de": [
+    "consultoriaresto"
+   ],
+   "proximo_passo": "Transformar o seu planejador de negócios num modelo e fazer 2 planos de teste",
+   "metrica": "R$ por hora sua",
+   "nota": {
+    "sinergia": 5,
+    "escala": 3,
+    "demanda": 4,
+    "esforco": 2,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 60,
+   "veredito": "proxima",
+   "motivo": "O motor financeiro e o planejador já existem no setup; você só adapta para o cliente.",
+   "lote": "2026-11",
+   "ordem": 6
+  },
+  {
+   "id": "bpofin",
+   "nome": "BPO financeiro para pequenas empresas (contas, conciliação, fluxo de caixa)",
+   "frente": "economia",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "mensalidade",
+   "escala": "produtizado",
+   "canais": [
+    "clientes de sites",
+    "contadores parceiros"
+   ],
+   "automatico": [
+    "importação de extratos e conciliação",
+    "fluxo de caixa e alertas",
+    "relatório mensal"
+   ],
+   "humano": [
+    "conferir exceções",
+    "reunião mensal curta"
+   ],
+   "deriva_de": [
+    "sites",
+    "rendara"
+   ],
+   "proximo_passo": "Fazer a rotina completa num negócio conhecido por 2 meses e virar checklist",
+   "metrica": "contratos mensais",
+   "nota": {
+    "sinergia": 4,
+    "escala": 3,
+    "demanda": 4,
+    "esforco": 3,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 65,
+   "veredito": "fila",
+   "motivo": "Recorrente e delegável a um assistente depois do checklist. É gestão financeira, não contabilidade: escrituração e impostos ficam com o contador.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "credito-editais",
+   "nome": "Captação de crédito e editais para pequenos negócios (Pronampe, BDMG, Sebrae, FAPEMIG)",
+   "frente": "economia",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "taxa + êxito",
+   "escala": "produtizado",
+   "canais": [
+    "comércio local",
+    "contadores"
+   ],
+   "automatico": [
+    "busca semanal de editais e linhas de crédito",
+    "documentos e projeções pelo plano de negócios"
+   ],
+   "humano": [
+    "montar a proposta com o cliente"
+   ],
+   "deriva_de": [
+    "planonegocio"
+   ],
+   "proximo_passo": "Ligar a busca de editais e fazer o primeiro pedido para um negócio seu",
+   "metrica": "propostas aprovadas",
+   "nota": {
+    "sinergia": 4,
+    "escala": 2,
+    "demanda": 3,
+    "esforco": 3,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 45,
+   "veredito": "fila",
+   "motivo": "Paga bem quando aprova; depende do plano de negócios pronto. Nunca prometer aprovação.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "mentoriafin",
+   "nome": "Mentoria de organização financeira e palestras em empresas (sem recomendar ativos)",
+   "frente": "economia",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "por pacote ou palestra",
+   "escala": "produtizado",
+   "canais": [
+    "Instagram",
+    "empresas locais"
+   ],
+   "automatico": [
+    "diagnóstico pelo Caixa da Casa",
+    "material e planilha da cascata"
+   ],
+   "humano": [
+    "encontros e palestras"
+   ],
+   "deriva_de": [
+    "financas"
+   ],
+   "proximo_passo": "Testar com 3 pessoas usando o seu método da cascata",
+   "metrica": "R$ por hora sua",
+   "nota": {
+    "sinergia": 5,
+    "escala": 2,
+    "demanda": 3,
+    "esforco": 2,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 40,
+   "veredito": "fila",
+   "motivo": "Orçamento, dívidas e reserva. Recomendar ativo ou gerir dinheiro de terceiros exige certificação e registro (CVM): fica fora.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "modelosfin",
+   "nome": "Modelos financeiros para empresas (fluxo de caixa, DRE gerencial, precificação, valuation simples)",
+   "frente": "economia",
+   "tipo": "infoproduto",
+   "estagio": "ideia",
+   "receita": "venda única",
+   "escala": "digital",
+   "canais": [
+    "Hotmart",
+    "Kiwify"
+   ],
+   "automatico": [
+    "geração e teste das planilhas",
+    "entrega"
+   ],
+   "humano": [
+    "suporte"
+   ],
+   "deriva_de": [
+    "rendara",
+    "planonegocio"
+   ],
+   "proximo_passo": "Separar 3 modelos do motor financeiro dos negócios",
+   "metrica": "vendas por mês",
+   "nota": {
+    "sinergia": 5,
+    "escala": 5,
+    "demanda": 3,
+    "esforco": 2,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 90,
+   "veredito": "fila",
+   "motivo": "Sai do motor financeiro que já existe; vende sozinho.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "calculadoras",
+   "nome": "Calculadoras financeiras online (CLT x PJ, MEI, financiamento, independência financeira)",
+   "frente": "economia",
+   "tipo": "SaaS",
+   "estagio": "ideia",
+   "receita": "afiliados e captação de clientes",
+   "escala": "digital",
+   "canais": [
+    "Google",
+    "site",
+    "redes"
+   ],
+   "automatico": [
+    "cálculo e página",
+    "captura de contato com consentimento"
+   ],
+   "humano": [
+    "manter as tabelas e regras atualizadas"
+   ],
+   "deriva_de": [
+    "modelosfin"
+   ],
+   "proximo_passo": "Publicar 1 calculadora no site com as regras do Caixa da Casa",
+   "metrica": "visitas e contatos por mês",
+   "nota": {
+    "sinergia": 5,
+    "escala": 5,
+    "demanda": 3,
+    "esforco": 2,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 90,
+   "veredito": "fila",
+   "motivo": "Isca que traz clientes para a mentoria, o BPO e os modelos. Atualizar as regras quando a lei mudar.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "consultoriainv",
+   "nome": "Consultoria de investimentos (AM Rendara premium, com sócia certificada)",
+   "frente": "economia",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "mensalidade ou taxa sobre patrimônio",
+   "escala": "produtizado",
+   "canais": [
+    "AM Rendara"
+   ],
+   "automatico": [
+    "carteira e rebalanceamento ARCA no Rendara"
+   ],
+   "humano": [
+    "a recomendação, feita por quem tem a certificação"
+   ],
+   "deriva_de": [
+    "rendara"
+   ],
+   "proximo_passo": "Só quando a sócia estiver certificada e registrada",
+   "metrica": "clientes ativos",
+   "nota": {
+    "sinergia": 4,
+    "escala": 3,
+    "demanda": 3,
+    "esforco": 4,
+    "capital": 2
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 30,
+   "veredito": "fila",
+   "motivo": "Portão regulatório: recomendar ativos exige certificação e registro na CVM. Sem isso, não existe.",
    "lote": "2026-11"
   }
  ],
