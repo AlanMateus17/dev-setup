@@ -4,7 +4,7 @@ Copie esta pasta para o repositório do site e rode `bash ~/dev/dev-setup/script
 
 1. Abra uma issue com a ficha (.github/ISSUE_TEMPLATE/site.yml).
 2. Atribua a issue ao Copilot (agente na nuvem). Ele abre um PR. Se errar, peça o ajuste no próprio PR ou troque de agente.
-3. O workflow `qualidade` confere HTML, links e acessibilidade. A rotina do Claude revisa contra o AGENTS.md.
+3. O workflow `qualidade` confere HTML, links, acessibilidade e a nota do Lighthouse (desempenho 80+, acessibilidade e SEO 90+; ajuste em .lighthouserc.json). O relatório fica nos artefatos da execução: mande para o cliente como prova de qualidade. A rotina do Claude revisa contra o AGENTS.md.
 4. A prévia sobe no Cloudflare Pages (ligue o repositório ao Pages uma vez). Abra no celular.
 5. Você aprova o PR. O merge publica na Hostinger pelo deploy por push (ligue uma vez no painel ou com a skill deploy-to-hosting).
 

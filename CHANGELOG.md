@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.2.2] - 2026-11-01
+
+### Corrigido
+- Esteira de sites: o workflow qualidade agora roda o Lighthouse (desempenho 80+, acessibilidade e SEO 90+), como a documentação já prometia; relatório guardado nos artefatos da execução.
+
 ## [2.2.1] - 2026-11-01
 
 ### Corrigido
