@@ -2304,6 +2304,109 @@
    ]
   },
   {
+   "id": "f-crescimento",
+   "titulo": "Dados e crescimento: medir, testar e vender mais",
+   "objetivo": "Saber onde o cliente desiste, testar a página que vende mais, conhecer cada cliente e atender rápido, com ferramentas abertas.",
+   "quando": "Com a primeira página de venda no ar (jan/2027) e por etapas",
+   "passos": [
+    {
+     "id": "cr-metabase",
+     "titulo": "Subir o Metabase e criar o painel de vendas e clientes",
+     "quem": "script",
+     "pronto": "Painel com receita por renda, ticket médio e clientes novos",
+     "tempo_min": 30,
+     "blocos": [
+      "metabase"
+     ],
+     "comando": "cd ~/dev/dev-setup/infra/dados && docker compose up -d",
+     "nota": "Conecte ao banco de métricas (PostgreSQL da automação) pela tela do Metabase."
+    },
+    {
+     "id": "cr-posthog",
+     "titulo": "Ligar o PostHog nas páginas de venda (funil e gravações)",
+     "quem": "voce",
+     "pronto": "Funil visita → checkout → compra visível",
+     "tempo_min": 30,
+     "blocos": [
+      "posthog"
+     ],
+     "fora": "Conta no plano de nuvem com cota grátis e o script na página; respeite o aviso de cookies (LGPD)."
+    },
+    {
+     "id": "cr-ab",
+     "titulo": "Primeiro teste A/B da página do mini-curso",
+     "quem": "claude",
+     "pronto": "Teste rodando com meta e tamanho de amostra definidos",
+     "tempo_min": 60,
+     "blocos": [
+      "growthbook",
+      "posthog"
+     ],
+     "comando": "cd ~/dev/dev-setup && claude \"Passo cr-ab do roteiro: Primeiro teste A/B da página do mini-curso com GrowthBook e PostHog, com hipótese, meta e tamanho mínimo de amostra\""
+    },
+    {
+     "id": "cr-analises",
+     "titulo": "Análises de cliente: RFM, LTV, churn e previsão de receita",
+     "quem": "claude",
+     "pronto": "Relatório mensal com os 3 números que mudam decisão",
+     "tempo_min": 120,
+     "blocos": [
+      "analises",
+      "duck"
+     ],
+     "comando": "cd ~/dev/dev-setup && claude \"Passo cr-analises do roteiro: Criar as análises de cliente (RFM, LTV, churn e previsão de receita) em Python com DuckDB sobre o banco de métricas\""
+    },
+    {
+     "id": "cr-chatwoot",
+     "titulo": "Atendimento numa caixa só com o Chatwoot e o agente atendente",
+     "quem": "claude",
+     "pronto": "WhatsApp, Instagram e site respondidos no mesmo lugar",
+     "tempo_min": 120,
+     "blocos": [
+      "chatwoot",
+      "oatend"
+     ],
+     "comando": "cd ~/dev/dev-setup && claude \"Passo cr-chatwoot do roteiro: Subir o Chatwoot na VM e ligar o agente atendente pelo gateway, com passagem para humano\"",
+     "nota": "Entra com 3 clientes de sites ou o primeiro curso vendendo."
+    },
+    {
+     "id": "cr-crm",
+     "titulo": "Trocar a planilha pelo Twenty CRM quando houver 20+ leads ativos",
+     "quem": "claude",
+     "pronto": "Funil de vendas no CRM, com os leads do prospector",
+     "tempo_min": 90,
+     "blocos": [
+      "twenty",
+      "ocrm"
+     ],
+     "comando": "cd ~/dev/dev-setup && claude \"Passo cr-crm do roteiro: Subir o Twenty CRM e migrar a planilha de leads e clientes\""
+    },
+    {
+     "id": "cr-contratos",
+     "titulo": "Contratos assinados online (Documenso) e orçamentos e cobranças (Invoice Ninja)",
+     "quem": "claude",
+     "pronto": "Primeiro contrato assinado e primeira fatura enviada pelo sistema",
+     "tempo_min": 90,
+     "blocos": [
+      "documenso",
+      "invoiceninja"
+     ],
+     "comando": "cd ~/dev/dev-setup && claude \"Passo cr-contratos do roteiro: Subir Documenso e Invoice Ninja na VM com o modelo de contrato do kit de sites\""
+    },
+    {
+     "id": "cr-penpot",
+     "titulo": "Usar o Penpot para mockups de propostas e telas dos sistemas",
+     "quem": "voce",
+     "pronto": "Primeiro mockup de proposta feito no Penpot",
+     "tempo_min": 30,
+     "blocos": [
+      "penpot"
+     ],
+     "fora": "Conta grátis no Penpot (navegador) ou auto-hospedado depois."
+    }
+   ]
+  },
+  {
    "id": "f11",
    "titulo": "Pipeline de conteúdo",
    "objetivo": "Gravou ou escreveu, as peças aparecem na fila de aprovação.",

@@ -524,5 +524,77 @@
   "Modelo mais leve do Claude para tarefas simples; o mais forte só para planejar e revisar.",
   "Rascunho na IA mais barata, revisão final no Claude.",
   "Peça o resultado em arquivo ou no repositório, não em textos longos repetidos no chat."
+ ],
+ "ia_extras": [
+  {
+   "categoria": "Vídeo curto a partir dos seus vídeos longos",
+   "exemplos": "Ferramentas de cortes automáticos; aberto: Whisper + FFmpeg + script seu",
+   "renda": "Mais alcance no Reels/Shorts → isca do mini-curso e dos sites",
+   "decisao": "construir aberto",
+   "quando": "Quando o canal tiver 10 vídeos longos"
+  },
+  {
+   "categoria": "Avatar e vídeo falado",
+   "exemplos": "Avatares de IA (só com o SEU rosto e a SUA voz)",
+   "renda": "Vídeos de venda e aulas sem gravar tudo de novo",
+   "decisao": "adiar",
+   "quando": "Depois que um curso vender; nunca rosto ou voz de aluno"
+  },
+  {
+   "categoria": "Imagens e capas",
+   "exemplos": "ChatGPT Go (imagens), FLUX.1 schnell (aberto)",
+   "renda": "Capas de curso, posts, mockups de sites para proposta",
+   "decisao": "usar o que já tem",
+   "quando": "Agora"
+  },
+  {
+   "categoria": "Apresentações e propostas",
+   "exemplos": "Geradores de slides com IA; Claude Slides que você já tem",
+   "renda": "Proposta bonita em minutos → fecha mais sites",
+   "decisao": "usar o que já tem",
+   "quando": "Agora"
+  },
+  {
+   "categoria": "Música e trilha",
+   "exemplos": "Geradores de música com IA (confira a licença comercial do plano)",
+   "renda": "Trilha própria nos vídeos, sem direito autoral de terceiros",
+   "decisao": "adiar",
+   "quando": "Quando o canal monetizar"
+  },
+  {
+   "categoria": "Prospecção e enriquecimento de leads",
+   "exemplos": "Ferramentas de lista e enriquecimento B2B; aberto: o seu prospector com dados públicos",
+   "renda": "Mais conversas com comércio local",
+   "decisao": "construir aberto",
+   "quando": "Fase 24 horas (prospector)"
+  },
+  {
+   "categoria": "Atendimento omnicanal com IA",
+   "exemplos": "Chatwoot (aberto) + agente atendente pelo gateway",
+   "renda": "Responde WhatsApp/Instagram/site rápido, com passagem para você",
+   "decisao": "construir aberto",
+   "quando": "Com 3 clientes de sites ou o primeiro curso"
+  },
+  {
+   "categoria": "SEO e conteúdo com IA",
+   "exemplos": "Search Console + Umami + agente de pauta pelo gateway",
+   "renda": "Tráfego orgânico para o blog e as páginas de venda",
+   "decisao": "construir aberto",
+   "quando": "Quando o site novo for ao ar"
+  },
+  {
+   "categoria": "Agente no navegador",
+   "exemplos": "Claude in Chrome (você já tem)",
+   "renda": "Tarefas repetitivas em sites sem API",
+   "decisao": "usar o que já tem",
+   "quando": "Agora, com aprovação nas ações"
+  },
+  {
+   "categoria": "Transcrição e notas de reuniões e aulas",
+   "exemplos": "Whisper local; NotebookLM",
+   "renda": "Cada aula vira resumo, exercícios e post",
+   "decisao": "usar o que já tem",
+   "quando": "Agora"
+  }
  ]
 }

@@ -2,6 +2,12 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.28.0] - 2026-11-01
+
+### Adicionado
+- Dados e crescimento: fase com Metabase (infra/dados), PostHog (funil e gravações), GrowthBook (testes A/B), análises de cliente (RFM, LTV, churn, previsão), Chatwoot (atendimento numa caixa só), Twenty (CRM aberto), Documenso (assinatura), Invoice Ninja (orçamentos e cobrança) e Penpot (design). 9 blocos novos.
+- Outras ferramentas de IA por categoria em docs/custos.md: o que acrescentam, como geram renda, decisão e quando entram.
+
 ## [1.27.0] - 2026-11-01
 
 ### Adicionado

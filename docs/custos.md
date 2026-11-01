@@ -125,6 +125,21 @@ Para o que vira produto, prefira licença Apache 2.0 ou MIT e confira a licença
 | Transcrever, resumir e rascunhar em volume | Modelos locais (Ollama) ou Gemini API grátis pelo gateway | Sem custo e sem gastar limite |
 | Tudo que tem dado sensível (aluno, finanças, senha) | Nenhuma IA na nuvem; modelo local ou à mão | Segurança acima de conveniência |
 
+## Outras ferramentas de IA: o que acrescentam e quando
+
+| Categoria | Exemplos | Como gera renda | Decisão | Quando |
+|---|---|---|---|---|
+| Vídeo curto a partir dos seus vídeos longos | Ferramentas de cortes automáticos; aberto: Whisper + FFmpeg + script seu | Mais alcance no Reels/Shorts → isca do mini-curso e dos sites | construir aberto | Quando o canal tiver 10 vídeos longos |
+| Avatar e vídeo falado | Avatares de IA (só com o SEU rosto e a SUA voz) | Vídeos de venda e aulas sem gravar tudo de novo | adiar | Depois que um curso vender; nunca rosto ou voz de aluno |
+| Imagens e capas | ChatGPT Go (imagens), FLUX.1 schnell (aberto) | Capas de curso, posts, mockups de sites para proposta | usar o que já tem | Agora |
+| Apresentações e propostas | Geradores de slides com IA; Claude Slides que você já tem | Proposta bonita em minutos → fecha mais sites | usar o que já tem | Agora |
+| Música e trilha | Geradores de música com IA (confira a licença comercial do plano) | Trilha própria nos vídeos, sem direito autoral de terceiros | adiar | Quando o canal monetizar |
+| Prospecção e enriquecimento de leads | Ferramentas de lista e enriquecimento B2B; aberto: o seu prospector com dados públicos | Mais conversas com comércio local | construir aberto | Fase 24 horas (prospector) |
+| Atendimento omnicanal com IA | Chatwoot (aberto) + agente atendente pelo gateway | Responde WhatsApp/Instagram/site rápido, com passagem para você | construir aberto | Com 3 clientes de sites ou o primeiro curso |
+| SEO e conteúdo com IA | Search Console + Umami + agente de pauta pelo gateway | Tráfego orgânico para o blog e as páginas de venda | construir aberto | Quando o site novo for ao ar |
+| Agente no navegador | Claude in Chrome (você já tem) | Tarefas repetitivas em sites sem API | usar o que já tem | Agora, com aprovação nas ações |
+| Transcrição e notas de reuniões e aulas | Whisper local; NotebookLM | Cada aula vira resumo, exercícios e post | usar o que já tem | Agora |
+
 ## Fazer o limite do Claude durar
 
 - Uma conversa por tarefa: conversa longa relê tudo a cada mensagem e consome o limite muito mais rápido.

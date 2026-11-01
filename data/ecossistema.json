@@ -3356,6 +3356,87 @@
    "conta": true,
    "futuro": false,
    "descricao": "Uma chave para dezenas de modelos, alguns grátis com limite; reserva no gateway."
+  },
+  {
+   "id": "posthog",
+   "camada": "mkt",
+   "rotulo": "PostHog (funil|e gravações)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Funis, gravação de sessões e testes nas páginas de venda: mostra onde o visitante desiste. Plano de nuvem com cota grátis; código aberto."
+  },
+  {
+   "id": "metabase",
+   "camada": "dados",
+   "rotulo": "Metabase (painéis)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Painéis e perguntas sobre vendas, clientes e conteúdo sem programar, em cima do banco de métricas. Local."
+  },
+  {
+   "id": "growthbook",
+   "camada": "mkt",
+   "rotulo": "GrowthBook|(testes A/B)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Testes A/B e liberação gradual de funções com estatística correta. Código aberto."
+  },
+  {
+   "id": "analises",
+   "camada": "dados",
+   "rotulo": "Análises de cliente|(RFM, LTV, churn)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Quem compra mais, quem está sumindo, quanto vale cada cliente e previsão de receita, em Python/DuckDB."
+  },
+  {
+   "id": "chatwoot",
+   "camada": "venda",
+   "rotulo": "Chatwoot|(atendimento)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Caixa única de WhatsApp, Instagram, e-mail e site, com o agente atendente e passagem para você. Código aberto."
+  },
+  {
+   "id": "twenty",
+   "camada": "venda",
+   "rotulo": "Twenty (CRM aberto)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "CRM de verdade (funil, tarefas, e-mails) no lugar da planilha, quando houver 20+ clientes ou leads ativos."
+  },
+  {
+   "id": "documenso",
+   "camada": "emp",
+   "rotulo": "Documenso|(assinatura)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Contratos assinados online com validade, código aberto, no lugar de serviços pagos."
+  },
+  {
+   "id": "invoiceninja",
+   "camada": "emp",
+   "rotulo": "Invoice Ninja|(orçamentos)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Orçamentos, faturas e cobrança recorrente de serviços. Código aberto."
+  },
+  {
+   "id": "penpot",
+   "camada": "cont",
+   "rotulo": "Penpot (design)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Design de telas e protótipos, aberto, alternativa ao Figma pago."
   }
  ],
  "conexoes": [
@@ -6603,6 +6684,56 @@
    "de": "litellm",
    "para": "openrouter",
    "rotulo": "reserva"
+  },
+  {
+   "de": "posthog",
+   "para": "painel",
+   "rotulo": "conversão por página"
+  },
+  {
+   "de": "metabase",
+   "para": "metrics",
+   "rotulo": "lê"
+  },
+  {
+   "de": "growthbook",
+   "para": "posthog",
+   "rotulo": "mede os testes"
+  },
+  {
+   "de": "analises",
+   "para": "duck",
+   "rotulo": "roda em"
+  },
+  {
+   "de": "analises",
+   "para": "metabase",
+   "rotulo": "publica"
+  },
+  {
+   "de": "chatwoot",
+   "para": "oatend",
+   "rotulo": "usa o agente"
+  },
+  {
+   "de": "twenty",
+   "para": "ocrm",
+   "rotulo": "substitui a planilha"
+  },
+  {
+   "de": "documenso",
+   "para": "legal",
+   "rotulo": "assina contratos"
+  },
+  {
+   "de": "invoiceninja",
+   "para": "hooks",
+   "rotulo": "avisa pagamentos"
+  },
+  {
+   "de": "penpot",
+   "para": "front",
+   "rotulo": "telas dos sistemas"
   }
  ],
  "fluxos": [

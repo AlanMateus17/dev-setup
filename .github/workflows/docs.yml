@@ -84,3 +84,4 @@ jobs:
         run: |
           docker compose -f infra/ia/compose.yaml config --quiet
           docker compose -f infra/rede/compose.yaml config --quiet
+          docker compose -f infra/dados/compose.yaml config --quiet

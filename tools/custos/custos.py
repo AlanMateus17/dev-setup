@@ -64,6 +64,8 @@ def gerar(d: dict) -> str:
     o += [f"| {m['tarefa']} | {m['modelo']} | {m['licenca']} | {m['roda']} |" for m in d["modelos_abertos"]]
     o += ["", "## Qual IA para cada tarefa\n", "| Tarefa | IA | Por quê |", "|---|---|---|"]
     o += [f"| {r['tarefa']} | {r['ia']} | {r['por_que']} |" for r in d.get("rotas_ia", [])]
+    o += ["", "## Outras ferramentas de IA: o que acrescentam e quando\n", "| Categoria | Exemplos | Como gera renda | Decisão | Quando |", "|---|---|---|---|---|"]
+    o += [f"| {x['categoria']} | {x['exemplos']} | {x['renda']} | {x['decisao']} | {x['quando']} |" for x in d.get("ia_extras", [])]
     o += ["", "## Fazer o limite do Claude durar\n"] + [f"- {x}" for x in d.get("economia_limite", [])]
     o += ["", "Coerência entre IAs: as mesmas regras em CLAUDE.md, AGENTS.md e GEMINI.md (scripts/wsl/regras-ia.sh)."]
     o.append("\nAssinaturas pessoais (streaming, apps) ficam fora do repositório: confira no Caixa da Casa.")

@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** O que é publicado e anunciado aqui leva às plataformas de venda; cada venda volta como dado para o banco de métricas.
 
-**26 blocos** · 11 precisam de conta · 13 marcados como futuro
+**28 blocos** · 12 precisam de conta · 13 marcados como futuro
 
 ## Mapa de conexões
 
@@ -40,6 +40,8 @@ flowchart LR
     n_liads["LinkedIn Ads"]
     n_nativo["Mídia nativa (Taboola, Outbrain)"]
     n_infl["Influenciadores e newsletters"]
+    n_posthog["PostHog (funil e gravações)"]
+    n_growthbook["GrowthBook (testes A/B)"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_oanal["Analista semanal"]
@@ -66,6 +68,7 @@ flowchart LR
   end
   subgraph L_emp["Pessoa física: impostos e finanças"]
     n_financas["Financeiro local"]
+    n_invoiceninja["Invoice Ninja (orçamentos)"]
     n_nfse["Carnê-leão (Receita Federal)"]
   end
   subgraph L_web["Vitrine web (sites e domínio)"]
@@ -106,6 +109,7 @@ flowchart LR
   subgraph L_dados["Dados e treino de IA"]
     n_dbt["dbt Core"]
     n_grocy["Grocy"]
+    n_metabase["Metabase (painéis)"]
   end
   subgraph L_ia["Agentes de IA e sandbox"]
     n_litellm["Gateway de modelos (LiteLLM)"]
@@ -222,6 +226,7 @@ flowchart LR
   n_hotm -->|"venda e reembolso"| n_hooks
   n_kiwi -->|"venda e reembolso"| n_hooks
   n_eduzz -->|"venda e reembolso"| n_hooks
+  n_invoiceninja -->|"avisa pagamentos"| n_hooks
   n_metrics -->|"consultas"| n_painel
   n_metrics -->|"base do carnê-leão"| n_nfse
   n_metrics -->|"dados da semana"| n_oanal
@@ -235,6 +240,7 @@ flowchart LR
   n_nas -->|"roda 24 h"| n_metrics
   n_mcp -->|"leitura (usuário do Grafana)"| n_metrics
   n_docker -->|"container"| n_metrics
+  n_metabase -->|"lê"| n_metrics
   n_painel -->|"roda no Grafana"| n_graf
   n_dbt -->|"modelos limpos"| n_painel
   n_radar -->|"lucro por hora"| n_painel
@@ -242,6 +248,7 @@ flowchart LR
   n_financas -->|"sobra do mês"| n_painel
   n_restauracao -->|"resultado do teste"| n_painel
   n_roi -->|"resultado por ferramenta"| n_painel
+  n_posthog -->|"conversão por página"| n_painel
   n_afprog -->|"afiliados cadastrados"| n_hotm
   n_prosp -->|"novos afiliados"| n_afprog
   n_cvid -->|"canais semelhantes"| n_prosp
@@ -252,40 +259,43 @@ flowchart LR
   n_spotads -->|"lembrança da marca"| n_yt
   n_nativo -->|"leva aos artigos"| n_site
   n_infl -->|"link com cupom"| n_inst
+  n_growthbook -->|"mede os testes"| n_posthog
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_ads,n_isca,n_mailer,n_postiz,n_aprov,n_tg,n_n8n,n_horario,n_pixel,n_utm,n_gads,n_ttads,n_regras,n_calc,n_hooks,n_metrics,n_painel,n_afprog,n_prosp,n_dub,n_spotads,n_kwaiads,n_pinads,n_liads,n_nativo,n_infl desta
+  class n_ads,n_isca,n_mailer,n_postiz,n_aprov,n_tg,n_n8n,n_horario,n_pixel,n_utm,n_gads,n_ttads,n_regras,n_calc,n_hooks,n_metrics,n_painel,n_afprog,n_prosp,n_dub,n_spotads,n_kwaiads,n_pinads,n_liads,n_nativo,n_infl,n_posthog,n_growthbook desta
 ```
 
 ## Blocos
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Meta Ads (Instagram, Facebook)](#ads) | Remoto · precisa de conta · futuro | Primeiro canal pago: anúncios da isca grátis e remarketing do mini-curso. Desde jan/2026 a fatura tem +12,15% de impostos sobre a mídia. | passo 36.1 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
-| [Isca grátis + sequência de e-mails](#isca) | Local | Aula ou PDF grátis que captura o e-mail e abre uma sequência de 5 a 7 e-mails até o mini-curso. | passo 26.6 · Semanas 6 e 7 · dez/2026; passo 30.5 · Semanas 12 a 15 · jan a fev/2027 |
-| [MailerLite](#mailer) | Remoto · precisa de conta | Newsletter do blog com grupos por tema e funil de lançamento. Você já escolheu o plano grátis. | passo 26.6 · Semanas 6 e 7 · dez/2026; passo 30.5 · Semanas 12 a 15 · jan a fev/2027; passo 35.8 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [Meta Ads (Instagram, Facebook)](#ads) | Remoto · precisa de conta · futuro | Primeiro canal pago: anúncios da isca grátis e remarketing do mini-curso. Desde jan/2026 a fatura tem +12,15% de impostos sobre a mídia. | passo 37.1 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
+| [Isca grátis + sequência de e-mails](#isca) | Local | Aula ou PDF grátis que captura o e-mail e abre uma sequência de 5 a 7 e-mails até o mini-curso. | passo 27.6 · Semanas 6 e 7 · dez/2026; passo 31.5 · Semanas 12 a 15 · jan a fev/2027 |
+| [MailerLite](#mailer) | Remoto · precisa de conta | Newsletter do blog com grupos por tema e funil de lançamento. Você já escolheu o plano grátis. | passo 27.6 · Semanas 6 e 7 · dez/2026; passo 31.5 · Semanas 12 a 15 · jan a fev/2027; passo 36.8 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
 | [Postiz (agendador)](#postiz) | Local · futuro | Agendador open source (AGPL-3.0) que publica em mais de 28 redes. Roda no seu Docker com PostgreSQL e Redis; integra com o n8n. | passo 10.8 · Semana 4 · nov/2026 |
-| [Aprovação no celular](#aprov) | Local | Nenhum post sai sem o seu ok: a peça chega pelo Telegram e você aprova no celular. Protege o canal de erro da IA. | passo 24.3 · Semana 5 · nov/2026 |
-| [Telegram (avisos)](#tg) | Remoto · precisa de conta | Bot que avisa no celular: peça pronta para aprovar, serviço fora do ar. Grátis. | passo 17.1 · Semana 5 · nov/2026; passo 17.2 · Semana 5 · nov/2026; passo 17.3 · Semana 5 · nov/2026; passo 17.4 · Semana 5 · nov/2026; passo 17.5 · Semana 5 · nov/2026; passo 23.5 · Dez/2026 a jan/2027; passo 24.3 · Semana 5 · nov/2026 |
-| [n8n](#n8n) | Local | Automação: novo aluno → e-mail, post agendado, aviso. | passo 10.1 · Semana 4 · nov/2026; passo 10.2 · Semana 4 · nov/2026; passo 10.5 · Semana 4 · nov/2026; passo 10.7 · Semana 4 · nov/2026; passo 12.1 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.4 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.6 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.7 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.9 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.10 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.12 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 20.7 · Semana 6 · nov/2026 a dez/2026; passo 23.5 · Dez/2026 a jan/2027; passo 35.5 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
-| [Algoritmo de horário](#horario) | Local · futuro | Calcula o desempenho por rede, dia e hora com os seus dados; 80% dos posts nas melhores faixas, 20% testando faixas novas. | passo 36.6 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
-| [Tags de conversão (Pixel, Google…)](#pixel) | Remoto · precisa de conta | Pixel + API de Conversões da Meta, tag do Google Ads, pixel do TikTok e as tags de Kwai, Pinterest, LinkedIn e nativos. Sem a tag, o canal não aprende quem compra e a venda não chega ao painel. | passo 26.5 · Semanas 6 e 7 · dez/2026; passo 30.4 · Semanas 12 a 15 · jan a fev/2027 |
-| [Padrão de UTM](#utm) | Local | Todo link marcado com fonte, meio, campanha e criativo, para ligar cada venda ao anúncio ou post que a trouxe. | passo 27.12 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 30.4 · Semanas 12 a 15 · jan a fev/2027 |
-| [Google e YouTube Ads](#gads) | Remoto · precisa de conta · futuro | Para vídeos longos que já convertem e buscas com intenção de compra. | passo 36.2 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
-| [TikTok Ads](#ttads) | Remoto · precisa de conta · futuro | Depois que os cortes orgânicos mostrarem tração. | passo 36.2 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
-| [Regras de corte](#regras) | Local | Pausa criativo ou conjunto quando o CPA passa do de empate; sobe 15% do orçamento quando fica abaixo do CPA da margem. | passo 27.13 · Semanas 8 a 10 · dez/2026 a jan/2027 |
-| [Lucro por Venda (calculadora)](#calc) | Remoto | Artefato com taxas das plataformas, imposto, CPA e ROAS de empate, simulador e o lucro real de cada campanha. | passo 27.13 · Semanas 8 a 10 · dez/2026 a jan/2027 |
-| [Webhooks de venda](#hooks) | Remoto | Hotmart, Kiwify e Eduzz avisam cada venda e reembolso; o n8n grava no banco. | passo 28.1 · Semana 11 · jan/2027; passo 28.2 · Semana 11 · jan/2027; passo 29.3 · Semana 11 · jan/2027; passo 30.7 · Semanas 12 a 15 · jan a fev/2027 |
-| [Banco de métricas (PostgreSQL)](#metrics) | Local | Tabelas de produtos, vendas, gastos, ferramentas e impostos. | passo 10.2 · Semana 4 · nov/2026; passo 10.7 · Semana 4 · nov/2026; passo 28.3 · Semana 11 · jan/2027 |
-| [Painel de lucro (Grafana)](#painel) | Local | Lucro por produto, canal, campanha e país, atualizado sozinho. | passo 11.6 · Semana 4 · nov/2026; passo 12.11 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 28.4 · Semana 11 · jan/2027; passo 29.3 · Semana 11 · jan/2027 |
-| [Programa de afiliados](#afprog) | Remoto · futuro | Comissão definida pela calculadora, aberta depois de 20 vendas próprias. | passo 36.5 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
-| [Prospecção de parceiros](#prosp) | Local | Busca e qualificação de parceiros com IA; mensagem revisada e enviada por você. | passo 27.16 · Semanas 8 a 10 · dez/2026 a jan/2027 |
-| [Dublagem (YouTube + ElevenLabs)](#dub) | Remoto · futuro | Dublagem automática do YouTube para vídeos; ElevenLabs para cursos fora do YouTube. Espanhol primeiro. | passo 36.8 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
-| [Spotify Ad Studio](#spotads) | Remoto · precisa de conta · futuro | Anúncios em áudio e podcast, abertos a anunciantes no Brasil. Clique baixo: serve para marca, não para venda direta. | passo 36.3 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
-| [Kwai Ads](#kwaiads) | Remoto · precisa de conta · futuro | Plataforma de anúncios do Kwai no Brasil; teste depois de Meta e TikTok. | passo 36.3 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
-| [Pinterest Ads](#pinads) | Remoto · precisa de conta · futuro | Para templates e material visual; confira se a conta aceita o Brasil. | passo 36.3 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
-| [LinkedIn Ads](#liads) | Remoto · precisa de conta · futuro | Caro; só para B2B (sistemas AM e consultoria). | passo 36.3 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
-| [Mídia nativa (Taboola, Outbrain)](#nativo) | Remoto · precisa de conta · futuro | Clique barato e conversão baixa; leva leitores a artigos do blog que vendem. | passo 36.3 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
-| [Influenciadores e newsletters](#infl) | Remoto · futuro | Post pago ou por desempenho no nicho de TI e educação; peça números reais e use cupom. | passo 36.4 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
+| [Aprovação no celular](#aprov) | Local | Nenhum post sai sem o seu ok: a peça chega pelo Telegram e você aprova no celular. Protege o canal de erro da IA. | passo 25.3 · Semana 5 · nov/2026 |
+| [Telegram (avisos)](#tg) | Remoto · precisa de conta | Bot que avisa no celular: peça pronta para aprovar, serviço fora do ar. Grátis. | passo 17.1 · Semana 5 · nov/2026; passo 17.2 · Semana 5 · nov/2026; passo 17.3 · Semana 5 · nov/2026; passo 17.4 · Semana 5 · nov/2026; passo 17.5 · Semana 5 · nov/2026; passo 23.5 · Dez/2026 a jan/2027; passo 25.3 · Semana 5 · nov/2026 |
+| [n8n](#n8n) | Local | Automação: novo aluno → e-mail, post agendado, aviso. | passo 10.1 · Semana 4 · nov/2026; passo 10.2 · Semana 4 · nov/2026; passo 10.5 · Semana 4 · nov/2026; passo 10.7 · Semana 4 · nov/2026; passo 12.1 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.4 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.6 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.7 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.9 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.10 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.12 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 20.7 · Semana 6 · nov/2026 a dez/2026; passo 23.5 · Dez/2026 a jan/2027; passo 36.5 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [Algoritmo de horário](#horario) | Local · futuro | Calcula o desempenho por rede, dia e hora com os seus dados; 80% dos posts nas melhores faixas, 20% testando faixas novas. | passo 37.6 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
+| [Tags de conversão (Pixel, Google…)](#pixel) | Remoto · precisa de conta | Pixel + API de Conversões da Meta, tag do Google Ads, pixel do TikTok e as tags de Kwai, Pinterest, LinkedIn e nativos. Sem a tag, o canal não aprende quem compra e a venda não chega ao painel. | passo 27.5 · Semanas 6 e 7 · dez/2026; passo 31.4 · Semanas 12 a 15 · jan a fev/2027 |
+| [Padrão de UTM](#utm) | Local | Todo link marcado com fonte, meio, campanha e criativo, para ligar cada venda ao anúncio ou post que a trouxe. | passo 28.12 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 31.4 · Semanas 12 a 15 · jan a fev/2027 |
+| [Google e YouTube Ads](#gads) | Remoto · precisa de conta · futuro | Para vídeos longos que já convertem e buscas com intenção de compra. | passo 37.2 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
+| [TikTok Ads](#ttads) | Remoto · precisa de conta · futuro | Depois que os cortes orgânicos mostrarem tração. | passo 37.2 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
+| [Regras de corte](#regras) | Local | Pausa criativo ou conjunto quando o CPA passa do de empate; sobe 15% do orçamento quando fica abaixo do CPA da margem. | passo 28.13 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Lucro por Venda (calculadora)](#calc) | Remoto | Artefato com taxas das plataformas, imposto, CPA e ROAS de empate, simulador e o lucro real de cada campanha. | passo 28.13 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Webhooks de venda](#hooks) | Remoto | Hotmart, Kiwify e Eduzz avisam cada venda e reembolso; o n8n grava no banco. | passo 29.1 · Semana 11 · jan/2027; passo 29.2 · Semana 11 · jan/2027; passo 30.3 · Semana 11 · jan/2027; passo 31.7 · Semanas 12 a 15 · jan a fev/2027 |
+| [Banco de métricas (PostgreSQL)](#metrics) | Local | Tabelas de produtos, vendas, gastos, ferramentas e impostos. | passo 10.2 · Semana 4 · nov/2026; passo 10.7 · Semana 4 · nov/2026; passo 29.3 · Semana 11 · jan/2027 |
+| [Painel de lucro (Grafana)](#painel) | Local | Lucro por produto, canal, campanha e país, atualizado sozinho. | passo 11.6 · Semana 4 · nov/2026; passo 12.11 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 29.4 · Semana 11 · jan/2027; passo 30.3 · Semana 11 · jan/2027 |
+| [Programa de afiliados](#afprog) | Remoto · futuro | Comissão definida pela calculadora, aberta depois de 20 vendas próprias. | passo 37.5 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
+| [Prospecção de parceiros](#prosp) | Local | Busca e qualificação de parceiros com IA; mensagem revisada e enviada por você. | passo 28.16 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Dublagem (YouTube + ElevenLabs)](#dub) | Remoto · futuro | Dublagem automática do YouTube para vídeos; ElevenLabs para cursos fora do YouTube. Espanhol primeiro. | passo 37.8 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
+| [Spotify Ad Studio](#spotads) | Remoto · precisa de conta · futuro | Anúncios em áudio e podcast, abertos a anunciantes no Brasil. Clique baixo: serve para marca, não para venda direta. | passo 37.3 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
+| [Kwai Ads](#kwaiads) | Remoto · precisa de conta · futuro | Plataforma de anúncios do Kwai no Brasil; teste depois de Meta e TikTok. | passo 37.3 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
+| [Pinterest Ads](#pinads) | Remoto · precisa de conta · futuro | Para templates e material visual; confira se a conta aceita o Brasil. | passo 37.3 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
+| [LinkedIn Ads](#liads) | Remoto · precisa de conta · futuro | Caro; só para B2B (sistemas AM e consultoria). | passo 37.3 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
+| [Mídia nativa (Taboola, Outbrain)](#nativo) | Remoto · precisa de conta · futuro | Clique barato e conversão baixa; leva leitores a artigos do blog que vendem. | passo 37.3 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
+| [Influenciadores e newsletters](#infl) | Remoto · futuro | Post pago ou por desempenho no nicho de TI e educação; peça números reais e use cupom. | passo 37.4 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
+| [PostHog (funil e gravações)](#posthog) | Remoto · precisa de conta | Funis, gravação de sessões e testes nas páginas de venda: mostra onde o visitante desiste. Plano de nuvem com cota grátis; código aberto. | passo 24.2 · Com a primeira página de venda no ar (jan/2027) e por etapas; passo 24.3 · Com a primeira página de venda no ar (jan/2027) e por etapas |
+| [GrowthBook (testes A/B)](#growthbook) | Local | Testes A/B e liberação gradual de funções com estatística correta. Código aberto. | passo 24.3 · Com a primeira página de venda no ar (jan/2027) e por etapas |
 
 <a id="ads"></a>
 
@@ -295,7 +305,7 @@ flowchart LR
 
 Primeiro canal pago: anúncios da isca grátis e remarketing do mini-curso. Desde jan/2026 a fatura tem +12,15% de impostos sobre a mídia.
 
-**Quando entra:** passo 36.1 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.1 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -315,7 +325,7 @@ Primeiro canal pago: anúncios da isca grátis e remarketing do mini-curso. Desd
 
 Aula ou PDF grátis que captura o e-mail e abre uma sequência de 5 a 7 e-mails até o mini-curso.
 
-**Quando entra:** passo 26.6 · Semanas 6 e 7 · dez/2026; passo 30.5 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 27.6 · Semanas 6 e 7 · dez/2026; passo 31.5 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -340,7 +350,7 @@ Aula ou PDF grátis que captura o e-mail e abre uma sequência de 5 a 7 e-mails 
 
 Newsletter do blog com grupos por tema e funil de lançamento. Você já escolheu o plano grátis.
 
-**Quando entra:** passo 26.6 · Semanas 6 e 7 · dez/2026; passo 30.5 · Semanas 12 a 15 · jan a fev/2027; passo 35.8 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 27.6 · Semanas 6 e 7 · dez/2026; passo 31.5 · Semanas 12 a 15 · jan a fev/2027; passo 36.8 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -382,7 +392,7 @@ Agendador open source (AGPL-3.0) que publica em mais de 28 redes. Roda no seu Do
 
 Nenhum post sai sem o seu ok: a peça chega pelo Telegram e você aprova no celular. Protege o canal de erro da IA.
 
-**Quando entra:** passo 24.3 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 25.3 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -398,7 +408,7 @@ Nenhum post sai sem o seu ok: a peça chega pelo Telegram e você aprova no celu
 
 Bot que avisa no celular: peça pronta para aprovar, serviço fora do ar. Grátis.
 
-**Quando entra:** passo 17.1 · Semana 5 · nov/2026; passo 17.2 · Semana 5 · nov/2026; passo 17.3 · Semana 5 · nov/2026; passo 17.4 · Semana 5 · nov/2026; passo 17.5 · Semana 5 · nov/2026; passo 23.5 · Dez/2026 a jan/2027; passo 24.3 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 17.1 · Semana 5 · nov/2026; passo 17.2 · Semana 5 · nov/2026; passo 17.3 · Semana 5 · nov/2026; passo 17.4 · Semana 5 · nov/2026; passo 17.5 · Semana 5 · nov/2026; passo 23.5 · Dez/2026 a jan/2027; passo 25.3 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -417,7 +427,7 @@ Bot que avisa no celular: peça pronta para aprovar, serviço fora do ar. Gráti
 
 Automação: novo aluno → e-mail, post agendado, aviso.
 
-**Quando entra:** passo 10.1 · Semana 4 · nov/2026; passo 10.2 · Semana 4 · nov/2026; passo 10.5 · Semana 4 · nov/2026; passo 10.7 · Semana 4 · nov/2026; passo 12.1 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.4 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.6 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.7 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.9 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.10 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.12 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 20.7 · Semana 6 · nov/2026 a dez/2026; passo 23.5 · Dez/2026 a jan/2027; passo 35.5 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 10.1 · Semana 4 · nov/2026; passo 10.2 · Semana 4 · nov/2026; passo 10.5 · Semana 4 · nov/2026; passo 10.7 · Semana 4 · nov/2026; passo 12.1 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.4 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.6 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.7 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.9 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.10 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 12.12 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 20.7 · Semana 6 · nov/2026 a dez/2026; passo 23.5 · Dez/2026 a jan/2027; passo 36.5 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -447,7 +457,7 @@ Automação: novo aluno → e-mail, post agendado, aviso.
 
 Calcula o desempenho por rede, dia e hora com os seus dados; 80% dos posts nas melhores faixas, 20% testando faixas novas.
 
-**Quando entra:** passo 36.6 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.6 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -462,7 +472,7 @@ Calcula o desempenho por rede, dia e hora com os seus dados; 80% dos posts nas m
 
 Pixel + API de Conversões da Meta, tag do Google Ads, pixel do TikTok e as tags de Kwai, Pinterest, LinkedIn e nativos. Sem a tag, o canal não aprende quem compra e a venda não chega ao painel.
 
-**Quando entra:** passo 26.5 · Semanas 6 e 7 · dez/2026; passo 30.4 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 27.5 · Semanas 6 e 7 · dez/2026; passo 31.4 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -483,7 +493,7 @@ Pixel + API de Conversões da Meta, tag do Google Ads, pixel do TikTok e as tags
 
 Todo link marcado com fonte, meio, campanha e criativo, para ligar cada venda ao anúncio ou post que a trouxe.
 
-**Quando entra:** passo 27.12 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 30.4 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 28.12 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 31.4 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -506,7 +516,7 @@ Todo link marcado com fonte, meio, campanha e criativo, para ligar cada venda ao
 
 Para vídeos longos que já convertem e buscas com intenção de compra.
 
-**Quando entra:** passo 36.2 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.2 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -525,7 +535,7 @@ Para vídeos longos que já convertem e buscas com intenção de compra.
 
 Depois que os cortes orgânicos mostrarem tração.
 
-**Quando entra:** passo 36.2 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.2 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -544,7 +554,7 @@ Depois que os cortes orgânicos mostrarem tração.
 
 Pausa criativo ou conjunto quando o CPA passa do de empate; sobe 15% do orçamento quando fica abaixo do CPA da margem.
 
-**Quando entra:** passo 27.13 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 28.13 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -568,7 +578,7 @@ Pausa criativo ou conjunto quando o CPA passa do de empate; sobe 15% do orçamen
 
 Artefato com taxas das plataformas, imposto, CPA e ROAS de empate, simulador e o lucro real de cada campanha.
 
-**Quando entra:** passo 27.13 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 28.13 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -594,7 +604,7 @@ Artefato com taxas das plataformas, imposto, CPA e ROAS de empate, simulador e o
 
 Hotmart, Kiwify e Eduzz avisam cada venda e reembolso; o n8n grava no banco.
 
-**Quando entra:** passo 28.1 · Semana 11 · jan/2027; passo 28.2 · Semana 11 · jan/2027; passo 29.3 · Semana 11 · jan/2027; passo 30.7 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 29.1 · Semana 11 · jan/2027; passo 29.2 · Semana 11 · jan/2027; passo 30.3 · Semana 11 · jan/2027; passo 31.7 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -602,6 +612,7 @@ Hotmart, Kiwify e Eduzz avisam cada venda e reembolso; o n8n grava no banco.
 | ← recebe de | [Hotmart](20-venda.md#hotm) | Plataformas de venda e recebimento | venda e reembolso |
 | ← recebe de | [Kiwify](20-venda.md#kiwi) | Plataformas de venda e recebimento | venda e reembolso |
 | ← recebe de | [Eduzz](20-venda.md#eduzz) | Plataformas de venda e recebimento | venda e reembolso |
+| ← recebe de | [Invoice Ninja (orçamentos)](19-emp.md#invoiceninja) | Pessoa física: impostos e finanças | avisa pagamentos |
 
 <a id="metrics"></a>
 
@@ -611,7 +622,7 @@ Hotmart, Kiwify e Eduzz avisam cada venda e reembolso; o n8n grava no banco.
 
 Tabelas de produtos, vendas, gastos, ferramentas e impostos.
 
-**Quando entra:** passo 10.2 · Semana 4 · nov/2026; passo 10.7 · Semana 4 · nov/2026; passo 28.3 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 10.2 · Semana 4 · nov/2026; passo 10.7 · Semana 4 · nov/2026; passo 29.3 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -633,6 +644,7 @@ Tabelas de produtos, vendas, gastos, ferramentas e impostos.
 | ← recebe de | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | roda 24 h |
 | ← recebe de | [Servidores MCP](05-ia.md#mcp) | Agentes de IA e sandbox | leitura (usuário do Grafana) |
 | ← recebe de | [Docker + Compose](09-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
+| ← recebe de | [Metabase (painéis)](06-dados.md#metabase) | Dados e treino de IA | lê |
 
 <a id="painel"></a>
 
@@ -642,7 +654,7 @@ Tabelas de produtos, vendas, gastos, ferramentas e impostos.
 
 Lucro por produto, canal, campanha e país, atualizado sozinho.
 
-**Quando entra:** passo 11.6 · Semana 4 · nov/2026; passo 12.11 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 28.4 · Semana 11 · jan/2027; passo 29.3 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 11.6 · Semana 4 · nov/2026; passo 12.11 · Nov/2026 em diante, uma por vez, na ordem de desbloqueio; passo 29.4 · Semana 11 · jan/2027; passo 30.3 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -655,6 +667,7 @@ Lucro por produto, canal, campanha e país, atualizado sozinho.
 | ← recebe de | [Financeiro local](19-emp.md#financas) | Pessoa física: impostos e finanças | sobra do mês |
 | ← recebe de | [Teste de restauração](02-seg.md#restauracao) | Segurança e cofre | resultado do teste |
 | ← recebe de | [Lucro por ferramenta](23-oper.md#roi) | Operação do grupo (esteira, marca, qualidade) | resultado por ferramenta |
+| ← recebe de | [PostHog (funil e gravações)](21-mkt.md#posthog) | Marketing, automação e medição | conversão por página |
 
 <a id="afprog"></a>
 
@@ -664,7 +677,7 @@ Lucro por produto, canal, campanha e país, atualizado sozinho.
 
 Comissão definida pela calculadora, aberta depois de 20 vendas próprias.
 
-**Quando entra:** passo 36.5 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.5 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -680,7 +693,7 @@ Comissão definida pela calculadora, aberta depois de 20 vendas próprias.
 
 Busca e qualificação de parceiros com IA; mensagem revisada e enviada por você.
 
-**Quando entra:** passo 27.16 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 28.16 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -696,7 +709,7 @@ Busca e qualificação de parceiros com IA; mensagem revisada e enviada por voc�
 
 Dublagem automática do YouTube para vídeos; ElevenLabs para cursos fora do YouTube. Espanhol primeiro.
 
-**Quando entra:** passo 36.8 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.8 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -712,7 +725,7 @@ Dublagem automática do YouTube para vídeos; ElevenLabs para cursos fora do You
 
 Anúncios em áudio e podcast, abertos a anunciantes no Brasil. Clique baixo: serve para marca, não para venda direta.
 
-**Quando entra:** passo 36.3 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.3 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -731,7 +744,7 @@ Anúncios em áudio e podcast, abertos a anunciantes no Brasil. Clique baixo: se
 
 Plataforma de anúncios do Kwai no Brasil; teste depois de Meta e TikTok.
 
-**Quando entra:** passo 36.3 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.3 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -750,7 +763,7 @@ Plataforma de anúncios do Kwai no Brasil; teste depois de Meta e TikTok.
 
 Para templates e material visual; confira se a conta aceita o Brasil.
 
-**Quando entra:** passo 36.3 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.3 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -769,7 +782,7 @@ Para templates e material visual; confira se a conta aceita o Brasil.
 
 Caro; só para B2B (sistemas AM e consultoria).
 
-**Quando entra:** passo 36.3 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.3 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -788,7 +801,7 @@ Caro; só para B2B (sistemas AM e consultoria).
 
 Clique barato e conversão baixa; leva leitores a artigos do blog que vendem.
 
-**Quando entra:** passo 36.3 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.3 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -808,7 +821,7 @@ Clique barato e conversão baixa; leva leitores a artigos do blog que vendem.
 
 Post pago ou por desempenho no nicho de TI e educação; peça números reais e use cupom.
 
-**Quando entra:** passo 36.4 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.4 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -818,6 +831,35 @@ Post pago ou por desempenho no nicho de TI e educação; peça números reais e 
 | ← recebe de | [Lucro por Venda (calculadora)](21-mkt.md#calc) | Marketing, automação e medição | valor máximo do post |
 | ← recebe de | [Padrão de UTM](21-mkt.md#utm) | Marketing, automação e medição | marca os links |
 | ← recebe de | [Regras de corte](21-mkt.md#regras) | Marketing, automação e medição | renova ou encerra parceria |
+
+<a id="posthog"></a>
+
+### PostHog (funil e gravações)
+
+*Remoto · precisa de conta*
+
+Funis, gravação de sessões e testes nas páginas de venda: mostra onde o visitante desiste. Plano de nuvem com cota grátis; código aberto.
+
+**Quando entra:** passo 24.2 · Com a primeira página de venda no ar (jan/2027) e por etapas; passo 24.3 · Com a primeira página de venda no ar (jan/2027) e por etapas ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Painel de lucro (Grafana)](21-mkt.md#painel) | Marketing, automação e medição | conversão por página |
+| ← recebe de | [GrowthBook (testes A/B)](21-mkt.md#growthbook) | Marketing, automação e medição | mede os testes |
+
+<a id="growthbook"></a>
+
+### GrowthBook (testes A/B)
+
+*Local*
+
+Testes A/B e liberação gradual de funções com estatística correta. Código aberto.
+
+**Quando entra:** passo 24.3 · Com a primeira página de venda no ar (jan/2027) e por etapas ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [PostHog (funil e gravações)](21-mkt.md#posthog) | Marketing, automação e medição | mede os testes |
 
 ---
 
