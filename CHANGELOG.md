@@ -2,6 +2,15 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.30.0] - 2026-11-01
+
+### Adicionado
+- Verificador de documentos (tools/documentos/verificar.py): perfil ABNT (A4, margens, fonte, espaçamento, recuo, numeração, sumário, referências) com correção automática da formatação, e perfil escola (campos vazios, dados de aluno, máximo de objetivos).
+- Rendas "Verificador e formatador ABNT automático" (próxima, 7ª) e "Conferência automática de documentos para escolas" (fila), com softwares e passos fa-conferir e fa-abnt.
+
+### Removido
+- Dependência dos congelados (harumakis) na máquina de venda: o plano de congelados saiu, por decisão do Alan.
+
 ## [1.29.0] - 2026-11-01
 
 ### Adicionado

@@ -1477,6 +1477,33 @@
       "fabrica"
      ],
      "fora": "Hábito de revisão: a Fábrica aprende com o que você corrige."
+    },
+    {
+     "id": "fa-conferir",
+     "titulo": "Conferir automaticamente cada documento antes de entregar à escola",
+     "quem": "script",
+     "pronto": "Laudo sem itens a corrigir",
+     "tempo_min": 2,
+     "blocos": [
+      "fabrica"
+     ],
+     "comando": "python3 ~/dev/dev-setup/tools/documentos/verificar.py ~/dev/aulas/documentos/planejamento-s1.docx --perfil escola"
+    },
+    {
+     "id": "fa-abnt",
+     "titulo": "Formatador ABNT: testar em 3 trabalhos e lançar a versão web",
+     "quem": "script",
+     "pronto": "3 trabalhos corrigidos e laudos aprovados",
+     "tempo_min": 30,
+     "blocos": [
+      "fabrica"
+     ],
+     "comando": "python3 ~/dev/dev-setup/tools/documentos/verificar.py ~/Downloads/trabalho.docx --corrigir",
+     "ofertas": [
+      "abnt-auto",
+      "docs-escolas"
+     ],
+     "nota": "Só formatação e conferência. A versão web (Horizons) usa a mesma verificação; nunca escrever o trabalho por ninguém."
     }
    ]
   },

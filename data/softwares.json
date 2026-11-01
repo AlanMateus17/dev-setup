@@ -1337,6 +1337,39 @@
    ],
    "estado": "existe",
    "vende": false
+  },
+  {
+   "id": "ss-abnt",
+   "nome": "Verificador e formatador ABNT online",
+   "categoria": "microsaas",
+   "publico": "universitários e pós-graduandos",
+   "faz": "Laudo ABNT e arquivo corrigido a partir do .docx enviado",
+   "ferramenta": "horizons",
+   "receita": "por documento ou assinatura",
+   "oferta": "abnt-auto",
+   "modulos": [
+    "pagamento",
+    "portal",
+    "ia"
+   ],
+   "estado": "em-construcao",
+   "vende": true
+  },
+  {
+   "id": "ss-conferir",
+   "nome": "Conferência de documentos escolares",
+   "categoria": "microsaas",
+   "publico": "coordenações e escolas",
+   "faz": "Aponta campos vazios, fora do modelo e fora das regras em cada planejamento",
+   "ferramenta": "horizons",
+   "receita": "licença por escola",
+   "oferta": "docs-escolas",
+   "modulos": [
+    "portal",
+    "pagamento"
+   ],
+   "estado": "ideia",
+   "vende": true
   }
  ]
 }

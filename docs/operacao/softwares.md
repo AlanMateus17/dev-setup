@@ -4,7 +4,7 @@
 
 [← Operação do grupo](README.md)
 
-**62 softwares que você pode criar e vender**, mais 7 sites e ferramentas seus. Todos são montados a partir de **20 módulos reaproveitáveis**: cada módulo construído uma vez deixa mais barato todo software que o usa. Cada software vendável liga a uma oferta do [portfólio](portfolio.md), onde estão o veredito, a fila e as automações.
+**64 softwares que você pode criar e vender**, mais 7 sites e ferramentas seus. Todos são montados a partir de **20 módulos reaproveitáveis**: cada módulo construído uma vez deixa mais barato todo software que o usa. Cada software vendável liga a uma oferta do [portfólio](portfolio.md), onde estão o veredito, a fila e as automações.
 
 ## Resumo
 
@@ -12,7 +12,7 @@
 |---|---:|---:|
 | Sites por tipo de negócio | 26 | 0 |
 | Sistemas AM (stack Aura) | 14 | 2 |
-| Micro-SaaS (validar rápido, reconstruir se vender) | 11 | 1 |
+| Micro-SaaS (validar rápido, reconstruir se vender) | 13 | 2 |
 | Educação | 5 | 3 |
 | Produtos para devs e empresas | 6 | 1 |
 | Seus sites e ferramentas (não vendidos) | 7 | 5 |
@@ -20,7 +20,7 @@
 | Ferramenta | Softwares |
 |---|---:|
 | Website Builder com IA (Hostinger) | 16 |
-| Horizons (Hostinger) | 19 |
+| Horizons (Hostinger) | 21 |
 | Stack Aura (.NET + Next.js) | 19 |
 | Next.js | 8 |
 | WordPress | 1 |
@@ -39,17 +39,17 @@ Primeiro os que entram em mais softwares vendáveis. É aqui que as horas de tra
 | 2 | **Vitrine base** | Páginas, SEO, WhatsApp, mapa, horário e formulário de contato | 32 | 29 |
 | 3 | **Relatório mensal** | Visitas, contatos e pedidos do mês enviados ao cliente | 29 | 27 |
 | 4 | **Avaliações e depoimentos** | Mostra avaliações do Google e pede avaliação depois do atendimento | 27 | 26 |
-| 5 | **Pagamento e assinatura** | Pix, cartão, cobrança recorrente e controle de acesso | 25 | 24 |
+| 5 | **Pagamento e assinatura** | Pix, cartão, cobrança recorrente e controle de acesso | 27 | 26 |
 | 6 | **Base multi-empresa Aura** | Cada cliente isolado (tenant e RLS), licença por módulo | 16 | 15 |
-| 7 | **Agendamento** | Horários, pagamento antecipado e lembretes | 13 | 13 |
-| 8 | **Área do cliente** | Login, histórico, documentos e segunda via | 12 | 12 |
+| 7 | **Área do cliente** | Login, histórico, documentos e segunda via | 14 | 14 |
+| 8 | **Agendamento** | Horários, pagamento antecipado e lembretes | 13 | 13 |
 | 9 | **Galeria e portfólio** | Fotos de obras, pratos, trabalhos e antes/depois | 11 | 11 |
 | 10 | **Pedido de orçamento** | Formulário que vira orçamento em PDF e vai para o WhatsApp | 11 | 11 |
 | 11 | **Blog e notícias** | Artigos para SEO e novidades | 10 | 9 |
 | 12 | **Catálogo com filtros** | Produtos, imóveis ou veículos com busca e filtros | 9 | 8 |
 | 13 | **Financeiro** | Contas, fluxo de caixa, conciliação e DRE (Rendara) | 9 | 8 |
-| 14 | **Pedido online** | Carrinho que manda o pedido para o WhatsApp ou para pagamento | 8 | 8 |
-| 15 | **Assistente de IA** | Respostas, resumos e geração de conteúdo com regras (aura-copilot) | 7 | 7 |
+| 14 | **Assistente de IA** | Respostas, resumos e geração de conteúdo com regras (aura-copilot) | 8 | 8 |
+| 15 | **Pedido online** | Carrinho que manda o pedido para o WhatsApp ou para pagamento | 8 | 8 |
 | 16 | **Cardápio digital** | Cardápio com QR, fotos, preços e esgotados | 5 | 5 |
 | 17 | **Estoque e ficha técnica** | Entrada, saída, custo, receita e perdas (Kaixara) | 5 | 5 |
 | 18 | **Banco de exercícios e correção** | Exercícios, correção automática e certificado | 4 | 4 |
@@ -128,6 +128,8 @@ Primeiro os que entram em mais softwares vendáveis. É aqui que as horas de tra
 | **Painel de BPO financeiro para clientes** | pequenas empresas | Conciliação e relatório mensal | Stack Aura (.NET + Next.js) | mensalidade do serviço | Ideia | BPO financeiro para pequenas empresas (contas, conciliação, fluxo de caixa) | Financeiro, Relatório mensal, Área do cliente |
 | **Fábrica de documentos para professores** | professores da rede de MG | Planejamento semanal, guia de ensino, documentos | Horizons (Hostinger) | assinatura | Ideia | Fábrica de documentos para professores de MG (assinatura) | Assistente de IA, Pagamento e assinatura, Área do cliente |
 | **Planilha Cascata (validação do Rendara)** | pessoas organizando as finanças | Caixas em cascata e metas | Python/planilha | venda única | Existe | AM Rendara (finanças), começando pela planilha | Financeiro |
+| **Verificador e formatador ABNT online** | universitários e pós-graduandos | Laudo ABNT e arquivo corrigido a partir do .docx enviado | Horizons (Hostinger) | por documento ou assinatura | Em construção | Verificador e formatador ABNT automático (TCC, artigos, relatórios) | Pagamento e assinatura, Área do cliente, Assistente de IA |
+| **Conferência de documentos escolares** | coordenações e escolas | Aponta campos vazios, fora do modelo e fora das regras em cada planejamento | Horizons (Hostinger) | licença por escola | Ideia | Conferência automática de documentos para coordenações e escolas | Área do cliente, Pagamento e assinatura |
 
 ## Educação
 

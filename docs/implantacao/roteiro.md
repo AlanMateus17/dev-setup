@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-48 fases, 371 passos, cerca de **1200 h 31 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+48 fases, 373 passos, cerca de **1201 h 03 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
-**Todo o planejamento está aqui:** os 369 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 100 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
+**Todo o planejamento está aqui:** os 369 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 102 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 279 dos 371 passos (268 h 21 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 281 dos 373 passos (268 h 53 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -28,7 +28,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [11 · Arsenal de rendas: regras e as 3 de agora](#f-arsenal) | Semana 4 · nov/2026 | 8 | 7 h 50 min |
 | [12 · Automações do arsenal](#f-automacoes) | Nov/2026 em diante, uma por vez, na ordem de desbloqueio | 12 | 24 h 00 min |
 | [13 · Kit de sites com IA da Hostinger](#f-sites) | Semanas 4 e 5 · nov/2026 | 5 | 5 h 00 min |
-| [14 · Escola: Fábrica de aulas e documentos](#f-escola) | Semanas 5 e 6 · nov/2026 | 5 | 2 h 10 min |
+| [14 · Escola: Fábrica de aulas e documentos](#f-escola) | Semanas 5 e 6 · nov/2026 | 7 | 2 h 42 min |
 | [15 · Departamento financeiro pessoal](#f-financeiro) | Dez/2026 | 4 | 1 h 12 min |
 | [16 · Rotina automatizada](#f-rotina) | Semana 4 · nov/2026 | 5 | 34 min |
 | [17 · Comandos remotos pelo Telegram](#f-remoto) | Semana 5 · nov/2026 | 5 | 35 min |
@@ -1473,6 +1473,34 @@ cd ~/dev/aulas && python3 ~/dev/dev-setup/tools/fabrica/plano_semanal.py ementas
 
 - **Fora do terminal:** Hábito de revisão: a Fábrica aprende com o que você corrige.
 - [ ] **Pronto quando:** Regras atualizadas a cada revisão
+- Implanta: Fábrica de aulas
+
+### 14.6 Conferir automaticamente cada documento antes de entregar à escola
+
+**Script** · 2 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+python3 ~/dev/dev-setup/tools/documentos/verificar.py ~/dev/aulas/documentos/planejamento-s1.docx --perfil escola
+```
+
+- [ ] **Pronto quando:** Laudo sem itens a corrigir
+- Implanta: Fábrica de aulas
+
+### 14.7 Formatador ABNT: testar em 3 trabalhos e lançar a versão web
+
+**Script** · 30 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+python3 ~/dev/dev-setup/tools/documentos/verificar.py ~/Downloads/trabalho.docx --corrigir
+```
+
+- [ ] **Pronto quando:** 3 trabalhos corrigidos e laudos aprovados
+- Só formatação e conferência. A versão web (Horizons) usa a mesma verificação; nunca escrever o trabalho por ninguém.
+- **Oferta:** Verificador e formatador ABNT automático (TCC, artigos, relatórios) · Conferência automática de documentos para coordenações e escolas
 - Implanta: Fábrica de aulas
 
 <a id="f-financeiro"></a>
@@ -4485,7 +4513,7 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 
 - **Fora do terminal:** Exigem capital; só quando a renda do núcleo pagar o investimento.
 - [ ] **Pronto quando:** Decisão registrada com capital próprio disponível
-- **Oferta:** Mercadinho autônomo em condomínio · Máquina de venda de lanches e congelados · Aluguel de kits de robótica · Kits e placas de robótica (Tindie e Mercado Livre) · Motos e carros: compra e revenda
+- **Oferta:** Mercadinho autônomo em condomínio · Máquina de venda de lanches · Aluguel de kits de robótica · Kits e placas de robótica (Tindie e Mercado Livre) · Motos e carros: compra e revenda
 
 <a id="f33"></a>
 
@@ -4823,7 +4851,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Canva · Krita · Inkscape | 3.2, 26.4 | Semana 1 · out/2026; Semana 5 · dez/2026 |
 | Whisper (local) | 4.4, 25.6 | Semana 2 · nov/2026; Semana 5 · nov/2026 |
 | Voz clonada (ElevenLabs) | 26.5 | Semana 5 · dez/2026 |
-| Fábrica de aulas | 14.1, 14.2, 14.3, 14.4, 14.5 | Semanas 5 e 6 · nov/2026 |
+| Fábrica de aulas | 14.1, 14.2, 14.3, 14.4, 14.5, 14.6, 14.7 | Semanas 5 e 6 · nov/2026 |
 | Penpot (design) | 24.8 | Com a primeira página de venda no ar (jan/2027) e por etapas |
 
 ### Nuvem, código e entrega

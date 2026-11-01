@@ -2883,7 +2883,7 @@
   },
   {
    "id": "vending",
-   "nome": "Máquina de venda de lanches e congelados",
+   "nome": "Máquina de venda de lanches",
    "frente": "fisico",
    "tipo": "comércio",
    "estagio": "ideia",
@@ -2902,7 +2902,7 @@
    "deriva_de": [
     "mercadinho"
    ],
-   "proximo_passo": "Só depois dos congelados validados",
+   "proximo_passo": "Só com capital próprio e um ponto validado",
    "metrica": "lucro por máquina",
    "nota": {
     "sinergia": 3,
@@ -2916,7 +2916,7 @@
    "perfil": "ativa",
    "automacao": 60,
    "veredito": "decidir",
-   "motivo": "Capital alto; depende dos congelados.",
+   "motivo": "Capital alto.",
    "lote": "2026-11",
    "usa": [
     "estoque"
@@ -4302,6 +4302,99 @@
     "crm",
     "recorrencia",
     "cascata"
+   ]
+  },
+  {
+   "estagio": "ideia",
+   "doc": null,
+   "nova": true,
+   "lote": "2026-11",
+   "id": "abnt-auto",
+   "nome": "Verificador e formatador ABNT automático (TCC, artigos, relatórios)",
+   "frente": "educacao",
+   "tipo": "SaaS",
+   "receita": "por documento ou assinatura",
+   "escala": "digital",
+   "canais": [
+    "Instagram",
+    "grupos de faculdade",
+    "site"
+   ],
+   "automatico": [
+    "laudo ABNT do .docx enviado",
+    "arquivo corrigido (margens, A4, fonte, espaçamento)",
+    "cobrança e entrega"
+   ],
+   "humano": [
+    "suporte por exceção"
+   ],
+   "deriva_de": [
+    "abnt"
+   ],
+   "proximo_passo": "Publicar a versão web (Horizons) com o verificador e cobrar por documento; testar com 10 universitários",
+   "metrica": "documentos verificados por mês",
+   "nota": {
+    "sinergia": 5,
+    "escala": 5,
+    "demanda": 4,
+    "esforco": 2,
+    "capital": 1
+   },
+   "perfil": "passiva",
+   "automacao": 90,
+   "veredito": "proxima",
+   "ordem": 7,
+   "motivo": "Escala sem a sua hora: o aluno envia o .docx e recebe o laudo e o arquivo corrigido. Só formatação e conferência, nunca escrever o trabalho.",
+   "usa": [
+    "venda",
+    "recorrencia",
+    "suporte",
+    "funil"
+   ]
+  },
+  {
+   "estagio": "ideia",
+   "doc": null,
+   "nova": true,
+   "lote": "2026-11",
+   "id": "docs-escolas",
+   "nome": "Conferência automática de documentos para coordenações e escolas",
+   "frente": "educacao",
+   "tipo": "licença",
+   "receita": "licença por escola",
+   "escala": "produtizado",
+   "canais": [
+    "coordenações",
+    "diretores",
+    "Superintendência Regional"
+   ],
+   "automatico": [
+    "verifica campos vazios, modelo e regras",
+    "lista do que cada professor precisa corrigir"
+   ],
+   "humano": [
+    "apresentar e treinar a coordenação"
+   ],
+   "deriva_de": [
+    "fabricaprof"
+   ],
+   "proximo_passo": "Usar na sua própria escola por um bimestre (sem dado de aluno) e levar o resultado à coordenação",
+   "metrica": "escolas licenciadas",
+   "nota": {
+    "sinergia": 5,
+    "escala": 4,
+    "demanda": 3,
+    "esforco": 3,
+    "capital": 1
+   },
+   "perfil": "passiva",
+   "automacao": 85,
+   "veredito": "fila",
+   "motivo": "A coordenação recebe dezenas de planejamentos por semana; o verificador aponta o que falta. Nada de dados de aluno.",
+   "usa": [
+    "crm",
+    "recorrencia",
+    "fabrica"
    ]
   }
  ],
