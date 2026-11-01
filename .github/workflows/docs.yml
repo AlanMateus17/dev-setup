@@ -35,7 +35,7 @@ jobs:
       - name: Testar o kit de sites, o avaliador e as ferramentas do dia a dia
         run: |
           python tools/kitsites/gerar.py --check
-          for d in kitsites avaliador radar organizar remoto financeiro fabrica; do python -m unittest discover -s tools/$d -v || exit 1; done
+          for d in kitsites avaliador radar organizar remoto financeiro fabrica ia; do python -m unittest discover -s tools/$d -v || exit 1; done
       - name: Testar o pipeline de conteúdo e conferir o roteiro de implantação
         run: |
           python -m unittest discover -s tools/conteudo -v
@@ -77,3 +77,9 @@ jobs:
           CASA_DIR: /tmp/casa
           PAPERLESS_SECRET: ci
         run: docker compose config --quiet
+      - name: Docker Compose da IA e da rede
+        env:
+          LITELLM_MASTER_KEY: ci
+        run: |
+          docker compose -f infra/ia/compose.yaml config --quiet
+          docker compose -f infra/rede/compose.yaml config --quiet

@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** git push via SSH leva o código ao GitHub; o Actions testa e publica.
 
-**17 blocos** · 12 precisam de conta · 3 marcados como futuro
+**18 blocos** · 12 precisam de conta · 3 marcados como futuro
 
 ## Mapa de conexões
 
@@ -31,6 +31,7 @@ flowchart LR
     n_b2["Backblaze B2 (backup)"]
     n_gpuh["GPU por hora (RunPod e afins)"]
     n_gdrv["Google Drive (seus documentos)"]
+    n_repopadrao["Repositório padrão"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_acv["Acervo (seus documentos)"]
@@ -82,8 +83,10 @@ flowchart LR
   end
   subgraph L_dados["Dados e treino de IA"]
     n_unsl["Unsloth (QLoRA)"]
+    n_vllm["vLLM (GPU alugada)"]
   end
   subgraph L_ia["Agentes de IA e sandbox"]
+    n_litellm["Gateway de modelos (LiteLLM)"]
     n_mcp["Servidores MCP"]
   end
   subgraph L_lin["Linux (Ubuntu no WSL2, Arch no 2º disco)"]
@@ -94,9 +97,11 @@ flowchart LR
     n_obsd["Obsidian + Git"]
   end
   subgraph L_seg["Segurança e cofre"]
+    n_gitleaks["gitleaks (segredos)"]
     n_kee["KeePassXC"]
     n_restic["restic (backup criptografado)"]
     n_sign["Commits assinados (chave SSH)"]
+    n_trivy["Trivy + Semgrep"]
     n_ykey["Chave física (YubiKey)"]
   end
   subgraph L_hw["Hardware"]
@@ -157,33 +162,38 @@ flowchart LR
   n_restic -->|"criptografado"| n_b2
   n_gpuh -->|"modelos abertos"| n_voz
   n_gpuh -->|"GPU de 24 GB"| n_unsl
+  n_litellm -->|"usa GPU alugada"| n_gpuh
+  n_vllm -->|"roda em"| n_gpuh
   n_gdrv -->|"cópia pelo Takeout"| n_acv
   n_cgws -->|"o Claude lê o Drive"| n_gdrv
+  n_repopadrao -->|"inclui"| n_gitleaks
+  n_repopadrao -->|"inclui"| n_trivy
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_blob,n_tmail,n_sonar,n_ghproj,n_dbot,n_gcp,n_gh,n_gha,n_ghcr,n_ghp,n_cf,n_vercel,n_azure,n_aws,n_b2,n_gpuh,n_gdrv desta
+  class n_blob,n_tmail,n_sonar,n_ghproj,n_dbot,n_gcp,n_gh,n_gha,n_ghcr,n_ghp,n_cf,n_vercel,n_azure,n_aws,n_b2,n_gpuh,n_gdrv,n_repopadrao desta
 ```
 
 ## Blocos
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Armazenamento de arquivos (Blob/R2)](#blob) | Remoto · precisa de conta | Fotos de produtos, anexos e PDFs dos sistemas AM fora do banco de dados. | passo 27.4 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
-| [E-mail transacional (Resend, SES…)](#tmail) | Remoto · precisa de conta | E-mails automáticos dos sistemas: confirmação de conta, senha, recibo. | passo 27.5 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
-| [SonarQube Cloud](#sonar) | Remoto · precisa de conta | Nota de qualidade e segurança do código a cada PR. Grátis para repositório público; recrutador vê o selo. | passo 26.5 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| [Armazenamento de arquivos (Blob/R2)](#blob) | Remoto · precisa de conta | Fotos de produtos, anexos e PDFs dos sistemas AM fora do banco de dados. | passo 31.4 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| [E-mail transacional (Resend, SES…)](#tmail) | Remoto · precisa de conta | E-mails automáticos dos sistemas: confirmação de conta, senha, recibo. | passo 31.5 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| [SonarQube Cloud](#sonar) | Remoto · precisa de conta | Nota de qualidade e segurança do código a cada PR. Grátis para repositório público; recrutador vê o selo. | passo 30.5 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
 | [Projects · ADRs · MkDocs](#ghproj) | Remoto | GitHub Projects espelhando o EPIC-01, decisões de arquitetura registradas e documentação publicada no Pages. | passo 5.5 · Semana 2 · nov/2026 |
 | [Dependabot + CodeQL](#dbot) | Remoto | Dependabot atualiza pacotes vulneráveis; CodeQL procura falhas no seu código. Grátis em repositório público. | passo 5.3 · Semana 2 · nov/2026 |
-| [Google Cloud](#gcp) | Remoto · precisa de conta · futuro | Terceira nuvem: só o básico, quando um projeto de IA ou dados pedir. | passo 38.5 · 2028 |
+| [Google Cloud](#gcp) | Remoto · precisa de conta · futuro | Terceira nuvem: só o básico, quando um projeto de IA ou dados pedir. | passo 42.5 · 2028 |
 | [GitHub](#gh) | Remoto · precisa de conta | Código, vault, ensino-ti e a org grupo-amtech-digital. É também o seu portfólio. | passo 2.7 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 5.1 · Semana 2 · nov/2026; passo 5.4 · Semana 2 · nov/2026 |
-| [GitHub Actions](#gha) | Remoto | CI/CD: build, testes, segurança e deploy. | passo 5.2 · Semana 2 · nov/2026; passo 24.1 · Semana 11 · jan/2027 |
-| [GHCR (imagens)](#ghcr) | Remoto | Registro das imagens Docker das APIs. | passo 26.6 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| [GitHub Pages](#ghp) | Remoto | Hospeda site pessoal, blog e Catálogo do HTML. | passo 21.7 · Semanas 6 e 7 · dez/2026 |
-| [Cloudflare (DNS, Pages, e-mail)](#cf) | Remoto · precisa de conta | DNS, HTTPS, proteção, hospedagem estática dos sites comerciais e redirecionamento de e-mail do domínio. O Cloudflare Tunnel leva os webhooks de venda até o n8n sem abrir portas em casa. | passo 21.3 · Semanas 6 e 7 · dez/2026; passo 21.8 · Semanas 6 e 7 · dez/2026; passo 23.1 · Semana 11 · jan/2027; passo 27.6 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
-| [Vercel](#vercel) | Remoto · precisa de conta | Frontends Next.js. O plano grátis é para uso pessoal e não comercial; confira os termos antes de pôr venda nele. | passo 27.6 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
-| [Azure](#azure) | Remoto · precisa de conta | Primeira nuvem para as APIs AM: App Service/Container Apps, PostgreSQL, Key Vault. | passo 27.2 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028); passo 27.3 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028); passo 27.6 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
-| [AWS](#aws) | Remoto · precisa de conta · futuro | Segunda nuvem, para o mercado maior. | passo 38.4 · 2028 |
+| [GitHub Actions](#gha) | Remoto | CI/CD: build, testes, segurança e deploy. | passo 5.2 · Semana 2 · nov/2026; passo 28.1 · Semana 11 · jan/2027 |
+| [GHCR (imagens)](#ghcr) | Remoto | Registro das imagens Docker das APIs. | passo 30.6 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| [GitHub Pages](#ghp) | Remoto | Hospeda site pessoal, blog e Catálogo do HTML. | passo 25.7 · Semanas 6 e 7 · dez/2026 |
+| [Cloudflare (DNS, Pages, e-mail)](#cf) | Remoto · precisa de conta | DNS, HTTPS, proteção, hospedagem estática dos sites comerciais e redirecionamento de e-mail do domínio. O Cloudflare Tunnel leva os webhooks de venda até o n8n sem abrir portas em casa. | passo 25.3 · Semanas 6 e 7 · dez/2026; passo 25.8 · Semanas 6 e 7 · dez/2026; passo 27.1 · Semana 11 · jan/2027; passo 31.6 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| [Vercel](#vercel) | Remoto · precisa de conta | Frontends Next.js. O plano grátis é para uso pessoal e não comercial; confira os termos antes de pôr venda nele. | passo 31.6 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| [Azure](#azure) | Remoto · precisa de conta | Primeira nuvem para as APIs AM: App Service/Container Apps, PostgreSQL, Key Vault. | passo 31.2 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028); passo 31.3 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028); passo 31.6 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| [AWS](#aws) | Remoto · precisa de conta · futuro | Segunda nuvem, para o mercado maior. | passo 42.4 · 2028 |
 | [Backblaze B2 (backup)](#b2) | Remoto · precisa de conta · futuro | Cópia fora de casa do backup, criptografada pelo restic. US$ 6,95 por TB/mês. | passo 7.2 · Semana 3 · nov/2026 |
-| [GPU por hora (RunPod e afins)](#gpuh) | Remoto · precisa de conta | Quando o Kaggle não bastar: GPU de 24 GB a partir de cerca de US$ 0,27 a 0,90 por hora no RunPod (out/2026). Um fine-tuning QLoRA de 8B costuma levar poucas horas. Use crédito pré-pago, sem cartão em débito automático. | passo 29.9 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| [GPU por hora (RunPod e afins)](#gpuh) | Remoto · precisa de conta | Quando o Kaggle não bastar: GPU de 24 GB a partir de cerca de US$ 0,27 a 0,90 por hora no RunPod (out/2026). Um fine-tuning QLoRA de 8B costuma levar poucas horas. Use crédito pré-pago, sem cartão em débito automático. | passo 21.4 · 2027, depois do primeiro fine-tuning de 8B; passo 33.9 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 | [Google Drive (seus documentos)](#gdrv) | Remoto · precisa de conta | Onde estão hoje as suas aulas, apostilas, provas, especificações e planos, misturados com cópias repetidas e documentos pessoais. O Google Takeout tira uma cópia completa para o acervo. | passo 0.5 · Antes de tudo · semana 1 (out/2026); passo 8.1 · Semanas 3 e 4 · nov/2026 |
+| [Repositório padrão](#repopadrao) | Local | Modelo com pre-commit, CI de qualidade, Definition of Done, ADRs e CHANGELOG para todo repositório. | passo 19.1 · Semana 5 · nov/2026; passo 19.2 · Semana 5 · nov/2026 |
 
 <a id="blob"></a>
 
@@ -193,7 +203,7 @@ flowchart LR
 
 Fotos de produtos, anexos e PDFs dos sistemas AM fora do banco de dados.
 
-**Quando entra:** passo 27.4 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.4 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -207,7 +217,7 @@ Fotos de produtos, anexos e PDFs dos sistemas AM fora do banco de dados.
 
 E-mails automáticos dos sistemas: confirmação de conta, senha, recibo.
 
-**Quando entra:** passo 27.5 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.5 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -221,7 +231,7 @@ E-mails automáticos dos sistemas: confirmação de conta, senha, recibo.
 
 Nota de qualidade e segurança do código a cada PR. Grátis para repositório público; recrutador vê o selo.
 
-**Quando entra:** passo 26.5 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 30.5 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -264,7 +274,7 @@ Dependabot atualiza pacotes vulneráveis; CodeQL procura falhas no seu código. 
 
 Terceira nuvem: só o básico, quando um projeto de IA ou dados pedir.
 
-**Quando entra:** passo 38.5 · 2028 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 42.5 · 2028 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -309,7 +319,7 @@ Código, vault, ensino-ti e a org grupo-amtech-digital. É também o seu portfó
 
 CI/CD: build, testes, segurança e deploy.
 
-**Quando entra:** passo 5.2 · Semana 2 · nov/2026; passo 24.1 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 5.2 · Semana 2 · nov/2026; passo 28.1 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -330,7 +340,7 @@ CI/CD: build, testes, segurança e deploy.
 
 Registro das imagens Docker das APIs.
 
-**Quando entra:** passo 26.6 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 30.6 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -346,7 +356,7 @@ Registro das imagens Docker das APIs.
 
 Hospeda site pessoal, blog e Catálogo do HTML.
 
-**Quando entra:** passo 21.7 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 25.7 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -362,7 +372,7 @@ Hospeda site pessoal, blog e Catálogo do HTML.
 
 DNS, HTTPS, proteção, hospedagem estática dos sites comerciais e redirecionamento de e-mail do domínio. O Cloudflare Tunnel leva os webhooks de venda até o n8n sem abrir portas em casa.
 
-**Quando entra:** passo 21.3 · Semanas 6 e 7 · dez/2026; passo 21.8 · Semanas 6 e 7 · dez/2026; passo 23.1 · Semana 11 · jan/2027; passo 27.6 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 25.3 · Semanas 6 e 7 · dez/2026; passo 25.8 · Semanas 6 e 7 · dez/2026; passo 27.1 · Semana 11 · jan/2027; passo 31.6 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -382,7 +392,7 @@ DNS, HTTPS, proteção, hospedagem estática dos sites comerciais e redirecionam
 
 Frontends Next.js. O plano grátis é para uso pessoal e não comercial; confira os termos antes de pôr venda nele.
 
-**Quando entra:** passo 27.6 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.6 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -397,7 +407,7 @@ Frontends Next.js. O plano grátis é para uso pessoal e não comercial; confira
 
 Primeira nuvem para as APIs AM: App Service/Container Apps, PostgreSQL, Key Vault.
 
-**Quando entra:** passo 27.2 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028); passo 27.3 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028); passo 27.6 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.2 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028); passo 31.3 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028); passo 31.6 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -418,7 +428,7 @@ Primeira nuvem para as APIs AM: App Service/Container Apps, PostgreSQL, Key Vaul
 
 Segunda nuvem, para o mercado maior.
 
-**Quando entra:** passo 38.4 · 2028 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 42.4 · 2028 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -451,12 +461,14 @@ Cópia fora de casa do backup, criptografada pelo restic. US$ 6,95 por TB/mês.
 
 Quando o Kaggle não bastar: GPU de 24 GB a partir de cerca de US$ 0,27 a 0,90 por hora no RunPod (out/2026). Um fine-tuning QLoRA de 8B costuma levar poucas horas. Use crédito pré-pago, sem cartão em débito automático.
 
-**Quando entra:** passo 29.9 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 21.4 · 2027, depois do primeiro fine-tuning de 8B; passo 33.9 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Voz clonada (ElevenLabs)](13-cont.md#voz) | Produção de conteúdo | modelos abertos |
 | → envia para | [Unsloth (QLoRA)](06-dados.md#unsl) | Dados e treino de IA | GPU de 24 GB |
+| ← recebe de | [Gateway de modelos (LiteLLM)](05-ia.md#litellm) | Agentes de IA e sandbox | usa GPU alugada |
+| ← recebe de | [vLLM (GPU alugada)](06-dados.md#vllm) | Dados e treino de IA | roda em |
 
 <a id="gdrv"></a>
 
@@ -472,6 +484,21 @@ Onde estão hoje as suas aulas, apostilas, provas, especificações e planos, mi
 |---|---|---|---|
 | → envia para | [Acervo (seus documentos)](23-oper.md#acv) | Operação do grupo (esteira, marca, qualidade) | cópia pelo Takeout |
 | ← recebe de | [Conector Google (Gmail, Drive…)](08-clc.md#cgws) | Claude: recursos, conectores e plugins | o Claude lê o Drive |
+
+<a id="repopadrao"></a>
+
+### Repositório padrão
+
+*Local*
+
+Modelo com pre-commit, CI de qualidade, Definition of Done, ADRs e CHANGELOG para todo repositório.
+
+**Quando entra:** passo 19.1 · Semana 5 · nov/2026; passo 19.2 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [gitleaks (segredos)](02-seg.md#gitleaks) | Segurança e cofre | inclui |
+| → envia para | [Trivy + Semgrep](02-seg.md#trivy) | Segurança e cofre | inclui |
 
 ---
 

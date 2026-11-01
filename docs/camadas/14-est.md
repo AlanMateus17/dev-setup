@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** O que você estuda vira produto, aula, post e linha no currículo.
 
-**7 blocos** · 5 precisam de conta · 0 marcados como futuro
+**9 blocos** · 5 precisam de conta · 0 marcados como futuro
 
 ## Mapa de conexões
 
@@ -21,6 +21,8 @@ flowchart LR
     n_road["roadmap.sh + Akita"]
     n_ghed["GitHub Education"]
     n_dez["Zoomcamp de dados + cursos de IA"]
+    n_gptzero["GPT do zero (estudo)"]
+    n_labrede["Laboratório de redes"]
   end
   subgraph L_editora["Editora AMS Silva (produção de livros)"]
     n_exyaml["Exercícios em YAML"]
@@ -33,11 +35,13 @@ flowchart LR
     n_copi["GitHub Copilot"]
   end
   subgraph L_dados["Dados e treino de IA"]
+    n_kgl["Kaggle · Colab (GPU grátis)"]
     n_pyds["Python de dados (Polars, Jupyter)"]
     n_torch["PyTorch + CUDA (WSL2)"]
   end
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
     n_obsd["Obsidian + Git"]
+    n_tail["Tailscale (VPN)"]
     n_vms["VMs: Kali · Arch · Servidores"]
   end
   subgraph L_hw["Hardware"]
@@ -55,21 +59,25 @@ flowchart LR
   n_ghed -->|"Copilot Pro"| n_copi
   n_dez -->|"projetos dos módulos"| n_pyds
   n_dez -->|"exercícios de redes neurais"| n_torch
+  n_gptzero -->|"treina em"| n_kgl
+  n_labrede -->|"pratica antes"| n_tail
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_learn,n_thm,n_plat,n_anki,n_road,n_ghed,n_dez desta
+  class n_learn,n_thm,n_plat,n_anki,n_road,n_ghed,n_dez,n_gptzero,n_labrede desta
 ```
 
 ## Blocos
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Microsoft Learn + AWS Skill Builder](#learn) | Remoto · precisa de conta | Trilhas oficiais e gratuitas para AZ-900, AZ-204 e AWS. | passo 41.2 · Contínuo, desde a semana 2 |
-| [TryHackMe / Hack The Box](#thm) | Remoto · precisa de conta | Laboratórios guiados de segurança para Security+, eJPT e OSCP. | passo 41.2 · Contínuo, desde a semana 2 |
-| [Alura · Rocketseat · DIO · Udemy](#plat) | Remoto · precisa de conta | Contas de aluno. A licença é para você assistir e estudar; baixar, copiar ou extrair as aulas para alimentar IA não é permitido. O que vai para a IA são as suas anotações e os seus projetos. | passo 41.3 · Contínuo, desde a semana 2 |
-| [Anki](#anki) | Local · precisa de conta | Repetição espaçada para comandos, conceitos, certificações e concurso. Open source. A conta grátis do AnkiWeb sincroniza notebook e celular. | passo 3.2 · Semana 1 · out/2026; passo 30.7 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 41.4 · Contínuo, desde a semana 2 |
-| [roadmap.sh + Akita](#road) | Remoto | Roteiros de estudo e referência da trilha Linux. | passo 41.2 · Contínuo, desde a semana 2 |
-| [GitHub Education](#ghed) | Remoto · precisa de conta | Pacote para professores: Copilot Pro e outros benefícios. Peça a verificação. | passo 41.1 · Contínuo, desde a semana 2 |
-| [Zoomcamp de dados + cursos de IA](#dez) | Remoto | Data Engineering Zoomcamp (DataTalksClub, grátis, 10 semanas), curso de LLM da Hugging Face, fast.ai e Neural Networks: Zero to Hero. Para a IA vão só as suas anotações e os seus projetos. | passo 29.6 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| [Microsoft Learn + AWS Skill Builder](#learn) | Remoto · precisa de conta | Trilhas oficiais e gratuitas para AZ-900, AZ-204 e AWS. | passo 45.2 · Contínuo, desde a semana 2 |
+| [TryHackMe / Hack The Box](#thm) | Remoto · precisa de conta | Laboratórios guiados de segurança para Security+, eJPT e OSCP. | passo 45.2 · Contínuo, desde a semana 2 |
+| [Alura · Rocketseat · DIO · Udemy](#plat) | Remoto · precisa de conta | Contas de aluno. A licença é para você assistir e estudar; baixar, copiar ou extrair as aulas para alimentar IA não é permitido. O que vai para a IA são as suas anotações e os seus projetos. | passo 45.3 · Contínuo, desde a semana 2 |
+| [Anki](#anki) | Local · precisa de conta | Repetição espaçada para comandos, conceitos, certificações e concurso. Open source. A conta grátis do AnkiWeb sincroniza notebook e celular. | passo 3.2 · Semana 1 · out/2026; passo 34.7 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 45.4 · Contínuo, desde a semana 2 |
+| [roadmap.sh + Akita](#road) | Remoto | Roteiros de estudo e referência da trilha Linux. | passo 45.2 · Contínuo, desde a semana 2 |
+| [GitHub Education](#ghed) | Remoto · precisa de conta | Pacote para professores: Copilot Pro e outros benefícios. Peça a verificação. | passo 45.1 · Contínuo, desde a semana 2 |
+| [Zoomcamp de dados + cursos de IA](#dez) | Remoto | Data Engineering Zoomcamp (DataTalksClub, grátis, 10 semanas), curso de LLM da Hugging Face, fast.ai e Neural Networks: Zero to Hero. Para a IA vão só as suas anotações e os seus projetos. | passo 33.6 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| [GPT do zero (estudo)](#gptzero) | Local | Tokenizador, atenção e treino de um GPT pequeno no Kaggle, para dominar a arquitetura. | passo 21.1 · 2027, depois do primeiro fine-tuning de 8B |
+| [Laboratório de redes](#labrede) | Local | Packet Tracer e containerlab para VLAN, roteamento e firewall (Network+ e CCNA). | passo 22.5 · Semana 6 · nov/2026 |
 
 <a id="learn"></a>
 
@@ -79,7 +87,7 @@ flowchart LR
 
 Trilhas oficiais e gratuitas para AZ-900, AZ-204 e AWS.
 
-**Quando entra:** passo 41.2 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 45.2 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -94,7 +102,7 @@ Trilhas oficiais e gratuitas para AZ-900, AZ-204 e AWS.
 
 Laboratórios guiados de segurança para Security+, eJPT e OSCP.
 
-**Quando entra:** passo 41.2 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 45.2 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -110,7 +118,7 @@ Laboratórios guiados de segurança para Security+, eJPT e OSCP.
 
 Contas de aluno. A licença é para você assistir e estudar; baixar, copiar ou extrair as aulas para alimentar IA não é permitido. O que vai para a IA são as suas anotações e os seus projetos.
 
-**Quando entra:** passo 41.3 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 45.3 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -124,7 +132,7 @@ Contas de aluno. A licença é para você assistir e estudar; baixar, copiar ou 
 
 Repetição espaçada para comandos, conceitos, certificações e concurso. Open source. A conta grátis do AnkiWeb sincroniza notebook e celular.
 
-**Quando entra:** passo 3.2 · Semana 1 · out/2026; passo 30.7 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 41.4 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 3.2 · Semana 1 · out/2026; passo 34.7 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 45.4 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -139,7 +147,7 @@ Repetição espaçada para comandos, conceitos, certificações e concurso. Open
 
 Roteiros de estudo e referência da trilha Linux.
 
-**Quando entra:** passo 41.2 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 45.2 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -153,7 +161,7 @@ Roteiros de estudo e referência da trilha Linux.
 
 Pacote para professores: Copilot Pro e outros benefícios. Peça a verificação.
 
-**Quando entra:** passo 41.1 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 45.1 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -167,12 +175,40 @@ Pacote para professores: Copilot Pro e outros benefícios. Peça a verificação
 
 Data Engineering Zoomcamp (DataTalksClub, grátis, 10 semanas), curso de LLM da Hugging Face, fast.ai e Neural Networks: Zero to Hero. Para a IA vão só as suas anotações e os seus projetos.
 
-**Quando entra:** passo 29.6 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 33.6 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Python de dados (Polars, Jupyter)](06-dados.md#pyds) | Dados e treino de IA | projetos dos módulos |
 | → envia para | [PyTorch + CUDA (WSL2)](06-dados.md#torch) | Dados e treino de IA | exercícios de redes neurais |
+
+<a id="gptzero"></a>
+
+### GPT do zero (estudo)
+
+*Local*
+
+Tokenizador, atenção e treino de um GPT pequeno no Kaggle, para dominar a arquitetura.
+
+**Quando entra:** passo 21.1 · 2027, depois do primeiro fine-tuning de 8B ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Kaggle · Colab (GPU grátis)](06-dados.md#kgl) | Dados e treino de IA | treina em |
+
+<a id="labrede"></a>
+
+### Laboratório de redes
+
+*Local*
+
+Packet Tracer e containerlab para VLAN, roteamento e firewall (Network+ e CCNA).
+
+**Quando entra:** passo 22.5 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Tailscale (VPN)](03-win.md#tail) | Windows 11, apps e máquinas virtuais | pratica antes |
 
 ---
 

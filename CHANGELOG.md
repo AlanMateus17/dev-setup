@@ -2,6 +2,15 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.23.0] - 2026-11-01
+
+### Adicionado
+- Padrão de elite: repositório padrão (pre-commit com gitleaks e Conventional Commits, CI com gitleaks, Trivy, Semgrep e testes, Definition of Done, ADRs) aplicado por scripts/wsl/padronizar-repo.sh sem sobrescrever nada; segredos direto do KeePassXC (scripts/wsl/segredos.sh); teste mensal de restauração do backup (scripts/wsl/teste-restauracao.sh).
+- IA com qualidade medida: gateway LiteLLM (infra/ia) com nomes estáveis (local, rapido, forte, gpu-alugada), fallback e teto de gasto; evals com promptfoo; passos do agente revisor de qualidade, do MCP próprio e dos agentes do n8n pelo gateway.
+- Modelos grandes sem computador maior: docs/ia/README.md (quantização, MoE, cluster na rede, QLoRA, GPU por hora com vLLM, destilação, API) e a calculadora tools/ia/cabe.py.
+- Rede própria: docs/rede/README.md, Tailscale agora, Syncthing, AdGuard Home (infra/rede), laboratório de redes e WireGuard à mão.
+- Quatro fases novas no roteiro e 18 blocos novos no ecossistema.
+
 ## [1.22.0] - 2026-11-01
 
 ### Adicionado

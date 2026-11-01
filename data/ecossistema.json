@@ -3149,6 +3149,168 @@
    "conta": false,
    "futuro": false,
    "descricao": "Downloads por tipo (sem apagar nada) e exportação de senhas pronta para o KeePassXC."
+  },
+  {
+   "id": "litellm",
+   "camada": "ia",
+   "rotulo": "Gateway de modelos|(LiteLLM)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Um endereço para todos os modelos (local, API, GPU alugada), com nomes estáveis, fallback e teto de gasto."
+  },
+  {
+   "id": "promptfoo",
+   "camada": "ia",
+   "rotulo": "Evals dos agentes|(promptfoo)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Casos de teste de cada agente; prompt ou modelo novo só entra se passar."
+  },
+  {
+   "id": "revisor",
+   "camada": "oper",
+   "rotulo": "Agente revisor|de qualidade",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Confere cada entrega contra o padrão de qualidade da oferta antes de chegar ao cliente."
+  },
+  {
+   "id": "mcpproprio",
+   "camada": "ia",
+   "rotulo": "MCP próprio|(seus dados)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Servidor MCP só de leitura com portfólio, softwares, roteiro e progresso, para qualquer agente consultar."
+  },
+  {
+   "id": "agentsdk",
+   "camada": "ia",
+   "rotulo": "Claude Agent SDK",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Agentes próprios em código (revisor, analista, orçamentista) com as mesmas ferramentas do Claude Code."
+  },
+  {
+   "id": "repopadrao",
+   "camada": "nuvem",
+   "rotulo": "Repositório padrão",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Modelo com pre-commit, CI de qualidade, Definition of Done, ADRs e CHANGELOG para todo repositório."
+  },
+  {
+   "id": "gitleaks",
+   "camada": "seg",
+   "rotulo": "gitleaks (segredos)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Bloqueia senha ou chave em commit e varre o histórico."
+  },
+  {
+   "id": "trivy",
+   "camada": "seg",
+   "rotulo": "Trivy + Semgrep",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Vulnerabilidades em dependências, containers e código, no CI de todo repositório."
+  },
+  {
+   "id": "segredos",
+   "camada": "seg",
+   "rotulo": "Segredos do cofre|(keepassxc-cli)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "O comando recebe o segredo direto do KeePassXC, sem .env em texto puro."
+  },
+  {
+   "id": "restauracao",
+   "camada": "seg",
+   "rotulo": "Teste de|restauração",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Restaura o último backup numa pasta temporária e confere. Backup não testado não conta."
+  },
+  {
+   "id": "iacluster",
+   "camada": "ia",
+   "rotulo": "Cluster de IA|na rede",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "llama.cpp RPC ou exo: um modelo maior dividido entre os seus computadores."
+  },
+  {
+   "id": "vllm",
+   "camada": "dados",
+   "rotulo": "vLLM (GPU alugada)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Serve um modelo grande numa GPU por hora, ligado ao gateway, só enquanto precisa."
+  },
+  {
+   "id": "destilacao",
+   "camada": "dados",
+   "rotulo": "Destilação",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Modelo grande gera exemplos da sua tarefa; um modelo pequeno aprende a imitá-lo."
+  },
+  {
+   "id": "gptzero",
+   "camada": "est",
+   "rotulo": "GPT do zero|(estudo)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Tokenizador, atenção e treino de um GPT pequeno no Kaggle, para dominar a arquitetura."
+  },
+  {
+   "id": "syncthing",
+   "camada": "win",
+   "rotulo": "Syncthing",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Pastas sincronizadas entre os seus aparelhos, direto, sem nuvem."
+  },
+  {
+   "id": "adguard",
+   "camada": "lin",
+   "rotulo": "AdGuard Home (DNS)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "DNS da casa com bloqueio de anúncios e rastreadores, também pelo Tailscale."
+  },
+  {
+   "id": "labrede",
+   "camada": "est",
+   "rotulo": "Laboratório de redes",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Packet Tracer e containerlab para VLAN, roteamento e firewall (Network+ e CCNA)."
+  },
+  {
+   "id": "wireguard",
+   "camada": "lin",
+   "rotulo": "WireGuard (na mão)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Túnel montado à mão entre duas máquinas, para entender o que o Tailscale faz."
   }
  ],
  "conexoes": [
@@ -6256,6 +6418,101 @@
    "de": "grocy",
    "para": "tg",
    "rotulo": "avisa ração e remédios"
+  },
+  {
+   "de": "litellm",
+   "para": "oll",
+   "rotulo": "usa modelos locais"
+  },
+  {
+   "de": "litellm",
+   "para": "gpuh",
+   "rotulo": "usa GPU alugada"
+  },
+  {
+   "de": "promptfoo",
+   "para": "litellm",
+   "rotulo": "testa pelo gateway"
+  },
+  {
+   "de": "revisor",
+   "para": "agentsdk",
+   "rotulo": "feito com"
+  },
+  {
+   "de": "agentsdk",
+   "para": "litellm",
+   "rotulo": "chama modelos"
+  },
+  {
+   "de": "mcpproprio",
+   "para": "cc",
+   "rotulo": "consultado por"
+  },
+  {
+   "de": "n8n",
+   "para": "litellm",
+   "rotulo": "agentes do n8n usam"
+  },
+  {
+   "de": "repopadrao",
+   "para": "gitleaks",
+   "rotulo": "inclui"
+  },
+  {
+   "de": "repopadrao",
+   "para": "trivy",
+   "rotulo": "inclui"
+  },
+  {
+   "de": "segredos",
+   "para": "kee",
+   "rotulo": "lê do cofre"
+  },
+  {
+   "de": "restauracao",
+   "para": "painel",
+   "rotulo": "resultado do teste"
+  },
+  {
+   "de": "iacluster",
+   "para": "tail",
+   "rotulo": "pela rede privada"
+  },
+  {
+   "de": "vllm",
+   "para": "gpuh",
+   "rotulo": "roda em"
+  },
+  {
+   "de": "destilacao",
+   "para": "kgl",
+   "rotulo": "treina em"
+  },
+  {
+   "de": "gptzero",
+   "para": "kgl",
+   "rotulo": "treina em"
+  },
+  {
+   "de": "syncthing",
+   "para": "tail",
+   "rotulo": "pela rede privada"
+  },
+  {
+   "de": "adguard",
+   "para": "tail",
+   "rotulo": "DNS da rede"
+  },
+  {
+   "de": "labrede",
+   "para": "tail",
+   "rotulo": "pratica antes"
+  },
+  {
+   "de": "wireguard",
+   "para": "tail",
+   "rotulo": "base de"
   }
  ],
  "fluxos": [

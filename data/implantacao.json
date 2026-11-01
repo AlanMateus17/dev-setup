@@ -1737,6 +1737,329 @@
    ]
   },
   {
+   "id": "f-elite",
+   "titulo": "Padrão de elite em todo repositório",
+   "objetivo": "Nenhum commit com segredo, vulnerabilidade ou teste quebrado chega ao GitHub; segredo só sai do cofre; backup testado.",
+   "quando": "Semana 5 · nov/2026",
+   "passos": [
+    {
+     "id": "el-precommit",
+     "titulo": "Instalar o pre-commit",
+     "quem": "script",
+     "pronto": "pre-commit --version responde",
+     "tempo_min": 5,
+     "blocos": [
+      "repopadrao"
+     ],
+     "comando": "sudo apt install -y pipx && pipx install pre-commit && pipx ensurepath"
+    },
+    {
+     "id": "el-padrao",
+     "titulo": "Aplicar o repositório padrão em todos os seus repositórios",
+     "quem": "script",
+     "pronto": "Todos os repositórios com hooks e CI de qualidade",
+     "tempo_min": 10,
+     "blocos": [
+      "repopadrao",
+      "gitleaks",
+      "trivy"
+     ],
+     "comando": "cd ~/dev/dev-setup && bash scripts/wsl/padronizar-repo.sh --todos",
+     "nota": "Só cria o que falta. Revise com git status, faça commit e push em cada um."
+    },
+    {
+     "id": "el-historico",
+     "titulo": "Varrer o histórico de todos os repositórios atrás de segredos",
+     "quem": "script",
+     "pronto": "Nenhum segredo encontrado (ou trocado e removido)",
+     "tempo_min": 15,
+     "blocos": [
+      "gitleaks"
+     ],
+     "comando": "cd ~/dev && for r in */; do echo \"== $r\"; docker run --rm -v \"$PWD/$r:/repo\" zricethezav/gitleaks:latest detect -s /repo --no-banner; done",
+     "nota": "Se achar algo: troque a senha ou chave na hora (o histórico do GitHub guarda cópia)."
+    },
+    {
+     "id": "el-segredos",
+     "titulo": "Rodar serviços com segredos vindos do KeePassXC",
+     "quem": "script",
+     "pronto": "Um serviço sobe sem .env em texto puro",
+     "tempo_min": 15,
+     "blocos": [
+      "segredos"
+     ],
+     "comando": "sudo apt install -y keepassxc && bash ~/dev/dev-setup/scripts/wsl/segredos.sh 'Automacao/N8N_CHAVE' N8N_CHAVE -- env | grep -c N8N_CHAVE",
+     "nota": "A senha do cofre é digitada à mão. O teste deve mostrar 1."
+    },
+    {
+     "id": "el-restauracao",
+     "titulo": "Testar a restauração do backup (todo mês)",
+     "quem": "script",
+     "pronto": "TESTE OK: o backup restaura",
+     "tempo_min": 15,
+     "blocos": [
+      "restauracao"
+     ],
+     "comando": "bash ~/dev/dev-setup/scripts/wsl/teste-restauracao.sh",
+     "nota": "Precisa de RESTIC_REPOSITORY definido. Marque na Rotina: primeiro domingo do mês."
+    },
+    {
+     "id": "el-revisao",
+     "titulo": "Revisão mensal de qualidade: CI, evals, painel e backups",
+     "quem": "voce",
+     "pronto": "Checklist do mês feito",
+     "tempo_min": 30,
+     "blocos": [
+      "revisor"
+     ],
+     "fora": "Hábito de 30 minutos no primeiro sábado do mês."
+    }
+   ]
+  },
+  {
+   "id": "f-ia-elite",
+   "titulo": "Agentes e IA com qualidade medida",
+   "objetivo": "Todo agente passa pelo gateway, tem testes e um revisor antes de chegar ao cliente.",
+   "quando": "Semana 6 · nov/2026 a dez/2026",
+   "passos": [
+    {
+     "id": "ia-gateway",
+     "titulo": "Subir o gateway de modelos (LiteLLM) com teto de gasto",
+     "quem": "script",
+     "pronto": "http://localhost:4000 responde com os modelos local, rapido e forte",
+     "tempo_min": 15,
+     "blocos": [
+      "litellm"
+     ],
+     "comando": "cd ~/dev/dev-setup/infra/ia && cp -n ia.env.example .env && nano .env && docker compose up -d",
+     "nota": "Melhor: deixe o .env vazio e suba com scripts/wsl/segredos.sh. O teto mensal está em litellm.yaml."
+    },
+    {
+     "id": "ia-evals",
+     "titulo": "Rodar os testes do primeiro agente (promptfoo)",
+     "quem": "script",
+     "pronto": "Todos os casos passam",
+     "tempo_min": 15,
+     "blocos": [
+      "promptfoo"
+     ],
+     "comando": "cd ~/dev/dev-setup/infra/ia/evals && npx promptfoo@latest eval"
+    },
+    {
+     "id": "ia-cabe",
+     "titulo": "Ver quais modelos maiores cabem no seu notebook",
+     "quem": "script",
+     "pronto": "Lista do que roda local, offload ou só alugado",
+     "tempo_min": 5,
+     "blocos": [
+      "gguf"
+     ],
+     "comando": "python3 ~/dev/dev-setup/tools/ia/cabe.py 32 && python3 ~/dev/dev-setup/tools/ia/cabe.py 30 --ativos 3"
+    },
+    {
+     "id": "ia-moe",
+     "titulo": "Rodar um modelo MoE ou de 14B+ quantizado que o cabe.py aprovou",
+     "quem": "voce",
+     "pronto": "Modelo respondendo no Ollama pelo gateway",
+     "tempo_min": 30,
+     "blocos": [
+      "oll",
+      "lmods"
+     ],
+     "fora": "Escolha o modelo na biblioteca do Ollama pelo resultado do cabe.py; os nomes mudam com frequência."
+    },
+    {
+     "id": "ia-revisor",
+     "titulo": "Construir o agente revisor de qualidade (Claude Agent SDK)",
+     "quem": "claude",
+     "pronto": "Revisor aprova ou devolve uma entrega com o motivo",
+     "tempo_min": 120,
+     "blocos": [
+      "revisor",
+      "agentsdk"
+     ],
+     "comando": "cd ~/dev/dev-setup && claude \"Passo ia-revisor do roteiro: Construir o agente revisor de qualidade com o Claude Agent SDK, usando o padrão de qualidade das ofertas e o gateway\""
+    },
+    {
+     "id": "ia-mcp",
+     "titulo": "Construir o MCP próprio só de leitura (portfólio, softwares, roteiro)",
+     "quem": "claude",
+     "pronto": "Claude Code consulta os seus dados pelo MCP",
+     "tempo_min": 90,
+     "blocos": [
+      "mcpproprio",
+      "mcp"
+     ],
+     "comando": "cd ~/dev/dev-setup && claude \"Passo ia-mcp do roteiro: Construir um servidor MCP só de leitura com data/portfolio.json, data/softwares.json e data/implantacao.json\""
+    },
+    {
+     "id": "ia-n8n",
+     "titulo": "Agentes do n8n passam pelo gateway e têm evals",
+     "quem": "claude",
+     "pronto": "Fluxos de agente usando local/rapido/forte, com testes",
+     "tempo_min": 90,
+     "blocos": [
+      "n8n",
+      "litellm",
+      "promptfoo"
+     ],
+     "comando": "cd ~/dev/dev-setup && claude \"Passo ia-n8n do roteiro: Ligar os agentes do n8n ao gateway LiteLLM e criar os evals de cada um\""
+    }
+   ]
+  },
+  {
+   "id": "f-ia-grande",
+   "titulo": "Modelos grandes sem computador maior",
+   "objetivo": "Usar e treinar modelos muito maiores que o notebook aguenta: cluster na rede, GPU por hora, destilação e QLoRA.",
+   "quando": "2027, depois do primeiro fine-tuning de 8B",
+   "passos": [
+    {
+     "id": "ig-gptzero",
+     "titulo": "Construir um GPT pequeno do zero no Kaggle",
+     "quem": "voce",
+     "pronto": "Modelo treinado gera texto e você explica cada parte",
+     "tempo_min": 600,
+     "blocos": [
+      "gptzero",
+      "kgl"
+     ],
+     "fora": "Estudo guiado no Kaggle (GPU grátis); o código é seu."
+    },
+    {
+     "id": "ig-cluster",
+     "titulo": "Dividir um modelo entre dois computadores da sua rede (llama.cpp RPC)",
+     "quem": "claude",
+     "pronto": "Modelo maior respondendo com as duas máquinas",
+     "tempo_min": 120,
+     "blocos": [
+      "iacluster",
+      "tail"
+     ],
+     "comando": "cd ~/dev/dev-setup && claude \"Passo ig-cluster do roteiro: Montar o llama.cpp RPC entre o notebook e o segundo computador pelo Tailscale\"",
+     "nota": "Precisa de um segundo computador na rede. A velocidade depende da rede: cabo ou Wi-Fi bom."
+    },
+    {
+     "id": "ig-destilacao",
+     "titulo": "Destilar: modelo grande gera exemplos, um 8B aprende a tarefa",
+     "quem": "claude",
+     "pronto": "Modelo pequeno com nota próxima do grande nos seus evals",
+     "tempo_min": 240,
+     "blocos": [
+      "destilacao",
+      "kgl",
+      "promptfoo"
+     ],
+     "comando": "cd ~/dev/dev-setup && claude \"Passo ig-destilacao do roteiro: Destilação de uma tarefa do grupo para um modelo de 8B, medida pelos evals\""
+    },
+    {
+     "id": "ig-qlora",
+     "titulo": "Fine-tuning QLoRA de 32B a 70B em GPU alugada, com teto de gasto",
+     "quem": "voce",
+     "pronto": "Adaptador treinado e avaliado contra o modelo base",
+     "tempo_min": 240,
+     "blocos": [
+      "gpuh",
+      "vllm"
+     ],
+     "fora": "Aluguel de GPU por hora no navegador; defina o teto antes de ligar e desligue ao terminar.",
+     "precisa": [
+      "pagamento"
+     ]
+    },
+    {
+     "id": "ig-vllm",
+     "titulo": "Servir o seu modelo com vLLM na GPU alugada, pelo gateway",
+     "quem": "claude",
+     "pronto": "gpu-alugada responde no gateway",
+     "tempo_min": 60,
+     "blocos": [
+      "vllm",
+      "litellm"
+     ],
+     "comando": "cd ~/dev/dev-setup && claude \"Passo ig-vllm do roteiro: Servir o modelo treinado com vLLM numa GPU por hora e ligar como gpu-alugada no LiteLLM\"",
+     "precisa": [
+      "pagamento"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "f-rede",
+   "titulo": "Rede própria entre os seus computadores",
+   "objetivo": "Seus aparelhos numa rede privada criptografada, com arquivos sincronizados e DNS próprio, sem nada exposto na internet.",
+   "quando": "Semana 6 · nov/2026",
+   "passos": [
+    {
+     "id": "rd-tailscale",
+     "titulo": "Instalar o Tailscale no Windows e no celular",
+     "quem": "script",
+     "pronto": "Notebook e celular aparecem no painel do Tailscale",
+     "tempo_min": 15,
+     "blocos": [
+      "tail"
+     ],
+     "comando": "winget install --id Tailscale.Tailscale -e",
+     "nota": "O login é no navegador; no celular, app Tailscale. O Ubuntu do WSL usa a rede do Windows."
+    },
+    {
+     "id": "rd-acl",
+     "titulo": "Ligar MagicDNS e escrever as regras de acesso (ACL)",
+     "quem": "voce",
+     "pronto": "Celular acessa só o que precisa",
+     "tempo_min": 20,
+     "blocos": [
+      "tail"
+     ],
+     "fora": "Painel do Tailscale, no navegador. Modelo das regras em docs/rede/README.md."
+    },
+    {
+     "id": "rd-syncthing",
+     "titulo": "Sincronizar uma pasta entre notebook e celular com o Syncthing",
+     "quem": "script",
+     "pronto": "Pasta de teste sincronizando nos dois",
+     "tempo_min": 20,
+     "blocos": [
+      "syncthing"
+     ],
+     "comando": "winget install --id Syncthing.Syncthing -e"
+    },
+    {
+     "id": "rd-adguard",
+     "titulo": "Subir o AdGuard Home como DNS da casa",
+     "quem": "script",
+     "pronto": "Configuração inicial em http://localhost:3001",
+     "tempo_min": 15,
+     "blocos": [
+      "adguard"
+     ],
+     "comando": "cd ~/dev/dev-setup/infra/rede && docker compose up -d",
+     "nota": "Para usar no celular fora de casa, aponte o DNS do Tailscale para o notebook."
+    },
+    {
+     "id": "rd-lab",
+     "titulo": "Montar o laboratório de redes (Packet Tracer)",
+     "quem": "voce",
+     "pronto": "Primeira topologia com 2 VLANs funcionando",
+     "tempo_min": 60,
+     "blocos": [
+      "labrede"
+     ],
+     "fora": "Conta gratuita na Cisco Networking Academy e download do Packet Tracer."
+    },
+    {
+     "id": "rd-wireguard",
+     "titulo": "Montar um túnel WireGuard à mão entre o WSL e o celular",
+     "quem": "claude",
+     "pronto": "Ping pelo túnel funcionando",
+     "tempo_min": 60,
+     "blocos": [
+      "wireguard"
+     ],
+     "comando": "cd ~/dev/dev-setup && claude \"Passo rd-wireguard do roteiro: Montar um túnel WireGuard à mão entre o Ubuntu do WSL e o celular, explicando cada chave e cada linha\""
+    }
+   ]
+  },
+  {
    "id": "f11",
    "titulo": "Pipeline de conteúdo",
    "objetivo": "Gravou ou escreveu, as peças aparecem na fila de aprovação.",

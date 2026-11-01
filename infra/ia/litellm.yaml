@@ -1,0 +1,25 @@
+# Nomes estáveis para os agentes; troque o modelo por trás sem mexer em nenhum agente.
+model_list:
+  - model_name: local
+    litellm_params:
+      model: ollama/qwen2.5:7b
+      api_base: http://host.docker.internal:11434
+  - model_name: rapido
+    litellm_params:
+      model: anthropic/claude-haiku-5-5
+      api_key: os.environ/ANTHROPIC_API_KEY
+  - model_name: forte
+    litellm_params:
+      model: anthropic/claude-sonnet-5-5
+      api_key: os.environ/ANTHROPIC_API_KEY
+  - model_name: gpu-alugada        # vLLM numa GPU por hora (RunPod); só quando ligada
+    litellm_params:
+      model: openai/seu-modelo
+      api_base: os.environ/VLLM_URL
+router_settings:
+  fallbacks:
+    - forte: [rapido]
+    - rapido: [local]
+litellm_settings:
+  max_budget: 20          # US$ por mês no total; passou, recusa
+  budget_duration: 30d

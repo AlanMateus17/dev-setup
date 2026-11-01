@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** O Windows depende de TPM, BitLocker e Defender para ficar protegido.
 
-**25 blocos** · 2 precisam de conta · 3 marcados como futuro
+**26 blocos** · 2 precisam de conta · 3 marcados como futuro
 
 ## Mapa de conexões
 
@@ -39,6 +39,7 @@ flowchart LR
     n_ard["Arduino IDE 2"]
     n_rufus["Rufus (grava pendrives)"]
     n_aw["ActivityWatch"]
+    n_syncthing["Syncthing"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_acv["Acervo (seus documentos)"]
@@ -69,6 +70,7 @@ flowchart LR
   end
   subgraph L_est["Estudo e carreira"]
     n_anki["Anki"]
+    n_labrede["Laboratório de redes"]
     n_plat["Alura · Rocketseat · DIO · Udemy"]
     n_road["roadmap.sh + Akita"]
     n_thm["TryHackMe / Hack The Box"]
@@ -104,11 +106,14 @@ flowchart LR
     n_dset["Seus datasets (só conteúdo seu)"]
   end
   subgraph L_ia["Agentes de IA e sandbox"]
+    n_iacluster["Cluster de IA na rede"]
     n_rag["Base de conhecimento (RAG) das suas notas"]
   end
   subgraph L_lin["Linux (Ubuntu no WSL2, Arch no 2º disco)"]
+    n_adguard["AdGuard Home (DNS)"]
     n_arch["Arch + Omarchy (2º NVMe)"]
     n_netw["nmap · dig · curl"]
+    n_wireguard["WireGuard (na mão)"]
     n_wsl["Ubuntu (WSL2)"]
   end
   subgraph L_seg["Segurança e cofre"]
@@ -129,6 +134,11 @@ flowchart LR
   end
   n_tail -->|"acesso remoto"| n_nas
   n_ws -->|"rede privada"| n_tail
+  n_iacluster -->|"pela rede privada"| n_tail
+  n_syncthing -->|"pela rede privada"| n_tail
+  n_adguard -->|"DNS da rede"| n_tail
+  n_labrede -->|"pratica antes"| n_tail
+  n_wireguard -->|"base de"| n_tail
   n_wslcfg -->|"limite de RAM"| n_wsl
   n_wterm -->|"abre o Ubuntu"| n_wsl
   n_draw -->|"diagramas"| n_obsd
@@ -192,19 +202,19 @@ flowchart LR
   n_rufus -->|"grava a ISO"| n_parch
   n_aw -->|"horas por renda"| n_painel
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_tail,n_wslcfg,n_wterm,n_draw,n_unity,n_boot,n_nitro,n_zip,n_ptoys,n_pdf,n_sharex,n_office,n_ffox,n_w11,n_vsc,n_obsd,n_syncth,n_dbv,n_nav,n_vbox,n_wshark,n_vms,n_ard,n_rufus,n_aw desta
+  class n_tail,n_wslcfg,n_wterm,n_draw,n_unity,n_boot,n_nitro,n_zip,n_ptoys,n_pdf,n_sharex,n_office,n_ffox,n_w11,n_vsc,n_obsd,n_syncth,n_dbv,n_nav,n_vbox,n_wshark,n_vms,n_ard,n_rufus,n_aw,n_syncthing desta
 ```
 
 ## Blocos
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Tailscale (VPN)](#tail) | Remoto · precisa de conta · futuro | Acesso seguro ao homelab e ao notebook de qualquer lugar, sem abrir porta no roteador. Grátis para uso pessoal. | passo 30.11 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 39.2 · 2028, quando o grupo pedir |
+| [Tailscale (VPN)](#tail) | Remoto · precisa de conta · futuro | Acesso seguro ao homelab e ao notebook de qualquer lugar, sem abrir porta no roteador. Grátis para uso pessoal. | passo 21.2 · 2027, depois do primeiro fine-tuning de 8B; passo 22.1 · Semana 6 · nov/2026; passo 22.2 · Semana 6 · nov/2026; passo 34.11 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 43.2 · 2028, quando o grupo pedir |
 | [.wslconfig + localhost](#wslcfg) | Local | Limita o WSL a 12 GB de RAM e faz o localhost do Windows abrir os apps que rodam no Linux. | passo 3.2 · Semana 1 · out/2026 |
 | [Terminal · PowerShell · winget](#wterm) | Local | Terminal com abas para Ubuntu e PowerShell; winget instala e atualiza programas. | passo 3.2 · Semana 1 · out/2026 |
 | [Excalidraw / draw.io](#draw) | Local | Diagramas de arquitetura para ADRs, aulas e entrevistas. | passo 3.2 · Semana 1 · out/2026 |
 | [Unity · Cocos](#unity) | Local | Mantidos para as aulas de robótica. Decisão sua: ficam ou saem. | passo 3.8 · Semana 1 · out/2026 |
-| [Gerenciador de boot](#boot) | Local · futuro | Escolhe Windows ou Arch ao ligar; cada sistema no próprio disco. | passo 32.1 · 2027, conforme cada compra |
+| [Gerenciador de boot](#boot) | Local · futuro | Escolhe Windows ou Arch ao ligar; cada sistema no próprio disco. | passo 36.1 · 2027, conforme cada compra |
 | [NitroSense + drivers AMD e NVIDIA](#nitro) | Local | Controle das ventoinhas e modos de energia do Nitro, mais os drivers de vídeo. Não remover. | passo 1.3 · Semana 1 · out/2026 |
 | [7-Zip](#zip) | Local | Abre e cria .zip, .7z e .tar (ISOs, backups, materiais de aula). | passo 3.2 · Semana 1 · out/2026 |
 | [PowerToys](#ptoys) | Local | Utilitários da Microsoft: organizar janelas nos dois monitores, renomear em lote, color picker para o design. | passo 3.2 · Semana 1 · out/2026 |
@@ -220,10 +230,11 @@ flowchart LR
 | [Navegador + Claude in Chrome](#nav) | Local | Testes, DevTools e acesso a todas as contas web. | passo 2.5 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 2.10 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 3.6 · Semana 1 · out/2026 |
 | [VirtualBox](#vbox) | Local | Roda as VMs de estudo. | passo 3.2 · Semana 1 · out/2026 |
 | [Wireshark](#wshark) | Local | Captura e lê o tráfego de rede no laboratório de segurança. Instalado pelo winget. | passo 3.2 · Semana 1 · out/2026 |
-| [VMs: Kali · Arch · Servidores](#vms) | Local · futuro | Kali (segurança), Arch (treino da instalação), Ubuntu Server (deploy), Windows Server com Active Directory e RHEL/Rocky (corporativo). Kali e Arch também ficam em pendrive. | passo 32.3 · 2027, conforme cada compra |
-| [Arduino IDE 2](#ard) | Local | Programação das placas de robótica. | passo 3.2 · Semana 1 · out/2026; passo 30.16 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
-| [Rufus (grava pendrives)](#rufus) | Local | Grava as ISOs do Kali e do Arch nos pendrives. Instalado pelo winget. | passo 29.1 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| [VMs: Kali · Arch · Servidores](#vms) | Local · futuro | Kali (segurança), Arch (treino da instalação), Ubuntu Server (deploy), Windows Server com Active Directory e RHEL/Rocky (corporativo). Kali e Arch também ficam em pendrive. | passo 36.3 · 2027, conforme cada compra |
+| [Arduino IDE 2](#ard) | Local | Programação das placas de robótica. | passo 3.2 · Semana 1 · out/2026; passo 34.16 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [Rufus (grava pendrives)](#rufus) | Local | Grava as ISOs do Kali e do Arch nos pendrives. Instalado pelo winget. | passo 33.1 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 | [ActivityWatch](#aw) | Local | Mede sozinho em que programas e sites vai o seu tempo. Base do retorno por hora de cada renda. Fica no seu PC. | passo 16.1 · Semana 4 · nov/2026 |
+| [Syncthing](#syncthing) | Local | Pastas sincronizadas entre os seus aparelhos, direto, sem nuvem. | passo 22.3 · Semana 6 · nov/2026 |
 
 <a id="tail"></a>
 
@@ -233,12 +244,17 @@ flowchart LR
 
 Acesso seguro ao homelab e ao notebook de qualquer lugar, sem abrir porta no roteador. Grátis para uso pessoal.
 
-**Quando entra:** passo 30.11 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 39.2 · 2028, quando o grupo pedir ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 21.2 · 2027, depois do primeiro fine-tuning de 8B; passo 22.1 · Semana 6 · nov/2026; passo 22.2 · Semana 6 · nov/2026; passo 34.11 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 43.2 · 2028, quando o grupo pedir ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | acesso remoto |
 | ← recebe de | [Workstation com GPU](01-hw.md#ws) | Hardware | rede privada |
+| ← recebe de | [Cluster de IA na rede](05-ia.md#iacluster) | Agentes de IA e sandbox | pela rede privada |
+| ← recebe de | [Syncthing](03-win.md#syncthing) | Windows 11, apps e máquinas virtuais | pela rede privada |
+| ← recebe de | [AdGuard Home (DNS)](04-lin.md#adguard) | Linux (Ubuntu no WSL2, Arch no 2º disco) | DNS da rede |
+| ← recebe de | [Laboratório de redes](14-est.md#labrede) | Estudo e carreira | pratica antes |
+| ← recebe de | [WireGuard (na mão)](04-lin.md#wireguard) | Linux (Ubuntu no WSL2, Arch no 2º disco) | base de |
 
 <a id="wslcfg"></a>
 
@@ -304,7 +320,7 @@ Mantidos para as aulas de robótica. Decisão sua: ficam ou saem.
 
 Escolhe Windows ou Arch ao ligar; cada sistema no próprio disco.
 
-**Quando entra:** passo 32.1 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 36.1 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -567,7 +583,7 @@ Captura e lê o tráfego de rede no laboratório de segurança. Instalado pelo w
 
 Kali (segurança), Arch (treino da instalação), Ubuntu Server (deploy), Windows Server com Active Directory e RHEL/Rocky (corporativo). Kali e Arch também ficam em pendrive.
 
-**Quando entra:** passo 32.3 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 36.3 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -585,7 +601,7 @@ Kali (segurança), Arch (treino da instalação), Ubuntu Server (deploy), Window
 
 Programação das placas de robótica.
 
-**Quando entra:** passo 3.2 · Semana 1 · out/2026; passo 30.16 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 3.2 · Semana 1 · out/2026; passo 34.16 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -599,7 +615,7 @@ Programação das placas de robótica.
 
 Grava as ISOs do Kali e do Arch nos pendrives. Instalado pelo winget.
 
-**Quando entra:** passo 29.1 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 33.1 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -619,6 +635,20 @@ Mede sozinho em que programas e sites vai o seu tempo. Base do retorno por hora 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Painel de lucro (Grafana)](21-mkt.md#painel) | Marketing, automação e medição | horas por renda |
+
+<a id="syncthing"></a>
+
+### Syncthing
+
+*Local*
+
+Pastas sincronizadas entre os seus aparelhos, direto, sem nuvem.
+
+**Quando entra:** passo 22.3 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Tailscale (VPN)](03-win.md#tail) | Windows 11, apps e máquinas virtuais | pela rede privada |
 
 ---
 

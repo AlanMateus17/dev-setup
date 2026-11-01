@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** O código fica no ext4 do Linux; o Windows enxerga pela ponte do WSL2.
 
-**10 blocos** · 0 precisam de conta · 2 marcados como futuro
+**12 blocos** · 0 precisam de conta · 2 marcados como futuro
 
 ## Mapa de conexões
 
@@ -24,6 +24,8 @@ flowchart LR
     n_dot["dotfiles"]
     n_arch["Arch + Omarchy (2º NVMe)"]
     n_rotinas["Rotinas agendadas"]
+    n_adguard["AdGuard Home (DNS)"]
+    n_wireguard["WireGuard (na mão)"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_overif["Verificadores"]
@@ -54,6 +56,7 @@ flowchart LR
   end
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
     n_boot["Gerenciador de boot"]
+    n_tail["Tailscale (VPN)"]
     n_vms["VMs: Kali · Arch · Servidores"]
     n_vsc["VS Code"]
     n_w11["Windows 11 Home"]
@@ -94,15 +97,17 @@ flowchart LR
   n_boot -->|"boot"| n_arch
   n_parch -->|"treino antes do 2º NVMe"| n_arch
   n_rotinas -->|"resumo da manhã"| n_tg
+  n_adguard -->|"DNS da rede"| n_tail
+  n_wireguard -->|"base de"| n_tail
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_nvim,n_netw,n_wsl,n_git,n_rt,n_tex,n_sec,n_dot,n_arch,n_rotinas desta
+  class n_nvim,n_netw,n_wsl,n_git,n_rt,n_tex,n_sec,n_dot,n_arch,n_rotinas,n_adguard,n_wireguard desta
 ```
 
 ## Blocos
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Neovim](#nvim) | Local · futuro | Editor de terminal da trilha Arch e Akita. Aprender aos poucos; não substitui o VS Code no começo. | passo 32.2 · 2027, conforme cada compra |
+| [Neovim](#nvim) | Local · futuro | Editor de terminal da trilha Arch e Akita. Aprender aos poucos; não substitui o VS Code no começo. | passo 36.2 · 2027, conforme cada compra |
 | [nmap · dig · curl](#netw) | Local | Diagnóstico de rede no Ubuntu: portas, DNS e requisições HTTP. Instalados pelo bootstrap.sh. | passo 4.4 · Semana 2 · nov/2026 |
 | [Ubuntu (WSL2)](#wsl) | Local | Onde o código vive e roda. | passo 4.1 · Semana 2 · nov/2026; passo 4.5 · Semana 2 · nov/2026 |
 | [Git + SSH + gh](#git) | Local | Versionamento e acesso ao GitHub. | passo 4.4 · Semana 2 · nov/2026; passo 4.6 · Semana 2 · nov/2026 |
@@ -110,8 +115,10 @@ flowchart LR
 | [TeX Live](#tex) | Local | Compila o livro e as apostilas. | passo 4.4 · Semana 2 · nov/2026 |
 | [gitleaks · Trivy](#sec) | Local | Barra senha no commit e acha vulnerabilidades em imagens. | passo 4.4 · Semana 2 · nov/2026 |
 | [dotfiles](#dot) | Local | Configuração versionada do ambiente. | passo 4.7 · Semana 2 · nov/2026 |
-| [Arch + Omarchy (2º NVMe)](#arch) | Local · futuro | Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portátil em pendrive ou SSD USB. | passo 32.1 · 2027, conforme cada compra |
+| [Arch + Omarchy (2º NVMe)](#arch) | Local · futuro | Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portátil em pendrive ou SSD USB. | passo 36.1 · 2027, conforme cada compra |
 | [Rotinas agendadas](#rotinas) | Local | Resumo da manhã no Telegram e manutenção semanal, pelo cron do Ubuntu. | passo 16.3 · Semana 4 · nov/2026; passo 16.4 · Semana 4 · nov/2026; passo 16.5 · Semana 4 · nov/2026 |
+| [AdGuard Home (DNS)](#adguard) | Local | DNS da casa com bloqueio de anúncios e rastreadores, também pelo Tailscale. | passo 22.4 · Semana 6 · nov/2026 |
+| [WireGuard (na mão)](#wireguard) | Local | Túnel montado à mão entre duas máquinas, para entender o que o Tailscale faz. | passo 22.6 · Semana 6 · nov/2026 |
 
 <a id="nvim"></a>
 
@@ -121,7 +128,7 @@ flowchart LR
 
 Editor de terminal da trilha Arch e Akita. Aprender aos poucos; não substitui o VS Code no começo.
 
-**Quando entra:** passo 32.2 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 36.2 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -252,7 +259,7 @@ Configuração versionada do ambiente.
 
 Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portátil em pendrive ou SSD USB.
 
-**Quando entra:** passo 32.1 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 36.1 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -274,6 +281,34 @@ Resumo da manhã no Telegram e manutenção semanal, pelo cron do Ubuntu.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Telegram (avisos)](21-mkt.md#tg) | Marketing, automação e medição | resumo da manhã |
+
+<a id="adguard"></a>
+
+### AdGuard Home (DNS)
+
+*Local*
+
+DNS da casa com bloqueio de anúncios e rastreadores, também pelo Tailscale.
+
+**Quando entra:** passo 22.4 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Tailscale (VPN)](03-win.md#tail) | Windows 11, apps e máquinas virtuais | DNS da rede |
+
+<a id="wireguard"></a>
+
+### WireGuard (na mão)
+
+*Local*
+
+Túnel montado à mão entre duas máquinas, para entender o que o Tailscale faz.
+
+**Quando entra:** passo 22.6 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Tailscale (VPN)](03-win.md#tail) | Windows 11, apps e máquinas virtuais | base de |
 
 ---
 
