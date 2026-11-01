@@ -2102,15 +2102,16 @@
     },
     {
      "id": "ag-hostinger-mcp",
-     "titulo": "Conectar o MCP da Hostinger ao Claude",
-     "quem": "voce",
-     "pronto": "O Claude lista os seus sites da Hostinger",
+     "titulo": "Ligar o MCP da Hostinger no Claude Code (WSL)",
+     "quem": "script",
+     "pronto": "O Claude Code lista os seus sites da Hostinger",
      "tempo_min": 10,
      "blocos": [
       "hostg",
       "anth"
      ],
-     "fora": "Token de API criado no painel da Hostinger e guardado no KeePassXC; conecte pelo diretório de conectores do Claude."
+     "comando": "bash ~/dev/dev-setup/scripts/wsl/segredos.sh \"Hostinger/API_TOKEN\" HOSTINGER_API_TOKEN -- claude mcp add -s user --env HOSTINGER_API_TOKEN=\"$HOSTINGER_API_TOKEN\" hostinger-api-mcp -- npx -y hostinger-api-mcp",
+     "nota": "A Hostinger não está no diretório de conectores do app; o servidor oficial roda pelo npm. Crie o token no painel e guarde no KeePassXC antes."
     },
     {
      "id": "ag-esteira",

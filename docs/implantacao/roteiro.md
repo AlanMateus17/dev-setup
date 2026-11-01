@@ -2090,12 +2090,18 @@ Cada tarefa na melhor ferramenta, com reserva e portão; sites feitos por agente
 - [ ] **Pronto quando:** Copilot Pro ativo na sua conta
 - Implanta: GitHub Education · GitHub Copilot
 
-### 21.2 Conectar o MCP da Hostinger ao Claude
+### 21.2 Ligar o MCP da Hostinger no Claude Code (WSL)
 
-**Você** · 10 min
+**Script** · 10 min
 
-- **Fora do terminal:** Token de API criado no painel da Hostinger e guardado no KeePassXC; conecte pelo diretório de conectores do Claude.
-- [ ] **Pronto quando:** O Claude lista os seus sites da Hostinger
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+bash ~/dev/dev-setup/scripts/wsl/segredos.sh "Hostinger/API_TOKEN" HOSTINGER_API_TOKEN -- claude mcp add -s user --env HOSTINGER_API_TOKEN="$HOSTINGER_API_TOKEN" hostinger-api-mcp -- npx -y hostinger-api-mcp
+```
+
+- [ ] **Pronto quando:** O Claude Code lista os seus sites da Hostinger
+- A Hostinger não está no diretório de conectores do app; o servidor oficial roda pelo npm. Crie o token no painel e guarde no KeePassXC antes.
 - Implanta: Hostinger (clientes WP) · Claude (assinatura e API)
 
 ### 21.3 Criar o repositório do primeiro site a partir da esteira
