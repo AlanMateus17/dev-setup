@@ -28,6 +28,10 @@ jobs:
         run: |
           python -m unittest discover -s tools/portfolio -v
           python tools/portfolio/portfolio.py --check
+      - name: Testar e conferir o catálogo de softwares
+        run: |
+          python -m unittest discover -s tools/softwares -v
+          python tools/softwares/softwares.py --check
       - name: Testar o pipeline de conteúdo e conferir o roteiro de implantação
         run: |
           python -m unittest discover -s tools/conteudo -v

@@ -34,6 +34,7 @@ flowchart LR
 6. [Clientes e dados](06-clientes-e-dados.md): CRM único, consentimento, jornadas entre ofertas e os números de cada uma
 7. [Ordem de execução](07-ordem-de-execucao.md): o que fazer nos próximos 90 dias e 12 meses, dentro das horas que você tem
 - [Portfólio de ofertas](portfolio.md): o catálogo completo, o arsenal de rendas (o que entra agora, a fila, o que fica para 2027, o que exige capital e o que foi descartado), as regras de hora mínima e teto de horas, e o ranking (gerado)
+- [Catálogo de softwares](softwares.md): todos os sites por tipo de negócio, sistemas AM, micro-SaaS e produtos que você pode criar e vender, montados com módulos reaproveitáveis e ligados às ofertas (gerado)
 - [`portfolio.html`](portfolio.html): o mesmo catálogo com filtros, para abrir no navegador
 
 ## Antes de tudo: o limite real

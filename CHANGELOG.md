@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.21.0] - 2026-11-01
+
+### Adicionado
+- Catálogo de softwares (data/softwares.json → docs/operacao/softwares.md): 62 softwares vendáveis (26 sites por tipo de negócio, 14 sistemas AM, 11 micro-SaaS, 5 de educação, 6 produtos) e 7 sites e ferramentas seus, montados com 20 módulos reaproveitáveis na ordem de construção. Cada software liga a uma oferta do portfólio; o CI recusa módulo ou oferta inexistente e módulo sem uso.
+
 ## [1.20.0] - 2026-11-01
 
 ### Adicionado
