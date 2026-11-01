@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-50 fases, 396 passos, cerca de **1213 h 53 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+50 fases, 394 passos, cerca de **1213 h 13 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
 **Todo o planejamento está aqui:** os 371 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 102 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 304 dos 396 passos (281 h 43 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 302 dos 394 passos (281 h 03 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -34,7 +34,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [17 · Rotina automatizada](#f-rotina) | Semana 4 · nov/2026 | 5 | 34 min |
 | [18 · Comandos remotos pelo Telegram](#f-remoto) | Semana 5 · nov/2026 | 5 | 35 min |
 | [19 · Casa e vida](#f-casa) | Dez/2026 | 6 | 2 h 55 min |
-| [20 · Padrão de elite em todo repositório](#f-elite) | Semana 5 · nov/2026 | 9 | 2 h 50 min |
+| [20 · Padrão de elite em todo repositório](#f-elite) | Semana 5 · nov/2026 | 8 | 2 h 30 min |
 | [21 · Agentes e IA com qualidade medida](#f-ia-elite) | Semana 6 · nov/2026 a dez/2026 | 15 | 8 h 00 min |
 | [22 · Roteador de agentes e esteira de sites](#f-agentes) | Semana 6 · nov/2026 a dez/2026 | 9 | 2 h 55 min |
 | [23 · Modelos grandes sem computador maior](#f-ia-grande) | 2027, depois do primeiro fine-tuning de 8B | 6 | 23 h 00 min |
@@ -63,7 +63,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [46 · Distribuído, plataforma e segunda nuvem](#f30) | 2028 | 6 | 69 h 00 min |
 | [47 · Infraestrutura própria](#f31) | 2028, quando o grupo pedir | 3 | 17 h 00 min |
 | [48 · Negócios do grupo em Barbacena](#f32) | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano · **gatilho:** Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta | 10 | 483 h 00 min |
-| [49 · Estudo contínuo](#f33) | Contínuo, desde a semana 2 | 13 | 3 h 50 min |
+| [49 · Estudo contínuo](#f33) | Contínuo, desde a semana 2 | 12 | 3 h 30 min |
 
 <a id="f0"></a>
 
@@ -1973,15 +1973,7 @@ bash ~/dev/dev-setup/scripts/wsl/teste-restauracao.sh
 - [ ] **Pronto quando:** Assinaturas canceladas ou trocadas conforme docs/custos.md
 - Implanta: Claude (assinatura e API)
 
-### 20.8 Pedir o GitHub Education (Copilot e créditos grátis de estudante)
-
-**Você** · 20 min
-
-- **Fora do terminal:** Pedido no site do GitHub Education com comprovante de matrícula.
-- [ ] **Pronto quando:** Pacote de estudante aprovado
-- Implanta: GitHub Education · GitHub Copilot
-
-### 20.9 Auditoria de custos a cada 3 meses
+### 20.8 Auditoria de custos a cada 3 meses
 
 **Você** · 30 min
 
@@ -2092,12 +2084,12 @@ cd ~/dev/dev-setup && claude "Passo ia-n8n do roteiro: Ligar os agentes do n8n a
 - [ ] **Pronto quando:** Gemini, NotebookLM e ChatGPT Go funcionando; Google One antigo trocado
 - Implanta: Gemini (pago) · ChatGPT · Google Drive (seus documentos)
 
-### 21.9 Usar a IA certa para cada tarefa (rascunho barato, revisão no Claude)
+### 21.9 Usar a ferramenta certa para cada tarefa (primária, reserva e portão)
 
 **Você** · 10 min
 
-- **Fora do terminal:** Hábito; a tabela está em docs/custos.md.
-- [ ] **Pronto quando:** Tabela de rotas em docs/custos.md seguida por 2 semanas
+- **Fora do terminal:** Hábito; a tabela está em docs/recursos.md (a de docs/custos.md cobre só as IAs de conversa).
+- [ ] **Pronto quando:** Tabela de rotas de docs/recursos.md seguida por 2 semanas
 - Implanta: Claude (assinatura e API) · NotebookLM
 
 ### 21.10 Mesmas regras para todas as IAs em cada repositório
@@ -2181,8 +2173,14 @@ Cada tarefa na melhor ferramenta, com reserva e portão; sites feitos por agente
 
 **Você** · 15 min
 
-- **Fora do terminal:** Em education.github.com, com comprovante de vínculo da escola. É o passo que mais destrava a esteira.
+No **PowerShell** do Windows (linha `PS C:\>`):
+
+```powershell
+Start-Process 'https://education.github.com/discount_requests/application'
+```
+
 - [ ] **Pronto quando:** Copilot Pro ativo na sua conta
+- Peça como PROFESSOR (comprovante de vínculo da escola), não como estudante: o plano de estudante exclui os agentes de terceiros. É o passo que mais destrava a esteira.
 - Implanta: GitHub Education · GitHub Copilot
 
 ### 22.2 Ligar o MCP da Hostinger no Claude Code (WSL)
@@ -4744,20 +4742,7 @@ As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 
 **Quando:** Contínuo, desde a semana 2
 
-### 49.1 Pedir o GitHub Education como professor e ligar o Copilot
-
-**Você** · 20 min
-
-No **PowerShell** do Windows (linha `PS C:\>`):
-
-```powershell
-Start-Process 'https://education.github.com/discount_requests/application'
-```
-
-- [ ] **Pronto quando:** Benefícios aprovados e Copilot ativo no VS Code
-- Implanta: GitHub Education · GitHub Copilot
-
-### 49.2 Montar as trilhas: Microsoft Learn, AWS Skill Builder, roadmap.sh e laboratórios do TryHackMe
+### 49.1 Montar as trilhas: Microsoft Learn, AWS Skill Builder, roadmap.sh e laboratórios do TryHackMe
 
 **Você** · 30 min
 
@@ -4765,7 +4750,7 @@ Start-Process 'https://education.github.com/discount_requests/application'
 - [ ] **Pronto quando:** Uma trilha de cada em andamento, anotada no Obsidian
 - Implanta: Microsoft Learn + AWS Skill Builder · roadmap.sh + Akita · TryHackMe / Hack The Box
 
-### 49.3 Organizar as contas de aluno (Alura, Rocketseat, DIO, Udemy)
+### 49.2 Organizar as contas de aluno (Alura, Rocketseat, DIO, Udemy)
 
 **Você** · 15 min
 
@@ -4774,7 +4759,7 @@ Start-Process 'https://education.github.com/discount_requests/application'
 - A licença é para assistir e estudar. Para a IA vão só as suas anotações e os seus projetos.
 - Implanta: Alura · Rocketseat · DIO · Udemy
 
-### 49.4 Criar os baralhos do Anki (comandos, conceitos, certificações)
+### 49.3 Criar os baralhos do Anki (comandos, conceitos, certificações)
 
 **Você** · 20 min
 
@@ -4782,7 +4767,7 @@ Start-Process 'https://education.github.com/discount_requests/application'
 - [ ] **Pronto quando:** Revisão do dia feita no notebook e no celular
 - Implanta: Anki
 
-### 49.5 Rendas que dependem de formação longa (bug bounty, perícia)
+### 49.4 Rendas que dependem de formação longa (bug bounty, perícia)
 
 **Você** · 15 min
 
@@ -4790,7 +4775,7 @@ Start-Process 'https://education.github.com/discount_requests/application'
 - [ ] **Pronto quando:** Portão de formação cumprido
 - **Oferta:** Bug bounty e pentest · Perito em informática judicial
 
-### 49.6 Consultoria de investimentos só com a sócia certificada e registrada
+### 49.5 Consultoria de investimentos só com a sócia certificada e registrada
 
 **Você** · 15 min
 
@@ -4798,49 +4783,49 @@ Start-Process 'https://education.github.com/discount_requests/application'
 - [ ] **Pronto quando:** Certificação e registro conferidos
 - **Oferta:** Consultoria de investimentos (AM Rendara premium, com sócia certificada)
 
-### 49.7 Estudo vira produto: rodar a esteira depois de cada bloco de estudo
+### 49.6 Estudo vira produto: rodar a esteira depois de cada bloco de estudo
 
 **Você** · 15 min
 
 - **Fora do terminal:** Usa a automação au-esteira, quando construída; a revisão é sua.
 - [ ] **Pronto quando:** Aula, exercícios, cartões e roteiro gerados para revisar
 
-### 49.8 Decidir quando começar a graduação em Economia
+### 49.7 Decidir quando começar a graduação em Economia
 
 **Você** · 20 min
 
 - **Fora do terminal:** Decisão de formação; fora do terminal.
 - [ ] **Pronto quando:** Decisão com data e custo no Caixa da Casa
 
-### 49.9 Trilha de certificações do mercado financeiro (CNPI → registro de consultor → CGE/CGA → CFP → CFA)
+### 49.8 Trilha de certificações do mercado financeiro (CNPI → registro de consultor → CGE/CGA → CFP → CFA)
 
 **Você** · 20 min
 
 - **Fora do terminal:** Ordem e motivos em docs/certificacoes.md. CPA e C-PRO só se for trabalhar em banco. Confira o edital do ano antes de pagar.
 - [ ] **Pronto quando:** Primeira prova marcada quando a cascata permitir
 
-### 49.10 Rotina diária de inglês; espanhol no B1 e mandarim no B2
+### 49.9 Rotina diária de inglês; espanhol no B1 e mandarim no B2
 
 **Você** · 10 min
 
 - **Fora do terminal:** Rotina de estudo; os gatilhos de espanhol e mandarim seguem o seu plano de idiomas.
 - [ ] **Pronto quando:** 25 a 30 min de inglês por dia na Rotina
 
-### 49.11 AM-OS e AM Linux: trilha de 10 anos de sistemas
+### 49.10 AM-OS e AM Linux: trilha de 10 anos de sistemas
 
 **Você** · 15 min
 
 - **Fora do terminal:** Horizonte longo; entra depois do Passo 9 do plano de estudos.
 - [ ] **Pronto quando:** Marco do ano definido
 
-### 49.12 Vigiar editais de professor EBTT (IF Sudeste MG, campus Barbacena) e de professor efetivo de MG
+### 49.11 Vigiar editais de professor EBTT (IF Sudeste MG, campus Barbacena) e de professor efetivo de MG
 
 **Você** · 20 min
 
 - **Fora do terminal:** A busca semanal de editais (passo au-editais) inclui esses concursos. Decisão sua: 40 h com dedicação exclusiva limita as outras rendas; existem vagas de 20 h.
 - [ ] **Pronto quando:** Editais na busca semanal e decisão registrada a cada edital
 
-### 49.13 Encaixar as atividades da Licenciatura em Matemática na Rotina
+### 49.12 Encaixar as atividades da Licenciatura em Matemática na Rotina
 
 **Você** · 15 min
 
@@ -4966,7 +4951,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Declaração anual do IR | 30.19 | Semanas 8 a 10 · dez/2026 a jan/2027 |
 | Conta bancária separada (CPF) | 2.7, 30.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semanas 8 a 10 · dez/2026 a jan/2027 |
 | Contador | 30.3 | Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Caixa da Casa / AM Rendara | 16.1, 16.2, 16.3, 16.4, 16.5, 16.6, 16.7, 16.8, 20.9, 30.20, 38.4 | Dez/2026; Semana 5 · nov/2026; Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
+| Caixa da Casa / AM Rendara | 16.1, 16.2, 16.3, 16.4, 16.5, 16.6, 16.7, 16.8, 20.8, 30.20, 38.4 | Dez/2026; Semana 5 · nov/2026; Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
 | Financeiro local | 15.1, 15.2, 15.3, 15.4 | Dez/2026 |
 | Documenso (assinatura) | 26.7 | Com a primeira página de venda no ar (jan/2027) e por etapas |
 | Invoice Ninja (orçamentos) | 26.7 | Com a primeira página de venda no ar (jan/2027) e por etapas |
@@ -5067,12 +5052,12 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Microsoft Learn + AWS Skill Builder | 49.2 | Contínuo, desde a semana 2 |
-| TryHackMe / Hack The Box | 49.2 | Contínuo, desde a semana 2 |
-| Alura · Rocketseat · DIO · Udemy | 49.3 | Contínuo, desde a semana 2 |
-| Anki | 3.2, 38.7, 49.4 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez; Contínuo, desde a semana 2 |
-| roadmap.sh + Akita | 49.2 | Contínuo, desde a semana 2 |
-| GitHub Education | 20.8, 22.1, 49.1 | Semana 5 · nov/2026; Semana 6 · nov/2026 a dez/2026; Contínuo, desde a semana 2 |
+| Microsoft Learn + AWS Skill Builder | 49.1 | Contínuo, desde a semana 2 |
+| TryHackMe / Hack The Box | 49.1 | Contínuo, desde a semana 2 |
+| Alura · Rocketseat · DIO · Udemy | 49.2 | Contínuo, desde a semana 2 |
+| Anki | 3.2, 38.7, 49.3 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez; Contínuo, desde a semana 2 |
+| roadmap.sh + Akita | 49.1 | Contínuo, desde a semana 2 |
+| GitHub Education | 22.1 | Semana 6 · nov/2026 a dez/2026 |
 | Zoomcamp de dados + cursos de IA | 37.6 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 | GPT do zero (estudo) | 23.1 | 2027, depois do primeiro fine-tuning de 8B |
 | Laboratório de redes | 24.5 | Semana 6 · nov/2026 |
@@ -5206,7 +5191,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Codex (OpenAI) | 9.4 | Semana 4 · nov/2026 |
 | Agentes de código do Google | 9.4 | Semana 4 · nov/2026 |
 | Perplexity | 9.4 | Semana 4 · nov/2026 |
-| GitHub Copilot | 20.8, 22.1, 22.3, 49.1 | Semana 5 · nov/2026; Semana 6 · nov/2026 a dez/2026; Contínuo, desde a semana 2 |
+| GitHub Copilot | 22.1, 22.3 | Semana 6 · nov/2026 a dez/2026 |
 
 ### Dados e treino de IA
 

@@ -103,7 +103,7 @@ flowchart LR
 | [Codex (OpenAI)](#codex) | Remoto · precisa de conta | Agente de código da OpenAI (terminal, VS Code e nuvem). Vem no ChatGPT Go com limite baixo: reserva e segunda opinião, lendo o mesmo AGENTS.md. O Sites do ChatGPT não serve para clientes (proíbe comércio). | passo 9.4 · Semana 4 · nov/2026 |
 | [Agentes de código do Google](#gcode) | Remoto · precisa de conta | O Gemini CLI saiu do ar para contas pessoais sem licença paga em 18/06/2026; o substituto, Antigravity CLI, é fechado e tem acesso ampliado só no plano Pro. Nenhum fluxo do setup depende dele. | passo 9.4 · Semana 4 · nov/2026 |
 | [Perplexity](#perp) | Remoto · precisa de conta | Busca com fontes citadas. Bom para pesquisa de mercado e para checar fatos antes de publicar. | passo 9.4 · Semana 4 · nov/2026 |
-| [GitHub Copilot](#copi) | Remoto · precisa de conta | Autocompletar, chat e agente na nuvem: você atribui uma issue e ele abre um PR. Professores verificados no GitHub Education ganham o Pro grátis (1.500 créditos por mês). Motor da esteira de sites. | passo 20.8 · Semana 5 · nov/2026; passo 22.1 · Semana 6 · nov/2026 a dez/2026; passo 22.3 · Semana 6 · nov/2026 a dez/2026; passo 49.1 · Contínuo, desde a semana 2 |
+| [GitHub Copilot](#copi) | Remoto · precisa de conta | Autocompletar, chat e agente na nuvem: você atribui uma issue e ele abre um PR. Professores verificados no GitHub Education ganham o Pro grátis (1.500 créditos por mês). Motor da esteira de sites. | passo 22.1 · Semana 6 · nov/2026 a dez/2026; passo 22.3 · Semana 6 · nov/2026 a dez/2026 |
 
 <a id="capp2"></a>
 
@@ -251,7 +251,7 @@ Busca com fontes citadas. Bom para pesquisa de mercado e para checar fatos antes
 
 Autocompletar, chat e agente na nuvem: você atribui uma issue e ele abre um PR. Professores verificados no GitHub Education ganham o Pro grátis (1.500 créditos por mês). Motor da esteira de sites.
 
-**Quando entra:** passo 20.8 · Semana 5 · nov/2026; passo 22.1 · Semana 6 · nov/2026 a dez/2026; passo 22.3 · Semana 6 · nov/2026 a dez/2026; passo 49.1 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 22.1 · Semana 6 · nov/2026 a dez/2026; passo 22.3 · Semana 6 · nov/2026 a dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

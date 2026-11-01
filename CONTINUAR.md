@@ -19,9 +19,9 @@ Cole este arquivo na primeira mensagem de uma conversa nova (ou rode `python3 ~/
 ## 2. Onde está tudo
 - Repositório privado: github.com/AlanMateus17/dev-setup (branch main, CI verde). No PC: ~/dev/dev-setup (Ubuntu/WSL) e C:\Users\alanmateus\dev-setup (Windows).
 - Regra do repositório: data/*.json → geradores → docs/. Nunca editar arquivo gerado. Toda mudança: dados ou ferramenta, geradores, testes, CHANGELOG, commit, push, CI verde.
-- Números agora: 48 fases, 378 passos, 369 blocos, 102 rendas, 71 softwares. O CI recusa passo sem comando ou motivo, bloco fora do roteiro e renda sem passo.
+- Números agora: 50 fases, 394 passos, 371 blocos, 102 rendas, 71 softwares, 27 metodologias de investimento. O CI recusa passo sem comando ou motivo, bloco fora do roteiro e renda sem passo.
 - Artefatos: Acompanhamento (progresso marcado) https://claude.ai/artifact/CJ27fg9sycvhqZ2s9GSbjd · Portfólio de rendas https://claude.ai/artifact/Mbj1yj6LRmUnf3SJLrTfaB · Mapa https://claude.ai/artifact/BTUyCQfojw6cngvR5W5oAB · Ecossistema https://claude.ai/artifact/4Ze2J4Y1oKgAkjuQmbAAG1 · Plano de automação (documento) https://claude.ai/artifact/XCzSQNb28yFgPCymRV9wrL · Posts do setup (design) https://claude.ai/artifact/V8826RzNePgWKuy6GuYPvd
-- Guias no repositório: docs/implantacao/roteiro.md (passo a passo), docs/operacao/portfolio.md (rendas e automações), docs/operacao/softwares.md, docs/operacao/kit-sites.md, docs/custos.md (o que pagar, rotas de IA), docs/operacao/24-horas.md, docs/operacao/sessoes-curtas.md, docs/ia/README.md, docs/rede/README.md.
+- Guias no repositório: docs/implantacao/roteiro.md (passo a passo), docs/operacao/portfolio.md (rendas e automações), docs/operacao/softwares.md, docs/operacao/kit-sites.md, docs/custos.md (o que pagar, rotas de IA), docs/recursos.md (a melhor ferramenta para cada tarefa: primária, reserva e portão), docs/investimentos.md (as 27 metodologias nas 4 classes do ARCA), docs/certificacoes.md (o que cada certificação habilita e a ordem), docs/operacao/24-horas.md, docs/operacao/sessoes-curtas.md, docs/ia/README.md, docs/rede/README.md.
 
 ## 3. Já feito no meu notebook (Acer Nitro, 32 GB, GTX 1650)
 Fases 0, 3, 4 e 5 completas: diagnóstico, Windows (winget, BitLocker, Defender, extensões do VS Code), Ubuntu no WSL com Docker, gh e SSH, repositório no GitHub com CI. Também: backup inicial, Windows Update, 2FA do GitHub, KeePassXC instalado com os cofres copiados para o pendrive D:\Cofre. Falta: senhas (2.2 a 2.4), mesa (1.2), e todas as fases a partir da 6.
@@ -38,6 +38,10 @@ Fases 0, 3, 4 e 5 completas: diagnóstico, Windows (winget, BitLocker, Defender,
 - Custos: construir o que me diferencia, código aberto para infraestrutura, pagar só o que vale mais que minhas horas. Cortar IAs pagas repetidas; Vercel não serve para projeto comercial (usar Cloudflare Pages, GitHub Pages ou Hostinger); GitHub Education (estudante) para Copilot grátis.
 - 24 horas sem pagar: GitHub Actions (vigia semanal já ativo), VM grátis da Oracle (2 núcleos, 12 GB desde jun/2026) para n8n, bot, Uptime Kuma e gateway; notebook para estudo e modelos locais.
 - Modelos grandes sem PC maior: quantização, MoE, cluster na rede (llama.cpp RPC), QLoRA no Kaggle ou GPU alugada com teto, destilação; Strata (do Akita) só com GPU de 12 GB+.
+- Setup 2.x (nov/2026): toda tarefa tem ferramenta primária, reserva e portão humano; nenhuma depende dos créditos de uma ferramenta só. Copilot Pro grátis como PROFESSOR é o motor da esteira de sites (issue → PR → CI → revisão do Claude → prévia → minha aprovação → Hostinger). Codex do ChatGPT Go como reserva. Gemini CLI e v0 fora. OpenClaw só isolado na VM, depois da esteira entregar um site.
+- Investimentos: todas as metodologias ao mesmo tempo nas 4 classes do ARCA (ações 9, FIIs 7, renda fixa 4, internacional 7), consenso por ativo (forte, médio, fraco), aporte em dois níveis (classe → metodologia) com mínimo de R$ 100 por compra, uma carteira por metodologia contra o índice. As perguntas do Raul Sena ficam só nas minhas anotações em ~/financas.
+- Certificações: CNPI primeiro (para poder recomendar ativos), depois registro de consultor na CVM, CGE/CGA, CFP, CFA. CPA e C-PRO só se for trabalhar em banco. AZ-204 saiu; o caminho Azure é AZ-900 → AI-200.
+- Regra de "parar de adicionar áreas até a primeira venda" retirada a meu pedido: ideias novas entram no setup; a execução segue a ordem do roteiro.
 - Prospecção: lista semanal de dados públicos com aprovação minha; nunca disparo em massa no WhatsApp. "Procurar buracos" só nos meus sistemas e de clientes com contrato.
 
 ## 5. Ferramentas prontas no repositório (comandos no Ubuntu)
@@ -50,6 +54,9 @@ Fases 0, 3, 4 e 5 completas: diagnóstico, Windows (winget, BitLocker, Defender,
 - Organizadores: tools/organizar/downloads.py e senhas_csv.py (prepara o CSV do Chrome para o KeePassXC sem mostrar senhas)
 - Bot do Telegram: tools/remoto/bot.py (só o meu chat, comandos fixos)
 - Financeiro local: tools/financeiro/financeiro.py iniciar | importar | mes (dados em ~/financas)
+- Investimentos: tools/investimentos/investimentos.py iniciar | avaliar CLASSE CSV | aporte carteira.csv 800 | comparar carteiras.csv
+- Certificações e recursos: tools/carreira/certificacoes.py e tools/recursos/recursos.py (geram os docs)
+- Esteira de sites: infra/templates/esteira-site (ficha como issue, workflow qualidade, LEIA.md)
 - Lucro por ferramenta: tools/roi/roi.py (dados em ~/financas/roi.toml)
 - Calculadora de modelos: tools/ia/cabe.py 32
 - Rotinas: scripts/wsl/resumo-manha.sh, manutencao-semanal.sh, agendar.sh --aplicar
@@ -75,38 +82,40 @@ Fases 0, 3, 4 e 5 completas: diagnóstico, Windows (winget, BitLocker, Defender,
 | 13 | Kit de sites com IA da Hostinger | Semanas 4 e 5 · nov/2026 | 5 |
 | 14 | Escola: Fábrica de aulas e documentos | Semanas 5 e 6 · nov/2026 | 9 |
 | 15 | Departamento financeiro pessoal | Dez/2026 | 4 |
-| 16 | Rotina automatizada | Semana 4 · nov/2026 | 5 |
-| 17 | Comandos remotos pelo Telegram | Semana 5 · nov/2026 | 5 |
-| 18 | Casa e vida | Dez/2026 | 6 |
-| 19 | Padrão de elite em todo repositório | Semana 5 · nov/2026 | 9 |
-| 20 | Agentes e IA com qualidade medida | Semana 6 · nov/2026 a dez/2026 | 15 |
-| 21 | Modelos grandes sem computador maior | 2027, depois do primeiro fine-tuning de 8B | 6 |
-| 22 | Rede própria entre os seus computadores | Semana 6 · nov/2026 | 6 |
-| 23 | Operação 24 horas | Dez/2026 a jan/2027 | 8 |
-| 24 | Dados e crescimento: medir, testar e vender mais | Com a primeira página de venda no ar (jan/2027) e por etapas | 8 |
-| 25 | Pipeline de conteúdo | Semana 5 · nov/2026 | 7 |
-| 26 | Estúdio de conteúdo | Semana 5 · dez/2026 | 5 |
-| 27 | Contas, canais e sites | Semanas 6 e 7 · dez/2026 | 13 |
-| 28 | Vendas e finanças no CPF | Semanas 8 a 10 · dez/2026 a jan/2027 | 20 |
-| 29 | Vendas medidas | Semana 11 · jan/2027 | 4 |
-| 30 | Teste do núcleo | Semana 11 · jan/2027 | 4 |
-| 31 | Primeira venda: o mini-curso no ar | Semanas 12 a 15 · jan a fev/2027 | 8 |
-| 32 | Base dos sistemas AM | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 | 8 |
-| 33 | Nuvem e deploy | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) | 7 |
-| 34 | Editora | Quando o capítulo 1 estiver pronto | 11 |
-| 35 | Dados, IA e pendrives | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) | 12 |
-| 36 | Mais ofertas, uma por vez | Fev a dez/2027, uma oferta por vez | 23 |
-| 37 | Marketing pago e crescimento | A partir de fev/2027 | 10 |
-| 38 | Linux nativo e laboratório completo | 2027, conforme cada compra | 6 |
-| 39 | IA dentro dos sistemas AM | Depois do Passo 9 e do IA0 da Trilha de Dados e IA (≈ 2028), junto do IA5 | 1 |
-| 40 | Sistemas AM à venda | 2027 | 5 |
-| 41 | CNPJ e formalização | Quando a renda pedir | 4 |
-| 42 | Agentes do grupo | Junto com o primeiro CNPJ | 7 |
-| 43 | Editora: depois do primeiro livro | Depois do primeiro livro | 5 |
-| 44 | Distribuído, plataforma e segunda nuvem | 2028 | 6 |
-| 45 | Infraestrutura própria | 2028, quando o grupo pedir | 3 |
-| 46 | Negócios do grupo em Barbacena | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano | 10 |
-| 47 | Estudo contínuo | Contínuo, desde a semana 2 | 13 |
+| 16 | Investimentos com as suas metodologias | Dez/2026 | 9 |
+| 17 | Rotina automatizada | Semana 4 · nov/2026 | 5 |
+| 18 | Comandos remotos pelo Telegram | Semana 5 · nov/2026 | 5 |
+| 19 | Casa e vida | Dez/2026 | 6 |
+| 20 | Padrão de elite em todo repositório | Semana 5 · nov/2026 | 8 |
+| 21 | Agentes e IA com qualidade medida | Semana 6 · nov/2026 a dez/2026 | 15 |
+| 22 | Roteador de agentes e esteira de sites | Semana 6 · nov/2026 a dez/2026 | 9 |
+| 23 | Modelos grandes sem computador maior | 2027, depois do primeiro fine-tuning de 8B | 6 |
+| 24 | Rede própria entre os seus computadores | Semana 6 · nov/2026 | 6 |
+| 25 | Operação 24 horas | Dez/2026 a jan/2027 | 8 |
+| 26 | Dados e crescimento: medir, testar e vender mais | Com a primeira página de venda no ar (jan/2027) e por etapas | 8 |
+| 27 | Pipeline de conteúdo | Semana 5 · nov/2026 | 7 |
+| 28 | Estúdio de conteúdo | Semana 5 · dez/2026 | 5 |
+| 29 | Contas, canais e sites | Semanas 6 e 7 · dez/2026 | 13 |
+| 30 | Vendas e finanças no CPF | Semanas 8 a 10 · dez/2026 a jan/2027 | 20 |
+| 31 | Vendas medidas | Semana 11 · jan/2027 | 4 |
+| 32 | Teste do núcleo | Semana 11 · jan/2027 | 4 |
+| 33 | Primeira venda: o mini-curso no ar | Semanas 12 a 15 · jan a fev/2027 | 8 |
+| 34 | Base dos sistemas AM | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 | 8 |
+| 35 | Nuvem e deploy | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) | 7 |
+| 36 | Editora | Quando o capítulo 1 estiver pronto | 11 |
+| 37 | Dados, IA e pendrives | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) | 12 |
+| 38 | Mais ofertas, uma por vez | Fev a dez/2027, uma oferta por vez | 23 |
+| 39 | Marketing pago e crescimento | A partir de fev/2027 | 10 |
+| 40 | Linux nativo e laboratório completo | 2027, conforme cada compra | 6 |
+| 41 | IA dentro dos sistemas AM | Depois do Passo 9 e do IA0 da Trilha de Dados e IA (≈ 2028), junto do IA5 | 1 |
+| 42 | Sistemas AM à venda | 2027 | 5 |
+| 43 | CNPJ e formalização | Quando a renda pedir | 4 |
+| 44 | Agentes do grupo | Junto com o primeiro CNPJ | 7 |
+| 45 | Editora: depois do primeiro livro | Depois do primeiro livro | 5 |
+| 46 | Distribuído, plataforma e segunda nuvem | 2028 | 6 |
+| 47 | Infraestrutura própria | 2028, quando o grupo pedir | 3 |
+| 48 | Negócios do grupo em Barbacena | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano | 10 |
+| 49 | Estudo contínuo | Contínuo, desde a semana 2 | 12 |
 
 ## 7. Minhas pendências (ver também ESTADO.md)
 1. Senhas: passo kp-organizar, depois 2.4 (exportar do Chrome, importar no KeePassXC, apagar os CSVs, copiar o cofre para o pendrive).
@@ -115,8 +124,10 @@ Fases 0, 3, 4 e 5 completas: diagnóstico, Windows (winget, BitLocker, Defender,
 4. Templates do Rei dos Sites: comprei? onde estão os arquivos? (repositório só privado e só se a licença permitir).
 5. Modelos .docx da escola e uma ementa para a Fábrica.
 6. Mesa (passo 1.2) e trocas de assinatura (ct-cortes, ia-segunda).
+7. GitHub Education como professor (ag-ghed) e token da Hostinger (ag-hostinger-mcp): destravam a esteira de sites.
+8. investimentos.toml e os 4 CSVs de indicadores (inv-politica, inv-indicadores, inv-sena).
 
 ## 8. Como pedir ajuda numa conversa nova
 1. Cole este arquivo e o pacote do passo: `python3 ~/dev/dev-setup/tools/sessao/contexto.py --passo ID | clip.exe`.
 2. Peça ao Claude para abrir o repositório AlanMateus17/dev-setup (GitHub conectado) e, ao terminar, marcar o passo no Acompanhamento.
-3. Foco: executar até a primeira venda. Áreas novas só depois disso.
+3. Foco: executar o roteiro na ordem. Ideias novas podem entrar no setup a qualquer momento (dados, gerador, teste, CHANGELOG, CI).

@@ -2,6 +2,13 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.2.1] - 2026-11-01
+
+### Corrigido
+- Passos repetidos do GitHub Education (ct-copilot, como estudante, e github-education) unificados em ag-ghed, como professor.
+- Passo ia-rotas aponta para a tabela de rotas de docs/recursos.md.
+- CONTINUAR.md atualizado com a versão 2.x: números, guias novos, decisões (roteador, esteira, investimentos, certificações), ferramentas, tabela das 50 fases e pendências novas.
+
 ## [2.2.0] - 2026-11-01
 
 ### Alterado

@@ -1979,18 +1979,6 @@
      "fora": "Cancelamentos são nas contas de cada serviço, no navegador. A lista está em docs/custos.md."
     },
     {
-     "id": "ct-copilot",
-     "titulo": "Pedir o GitHub Education (Copilot e créditos grátis de estudante)",
-     "quem": "voce",
-     "pronto": "Pacote de estudante aprovado",
-     "tempo_min": 20,
-     "blocos": [
-      "ghed",
-      "copi"
-     ],
-     "fora": "Pedido no site do GitHub Education com comprovante de matrícula."
-    },
-    {
      "id": "ct-auditoria",
      "titulo": "Auditoria de custos a cada 3 meses",
      "quem": "voce",
@@ -2107,15 +2095,15 @@
     },
     {
      "id": "ia-rotas",
-     "titulo": "Usar a IA certa para cada tarefa (rascunho barato, revisão no Claude)",
+     "titulo": "Usar a ferramenta certa para cada tarefa (primária, reserva e portão)",
      "quem": "voce",
-     "pronto": "Tabela de rotas em docs/custos.md seguida por 2 semanas",
+     "pronto": "Tabela de rotas de docs/recursos.md seguida por 2 semanas",
      "tempo_min": 10,
      "blocos": [
       "anth",
       "nblm"
      ],
-     "fora": "Hábito; a tabela está em docs/custos.md."
+     "fora": "Hábito; a tabela está em docs/recursos.md (a de docs/custos.md cobre só as IAs de conversa)."
     },
     {
      "id": "ia-regras",
@@ -2203,7 +2191,8 @@
       "ghed",
       "copi"
      ],
-     "fora": "Em education.github.com, com comprovante de vínculo da escola. É o passo que mais destrava a esteira."
+     "comando": "Start-Process 'https://education.github.com/discount_requests/application'",
+     "nota": "Peça como PROFESSOR (comprovante de vínculo da escola), não como estudante: o plano de estudante exclui os agentes de terceiros. É o passo que mais destrava a esteira."
     },
     {
      "id": "ag-hostinger-mcp",
@@ -5303,18 +5292,6 @@
    "titulo": "Estudo contínuo",
    "objetivo": "As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.",
    "passos": [
-    {
-     "id": "github-education",
-     "titulo": "Pedir o GitHub Education como professor e ligar o Copilot",
-     "quem": "voce",
-     "pronto": "Benefícios aprovados e Copilot ativo no VS Code",
-     "tempo_min": 20,
-     "comando": "Start-Process 'https://education.github.com/discount_requests/application'",
-     "blocos": [
-      "ghed",
-      "copi"
-     ]
-    },
     {
      "id": "trilhas",
      "titulo": "Montar as trilhas: Microsoft Learn, AWS Skill Builder, roadmap.sh e laboratórios do TryHackMe",
