@@ -82,6 +82,7 @@ flowchart LR
     n_gem["Gemini (pago)"]
   end
   subgraph L_ia["Agentes de IA e sandbox"]
+    n_aiusage["ai-usagebar (Akita)"]
     n_cc["Claude Code"]
   end
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
@@ -100,6 +101,7 @@ flowchart LR
   n_cc -->|"modelo Claude"| n_anth
   n_ai -->|"modelos"| n_anth
   n_opipe -->|"API do Claude"| n_anth
+  n_aiusage -->|"mostra o limite"| n_anth
   n_cgws -->|"mesmos dados Google"| n_gem
   n_cgws -->|"resumos de e-mail e agenda"| n_obsd
   n_cgws -->|"o Claude lê o Drive"| n_gdrv
@@ -239,6 +241,7 @@ Assinatura usada pelo app e pelo Claude Code; API para as funções de IA dos si
 | ← recebe de | [Claude Code](05-ia.md#cc) | Agentes de IA e sandbox | modelo Claude |
 | ← recebe de | [IA: RAG + pgvector](11-app.md#ai) | Aplicação: sistemas AM (Aura) | modelos |
 | ← recebe de | [Pipeline de conteúdo](23-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | API do Claude |
+| ← recebe de | [ai-usagebar (Akita)](05-ia.md#aiusage) | Agentes de IA e sandbox | mostra o limite |
 
 <a id="cgws"></a>
 

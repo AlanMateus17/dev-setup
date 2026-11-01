@@ -29,8 +29,9 @@ Regra geral: **pague só pelo que custa menos que as suas horas ou exige confian
 | Decisão | Item | Hoje | Alternativa | Por quê |
 |---|---|---|---|---|
 | **testar grátis** | ChatGPT pago | mensal | ChatGPT Go grátis pelo Nubank (1 mês; 3 meses no Nubank+; 1 ano no Ultravioleta), depois R$ 39,99 se for usado toda semana | Segunda IA para imagens, voz e quando o limite do Claude acabar. Plus (R$ 99,90) só se o Go não bastar. |
-| **cortar** | Codex (OpenAI) | mensal | Claude Code | Ferramenta repetida. |
-| **cortar** | Grok | mensal | Plano grátis | Sem uso que o Claude não cubra. |
+| **testar grátis** | Z.AI (GLM, plano de código) | mensal baixo | Usar como reserva do Claude Code quando o limite acabar | Plano de código barato que funciona em ferramentas compatíveis com o Claude Code; o próprio Akita monitora no ai-usagebar. Confira preço, limites e política de dados antes. |
+| **usar barato** | DeepSeek | grátis / API muito barata | Chat grátis; API pelo gateway como 'barato' | Ótimo custo para rascunho em volume. Os dados ficam em servidores na China: nada sensível, nada de aluno, nada de cliente. |
+| **cortar** | Grok | pago | Grátis, se quiser ver o que está em alta no X | O diferencial é o X em tempo real; não resolve aula, código nem setup melhor que as outras. |
 | **cortar uma** | Alura · Rocketseat · Udemy | mensal | Ficar com uma plataforma na renovação + Microsoft Learn, roadmap.sh e documentação oficial (grátis) | Regra já decidida: nenhum curso novo até o cartão zerar. |
 | **trocar** | Gemini pago | mensal | Google AI Plus (R$ 24,99, com 200 GB) no lugar do Google One atual, se o seu plano for de até 200 GB | Quase sem custo extra: troca o armazenamento que você já paga por armazenamento + Gemini Pro + NotebookLM com mais uso. Melhor IA para rascunhar aulas a partir das fontes. |
 | **trocar** | SonarQube Cloud | grátis só para público | Semgrep CE no CI (já no repositório padrão) | Repositório privado no Sonar é pago; o Semgrep cobre de graça. |
@@ -52,9 +53,10 @@ Regra geral: **pague só pelo que custa menos que as suas horas ou exige confian
 | **limitar** | Claude por API (agentes) | por uso | Modelos locais pelo gateway para tarefas simples | Teto mensal no LiteLLM; 'local' por padrão, 'rapido' só quando o eval mostrar que o local não basta. |
 | **limitar** | GPU por hora | por hora | Kaggle e Colab grátis primeiro | Alugar só para o que não cabe no grátis, com teto e desligando ao terminar. |
 | **usar grátis** | Agentes de código do Google | mensal | Cota grátis | Só para comparar; nada pago. |
-| **usar grátis** | DeepSeek | por uso | Chat grátis; modelos abertos no Ollama | Pesos abertos rodam local quando couberem. |
 | **usar grátis** | Gemini API (cota grátis do AI Studio) | grátis (cota) | — | Rascunhos em lote pelo gateway sem gastar o Claude. Na cota grátis o Google pode usar os dados para melhorar produtos: nada sensível, nada de aluno. |
 | **usar grátis** | GitHub Copilot | mensal | GitHub Education (estudante) | Estudante verificado recebe o Copilot sem pagar; você está na Licenciatura. |
+| **usar grátis** | OpenRouter | por uso (alguns modelos grátis) | — | Uma chave para dezenas de modelos, inclusive grátis com limite; bom reserva no gateway. Confira a política de dados de cada modelo. |
+| **usar grátis** | Perplexity | grátis | — | Pesquisa com fontes citadas no plano grátis; Pro só se aparecer de graça por promoção. |
 | **manter grátis** | Anki | grátis no PC | AnkiDroid (grátis) no celular | O app pago é só o de iPhone. |
 | **manter grátis** | Cal.com | grátis | Auto-hospedar se precisar de mais | O plano individual grátis basta. |
 | **manter grátis** | Canva | grátis | Krita e Inkscape | Pro só se um cliente pagar por isso. |
@@ -62,6 +64,7 @@ Regra geral: **pague só pelo que custa menos que as suas horas ou exige confian
 | **manter grátis** | MailerLite | grátis (limite) | Listmonk auto-hospedado + envio barato (SES/Resend) | O plano grátis encolheu em 2025: confira o limite. Passou dele, Listmonk custa centavos. |
 | **manter grátis** | Sentry | grátis (cota) | GlitchTip auto-hospedado se passar da cota | A cota grátis basta no começo. |
 | **manter grátis** | Tailscale | grátis (pessoal) | Headscale auto-hospedado se um dia precisar | O plano pessoal grátis cobre todos os seus aparelhos. |
+| **usar o que já paga** | Codex (OpenAI) | incluso em planos do ChatGPT | Usar só se vier junto com o plano do ChatGPT que você tiver | Bom como segunda opinião de código quando o limite do Claude acabar; não vale assinar à parte. |
 | **usar o que já paga** | E-mail profissional | incluso | E-mail do plano Hostinger; Cloudflare Email Routing para encaminhar | Não contratar Google Workspace agora. |
 | **manter** | ActivityWatch | grátis | — | Código aberto. |
 | **manter** | Claude (assinatura) | mensal | — | A ferramenta que mais devolve hora sua: código, setup, conteúdo. A única IA paga. |
@@ -78,16 +81,17 @@ Regra geral: **pague só pelo que custa menos que as suas horas ou exige confian
 
 | Decisão | Itens |
 |---|---:|
-| testar grátis | 1 |
-| cortar | 2 |
+| testar grátis | 2 |
+| usar barato | 1 |
+| cortar | 1 |
 | cortar uma | 1 |
 | trocar | 2 |
 | trocar para comercial | 1 |
 | adiar | 14 |
 | limitar | 2 |
-| usar grátis | 4 |
+| usar grátis | 5 |
 | manter grátis | 7 |
-| usar o que já paga | 1 |
+| usar o que já paga | 2 |
 | manter | 11 |
 | regra | 1 |
 
@@ -116,6 +120,8 @@ Para o que vira produto, prefira licença Apache 2.0 ou MIT e confira a licença
 | Revisar a aula pronta contra as suas regras | Claude | Uma revisão curta gasta pouco limite |
 | Pesquisa com fontes | Perplexity (grátis) ou Gemini; Claude para fechar a decisão | Busca barata, decisão no Claude |
 | Imagens, capas e voz de conversa | ChatGPT Go | Ponto forte dele |
+| Rascunho em volume pela API (descrições, variações, resumos) | DeepSeek ou OpenRouter grátis pelo gateway | Custo perto de zero; nada sensível |
+| Código quando o limite do Claude acabar | Codex (se vier no plano do ChatGPT) ou Z.AI GLM | Reserva barata; revisão final no Claude |
 | Transcrever, resumir e rascunhar em volume | Modelos locais (Ollama) ou Gemini API grátis pelo gateway | Sem custo e sem gastar limite |
 | Tudo que tem dado sensível (aluno, finanças, senha) | Nenhuma IA na nuvem; modelo local ou à mão | Segurança acima de conveniência |
 

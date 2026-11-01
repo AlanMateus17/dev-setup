@@ -35,6 +35,7 @@ flowchart LR
 7. [Ordem de execução](07-ordem-de-execucao.md): o que fazer nos próximos 90 dias e 12 meses, dentro das horas que você tem
 - [Portfólio de ofertas](portfolio.md): o catálogo completo, o arsenal de rendas (o que entra agora, a fila, o que fica para 2027, o que exige capital e o que foi descartado), as regras de hora mínima e teto de horas, e o ranking (gerado)
 - [Kit de sites com IA da Hostinger](kit-sites.md): pacotes, ficha do cliente, um prompt por tipo de negócio, conferência automática, checklist de entrega, relatório mensal e o [modelo de contrato](contrato-sites-modelo.md) (gerado)
+- [Conversas curtas](sessoes-curtas.md): o protocolo para o limite das IAs durar (pacote de contexto, ESTADO.md, ai-memory, ai-usagebar)
 - [Operação 24 horas](24-horas.md): o que roda no notebook, no GitHub e na VM grátis, e o que o setup faz sozinho o tempo todo
 - [Catálogo de softwares](softwares.md): todos os sites por tipo de negócio, sistemas AM, micro-SaaS e produtos que você pode criar e vender, montados com módulos reaproveitáveis e ligados às ofertas (gerado)
 - [`portfolio.html`](portfolio.html): o mesmo catálogo com filtros, para abrir no navegador

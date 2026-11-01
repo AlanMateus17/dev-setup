@@ -50,26 +50,26 @@
   {
    "bloco": "grok",
    "item": "Grok",
-   "hoje": "mensal",
+   "hoje": "pago",
    "decisao": "cortar",
-   "alternativa": "Plano grátis",
-   "motivo": "Sem uso que o Claude não cubra."
+   "alternativa": "Grátis, se quiser ver o que está em alta no X",
+   "motivo": "O diferencial é o X em tempo real; não resolve aula, código nem setup melhor que as outras."
   },
   {
    "bloco": "ds",
    "item": "DeepSeek",
-   "hoje": "por uso",
-   "decisao": "usar grátis",
-   "alternativa": "Chat grátis; modelos abertos no Ollama",
-   "motivo": "Pesos abertos rodam local quando couberem."
+   "hoje": "grátis / API muito barata",
+   "decisao": "usar barato",
+   "alternativa": "Chat grátis; API pelo gateway como 'barato'",
+   "motivo": "Ótimo custo para rascunho em volume. Os dados ficam em servidores na China: nada sensível, nada de aluno, nada de cliente."
   },
   {
    "bloco": "codex",
    "item": "Codex (OpenAI)",
-   "hoje": "mensal",
-   "decisao": "cortar",
-   "alternativa": "Claude Code",
-   "motivo": "Ferramenta repetida."
+   "hoje": "incluso em planos do ChatGPT",
+   "decisao": "usar o que já paga",
+   "alternativa": "Usar só se vier junto com o plano do ChatGPT que você tiver",
+   "motivo": "Bom como segunda opinião de código quando o limite do Claude acabar; não vale assinar à parte."
   },
   {
    "bloco": "gcode",
@@ -390,6 +390,30 @@
    "decisao": "usar grátis",
    "alternativa": "—",
    "motivo": "Rascunhos em lote pelo gateway sem gastar o Claude. Na cota grátis o Google pode usar os dados para melhorar produtos: nada sensível, nada de aluno."
+  },
+  {
+   "bloco": "perp",
+   "item": "Perplexity",
+   "hoje": "grátis",
+   "decisao": "usar grátis",
+   "alternativa": "—",
+   "motivo": "Pesquisa com fontes citadas no plano grátis; Pro só se aparecer de graça por promoção."
+  },
+  {
+   "bloco": "litellm",
+   "item": "OpenRouter",
+   "hoje": "por uso (alguns modelos grátis)",
+   "decisao": "usar grátis",
+   "alternativa": "—",
+   "motivo": "Uma chave para dezenas de modelos, inclusive grátis com limite; bom reserva no gateway. Confira a política de dados de cada modelo."
+  },
+  {
+   "bloco": "cc",
+   "item": "Z.AI (GLM, plano de código)",
+   "hoje": "mensal baixo",
+   "decisao": "testar grátis",
+   "alternativa": "Usar como reserva do Claude Code quando o limite acabar",
+   "motivo": "Plano de código barato que funciona em ferramentas compatíveis com o Claude Code; o próprio Akita monitora no ai-usagebar. Confira preço, limites e política de dados antes."
   }
  ],
  "modelos_abertos": [
@@ -472,6 +496,16 @@
    "tarefa": "Imagens, capas e voz de conversa",
    "ia": "ChatGPT Go",
    "por_que": "Ponto forte dele"
+  },
+  {
+   "tarefa": "Rascunho em volume pela API (descrições, variações, resumos)",
+   "ia": "DeepSeek ou OpenRouter grátis pelo gateway",
+   "por_que": "Custo perto de zero; nada sensível"
+  },
+  {
+   "tarefa": "Código quando o limite do Claude acabar",
+   "ia": "Codex (se vier no plano do ChatGPT) ou Z.AI GLM",
+   "por_que": "Reserva barata; revisão final no Claude"
   },
   {
    "tarefa": "Transcrever, resumir e rascunhar em volume",

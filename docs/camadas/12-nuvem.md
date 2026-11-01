@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** git push via SSH leva o código ao GitHub; o Actions testa e publica.
 
-**20 blocos** · 13 precisam de conta · 3 marcados como futuro
+**21 blocos** · 14 precisam de conta · 3 marcados como futuro
 
 ## Mapa de conexões
 
@@ -34,6 +34,7 @@ flowchart LR
     n_repopadrao["Repositório padrão"]
     n_vigia["Vigia semanal (GitHub Actions)"]
     n_vm247["VM sempre ligada (Oracle grátis)"]
+    n_openrouter["OpenRouter"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_acv["Acervo (seus documentos)"]
@@ -173,8 +174,9 @@ flowchart LR
   n_vigia -->|"usa o conferir"| n_kitsites
   n_vm247 -->|"roda 24 h"| n_n8n
   n_vm247 -->|"pela rede privada"| n_tail
+  n_litellm -->|"reserva"| n_openrouter
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_blob,n_tmail,n_sonar,n_ghproj,n_dbot,n_gcp,n_gh,n_gha,n_ghcr,n_ghp,n_cf,n_vercel,n_azure,n_aws,n_b2,n_gpuh,n_gdrv,n_repopadrao,n_vigia,n_vm247 desta
+  class n_blob,n_tmail,n_sonar,n_ghproj,n_dbot,n_gcp,n_gh,n_gha,n_ghcr,n_ghp,n_cf,n_vercel,n_azure,n_aws,n_b2,n_gpuh,n_gdrv,n_repopadrao,n_vigia,n_vm247,n_openrouter desta
 ```
 
 ## Blocos
@@ -201,6 +203,7 @@ flowchart LR
 | [Repositório padrão](#repopadrao) | Local | Modelo com pre-commit, CI de qualidade, Definition of Done, ADRs e CHANGELOG para todo repositório. | passo 19.1 · Semana 5 · nov/2026; passo 19.2 · Semana 5 · nov/2026 |
 | [Vigia semanal (GitHub Actions)](#vigia) | Remoto | Roda no GitHub sem o notebook ligado: confere os sites dos clientes e procura segredos. | passo 23.1 · Dez/2026 a jan/2027; passo 23.2 · Dez/2026 a jan/2027 |
 | [VM sempre ligada (Oracle grátis)](#vm247) | Remoto · precisa de conta | 2 núcleos e 12 GB grátis para n8n, bot, Uptime Kuma e gateway rodarem 24 horas. | passo 23.1 · Dez/2026 a jan/2027; passo 23.4 · Dez/2026 a jan/2027; passo 23.5 · Dez/2026 a jan/2027 |
+| [OpenRouter](#openrouter) | Remoto · precisa de conta | Uma chave para dezenas de modelos, alguns grátis com limite; reserva no gateway. | passo 20.15 · Semana 6 · nov/2026 a dez/2026 |
 
 <a id="blob"></a>
 
@@ -534,6 +537,20 @@ Roda no GitHub sem o notebook ligado: confere os sites dos clientes e procura se
 |---|---|---|---|
 | → envia para | [n8n](21-mkt.md#n8n) | Marketing, automação e medição | roda 24 h |
 | → envia para | [Tailscale (VPN)](03-win.md#tail) | Windows 11, apps e máquinas virtuais | pela rede privada |
+
+<a id="openrouter"></a>
+
+### OpenRouter
+
+*Remoto · precisa de conta*
+
+Uma chave para dezenas de modelos, alguns grátis com limite; reserva no gateway.
+
+**Quando entra:** passo 20.15 · Semana 6 · nov/2026 a dez/2026 ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| ← recebe de | [Gateway de modelos (LiteLLM)](05-ia.md#litellm) | Agentes de IA e sandbox | reserva |
 
 ---
 

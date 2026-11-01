@@ -17,7 +17,7 @@ DADOS = RAIZ / "data" / "custos.json"
 ECO = RAIZ / "data" / "ecossistema.json"
 MD = RAIZ / "docs" / "custos.md"
 AVISO = "<!-- Arquivo GERADO por tools/custos/custos.py a partir de data/custos.json. Não edite à mão. -->\n"
-DECISOES = ["testar grátis", "cortar", "cortar uma", "trocar", "trocar para comercial", "adiar", "limitar", "usar grátis", "manter grátis",
+DECISOES = ["testar grátis", "usar barato", "cortar", "cortar uma", "trocar", "trocar para comercial", "adiar", "limitar", "usar grátis", "manter grátis",
             "usar o que já paga", "manter", "regra"]
 
 

@@ -2,6 +2,13 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.27.0] - 2026-11-01
+
+### Adicionado
+- Conversas curtas: pacote de contexto por passo ou resumo (tools/sessao/contexto.py, poucas centenas de tokens), ESTADO.md como memória de 5 linhas por sessão e o protocolo em docs/operacao/sessoes-curtas.md.
+- Ferramentas do Akita: ai-memory 2.0 (passo de atualização), ai-usagebar (limite das IAs no terminal) e Strata (MoE de 125B em casa, quando houver GPU de 12 GB+).
+- Avaliação das outras IAs em docs/custos.md: DeepSeek (usar barato, nada sensível), Perplexity e OpenRouter (grátis), Z.AI GLM (testar como reserva de código), Codex (só se vier no plano), Grok (cortar). Rotas e gateway com os modelos "barato" e "reserva".
+
 ## [1.26.0] - 2026-11-01
 
 ### Adicionado

@@ -1984,6 +1984,52 @@
       "litellm"
      ],
      "fora": "Chave criada no Google AI Studio (navegador) e guardada no KeePassXC; depois suba o gateway com scripts/wsl/segredos.sh."
+    },
+    {
+     "id": "ia-sessoes",
+     "titulo": "Adotar as conversas curtas: pacote de contexto no começo, ESTADO.md no fim",
+     "quem": "script",
+     "pronto": "Uma semana de tarefas, cada uma numa conversa nova",
+     "tempo_min": 5,
+     "blocos": [
+      "sessao"
+     ],
+     "comando": "python3 ~/dev/dev-setup/tools/sessao/contexto.py --resumo | clip.exe",
+     "nota": "Cole na conversa nova. Protocolo completo em docs/operacao/sessoes-curtas.md."
+    },
+    {
+     "id": "ia-memoria2",
+     "titulo": "Atualizar o ai-memory para a 2.0 e reinstalar os hooks do Claude Code",
+     "quem": "claude",
+     "pronto": "Sessão nova do Claude Code começa com o briefing do projeto",
+     "tempo_min": 30,
+     "blocos": [
+      "mem"
+     ],
+     "comando": "cd ~/dev/dev-setup && claude \"Passo ia-memoria2 do roteiro: Atualizar o ai-memory para a versão 2.0 (github.com/akitaonrails/ai-memory) e reinstalar os hooks do Claude Code\""
+    },
+    {
+     "id": "ia-usagebar",
+     "titulo": "Instalar o ai-usagebar para ver o limite antes de começar",
+     "quem": "claude",
+     "pronto": "Uso do Claude visível no terminal",
+     "tempo_min": 20,
+     "blocos": [
+      "aiusage"
+     ],
+     "comando": "cd ~/dev/dev-setup && claude \"Passo ia-usagebar do roteiro: Instalar o ai-usagebar do Akita (github.com/akitaonrails) em modo TUI no Ubuntu do WSL\""
+    },
+    {
+     "id": "ia-reservas",
+     "titulo": "Ligar as reservas baratas no gateway (DeepSeek, OpenRouter) para rascunho em volume",
+     "quem": "voce",
+     "pronto": "Modelos barato e reserva respondendo no gateway",
+     "tempo_min": 15,
+     "blocos": [
+      "litellm",
+      "openrouter"
+     ],
+     "fora": "Chaves criadas no navegador e guardadas no KeePassXC; nada sensível passa por elas."
     }
    ]
   },
@@ -2060,6 +2106,18 @@
      "precisa": [
       "pagamento"
      ]
+    },
+    {
+     "id": "ig-strata",
+     "titulo": "Strata: rodar um MoE de 125B em casa quando tiver GPU de 12 GB ou mais",
+     "quem": "voce",
+     "pronto": "Modelo respondendo pela API local, ligado ao gateway",
+     "tempo_min": 120,
+     "blocos": [
+      "strata",
+      "ws"
+     ],
+     "fora": "Depende da workstation (a GTX 1650 de 4 GB está abaixo do mínimo testado). Repositório: github.com/Niko1221/Strata."
     }
    ]
   },

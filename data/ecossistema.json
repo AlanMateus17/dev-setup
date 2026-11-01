@@ -3320,6 +3320,42 @@
    "conta": false,
    "futuro": false,
    "descricao": "Monta listas de negócios a partir de dados públicos e rascunha a abordagem; você aprova cada contato."
+  },
+  {
+   "id": "aiusage",
+   "camada": "ia",
+   "rotulo": "ai-usagebar (Akita)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Mostra no terminal quanto do limite de Claude, Codex, Z.AI e OpenRouter já foi usado."
+  },
+  {
+   "id": "sessao",
+   "camada": "ia",
+   "rotulo": "Pacote de contexto|+ ESTADO.md",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Contexto curto para começar cada conversa nova e memória de 5 linhas por sessão: o limite dura."
+  },
+  {
+   "id": "strata",
+   "camada": "ia",
+   "rotulo": "Strata (MoE grande)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Motor aberto (MIT) que roda um MoE de 125B com 6B ativos em PC doméstico usando a VRAM como cache. Pede ~12 GB de GPU: entra com a workstation."
+  },
+  {
+   "id": "openrouter",
+   "camada": "nuvem",
+   "rotulo": "OpenRouter",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Uma chave para dezenas de modelos, alguns grátis com limite; reserva no gateway."
   }
  ],
  "conexoes": [
@@ -6542,6 +6578,31 @@
    "de": "prospector",
    "para": "ocrm",
    "rotulo": "leads aprovados"
+  },
+  {
+   "de": "aiusage",
+   "para": "anth",
+   "rotulo": "mostra o limite"
+  },
+  {
+   "de": "sessao",
+   "para": "cc",
+   "rotulo": "começa cada sessão"
+  },
+  {
+   "de": "sessao",
+   "para": "mem",
+   "rotulo": "complementa"
+  },
+  {
+   "de": "strata",
+   "para": "ws",
+   "rotulo": "precisa de"
+  },
+  {
+   "de": "litellm",
+   "para": "openrouter",
+   "rotulo": "reserva"
   }
  ],
  "fluxos": [

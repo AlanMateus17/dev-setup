@@ -36,7 +36,7 @@ jobs:
         run: |
           python tools/kitsites/gerar.py --check
           python tools/custos/custos.py --check
-          for d in kitsites avaliador radar organizar remoto financeiro fabrica ia custos roi; do python -m unittest discover -s tools/$d -v || exit 1; done
+          for d in kitsites avaliador radar organizar remoto financeiro fabrica ia custos roi sessao; do python -m unittest discover -s tools/$d -v || exit 1; done
       - name: Testar o pipeline de conteúdo e conferir o roteiro de implantação
         run: |
           python -m unittest discover -s tools/conteudo -v

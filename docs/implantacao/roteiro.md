@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-47 fases, 358 passos, cerca de **1187 h 51 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+47 fases, 363 passos, cerca de **1191 h 01 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
-**Todo o planejamento está aqui:** os 356 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 100 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
+**Todo o planejamento está aqui:** os 360 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 100 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 266 dos 358 passos (255 h 41 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 271 dos 363 passos (258 h 51 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -34,8 +34,8 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [17 · Comandos remotos pelo Telegram](#f-remoto) | Semana 5 · nov/2026 | 5 | 35 min |
 | [18 · Casa e vida](#f-casa) | Dez/2026 | 6 | 2 h 55 min |
 | [19 · Padrão de elite em todo repositório](#f-elite) | Semana 5 · nov/2026 | 9 | 2 h 50 min |
-| [20 · Agentes e IA com qualidade medida](#f-ia-elite) | Semana 6 · nov/2026 a dez/2026 | 11 | 6 h 50 min |
-| [21 · Modelos grandes sem computador maior](#f-ia-grande) | 2027, depois do primeiro fine-tuning de 8B | 5 | 21 h 00 min |
+| [20 · Agentes e IA com qualidade medida](#f-ia-elite) | Semana 6 · nov/2026 a dez/2026 | 15 | 8 h 00 min |
+| [21 · Modelos grandes sem computador maior](#f-ia-grande) | 2027, depois do primeiro fine-tuning de 8B | 6 | 23 h 00 min |
 | [22 · Rede própria entre os seus computadores](#f-rede) | Semana 6 · nov/2026 | 6 | 3 h 10 min |
 | [23 · Operação 24 horas](#f-247) | Dez/2026 a jan/2027 | 8 | 7 h 25 min |
 | [24 · Pipeline de conteúdo](#f11) | Semana 5 · nov/2026 | 6 | 1 h 24 min |
@@ -1970,6 +1970,54 @@ bash ~/dev/dev-setup/scripts/wsl/regras-ia.sh ~/dev/aulas
 - [ ] **Pronto quando:** Modelo 'gratis' respondendo no gateway
 - Implanta: Gateway de modelos (LiteLLM)
 
+### 20.12 Adotar as conversas curtas: pacote de contexto no começo, ESTADO.md no fim
+
+**Script** · 5 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+python3 ~/dev/dev-setup/tools/sessao/contexto.py --resumo | clip.exe
+```
+
+- [ ] **Pronto quando:** Uma semana de tarefas, cada uma numa conversa nova
+- Cole na conversa nova. Protocolo completo em docs/operacao/sessoes-curtas.md.
+- Implanta: Pacote de contexto + ESTADO.md
+
+### 20.13 Atualizar o ai-memory para a 2.0 e reinstalar os hooks do Claude Code
+
+**Claude com você** · 30 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/dev-setup && claude "Passo ia-memoria2 do roteiro: Atualizar o ai-memory para a versão 2.0 (github.com/akitaonrails/ai-memory) e reinstalar os hooks do Claude Code"
+```
+
+- [ ] **Pronto quando:** Sessão nova do Claude Code começa com o briefing do projeto
+- Implanta: ai-memory
+
+### 20.14 Instalar o ai-usagebar para ver o limite antes de começar
+
+**Claude com você** · 20 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/dev-setup && claude "Passo ia-usagebar do roteiro: Instalar o ai-usagebar do Akita (github.com/akitaonrails) em modo TUI no Ubuntu do WSL"
+```
+
+- [ ] **Pronto quando:** Uso do Claude visível no terminal
+- Implanta: ai-usagebar (Akita)
+
+### 20.15 Ligar as reservas baratas no gateway (DeepSeek, OpenRouter) para rascunho em volume
+
+**Você** · 15 min
+
+- **Fora do terminal:** Chaves criadas no navegador e guardadas no KeePassXC; nada sensível passa por elas.
+- [ ] **Pronto quando:** Modelos barato e reserva respondendo no gateway
+- Implanta: Gateway de modelos (LiteLLM) · OpenRouter
+
 <a id="f-ia-grande"></a>
 
 ## 21 · Modelos grandes sem computador maior
@@ -2035,6 +2083,14 @@ cd ~/dev/dev-setup && claude "Passo ig-vllm do roteiro: Servir o modelo treinado
 - [ ] **Pronto quando:** gpu-alugada responde no gateway
 - **Precisa:** pagar um serviço
 - Implanta: vLLM (GPU alugada) · Gateway de modelos (LiteLLM)
+
+### 21.6 Strata: rodar um MoE de 125B em casa quando tiver GPU de 12 GB ou mais
+
+**Você** · 2 h 00 min
+
+- **Fora do terminal:** Depende da workstation (a GTX 1650 de 4 GB está abaixo do mínimo testado). Repositório: github.com/Niko1221/Strata.
+- [ ] **Pronto quando:** Modelo respondendo pela API local, ligado ao gateway
+- Implanta: Strata (MoE grande) · Workstation com GPU
 
 <a id="f-rede"></a>
 
@@ -4682,6 +4738,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Repositório padrão | 19.1, 19.2 | Semana 5 · nov/2026 |
 | Vigia semanal (GitHub Actions) | 23.1, 23.2 | Dez/2026 a jan/2027 |
 | VM sempre ligada (Oracle grátis) | 23.1, 23.4, 23.5 | Dez/2026 a jan/2027 |
+| OpenRouter | 20.15 | Semana 6 · nov/2026 a dez/2026 |
 
 ### Aplicação: sistemas AM (Aura)
 
@@ -4805,15 +4862,18 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Base de conhecimento (RAG) das suas notas | 6.7, 8.6, 23.7 | Semana 2 · nov/2026; Semanas 3 e 4 · nov/2026; Dez/2026 a jan/2027 |
 | Claude Code | 6.1 | Semana 2 · nov/2026 |
 | ai-jail | 6.2 | Semana 2 · nov/2026 |
-| ai-memory | 6.6 | Semana 2 · nov/2026 |
+| ai-memory | 6.6, 20.13 | Semana 2 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
 | Servidores MCP | 6.5, 20.6 | Semana 2 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
 | CLAUDE.md, agentes e skills (seus) | 6.3, 20.10 | Semana 2 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
 | Ollama | 6.4, 20.4, 34.5, 34.12 | Semana 2 · nov/2026; Semana 6 · nov/2026 a dez/2026; Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
-| Gateway de modelos (LiteLLM) | 20.1, 20.7, 20.11, 21.5, 23.5 | Semana 6 · nov/2026 a dez/2026; 2027, depois do primeiro fine-tuning de 8B; Dez/2026 a jan/2027 |
+| Gateway de modelos (LiteLLM) | 20.1, 20.7, 20.11, 20.15, 21.5, 23.5 | Semana 6 · nov/2026 a dez/2026; 2027, depois do primeiro fine-tuning de 8B; Dez/2026 a jan/2027 |
 | Evals dos agentes (promptfoo) | 20.2, 20.7, 21.3, 23.7 | Semana 6 · nov/2026 a dez/2026; 2027, depois do primeiro fine-tuning de 8B; Dez/2026 a jan/2027 |
 | MCP próprio (seus dados) | 20.6 | Semana 6 · nov/2026 a dez/2026 |
 | Claude Agent SDK | 20.5 | Semana 6 · nov/2026 a dez/2026 |
 | Cluster de IA na rede | 21.2 | 2027, depois do primeiro fine-tuning de 8B |
+| ai-usagebar (Akita) | 20.14 | Semana 6 · nov/2026 a dez/2026 |
+| Pacote de contexto + ESTADO.md | 20.12 | Semana 6 · nov/2026 a dez/2026 |
+| Strata (MoE grande) | 21.6 | 2027, depois do primeiro fine-tuning de 8B |
 
 ### Linux (Ubuntu no WSL2, Arch no 2º disco)
 
@@ -4897,5 +4957,5 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Arduino · ESP32 · Pi | 1.2, 35.16 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez |
 | Servidor caseiro (NAS + serviços) | 44.1 | 2028, quando o grupo pedir |
 | SSD externo (USB-C 10 Gbps) | 1.2 | Semana 1 · out/2026 |
-| Workstation com GPU | 44.3 | 2028, quando o grupo pedir |
+| Workstation com GPU | 21.6, 44.3 | 2027, depois do primeiro fine-tuning de 8B; 2028, quando o grupo pedir |
 | Home Assistant | 18.1, 18.6 | Dez/2026 |

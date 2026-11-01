@@ -16,6 +16,14 @@ model_list:
     litellm_params:
       model: gemini/gemini-2.5-flash
       api_key: os.environ/GEMINI_API_KEY
+  - model_name: barato            # DeepSeek: muito barato; dados na China, nada sensível
+    litellm_params:
+      model: deepseek/deepseek-chat
+      api_key: os.environ/DEEPSEEK_API_KEY
+  - model_name: reserva           # OpenRouter: modelos grátis com limite
+    litellm_params:
+      model: openrouter/openrouter/auto
+      api_key: os.environ/OPENROUTER_API_KEY
   - model_name: gpu-alugada        # vLLM numa GPU por hora (RunPod); só quando ligada
     litellm_params:
       model: openai/seu-modelo
@@ -23,7 +31,7 @@ model_list:
 router_settings:
   fallbacks:
     - forte: [rapido]
-    - rapido: [gratis, local]
+    - rapido: [gratis, barato, reserva, local]
 litellm_settings:
   max_budget: 20          # US$ por mês no total; passou, recusa
   budget_duration: 30d
