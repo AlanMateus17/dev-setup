@@ -17,7 +17,7 @@ DADOS = RAIZ / "data" / "custos.json"
 ECO = RAIZ / "data" / "ecossistema.json"
 MD = RAIZ / "docs" / "custos.md"
 AVISO = "<!-- Arquivo GERADO por tools/custos/custos.py a partir de data/custos.json. Não edite à mão. -->\n"
-DECISOES = ["cortar", "cortar uma", "trocar", "trocar para comercial", "adiar", "limitar", "usar grátis", "manter grátis",
+DECISOES = ["testar grátis", "cortar", "cortar uma", "trocar", "trocar para comercial", "adiar", "limitar", "usar grátis", "manter grátis",
             "usar o que já paga", "manter", "regra"]
 
 
@@ -62,6 +62,10 @@ def gerar(d: dict) -> str:
     o += ["", "## Modelos abertos para cada tarefa\n", "Para o que vira produto, prefira licença Apache 2.0 ou MIT e confira a licença do tamanho exato que baixar.\n",
           "| Tarefa | Modelo | Licença | Onde roda |", "|---|---|---|---|"]
     o += [f"| {m['tarefa']} | {m['modelo']} | {m['licenca']} | {m['roda']} |" for m in d["modelos_abertos"]]
+    o += ["", "## Qual IA para cada tarefa\n", "| Tarefa | IA | Por quê |", "|---|---|---|"]
+    o += [f"| {r['tarefa']} | {r['ia']} | {r['por_que']} |" for r in d.get("rotas_ia", [])]
+    o += ["", "## Fazer o limite do Claude durar\n"] + [f"- {x}" for x in d.get("economia_limite", [])]
+    o += ["", "Coerência entre IAs: as mesmas regras em CLAUDE.md, AGENTS.md e GEMINI.md (scripts/wsl/regras-ia.sh)."]
     o.append("\nAssinaturas pessoais (streaming, apps) ficam fora do repositório: confira no Caixa da Casa.")
     return "\n".join(o) + "\n"
 

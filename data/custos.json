@@ -35,17 +35,17 @@
    "bloco": "gpt",
    "item": "ChatGPT pago",
    "hoje": "mensal",
-   "decisao": "cortar",
-   "alternativa": "Plano grátis",
-   "motivo": "Duas IAs pagas fazem o mesmo trabalho; o grátis basta para comparar respostas."
+   "decisao": "testar grátis",
+   "alternativa": "ChatGPT Go grátis pelo Nubank (1 mês; 3 meses no Nubank+; 1 ano no Ultravioleta), depois R$ 39,99 se for usado toda semana",
+   "motivo": "Segunda IA para imagens, voz e quando o limite do Claude acabar. Plus (R$ 99,90) só se o Go não bastar."
   },
   {
    "bloco": "gem",
    "item": "Gemini pago",
    "hoje": "mensal",
-   "decisao": "cortar",
-   "alternativa": "Plano grátis + NotebookLM grátis",
-   "motivo": "Mesmo motivo; NotebookLM grátis cobre o estudo com fontes."
+   "decisao": "trocar",
+   "alternativa": "Google AI Plus (R$ 24,99, com 200 GB) no lugar do Google One atual, se o seu plano for de até 200 GB",
+   "motivo": "Quase sem custo extra: troca o armazenamento que você já paga por armazenamento + Gemini Pro + NotebookLM com mais uso. Melhor IA para rascunhar aulas a partir das fontes."
   },
   {
    "bloco": "grok",
@@ -374,6 +374,22 @@
    "decisao": "regra",
    "alternativa": "Comprar só o que um passo do roteiro bloqueia",
    "motivo": "Cada compra entra pelo Caixa da Casa e pela cascata."
+  },
+  {
+   "bloco": "anth",
+   "item": "Claude Max (5x)",
+   "hoje": "US$ 100 por mês",
+   "decisao": "adiar",
+   "alternativa": "Pro + Google AI Plus + ChatGPT Go grátis + modelos locais + Gemini API grátis no gateway",
+   "motivo": "É a solução direta para o limite, mas custa caro hoje. Entra quando uma renda passar no portão e o limite ainda travar o trabalho."
+  },
+  {
+   "bloco": "litellm",
+   "item": "Gemini API (cota grátis do AI Studio)",
+   "hoje": "grátis (cota)",
+   "decisao": "usar grátis",
+   "alternativa": "—",
+   "motivo": "Rascunhos em lote pelo gateway sem gastar o Claude. Na cota grátis o Google pode usar os dados para melhorar produtos: nada sensível, nada de aluno."
   }
  ],
  "modelos_abertos": [
@@ -425,5 +441,54 @@
    "licenca": "Licenças próprias com restrições: leia antes de usar em produto",
    "roda": "Quantizados ou alugados"
   }
+ ],
+ "rotas_ia": [
+  {
+   "tarefa": "Planejar o setup, arquitetura, revisão de código e do que vai para cliente",
+   "ia": "Claude (Pro)",
+   "por_que": "Melhor raciocínio longo e coerência com o repositório"
+  },
+  {
+   "tarefa": "Código no setup e nos sistemas",
+   "ia": "Claude Code; Gemini como segunda opinião",
+   "por_que": "Lê e muda o repositório com testes"
+  },
+  {
+   "tarefa": "Rascunho de aulas e documentos a partir das ementas e fontes oficiais",
+   "ia": "NotebookLM / Gemini (AI Plus)",
+   "por_que": "Responde preso às fontes que você carrega; economiza o limite do Claude"
+  },
+  {
+   "tarefa": "Revisar a aula pronta contra as suas regras",
+   "ia": "Claude",
+   "por_que": "Uma revisão curta gasta pouco limite"
+  },
+  {
+   "tarefa": "Pesquisa com fontes",
+   "ia": "Perplexity (grátis) ou Gemini; Claude para fechar a decisão",
+   "por_que": "Busca barata, decisão no Claude"
+  },
+  {
+   "tarefa": "Imagens, capas e voz de conversa",
+   "ia": "ChatGPT Go",
+   "por_que": "Ponto forte dele"
+  },
+  {
+   "tarefa": "Transcrever, resumir e rascunhar em volume",
+   "ia": "Modelos locais (Ollama) ou Gemini API grátis pelo gateway",
+   "por_que": "Sem custo e sem gastar limite"
+  },
+  {
+   "tarefa": "Tudo que tem dado sensível (aluno, finanças, senha)",
+   "ia": "Nenhuma IA na nuvem; modelo local ou à mão",
+   "por_que": "Segurança acima de conveniência"
+  }
+ ],
+ "economia_limite": [
+  "Uma conversa por tarefa: conversa longa relê tudo a cada mensagem e consome o limite muito mais rápido.",
+  "Projects com os arquivos fixos (regras, ementas, setup) em vez de colar tudo de novo.",
+  "Modelo mais leve do Claude para tarefas simples; o mais forte só para planejar e revisar.",
+  "Rascunho na IA mais barata, revisão final no Claude.",
+  "Peça o resultado em arquivo ou no repositório, não em textos longos repetidos no chat."
  ]
 }

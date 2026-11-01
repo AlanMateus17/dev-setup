@@ -1937,6 +1937,53 @@
       "promptfoo"
      ],
      "comando": "cd ~/dev/dev-setup && claude \"Passo ia-n8n do roteiro: Ligar os agentes do n8n ao gateway LiteLLM e criar os evals de cada um\""
+    },
+    {
+     "id": "ia-segunda",
+     "titulo": "Montar a segunda IA: Google AI Plus no lugar do Google One e ChatGPT Go grátis pelo Nubank",
+     "quem": "voce",
+     "pronto": "Gemini, NotebookLM e ChatGPT Go funcionando; Google One antigo trocado",
+     "tempo_min": 20,
+     "blocos": [
+      "gem",
+      "gpt",
+      "gdrv"
+     ],
+     "fora": "Assinaturas no app do Google One e no app do Nubank. Confira antes o tamanho do seu plano atual do Google One."
+    },
+    {
+     "id": "ia-rotas",
+     "titulo": "Usar a IA certa para cada tarefa (rascunho barato, revisão no Claude)",
+     "quem": "voce",
+     "pronto": "Tabela de rotas em docs/custos.md seguida por 2 semanas",
+     "tempo_min": 10,
+     "blocos": [
+      "anth",
+      "nblm"
+     ],
+     "fora": "Hábito; a tabela está em docs/custos.md."
+    },
+    {
+     "id": "ia-regras",
+     "titulo": "Mesmas regras para todas as IAs em cada repositório",
+     "quem": "script",
+     "pronto": "CLAUDE.md, AGENTS.md e GEMINI.md presentes",
+     "tempo_min": 5,
+     "blocos": [
+      "kit"
+     ],
+     "comando": "bash ~/dev/dev-setup/scripts/wsl/regras-ia.sh ~/dev/aulas"
+    },
+    {
+     "id": "ia-gemini-api",
+     "titulo": "Ligar a cota grátis do Gemini no gateway para rascunhos em lote",
+     "quem": "voce",
+     "pronto": "Modelo 'gratis' respondendo no gateway",
+     "tempo_min": 10,
+     "blocos": [
+      "litellm"
+     ],
+     "fora": "Chave criada no Google AI Studio (navegador) e guardada no KeePassXC; depois suba o gateway com scripts/wsl/segredos.sh."
     }
    ]
   },

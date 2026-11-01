@@ -28,11 +28,11 @@ Regra geral: **pague só pelo que custa menos que as suas horas ou exige confian
 
 | Decisão | Item | Hoje | Alternativa | Por quê |
 |---|---|---|---|---|
-| **cortar** | ChatGPT pago | mensal | Plano grátis | Duas IAs pagas fazem o mesmo trabalho; o grátis basta para comparar respostas. |
+| **testar grátis** | ChatGPT pago | mensal | ChatGPT Go grátis pelo Nubank (1 mês; 3 meses no Nubank+; 1 ano no Ultravioleta), depois R$ 39,99 se for usado toda semana | Segunda IA para imagens, voz e quando o limite do Claude acabar. Plus (R$ 99,90) só se o Go não bastar. |
 | **cortar** | Codex (OpenAI) | mensal | Claude Code | Ferramenta repetida. |
-| **cortar** | Gemini pago | mensal | Plano grátis + NotebookLM grátis | Mesmo motivo; NotebookLM grátis cobre o estudo com fontes. |
 | **cortar** | Grok | mensal | Plano grátis | Sem uso que o Claude não cubra. |
 | **cortar uma** | Alura · Rocketseat · Udemy | mensal | Ficar com uma plataforma na renovação + Microsoft Learn, roadmap.sh e documentação oficial (grátis) | Regra já decidida: nenhum curso novo até o cartão zerar. |
+| **trocar** | Gemini pago | mensal | Google AI Plus (R$ 24,99, com 200 GB) no lugar do Google One atual, se o seu plano for de até 200 GB | Quase sem custo extra: troca o armazenamento que você já paga por armazenamento + Gemini Pro + NotebookLM com mais uso. Melhor IA para rascunhar aulas a partir das fontes. |
 | **trocar** | SonarQube Cloud | grátis só para público | Semgrep CE no CI (já no repositório padrão) | Repositório privado no Sonar é pago; o Semgrep cobre de graça. |
 | **trocar para comercial** | Vercel | grátis (Hobby) | Cloudflare Pages ou GitHub Pages (grátis e permitem uso comercial) ou o Hostinger que você já paga | O plano Hobby da Vercel é para uso pessoal, não comercial: site de cliente ou de venda não pode ficar nele. |
 | **adiar** | API de NFS-e | mensal | Emissor nacional da NFS-e (gov, grátis) enquanto for MEI | API só quando o volume de notas pedir. |
@@ -40,6 +40,7 @@ Regra geral: **pague só pelo que custa menos que as suas horas ou exige confian
 | **adiar** | Backblaze B2 | por TB | Disco externo + Google Drive que você já paga (restic via rclone) | Uma nuvem de backup só; use a que já está paga. |
 | **adiar** | Certificado digital e-CNPJ | anual | — | Só quando houver CNPJ. |
 | **adiar** | Chave física (YubiKey) | compra | App 2FA no celular + códigos de recuperação no cofre | Bom, mas não urgente. |
+| **adiar** | Claude Max (5x) | US$ 100 por mês | Pro + Google AI Plus + ChatGPT Go grátis + modelos locais + Gemini API grátis no gateway | É a solução direta para o limite, mas custa caro hoje. Entra quando uma renda passar no portão e o limite ainda travar o trabalho. |
 | **adiar** | Conector Upwork | créditos por proposta | — | Só com inglês B1. |
 | **adiar** | Dublagem (ElevenLabs) | mensal | Dublagem automática do YouTube, quando disponível no canal | Só depois de um curso vender em português. |
 | **adiar** | Influenciadores e newsletters | por uso | Parcerias por permuta | Só com oferta validada. |
@@ -52,6 +53,7 @@ Regra geral: **pague só pelo que custa menos que as suas horas ou exige confian
 | **limitar** | GPU por hora | por hora | Kaggle e Colab grátis primeiro | Alugar só para o que não cabe no grátis, com teto e desligando ao terminar. |
 | **usar grátis** | Agentes de código do Google | mensal | Cota grátis | Só para comparar; nada pago. |
 | **usar grátis** | DeepSeek | por uso | Chat grátis; modelos abertos no Ollama | Pesos abertos rodam local quando couberem. |
+| **usar grátis** | Gemini API (cota grátis do AI Studio) | grátis (cota) | — | Rascunhos em lote pelo gateway sem gastar o Claude. Na cota grátis o Google pode usar os dados para melhorar produtos: nada sensível, nada de aluno. |
 | **usar grátis** | GitHub Copilot | mensal | GitHub Education (estudante) | Estudante verificado recebe o Copilot sem pagar; você está na Licenciatura. |
 | **manter grátis** | Anki | grátis no PC | AnkiDroid (grátis) no celular | O app pago é só o de iPhone. |
 | **manter grátis** | Cal.com | grátis | Auto-hospedar se precisar de mais | O plano individual grátis basta. |
@@ -76,13 +78,14 @@ Regra geral: **pague só pelo que custa menos que as suas horas ou exige confian
 
 | Decisão | Itens |
 |---|---:|
-| cortar | 4 |
+| testar grátis | 1 |
+| cortar | 2 |
 | cortar uma | 1 |
-| trocar | 1 |
+| trocar | 2 |
 | trocar para comercial | 1 |
-| adiar | 13 |
+| adiar | 14 |
 | limitar | 2 |
-| usar grátis | 3 |
+| usar grátis | 4 |
 | manter grátis | 7 |
 | usar o que já paga | 1 |
 | manter | 11 |
@@ -102,5 +105,28 @@ Para o que vira produto, prefira licença Apache 2.0 ou MIT e confira a licença
 | OCR de documentos | Tesseract (dentro do Paperless) | Apache 2.0 | CPU |
 | Imagens | FLUX.1 schnell | Apache 2.0 | GPU alugada ou Colab (pesado para 4 GB) |
 | Modelos grandes para estudo | Llama, Gemma | Licenças próprias com restrições: leia antes de usar em produto | Quantizados ou alugados |
+
+## Qual IA para cada tarefa
+
+| Tarefa | IA | Por quê |
+|---|---|---|
+| Planejar o setup, arquitetura, revisão de código e do que vai para cliente | Claude (Pro) | Melhor raciocínio longo e coerência com o repositório |
+| Código no setup e nos sistemas | Claude Code; Gemini como segunda opinião | Lê e muda o repositório com testes |
+| Rascunho de aulas e documentos a partir das ementas e fontes oficiais | NotebookLM / Gemini (AI Plus) | Responde preso às fontes que você carrega; economiza o limite do Claude |
+| Revisar a aula pronta contra as suas regras | Claude | Uma revisão curta gasta pouco limite |
+| Pesquisa com fontes | Perplexity (grátis) ou Gemini; Claude para fechar a decisão | Busca barata, decisão no Claude |
+| Imagens, capas e voz de conversa | ChatGPT Go | Ponto forte dele |
+| Transcrever, resumir e rascunhar em volume | Modelos locais (Ollama) ou Gemini API grátis pelo gateway | Sem custo e sem gastar limite |
+| Tudo que tem dado sensível (aluno, finanças, senha) | Nenhuma IA na nuvem; modelo local ou à mão | Segurança acima de conveniência |
+
+## Fazer o limite do Claude durar
+
+- Uma conversa por tarefa: conversa longa relê tudo a cada mensagem e consome o limite muito mais rápido.
+- Projects com os arquivos fixos (regras, ementas, setup) em vez de colar tudo de novo.
+- Modelo mais leve do Claude para tarefas simples; o mais forte só para planejar e revisar.
+- Rascunho na IA mais barata, revisão final no Claude.
+- Peça o resultado em arquivo ou no repositório, não em textos longos repetidos no chat.
+
+Coerência entre IAs: as mesmas regras em CLAUDE.md, AGENTS.md e GEMINI.md (scripts/wsl/regras-ia.sh).
 
 Assinaturas pessoais (streaming, apps) ficam fora do repositório: confira no Caixa da Casa.

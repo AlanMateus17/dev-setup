@@ -2,6 +2,16 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.25.0] - 2026-11-01
+
+### Alterado
+- Custos: ChatGPT passa de "cortar" para "testar grátis" (ChatGPT Go pelo Nubank) e Gemini de "cortar" para "trocar" (Google AI Plus no lugar do Google One). Claude Max entra como "adiar".
+
+### Adicionado
+- Rotas por tarefa (qual IA para cada trabalho) e práticas para o limite do Claude durar, em docs/custos.md.
+- Regras únicas para todas as IAs (infra/templates/regras-ia + scripts/wsl/regras-ia.sh → CLAUDE.md, AGENTS.md, GEMINI.md).
+- Modelo "gratis" (cota grátis do Gemini) no gateway LiteLLM; passos ia-segunda, ia-rotas, ia-regras e ia-gemini-api.
+
 ## [1.24.0] - 2026-11-01
 
 ### Adicionado

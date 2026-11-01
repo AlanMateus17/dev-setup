@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-46 fases, 346 passos, cerca de **1179 h 41 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+46 fases, 350 passos, cerca de **1180 h 26 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
 **Todo o planejamento está aqui:** os 352 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 100 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 254 dos 346 passos (247 h 31 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 258 dos 350 passos (248 h 16 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -34,7 +34,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [17 · Comandos remotos pelo Telegram](#f-remoto) | Semana 5 · nov/2026 | 5 | 35 min |
 | [18 · Casa e vida](#f-casa) | Dez/2026 | 6 | 2 h 55 min |
 | [19 · Padrão de elite em todo repositório](#f-elite) | Semana 5 · nov/2026 | 9 | 2 h 50 min |
-| [20 · Agentes e IA com qualidade medida](#f-ia-elite) | Semana 6 · nov/2026 a dez/2026 | 7 | 6 h 05 min |
+| [20 · Agentes e IA com qualidade medida](#f-ia-elite) | Semana 6 · nov/2026 a dez/2026 | 11 | 6 h 50 min |
 | [21 · Modelos grandes sem computador maior](#f-ia-grande) | 2027, depois do primeiro fine-tuning de 8B | 5 | 21 h 00 min |
 | [22 · Rede própria entre os seus computadores](#f-rede) | Semana 6 · nov/2026 | 6 | 3 h 10 min |
 | [23 · Pipeline de conteúdo](#f11) | Semana 5 · nov/2026 | 6 | 1 h 24 min |
@@ -1931,6 +1931,43 @@ cd ~/dev/dev-setup && claude "Passo ia-n8n do roteiro: Ligar os agentes do n8n a
 
 - [ ] **Pronto quando:** Fluxos de agente usando local/rapido/forte, com testes
 - Implanta: n8n · Gateway de modelos (LiteLLM) · Evals dos agentes (promptfoo)
+
+### 20.8 Montar a segunda IA: Google AI Plus no lugar do Google One e ChatGPT Go grátis pelo Nubank
+
+**Você** · 20 min
+
+- **Fora do terminal:** Assinaturas no app do Google One e no app do Nubank. Confira antes o tamanho do seu plano atual do Google One.
+- [ ] **Pronto quando:** Gemini, NotebookLM e ChatGPT Go funcionando; Google One antigo trocado
+- Implanta: Gemini (pago) · ChatGPT · Google Drive (seus documentos)
+
+### 20.9 Usar a IA certa para cada tarefa (rascunho barato, revisão no Claude)
+
+**Você** · 10 min
+
+- **Fora do terminal:** Hábito; a tabela está em docs/custos.md.
+- [ ] **Pronto quando:** Tabela de rotas em docs/custos.md seguida por 2 semanas
+- Implanta: Claude (assinatura e API) · NotebookLM
+
+### 20.10 Mesmas regras para todas as IAs em cada repositório
+
+**Script** · 5 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+bash ~/dev/dev-setup/scripts/wsl/regras-ia.sh ~/dev/aulas
+```
+
+- [ ] **Pronto quando:** CLAUDE.md, AGENTS.md e GEMINI.md presentes
+- Implanta: CLAUDE.md, agentes e skills (seus)
+
+### 20.11 Ligar a cota grátis do Gemini no gateway para rascunhos em lote
+
+**Você** · 10 min
+
+- **Fora do terminal:** Chave criada no Google AI Studio (navegador) e guardada no KeePassXC; depois suba o gateway com scripts/wsl/segredos.sh.
+- [ ] **Pronto quando:** Modelo 'gratis' respondendo no gateway
+- Implanta: Gateway de modelos (LiteLLM)
 
 <a id="f-ia-grande"></a>
 
@@ -4549,7 +4586,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | AWS | 42.4 | 2028 |
 | Backblaze B2 (backup) | 7.2 | Semana 3 · nov/2026 |
 | GPU por hora (RunPod e afins) | 21.4, 33.9 | 2027, depois do primeiro fine-tuning de 8B; Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
-| Google Drive (seus documentos) | 0.5, 8.1 | Antes de tudo · semana 1 (out/2026); Semanas 3 e 4 · nov/2026 |
+| Google Drive (seus documentos) | 0.5, 8.1, 20.8 | Antes de tudo · semana 1 (out/2026); Semanas 3 e 4 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
 | Repositório padrão | 19.1, 19.2 | Semana 5 · nov/2026 |
 
 ### Aplicação: sistemas AM (Aura)
@@ -4614,7 +4651,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Pesquisa aprofundada | 9.1 | Semana 4 · nov/2026 |
 | Tarefas agendadas | 9.1 | Semana 4 · nov/2026 |
 | Claude in Chrome + uso do computador | 3.6 | Semana 1 · out/2026 |
-| Claude (assinatura e API) | 19.7, 23.2 | Semana 5 · nov/2026 |
+| Claude (assinatura e API) | 19.7, 20.9, 23.2 | Semana 5 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
 | Conector Google (Gmail, Drive…) | 2.3, 9.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 4 · nov/2026 |
 | Conectores Canva + Figma | 9.2, 24.4 | Semana 4 · nov/2026; Semana 5 · dez/2026 |
 | Conector MailerLite | 9.2, 25.6 | Semana 4 · nov/2026; Semanas 6 e 7 · dez/2026 |
@@ -4634,9 +4671,9 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Bloco | Passo | Quando |
 |---|---|---|
 | Claude (app) | 9.1 | Semana 4 · nov/2026 |
-| ChatGPT | 9.4 | Semana 4 · nov/2026 |
-| Gemini (pago) | 9.4 | Semana 4 · nov/2026 |
-| NotebookLM | 6.7 | Semana 2 · nov/2026 |
+| ChatGPT | 9.4, 20.8 | Semana 4 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
+| Gemini (pago) | 9.4, 20.8 | Semana 4 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
+| NotebookLM | 6.7, 20.9 | Semana 2 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
 | Grok | 9.4 | Semana 4 · nov/2026 |
 | DeepSeek | 9.4 | Semana 4 · nov/2026 |
 | Codex (OpenAI) | 9.4 | Semana 4 · nov/2026 |
@@ -4676,9 +4713,9 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | ai-jail | 6.2 | Semana 2 · nov/2026 |
 | ai-memory | 6.6 | Semana 2 · nov/2026 |
 | Servidores MCP | 6.5, 20.6 | Semana 2 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
-| CLAUDE.md, agentes e skills (seus) | 6.3 | Semana 2 · nov/2026 |
+| CLAUDE.md, agentes e skills (seus) | 6.3, 20.10 | Semana 2 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
 | Ollama | 6.4, 20.4, 33.5, 33.12 | Semana 2 · nov/2026; Semana 6 · nov/2026 a dez/2026; Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
-| Gateway de modelos (LiteLLM) | 20.1, 20.7, 21.5 | Semana 6 · nov/2026 a dez/2026; 2027, depois do primeiro fine-tuning de 8B |
+| Gateway de modelos (LiteLLM) | 20.1, 20.7, 20.11, 21.5 | Semana 6 · nov/2026 a dez/2026; 2027, depois do primeiro fine-tuning de 8B |
 | Evals dos agentes (promptfoo) | 20.2, 20.7, 21.3 | Semana 6 · nov/2026 a dez/2026; 2027, depois do primeiro fine-tuning de 8B |
 | MCP próprio (seus dados) | 20.6 | Semana 6 · nov/2026 a dez/2026 |
 | Claude Agent SDK | 20.5 | Semana 6 · nov/2026 a dez/2026 |

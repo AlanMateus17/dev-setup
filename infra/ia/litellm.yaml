@@ -12,6 +12,10 @@ model_list:
     litellm_params:
       model: anthropic/claude-sonnet-5-5
       api_key: os.environ/ANTHROPIC_API_KEY
+  - model_name: gratis            # cota grátis do Gemini (AI Studio): nada sensível
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: os.environ/GEMINI_API_KEY
   - model_name: gpu-alugada        # vLLM numa GPU por hora (RunPod); só quando ligada
     litellm_params:
       model: openai/seu-modelo
@@ -19,7 +23,7 @@ model_list:
 router_settings:
   fallbacks:
     - forte: [rapido]
-    - rapido: [local]
+    - rapido: [gratis, local]
 litellm_settings:
   max_budget: 20          # US$ por mês no total; passou, recusa
   budget_duration: 30d

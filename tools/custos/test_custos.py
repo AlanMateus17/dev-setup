@@ -18,10 +18,11 @@ class TestCustos(unittest.TestCase):
         d["itens"][0]["bloco"] = "nao-existe"
         self.assertTrue(validar(d, eco))
 
-    def test_so_uma_ia_paga_mantida(self):
+    def test_claude_principal_e_rotas(self):
         d, _ = carregar()
-        pagas = [i for i in d["itens"] if i["hoje"] == "mensal" and i["decisao"] == "manter" and i["bloco"] in ("anth", "gpt", "gem", "grok", "codex", "copi")]
-        self.assertEqual(len(pagas), 1)
+        nomes = {i["item"]: i["decisao"] for i in d["itens"]}
+        self.assertEqual(nomes["Claude (assinatura)"], "manter")
+        self.assertIn("Claude (Pro)", [r["ia"] for r in d["rotas_ia"]])
 
     def test_gera(self):
         d, _ = carregar()
