@@ -2,6 +2,17 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.1.0] - 2026-11-01
+
+### Adicionado
+- Investimentos (data/investimentos.json → docs/investimentos.md, tools/investimentos): as suas metodologias (ARCA, Barsi, Bazin, Graham, Buffett, Sena) e as novas para testar (Fórmula Mágica, Piotroski, Peter Lynch, Gordon, índice de referência). O script avalia quem passa em cada metodologia (com preço-teto de Bazin e valor de Graham), divide o aporte pelo ARCA dentro de ações com limites por empresa e setor, respeita o portão (cartão zerado e reserva completa) e compara cada carteira com o índice. Dados em ~/financas, fora do GitHub; modelos com tickers inventados.
+- Certificações (data/certificacoes.json → docs/certificacoes.md, tools/carreira): mercado financeiro (CNPI → registro de consultor na CVM → CGE/CGA → CFP → CFA; CPA e C-PRO só para banco), nuvem e IA, e segurança, com o que cada uma habilita, requisito, custo e fonte.
+- Fase f-investimentos com 9 passos (inv-iniciar a inv-cnpi).
+
+### Alterado
+- AZ-204 trocado pelo AI-200 em toda a documentação (o AZ-204 deixou de ser agendável em 31/07/2026).
+- Passo est-certificacoes com a ordem nova; CPA-10, CPA-20 e CEA substituídas por CPA, C-PRO R e C-PRO I (ANBIMA, jan/2026).
+
 ## [2.0.0] - 2026-11-01
 
 ### Alterado (mudança de modelo)

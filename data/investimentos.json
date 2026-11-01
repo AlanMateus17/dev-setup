@@ -1,0 +1,151 @@
+{
+ "aviso": "Não é recomendação de investimento. O setup aplica as regras que você escreveu; a decisão de comprar, manter ou vender é sua. Os tickers dos exemplos são inventados.",
+ "regras": [
+  "Portão: só entra dinheiro em ações e nas outras classes do ARCA com o cartão zerado e a reserva de emergência completa (3 → 6 → 12 meses).",
+  "Aporte mensal planejado de R$ 800; meta de renda passiva de R$ 800 por mês.",
+  "ARCA também dentro do pilar de ações: um percentual por metodologia, com limites por empresa e por setor para não concentrar.",
+  "Uma carteira por metodologia (real ou simulada) para comparar o resultado de cada uma contra um índice de referência.",
+  "Rebalancear de preferência com aporte novo: vender só quando a própria regra de venda da metodologia mandar.",
+  "Indicadores vêm de fonte que você confere (demonstrações da empresa na CVM/RI); o script só calcula.",
+  "Recomendar ativos para outras pessoas exige registro na CVM (analista ou consultor). Até lá, tudo aqui é para a sua carteira."
+ ],
+ "metodologias": [
+  {
+   "id": "barsi",
+   "nome": "Luiz Barsi (carteira previdenciária)",
+   "tipo": "seleção para renda",
+   "status": "já usa",
+   "ideia": "Comprar empresas de setores perenes que pagam dividendos com constância e reinvestir os dividendos por décadas.",
+   "criterios": [
+    {"chave": "setor", "regra": "em", "valor": ["bancos", "energia", "saneamento", "seguros", "telecom"], "texto": "Setor perene (BESST)"},
+    {"chave": "anos_dividendos", "regra": ">=", "valor": 5, "texto": "Pagou dividendos em pelo menos 5 dos últimos anos"},
+    {"chave": "anos_lucro", "regra": ">=", "valor": 5, "texto": "Lucro em pelo menos 5 dos últimos anos"},
+    {"chave": "dy", "regra": ">=", "valor": 6, "texto": "Dividend yield de pelo menos 6% no preço atual"}
+   ],
+   "perguntas": ["A empresa existirá e venderá o mesmo serviço daqui a 20 anos?", "O dividendo vem do lucro recorrente ou de evento único?"],
+   "venda": "Só se o fundamento quebrar (lucro e dividendo deixarem de existir de forma recorrente).",
+   "fonte": "Literatura pública sobre o método; confira com o material que você estudou."
+  },
+  {
+   "id": "bazin",
+   "nome": "Décio Bazin (preço-teto)",
+   "tipo": "preço",
+   "status": "já usa",
+   "ideia": "Só comprar abaixo do preço-teto, que garante pelo menos 6% de dividendos sobre o preço pago, em empresas pouco endividadas.",
+   "criterios": [
+    {"chave": "dy_medio", "regra": ">=", "valor": 6, "texto": "Dividend yield médio de 3 a 5 anos de pelo menos 6%"},
+    {"chave": "divida_pl", "regra": "<=", "valor": 1, "texto": "Dívida bruta / patrimônio líquido até 1"},
+    {"chave": "preco", "regra": "<=teto_bazin", "valor": 6, "texto": "Preço até o preço-teto (dividendo médio ÷ 6%)"}
+   ],
+   "perguntas": ["O dividendo médio inclui algum pagamento extraordinário que distorce a média?"],
+   "venda": "Quando o dividend yield sobre o preço atual cair muito abaixo de 6% e houver opção melhor (regra sua).",
+   "fonte": "Livro 'Faça Fortuna com Ações, Antes que Seja Tarde', de Décio Bazin."
+  },
+  {
+   "id": "graham",
+   "nome": "Benjamin Graham (investidor defensivo)",
+   "tipo": "preço e segurança",
+   "status": "já usa",
+   "ideia": "Comprar com margem de segurança abaixo do valor intrínseco, em empresas sólidas e com lucro estável.",
+   "criterios": [
+    {"chave": "lpa", "regra": ">", "valor": 0, "texto": "Lucro por ação positivo"},
+    {"chave": "vpa", "regra": ">", "valor": 0, "texto": "Valor patrimonial por ação positivo"},
+    {"chave": "liquidez_corrente", "regra": ">=", "valor": 1.5, "texto": "Liquidez corrente de pelo menos 1,5"},
+    {"chave": "preco", "regra": "<=graham", "valor": 25, "texto": "Preço com pelo menos 25% de margem abaixo do valor de Graham (√(22,5 × LPA × VPA))"}
+   ],
+   "perguntas": ["O lucro dos últimos 10 anos foi positivo e estável?"],
+   "venda": "Quando o preço passar do valor intrínseco (regra sua).",
+   "fonte": "Livro 'O Investidor Inteligente', de Benjamin Graham."
+  },
+  {
+   "id": "buffett",
+   "nome": "Warren Buffett (qualidade a preço justo)",
+   "tipo": "seleção por qualidade",
+   "status": "já usa",
+   "ideia": "Empresas com vantagem competitiva durável, alta rentabilidade e pouca dívida, mantidas por muito tempo.",
+   "criterios": [
+    {"chave": "roe", "regra": ">=", "valor": 15, "texto": "ROE de pelo menos 15%"},
+    {"chave": "margem_liquida", "regra": ">=", "valor": 10, "texto": "Margem líquida de pelo menos 10%"},
+    {"chave": "divida_liquida_ebitda", "regra": "<=", "valor": 2, "texto": "Dívida líquida / EBITDA até 2"}
+   ],
+   "perguntas": ["Qual é a vantagem competitiva (marca, custo, rede, troca difícil)?", "Eu entendo como a empresa ganha dinheiro?", "A gestão aloca bem o capital e trata bem o minoritário?"],
+   "venda": "Quando a vantagem competitiva acabar, não por queda de preço.",
+   "fonte": "Cartas anuais da Berkshire Hathaway aos acionistas (públicas)."
+  },
+  {
+   "id": "sena",
+   "nome": "Raul Sena (Investidor Sardinha)",
+   "tipo": "checklist qualitativo",
+   "status": "já usa",
+   "ideia": "Usar as perguntas do método do Raul Sena como ele usa e, numa segunda versão, estendidas com as perguntas das outras metodologias.",
+   "criterios": [],
+   "perguntas": [],
+   "venda": "Preencha com a regra do método.",
+   "fonte": "Material do curso do Raul Sena que você tem. As perguntas não ficam no repositório: o material é pago. Você escreve as SUAS anotações em ~/financas/investimentos.toml."
+  },
+  {
+   "id": "formula_magica",
+   "nome": "Fórmula Mágica (Joel Greenblatt)",
+   "tipo": "ranking quantitativo",
+   "status": "adicionar",
+   "ideia": "Ordenar as empresas por retorno sobre o capital (alto é melhor) e por lucro operacional sobre o valor da empresa (barato é melhor) e somar as posições.",
+   "criterios": [
+    {"chave": "roic", "regra": "rank_desc", "valor": 0, "texto": "Posição no ranking de ROIC"},
+    {"chave": "ev_ebit", "regra": "rank_asc", "valor": 0, "texto": "Posição no ranking de EV/EBIT"}
+   ],
+   "perguntas": ["Excluí bancos e seguradoras? (a fórmula não serve para eles)"],
+   "venda": "Rebalanceamento anual da carteira pelo ranking.",
+   "fonte": "Livro 'O Mercado de Ações ao Seu Alcance', de Joel Greenblatt."
+  },
+  {
+   "id": "piotroski",
+   "nome": "Piotroski F-Score",
+   "tipo": "filtro de saúde financeira",
+   "status": "adicionar",
+   "ideia": "Nove testes simples de lucro, endividamento e eficiência; nota de 0 a 9. Serve como filtro para as outras metodologias.",
+   "criterios": [
+    {"chave": "fscore", "regra": ">=", "valor": 7, "texto": "Nota F-Score de pelo menos 7 (você calcula os 9 testes ou pega de fonte conferida)"}
+   ],
+   "perguntas": [],
+   "venda": "Quando a nota cair para 3 ou menos (regra sua).",
+   "fonte": "Artigo 'Value Investing: The Use of Historical Financial Statement Information', de Joseph Piotroski (2000)."
+  },
+  {
+   "id": "lynch",
+   "nome": "Peter Lynch (PEG)",
+   "tipo": "crescimento a preço justo",
+   "status": "avaliar",
+   "ideia": "Comparar o P/L com o crescimento do lucro: PEG até 1 indica que o preço não está caro para o crescimento.",
+   "criterios": [
+    {"chave": "peg", "regra": "<=", "valor": 1, "texto": "PEG (P/L ÷ crescimento anual do lucro em %) até 1"}
+   ],
+   "perguntas": ["O crescimento usado é sustentável ou foi um ano fora da curva?"],
+   "venda": "Quando a história de crescimento mudar.",
+   "fonte": "Livro 'O Jeito Peter Lynch de Investir', de Peter Lynch."
+  },
+  {
+   "id": "gordon",
+   "nome": "Modelo de Gordon (preço justo por dividendos)",
+   "tipo": "preço",
+   "status": "avaliar",
+   "ideia": "Preço justo = próximo dividendo ÷ (retorno exigido − crescimento do dividendo). Complementa o Bazin para pagadoras que crescem.",
+   "criterios": [],
+   "perguntas": ["O crescimento usado é menor que o retorno exigido? (senão a fórmula não vale)"],
+   "venda": "Quando o preço passar muito do preço justo (regra sua).",
+   "fonte": "Modelo de desconto de dividendos (Gordon, 1959), conteúdo das provas C-PRO e CNPI."
+  },
+  {
+   "id": "indice",
+   "nome": "Índice de referência (benchmark)",
+   "tipo": "comparação",
+   "status": "adicionar",
+   "ideia": "Toda carteira por metodologia é comparada com um ETF de índice comprado no mesmo dia e valor. Se a metodologia perder do índice por 3 anos, você revisa.",
+   "criterios": [],
+   "perguntas": [],
+   "venda": "—",
+   "fonte": "Prática de avaliação de desempenho de carteiras (conteúdo CGA/CFA)."
+  }
+ ],
+ "concentracao_padrao": {"max_empresa_pct": 10, "max_setor_pct": 30, "min_empresas": 8},
+ "alocacao_acoes_padrao": {"barsi_bazin": 50, "buffett": 20, "graham": 15, "formula_magica": 15}
+}

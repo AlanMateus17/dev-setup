@@ -1,0 +1,19 @@
+# Suas regras de investimento. Fica em ~/financas (fora do GitHub). Não é recomendação: são as SUAS regras.
+[portao]
+cartao_zerado = false        # mude para true quando o cartão estiver zerado
+reserva_completa = false     # true quando a reserva de emergência estiver na meta atual (3, 6 ou 12 meses)
+
+[alocacao_acoes]             # ARCA dentro de ações: % por grupo de metodologia (soma 100)
+barsi_bazin = 50
+buffett = 20
+graham = 15
+formula_magica = 15
+
+[concentracao]
+max_empresa_pct = 10
+max_setor_pct = 30
+min_empresas = 8
+
+[sena]
+# Suas anotações das perguntas do método (do material que você estudou), uma por linha:
+perguntas = []

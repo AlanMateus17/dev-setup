@@ -69,15 +69,15 @@ flowchart LR
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Microsoft Learn + AWS Skill Builder](#learn) | Remoto · precisa de conta | Trilhas oficiais e gratuitas para AZ-900, AZ-204 e AWS. | passo 48.2 · Contínuo, desde a semana 2 |
-| [TryHackMe / Hack The Box](#thm) | Remoto · precisa de conta | Laboratórios guiados de segurança para Security+, eJPT e OSCP. | passo 48.2 · Contínuo, desde a semana 2 |
-| [Alura · Rocketseat · DIO · Udemy](#plat) | Remoto · precisa de conta | Contas de aluno. A licença é para você assistir e estudar; baixar, copiar ou extrair as aulas para alimentar IA não é permitido. O que vai para a IA são as suas anotações e os seus projetos. | passo 48.3 · Contínuo, desde a semana 2 |
-| [Anki](#anki) | Local · precisa de conta | Repetição espaçada para comandos, conceitos, certificações e concurso. Open source. A conta grátis do AnkiWeb sincroniza notebook e celular. | passo 3.2 · Semana 1 · out/2026; passo 37.7 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 48.4 · Contínuo, desde a semana 2 |
-| [roadmap.sh + Akita](#road) | Remoto | Roteiros de estudo e referência da trilha Linux. | passo 48.2 · Contínuo, desde a semana 2 |
-| [GitHub Education](#ghed) | Remoto · precisa de conta | Pacote para professores: Copilot Pro e outros benefícios. Peça a verificação. | passo 19.8 · Semana 5 · nov/2026; passo 21.1 · Semana 6 · nov/2026 a dez/2026; passo 48.1 · Contínuo, desde a semana 2 |
-| [Zoomcamp de dados + cursos de IA](#dez) | Remoto | Data Engineering Zoomcamp (DataTalksClub, grátis, 10 semanas), curso de LLM da Hugging Face, fast.ai e Neural Networks: Zero to Hero. Para a IA vão só as suas anotações e os seus projetos. | passo 36.6 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
-| [GPT do zero (estudo)](#gptzero) | Local | Tokenizador, atenção e treino de um GPT pequeno no Kaggle, para dominar a arquitetura. | passo 22.1 · 2027, depois do primeiro fine-tuning de 8B |
-| [Laboratório de redes](#labrede) | Local | Packet Tracer e containerlab para VLAN, roteamento e firewall (Network+ e CCNA). | passo 23.5 · Semana 6 · nov/2026 |
+| [Microsoft Learn + AWS Skill Builder](#learn) | Remoto · precisa de conta | Trilhas oficiais e gratuitas para AZ-900, AI-200 (substituto do AZ-204) e AWS. | passo 49.2 · Contínuo, desde a semana 2 |
+| [TryHackMe / Hack The Box](#thm) | Remoto · precisa de conta | Laboratórios guiados de segurança para Security+, eJPT e OSCP. | passo 49.2 · Contínuo, desde a semana 2 |
+| [Alura · Rocketseat · DIO · Udemy](#plat) | Remoto · precisa de conta | Contas de aluno. A licença é para você assistir e estudar; baixar, copiar ou extrair as aulas para alimentar IA não é permitido. O que vai para a IA são as suas anotações e os seus projetos. | passo 49.3 · Contínuo, desde a semana 2 |
+| [Anki](#anki) | Local · precisa de conta | Repetição espaçada para comandos, conceitos, certificações e concurso. Open source. A conta grátis do AnkiWeb sincroniza notebook e celular. | passo 3.2 · Semana 1 · out/2026; passo 38.7 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 49.4 · Contínuo, desde a semana 2 |
+| [roadmap.sh + Akita](#road) | Remoto | Roteiros de estudo e referência da trilha Linux. | passo 49.2 · Contínuo, desde a semana 2 |
+| [GitHub Education](#ghed) | Remoto · precisa de conta | Pacote para professores: Copilot Pro e outros benefícios. Peça a verificação. | passo 20.8 · Semana 5 · nov/2026; passo 22.1 · Semana 6 · nov/2026 a dez/2026; passo 49.1 · Contínuo, desde a semana 2 |
+| [Zoomcamp de dados + cursos de IA](#dez) | Remoto | Data Engineering Zoomcamp (DataTalksClub, grátis, 10 semanas), curso de LLM da Hugging Face, fast.ai e Neural Networks: Zero to Hero. Para a IA vão só as suas anotações e os seus projetos. | passo 37.6 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| [GPT do zero (estudo)](#gptzero) | Local | Tokenizador, atenção e treino de um GPT pequeno no Kaggle, para dominar a arquitetura. | passo 23.1 · 2027, depois do primeiro fine-tuning de 8B |
+| [Laboratório de redes](#labrede) | Local | Packet Tracer e containerlab para VLAN, roteamento e firewall (Network+ e CCNA). | passo 24.5 · Semana 6 · nov/2026 |
 
 <a id="learn"></a>
 
@@ -85,9 +85,9 @@ flowchart LR
 
 *Remoto · precisa de conta*
 
-Trilhas oficiais e gratuitas para AZ-900, AZ-204 e AWS.
+Trilhas oficiais e gratuitas para AZ-900, AI-200 (substituto do AZ-204) e AWS.
 
-**Quando entra:** passo 48.2 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 49.2 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -102,7 +102,7 @@ Trilhas oficiais e gratuitas para AZ-900, AZ-204 e AWS.
 
 Laboratórios guiados de segurança para Security+, eJPT e OSCP.
 
-**Quando entra:** passo 48.2 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 49.2 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -118,7 +118,7 @@ Laboratórios guiados de segurança para Security+, eJPT e OSCP.
 
 Contas de aluno. A licença é para você assistir e estudar; baixar, copiar ou extrair as aulas para alimentar IA não é permitido. O que vai para a IA são as suas anotações e os seus projetos.
 
-**Quando entra:** passo 48.3 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 49.3 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -132,7 +132,7 @@ Contas de aluno. A licença é para você assistir e estudar; baixar, copiar ou 
 
 Repetição espaçada para comandos, conceitos, certificações e concurso. Open source. A conta grátis do AnkiWeb sincroniza notebook e celular.
 
-**Quando entra:** passo 3.2 · Semana 1 · out/2026; passo 37.7 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 48.4 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 3.2 · Semana 1 · out/2026; passo 38.7 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 49.4 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -147,7 +147,7 @@ Repetição espaçada para comandos, conceitos, certificações e concurso. Open
 
 Roteiros de estudo e referência da trilha Linux.
 
-**Quando entra:** passo 48.2 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 49.2 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -161,7 +161,7 @@ Roteiros de estudo e referência da trilha Linux.
 
 Pacote para professores: Copilot Pro e outros benefícios. Peça a verificação.
 
-**Quando entra:** passo 19.8 · Semana 5 · nov/2026; passo 21.1 · Semana 6 · nov/2026 a dez/2026; passo 48.1 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 20.8 · Semana 5 · nov/2026; passo 22.1 · Semana 6 · nov/2026 a dez/2026; passo 49.1 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -175,7 +175,7 @@ Pacote para professores: Copilot Pro e outros benefícios. Peça a verificação
 
 Data Engineering Zoomcamp (DataTalksClub, grátis, 10 semanas), curso de LLM da Hugging Face, fast.ai e Neural Networks: Zero to Hero. Para a IA vão só as suas anotações e os seus projetos.
 
-**Quando entra:** passo 36.6 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.6 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -190,7 +190,7 @@ Data Engineering Zoomcamp (DataTalksClub, grátis, 10 semanas), curso de LLM da 
 
 Tokenizador, atenção e treino de um GPT pequeno no Kaggle, para dominar a arquitetura.
 
-**Quando entra:** passo 22.1 · 2027, depois do primeiro fine-tuning de 8B ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 23.1 · 2027, depois do primeiro fine-tuning de 8B ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -204,7 +204,7 @@ Tokenizador, atenção e treino de um GPT pequeno no Kaggle, para dominar a arqu
 
 Packet Tracer e containerlab para VLAN, roteamento e firewall (Network+ e CCNA).
 
-**Quando entra:** passo 23.5 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 24.5 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

@@ -1582,6 +1582,111 @@
    ]
   },
   {
+   "id": "f-investimentos",
+   "titulo": "Investimentos com as suas metodologias",
+   "objetivo": "As suas regras (ARCA, Barsi, Bazin, Graham, Buffett, Sena) aplicadas por script, uma carteira por metodologia e comparação com o índice. Não é recomendação: a decisão é sua.",
+   "quando": "Dez/2026",
+   "passos": [
+    {
+     "id": "inv-iniciar",
+     "titulo": "Copiar os modelos de investimento para ~/financas",
+     "quem": "script",
+     "pronto": "investimentos.toml, indicadores.csv, carteira.csv e carteiras.csv em ~/financas",
+     "tempo_min": 5,
+     "blocos": [
+      "caixa"
+     ],
+     "comando": "python ~/dev/dev-setup/tools/investimentos/investimentos.py iniciar"
+    },
+    {
+     "id": "inv-politica",
+     "titulo": "Preencher a política de investimentos e o investimentos.toml (portão, ARCA dentro de ações, limites)",
+     "quem": "voce",
+     "pronto": "Política assinada por você e o portão refletindo o cartão e a reserva de hoje",
+     "tempo_min": 40,
+     "blocos": [
+      "caixa"
+     ],
+     "fora": "Decisão sua; o modelo está em ~/financas/politica-investimentos.md (financeiro.py iniciar)."
+    },
+    {
+     "id": "inv-sena",
+     "titulo": "Escrever as suas anotações das perguntas do método do Raul Sena no investimentos.toml",
+     "quem": "voce",
+     "pronto": "Lista [sena] preenchida com as suas palavras",
+     "tempo_min": 30,
+     "blocos": [
+      "caixa"
+     ],
+     "fora": "O material do curso é pago: só as suas anotações vão para o arquivo, que fica fora do GitHub."
+    },
+    {
+     "id": "inv-indicadores",
+     "titulo": "Montar o indicadores.csv das empresas que você acompanha",
+     "quem": "voce",
+     "pronto": "Planilha com os indicadores conferidos na fonte (RI da empresa ou CVM)",
+     "tempo_min": 60,
+     "blocos": [
+      "caixa"
+     ],
+     "fora": "Exporte do site que você usa e confira os números que decidem a compra na demonstração da empresa."
+    },
+    {
+     "id": "inv-avaliar",
+     "titulo": "Rodar a avaliação e decidir as compras do mês",
+     "quem": "script",
+     "pronto": "Lista de quem passa em cada metodologia e a divisão do aporte",
+     "tempo_min": 15,
+     "blocos": [
+      "caixa"
+     ],
+     "comando": "python ~/dev/dev-setup/tools/investimentos/investimentos.py avaliar ~/financas/indicadores.csv && python ~/dev/dev-setup/tools/investimentos/investimentos.py aporte ~/financas/carteira.csv 800"
+    },
+    {
+     "id": "inv-carteiras",
+     "titulo": "Criar uma carteira por metodologia (real ou simulada) e uma do índice",
+     "quem": "voce",
+     "pronto": "carteiras.csv com uma linha por carteira, incluindo 'indice'",
+     "tempo_min": 30,
+     "blocos": [
+      "caixa"
+     ],
+     "fora": "Simulada = anotada com preço e data, sem comprar."
+    },
+    {
+     "id": "inv-comparar",
+     "titulo": "Comparar as carteiras contra o índice todo mês",
+     "quem": "script",
+     "pronto": "Resultado anotado no Caixa da Casa; metodologia que perder do índice por 3 anos é revista",
+     "tempo_min": 10,
+     "blocos": [
+      "caixa"
+     ],
+     "comando": "python ~/dev/dev-setup/tools/investimentos/investimentos.py comparar ~/financas/carteiras.csv"
+    },
+    {
+     "id": "inv-novas",
+     "titulo": "Testar as metodologias novas (Fórmula Mágica, Piotroski) só na carteira simulada por 12 meses",
+     "quem": "voce",
+     "pronto": "Decisão de manter ou cortar cada uma, registrada",
+     "tempo_min": 20,
+     "blocos": [
+      "caixa"
+     ],
+     "fora": "Lynch e Gordon ficam como 'avaliar' até você estudar o capítulo correspondente."
+    },
+    {
+     "id": "inv-cnpi",
+     "titulo": "Marcar a prova CB da CNPI quando a verba de estudo permitir",
+     "quem": "voce",
+     "pronto": "Inscrição feita no site da Apimec",
+     "tempo_min": 20,
+     "blocos": [],
+     "fora": "É ela que permite recomendar ativos no seu conteúdo de finanças. Ordem completa em docs/certificacoes.md."
+    }
+   ]
+  },
+  {
    "id": "f-rotina",
    "titulo": "Rotina automatizada",
    "objetivo": "O setup se cuida sozinho e só te chama quando precisa.",
@@ -5291,12 +5396,12 @@
     },
     {
      "id": "est-certificacoes",
-     "titulo": "Trilha de certificações do mercado financeiro (CPA → CNPI → CGA → CFA)",
+     "titulo": "Trilha de certificações do mercado financeiro (CNPI → registro de consultor → CGE/CGA → CFP → CFA)",
      "quem": "voce",
      "pronto": "Primeira prova marcada quando a cascata permitir",
      "tempo_min": 20,
      "blocos": [],
-     "fora": "Estudo e prova; conferir as regras atuais da ANBIMA e da APIMEC antes de pagar."
+     "fora": "Ordem e motivos em docs/certificacoes.md. CPA e C-PRO só se for trabalhar em banco. Confira o edital do ano antes de pagar."
     },
     {
      "id": "est-idiomas",

@@ -11,7 +11,7 @@
 - [Auditoria: o que faltava](auditoria.md)
 - [Sistemas operacionais](sistemas-operacionais.md) · [Nuvem](nuvem.md) · [Mercado](mercado.md) · [Roteiro de estudo](roteiro.md)
 - [Peças autorais](pecas-autorais.md) · [Decisões](fora-do-setup.md)
-- [Arquitetura de IA: modelos grandes sem computador maior](ia/README.md) · [Rede própria entre os seus computadores](rede/README.md) · [Custos: construir, abrir ou pagar](custos.md) · [Recursos: a melhor ferramenta para cada tarefa](recursos.md)
+- [Arquitetura de IA: modelos grandes sem computador maior](ia/README.md) · [Rede própria entre os seus computadores](rede/README.md) · [Custos: construir, abrir ou pagar](custos.md) · [Recursos: a melhor ferramenta para cada tarefa](recursos.md) · [Investimentos: as suas metodologias](investimentos.md) · [Certificações](certificacoes.md)
 - [Marketing, vendas e automação](marketing/README.md): funil, canais sem rosto com voz clonada, publicação automática, tráfego, parcerias, internacional e medição de lucro
 - [Editora AMS Silva](editora/README.md): estrutura legal, pipeline de produção dos livros, rigor editorial, identidade visual, avaliação, produtos, lançamento e roteiro
 - [Implantação](implantacao/README.md): roteiro que cobre todos os blocos do setup, scripts que instalam e verificadores que conferem; pipeline de conteúdo e stack de automação
