@@ -101,7 +101,7 @@ flowchart LR
 | [Codex (OpenAI)](#codex) | Remoto · precisa de conta | Agente de código da OpenAI (terminal, VS Code e nuvem). Está incluído até no plano grátis do ChatGPT, com limite. Use como segunda opinião ao Claude Code, nos mesmos repositórios. | passo 9.4 · Semana 4 · nov/2026 |
 | [Agentes de código do Google](#gcode) | Remoto · precisa de conta | Jules e o CLI do Google. As regras mudaram em 2026: o CLI deixou de ser grátis para contas pessoais. Confira o que o seu plano do Gemini inclui antes de montar um fluxo em cima dele. | passo 9.4 · Semana 4 · nov/2026 |
 | [Perplexity](#perp) | Remoto · precisa de conta | Busca com fontes citadas. Bom para pesquisa de mercado e para checar fatos antes de publicar. | passo 9.4 · Semana 4 · nov/2026 |
-| [GitHub Copilot](#copi) | Remoto · precisa de conta | Autocompletar e chat dentro do VS Code. Professores verificados no GitHub Education ganham o plano Pro grátis. | passo 34.1 · Contínuo, desde a semana 2 |
+| [GitHub Copilot](#copi) | Remoto · precisa de conta | Autocompletar e chat dentro do VS Code. Professores verificados no GitHub Education ganham o plano Pro grátis. | passo 35.1 · Contínuo, desde a semana 2 |
 
 <a id="capp2"></a>
 
@@ -249,7 +249,7 @@ Busca com fontes citadas. Bom para pesquisa de mercado e para checar fatos antes
 
 Autocompletar e chat dentro do VS Code. Professores verificados no GitHub Education ganham o plano Pro grátis.
 
-**Quando entra:** passo 34.1 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 35.1 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

@@ -149,7 +149,7 @@ function card(o){
     <div class="next"><span>Próximo passo</span>${esc(o.proximo_passo)}</div>
     ${o.quando?`<div class="next"><span>Quando entra</span>${esc(o.quando)}</div>`:""}
     <div class="split"><div><h3>O setup automatiza</h3>${li(o.automatico)}</div><div><h3>Fica com você</h3>${li(o.humano)}</div></div>
-    <div class="meta"><span><b>Receita:</b> ${esc(o.receita)}</span><span><b>Canais:</b> ${esc(o.canais.join(", ")||"—")}</span><span><b>Métrica:</b> ${esc(o.metrica)}</span>${o.deriva_de.length?`<span><b>Nasce de:</b> ${esc(o.deriva_de.map(d=>nomeDe[d]).join(", "))}</span>`:""}</div>
+    <div class="meta"><span><b>Receita:</b> ${esc(o.receita)}</span><span><b>Canais:</b> ${esc(o.canais.join(", ")||"—")}</span><span><b>Métrica:</b> ${esc(o.metrica)}</span>${o.usa&&o.usa.length?`<span><b>Automações:</b> ${esc(o.usa.map(u=>D.automacoes[u]).join(", "))}</span>`:""}${o.deriva_de.length?`<span><b>Nasce de:</b> ${esc(o.deriva_de.map(d=>nomeDe[d]).join(", "))}</span>`:""}</div>
   </article>`;
 }
 stats();render();

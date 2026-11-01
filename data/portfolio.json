@@ -52,7 +52,15 @@
    "automacao": 85,
    "veredito": "agora",
    "motivo": "O material já existe e, pronto, vende 24h. Grava no bloco de sábado.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "venda",
+    "funil",
+    "esteira",
+    "midia",
+    "publicacao",
+    "suporte"
+   ]
   },
   {
    "id": "formti",
@@ -93,7 +101,14 @@
    "automacao": 85,
    "veredito": "fila",
    "motivo": "Depois que o mini-curso validar a demanda.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "venda",
+    "funil",
+    "esteira",
+    "midia",
+    "suporte"
+   ]
   },
   {
    "id": "formmat",
@@ -132,7 +147,14 @@
    "automacao": 85,
    "veredito": "fila",
    "motivo": "Depende do livro pronto.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "venda",
+    "funil",
+    "esteira",
+    "midia",
+    "suporte"
+   ]
   },
   {
    "id": "financas",
@@ -171,7 +193,13 @@
    "automacao": 85,
    "veredito": "fila",
    "motivo": "Cuidado regulatório (não recomendar ativo); depois da planilha validar.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "venda",
+    "funil",
+    "midia",
+    "suporte"
+   ]
   },
   {
    "id": "aulas",
@@ -211,7 +239,13 @@
    "veredito": "proxima",
    "motivo": "Em turma online, 1 hora sua vale vários alunos e a gravação vira curso. Entra com o mini-curso no ar servindo de isca.",
    "ordem": 2,
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "agenda",
+    "crm",
+    "esteira",
+    "horas"
+   ]
   },
   {
    "id": "templates",
@@ -252,7 +286,12 @@
    "automacao": 90,
    "veredito": "fila",
    "motivo": "Sai de cada site entregue; empacotar sem custo extra.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "venda",
+    "ci",
+    "suporte"
+   ]
   },
   {
    "id": "catalogo",
@@ -288,7 +327,11 @@
    "automacao": 95,
    "veredito": "manter",
    "motivo": "Já está no ar e é a isca gratuita; só manter.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "ci",
+    "funil"
+   ]
   },
   {
    "id": "ammentor",
@@ -329,7 +372,13 @@
    "veredito": "proxima",
    "motivo": "Já existe no seu Desktop; falta ligar cobrança e acesso.",
    "ordem": 1,
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "recorrencia",
+    "esteira",
+    "suporte",
+    "funil"
+   ]
   },
   {
    "id": "udemy",
@@ -367,7 +416,11 @@
    "automacao": 90,
    "veredito": "fila",
    "motivo": "Reaproveita os cursos gravados.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "midia",
+    "esteira"
+   ]
   },
   {
    "id": "dio",
@@ -402,7 +455,10 @@
    "automacao": 70,
    "veredito": "fila",
    "motivo": "Depende de convite da plataforma.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "midia"
+   ]
   },
   {
    "id": "aulasprof",
@@ -442,7 +498,12 @@
    "automacao": 90,
    "veredito": "fila",
    "motivo": "Entra junto com a Fábrica para professores.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "venda",
+    "fabrica",
+    "suporte"
+   ]
   },
   {
    "id": "simulados",
@@ -483,7 +544,12 @@
    "automacao": 90,
    "veredito": "fila",
    "motivo": "Produto, não estudo seu; depois do AM Mentor.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "recorrencia",
+    "esteira",
+    "suporte"
+   ]
   },
   {
    "id": "anki",
@@ -521,7 +587,11 @@
    "automacao": 95,
    "veredito": "fila",
    "motivo": "Sai do seu estudo; esforço quase zero.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "venda",
+    "esteira"
+   ]
   },
   {
    "id": "comunidade",
@@ -561,7 +631,12 @@
    "automacao": 60,
    "veredito": "fila",
    "motivo": "Exige presença constante; só com uma base de alunos já pagando.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "recorrencia",
+    "suporte",
+    "publicacao"
+   ]
   },
   {
    "id": "workshop",
@@ -601,7 +676,12 @@
    "automacao": 30,
    "veredito": "em2027",
    "motivo": "Hora presencial; só se a tarde ficar livre em 2027.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "agenda",
+    "crm",
+    "horas"
+   ]
   },
   {
    "id": "livro",
@@ -642,7 +722,12 @@
    "automacao": 85,
    "veredito": "fila",
    "motivo": "Escrita contínua nos blocos de estudo; lançamento pela Editora.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "venda",
+    "funil",
+    "publicacao"
+   ]
   },
   {
    "id": "kitlivro",
@@ -680,7 +765,11 @@
    "automacao": 90,
    "veredito": "fila",
    "motivo": "Depois do livro.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "venda",
+    "suporte"
+   ]
   },
   {
    "id": "adocao",
@@ -719,7 +808,11 @@
    "automacao": 70,
    "veredito": "fila",
    "motivo": "Depois do livro e do kit.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "crm",
+    "venda"
+   ]
   },
   {
    "id": "traducao",
@@ -756,7 +849,10 @@
    "automacao": 80,
    "veredito": "fila",
    "motivo": "Depois do livro vender em português.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "venda"
+   ]
   },
   {
    "id": "sites",
@@ -796,7 +892,13 @@
    "automacao": 70,
    "veredito": "agora",
    "motivo": "Caixa rápido para quitar o cartão e manutenção mensal recorrente; é a sua regra para sair do restaurante.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "crm",
+    "sites",
+    "recorrencia",
+    "horas"
+   ]
   },
   {
    "id": "encomenda",
@@ -837,7 +939,12 @@
    "automacao": 40,
    "veredito": "fila",
    "motivo": "Só projetos acima da hora mínima.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "crm",
+    "ci",
+    "horas"
+   ]
   },
   {
    "id": "kaixara",
@@ -875,7 +982,12 @@
    "automacao": 70,
    "veredito": "fila",
    "motivo": "Projeto de portfólio; venda só depois de validar.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "recorrencia",
+    "suporte",
+    "ci"
+   ]
   },
   {
    "id": "rotara",
@@ -915,7 +1027,12 @@
    "automacao": 70,
    "veredito": "fila",
    "motivo": "Depende do Kaixara.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "recorrencia",
+    "suporte",
+    "ci"
+   ]
   },
   {
    "id": "rendara",
@@ -951,7 +1068,13 @@
    "automacao": 80,
    "veredito": "fila",
    "motivo": "Valida primeiro pela planilha Cascata.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "recorrencia",
+    "suporte",
+    "ci",
+    "cascata"
+   ]
   },
   {
    "id": "taskoro",
@@ -982,7 +1105,12 @@
    "automacao": 70,
    "veredito": "fila",
    "motivo": "Pausado por você.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "recorrencia",
+    "suporte",
+    "ci"
+   ]
   },
   {
    "id": "whitelabel",
@@ -1021,7 +1149,12 @@
    "automacao": 70,
    "veredito": "fila",
    "motivo": "Depende do AM Delivery.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "recorrencia",
+    "suporte",
+    "ci"
+   ]
   },
   {
    "id": "licencadelivery",
@@ -1059,7 +1192,11 @@
    "automacao": 70,
    "veredito": "fila",
    "motivo": "Depende do AM Delivery funcionando em Barbacena.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "crm",
+    "recorrencia"
+   ]
   },
   {
    "id": "assist",
@@ -1098,7 +1235,12 @@
    "automacao": 30,
    "veredito": "decidir",
    "motivo": "Loja e bancada pedem capital e presença; começa pela revenda e pela intermediação.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "estoque",
+    "crm",
+    "horas"
+   ]
   },
   {
    "id": "remoto",
@@ -1138,7 +1280,14 @@
    "automacao": 60,
    "veredito": "fila",
    "motivo": "Contratos mensais com empresas; depois dos primeiros clientes de sites.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "crm",
+    "recorrencia",
+    "sites",
+    "suporte",
+    "horas"
+   ]
   },
   {
    "id": "pecas",
@@ -1178,7 +1327,11 @@
    "automacao": 70,
    "veredito": "fila",
    "motivo": "Sem estoque; entra com a revenda de notebooks.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "estoque",
+    "venda"
+   ]
   },
   {
    "id": "automacaoia",
@@ -1218,7 +1371,13 @@
    "automacao": 60,
    "veredito": "fila",
    "motivo": "Mensalidade, e cada automação vira template; depois do primeiro cliente de sites.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "crm",
+    "recorrencia",
+    "ci",
+    "horas"
+   ]
   },
   {
    "id": "agencialocal",
@@ -1258,7 +1417,13 @@
    "automacao": 50,
    "veredito": "fila",
    "motivo": "Junto com a automação com IA.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "crm",
+    "recorrencia",
+    "publicacao",
+    "horas"
+   ]
   },
   {
    "id": "consultoriaresto",
@@ -1295,7 +1460,12 @@
    "automacao": 30,
    "veredito": "em2027",
    "motivo": "Hora presencial em restaurante.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "crm",
+    "agenda",
+    "horas"
+   ]
   },
   {
    "id": "maker",
@@ -1335,7 +1505,11 @@
    "automacao": 40,
    "veredito": "decidir",
    "motivo": "Estoque e oficina; capital.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "estoque",
+    "venda"
+   ]
   },
   {
    "id": "oficinas",
@@ -1374,7 +1548,12 @@
    "automacao": 20,
    "veredito": "em2027",
    "motivo": "Hora presencial em escolas.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "crm",
+    "agenda",
+    "horas"
+   ]
   },
   {
    "id": "ponto",
@@ -1411,7 +1590,10 @@
    "automacao": 30,
    "veredito": "decidir",
    "motivo": "Precisa de loja aberta.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "estoque"
+   ]
   },
   {
    "id": "entregas",
@@ -1452,7 +1634,11 @@
    "automacao": 30,
    "veredito": "decidir",
    "motivo": "Capital, equipe e veículos.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "estoque",
+    "crm"
+   ]
   },
   {
    "id": "delivery",
@@ -1493,7 +1679,11 @@
    "automacao": 40,
    "veredito": "decidir",
    "motivo": "Capital alto; portões dos negócios físicos.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "estoque",
+    "recorrencia"
+   ]
   },
   {
    "id": "sushi",
@@ -1536,7 +1726,10 @@
    "automacao": 30,
    "veredito": "decidir",
    "motivo": "Capital alto e equipe.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "estoque"
+   ]
   },
   {
    "id": "aulasushi",
@@ -1572,7 +1765,12 @@
    "automacao": 0,
    "veredito": "em2027",
    "motivo": "Hora pura presencial; paga bem por evento, mas ocupa fim de semana.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "agenda",
+    "crm",
+    "horas"
+   ]
   },
   {
    "id": "cafeteria",
@@ -1611,7 +1809,10 @@
    "automacao": 30,
    "veredito": "decidir",
    "motivo": "Capital alto; depende da padaria.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "estoque"
+   ]
   },
   {
    "id": "padaria",
@@ -1651,7 +1852,10 @@
    "automacao": 30,
    "veredito": "decidir",
    "motivo": "O maior capital do grupo.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "estoque"
+   ]
   },
   {
    "id": "dark",
@@ -1694,7 +1898,12 @@
    "automacao": 70,
    "veredito": "fila",
    "motivo": "Começa quando o estudo gerar conteúdo toda semana.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "esteira",
+    "midia",
+    "publicacao"
+   ]
   },
   {
    "id": "buildpublic",
@@ -1734,7 +1943,11 @@
    "automacao": 70,
    "veredito": "fila",
    "motivo": "Sai do bloco de produção de sábado.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "midia",
+    "publicacao"
+   ]
   },
   {
    "id": "newsletter",
@@ -1772,7 +1985,12 @@
    "automacao": 80,
    "veredito": "fila",
    "motivo": "Junto com o canal.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "funil",
+    "publicacao",
+    "esteira"
+   ]
   },
   {
    "id": "afiliados",
@@ -1813,7 +2031,10 @@
    "automacao": 90,
    "veredito": "fila",
    "motivo": "Links nas páginas e vídeos que já vão existir.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "publicacao"
+   ]
   },
   {
    "id": "monetizacao",
@@ -1848,7 +2069,11 @@
    "automacao": 95,
    "veredito": "fila",
    "motivo": "Consequência do canal crescer.",
-   "lote": ""
+   "lote": "",
+   "usa": [
+    "publicacao",
+    "midia"
+   ]
   },
   {
    "id": "avaliacaoia",
@@ -1886,7 +2111,10 @@
    "automacao": 0,
    "veredito": "agora",
    "motivo": "Começa sem custo, ocupa só as brechas e paga em dólar. Sai se ficar abaixo da hora mínima.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "horas"
+   ]
   },
   {
    "id": "revenda-notebooks",
@@ -1930,7 +2158,12 @@
    "veredito": "proxima",
    "motivo": "Usa a sua bancada e o radar. Só continua se passar da hora mínima por 2 meses.",
    "lote": "2026-11",
-   "ordem": 3
+   "ordem": 3,
+   "usa": [
+    "radar",
+    "estoque",
+    "horas"
+   ]
   },
   {
    "id": "fabricaprof",
@@ -1973,7 +2206,13 @@
    "veredito": "proxima",
    "motivo": "Você constrói a Fábrica para si; vender é abrir para outros. Dado de aluno nunca entra.",
    "lote": "2026-11",
-   "ordem": 4
+   "ordem": 4,
+   "usa": [
+    "fabrica",
+    "recorrencia",
+    "suporte",
+    "funil"
+   ]
   },
   {
    "id": "setuppro",
@@ -2016,7 +2255,13 @@
    "veredito": "proxima",
    "motivo": "Você já está construindo; falta empacotar.",
    "lote": "2026-11",
-   "ordem": 5
+   "ordem": 5,
+   "usa": [
+    "venda",
+    "ci",
+    "midia",
+    "suporte"
+   ]
   },
   {
    "id": "abnt",
@@ -2052,7 +2297,11 @@
    "automacao": 50,
    "veredito": "fila",
    "motivo": "Ganho baixo e sazonal; só nas temporadas, se sobrar hora. Nunca escrever o trabalho pelo aluno.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "crm",
+    "horas"
+   ]
   },
   {
    "id": "conteudista",
@@ -2088,7 +2337,12 @@
    "automacao": 60,
    "veredito": "fila",
    "motivo": "Bom por hora porque a Fábrica faz o grosso. Leia o contrato: o direito costuma ficar com a instituição.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "editais",
+    "fabrica",
+    "horas"
+   ]
   },
   {
    "id": "questoes",
@@ -2124,7 +2378,12 @@
    "automacao": 50,
    "veredito": "fila",
    "motivo": "Reaproveita o seu ecossistema de avaliações.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "editais",
+    "esteira",
+    "horas"
+   ]
   },
   {
    "id": "bytesdcoin",
@@ -2160,7 +2419,11 @@
    "automacao": 60,
    "veredito": "fila",
    "motivo": "Precisa de revisão jurídica; demanda ainda não testada.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "crm",
+    "ci"
+   ]
   },
   {
    "id": "segurancapme",
@@ -2198,7 +2461,12 @@
    "automacao": 50,
    "veredito": "fila",
    "motivo": "Só a parte técnica; a jurídica da LGPD fica com advogado.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "crm",
+    "recorrencia",
+    "horas"
+   ]
   },
   {
    "id": "freelausd",
@@ -2235,7 +2503,11 @@
    "automacao": 30,
    "veredito": "fila",
    "motivo": "Portão: inglês B1.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "crm",
+    "horas"
+   ]
   },
   {
    "id": "bugbounty",
@@ -2271,7 +2543,10 @@
    "automacao": 10,
    "veredito": "fila",
    "motivo": "Portão: eJPT/OSCP e contrato formal. Horizonte longo.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "horas"
+   ]
   },
   {
    "id": "camisetas",
@@ -2308,7 +2583,10 @@
    "automacao": 95,
    "veredito": "fila",
    "motivo": "Ganho baixo, mas trabalho quase zero. Nada de personagens ou marcas de terceiros.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "publicacao"
+   ]
   },
   {
    "id": "templatesint",
@@ -2349,7 +2627,12 @@
    "automacao": 90,
    "veredito": "fila",
    "motivo": "Esforço inicial alto; depois do Setup profissional.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "venda",
+    "ci",
+    "suporte"
+   ]
   },
   {
    "id": "uikits",
@@ -2386,7 +2669,11 @@
    "automacao": 90,
    "veredito": "fila",
    "motivo": "Junto com os templates.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "venda",
+    "ci"
+   ]
   },
   {
    "id": "pluginwp",
@@ -2423,7 +2710,12 @@
    "automacao": 75,
    "veredito": "fila",
    "motivo": "Suporte contínuo; o problema tem que vir dos clientes.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "recorrencia",
+    "ci",
+    "suporte"
+   ]
   },
   {
    "id": "n8ntemplates",
@@ -2461,7 +2753,11 @@
    "automacao": 90,
    "veredito": "fila",
    "motivo": "Sai das suas automações; esforço baixo.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "venda",
+    "ci"
+   ]
   },
   {
    "id": "kitstindie",
@@ -2499,7 +2795,11 @@
    "automacao": 50,
    "veredito": "decidir",
    "motivo": "Capital em estoque; portão: AMtech Maker validado.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "estoque",
+    "venda"
+   ]
   },
   {
    "id": "modelos3d",
@@ -2535,7 +2835,10 @@
    "automacao": 80,
    "veredito": "descartar",
    "motivo": "Ganho baixo; só publicar o que já existir.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "publicacao"
+   ]
   },
   {
    "id": "mercadinho",
@@ -2573,7 +2876,10 @@
    "automacao": 60,
    "veredito": "decidir",
    "motivo": "Capital alto; portão: Kaixara pronto e renda do núcleo pagando o investimento.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "estoque"
+   ]
   },
   {
    "id": "vending",
@@ -2611,7 +2917,10 @@
    "automacao": 60,
    "veredito": "decidir",
    "motivo": "Capital alto; depende dos congelados.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "estoque"
+   ]
   },
   {
    "id": "aluguelkits",
@@ -2649,7 +2958,12 @@
    "automacao": 40,
    "veredito": "decidir",
    "motivo": "Capital em kits e logística de devolução.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "agenda",
+    "estoque",
+    "crm"
+   ]
   },
   {
    "id": "sitesnicho",
@@ -2684,7 +2998,10 @@
    "automacao": 70,
    "veredito": "descartar",
    "motivo": "O Google pune conteúdo em massa feito por IA, e o tráfego desses sites caiu.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "publicacao"
+   ]
   },
   {
    "id": "bancoimagens",
@@ -2719,7 +3036,10 @@
    "automacao": 80,
    "veredito": "descartar",
    "motivo": "Paga pouco.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "publicacao"
+   ]
   },
   {
    "id": "royalties",
@@ -2758,7 +3078,11 @@
    "automacao": 80,
    "veredito": "fila",
    "motivo": "Depende de seleção; usa os cursos já gravados.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "midia",
+    "esteira"
+   ]
   },
   {
    "id": "jogo",
@@ -2796,7 +3120,11 @@
    "automacao": 90,
    "veredito": "descartar",
    "motivo": "Construção longa e retorno incerto.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "venda",
+    "ci"
+   ]
   },
   {
    "id": "dublagem",
@@ -2834,7 +3162,11 @@
    "automacao": 90,
    "veredito": "fila",
    "motivo": "Depois que houver curso gravado. Nunca a voz de alunos.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "midia",
+    "venda"
+   ]
   },
   {
    "id": "crowdtest",
@@ -2868,7 +3200,10 @@
    "automacao": 0,
    "veredito": "descartar",
    "motivo": "0% automatizável e paga pouco; automatizar viola as regras das plataformas.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "horas"
+   ]
   },
   {
    "id": "fiscalprova",
@@ -2903,7 +3238,10 @@
    "automacao": 0,
    "veredito": "descartar",
    "motivo": "Ganho baixo e ocupa o fim de semana inteiro.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "horas"
+   ]
   },
   {
    "id": "senac",
@@ -2941,7 +3279,12 @@
    "automacao": 20,
    "veredito": "em2027",
    "motivo": "Hora presencial.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "editais",
+    "fabrica",
+    "horas"
+   ]
   },
   {
    "id": "idosos",
@@ -2979,7 +3322,12 @@
    "automacao": 20,
    "veredito": "em2027",
    "motivo": "Hora presencial.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "agenda",
+    "fabrica",
+    "horas"
+   ]
   },
   {
    "id": "colonia",
@@ -3017,7 +3365,12 @@
    "automacao": 20,
    "veredito": "em2027",
    "motivo": "Hora presencial. Nunca oferecer para os seus alunos da escola.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "agenda",
+    "crm",
+    "horas"
+   ]
   },
   {
    "id": "portugues",
@@ -3053,7 +3406,11 @@
    "automacao": 0,
    "veredito": "fila",
    "motivo": "Hora pura; portão: inglês básico.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "agenda",
+    "horas"
+   ]
   },
   {
    "id": "trafego",
@@ -3091,7 +3448,12 @@
    "automacao": 50,
    "veredito": "em2027",
    "motivo": "Cliente cobra resultado e cansa; só com contrato mensal alto e gestor júnior.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "crm",
+    "recorrencia",
+    "horas"
+   ]
   },
   {
    "id": "edicaovideo",
@@ -3126,7 +3488,11 @@
    "automacao": 60,
    "veredito": "descartar",
    "motivo": "Margem pequena.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "midia",
+    "crm"
+   ]
   },
   {
    "id": "fotosproduto",
@@ -3161,7 +3527,10 @@
    "automacao": 30,
    "veredito": "descartar",
    "motivo": "Preço baixo e hora presencial.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "crm"
+   ]
   },
   {
    "id": "erp",
@@ -3198,7 +3567,11 @@
    "automacao": 50,
    "veredito": "fila",
    "motivo": "Recorrência antes do Kaixara ficar pronto.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "crm",
+    "recorrencia"
+   ]
   },
   {
    "id": "recuperacao",
@@ -3236,7 +3609,11 @@
    "automacao": 10,
    "veredito": "fila",
    "motivo": "Você só coleta e entrega, por comissão; entra com a assistência.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "estoque",
+    "crm"
+   ]
   },
   {
    "id": "perito",
@@ -3271,7 +3648,11 @@
    "automacao": 20,
    "veredito": "fila",
    "motivo": "Portão: estudo de perícia forense e cadastro no TJMG.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "crm",
+    "horas"
+   ]
   },
   {
    "id": "pcmontado",
@@ -3310,7 +3691,12 @@
    "automacao": 40,
    "veredito": "em2027",
    "motivo": "Montar exige mãos; você vende e configura, o parceiro monta.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "crm",
+    "estoque",
+    "horas"
+   ]
   },
   {
    "id": "redescftv",
@@ -3348,7 +3734,12 @@
    "automacao": 50,
    "veredito": "em2027",
    "motivo": "Instalação presencial; a parte boa é o contrato mensal.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "crm",
+    "recorrencia",
+    "estoque"
+   ]
   },
   {
    "id": "casainteligente",
@@ -3385,7 +3776,11 @@
    "automacao": 50,
    "veredito": "em2027",
    "motivo": "Primeiro a sua casa; instalação presencial.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "crm",
+    "recorrencia"
+   ]
   },
   {
    "id": "revenda-celulares",
@@ -3425,7 +3820,12 @@
    "automacao": 40,
    "veredito": "fila",
    "motivo": "Checklist rígido: IMEI, conta Google ou iCloud removida, recibo com CPF.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "radar",
+    "estoque",
+    "horas"
+   ]
   },
   {
    "id": "revenda-livros",
@@ -3463,7 +3863,11 @@
    "automacao": 70,
    "veredito": "fila",
    "motivo": "Margem pequena; envio quase automático.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "radar",
+    "estoque"
+   ]
   },
   {
    "id": "revenda-pecas",
@@ -3500,7 +3904,11 @@
    "automacao": 40,
    "veredito": "fila",
    "motivo": "Aproveita o que sobra da revenda de notebooks.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "radar",
+    "estoque"
+   ]
   },
   {
    "id": "revenda-veiculos",
@@ -3536,7 +3944,10 @@
    "automacao": 30,
    "veredito": "decidir",
    "motivo": "Capital alto e risco de dívida, restrição, sinistro e golpe.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "radar"
+   ]
   },
   {
    "id": "dividendos",
@@ -3573,7 +3984,10 @@
    "automacao": 95,
    "veredito": "fila",
    "motivo": "A cascata manda: só depois do cartão quitado e da reserva cheia. As decisões são suas.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "cascata"
+   ]
   },
   {
    "id": "planonegocio",
@@ -3615,7 +4029,11 @@
    "veredito": "proxima",
    "motivo": "O motor financeiro e o planejador já existem no setup; você só adapta para o cliente.",
    "lote": "2026-11",
-   "ordem": 6
+   "ordem": 6,
+   "usa": [
+    "crm",
+    "horas"
+   ]
   },
   {
    "id": "bpofin",
@@ -3657,7 +4075,13 @@
    "automacao": 65,
    "veredito": "fila",
    "motivo": "Recorrente e delegável a um assistente depois do checklist. É gestão financeira, não contabilidade: escrituração e impostos ficam com o contador.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "crm",
+    "recorrencia",
+    "financeiro",
+    "horas"
+   ]
   },
   {
    "id": "credito-editais",
@@ -3696,7 +4120,12 @@
    "automacao": 45,
    "veredito": "fila",
    "motivo": "Paga bem quando aprova; depende do plano de negócios pronto. Nunca prometer aprovação.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "editais",
+    "crm",
+    "horas"
+   ]
   },
   {
    "id": "mentoriafin",
@@ -3735,7 +4164,13 @@
    "automacao": 40,
    "veredito": "fila",
    "motivo": "Orçamento, dívidas e reserva. Recomendar ativo ou gerir dinheiro de terceiros exige certificação e registro (CVM): fica fora.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "agenda",
+    "crm",
+    "cascata",
+    "horas"
+   ]
   },
   {
    "id": "modelosfin",
@@ -3775,7 +4210,12 @@
    "automacao": 90,
    "veredito": "fila",
    "motivo": "Sai do motor financeiro que já existe; vende sozinho.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "venda",
+    "ci",
+    "suporte"
+   ]
   },
   {
    "id": "calculadoras",
@@ -3815,7 +4255,12 @@
    "automacao": 90,
    "veredito": "fila",
    "motivo": "Isca que traz clientes para a mentoria, o BPO e os modelos. Atualizar as regras quando a lei mudar.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "funil",
+    "ci",
+    "publicacao"
+   ]
   },
   {
    "id": "consultoriainv",
@@ -3852,7 +4297,12 @@
    "automacao": 30,
    "veredito": "fila",
    "motivo": "Portão regulatório: recomendar ativos exige certificação e registro na CVM. Sem isso, não existe.",
-   "lote": "2026-11"
+   "lote": "2026-11",
+   "usa": [
+    "crm",
+    "recorrencia",
+    "cascata"
+   ]
   }
  ],
  "regras": {
@@ -3867,5 +4317,167 @@
    "Estudo da manhã: o setup transforma em aula, exercício, cartão Anki e roteiro (15 min de revisão)",
    "Domingo, sono e cães: intocáveis"
   ]
- }
+ },
+ "automacoes": [
+  {
+   "id": "venda",
+   "nome": "Checkout, entrega e área do cliente",
+   "faz": "Recebe o pagamento (Hotmart, Kiwify ou Stripe), libera o acesso e manda o recibo, sem você.",
+   "estado": "parcial",
+   "universal": false,
+   "passo": "plataformas"
+  },
+  {
+   "id": "funil",
+   "nome": "Funil de e-mails e isca gratuita",
+   "faz": "Captura o contato com consentimento e manda a sequência de e-mails até a oferta.",
+   "estado": "construir",
+   "universal": false,
+   "passo": "au-funil"
+  },
+  {
+   "id": "esteira",
+   "nome": "Estudo vira produto",
+   "faz": "Das suas anotações de estudo, gera rascunho de aula, exercícios, cartões Anki e roteiro de vídeo para você revisar.",
+   "estado": "construir",
+   "universal": false,
+   "passo": "au-esteira"
+  },
+  {
+   "id": "fabrica",
+   "nome": "Fábrica de aulas e documentos",
+   "faz": "Gera aulas e documentos da escola no modelo exigido, a partir das regras e das ementas. Dado de aluno nunca entra.",
+   "estado": "construir",
+   "universal": false,
+   "passo": "au-fabrica"
+  },
+  {
+   "id": "publicacao",
+   "nome": "Publicação agendada com aprovação",
+   "faz": "Agenda posts, vídeos e artigos; nada vai ao ar sem o seu ok.",
+   "estado": "parcial",
+   "universal": false,
+   "passo": "au-publicacao"
+  },
+  {
+   "id": "midia",
+   "nome": "Cortes, legendas e dublagem com a sua voz",
+   "faz": "Corta, legenda e dubla os vídeos. Só a sua voz, nunca a de alunos.",
+   "estado": "parcial",
+   "universal": false,
+   "passo": "au-midia"
+  },
+  {
+   "id": "crm",
+   "nome": "CRM, proposta, contrato e cobrança",
+   "faz": "Registra o cliente, gera proposta e contrato de modelo e cobra.",
+   "estado": "parcial",
+   "universal": false,
+   "passo": "crm"
+  },
+  {
+   "id": "recorrencia",
+   "nome": "Cobrança recorrente e controle de acesso",
+   "faz": "Cobra todo mês, corta o acesso de quem não paga e avisa antes.",
+   "estado": "construir",
+   "universal": false,
+   "passo": "au-recorrencia"
+  },
+  {
+   "id": "sites",
+   "nome": "Manutenção automática de sites",
+   "faz": "Atualiza, faz backup e monitora os sites dos clientes; avisa só quando algo quebra.",
+   "estado": "parcial",
+   "universal": false,
+   "passo": "kuma-monitores"
+  },
+  {
+   "id": "suporte",
+   "nome": "Atendimento de primeiro nível",
+   "faz": "Responde as dúvidas frequentes com base no seu material e passa para você o que não souber.",
+   "estado": "construir",
+   "universal": false,
+   "passo": "au-suporte"
+  },
+  {
+   "id": "ci",
+   "nome": "CI que testa e publica pacotes",
+   "faz": "Testa e publica templates, plugins e kits a cada versão.",
+   "estado": "existe",
+   "universal": false,
+   "passo": "ci-verde"
+  },
+  {
+   "id": "estoque",
+   "nome": "Estoque, ordem de serviço e parceiros",
+   "faz": "Controla compra, conserto, venda e o serviço feito por parceiros, com custo e lucro por item (Kaixara).",
+   "estado": "construir",
+   "universal": false,
+   "passo": "au-estoque"
+  },
+  {
+   "id": "radar",
+   "nome": "Radar de revenda",
+   "faz": "Lê os alertas de busca salvos e avisa só o que passa da hora mínima.",
+   "estado": "construir",
+   "universal": false,
+   "passo": "ar-radar"
+  },
+  {
+   "id": "editais",
+   "nome": "Busca semanal de editais e oportunidades",
+   "faz": "Procura editais de conteudista, crédito, fomento e seleções e resume os que servem.",
+   "estado": "construir",
+   "universal": false,
+   "passo": "au-editais"
+  },
+  {
+   "id": "financeiro",
+   "nome": "Conciliação e relatório financeiro de clientes",
+   "faz": "Importa extratos, concilia e gera o relatório mensal de cada cliente.",
+   "estado": "construir",
+   "universal": false,
+   "passo": "au-financeiro"
+  },
+  {
+   "id": "agenda",
+   "nome": "Agenda com pagamento antecipado e lembretes",
+   "faz": "O cliente escolhe o horário, paga antes e recebe lembrete (Cal.com).",
+   "estado": "parcial",
+   "universal": false,
+   "passo": "agenda"
+  },
+  {
+   "id": "horas",
+   "nome": "Registro de horas",
+   "faz": "Mede as horas suas em cada renda (ActivityWatch) para calcular o retorno por hora.",
+   "estado": "construir",
+   "universal": false,
+   "passo": "au-horas"
+  },
+  {
+   "id": "cascata",
+   "nome": "Cascata e ARCA",
+   "faz": "Mostra a fase da cascata e quanto aportar pelo seu método (Caixa da Casa, depois Rendara).",
+   "estado": "existe",
+   "universal": false,
+   "passo": null
+  },
+  {
+   "id": "painel",
+   "nome": "Painel de lucro e retorno por hora",
+   "faz": "Lucro e R$ por hora sua de cada renda; marca quem ficou abaixo da hora mínima.",
+   "estado": "parcial",
+   "universal": true,
+   "passo": "painel-lucro"
+  },
+  {
+   "id": "remoto",
+   "nome": "Comandos e aprovações pelo Telegram",
+   "faz": "Você aprova posts, vê vendas e recebe alertas pelo celular, só do seu número.",
+   "estado": "construir",
+   "universal": true,
+   "passo": "au-remoto"
+  }
+ ]
 }

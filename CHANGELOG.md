@@ -2,6 +2,13 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.20.0] - 2026-11-01
+
+### Adicionado
+- Mapa de automações do arsenal: 20 automações compartilhadas (checkout, funil, esteira estudo → produto, Fábrica, publicação com aprovação, mídia, CRM, recorrência, manutenção de sites, atendimento, CI, estoque, radar, editais, conciliação, agenda, horas, cascata, painel, Telegram), cada oferta ligada às que usa e a ordem de construção pelo que cada uma destrava.
+- Nível de cada oferta: o setup faz tudo menos criar e aprovar (85%+), faz a maior parte (50–84%) ou depende da sua hora.
+- Fase "Automações do arsenal" no roteiro, com um passo por automação a construir. O CI recusa automação inexistente, passiva sem automação e automação a construir sem passo.
+
 ## [1.19.0] - 2026-11-01
 
 ### Adicionado

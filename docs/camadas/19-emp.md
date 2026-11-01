@@ -114,17 +114,17 @@ flowchart LR
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Registro de marca (INPI)](#inpi) | Remoto · precisa de conta | Proteger AMtech, Instituto AMS e os nomes AM antes de investir na marca. Pode ser pedido no seu CPF; confira no INPI o desconto disponível para pessoa física. | passo 15.17 · Semanas 8 a 10 · dez/2026 a jan/2027 |
-| [Termos, privacidade (LGPD) e contratos](#legal) | Local | Termos de uso, política de privacidade nos sites e contrato padrão de serviço. Obrigatório antes de coletar e-mail ou vender. | passo 15.4 · Semanas 8 a 10 · dez/2026 a jan/2027 |
-| [Certificado digital (e-CNPJ)](#ecnpj) | Remoto · precisa de conta · futuro | Só quando houver CNPJ: emissão de nota por API e assinatura de documentos da empresa. | passo 28.2 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
-| [API de NFS-e (ex.: Focus NFe)](#nfapi) | Remoto · precisa de conta · futuro | Só quando houver CNPJ. Implementa o seu IEmissorFiscal: os sistemas AM emitem nota sozinhos. | passo 28.3 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
-| [CNPJ (futuro)](#cnpj) | Remoto · precisa de conta · futuro | Ainda não. Quando a renda crescer, MEI ou SLU. Até lá, tudo no seu CPF. | passo 28.1 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
-| [gov.br (prata ou ouro)](#govbr) | Remoto · precisa de conta | Acesso ao carnê-leão online e à declaração do Imposto de Renda. | passo 2.6 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 15.1 · Semanas 8 a 10 · dez/2026 a jan/2027 |
-| [Carnê-leão (Receita Federal)](#nfse) | Remoto · precisa de conta | Todo mês você lança o que recebeu de compradores (Hotmart, Kiwify, aulas, sites) e do exterior (Udemy) e paga o DARF até o último dia útil do mês seguinte. | passo 15.18 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 18.7 · Semanas 12 a 15 · jan a fev/2027 |
-| [Declaração anual do IR](#irpf) | Remoto · precisa de conta | Os valores lançados no carnê-leão entram sozinhos na declaração. | passo 15.19 · Semanas 8 a 10 · dez/2026 a jan/2027 |
-| [Conta bancária separada (CPF)](#banco) | Remoto · precisa de conta | Uma conta só para receber vendas e serviços, separada do salário. Facilita o carnê-leão e a futura passagem para CNPJ. | passo 2.6 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 15.2 · Semanas 8 a 10 · dez/2026 a jan/2027 |
-| [Contador](#conta) | Físico | Uma consulta para montar o carnê-leão do jeito certo e dizer a partir de que renda vale abrir CNPJ. | passo 15.3 · Semanas 8 a 10 · dez/2026 a jan/2027 |
-| [Caixa da Casa / AM Rendara](#caixa) | Local | Controle financeiro pessoal e da empresa (seu sistema). | passo 15.20 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 23.4 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [Registro de marca (INPI)](#inpi) | Remoto · precisa de conta | Proteger AMtech, Instituto AMS e os nomes AM antes de investir na marca. Pode ser pedido no seu CPF; confira no INPI o desconto disponível para pessoa física. | passo 16.17 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Termos, privacidade (LGPD) e contratos](#legal) | Local | Termos de uso, política de privacidade nos sites e contrato padrão de serviço. Obrigatório antes de coletar e-mail ou vender. | passo 16.4 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Certificado digital (e-CNPJ)](#ecnpj) | Remoto · precisa de conta · futuro | Só quando houver CNPJ: emissão de nota por API e assinatura de documentos da empresa. | passo 29.2 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
+| [API de NFS-e (ex.: Focus NFe)](#nfapi) | Remoto · precisa de conta · futuro | Só quando houver CNPJ. Implementa o seu IEmissorFiscal: os sistemas AM emitem nota sozinhos. | passo 29.3 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
+| [CNPJ (futuro)](#cnpj) | Remoto · precisa de conta · futuro | Ainda não. Quando a renda crescer, MEI ou SLU. Até lá, tudo no seu CPF. | passo 29.1 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
+| [gov.br (prata ou ouro)](#govbr) | Remoto · precisa de conta | Acesso ao carnê-leão online e à declaração do Imposto de Renda. | passo 2.6 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 16.1 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Carnê-leão (Receita Federal)](#nfse) | Remoto · precisa de conta | Todo mês você lança o que recebeu de compradores (Hotmart, Kiwify, aulas, sites) e do exterior (Udemy) e paga o DARF até o último dia útil do mês seguinte. | passo 16.18 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 19.7 · Semanas 12 a 15 · jan a fev/2027 |
+| [Declaração anual do IR](#irpf) | Remoto · precisa de conta | Os valores lançados no carnê-leão entram sozinhos na declaração. | passo 16.19 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Conta bancária separada (CPF)](#banco) | Remoto · precisa de conta | Uma conta só para receber vendas e serviços, separada do salário. Facilita o carnê-leão e a futura passagem para CNPJ. | passo 2.6 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 16.2 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Contador](#conta) | Físico | Uma consulta para montar o carnê-leão do jeito certo e dizer a partir de que renda vale abrir CNPJ. | passo 16.3 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Caixa da Casa / AM Rendara](#caixa) | Local | Controle financeiro pessoal e da empresa (seu sistema). | passo 16.20 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 24.4 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
 
 <a id="inpi"></a>
 
@@ -134,7 +134,7 @@ flowchart LR
 
 Proteger AMtech, Instituto AMS e os nomes AM antes de investir na marca. Pode ser pedido no seu CPF; confira no INPI o desconto disponível para pessoa física.
 
-**Quando entra:** passo 15.17 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 16.17 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -149,7 +149,7 @@ Proteger AMtech, Instituto AMS e os nomes AM antes de investir na marca. Pode se
 
 Termos de uso, política de privacidade nos sites e contrato padrão de serviço. Obrigatório antes de coletar e-mail ou vender.
 
-**Quando entra:** passo 15.4 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 16.4 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -164,7 +164,7 @@ Termos de uso, política de privacidade nos sites e contrato padrão de serviço
 
 Só quando houver CNPJ: emissão de nota por API e assinatura de documentos da empresa.
 
-**Quando entra:** passo 28.2 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 29.2 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -178,7 +178,7 @@ Só quando houver CNPJ: emissão de nota por API e assinatura de documentos da e
 
 Só quando houver CNPJ. Implementa o seu IEmissorFiscal: os sistemas AM emitem nota sozinhos.
 
-**Quando entra:** passo 28.3 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 29.3 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -193,7 +193,7 @@ Só quando houver CNPJ. Implementa o seu IEmissorFiscal: os sistemas AM emitem n
 
 Ainda não. Quando a renda crescer, MEI ou SLU. Até lá, tudo no seu CPF.
 
-**Quando entra:** passo 28.1 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 29.1 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -211,7 +211,7 @@ Ainda não. Quando a renda crescer, MEI ou SLU. Até lá, tudo no seu CPF.
 
 Acesso ao carnê-leão online e à declaração do Imposto de Renda.
 
-**Quando entra:** passo 2.6 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 15.1 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 2.6 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 16.1 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -226,7 +226,7 @@ Acesso ao carnê-leão online e à declaração do Imposto de Renda.
 
 Todo mês você lança o que recebeu de compradores (Hotmart, Kiwify, aulas, sites) e do exterior (Udemy) e paga o DARF até o último dia útil do mês seguinte.
 
-**Quando entra:** passo 15.18 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 18.7 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 16.18 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 19.7 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -253,7 +253,7 @@ Todo mês você lança o que recebeu de compradores (Hotmart, Kiwify, aulas, sit
 
 Os valores lançados no carnê-leão entram sozinhos na declaração.
 
-**Quando entra:** passo 15.19 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 16.19 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -268,7 +268,7 @@ Os valores lançados no carnê-leão entram sozinhos na declaração.
 
 Uma conta só para receber vendas e serviços, separada do salário. Facilita o carnê-leão e a futura passagem para CNPJ.
 
-**Quando entra:** passo 2.6 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 15.2 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 2.6 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 16.2 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -290,7 +290,7 @@ Uma conta só para receber vendas e serviços, separada do salário. Facilita o 
 
 Uma consulta para montar o carnê-leão do jeito certo e dizer a partir de que renda vale abrir CNPJ.
 
-**Quando entra:** passo 15.3 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 16.3 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -306,7 +306,7 @@ Uma consulta para montar o carnê-leão do jeito certo e dizer a partir de que r
 
 Controle financeiro pessoal e da empresa (seu sistema).
 
-**Quando entra:** passo 15.20 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 23.4 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 16.20 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 24.4 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

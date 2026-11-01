@@ -50,6 +50,23 @@ class TestPortfolio(unittest.TestCase):
         prox[1]["ordem"] = prox[0]["ordem"]
         self.assertTrue(any("ordem" in e for e in validar(d)))
 
+    def test_automacao_inexistente(self):
+        d = copy.deepcopy(self.dados)
+        d["ofertas"][0]["usa"] = ["nao-existe"]
+        self.assertTrue(any("inexistente" in e for e in validar(d)))
+
+    def test_passiva_precisa_de_automacao(self):
+        d = copy.deepcopy(self.dados)
+        o = next(x for x in d["ofertas"] if x["perfil"] == "passiva")
+        o["usa"] = []
+        self.assertTrue(any("passiva sem" in e for e in validar(d)))
+
+    def test_automacao_a_construir_tem_passo(self):
+        d = copy.deepcopy(self.dados)
+        a = next(x for x in d["automacoes"] if x["estado"] == "construir")
+        a["passo"] = None
+        self.assertTrue(any("falta o passo" in e for e in validar(d)))
+
     def test_toda_oferta_tem_proximo_passo_e_metrica(self):
         for o in self.dados["ofertas"]:
             self.assertTrue(o["proximo_passo"].strip(), o["id"])

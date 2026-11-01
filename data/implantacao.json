@@ -1160,6 +1160,150 @@
    ]
   },
   {
+   "id": "f-automacoes",
+   "titulo": "Automações do arsenal",
+   "objetivo": "Construir uma vez as automações que várias rendas usam, na ordem de quantas rendas cada uma destrava.",
+   "quando": "Nov/2026 em diante, uma por vez, na ordem de desbloqueio",
+   "passos": [
+    {
+     "id": "au-funil",
+     "titulo": "Automação: Funil de e-mails e isca gratuita",
+     "quem": "claude",
+     "pronto": "Captura o contato com consentimento e manda a sequência de e-mails até a oferta.",
+     "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo au-funil do roteiro: Automação: Funil de e-mails e isca gratuita\"",
+     "nota": "Construir quando a primeira oferta que usa esta automação for ativada; a ordem está na seção Automações do portfólio.",
+     "blocos": [
+      "n8n"
+     ]
+    },
+    {
+     "id": "au-esteira",
+     "titulo": "Automação: Estudo vira produto",
+     "quem": "claude",
+     "pronto": "Das suas anotações de estudo, gera rascunho de aula, exercícios, cartões Anki e roteiro de vídeo para você revisar.",
+     "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo au-esteira do roteiro: Automação: Estudo vira produto\"",
+     "nota": "Construir quando a primeira oferta que usa esta automação for ativada; a ordem está na seção Automações do portfólio.",
+     "blocos": []
+    },
+    {
+     "id": "au-fabrica",
+     "titulo": "Automação: Fábrica de aulas e documentos",
+     "quem": "claude",
+     "pronto": "Gera aulas e documentos da escola no modelo exigido, a partir das regras e das ementas. Dado de aluno nunca entra.",
+     "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo au-fabrica do roteiro: Automação: Fábrica de aulas e documentos\"",
+     "nota": "Construir quando a primeira oferta que usa esta automação for ativada; a ordem está na seção Automações do portfólio.",
+     "blocos": []
+    },
+    {
+     "id": "au-publicacao",
+     "titulo": "Automação: Publicação agendada com aprovação",
+     "quem": "claude",
+     "pronto": "Agenda posts, vídeos e artigos; nada vai ao ar sem o seu ok.",
+     "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo au-publicacao do roteiro: Automação: Publicação agendada com aprovação\"",
+     "nota": "Construir quando a primeira oferta que usa esta automação for ativada; a ordem está na seção Automações do portfólio.",
+     "blocos": [
+      "n8n"
+     ]
+    },
+    {
+     "id": "au-midia",
+     "titulo": "Automação: Cortes, legendas e dublagem com a sua voz",
+     "quem": "claude",
+     "pronto": "Corta, legenda e dubla os vídeos. Só a sua voz, nunca a de alunos.",
+     "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo au-midia do roteiro: Automação: Cortes, legendas e dublagem com a sua voz\"",
+     "nota": "Construir quando a primeira oferta que usa esta automação for ativada; a ordem está na seção Automações do portfólio.",
+     "blocos": []
+    },
+    {
+     "id": "au-recorrencia",
+     "titulo": "Automação: Cobrança recorrente e controle de acesso",
+     "quem": "claude",
+     "pronto": "Cobra todo mês, corta o acesso de quem não paga e avisa antes.",
+     "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo au-recorrencia do roteiro: Automação: Cobrança recorrente e controle de acesso\"",
+     "nota": "Construir quando a primeira oferta que usa esta automação for ativada; a ordem está na seção Automações do portfólio.",
+     "blocos": [
+      "n8n"
+     ]
+    },
+    {
+     "id": "au-suporte",
+     "titulo": "Automação: Atendimento de primeiro nível",
+     "quem": "claude",
+     "pronto": "Responde as dúvidas frequentes com base no seu material e passa para você o que não souber.",
+     "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo au-suporte do roteiro: Automação: Atendimento de primeiro nível\"",
+     "nota": "Construir quando a primeira oferta que usa esta automação for ativada; a ordem está na seção Automações do portfólio.",
+     "blocos": [
+      "n8n"
+     ]
+    },
+    {
+     "id": "au-estoque",
+     "titulo": "Automação: Estoque, ordem de serviço e parceiros",
+     "quem": "claude",
+     "pronto": "Controla compra, conserto, venda e o serviço feito por parceiros, com custo e lucro por item (Kaixara).",
+     "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo au-estoque do roteiro: Automação: Estoque, ordem de serviço e parceiros\"",
+     "nota": "Construir quando a primeira oferta que usa esta automação for ativada; a ordem está na seção Automações do portfólio.",
+     "blocos": []
+    },
+    {
+     "id": "au-editais",
+     "titulo": "Automação: Busca semanal de editais e oportunidades",
+     "quem": "claude",
+     "pronto": "Procura editais de conteudista, crédito, fomento e seleções e resume os que servem.",
+     "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo au-editais do roteiro: Automação: Busca semanal de editais e oportunidades\"",
+     "nota": "Construir quando a primeira oferta que usa esta automação for ativada; a ordem está na seção Automações do portfólio.",
+     "blocos": [
+      "n8n"
+     ]
+    },
+    {
+     "id": "au-financeiro",
+     "titulo": "Automação: Conciliação e relatório financeiro de clientes",
+     "quem": "claude",
+     "pronto": "Importa extratos, concilia e gera o relatório mensal de cada cliente.",
+     "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo au-financeiro do roteiro: Automação: Conciliação e relatório financeiro de clientes\"",
+     "nota": "Construir quando a primeira oferta que usa esta automação for ativada; a ordem está na seção Automações do portfólio.",
+     "blocos": [
+      "n8n"
+     ]
+    },
+    {
+     "id": "au-horas",
+     "titulo": "Automação: Registro de horas",
+     "quem": "claude",
+     "pronto": "Mede as horas suas em cada renda (ActivityWatch) para calcular o retorno por hora.",
+     "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo au-horas do roteiro: Automação: Registro de horas\"",
+     "nota": "Construir quando a primeira oferta que usa esta automação for ativada; a ordem está na seção Automações do portfólio.",
+     "blocos": [
+      "painel"
+     ]
+    },
+    {
+     "id": "au-remoto",
+     "titulo": "Automação: Comandos e aprovações pelo Telegram",
+     "quem": "claude",
+     "pronto": "Você aprova posts, vê vendas e recebe alertas pelo celular, só do seu número.",
+     "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo au-remoto do roteiro: Automação: Comandos e aprovações pelo Telegram\"",
+     "nota": "Construir quando a primeira oferta que usa esta automação for ativada; a ordem está na seção Automações do portfólio.",
+     "blocos": [
+      "n8n"
+     ]
+    }
+   ]
+  },
+  {
    "id": "f11",
    "titulo": "Pipeline de conteúdo",
    "objetivo": "Gravou ou escreveu, as peças aparecem na fila de aprovação.",
