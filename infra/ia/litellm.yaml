@@ -16,6 +16,11 @@ model_list:
     litellm_params:
       model: gemini/gemini-2.5-flash
       api_key: os.environ/GEMINI_API_KEY
+  - model_name: gratis-cf         # Workers AI da Cloudflare: 10.000 neurônios grátis por dia; nada sensível
+    litellm_params:
+      model: cloudflare/@cf/meta/llama-3.1-8b-instruct
+      api_key: os.environ/CLOUDFLARE_API_KEY
+      account_id: os.environ/CLOUDFLARE_ACCOUNT_ID
   - model_name: barato            # DeepSeek: muito barato; dados na China, nada sensível
     litellm_params:
       model: deepseek/deepseek-chat
@@ -31,7 +36,7 @@ model_list:
 router_settings:
   fallbacks:
     - forte: [rapido]
-    - rapido: [gratis, barato, reserva, local]
+    - rapido: [gratis, gratis-cf, barato, reserva, local]
 litellm_settings:
   max_budget: 20          # US$ por mês no total; passou, recusa
   budget_duration: 30d

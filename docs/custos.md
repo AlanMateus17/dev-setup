@@ -31,6 +31,7 @@ Regra geral: **pague só pelo que custa menos que as suas horas ou exige confian
 | **testar grátis** | ChatGPT pago | mensal | ChatGPT Go grátis pelo Nubank (1 mês; 3 meses no Nubank+; 1 ano no Ultravioleta), depois R$ 39,99 se for usado toda semana | Segunda IA para imagens, voz e quando o limite do Claude acabar. Plus (R$ 99,90) só se o Go não bastar. |
 | **testar grátis** | Z.AI (GLM, plano de código) | mensal baixo | Usar como reserva do Claude Code quando o limite acabar | Plano de código barato que funciona em ferramentas compatíveis com o Claude Code; o próprio Akita monitora no ai-usagebar. Confira preço, limites e política de dados antes. |
 | **usar barato** | DeepSeek | grátis / API muito barata | Chat grátis; API pelo gateway como 'barato' | Ótimo custo para rascunho em volume. Os dados ficam em servidores na China: nada sensível, nada de aluno, nada de cliente. |
+| **cortar** | Agentes de código do Google | saiu do ar no grátis | Copilot Pro e Codex como reservas de código | O Gemini CLI parou para contas pessoais sem licença paga em 18/06/2026; o Antigravity tem acesso ampliado só no Pro. |
 | **cortar** | Grok | pago | Grátis, se quiser ver o que está em alta no X | O diferencial é o X em tempo real; não resolve aula, código nem setup melhor que as outras. |
 | **cortar uma** | Alura · Rocketseat · Udemy | mensal | Ficar com uma plataforma na renovação + Microsoft Learn, roadmap.sh e documentação oficial (grátis) | Regra já decidida: nenhum curso novo até o cartão zerar. |
 | **trocar** | Gemini pago | mensal | Google AI Plus (R$ 24,99, com 200 GB) no lugar do Google One atual, se o seu plano for de até 200 GB | Quase sem custo extra: troca o armazenamento que você já paga por armazenamento + Gemini Pro + NotebookLM com mais uso. Melhor IA para rascunhar aulas a partir das fontes. |
@@ -52,9 +53,8 @@ Regra geral: **pague só pelo que custa menos que as suas horas ou exige confian
 | **adiar** | vLLM em GPU alugada | por hora | Ollama local e gateway | Só quando um modelo seu tiver uso real. |
 | **limitar** | Claude por API (agentes) | por uso | Modelos locais pelo gateway para tarefas simples | Teto mensal no LiteLLM; 'local' por padrão, 'rapido' só quando o eval mostrar que o local não basta. |
 | **limitar** | GPU por hora | por hora | Kaggle e Colab grátis primeiro | Alugar só para o que não cabe no grátis, com teto e desligando ao terminar. |
-| **usar grátis** | Agentes de código do Google | mensal | Cota grátis | Só para comparar; nada pago. |
 | **usar grátis** | Gemini API (cota grátis do AI Studio) | grátis (cota) | — | Rascunhos em lote pelo gateway sem gastar o Claude. Na cota grátis o Google pode usar os dados para melhorar produtos: nada sensível, nada de aluno. |
-| **usar grátis** | GitHub Copilot | mensal | GitHub Education (estudante) | Estudante verificado recebe o Copilot sem pagar; você está na Licenciatura. |
+| **usar grátis** | GitHub Copilot | mensal | GitHub Education como PROFESSOR (Copilot Pro), não como estudante | Professor verificado ganha o Pro grátis, com agente na nuvem e agentes de terceiros; o plano de estudante exclui os agentes de terceiros. Motor da esteira de sites. |
 | **usar grátis** | OpenRouter | por uso (alguns modelos grátis) | — | Uma chave para dezenas de modelos, inclusive grátis com limite; bom reserva no gateway. Confira a política de dados de cada modelo. |
 | **usar grátis** | Perplexity | grátis | — | Pesquisa com fontes citadas no plano grátis; Pro só se aparecer de graça por promoção. |
 | **manter grátis** | Anki | grátis no PC | AnkiDroid (grátis) no celular | O app pago é só o de iPhone. |
@@ -83,13 +83,13 @@ Regra geral: **pague só pelo que custa menos que as suas horas ou exige confian
 |---|---:|
 | testar grátis | 2 |
 | usar barato | 1 |
-| cortar | 1 |
+| cortar | 2 |
 | cortar uma | 1 |
 | trocar | 2 |
 | trocar para comercial | 1 |
 | adiar | 14 |
 | limitar | 2 |
-| usar grátis | 5 |
+| usar grátis | 4 |
 | manter grátis | 7 |
 | usar o que já paga | 2 |
 | manter | 11 |
@@ -115,13 +115,13 @@ Para o que vira produto, prefira licença Apache 2.0 ou MIT e confira a licença
 | Tarefa | IA | Por quê |
 |---|---|---|
 | Planejar o setup, arquitetura, revisão de código e do que vai para cliente | Claude (Pro) | Melhor raciocínio longo e coerência com o repositório |
-| Código no setup e nos sistemas | Claude Code; Gemini como segunda opinião | Lê e muda o repositório com testes |
+| Código no setup e nos sistemas | Claude Code; Copilot (agente na nuvem) para issues pequenas | Lê e muda o repositório com testes |
 | Rascunho de aulas e documentos a partir das ementas e fontes oficiais | NotebookLM / Gemini (AI Plus) | Responde preso às fontes que você carrega; economiza o limite do Claude |
 | Revisar a aula pronta contra as suas regras | Claude | Uma revisão curta gasta pouco limite |
 | Pesquisa com fontes | Perplexity (grátis) ou Gemini; Claude para fechar a decisão | Busca barata, decisão no Claude |
 | Imagens, capas e voz de conversa | ChatGPT Go | Ponto forte dele |
 | Rascunho em volume pela API (descrições, variações, resumos) | DeepSeek ou OpenRouter grátis pelo gateway | Custo perto de zero; nada sensível |
-| Código quando o limite do Claude acabar | Codex (se vier no plano do ChatGPT) ou Z.AI GLM | Reserva barata; revisão final no Claude |
+| Código quando o limite do Claude acabar | Copilot Pro (grátis para professor) ou Codex do ChatGPT Go | Créditos de outra empresa; revisão final no Claude. Detalhes em docs/recursos.md |
 | Transcrever, resumir e rascunhar em volume | Modelos locais (Ollama) ou Gemini API grátis pelo gateway | Sem custo e sem gastar limite |
 | Tudo que tem dado sensível (aluno, finanças, senha) | Nenhuma IA na nuvem; modelo local ou à mão | Segurança acima de conveniência |
 

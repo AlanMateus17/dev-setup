@@ -74,18 +74,18 @@
   {
    "bloco": "gcode",
    "item": "Agentes de código do Google",
-   "hoje": "mensal",
-   "decisao": "usar grátis",
-   "alternativa": "Cota grátis",
-   "motivo": "Só para comparar; nada pago."
+   "hoje": "saiu do ar no grátis",
+   "decisao": "cortar",
+   "alternativa": "Copilot Pro e Codex como reservas de código",
+   "motivo": "O Gemini CLI parou para contas pessoais sem licença paga em 18/06/2026; o Antigravity tem acesso ampliado só no Pro."
   },
   {
    "bloco": "copi",
    "item": "GitHub Copilot",
    "hoje": "mensal",
    "decisao": "usar grátis",
-   "alternativa": "GitHub Education (estudante)",
-   "motivo": "Estudante verificado recebe o Copilot sem pagar; você está na Licenciatura."
+   "alternativa": "GitHub Education como PROFESSOR (Copilot Pro), não como estudante",
+   "motivo": "Professor verificado ganha o Pro grátis, com agente na nuvem e agentes de terceiros; o plano de estudante exclui os agentes de terceiros. Motor da esteira de sites."
   },
   {
    "bloco": "voz",
@@ -474,7 +474,7 @@
   },
   {
    "tarefa": "Código no setup e nos sistemas",
-   "ia": "Claude Code; Gemini como segunda opinião",
+   "ia": "Claude Code; Copilot (agente na nuvem) para issues pequenas",
    "por_que": "Lê e muda o repositório com testes"
   },
   {
@@ -504,8 +504,8 @@
   },
   {
    "tarefa": "Código quando o limite do Claude acabar",
-   "ia": "Codex (se vier no plano do ChatGPT) ou Z.AI GLM",
-   "por_que": "Reserva barata; revisão final no Claude"
+   "ia": "Copilot Pro (grátis para professor) ou Codex do ChatGPT Go",
+   "por_que": "Créditos de outra empresa; revisão final no Claude. Detalhes em docs/recursos.md"
   },
   {
    "tarefa": "Transcrever, resumir e rascunhar em volume",

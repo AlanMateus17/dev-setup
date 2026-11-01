@@ -11,7 +11,7 @@
 - [Auditoria: o que faltava](auditoria.md)
 - [Sistemas operacionais](sistemas-operacionais.md) · [Nuvem](nuvem.md) · [Mercado](mercado.md) · [Roteiro de estudo](roteiro.md)
 - [Peças autorais](pecas-autorais.md) · [Decisões](fora-do-setup.md)
-- [Arquitetura de IA: modelos grandes sem computador maior](ia/README.md) · [Rede própria entre os seus computadores](rede/README.md) · [Custos: construir, abrir ou pagar](custos.md)
+- [Arquitetura de IA: modelos grandes sem computador maior](ia/README.md) · [Rede própria entre os seus computadores](rede/README.md) · [Custos: construir, abrir ou pagar](custos.md) · [Recursos: a melhor ferramenta para cada tarefa](recursos.md)
 - [Marketing, vendas e automação](marketing/README.md): funil, canais sem rosto com voz clonada, publicação automática, tráfego, parcerias, internacional e medição de lucro
 - [Editora AMS Silva](editora/README.md): estrutura legal, pipeline de produção dos livros, rigor editorial, identidade visual, avaliação, produtos, lançamento e roteiro
 - [Implantação](implantacao/README.md): roteiro que cobre todos os blocos do setup, scripts que instalam e verificadores que conferem; pipeline de conteúdo e stack de automação
@@ -29,7 +29,7 @@
 - [20 · Plataformas de venda e recebimento](camadas/20-venda.md) (13 blocos)
 - [19 · Pessoa física: impostos e finanças](camadas/19-emp.md) (14 blocos)
 - [18 · Vitrine web (sites e domínio)](camadas/18-web.md) (11 blocos)
-- [17 · Produtos (o que você vende)](camadas/17-prod.md) (7 blocos)
+- [17 · Produtos (o que você vende)](camadas/17-prod.md) (8 blocos)
 - [16 · Negócios do grupo (Barbacena)](camadas/16-neg.md) (17 blocos)
 - [15 · Editora AMS Silva (produção de livros)](camadas/15-editora.md) (36 blocos)
 - [14 · Estudo e carreira](camadas/14-est.md) (9 blocos)
@@ -41,7 +41,7 @@
 - [08 · Claude: recursos, conectores e plugins](camadas/08-clc.md) (19 blocos)
 - [07 · Assistentes de IA (chat, pesquisa e estudo)](camadas/07-chat.md) (10 blocos)
 - [06 · Dados e treino de IA](camadas/06-dados.md) (19 blocos)
-- [05 · Agentes de IA e sandbox](camadas/05-ia.md) (16 blocos)
+- [05 · Agentes de IA e sandbox](camadas/05-ia.md) (17 blocos)
 - [04 · Linux (Ubuntu no WSL2, Arch no 2º disco)](camadas/04-lin.md) (12 blocos)
 - [03 · Windows 11, apps e máquinas virtuais](camadas/03-win.md) (25 blocos)
 - [02 · Segurança e cofre](camadas/02-seg.md) (12 blocos)

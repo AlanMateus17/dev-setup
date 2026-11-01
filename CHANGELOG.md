@@ -2,6 +2,18 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.0.0] - 2026-11-01
+
+### Alterado (mudança de modelo)
+- O setup deixa de depender de um agente só: toda tarefa tem ferramenta primária, reserva e portão humano (docs/recursos.md). Nenhuma tarefa depende dos créditos de uma ferramenta.
+- Custos: Copilot pelo GitHub Education como professor (Pro com agente na nuvem), não como estudante; agentes de código do Google cortados (Gemini CLI saiu do ar para contas pessoais em 18/06/2026).
+
+### Adicionado
+- Auditoria de recursos das ferramentas com conta (data/recursos.json → docs/recursos.md, tools/recursos): Copilot, Claude (rotinas), Codex, Google, Hostinger (MCP, deploy por push, créditos de IA), OpenClaw, Cloudflare (Workers AI), Lovable, v0, Mercado Pago (MCP), Hotmart e Canva, com fonte e decisão por recurso.
+- Esteira de sites (infra/templates/esteira-site): ficha como issue, agente abre o PR, CI de HTML, links e acessibilidade, revisão pela rotina do Claude, prévia, aprovação e deploy na Hostinger.
+- Blocos OpenClaw (isolado, futuro) e Esteira de sites; fase f-agentes com 9 passos (ag-ghed, ag-hostinger-mcp, ag-esteira, ag-deploy, ag-rotina-pr, ag-cf-mcp, ag-gateway-cf, ag-canva-edu, ag-openclaw).
+- Modelo "gratis-cf" (Workers AI) no gateway.
+
 ## [1.31.0] - 2026-11-01
 
 ### Adicionado

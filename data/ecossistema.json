@@ -493,7 +493,7 @@
    "tipo": "remoto",
    "conta": true,
    "futuro": false,
-   "descricao": "Hospedagem WordPress que você já tem; serve para sites de clientes."
+   "descricao": "Hospedagem que você já tem. Deploy por push no GitHub (inclusive Node.js) e MCP oficial com 146 ferramentas para IAs: publicar, ligar domínio e manter WordPress pela conversa. Créditos de IA (construtor, Agent, Reach) são pagos à parte."
   },
   {
    "id": "curso",
@@ -1348,7 +1348,7 @@
    "tipo": "remoto",
    "conta": true,
    "futuro": false,
-   "descricao": "Agente de código da OpenAI (terminal, VS Code e nuvem). Está incluído até no plano grátis do ChatGPT, com limite. Use como segunda opinião ao Claude Code, nos mesmos repositórios."
+   "descricao": "Agente de código da OpenAI (terminal, VS Code e nuvem). Vem no ChatGPT Go com limite baixo: reserva e segunda opinião, lendo o mesmo AGENTS.md. O Sites do ChatGPT não serve para clientes (proíbe comércio)."
   },
   {
    "id": "gcode",
@@ -1357,7 +1357,7 @@
    "tipo": "remoto",
    "conta": true,
    "futuro": false,
-   "descricao": "Jules e o CLI do Google. As regras mudaram em 2026: o CLI deixou de ser grátis para contas pessoais. Confira o que o seu plano do Gemini inclui antes de montar um fluxo em cima dele."
+   "descricao": "O Gemini CLI saiu do ar para contas pessoais sem licença paga em 18/06/2026; o substituto, Antigravity CLI, é fechado e tem acesso ampliado só no plano Pro. Nenhum fluxo do setup depende dele."
   },
   {
    "id": "perp",
@@ -1375,7 +1375,7 @@
    "tipo": "remoto",
    "conta": true,
    "futuro": false,
-   "descricao": "Autocompletar e chat dentro do VS Code. Professores verificados no GitHub Education ganham o plano Pro grátis."
+   "descricao": "Autocompletar, chat e agente na nuvem: você atribui uma issue e ele abre um PR. Professores verificados no GitHub Education ganham o Pro grátis (1.500 créditos por mês). Motor da esteira de sites."
   },
   {
    "id": "pyds",
@@ -3437,6 +3437,24 @@
    "conta": false,
    "futuro": false,
    "descricao": "Design de telas e protótipos, aberto, alternativa ao Figma pago."
+  },
+  {
+   "id": "oclaw",
+   "camada": "ia",
+   "rotulo": "OpenClaw|(agente 24 h)",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Agente auto-hospedado para tarefas noturnas que as rotinas e o n8n não cobrem. Histórico de segurança ruim em 2026: só na VM isolada, atrás do Tailscale, sem suas contas pessoais, sem skills de terceiros não revisadas e com chave de teto baixo no gateway."
+  },
+  {
+   "id": "esteira",
+   "camada": "prod",
+   "rotulo": "Esteira de sites|(issue → PR → ar)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Ficha como issue, agente abre o PR, CI confere HTML, links e acessibilidade, a rotina do Claude revisa, você aprova a prévia e o merge publica na Hostinger. Modelo em infra/templates/esteira-site."
   }
  ],
  "conexoes": [
@@ -6734,6 +6752,31 @@
    "de": "penpot",
    "para": "front",
    "rotulo": "telas dos sistemas"
+  },
+  {
+   "de": "oclaw",
+   "para": "vm247",
+   "rotulo": "roda isolado"
+  },
+  {
+   "de": "oclaw",
+   "para": "litellm",
+   "rotulo": "modelo com teto"
+  },
+  {
+   "de": "copi",
+   "para": "esteira",
+   "rotulo": "abre o PR"
+  },
+  {
+   "de": "esteira",
+   "para": "hostg",
+   "rotulo": "deploy por push"
+  },
+  {
+   "de": "esteira",
+   "para": "sites",
+   "rotulo": "entrega"
   }
  ],
  "fluxos": [

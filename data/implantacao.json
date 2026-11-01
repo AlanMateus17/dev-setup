@@ -2083,6 +2083,122 @@
    ]
   },
   {
+   "id": "f-agentes",
+   "titulo": "Roteador de agentes e esteira de sites",
+   "objetivo": "Cada tarefa na melhor ferramenta, com reserva e portão; sites feitos por agentes e só conferidos por você. Detalhes em docs/recursos.md.",
+   "quando": "Semana 6 · nov/2026 a dez/2026",
+   "passos": [
+    {
+     "id": "ag-ghed",
+     "titulo": "Pedir a verificação de professor no GitHub Education (libera o Copilot Pro grátis)",
+     "quem": "voce",
+     "pronto": "Copilot Pro ativo na sua conta",
+     "tempo_min": 15,
+     "blocos": [
+      "ghed",
+      "copi"
+     ],
+     "fora": "Em education.github.com, com comprovante de vínculo da escola. É o passo que mais destrava a esteira."
+    },
+    {
+     "id": "ag-hostinger-mcp",
+     "titulo": "Conectar o MCP da Hostinger ao Claude",
+     "quem": "voce",
+     "pronto": "O Claude lista os seus sites da Hostinger",
+     "tempo_min": 10,
+     "blocos": [
+      "hostg",
+      "anth"
+     ],
+     "fora": "Token de API criado no painel da Hostinger e guardado no KeePassXC; conecte pelo diretório de conectores do Claude."
+    },
+    {
+     "id": "ag-esteira",
+     "titulo": "Criar o repositório do primeiro site a partir da esteira",
+     "quem": "script",
+     "pronto": "Issue com a ficha atribuída ao Copilot e PR aberto com o workflow qualidade verde",
+     "tempo_min": 30,
+     "blocos": [
+      "esteira",
+      "copi"
+     ],
+     "comando": "cp -r ~/dev/dev-setup/infra/templates/esteira-site/. ~/dev/site-pessoal/ && bash ~/dev/dev-setup/scripts/wsl/regras-ia.sh ~/dev/site-pessoal"
+    },
+    {
+     "id": "ag-deploy",
+     "titulo": "Ligar prévia no Cloudflare Pages e deploy por push na Hostinger",
+     "quem": "claude",
+     "pronto": "Merge na main publica o site; cada PR tem link de prévia",
+     "tempo_min": 20,
+     "blocos": [
+      "esteira",
+      "hostg",
+      "cf"
+     ],
+     "fora": "Peça ao Claude com a skill deploy-to-hosting depois do passo ag-hostinger-mcp."
+    },
+    {
+     "id": "ag-rotina-pr",
+     "titulo": "Rotina do Claude Code que revisa cada PR da esteira",
+     "quem": "claude",
+     "pronto": "Todo PR novo recebe a revisão contra o AGENTS.md",
+     "tempo_min": 15,
+     "blocos": [
+      "cc",
+      "esteira"
+     ],
+     "fora": "Rotina com gatilho de PR no GitHub. O Pro tem 5 execuções por dia: use só nos repositórios da esteira."
+    },
+    {
+     "id": "ag-cf-mcp",
+     "titulo": "Trocar o conector descontinuado da Cloudflare pelo Cloudflare API MCP",
+     "quem": "voce",
+     "pronto": "Conector novo responde e o antigo foi removido",
+     "tempo_min": 5,
+     "blocos": [
+      "ccf",
+      "cf"
+     ],
+     "fora": "Nas configurações de conectores do Claude."
+    },
+    {
+     "id": "ag-gateway-cf",
+     "titulo": "Ligar o modelo grátis da Cloudflare (Workers AI) no gateway",
+     "quem": "voce",
+     "pronto": "Modelo 'gratis-cf' respondendo no gateway",
+     "tempo_min": 10,
+     "blocos": [
+      "litellm",
+      "cf"
+     ],
+     "fora": "Token com permissão só de Workers AI e o ID da conta no KeePassXC; suba com scripts/wsl/segredos.sh."
+    },
+    {
+     "id": "ag-canva-edu",
+     "titulo": "Pedir o Canva para Educação",
+     "quem": "voce",
+     "pronto": "Conta de professor aprovada (ou recusada: segue no grátis)",
+     "tempo_min": 10,
+     "blocos": [
+      "img"
+     ],
+     "fora": "No site do Canva, com comprovante da escola."
+    },
+    {
+     "id": "ag-openclaw",
+     "titulo": "Testar o OpenClaw isolado na VM (só depois da esteira entregar um site)",
+     "quem": "voce",
+     "pronto": "Uma tarefa noturna rodando com relatório no Telegram, sem acesso às suas contas",
+     "tempo_min": 60,
+     "blocos": [
+      "oclaw",
+      "vm247"
+     ],
+     "fora": "Versão mais recente, porta só no Tailscale, sem skills da loja, chave do gateway com teto de US$ 2. Se não trouxer ganho em 2 semanas, desligue."
+    }
+   ]
+  },
+  {
    "id": "f-ia-grande",
    "titulo": "Modelos grandes sem computador maior",
    "objetivo": "Usar e treinar modelos muito maiores que o notebook aguenta: cluster na rede, GPU por hora, destilação e QLoRA.",

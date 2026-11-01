@@ -77,14 +77,14 @@ flowchart LR
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Sentry (erros)](#sentry) | Remoto · precisa de conta | Avisa quando um erro acontece em produção, com o ponto exato no código. Plano grátis para um dev. | passo 32.4 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| [Uptime Kuma](#kuma) | Local | Verifica a cada minuto se os sites e APIs estão no ar e avisa no celular. Open source. | passo 10.6 · Semana 4 · nov/2026; passo 23.5 · Dez/2026 a jan/2027 |
-| [Seq (logs)](#seq) | Local | Visualizador de logs simples para começar, antes da stack Grafana. | passo 32.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| [Loki + Tempo](#loki) | Local · futuro | Logs e rastreamento de requisições entre serviços, consultados no Grafana. | passo 44.3 · 2028 |
-| [OpenTelemetry](#otel) | Local | Coleta logs, métricas e traces da API. | passo 32.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| [Prometheus](#prom) | Local | Guarda as métricas. | passo 32.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| [Grafana](#graf) | Local | Painéis e alertas. | passo 10.4 · Semana 4 · nov/2026; passo 29.4 · Semana 11 · jan/2027 |
-| [.NET Aspire](#aspire) | Local | Sobe o sistema inteiro no dev com painel próprio. | passo 32.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| [Sentry (erros)](#sentry) | Remoto · precisa de conta | Avisa quando um erro acontece em produção, com o ponto exato no código. Plano grátis para um dev. | passo 33.4 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| [Uptime Kuma](#kuma) | Local | Verifica a cada minuto se os sites e APIs estão no ar e avisa no celular. Open source. | passo 10.6 · Semana 4 · nov/2026; passo 24.5 · Dez/2026 a jan/2027 |
+| [Seq (logs)](#seq) | Local | Visualizador de logs simples para começar, antes da stack Grafana. | passo 33.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| [Loki + Tempo](#loki) | Local · futuro | Logs e rastreamento de requisições entre serviços, consultados no Grafana. | passo 45.3 · 2028 |
+| [OpenTelemetry](#otel) | Local | Coleta logs, métricas e traces da API. | passo 33.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| [Prometheus](#prom) | Local | Guarda as métricas. | passo 33.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| [Grafana](#graf) | Local | Painéis e alertas. | passo 10.4 · Semana 4 · nov/2026; passo 30.4 · Semana 11 · jan/2027 |
+| [.NET Aspire](#aspire) | Local | Sobe o sistema inteiro no dev com painel próprio. | passo 33.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
 
 <a id="sentry"></a>
 
@@ -94,7 +94,7 @@ flowchart LR
 
 Avisa quando um erro acontece em produção, com o ponto exato no código. Plano grátis para um dev.
 
-**Quando entra:** passo 32.4 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 33.4 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -109,7 +109,7 @@ Avisa quando um erro acontece em produção, com o ponto exato no código. Plano
 
 Verifica a cada minuto se os sites e APIs estão no ar e avisa no celular. Open source.
 
-**Quando entra:** passo 10.6 · Semana 4 · nov/2026; passo 23.5 · Dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 10.6 · Semana 4 · nov/2026; passo 24.5 · Dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -127,7 +127,7 @@ Verifica a cada minuto se os sites e APIs estão no ar e avisa no celular. Open 
 
 Visualizador de logs simples para começar, antes da stack Grafana.
 
-**Quando entra:** passo 32.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 33.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -141,7 +141,7 @@ Visualizador de logs simples para começar, antes da stack Grafana.
 
 Logs e rastreamento de requisições entre serviços, consultados no Grafana.
 
-**Quando entra:** passo 44.3 · 2028 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 45.3 · 2028 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -155,7 +155,7 @@ Logs e rastreamento de requisições entre serviços, consultados no Grafana.
 
 Coleta logs, métricas e traces da API.
 
-**Quando entra:** passo 32.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 33.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -171,7 +171,7 @@ Coleta logs, métricas e traces da API.
 
 Guarda as métricas.
 
-**Quando entra:** passo 32.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 33.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -186,7 +186,7 @@ Guarda as métricas.
 
 Painéis e alertas.
 
-**Quando entra:** passo 10.4 · Semana 4 · nov/2026; passo 29.4 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 10.4 · Semana 4 · nov/2026; passo 30.4 · Semana 11 · jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -207,7 +207,7 @@ Painéis e alertas.
 
 Sobe o sistema inteiro no dev com painel próprio.
 
-**Quando entra:** passo 32.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 33.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

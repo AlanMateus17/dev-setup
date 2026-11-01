@@ -10,3 +10,4 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-01: dados e crescimento, ferramentas do Akita (ai-memory 2.0, ai-usagebar, Strata para o futuro) e operação 24 h no roteiro. Regra: parar de adicionar áreas e executar até a primeira venda.
 - 2026-11-01: harumakis/congelados retirados do plano. Documentos da escola e TCC: verificador ABNT automático (próxima renda, 7ª) e conferência para escolas (fila).
 - 2026-11-01: passos que faltavam adicionados (revisão de fim de ano, robótica 41+, posts do setup, EBTT, Licenciatura). CONTINUAR.md completo. Próxima conversa começa pelo kp-organizar (senhas).
+- 2026-11-01: v2.0: roteador de agentes (primária, reserva e portão por tarefa) e esteira de sites (issue → Copilot → PR → prévia → aprovação → Hostinger). Auditoria em docs/recursos.md. OpenClaw só isolado na VM e depois da esteira entregar um site. Maior lacuna: verificação de professor no GitHub Education (ag-ghed).
