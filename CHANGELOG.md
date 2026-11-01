@@ -2,6 +2,16 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [1.18.0] - 2026-11-01
+
+### Adicionado
+- Arsenal de rendas no portfólio: 93 ofertas (46 novas), cada uma com perfil (passiva, ativa que vale a pena, ativa), % automático, veredito (agora, próxima, manter, fila, 2027, decidir, descartar) e o motivo.
+- Nota de facilidade (sinergia + demanda + (6 − esforço) + (6 − capital)) e ranking da mais fácil para a mais difícil.
+- Regras validadas no CI: hora mínima de R$ 45, teto de 7 horas extras por semana, no máximo 3 rendas em "agora" e ordem única para as próximas.
+- Marcas: AMtech Educação, Software, Digital, Campo (presencial por parceiros), Mídia e Patrimônio.
+- Radar de revenda (bloco novo): lê alertas de busca salvos, compara com o preço de referência e só avisa o que passa da hora mínima; nunca compra nem fala com vendedor.
+- Fase "Arsenal de rendas" no roteiro (nov/2026) e passos para a fila, os serviços de 2027, as rendas de capital alto e as de formação longa.
+
 ## [1.17.0] - 2026-10-31
 
 ### Adicionado

@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-34 fases, 253 passos, cerca de **1097 h 15 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+35 fases, 266 passos, cerca de **1107 h 20 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
-**Todo o planejamento está aqui:** os 326 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 47 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
+**Todo o planejamento está aqui:** os 327 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 93 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 168 dos 253 passos (172 h 35 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 177 dos 266 passos (180 h 40 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -25,29 +25,30 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [8 · Acervo: tudo o que você já tem](#f8) | Semanas 3 e 4 · nov/2026 | 7 | 4 h 55 min |
 | [9 · Claude e assistentes](#f9) | Semana 4 · nov/2026 | 4 | 1 h 45 min |
 | [10 · Automação e medição](#f10) | Semana 4 · nov/2026 | 8 | 1 h 42 min |
-| [11 · Pipeline de conteúdo](#f11) | Semana 5 · nov/2026 | 6 | 1 h 24 min |
-| [12 · Estúdio de conteúdo](#f12) | Semana 5 · dez/2026 | 5 | 3 h 20 min |
-| [13 · Contas, canais e sites](#f13) | Semanas 6 e 7 · dez/2026 | 13 | 9 h 00 min |
-| [14 · Vendas e finanças no CPF](#f14) | Semanas 8 a 10 · dez/2026 a jan/2027 | 20 | 12 h 10 min |
-| [15 · Vendas medidas](#f15) | Semana 11 · jan/2027 | 4 | 2 h 40 min |
-| [16 · Teste do núcleo](#f16) | Semana 11 · jan/2027 | 4 | 1 h 00 min |
-| [17 · Primeira venda: o mini-curso no ar](#f17) | Semanas 12 a 15 · jan a fev/2027 | 8 | 22 h 30 min |
-| [18 · Base dos sistemas AM](#f18) | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 | 8 | 7 h 40 min |
-| [19 · Nuvem e deploy](#f19) | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) | 7 | 6 h 15 min |
-| [20 · Editora](#f20) | Quando o capítulo 1 estiver pronto · **gatilho:** O capítulo 1 e o seu modelo de criação prontos | 11 | 18 h 30 min |
-| [21 · Dados, IA e pendrives](#f21) | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) | 12 | 16 h 20 min |
-| [22 · Mais ofertas, uma por vez](#f22) | Fev a dez/2027, uma oferta por vez · **gatilho:** A primeira venda do mini-curso aconteceu | 20 | 127 h 30 min |
-| [23 · Marketing pago e crescimento](#f23) | A partir de fev/2027 · **gatilho:** O mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar | 10 | 37 h 30 min |
-| [24 · Linux nativo e laboratório completo](#f24) | 2027, conforme cada compra | 6 | 18 h 00 min |
-| [25 · IA dentro dos sistemas AM](#f25) | Depois do Passo 9 e do IA0 da Trilha de Dados e IA (≈ 2028), junto do IA5 | 1 | 8 h 00 min |
-| [26 · Sistemas AM à venda](#f26) | 2027 · **gatilho:** O primeiro sistema AM pronto e testado com um cliente | 5 | 120 h 00 min |
-| [27 · CNPJ e formalização](#f27) | Quando a renda pedir · **gatilho:** A renda passou do valor de virada definido com o contador | 4 | 13 h 00 min |
-| [28 · Agentes do grupo](#f28) | Junto com o primeiro CNPJ · **gatilho:** Clientes e vendas recorrentes | 7 | 18 h 00 min |
-| [29 · Editora: depois do primeiro livro](#f29) | Depois do primeiro livro · **gatilho:** O primeiro livro publicado | 5 | 56 h 00 min |
-| [30 · Distribuído, plataforma e segunda nuvem](#f30) | 2028 | 6 | 69 h 00 min |
-| [31 · Infraestrutura própria](#f31) | 2028, quando o grupo pedir | 3 | 17 h 00 min |
-| [32 · Negócios do grupo em Barbacena](#f32) | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano · **gatilho:** Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta | 8 | 482 h 00 min |
-| [33 · Estudo contínuo](#f33) | Contínuo, desde a semana 2 | 4 | 1 h 25 min |
+| [11 · Arsenal de rendas: regras e as 3 de agora](#f-arsenal) | Semana 4 · nov/2026 | 8 | 7 h 50 min |
+| [12 · Pipeline de conteúdo](#f11) | Semana 5 · nov/2026 | 6 | 1 h 24 min |
+| [13 · Estúdio de conteúdo](#f12) | Semana 5 · dez/2026 | 5 | 3 h 20 min |
+| [14 · Contas, canais e sites](#f13) | Semanas 6 e 7 · dez/2026 | 13 | 9 h 00 min |
+| [15 · Vendas e finanças no CPF](#f14) | Semanas 8 a 10 · dez/2026 a jan/2027 | 20 | 12 h 10 min |
+| [16 · Vendas medidas](#f15) | Semana 11 · jan/2027 | 4 | 2 h 40 min |
+| [17 · Teste do núcleo](#f16) | Semana 11 · jan/2027 | 4 | 1 h 00 min |
+| [18 · Primeira venda: o mini-curso no ar](#f17) | Semanas 12 a 15 · jan a fev/2027 | 8 | 22 h 30 min |
+| [19 · Base dos sistemas AM](#f18) | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 | 8 | 7 h 40 min |
+| [20 · Nuvem e deploy](#f19) | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) | 7 | 6 h 15 min |
+| [21 · Editora](#f20) | Quando o capítulo 1 estiver pronto · **gatilho:** O capítulo 1 e o seu modelo de criação prontos | 11 | 18 h 30 min |
+| [22 · Dados, IA e pendrives](#f21) | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) | 12 | 16 h 20 min |
+| [23 · Mais ofertas, uma por vez](#f22) | Fev a dez/2027, uma oferta por vez · **gatilho:** A primeira venda do mini-curso aconteceu | 22 | 128 h 30 min |
+| [24 · Marketing pago e crescimento](#f23) | A partir de fev/2027 · **gatilho:** O mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar | 10 | 37 h 30 min |
+| [25 · Linux nativo e laboratório completo](#f24) | 2027, conforme cada compra | 6 | 18 h 00 min |
+| [26 · IA dentro dos sistemas AM](#f25) | Depois do Passo 9 e do IA0 da Trilha de Dados e IA (≈ 2028), junto do IA5 | 1 | 8 h 00 min |
+| [27 · Sistemas AM à venda](#f26) | 2027 · **gatilho:** O primeiro sistema AM pronto e testado com um cliente | 5 | 120 h 00 min |
+| [28 · CNPJ e formalização](#f27) | Quando a renda pedir · **gatilho:** A renda passou do valor de virada definido com o contador | 4 | 13 h 00 min |
+| [29 · Agentes do grupo](#f28) | Junto com o primeiro CNPJ · **gatilho:** Clientes e vendas recorrentes | 7 | 18 h 00 min |
+| [30 · Editora: depois do primeiro livro](#f29) | Depois do primeiro livro · **gatilho:** O primeiro livro publicado | 5 | 56 h 00 min |
+| [31 · Distribuído, plataforma e segunda nuvem](#f30) | 2028 | 6 | 69 h 00 min |
+| [32 · Infraestrutura própria](#f31) | 2028, quando o grupo pedir | 3 | 17 h 00 min |
+| [33 · Negócios do grupo em Barbacena](#f32) | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano · **gatilho:** Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta | 10 | 483 h 00 min |
+| [34 · Estudo contínuo](#f33) | Contínuo, desde a semana 2 | 5 | 1 h 40 min |
 
 <a id="f0"></a>
 
@@ -1045,15 +1046,97 @@ cd ~/dev/dev-setup && claude "Passo backup-banco do roteiro: Pôr o banco de mé
 - [ ] **Pronto quando:** Decisão anotada em infra/postiz/README.md
 - Implanta: Postiz (agendador)
 
+<a id="f-arsenal"></a>
+
+## 11 · Arsenal de rendas: regras e as 3 de agora
+
+Só 3 rendas ativas por vez, hora mínima de R$ 45, teto de 7 horas extras por semana e o resto em fila com portão.
+
+**Quando:** Semana 4 · nov/2026
+
+### 11.1 Confirmar a hora mínima (R$ 45) e o teto de 7 horas extras por semana
+
+**Você** · 15 min
+
+- **Fora do terminal:** Decisão sua. Se mudar o valor, peça ao Claude para trocar em data/portfolio.json.
+- [ ] **Pronto quando:** Valores confirmados em data/portfolio.json (regras)
+
+### 11.2 Pôr na Rotina o bloco de negócio (quinta 13h–16h30) e o de produção (sábado 9h30–12h30)
+
+**Você** · 10 min
+
+- **Fora do terminal:** A Rotina fica no Caixa da Casa (artefato), fora do terminal.
+- [ ] **Pronto quando:** Os dois blocos aparecem na Rotina do Caixa da Casa
+
+### 11.3 Cadastro e teste de entrada numa plataforma de avaliação de IA
+
+**Você** · 1 h 30 min
+
+- **Fora do terminal:** Cadastro no navegador. Nunca pague para entrar e nunca passe senha a ninguém.
+- [ ] **Pronto quando:** Teste de entrada feito
+- **Oferta:** Avaliação de respostas de IA (DataAnnotation, Outlier)
+
+### 11.4 Oferecer site com manutenção mensal a 5 comércios
+
+**Você** · 2 h 00 min
+
+- **Fora do terminal:** Venda é conversa com o cliente; o setup prepara a proposta e o contrato.
+- [ ] **Pronto quando:** 5 ofertas feitas e respostas anotadas no CRM
+- **Oferta:** Sites e lojas para pequenas empresas
+
+### 11.5 Criar as buscas salvas com alerta e ligar o radar de revenda
+
+**Claude com você** · 2 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/dev-setup && claude "Passo ar-radar do roteiro: Criar as buscas salvas com alerta e ligar o radar de revenda"
+```
+
+- [ ] **Pronto quando:** Radar avisa no Telegram só itens acima da hora mínima, com checklist antigolpe
+- Lê só a pasta de alertas do Gmail. Não raspa sites que proíbem coleta, não compra e não fala com vendedor.
+- **Oferta:** Notebooks e PCs: comprar, consertar e revender · Celulares: comprar, consertar e revender · Livros técnicos e didáticos usados · Peças de máquinas sucateadas (RAM, SSD, placas)
+- Implanta: Radar de revenda
+
+### 11.6 Retorno por hora de cada marca no painel
+
+**Claude com você** · 1 h 30 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/dev-setup && claude "Passo ar-retorno do roteiro: Retorno por hora de cada marca no painel"
+```
+
+- [ ] **Pronto quando:** O painel mostra R$ por hora sua de cada oferta ativa e marca as que ficaram abaixo da hora mínima
+- Implanta: Painel de lucro (Grafana)
+
+### 11.7 Conferir a fase da cascata antes de qualquer investimento
+
+**Você** · 10 min
+
+- **Fora do terminal:** Decisão financeira é sua; o Caixa da Casa mostra a fase.
+- [ ] **Pronto quando:** Fase atual anotada no Caixa da Casa
+- **Oferta:** Dividendos, FIIs e renda fixa (cascata e ARCA)
+
+### 11.8 Revisar os descartes uma vez por trimestre
+
+**Você** · 15 min
+
+- **Fora do terminal:** Revisão de decisão, fora do terminal.
+- [ ] **Pronto quando:** Revisão anotada; nenhum descarte volta sem motivo novo
+- **Oferta:** Modelos 3D e projetos Arduino para download · Sites de nicho com anúncios · Fotos e vídeos em bancos de imagens · Jogo educativo de lógica (itch.io e Steam) · Testes de software pagos por bug · Aplicador e fiscal de provas · Edição de vídeo para lojas e criadores · Fotos de produto para lojas do Mercado Livre
+
 <a id="f11"></a>
 
-## 11 · Pipeline de conteúdo
+## 12 · Pipeline de conteúdo
 
 Gravou ou escreveu, as peças aparecem na fila de aprovação.
 
 **Quando:** Semana 5 · nov/2026
 
-### 11.1 Preencher o guia de marca
+### 12.1 Preencher o guia de marca
 
 **Você** · 40 min
 
@@ -1067,7 +1150,7 @@ code ~/dev/dev-setup/config/marca.md
 - O Claude pode rascunhar a partir dos documentos de marca e presença; você corrige.
 - Implanta: Marca pessoal Alan Mateus
 
-### 11.2 Criar a chave da API no console da Anthropic e colocar no conteudo.env
+### 12.2 Criar a chave da API no console da Anthropic e colocar no conteudo.env
 
 **Você** · 10 min
 
@@ -1076,7 +1159,7 @@ code ~/dev/dev-setup/config/marca.md
 - A API é cobrada por uso, separada da assinatura do Claude. Defina um limite de gasto mensal no console.
 - Implanta: Claude (assinatura e API)
 
-### 11.3 Criar o bot de aviso no Telegram (opcional)
+### 12.3 Criar o bot de aviso no Telegram (opcional)
 
 **Você** · 10 min
 
@@ -1084,7 +1167,7 @@ code ~/dev/dev-setup/config/marca.md
 - [ ] **Pronto quando:** Mensagem de teste chega no celular
 - Implanta: Telegram (avisos) · Aprovação no celular
 
-### 11.4 Testar o caminho sem gastar
+### 12.4 Testar o caminho sem gastar
 
 **Script** · 2 min
 
@@ -1097,7 +1180,7 @@ echo teste > ~/AMtech/entrada/ideias/teste.txt && touch -d '-2 min' ~/AMtech/ent
 - [ ] **Pronto quando:** Uma pasta [SIMULADO] aparece em ~/AMtech/fila
 - Implanta: Pipeline de conteúdo
 
-### 11.5 Ligar o timer de 15 minutos
+### 12.5 Ligar o timer de 15 minutos
 
 **Script** · 2 min
 
@@ -1110,7 +1193,7 @@ bash scripts/wsl/ativar-pipeline.sh
 - [ ] **Pronto quando:** verificar.sh --servicos mostra o timer OK
 - Implanta: Pipeline de conteúdo · Agente editor de conteúdo · Flywheel de conteúdo
 
-### 11.6 Colocar uma aula gravada de verdade em ~/AMtech/entrada/aulas
+### 12.6 Colocar uma aula gravada de verdade em ~/AMtech/entrada/aulas
 
 **Você** · 20 min
 
@@ -1125,13 +1208,13 @@ cp /mnt/c/Users/SEU_USUARIO/Videos/NOME-DA-AULA.mp4 ~/AMtech/entrada/aulas/
 
 <a id="f12"></a>
 
-## 12 · Estúdio de conteúdo
+## 13 · Estúdio de conteúdo
 
 Gravar, editar e montar imagens no mesmo padrão toda semana, sem pensar.
 
 **Quando:** Semana 5 · dez/2026
 
-### 12.1 Montar no OBS as cenas de aula, tela com rosto e vídeo vertical
+### 13.1 Montar no OBS as cenas de aula, tela com rosto e vídeo vertical
 
 **Você** · 40 min
 
@@ -1139,7 +1222,7 @@ Gravar, editar e montar imagens no mesmo padrão toda semana, sem pensar.
 - [ ] **Pronto quando:** Gravação de teste de 1 minuto com áudio limpo nas três cenas
 - Implanta: OBS Studio
 
-### 12.2 Criar no Audacity a cadeia de limpeza da sua voz (ruído, compressor, volume)
+### 13.2 Criar no Audacity a cadeia de limpeza da sua voz (ruído, compressor, volume)
 
 **Você** · 20 min
 
@@ -1147,7 +1230,7 @@ Gravar, editar e montar imagens no mesmo padrão toda semana, sem pensar.
 - [ ] **Pronto quando:** A mesma limpeza aplicada com um clique numa gravação nova
 - Implanta: Audacity
 
-### 12.3 Criar no DaVinci ou Kdenlive o projeto modelo com abertura, legendas e formato vertical
+### 13.3 Criar no DaVinci ou Kdenlive o projeto modelo com abertura, legendas e formato vertical
 
 **Você** · 40 min
 
@@ -1155,7 +1238,7 @@ Gravar, editar e montar imagens no mesmo padrão toda semana, sem pensar.
 - [ ] **Pronto quando:** Um corte de 30 segundos exportado a partir do modelo
 - Implanta: DaVinci Resolve ou Kdenlive
 
-### 12.4 Criar os modelos de capa, carrossel e thumbnail com a sua marca (Canva, Krita ou Inkscape)
+### 13.4 Criar os modelos de capa, carrossel e thumbnail com a sua marca (Canva, Krita ou Inkscape)
 
 **Claude com você** · 40 min
 
@@ -1169,7 +1252,7 @@ cd ~/dev/dev-setup && claude "Passo imagens-modelos do roteiro: Criar os modelos
 - O Claude cria os modelos no Canva pelo conector, a partir do config/marca.md.
 - Implanta: Canva · Krita · Inkscape · Conectores Canva + Figma
 
-### 12.5 Clonar a sua própria voz na ElevenLabs (opcional, plano pago)
+### 13.5 Clonar a sua própria voz na ElevenLabs (opcional, plano pago)
 
 **Você** · 1 h 00 min
 
@@ -1181,13 +1264,13 @@ cd ~/dev/dev-setup && claude "Passo imagens-modelos do roteiro: Criar os modelos
 
 <a id="f13"></a>
 
-## 13 · Contas, canais e sites
+## 14 · Contas, canais e sites
 
 Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 
 **Quando:** Semanas 6 e 7 · dez/2026
 
-### 13.1 Completar Instagram, YouTube, TikTok, LinkedIn e Facebook com a mesma identidade
+### 14.1 Completar Instagram, YouTube, TikTok, LinkedIn e Facebook com a mesma identidade
 
 **Você** · 1 h 30 min
 
@@ -1195,7 +1278,7 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 - [ ] **Pronto quando:** Foto, nome, bio e link iguais nas cinco redes
 - Implanta: Instagram · YouTube · TikTok · LinkedIn · Facebook · Marca pessoal Alan Mateus
 
-### 13.2 Configurar o WhatsApp Business com catálogo, respostas rápidas e horário
+### 14.2 Configurar o WhatsApp Business com catálogo, respostas rápidas e horário
 
 **Você** · 30 min
 
@@ -1203,7 +1286,7 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 - [ ] **Pronto quando:** Mensagem de teste recebe a saudação automática
 - Implanta: WhatsApp Business
 
-### 13.3 Registrar o domínio no Registro.br e apontar para a Cloudflare
+### 14.3 Registrar o domínio no Registro.br e apontar para a Cloudflare
 
 **Você** · 30 min
 
@@ -1212,7 +1295,7 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 - **Precisa:** pagar um serviço
 - Implanta: Domínio (Registro.br) · Cloudflare (DNS, Pages, e-mail)
 
-### 13.4 Criar o e-mail profissional do domínio
+### 14.4 Criar o e-mail profissional do domínio
 
 **Você** · 30 min
 
@@ -1221,7 +1304,7 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 - **Precisa:** pagar um serviço
 - Implanta: E-mail profissional (enviar e receber)
 
-### 13.5 Criar o Gerenciador de Negócios da Meta, o Pixel e a conta de anúncios
+### 14.5 Criar o Gerenciador de Negócios da Meta, o Pixel e a conta de anúncios
 
 **Você** · 40 min
 
@@ -1229,7 +1312,7 @@ Perfis, domínio, e-mail e sites prontos para receber o que o pipeline produz.
 - [ ] **Pronto quando:** Pixel instalado na página de vendas
 - Implanta: Meta Business Suite · Tags de conversão (Pixel, Google…)
 
-### 13.6 Montar no MailerLite os grupos, o formulário da isca e a sequência de boas-vindas
+### 14.6 Montar no MailerLite os grupos, o formulário da isca e a sequência de boas-vindas
 
 **Claude com você** · 30 min
 
@@ -1243,7 +1326,7 @@ cd ~/dev/dev-setup && claude "Passo mailerlite do roteiro: Montar no MailerLite 
 - O Claude faz pelo conector do MailerLite, com a sua aprovação.
 - Implanta: MailerLite · Isca grátis + sequência de e-mails · Conector MailerLite
 
-### 13.7 Publicar o site pessoal e blog no GitHub Pages (alanmateus17.github.io)
+### 14.7 Publicar o site pessoal e blog no GitHub Pages (alanmateus17.github.io)
 
 **Claude com você** · 1 h 00 min
 
@@ -1256,7 +1339,7 @@ cd ~/dev/dev-setup && claude "Passo site-pessoal do roteiro: Publicar o site pes
 - [ ] **Pronto quando:** Site no ar com portfólio, blog e formulário da newsletter
 - Implanta: Site pessoal + blog (Jekyll) · GitHub Pages
 
-### 13.8 Publicar o site do Instituto AMS com a página de pré-venda na Cloudflare Pages
+### 14.8 Publicar o site do Instituto AMS com a página de pré-venda na Cloudflare Pages
 
 **Claude com você** · 1 h 00 min
 
@@ -1270,7 +1353,7 @@ cd ~/dev/dev-setup && claude "Passo vercel-pagina do roteiro: Publicar o site do
 - Fica na Cloudflare Pages porque o plano grátis do Vercel não permite uso comercial. O Claude publica pelo conector da Cloudflare ou pelo Wrangler.
 - Implanta: Instituto AMS · Cloudflare (DNS, Pages, e-mail)
 
-### 13.9 Publicar o site do Grupo AMtech e o Catálogo do HTML
+### 14.9 Publicar o site do Grupo AMtech e o Catálogo do HTML
 
 **Claude com você** · 1 h 30 min
 
@@ -1284,7 +1367,7 @@ cd ~/dev/dev-setup && claude "Passo site-grupo do roteiro: Publicar o site do Gr
 - **Oferta:** Catálogo do HTML (gratuito)
 - Implanta: Site Grupo AMtech · Catálogo do HTML
 
-### 13.10 Mostrar o Catálogo do HTML aos alunos e ex-alunos
+### 14.10 Mostrar o Catálogo do HTML aos alunos e ex-alunos
 
 **Você** · 20 min
 
@@ -1293,7 +1376,7 @@ cd ~/dev/dev-setup && claude "Passo site-grupo do roteiro: Publicar o site do Gr
 - É material grátis da escola, não venda. Nada de oferecer produto pago a aluno menor de idade; ex-alunos adultos podem seguir as redes.
 - Implanta: Alunos e ex-alunos
 
-### 13.11 Ligar o Umami nos sites
+### 14.11 Ligar o Umami nos sites
 
 **Claude com você** · 20 min
 
@@ -1306,7 +1389,7 @@ cd ~/dev/dev-setup && claude "Passo umami do roteiro: Ligar o Umami nos sites"
 - [ ] **Pronto quando:** Uma visita de teste aparece no painel do Umami
 - Implanta: Umami (analytics)
 
-### 13.12 Ligar o Google Search Console no domínio e enviar o sitemap de cada site
+### 14.12 Ligar o Google Search Console no domínio e enviar o sitemap de cada site
 
 **Você** · 10 min
 
@@ -1314,7 +1397,7 @@ cd ~/dev/dev-setup && claude "Passo umami do roteiro: Ligar o Umami nos sites"
 - [ ] **Pronto quando:** Propriedade verificada e sitemaps lidos
 - Implanta: Google Search Console · Busca Google (SEO)
 
-### 13.13 Separar na Hostinger o espaço dos sites de clientes
+### 14.13 Separar na Hostinger o espaço dos sites de clientes
 
 **Claude com você** · 30 min
 
@@ -1331,13 +1414,13 @@ cd ~/dev/dev-setup && claude "Passo hostinger do roteiro: Separar na Hostinger o
 
 <a id="f14"></a>
 
-## 14 · Vendas e finanças no CPF
+## 15 · Vendas e finanças no CPF
 
 Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 
 **Quando:** Semanas 8 a 10 · dez/2026 a jan/2027
 
-### 14.1 Subir a conta gov.br para prata ou ouro
+### 15.1 Subir a conta gov.br para prata ou ouro
 
 **Você** · 20 min
 
@@ -1345,7 +1428,7 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 - [ ] **Pronto quando:** Nível prata ou ouro aparece no app gov.br
 - Implanta: gov.br (prata ou ouro)
 
-### 14.2 Abrir a conta bancária separada para o que você vende (no CPF)
+### 15.2 Abrir a conta bancária separada para o que você vende (no CPF)
 
 **Você** · 30 min
 
@@ -1353,7 +1436,7 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 - [ ] **Pronto quando:** Conta aberta; todas as plataformas vão pagar nela
 - Implanta: Conta bancária separada (CPF)
 
-### 14.3 Fazer a consulta com o contador: carnê-leão e a partir de que renda abrir CNPJ
+### 15.3 Fazer a consulta com o contador: carnê-leão e a partir de que renda abrir CNPJ
 
 **Você** · 1 h 00 min
 
@@ -1362,7 +1445,7 @@ Cada oferta pode ser vendida, recebida e declarada do jeito certo.
 - **Precisa:** pagar um serviço
 - Implanta: Contador
 
-### 14.4 Publicar termos de uso e política de privacidade (LGPD) e ter o contrato padrão de serviço
+### 15.4 Publicar termos de uso e política de privacidade (LGPD) e ter o contrato padrão de serviço
 
 **Claude com você** · 1 h 00 min
 
@@ -1376,7 +1459,7 @@ cd ~/dev/dev-setup && claude "Passo legal do roteiro: Publicar termos de uso e p
 - O Claude rascunha; antes de usar, peça para o contador ou um advogado revisar. Isto vem antes de coletar e-mail ou vender.
 - Implanta: Termos, privacidade (LGPD) e contratos
 
-### 14.5 Criar as contas da Hotmart e da Kiwify no CPF e cadastrar o mini-curso
+### 15.5 Criar as contas da Hotmart e da Kiwify no CPF e cadastrar o mini-curso
 
 **Você** · 1 h 00 min
 
@@ -1384,7 +1467,7 @@ cd ~/dev/dev-setup && claude "Passo legal do roteiro: Publicar termos de uso e p
 - [ ] **Pronto quando:** Produto em rascunho nas duas
 - Implanta: Hotmart · Kiwify · Mini-curso Lógica de Programação
 
-### 14.6 Abrir as contas na Eduzz e na Udemy e publicar artigos e projetos na DIO
+### 15.6 Abrir as contas na Eduzz e na Udemy e publicar artigos e projetos na DIO
 
 **Você** · 1 h 00 min
 
@@ -1394,7 +1477,7 @@ cd ~/dev/dev-setup && claude "Passo legal do roteiro: Publicar termos de uso e p
 - **Oferta:** Parceria DIO
 - Implanta: Eduzz · Udemy · DIO (parceria)
 
-### 14.7 Ativar o Mercado Pago para Pix e cartão das aulas e dos sites
+### 15.7 Ativar o Mercado Pago para Pix e cartão das aulas e dos sites
 
 **Você** · 20 min
 
@@ -1402,7 +1485,7 @@ cd ~/dev/dev-setup && claude "Passo legal do roteiro: Publicar termos de uso e p
 - [ ] **Pronto quando:** Link de pagamento de teste pago e estornado
 - Implanta: Mercado Pago
 
-### 14.8 Criar a agenda online no Cal.com com pagamento para as aulas particulares
+### 15.8 Criar a agenda online no Cal.com com pagamento para as aulas particulares
 
 **Você** · 30 min
 
@@ -1411,7 +1494,7 @@ cd ~/dev/dev-setup && claude "Passo legal do roteiro: Publicar termos de uso e p
 - **Oferta:** Aulas particulares
 - Implanta: Agenda online (Cal.com) · Aulas particulares
 
-### 14.9 Criar o CRM em planilha com origem e consentimento de cada cliente
+### 15.9 Criar o CRM em planilha com origem e consentimento de cada cliente
 
 **Claude com você** · 30 min
 
@@ -1424,7 +1507,7 @@ cd ~/dev/dev-setup && claude "Passo crm do roteiro: Criar o CRM em planilha com 
 - [ ] **Pronto quando:** Planilha com colunas de oferta, origem, consentimento LGPD e próximo passo
 - Implanta: CRM simples (planilha) · CRM único + LGPD
 
-### 14.10 Abrir a comunidade dos alunos (Discord ou grupo)
+### 15.10 Abrir a comunidade dos alunos (Discord ou grupo)
 
 **Você** · 30 min
 
@@ -1432,7 +1515,7 @@ cd ~/dev/dev-setup && claude "Passo crm do roteiro: Criar o CRM em planilha com 
 - [ ] **Pronto quando:** Regras publicadas e convite automático na compra
 - Implanta: Comunidade (Discord ou grupo)
 
-### 14.11 Entrar nos programas de afiliados (Amazon, Hotmart) e criar a lista de links
+### 15.11 Entrar nos programas de afiliados (Amazon, Hotmart) e criar a lista de links
 
 **Você** · 30 min
 
@@ -1441,7 +1524,7 @@ cd ~/dev/dev-setup && claude "Passo crm do roteiro: Criar o CRM em planilha com 
 - **Oferta:** Afiliados (ferramentas, livros, equipamentos que você usa)
 - Implanta: Afiliados (Amazon, Hotmart…)
 
-### 14.12 Adotar o padrão de UTM em todo link
+### 15.12 Adotar o padrão de UTM em todo link
 
 **Claude com você** · 15 min
 
@@ -1454,7 +1537,7 @@ cd ~/dev/dev-setup && claude "Passo utm do roteiro: Adotar o padrão de UTM em t
 - [ ] **Pronto quando:** Gerador de links com UTM salvo e usado no primeiro post
 - Implanta: Padrão de UTM
 
-### 14.13 Calcular o lucro por venda de cada oferta e definir as regras de corte dos anúncios
+### 15.13 Calcular o lucro por venda de cada oferta e definir as regras de corte dos anúncios
 
 **Você** · 30 min
 
@@ -1462,7 +1545,7 @@ cd ~/dev/dev-setup && claude "Passo utm do roteiro: Adotar o padrão de UTM em t
 - [ ] **Pronto quando:** CPA de empate e CPA da margem anotados para cada oferta ativa
 - Implanta: Lucro por Venda (calculadora) · Regras de corte
 
-### 14.14 Revisar o portfólio de ofertas: estágio, próximo passo e padrão de qualidade
+### 15.14 Revisar o portfólio de ofertas: estágio, próximo passo e padrão de qualidade
 
 **Claude com você** · 45 min
 
@@ -1476,7 +1559,7 @@ cd ~/dev/dev-setup && claude "Passo ofertas do roteiro: Revisar o portfólio de 
 - O Claude cria o comando /revisar-oferta, que confere um lançamento contra o padrão de qualidade antes de ir ao ar.
 - Implanta: Portfólio de ofertas · Esteira de ofertas · Padrão de qualidade · Revisor de oferta
 
-### 14.15 Ligar a pergunta de satisfação depois de cada compra ou serviço e o pedido de avaliação no Google
+### 15.15 Ligar a pergunta de satisfação depois de cada compra ou serviço e o pedido de avaliação no Google
 
 **Claude com você** · 30 min
 
@@ -1489,7 +1572,7 @@ cd ~/dev/dev-setup && claude "Passo avaliacoes do roteiro: Ligar a pergunta de s
 - [ ] **Pronto quando:** Compra de teste recebe a pergunta por e-mail
 - Implanta: NPS e avaliações
 
-### 14.16 Montar a lista de parceiros e a primeira mensagem de prospecção
+### 15.16 Montar a lista de parceiros e a primeira mensagem de prospecção
 
 **Claude com você** · 45 min
 
@@ -1503,7 +1586,7 @@ cd ~/dev/dev-setup && claude "Passo prospeccao do roteiro: Montar a lista de par
 - O Claude busca e qualifica; quem envia é você.
 - Implanta: Prospecção de parceiros
 
-### 14.17 Pesquisar e pedir o registro das marcas no INPI
+### 15.17 Pesquisar e pedir o registro das marcas no INPI
 
 **Você** · 1 h 00 min
 
@@ -1512,7 +1595,7 @@ cd ~/dev/dev-setup && claude "Passo prospeccao do roteiro: Montar a lista de par
 - **Precisa:** pagar um serviço
 - Implanta: Registro de marca (INPI)
 
-### 14.18 Fazer o primeiro carnê-leão do mês e marcar o lembrete mensal
+### 15.18 Fazer o primeiro carnê-leão do mês e marcar o lembrete mensal
 
 **Você** · 30 min
 
@@ -1520,7 +1603,7 @@ cd ~/dev/dev-setup && claude "Passo prospeccao do roteiro: Montar a lista de par
 - [ ] **Pronto quando:** DARF gerado (ou mês sem receita registrado) e lembrete todo dia 20
 - Implanta: Carnê-leão (Receita Federal)
 
-### 14.19 Separar a pasta da declaração anual do IR
+### 15.19 Separar a pasta da declaração anual do IR
 
 **Você** · 15 min
 
@@ -1528,7 +1611,7 @@ cd ~/dev/dev-setup && claude "Passo prospeccao do roteiro: Montar a lista de par
 - [ ] **Pronto quando:** Pasta com informes e carnês do ano, guardada no backup
 - Implanta: Declaração anual do IR
 
-### 14.20 Começar o Caixa da Casa numa planilha até o sistema AM Rendara existir
+### 15.20 Começar o Caixa da Casa numa planilha até o sistema AM Rendara existir
 
 **Claude com você** · 30 min
 
@@ -1544,13 +1627,13 @@ cd ~/dev/dev-setup && claude "Passo caixa do roteiro: Começar o Caixa da Casa n
 
 <a id="f15"></a>
 
-## 15 · Vendas medidas
+## 16 · Vendas medidas
 
 Cada venda chega sozinha ao banco e aparece no painel de lucro.
 
 **Quando:** Semana 11 · jan/2027
 
-### 15.1 Criar o túnel público para os webhooks (Cloudflare Tunnel) e preencher N8N_WEBHOOK_URL
+### 16.1 Criar o túnel público para os webhooks (Cloudflare Tunnel) e preencher N8N_WEBHOOK_URL
 
 **Você** · 40 min
 
@@ -1565,7 +1648,7 @@ curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloud
 - **Precisa:** pagar um serviço
 - Implanta: Cloudflare (DNS, Pages, e-mail) · Webhooks de venda
 
-### 15.2 Criar no n8n o fluxo: webhook Hotmart, Kiwify e Eduzz → tabela vendas
+### 16.2 Criar no n8n o fluxo: webhook Hotmart, Kiwify e Eduzz → tabela vendas
 
 **Claude com você** · 1 h 00 min
 
@@ -1579,7 +1662,7 @@ cd ~/dev/dev-setup && claude "Passo fluxo-vendas do roteiro: Criar no n8n o flux
 - O Claude monta o fluxo com você no n8n; a tabela já tem a trava contra venda duplicada.
 - Implanta: Webhooks de venda
 
-### 15.3 Lançar os gastos de anúncio (manual no começo, depois pela API de cada rede)
+### 16.3 Lançar os gastos de anúncio (manual no começo, depois pela API de cada rede)
 
 **Você** · 15 min
 
@@ -1587,7 +1670,7 @@ cd ~/dev/dev-setup && claude "Passo fluxo-vendas do roteiro: Criar no n8n o flux
 - [ ] **Pronto quando:** Tabela gastos com a primeira campanha
 - Implanta: Banco de métricas (PostgreSQL)
 
-### 15.4 Montar o painel de lucro no Grafana sobre a view lucro_por_produto_mes
+### 16.4 Montar o painel de lucro no Grafana sobre a view lucro_por_produto_mes
 
 **Claude com você** · 45 min
 
@@ -1602,13 +1685,13 @@ cd ~/dev/dev-setup && claude "Passo painel-lucro do roteiro: Montar o painel de 
 
 <a id="f16"></a>
 
-## 16 · Teste do núcleo
+## 17 · Teste do núcleo
 
 Os três testes de ponta a ponta passam: daqui em diante, alimentar o sistema já faz tudo sozinho.
 
 **Quando:** Semana 11 · jan/2027
 
-### 16.1 Dev: mudar algo num repositório, commit assinado, push, CI verde
+### 17.1 Dev: mudar algo num repositório, commit assinado, push, CI verde
 
 **Você** · 15 min
 
@@ -1621,7 +1704,7 @@ cd ~/dev/dev-setup && git commit --allow-empty -S -m 'teste: commit assinado' &&
 - [ ] **Pronto quando:** Selo Verified no commit e CI verde
 - Implanta: Commits assinados (chave SSH) · GitHub Actions
 
-### 16.2 Conteúdo: arquivo na entrada → peças na fila → aviso no Telegram
+### 17.2 Conteúdo: arquivo na entrada → peças na fila → aviso no Telegram
 
 **Você** · 20 min
 
@@ -1629,7 +1712,7 @@ cd ~/dev/dev-setup && git commit --allow-empty -S -m 'teste: commit assinado' &&
 - [ ] **Pronto quando:** Pasta nova na fila e mensagem no celular
 - Implanta: Pipeline de conteúdo
 
-### 16.3 Venda: compra de teste na Hotmart → linha na tabela vendas → painel de lucro
+### 17.3 Venda: compra de teste na Hotmart → linha na tabela vendas → painel de lucro
 
 **Você** · 20 min
 
@@ -1637,7 +1720,7 @@ cd ~/dev/dev-setup && git commit --allow-empty -S -m 'teste: commit assinado' &&
 - [ ] **Pronto quando:** Venda de teste no Grafana
 - Implanta: Webhooks de venda · Painel de lucro (Grafana)
 
-### 16.4 Rodar os três verificadores juntos
+### 17.4 Rodar os três verificadores juntos
 
 **Script** · 5 min
 
@@ -1652,13 +1735,13 @@ bash ~/dev/dev-setup/scripts/wsl/verificar.sh && bash ~/dev/dev-setup/scripts/ws
 
 <a id="f17"></a>
 
-## 17 · Primeira venda: o mini-curso no ar
+## 18 · Primeira venda: o mini-curso no ar
 
 A primeira venda real pela internet, com entrega, suporte, imposto e números no painel.
 
 **Quando:** Semanas 12 a 15 · jan a fev/2027
 
-### 17.1 Fechar o roteiro das 5 primeiras aulas do mini-curso a partir do acervo
+### 18.1 Fechar o roteiro das 5 primeiras aulas do mini-curso a partir do acervo
 
 **Claude com você** · 2 h 00 min
 
@@ -1672,7 +1755,7 @@ cd ~/dev/dev-setup && claude "Passo mc-roteiro do roteiro: Fechar o roteiro das 
 - **Oferta:** Mini-curso Lógica de Programação
 - Implanta: Mini-curso Lógica de Programação
 
-### 17.2 Gravar e editar as 5 aulas
+### 18.2 Gravar e editar as 5 aulas
 
 **Você** · 10 h 00 min
 
@@ -1681,7 +1764,7 @@ cd ~/dev/dev-setup && claude "Passo mc-roteiro do roteiro: Fechar o roteiro das 
 - **Oferta:** Mini-curso Lógica de Programação
 - Implanta: OBS Studio · DaVinci Resolve ou Kdenlive
 
-### 17.3 Subir as aulas na Hotmart com preço e garantia de 7 dias
+### 18.3 Subir as aulas na Hotmart com preço e garantia de 7 dias
 
 **Você** · 2 h 00 min
 
@@ -1691,7 +1774,7 @@ cd ~/dev/dev-setup && claude "Passo mc-roteiro do roteiro: Fechar o roteiro das 
 - **Oferta:** Mini-curso Lógica de Programação
 - Implanta: Hotmart
 
-### 17.4 Página de vendas no Instituto AMS: promessa, conteúdo, preço e garantia
+### 18.4 Página de vendas no Instituto AMS: promessa, conteúdo, preço e garantia
 
 **Claude com você** · 2 h 00 min
 
@@ -1706,7 +1789,7 @@ cd ~/dev/dev-setup && claude "Passo mc-pagina do roteiro: Página de vendas no I
 - **Oferta:** Mini-curso Lógica de Programação
 - Implanta: Instituto AMS · Tags de conversão (Pixel, Google…) · Padrão de UTM
 
-### 17.5 Isca grátis (aula 1) com a sequência de e-mails que leva à venda
+### 18.5 Isca grátis (aula 1) com a sequência de e-mails que leva à venda
 
 **Claude com você** · 1 h 30 min
 
@@ -1720,7 +1803,7 @@ cd ~/dev/dev-setup && claude "Passo mc-isca do roteiro: Isca grátis (aula 1) co
 - **Oferta:** Mini-curso Lógica de Programação · Newsletter (patrocínio e vendas)
 - Implanta: Isca grátis + sequência de e-mails · MailerLite
 
-### 17.6 Abrir a pré-venda: lista de e-mail, Instagram, WhatsApp e LinkedIn
+### 18.6 Abrir a pré-venda: lista de e-mail, Instagram, WhatsApp e LinkedIn
 
 **Você** · 2 h 00 min
 
@@ -1729,7 +1812,7 @@ cd ~/dev/dev-setup && claude "Passo mc-isca do roteiro: Isca grátis (aula 1) co
 - **Oferta:** Mini-curso Lógica de Programação
 - Implanta: Instagram · WhatsApp Business · LinkedIn
 
-### 17.7 Primeira venda real: acesso, suporte, painel e carnê-leão
+### 18.7 Primeira venda real: acesso, suporte, painel e carnê-leão
 
 **Você** · 1 h 00 min
 
@@ -1738,7 +1821,7 @@ cd ~/dev/dev-setup && claude "Passo mc-isca do roteiro: Isca grátis (aula 1) co
 - **Oferta:** Mini-curso Lógica de Programação
 - Implanta: Hotmart · Webhooks de venda · Carnê-leão (Receita Federal)
 
-### 17.8 Publicar o mini-curso também na Kiwify, Eduzz e Udemy
+### 18.8 Publicar o mini-curso também na Kiwify, Eduzz e Udemy
 
 **Você** · 2 h 00 min
 
@@ -1749,13 +1832,13 @@ cd ~/dev/dev-setup && claude "Passo mc-isca do roteiro: Isca grátis (aula 1) co
 
 <a id="f18"></a>
 
-## 18 · Base dos sistemas AM
+## 19 · Base dos sistemas AM
 
 Um sistema novo nasce pronto: arquitetura, testes, login, observabilidade e deploy.
 
 **Quando:** Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6
 
-### 18.1 Gerar o modelo de sistema com /novo-sistema-aura
+### 19.1 Gerar o modelo de sistema com /novo-sistema-aura
 
 **Claude com você** · 2 h 00 min
 
@@ -1769,7 +1852,7 @@ cd ~/dev/dev-setup && claude "Passo template-aura do roteiro: Gerar o modelo de 
 - Clean Architecture + DDD, EF Core com Npgsql, multi-tenant com RLS, SignalR com Redis, OpenAPI com Scalar, Next.js com o Aura Design System e Storybook, testes com xUnit, Playwright e k6.
 - Implanta: Clean Arch + DDD · EF Core + Npgsql · SignalR · Multi-tenant (RLS) · API ASP.NET Core · Next.js + Aura Design System · OpenAPI + Scalar · Storybook · PostgreSQL · Redis · Testes: xUnit, Playwright, k6
 
-### 18.2 Ligar o login: Keycloak no dev e Entra ID na nuvem
+### 19.2 Ligar o login: Keycloak no dev e Entra ID na nuvem
 
 **Claude com você** · 1 h 00 min
 
@@ -1782,7 +1865,7 @@ cd ~/dev/dev-setup && claude "Passo auth do roteiro: Ligar o login: Keycloak no 
 - [ ] **Pronto quando:** Usuário de teste entra e só vê os dados da própria empresa
 - Implanta: Keycloak / Entra ID
 
-### 18.3 Ligar a observabilidade do dev: .NET Aspire, OpenTelemetry, Prometheus, Seq, Mailpit e Caddy
+### 19.3 Ligar a observabilidade do dev: .NET Aspire, OpenTelemetry, Prometheus, Seq, Mailpit e Caddy
 
 **Claude com você** · 1 h 00 min
 
@@ -1795,7 +1878,7 @@ cd ~/dev/dev-setup && claude "Passo observabilidade-dev do roteiro: Ligar a obse
 - [ ] **Pronto quando:** Painel do Aspire mostra trace de uma requisição; e-mail de teste cai no Mailpit
 - Implanta: .NET Aspire · OpenTelemetry · Prometheus · Seq (logs) · Mailpit · Caddy (proxy + HTTPS)
 
-### 18.4 Criar o projeto no Sentry e ligar no modelo
+### 19.4 Criar o projeto no Sentry e ligar no modelo
 
 **Você** · 20 min
 
@@ -1803,7 +1886,7 @@ cd ~/dev/dev-setup && claude "Passo observabilidade-dev do roteiro: Ligar a obse
 - [ ] **Pronto quando:** Erro de teste aparece no Sentry
 - Implanta: Sentry (erros)
 
-### 18.5 Ligar o SonarQube Cloud no repositório do modelo
+### 19.5 Ligar o SonarQube Cloud no repositório do modelo
 
 **Você** · 20 min
 
@@ -1812,7 +1895,7 @@ cd ~/dev/dev-setup && claude "Passo observabilidade-dev do roteiro: Ligar a obse
 - O plano grátis cobre repositório público; confira o limite para privado antes de ligar.
 - Implanta: SonarQube Cloud
 
-### 18.6 Publicar a imagem Docker da API no GHCR pelo CI
+### 19.6 Publicar a imagem Docker da API no GHCR pelo CI
 
 **Claude com você** · 30 min
 
@@ -1825,7 +1908,7 @@ cd ~/dev/dev-setup && claude "Passo ghcr do roteiro: Publicar a imagem Docker da
 - [ ] **Pronto quando:** Imagem com a tag do commit aparece nos pacotes do GitHub
 - Implanta: GHCR (imagens)
 
-### 18.7 Separar o que do modelo pode virar template à venda
+### 19.7 Separar o que do modelo pode virar template à venda
 
 **Você** · 30 min
 
@@ -1834,7 +1917,7 @@ cd ~/dev/dev-setup && claude "Passo ghcr do roteiro: Publicar a imagem Docker da
 - **Oferta:** Templates e código-fonte
 - Implanta: Templates e código-fonte
 
-### 18.8 Candidatar-se às vagas de dev .NET com GitHub, LinkedIn e site prontos — quando o Passo 8 da trilha de estudo estiver feito (≈ jul a dez/2027)
+### 19.8 Candidatar-se às vagas de dev .NET com GitHub, LinkedIn e site prontos — quando o Passo 8 da trilha de estudo estiver feito (≈ jul a dez/2027)
 
 **Você** · 2 h 00 min
 
@@ -1844,13 +1927,13 @@ cd ~/dev/dev-setup && claude "Passo ghcr do roteiro: Publicar a imagem Docker da
 
 <a id="f19"></a>
 
-## 19 · Nuvem e deploy
+## 20 · Nuvem e deploy
 
 As contas de nuvem criadas por código, com custo sob controle.
 
 **Quando:** Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028)
 
-### 19.1 Instalar Azure CLI, Terraform, Vercel CLI e Wrangler
+### 20.1 Instalar Azure CLI, Terraform, Vercel CLI e Wrangler
 
 **Script** · 15 min
 
@@ -1863,7 +1946,7 @@ bash scripts/wsl/nuvem.sh
 - [ ] **Pronto quando:** Termina com 'Pronto'; verificar.sh mostra as quatro ferramentas
 - Implanta: Azure CLI · AWS CLI · Terraform
 
-### 19.2 Criar a conta Azure com alerta de orçamento
+### 20.2 Criar a conta Azure com alerta de orçamento
 
 **Você** · 30 min
 
@@ -1878,7 +1961,7 @@ az login && az account show
 - Ligue o alerta antes de criar qualquer recurso. O Microsoft Learn do conector ajuda a escolher o serviço mais barato.
 - Implanta: Azure
 
-### 19.3 Criar com Terraform o grupo de recursos, o banco e o Key Vault do primeiro sistema
+### 20.3 Criar com Terraform o grupo de recursos, o banco e o Key Vault do primeiro sistema
 
 **Claude com você** · 1 h 30 min
 
@@ -1891,7 +1974,7 @@ cd ~/dev/dev-setup && claude "Passo terraform-base do roteiro: Criar com Terrafo
 - [ ] **Pronto quando:** 'terraform plan' sem diferenças depois do apply
 - Implanta: Terraform · Azure
 
-### 19.4 Criar o armazenamento de arquivos (R2 da Cloudflare ou Blob)
+### 20.4 Criar o armazenamento de arquivos (R2 da Cloudflare ou Blob)
 
 **Claude com você** · 30 min
 
@@ -1904,7 +1987,7 @@ cd ~/dev/dev-setup && claude "Passo arquivos-nuvem do roteiro: Criar o armazenam
 - [ ] **Pronto quando:** Upload de teste pelo sistema exemplo
 - Implanta: Armazenamento de arquivos (Blob/R2)
 
-### 19.5 Configurar o e-mail transacional (Resend) com o domínio verificado
+### 20.5 Configurar o e-mail transacional (Resend) com o domínio verificado
 
 **Você** · 30 min
 
@@ -1912,7 +1995,7 @@ cd ~/dev/dev-setup && claude "Passo arquivos-nuvem do roteiro: Criar o armazenam
 - [ ] **Pronto quando:** E-mail de confirmação de conta chega na caixa de entrada, não no spam
 - Implanta: E-mail transacional (Resend, SES…)
 
-### 19.6 Fazer o primeiro deploy do sistema exemplo
+### 20.6 Fazer o primeiro deploy do sistema exemplo
 
 **Claude com você** · 1 h 00 min
 
@@ -1925,7 +2008,7 @@ cd ~/dev/dev-setup && claude "Passo deploy-teste do roteiro: Fazer o primeiro de
 - [ ] **Pronto quando:** Sistema no ar com HTTPS, login e erro de teste no Sentry
 - Implanta: Vercel · Azure · Cloudflare (DNS, Pages, e-mail)
 
-### 19.7 Criar o aura-status: painel de repositórios, backup e Dependabot
+### 20.7 Criar o aura-status: painel de repositórios, backup e Dependabot
 
 **Claude com você** · 2 h 00 min
 
@@ -1940,7 +2023,7 @@ cd ~/dev/dev-setup && claude "Passo aura-status do roteiro: Criar o aura-status:
 
 <a id="f20"></a>
 
-## 20 · Editora
+## 21 · Editora
 
 O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.
 
@@ -1948,7 +2031,7 @@ O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.
 
 **Começa quando:** O capítulo 1 e o seu modelo de criação prontos
 
-### 20.1 Entregar o seu modelo de criação e o seu método passo a passo
+### 21.1 Entregar o seu modelo de criação e o seu método passo a passo
 
 **Você** · 2 h 00 min
 
@@ -1956,7 +2039,7 @@ O livro sai de um repositório com CI, pronto para virar PDF, EPUB e impressão.
 - [ ] **Pronto quando:** metodo.yaml com cada etapa, entrada, saída e critério de conclusão; template de capítulo pronto
 - Implanta: Seu modelo de criação · Seu método (metodo.yaml) · Projeto do capítulo · Mapa de pré-requisitos
 
-### 20.2 Criar o repositório do livro com fonte única, classe LaTeX, exercícios em YAML e CI
+### 21.2 Criar o repositório do livro com fonte única, classe LaTeX, exercícios em YAML e CI
 
 **Claude com você** · 2 h 00 min
 
@@ -1971,7 +2054,7 @@ cd ~/dev/dev-setup && claude "Passo livro-repo do roteiro: Criar o repositório 
 - **Precisa:** conteúdo seu pronto (livro, capítulo)
 - Implanta: Repositório do livro · Fonte única (Markdown + Pandoc) · Classe LaTeX do livro · Exercícios em YAML · Pipeline do livro (CI) · Revisão automática (LanguageTool, Vale) · Errata e edições · Livro Lógica e Máquina
 
-### 20.3 Construir o pipeline de imagens do livro: busca nos acervos, filtro de licença, folha de contato e créditos
+### 21.3 Construir o pipeline de imagens do livro: busca nos acervos, filtro de licença, folha de contato e créditos
 
 **Claude com você** · 4 h 00 min
 
@@ -1984,7 +2067,7 @@ cd ~/dev/dev-setup && claude "Passo editora-imagens do roteiro: Construir o pipe
 - [ ] **Pronto quando:** Uma figura do capítulo 1 sai com licença conferida, ficha e crédito; o build falha se faltar ficha
 - Implanta: Acervos de imagens (APIs) · Busca automática de imagens · Filtro de licença e fichas · Folha de contato (artefato) · Créditos e legendas
 
-### 20.4 Figuras, tabelas e texto alternativo gerados por código
+### 21.4 Figuras, tabelas e texto alternativo gerados por código
 
 **Claude com você** · 3 h 00 min
 
@@ -1997,7 +2080,7 @@ cd ~/dev/dev-setup && claude "Passo editora-figuras do roteiro: Figuras, tabelas
 - [ ] **Pronto quando:** Gráficos e tabelas do capítulo 1 gerados no build, com texto alternativo revisado por você
 - Implanta: Figuras por código (Matplotlib…) · Geradores de tabelas · Texto alternativo
 
-### 20.5 Criar os agentes da editora: revisor técnico, gabarito, leitor iniciante e consistência
+### 21.5 Criar os agentes da editora: revisor técnico, gabarito, leitor iniciante e consistência
 
 **Claude com você** · 3 h 00 min
 
@@ -2010,7 +2093,7 @@ cd ~/dev/dev-setup && claude "Passo editora-agentes do roteiro: Criar os agentes
 - [ ] **Pronto quando:** Os agentes apontam problemas reais no capítulo 1 e você corrige
 - Implanta: Agentes da editora
 
-### 20.6 Montar a matriz de editais e o quadro de referências
+### 21.6 Montar a matriz de editais e o quadro de referências
 
 **Claude com você** · 1 h 00 min
 
@@ -2023,7 +2106,7 @@ cd ~/dev/dev-setup && claude "Passo editais do roteiro: Montar a matriz de edita
 - [ ] **Pronto quando:** Cada tópico dos editais ligado a um capítulo; lacunas listadas
 - Implanta: Matriz de editais · Quadro de referências
 
-### 20.7 Definir o selo Editora AMS Silva (nome, logo e uso no CPF)
+### 21.7 Definir o selo Editora AMS Silva (nome, logo e uso no CPF)
 
 **Você** · 30 min
 
@@ -2031,7 +2114,7 @@ cd ~/dev/dev-setup && claude "Passo editais do roteiro: Montar a matriz de edita
 - [ ] **Pronto quando:** Logo aprovado e aplicado na classe LaTeX
 - Implanta: Selo Editora AMS Silva
 
-### 20.8 Comprar os ISBNs na CBL e pedir a ficha catalográfica
+### 21.8 Comprar os ISBNs na CBL e pedir a ficha catalográfica
 
 **Você** · 1 h 00 min
 
@@ -2040,7 +2123,7 @@ cd ~/dev/dev-setup && claude "Passo editais do roteiro: Montar a matriz de edita
 - **Precisa:** pagar um serviço, conteúdo seu pronto (livro, capítulo)
 - Implanta: ISBN + código de barras (CBL) · Ficha catalográfica
 
-### 20.9 Escolher 3 a 5 leitores beta e um revisor técnico
+### 21.9 Escolher 3 a 5 leitores beta e um revisor técnico
 
 **Você** · 30 min
 
@@ -2049,7 +2132,7 @@ cd ~/dev/dev-setup && claude "Passo editais do roteiro: Montar a matriz de edita
 - **Precisa:** conteúdo seu pronto (livro, capítulo)
 - Implanta: Leitores beta e revisão técnica
 
-### 20.10 Criar a conta no Amazon KDP e cadastrar o livro em rascunho
+### 21.10 Criar a conta no Amazon KDP e cadastrar o livro em rascunho
 
 **Você** · 1 h 00 min
 
@@ -2059,7 +2142,7 @@ cd ~/dev/dev-setup && claude "Passo editais do roteiro: Montar a matriz de edita
 - **Oferta:** Livro Lógica e Máquina
 - Implanta: Amazon KDP
 
-### 20.11 Enviar o depósito legal à Biblioteca Nacional até 30 dias depois de publicar
+### 21.11 Enviar o depósito legal à Biblioteca Nacional até 30 dias depois de publicar
 
 **Você** · 30 min
 
@@ -2070,13 +2153,13 @@ cd ~/dev/dev-setup && claude "Passo editais do roteiro: Montar a matriz de edita
 
 <a id="f21"></a>
 
-## 21 · Dados, IA e pendrives
+## 22 · Dados, IA e pendrives
 
 O laboratório de dados e de treino no ar, um modelo seu rodando no Ollama e os pendrives de Kali e Arch dando boot.
 
 **Quando:** Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029)
 
-### 21.1 Gravar o pendrive do Kali com persistência criptografada
+### 22.1 Gravar o pendrive do Kali com persistência criptografada
 
 **Você** · 1 h 30 min
 
@@ -2090,7 +2173,7 @@ winget install --id Rufus.Rufus -e
 - Siga kali.org/docs/usb. Antes do primeiro boot: suspenda o BitLocker, desligue o Secure Boot e, ao voltar ao Windows, religue o Secure Boot e reative o BitLocker (veja Secure Boot e BitLocker no mapa). Só contra alvos seus ou autorizados.
 - Implanta: Pendrive Kali (persistência) · Rufus (grava pendrives)
 
-### 21.2 Instalar o Arch num pendrive rápido ou SSD USB, pelo guia oficial
+### 22.2 Instalar o Arch num pendrive rápido ou SSD USB, pelo guia oficial
 
 **Você** · 3 h 00 min
 
@@ -2100,7 +2183,7 @@ winget install --id Rufus.Rufus -e
 - **Precisa:** comprar algo
 - Implanta: Pendrive Arch (instalação portátil)
 
-### 21.3 Conferir a GPU dentro do Ubuntu
+### 22.3 Conferir a GPU dentro do Ubuntu
 
 **Script** · 5 min
 
@@ -2113,7 +2196,7 @@ nvidia-smi
 - [ ] **Pronto quando:** Aparece a GTX 1650 com o driver do Windows
 - Implanta: PyTorch + CUDA (WSL2)
 
-### 21.4 Montar o laboratório de dados e de IA
+### 22.4 Montar o laboratório de dados e de IA
 
 **Script** · 30 min
 
@@ -2126,7 +2209,7 @@ bash scripts/wsl/lab-ia.sh
 - [ ] **Pronto quando:** Termina com 'Pronto' e mostra a GPU vista pelo PyTorch
 - Implanta: Python de dados (Polars, Jupyter) · DuckDB + Parquet · Spark (PySpark) · PyTorch + CUDA (WSL2) · MLflow (experimentos) · llama.cpp (GGUF)
 
-### 21.5 Rodar um modelo 8B no Ollama com parte na GPU
+### 22.5 Rodar um modelo 8B no Ollama com parte na GPU
 
 **Você** · 15 min
 
@@ -2140,7 +2223,7 @@ ollama run llama3.1:8b
 - Mais lento que um 3B ou 4B, que cabem inteiros na placa. Use o 8B quando a qualidade importar mais que a velocidade.
 - Implanta: Modelos locais: Qwen · Gemma · Llama · Ollama
 
-### 21.6 Fazer o Data Engineering Zoomcamp e os cursos de IA, um módulo por semana
+### 22.6 Fazer o Data Engineering Zoomcamp e os cursos de IA, um módulo por semana
 
 **Você** · 1 h 00 min
 
@@ -2149,7 +2232,7 @@ ollama run llama3.1:8b
 - O tempo é só para começar; o curso leva 10 semanas. Para a IA vão as suas anotações, nunca o material do curso.
 - Implanta: Zoomcamp de dados + cursos de IA
 
-### 21.7 Criar o projeto dbt sobre o banco de métricas
+### 22.7 Criar o projeto dbt sobre o banco de métricas
 
 **Claude com você** · 1 h 30 min
 
@@ -2162,7 +2245,7 @@ cd ~/dev/dev-setup && claude "Passo dbt-metricas do roteiro: Criar o projeto dbt
 - [ ] **Pronto quando:** 'dbt build' verde e o painel de lucro lendo os modelos
 - Implanta: dbt Core
 
-### 21.8 Subir o Airflow e agendar o dbt todo dia
+### 22.8 Subir o Airflow e agendar o dbt todo dia
 
 **Claude com você** · 1 h 30 min
 
@@ -2175,7 +2258,7 @@ cd ~/dev/dev-setup && claude "Passo airflow do roteiro: Subir o Airflow e agenda
 - [ ] **Pronto quando:** A rotina diária aparece verde no Airflow por 3 dias seguidos
 - Implanta: Airflow (orquestração)
 
-### 21.9 Criar as contas do Hugging Face e do Kaggle (e do RunPod, só se precisar)
+### 22.9 Criar as contas do Hugging Face e do Kaggle (e do RunPod, só se precisar)
 
 **Você** · 30 min
 
@@ -2184,7 +2267,7 @@ cd ~/dev/dev-setup && claude "Passo airflow do roteiro: Subir o Airflow e agenda
 - No RunPod, só crédito pré-pago. Nunca ponha token em notebook público.
 - Implanta: Hugging Face (modelos e Hub) · Kaggle · Colab (GPU grátis) · GPU por hora (RunPod e afins)
 
-### 21.10 Montar o primeiro dataset só com conteúdo seu
+### 22.10 Montar o primeiro dataset só com conteúdo seu
 
 **Claude com você** · 2 h 00 min
 
@@ -2198,7 +2281,7 @@ cd ~/dev/dev-setup && claude "Passo dataset do roteiro: Montar o primeiro datase
 - Fontes: suas notas, exercícios, livro e aulas que você gravou. Nada de cursos de terceiros; nada de dados de alunos sem consentimento.
 - Implanta: Seus datasets (só conteúdo seu) · Avaliação dos modelos
 
-### 21.11 Primeiro fine-tuning QLoRA de um 8B no Kaggle
+### 22.11 Primeiro fine-tuning QLoRA de um 8B no Kaggle
 
 **Claude com você** · 3 h 00 min
 
@@ -2211,7 +2294,7 @@ cd ~/dev/dev-setup && claude "Passo fine-tune do roteiro: Primeiro fine-tuning Q
 - [ ] **Pronto quando:** Adaptador salvo no Hugging Face privado e o treino registrado no MLflow
 - Implanta: Unsloth (QLoRA) · Kaggle · Colab (GPU grátis)
 
-### 21.12 Avaliar contra o modelo base e levar o seu modelo para o Ollama
+### 22.12 Avaliar contra o modelo base e levar o seu modelo para o Ollama
 
 **Claude com você** · 1 h 30 min
 
@@ -2226,7 +2309,7 @@ cd ~/dev/dev-setup && claude "Passo modelo-no-ollama do roteiro: Avaliar contra 
 
 <a id="f22"></a>
 
-## 22 · Mais ofertas, uma por vez
+## 23 · Mais ofertas, uma por vez
 
 Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em construção e uma em validação por vez.
 
@@ -2234,7 +2317,7 @@ Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em const
 
 **Começa quando:** A primeira venda do mini-curso aconteceu
 
-### 22.1 Página 'meu setup' com links de afiliado
+### 23.1 Página 'meu setup' com links de afiliado
 
 **Claude com você** · 1 h 30 min
 
@@ -2248,7 +2331,7 @@ cd ~/dev/dev-setup && claude "Passo of-meu-setup do roteiro: Página 'meu setup'
 - **Oferta:** Afiliados (ferramentas, livros, equipamentos que você usa)
 - Implanta: Site pessoal + blog (Jekyll) · Afiliados (Amazon, Hotmart…)
 
-### 22.2 Pôr no Catálogo do HTML a chamada para o mini-curso e para a newsletter
+### 23.2 Pôr no Catálogo do HTML a chamada para o mini-curso e para a newsletter
 
 **Claude com você** · 30 min
 
@@ -2262,7 +2345,7 @@ cd ~/dev/dev-setup && claude "Passo of-catalogo do roteiro: Pôr no Catálogo do
 - **Oferta:** Catálogo do HTML (gratuito)
 - Implanta: Catálogo do HTML
 
-### 22.3 Kit de aulas prontas para professores: uma disciplina que você já leciona
+### 23.3 Kit de aulas prontas para professores: uma disciplina que você já leciona
 
 **Você** · 10 h 00 min
 
@@ -2272,7 +2355,7 @@ cd ~/dev/dev-setup && claude "Passo of-catalogo do roteiro: Pôr no Catálogo do
 - **Oferta:** Pacote de aulas prontas para professores de informática
 - Implanta: Acervo (seus documentos) · Hotmart
 
-### 22.4 Vender a planilha do Caixa da Casa antes de construir o AM Rendara
+### 23.4 Vender a planilha do Caixa da Casa antes de construir o AM Rendara
 
 **Você** · 3 h 00 min
 
@@ -2281,7 +2364,7 @@ cd ~/dev/dev-setup && claude "Passo of-catalogo do roteiro: Pôr no Catálogo do
 - **Oferta:** AM Rendara (finanças), começando pela planilha
 - Implanta: Caixa da Casa / AM Rendara · Hotmart
 
-### 22.5 Automação com IA para pequenos negócios: 1 implantação grátis em troca de caso
+### 23.5 Automação com IA para pequenos negócios: 1 implantação grátis em troca de caso
 
 **Claude com você** · 10 h 00 min
 
@@ -2295,7 +2378,7 @@ cd ~/dev/dev-setup && claude "Passo of-automacao do roteiro: Automação com IA 
 - **Oferta:** Automação com IA para pequenos negócios (WhatsApp, n8n, agenda)
 - Implanta: n8n · Agente atendente (WhatsApp)
 
-### 22.6 Banco de questões para concursos: 50 questões comentadas grátis para medir a procura
+### 23.6 Banco de questões para concursos: 50 questões comentadas grátis para medir a procura
 
 **Você** · 8 h 00 min
 
@@ -2304,7 +2387,7 @@ cd ~/dev/dev-setup && claude "Passo of-automacao do roteiro: Automação com IA 
 - **Oferta:** Banco de questões de TI para concursos (PF, PRF, Forças Armadas)
 - Implanta: Exercícios em YAML
 
-### 22.7 Baralhos Anki de TI e concursos: o primeiro, do capítulo 1
+### 23.7 Baralhos Anki de TI e concursos: o primeiro, do capítulo 1
 
 **Você** · 3 h 00 min
 
@@ -2313,7 +2396,7 @@ cd ~/dev/dev-setup && claude "Passo of-automacao do roteiro: Automação com IA 
 - **Oferta:** Baralhos Anki de TI e concursos
 - Implanta: Anki · Exercícios em YAML
 
-### 22.8 Newsletter com patrocínio e vendas
+### 23.8 Newsletter com patrocínio e vendas
 
 **Você** · 2 h 00 min
 
@@ -2322,7 +2405,7 @@ cd ~/dev/dev-setup && claude "Passo of-automacao do roteiro: Automação com IA 
 - **Oferta:** Newsletter (patrocínio e vendas)
 - Implanta: MailerLite
 
-### 22.9 Presença digital para comércio local, oferecida a 5 clientes de sites
+### 23.9 Presença digital para comércio local, oferecida a 5 clientes de sites
 
 **Você** · 4 h 00 min
 
@@ -2331,7 +2414,7 @@ cd ~/dev/dev-setup && claude "Passo of-automacao do roteiro: Automação com IA 
 - **Oferta:** Presença digital para comércio local (Google Perfil, redes, avaliações)
 - Implanta: Google Perfil da Empresa · Sites para pequenas empresas
 
-### 22.10 Sites: 3 pacotes fixos com preço público
+### 23.10 Sites: 3 pacotes fixos com preço público
 
 **Você** · 3 h 00 min
 
@@ -2340,7 +2423,7 @@ cd ~/dev/dev-setup && claude "Passo of-automacao do roteiro: Automação com IA 
 - **Oferta:** Sites e lojas para pequenas empresas
 - Implanta: Sites para pequenas empresas · Hostinger (clientes WP)
 
-### 22.11 Suporte remoto com plano mensal para empresas
+### 23.11 Suporte remoto com plano mensal para empresas
 
 **Você** · 4 h 00 min
 
@@ -2349,7 +2432,7 @@ cd ~/dev/dev-setup && claude "Passo of-automacao do roteiro: Automação com IA 
 - **Oferta:** Suporte remoto e planos mensais para empresas
 - Implanta: Tailscale (VPN)
 
-### 22.12 Implantação de ficha técnica e engenharia de cardápio para restaurantes
+### 23.12 Implantação de ficha técnica e engenharia de cardápio para restaurantes
 
 **Você** · 8 h 00 min
 
@@ -2358,7 +2441,7 @@ cd ~/dev/dev-setup && claude "Passo of-automacao do roteiro: Automação com IA 
 - **Oferta:** Implantação de ficha técnica e engenharia de cardápio
 - Implanta: AM Kaixara (PDV e cardápio)
 
-### 22.13 AM Mentor: banco de exercícios com correção, começando pelo capítulo 1
+### 23.13 AM Mentor: banco de exercícios com correção, começando pelo capítulo 1
 
 **Claude com você** · 20 h 00 min
 
@@ -2372,7 +2455,7 @@ cd ~/dev/dev-setup && claude "Passo of-ammentor do roteiro: AM Mentor: banco de 
 - **Oferta:** AM Mentor: banco de exercícios com correção
 - Implanta: Exercícios em YAML
 
-### 22.14 Canais sem rosto: 3 vídeos por semana por 8 semanas e medir
+### 23.14 Canais sem rosto: 3 vídeos por semana por 8 semanas e medir
 
 **Você** · 20 h 00 min
 
@@ -2381,7 +2464,7 @@ cd ~/dev/dev-setup && claude "Passo of-ammentor do roteiro: AM Mentor: banco de 
 - **Oferta:** Canais sem rosto (YouTube, TikTok, Instagram, Facebook)
 - Implanta: Agente editor de conteúdo · YouTube
 
-### 22.15 Comunidade paga do Instituto AMS
+### 23.15 Comunidade paga do Instituto AMS
 
 **Você** · 4 h 00 min
 
@@ -2391,7 +2474,7 @@ cd ~/dev/dev-setup && claude "Passo of-ammentor do roteiro: AM Mentor: banco de 
 - **Oferta:** Comunidade paga do Instituto AMS
 - Implanta: Comunidade (Discord ou grupo)
 
-### 22.16 Oficinas de robótica e programação para escolas: plano de 8 encontros
+### 23.16 Oficinas de robótica e programação para escolas: plano de 8 encontros
 
 **Você** · 10 h 00 min
 
@@ -2400,7 +2483,7 @@ cd ~/dev/dev-setup && claude "Passo of-ammentor do roteiro: AM Mentor: banco de 
 - **Oferta:** Oficinas de robótica e programação para escolas
 - Implanta: Arduino · ESP32 · Pi · Arduino IDE 2
 
-### 22.17 Sistemas sob encomenda, com 50% de entrada
+### 23.17 Sistemas sob encomenda, com 50% de entrada
 
 **Você** · 4 h 00 min
 
@@ -2409,7 +2492,7 @@ cd ~/dev/dev-setup && claude "Passo of-ammentor do roteiro: AM Mentor: banco de 
 - **Oferta:** Sistemas sob encomenda
 - Implanta: API ASP.NET Core · Next.js + Aura Design System
 
-### 22.18 Aula de sushi e sushiman para eventos: 2 eventos de teste
+### 23.18 Aula de sushi e sushiman para eventos: 2 eventos de teste
 
 **Você** · 4 h 00 min
 
@@ -2418,7 +2501,7 @@ cd ~/dev/dev-setup && claude "Passo of-ammentor do roteiro: AM Mentor: banco de 
 - **Oferta:** Aula de sushi e sushiman para eventos
 - Implanta: Agenda online (Cal.com)
 
-### 22.19 Workshop presencial para pequenos empresários: piloto com 10 vagas
+### 23.19 Workshop presencial para pequenos empresários: piloto com 10 vagas
 
 **Você** · 8 h 00 min
 
@@ -2427,7 +2510,7 @@ cd ~/dev/dev-setup && claude "Passo of-ammentor do roteiro: AM Mentor: banco de 
 - **Oferta:** Workshops presenciais para pequenos empresários (IA, planilhas, presença digital)
 - Implanta: Agenda online (Cal.com) · Mercado Pago
 
-### 22.20 Revisar a cada trimestre as ofertas pausadas (AM Taskoro)
+### 23.20 Revisar a cada trimestre as ofertas pausadas (AM Taskoro)
 
 **Você** · 30 min
 
@@ -2436,9 +2519,25 @@ cd ~/dev/dev-setup && claude "Passo of-ammentor do roteiro: AM Mentor: banco de 
 - **Oferta:** AM Taskoro (gestão de projetos ágeis)
 - Implanta: Portfólio de ofertas
 
+### 23.21 Fila de produtos digitais (Fábrica para professores, Setup profissional, templates e outros)
+
+**Você** · 30 min
+
+- **Fora do terminal:** Entra só quando uma renda ativa passar no portão (3 meses se pagando). A ordem é o ranking de facilidade do portfólio.
+- [ ] **Pronto quando:** Cada uma ativada na ordem, uma de cada vez
+- **Oferta:** Fábrica de documentos para professores de MG (assinatura) · Setup profissional (curso, template e configuração remota) · Templates Next.js/Tailwind em inglês · Blocos e kits de componentes de interface · Plugin WordPress com versão Pro · Templates de automação n8n · Cursos em plataformas que pagam royalties (Alura, Rocketseat, Domestika) · Cursos dublados por IA em inglês e espanhol (só a sua voz) · Licença do ByteSDCoin para escolas (sem aposta) · Camisetas e canecas sob demanda (dev e professor)
+
+### 23.22 Fila de serviços que pagam bem por hora (conteudista, questões, ERP e outros)
+
+**Você** · 30 min
+
+- **Fora do terminal:** Entra só quando uma renda ativa passar no portão (3 meses se pagando). A ordem é o ranking de facilidade do portfólio.
+- [ ] **Pronto quando:** Cada uma ativada na ordem, uma de cada vez
+- **Oferta:** Professor conteudista EAD · Elaboração e revisão de questões · Formatação ABNT de TCC (só formatar e revisar) · Segurança digital para pequenas empresas · Freela internacional em dólar (Upwork) · Parceiro de ERP (Bling, Tiny, Omie): implantação e comissão · Português para estrangeiros (Preply, italki) · Recuperação de dados (intermediação com laboratório)
+
 <a id="f23"></a>
 
-## 23 · Marketing pago e crescimento
+## 24 · Marketing pago e crescimento
 
 Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.
 
@@ -2446,7 +2545,7 @@ Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.
 
 **Começa quando:** O mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar
 
-### 23.1 Primeira campanha na Meta com orçamento de teste
+### 24.1 Primeira campanha na Meta com orçamento de teste
 
 **Você** · 2 h 00 min
 
@@ -2455,7 +2554,7 @@ Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.
 - **Precisa:** pagar um serviço
 - Implanta: Meta Ads (Instagram, Facebook)
 
-### 23.2 Google e YouTube Ads, depois TikTok Ads
+### 24.2 Google e YouTube Ads, depois TikTok Ads
 
 **Você** · 3 h 00 min
 
@@ -2464,7 +2563,7 @@ Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.
 - **Precisa:** pagar um serviço
 - Implanta: Google e YouTube Ads · TikTok Ads
 
-### 23.3 Kwai, Pinterest, LinkedIn, Spotify e mídia nativa, um por vez
+### 24.3 Kwai, Pinterest, LinkedIn, Spotify e mídia nativa, um por vez
 
 **Você** · 4 h 00 min
 
@@ -2473,7 +2572,7 @@ Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.
 - **Precisa:** pagar um serviço
 - Implanta: Kwai Ads · Pinterest Ads · LinkedIn Ads · Spotify Ad Studio · Mídia nativa (Taboola, Outbrain)
 
-### 23.4 Influenciadores e newsletters parceiras com cupom
+### 24.4 Influenciadores e newsletters parceiras com cupom
 
 **Você** · 2 h 00 min
 
@@ -2482,7 +2581,7 @@ Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.
 - **Precisa:** pagar um serviço
 - Implanta: Influenciadores e newsletters
 
-### 23.5 Abrir o programa de afiliados do mini-curso
+### 24.5 Abrir o programa de afiliados do mini-curso
 
 **Você** · 1 h 00 min
 
@@ -2490,7 +2589,7 @@ Pôr dinheiro em anúncio só quando a venda orgânica provou a oferta.
 - [ ] **Pronto quando:** Primeiro afiliado vendendo
 - Implanta: Programa de afiliados
 
-### 23.6 Ligar o algoritmo de horário com 3 meses de dados de publicação
+### 24.6 Ligar o algoritmo de horário com 3 meses de dados de publicação
 
 **Claude com você** · 2 h 00 min
 
@@ -2503,7 +2602,7 @@ cd ~/dev/dev-setup && claude "Passo horario do roteiro: Ligar o algoritmo de hor
 - [ ] **Pronto quando:** 80% dos posts nas melhores faixas, 20% testando
 - Implanta: Algoritmo de horário
 
-### 23.7 Canal build in public: um vídeo por semana das decisões reais
+### 24.7 Canal build in public: um vídeo por semana das decisões reais
 
 **Você** · 1 h 00 min
 
@@ -2512,7 +2611,7 @@ cd ~/dev/dev-setup && claude "Passo horario do roteiro: Ligar o algoritmo de hor
 - **Oferta:** Canal com rosto: construindo o Grupo AMtech em público
 - Implanta: Canal build in public
 
-### 23.8 Dublar os melhores vídeos para outros idiomas
+### 24.8 Dublar os melhores vídeos para outros idiomas
 
 **Você** · 2 h 00 min
 
@@ -2521,7 +2620,7 @@ cd ~/dev/dev-setup && claude "Passo horario do roteiro: Ligar o algoritmo de hor
 - **Precisa:** pagar um serviço
 - Implanta: Dublagem (YouTube + ElevenLabs)
 
-### 23.9 Membros do YouTube quando o canal for elegível
+### 24.9 Membros do YouTube quando o canal for elegível
 
 **Você** · 30 min
 
@@ -2530,7 +2629,7 @@ cd ~/dev/dev-setup && claude "Passo horario do roteiro: Ligar o algoritmo de hor
 - **Oferta:** Monetização das plataformas (YouTube, Instagram)
 - Implanta: YouTube (membros)
 
-### 23.10 Primeira formação completa (TI, Matemática ou Finanças)
+### 24.10 Primeira formação completa (TI, Matemática ou Finanças)
 
 **Você** · 20 h 00 min
 
@@ -2541,13 +2640,13 @@ cd ~/dev/dev-setup && claude "Passo horario do roteiro: Ligar o algoritmo de hor
 
 <a id="f24"></a>
 
-## 24 · Linux nativo e laboratório completo
+## 25 · Linux nativo e laboratório completo
 
 Arch com boot próprio, VMs de laboratório e a segurança física em dia.
 
 **Quando:** 2027, conforme cada compra
 
-### 24.1 Instalar o 2º NVMe e o Arch + Omarchy com boot próprio
+### 25.1 Instalar o 2º NVMe e o Arch + Omarchy com boot próprio
 
 **Você** · 5 h 00 min
 
@@ -2556,7 +2655,7 @@ Arch com boot próprio, VMs de laboratório e a segurança física em dia.
 - **Precisa:** comprar algo
 - Implanta: 2º NVMe (1–4 TB) · Arch + Omarchy (2º NVMe) · Gerenciador de boot
 
-### 24.2 Aprender o Neovim aos poucos
+### 25.2 Aprender o Neovim aos poucos
 
 **Você** · 5 h 00 min
 
@@ -2569,7 +2668,7 @@ sudo apt install -y neovim && nvim +Tutor
 - [ ] **Pronto quando:** Uma semana editando só no Neovim
 - Implanta: Neovim
 
-### 24.3 Montar as VMs do laboratório: Kali, Arch, Ubuntu Server, Windows Server e Rocky
+### 25.3 Montar as VMs do laboratório: Kali, Arch, Ubuntu Server, Windows Server e Rocky
 
 **Você** · 5 h 00 min
 
@@ -2577,7 +2676,7 @@ sudo apt install -y neovim && nvim +Tutor
 - [ ] **Pronto quando:** Duas VMs numa rede isolada, atacante e alvo
 - Implanta: VMs: Kali · Arch · Servidores
 
-### 24.4 SSD SATA na baia livre para as VMs
+### 25.4 SSD SATA na baia livre para as VMs
 
 **Você** · 1 h 00 min
 
@@ -2586,7 +2685,7 @@ sudo apt install -y neovim && nvim +Tutor
 - **Precisa:** comprar algo
 - Implanta: SSD SATA 2,5"
 
-### 24.5 Chave física no GitHub, Google e Microsoft
+### 25.5 Chave física no GitHub, Google e Microsoft
 
 **Você** · 1 h 00 min
 
@@ -2595,7 +2694,7 @@ sudo apt install -y neovim && nvim +Tutor
 - **Precisa:** comprar algo
 - Implanta: Chave física (YubiKey)
 
-### 24.6 Microfone e câmera
+### 25.6 Microfone e câmera
 
 **Você** · 1 h 00 min
 
@@ -2606,13 +2705,13 @@ sudo apt install -y neovim && nvim +Tutor
 
 <a id="f25"></a>
 
-## 25 · IA dentro dos sistemas AM
+## 26 · IA dentro dos sistemas AM
 
 Busca e assistente com os seus dados dentro de um sistema AM.
 
 **Quando:** Depois do Passo 9 e do IA0 da Trilha de Dados e IA (≈ 2028), junto do IA5
 
-### 25.1 RAG com pgvector dentro do primeiro sistema AM
+### 26.1 RAG com pgvector dentro do primeiro sistema AM
 
 **Claude com você** · 8 h 00 min
 
@@ -2627,7 +2726,7 @@ cd ~/dev/dev-setup && claude "Passo rag-sistema do roteiro: RAG com pgvector den
 
 <a id="f26"></a>
 
-## 26 · Sistemas AM à venda
+## 27 · Sistemas AM à venda
 
 Os sistemas viram produto por assinatura.
 
@@ -2635,7 +2734,7 @@ Os sistemas viram produto por assinatura.
 
 **Começa quando:** O primeiro sistema AM pronto e testado com um cliente
 
-### 26.1 Lançar o primeiro sistema AM como SaaS, com cobrança por módulo
+### 27.1 Lançar o primeiro sistema AM como SaaS, com cobrança por módulo
 
 **Claude com você** · 10 h 00 min
 
@@ -2648,7 +2747,7 @@ cd ~/dev/dev-setup && claude "Passo saas do roteiro: Lançar o primeiro sistema 
 - [ ] **Pronto quando:** Primeiro cliente pagando por assinatura
 - Implanta: Sistemas AM (SaaS) · aura-licensing
 
-### 26.2 AM Kaixara: PDV, cardápio, fichas técnicas e estoque
+### 27.2 AM Kaixara: PDV, cardápio, fichas técnicas e estoque
 
 **Claude com você** · 40 h 00 min
 
@@ -2662,7 +2761,7 @@ cd ~/dev/dev-setup && claude "Passo kaixara do roteiro: AM Kaixara: PDV, cardáp
 - **Oferta:** AM Kaixara (PDV, ficha técnica, cardápio)
 - Implanta: AM Kaixara (PDV e cardápio)
 
-### 26.3 AM Rotara: pedidos, rotas e mapas
+### 27.3 AM Rotara: pedidos, rotas e mapas
 
 **Claude com você** · 40 h 00 min
 
@@ -2676,7 +2775,7 @@ cd ~/dev/dev-setup && claude "Passo rotara do roteiro: AM Rotara: pedidos, rotas
 - **Oferta:** AM Rotara (pedidos e entregas)
 - Implanta: AM Rotara (entregas) · PostGIS + MapLibre
 
-### 26.4 Serviços aura- compartilhados, só quando um sistema precisar
+### 27.4 Serviços aura- compartilhados, só quando um sistema precisar
 
 **Claude com você** · 10 h 00 min
 
@@ -2689,7 +2788,7 @@ cd ~/dev/dev-setup && claude "Passo servicos-aura do roteiro: Serviços aura- co
 - [ ] **Pronto quando:** Um serviço compartilhado usado por dois sistemas
 - Implanta: Serviços aura- (10) · Datomic local
 
-### 26.5 App de delivery com a marca do restaurante (white-label)
+### 27.5 App de delivery com a marca do restaurante (white-label)
 
 **Claude com você** · 20 h 00 min
 
@@ -2706,7 +2805,7 @@ cd ~/dev/dev-setup && claude "Passo whitelabel do roteiro: App de delivery com a
 
 <a id="f27"></a>
 
-## 27 · CNPJ e formalização
+## 28 · CNPJ e formalização
 
 Sair do CPF na hora certa, com nota fiscal e cobrança automáticas.
 
@@ -2714,7 +2813,7 @@ Sair do CPF na hora certa, com nota fiscal e cobrança automáticas.
 
 **Começa quando:** A renda passou do valor de virada definido com o contador
 
-### 27.1 Abrir a AMtech Tecnologia (ME no Simples, sócio único)
+### 28.1 Abrir a AMtech Tecnologia (ME no Simples, sócio único)
 
 **Você** · 4 h 00 min
 
@@ -2723,7 +2822,7 @@ Sair do CPF na hora certa, com nota fiscal e cobrança automáticas.
 - **Precisa:** pagar um serviço
 - Implanta: CNPJ (futuro) · 3 CNPJs por frente
 
-### 27.2 Certificado digital e-CNPJ
+### 28.2 Certificado digital e-CNPJ
 
 **Você** · 1 h 00 min
 
@@ -2732,7 +2831,7 @@ Sair do CPF na hora certa, com nota fiscal e cobrança automáticas.
 - **Precisa:** pagar um serviço
 - Implanta: Certificado digital (e-CNPJ)
 
-### 27.3 Nota fiscal automática pela API de NFS-e
+### 28.3 Nota fiscal automática pela API de NFS-e
 
 **Claude com você** · 4 h 00 min
 
@@ -2745,7 +2844,7 @@ cd ~/dev/dev-setup && claude "Passo nfse-api do roteiro: Nota fiscal automática
 - [ ] **Pronto quando:** Venda de teste emite nota sozinha
 - Implanta: API de NFS-e (ex.: Focus NFe)
 
-### 27.4 Cobrança recorrente por Pix Automático
+### 28.4 Cobrança recorrente por Pix Automático
 
 **Claude com você** · 4 h 00 min
 
@@ -2760,7 +2859,7 @@ cd ~/dev/dev-setup && claude "Passo pix-automatico do roteiro: Cobrança recorre
 
 <a id="f28"></a>
 
-## 28 · Agentes do grupo
+## 29 · Agentes do grupo
 
 Atendimento, orçamento, cobrança e análise rodando com a sua aprovação.
 
@@ -2768,7 +2867,7 @@ Atendimento, orçamento, cobrança e análise rodando com a sua aprovação.
 
 **Começa quando:** Clientes e vendas recorrentes
 
-### 28.1 Analista semanal: o que funcionou e o que mudar
+### 29.1 Analista semanal: o que funcionou e o que mudar
 
 **Claude com você** · 2 h 00 min
 
@@ -2781,7 +2880,7 @@ cd ~/dev/dev-setup && claude "Passo ag-analista do roteiro: Analista semanal: o 
 - [ ] **Pronto quando:** Relatório toda segunda no Telegram
 - Implanta: Analista semanal
 
-### 28.2 Atendente do WhatsApp com passagem para você
+### 29.2 Atendente do WhatsApp com passagem para você
 
 **Claude com você** · 4 h 00 min
 
@@ -2794,7 +2893,7 @@ cd ~/dev/dev-setup && claude "Passo ag-atendente do roteiro: Atendente do WhatsA
 - [ ] **Pronto quando:** Dúvida comum respondida sozinha; o resto chega para você
 - Implanta: Agente atendente (WhatsApp)
 
-### 28.3 Orçamentista de sites e sistemas
+### 29.3 Orçamentista de sites e sistemas
 
 **Claude com você** · 3 h 00 min
 
@@ -2807,7 +2906,7 @@ cd ~/dev/dev-setup && claude "Passo ag-orcamento do roteiro: Orçamentista de si
 - [ ] **Pronto quando:** Rascunho de orçamento em 5 minutos, revisado por você
 - Implanta: Agente orçamentista
 
-### 28.4 Cobrador educado (lembrete antes e depois do vencimento)
+### 29.4 Cobrador educado (lembrete antes e depois do vencimento)
 
 **Claude com você** · 2 h 00 min
 
@@ -2820,7 +2919,7 @@ cd ~/dev/dev-setup && claude "Passo ag-cobranca do roteiro: Cobrador educado (le
 - [ ] **Pronto quando:** Atraso cai pela metade
 - Implanta: Agente cobrador
 
-### 28.5 Pós-venda: NPS e pedido de avaliação
+### 29.5 Pós-venda: NPS e pedido de avaliação
 
 **Claude com você** · 2 h 00 min
 
@@ -2833,7 +2932,7 @@ cd ~/dev/dev-setup && claude "Passo ag-posvenda do roteiro: Pós-venda: NPS e pe
 - [ ] **Pronto quando:** NPS medido em cada venda
 - Implanta: Agente pós-venda
 
-### 28.6 Organizador fiscal para o contador
+### 29.6 Organizador fiscal para o contador
 
 **Claude com você** · 2 h 00 min
 
@@ -2846,7 +2945,7 @@ cd ~/dev/dev-setup && claude "Passo ag-fiscal do roteiro: Organizador fiscal par
 - [ ] **Pronto quando:** Pasta do mês pronta no dia 5
 - Implanta: Organizador fiscal
 
-### 28.7 Comprador com estoque mínimo
+### 29.7 Comprador com estoque mínimo
 
 **Claude com você** · 3 h 00 min
 
@@ -2861,7 +2960,7 @@ cd ~/dev/dev-setup && claude "Passo ag-comprador do roteiro: Comprador com estoq
 
 <a id="f29"></a>
 
-## 29 · Editora: depois do primeiro livro
+## 30 · Editora: depois do primeiro livro
 
 O mesmo livro em mais formatos, públicos e idiomas.
 
@@ -2869,7 +2968,7 @@ O mesmo livro em mais formatos, públicos e idiomas.
 
 **Começa quando:** O primeiro livro publicado
 
-### 29.1 Gráfica sob demanda no Brasil
+### 30.1 Gráfica sob demanda no Brasil
 
 **Você** · 2 h 00 min
 
@@ -2878,7 +2977,7 @@ O mesmo livro em mais formatos, públicos e idiomas.
 - **Precisa:** pagar um serviço
 - Implanta: Gráfica sob demanda (Brasil)
 
-### 29.2 Kit edição especial
+### 30.2 Kit edição especial
 
 **Você** · 4 h 00 min
 
@@ -2888,7 +2987,7 @@ O mesmo livro em mais formatos, públicos e idiomas.
 - **Oferta:** Kit do livro e edição do professor
 - Implanta: Kit edição especial
 
-### 29.3 Curso por seção do livro, com animações
+### 30.3 Curso por seção do livro, com animações
 
 **Você** · 20 h 00 min
 
@@ -2896,7 +2995,7 @@ O mesmo livro em mais formatos, públicos e idiomas.
 - [ ] **Pronto quando:** Primeira seção gravada e à venda
 - Implanta: Curso por seção · Manim (animações)
 
-### 29.4 Edição do professor com licença para escolas
+### 30.4 Edição do professor com licença para escolas
 
 **Claude com você** · 10 h 00 min
 
@@ -2910,7 +3009,7 @@ cd ~/dev/dev-setup && claude "Passo edicao-professor do roteiro: Edição do pro
 - **Oferta:** Adoção do livro por escolas
 - Implanta: Edição do professor
 
-### 29.5 Traduções para espanhol e inglês
+### 30.5 Traduções para espanhol e inglês
 
 **Claude com você** · 20 h 00 min
 
@@ -2927,13 +3026,13 @@ cd ~/dev/dev-setup && claude "Passo traducoes do roteiro: Traduções para espan
 
 <a id="f30"></a>
 
-## 30 · Distribuído, plataforma e segunda nuvem
+## 31 · Distribuído, plataforma e segunda nuvem
 
 O que pesa em vaga pleno e sênior.
 
 **Quando:** 2028
 
-### 30.1 RabbitMQ e depois Kafka entre dois sistemas AM
+### 31.1 RabbitMQ e depois Kafka entre dois sistemas AM
 
 **Claude com você** · 10 h 00 min
 
@@ -2946,7 +3045,7 @@ cd ~/dev/dev-setup && claude "Passo mensageria do roteiro: RabbitMQ e depois Kaf
 - [ ] **Pronto quando:** Evento de um sistema chega no outro sem chamada direta
 - Implanta: RabbitMQ · Kafka
 
-### 30.2 Kubernetes local com kind, kubectl, Helm e k9s
+### 31.2 Kubernetes local com kind, kubectl, Helm e k9s
 
 **Você** · 10 h 00 min
 
@@ -2959,7 +3058,7 @@ mkdir -p ~/.local/bin && curl -Lo ~/.local/bin/kind https://kind.sigs.k8s.io/dl/
 - [ ] **Pronto quando:** Um sistema AM rodando no cluster local
 - Implanta: Kubernetes local (kind) · kubectl · Helm · k9s
 
-### 30.3 Logs e rastreamento com Loki e Tempo no Grafana
+### 31.3 Logs e rastreamento com Loki e Tempo no Grafana
 
 **Claude com você** · 4 h 00 min
 
@@ -2972,7 +3071,7 @@ cd ~/dev/dev-setup && claude "Passo loki-tempo do roteiro: Logs e rastreamento c
 - [ ] **Pronto quando:** Uma requisição seguida de ponta a ponta
 - Implanta: Loki + Tempo
 
-### 30.4 AWS: Cloud Practitioner e o mesmo sistema rodando lá
+### 31.4 AWS: Cloud Practitioner e o mesmo sistema rodando lá
 
 **Você** · 20 h 00 min
 
@@ -2981,7 +3080,7 @@ cd ~/dev/dev-setup && claude "Passo loki-tempo do roteiro: Logs e rastreamento c
 - **Precisa:** pagar um serviço
 - Implanta: AWS
 
-### 30.5 Google Cloud só o básico, quando um projeto de IA ou dados pedir
+### 31.5 Google Cloud só o básico, quando um projeto de IA ou dados pedir
 
 **Você** · 5 h 00 min
 
@@ -2989,7 +3088,7 @@ cd ~/dev/dev-setup && claude "Passo loki-tempo do roteiro: Logs e rastreamento c
 - [ ] **Pronto quando:** Um serviço usado num projeto real
 - Implanta: Google Cloud
 
-### 30.6 App mobile dos sistemas AM com .NET MAUI
+### 31.6 App mobile dos sistemas AM com .NET MAUI
 
 **Claude com você** · 20 h 00 min
 
@@ -3004,13 +3103,13 @@ cd ~/dev/dev-setup && claude "Passo mobile do roteiro: App mobile dos sistemas A
 
 <a id="f31"></a>
 
-## 31 · Infraestrutura própria
+## 32 · Infraestrutura própria
 
 Servidor em casa e máquina de IA quando o grupo pedir.
 
 **Quando:** 2028, quando o grupo pedir
 
-### 31.1 Servidor caseiro com backup local e os serviços 24 horas
+### 32.1 Servidor caseiro com backup local e os serviços 24 horas
 
 **Você** · 8 h 00 min
 
@@ -3019,7 +3118,7 @@ Servidor em casa e máquina de IA quando o grupo pedir.
 - **Precisa:** comprar algo
 - Implanta: Servidor caseiro (NAS + serviços)
 
-### 31.2 Tailscale entre notebook, celular e servidor
+### 32.2 Tailscale entre notebook, celular e servidor
 
 **Você** · 1 h 00 min
 
@@ -3027,7 +3126,7 @@ Servidor em casa e máquina de IA quando o grupo pedir.
 - [ ] **Pronto quando:** Acesso ao servidor de fora de casa sem abrir porta
 - Implanta: Tailscale (VPN)
 
-### 31.3 Workstation com GPU para treinar e gerar voz e vídeo em casa
+### 32.3 Workstation com GPU para treinar e gerar voz e vídeo em casa
 
 **Você** · 8 h 00 min
 
@@ -3038,7 +3137,7 @@ Servidor em casa e máquina de IA quando o grupo pedir.
 
 <a id="f32"></a>
 
-## 32 · Negócios do grupo em Barbacena
+## 33 · Negócios do grupo em Barbacena
 
 Um negócio por vez, cada um só depois que o anterior passa no portão.
 
@@ -3046,7 +3145,7 @@ Um negócio por vez, cada um só depois que o anterior passa no portão.
 
 **Começa quando:** Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta
 
-### 32.1 Planejador do grupo com os números reais
+### 33.1 Planejador do grupo com os números reais
 
 **Claude com você** · 2 h 00 min
 
@@ -3059,7 +3158,7 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 - [ ] **Pronto quando:** Capital mínimo e portões calculados com os seus dados
 - Implanta: Planejador do Grupo
 
-### 32.2 A1 · AMtech Software
+### 33.2 A1 · AMtech Software
 
 **Você** · 40 h 00 min
 
@@ -3068,7 +3167,7 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 - **Precisa:** pagar um serviço
 - Implanta: AMtech Software (projetos e SaaS)
 
-### 32.3 A2 · Loja AMtech, peças sob encomenda, ponto de retirada e Maker
+### 33.3 A2 · Loja AMtech, peças sob encomenda, ponto de retirada e Maker
 
 **Você** · 80 h 00 min
 
@@ -3078,7 +3177,7 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 - **Oferta:** Assistência técnica · Peças e acessórios sem estoque · Ponto de retirada (Shopee e Mercado Livre) · AMtech Maker (robótica e automação)
 - Implanta: Loja AMtech (assistência) · Peças sem estoque (sob encomenda) · Ponto de retirada (Shopee e ML) · AMtech Maker (robótica) · Anatel e Inmetro · Google Perfil da Empresa
 
-### 32.4 B1 · AM Entregas e Mercado Envios Flex
+### 33.4 B1 · AM Entregas e Mercado Envios Flex
 
 **Você** · 80 h 00 min
 
@@ -3088,7 +3187,7 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 - **Oferta:** AM Entregas
 - Implanta: AM Entregas (moto e carro) · Mercado Envios Flex
 
-### 32.5 B2 · AM Delivery
+### 33.5 B2 · AM Delivery
 
 **Você** · 80 h 00 min
 
@@ -3098,7 +3197,7 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 - **Oferta:** AM Delivery · Licença do AM Delivery para outras cidades
 - Implanta: AM Delivery (várias empresas)
 
-### 32.6 C1 · Sushi, delivery primeiro
+### 33.6 C1 · Sushi, delivery primeiro
 
 **Você** · 80 h 00 min
 
@@ -3108,7 +3207,7 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 - **Oferta:** Sushi (delivery)
 - Implanta: Sushi (delivery) · Vigilância sanitária (RDC 216) · iFood (canal de descoberta)
 
-### 32.7 C2 · Padaria com café da manhã e almoço
+### 33.7 C2 · Padaria com café da manhã e almoço
 
 **Você** · 80 h 00 min
 
@@ -3118,7 +3217,7 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 - **Oferta:** Padaria com café da manhã e almoço
 - Implanta: Padaria + café da manhã + almoço
 
-### 32.8 C3 · Cafeteria
+### 33.8 C3 · Cafeteria
 
 **Você** · 40 h 00 min
 
@@ -3128,15 +3227,31 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 - **Oferta:** Cafeteria
 - Implanta: Cafeteria
 
+### 33.9 Serviços presenciais para 2027, se a tarde ficar livre (por parceiros quando der)
+
+**Você** · 30 min
+
+- **Fora do terminal:** Dependem de você presente ou de parceiro técnico; decisão de 2027.
+- [ ] **Pronto quando:** Decisão tomada no replanejamento de 2027
+- **Oferta:** PC montado e entregue configurado · Redes Wi-Fi e câmeras com monitoramento mensal · Casa inteligente para clientes (Home Assistant) · Instrutor horista (SENAC, SENAI, prefeitura) · Aulas de informática e celular para idosos · Colônia de férias tech (robótica e programação) · Gestão de tráfego pago para o comércio local
+
+### 33.10 Rendas de capital alto: decidir só com o portão aberto
+
+**Você** · 30 min
+
+- **Fora do terminal:** Exigem capital; só quando a renda do núcleo pagar o investimento.
+- [ ] **Pronto quando:** Decisão registrada com capital próprio disponível
+- **Oferta:** Mercadinho autônomo em condomínio · Máquina de venda de lanches e congelados · Aluguel de kits de robótica · Kits e placas de robótica (Tindie e Mercado Livre) · Motos e carros: compra e revenda
+
 <a id="f33"></a>
 
-## 33 · Estudo contínuo
+## 34 · Estudo contínuo
 
 As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 
 **Quando:** Contínuo, desde a semana 2
 
-### 33.1 Pedir o GitHub Education como professor e ligar o Copilot
+### 34.1 Pedir o GitHub Education como professor e ligar o Copilot
 
 **Você** · 20 min
 
@@ -3149,7 +3264,7 @@ Start-Process 'https://education.github.com/discount_requests/application'
 - [ ] **Pronto quando:** Benefícios aprovados e Copilot ativo no VS Code
 - Implanta: GitHub Education · GitHub Copilot
 
-### 33.2 Montar as trilhas: Microsoft Learn, AWS Skill Builder, roadmap.sh e laboratórios do TryHackMe
+### 34.2 Montar as trilhas: Microsoft Learn, AWS Skill Builder, roadmap.sh e laboratórios do TryHackMe
 
 **Você** · 30 min
 
@@ -3157,7 +3272,7 @@ Start-Process 'https://education.github.com/discount_requests/application'
 - [ ] **Pronto quando:** Uma trilha de cada em andamento, anotada no Obsidian
 - Implanta: Microsoft Learn + AWS Skill Builder · roadmap.sh + Akita · TryHackMe / Hack The Box
 
-### 33.3 Organizar as contas de aluno (Alura, Rocketseat, DIO, Udemy)
+### 34.3 Organizar as contas de aluno (Alura, Rocketseat, DIO, Udemy)
 
 **Você** · 15 min
 
@@ -3166,13 +3281,21 @@ Start-Process 'https://education.github.com/discount_requests/application'
 - A licença é para assistir e estudar. Para a IA vão só as suas anotações e os seus projetos.
 - Implanta: Alura · Rocketseat · DIO · Udemy
 
-### 33.4 Criar os baralhos do Anki (comandos, conceitos, certificações)
+### 34.4 Criar os baralhos do Anki (comandos, conceitos, certificações)
 
 **Você** · 20 min
 
 - **Fora do terminal:** Estudo: assistir, praticar e anotar.
 - [ ] **Pronto quando:** Revisão do dia feita no notebook e no celular
 - Implanta: Anki
+
+### 34.5 Rendas que dependem de formação longa (bug bounty, perícia)
+
+**Você** · 15 min
+
+- **Fora do terminal:** Dependem de certificação e estudo; entram pela trilha de estudo.
+- [ ] **Pronto quando:** Portão de formação cumprido
+- **Oferta:** Bug bounty e pentest · Perito em informática judicial
 
 <a id="quando-entra-cada-bloco"></a>
 
@@ -3184,295 +3307,296 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Portfólio de ofertas | 8.7, 14.14, 22.20 | Semanas 3 e 4 · nov/2026; Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
-| Esteira de ofertas | 8.7, 14.14 | Semanas 3 e 4 · nov/2026; Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Padrão de qualidade | 14.14 | Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Marca pessoal Alan Mateus | 11.1, 13.1 | Semana 5 · nov/2026; Semanas 6 e 7 · dez/2026 |
-| NPS e avaliações | 14.15 | Semanas 8 a 10 · dez/2026 a jan/2027 |
-| CRM único + LGPD | 14.9 | Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Flywheel de conteúdo | 11.5, 11.6 | Semana 5 · nov/2026 |
-| Canal build in public | 23.7 | A partir de fev/2027 |
-| Agente atendente (WhatsApp) | 22.5, 28.2 | Fev a dez/2027, uma oferta por vez; Junto com o primeiro CNPJ |
-| Agente orçamentista | 28.3 | Junto com o primeiro CNPJ |
-| Agente cobrador | 28.4 | Junto com o primeiro CNPJ |
-| Agente pós-venda | 28.5 | Junto com o primeiro CNPJ |
-| Agente editor de conteúdo | 11.5, 22.14 | Semana 5 · nov/2026; Fev a dez/2027, uma oferta por vez |
-| Analista semanal | 28.1 | Junto com o primeiro CNPJ |
-| Organizador fiscal | 28.6 | Junto com o primeiro CNPJ |
-| Revisor de oferta | 14.14 | Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Agente comprador | 28.7 | Junto com o primeiro CNPJ |
+| Portfólio de ofertas | 8.7, 15.14, 23.20 | Semanas 3 e 4 · nov/2026; Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
+| Esteira de ofertas | 8.7, 15.14 | Semanas 3 e 4 · nov/2026; Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Padrão de qualidade | 15.14 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Marca pessoal Alan Mateus | 12.1, 14.1 | Semana 5 · nov/2026; Semanas 6 e 7 · dez/2026 |
+| NPS e avaliações | 15.15 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| CRM único + LGPD | 15.9 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Flywheel de conteúdo | 12.5, 12.6 | Semana 5 · nov/2026 |
+| Canal build in public | 24.7 | A partir de fev/2027 |
+| Agente atendente (WhatsApp) | 23.5, 29.2 | Fev a dez/2027, uma oferta por vez; Junto com o primeiro CNPJ |
+| Agente orçamentista | 29.3 | Junto com o primeiro CNPJ |
+| Agente cobrador | 29.4 | Junto com o primeiro CNPJ |
+| Agente pós-venda | 29.5 | Junto com o primeiro CNPJ |
+| Agente editor de conteúdo | 12.5, 23.14 | Semana 5 · nov/2026; Fev a dez/2027, uma oferta por vez |
+| Analista semanal | 29.1 | Junto com o primeiro CNPJ |
+| Organizador fiscal | 29.6 | Junto com o primeiro CNPJ |
+| Revisor de oferta | 15.14 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Agente comprador | 29.7 | Junto com o primeiro CNPJ |
 | Diagnóstico do notebook | 0.2 | Antes de tudo · semana 1 (out/2026) |
-| Roteiro de implantação | 0.6, 16.4 | Antes de tudo · semana 1 (out/2026); Semana 11 · jan/2027 |
+| Roteiro de implantação | 0.6, 17.4 | Antes de tudo · semana 1 (out/2026); Semana 11 · jan/2027 |
 | Instaladores (PowerShell e bash) | 3.1, 4.4 | Semana 1 · out/2026; Semana 2 · nov/2026 |
-| Verificadores | 3.9, 4.10, 10.3, 16.4 | Semana 1 · out/2026; Semana 2 · nov/2026; Semana 4 · nov/2026; Semana 11 · jan/2027 |
-| Pipeline de conteúdo | 11.4, 11.5, 16.2 | Semana 5 · nov/2026; Semana 11 · jan/2027 |
-| Acervo (seus documentos) | 8.3, 8.4, 8.5, 22.3 | Semanas 3 e 4 · nov/2026; Fev a dez/2027, uma oferta por vez |
+| Verificadores | 3.9, 4.10, 10.3, 17.4 | Semana 1 · out/2026; Semana 2 · nov/2026; Semana 4 · nov/2026; Semana 11 · jan/2027 |
+| Pipeline de conteúdo | 12.4, 12.5, 17.2 | Semana 5 · nov/2026; Semana 11 · jan/2027 |
+| Acervo (seus documentos) | 8.3, 8.4, 8.5, 23.3 | Semanas 3 e 4 · nov/2026; Fev a dez/2027, uma oferta por vez |
 
 ### Público e canais
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Meta Business Suite | 13.5 | Semanas 6 e 7 · dez/2026 |
-| Instagram | 13.1, 17.6 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
-| YouTube | 13.1, 22.14 | Semanas 6 e 7 · dez/2026; Fev a dez/2027, uma oferta por vez |
-| LinkedIn | 13.1, 17.6 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
-| WhatsApp Business | 13.2, 17.6 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
-| Google Perfil da Empresa | 22.9, 32.3 | Fev a dez/2027, uma oferta por vez; Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Comunidade (Discord ou grupo) | 14.10, 22.15 | Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
-| Busca Google (SEO) | 13.12 | Semanas 6 e 7 · dez/2026 |
-| Alunos e ex-alunos | 13.10 | Semanas 6 e 7 · dez/2026 |
-| Recrutadores | 18.8 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| TikTok | 13.1 | Semanas 6 e 7 · dez/2026 |
-| Facebook | 13.1 | Semanas 6 e 7 · dez/2026 |
+| Meta Business Suite | 14.5 | Semanas 6 e 7 · dez/2026 |
+| Instagram | 14.1, 18.6 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
+| YouTube | 14.1, 23.14 | Semanas 6 e 7 · dez/2026; Fev a dez/2027, uma oferta por vez |
+| LinkedIn | 14.1, 18.6 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
+| WhatsApp Business | 14.2, 18.6 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
+| Google Perfil da Empresa | 23.9, 33.3 | Fev a dez/2027, uma oferta por vez; Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Comunidade (Discord ou grupo) | 15.10, 23.15 | Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
+| Busca Google (SEO) | 14.12 | Semanas 6 e 7 · dez/2026 |
+| Alunos e ex-alunos | 14.10 | Semanas 6 e 7 · dez/2026 |
+| Recrutadores | 19.8 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| TikTok | 14.1 | Semanas 6 e 7 · dez/2026 |
+| Facebook | 14.1 | Semanas 6 e 7 · dez/2026 |
 
 ### Marketing, automação e medição
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Meta Ads (Instagram, Facebook) | 23.1 | A partir de fev/2027 |
-| Isca grátis + sequência de e-mails | 13.6, 17.5 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
-| MailerLite | 13.6, 17.5, 22.8 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027; Fev a dez/2027, uma oferta por vez |
+| Meta Ads (Instagram, Facebook) | 24.1 | A partir de fev/2027 |
+| Isca grátis + sequência de e-mails | 14.6, 18.5 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
+| MailerLite | 14.6, 18.5, 23.8 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027; Fev a dez/2027, uma oferta por vez |
 | Postiz (agendador) | 10.8 | Semana 4 · nov/2026 |
-| Aprovação no celular | 11.3 | Semana 5 · nov/2026 |
-| Telegram (avisos) | 11.3 | Semana 5 · nov/2026 |
-| n8n | 10.1, 10.2, 10.5, 10.7, 22.5 | Semana 4 · nov/2026; Fev a dez/2027, uma oferta por vez |
-| Algoritmo de horário | 23.6 | A partir de fev/2027 |
-| Tags de conversão (Pixel, Google…) | 13.5, 17.4 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
-| Padrão de UTM | 14.12, 17.4 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027 |
-| Google e YouTube Ads | 23.2 | A partir de fev/2027 |
-| TikTok Ads | 23.2 | A partir de fev/2027 |
-| Regras de corte | 14.13 | Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Lucro por Venda (calculadora) | 14.13 | Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Webhooks de venda | 15.1, 15.2, 16.3, 17.7 | Semana 11 · jan/2027; Semanas 12 a 15 · jan a fev/2027 |
-| Banco de métricas (PostgreSQL) | 10.2, 10.7, 15.3 | Semana 4 · nov/2026; Semana 11 · jan/2027 |
-| Painel de lucro (Grafana) | 15.4, 16.3 | Semana 11 · jan/2027 |
-| Programa de afiliados | 23.5 | A partir de fev/2027 |
-| Prospecção de parceiros | 14.16 | Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Dublagem (YouTube + ElevenLabs) | 23.8 | A partir de fev/2027 |
-| Spotify Ad Studio | 23.3 | A partir de fev/2027 |
-| Kwai Ads | 23.3 | A partir de fev/2027 |
-| Pinterest Ads | 23.3 | A partir de fev/2027 |
-| LinkedIn Ads | 23.3 | A partir de fev/2027 |
-| Mídia nativa (Taboola, Outbrain) | 23.3 | A partir de fev/2027 |
-| Influenciadores e newsletters | 23.4 | A partir de fev/2027 |
+| Aprovação no celular | 12.3 | Semana 5 · nov/2026 |
+| Telegram (avisos) | 12.3 | Semana 5 · nov/2026 |
+| n8n | 10.1, 10.2, 10.5, 10.7, 23.5 | Semana 4 · nov/2026; Fev a dez/2027, uma oferta por vez |
+| Algoritmo de horário | 24.6 | A partir de fev/2027 |
+| Tags de conversão (Pixel, Google…) | 14.5, 18.4 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
+| Padrão de UTM | 15.12, 18.4 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027 |
+| Google e YouTube Ads | 24.2 | A partir de fev/2027 |
+| TikTok Ads | 24.2 | A partir de fev/2027 |
+| Regras de corte | 15.13 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Lucro por Venda (calculadora) | 15.13 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Webhooks de venda | 16.1, 16.2, 17.3, 18.7 | Semana 11 · jan/2027; Semanas 12 a 15 · jan a fev/2027 |
+| Banco de métricas (PostgreSQL) | 10.2, 10.7, 16.3 | Semana 4 · nov/2026; Semana 11 · jan/2027 |
+| Painel de lucro (Grafana) | 11.6, 16.4, 17.3 | Semana 4 · nov/2026; Semana 11 · jan/2027 |
+| Programa de afiliados | 24.5 | A partir de fev/2027 |
+| Prospecção de parceiros | 15.16 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Dublagem (YouTube + ElevenLabs) | 24.8 | A partir de fev/2027 |
+| Spotify Ad Studio | 24.3 | A partir de fev/2027 |
+| Kwai Ads | 24.3 | A partir de fev/2027 |
+| Pinterest Ads | 24.3 | A partir de fev/2027 |
+| LinkedIn Ads | 24.3 | A partir de fev/2027 |
+| Mídia nativa (Taboola, Outbrain) | 24.3 | A partir de fev/2027 |
+| Influenciadores e newsletters | 24.4 | A partir de fev/2027 |
 
 ### Plataformas de venda e recebimento
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Pix Automático + gateway (ex.: Asaas) | 27.4 | Quando a renda pedir |
-| Agenda online (Cal.com) | 14.8, 22.18, 22.19 | Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
-| CRM simples (planilha) | 14.9 | Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Hotmart | 14.5, 17.3, 17.7, 22.3, 22.4 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027; Fev a dez/2027, uma oferta por vez |
-| Kiwify | 14.5, 17.8 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027 |
-| Eduzz | 14.6, 17.8 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027 |
-| Udemy | 14.6, 17.8 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027 |
-| DIO (parceria) | 14.6 | Semanas 8 a 10 · dez/2026 a jan/2027 |
-| YouTube (membros) | 23.9 | A partir de fev/2027 |
-| Mercado Pago | 14.7, 22.19 | Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
-| Afiliados (Amazon, Hotmart…) | 14.11, 22.1 | Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
+| Pix Automático + gateway (ex.: Asaas) | 28.4 | Quando a renda pedir |
+| Agenda online (Cal.com) | 15.8, 23.18, 23.19 | Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
+| CRM simples (planilha) | 15.9 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Hotmart | 15.5, 18.3, 18.7, 23.3, 23.4 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027; Fev a dez/2027, uma oferta por vez |
+| Kiwify | 15.5, 18.8 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027 |
+| Eduzz | 15.6, 18.8 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027 |
+| Udemy | 15.6, 18.8 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027 |
+| DIO (parceria) | 15.6 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| YouTube (membros) | 24.9 | A partir de fev/2027 |
+| Mercado Pago | 15.7, 23.19 | Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
+| Afiliados (Amazon, Hotmart…) | 15.11, 23.1 | Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
 
 ### Pessoa física: impostos e finanças
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Registro de marca (INPI) | 14.17 | Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Termos, privacidade (LGPD) e contratos | 14.4 | Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Certificado digital (e-CNPJ) | 27.2 | Quando a renda pedir |
-| API de NFS-e (ex.: Focus NFe) | 27.3 | Quando a renda pedir |
-| CNPJ (futuro) | 27.1 | Quando a renda pedir |
-| gov.br (prata ou ouro) | 2.6, 14.1 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Carnê-leão (Receita Federal) | 14.18, 17.7 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027 |
-| Declaração anual do IR | 14.19 | Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Conta bancária separada (CPF) | 2.6, 14.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Contador | 14.3 | Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Caixa da Casa / AM Rendara | 14.20, 22.4 | Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
+| Registro de marca (INPI) | 15.17 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Termos, privacidade (LGPD) e contratos | 15.4 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Certificado digital (e-CNPJ) | 28.2 | Quando a renda pedir |
+| API de NFS-e (ex.: Focus NFe) | 28.3 | Quando a renda pedir |
+| CNPJ (futuro) | 28.1 | Quando a renda pedir |
+| gov.br (prata ou ouro) | 2.6, 15.1 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Carnê-leão (Receita Federal) | 15.18, 18.7 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027 |
+| Declaração anual do IR | 15.19 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Conta bancária separada (CPF) | 2.6, 15.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Contador | 15.3 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Caixa da Casa / AM Rendara | 15.20, 23.4 | Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
 
 ### Vitrine web (sites e domínio)
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| E-mail profissional (enviar e receber) | 13.4 | Semanas 6 e 7 · dez/2026 |
-| Domínio (Registro.br) | 13.3 | Semanas 6 e 7 · dez/2026 |
-| Site pessoal + blog (Jekyll) | 13.7, 22.1 | Semanas 6 e 7 · dez/2026; Fev a dez/2027, uma oferta por vez |
-| Instituto AMS | 13.8, 17.4 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
-| Site Grupo AMtech | 13.9 | Semanas 6 e 7 · dez/2026 |
-| Catálogo do HTML | 13.9, 22.2 | Semanas 6 e 7 · dez/2026; Fev a dez/2027, uma oferta por vez |
-| Umami (analytics) | 13.11 | Semanas 6 e 7 · dez/2026 |
-| Google Search Console | 13.12 | Semanas 6 e 7 · dez/2026 |
-| Hostinger (clientes WP) | 13.13, 22.10 | Semanas 6 e 7 · dez/2026; Fev a dez/2027, uma oferta por vez |
+| E-mail profissional (enviar e receber) | 14.4 | Semanas 6 e 7 · dez/2026 |
+| Domínio (Registro.br) | 14.3 | Semanas 6 e 7 · dez/2026 |
+| Site pessoal + blog (Jekyll) | 14.7, 23.1 | Semanas 6 e 7 · dez/2026; Fev a dez/2027, uma oferta por vez |
+| Instituto AMS | 14.8, 18.4 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
+| Site Grupo AMtech | 14.9 | Semanas 6 e 7 · dez/2026 |
+| Catálogo do HTML | 14.9, 23.2 | Semanas 6 e 7 · dez/2026; Fev a dez/2027, uma oferta por vez |
+| Umami (analytics) | 14.11 | Semanas 6 e 7 · dez/2026 |
+| Google Search Console | 14.12 | Semanas 6 e 7 · dez/2026 |
+| Hostinger (clientes WP) | 14.13, 23.10 | Semanas 6 e 7 · dez/2026; Fev a dez/2027, uma oferta por vez |
 
 ### Produtos (o que você vende)
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Mini-curso Lógica de Programação | 14.5, 17.1 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027 |
-| Formações (TI, Matemática, Finanças) | 23.10 | A partir de fev/2027 |
-| Templates e código-fonte | 18.7 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| Livro Lógica e Máquina | 20.2 | Quando o capítulo 1 estiver pronto |
-| Aulas particulares | 14.8 | Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Sites para pequenas empresas | 13.13, 22.9, 22.10 | Semanas 6 e 7 · dez/2026; Fev a dez/2027, uma oferta por vez |
-| Sistemas AM (SaaS) | 26.1 | 2027 |
+| Mini-curso Lógica de Programação | 15.5, 18.1 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027 |
+| Formações (TI, Matemática, Finanças) | 24.10 | A partir de fev/2027 |
+| Templates e código-fonte | 19.7 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| Livro Lógica e Máquina | 21.2 | Quando o capítulo 1 estiver pronto |
+| Aulas particulares | 15.8 | Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Sites para pequenas empresas | 14.13, 23.9, 23.10 | Semanas 6 e 7 · dez/2026; Fev a dez/2027, uma oferta por vez |
+| Sistemas AM (SaaS) | 27.1 | 2027 |
 
 ### Negócios do grupo (Barbacena)
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| AMtech Software (projetos e SaaS) | 32.2 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Loja AMtech (assistência) | 32.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Peças sem estoque (sob encomenda) | 32.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Ponto de retirada (Shopee e ML) | 32.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| AMtech Maker (robótica) | 32.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| AM Entregas (moto e carro) | 32.4 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Mercado Envios Flex | 32.4 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| AM Delivery (várias empresas) | 32.5 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Sushi (delivery) | 32.6 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Cafeteria | 32.8 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Padaria + café da manhã + almoço | 32.7 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| 3 CNPJs por frente | 27.1 | Quando a renda pedir |
-| Planejador do Grupo | 32.1 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| iFood (canal de descoberta) | 32.6 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Vigilância sanitária (RDC 216) | 32.6 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Anatel e Inmetro | 32.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| AMtech Software (projetos e SaaS) | 33.2 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Loja AMtech (assistência) | 33.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Peças sem estoque (sob encomenda) | 33.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Ponto de retirada (Shopee e ML) | 33.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| AMtech Maker (robótica) | 33.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| AM Entregas (moto e carro) | 33.4 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Mercado Envios Flex | 33.4 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| AM Delivery (várias empresas) | 33.5 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Sushi (delivery) | 33.6 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Cafeteria | 33.8 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Padaria + café da manhã + almoço | 33.7 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| 3 CNPJs por frente | 28.1 | Quando a renda pedir |
+| Planejador do Grupo | 33.1 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| iFood (canal de descoberta) | 33.6 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Vigilância sanitária (RDC 216) | 33.6 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Anatel e Inmetro | 33.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Radar de revenda | 11.5 | Semana 4 · nov/2026 |
 
 ### Editora AMS Silva (produção de livros)
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Selo Editora AMS Silva | 20.7 | Quando o capítulo 1 estiver pronto |
-| Repositório do livro | 20.2 | Quando o capítulo 1 estiver pronto |
-| Seu modelo de criação | 20.1 | Quando o capítulo 1 estiver pronto |
-| Fonte única (Markdown + Pandoc) | 20.2 | Quando o capítulo 1 estiver pronto |
-| Exercícios em YAML | 20.2, 22.6, 22.7, 22.13 | Quando o capítulo 1 estiver pronto; Fev a dez/2027, uma oferta por vez |
+| Selo Editora AMS Silva | 21.7 | Quando o capítulo 1 estiver pronto |
+| Repositório do livro | 21.2 | Quando o capítulo 1 estiver pronto |
+| Seu modelo de criação | 21.1 | Quando o capítulo 1 estiver pronto |
+| Fonte única (Markdown + Pandoc) | 21.2 | Quando o capítulo 1 estiver pronto |
+| Exercícios em YAML | 21.2, 23.6, 23.7, 23.13 | Quando o capítulo 1 estiver pronto; Fev a dez/2027, uma oferta por vez |
 | Pranchas TikZ e SVG | 4.4 | Semana 2 · nov/2026 |
-| Classe LaTeX do livro | 20.2 | Quando o capítulo 1 estiver pronto |
-| Pipeline do livro (CI) | 20.2 | Quando o capítulo 1 estiver pronto |
-| Revisão automática (LanguageTool, Vale) | 20.2 | Quando o capítulo 1 estiver pronto |
-| Agentes da editora | 20.5 | Quando o capítulo 1 estiver pronto |
-| Leitores beta e revisão técnica | 20.9 | Quando o capítulo 1 estiver pronto |
-| Errata e edições | 20.2 | Quando o capítulo 1 estiver pronto |
-| ISBN + código de barras (CBL) | 20.8 | Quando o capítulo 1 estiver pronto |
-| Ficha catalográfica | 20.8 | Quando o capítulo 1 estiver pronto |
-| Depósito legal | 20.11 | Quando o capítulo 1 estiver pronto |
-| Amazon KDP | 20.10 | Quando o capítulo 1 estiver pronto |
-| Gráfica sob demanda (Brasil) | 29.1 | Depois do primeiro livro |
-| Kit edição especial | 29.2 | Depois do primeiro livro |
-| Curso por seção | 29.3 | Depois do primeiro livro |
-| Edição do professor | 29.4 | Depois do primeiro livro |
-| Traduções (espanhol, inglês) | 29.5 | Depois do primeiro livro |
-| Quadro de referências | 20.6 | Quando o capítulo 1 estiver pronto |
-| Matriz de editais | 20.6 | Quando o capítulo 1 estiver pronto |
-| Projeto do capítulo | 20.1 | Quando o capítulo 1 estiver pronto |
-| Mapa de pré-requisitos | 20.1 | Quando o capítulo 1 estiver pronto |
-| Seu método (metodo.yaml) | 20.1 | Quando o capítulo 1 estiver pronto |
-| Acervos de imagens (APIs) | 20.3 | Quando o capítulo 1 estiver pronto |
-| Busca automática de imagens | 20.3 | Quando o capítulo 1 estiver pronto |
-| Filtro de licença e fichas | 20.3 | Quando o capítulo 1 estiver pronto |
-| Folha de contato (artefato) | 20.3 | Quando o capítulo 1 estiver pronto |
-| Créditos e legendas | 20.3 | Quando o capítulo 1 estiver pronto |
-| Figuras por código (Matplotlib…) | 20.4 | Quando o capítulo 1 estiver pronto |
+| Classe LaTeX do livro | 21.2 | Quando o capítulo 1 estiver pronto |
+| Pipeline do livro (CI) | 21.2 | Quando o capítulo 1 estiver pronto |
+| Revisão automática (LanguageTool, Vale) | 21.2 | Quando o capítulo 1 estiver pronto |
+| Agentes da editora | 21.5 | Quando o capítulo 1 estiver pronto |
+| Leitores beta e revisão técnica | 21.9 | Quando o capítulo 1 estiver pronto |
+| Errata e edições | 21.2 | Quando o capítulo 1 estiver pronto |
+| ISBN + código de barras (CBL) | 21.8 | Quando o capítulo 1 estiver pronto |
+| Ficha catalográfica | 21.8 | Quando o capítulo 1 estiver pronto |
+| Depósito legal | 21.11 | Quando o capítulo 1 estiver pronto |
+| Amazon KDP | 21.10 | Quando o capítulo 1 estiver pronto |
+| Gráfica sob demanda (Brasil) | 30.1 | Depois do primeiro livro |
+| Kit edição especial | 30.2 | Depois do primeiro livro |
+| Curso por seção | 30.3 | Depois do primeiro livro |
+| Edição do professor | 30.4 | Depois do primeiro livro |
+| Traduções (espanhol, inglês) | 30.5 | Depois do primeiro livro |
+| Quadro de referências | 21.6 | Quando o capítulo 1 estiver pronto |
+| Matriz de editais | 21.6 | Quando o capítulo 1 estiver pronto |
+| Projeto do capítulo | 21.1 | Quando o capítulo 1 estiver pronto |
+| Mapa de pré-requisitos | 21.1 | Quando o capítulo 1 estiver pronto |
+| Seu método (metodo.yaml) | 21.1 | Quando o capítulo 1 estiver pronto |
+| Acervos de imagens (APIs) | 21.3 | Quando o capítulo 1 estiver pronto |
+| Busca automática de imagens | 21.3 | Quando o capítulo 1 estiver pronto |
+| Filtro de licença e fichas | 21.3 | Quando o capítulo 1 estiver pronto |
+| Folha de contato (artefato) | 21.3 | Quando o capítulo 1 estiver pronto |
+| Créditos e legendas | 21.3 | Quando o capítulo 1 estiver pronto |
+| Figuras por código (Matplotlib…) | 21.4 | Quando o capítulo 1 estiver pronto |
 | CircuiTikZ | 4.4 | Semana 2 · nov/2026 |
-| Geradores de tabelas | 20.4 | Quando o capítulo 1 estiver pronto |
-| Manim (animações) | 29.3 | Depois do primeiro livro |
-| Texto alternativo | 20.4 | Quando o capítulo 1 estiver pronto |
+| Geradores de tabelas | 21.4 | Quando o capítulo 1 estiver pronto |
+| Manim (animações) | 30.3 | Depois do primeiro livro |
+| Texto alternativo | 21.4 | Quando o capítulo 1 estiver pronto |
 
 ### Estudo e carreira
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Microsoft Learn + AWS Skill Builder | 33.2 | Contínuo, desde a semana 2 |
-| TryHackMe / Hack The Box | 33.2 | Contínuo, desde a semana 2 |
-| Alura · Rocketseat · DIO · Udemy | 33.3 | Contínuo, desde a semana 2 |
-| Anki | 3.2, 22.7, 33.4 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez; Contínuo, desde a semana 2 |
-| roadmap.sh + Akita | 33.2 | Contínuo, desde a semana 2 |
-| GitHub Education | 33.1 | Contínuo, desde a semana 2 |
-| Zoomcamp de dados + cursos de IA | 21.6 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Microsoft Learn + AWS Skill Builder | 34.2 | Contínuo, desde a semana 2 |
+| TryHackMe / Hack The Box | 34.2 | Contínuo, desde a semana 2 |
+| Alura · Rocketseat · DIO · Udemy | 34.3 | Contínuo, desde a semana 2 |
+| Anki | 3.2, 23.7, 34.4 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez; Contínuo, desde a semana 2 |
+| roadmap.sh + Akita | 34.2 | Contínuo, desde a semana 2 |
+| GitHub Education | 34.1 | Contínuo, desde a semana 2 |
+| Zoomcamp de dados + cursos de IA | 22.6 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 
 ### Produção de conteúdo
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| OBS Studio | 3.2, 12.1, 17.2 | Semana 1 · out/2026; Semana 5 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
-| DaVinci Resolve ou Kdenlive | 3.7, 12.3, 17.2 | Semana 1 · out/2026; Semana 5 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
-| Audacity | 3.2, 12.2 | Semana 1 · out/2026; Semana 5 · dez/2026 |
-| Canva · Krita · Inkscape | 3.2, 12.4 | Semana 1 · out/2026; Semana 5 · dez/2026 |
-| Whisper (local) | 4.4, 11.6 | Semana 2 · nov/2026; Semana 5 · nov/2026 |
-| Voz clonada (ElevenLabs) | 12.5 | Semana 5 · dez/2026 |
+| OBS Studio | 3.2, 13.1, 18.2 | Semana 1 · out/2026; Semana 5 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
+| DaVinci Resolve ou Kdenlive | 3.7, 13.3, 18.2 | Semana 1 · out/2026; Semana 5 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
+| Audacity | 3.2, 13.2 | Semana 1 · out/2026; Semana 5 · dez/2026 |
+| Canva · Krita · Inkscape | 3.2, 13.4 | Semana 1 · out/2026; Semana 5 · dez/2026 |
+| Whisper (local) | 4.4, 12.6 | Semana 2 · nov/2026; Semana 5 · nov/2026 |
+| Voz clonada (ElevenLabs) | 13.5 | Semana 5 · dez/2026 |
 
 ### Nuvem, código e entrega
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Armazenamento de arquivos (Blob/R2) | 19.4 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
-| E-mail transacional (Resend, SES…) | 19.5 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
-| SonarQube Cloud | 18.5 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| Armazenamento de arquivos (Blob/R2) | 20.4 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| E-mail transacional (Resend, SES…) | 20.5 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| SonarQube Cloud | 19.5 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
 | Projects · ADRs · MkDocs | 5.5 | Semana 2 · nov/2026 |
 | Dependabot + CodeQL | 5.3 | Semana 2 · nov/2026 |
-| Google Cloud | 30.5 | 2028 |
+| Google Cloud | 31.5 | 2028 |
 | GitHub | 2.6, 5.1, 5.4 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 2 · nov/2026 |
-| GitHub Actions | 5.2, 16.1 | Semana 2 · nov/2026; Semana 11 · jan/2027 |
-| GHCR (imagens) | 18.6 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| GitHub Pages | 13.7 | Semanas 6 e 7 · dez/2026 |
-| Cloudflare (DNS, Pages, e-mail) | 13.3, 13.8, 15.1, 19.6 | Semanas 6 e 7 · dez/2026; Semana 11 · jan/2027; Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
-| Vercel | 19.6 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
-| Azure | 19.2, 19.3, 19.6 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
-| AWS | 30.4 | 2028 |
+| GitHub Actions | 5.2, 17.1 | Semana 2 · nov/2026; Semana 11 · jan/2027 |
+| GHCR (imagens) | 19.6 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| GitHub Pages | 14.7 | Semanas 6 e 7 · dez/2026 |
+| Cloudflare (DNS, Pages, e-mail) | 14.3, 14.8, 16.1, 20.6 | Semanas 6 e 7 · dez/2026; Semana 11 · jan/2027; Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| Vercel | 20.6 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| Azure | 20.2, 20.3, 20.6 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| AWS | 31.4 | 2028 |
 | Backblaze B2 (backup) | 7.2 | Semana 3 · nov/2026 |
-| GPU por hora (RunPod e afins) | 21.9 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| GPU por hora (RunPod e afins) | 22.9 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 | Google Drive (seus documentos) | 0.5, 8.1 | Antes de tudo · semana 1 (out/2026); Semanas 3 e 4 · nov/2026 |
 
 ### Aplicação: sistemas AM (Aura)
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| OpenAPI + Scalar | 18.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| PostGIS + MapLibre | 26.3 | 2027 |
-| Storybook | 18.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| Clean Arch + DDD | 18.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| EF Core + Npgsql | 18.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| SignalR | 18.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| Multi-tenant (RLS) | 18.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| Testes: xUnit, Playwright, k6 | 18.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| Serviços aura- (10) | 26.4 | 2027 |
-| Next.js + Aura Design System | 18.1, 22.17 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6; Fev a dez/2027, uma oferta por vez |
-| API ASP.NET Core | 18.1, 22.17 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6; Fev a dez/2027, uma oferta por vez |
-| Keycloak / Entra ID | 18.2 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| IA: RAG + pgvector | 25.1 | Depois do Passo 9 e do IA0 da Trilha de Dados e IA (≈ 2028), junto do IA5 |
-| aura-licensing | 26.1 | 2027 |
-| aura-status | 19.7 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
-| AM Kaixara (PDV e cardápio) | 22.12, 26.2 | Fev a dez/2027, uma oferta por vez; 2027 |
-| AM Rotara (entregas) | 26.3, 26.5 | 2027 |
-| App mobile (.NET MAUI) | 30.6 | 2028 |
+| OpenAPI + Scalar | 19.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| PostGIS + MapLibre | 27.3 | 2027 |
+| Storybook | 19.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| Clean Arch + DDD | 19.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| EF Core + Npgsql | 19.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| SignalR | 19.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| Multi-tenant (RLS) | 19.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| Testes: xUnit, Playwright, k6 | 19.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| Serviços aura- (10) | 27.4 | 2027 |
+| Next.js + Aura Design System | 19.1, 23.17 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6; Fev a dez/2027, uma oferta por vez |
+| API ASP.NET Core | 19.1, 23.17 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6; Fev a dez/2027, uma oferta por vez |
+| Keycloak / Entra ID | 19.2 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| IA: RAG + pgvector | 26.1 | Depois do Passo 9 e do IA0 da Trilha de Dados e IA (≈ 2028), junto do IA5 |
+| aura-licensing | 27.1 | 2027 |
+| aura-status | 20.7 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| AM Kaixara (PDV e cardápio) | 23.12, 27.2 | Fev a dez/2027, uma oferta por vez; 2027 |
+| AM Rotara (entregas) | 27.3, 27.5 | 2027 |
+| App mobile (.NET MAUI) | 31.6 | 2028 |
 
 ### Observabilidade
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Sentry (erros) | 18.4 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| Sentry (erros) | 19.4 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
 | Uptime Kuma | 10.6 | Semana 4 · nov/2026 |
-| Seq (logs) | 18.3 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| Loki + Tempo | 30.3 | 2028 |
-| OpenTelemetry | 18.3 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| Prometheus | 18.3 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| Grafana | 10.4, 15.4 | Semana 4 · nov/2026; Semana 11 · jan/2027 |
-| .NET Aspire | 18.3 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| Seq (logs) | 19.3 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| Loki + Tempo | 31.3 | 2028 |
+| OpenTelemetry | 19.3 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| Prometheus | 19.3 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| Grafana | 10.4, 16.4 | Semana 4 · nov/2026; Semana 11 · jan/2027 |
+| .NET Aspire | 19.3 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
 
 ### Containers, Kubernetes e infra como código
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Caddy (proxy + HTTPS) | 18.3 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| Mailpit | 18.3 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| Kafka | 30.1 | 2028 |
-| kubectl · Helm · k9s | 30.2 | 2028 |
-| Azure CLI · AWS CLI | 19.1 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
-| Datomic local | 26.4 | 2027 |
+| Caddy (proxy + HTTPS) | 19.3 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| Mailpit | 19.3 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| Kafka | 31.1 | 2028 |
+| kubectl · Helm · k9s | 31.2 | 2028 |
+| Azure CLI · AWS CLI | 20.1 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| Datomic local | 27.4 | 2027 |
 | Docker + Compose | 4.2, 10.2 | Semana 2 · nov/2026; Semana 4 · nov/2026 |
-| PostgreSQL | 10.2, 18.1 | Semana 4 · nov/2026; Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| Redis | 18.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| RabbitMQ | 30.1 | 2028 |
-| Kubernetes local (kind) | 30.2 | 2028 |
-| Terraform | 19.1, 19.3 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| PostgreSQL | 10.2, 19.1 | Semana 4 · nov/2026; Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| Redis | 19.1 | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| RabbitMQ | 31.1 | 2028 |
+| Kubernetes local (kind) | 31.2 | 2028 |
+| Terraform | 20.1, 20.3 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
 
 ### Claude: recursos, conectores e plugins
 
@@ -3483,10 +3607,10 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Pesquisa aprofundada | 9.1 | Semana 4 · nov/2026 |
 | Tarefas agendadas | 9.1 | Semana 4 · nov/2026 |
 | Claude in Chrome + uso do computador | 3.6 | Semana 1 · out/2026 |
-| Claude (assinatura e API) | 11.2 | Semana 5 · nov/2026 |
+| Claude (assinatura e API) | 12.2 | Semana 5 · nov/2026 |
 | Conector Google (Gmail, Drive…) | 2.3, 9.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 4 · nov/2026 |
-| Conectores Canva + Figma | 9.2, 12.4 | Semana 4 · nov/2026; Semana 5 · dez/2026 |
-| Conector MailerLite | 9.2, 13.6 | Semana 4 · nov/2026; Semanas 6 e 7 · dez/2026 |
+| Conectores Canva + Figma | 9.2, 13.4 | Semana 4 · nov/2026; Semana 5 · dez/2026 |
+| Conector MailerLite | 9.2, 14.6 | Semana 4 · nov/2026; Semanas 6 e 7 · dez/2026 |
 | Vercel · AWS · Microsoft Learn | 9.2 | Semana 4 · nov/2026 |
 | Conector Upwork | 9.2 | Semana 4 · nov/2026 |
 | Lovable + Supabase | 9.2 | Semana 4 · nov/2026 |
@@ -3511,44 +3635,44 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Codex (OpenAI) | 9.4 | Semana 4 · nov/2026 |
 | Agentes de código do Google | 9.4 | Semana 4 · nov/2026 |
 | Perplexity | 9.4 | Semana 4 · nov/2026 |
-| GitHub Copilot | 33.1 | Contínuo, desde a semana 2 |
+| GitHub Copilot | 34.1 | Contínuo, desde a semana 2 |
 
 ### Dados e treino de IA
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Python de dados (Polars, Jupyter) | 21.4 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
-| DuckDB + Parquet | 21.4 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
-| dbt Core | 21.7 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
-| Airflow (orquestração) | 21.8 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
-| Spark (PySpark) | 21.4 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
-| Seus datasets (só conteúdo seu) | 21.10 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
-| PyTorch + CUDA (WSL2) | 21.3, 21.4 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
-| Hugging Face (modelos e Hub) | 21.9 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
-| Unsloth (QLoRA) | 21.11 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
-| Kaggle · Colab (GPU grátis) | 21.9, 21.11 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
-| MLflow (experimentos) | 21.4 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
-| Avaliação dos modelos | 21.10, 21.12 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
-| llama.cpp (GGUF) | 21.4, 21.12 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Python de dados (Polars, Jupyter) | 22.4 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| DuckDB + Parquet | 22.4 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| dbt Core | 22.7 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Airflow (orquestração) | 22.8 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Spark (PySpark) | 22.4 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Seus datasets (só conteúdo seu) | 22.10 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| PyTorch + CUDA (WSL2) | 22.3, 22.4 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Hugging Face (modelos e Hub) | 22.9 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Unsloth (QLoRA) | 22.11 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Kaggle · Colab (GPU grátis) | 22.9, 22.11 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| MLflow (experimentos) | 22.4 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Avaliação dos modelos | 22.10, 22.12 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| llama.cpp (GGUF) | 22.4, 22.12 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 
 ### Agentes de IA e sandbox
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Modelos locais: Qwen · Gemma · Llama | 6.4, 21.5 | Semana 2 · nov/2026; Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Modelos locais: Qwen · Gemma · Llama | 6.4, 22.5 | Semana 2 · nov/2026; Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 | Base de conhecimento (RAG) das suas notas | 6.7, 8.6 | Semana 2 · nov/2026; Semanas 3 e 4 · nov/2026 |
 | Claude Code | 6.1 | Semana 2 · nov/2026 |
 | ai-jail | 6.2 | Semana 2 · nov/2026 |
 | ai-memory | 6.6 | Semana 2 · nov/2026 |
 | Servidores MCP | 6.5 | Semana 2 · nov/2026 |
 | CLAUDE.md, agentes e skills (seus) | 6.3 | Semana 2 · nov/2026 |
-| Ollama | 6.4, 21.5, 21.12 | Semana 2 · nov/2026; Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Ollama | 6.4, 22.5, 22.12 | Semana 2 · nov/2026; Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 
 ### Linux (Ubuntu no WSL2, Arch no 2º disco)
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Neovim | 24.2 | 2027, conforme cada compra |
+| Neovim | 25.2 | 2027, conforme cada compra |
 | nmap · dig · curl | 4.4 | Semana 2 · nov/2026 |
 | Ubuntu (WSL2) | 4.1, 4.5 | Semana 2 · nov/2026 |
 | Git + SSH + gh | 4.4, 4.6 | Semana 2 · nov/2026 |
@@ -3556,18 +3680,18 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | TeX Live | 4.4 | Semana 2 · nov/2026 |
 | gitleaks · Trivy | 4.4 | Semana 2 · nov/2026 |
 | dotfiles | 4.7 | Semana 2 · nov/2026 |
-| Arch + Omarchy (2º NVMe) | 24.1 | 2027, conforme cada compra |
+| Arch + Omarchy (2º NVMe) | 25.1 | 2027, conforme cada compra |
 
 ### Windows 11, apps e máquinas virtuais
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Tailscale (VPN) | 22.11, 31.2 | Fev a dez/2027, uma oferta por vez; 2028, quando o grupo pedir |
+| Tailscale (VPN) | 23.11, 32.2 | Fev a dez/2027, uma oferta por vez; 2028, quando o grupo pedir |
 | .wslconfig + localhost | 3.2 | Semana 1 · out/2026 |
 | Terminal · PowerShell · winget | 3.2 | Semana 1 · out/2026 |
 | Excalidraw / draw.io | 3.2 | Semana 1 · out/2026 |
 | Unity · Cocos | 3.8 | Semana 1 · out/2026 |
-| Gerenciador de boot | 24.1 | 2027, conforme cada compra |
+| Gerenciador de boot | 25.1 | 2027, conforme cada compra |
 | NitroSense + drivers AMD e NVIDIA | 1.3 | Semana 1 · out/2026 |
 | 7-Zip | 3.2 | Semana 1 · out/2026 |
 | PowerToys | 3.2 | Semana 1 · out/2026 |
@@ -3583,17 +3707,17 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Navegador + Claude in Chrome | 2.4, 2.9, 3.6 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 1 · out/2026 |
 | VirtualBox | 3.2 | Semana 1 · out/2026 |
 | Wireshark | 3.2 | Semana 1 · out/2026 |
-| VMs: Kali · Arch · Servidores | 24.3 | 2027, conforme cada compra |
-| Arduino IDE 2 | 3.2, 22.16 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez |
-| Rufus (grava pendrives) | 21.1 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| VMs: Kali · Arch · Servidores | 25.3 | 2027, conforme cada compra |
+| Arduino IDE 2 | 3.2, 23.16 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez |
+| Rufus (grava pendrives) | 22.1 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 
 ### Segurança e cofre
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Commits assinados (chave SSH) | 4.6, 16.1 | Semana 2 · nov/2026; Semana 11 · jan/2027 |
+| Commits assinados (chave SSH) | 4.6, 17.1 | Semana 2 · nov/2026; Semana 11 · jan/2027 |
 | restic (backup criptografado) | 7.1, 7.4, 10.7 | Semana 3 · nov/2026; Semana 4 · nov/2026 |
-| Chave física (YubiKey) | 24.5 | 2027, conforme cada compra |
+| Chave física (YubiKey) | 25.5 | 2027, conforme cada compra |
 | TPM + Secure Boot | 3.3 | Semana 1 · out/2026 |
 | BitLocker | 3.3 | Semana 1 · out/2026 |
 | Defender + Firewall | 3.4 | Semana 1 · out/2026 |
@@ -3607,16 +3731,16 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 |---|---|---|
 | Nobreak | 1.2 | Semana 1 · out/2026 |
 | Base com cooler | 1.2 | Semana 1 · out/2026 |
-| SSD SATA 2,5" | 24.4 | 2027, conforme cada compra |
+| SSD SATA 2,5" | 25.4 | 2027, conforme cada compra |
 | Acer Nitro (32 GB, GTX 1650) | 0.2, 1.2 | Antes de tudo · semana 1 (out/2026); Semana 1 · out/2026 |
-| 2º NVMe (1–4 TB) | 24.1 | 2027, conforme cada compra |
+| 2º NVMe (1–4 TB) | 25.1 | 2027, conforme cada compra |
 | 2º monitor | 1.2 | Semana 1 · out/2026 |
-| Microfone + câmera | 24.6 | 2027, conforme cada compra |
+| Microfone + câmera | 25.6 | 2027, conforme cada compra |
 | Celular | 1.2, 2.8, 4.9 | Semana 1 · out/2026; Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 2 · nov/2026 |
 | Disco externo | 1.1, 1.2, 2.10, 7.1 | Semana 1 · out/2026; Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 3 · nov/2026 |
-| Pendrive Kali (persistência) | 21.1 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
-| Pendrive Arch (instalação portátil) | 21.2 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
-| Arduino · ESP32 · Pi | 1.2, 22.16 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez |
-| Servidor caseiro (NAS + serviços) | 31.1 | 2028, quando o grupo pedir |
+| Pendrive Kali (persistência) | 22.1 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Pendrive Arch (instalação portátil) | 22.2 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| Arduino · ESP32 · Pi | 1.2, 23.16 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez |
+| Servidor caseiro (NAS + serviços) | 32.1 | 2028, quando o grupo pedir |
 | SSD externo (USB-C 10 Gbps) | 1.2 | Semana 1 · out/2026 |
-| Workstation com GPU | 31.3 | 2028, quando o grupo pedir |
+| Workstation com GPU | 32.3 | 2028, quando o grupo pedir |

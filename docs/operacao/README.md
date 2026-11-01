@@ -10,7 +10,7 @@ Nada é vendido sem ter passado pela esteira; nada é feito uma vez só: cada tr
 
 ```mermaid
 flowchart LR
-  C["Catálogo único<br/>47 ofertas pontuadas"] --> E["Esteira<br/>ideia → validação → construção<br/>→ lançamento → escala"]
+  C["Catálogo único<br/>93 ofertas pontuadas<br/>arsenal com vereditos"] --> E["Esteira<br/>ideia → validação → construção<br/>→ lançamento → escala"]
   E --> Q["Padrão de qualidade<br/>por tipo de oferta"]
   Q --> V["Venda e entrega"]
   V --> D["Clientes e dados<br/>CRM único, LGPD"]
@@ -33,7 +33,7 @@ flowchart LR
 5. [Padrão de qualidade](05-padrao-de-qualidade.md): o que é "pronto" para cada tipo de oferta e o ciclo de melhoria
 6. [Clientes e dados](06-clientes-e-dados.md): CRM único, consentimento, jornadas entre ofertas e os números de cada uma
 7. [Ordem de execução](07-ordem-de-execucao.md): o que fazer nos próximos 90 dias e 12 meses, dentro das horas que você tem
-- [Portfólio de ofertas](portfolio.md): o catálogo completo com ranking e as fontes de renda novas (gerado)
+- [Portfólio de ofertas](portfolio.md): o catálogo completo, o arsenal de rendas (o que entra agora, a fila, o que fica para 2027, o que exige capital e o que foi descartado), as regras de hora mínima e teto de horas, e o ranking (gerado)
 - [`portfolio.html`](portfolio.html): o mesmo catálogo com filtros, para abrir no navegador
 
 ## Antes de tudo: o limite real

@@ -1,11 +1,13 @@
 {
  "frentes": {
-  "educacao": "Instituto AMS e infoprodutos",
+  "educacao": "AMtech Educação · Instituto AMS",
   "editora": "Editora AMS Silva",
   "software": "AMtech Software",
-  "servicos": "Serviços locais e B2B",
+  "servicos": "AMtech Digital (serviços remotos e B2B)",
+  "campo": "AMtech Campo (presencial, por parceiros)",
   "fisico": "Negócios físicos",
-  "midia": "Conteúdo e mídia"
+  "midia": "AMtech Mídia",
+  "patrimonio": "Patrimônio (investimentos)"
  },
  "ofertas": [
   {
@@ -44,7 +46,12 @@
     "capital": 1
    },
    "doc": "../marketing/README.md",
-   "nova": false
+   "nova": false,
+   "perfil": "passiva",
+   "automacao": 85,
+   "veredito": "agora",
+   "motivo": "O material já existe e, pronto, vende 24h. Grava no bloco de sábado.",
+   "lote": ""
   },
   {
    "id": "formti",
@@ -80,7 +87,12 @@
     "capital": 2
    },
    "doc": null,
-   "nova": false
+   "nova": false,
+   "perfil": "passiva",
+   "automacao": 85,
+   "veredito": "fila",
+   "motivo": "Depois que o mini-curso validar a demanda.",
+   "lote": ""
   },
   {
    "id": "formmat",
@@ -114,7 +126,12 @@
     "capital": 1
    },
    "doc": null,
-   "nova": false
+   "nova": false,
+   "perfil": "passiva",
+   "automacao": 85,
+   "veredito": "fila",
+   "motivo": "Depende do livro pronto.",
+   "lote": ""
   },
   {
    "id": "financas",
@@ -148,7 +165,12 @@
     "capital": 1
    },
    "doc": null,
-   "nova": false
+   "nova": false,
+   "perfil": "passiva",
+   "automacao": 85,
+   "veredito": "fila",
+   "motivo": "Cuidado regulatório (não recomendar ativo); depois da planilha validar.",
+   "lote": ""
   },
   {
    "id": "aulas",
@@ -182,7 +204,13 @@
     "capital": 1
    },
    "doc": null,
-   "nova": false
+   "nova": false,
+   "perfil": "ativa_boa",
+   "automacao": 30,
+   "veredito": "proxima",
+   "motivo": "Em turma online, 1 hora sua vale vários alunos e a gravação vira curso. Entra com o mini-curso no ar servindo de isca.",
+   "ordem": 2,
+   "lote": ""
   },
   {
    "id": "templates",
@@ -218,7 +246,12 @@
     "capital": 1
    },
    "doc": null,
-   "nova": false
+   "nova": false,
+   "perfil": "passiva",
+   "automacao": 90,
+   "veredito": "fila",
+   "motivo": "Sai de cada site entregue; empacotar sem custo extra.",
+   "lote": ""
   },
   {
    "id": "catalogo",
@@ -249,7 +282,12 @@
     "capital": 1
    },
    "doc": null,
-   "nova": false
+   "nova": false,
+   "perfil": "passiva",
+   "automacao": 95,
+   "veredito": "manter",
+   "motivo": "Já está no ar e é a isca gratuita; só manter.",
+   "lote": ""
   },
   {
    "id": "ammentor",
@@ -284,7 +322,13 @@
     "capital": 2
    },
    "doc": null,
-   "nova": false
+   "nova": false,
+   "perfil": "passiva",
+   "automacao": 90,
+   "veredito": "proxima",
+   "motivo": "Já existe no seu Desktop; falta ligar cobrança e acesso.",
+   "ordem": 1,
+   "lote": ""
   },
   {
    "id": "udemy",
@@ -317,7 +361,12 @@
     "capital": 1
    },
    "doc": null,
-   "nova": false
+   "nova": false,
+   "perfil": "passiva",
+   "automacao": 90,
+   "veredito": "fila",
+   "motivo": "Reaproveita os cursos gravados.",
+   "lote": ""
   },
   {
    "id": "dio",
@@ -347,7 +396,12 @@
     "capital": 1
    },
    "doc": null,
-   "nova": false
+   "nova": false,
+   "perfil": "passiva",
+   "automacao": 70,
+   "veredito": "fila",
+   "motivo": "Depende de convite da plataforma.",
+   "lote": ""
   },
   {
    "id": "aulasprof",
@@ -382,7 +436,12 @@
     "capital": 1
    },
    "doc": null,
-   "nova": true
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 90,
+   "veredito": "fila",
+   "motivo": "Entra junto com a Fábrica para professores.",
+   "lote": ""
   },
   {
    "id": "simulados",
@@ -418,7 +477,12 @@
     "capital": 1
    },
    "doc": null,
-   "nova": true
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 90,
+   "veredito": "fila",
+   "motivo": "Produto, não estudo seu; depois do AM Mentor.",
+   "lote": ""
   },
   {
    "id": "anki",
@@ -451,7 +515,12 @@
     "capital": 1
    },
    "doc": null,
-   "nova": true
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 95,
+   "veredito": "fila",
+   "motivo": "Sai do seu estudo; esforço quase zero.",
+   "lote": ""
   },
   {
    "id": "comunidade",
@@ -486,7 +555,12 @@
     "capital": 1
    },
    "doc": null,
-   "nova": false
+   "nova": false,
+   "perfil": "ativa_boa",
+   "automacao": 60,
+   "veredito": "fila",
+   "motivo": "Exige presença constante; só com uma base de alunos já pagando.",
+   "lote": ""
   },
   {
    "id": "workshop",
@@ -521,7 +595,12 @@
     "capital": 1
    },
    "doc": null,
-   "nova": true
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 30,
+   "veredito": "em2027",
+   "motivo": "Hora presencial; só se a tarde ficar livre em 2027.",
+   "lote": ""
   },
   {
    "id": "livro",
@@ -557,7 +636,12 @@
     "capital": 2
    },
    "doc": "../editora/README.md",
-   "nova": false
+   "nova": false,
+   "perfil": "passiva",
+   "automacao": 85,
+   "veredito": "fila",
+   "motivo": "Escrita contínua nos blocos de estudo; lançamento pela Editora.",
+   "lote": ""
   },
   {
    "id": "kitlivro",
@@ -590,7 +674,12 @@
     "capital": 1
    },
    "doc": null,
-   "nova": false
+   "nova": false,
+   "perfil": "passiva",
+   "automacao": 90,
+   "veredito": "fila",
+   "motivo": "Depois do livro.",
+   "lote": ""
   },
   {
    "id": "adocao",
@@ -624,7 +713,12 @@
     "capital": 1
    },
    "doc": null,
-   "nova": true
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 70,
+   "veredito": "fila",
+   "motivo": "Depois do livro e do kit.",
+   "lote": ""
   },
   {
    "id": "traducao",
@@ -656,7 +750,12 @@
     "capital": 3
    },
    "doc": null,
-   "nova": false
+   "nova": false,
+   "perfil": "passiva",
+   "automacao": 80,
+   "veredito": "fila",
+   "motivo": "Depois do livro vender em português.",
+   "lote": ""
   },
   {
    "id": "sites",
@@ -691,7 +790,12 @@
     "capital": 1
    },
    "doc": "../negocios/01-software-house.md",
-   "nova": false
+   "nova": false,
+   "perfil": "ativa_boa",
+   "automacao": 70,
+   "veredito": "agora",
+   "motivo": "Caixa rápido para quitar o cartão e manutenção mensal recorrente; é a sua regra para sair do restaurante.",
+   "lote": ""
   },
   {
    "id": "encomenda",
@@ -727,7 +831,12 @@
     "capital": 1
    },
    "doc": "../negocios/01-software-house.md",
-   "nova": false
+   "nova": false,
+   "perfil": "ativa_boa",
+   "automacao": 40,
+   "veredito": "fila",
+   "motivo": "Só projetos acima da hora mínima.",
+   "lote": ""
   },
   {
    "id": "kaixara",
@@ -760,7 +869,12 @@
     "capital": 2
    },
    "doc": null,
-   "nova": false
+   "nova": false,
+   "perfil": "passiva",
+   "automacao": 70,
+   "veredito": "fila",
+   "motivo": "Projeto de portfólio; venda só depois de validar.",
+   "lote": ""
   },
   {
    "id": "rotara",
@@ -795,7 +909,12 @@
     "capital": 2
    },
    "doc": null,
-   "nova": false
+   "nova": false,
+   "perfil": "passiva",
+   "automacao": 70,
+   "veredito": "fila",
+   "motivo": "Depende do Kaixara.",
+   "lote": ""
   },
   {
    "id": "rendara",
@@ -826,7 +945,12 @@
     "capital": 1
    },
    "doc": null,
-   "nova": false
+   "nova": false,
+   "perfil": "passiva",
+   "automacao": 80,
+   "veredito": "fila",
+   "motivo": "Valida primeiro pela planilha Cascata.",
+   "lote": ""
   },
   {
    "id": "taskoro",
@@ -852,7 +976,12 @@
     "capital": 2
    },
    "doc": null,
-   "nova": false
+   "nova": false,
+   "perfil": "passiva",
+   "automacao": 70,
+   "veredito": "fila",
+   "motivo": "Pausado por você.",
+   "lote": ""
   },
   {
    "id": "whitelabel",
@@ -886,7 +1015,12 @@
     "capital": 2
    },
    "doc": null,
-   "nova": true
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 70,
+   "veredito": "fila",
+   "motivo": "Depende do AM Delivery.",
+   "lote": ""
   },
   {
    "id": "licencadelivery",
@@ -919,12 +1053,17 @@
     "capital": 2
    },
    "doc": null,
-   "nova": true
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 70,
+   "veredito": "fila",
+   "motivo": "Depende do AM Delivery funcionando em Barbacena.",
+   "lote": ""
   },
   {
    "id": "assist",
    "nome": "Assistência técnica",
-   "frente": "servicos",
+   "frente": "campo",
    "tipo": "serviço",
    "estagio": "ideia",
    "receita": "por serviço",
@@ -953,7 +1092,12 @@
     "capital": 2
    },
    "doc": "../negocios/02-assistencia-e-pecas.md",
-   "nova": false
+   "nova": false,
+   "perfil": "ativa",
+   "automacao": 30,
+   "veredito": "decidir",
+   "motivo": "Loja e bancada pedem capital e presença; começa pela revenda e pela intermediação.",
+   "lote": ""
   },
   {
    "id": "remoto",
@@ -988,12 +1132,17 @@
     "capital": 1
    },
    "doc": null,
-   "nova": true
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 60,
+   "veredito": "fila",
+   "motivo": "Contratos mensais com empresas; depois dos primeiros clientes de sites.",
+   "lote": ""
   },
   {
    "id": "pecas",
    "nome": "Peças e acessórios sem estoque",
-   "frente": "servicos",
+   "frente": "campo",
    "tipo": "comércio",
    "estagio": "ideia",
    "receita": "margem por venda",
@@ -1023,7 +1172,12 @@
     "capital": 1
    },
    "doc": "../negocios/02-assistencia-e-pecas.md",
-   "nova": false
+   "nova": false,
+   "perfil": "ativa_boa",
+   "automacao": 70,
+   "veredito": "fila",
+   "motivo": "Sem estoque; entra com a revenda de notebooks.",
+   "lote": ""
   },
   {
    "id": "automacaoia",
@@ -1058,7 +1212,12 @@
     "capital": 1
    },
    "doc": null,
-   "nova": true
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 60,
+   "veredito": "fila",
+   "motivo": "Mensalidade, e cada automação vira template; depois do primeiro cliente de sites.",
+   "lote": ""
   },
   {
    "id": "agencialocal",
@@ -1093,7 +1252,12 @@
     "capital": 1
    },
    "doc": null,
-   "nova": true
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 50,
+   "veredito": "fila",
+   "motivo": "Junto com a automação com IA.",
+   "lote": ""
   },
   {
    "id": "consultoriaresto",
@@ -1125,12 +1289,17 @@
     "capital": 1
    },
    "doc": null,
-   "nova": true
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 30,
+   "veredito": "em2027",
+   "motivo": "Hora presencial em restaurante.",
+   "lote": ""
   },
   {
    "id": "maker",
    "nome": "AMtech Maker (robótica e automação)",
-   "frente": "servicos",
+   "frente": "campo",
    "tipo": "produto e serviço",
    "estagio": "ideia",
    "receita": "venda e projeto",
@@ -1160,12 +1329,17 @@
     "capital": 2
    },
    "doc": "../negocios/03-produtos-proprios.md",
-   "nova": false
+   "nova": false,
+   "perfil": "ativa",
+   "automacao": 40,
+   "veredito": "decidir",
+   "motivo": "Estoque e oficina; capital.",
+   "lote": ""
   },
   {
    "id": "oficinas",
    "nome": "Oficinas de robótica e programação para escolas",
-   "frente": "servicos",
+   "frente": "campo",
    "tipo": "serviço",
    "estagio": "ideia",
    "receita": "por turma",
@@ -1194,7 +1368,12 @@
     "capital": 2
    },
    "doc": null,
-   "nova": true
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 20,
+   "veredito": "em2027",
+   "motivo": "Hora presencial em escolas.",
+   "lote": ""
   },
   {
    "id": "ponto",
@@ -1226,7 +1405,12 @@
     "capital": 1
    },
    "doc": "../negocios/04-ponto-de-retirada.md",
-   "nova": false
+   "nova": false,
+   "perfil": "ativa",
+   "automacao": 30,
+   "veredito": "decidir",
+   "motivo": "Precisa de loja aberta.",
+   "lote": ""
   },
   {
    "id": "entregas",
@@ -1262,7 +1446,12 @@
     "capital": 3
    },
    "doc": "../negocios/05-logistica-e-entregas.md",
-   "nova": false
+   "nova": false,
+   "perfil": "ativa",
+   "automacao": 30,
+   "veredito": "decidir",
+   "motivo": "Capital, equipe e veículos.",
+   "lote": ""
   },
   {
    "id": "delivery",
@@ -1298,7 +1487,12 @@
     "capital": 4
    },
    "doc": "../negocios/06-delivery-multiempresas.md",
-   "nova": false
+   "nova": false,
+   "perfil": "ativa",
+   "automacao": 40,
+   "veredito": "decidir",
+   "motivo": "Capital alto; portões dos negócios físicos.",
+   "lote": ""
   },
   {
    "id": "sushi",
@@ -1336,7 +1530,12 @@
     "capital": 5
    },
    "doc": "../negocios/07-sushi.md",
-   "nova": false
+   "nova": false,
+   "perfil": "ativa",
+   "automacao": 30,
+   "veredito": "decidir",
+   "motivo": "Capital alto e equipe.",
+   "lote": ""
   },
   {
    "id": "aulasushi",
@@ -1367,7 +1566,12 @@
     "capital": 1
    },
    "doc": null,
-   "nova": true
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 0,
+   "veredito": "em2027",
+   "motivo": "Hora pura presencial; paga bem por evento, mas ocupa fim de semana.",
+   "lote": ""
   },
   {
    "id": "cafeteria",
@@ -1401,7 +1605,12 @@
     "capital": 4
    },
    "doc": "../negocios/08-cafeteria.md",
-   "nova": false
+   "nova": false,
+   "perfil": "ativa",
+   "automacao": 30,
+   "veredito": "decidir",
+   "motivo": "Capital alto; depende da padaria.",
+   "lote": ""
   },
   {
    "id": "padaria",
@@ -1436,7 +1645,12 @@
     "capital": 5
    },
    "doc": "../negocios/09-padaria-e-almoco.md",
-   "nova": false
+   "nova": false,
+   "perfil": "ativa",
+   "automacao": 30,
+   "veredito": "decidir",
+   "motivo": "O maior capital do grupo.",
+   "lote": ""
   },
   {
    "id": "dark",
@@ -1474,7 +1688,12 @@
     "capital": 1
    },
    "doc": "../marketing/README.md",
-   "nova": false
+   "nova": false,
+   "perfil": "passiva",
+   "automacao": 70,
+   "veredito": "fila",
+   "motivo": "Começa quando o estudo gerar conteúdo toda semana.",
+   "lote": ""
   },
   {
    "id": "buildpublic",
@@ -1509,7 +1728,12 @@
     "capital": 1
    },
    "doc": null,
-   "nova": true
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 70,
+   "veredito": "fila",
+   "motivo": "Sai do bloco de produção de sábado.",
+   "lote": ""
   },
   {
    "id": "newsletter",
@@ -1542,7 +1766,12 @@
     "capital": 1
    },
    "doc": null,
-   "nova": false
+   "nova": false,
+   "perfil": "passiva",
+   "automacao": 80,
+   "veredito": "fila",
+   "motivo": "Junto com o canal.",
+   "lote": ""
   },
   {
    "id": "afiliados",
@@ -1578,7 +1807,12 @@
     "capital": 1
    },
    "doc": null,
-   "nova": false
+   "nova": false,
+   "perfil": "passiva",
+   "automacao": 90,
+   "veredito": "fila",
+   "motivo": "Links nas páginas e vídeos que já vão existir.",
+   "lote": ""
   },
   {
    "id": "monetizacao",
@@ -1608,7 +1842,1750 @@
     "capital": 1
    },
    "doc": null,
-   "nova": false
+   "nova": false,
+   "perfil": "passiva",
+   "automacao": 95,
+   "veredito": "fila",
+   "motivo": "Consequência do canal crescer.",
+   "lote": ""
+  },
+  {
+   "id": "avaliacaoia",
+   "nome": "Avaliação de respostas de IA (DataAnnotation, Outlier)",
+   "frente": "servicos",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "por hora, em dólar",
+   "escala": "local",
+   "canais": [
+    "DataAnnotation",
+    "Outlier",
+    "RWS"
+   ],
+   "automatico": [
+    "registro de horas e de pagamentos",
+    "lançamento no Caixa da Casa"
+   ],
+   "humano": [
+    "fazer as tarefas"
+   ],
+   "deriva_de": [],
+   "proximo_passo": "Fazer o cadastro e o teste de entrada (quem pede pagamento para você entrar é golpe)",
+   "metrica": "R$ líquido por hora",
+   "nota": {
+    "sinergia": 3,
+    "escala": 1,
+    "demanda": 3,
+    "esforco": 1,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 0,
+   "veredito": "agora",
+   "motivo": "Começa sem custo, ocupa só as brechas e paga em dólar. Sai se ficar abaixo da hora mínima.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "revenda-notebooks",
+   "nome": "Notebooks e PCs: comprar, consertar e revender",
+   "frente": "campo",
+   "tipo": "comércio",
+   "estagio": "ideia",
+   "receita": "margem por unidade",
+   "escala": "local",
+   "canais": [
+    "OLX",
+    "Mercado Livre",
+    "Facebook"
+   ],
+   "automatico": [
+    "alerta e pré-avaliação pelo radar",
+    "laudo de teste (diagnóstico)",
+    "anúncio pronto para você aprovar",
+    "estoque e lucro no Kaixara"
+   ],
+   "humano": [
+    "ver e testar antes de comprar",
+    "consertar"
+   ],
+   "deriva_de": [
+    "assist"
+   ],
+   "proximo_passo": "Criar as buscas salvas e rodar o radar 4 semanas sem comprar, só medindo",
+   "metrica": "lucro por hora sua",
+   "nota": {
+    "sinergia": 5,
+    "escala": 2,
+    "demanda": 4,
+    "esforco": 2,
+    "capital": 3
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 40,
+   "veredito": "proxima",
+   "motivo": "Usa a sua bancada e o radar. Só continua se passar da hora mínima por 2 meses.",
+   "lote": "2026-11",
+   "ordem": 3
+  },
+  {
+   "id": "fabricaprof",
+   "nome": "Fábrica de documentos para professores de MG (assinatura)",
+   "frente": "educacao",
+   "tipo": "assinatura",
+   "estagio": "ideia",
+   "receita": "mensal",
+   "escala": "digital",
+   "canais": [
+    "Instagram",
+    "grupos de professores",
+    "Hotmart"
+   ],
+   "automatico": [
+    "geração dos documentos",
+    "cobrança e acesso",
+    "atualização do modelo"
+   ],
+   "humano": [
+    "atualizar o modelo quando a escola mudar",
+    "suporte"
+   ],
+   "deriva_de": [
+    "aulasprof"
+   ],
+   "proximo_passo": "Usar a Fábrica por 1 bimestre em você mesmo e mostrar a 5 colegas",
+   "metrica": "assinantes ativos",
+   "nota": {
+    "sinergia": 5,
+    "escala": 5,
+    "demanda": 4,
+    "esforco": 3,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 85,
+   "veredito": "proxima",
+   "motivo": "Você constrói a Fábrica para si; vender é abrir para outros. Dado de aluno nunca entra.",
+   "lote": "2026-11",
+   "ordem": 4
+  },
+  {
+   "id": "setuppro",
+   "nome": "Setup profissional (curso, template e configuração remota)",
+   "frente": "software",
+   "tipo": "infoproduto",
+   "estagio": "ideia",
+   "receita": "venda única + serviço",
+   "escala": "digital",
+   "canais": [
+    "YouTube",
+    "Hotmart",
+    "GitHub"
+   ],
+   "automatico": [
+    "entrega do template",
+    "vídeos",
+    "verificador automático"
+   ],
+   "humano": [
+    "gravar",
+    "suporte"
+   ],
+   "deriva_de": [
+    "templates"
+   ],
+   "proximo_passo": "Tirar do seu setup tudo o que é pessoal e gravar a primeira aula",
+   "metrica": "vendas por mês",
+   "nota": {
+    "sinergia": 5,
+    "escala": 5,
+    "demanda": 3,
+    "esforco": 2,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 85,
+   "veredito": "proxima",
+   "motivo": "Você já está construindo; falta empacotar.",
+   "lote": "2026-11",
+   "ordem": 5
+  },
+  {
+   "id": "abnt",
+   "nome": "Formatação ABNT de TCC (só formatar e revisar)",
+   "frente": "educacao",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "por trabalho",
+   "escala": "produtizado",
+   "canais": [
+    "Instagram",
+    "WhatsApp"
+   ],
+   "automatico": [
+    "verificador de margens, citações e sumário do .docx"
+   ],
+   "humano": [
+    "ajustes finais"
+   ],
+   "deriva_de": [],
+   "proximo_passo": "Fazer o verificador automático e testar em 3 trabalhos",
+   "metrica": "R$ por hora",
+   "nota": {
+    "sinergia": 4,
+    "escala": 2,
+    "demanda": 3,
+    "esforco": 1,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 50,
+   "veredito": "fila",
+   "motivo": "Ganho baixo e sazonal; só nas temporadas, se sobrar hora. Nunca escrever o trabalho pelo aluno.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "conteudista",
+   "nome": "Professor conteudista EAD",
+   "frente": "educacao",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "por material produzido",
+   "escala": "produtizado",
+   "canais": [
+    "editais de universidades, UAB e IFs"
+   ],
+   "automatico": [
+    "busca semanal de editais",
+    "rascunho pela Fábrica de aulas"
+   ],
+   "humano": [
+    "revisar e entregar"
+   ],
+   "deriva_de": [],
+   "proximo_passo": "Ligar a busca semanal de editais",
+   "metrica": "R$ por hora",
+   "nota": {
+    "sinergia": 5,
+    "escala": 2,
+    "demanda": 3,
+    "esforco": 3,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 60,
+   "veredito": "fila",
+   "motivo": "Bom por hora porque a Fábrica faz o grosso. Leia o contrato: o direito costuma ficar com a instituição.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "questoes",
+   "nome": "Elaboração e revisão de questões",
+   "frente": "educacao",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "por questão",
+   "escala": "produtizado",
+   "canais": [
+    "edtechs",
+    "bancas"
+   ],
+   "automatico": [
+    "rascunho pelo banco de avaliações"
+   ],
+   "humano": [
+    "revisar"
+   ],
+   "deriva_de": [],
+   "proximo_passo": "Montar um portfólio de 20 questões e se candidatar",
+   "metrica": "R$ por hora",
+   "nota": {
+    "sinergia": 5,
+    "escala": 2,
+    "demanda": 3,
+    "esforco": 2,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 50,
+   "veredito": "fila",
+   "motivo": "Reaproveita o seu ecossistema de avaliações.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "bytesdcoin",
+   "nome": "Licença do ByteSDCoin para escolas (sem aposta)",
+   "frente": "educacao",
+   "tipo": "licença",
+   "estagio": "ideia",
+   "receita": "licença anual",
+   "escala": "produtizado",
+   "canais": [
+    "escolas",
+    "redes de ensino"
+   ],
+   "automatico": [
+    "implantação e documentação"
+   ],
+   "humano": [
+    "apresentar e treinar"
+   ],
+   "deriva_de": [],
+   "proximo_passo": "Revisão jurídica e um piloto em outra escola",
+   "metrica": "escolas licenciadas",
+   "nota": {
+    "sinergia": 4,
+    "escala": 4,
+    "demanda": 2,
+    "esforco": 4,
+    "capital": 2
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 60,
+   "veredito": "fila",
+   "motivo": "Precisa de revisão jurídica; demanda ainda não testada.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "segurancapme",
+   "nome": "Segurança digital para pequenas empresas",
+   "frente": "servicos",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "pacote + mensalidade",
+   "escala": "produtizado",
+   "canais": [
+    "indicação",
+    "Google Perfil"
+   ],
+   "automatico": [
+    "checklist, backup e alertas"
+   ],
+   "humano": [
+    "diagnóstico inicial"
+   ],
+   "deriva_de": [
+    "remoto"
+   ],
+   "proximo_passo": "Documentar 3 casos (começando pelo seu) como checklist",
+   "metrica": "contratos mensais",
+   "nota": {
+    "sinergia": 4,
+    "escala": 3,
+    "demanda": 3,
+    "esforco": 3,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 50,
+   "veredito": "fila",
+   "motivo": "Só a parte técnica; a jurídica da LGPD fica com advogado.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "freelausd",
+   "nome": "Freela internacional em dólar (Upwork)",
+   "frente": "software",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "por projeto, em dólar",
+   "escala": "produtizado",
+   "canais": [
+    "Upwork"
+   ],
+   "automatico": [
+    "propostas e contratos modelo"
+   ],
+   "humano": [
+    "executar"
+   ],
+   "deriva_de": [
+    "encomenda"
+   ],
+   "proximo_passo": "Perfil no Upwork quando o inglês chegar ao B1",
+   "metrica": "R$ por hora",
+   "nota": {
+    "sinergia": 4,
+    "escala": 3,
+    "demanda": 3,
+    "esforco": 3,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 30,
+   "veredito": "fila",
+   "motivo": "Portão: inglês B1.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "bugbounty",
+   "nome": "Bug bounty e pentest",
+   "frente": "servicos",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "por achado ou contrato",
+   "escala": "local",
+   "canais": [
+    "HackerOne",
+    "contratos"
+   ],
+   "automatico": [
+    "recon e relatórios"
+   ],
+   "humano": [
+    "testar"
+   ],
+   "deriva_de": [],
+   "proximo_passo": "Concluir o eJPT",
+   "metrica": "R$ por hora",
+   "nota": {
+    "sinergia": 3,
+    "escala": 2,
+    "demanda": 2,
+    "esforco": 5,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 10,
+   "veredito": "fila",
+   "motivo": "Portão: eJPT/OSCP e contrato formal. Horizonte longo.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "camisetas",
+   "nome": "Camisetas e canecas sob demanda (dev e professor)",
+   "frente": "midia",
+   "tipo": "comércio",
+   "estagio": "ideia",
+   "receita": "comissão por peça",
+   "escala": "digital",
+   "canais": [
+    "loja de impressão sob demanda"
+   ],
+   "automatico": [
+    "impressão, cobrança e envio pela plataforma"
+   ],
+   "humano": [
+    "criar as estampas, uma vez"
+   ],
+   "deriva_de": [
+    "dark"
+   ],
+   "proximo_passo": "Subir 10 estampas que saíram do seu conteúdo",
+   "metrica": "vendas por mês",
+   "nota": {
+    "sinergia": 3,
+    "escala": 5,
+    "demanda": 2,
+    "esforco": 1,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 95,
+   "veredito": "fila",
+   "motivo": "Ganho baixo, mas trabalho quase zero. Nada de personagens ou marcas de terceiros.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "templatesint",
+   "nome": "Templates Next.js/Tailwind em inglês",
+   "frente": "software",
+   "tipo": "infoproduto",
+   "estagio": "ideia",
+   "receita": "venda única, em dólar",
+   "escala": "digital",
+   "canais": [
+    "Envato",
+    "Gumroad",
+    "Creative Market"
+   ],
+   "automatico": [
+    "testes, demonstração e publicação pelo CI"
+   ],
+   "humano": [
+    "construir",
+    "suporte"
+   ],
+   "deriva_de": [
+    "templates",
+    "setuppro"
+   ],
+   "proximo_passo": "Publicar 1 template a partir do Aura Design System",
+   "metrica": "vendas por mês",
+   "nota": {
+    "sinergia": 5,
+    "escala": 5,
+    "demanda": 3,
+    "esforco": 4,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 90,
+   "veredito": "fila",
+   "motivo": "Esforço inicial alto; depois do Setup profissional.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "uikits",
+   "nome": "Blocos e kits de componentes de interface",
+   "frente": "software",
+   "tipo": "infoproduto",
+   "estagio": "ideia",
+   "receita": "venda única, em dólar",
+   "escala": "digital",
+   "canais": [
+    "Gumroad"
+   ],
+   "automatico": [
+    "publicação pelo CI"
+   ],
+   "humano": [
+    "construir"
+   ],
+   "deriva_de": [
+    "templatesint"
+   ],
+   "proximo_passo": "Separar 10 blocos dos templates",
+   "metrica": "vendas por mês",
+   "nota": {
+    "sinergia": 5,
+    "escala": 5,
+    "demanda": 2,
+    "esforco": 3,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 90,
+   "veredito": "fila",
+   "motivo": "Junto com os templates.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "pluginwp",
+   "nome": "Plugin WordPress com versão Pro",
+   "frente": "software",
+   "tipo": "SaaS",
+   "estagio": "ideia",
+   "receita": "assinatura anual",
+   "escala": "digital",
+   "canais": [
+    "repositório do WordPress"
+   ],
+   "automatico": [
+    "testes em vários sites"
+   ],
+   "humano": [
+    "suporte"
+   ],
+   "deriva_de": [
+    "sites"
+   ],
+   "proximo_passo": "Escolher o problema a partir dos pedidos dos clientes de sites",
+   "metrica": "licenças ativas",
+   "nota": {
+    "sinergia": 3,
+    "escala": 5,
+    "demanda": 3,
+    "esforco": 4,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 75,
+   "veredito": "fila",
+   "motivo": "Suporte contínuo; o problema tem que vir dos clientes.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "n8ntemplates",
+   "nome": "Templates de automação n8n",
+   "frente": "software",
+   "tipo": "infoproduto",
+   "estagio": "ideia",
+   "receita": "venda única",
+   "escala": "digital",
+   "canais": [
+    "marketplace do n8n",
+    "Gumroad"
+   ],
+   "automatico": [
+    "exportação das suas automações"
+   ],
+   "humano": [
+    "documentar"
+   ],
+   "deriva_de": [
+    "automacaoia"
+   ],
+   "proximo_passo": "Publicar as 3 automações que você mais usa",
+   "metrica": "vendas por mês",
+   "nota": {
+    "sinergia": 5,
+    "escala": 5,
+    "demanda": 2,
+    "esforco": 1,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 90,
+   "veredito": "fila",
+   "motivo": "Sai das suas automações; esforço baixo.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "kitstindie",
+   "nome": "Kits e placas de robótica (Tindie e Mercado Livre)",
+   "frente": "campo",
+   "tipo": "produto",
+   "estagio": "ideia",
+   "receita": "margem por kit",
+   "escala": "produtizado",
+   "canais": [
+    "Tindie",
+    "Mercado Livre"
+   ],
+   "automatico": [
+    "documentação e estoque no Kaixara"
+   ],
+   "humano": [
+    "montar e enviar"
+   ],
+   "deriva_de": [
+    "maker"
+   ],
+   "proximo_passo": "Validar 1 kit com pré-venda",
+   "metrica": "kits vendidos",
+   "nota": {
+    "sinergia": 4,
+    "escala": 3,
+    "demanda": 3,
+    "esforco": 3,
+    "capital": 3
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 50,
+   "veredito": "decidir",
+   "motivo": "Capital em estoque; portão: AMtech Maker validado.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "modelos3d",
+   "nome": "Modelos 3D e projetos Arduino para download",
+   "frente": "midia",
+   "tipo": "infoproduto",
+   "estagio": "ideia",
+   "receita": "venda única",
+   "escala": "digital",
+   "canais": [
+    "Cults3D",
+    "Printables"
+   ],
+   "automatico": [
+    "publicação"
+   ],
+   "humano": [
+    "modelar"
+   ],
+   "deriva_de": [],
+   "proximo_passo": "Nenhum: só publicar o que sair das aulas",
+   "metrica": "downloads",
+   "nota": {
+    "sinergia": 3,
+    "escala": 5,
+    "demanda": 1,
+    "esforco": 2,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 80,
+   "veredito": "descartar",
+   "motivo": "Ganho baixo; só publicar o que já existir.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "mercadinho",
+   "nome": "Mercadinho autônomo em condomínio",
+   "frente": "fisico",
+   "tipo": "comércio",
+   "estagio": "ideia",
+   "receita": "margem dos produtos",
+   "escala": "local",
+   "canais": [
+    "condomínios"
+   ],
+   "automatico": [
+    "autoatendimento no Kaixara",
+    "estoque e reposição"
+   ],
+   "humano": [
+    "repor e negociar"
+   ],
+   "deriva_de": [
+    "kaixara"
+   ],
+   "proximo_passo": "Kaixara com autoatendimento e conversa com 1 síndico",
+   "metrica": "lucro por loja",
+   "nota": {
+    "sinergia": 4,
+    "escala": 3,
+    "demanda": 3,
+    "esforco": 4,
+    "capital": 5
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 60,
+   "veredito": "decidir",
+   "motivo": "Capital alto; portão: Kaixara pronto e renda do núcleo pagando o investimento.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "vending",
+   "nome": "Máquina de venda de lanches e congelados",
+   "frente": "fisico",
+   "tipo": "comércio",
+   "estagio": "ideia",
+   "receita": "margem dos produtos",
+   "escala": "local",
+   "canais": [
+    "faculdades",
+    "empresas"
+   ],
+   "automatico": [
+    "telemetria e estoque"
+   ],
+   "humano": [
+    "repor"
+   ],
+   "deriva_de": [
+    "mercadinho"
+   ],
+   "proximo_passo": "Só depois dos congelados validados",
+   "metrica": "lucro por máquina",
+   "nota": {
+    "sinergia": 3,
+    "escala": 3,
+    "demanda": 3,
+    "esforco": 3,
+    "capital": 4
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 60,
+   "veredito": "decidir",
+   "motivo": "Capital alto; depende dos congelados.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "aluguelkits",
+   "nome": "Aluguel de kits de robótica",
+   "frente": "campo",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "por evento",
+   "escala": "produtizado",
+   "canais": [
+    "escolas",
+    "festas"
+   ],
+   "automatico": [
+    "agenda e contrato"
+   ],
+   "humano": [
+    "entregar e recolher"
+   ],
+   "deriva_de": [
+    "maker"
+   ],
+   "proximo_passo": "Depois do AMtech Maker",
+   "metrica": "aluguéis por mês",
+   "nota": {
+    "sinergia": 4,
+    "escala": 2,
+    "demanda": 2,
+    "esforco": 3,
+    "capital": 3
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 40,
+   "veredito": "decidir",
+   "motivo": "Capital em kits e logística de devolução.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "sitesnicho",
+   "nome": "Sites de nicho com anúncios",
+   "frente": "midia",
+   "tipo": "mídia",
+   "estagio": "ideia",
+   "receita": "anúncios",
+   "escala": "digital",
+   "canais": [
+    "Google"
+   ],
+   "automatico": [
+    "publicação"
+   ],
+   "humano": [
+    "conteúdo de verdade"
+   ],
+   "deriva_de": [],
+   "proximo_passo": "Nenhum",
+   "metrica": "receita por mês",
+   "nota": {
+    "sinergia": 2,
+    "escala": 5,
+    "demanda": 1,
+    "esforco": 4,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 70,
+   "veredito": "descartar",
+   "motivo": "O Google pune conteúdo em massa feito por IA, e o tráfego desses sites caiu.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "bancoimagens",
+   "nome": "Fotos e vídeos em bancos de imagens",
+   "frente": "midia",
+   "tipo": "mídia",
+   "estagio": "ideia",
+   "receita": "por download",
+   "escala": "digital",
+   "canais": [
+    "Adobe Stock"
+   ],
+   "automatico": [
+    "legenda e envio em lote"
+   ],
+   "humano": [
+    "fotografar"
+   ],
+   "deriva_de": [],
+   "proximo_passo": "Nenhum: experimento sem prazo",
+   "metrica": "receita por mês",
+   "nota": {
+    "sinergia": 2,
+    "escala": 5,
+    "demanda": 1,
+    "esforco": 2,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 80,
+   "veredito": "descartar",
+   "motivo": "Paga pouco.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "royalties",
+   "nome": "Cursos em plataformas que pagam royalties (Alura, Rocketseat, Domestika)",
+   "frente": "educacao",
+   "tipo": "parceria",
+   "estagio": "ideia",
+   "receita": "royalties",
+   "escala": "digital",
+   "canais": [
+    "Alura",
+    "Rocketseat",
+    "Domestika"
+   ],
+   "automatico": [
+    "material pela Fábrica de aulas"
+   ],
+   "humano": [
+    "gravar"
+   ],
+   "deriva_de": [
+    "formti"
+   ],
+   "proximo_passo": "Candidatar-se com o mini-curso como amostra",
+   "metrica": "royalties por mês",
+   "nota": {
+    "sinergia": 5,
+    "escala": 4,
+    "demanda": 2,
+    "esforco": 3,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 80,
+   "veredito": "fila",
+   "motivo": "Depende de seleção; usa os cursos já gravados.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "jogo",
+   "nome": "Jogo educativo de lógica (itch.io e Steam)",
+   "frente": "software",
+   "tipo": "infoproduto",
+   "estagio": "ideia",
+   "receita": "venda única",
+   "escala": "digital",
+   "canais": [
+    "itch.io",
+    "Steam"
+   ],
+   "automatico": [
+    "venda e atualização"
+   ],
+   "humano": [
+    "construir"
+   ],
+   "deriva_de": [
+    "ammentor"
+   ],
+   "proximo_passo": "Nenhum por enquanto",
+   "metrica": "vendas por mês",
+   "nota": {
+    "sinergia": 3,
+    "escala": 5,
+    "demanda": 1,
+    "esforco": 5,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 90,
+   "veredito": "descartar",
+   "motivo": "Construção longa e retorno incerto.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "dublagem",
+   "nome": "Cursos dublados por IA em inglês e espanhol (só a sua voz)",
+   "frente": "educacao",
+   "tipo": "infoproduto",
+   "estagio": "ideia",
+   "receita": "venda única, em dólar",
+   "escala": "digital",
+   "canais": [
+    "Udemy",
+    "Hotmart"
+   ],
+   "automatico": [
+    "dublagem e legendas"
+   ],
+   "humano": [
+    "revisar"
+   ],
+   "deriva_de": [
+    "udemy"
+   ],
+   "proximo_passo": "Dublar o mini-curso quando estiver gravado",
+   "metrica": "vendas fora do Brasil",
+   "nota": {
+    "sinergia": 5,
+    "escala": 5,
+    "demanda": 3,
+    "esforco": 2,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 90,
+   "veredito": "fila",
+   "motivo": "Depois que houver curso gravado. Nunca a voz de alunos.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "crowdtest",
+   "nome": "Testes de software pagos por bug",
+   "frente": "servicos",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "por bug",
+   "escala": "local",
+   "canais": [
+    "Applause",
+    "Testbirds"
+   ],
+   "automatico": [],
+   "humano": [
+    "testar"
+   ],
+   "deriva_de": [],
+   "proximo_passo": "Nenhum",
+   "metrica": "R$ por hora",
+   "nota": {
+    "sinergia": 2,
+    "escala": 1,
+    "demanda": 2,
+    "esforco": 3,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 0,
+   "veredito": "descartar",
+   "motivo": "0% automatizável e paga pouco; automatizar viola as regras das plataformas.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "fiscalprova",
+   "nome": "Aplicador e fiscal de provas",
+   "frente": "servicos",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "por dia",
+   "escala": "local",
+   "canais": [
+    "FGV",
+    "Cebraspe",
+    "Idecan"
+   ],
+   "automatico": [],
+   "humano": [
+    "o dia inteiro presente"
+   ],
+   "deriva_de": [],
+   "proximo_passo": "Nenhum",
+   "metrica": "R$ por hora",
+   "nota": {
+    "sinergia": 1,
+    "escala": 1,
+    "demanda": 3,
+    "esforco": 1,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 0,
+   "veredito": "descartar",
+   "motivo": "Ganho baixo e ocupa o fim de semana inteiro.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "senac",
+   "nome": "Instrutor horista (SENAC, SENAI, prefeitura)",
+   "frente": "educacao",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "por hora",
+   "escala": "local",
+   "canais": [
+    "SENAC Barbacena",
+    "prefeitura"
+   ],
+   "automatico": [
+    "material pela Fábrica de aulas"
+   ],
+   "humano": [
+    "dar a aula"
+   ],
+   "deriva_de": [
+    "aulas"
+   ],
+   "proximo_passo": "Só se a tarde ficar livre em 2027",
+   "metrica": "R$ por hora",
+   "nota": {
+    "sinergia": 5,
+    "escala": 1,
+    "demanda": 3,
+    "esforco": 2,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 20,
+   "veredito": "em2027",
+   "motivo": "Hora presencial.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "idosos",
+   "nome": "Aulas de informática e celular para idosos",
+   "frente": "educacao",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "mensalidade da turma",
+   "escala": "local",
+   "canais": [
+    "igrejas",
+    "associações"
+   ],
+   "automatico": [
+    "material e lista de presença"
+   ],
+   "humano": [
+    "dar a aula"
+   ],
+   "deriva_de": [
+    "aulas"
+   ],
+   "proximo_passo": "Só se a tarde ficar livre em 2027",
+   "metrica": "alunos por turma",
+   "nota": {
+    "sinergia": 4,
+    "escala": 1,
+    "demanda": 3,
+    "esforco": 2,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 20,
+   "veredito": "em2027",
+   "motivo": "Hora presencial.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "colonia",
+   "nome": "Colônia de férias tech (robótica e programação)",
+   "frente": "educacao",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "por semana",
+   "escala": "local",
+   "canais": [
+    "pais",
+    "escolas particulares"
+   ],
+   "automatico": [
+    "inscrição e pagamento"
+   ],
+   "humano": [
+    "conduzir as atividades"
+   ],
+   "deriva_de": [
+    "oficinas"
+   ],
+   "proximo_passo": "Só em 2027, em janeiro ou julho",
+   "metrica": "inscritos",
+   "nota": {
+    "sinergia": 4,
+    "escala": 2,
+    "demanda": 3,
+    "esforco": 3,
+    "capital": 2
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 20,
+   "veredito": "em2027",
+   "motivo": "Hora presencial. Nunca oferecer para os seus alunos da escola.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "portugues",
+   "nome": "Português para estrangeiros (Preply, italki)",
+   "frente": "educacao",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "por hora, em dólar",
+   "escala": "local",
+   "canais": [
+    "Preply",
+    "italki"
+   ],
+   "automatico": [
+    "agenda"
+   ],
+   "humano": [
+    "dar a aula"
+   ],
+   "deriva_de": [],
+   "proximo_passo": "Perfil quando o inglês chegar ao básico",
+   "metrica": "R$ por hora",
+   "nota": {
+    "sinergia": 2,
+    "escala": 1,
+    "demanda": 3,
+    "esforco": 2,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 0,
+   "veredito": "fila",
+   "motivo": "Hora pura; portão: inglês básico.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "trafego",
+   "nome": "Gestão de tráfego pago para o comércio local",
+   "frente": "servicos",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "mensalidade",
+   "escala": "produtizado",
+   "canais": [
+    "indicação"
+   ],
+   "automatico": [
+    "relatórios e regras automáticas"
+   ],
+   "humano": [
+    "estratégia",
+    "conversa com o cliente"
+   ],
+   "deriva_de": [
+    "agencialocal"
+   ],
+   "proximo_passo": "Testar primeiro nas suas próprias ofertas",
+   "metrica": "contratos mensais",
+   "nota": {
+    "sinergia": 4,
+    "escala": 2,
+    "demanda": 4,
+    "esforco": 3,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 50,
+   "veredito": "em2027",
+   "motivo": "Cliente cobra resultado e cansa; só com contrato mensal alto e gestor júnior.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "edicaovideo",
+   "nome": "Edição de vídeo para lojas e criadores",
+   "frente": "servicos",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "por vídeo",
+   "escala": "produtizado",
+   "canais": [
+    "indicação"
+   ],
+   "automatico": [
+    "cortes e legendas por IA"
+   ],
+   "humano": [
+    "criatividade"
+   ],
+   "deriva_de": [],
+   "proximo_passo": "Nenhum: a IA de corte fica só no seu canal",
+   "metrica": "R$ por hora",
+   "nota": {
+    "sinergia": 3,
+    "escala": 2,
+    "demanda": 3,
+    "esforco": 2,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 60,
+   "veredito": "descartar",
+   "motivo": "Margem pequena.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "fotosproduto",
+   "nome": "Fotos de produto para lojas do Mercado Livre",
+   "frente": "campo",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "por foto",
+   "escala": "local",
+   "canais": [
+    "lojistas"
+   ],
+   "automatico": [
+    "remoção de fundo"
+   ],
+   "humano": [
+    "fotografar"
+   ],
+   "deriva_de": [],
+   "proximo_passo": "Nenhum",
+   "metrica": "R$ por hora",
+   "nota": {
+    "sinergia": 2,
+    "escala": 1,
+    "demanda": 2,
+    "esforco": 2,
+    "capital": 2
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 30,
+   "veredito": "descartar",
+   "motivo": "Preço baixo e hora presencial.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "erp",
+   "nome": "Parceiro de ERP (Bling, Tiny, Omie): implantação e comissão",
+   "frente": "servicos",
+   "tipo": "parceria",
+   "estagio": "ideia",
+   "receita": "implantação + comissão recorrente",
+   "escala": "produtizado",
+   "canais": [
+    "clientes de sites"
+   ],
+   "automatico": [
+    "roteiro de implantação"
+   ],
+   "humano": [
+    "implantar"
+   ],
+   "deriva_de": [
+    "sites"
+   ],
+   "proximo_passo": "Entrar no programa de parceiros quando um cliente de sites pedir gestão",
+   "metrica": "comissão mensal",
+   "nota": {
+    "sinergia": 4,
+    "escala": 3,
+    "demanda": 3,
+    "esforco": 2,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 50,
+   "veredito": "fila",
+   "motivo": "Recorrência antes do Kaixara ficar pronto.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "recuperacao",
+   "nome": "Recuperação de dados (intermediação com laboratório)",
+   "frente": "campo",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "comissão",
+   "escala": "local",
+   "canais": [
+    "assistência",
+    "indicação"
+   ],
+   "automatico": [
+    "ordem de serviço e acompanhamento"
+   ],
+   "humano": [
+    "coletar e entregar"
+   ],
+   "deriva_de": [
+    "assist"
+   ],
+   "proximo_passo": "Fechar parceria com 1 laboratório",
+   "metrica": "comissão por mês",
+   "nota": {
+    "sinergia": 4,
+    "escala": 2,
+    "demanda": 3,
+    "esforco": 1,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 10,
+   "veredito": "fila",
+   "motivo": "Você só coleta e entrega, por comissão; entra com a assistência.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "perito",
+   "nome": "Perito em informática judicial",
+   "frente": "servicos",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "por laudo",
+   "escala": "local",
+   "canais": [
+    "cadastro no TJMG"
+   ],
+   "automatico": [
+    "modelos de laudo"
+   ],
+   "humano": [
+    "perícia"
+   ],
+   "deriva_de": [],
+   "proximo_passo": "Estudar perícia forense",
+   "metrica": "laudos por ano",
+   "nota": {
+    "sinergia": 3,
+    "escala": 1,
+    "demanda": 2,
+    "esforco": 5,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 20,
+   "veredito": "fila",
+   "motivo": "Portão: estudo de perícia forense e cadastro no TJMG.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "pcmontado",
+   "nome": "PC montado e entregue configurado",
+   "frente": "campo",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "taxa de montagem e configuração",
+   "escala": "produtizado",
+   "canais": [
+    "Instagram",
+    "indicação"
+   ],
+   "automatico": [
+    "orçamento",
+    "configuração final pelos scripts do setup"
+   ],
+   "humano": [
+    "montar (técnico parceiro)"
+   ],
+   "deriva_de": [
+    "assist"
+   ],
+   "proximo_passo": "Achar 1 técnico parceiro e fazer 3 montagens você mesmo para criar o checklist",
+   "metrica": "R$ por hora sua",
+   "nota": {
+    "sinergia": 5,
+    "escala": 2,
+    "demanda": 3,
+    "esforco": 2,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 40,
+   "veredito": "em2027",
+   "motivo": "Montar exige mãos; você vende e configura, o parceiro monta.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "redescftv",
+   "nome": "Redes Wi-Fi e câmeras com monitoramento mensal",
+   "frente": "campo",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "instalação + mensalidade",
+   "escala": "produtizado",
+   "canais": [
+    "comércio local",
+    "condomínios"
+   ],
+   "automatico": [
+    "monitoramento e alertas"
+   ],
+   "humano": [
+    "instalar (instalador parceiro)"
+   ],
+   "deriva_de": [
+    "remoto"
+   ],
+   "proximo_passo": "Achar 1 instalador parceiro",
+   "metrica": "contratos mensais",
+   "nota": {
+    "sinergia": 3,
+    "escala": 2,
+    "demanda": 4,
+    "esforco": 3,
+    "capital": 2
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 50,
+   "veredito": "em2027",
+   "motivo": "Instalação presencial; a parte boa é o contrato mensal.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "casainteligente",
+   "nome": "Casa inteligente para clientes (Home Assistant)",
+   "frente": "campo",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "projeto + suporte",
+   "escala": "produtizado",
+   "canais": [
+    "indicação"
+   ],
+   "automatico": [
+    "configuração e monitoramento"
+   ],
+   "humano": [
+    "instalar"
+   ],
+   "deriva_de": [
+    "redescftv"
+   ],
+   "proximo_passo": "Montar primeiro a sua casa",
+   "metrica": "projetos",
+   "nota": {
+    "sinergia": 3,
+    "escala": 2,
+    "demanda": 2,
+    "esforco": 4,
+    "capital": 3
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 50,
+   "veredito": "em2027",
+   "motivo": "Primeiro a sua casa; instalação presencial.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "revenda-celulares",
+   "nome": "Celulares: comprar, consertar e revender",
+   "frente": "campo",
+   "tipo": "comércio",
+   "estagio": "ideia",
+   "receita": "margem por unidade",
+   "escala": "local",
+   "canais": [
+    "OLX",
+    "Mercado Livre",
+    "Facebook"
+   ],
+   "automatico": [
+    "radar, checklist e anúncio"
+   ],
+   "humano": [
+    "consultar IMEI e testar na hora",
+    "trocar tela ou bateria"
+   ],
+   "deriva_de": [
+    "revenda-notebooks"
+   ],
+   "proximo_passo": "Depois dos notebooks passarem no portão",
+   "metrica": "lucro por hora sua",
+   "nota": {
+    "sinergia": 5,
+    "escala": 2,
+    "demanda": 4,
+    "esforco": 2,
+    "capital": 3
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 40,
+   "veredito": "fila",
+   "motivo": "Checklist rígido: IMEI, conta Google ou iCloud removida, recibo com CPF.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "revenda-livros",
+   "nome": "Livros técnicos e didáticos usados",
+   "frente": "campo",
+   "tipo": "comércio",
+   "estagio": "ideia",
+   "receita": "margem por livro",
+   "escala": "digital",
+   "canais": [
+    "Estante Virtual",
+    "Mercado Livre"
+   ],
+   "automatico": [
+    "radar, anúncio e etiqueta de envio"
+   ],
+   "humano": [
+    "embalar"
+   ],
+   "deriva_de": [
+    "revenda-notebooks"
+   ],
+   "proximo_passo": "Experimento com 10 livros",
+   "metrica": "lucro por hora sua",
+   "nota": {
+    "sinergia": 4,
+    "escala": 3,
+    "demanda": 2,
+    "esforco": 1,
+    "capital": 1
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 70,
+   "veredito": "fila",
+   "motivo": "Margem pequena; envio quase automático.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "revenda-pecas",
+   "nome": "Peças de máquinas sucateadas (RAM, SSD, placas)",
+   "frente": "campo",
+   "tipo": "comércio",
+   "estagio": "ideia",
+   "receita": "margem por peça",
+   "escala": "local",
+   "canais": [
+    "Mercado Livre"
+   ],
+   "automatico": [
+    "radar e anúncio"
+   ],
+   "humano": [
+    "desmontar e testar"
+   ],
+   "deriva_de": [
+    "revenda-notebooks"
+   ],
+   "proximo_passo": "Junto com os notebooks",
+   "metrica": "lucro por hora sua",
+   "nota": {
+    "sinergia": 5,
+    "escala": 2,
+    "demanda": 3,
+    "esforco": 2,
+    "capital": 2
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 40,
+   "veredito": "fila",
+   "motivo": "Aproveita o que sobra da revenda de notebooks.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "revenda-veiculos",
+   "nome": "Motos e carros: compra e revenda",
+   "frente": "fisico",
+   "tipo": "comércio",
+   "estagio": "ideia",
+   "receita": "margem por veículo",
+   "escala": "local",
+   "canais": [
+    "OLX",
+    "Webmotors"
+   ],
+   "automatico": [
+    "radar com tabela FIPE"
+   ],
+   "humano": [
+    "vistoria, documentação e negociação"
+   ],
+   "deriva_de": [],
+   "proximo_passo": "Nenhum antes de capital próprio, CNPJ e vistoria cautelar",
+   "metrica": "lucro por veículo",
+   "nota": {
+    "sinergia": 2,
+    "escala": 1,
+    "demanda": 3,
+    "esforco": 4,
+    "capital": 5
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "ativa",
+   "automacao": 30,
+   "veredito": "decidir",
+   "motivo": "Capital alto e risco de dívida, restrição, sinistro e golpe.",
+   "lote": "2026-11"
+  },
+  {
+   "id": "dividendos",
+   "nome": "Dividendos, FIIs e renda fixa (cascata e ARCA)",
+   "frente": "patrimonio",
+   "tipo": "investimento",
+   "estagio": "ideia",
+   "receita": "rendimentos",
+   "escala": "digital",
+   "canais": [
+    "corretora",
+    "Tesouro Direto"
+   ],
+   "automatico": [
+    "cascata e ARCA no Caixa da Casa",
+    "análise pelos seus critérios"
+   ],
+   "humano": [
+    "aportar e decidir uma vez por mês"
+   ],
+   "deriva_de": [],
+   "proximo_passo": "Seguir a cascata: cartão quitado e reserva cheia antes da bolsa",
+   "metrica": "renda passiva por mês",
+   "nota": {
+    "sinergia": 5,
+    "escala": 5,
+    "demanda": 5,
+    "esforco": 1,
+    "capital": 5
+   },
+   "doc": null,
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 95,
+   "veredito": "fila",
+   "motivo": "A cascata manda: só depois do cartão quitado e da reserva cheia. As decisões são suas.",
+   "lote": "2026-11"
   }
- ]
+ ],
+ "regras": {
+  "hora_minima": 45,
+  "teto_horas_semana": 7,
+  "max_agora": 3,
+  "portao": "3 meses seguidos se pagando no painel",
+  "corte": "abaixo da hora mínima por 2 meses: delegar ou cortar",
+  "blocos_da_semana": [
+   "Quinta 13h–16h30: bloco de negócio (vender, atender, comprar no radar)",
+   "Sábado 9h30–12h30: bloco de produção (gravar e revisar o que o estudo gerou)",
+   "Estudo da manhã: o setup transforma em aula, exercício, cartão Anki e roteiro (15 min de revisão)",
+   "Domingo, sono e cães: intocáveis"
+  ]
+ }
 }

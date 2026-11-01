@@ -16,7 +16,7 @@ flowchart TB
   L_emp["19 · Pessoa física: impostos e finanças<br/>11 blocos"]
   L_web["18 · Vitrine web (sites e domínio)<br/>9 blocos"]
   L_prod["17 · Produtos (o que você vende)<br/>7 blocos"]
-  L_neg["16 · Negócios do grupo (Barbacena)<br/>16 blocos"]
+  L_neg["16 · Negócios do grupo (Barbacena)<br/>17 blocos"]
   L_editora["15 · Editora AMS Silva (produção de livros)<br/>36 blocos"]
   L_est["14 · Estudo e carreira<br/>7 blocos"]
   L_cont["13 · Produção de conteúdo<br/>6 blocos"]
@@ -69,7 +69,7 @@ flowchart TB
 | 19 | [Pessoa física: impostos e finanças](camadas/19-emp.md) | 11 | Tudo no seu CPF por enquanto; o CNPJ entra quando a renda justificar. |
 | 18 | [Vitrine web (sites e domínio)](camadas/18-web.md) | 9 | Os sites mostram e vendem os produtos e o seu portfólio. |
 | 17 | [Produtos (o que você vende)](camadas/17-prod.md) | 7 | Cada produto nasce do conteúdo gravado, escrito ou programado. |
-| 16 | [Negócios do grupo (Barbacena)](camadas/16-neg.md) | 16 | Os nove negócios físicos e de serviço usam os sistemas AM, a frota de entregas e o mesmo caixa de medição. |
+| 16 | [Negócios do grupo (Barbacena)](camadas/16-neg.md) | 17 | Os nove negócios físicos e de serviço usam os sistemas AM, a frota de entregas e o mesmo caixa de medição. |
 | 15 | [Editora AMS Silva (produção de livros)](camadas/15-editora.md) | 36 | Cada livro sai do pipeline como produto pronto para as plataformas e para a gráfica. |
 | 14 | [Estudo e carreira](camadas/14-est.md) | 7 | O que você estuda vira produto, aula, post e linha no currículo. |
 | 13 | [Produção de conteúdo](camadas/13-cont.md) | 6 | Gravação e edição rodam no notebook; os arquivos finais sobem para as plataformas. |

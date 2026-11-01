@@ -126,17 +126,17 @@ flowchart LR
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Pix Automático + gateway (ex.: Asaas)](#pixa) | Remoto · precisa de conta · futuro | Cobrança recorrente dos sistemas AM por Pix, sem cartão. Lançado pelo Banco Central em 2025. Entra quando o primeiro SaaS tiver cliente. | passo 27.4 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
-| [Agenda online (Cal.com)](#agenda) | Remoto · precisa de conta | Aluno particular escolhe horário sozinho e já paga. Open source, com plano grátis. | passo 14.8 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 22.18 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 22.19 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
-| [CRM simples (planilha)](#crm) | Local | Lista de alunos, clientes e propostas. Uma planilha resolve até dezenas de clientes. | passo 14.9 · Semanas 8 a 10 · dez/2026 a jan/2027 |
-| [Hotmart](#hotm) | Remoto · precisa de conta | Checkout, área de membros e afiliados para cursos e PDFs. Aceita vender no CPF. Melhor quando você mesmo leva o público. | passo 14.5 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 17.3 · Semanas 12 a 15 · jan a fev/2027; passo 17.7 · Semanas 12 a 15 · jan a fev/2027; passo 22.3 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 22.4 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
-| [Kiwify](#kiwi) | Remoto · precisa de conta | Mesma função da Hotmart, com painel mais simples. Aceita vender no CPF. | passo 14.5 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 17.8 · Semanas 12 a 15 · jan a fev/2027 |
-| [Eduzz](#eduzz) | Remoto · precisa de conta | Outra plataforma brasileira de infoprodutos, com programa de afiliados próprio. | passo 14.6 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 17.8 · Semanas 12 a 15 · jan a fev/2027 |
-| [Udemy](#udemy) | Remoto · precisa de conta | Marketplace mundial: ela traz alunos que você não alcançaria. Ganha bem menos por venda orgânica do que pelo seu cupom. Recebe por PayPal ou Payoneer e pede um formulário fiscal dos EUA. | passo 14.6 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 17.8 · Semanas 12 a 15 · jan a fev/2027 |
-| [DIO (parceria)](#dio) | Remoto · precisa de conta | Não é marketplace aberto como a Udemy. Os experts trabalham em parceria com a DIO; o caminho é publicar artigos e projetos lá e se candidatar ou ser convidado. | passo 14.6 · Semanas 8 a 10 · dez/2026 a jan/2027 |
-| [YouTube (membros)](#ytm) | Remoto · precisa de conta · futuro | Assinatura mensal do canal, quando houver público. | passo 23.9 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
-| [Mercado Pago](#mp) | Remoto · precisa de conta | Pix e cartão para aulas particulares e serviços de sites. | passo 14.7 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 22.19 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
-| [Afiliados (Amazon, Hotmart…)](#afil) | Remoto · precisa de conta | Links de produtos de terceiros no blog e nos vídeos. | passo 14.11 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 22.1 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [Pix Automático + gateway (ex.: Asaas)](#pixa) | Remoto · precisa de conta · futuro | Cobrança recorrente dos sistemas AM por Pix, sem cartão. Lançado pelo Banco Central em 2025. Entra quando o primeiro SaaS tiver cliente. | passo 28.4 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
+| [Agenda online (Cal.com)](#agenda) | Remoto · precisa de conta | Aluno particular escolhe horário sozinho e já paga. Open source, com plano grátis. | passo 15.8 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 23.18 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 23.19 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [CRM simples (planilha)](#crm) | Local | Lista de alunos, clientes e propostas. Uma planilha resolve até dezenas de clientes. | passo 15.9 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Hotmart](#hotm) | Remoto · precisa de conta | Checkout, área de membros e afiliados para cursos e PDFs. Aceita vender no CPF. Melhor quando você mesmo leva o público. | passo 15.5 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 18.3 · Semanas 12 a 15 · jan a fev/2027; passo 18.7 · Semanas 12 a 15 · jan a fev/2027; passo 23.3 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 23.4 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [Kiwify](#kiwi) | Remoto · precisa de conta | Mesma função da Hotmart, com painel mais simples. Aceita vender no CPF. | passo 15.5 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 18.8 · Semanas 12 a 15 · jan a fev/2027 |
+| [Eduzz](#eduzz) | Remoto · precisa de conta | Outra plataforma brasileira de infoprodutos, com programa de afiliados próprio. | passo 15.6 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 18.8 · Semanas 12 a 15 · jan a fev/2027 |
+| [Udemy](#udemy) | Remoto · precisa de conta | Marketplace mundial: ela traz alunos que você não alcançaria. Ganha bem menos por venda orgânica do que pelo seu cupom. Recebe por PayPal ou Payoneer e pede um formulário fiscal dos EUA. | passo 15.6 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 18.8 · Semanas 12 a 15 · jan a fev/2027 |
+| [DIO (parceria)](#dio) | Remoto · precisa de conta | Não é marketplace aberto como a Udemy. Os experts trabalham em parceria com a DIO; o caminho é publicar artigos e projetos lá e se candidatar ou ser convidado. | passo 15.6 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [YouTube (membros)](#ytm) | Remoto · precisa de conta · futuro | Assinatura mensal do canal, quando houver público. | passo 24.9 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) |
+| [Mercado Pago](#mp) | Remoto · precisa de conta | Pix e cartão para aulas particulares e serviços de sites. | passo 15.7 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 23.19 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [Afiliados (Amazon, Hotmart…)](#afil) | Remoto · precisa de conta | Links de produtos de terceiros no blog e nos vídeos. | passo 15.11 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 23.1 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
 
 <a id="pixa"></a>
 
@@ -146,7 +146,7 @@ flowchart LR
 
 Cobrança recorrente dos sistemas AM por Pix, sem cartão. Lançado pelo Banco Central em 2025. Entra quando o primeiro SaaS tiver cliente.
 
-**Quando entra:** passo 27.4 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 28.4 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -162,7 +162,7 @@ Cobrança recorrente dos sistemas AM por Pix, sem cartão. Lançado pelo Banco C
 
 Aluno particular escolhe horário sozinho e já paga. Open source, com plano grátis.
 
-**Quando entra:** passo 14.8 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 22.18 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 22.19 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 15.8 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 23.18 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 23.19 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -177,7 +177,7 @@ Aluno particular escolhe horário sozinho e já paga. Open source, com plano gr�
 
 Lista de alunos, clientes e propostas. Uma planilha resolve até dezenas de clientes.
 
-**Quando entra:** passo 14.9 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 15.9 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -192,7 +192,7 @@ Lista de alunos, clientes e propostas. Uma planilha resolve até dezenas de clie
 
 Checkout, área de membros e afiliados para cursos e PDFs. Aceita vender no CPF. Melhor quando você mesmo leva o público.
 
-**Quando entra:** passo 14.5 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 17.3 · Semanas 12 a 15 · jan a fev/2027; passo 17.7 · Semanas 12 a 15 · jan a fev/2027; passo 22.3 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 22.4 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 15.5 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 18.3 · Semanas 12 a 15 · jan a fev/2027; passo 18.7 · Semanas 12 a 15 · jan a fev/2027; passo 23.3 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 23.4 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -221,7 +221,7 @@ Checkout, área de membros e afiliados para cursos e PDFs. Aceita vender no CPF.
 
 Mesma função da Hotmart, com painel mais simples. Aceita vender no CPF.
 
-**Quando entra:** passo 14.5 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 17.8 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 15.5 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 18.8 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -239,7 +239,7 @@ Mesma função da Hotmart, com painel mais simples. Aceita vender no CPF.
 
 Outra plataforma brasileira de infoprodutos, com programa de afiliados próprio.
 
-**Quando entra:** passo 14.6 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 17.8 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 15.6 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 18.8 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -256,7 +256,7 @@ Outra plataforma brasileira de infoprodutos, com programa de afiliados próprio.
 
 Marketplace mundial: ela traz alunos que você não alcançaria. Ganha bem menos por venda orgânica do que pelo seu cupom. Recebe por PayPal ou Payoneer e pede um formulário fiscal dos EUA.
 
-**Quando entra:** passo 14.6 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 17.8 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 15.6 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 18.8 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -272,7 +272,7 @@ Marketplace mundial: ela traz alunos que você não alcançaria. Ganha bem menos
 
 Não é marketplace aberto como a Udemy. Os experts trabalham em parceria com a DIO; o caminho é publicar artigos e projetos lá e se candidatar ou ser convidado.
 
-**Quando entra:** passo 14.6 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 15.6 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -287,7 +287,7 @@ Não é marketplace aberto como a Udemy. Os experts trabalham em parceria com a 
 
 Assinatura mensal do canal, quando houver público.
 
-**Quando entra:** passo 23.9 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 24.9 · A partir de fev/2027 (começa quando: o mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -301,7 +301,7 @@ Assinatura mensal do canal, quando houver público.
 
 Pix e cartão para aulas particulares e serviços de sites.
 
-**Quando entra:** passo 14.7 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 22.19 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 15.7 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 23.19 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -320,7 +320,7 @@ Pix e cartão para aulas particulares e serviços de sites.
 
 Links de produtos de terceiros no blog e nos vídeos.
 
-**Quando entra:** passo 14.11 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 22.1 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 15.11 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 23.1 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

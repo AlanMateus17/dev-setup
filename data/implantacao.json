@@ -1050,6 +1050,116 @@
    "quando": "Semana 4 · nov/2026"
   },
   {
+   "id": "f-arsenal",
+   "titulo": "Arsenal de rendas: regras e as 3 de agora",
+   "objetivo": "Só 3 rendas ativas por vez, hora mínima de R$ 45, teto de 7 horas extras por semana e o resto em fila com portão.",
+   "quando": "Semana 4 · nov/2026",
+   "passos": [
+    {
+     "id": "ar-regras",
+     "titulo": "Confirmar a hora mínima (R$ 45) e o teto de 7 horas extras por semana",
+     "quem": "voce",
+     "pronto": "Valores confirmados em data/portfolio.json (regras)",
+     "tempo_min": 15,
+     "fora": "Decisão sua. Se mudar o valor, peça ao Claude para trocar em data/portfolio.json.",
+     "blocos": []
+    },
+    {
+     "id": "ar-rotina",
+     "titulo": "Pôr na Rotina o bloco de negócio (quinta 13h–16h30) e o de produção (sábado 9h30–12h30)",
+     "quem": "voce",
+     "pronto": "Os dois blocos aparecem na Rotina do Caixa da Casa",
+     "tempo_min": 10,
+     "fora": "A Rotina fica no Caixa da Casa (artefato), fora do terminal.",
+     "blocos": []
+    },
+    {
+     "id": "ar-ia",
+     "titulo": "Cadastro e teste de entrada numa plataforma de avaliação de IA",
+     "quem": "voce",
+     "pronto": "Teste de entrada feito",
+     "tempo_min": 90,
+     "fora": "Cadastro no navegador. Nunca pague para entrar e nunca passe senha a ninguém.",
+     "blocos": [],
+     "ofertas": [
+      "avaliacaoia"
+     ]
+    },
+    {
+     "id": "ar-sites",
+     "titulo": "Oferecer site com manutenção mensal a 5 comércios",
+     "quem": "voce",
+     "pronto": "5 ofertas feitas e respostas anotadas no CRM",
+     "tempo_min": 120,
+     "fora": "Venda é conversa com o cliente; o setup prepara a proposta e o contrato.",
+     "blocos": [],
+     "ofertas": [
+      "sites"
+     ]
+    },
+    {
+     "id": "ar-radar",
+     "titulo": "Criar as buscas salvas com alerta e ligar o radar de revenda",
+     "quem": "claude",
+     "pronto": "Radar avisa no Telegram só itens acima da hora mínima, com checklist antigolpe",
+     "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo ar-radar do roteiro: Criar as buscas salvas com alerta e ligar o radar de revenda\"",
+     "nota": "Lê só a pasta de alertas do Gmail. Não raspa sites que proíbem coleta, não compra e não fala com vendedor.",
+     "blocos": [
+      "radar"
+     ],
+     "ofertas": [
+      "revenda-notebooks",
+      "revenda-celulares",
+      "revenda-livros",
+      "revenda-pecas"
+     ]
+    },
+    {
+     "id": "ar-retorno",
+     "titulo": "Retorno por hora de cada marca no painel",
+     "quem": "claude",
+     "pronto": "O painel mostra R$ por hora sua de cada oferta ativa e marca as que ficaram abaixo da hora mínima",
+     "tempo_min": 90,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo ar-retorno do roteiro: Retorno por hora de cada marca no painel\"",
+     "blocos": [
+      "painel"
+     ]
+    },
+    {
+     "id": "ar-cascata",
+     "titulo": "Conferir a fase da cascata antes de qualquer investimento",
+     "quem": "voce",
+     "pronto": "Fase atual anotada no Caixa da Casa",
+     "tempo_min": 10,
+     "fora": "Decisão financeira é sua; o Caixa da Casa mostra a fase.",
+     "blocos": [],
+     "ofertas": [
+      "dividendos"
+     ]
+    },
+    {
+     "id": "ar-descartes",
+     "titulo": "Revisar os descartes uma vez por trimestre",
+     "quem": "voce",
+     "pronto": "Revisão anotada; nenhum descarte volta sem motivo novo",
+     "tempo_min": 15,
+     "fora": "Revisão de decisão, fora do terminal.",
+     "blocos": [],
+     "ofertas": [
+      "modelos3d",
+      "sitesnicho",
+      "bancoimagens",
+      "jogo",
+      "crowdtest",
+      "fiscalprova",
+      "edicaovideo",
+      "fotosproduto"
+     ]
+    }
+   ]
+  },
+  {
    "id": "f11",
    "titulo": "Pipeline de conteúdo",
    "objetivo": "Gravou ou escreveu, as peças aparecem na fila de aprovação.",
@@ -2721,6 +2831,46 @@
      "ofertas": [
       "taskoro"
      ]
+    },
+    {
+     "id": "of-fila-digital",
+     "titulo": "Fila de produtos digitais (Fábrica para professores, Setup profissional, templates e outros)",
+     "quem": "voce",
+     "pronto": "Cada uma ativada na ordem, uma de cada vez",
+     "tempo_min": 30,
+     "fora": "Entra só quando uma renda ativa passar no portão (3 meses se pagando). A ordem é o ranking de facilidade do portfólio.",
+     "blocos": [],
+     "ofertas": [
+      "fabricaprof",
+      "setuppro",
+      "templatesint",
+      "uikits",
+      "pluginwp",
+      "n8ntemplates",
+      "royalties",
+      "dublagem",
+      "bytesdcoin",
+      "camisetas"
+     ]
+    },
+    {
+     "id": "of-fila-servicos",
+     "titulo": "Fila de serviços que pagam bem por hora (conteudista, questões, ERP e outros)",
+     "quem": "voce",
+     "pronto": "Cada uma ativada na ordem, uma de cada vez",
+     "tempo_min": 30,
+     "fora": "Entra só quando uma renda ativa passar no portão (3 meses se pagando). A ordem é o ranking de facilidade do portfólio.",
+     "blocos": [],
+     "ofertas": [
+      "conteudista",
+      "questoes",
+      "abnt",
+      "segurancapme",
+      "freelausd",
+      "erp",
+      "portugues",
+      "recuperacao"
+     ]
     }
    ],
    "quando": "Fev a dez/2027, uma oferta por vez",
@@ -3563,6 +3713,40 @@
      "ofertas": [
       "cafeteria"
      ]
+    },
+    {
+     "id": "nb-2027",
+     "titulo": "Serviços presenciais para 2027, se a tarde ficar livre (por parceiros quando der)",
+     "quem": "voce",
+     "pronto": "Decisão tomada no replanejamento de 2027",
+     "tempo_min": 30,
+     "fora": "Dependem de você presente ou de parceiro técnico; decisão de 2027.",
+     "blocos": [],
+     "ofertas": [
+      "pcmontado",
+      "redescftv",
+      "casainteligente",
+      "senac",
+      "idosos",
+      "colonia",
+      "trafego"
+     ]
+    },
+    {
+     "id": "nb-decidir",
+     "titulo": "Rendas de capital alto: decidir só com o portão aberto",
+     "quem": "voce",
+     "pronto": "Decisão registrada com capital próprio disponível",
+     "tempo_min": 30,
+     "fora": "Exigem capital; só quando a renda do núcleo pagar o investimento.",
+     "blocos": [],
+     "ofertas": [
+      "mercadinho",
+      "vending",
+      "aluguelkits",
+      "kitstindie",
+      "revenda-veiculos"
+     ]
     }
    ],
    "quando": "Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano",
@@ -3619,6 +3803,19 @@
      "fora": "Estudo: assistir, praticar e anotar.",
      "blocos": [
       "anki"
+     ]
+    },
+    {
+     "id": "est-longo",
+     "titulo": "Rendas que dependem de formação longa (bug bounty, perícia)",
+     "quem": "voce",
+     "pronto": "Portão de formação cumprido",
+     "tempo_min": 15,
+     "fora": "Dependem de certificação e estudo; entram pela trilha de estudo.",
+     "blocos": [],
+     "ofertas": [
+      "bugbounty",
+      "perito"
      ]
     }
    ],

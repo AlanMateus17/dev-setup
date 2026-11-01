@@ -3050,6 +3050,15 @@
    "conta": false,
    "futuro": false,
    "descricao": "tools/acervo/acervo.py: lê todos os seus documentos sem alterar nada, acha cópias, separa os pessoais, marca o que é de terceiros ou da escola, converte o resto para Markdown no Obsidian e sugere os produtos que dá para vender. Tudo no notebook."
+  },
+  {
+   "id": "radar",
+   "camada": "neg",
+   "rotulo": "Radar de revenda",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Lê os alertas de busca salvos (OLX, Mercado Livre, Facebook, Estante Virtual) que chegam ao Gmail, compara com o preço de referência e avisa no Telegram só o que passa da hora mínima. Nunca compra nem fala com vendedor."
   }
  ],
  "conexoes": [
@@ -6097,6 +6106,11 @@
    "de": "diag",
    "para": "oinst",
    "rotulo": "o que falta instalar"
+  },
+  {
+   "de": "radar",
+   "para": "painel",
+   "rotulo": "lucro por hora"
   }
  ],
  "fluxos": [
