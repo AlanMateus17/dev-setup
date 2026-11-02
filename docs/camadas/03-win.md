@@ -131,9 +131,11 @@ flowchart LR
     n_pkali["Pendrive Kali (persistência)"]
     n_rob["Arduino · ESP32 · Pi"]
     n_sata["SSD SATA 2,5#quot;"]
+    n_srvcasa["Servidor da casa (N100 ou Pi 5)"]
     n_ws["Workstation com GPU"]
   end
   n_tail -->|"acesso remoto"| n_nas
+  n_tail -->|"acesso de fora"| n_srvcasa
   n_ws -->|"rede privada"| n_tail
   n_iacluster -->|"pela rede privada"| n_tail
   n_syncth -->|"pela rede privada"| n_tail
@@ -251,6 +253,7 @@ Acesso seguro ao homelab e ao notebook de qualquer lugar, sem abrir porta no rot
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Servidor caseiro (NAS + serviços)](01-hw.md#nas) | Hardware | acesso remoto |
+| → envia para | [Servidor da casa (N100 ou Pi 5)](01-hw.md#srvcasa) | Hardware | acesso de fora |
 | ← recebe de | [Workstation com GPU](01-hw.md#ws) | Hardware | rede privada |
 | ← recebe de | [Cluster de IA na rede](05-ia.md#iacluster) | Agentes de IA e sandbox | pela rede privada |
 | ← recebe de | [Syncthing](03-win.md#syncth) | Windows 11, apps e máquinas virtuais | pela rede privada |

@@ -2,6 +2,19 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.4.0] - 2026-11-02
+
+### Adicionado
+- Jarvis por comando de voz (docs/jarvis): voz local, casa (energia, água, câmeras, portas, janelas, eletrodomésticos), robótica e PC, com a pesquisa do que existe (Home Assistant Assist e Wyoming, MCP do Home Assistant, Claude Code /voice, Frigate, AI-on-the-edge-device, ESPHome, ROS 2 com mqtt_client, Pipecat).
+- tools/jarvis/politica.py: níveis livre, voz, celular e proibido por ação, com mínimos fixos no código (destrancar, abrir janela, porta e portão, desligar geladeira, desarmar alarme, desligar câmera), limite de 25 entidades expostas e geração das automações que religam a geladeira; modelo em politica.example.toml.
+- tools/jarvis/falar.py: hook Stop do Claude Code que fala a última resposta pelo Piper local, sem nunca travar o agente.
+- infra/jarvis: Whisper na GPU, Piper pt_BR, openWakeWord ("hey jarvis") e Mosquitto; perfis zigbee (Zigbee2MQTT) e cameras (Frigate).
+- ADR 0004: a casa roda num servidor próprio com Home Assistant OS; o notebook empresta a GPU para a voz.
+- 14 blocos, 23 conexões e o fluxo "um comando de voz até a tomada"; fase 51 refeita com 13 passos, da voz no PC à primeira contribuição open source.
+
+### Alterado
+- Fechadura entra no Jarvis: trancar livre, destrancar só com o toque no celular (antes ficava totalmente fora).
+
 ## [2.3.0] - 2026-11-02
 
 ### Adicionado

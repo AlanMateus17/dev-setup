@@ -5622,50 +5622,161 @@
   },
   {
    "id": "f-jarvis",
-   "titulo": "Jarvis: uma porta para todos os seus agentes",
-   "objetivo": "Falar com o setup por texto ou voz e ele chamar o agente certo, com ferramentas liberadas por lista e o seu ok para qualquer ação que mude algo.",
-   "quando": "2027, depois da Operação 24 horas e do roteador de agentes",
+   "titulo": "Jarvis: o setup e a casa por comando de voz",
+   "objetivo": "Falar com o setup e com a casa: o Claude Code por voz no PC agora, depois o servidor da casa, os aparelhos, as câmeras, a energia, a água e os robôs, sempre pela política de risco.",
+   "quando": "Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas",
    "passos": [
     {
-     "id": "jv-intencoes",
-     "titulo": "Definir as intenções do Jarvis e o que cada uma pode fazer",
-     "quem": "claude",
-     "pronto": "Tabela de intenções revisada (ferramenta, só leitura ou com aprovação)",
-     "tempo_min": 60,
+     "id": "jv-claude-voz",
+     "titulo": "Claude Code por voz: falar com o /voice e ouvir a resposta",
+     "quem": "script",
+     "pronto": "Você pede por voz para criar uma pasta e ouve a confirmação",
+     "tempo_min": 40,
      "blocos": [
-      "jarvis"
+      "ccvoz"
      ],
-     "fora": "Tabela em docs/seguranca/04-jarvis.md; nada de código antes da lista branca."
-    },
-    {
-     "id": "jv-orquestrador",
-     "titulo": "Orquestrador no Claude Agent SDK lendo o MCP próprio",
-     "quem": "claude",
-     "pronto": "Responde 'como está o setup?' pelo Telegram",
-     "tempo_min": 480,
-     "blocos": [],
-     "fora": "Código num repositório privado do Jarvis, quando o MCP próprio e o roteador de agentes existirem."
+     "comando": "pipx install piper-tts && python3 ~/dev/dev-setup/tools/jarvis/falar.py --teste",
+     "nota": "Baixe uma voz pt_BR do Piper em ~/.local/share/piper e ligue o hook Stop no ~/.claude/settings.json (docs/jarvis/04-pc.md). O agente continua no ai-jail."
     },
     {
      "id": "jv-voz",
-     "titulo": "Voz local: Whisper para ouvir e Piper para falar",
+     "titulo": "Voz local para a casa: Whisper na GPU, Piper e openWakeWord",
      "quem": "script",
-     "pronto": "O Jarvis responde em voz no notebook",
+     "pronto": "O Home Assistant de testes transcreve uma frase em português pelo Wyoming",
+     "tempo_min": 40,
+     "blocos": [
+      "jvoz",
+      "mqtt"
+     ],
+     "comando": "cd ~/dev/dev-setup/infra/jarvis && cp -n jarvis.env.example .env && nano .env && docker compose up -d",
+     "nota": "Crie o usuário do MQTT na primeira vez (comando no topo do compose.yaml); a senha vai para o KeePassXC."
+    },
+    {
+     "id": "jv-intencoes",
+     "titulo": "Política do Jarvis: o que cada comando pode fazer",
+     "quem": "script",
+     "pronto": "Política válida, com a geladeira religando sozinha e no máximo 25 entidades expostas",
      "tempo_min": 60,
      "blocos": [
-      "jvoz"
+      "politica",
+      "jarvis"
      ],
-     "comando": "pipx install piper-tts",
-     "nota": "Baixe uma voz pt_BR do Piper; o Whisper já vem do bootstrap (--com-whisper)."
+     "comando": "mkdir -p ~/.config/amtech && cp -n ~/dev/dev-setup/tools/jarvis/politica.example.toml ~/.config/amtech/jarvis.toml && python3 ~/dev/dev-setup/tools/jarvis/politica.py validar ~/.config/amtech/jarvis.toml",
+     "nota": "Troque os ids pelos das suas entidades e gere as automações de segurança com: politica.py ha-yaml."
+    },
+    {
+     "id": "jv-servidor",
+     "titulo": "Servidor da casa com Home Assistant OS",
+     "quem": "voce",
+     "pronto": "Home Assistant no ar com o notebook desligado, backup automático ligado",
+     "tempo_min": 120,
+     "blocos": [
+      "srvcasa"
+     ],
+     "precisa": [
+      "compra"
+     ],
+     "fora": "Compra do mini PC (ou Raspberry Pi 5) e gravação do Home Assistant OS pelo instalador oficial; ver docs/adr/0004."
     },
     {
      "id": "jv-casa",
-     "titulo": "Ligar o Jarvis ao Home Assistant",
+     "titulo": "Claude como agente de conversa e MCP do Home Assistant",
      "quem": "voce",
-     "pronto": "Acende uma luz por comando de voz",
+     "pronto": "\"Hey jarvis, quanto gastei de energia hoje?\" responde certo",
      "tempo_min": 60,
+     "blocos": [
+      "hamcp"
+     ],
+     "fora": "Integrações Anthropic e Model Context Protocol Server pela tela do Home Assistant; exponha só as entidades da política."
+    },
+    {
+     "id": "jv-satelite",
+     "titulo": "Primeiro satélite de voz (ESP32-S3) no quarto",
+     "quem": "voce",
+     "pronto": "\"Hey jarvis, apaga a luz\" funciona do cômodo",
+     "tempo_min": 90,
+     "blocos": [
+      "satvoz",
+      "esphome"
+     ],
+     "precisa": [
+      "compra"
+     ],
+     "fora": "Placa ESP32-S3 com microfone e alto-falante (ou o Voice Preview Edition) gravada pelo ESPHome no navegador."
+    },
+    {
+     "id": "jv-zigbee",
+     "titulo": "Zigbee: coordenador, tomadas com medição e sensores de porta e janela",
+     "quem": "voce",
+     "pronto": "Geladeira e escritório medindo consumo; portas e janelas avisando se ficaram abertas",
+     "tempo_min": 120,
+     "blocos": [
+      "zbdongle",
+      "z2m",
+      "dispcasa"
+     ],
+     "precisa": [
+      "compra"
+     ],
+     "fora": "Compra dos aparelhos; tomada da geladeira e do chuveiro com corrente nominal acima do aparelho. Medidor no quadro, motores de janela e fechadura: com eletricista e serralheiro."
+    },
+    {
+     "id": "jv-agua",
+     "titulo": "Leitor do hidrômetro com ESP32-CAM",
+     "quem": "voce",
+     "pronto": "Consumo de água do dia no painel de energia do Home Assistant",
+     "tempo_min": 120,
+     "blocos": [
+      "aguacam"
+     ],
+     "precisa": [
+      "compra"
+     ],
+     "fora": "Firmware do AI-on-the-edge-device pelo instalador web do projeto; suporte impresso em 3D. Só fotografa: não abra nem mexa no medidor da concessionária."
+    },
+    {
+     "id": "jv-cameras",
+     "titulo": "Câmeras com Frigate (detecção local)",
+     "quem": "voce",
+     "pronto": "Aviso no celular quando uma pessoa entra no quintal, com a foto",
+     "tempo_min": 180,
+     "blocos": [
+      "cams",
+      "frigate"
+     ],
+     "precisa": [
+      "compra"
+     ],
+     "fora": "Câmeras com RTSP e o add-on do Frigate no servidor da casa (ou o perfil cameras do infra/jarvis). Avise quem mora e quem visita; nada apontado para rua ou vizinho."
+    },
+    {
+     "id": "jv-robotica",
+     "titulo": "Robôs na casa: ESP32 pelo ESPHome e Raspberry Pi com ROS 2 pelo MQTT",
+     "quem": "claude",
+     "pronto": "\"Hey jarvis, manda o robô para a sala\" move o robô de teste",
+     "tempo_min": 240,
+     "blocos": [
+      "ros2"
+     ],
+     "fora": "Código no repositório da robótica pessoal: ponte mqtt_client do ROS 2 e entidades do robô no Home Assistant, com parada de emergência física."
+    },
+    {
+     "id": "jv-opensource",
+     "titulo": "Primeira contribuição open source com o agente",
+     "quem": "voce",
+     "pronto": "Um pull request aberto num projeto que você usa",
+     "tempo_min": 180,
      "blocos": [],
-     "fora": "Token de longa duração criado na tela do Home Assistant; ações da casa só por lista (luz, aviso), nunca fechadura."
+     "fora": "Issue com o rótulo good first issue num projeto que você usa (Home Assistant, ESPHome, Ghidra...), seguindo o CONTRIBUTING e a regra de uso de IA do projeto; você revisa e assina tudo."
+    },
+    {
+     "id": "jv-orquestrador",
+     "titulo": "Orquestrador único: uma conversa para a casa, o PC e o setup",
+     "quem": "claude",
+     "pronto": "Do satélite de voz, pede o resumo do dia e o próximo passo do roteiro",
+     "tempo_min": 480,
+     "blocos": [],
+     "fora": "Claude Agent SDK com o MCP do Home Assistant, o MCP próprio e a política; só depois do MCP próprio e do roteador de agentes."
     },
     {
      "id": "jv-hud",

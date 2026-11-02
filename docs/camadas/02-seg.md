@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** Drivers AMD e NVIDIA ligam o sistema ao hardware.
 
-**19 blocos** · 0 precisam de conta · 1 marcados como futuro
+**20 blocos** · 0 precisam de conta · 1 marcados como futuro
 
 ## Mapa de conexões
 
@@ -33,6 +33,7 @@ flowchart LR
     n_appsec["AppSec nos seus sistemas"]
     n_escopo["Guarda de escopo (autorização)"]
     n_relpent["Relatório de pentest (CVSS)"]
+    n_politica["Política do Jarvis (níveis de risco)"]
   end
   subgraph L_mkt["Marketing, automação e medição"]
     n_painel["Painel de lucro (Grafana)"]
@@ -61,6 +62,8 @@ flowchart LR
     n_nkaix["AM Kaixara (PDV e cardápio)"]
   end
   subgraph L_ia["Agentes de IA e sandbox"]
+    n_hamcp["MCP do Home Assistant"]
+    n_jarvis["Jarvis (porta única dos agentes)"]
     n_mcp["Servidores MCP"]
     n_oll["Ollama"]
   end
@@ -121,8 +124,10 @@ flowchart LR
   n_appsec -->|"CodeQL"| n_dbot
   n_escopo -->|"registro de atividades"| n_relpent
   n_relpent -->|"entregável"| n_nseg
+  n_politica -->|"níveis de risco"| n_jarvis
+  n_politica -->|"o que expor"| n_hamcp
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_sign,n_restic,n_ykey,n_tpm,n_bitl,n_def,n_kee,n_tfa,n_bkp,n_organizar,n_segredos,n_restauracao,n_relab,n_ghidramcp,n_labseg,n_kitpent,n_appsec,n_escopo,n_relpent desta
+  class n_sign,n_restic,n_ykey,n_tpm,n_bitl,n_def,n_kee,n_tfa,n_bkp,n_organizar,n_segredos,n_restauracao,n_relab,n_ghidramcp,n_labseg,n_kitpent,n_appsec,n_escopo,n_relpent,n_politica desta
 ```
 
 ## Blocos
@@ -148,6 +153,7 @@ flowchart LR
 | [AppSec nos seus sistemas](#appsec) | Local | Modelagem de ameaças (STRIDE), checklist ASVS e ZAP na homologação, por cima do gitleaks, Trivy e Semgrep do repositório padrão. | passo 50.7 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | [Guarda de escopo (autorização)](#escopo) | Local | tools/seguranca/escopo.py: nenhum teste roda sem termo assinado, dentro da janela e do escopo; cada comando fica registrado. | passo 50.10 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | [Relatório de pentest (CVSS)](#relpent) | Local | tools/seguranca/relatorio.py e cvss.py: do sumário executivo ao registro de atividades, com a nota CVSS 3.1 calculada, nunca escrita à mão. | passo 50.10 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [Política do Jarvis (níveis de risco)](#politica) | Local | tools/jarvis/politica.py: livre, voz, celular ou proibido por ação; destrancar, abrir janela e desligar geladeira nunca só por voz. | passo 51.3 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
 
 <a id="sign"></a>
 
@@ -445,6 +451,21 @@ tools/seguranca/relatorio.py e cvss.py: do sumário executivo ao registro de ati
 | → envia para | [AMtech Segurança (pentest)](16-neg.md#nseg) | Negócios do grupo (Barbacena) | entregável |
 | ← recebe de | [Kit de pentest (Burp, ZAP, nmap…)](02-seg.md#kitpent) | Segurança e cofre | achados |
 | ← recebe de | [Guarda de escopo (autorização)](02-seg.md#escopo) | Segurança e cofre | registro de atividades |
+
+<a id="politica"></a>
+
+### Política do Jarvis (níveis de risco)
+
+*Local*
+
+tools/jarvis/politica.py: livre, voz, celular ou proibido por ação; destrancar, abrir janela e desligar geladeira nunca só por voz.
+
+**Quando entra:** passo 51.3 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Jarvis (porta única dos agentes)](05-ia.md#jarvis) | Agentes de IA e sandbox | níveis de risco |
+| → envia para | [MCP do Home Assistant](05-ia.md#hamcp) | Agentes de IA e sandbox | o que expor |
 
 ---
 

@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** O código fica no ext4 do Linux; o Windows enxerga pela ponte do WSL2.
 
-**12 blocos** · 0 precisam de conta · 2 marcados como futuro
+**13 blocos** · 0 precisam de conta · 3 marcados como futuro
 
 ## Mapa de conexões
 
@@ -26,6 +26,7 @@ flowchart LR
     n_rotinas["Rotinas agendadas"]
     n_adguard["AdGuard Home (DNS)"]
     n_wireguard["WireGuard (na mão)"]
+    n_ros2["ROS 2 + ponte MQTT"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_overif["Verificadores"]
@@ -46,6 +47,7 @@ flowchart LR
   end
   subgraph L_cnt["Containers, Kubernetes e infra como código"]
     n_docker["Docker + Compose"]
+    n_mqtt["Mosquitto (MQTT)"]
   end
   subgraph L_dados["Dados e treino de IA"]
     n_pyds["Python de dados (Polars, Jupyter)"]
@@ -70,6 +72,7 @@ flowchart LR
   subgraph L_hw["Hardware"]
     n_nvme["2º NVMe (1–4 TB)"]
     n_parch["Pendrive Arch (instalação portátil)"]
+    n_rob["Arduino · ESP32 · Pi"]
   end
   n_nvim -->|"editor"| n_wsl
   n_netw -->|"diagnóstico"| n_vms
@@ -101,8 +104,10 @@ flowchart LR
   n_rotinas -->|"resumo da manhã"| n_tg
   n_adguard -->|"DNS da rede"| n_tail
   n_wireguard -->|"base de"| n_tail
+  n_ros2 -->|"ponte"| n_mqtt
+  n_rob -->|"Raspberry Pi"| n_ros2
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_nvim,n_netw,n_wsl,n_git,n_rt,n_tex,n_sec,n_dot,n_arch,n_rotinas,n_adguard,n_wireguard desta
+  class n_nvim,n_netw,n_wsl,n_git,n_rt,n_tex,n_sec,n_dot,n_arch,n_rotinas,n_adguard,n_wireguard,n_ros2 desta
 ```
 
 ## Blocos
@@ -121,6 +126,7 @@ flowchart LR
 | [Rotinas agendadas](#rotinas) | Local | Resumo da manhã no Telegram e manutenção semanal, pelo cron do Ubuntu. | passo 17.3 · Semana 4 · nov/2026; passo 17.4 · Semana 4 · nov/2026; passo 17.5 · Semana 4 · nov/2026 |
 | [AdGuard Home (DNS)](#adguard) | Local | DNS da casa com bloqueio de anúncios e rastreadores, também pelo Tailscale. | passo 24.4 · Semana 6 · nov/2026 |
 | [WireGuard (na mão)](#wireguard) | Local | Túnel montado à mão entre duas máquinas, para entender o que o Tailscale faz. | passo 24.6 · Semana 6 · nov/2026 |
+| [ROS 2 + ponte MQTT](#ros2) | Local · futuro | Robôs no Raspberry Pi com ROS 2; o mqtt_client leva os tópicos para o MQTT e o Home Assistant manda e recebe comandos. | passo 51.10 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
 
 <a id="nvim"></a>
 
@@ -312,6 +318,21 @@ Túnel montado à mão entre duas máquinas, para entender o que o Tailscale faz
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Tailscale (VPN)](03-win.md#tail) | Windows 11, apps e máquinas virtuais | base de |
+
+<a id="ros2"></a>
+
+### ROS 2 + ponte MQTT
+
+*Local · futuro*
+
+Robôs no Raspberry Pi com ROS 2; o mqtt_client leva os tópicos para o MQTT e o Home Assistant manda e recebe comandos.
+
+**Quando entra:** passo 51.10 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Mosquitto (MQTT)](09-cnt.md#mqtt) | Containers, Kubernetes e infra como código | ponte |
+| ← recebe de | [Arduino · ESP32 · Pi](01-hw.md#rob) | Hardware | Raspberry Pi |
 
 ---
 

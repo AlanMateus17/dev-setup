@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** A CLI docker e o kubectl no Ubuntu falam com a engine do Docker no WSL2.
 
-**12 blocos** · 0 precisam de conta · 5 marcados como futuro
+**16 blocos** · 0 precisam de conta · 7 marcados como futuro
 
 ## Mapa de conexões
 
@@ -26,6 +26,10 @@ flowchart LR
     n_rmq["RabbitMQ"]
     n_kind["Kubernetes local (kind)"]
     n_tf["Terraform"]
+    n_mqtt["Mosquitto (MQTT)"]
+    n_z2m["Zigbee2MQTT"]
+    n_frigate["Frigate (câmeras com detecção)"]
+    n_esphome["ESPHome"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_overif["Verificadores"]
@@ -66,13 +70,19 @@ flowchart LR
     n_rag["Base de conhecimento (RAG) das suas notas"]
   end
   subgraph L_lin["Linux (Ubuntu no WSL2, Arch no 2º disco)"]
+    n_ros2["ROS 2 + ponte MQTT"]
     n_wsl["Ubuntu (WSL2)"]
   end
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
     n_dbv["DBeaver · Bruno"]
   end
   subgraph L_hw["Hardware"]
+    n_aguacam["Leitor do hidrômetro (ESP32-CAM)"]
+    n_cams["Câmeras IP (RTSP)"]
     n_ha["Home Assistant"]
+    n_rob["Arduino · ESP32 · Pi"]
+    n_satvoz["Satélites de voz (ESP32-S3)"]
+    n_zbdongle["Coordenador Zigbee (USB)"]
   end
   n_caddy -->|"HTTPS"| n_api
   n_api -->|"SMTP de teste"| n_mailp
@@ -114,8 +124,18 @@ flowchart LR
   n_tf -->|"cria recursos"| n_azure
   n_tf -->|"cria recursos"| n_aws
   n_tf -->|"DNS por código"| n_cf
+  n_mqtt -->|"integra"| n_ha
+  n_z2m -->|"publica"| n_mqtt
+  n_frigate -->|"eventos"| n_mqtt
+  n_aguacam -->|"leitura do hidrômetro"| n_mqtt
+  n_ros2 -->|"ponte"| n_mqtt
+  n_zbdongle -->|"rádio"| n_z2m
+  n_cams -->|"RTSP"| n_frigate
+  n_esphome -->|"entidades"| n_ha
+  n_satvoz -->|"firmware"| n_esphome
+  n_rob -->|"ESP32"| n_esphome
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_caddy,n_mailp,n_kafka,n_k8st,n_clis,n_datomic,n_docker,n_pg,n_redis,n_rmq,n_kind,n_tf desta
+  class n_caddy,n_mailp,n_kafka,n_k8st,n_clis,n_datomic,n_docker,n_pg,n_redis,n_rmq,n_kind,n_tf,n_mqtt,n_z2m,n_frigate,n_esphome desta
 ```
 
 ## Blocos
@@ -134,6 +154,10 @@ flowchart LR
 | [RabbitMQ](#rmq) | Local · futuro | Fila de eventos entre sistemas. | passo 46.1 · 2028 |
 | [Kubernetes local (kind)](#kind) | Local · futuro | Treino de Kubernetes sem pagar nuvem. | passo 46.2 · 2028 |
 | [Terraform](#tf) | Local | Cria Azure, AWS e Cloudflare por código. | passo 35.1 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028); passo 35.3 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| [Mosquitto (MQTT)](#mqtt) | Local | Barramento da casa: Zigbee2MQTT, Frigate, leitor do hidrômetro e os robôs publicam e recebem comandos por aqui, com usuário e senha. | passo 51.2 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| [Zigbee2MQTT](#z2m) | Local · futuro | Liga o coordenador Zigbee ao MQTT; aceita aparelhos de várias marcas sem o app de cada uma. | passo 51.7 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| [Frigate (câmeras com detecção)](#frigate) | Local · futuro | Grava e detecta pessoas, carros e animais localmente; manda eventos ao Home Assistant. Imagem nunca vai para IA na nuvem. | passo 51.9 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| [ESPHome](#esphome) | Local | Firmware por arquivo de configuração para ESP32: satélites de voz, sensores e robôs viram entidades do Home Assistant. | passo 51.6 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
 
 <a id="caddy"></a>
 
@@ -336,6 +360,70 @@ Cria Azure, AWS e Cloudflare por código.
 | → envia para | [Azure](12-nuvem.md#azure) | Nuvem, código e entrega | cria recursos |
 | → envia para | [AWS](12-nuvem.md#aws) | Nuvem, código e entrega | cria recursos |
 | → envia para | [Cloudflare (DNS, Pages, e-mail)](12-nuvem.md#cf) | Nuvem, código e entrega | DNS por código |
+
+<a id="mqtt"></a>
+
+### Mosquitto (MQTT)
+
+*Local*
+
+Barramento da casa: Zigbee2MQTT, Frigate, leitor do hidrômetro e os robôs publicam e recebem comandos por aqui, com usuário e senha.
+
+**Quando entra:** passo 51.2 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Home Assistant](01-hw.md#ha) | Hardware | integra |
+| ← recebe de | [Zigbee2MQTT](09-cnt.md#z2m) | Containers, Kubernetes e infra como código | publica |
+| ← recebe de | [Frigate (câmeras com detecção)](09-cnt.md#frigate) | Containers, Kubernetes e infra como código | eventos |
+| ← recebe de | [Leitor do hidrômetro (ESP32-CAM)](01-hw.md#aguacam) | Hardware | leitura do hidrômetro |
+| ← recebe de | [ROS 2 + ponte MQTT](04-lin.md#ros2) | Linux (Ubuntu no WSL2, Arch no 2º disco) | ponte |
+
+<a id="z2m"></a>
+
+### Zigbee2MQTT
+
+*Local · futuro*
+
+Liga o coordenador Zigbee ao MQTT; aceita aparelhos de várias marcas sem o app de cada uma.
+
+**Quando entra:** passo 51.7 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Mosquitto (MQTT)](09-cnt.md#mqtt) | Containers, Kubernetes e infra como código | publica |
+| ← recebe de | [Coordenador Zigbee (USB)](01-hw.md#zbdongle) | Hardware | rádio |
+
+<a id="frigate"></a>
+
+### Frigate (câmeras com detecção)
+
+*Local · futuro*
+
+Grava e detecta pessoas, carros e animais localmente; manda eventos ao Home Assistant. Imagem nunca vai para IA na nuvem.
+
+**Quando entra:** passo 51.9 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Mosquitto (MQTT)](09-cnt.md#mqtt) | Containers, Kubernetes e infra como código | eventos |
+| ← recebe de | [Câmeras IP (RTSP)](01-hw.md#cams) | Hardware | RTSP |
+
+<a id="esphome"></a>
+
+### ESPHome
+
+*Local*
+
+Firmware por arquivo de configuração para ESP32: satélites de voz, sensores e robôs viram entidades do Home Assistant.
+
+**Quando entra:** passo 51.6 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Home Assistant](01-hw.md#ha) | Hardware | entidades |
+| ← recebe de | [Satélites de voz (ESP32-S3)](01-hw.md#satvoz) | Hardware | firmware |
+| ← recebe de | [Arduino · ESP32 · Pi](01-hw.md#rob) | Hardware | ESP32 |
 
 ---
 

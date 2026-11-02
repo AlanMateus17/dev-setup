@@ -17,3 +17,6 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-02: tools/seguranca (escopo.py, cvss.py, relatorio.py) com testes; modelos de termo, escopo, achados e ameaças; lab Juice Shop/WebGoat; ferramentas-re.sh.
 - 2026-11-02: regra: nenhum teste sem termo assinado passando no escopo.py; binário de cliente só com modelo local; ordem laudo → bug bounty → pentest → red team.
 - 2026-11-02: próximo da frente: sg-ferramentas e sg-crackme (1 h no estudo da manhã de dezembro). Pendente do Alan: revisar com advogado o termo antes do 1º laudo pago.
+- 2026-11-02: v2.4: Jarvis por voz (docs/jarvis): Assist com voz local + Claude como agente; Claude Code por voz no PC (/voice + falar.py); casa num servidor próprio (ADR 0004).
+- 2026-11-02: tools/jarvis/politica.py (mínimos fixos: destrancar e abrir janela só com o celular; geladeira religa sozinha) e infra/jarvis (Whisper GPU, Piper, openWakeWord, MQTT, Zigbee, Frigate).
+- 2026-11-02: próximo do Jarvis: jv-claude-voz e jv-voz (nada a comprar). Compras em ordem: servidor da casa → coordenador Zigbee e tomadas → satélite ESP32-S3 → câmeras → leitor do hidrômetro.

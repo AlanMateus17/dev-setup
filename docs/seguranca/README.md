@@ -26,7 +26,7 @@ flowchart LR
 1. [Engenharia reversa com IA](01-engenharia-reversa.md): o laboratório, o fluxo com Ghidra e GhidraMCP, a trilha de exercícios, a aula para os alunos e como usar nos seus próprios sistemas
 2. [AppSec nos seus sistemas](02-appsec.md): o processo que pega a maior parte dos erros antes do cliente, com modelagem de ameaças, checklist ASVS, CI e os repositórios de referência para comparar arquitetura
 3. [Empresa de pentest](03-empresa-de-pentest.md): o que um serviço completo tem, da autorização ao reteste, as ferramentas que você constrói e as que usa prontas, a lei, os portões e a ordem realista
-4. [Jarvis](04-jarvis.md): uma porta para todos os seus agentes, montada com as peças que o setup já tem
+4. [Jarvis: o lado da segurança](04-jarvis.md): as ameaças de um assistente de voz e como a política trava cada uma (o guia completo está em [docs/jarvis](../jarvis/README.md))
 
 ## O que já está pronto no repositório
 

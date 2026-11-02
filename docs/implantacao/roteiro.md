@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-52 fases, 415 passos, cerca de **1297 h 28 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+52 fases, 423 passos, cerca de **1315 h 18 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
-**Todo o planejamento está aqui:** os 386 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 105 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
+**Todo o planejamento está aqui:** os 400 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 105 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 320 dos 415 passos (358 h 18 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 323 dos 423 passos (365 h 38 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -65,7 +65,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [48 · Negócios do grupo em Barbacena](#f32) | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano · **gatilho:** Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta | 10 | 483 h 00 min |
 | [49 · Estudo contínuo](#f33) | Contínuo, desde a semana 2 | 12 | 3 h 30 min |
 | [50 · Engenharia reversa, AppSec e pentest](#f-seguranca) | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) | 16 | 71 h 15 min |
-| [51 · Jarvis: uma porta para todos os seus agentes](#f-jarvis) | 2027, depois da Operação 24 horas e do roteador de agentes | 5 | 13 h 00 min |
+| [51 · Jarvis: o setup e a casa por comando de voz](#f-jarvis) | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas | 13 | 30 h 50 min |
 
 <a id="f0"></a>
 
@@ -5009,49 +5009,130 @@ mkdir -p ~/clientes/ensaio && cp ~/dev/dev-setup/infra/templates/seguranca/escop
 
 <a id="f-jarvis"></a>
 
-## 51 · Jarvis: uma porta para todos os seus agentes
+## 51 · Jarvis: o setup e a casa por comando de voz
 
-Falar com o setup por texto ou voz e ele chamar o agente certo, com ferramentas liberadas por lista e o seu ok para qualquer ação que mude algo.
+Falar com o setup e com a casa: o Claude Code por voz no PC agora, depois o servidor da casa, os aparelhos, as câmeras, a energia, a água e os robôs, sempre pela política de risco.
 
-**Quando:** 2027, depois da Operação 24 horas e do roteador de agentes
+**Quando:** Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas
 
-### 51.1 Definir as intenções do Jarvis e o que cada uma pode fazer
+### 51.1 Claude Code por voz: falar com o /voice e ouvir a resposta
 
-**Claude com você** · 1 h 00 min
+**Script** · 40 min
 
-- **Fora do terminal:** Tabela em docs/seguranca/04-jarvis.md; nada de código antes da lista branca.
-- [ ] **Pronto quando:** Tabela de intenções revisada (ferramenta, só leitura ou com aprovação)
-- Implanta: Jarvis (porta única dos agentes)
+No **Ubuntu** (linha `alanmateus@...$`):
 
-### 51.2 Orquestrador no Claude Agent SDK lendo o MCP próprio
+```bash
+pipx install piper-tts && python3 ~/dev/dev-setup/tools/jarvis/falar.py --teste
+```
 
-**Claude com você** · 8 h 00 min
+- [ ] **Pronto quando:** Você pede por voz para criar uma pasta e ouve a confirmação
+- Baixe uma voz pt_BR do Piper em ~/.local/share/piper e ligue o hook Stop no ~/.claude/settings.json (docs/jarvis/04-pc.md). O agente continua no ai-jail.
+- Implanta: Claude Code por voz (/voice + falar.py)
 
-- **Fora do terminal:** Código num repositório privado do Jarvis, quando o MCP próprio e o roteador de agentes existirem.
-- [ ] **Pronto quando:** Responde 'como está o setup?' pelo Telegram
+### 51.2 Voz local para a casa: Whisper na GPU, Piper e openWakeWord
 
-### 51.3 Voz local: Whisper para ouvir e Piper para falar
+**Script** · 40 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/dev-setup/infra/jarvis && cp -n jarvis.env.example .env && nano .env && docker compose up -d
+```
+
+- [ ] **Pronto quando:** O Home Assistant de testes transcreve uma frase em português pelo Wyoming
+- Crie o usuário do MQTT na primeira vez (comando no topo do compose.yaml); a senha vai para o KeePassXC.
+- Implanta: Voz local: Whisper, Piper, openWakeWord · Mosquitto (MQTT)
+
+### 51.3 Política do Jarvis: o que cada comando pode fazer
 
 **Script** · 1 h 00 min
 
 No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
-pipx install piper-tts
+mkdir -p ~/.config/amtech && cp -n ~/dev/dev-setup/tools/jarvis/politica.example.toml ~/.config/amtech/jarvis.toml && python3 ~/dev/dev-setup/tools/jarvis/politica.py validar ~/.config/amtech/jarvis.toml
 ```
 
-- [ ] **Pronto quando:** O Jarvis responde em voz no notebook
-- Baixe uma voz pt_BR do Piper; o Whisper já vem do bootstrap (--com-whisper).
-- Implanta: Voz do Jarvis (Whisper + Piper)
+- [ ] **Pronto quando:** Política válida, com a geladeira religando sozinha e no máximo 25 entidades expostas
+- Troque os ids pelos das suas entidades e gere as automações de segurança com: politica.py ha-yaml.
+- Implanta: Política do Jarvis (níveis de risco) · Jarvis (porta única dos agentes)
 
-### 51.4 Ligar o Jarvis ao Home Assistant
+### 51.4 Servidor da casa com Home Assistant OS
+
+**Você** · 2 h 00 min
+
+- **Fora do terminal:** Compra do mini PC (ou Raspberry Pi 5) e gravação do Home Assistant OS pelo instalador oficial; ver docs/adr/0004.
+- [ ] **Pronto quando:** Home Assistant no ar com o notebook desligado, backup automático ligado
+- **Precisa:** comprar algo
+- Implanta: Servidor da casa (N100 ou Pi 5)
+
+### 51.5 Claude como agente de conversa e MCP do Home Assistant
 
 **Você** · 1 h 00 min
 
-- **Fora do terminal:** Token de longa duração criado na tela do Home Assistant; ações da casa só por lista (luz, aviso), nunca fechadura.
-- [ ] **Pronto quando:** Acende uma luz por comando de voz
+- **Fora do terminal:** Integrações Anthropic e Model Context Protocol Server pela tela do Home Assistant; exponha só as entidades da política.
+- [ ] **Pronto quando:** "Hey jarvis, quanto gastei de energia hoje?" responde certo
+- Implanta: MCP do Home Assistant
 
-### 51.5 Aura Status como painel do Jarvis
+### 51.6 Primeiro satélite de voz (ESP32-S3) no quarto
+
+**Você** · 1 h 30 min
+
+- **Fora do terminal:** Placa ESP32-S3 com microfone e alto-falante (ou o Voice Preview Edition) gravada pelo ESPHome no navegador.
+- [ ] **Pronto quando:** "Hey jarvis, apaga a luz" funciona do cômodo
+- **Precisa:** comprar algo
+- Implanta: Satélites de voz (ESP32-S3) · ESPHome
+
+### 51.7 Zigbee: coordenador, tomadas com medição e sensores de porta e janela
+
+**Você** · 2 h 00 min
+
+- **Fora do terminal:** Compra dos aparelhos; tomada da geladeira e do chuveiro com corrente nominal acima do aparelho. Medidor no quadro, motores de janela e fechadura: com eletricista e serralheiro.
+- [ ] **Pronto quando:** Geladeira e escritório medindo consumo; portas e janelas avisando se ficaram abertas
+- **Precisa:** comprar algo
+- Implanta: Coordenador Zigbee (USB) · Zigbee2MQTT · Tomadas, sensores e atuadores
+
+### 51.8 Leitor do hidrômetro com ESP32-CAM
+
+**Você** · 2 h 00 min
+
+- **Fora do terminal:** Firmware do AI-on-the-edge-device pelo instalador web do projeto; suporte impresso em 3D. Só fotografa: não abra nem mexa no medidor da concessionária.
+- [ ] **Pronto quando:** Consumo de água do dia no painel de energia do Home Assistant
+- **Precisa:** comprar algo
+- Implanta: Leitor do hidrômetro (ESP32-CAM)
+
+### 51.9 Câmeras com Frigate (detecção local)
+
+**Você** · 3 h 00 min
+
+- **Fora do terminal:** Câmeras com RTSP e o add-on do Frigate no servidor da casa (ou o perfil cameras do infra/jarvis). Avise quem mora e quem visita; nada apontado para rua ou vizinho.
+- [ ] **Pronto quando:** Aviso no celular quando uma pessoa entra no quintal, com a foto
+- **Precisa:** comprar algo
+- Implanta: Câmeras IP (RTSP) · Frigate (câmeras com detecção)
+
+### 51.10 Robôs na casa: ESP32 pelo ESPHome e Raspberry Pi com ROS 2 pelo MQTT
+
+**Claude com você** · 4 h 00 min
+
+- **Fora do terminal:** Código no repositório da robótica pessoal: ponte mqtt_client do ROS 2 e entidades do robô no Home Assistant, com parada de emergência física.
+- [ ] **Pronto quando:** "Hey jarvis, manda o robô para a sala" move o robô de teste
+- Implanta: ROS 2 + ponte MQTT
+
+### 51.11 Primeira contribuição open source com o agente
+
+**Você** · 3 h 00 min
+
+- **Fora do terminal:** Issue com o rótulo good first issue num projeto que você usa (Home Assistant, ESPHome, Ghidra...), seguindo o CONTRIBUTING e a regra de uso de IA do projeto; você revisa e assina tudo.
+- [ ] **Pronto quando:** Um pull request aberto num projeto que você usa
+
+### 51.12 Orquestrador único: uma conversa para a casa, o PC e o setup
+
+**Claude com você** · 8 h 00 min
+
+- **Fora do terminal:** Claude Agent SDK com o MCP do Home Assistant, o MCP próprio e a política; só depois do MCP próprio e do roteador de agentes.
+- [ ] **Pronto quando:** Do satélite de voz, pede o resumo do dia e o próximo passo do roteiro
+
+### 51.13 Aura Status como painel do Jarvis
 
 **Claude com você** · 2 h 00 min
 
@@ -5385,6 +5466,10 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | RabbitMQ | 46.1 | 2028 |
 | Kubernetes local (kind) | 46.2 | 2028 |
 | Terraform | 35.1, 35.3 | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| Mosquitto (MQTT) | 51.2 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Zigbee2MQTT | 51.7 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Frigate (câmeras com detecção) | 51.9 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| ESPHome | 51.6 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
 
 ### Claude: recursos, conectores e plugins
 
@@ -5470,8 +5555,10 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Pacote de contexto + ESTADO.md | 21.12 | Semana 6 · nov/2026 a dez/2026 |
 | Strata (MoE grande) | 23.6 | 2027, depois do primeiro fine-tuning de 8B |
 | OpenClaw (agente 24 h) | 22.9 | Semana 6 · nov/2026 a dez/2026 |
-| Jarvis (porta única dos agentes) | 51.1 | 2027, depois da Operação 24 horas e do roteador de agentes |
-| Voz do Jarvis (Whisper + Piper) | 51.3 | 2027, depois da Operação 24 horas e do roteador de agentes |
+| Jarvis (porta única dos agentes) | 51.3 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Voz local: Whisper, Piper, openWakeWord | 51.2 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| MCP do Home Assistant | 51.5 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Claude Code por voz (/voice + falar.py) | 51.1 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
 
 ### Linux (Ubuntu no WSL2, Arch no 2º disco)
 
@@ -5489,6 +5576,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Rotinas agendadas | 17.3, 17.4, 17.5 | Semana 4 · nov/2026 |
 | AdGuard Home (DNS) | 24.4 | Semana 6 · nov/2026 |
 | WireGuard (na mão) | 24.6 | Semana 6 · nov/2026 |
+| ROS 2 + ponte MQTT | 51.10 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
 
 ### Windows 11, apps e máquinas virtuais
 
@@ -5543,6 +5631,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | AppSec nos seus sistemas | 50.7 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | Guarda de escopo (autorização) | 50.10 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | Relatório de pentest (CVSS) | 50.10 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Política do Jarvis (níveis de risco) | 51.3 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
 
 ### Hardware
 
@@ -5564,3 +5653,9 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | SSD externo (USB-C 10 Gbps) | 1.2 | Semana 1 · out/2026 |
 | Workstation com GPU | 23.6, 47.3 | 2027, depois do primeiro fine-tuning de 8B; 2028, quando o grupo pedir |
 | Home Assistant | 19.1, 19.6 | Dez/2026 |
+| Servidor da casa (N100 ou Pi 5) | 51.4 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Coordenador Zigbee (USB) | 51.7 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Satélites de voz (ESP32-S3) | 51.6 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Tomadas, sensores e atuadores | 51.7 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Câmeras IP (RTSP) | 51.9 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Leitor do hidrômetro (ESP32-CAM) | 51.8 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |

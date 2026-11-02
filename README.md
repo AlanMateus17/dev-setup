@@ -8,7 +8,7 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 
 | Camadas | Blocos | Conexões | Fluxos | Contas necessárias |
 |---|---|---|---|---|
-| 23 | 386 | 692 | 19 | 109 |
+| 23 | 400 | 715 | 20 | 109 |
 
 ## Por onde começar
 
@@ -22,6 +22,7 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 - **[Negócios do grupo](docs/negocios/README.md)**: software, loja, robótica, ponto de retirada, entregas, delivery, sushi, cafeteria e padaria, com números, ordem de abertura e mínimo legal de cada um.
 - **[Marketing, vendas e automação](docs/marketing/README.md)**: funil, canais sem rosto com voz clonada, publicação no melhor horário, tráfego pago, parcerias, internacional e lucro por venda.
 - **[Segurança](docs/seguranca/README.md)**: engenharia reversa com IA, AppSec nos seus sistemas, o caminho até a AMtech Segurança (pentest com guarda de escopo e relatório CVSS) e o Jarvis.
+- **[Jarvis](docs/jarvis/README.md)**: comandos de voz para o PC, a casa (energia, água, câmeras, portas, janelas, eletrodomésticos) e os robôs, com política de risco.
 - **Diagrama interativo**: baixe [`docs/index.html`](docs/index.html) e abra no navegador. Toque em qualquer bloco para ver as conexões dele.
 - **[Toda a documentação](docs/README.md)**
 
@@ -100,15 +101,15 @@ O Windows cuida só do que precisa de janela, GPU e segurança; todo o trabalho 
 | 12 | [Nuvem, código e entrega](docs/camadas/12-nuvem.md) | 21 | Armazenamento de arquivos (Blob/R2), E-mail transacional (Resend, SES…), SonarQube Cloud, Projects · ADRs · MkDocs… |
 | 11 | [Aplicação: sistemas AM (Aura)](docs/camadas/11-app.md) | 18 | OpenAPI + Scalar, PostGIS + MapLibre, Storybook, Clean Arch + DDD… |
 | 10 | [Observabilidade](docs/camadas/10-obs.md) | 8 | Sentry (erros), Uptime Kuma, Seq (logs), Loki + Tempo… |
-| 09 | [Containers, Kubernetes e infra como código](docs/camadas/09-cnt.md) | 12 | Caddy (proxy + HTTPS), Mailpit, Kafka, kubectl · Helm · k9s… |
+| 09 | [Containers, Kubernetes e infra como código](docs/camadas/09-cnt.md) | 16 | Caddy (proxy + HTTPS), Mailpit, Kafka, kubectl · Helm · k9s… |
 | 08 | [Claude: recursos, conectores e plugins](docs/camadas/08-clc.md) | 19 | Projects + memória, Artifacts (Docs, Slides, Sheets…), Pesquisa aprofundada, Tarefas agendadas… |
 | 07 | [Assistentes de IA (chat, pesquisa e estudo)](docs/camadas/07-chat.md) | 10 | Claude (app), ChatGPT, Gemini (pago), NotebookLM… |
 | 06 | [Dados e treino de IA](docs/camadas/06-dados.md) | 19 | Python de dados (Polars, Jupyter), DuckDB + Parquet, dbt Core, Airflow (orquestração)… |
-| 05 | [Agentes de IA e sandbox](docs/camadas/05-ia.md) | 19 | Modelos locais: Qwen · Gemma · Llama, Base de conhecimento (RAG) das suas notas, Claude Code, ai-jail… |
-| 04 | [Linux (Ubuntu no WSL2, Arch no 2º disco)](docs/camadas/04-lin.md) | 12 | Neovim, nmap · dig · curl, Ubuntu (WSL2), Git + SSH + gh… |
+| 05 | [Agentes de IA e sandbox](docs/camadas/05-ia.md) | 21 | Modelos locais: Qwen · Gemma · Llama, Base de conhecimento (RAG) das suas notas, Claude Code, ai-jail… |
+| 04 | [Linux (Ubuntu no WSL2, Arch no 2º disco)](docs/camadas/04-lin.md) | 13 | Neovim, nmap · dig · curl, Ubuntu (WSL2), Git + SSH + gh… |
 | 03 | [Windows 11, apps e máquinas virtuais](docs/camadas/03-win.md) | 25 | Tailscale (VPN), .wslconfig + localhost, Terminal · PowerShell · winget, Excalidraw / draw.io… |
-| 02 | [Segurança e cofre](docs/camadas/02-seg.md) | 19 | Commits assinados (chave SSH), restic (backup criptografado), Chave física (YubiKey), TPM + Secure Boot… |
-| 01 | [Hardware](docs/camadas/01-hw.md) | 16 | Nobreak, Base com cooler, SSD SATA 2,5", Acer Nitro (32 GB, GTX 1650)… |
+| 02 | [Segurança e cofre](docs/camadas/02-seg.md) | 20 | Commits assinados (chave SSH), restic (backup criptografado), Chave física (YubiKey), TPM + Secure Boot… |
+| 01 | [Hardware](docs/camadas/01-hw.md) | 22 | Nobreak, Base com cooler, SSD SATA 2,5", Acer Nitro (32 GB, GTX 1650)… |
 
 ## Stack fixa dos sistemas
 
@@ -143,7 +144,8 @@ docs/
   implantacao/        roteiro de implantação e acompanhamento (gerados)
   operacao/           esteira, portfólio, marca, conteúdo, automação, qualidade, execução
   negocios/           os nove negócios do grupo: estrutura, ordem, números, cardápios, licenças
-  seguranca/          engenharia reversa, AppSec, empresa de pentest e o Jarvis
+  seguranca/          engenharia reversa, AppSec e empresa de pentest
+  jarvis/             voz, casa, câmeras, energia, água, robótica e PC por comando de voz
   contas.md, auditoria.md, nuvem.md, roteiro.md, ...
   adr/                decisões de arquitetura
   index.html          diagrama interativo (gerado)
@@ -152,6 +154,7 @@ scripts/windows/      instalar.ps1, verificar.ps1, extensões do VS Code e o inv
 scripts/wsl/          bootstrap.sh, nuvem.sh, verificar.sh e ativar-pipeline.sh
 infra/automacao/      n8n, banco de métricas, Grafana e Uptime Kuma (Docker Compose)
 infra/lab-seguranca/  laboratório de ataque local (Juice Shop, WebGoat) presos em 127.0.0.1
+infra/jarvis/         voz local (Whisper, Piper, openWakeWord), MQTT, Zigbee2MQTT e Frigate
 config/marca.md       guia de marca usado pelo pipeline de conteúdo
 tools/                geradores, motor financeiro, pipeline de conteúdo e templates
 ```

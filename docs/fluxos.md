@@ -555,3 +555,30 @@ flowchart LR
 2. **[Lab de engenharia reversa](camadas/02-seg.md#relab)**: O binário que ele mesmo compilou (ou um crackme) abre no Ghidra.
 3. **[GhidraMCP (IA no Ghidra)](camadas/02-seg.md#ghidramcp)**: O GhidraMCP entrega as funções ao Claude, que renomeia e explica.
 4. **[Servidores MCP](camadas/05-ia.md#mcp)**: Tudo passa pelos servidores MCP com permissão limitada.
+
+## Um comando de voz até a tomada
+
+```mermaid
+flowchart LR
+  s0["1. Satélites de voz (ESP32-S3)"]
+  s1["2. ESPHome"]
+  s2["3. Home Assistant"]
+  s3["4. Mosquitto (MQTT)"]
+  s4["5. Zigbee2MQTT"]
+  s5["6. Coordenador Zigbee (USB)"]
+  s6["7. Tomadas, sensores e atuadores"]
+  s0 --> s1
+  s1 --> s2
+  s2 --> s3
+  s3 --> s4
+  s4 --> s5
+  s5 --> s6
+```
+
+1. **[Satélites de voz (ESP32-S3)](camadas/01-hw.md#satvoz)**: O satélite do cômodo ouve "hey jarvis" e grava o pedido.
+2. **[ESPHome](camadas/09-cnt.md#esphome)**: O firmware ESPHome manda o áudio ao Home Assistant.
+3. **[Home Assistant](camadas/01-hw.md#ha)**: O Assist transcreve (Whisper), resolve a frase ou pergunta ao Claude, e confere a política.
+4. **[Mosquitto (MQTT)](camadas/09-cnt.md#mqtt)**: O comando sai pelo MQTT.
+5. **[Zigbee2MQTT](camadas/09-cnt.md#z2m)**: O Zigbee2MQTT traduz para o rádio.
+6. **[Coordenador Zigbee (USB)](camadas/01-hw.md#zbdongle)**: O coordenador envia pelo Zigbee.
+7. **[Tomadas, sensores e atuadores](camadas/01-hw.md#dispcasa)**: A tomada desliga, e o Piper confirma em voz.

@@ -1117,6 +1117,42 @@
    "descricao": "Cria Azure, AWS e Cloudflare por código."
   },
   {
+   "id": "mqtt",
+   "camada": "cnt",
+   "rotulo": "Mosquitto (MQTT)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Barramento da casa: Zigbee2MQTT, Frigate, leitor do hidrômetro e os robôs publicam e recebem comandos por aqui, com usuário e senha."
+  },
+  {
+   "id": "z2m",
+   "camada": "cnt",
+   "rotulo": "Zigbee2MQTT",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Liga o coordenador Zigbee ao MQTT; aceita aparelhos de várias marcas sem o app de cada uma."
+  },
+  {
+   "id": "frigate",
+   "camada": "cnt",
+   "rotulo": "Frigate (câmeras|com detecção)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Grava e detecta pessoas, carros e animais localmente; manda eventos ao Home Assistant. Imagem nunca vai para IA na nuvem."
+  },
+  {
+   "id": "esphome",
+   "camada": "cnt",
+   "rotulo": "ESPHome",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Firmware por arquivo de configuração para ESP32: satélites de voz, sensores e robôs viram entidades do Home Assistant."
+  },
+  {
    "id": "proj",
    "camada": "clc",
    "rotulo": "Projects + memória",
@@ -3088,6 +3124,60 @@
    "descricao": "Casa inteligente local: sensores, luzes, avisos e a base da robótica pessoal."
   },
   {
+   "id": "srvcasa",
+   "camada": "hw",
+   "rotulo": "Servidor da casa|(N100 ou Pi 5)",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Mini PC N100 (ou Raspberry Pi 5) com Home Assistant OS, ligado no nobreak: a casa funciona com o notebook desligado (ADR 0004)."
+  },
+  {
+   "id": "zbdongle",
+   "camada": "hw",
+   "rotulo": "Coordenador Zigbee|(USB)",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Rádio Zigbee no servidor da casa: tomadas, sensores e atuadores conversam sem nuvem e sem Wi-Fi."
+  },
+  {
+   "id": "satvoz",
+   "camada": "hw",
+   "rotulo": "Satélites de voz|(ESP32-S3)",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Microfone e alto-falante por cômodo, com a palavra de ativação no próprio chip (microWakeWord). O ESP32 comum não tem fôlego para isso."
+  },
+  {
+   "id": "dispcasa",
+   "camada": "hw",
+   "rotulo": "Tomadas, sensores|e atuadores",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Tomadas com medição (geladeira, chuveiro), medidor no quadro, sensores de porta e janela, fechadura, motores de janela e cortina."
+  },
+  {
+   "id": "cams",
+   "camada": "hw",
+   "rotulo": "Câmeras IP (RTSP)",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Câmeras com RTSP local, sem depender da nuvem do fabricante; só apontando para a sua casa."
+  },
+  {
+   "id": "aguacam",
+   "camada": "hw",
+   "rotulo": "Leitor do hidrômetro|(ESP32-CAM)",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": true,
+   "descricao": "AI-on-the-edge-device: uma ESP32-CAM fotografa o hidrômetro e lê os números no próprio chip. Só lê, nunca mexe no medidor da concessionária."
+  },
+  {
    "id": "paperless",
    "camada": "dados",
    "rotulo": "Paperless-ngx",
@@ -3295,6 +3385,15 @@
    "descricao": "tools/seguranca/relatorio.py e cvss.py: do sumário executivo ao registro de atividades, com a nota CVSS 3.1 calculada, nunca escrita à mão."
   },
   {
+   "id": "politica",
+   "camada": "seg",
+   "rotulo": "Política do Jarvis|(níveis de risco)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "tools/jarvis/politica.py: livre, voz, celular ou proibido por ação; destrancar, abrir janela e desligar geladeira nunca só por voz."
+  },
+  {
    "id": "iacluster",
    "camada": "ia",
    "rotulo": "Cluster de IA|na rede",
@@ -3401,6 +3500,15 @@
    "conta": false,
    "futuro": false,
    "descricao": "Túnel montado à mão entre duas máquinas, para entender o que o Tailscale faz."
+  },
+  {
+   "id": "ros2",
+   "camada": "lin",
+   "rotulo": "ROS 2 + ponte MQTT",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Robôs no Raspberry Pi com ROS 2; o mqtt_client leva os tópicos para o MQTT e o Home Assistant manda e recebe comandos."
   },
   {
    "id": "roi",
@@ -3571,16 +3679,34 @@
    "tipo": "local",
    "conta": false,
    "futuro": true,
-   "descricao": "Uma entrada (Telegram, voz ou painel) que leva o pedido ao agente certo, com ferramentas liberadas por lista; ação que muda algo pede o seu ok."
+   "descricao": "Assistente de voz do Home Assistant com o Claude como agente: comando simples resolve local, o resto passa pela política do Jarvis; o PC e o código vão pelo Claude Code por voz."
   },
   {
    "id": "jvoz",
    "camada": "ia",
-   "rotulo": "Voz do Jarvis|(Whisper + Piper)",
+   "rotulo": "Voz local: Whisper,|Piper, openWakeWord",
    "tipo": "local",
    "conta": false,
    "futuro": true,
-   "descricao": "Ouve pelo Whisper local e responde com voz sintetizada local (Piper). A voz clonada da ElevenLabs fica para conteúdo."
+   "descricao": "Protocolo Wyoming (infra/jarvis): Whisper na GPU do notebook, Piper em pt_BR e openWakeWord com o \"hey jarvis\"; reserva na CPU do servidor da casa."
+  },
+  {
+   "id": "hamcp",
+   "camada": "ia",
+   "rotulo": "MCP do Home|Assistant",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Integração Model Context Protocol Server: o Claude controla e consulta só as entidades expostas, com conta de administrador e OAuth."
+  },
+  {
+   "id": "ccvoz",
+   "camada": "ia",
+   "rotulo": "Claude Code por voz|(/voice + falar.py)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Você fala com o /voice e ele responde em voz pelo hook tools/jarvis/falar.py (Piper local): pastas, arquivos, pesquisa, repositórios e PRs."
   },
   {
    "id": "esteira",
@@ -7052,6 +7178,121 @@
    "de": "whis",
    "para": "jvoz",
    "rotulo": "transcreve"
+  },
+  {
+   "de": "srvcasa",
+   "para": "ha",
+   "rotulo": "roda o"
+  },
+  {
+   "de": "ups",
+   "para": "srvcasa",
+   "rotulo": "energia"
+  },
+  {
+   "de": "dispcasa",
+   "para": "zbdongle",
+   "rotulo": "Zigbee"
+  },
+  {
+   "de": "zbdongle",
+   "para": "z2m",
+   "rotulo": "rádio"
+  },
+  {
+   "de": "z2m",
+   "para": "mqtt",
+   "rotulo": "publica"
+  },
+  {
+   "de": "mqtt",
+   "para": "ha",
+   "rotulo": "integra"
+  },
+  {
+   "de": "cams",
+   "para": "frigate",
+   "rotulo": "RTSP"
+  },
+  {
+   "de": "frigate",
+   "para": "mqtt",
+   "rotulo": "eventos"
+  },
+  {
+   "de": "aguacam",
+   "para": "mqtt",
+   "rotulo": "leitura do hidrômetro"
+  },
+  {
+   "de": "satvoz",
+   "para": "esphome",
+   "rotulo": "firmware"
+  },
+  {
+   "de": "esphome",
+   "para": "ha",
+   "rotulo": "entidades"
+  },
+  {
+   "de": "rob",
+   "para": "esphome",
+   "rotulo": "ESP32"
+  },
+  {
+   "de": "rob",
+   "para": "ros2",
+   "rotulo": "Raspberry Pi"
+  },
+  {
+   "de": "ros2",
+   "para": "mqtt",
+   "rotulo": "ponte"
+  },
+  {
+   "de": "jvoz",
+   "para": "ha",
+   "rotulo": "Assist local"
+  },
+  {
+   "de": "jarvis",
+   "para": "hamcp",
+   "rotulo": "casa por MCP"
+  },
+  {
+   "de": "hamcp",
+   "para": "ha",
+   "rotulo": "entidades expostas"
+  },
+  {
+   "de": "politica",
+   "para": "jarvis",
+   "rotulo": "níveis de risco"
+  },
+  {
+   "de": "politica",
+   "para": "hamcp",
+   "rotulo": "o que expor"
+  },
+  {
+   "de": "ccvoz",
+   "para": "jarvis",
+   "rotulo": "PC e código"
+  },
+  {
+   "de": "ccvoz",
+   "para": "cc",
+   "rotulo": "/voice"
+  },
+  {
+   "de": "ccvoz",
+   "para": "jvoz",
+   "rotulo": "fala a resposta"
+  },
+  {
+   "de": "tail",
+   "para": "srvcasa",
+   "rotulo": "acesso de fora"
   }
  ],
  "fluxos": [
@@ -7746,6 +7987,40 @@
     {
      "bloco": "mcp",
      "descricao": "Tudo passa pelos servidores MCP com permissão limitada."
+    }
+   ]
+  },
+  {
+   "id": "voz-casa",
+   "titulo": "Um comando de voz até a tomada",
+   "passos": [
+    {
+     "bloco": "satvoz",
+     "descricao": "O satélite do cômodo ouve \"hey jarvis\" e grava o pedido."
+    },
+    {
+     "bloco": "esphome",
+     "descricao": "O firmware ESPHome manda o áudio ao Home Assistant."
+    },
+    {
+     "bloco": "ha",
+     "descricao": "O Assist transcreve (Whisper), resolve a frase ou pergunta ao Claude, e confere a política."
+    },
+    {
+     "bloco": "mqtt",
+     "descricao": "O comando sai pelo MQTT."
+    },
+    {
+     "bloco": "z2m",
+     "descricao": "O Zigbee2MQTT traduz para o rádio."
+    },
+    {
+     "bloco": "zbdongle",
+     "descricao": "O coordenador envia pelo Zigbee."
+    },
+    {
+     "bloco": "dispcasa",
+     "descricao": "A tomada desliga, e o Piper confirma em voz."
     }
    ]
   }
