@@ -1943,6 +1943,16 @@
      "nota": "Rode no notebook; o proxy de git de algumas sessões não envia tags. Veja docs/boas-praticas.md."
     },
     {
+     "id": "el-hook-tags",
+     "titulo": "Ligar a tag automática a cada push",
+     "quem": "script",
+     "pronto": "Depois de um push, a tag da versão do CHANGELOG aparece sozinha no GitHub",
+     "tempo_min": 5,
+     "blocos": [],
+     "comando": "cd ~/dev/dev-setup && git config core.hooksPath scripts/git-hooks && git config push.followTags true",
+     "nota": "O hook scripts/git-hooks/pre-push cria e envia a tag da versão mais nova a cada git push. Para pular num push: AMTECH_SKIP_HOOK=1 git push."
+    },
+    {
      "id": "el-segredos",
      "titulo": "Rodar serviços com segredos vindos do KeePassXC",
      "quem": "script",

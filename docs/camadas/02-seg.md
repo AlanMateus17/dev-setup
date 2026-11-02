@@ -149,8 +149,8 @@ flowchart LR
 | [App 2FA (celular)](#tfa) | Local | Segundo fator de todas as contas. | passo 1.4 · Semana 1 · out/2026; passo 2.3 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 2.7 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026 |
 | [Backup 3-2-1](#bkp) | Local | GitHub + disco externo + (depois) NAS. | passo 2.11 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 7.1 · Semana 3 · nov/2026; passo 7.2 · Semana 3 · nov/2026; passo 7.3 · Semana 3 · nov/2026; passo 8.2 · Semanas 3 e 4 · nov/2026 |
 | [Organizadores](#organizar) | Local | Downloads por tipo (sem apagar nada) e exportação de senhas pronta para o KeePassXC. | passo 2.4 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 17.2 · Semana 4 · nov/2026 |
-| [Segredos do cofre (keepassxc-cli)](#segredos) | Local | O comando recebe o segredo direto do KeePassXC, sem .env em texto puro. | passo 20.5 · Semana 5 · nov/2026 |
-| [Teste de restauração](#restauracao) | Local | Restaura o último backup numa pasta temporária e confere. Backup não testado não conta. | passo 20.6 · Semana 5 · nov/2026 |
+| [Segredos do cofre (keepassxc-cli)](#segredos) | Local | O comando recebe o segredo direto do KeePassXC, sem .env em texto puro. | passo 20.6 · Semana 5 · nov/2026 |
+| [Teste de restauração](#restauracao) | Local | Restaura o último backup numa pasta temporária e confere. Backup não testado não conta. | passo 20.7 · Semana 5 · nov/2026 |
 | [Lab de engenharia reversa](#relab) | Local | Ghidra, ILSpy, gdb e strace (scripts/wsl/ferramentas-re.sh) para estudar binários seus, crackmes e a aula dos alunos. Binário de terceiro só com autorização escrita. | passo 50.1 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | [GhidraMCP (IA no Ghidra)](#ghidramcp) | Local | Servidor MCP que deixa o Claude listar, renomear e explicar funções no Ghidra. Binário de cliente só com modelo local (Ollama) e cláusula no contrato. | passo 50.3 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | [Lab de ataque (Juice Shop, WebGoat)](#labseg) | Local | infra/lab-seguranca: aplicações vulneráveis de propósito, presas em 127.0.0.1, para treinar o OWASP Top 10 sem tocar em sistema real. | passo 50.5 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
@@ -325,7 +325,7 @@ Downloads por tipo (sem apagar nada) e exportação de senhas pronta para o KeeP
 
 O comando recebe o segredo direto do KeePassXC, sem .env em texto puro.
 
-**Quando entra:** passo 20.5 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 20.6 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -339,7 +339,7 @@ O comando recebe o segredo direto do KeePassXC, sem .env em texto puro.
 
 Restaura o último backup numa pasta temporária e confere. Backup não testado não conta.
 
-**Quando entra:** passo 20.6 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 20.7 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

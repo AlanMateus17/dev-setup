@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-54 fases, 456 passos, cerca de **1495 h 33 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+54 fases, 457 passos, cerca de **1495 h 38 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
 **Todo o planejamento está aqui:** os 415 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 108 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 351 dos 456 passos (521 h 53 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 352 dos 457 passos (521 h 58 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -34,7 +34,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [17 · Rotina automatizada](#f-rotina) | Semana 4 · nov/2026 | 5 | 34 min |
 | [18 · Comandos remotos pelo Telegram](#f-remoto) | Semana 5 · nov/2026 | 5 | 35 min |
 | [19 · Casa e vida](#f-casa) | Dez/2026 | 6 | 2 h 55 min |
-| [20 · Padrão de elite em todo repositório](#f-elite) | Semana 5 · nov/2026 | 9 | 2 h 40 min |
+| [20 · Padrão de elite em todo repositório](#f-elite) | Semana 5 · nov/2026 | 10 | 2 h 45 min |
 | [21 · Agentes e IA com qualidade medida](#f-ia-elite) | Semana 6 · nov/2026 a dez/2026 | 15 | 8 h 00 min |
 | [22 · Roteador de agentes e esteira de sites](#f-agentes) | Semana 6 · nov/2026 a dez/2026 | 9 | 2 h 55 min |
 | [23 · Modelos grandes sem computador maior](#f-ia-grande) | 2027, depois do primeiro fine-tuning de 8B | 6 | 23 h 00 min |
@@ -1946,7 +1946,20 @@ cd ~/dev/dev-setup && git fetch --unshallow 2>/dev/null; python3 tools/git/tague
 - [ ] **Pronto quando:** git tag mostra uma tag vx.y.z para cada versão do CHANGELOG, no GitHub
 - Rode no notebook; o proxy de git de algumas sessões não envia tags. Veja docs/boas-praticas.md.
 
-### 20.5 Rodar serviços com segredos vindos do KeePassXC
+### 20.5 Ligar a tag automática a cada push
+
+**Script** · 5 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/dev-setup && git config core.hooksPath scripts/git-hooks && git config push.followTags true
+```
+
+- [ ] **Pronto quando:** Depois de um push, a tag da versão do CHANGELOG aparece sozinha no GitHub
+- O hook scripts/git-hooks/pre-push cria e envia a tag da versão mais nova a cada git push. Para pular num push: AMTECH_SKIP_HOOK=1 git push.
+
+### 20.6 Rodar serviços com segredos vindos do KeePassXC
 
 **Script** · 15 min
 
@@ -1960,7 +1973,7 @@ sudo apt install -y keepassxc && bash ~/dev/dev-setup/scripts/wsl/segredos.sh 'A
 - A senha do cofre é digitada à mão. O teste deve mostrar 1.
 - Implanta: Segredos do cofre (keepassxc-cli)
 
-### 20.6 Testar a restauração do backup (todo mês)
+### 20.7 Testar a restauração do backup (todo mês)
 
 **Script** · 15 min
 
@@ -1974,7 +1987,7 @@ bash ~/dev/dev-setup/scripts/wsl/teste-restauracao.sh
 - Precisa de RESTIC_REPOSITORY definido. Marque na Rotina: primeiro domingo do mês.
 - Implanta: Teste de restauração
 
-### 20.7 Revisão mensal de qualidade: CI, evals, painel e backups
+### 20.8 Revisão mensal de qualidade: CI, evals, painel e backups
 
 **Você** · 30 min
 
@@ -1982,7 +1995,7 @@ bash ~/dev/dev-setup/scripts/wsl/teste-restauracao.sh
 - [ ] **Pronto quando:** Checklist do mês feito
 - Implanta: Agente revisor de qualidade
 
-### 20.8 Aplicar os cortes de custo agora (IAs pagas repetidas, Vercel em projeto comercial, Sonar privado)
+### 20.9 Aplicar os cortes de custo agora (IAs pagas repetidas, Vercel em projeto comercial, Sonar privado)
 
 **Você** · 30 min
 
@@ -1990,7 +2003,7 @@ bash ~/dev/dev-setup/scripts/wsl/teste-restauracao.sh
 - [ ] **Pronto quando:** Assinaturas canceladas ou trocadas conforme docs/custos.md
 - Implanta: Claude (assinatura e API)
 
-### 20.9 Auditoria de custos a cada 3 meses
+### 20.10 Auditoria de custos a cada 3 meses
 
 **Você** · 30 min
 
@@ -5519,7 +5532,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Verificadores | 3.9, 4.10, 10.3, 32.4 | Semana 1 · out/2026; Semana 2 · nov/2026; Semana 4 · nov/2026; Semana 11 · jan/2027 |
 | Pipeline de conteúdo | 27.4, 27.5, 27.7, 32.2 | Semana 5 · nov/2026; Semana 11 · jan/2027 |
 | Acervo (seus documentos) | 8.3, 8.4, 8.5, 38.3 | Semanas 3 e 4 · nov/2026; Fev a dez/2027, uma oferta por vez |
-| Agente revisor de qualidade | 20.7, 21.5 | Semana 5 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
+| Agente revisor de qualidade | 20.8, 21.5 | Semana 5 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
 | Lucro por ferramenta | 25.3 | Dez/2026 a jan/2027 |
 | Prospector com aprovação | 25.6 | Dez/2026 a jan/2027 |
 | Resumo de IFC (ifc_resumo.py) | 53.6 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
@@ -5606,7 +5619,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Declaração anual do IR | 30.19 | Semanas 8 a 10 · dez/2026 a jan/2027 |
 | Conta bancária separada (CPF) | 2.7, 30.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semanas 8 a 10 · dez/2026 a jan/2027 |
 | Contador | 30.3 | Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Caixa da Casa / AM Rendara | 16.1, 16.2, 16.3, 16.4, 16.5, 16.6, 16.7, 16.8, 20.9, 30.20, 38.4 | Dez/2026; Semana 5 · nov/2026; Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
+| Caixa da Casa / AM Rendara | 16.1, 16.2, 16.3, 16.4, 16.5, 16.6, 16.7, 16.8, 20.10, 30.20, 38.4 | Dez/2026; Semana 5 · nov/2026; Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
 | Financeiro local | 15.1, 15.2, 15.3, 15.4 | Dez/2026 |
 | Documenso (assinatura) | 26.7 | Com a primeira página de venda no ar (jan/2027) e por etapas |
 | Invoice Ninja (orçamentos) | 26.7 | Com a primeira página de venda no ar (jan/2027) e por etapas |
@@ -5830,7 +5843,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Pesquisa aprofundada | 9.1 | Semana 4 · nov/2026 |
 | Tarefas agendadas | 9.1, 25.8 | Semana 4 · nov/2026; Dez/2026 a jan/2027 |
 | Claude in Chrome + uso do computador | 3.6 | Semana 1 · out/2026 |
-| Claude (assinatura e API) | 20.8, 21.9, 22.2, 27.2 | Semana 5 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
+| Claude (assinatura e API) | 20.9, 21.9, 22.2, 27.2 | Semana 5 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
 | Conector Google (Gmail, Drive…) | 2.3, 9.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 4 · nov/2026 |
 | Conectores Canva + Figma | 9.2, 28.4 | Semana 4 · nov/2026; Semana 5 · dez/2026 |
 | Conector MailerLite | 9.2, 29.6 | Semana 4 · nov/2026; Semanas 6 e 7 · dez/2026 |
@@ -5980,8 +5993,8 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | App 2FA (celular) | 1.4, 2.3, 2.7 | Semana 1 · out/2026; Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026 |
 | Backup 3-2-1 | 2.11, 7.1, 7.2, 7.3, 8.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 3 · nov/2026; Semanas 3 e 4 · nov/2026 |
 | Organizadores | 2.4, 17.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 4 · nov/2026 |
-| Segredos do cofre (keepassxc-cli) | 20.5 | Semana 5 · nov/2026 |
-| Teste de restauração | 20.6 | Semana 5 · nov/2026 |
+| Segredos do cofre (keepassxc-cli) | 20.6 | Semana 5 · nov/2026 |
+| Teste de restauração | 20.7 | Semana 5 · nov/2026 |
 | Lab de engenharia reversa | 50.1 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | GhidraMCP (IA no Ghidra) | 50.3 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | Lab de ataque (Juice Shop, WebGoat) | 50.5 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |

@@ -217,7 +217,7 @@ flowchart LR
 | [Verificadores](#overif) | Local | verificar.ps1 e verificar.sh: somente leitura, dizem 'pronto' ou listam o que falta. Também conferem os serviços da automação. | passo 3.9 · Semana 1 · out/2026; passo 4.10 · Semana 2 · nov/2026; passo 10.3 · Semana 4 · nov/2026; passo 32.4 · Semana 11 · jan/2027 |
 | [Pipeline de conteúdo](#opipe) | Local | tools/conteudo/processar.py com timer de 15 min: entrada → transcrição → peças pelo guia de marca → fila de aprovação → aviso no Telegram. | passo 27.4 · Semana 5 · nov/2026; passo 27.5 · Semana 5 · nov/2026; passo 27.7 · Semana 5 · nov/2026; passo 32.2 · Semana 11 · jan/2027 |
 | [Acervo (seus documentos)](#acv) | Local | tools/acervo/acervo.py: lê todos os seus documentos sem alterar nada, acha cópias, separa os pessoais, marca o que é de terceiros ou da escola, converte o resto para Markdown no Obsidian e sugere os produtos que dá para vender. Tudo no notebook. | passo 8.3 · Semanas 3 e 4 · nov/2026; passo 8.4 · Semanas 3 e 4 · nov/2026; passo 8.5 · Semanas 3 e 4 · nov/2026; passo 38.3 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
-| [Agente revisor de qualidade](#revisor) | Local | Confere cada entrega contra o padrão de qualidade da oferta antes de chegar ao cliente. | passo 20.7 · Semana 5 · nov/2026; passo 21.5 · Semana 6 · nov/2026 a dez/2026 |
+| [Agente revisor de qualidade](#revisor) | Local | Confere cada entrega contra o padrão de qualidade da oferta antes de chegar ao cliente. | passo 20.8 · Semana 5 · nov/2026; passo 21.5 · Semana 6 · nov/2026 a dez/2026 |
 | [Lucro por ferramenta](#roi) | Local | Lucro e prejuízo de cada ferramenta paga e de cada renda, mês a mês, contra a hora mínima. | passo 25.3 · Dez/2026 a jan/2027 |
 | [Prospector com aprovação](#prospector) | Remoto | Monta listas de negócios a partir de dados públicos e rascunha a abordagem; você aprova cada contato. | passo 25.6 · Dez/2026 a jan/2027 |
 | [Resumo de IFC (ifc_resumo.py)](#ifcresumo) | Local | tools/construcao/ifc_resumo.py: pavimentos, elementos e quantidades de qualquer modelo IFC, sem instalar nada. | passo 53.6 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
@@ -610,7 +610,7 @@ tools/acervo/acervo.py: lê todos os seus documentos sem alterar nada, acha cóp
 
 Confere cada entrega contra o padrão de qualidade da oferta antes de chegar ao cliente.
 
-**Quando entra:** passo 20.7 · Semana 5 · nov/2026; passo 21.5 · Semana 6 · nov/2026 a dez/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 20.8 · Semana 5 · nov/2026; passo 21.5 · Semana 6 · nov/2026 a dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

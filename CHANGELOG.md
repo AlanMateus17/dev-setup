@@ -2,6 +2,12 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.10.0] - 2026-11-02
+
+### Adicionado
+- Tag automática a cada push: hook scripts/git-hooks/pre-push cria e envia a tag da versão mais nova do CHANGELOG sozinho (ligar com git config core.hooksPath scripts/git-hooks). O hook também entra no repo-padrão, para todo repositório novo nascer com isso.
+- tools/git/taguear.py ganhou --ultima (só a versão nova, sem precisar do histórico completo) e envio de tag com guarda contra recursão. Passo el-hook-tags na fase Padrão de elite.
+
 ## [2.9.0] - 2026-11-02
 
 ### Adicionado
