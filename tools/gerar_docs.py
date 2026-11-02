@@ -343,6 +343,7 @@ def gerar_indice_docs(eco: dict, por_camada: dict) -> str:
     out.append("- [Jarvis](jarvis/README.md): o setup e a casa por comando de voz: voz local, casa, câmeras, energia, água, robótica, PC e open source, com política de risco")
     out.append("- [Construção civil, arquitetura e engenharia civil](construcao/README.md): BIM aberto e Autodesk educacional, estudo e normas, regras da IA e as rendas pela TI")
     out.append("- [Vários computadores, SSD externo e NAS](infra/README.md): como crescer o setup para mais máquinas e armazenamento local e em nuvem")
+    out.append("- [Boas práticas em todo repositório](boas-praticas.md): git, versões, tags, segurança, qualidade, backup e licenças")
     out.append("- [Decisões de arquitetura (ADRs)](adr/)")
     out.append("- Versões interativas, geradas dos mesmos dados: [`index.html`](index.html) (diagrama) e [`mapa.html`](mapa.html) (mapa do setup), para abrir no navegador\n")
     out.append("## Camadas\n")

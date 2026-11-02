@@ -2,6 +2,13 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.9.0] - 2026-11-02
+
+### Adicionado
+- tools/git/taguear.py: cria as tags de versão a partir do CHANGELOG, achando o commit de cada versão, de uma vez (com --criar --push); avisa se o histórico estiver incompleto. Com testes.
+- docs/boas-praticas.md: git e versões (Conventional Commits, SemVer, tags, main protegida), segredos e segurança, qualidade, documentação, backup e licenças — para todo repositório.
+- Passo el-tags na fase Padrão de elite (taguear todas as versões).
+
 ## [2.8.0] - 2026-11-02
 
 ### Adicionado

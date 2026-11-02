@@ -21,6 +21,7 @@
 - [Jarvis](jarvis/README.md): o setup e a casa por comando de voz: voz local, casa, câmeras, energia, água, robótica, PC e open source, com política de risco
 - [Construção civil, arquitetura e engenharia civil](construcao/README.md): BIM aberto e Autodesk educacional, estudo e normas, regras da IA e as rendas pela TI
 - [Vários computadores, SSD externo e NAS](infra/README.md): como crescer o setup para mais máquinas e armazenamento local e em nuvem
+- [Boas práticas em todo repositório](boas-praticas.md): git, versões, tags, segurança, qualidade, backup e licenças
 - [Decisões de arquitetura (ADRs)](adr/)
 - Versões interativas, geradas dos mesmos dados: [`index.html`](index.html) (diagrama) e [`mapa.html`](mapa.html) (mapa do setup), para abrir no navegador
 

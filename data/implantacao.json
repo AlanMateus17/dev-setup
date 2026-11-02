@@ -1933,6 +1933,16 @@
      "nota": "Se achar algo: troque a senha ou chave na hora (o histórico do GitHub guarda cópia)."
     },
     {
+     "id": "el-tags",
+     "titulo": "Taguear todas as versões do CHANGELOG",
+     "quem": "script",
+     "pronto": "git tag mostra uma tag vx.y.z para cada versão do CHANGELOG, no GitHub",
+     "tempo_min": 10,
+     "blocos": [],
+     "comando": "cd ~/dev/dev-setup && git fetch --unshallow 2>/dev/null; python3 tools/git/taguear.py --criar --push",
+     "nota": "Rode no notebook; o proxy de git de algumas sessões não envia tags. Veja docs/boas-praticas.md."
+    },
+    {
      "id": "el-segredos",
      "titulo": "Rodar serviços com segredos vindos do KeePassXC",
      "quem": "script",
