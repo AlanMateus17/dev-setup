@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-50 fases, 394 passos, cerca de **1213 h 13 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+52 fases, 415 passos, cerca de **1297 h 28 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
-**Todo o planejamento está aqui:** os 371 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 102 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
+**Todo o planejamento está aqui:** os 386 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 105 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 302 dos 394 passos (281 h 03 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 320 dos 415 passos (358 h 18 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -64,6 +64,8 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [47 · Infraestrutura própria](#f31) | 2028, quando o grupo pedir | 3 | 17 h 00 min |
 | [48 · Negócios do grupo em Barbacena](#f32) | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano · **gatilho:** Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta | 10 | 483 h 00 min |
 | [49 · Estudo contínuo](#f33) | Contínuo, desde a semana 2 | 12 | 3 h 30 min |
+| [50 · Engenharia reversa, AppSec e pentest](#f-seguranca) | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) | 16 | 71 h 15 min |
+| [51 · Jarvis: uma porta para todos os seus agentes](#f-jarvis) | 2027, depois da Operação 24 horas e do roteador de agentes | 5 | 13 h 00 min |
 
 <a id="f0"></a>
 
@@ -4767,13 +4769,13 @@ As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 - [ ] **Pronto quando:** Revisão do dia feita no notebook e no celular
 - Implanta: Anki
 
-### 49.4 Rendas que dependem de formação longa (bug bounty, perícia)
+### 49.4 Rendas que dependem de formação longa (perícia)
 
 **Você** · 15 min
 
-- **Fora do terminal:** Dependem de certificação e estudo; entram pela trilha de estudo.
+- **Fora do terminal:** Dependem de certificação e estudo; entram pela trilha de estudo. Bug bounty e pentest seguem a fase de segurança.
 - [ ] **Pronto quando:** Portão de formação cumprido
-- **Oferta:** Bug bounty e pentest · Perito em informática judicial
+- **Oferta:** Perito em informática judicial
 
 ### 49.5 Consultoria de investimentos só com a sócia certificada e registrada
 
@@ -4831,6 +4833,230 @@ As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 
 - **Fora do terminal:** Rotina do Caixa da Casa (artefato), fora do terminal.
 - [ ] **Pronto quando:** Aulas, atividades e provas da faculdade na Rotina do Caixa da Casa
+
+<a id="f-seguranca"></a>
+
+## 50 · Engenharia reversa, AppSec e pentest
+
+Aprender engenharia reversa com binários seus, proteger os seus sistemas e montar a AMtech Segurança com trava de escopo, relatório e certificações, nessa ordem.
+
+**Quando:** Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP)
+
+### 50.1 Instalar as ferramentas de engenharia reversa (Ghidra, ILSpy, gdb)
+
+**Script** · 30 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/dev-setup && bash scripts/wsl/ferramentas-re.sh
+```
+
+- [ ] **Pronto quando:** ghidra abre a janela e ilspycmd --version responde
+- Rode antes com --simular para ver o que falta. Pede o gh logado.
+- Implanta: Lab de engenharia reversa
+
+### 50.2 Primeira engenharia reversa: o crackme da aula
+
+**Script** · 45 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd /tmp && gcc -O0 -g -o licenca ~/dev/dev-setup/infra/templates/seguranca/aula-re/licenca.c && strings licenca | grep AMTECH
+```
+
+- [ ] **Pronto quando:** Chave achada pelo strings e pelo Ghidra, com a anotação do porquê no Obsidian
+- Depois abra o mesmo binário no Ghidra e faça a versão C# (Licenca.cs) no ILSpy. Siga com os crackmes da OWASP MAS.
+- Implanta: Compiler Explorer (godbolt) · Crackmes (OWASP MAS, crackmes.one)
+
+### 50.3 Ligar o GhidraMCP ao Claude
+
+**Você** · 30 min
+
+- **Fora do terminal:** Instalação pela janela do Ghidra (File > Install Extensions) e configuração do cliente MCP; passo a passo em docs/seguranca/01-engenharia-reversa.md.
+- [ ] **Pronto quando:** O Claude lista e renomeia as funções do licenca compilado
+- Implanta: GhidraMCP (IA no Ghidra)
+
+### 50.4 Aula: do C ao assembly e de volta (Arquitetura de Computadores)
+
+**Claude com você** · 1 h 00 min
+
+- **Fora do terminal:** Plano de aula pela Fábrica de aulas com o crackme de infra/templates/seguranca/aula-re; cada aluno analisa só o binário que ele mesmo compilou.
+- [ ] **Pronto quando:** Aula dada e o roteiro salvo no repositório de aulas
+
+### 50.5 Subir o laboratório de ataque (Juice Shop e WebGoat)
+
+**Script** · 10 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/dev-setup && docker compose -f infra/lab-seguranca/compose.yaml up -d
+```
+
+- [ ] **Pronto quando:** Juice Shop abre em http://127.0.0.1:3000
+- Desligue com down quando terminar. Nunca publique nem rode na VM da Oracle.
+- Implanta: Lab de ataque (Juice Shop, WebGoat)
+
+### 50.6 Trilha PortSwigger: todos os laboratórios Apprentice
+
+**Você** · 40 h 00 min
+
+- **Fora do terminal:** Cadastro no site da PortSwigger; os laboratórios rodam no navegador com o Burp Community (Windows) ou o da VM Kali.
+- [ ] **Pronto quando:** Apprentice de todos os temas resolvidos e anotados no Obsidian
+- Implanta: PortSwigger Web Security Academy · Kit de pentest (Burp, ZAP, nmap…)
+
+### 50.7 Modelagem de ameaças e checklist ASVS do AM Kaixara
+
+**Claude com você** · 2 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+mkdir -p docs/seguranca && cp ~/dev/dev-setup/infra/templates/seguranca/modelagem-ameacas.md docs/seguranca/ameacas.md
+```
+
+- [ ] **Pronto quando:** Tabela STRIDE preenchida e cada mitigação com um teste que prova
+- Rode dentro da pasta do AM Kaixara. Repita em cada sistema AM antes de cada funcionalidade com login, dinheiro ou dado pessoal.
+- Implanta: AppSec nos seus sistemas
+
+### 50.8 ZAP passivo na homologação de cada sistema
+
+**Script** · 20 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+mkdir -p .github/workflows && cp ~/dev/dev-setup/infra/templates/seguranca/dast-zap.yml .github/workflows/
+```
+
+- [ ] **Pronto quando:** Issue do ZAP aberta e sem alerta alto
+- Dentro da pasta do sistema, quando ele tiver homologação (Passo 5 da trilha). Crie a variável HOMOLOGACAO_URL no repositório.
+
+### 50.9 Comparar o AM Kaixara com os repositórios de referência
+
+**Claude com você** · 3 h 00 min
+
+- **Fora do terminal:** Leitura guiada: a funcionalidade criar pedido seguida da API ao banco no eShop e no modular-monolith, comparada com a sua.
+- [ ] **Pronto quando:** 3 ADRs novas no Kaixara, cada uma com a diferença e a decisão
+- Implanta: Repositórios de referência
+
+### 50.10 Ensaiar o serviço completo contra o seu próprio site
+
+**Script** · 4 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+mkdir -p ~/clientes/ensaio && cp ~/dev/dev-setup/infra/templates/seguranca/escopo.example.toml ~/clientes/ensaio/escopo.toml && python3 ~/dev/dev-setup/tools/seguranca/escopo.py validar ~/clientes/ensaio/escopo.toml
+```
+
+- [ ] **Pronto quando:** Relatório gerado do ensaio, com o seu site como cliente e o termo assinado por você
+- Troque alvos e janela pelos do seu site. A validação só passa com o termo assinado salvo na pasta. Gere o relatório com tools/seguranca/relatorio.py.
+- Implanta: Guarda de escopo (autorização) · Relatório de pentest (CVSS)
+
+### 50.11 Certificação eJPT
+
+**Você** · 1 h 00 min
+
+- **Fora do terminal:** Prova online paga em dólar; confira preço e voucher no site da INE. Antes: TryHackMe Jr Penetration Tester e os Apprentice da PortSwigger.
+- [ ] **Pronto quando:** eJPT aprovado
+- **Precisa:** pagar um serviço
+
+### 50.12 Primeiro report num programa público de bug bounty
+
+**Você** · 10 h 00 min
+
+- **Fora do terminal:** Cadastro no BugHunt (brasileiro) ou no HackerOne; leia o escopo e as regras do programa antes de testar qualquer coisa.
+- [ ] **Pronto quando:** Um report enviado e respondido (duplicado também conta como aprendizado)
+- **Oferta:** Bug bounty e pentest
+- Implanta: BugHunt · HackerOne (bug bounty)
+
+### 50.13 Laudo de segurança nos sites que você mantém
+
+**Você** · 1 h 00 min
+
+- **Fora do terminal:** Depois do ensaio e do eJPT; só nos sites que você mantém e com cláusula no contrato de sites.
+- [ ] **Pronto quando:** Laudo entregue a 3 clientes
+- **Oferta:** Laudo de segurança dos sites que você mantém
+
+### 50.14 Curso de segurança e engenharia reversa para devs
+
+**Você** · 1 h 00 min
+
+- **Fora do terminal:** Depois do eJPT e de 3 relatórios de ensaio. O material vem do seu estudo, sem copiar curso pago.
+- [ ] **Pronto quando:** Pré-venda aberta
+- **Oferta:** Curso: segurança e engenharia reversa para devs
+
+### 50.15 Certificação OSCP
+
+**Você** · 2 h 00 min
+
+- **Fora do terminal:** Curso e prova da OffSec, pagos em dólar; só depois do eJPT e de pelo menos 6 meses de laboratório.
+- [ ] **Pronto quando:** OSCP aprovado
+- **Precisa:** pagar um serviço
+
+### 50.16 Abrir a AMtech Segurança (pentest completo)
+
+**Você** · 4 h 00 min
+
+- **Fora do terminal:** Termo e contrato revisados por advogado, seguro de responsabilidade profissional e CNPJ com o contador; só depois da OSCP e de histórico (bug bounty e laudos).
+- [ ] **Pronto quando:** Primeiro contrato de pentest assinado
+- **Precisa:** pagar um serviço
+- **Oferta:** Pentest completo para empresas (AMtech Segurança)
+- Implanta: AMtech Segurança (pentest)
+
+<a id="f-jarvis"></a>
+
+## 51 · Jarvis: uma porta para todos os seus agentes
+
+Falar com o setup por texto ou voz e ele chamar o agente certo, com ferramentas liberadas por lista e o seu ok para qualquer ação que mude algo.
+
+**Quando:** 2027, depois da Operação 24 horas e do roteador de agentes
+
+### 51.1 Definir as intenções do Jarvis e o que cada uma pode fazer
+
+**Claude com você** · 1 h 00 min
+
+- **Fora do terminal:** Tabela em docs/seguranca/04-jarvis.md; nada de código antes da lista branca.
+- [ ] **Pronto quando:** Tabela de intenções revisada (ferramenta, só leitura ou com aprovação)
+- Implanta: Jarvis (porta única dos agentes)
+
+### 51.2 Orquestrador no Claude Agent SDK lendo o MCP próprio
+
+**Claude com você** · 8 h 00 min
+
+- **Fora do terminal:** Código num repositório privado do Jarvis, quando o MCP próprio e o roteador de agentes existirem.
+- [ ] **Pronto quando:** Responde 'como está o setup?' pelo Telegram
+
+### 51.3 Voz local: Whisper para ouvir e Piper para falar
+
+**Script** · 1 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+pipx install piper-tts
+```
+
+- [ ] **Pronto quando:** O Jarvis responde em voz no notebook
+- Baixe uma voz pt_BR do Piper; o Whisper já vem do bootstrap (--com-whisper).
+- Implanta: Voz do Jarvis (Whisper + Piper)
+
+### 51.4 Ligar o Jarvis ao Home Assistant
+
+**Você** · 1 h 00 min
+
+- **Fora do terminal:** Token de longa duração criado na tela do Home Assistant; ações da casa só por lista (luz, aviso), nunca fechadura.
+- [ ] **Pronto quando:** Acende uma luz por comando de voz
+
+### 51.5 Aura Status como painel do Jarvis
+
+**Claude com você** · 2 h 00 min
+
+- **Fora do terminal:** Quando o aura-status tiver API: o Jarvis lê dele em vez de duplicar a coleta.
+- [ ] **Pronto quando:** O painel mostra o que o Jarvis fez no dia
 
 <a id="quando-entra-cada-bloco"></a>
 
@@ -5006,6 +5232,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Vigilância sanitária (RDC 216) | 48.6 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
 | Anatel e Inmetro | 48.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
 | Radar de revenda | 11.5 | Semana 4 · nov/2026 |
+| AMtech Segurança (pentest) | 50.16 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 
 ### Editora AMS Silva (produção de livros)
 
@@ -5061,6 +5288,11 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Zoomcamp de dados + cursos de IA | 37.6 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 | GPT do zero (estudo) | 23.1 | 2027, depois do primeiro fine-tuning de 8B |
 | Laboratório de redes | 24.5 | Semana 6 · nov/2026 |
+| PortSwigger Web Security Academy | 50.6 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Crackmes (OWASP MAS, crackmes.one) | 50.2 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| BugHunt · HackerOne (bug bounty) | 50.12 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Compiler Explorer (godbolt) | 50.2 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Repositórios de referência | 50.9 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 
 ### Produção de conteúdo
 
@@ -5238,6 +5470,8 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Pacote de contexto + ESTADO.md | 21.12 | Semana 6 · nov/2026 a dez/2026 |
 | Strata (MoE grande) | 23.6 | 2027, depois do primeiro fine-tuning de 8B |
 | OpenClaw (agente 24 h) | 22.9 | Semana 6 · nov/2026 a dez/2026 |
+| Jarvis (porta única dos agentes) | 51.1 | 2027, depois da Operação 24 horas e do roteador de agentes |
+| Voz do Jarvis (Whisper + Piper) | 51.3 | 2027, depois da Operação 24 horas e do roteador de agentes |
 
 ### Linux (Ubuntu no WSL2, Arch no 2º disco)
 
@@ -5302,6 +5536,13 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Organizadores | 2.4, 17.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 4 · nov/2026 |
 | Segredos do cofre (keepassxc-cli) | 20.4 | Semana 5 · nov/2026 |
 | Teste de restauração | 20.5 | Semana 5 · nov/2026 |
+| Lab de engenharia reversa | 50.1 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| GhidraMCP (IA no Ghidra) | 50.3 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Lab de ataque (Juice Shop, WebGoat) | 50.5 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Kit de pentest (Burp, ZAP, nmap…) | 50.6 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| AppSec nos seus sistemas | 50.7 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Guarda de escopo (autorização) | 50.10 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Relatório de pentest (CVSS) | 50.10 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 
 ### Hardware
 

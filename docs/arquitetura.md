@@ -16,9 +16,9 @@ flowchart TB
   L_emp["19 · Pessoa física: impostos e finanças<br/>14 blocos"]
   L_web["18 · Vitrine web (sites e domínio)<br/>11 blocos"]
   L_prod["17 · Produtos (o que você vende)<br/>8 blocos"]
-  L_neg["16 · Negócios do grupo (Barbacena)<br/>17 blocos"]
+  L_neg["16 · Negócios do grupo (Barbacena)<br/>18 blocos"]
   L_editora["15 · Editora AMS Silva (produção de livros)<br/>36 blocos"]
-  L_est["14 · Estudo e carreira<br/>9 blocos"]
+  L_est["14 · Estudo e carreira<br/>14 blocos"]
   L_cont["13 · Produção de conteúdo<br/>8 blocos"]
   L_nuvem["12 · Nuvem, código e entrega<br/>21 blocos"]
   L_app["11 · Aplicação: sistemas AM (Aura)<br/>18 blocos"]
@@ -27,10 +27,10 @@ flowchart TB
   L_clc["08 · Claude: recursos, conectores e plugins<br/>19 blocos"]
   L_chat["07 · Assistentes de IA (chat, pesquisa e estudo)<br/>10 blocos"]
   L_dados["06 · Dados e treino de IA<br/>19 blocos"]
-  L_ia["05 · Agentes de IA e sandbox<br/>17 blocos"]
+  L_ia["05 · Agentes de IA e sandbox<br/>19 blocos"]
   L_lin["04 · Linux (Ubuntu no WSL2, Arch no 2º disco)<br/>12 blocos"]
   L_win["03 · Windows 11, apps e máquinas virtuais<br/>25 blocos"]
-  L_seg["02 · Segurança e cofre<br/>12 blocos"]
+  L_seg["02 · Segurança e cofre<br/>19 blocos"]
   L_hw["01 · Hardware<br/>16 blocos"]
   L_oper --- L_pub
   L_pub --- L_mkt
@@ -69,9 +69,9 @@ flowchart TB
 | 19 | [Pessoa física: impostos e finanças](camadas/19-emp.md) | 14 | Tudo no seu CPF por enquanto; o CNPJ entra quando a renda justificar. |
 | 18 | [Vitrine web (sites e domínio)](camadas/18-web.md) | 11 | Os sites mostram e vendem os produtos e o seu portfólio. |
 | 17 | [Produtos (o que você vende)](camadas/17-prod.md) | 8 | Cada produto nasce do conteúdo gravado, escrito ou programado. |
-| 16 | [Negócios do grupo (Barbacena)](camadas/16-neg.md) | 17 | Os nove negócios físicos e de serviço usam os sistemas AM, a frota de entregas e o mesmo caixa de medição. |
+| 16 | [Negócios do grupo (Barbacena)](camadas/16-neg.md) | 18 | Os nove negócios físicos e de serviço usam os sistemas AM, a frota de entregas e o mesmo caixa de medição. |
 | 15 | [Editora AMS Silva (produção de livros)](camadas/15-editora.md) | 36 | Cada livro sai do pipeline como produto pronto para as plataformas e para a gráfica. |
-| 14 | [Estudo e carreira](camadas/14-est.md) | 9 | O que você estuda vira produto, aula, post e linha no currículo. |
+| 14 | [Estudo e carreira](camadas/14-est.md) | 14 | O que você estuda vira produto, aula, post e linha no currículo. |
 | 13 | [Produção de conteúdo](camadas/13-cont.md) | 8 | Gravação e edição rodam no notebook; os arquivos finais sobem para as plataformas. |
 | 12 | [Nuvem, código e entrega](camadas/12-nuvem.md) | 21 | git push via SSH leva o código ao GitHub; o Actions testa e publica. |
 | 11 | [Aplicação: sistemas AM (Aura)](camadas/11-app.md) | 18 | A API envia logs, métricas e traces pelo OpenTelemetry. |
@@ -80,10 +80,10 @@ flowchart TB
 | 08 | [Claude: recursos, conectores e plugins](camadas/08-clc.md) | 19 | Os conectores dão ao Claude acesso às suas contas, com permissão que você aprova; os plugins trazem rotinas prontas. |
 | 07 | [Assistentes de IA (chat, pesquisa e estudo)](camadas/07-chat.md) | 10 | O que é código vai para o agente; o que é pesquisa e estudo fica nos assistentes e termina salvo no vault. |
 | 06 | [Dados e treino de IA](camadas/06-dados.md) | 19 | Os seus dados viram tabelas limpas e datasets; o treino pesado roda numa GPU da nuvem e o modelo volta para o Ollama do notebook. |
-| 05 | [Agentes de IA e sandbox](camadas/05-ia.md) | 17 | O agente roda dentro do ai-jail e só enxerga ~/dev/<projeto>. |
+| 05 | [Agentes de IA e sandbox](camadas/05-ia.md) | 19 | O agente roda dentro do ai-jail e só enxerga ~/dev/<projeto>. |
 | 04 | [Linux (Ubuntu no WSL2, Arch no 2º disco)](camadas/04-lin.md) | 12 | O código fica no ext4 do Linux; o Windows enxerga pela ponte do WSL2. |
 | 03 | [Windows 11, apps e máquinas virtuais](camadas/03-win.md) | 25 | O Windows depende de TPM, BitLocker e Defender para ficar protegido. |
-| 02 | [Segurança e cofre](camadas/02-seg.md) | 12 | Drivers AMD e NVIDIA ligam o sistema ao hardware. |
+| 02 | [Segurança e cofre](camadas/02-seg.md) | 19 | Drivers AMD e NVIDIA ligam o sistema ao hardware. |
 | 01 | [Hardware](camadas/01-hw.md) | 16 | — |
 
 ## Princípios

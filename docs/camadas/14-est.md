@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** O que você estuda vira produto, aula, post e linha no currículo.
 
-**9 blocos** · 5 precisam de conta · 0 marcados como futuro
+**14 blocos** · 7 precisam de conta · 0 marcados como futuro
 
 ## Mapa de conexões
 
@@ -23,6 +23,11 @@ flowchart LR
     n_dez["Zoomcamp de dados + cursos de IA"]
     n_gptzero["GPT do zero (estudo)"]
     n_labrede["Laboratório de redes"]
+    n_portsw["PortSwigger Web Security Academy"]
+    n_crackmes["Crackmes (OWASP MAS, crackmes.one)"]
+    n_bbplat["BugHunt · HackerOne (bug bounty)"]
+    n_godbolt["Compiler Explorer (godbolt)"]
+    n_refarq["Repositórios de referência"]
   end
   subgraph L_editora["Editora AMS Silva (produção de livros)"]
     n_exyaml["Exercícios em YAML"]
@@ -30,6 +35,10 @@ flowchart LR
   subgraph L_nuvem["Nuvem, código e entrega"]
     n_aws["AWS"]
     n_azure["Azure"]
+    n_ghproj["Projects · ADRs · MkDocs"]
+  end
+  subgraph L_app["Aplicação: sistemas AM (Aura)"]
+    n_nkaix["AM Kaixara (PDV e cardápio)"]
   end
   subgraph L_chat["Assistentes de IA (chat, pesquisa e estudo)"]
     n_copi["GitHub Copilot"]
@@ -44,6 +53,10 @@ flowchart LR
     n_tail["Tailscale (VPN)"]
     n_vms["VMs: Kali · Arch · Servidores"]
   end
+  subgraph L_seg["Segurança e cofre"]
+    n_kitpent["Kit de pentest (Burp, ZAP, nmap…)"]
+    n_relab["Lab de engenharia reversa"]
+  end
   subgraph L_hw["Hardware"]
     n_pkali["Pendrive Kali (persistência)"]
   end
@@ -52,6 +65,7 @@ flowchart LR
   n_thm -->|"prática"| n_vms
   n_thm -->|"writeups"| n_obsd
   n_thm -->|"laboratórios"| n_pkali
+  n_thm -->|"laboratórios guiados"| n_kitpent
   n_plat -->|"suas anotações"| n_obsd
   n_obsd -->|"notas viram cartões"| n_anki
   n_exyaml -->|"baralhos"| n_anki
@@ -61,8 +75,14 @@ flowchart LR
   n_dez -->|"exercícios de redes neurais"| n_torch
   n_gptzero -->|"treina em"| n_kgl
   n_labrede -->|"pratica antes"| n_tail
+  n_portsw -->|"ensina o Burp"| n_kitpent
+  n_crackmes -->|"desafios"| n_relab
+  n_bbplat -->|"programas com escopo"| n_kitpent
+  n_godbolt -->|"do C ao assembly"| n_relab
+  n_refarq -->|"comparar arquitetura"| n_nkaix
+  n_refarq -->|"vira ADR"| n_ghproj
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_learn,n_thm,n_plat,n_anki,n_road,n_ghed,n_dez,n_gptzero,n_labrede desta
+  class n_learn,n_thm,n_plat,n_anki,n_road,n_ghed,n_dez,n_gptzero,n_labrede,n_portsw,n_crackmes,n_bbplat,n_godbolt,n_refarq desta
 ```
 
 ## Blocos
@@ -78,6 +98,11 @@ flowchart LR
 | [Zoomcamp de dados + cursos de IA](#dez) | Remoto | Data Engineering Zoomcamp (DataTalksClub, grátis, 10 semanas), curso de LLM da Hugging Face, fast.ai e Neural Networks: Zero to Hero. Para a IA vão só as suas anotações e os seus projetos. | passo 37.6 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 | [GPT do zero (estudo)](#gptzero) | Local | Tokenizador, atenção e treino de um GPT pequeno no Kaggle, para dominar a arquitetura. | passo 23.1 · 2027, depois do primeiro fine-tuning de 8B |
 | [Laboratório de redes](#labrede) | Local | Packet Tracer e containerlab para VLAN, roteamento e firewall (Network+ e CCNA). | passo 24.5 · Semana 6 · nov/2026 |
+| [PortSwigger Web Security Academy](#portsw) | Remoto · precisa de conta | A melhor trilha grátis de segurança web, com laboratórios no navegador; prepara a certificação BSCP. | passo 50.6 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [Crackmes (OWASP MAS, crackmes.one)](#crackmes) | Remoto | Desafios de engenharia reversa feitos para serem quebrados: o treino legal do laboratório. | passo 50.2 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [BugHunt · HackerOne (bug bounty)](#bbplat) | Remoto · precisa de conta | Programas públicos de bug bounty com escopo e regras escritas: o primeiro histórico e a primeira renda de segurança. | passo 50.12 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [Compiler Explorer (godbolt)](#godbolt) | Remoto | C de um lado, assembly do outro, no navegador: a aula de Arquitetura de Computadores sem instalar nada. | passo 50.2 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [Repositórios de referência](#refarq) | Remoto | dotnet/eShop, modular-monolith-with-ddd, Clean Architecture, bitwarden/server e system-design-primer: comparar com o AM Kaixara e registrar em ADR. | passo 50.9 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 
 <a id="learn"></a>
 
@@ -109,6 +134,7 @@ Laboratórios guiados de segurança para Security+, eJPT e OSCP.
 | → envia para | [VMs: Kali · Arch · Servidores](03-win.md#vms) | Windows 11, apps e máquinas virtuais | prática |
 | → envia para | [Obsidian + Git](03-win.md#obsd) | Windows 11, apps e máquinas virtuais | writeups |
 | → envia para | [Pendrive Kali (persistência)](01-hw.md#pkali) | Hardware | laboratórios |
+| → envia para | [Kit de pentest (Burp, ZAP, nmap…)](02-seg.md#kitpent) | Segurança e cofre | laboratórios guiados |
 
 <a id="plat"></a>
 
@@ -209,6 +235,77 @@ Packet Tracer e containerlab para VLAN, roteamento e firewall (Network+ e CCNA).
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Tailscale (VPN)](03-win.md#tail) | Windows 11, apps e máquinas virtuais | pratica antes |
+
+<a id="portsw"></a>
+
+### PortSwigger Web Security Academy
+
+*Remoto · precisa de conta*
+
+A melhor trilha grátis de segurança web, com laboratórios no navegador; prepara a certificação BSCP.
+
+**Quando entra:** passo 50.6 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Kit de pentest (Burp, ZAP, nmap…)](02-seg.md#kitpent) | Segurança e cofre | ensina o Burp |
+
+<a id="crackmes"></a>
+
+### Crackmes (OWASP MAS, crackmes.one)
+
+*Remoto*
+
+Desafios de engenharia reversa feitos para serem quebrados: o treino legal do laboratório.
+
+**Quando entra:** passo 50.2 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Lab de engenharia reversa](02-seg.md#relab) | Segurança e cofre | desafios |
+
+<a id="bbplat"></a>
+
+### BugHunt · HackerOne (bug bounty)
+
+*Remoto · precisa de conta*
+
+Programas públicos de bug bounty com escopo e regras escritas: o primeiro histórico e a primeira renda de segurança.
+
+**Quando entra:** passo 50.12 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Kit de pentest (Burp, ZAP, nmap…)](02-seg.md#kitpent) | Segurança e cofre | programas com escopo |
+
+<a id="godbolt"></a>
+
+### Compiler Explorer (godbolt)
+
+*Remoto*
+
+C de um lado, assembly do outro, no navegador: a aula de Arquitetura de Computadores sem instalar nada.
+
+**Quando entra:** passo 50.2 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Lab de engenharia reversa](02-seg.md#relab) | Segurança e cofre | do C ao assembly |
+
+<a id="refarq"></a>
+
+### Repositórios de referência
+
+*Remoto*
+
+dotnet/eShop, modular-monolith-with-ddd, Clean Architecture, bitwarden/server e system-design-primer: comparar com o AM Kaixara e registrar em ADR.
+
+**Quando entra:** passo 50.9 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [AM Kaixara (PDV e cardápio)](11-app.md#nkaix) | Aplicação: sistemas AM (Aura) | comparar arquitetura |
+| → envia para | [Projects · ADRs · MkDocs](12-nuvem.md#ghproj) | Nuvem, código e entrega | vira ADR |
 
 ---
 

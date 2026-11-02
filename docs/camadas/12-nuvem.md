@@ -63,6 +63,7 @@ flowchart LR
   end
   subgraph L_est["Estudo e carreira"]
     n_learn["Microsoft Learn + AWS Skill Builder"]
+    n_refarq["Repositórios de referência"]
   end
   subgraph L_cont["Produção de conteúdo"]
     n_voz["Voz clonada (ElevenLabs)"]
@@ -104,6 +105,7 @@ flowchart LR
     n_tail["Tailscale (VPN)"]
   end
   subgraph L_seg["Segurança e cofre"]
+    n_appsec["AppSec nos seus sistemas"]
     n_kee["KeePassXC"]
     n_restic["restic (backup criptografado)"]
     n_sign["Commits assinados (chave SSH)"]
@@ -117,8 +119,10 @@ flowchart LR
   n_tmail -->|"e-mails do sistema"| n_api
   n_sonar -->|"análise no PR"| n_gha
   n_ghproj -->|"issues e board"| n_gh
+  n_refarq -->|"vira ADR"| n_ghproj
   n_dbot -->|"PRs de segurança"| n_gh
   n_dbot -->|"alertas"| n_status
+  n_appsec -->|"CodeQL"| n_dbot
   n_tf -->|"cria recursos"| n_gcp
   n_gh -->|"dispara a cada push"| n_gha
   n_gh -->|"portfólio"| n_recr
@@ -172,6 +176,7 @@ flowchart LR
   n_gdrv -->|"cópia pelo Takeout"| n_acv
   n_cgws -->|"o Claude lê o Drive"| n_gdrv
   n_repopadrao -->|"inclui"| n_sec
+  n_appsec -->|"soma ao CI"| n_repopadrao
   n_vigia -->|"usa o conferir"| n_kitsites
   n_vm247 -->|"roda 24 h"| n_n8n
   n_vm247 -->|"pela rede privada"| n_tail
@@ -262,6 +267,7 @@ GitHub Projects espelhando o EPIC-01, decisões de arquitetura registradas e doc
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | issues e board |
+| ← recebe de | [Repositórios de referência](14-est.md#refarq) | Estudo e carreira | vira ADR |
 
 <a id="dbot"></a>
 
@@ -277,6 +283,7 @@ Dependabot atualiza pacotes vulneráveis; CodeQL procura falhas no seu código. 
 |---|---|---|---|
 | → envia para | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | PRs de segurança |
 | → envia para | [aura-status](11-app.md#status) | Aplicação: sistemas AM (Aura) | alertas |
+| ← recebe de | [AppSec nos seus sistemas](02-seg.md#appsec) | Segurança e cofre | CodeQL |
 
 <a id="gcp"></a>
 
@@ -510,6 +517,7 @@ Modelo com pre-commit, CI de qualidade, Definition of Done, ADRs e CHANGELOG par
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [gitleaks · Trivy](04-lin.md#sec) | Linux (Ubuntu no WSL2, Arch no 2º disco) | inclui |
+| ← recebe de | [AppSec nos seus sistemas](02-seg.md#appsec) | Segurança e cofre | soma ao CI |
 
 <a id="vigia"></a>
 

@@ -2455,7 +2455,7 @@
     "esforco": 3,
     "capital": 1
    },
-   "doc": null,
+   "doc": "../seguranca/03-empresa-de-pentest.md",
    "nova": true,
    "perfil": "ativa_boa",
    "automacao": 50,
@@ -2518,8 +2518,8 @@
    "receita": "por achado ou contrato",
    "escala": "local",
    "canais": [
-    "HackerOne",
-    "contratos"
+    "BugHunt",
+    "HackerOne"
    ],
    "automatico": [
     "recon e relatórios"
@@ -2528,7 +2528,7 @@
     "testar"
    ],
    "deriva_de": [],
-   "proximo_passo": "Concluir o eJPT",
+   "proximo_passo": "Laboratórios Apprentice da PortSwigger, eJPT e o primeiro report no BugHunt",
    "metrica": "R$ por hora",
    "nota": {
     "sinergia": 3,
@@ -2537,12 +2537,12 @@
     "esforco": 5,
     "capital": 1
    },
-   "doc": null,
+   "doc": "../seguranca/03-empresa-de-pentest.md",
    "nova": true,
    "perfil": "ativa",
    "automacao": 10,
    "veredito": "fila",
-   "motivo": "Portão: eJPT/OSCP e contrato formal. Horizonte longo.",
+   "motivo": "Portão: eJPT e laboratórios. Renda irregular; vale pelo histórico que abre a AMtech Segurança.",
    "lote": "2026-11",
    "usa": [
     "horas"
@@ -4395,6 +4395,148 @@
     "crm",
     "recorrencia",
     "fabrica"
+   ]
+  },
+  {
+   "id": "auditsites",
+   "nome": "Laudo de segurança dos sites que você mantém",
+   "frente": "software",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "na mensalidade + laudo avulso",
+   "escala": "produtizado",
+   "canais": [
+    "clientes dos sites",
+    "indicação"
+   ],
+   "automatico": [
+    "laudo do conferir.py",
+    "ZAP passivo agendado",
+    "relatório pelo modelo"
+   ],
+   "humano": [
+    "revisar os achados",
+    "explicar ao cliente"
+   ],
+   "deriva_de": [
+    "sites"
+   ],
+   "proximo_passo": "Ensaiar o serviço completo no seu próprio site (escopo, testes, relatório)",
+   "metrica": "laudos entregues e clientes que sobem de plano",
+   "nota": {
+    "sinergia": 5,
+    "escala": 3,
+    "demanda": 3,
+    "esforco": 2,
+    "capital": 1
+   },
+   "doc": "../seguranca/03-empresa-de-pentest.md",
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 65,
+   "veredito": "fila",
+   "motivo": "Portão: ensaio no seu site e eJPT. Só nos sites que você mantém, com cláusula no contrato; aumenta o valor da mensalidade.",
+   "lote": "2026-11",
+   "usa": [
+    "sites",
+    "recorrencia",
+    "crm"
+   ]
+  },
+  {
+   "id": "cursoseg",
+   "nome": "Curso: segurança e engenharia reversa para devs",
+   "frente": "educacao",
+   "tipo": "infoproduto",
+   "estagio": "ideia",
+   "receita": "venda única",
+   "escala": "digital",
+   "canais": [
+    "YouTube",
+    "Instagram",
+    "Hotmart",
+    "Udemy"
+   ],
+   "automatico": [
+    "checkout e entrega",
+    "cortes para redes"
+   ],
+   "humano": [
+    "gravar",
+    "responder dúvidas"
+   ],
+   "deriva_de": [
+    "minicurso"
+   ],
+   "proximo_passo": "Transformar o crackme da aula e o lab de ataque nas 3 primeiras aulas",
+   "metrica": "vendas por mês",
+   "nota": {
+    "sinergia": 4,
+    "escala": 5,
+    "demanda": 3,
+    "esforco": 3,
+    "capital": 1
+   },
+   "doc": "../seguranca/README.md",
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 80,
+   "veredito": "fila",
+   "motivo": "Portão: eJPT e 3 relatórios de ensaio, para ensinar o que já fez. Material vem do seu estudo, sem copiar curso pago.",
+   "lote": "2026-11",
+   "usa": [
+    "venda",
+    "funil",
+    "esteira",
+    "publicacao"
+   ]
+  },
+  {
+   "id": "pentestpro",
+   "nome": "Pentest completo para empresas (AMtech Segurança)",
+   "frente": "servicos",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "por projeto + reteste",
+   "escala": "local",
+   "canais": [
+    "indicação",
+    "LinkedIn",
+    "clientes dos sites"
+   ],
+   "automatico": [
+    "guarda de escopo",
+    "registro de atividades",
+    "relatório com CVSS"
+   ],
+   "humano": [
+    "testar",
+    "explorar com controle",
+    "apresentar o relatório"
+   ],
+   "deriva_de": [
+    "auditsites",
+    "bugbounty"
+   ],
+   "proximo_passo": "OSCP, contrato e termo revisados por advogado e seguro de responsabilidade profissional",
+   "metrica": "R$ por hora e retestes contratados",
+   "nota": {
+    "sinergia": 3,
+    "escala": 2,
+    "demanda": 3,
+    "esforco": 5,
+    "capital": 2
+   },
+   "doc": "../seguranca/03-empresa-de-pentest.md",
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 25,
+   "veredito": "em2027",
+   "motivo": "Paga bem por hora, mas exige OSCP, histórico, seguro e contrato; sem isso, o risco jurídico é seu.",
+   "lote": "2026-11",
+   "usa": [
+    "crm",
+    "horas"
    ]
   }
  ],

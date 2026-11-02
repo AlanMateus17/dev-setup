@@ -112,6 +112,7 @@ flowchart LR
     n_metabase["Metabase (painéis)"]
   end
   subgraph L_ia["Agentes de IA e sandbox"]
+    n_jarvis["Jarvis (porta única dos agentes)"]
     n_litellm["Gateway de modelos (LiteLLM)"]
     n_mcp["Servidores MCP"]
     n_oll["Ollama"]
@@ -165,11 +166,13 @@ flowchart LR
   n_aprov -->|"libera"| n_n8n
   n_oedit -->|"fila de aprovação"| n_aprov
   n_tg -->|"aprovar ou recusar"| n_aprov
+  n_jarvis -->|"ação pede o seu ok"| n_aprov
   n_tg -->|"notificação"| n_cel
   n_opipe -->|"aviso de peça pronta"| n_tg
   n_kuma -->|"alerta"| n_tg
   n_rotinas -->|"resumo da manhã"| n_tg
   n_grocy -->|"avisa ração e remédios"| n_tg
+  n_jarvis -->|"conversa por"| n_tg
   n_n8n -->|"grava"| n_metrics
   n_n8n -->|"roda"| n_ocob
   n_n8n -->|"roda"| n_opos
@@ -399,6 +402,7 @@ Nenhum post sai sem o seu ok: a peça chega pelo Telegram e você aprova no celu
 | → envia para | [n8n](21-mkt.md#n8n) | Marketing, automação e medição | libera |
 | ← recebe de | [Agente editor de conteúdo](23-oper.md#oedit) | Operação do grupo (esteira, marca, qualidade) | fila de aprovação |
 | ← recebe de | [Telegram (avisos)](21-mkt.md#tg) | Marketing, automação e medição | aprovar ou recusar |
+| ← recebe de | [Jarvis (porta única dos agentes)](05-ia.md#jarvis) | Agentes de IA e sandbox | ação pede o seu ok |
 
 <a id="tg"></a>
 
@@ -418,6 +422,7 @@ Bot que avisa no celular: peça pronta para aprovar, serviço fora do ar. Gráti
 | ← recebe de | [Uptime Kuma](10-obs.md#kuma) | Observabilidade | alerta |
 | ← recebe de | [Rotinas agendadas](04-lin.md#rotinas) | Linux (Ubuntu no WSL2, Arch no 2º disco) | resumo da manhã |
 | ← recebe de | [Grocy](06-dados.md#grocy) | Dados e treino de IA | avisa ração e remédios |
+| ← recebe de | [Jarvis (porta única dos agentes)](05-ia.md#jarvis) | Agentes de IA e sandbox | conversa por |
 
 <a id="n8n"></a>
 

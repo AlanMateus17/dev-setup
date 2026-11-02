@@ -2,6 +2,17 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.3.0] - 2026-11-02
+
+### Adicionado
+- Frente de segurança (docs/seguranca): engenharia reversa com IA (Ghidra, GhidraMCP, ILSpy, trilha de exercícios e a aula "do C ao assembly e de volta"), AppSec nos sistemas AM (camadas do STRIDE ao ZAP, o erro de autorização que nenhum scanner acha, repositórios de referência para comparar arquitetura), empresa de pentest (serviço completo do termo assinado ao reteste, red team no horizonte, construir ou usar pronto, lei e contrato) e o Jarvis (orquestrador com lista branca, voz local e aprovação).
+- tools/seguranca: guarda de escopo (escopo.py: bloqueia teste sem termo assinado, fora da janela ou fora dos alvos, e registra cada comando), calculadora CVSS 3.1 pela especificação do FIRST (cvss.py) e gerador de relatório de pentest que recusa achado fora do escopo (relatorio.py), com 20 testes.
+- Modelos em infra/templates/seguranca: termo de autorização, escopo, achados, modelagem de ameaças com checklist ASVS, ZAP passivo no CI e o crackme da aula em C e C#.
+- Laboratório de ataque local (infra/lab-seguranca: Juice Shop e WebGoat em 127.0.0.1) e scripts/wsl/ferramentas-re.sh.
+- 15 blocos, 28 conexões e 2 fluxos (pentest e engenharia reversa); fases 50 (engenharia reversa, AppSec e pentest, 16 passos) e 51 (Jarvis, 5 passos).
+- Ofertas novas: laudo de segurança dos sites que você mantém, curso de segurança e engenharia reversa para devs e pentest completo (AMtech Segurança); bug bounty ganhou passo próprio.
+- Certificações de segurança: eJPT → BSCP → OSCP → OSWE e OSEP.
+
 ## [2.2.2] - 2026-11-01
 
 ### Corrigido

@@ -3061,6 +3061,15 @@
    "descricao": "Lê os alertas de busca salvos (OLX, Mercado Livre, Facebook, Estante Virtual) que chegam ao Gmail, compara com o preço de referência e avisa no Telegram só o que passa da hora mínima. Nunca compra nem fala com vendedor."
   },
   {
+   "id": "nseg",
+   "camada": "neg",
+   "rotulo": "AMtech Segurança|(pentest)",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Testes de segurança para empresas: laudo dos sites primeiro, pentest completo depois da OSCP, com contrato revisado, seguro e reteste."
+  },
+  {
    "id": "aw",
    "camada": "win",
    "rotulo": "ActivityWatch",
@@ -3223,6 +3232,69 @@
    "descricao": "Restaura o último backup numa pasta temporária e confere. Backup não testado não conta."
   },
   {
+   "id": "relab",
+   "camada": "seg",
+   "rotulo": "Lab de engenharia|reversa",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Ghidra, ILSpy, gdb e strace (scripts/wsl/ferramentas-re.sh) para estudar binários seus, crackmes e a aula dos alunos. Binário de terceiro só com autorização escrita."
+  },
+  {
+   "id": "ghidramcp",
+   "camada": "seg",
+   "rotulo": "GhidraMCP (IA|no Ghidra)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Servidor MCP que deixa o Claude listar, renomear e explicar funções no Ghidra. Binário de cliente só com modelo local (Ollama) e cláusula no contrato."
+  },
+  {
+   "id": "labseg",
+   "camada": "seg",
+   "rotulo": "Lab de ataque|(Juice Shop, WebGoat)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "infra/lab-seguranca: aplicações vulneráveis de propósito, presas em 127.0.0.1, para treinar o OWASP Top 10 sem tocar em sistema real."
+  },
+  {
+   "id": "kitpent",
+   "camada": "seg",
+   "rotulo": "Kit de pentest|(Burp, ZAP, nmap…)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Ferramentas maduras do mercado na VM Kali: Burp Suite, OWASP ZAP, nmap, ffuf, nuclei, sqlmap e Metasploit. Usar, não reescrever."
+  },
+  {
+   "id": "appsec",
+   "camada": "seg",
+   "rotulo": "AppSec nos seus|sistemas",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Modelagem de ameaças (STRIDE), checklist ASVS e ZAP na homologação, por cima do gitleaks, Trivy e Semgrep do repositório padrão."
+  },
+  {
+   "id": "escopo",
+   "camada": "seg",
+   "rotulo": "Guarda de escopo|(autorização)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "tools/seguranca/escopo.py: nenhum teste roda sem termo assinado, dentro da janela e do escopo; cada comando fica registrado."
+  },
+  {
+   "id": "relpent",
+   "camada": "seg",
+   "rotulo": "Relatório de|pentest (CVSS)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "tools/seguranca/relatorio.py e cvss.py: do sumário executivo ao registro de atividades, com a nota CVSS 3.1 calculada, nunca escrita à mão."
+  },
+  {
    "id": "iacluster",
    "camada": "ia",
    "rotulo": "Cluster de IA|na rede",
@@ -3275,6 +3347,51 @@
    "conta": false,
    "futuro": false,
    "descricao": "Packet Tracer e containerlab para VLAN, roteamento e firewall (Network+ e CCNA)."
+  },
+  {
+   "id": "portsw",
+   "camada": "est",
+   "rotulo": "PortSwigger Web|Security Academy",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "A melhor trilha grátis de segurança web, com laboratórios no navegador; prepara a certificação BSCP."
+  },
+  {
+   "id": "crackmes",
+   "camada": "est",
+   "rotulo": "Crackmes (OWASP MAS,|crackmes.one)",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Desafios de engenharia reversa feitos para serem quebrados: o treino legal do laboratório."
+  },
+  {
+   "id": "bbplat",
+   "camada": "est",
+   "rotulo": "BugHunt · HackerOne|(bug bounty)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Programas públicos de bug bounty com escopo e regras escritas: o primeiro histórico e a primeira renda de segurança."
+  },
+  {
+   "id": "godbolt",
+   "camada": "est",
+   "rotulo": "Compiler Explorer|(godbolt)",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": false,
+   "descricao": "C de um lado, assembly do outro, no navegador: a aula de Arquitetura de Computadores sem instalar nada."
+  },
+  {
+   "id": "refarq",
+   "camada": "est",
+   "rotulo": "Repositórios de|referência",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": false,
+   "descricao": "dotnet/eShop, modular-monolith-with-ddd, Clean Architecture, bitwarden/server e system-design-primer: comparar com o AM Kaixara e registrar em ADR."
   },
   {
    "id": "wireguard",
@@ -3446,6 +3563,24 @@
    "conta": false,
    "futuro": true,
    "descricao": "Agente auto-hospedado para tarefas noturnas que as rotinas e o n8n não cobrem. Histórico de segurança ruim em 2026: só na VM isolada, atrás do Tailscale, sem suas contas pessoais, sem skills de terceiros não revisadas e com chave de teto baixo no gateway."
+  },
+  {
+   "id": "jarvis",
+   "camada": "ia",
+   "rotulo": "Jarvis (porta única|dos agentes)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Uma entrada (Telegram, voz ou painel) que leva o pedido ao agente certo, com ferramentas liberadas por lista; ação que muda algo pede o seu ok."
+  },
+  {
+   "id": "jvoz",
+   "camada": "ia",
+   "rotulo": "Voz do Jarvis|(Whisper + Piper)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Ouve pelo Whisper local e responde com voz sintetizada local (Piper). A voz clonada da ElevenLabs fica para conteúdo."
   },
   {
    "id": "esteira",
@@ -6777,6 +6912,146 @@
    "de": "esteira",
    "para": "sites",
    "rotulo": "entrega"
+  },
+  {
+   "de": "relab",
+   "para": "ghidramcp",
+   "rotulo": "plugin"
+  },
+  {
+   "de": "ghidramcp",
+   "para": "mcp",
+   "rotulo": "fala por MCP"
+  },
+  {
+   "de": "ghidramcp",
+   "para": "oll",
+   "rotulo": "binário de cliente: modelo local"
+  },
+  {
+   "de": "crackmes",
+   "para": "relab",
+   "rotulo": "desafios"
+  },
+  {
+   "de": "godbolt",
+   "para": "relab",
+   "rotulo": "do C ao assembly"
+  },
+  {
+   "de": "vms",
+   "para": "kitpent",
+   "rotulo": "Kali roda o kit"
+  },
+  {
+   "de": "kitpent",
+   "para": "labseg",
+   "rotulo": "treina em"
+  },
+  {
+   "de": "portsw",
+   "para": "kitpent",
+   "rotulo": "ensina o Burp"
+  },
+  {
+   "de": "thm",
+   "para": "kitpent",
+   "rotulo": "laboratórios guiados"
+  },
+  {
+   "de": "bbplat",
+   "para": "kitpent",
+   "rotulo": "programas com escopo"
+  },
+  {
+   "de": "escopo",
+   "para": "kitpent",
+   "rotulo": "libera o alvo"
+  },
+  {
+   "de": "kitpent",
+   "para": "relpent",
+   "rotulo": "achados"
+  },
+  {
+   "de": "escopo",
+   "para": "relpent",
+   "rotulo": "registro de atividades"
+  },
+  {
+   "de": "relpent",
+   "para": "nseg",
+   "rotulo": "entregável"
+  },
+  {
+   "de": "nseg",
+   "para": "nsoft",
+   "rotulo": "mesmos clientes"
+  },
+  {
+   "de": "appsec",
+   "para": "repopadrao",
+   "rotulo": "soma ao CI"
+  },
+  {
+   "de": "appsec",
+   "para": "nkaix",
+   "rotulo": "ameaças do Kaixara"
+  },
+  {
+   "de": "appsec",
+   "para": "dbot",
+   "rotulo": "CodeQL"
+  },
+  {
+   "de": "refarq",
+   "para": "nkaix",
+   "rotulo": "comparar arquitetura"
+  },
+  {
+   "de": "refarq",
+   "para": "ghproj",
+   "rotulo": "vira ADR"
+  },
+  {
+   "de": "jarvis",
+   "para": "tg",
+   "rotulo": "conversa por"
+  },
+  {
+   "de": "jarvis",
+   "para": "mcpproprio",
+   "rotulo": "consulta seus dados"
+  },
+  {
+   "de": "jarvis",
+   "para": "agentsdk",
+   "rotulo": "chama os agentes"
+  },
+  {
+   "de": "jarvis",
+   "para": "ha",
+   "rotulo": "comanda a casa"
+  },
+  {
+   "de": "jarvis",
+   "para": "status",
+   "rotulo": "painel (HUD)"
+  },
+  {
+   "de": "jarvis",
+   "para": "aprov",
+   "rotulo": "ação pede o seu ok"
+  },
+  {
+   "de": "jvoz",
+   "para": "jarvis",
+   "rotulo": "voz"
+  },
+  {
+   "de": "whis",
+   "para": "jvoz",
+   "rotulo": "transcreve"
   }
  ],
  "fluxos": [
@@ -7427,6 +7702,50 @@
     {
      "bloco": "metrics",
      "descricao": "A primeira venda chega ao banco e ao painel."
+    }
+   ]
+  },
+  {
+   "id": "pentest",
+   "titulo": "Um teste de intrusão, do contrato ao reteste",
+   "passos": [
+    {
+     "bloco": "escopo",
+     "descricao": "O termo assinado vira escopo.toml; a guarda confere assinatura, janela e alvos."
+    },
+    {
+     "bloco": "kitpent",
+     "descricao": "Os testes rodam pelo escopo.py rodar, só nos alvos liberados, e cada comando fica registrado."
+    },
+    {
+     "bloco": "relpent",
+     "descricao": "Os achados viram relatório com nota CVSS calculada e o registro de atividades no apêndice."
+    },
+    {
+     "bloco": "nseg",
+     "descricao": "A AMtech Segurança entrega, combina as correções e faz o reteste."
+    }
+   ]
+  },
+  {
+   "id": "reversa",
+   "titulo": "Engenharia reversa com IA (estudo e aula)",
+   "passos": [
+    {
+     "bloco": "godbolt",
+     "descricao": "Na aula, o aluno vê o C virar assembly no Compiler Explorer."
+    },
+    {
+     "bloco": "relab",
+     "descricao": "O binário que ele mesmo compilou (ou um crackme) abre no Ghidra."
+    },
+    {
+     "bloco": "ghidramcp",
+     "descricao": "O GhidraMCP entrega as funções ao Claude, que renomeia e explica."
+    },
+    {
+     "bloco": "mcp",
+     "descricao": "Tudo passa pelos servidores MCP com permissão limitada."
     }
    ]
   }

@@ -62,6 +62,9 @@ flowchart LR
   subgraph L_dados["Dados e treino de IA"]
     n_dset["Seus datasets (só conteúdo seu)"]
   end
+  subgraph L_ia["Agentes de IA e sandbox"]
+    n_jvoz["Voz do Jarvis (Whisper + Piper)"]
+  end
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
     n_obsd["Obsidian + Git"]
   end
@@ -90,6 +93,7 @@ flowchart LR
   n_whis -->|"transcrição"| n_oedit
   n_whis -->|"transcreve"| n_opipe
   n_whis -->|"transcrições das suas aulas"| n_dset
+  n_whis -->|"transcreve"| n_jvoz
   n_voz -->|"sua voz em outros idiomas"| n_dub
   n_voz -->|"narração"| n_bcurso
   n_ws -->|"voz e vídeo locais"| n_voz
@@ -200,6 +204,7 @@ Transcreve as aulas para legenda, artigo e capítulo.
 | → envia para | [Agente editor de conteúdo](23-oper.md#oedit) | Operação do grupo (esteira, marca, qualidade) | transcrição |
 | → envia para | [Pipeline de conteúdo](23-oper.md#opipe) | Operação do grupo (esteira, marca, qualidade) | transcreve |
 | → envia para | [Seus datasets (só conteúdo seu)](06-dados.md#dset) | Dados e treino de IA | transcrições das suas aulas |
+| → envia para | [Voz do Jarvis (Whisper + Piper)](05-ia.md#jvoz) | Agentes de IA e sandbox | transcreve |
 | ← recebe de | [OBS Studio](13-cont.md#obss) | Produção de conteúdo | áudio |
 
 <a id="voz"></a>

@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** Os nove negócios físicos e de serviço usam os sistemas AM, a frota de entregas e o mesmo caixa de medição.
 
-**17 blocos** · 6 precisam de conta · 16 marcados como futuro
+**18 blocos** · 6 precisam de conta · 17 marcados como futuro
 
 ## Mapa de conexões
 
@@ -31,6 +31,7 @@ flowchart LR
     n_nvisa["Vigilância sanitária (RDC 216)"]
     n_nanatel["Anatel e Inmetro"]
     n_radar["Radar de revenda"]
+    n_nseg["AMtech Segurança (pentest)"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_ocatal["Portfólio de ofertas"]
@@ -55,11 +56,15 @@ flowchart LR
   subgraph L_obs["Observabilidade"]
     n_graf["Grafana"]
   end
+  subgraph L_seg["Segurança e cofre"]
+    n_relpent["Relatório de pentest (CVSS)"]
+  end
   n_nsoft -->|"constrói"| n_nkaix
   n_nsoft -->|"constrói"| n_nrot
   n_sites -->|"vira serviço da empresa"| n_nsoft
   n_ncnpj -->|"AMtech Tecnologia"| n_nsoft
   n_oesteira -->|"lança"| n_nsoft
+  n_nseg -->|"mesmos clientes"| n_nsoft
   n_nloja -->|"mesmo balcão"| n_nponto
   n_npecas -->|"vendidas no balcão"| n_nloja
   n_nmaker -->|"usa a bancada"| n_nloja
@@ -91,8 +96,9 @@ flowchart LR
   n_ocatal -->|"negócios físicos"| n_nplan
   n_graf -->|"resultado real"| n_nplan
   n_radar -->|"lucro por hora"| n_painel
+  n_relpent -->|"entregável"| n_nseg
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_nsoft,n_nloja,n_npecas,n_nponto,n_nmaker,n_nentr,n_nflex,n_ndeliv,n_nsushi,n_ncafe,n_npad,n_ncnpj,n_nplan,n_nifood,n_nvisa,n_nanatel,n_radar desta
+  class n_nsoft,n_nloja,n_npecas,n_nponto,n_nmaker,n_nentr,n_nflex,n_ndeliv,n_nsushi,n_ncafe,n_npad,n_ncnpj,n_nplan,n_nifood,n_nvisa,n_nanatel,n_radar,n_nseg desta
 ```
 
 ## Blocos
@@ -116,6 +122,7 @@ flowchart LR
 | [Vigilância sanitária (RDC 216)](#nvisa) | Remoto · precisa de conta · futuro | Alvará sanitário, Manual de Boas Práticas, POPs, curso dos manipuladores e controle de pragas. Em MG, o nível de risco define se há inspeção antes de abrir. | passo 48.6 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
 | [Anatel e Inmetro](#nanatel) | Remoto · precisa de conta · futuro | Homologação de produto próprio com Wi-Fi ou Bluetooth e, se o kit for brinquedo, certificação do Inmetro. | passo 48.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
 | [Radar de revenda](#radar) | Local | Lê os alertas de busca salvos (OLX, Mercado Livre, Facebook, Estante Virtual) que chegam ao Gmail, compara com o preço de referência e avisa no Telegram só o que passa da hora mínima. Nunca compra nem fala com vendedor. | passo 11.5 · Semana 4 · nov/2026 |
+| [AMtech Segurança (pentest)](#nseg) | Remoto · futuro | Testes de segurança para empresas: laudo dos sites primeiro, pentest completo depois da OSCP, com contrato revisado, seguro e reteste. | passo 50.16 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 
 <a id="nsoft"></a>
 
@@ -134,6 +141,7 @@ Software sob encomenda, sites, manutenção e SaaS AM. Primeiro CNPJ do grupo (M
 | ← recebe de | [Sites para pequenas empresas](17-prod.md#sites) | Produtos (o que você vende) | vira serviço da empresa |
 | ← recebe de | [3 CNPJs por frente](16-neg.md#ncnpj) | Negócios do grupo (Barbacena) | AMtech Tecnologia |
 | ← recebe de | [Esteira de ofertas](23-oper.md#oesteira) | Operação do grupo (esteira, marca, qualidade) | lança |
+| ← recebe de | [AMtech Segurança (pentest)](16-neg.md#nseg) | Negócios do grupo (Barbacena) | mesmos clientes |
 
 <a id="nloja"></a>
 
@@ -392,6 +400,21 @@ Lê os alertas de busca salvos (OLX, Mercado Livre, Facebook, Estante Virtual) q
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Painel de lucro (Grafana)](21-mkt.md#painel) | Marketing, automação e medição | lucro por hora |
+
+<a id="nseg"></a>
+
+### AMtech Segurança (pentest)
+
+*Remoto · futuro*
+
+Testes de segurança para empresas: laudo dos sites primeiro, pentest completo depois da OSCP, com contrato revisado, seguro e reteste.
+
+**Quando entra:** passo 50.16 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [AMtech Software (projetos e SaaS)](16-neg.md#nsoft) | Negócios do grupo (Barbacena) | mesmos clientes |
+| ← recebe de | [Relatório de pentest (CVSS)](02-seg.md#relpent) | Segurança e cofre | entregável |
 
 ---
 

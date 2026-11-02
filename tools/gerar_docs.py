@@ -339,6 +339,7 @@ def gerar_indice_docs(eco: dict, por_camada: dict) -> str:
     out.append("- [Implantação](implantacao/README.md): roteiro que cobre todos os blocos do setup, scripts que instalam e verificadores que conferem; pipeline de conteúdo e stack de automação")
     out.append("- [Operação do grupo](operacao/README.md): esteira de ofertas, portfólio pontuado, marca e presença, flywheel de conteúdo, automação, qualidade, clientes e ordem de execução")
     out.append("- [Negócios do grupo](negocios/README.md): os nove negócios em Barbacena, estrutura de CNPJs, ordem de abertura, números, cardápios e mínimo legal")
+    out.append("- [Segurança](seguranca/README.md): engenharia reversa com IA, AppSec nos seus sistemas, empresa de pentest com guarda de escopo e relatório CVSS, e o Jarvis")
     out.append("- [Vários computadores, SSD externo e NAS](infra/README.md): como crescer o setup para mais máquinas e armazenamento local e em nuvem")
     out.append("- [Decisões de arquitetura (ADRs)](adr/)")
     out.append("- Versões interativas, geradas dos mesmos dados: [`index.html`](index.html) (diagrama) e [`mapa.html`](mapa.html) (mapa do setup), para abrir no navegador\n")
@@ -367,6 +368,7 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
            "- **[Operação do grupo](docs/operacao/README.md)**: a esteira por onde passa toda oferta, o portfólio com " + str(len(json.loads((RAIZ / "data" / "portfolio.json").read_text(encoding="utf-8"))["ofertas"])) + " ofertas pontuadas e classificadas (arsenal de rendas), marca, conteúdo, automação, qualidade e a ordem de execução.",
            "- **[Negócios do grupo](docs/negocios/README.md)**: software, loja, robótica, ponto de retirada, entregas, delivery, sushi, cafeteria e padaria, com números, ordem de abertura e mínimo legal de cada um.",
            "- **[Marketing, vendas e automação](docs/marketing/README.md)**: funil, canais sem rosto com voz clonada, publicação no melhor horário, tráfego pago, parcerias, internacional e lucro por venda.",
+           "- **[Segurança](docs/seguranca/README.md)**: engenharia reversa com IA, AppSec nos seus sistemas, o caminho até a AMtech Segurança (pentest com guarda de escopo e relatório CVSS) e o Jarvis.",
            "- **Diagrama interativo**: baixe [`docs/index.html`](docs/index.html) e abra no navegador. Toque em qualquer bloco para ver as conexões dele.",
            "- **[Toda a documentação](docs/README.md)**\n",
            "## A pilha\n",
@@ -414,6 +416,7 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
             "  implantacao/        roteiro de implantação e acompanhamento (gerados)",
             "  operacao/           esteira, portfólio, marca, conteúdo, automação, qualidade, execução",
             "  negocios/           os nove negócios do grupo: estrutura, ordem, números, cardápios, licenças",
+            "  seguranca/          engenharia reversa, AppSec, empresa de pentest e o Jarvis",
             "  contas.md, auditoria.md, nuvem.md, roteiro.md, ...",
             "  adr/                decisões de arquitetura",
             "  index.html          diagrama interativo (gerado)",
@@ -421,6 +424,7 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
             "scripts/windows/      instalar.ps1, verificar.ps1, extensões do VS Code e o inventário do Windows",
             "scripts/wsl/          bootstrap.sh, nuvem.sh, verificar.sh e ativar-pipeline.sh",
             "infra/automacao/      n8n, banco de métricas, Grafana e Uptime Kuma (Docker Compose)",
+            "infra/lab-seguranca/  laboratório de ataque local (Juice Shop, WebGoat) presos em 127.0.0.1",
             "config/marca.md       guia de marca usado pelo pipeline de conteúdo",
             "tools/                geradores, motor financeiro, pipeline de conteúdo e templates",
             "```\n",

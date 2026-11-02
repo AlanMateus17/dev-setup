@@ -37,10 +37,13 @@ Conferido em 2026-11-01.
 
 ## Segurança
 
-**Para quê:** Segurança nos seus sistemas, bug bounty e perícia.
+**Para quê:** Segurança nos seus sistemas, bug bounty, AMtech Segurança (pentest) e perícia.
 
 | Ordem | Certificação | Habilita | Requisito | Custo | Situação |
 |---:|---|---|---|---|---|
 | 1 | [CompTIA A+ e Network+](https://www.comptia.org/certifications) | Base de hardware e redes (casa com as suas aulas de manutenção e redes). | Provas | Em dólar; confira no site da CompTIA | já no plano |
 | 2 | [CompTIA Security+](https://www.comptia.org/certifications/security) | Segurança de entrada reconhecida no exterior. | Prova | Em dólar; confira no site da CompTIA | já no plano |
-| 3 | [eJPT e OSCP](https://www.offsec.com/courses/pen-200/) | Pentest prático: bug bounty e serviços de segurança. | Laboratórios (TryHackMe, Hack The Box) antes das provas. | Em dólar; confira no site da INE e da OffSec | já no plano |
+| 3 | [eJPT (INE)](https://ine.com/security/certifications/ejpt-certification) | Primeira prova prática de pentest: abre o bug bounty, o laudo dos sites e o curso de segurança. | TryHackMe Jr Penetration Tester e os laboratórios Apprentice da PortSwigger antes da prova. | Em dólar; confira no site da INE (há promoções com voucher) | já no plano |
+| 4 | [BSCP (PortSwigger)](https://portswigger.net/web-security/certification) | Pentest de aplicação web, o que a maioria das empresas pequenas precisa. | Laboratórios Practitioner da Web Security Academy (grátis). | Em dólar; confira no site da PortSwigger | novo |
+| 5 | [OSCP (OffSec)](https://www.offsec.com/courses/pen-200/) | A certificação que contratos de pentest pedem: portão da AMtech Segurança. | Curso PEN-200 e laboratórios; só depois do eJPT. | Em dólar; confira no site da OffSec | já no plano |
+| 6 | [OSWE e OSEP (OffSec)](https://www.offsec.com/courses/web-300/) | Nível avançado: revisão de código para achar falhas (OSWE) e simulação de invasão com evasão (OSEP). | OSCP e histórico de trabalho; sem pressa. | Em dólar; confira no site da OffSec | novo |

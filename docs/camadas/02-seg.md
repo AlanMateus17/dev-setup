@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** Drivers AMD e NVIDIA ligam o sistema ao hardware.
 
-**12 blocos** · 0 precisam de conta · 1 marcados como futuro
+**19 blocos** · 0 precisam de conta · 1 marcados como futuro
 
 ## Mapa de conexões
 
@@ -26,6 +26,13 @@ flowchart LR
     n_organizar["Organizadores"]
     n_segredos["Segredos do cofre (keepassxc-cli)"]
     n_restauracao["Teste de restauração"]
+    n_relab["Lab de engenharia reversa"]
+    n_ghidramcp["GhidraMCP (IA no Ghidra)"]
+    n_labseg["Lab de ataque (Juice Shop, WebGoat)"]
+    n_kitpent["Kit de pentest (Burp, ZAP, nmap…)"]
+    n_appsec["AppSec nos seus sistemas"]
+    n_escopo["Guarda de escopo (autorização)"]
+    n_relpent["Relatório de pentest (CVSS)"]
   end
   subgraph L_mkt["Marketing, automação e medição"]
     n_painel["Painel de lucro (Grafana)"]
@@ -33,10 +40,29 @@ flowchart LR
   subgraph L_venda["Plataformas de venda e recebimento"]
     n_hotm["Hotmart"]
   end
+  subgraph L_neg["Negócios do grupo (Barbacena)"]
+    n_nseg["AMtech Segurança (pentest)"]
+  end
+  subgraph L_est["Estudo e carreira"]
+    n_bbplat["BugHunt · HackerOne (bug bounty)"]
+    n_crackmes["Crackmes (OWASP MAS, crackmes.one)"]
+    n_godbolt["Compiler Explorer (godbolt)"]
+    n_portsw["PortSwigger Web Security Academy"]
+    n_thm["TryHackMe / Hack The Box"]
+  end
   subgraph L_nuvem["Nuvem, código e entrega"]
     n_azure["Azure"]
     n_b2["Backblaze B2 (backup)"]
+    n_dbot["Dependabot + CodeQL"]
     n_gh["GitHub"]
+    n_repopadrao["Repositório padrão"]
+  end
+  subgraph L_app["Aplicação: sistemas AM (Aura)"]
+    n_nkaix["AM Kaixara (PDV e cardápio)"]
+  end
+  subgraph L_ia["Agentes de IA e sandbox"]
+    n_mcp["Servidores MCP"]
+    n_oll["Ollama"]
   end
   subgraph L_lin["Linux (Ubuntu no WSL2, Arch no 2º disco)"]
     n_wsl["Ubuntu (WSL2)"]
@@ -44,6 +70,7 @@ flowchart LR
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
     n_obsd["Obsidian + Git"]
     n_syncth["Syncthing"]
+    n_vms["VMs: Kali · Arch · Servidores"]
     n_w11["Windows 11 Home"]
   end
   subgraph L_hw["Hardware"]
@@ -77,8 +104,25 @@ flowchart LR
   n_nas -->|"3ª cópia (futuro)"| n_bkp
   n_ssdext -->|"cópia portátil"| n_bkp
   n_restauracao -->|"resultado do teste"| n_painel
+  n_relab -->|"plugin"| n_ghidramcp
+  n_crackmes -->|"desafios"| n_relab
+  n_godbolt -->|"do C ao assembly"| n_relab
+  n_ghidramcp -->|"fala por MCP"| n_mcp
+  n_ghidramcp -->|"binário de cliente: modelo local"| n_oll
+  n_kitpent -->|"treina em"| n_labseg
+  n_kitpent -->|"achados"| n_relpent
+  n_vms -->|"Kali roda o kit"| n_kitpent
+  n_portsw -->|"ensina o Burp"| n_kitpent
+  n_thm -->|"laboratórios guiados"| n_kitpent
+  n_bbplat -->|"programas com escopo"| n_kitpent
+  n_escopo -->|"libera o alvo"| n_kitpent
+  n_appsec -->|"soma ao CI"| n_repopadrao
+  n_appsec -->|"ameaças do Kaixara"| n_nkaix
+  n_appsec -->|"CodeQL"| n_dbot
+  n_escopo -->|"registro de atividades"| n_relpent
+  n_relpent -->|"entregável"| n_nseg
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_sign,n_restic,n_ykey,n_tpm,n_bitl,n_def,n_kee,n_tfa,n_bkp,n_organizar,n_segredos,n_restauracao desta
+  class n_sign,n_restic,n_ykey,n_tpm,n_bitl,n_def,n_kee,n_tfa,n_bkp,n_organizar,n_segredos,n_restauracao,n_relab,n_ghidramcp,n_labseg,n_kitpent,n_appsec,n_escopo,n_relpent desta
 ```
 
 ## Blocos
@@ -97,6 +141,13 @@ flowchart LR
 | [Organizadores](#organizar) | Local | Downloads por tipo (sem apagar nada) e exportação de senhas pronta para o KeePassXC. | passo 2.4 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 17.2 · Semana 4 · nov/2026 |
 | [Segredos do cofre (keepassxc-cli)](#segredos) | Local | O comando recebe o segredo direto do KeePassXC, sem .env em texto puro. | passo 20.4 · Semana 5 · nov/2026 |
 | [Teste de restauração](#restauracao) | Local | Restaura o último backup numa pasta temporária e confere. Backup não testado não conta. | passo 20.5 · Semana 5 · nov/2026 |
+| [Lab de engenharia reversa](#relab) | Local | Ghidra, ILSpy, gdb e strace (scripts/wsl/ferramentas-re.sh) para estudar binários seus, crackmes e a aula dos alunos. Binário de terceiro só com autorização escrita. | passo 50.1 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [GhidraMCP (IA no Ghidra)](#ghidramcp) | Local | Servidor MCP que deixa o Claude listar, renomear e explicar funções no Ghidra. Binário de cliente só com modelo local (Ollama) e cláusula no contrato. | passo 50.3 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [Lab de ataque (Juice Shop, WebGoat)](#labseg) | Local | infra/lab-seguranca: aplicações vulneráveis de propósito, presas em 127.0.0.1, para treinar o OWASP Top 10 sem tocar em sistema real. | passo 50.5 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [Kit de pentest (Burp, ZAP, nmap…)](#kitpent) | Local | Ferramentas maduras do mercado na VM Kali: Burp Suite, OWASP ZAP, nmap, ffuf, nuclei, sqlmap e Metasploit. Usar, não reescrever. | passo 50.6 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [AppSec nos seus sistemas](#appsec) | Local | Modelagem de ameaças (STRIDE), checklist ASVS e ZAP na homologação, por cima do gitleaks, Trivy e Semgrep do repositório padrão. | passo 50.7 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [Guarda de escopo (autorização)](#escopo) | Local | tools/seguranca/escopo.py: nenhum teste roda sem termo assinado, dentro da janela e do escopo; cada comando fica registrado. | passo 50.10 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [Relatório de pentest (CVSS)](#relpent) | Local | tools/seguranca/relatorio.py e cvss.py: do sumário executivo ao registro de atividades, com a nota CVSS 3.1 calculada, nunca escrita à mão. | passo 50.10 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 
 <a id="sign"></a>
 
@@ -281,6 +332,119 @@ Restaura o último backup numa pasta temporária e confere. Backup não testado 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Painel de lucro (Grafana)](21-mkt.md#painel) | Marketing, automação e medição | resultado do teste |
+
+<a id="relab"></a>
+
+### Lab de engenharia reversa
+
+*Local*
+
+Ghidra, ILSpy, gdb e strace (scripts/wsl/ferramentas-re.sh) para estudar binários seus, crackmes e a aula dos alunos. Binário de terceiro só com autorização escrita.
+
+**Quando entra:** passo 50.1 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [GhidraMCP (IA no Ghidra)](02-seg.md#ghidramcp) | Segurança e cofre | plugin |
+| ← recebe de | [Crackmes (OWASP MAS, crackmes.one)](14-est.md#crackmes) | Estudo e carreira | desafios |
+| ← recebe de | [Compiler Explorer (godbolt)](14-est.md#godbolt) | Estudo e carreira | do C ao assembly |
+
+<a id="ghidramcp"></a>
+
+### GhidraMCP (IA no Ghidra)
+
+*Local*
+
+Servidor MCP que deixa o Claude listar, renomear e explicar funções no Ghidra. Binário de cliente só com modelo local (Ollama) e cláusula no contrato.
+
+**Quando entra:** passo 50.3 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Servidores MCP](05-ia.md#mcp) | Agentes de IA e sandbox | fala por MCP |
+| → envia para | [Ollama](05-ia.md#oll) | Agentes de IA e sandbox | binário de cliente: modelo local |
+| ← recebe de | [Lab de engenharia reversa](02-seg.md#relab) | Segurança e cofre | plugin |
+
+<a id="labseg"></a>
+
+### Lab de ataque (Juice Shop, WebGoat)
+
+*Local*
+
+infra/lab-seguranca: aplicações vulneráveis de propósito, presas em 127.0.0.1, para treinar o OWASP Top 10 sem tocar em sistema real.
+
+**Quando entra:** passo 50.5 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| ← recebe de | [Kit de pentest (Burp, ZAP, nmap…)](02-seg.md#kitpent) | Segurança e cofre | treina em |
+
+<a id="kitpent"></a>
+
+### Kit de pentest (Burp, ZAP, nmap…)
+
+*Local*
+
+Ferramentas maduras do mercado na VM Kali: Burp Suite, OWASP ZAP, nmap, ffuf, nuclei, sqlmap e Metasploit. Usar, não reescrever.
+
+**Quando entra:** passo 50.6 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Lab de ataque (Juice Shop, WebGoat)](02-seg.md#labseg) | Segurança e cofre | treina em |
+| → envia para | [Relatório de pentest (CVSS)](02-seg.md#relpent) | Segurança e cofre | achados |
+| ← recebe de | [VMs: Kali · Arch · Servidores](03-win.md#vms) | Windows 11, apps e máquinas virtuais | Kali roda o kit |
+| ← recebe de | [PortSwigger Web Security Academy](14-est.md#portsw) | Estudo e carreira | ensina o Burp |
+| ← recebe de | [TryHackMe / Hack The Box](14-est.md#thm) | Estudo e carreira | laboratórios guiados |
+| ← recebe de | [BugHunt · HackerOne (bug bounty)](14-est.md#bbplat) | Estudo e carreira | programas com escopo |
+| ← recebe de | [Guarda de escopo (autorização)](02-seg.md#escopo) | Segurança e cofre | libera o alvo |
+
+<a id="appsec"></a>
+
+### AppSec nos seus sistemas
+
+*Local*
+
+Modelagem de ameaças (STRIDE), checklist ASVS e ZAP na homologação, por cima do gitleaks, Trivy e Semgrep do repositório padrão.
+
+**Quando entra:** passo 50.7 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Repositório padrão](12-nuvem.md#repopadrao) | Nuvem, código e entrega | soma ao CI |
+| → envia para | [AM Kaixara (PDV e cardápio)](11-app.md#nkaix) | Aplicação: sistemas AM (Aura) | ameaças do Kaixara |
+| → envia para | [Dependabot + CodeQL](12-nuvem.md#dbot) | Nuvem, código e entrega | CodeQL |
+
+<a id="escopo"></a>
+
+### Guarda de escopo (autorização)
+
+*Local*
+
+tools/seguranca/escopo.py: nenhum teste roda sem termo assinado, dentro da janela e do escopo; cada comando fica registrado.
+
+**Quando entra:** passo 50.10 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Kit de pentest (Burp, ZAP, nmap…)](02-seg.md#kitpent) | Segurança e cofre | libera o alvo |
+| → envia para | [Relatório de pentest (CVSS)](02-seg.md#relpent) | Segurança e cofre | registro de atividades |
+
+<a id="relpent"></a>
+
+### Relatório de pentest (CVSS)
+
+*Local*
+
+tools/seguranca/relatorio.py e cvss.py: do sumário executivo ao registro de atividades, com a nota CVSS 3.1 calculada, nunca escrita à mão.
+
+**Quando entra:** passo 50.10 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [AMtech Segurança (pentest)](16-neg.md#nseg) | Negócios do grupo (Barbacena) | entregável |
+| ← recebe de | [Kit de pentest (Burp, ZAP, nmap…)](02-seg.md#kitpent) | Segurança e cofre | achados |
+| ← recebe de | [Guarda de escopo (autorização)](02-seg.md#escopo) | Segurança e cofre | registro de atividades |
 
 ---
 

@@ -1,6 +1,6 @@
 # CONTINUAR: contexto completo para qualquer conversa nova
 
-Cole este arquivo na primeira mensagem de uma conversa nova (ou rode `python3 ~/dev/dev-setup/tools/sessao/contexto.py --inicio | clip.exe`). Decisões do dia a dia vão para o ESTADO.md; este arquivo muda quando algo grande muda. Última revisão: 01/11/2026.
+Cole este arquivo na primeira mensagem de uma conversa nova (ou rode `python3 ~/dev/dev-setup/tools/sessao/contexto.py --inicio | clip.exe`). Decisões do dia a dia vão para o ESTADO.md; este arquivo muda quando algo grande muda. Última revisão: 02/11/2026.
 
 ## 1. Quem sou e como trabalhar comigo
 - Alan Mateus, Barbacena-MG. Professor de informática numa escola EMTI (9 disciplinas, Técnico em Informática e em Desenvolvimento de Sistemas), trabalho também num restaurante (terça a domingo à noite), fundador da Grupo AMtech Digital. Formado em ADS, cursando Licenciatura em Matemática. Tenho TDAH.
@@ -19,15 +19,15 @@ Cole este arquivo na primeira mensagem de uma conversa nova (ou rode `python3 ~/
 ## 2. Onde está tudo
 - Repositório privado: github.com/AlanMateus17/dev-setup (branch main, CI verde). No PC: ~/dev/dev-setup (Ubuntu/WSL) e C:\Users\alanmateus\dev-setup (Windows).
 - Regra do repositório: data/*.json → geradores → docs/. Nunca editar arquivo gerado. Toda mudança: dados ou ferramenta, geradores, testes, CHANGELOG, commit, push, CI verde.
-- Números agora: 50 fases, 394 passos, 371 blocos, 102 rendas, 71 softwares, 27 metodologias de investimento. O CI recusa passo sem comando ou motivo, bloco fora do roteiro e renda sem passo.
+- Números agora: 52 fases, 415 passos, 386 blocos, 105 rendas, 71 softwares, 27 metodologias de investimento. O CI recusa passo sem comando ou motivo, bloco fora do roteiro e renda sem passo.
 - Artefatos: Acompanhamento (progresso marcado) https://claude.ai/artifact/CJ27fg9sycvhqZ2s9GSbjd · Portfólio de rendas https://claude.ai/artifact/Mbj1yj6LRmUnf3SJLrTfaB · Mapa https://claude.ai/artifact/BTUyCQfojw6cngvR5W5oAB · Ecossistema https://claude.ai/artifact/4Ze2J4Y1oKgAkjuQmbAAG1 · Plano de automação (documento) https://claude.ai/artifact/XCzSQNb28yFgPCymRV9wrL · Posts do setup (design) https://claude.ai/artifact/V8826RzNePgWKuy6GuYPvd
-- Guias no repositório: docs/implantacao/roteiro.md (passo a passo), docs/operacao/portfolio.md (rendas e automações), docs/operacao/softwares.md, docs/operacao/kit-sites.md, docs/custos.md (o que pagar, rotas de IA), docs/recursos.md (a melhor ferramenta para cada tarefa: primária, reserva e portão), docs/investimentos.md (as 27 metodologias nas 4 classes do ARCA), docs/certificacoes.md (o que cada certificação habilita e a ordem), docs/operacao/24-horas.md, docs/operacao/sessoes-curtas.md, docs/ia/README.md, docs/rede/README.md.
+- Guias no repositório: docs/implantacao/roteiro.md (passo a passo), docs/operacao/portfolio.md (rendas e automações), docs/operacao/softwares.md, docs/operacao/kit-sites.md, docs/custos.md (o que pagar, rotas de IA), docs/recursos.md (a melhor ferramenta para cada tarefa: primária, reserva e portão), docs/investimentos.md (as 27 metodologias nas 4 classes do ARCA), docs/certificacoes.md (o que cada certificação habilita e a ordem), docs/seguranca/README.md (engenharia reversa, AppSec, empresa de pentest e Jarvis), docs/operacao/24-horas.md, docs/operacao/sessoes-curtas.md, docs/ia/README.md, docs/rede/README.md.
 
 ## 3. Já feito no meu notebook (Acer Nitro, 32 GB, GTX 1650)
 Fases 0, 3, 4 e 5 completas: diagnóstico, Windows (winget, BitLocker, Defender, extensões do VS Code), Ubuntu no WSL com Docker, gh e SSH, repositório no GitHub com CI. Também: backup inicial, Windows Update, 2FA do GitHub, KeePassXC instalado com os cofres copiados para o pendrive D:\Cofre. Falta: senhas (2.2 a 2.4), mesa (1.2), e todas as fases a partir da 6.
 
 ## 4. Decisões principais
-- Arsenal de 102 rendas, cada uma com veredito (agora, próxima, fila, 2027, decidir, descartar), % automático e motivo.
+- Arsenal de 105 rendas, cada uma com veredito (agora, próxima, fila, 2027, decidir, descartar), % automático e motivo.
 - AGORA (máximo 3): Mini-curso Lógica de Programação, Sites e lojas para pequenas empresas, Avaliação de respostas de IA (DataAnnotation, Outlier).
 - PRÓXIMAS, em ordem: 1. AM Mentor: banco de exercícios com correção; 2. Aulas particulares; 3. Notebooks e PCs: comprar, consertar e revender; 4. Fábrica de documentos para professores de MG (assinatura); 5. Setup profissional (curso, template e configuração remota); 6. Plano de negócios e viabilidade financeira para quem vai abrir empresa; 7. Verificador e formatador ABNT automático (TCC, artigos, relatórios).
 - Regras: hora mínima R$ 45 por hora minha (a confirmar), teto de 7 h extras por semana (quinta 13h–16h30 negócio, sábado 9h30–12h30 produção), portão = 3 meses se pagando, corte = abaixo da hora mínima por 2 meses. Domingo, sono e cães são intocáveis.
@@ -43,6 +43,8 @@ Fases 0, 3, 4 e 5 completas: diagnóstico, Windows (winget, BitLocker, Defender,
 - Certificações: CNPI primeiro (para poder recomendar ativos), depois registro de consultor na CVM, CGE/CGA, CFP, CFA. CPA e C-PRO só se for trabalhar em banco. AZ-204 saiu; o caminho Azure é AZ-900 → AI-200.
 - Regra de "parar de adicionar áreas até a primeira venda" retirada a meu pedido: ideias novas entram no setup; a execução segue a ordem do roteiro.
 - Prospecção: lista semanal de dados públicos com aprovação minha; nunca disparo em massa no WhatsApp. "Procurar buracos" só nos meus sistemas e de clientes com contrato.
+- Segurança (nov/2026): engenharia reversa só em binário meu, de aluno em aula ou crackme; defesa dos meus sistemas antes de vender teste; ordem dos serviços: laudo dos sites → bug bounty → pentest web → rede/AD → red team; certificações eJPT → BSCP → OSCP → OSWE/OSEP. Nenhum teste sem termo assinado passando no escopo.py. Binário de cliente só com modelo local.
+- Jarvis: orquestrador com lista branca de ferramentas, voz local e o meu ok para qualquer ação que mude algo; entra em 2027, depois da Operação 24 horas e do roteador.
 
 ## 5. Ferramentas prontas no repositório (comandos no Ubuntu)
 - Pacote de contexto: tools/sessao/contexto.py (--inicio, --resumo, --passo ID)
@@ -58,6 +60,7 @@ Fases 0, 3, 4 e 5 completas: diagnóstico, Windows (winget, BitLocker, Defender,
 - Certificações e recursos: tools/carreira/certificacoes.py e tools/recursos/recursos.py (geram os docs)
 - Esteira de sites: infra/templates/esteira-site (ficha como issue, workflow qualidade, LEIA.md)
 - Lucro por ferramenta: tools/roi/roi.py (dados em ~/financas/roi.toml)
+- Segurança: tools/seguranca/escopo.py (validar | checar | rodar), cvss.py VETOR, relatorio.py ESCOPO ACHADOS; modelos em infra/templates/seguranca; lab em infra/lab-seguranca; scripts/wsl/ferramentas-re.sh (Ghidra, GhidraMCP, ILSpy)
 - Calculadora de modelos: tools/ia/cabe.py 32
 - Rotinas: scripts/wsl/resumo-manha.sh, manutencao-semanal.sh, agendar.sh --aplicar
 - Padrão de elite: scripts/wsl/padronizar-repo.sh --todos, segredos.sh, teste-restauracao.sh, regras-ia.sh
@@ -116,6 +119,8 @@ Fases 0, 3, 4 e 5 completas: diagnóstico, Windows (winget, BitLocker, Defender,
 | 47 | Infraestrutura própria | 2028, quando o grupo pedir | 3 |
 | 48 | Negócios do grupo em Barbacena | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano | 10 |
 | 49 | Estudo contínuo | Contínuo, desde a semana 2 | 12 |
+| 50 | Engenharia reversa, AppSec e pentest | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) | 16 |
+| 51 | Jarvis: uma porta para todos os seus agentes | 2027, depois da Operação 24 horas e do roteador de agentes | 5 |
 
 ## 7. Minhas pendências (ver também ESTADO.md)
 1. Senhas: passo kp-organizar, depois 2.4 (exportar do Chrome, importar no KeePassXC, apagar os CSVs, copiar o cofre para o pendrive).

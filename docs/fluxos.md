@@ -519,3 +519,39 @@ flowchart LR
 7. **[Aprovação no celular](camadas/21-mkt.md#aprov)**: Você aprova.
 8. **[n8n](camadas/21-mkt.md#n8n)**: Os posts levam o público até a página.
 9. **[Banco de métricas (PostgreSQL)](camadas/21-mkt.md#metrics)**: A primeira venda chega ao banco e ao painel.
+
+## Um teste de intrusão, do contrato ao reteste
+
+```mermaid
+flowchart LR
+  s0["1. Guarda de escopo (autorização)"]
+  s1["2. Kit de pentest (Burp, ZAP, nmap…)"]
+  s2["3. Relatório de pentest (CVSS)"]
+  s3["4. AMtech Segurança (pentest)"]
+  s0 --> s1
+  s1 --> s2
+  s2 --> s3
+```
+
+1. **[Guarda de escopo (autorização)](camadas/02-seg.md#escopo)**: O termo assinado vira escopo.toml; a guarda confere assinatura, janela e alvos.
+2. **[Kit de pentest (Burp, ZAP, nmap…)](camadas/02-seg.md#kitpent)**: Os testes rodam pelo escopo.py rodar, só nos alvos liberados, e cada comando fica registrado.
+3. **[Relatório de pentest (CVSS)](camadas/02-seg.md#relpent)**: Os achados viram relatório com nota CVSS calculada e o registro de atividades no apêndice.
+4. **[AMtech Segurança (pentest)](camadas/16-neg.md#nseg)**: A AMtech Segurança entrega, combina as correções e faz o reteste.
+
+## Engenharia reversa com IA (estudo e aula)
+
+```mermaid
+flowchart LR
+  s0["1. Compiler Explorer (godbolt)"]
+  s1["2. Lab de engenharia reversa"]
+  s2["3. GhidraMCP (IA no Ghidra)"]
+  s3["4. Servidores MCP"]
+  s0 --> s1
+  s1 --> s2
+  s2 --> s3
+```
+
+1. **[Compiler Explorer (godbolt)](camadas/14-est.md#godbolt)**: Na aula, o aluno vê o C virar assembly no Compiler Explorer.
+2. **[Lab de engenharia reversa](camadas/02-seg.md#relab)**: O binário que ele mesmo compilou (ou um crackme) abre no Ghidra.
+3. **[GhidraMCP (IA no Ghidra)](camadas/02-seg.md#ghidramcp)**: O GhidraMCP entrega as funções ao Claude, que renomeia e explica.
+4. **[Servidores MCP](camadas/05-ia.md#mcp)**: Tudo passa pelos servidores MCP com permissão limitada.

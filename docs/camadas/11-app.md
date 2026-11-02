@@ -56,6 +56,9 @@ flowchart LR
     n_nsoft["AMtech Software (projetos e SaaS)"]
     n_nsushi["Sushi (delivery)"]
   end
+  subgraph L_est["Estudo e carreira"]
+    n_refarq["Repositórios de referência"]
+  end
   subgraph L_cont["Produção de conteúdo"]
     n_penpot["Penpot (design)"]
   end
@@ -86,6 +89,7 @@ flowchart LR
     n_peng["Plugins: engineering + design"]
   end
   subgraph L_ia["Agentes de IA e sandbox"]
+    n_jarvis["Jarvis (porta única dos agentes)"]
     n_oll["Ollama"]
   end
   subgraph L_lin["Linux (Ubuntu no WSL2, Arch no 2º disco)"]
@@ -95,6 +99,9 @@ flowchart LR
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
     n_dbv["DBeaver · Bruno"]
     n_nav["Navegador + Claude in Chrome"]
+  end
+  subgraph L_seg["Segurança e cofre"]
+    n_appsec["AppSec nos seus sistemas"]
   end
   n_oapi -->|"documenta"| n_api
   n_oapi -->|"Bruno importa"| n_dbv
@@ -148,6 +155,7 @@ flowchart LR
   n_status -->|"Dependabot e repos"| n_gh
   n_status -->|"git status"| n_git
   n_dbot -->|"alertas"| n_status
+  n_jarvis -->|"painel (HUD)"| n_status
   n_nkaix -->|"ordens de serviço"| n_nloja
   n_nkaix -->|"PDV e ficha técnica"| n_nsushi
   n_nkaix -->|"PDV"| n_ncafe
@@ -156,6 +164,8 @@ flowchart LR
   n_nsoft -->|"constrói"| n_nkaix
   n_saas -->|"vende por assinatura"| n_nkaix
   n_ocomp -->|"estoque mínimo"| n_nkaix
+  n_appsec -->|"ameaças do Kaixara"| n_nkaix
+  n_refarq -->|"comparar arquitetura"| n_nkaix
   n_nrot -->|"roteiriza"| n_nentr
   n_nrot -->|"app e painel"| n_ndeliv
   n_nrot -->|"repasses"| n_caixa
@@ -448,6 +458,7 @@ Seu painel de repos, backup e Dependabot.
 | → envia para | [GitHub](12-nuvem.md#gh) | Nuvem, código e entrega | Dependabot e repos |
 | → envia para | [Git + SSH + gh](04-lin.md#git) | Linux (Ubuntu no WSL2, Arch no 2º disco) | git status |
 | ← recebe de | [Dependabot + CodeQL](12-nuvem.md#dbot) | Nuvem, código e entrega | alertas |
+| ← recebe de | [Jarvis (porta única dos agentes)](05-ia.md#jarvis) | Agentes de IA e sandbox | painel (HUD) |
 
 <a id="nkaix"></a>
 
@@ -469,6 +480,8 @@ PDV, comandas, ordem de serviço, estoque, ficha técnica e engenharia de cardá
 | ← recebe de | [AMtech Software (projetos e SaaS)](16-neg.md#nsoft) | Negócios do grupo (Barbacena) | constrói |
 | ← recebe de | [Sistemas AM (SaaS)](17-prod.md#saas) | Produtos (o que você vende) | vende por assinatura |
 | ← recebe de | [Agente comprador](23-oper.md#ocomp) | Operação do grupo (esteira, marca, qualidade) | estoque mínimo |
+| ← recebe de | [AppSec nos seus sistemas](02-seg.md#appsec) | Segurança e cofre | ameaças do Kaixara |
+| ← recebe de | [Repositórios de referência](14-est.md#refarq) | Estudo e carreira | comparar arquitetura |
 
 <a id="nrot"></a>
 

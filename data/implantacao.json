@@ -5330,14 +5330,13 @@
     },
     {
      "id": "est-longo",
-     "titulo": "Rendas que dependem de formação longa (bug bounty, perícia)",
+     "titulo": "Rendas que dependem de formação longa (perícia)",
      "quem": "voce",
      "pronto": "Portão de formação cumprido",
      "tempo_min": 15,
-     "fora": "Dependem de certificação e estudo; entram pela trilha de estudo.",
+     "fora": "Dependem de certificação e estudo; entram pela trilha de estudo. Bug bounty e pentest seguem a fase de segurança.",
      "blocos": [],
      "ofertas": [
-      "bugbounty",
       "perito"
      ]
     },
@@ -5418,6 +5417,266 @@
     }
    ],
    "quando": "Contínuo, desde a semana 2"
+  },
+  {
+   "id": "f-seguranca",
+   "titulo": "Engenharia reversa, AppSec e pentest",
+   "objetivo": "Aprender engenharia reversa com binários seus, proteger os seus sistemas e montar a AMtech Segurança com trava de escopo, relatório e certificações, nessa ordem.",
+   "quando": "Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP)",
+   "passos": [
+    {
+     "id": "sg-ferramentas",
+     "titulo": "Instalar as ferramentas de engenharia reversa (Ghidra, ILSpy, gdb)",
+     "quem": "script",
+     "pronto": "ghidra abre a janela e ilspycmd --version responde",
+     "tempo_min": 30,
+     "blocos": [
+      "relab"
+     ],
+     "comando": "cd ~/dev/dev-setup && bash scripts/wsl/ferramentas-re.sh",
+     "nota": "Rode antes com --simular para ver o que falta. Pede o gh logado."
+    },
+    {
+     "id": "sg-crackme",
+     "titulo": "Primeira engenharia reversa: o crackme da aula",
+     "quem": "script",
+     "pronto": "Chave achada pelo strings e pelo Ghidra, com a anotação do porquê no Obsidian",
+     "tempo_min": 45,
+     "blocos": [
+      "godbolt",
+      "crackmes"
+     ],
+     "comando": "cd /tmp && gcc -O0 -g -o licenca ~/dev/dev-setup/infra/templates/seguranca/aula-re/licenca.c && strings licenca | grep AMTECH",
+     "nota": "Depois abra o mesmo binário no Ghidra e faça a versão C# (Licenca.cs) no ILSpy. Siga com os crackmes da OWASP MAS."
+    },
+    {
+     "id": "sg-ghidramcp",
+     "titulo": "Ligar o GhidraMCP ao Claude",
+     "quem": "voce",
+     "pronto": "O Claude lista e renomeia as funções do licenca compilado",
+     "tempo_min": 30,
+     "blocos": [
+      "ghidramcp"
+     ],
+     "fora": "Instalação pela janela do Ghidra (File > Install Extensions) e configuração do cliente MCP; passo a passo em docs/seguranca/01-engenharia-reversa.md."
+    },
+    {
+     "id": "sg-aula",
+     "titulo": "Aula: do C ao assembly e de volta (Arquitetura de Computadores)",
+     "quem": "claude",
+     "pronto": "Aula dada e o roteiro salvo no repositório de aulas",
+     "tempo_min": 60,
+     "blocos": [],
+     "fora": "Plano de aula pela Fábrica de aulas com o crackme de infra/templates/seguranca/aula-re; cada aluno analisa só o binário que ele mesmo compilou."
+    },
+    {
+     "id": "sg-lab",
+     "titulo": "Subir o laboratório de ataque (Juice Shop e WebGoat)",
+     "quem": "script",
+     "pronto": "Juice Shop abre em http://127.0.0.1:3000",
+     "tempo_min": 10,
+     "blocos": [
+      "labseg"
+     ],
+     "comando": "cd ~/dev/dev-setup && docker compose -f infra/lab-seguranca/compose.yaml up -d",
+     "nota": "Desligue com down quando terminar. Nunca publique nem rode na VM da Oracle."
+    },
+    {
+     "id": "sg-portswigger",
+     "titulo": "Trilha PortSwigger: todos os laboratórios Apprentice",
+     "quem": "voce",
+     "pronto": "Apprentice de todos os temas resolvidos e anotados no Obsidian",
+     "tempo_min": 2400,
+     "blocos": [
+      "portsw",
+      "kitpent"
+     ],
+     "fora": "Cadastro no site da PortSwigger; os laboratórios rodam no navegador com o Burp Community (Windows) ou o da VM Kali."
+    },
+    {
+     "id": "sg-ameacas",
+     "titulo": "Modelagem de ameaças e checklist ASVS do AM Kaixara",
+     "quem": "claude",
+     "pronto": "Tabela STRIDE preenchida e cada mitigação com um teste que prova",
+     "tempo_min": 120,
+     "blocos": [
+      "appsec"
+     ],
+     "comando": "mkdir -p docs/seguranca && cp ~/dev/dev-setup/infra/templates/seguranca/modelagem-ameacas.md docs/seguranca/ameacas.md",
+     "nota": "Rode dentro da pasta do AM Kaixara. Repita em cada sistema AM antes de cada funcionalidade com login, dinheiro ou dado pessoal."
+    },
+    {
+     "id": "sg-dast",
+     "titulo": "ZAP passivo na homologação de cada sistema",
+     "quem": "script",
+     "pronto": "Issue do ZAP aberta e sem alerta alto",
+     "tempo_min": 20,
+     "blocos": [],
+     "comando": "mkdir -p .github/workflows && cp ~/dev/dev-setup/infra/templates/seguranca/dast-zap.yml .github/workflows/",
+     "nota": "Dentro da pasta do sistema, quando ele tiver homologação (Passo 5 da trilha). Crie a variável HOMOLOGACAO_URL no repositório."
+    },
+    {
+     "id": "sg-arquitetura",
+     "titulo": "Comparar o AM Kaixara com os repositórios de referência",
+     "quem": "claude",
+     "pronto": "3 ADRs novas no Kaixara, cada uma com a diferença e a decisão",
+     "tempo_min": 180,
+     "blocos": [
+      "refarq"
+     ],
+     "fora": "Leitura guiada: a funcionalidade criar pedido seguida da API ao banco no eShop e no modular-monolith, comparada com a sua."
+    },
+    {
+     "id": "sg-ensaio",
+     "titulo": "Ensaiar o serviço completo contra o seu próprio site",
+     "quem": "script",
+     "pronto": "Relatório gerado do ensaio, com o seu site como cliente e o termo assinado por você",
+     "tempo_min": 240,
+     "blocos": [
+      "escopo",
+      "relpent"
+     ],
+     "comando": "mkdir -p ~/clientes/ensaio && cp ~/dev/dev-setup/infra/templates/seguranca/escopo.example.toml ~/clientes/ensaio/escopo.toml && python3 ~/dev/dev-setup/tools/seguranca/escopo.py validar ~/clientes/ensaio/escopo.toml",
+     "nota": "Troque alvos e janela pelos do seu site. A validação só passa com o termo assinado salvo na pasta. Gere o relatório com tools/seguranca/relatorio.py."
+    },
+    {
+     "id": "sg-ejpt",
+     "titulo": "Certificação eJPT",
+     "quem": "voce",
+     "pronto": "eJPT aprovado",
+     "tempo_min": 60,
+     "blocos": [],
+     "precisa": [
+      "pagamento"
+     ],
+     "fora": "Prova online paga em dólar; confira preço e voucher no site da INE. Antes: TryHackMe Jr Penetration Tester e os Apprentice da PortSwigger."
+    },
+    {
+     "id": "sg-bugbounty",
+     "titulo": "Primeiro report num programa público de bug bounty",
+     "quem": "voce",
+     "pronto": "Um report enviado e respondido (duplicado também conta como aprendizado)",
+     "tempo_min": 600,
+     "blocos": [
+      "bbplat"
+     ],
+     "ofertas": [
+      "bugbounty"
+     ],
+     "fora": "Cadastro no BugHunt (brasileiro) ou no HackerOne; leia o escopo e as regras do programa antes de testar qualquer coisa."
+    },
+    {
+     "id": "sg-laudo",
+     "titulo": "Laudo de segurança nos sites que você mantém",
+     "quem": "voce",
+     "pronto": "Laudo entregue a 3 clientes",
+     "tempo_min": 60,
+     "blocos": [],
+     "ofertas": [
+      "auditsites"
+     ],
+     "fora": "Depois do ensaio e do eJPT; só nos sites que você mantém e com cláusula no contrato de sites."
+    },
+    {
+     "id": "sg-curso",
+     "titulo": "Curso de segurança e engenharia reversa para devs",
+     "quem": "voce",
+     "pronto": "Pré-venda aberta",
+     "tempo_min": 60,
+     "blocos": [],
+     "ofertas": [
+      "cursoseg"
+     ],
+     "fora": "Depois do eJPT e de 3 relatórios de ensaio. O material vem do seu estudo, sem copiar curso pago."
+    },
+    {
+     "id": "sg-oscp",
+     "titulo": "Certificação OSCP",
+     "quem": "voce",
+     "pronto": "OSCP aprovado",
+     "tempo_min": 120,
+     "blocos": [],
+     "precisa": [
+      "pagamento"
+     ],
+     "fora": "Curso e prova da OffSec, pagos em dólar; só depois do eJPT e de pelo menos 6 meses de laboratório."
+    },
+    {
+     "id": "sg-empresa",
+     "titulo": "Abrir a AMtech Segurança (pentest completo)",
+     "quem": "voce",
+     "pronto": "Primeiro contrato de pentest assinado",
+     "tempo_min": 240,
+     "blocos": [
+      "nseg"
+     ],
+     "ofertas": [
+      "pentestpro"
+     ],
+     "precisa": [
+      "pagamento"
+     ],
+     "fora": "Termo e contrato revisados por advogado, seguro de responsabilidade profissional e CNPJ com o contador; só depois da OSCP e de histórico (bug bounty e laudos)."
+    }
+   ]
+  },
+  {
+   "id": "f-jarvis",
+   "titulo": "Jarvis: uma porta para todos os seus agentes",
+   "objetivo": "Falar com o setup por texto ou voz e ele chamar o agente certo, com ferramentas liberadas por lista e o seu ok para qualquer ação que mude algo.",
+   "quando": "2027, depois da Operação 24 horas e do roteador de agentes",
+   "passos": [
+    {
+     "id": "jv-intencoes",
+     "titulo": "Definir as intenções do Jarvis e o que cada uma pode fazer",
+     "quem": "claude",
+     "pronto": "Tabela de intenções revisada (ferramenta, só leitura ou com aprovação)",
+     "tempo_min": 60,
+     "blocos": [
+      "jarvis"
+     ],
+     "fora": "Tabela em docs/seguranca/04-jarvis.md; nada de código antes da lista branca."
+    },
+    {
+     "id": "jv-orquestrador",
+     "titulo": "Orquestrador no Claude Agent SDK lendo o MCP próprio",
+     "quem": "claude",
+     "pronto": "Responde 'como está o setup?' pelo Telegram",
+     "tempo_min": 480,
+     "blocos": [],
+     "fora": "Código num repositório privado do Jarvis, quando o MCP próprio e o roteador de agentes existirem."
+    },
+    {
+     "id": "jv-voz",
+     "titulo": "Voz local: Whisper para ouvir e Piper para falar",
+     "quem": "script",
+     "pronto": "O Jarvis responde em voz no notebook",
+     "tempo_min": 60,
+     "blocos": [
+      "jvoz"
+     ],
+     "comando": "pipx install piper-tts",
+     "nota": "Baixe uma voz pt_BR do Piper; o Whisper já vem do bootstrap (--com-whisper)."
+    },
+    {
+     "id": "jv-casa",
+     "titulo": "Ligar o Jarvis ao Home Assistant",
+     "quem": "voce",
+     "pronto": "Acende uma luz por comando de voz",
+     "tempo_min": 60,
+     "blocos": [],
+     "fora": "Token de longa duração criado na tela do Home Assistant; ações da casa só por lista (luz, aviso), nunca fechadura."
+    },
+    {
+     "id": "jv-hud",
+     "titulo": "Aura Status como painel do Jarvis",
+     "quem": "claude",
+     "pronto": "O painel mostra o que o Jarvis fez no dia",
+     "tempo_min": 120,
+     "blocos": [],
+     "fora": "Quando o aura-status tiver API: o Jarvis lê dele em vez de duplicar a coleta."
+    }
+   ]
   }
  ]
 }
