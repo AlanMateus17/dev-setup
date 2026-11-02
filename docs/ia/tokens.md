@@ -40,6 +40,43 @@ A planta fica melhor porque é paramétrica: muda um número e o desenho inteiro
 
 O que **não** dá para largar 100% na mão do setup: a aprovação final. Um assistente que faz tudo sem conferir também faz besteira sem conferir. O setup foi montado para você só aprovar, não para você não olhar.
 
+## Aplicar isso a tudo
+
+A regra "peça o gerador, não o resultado" vale para quase tudo que você faz no setup. O que muda é o nome do gerador:
+
+| Você quer | O caro (não faça) | O barato (o gerador) |
+|---|---|---|
+| Planta baixa | Claude desenhar em texto | Script de FreeCAD/Bonsai com medidas por parâmetro |
+| Aula, prova, plano | Claude escrever tudo do zero toda vez | Fábrica de aulas a partir da ementa; Claude só revisa |
+| Site de cliente | Claude gerar o site inteiro no chat | Kit de sites: modelo pronto, Claude ajusta o que muda |
+| 50 questões, baralho Anki | Claude digitar uma a uma | Gerador a partir do YAML do livro |
+| Orçamento, finanças | Claude somar no texto | Planilha ou `orcamento.py` que calcula sozinho |
+| Documento repetido (contrato, laudo) | Reescrever cada vez | Modelo com campos; o script preenche |
+| Resumo de aula gravada | Colar a transcrição toda no Claude | Whisper transcreve local; modelo local resume; Claude só a versão final |
+| Dados de um app seu | Perguntar número por número | Script lê a API e devolve a tabela |
+
+O padrão é sempre o mesmo: o Claude escreve **uma vez** a ferramenta que faz; a ferramenta roda **mil vezes** de graça. Quando algo vira repetição, isso é sinal de que falta um gerador — peça o gerador.
+
+## Preciso dar todas as informações?
+
+Não. Dar tudo de antemão gasta token (entra texto) e cansa você. O setup trabalha assim:
+
+1. **Você dá o essencial** e o resto a IA **assume por padrão**, dizendo o que assumiu: *"assumi pé-direito 2,70 m, parede 15 cm, porta 80 cm — mude se quiser"*.
+2. **Você corrige só o que está errado.** Uma frase de correção custa quase nada; a descrição completa custaria muito.
+3. **A IA reúsa o que já sabe de você:** preferências salvas, a stack fixa (.NET, PostgreSQL), as regras do repositório e os seus projetos. Ela não pergunta de novo o que já está escrito no setup.
+
+Então "criar da forma mais perfeita possível" não vem de você descrever tudo; vem de um primeiro rascunho com padrões sensatos, que você corrige em uma ou duas frases, rodando o gerador a cada ajuste. Isso é mais rápido, mais barato e dá um resultado melhor do que tentar acertar tudo na primeira descrição.
+
+Quando um padrão se repete (sempre a mesma parede de 15 cm, sempre a mesma stack), peça para salvar nas suas preferências: a IA passa a assumir aquilo sozinha, e você nem precisa mais dizer.
+
+## Por voz, por escrito ou de qualquer forma
+
+A economia é a mesma nos três casos, porque o que conta é o texto que chega ao Claude, não como você falou:
+
+- **Voz:** o Whisper transcreve local (zero token) e manda ao Claude só o texto curto do seu pedido.
+- **Escrito:** frases curtas e diretas; o pacote de contexto entra no lugar de colar histórico.
+- **Arquivo (foto, PDF, planta):** o setup extrai local (Docling, Whisper, `ifc_resumo.py`) e manda ao Claude só o resumo, não o arquivo inteiro.
+
 ## Ferramentas
 
 ```bash

@@ -19,3 +19,4 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-02: compras em ordem: servidor da casa → kit de campo e Zigbee → SO-101 + 2 câmeras → satélite ESP32-S3 → câmeras → Reachy Mini → LeKiwi; GPU de 12 GB só depois do portão.
 - 2026-11-02: próximo sem comprar nada: jv-claude-voz, jv-voz, hf-coder e sg-ferramentas. Pendente do Alan: termo de autorização com advogado antes do 1º laudo pago; licença educacional da Autodesk.
 - 2026-11-02: v2.7: lab de alvo isolado (containers e VMs) para estudar e atacar software só na própria máquina; orçamento (orcamento.py, só dev/protótipo); economia de tokens (tokens.py + docs/ia/tokens.md: peça o script, não o resultado).
+- 2026-11-02: v2.7.1: economia de tokens generalizada (docs/ia/tokens.md: tabela por tipo de saída, por voz/escrito/arquivo) e regra "assuma padrões, o Alan corrige o que estiver errado" nas regras da IA.

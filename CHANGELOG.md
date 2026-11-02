@@ -2,6 +2,12 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.7.1] - 2026-11-02
+
+### Alterado
+- docs/ia/tokens.md: a regra "peça o gerador, não o resultado" aplicada a tudo (aula, site, questões, orçamento, documentos, dados), seção "preciso dar todas as informações?" (não: a IA assume padrões e você corrige) e a economia por voz, escrito ou arquivo.
+- Regras da IA: a IA assume padrões sensatos, marca o que assumiu e reúsa preferências e regras do repositório em vez de perguntar de novo.
+
 ## [2.7.0] - 2026-11-02
 
 ### Adicionado

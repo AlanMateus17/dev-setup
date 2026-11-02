@@ -23,3 +23,4 @@ para todas as IAs seguirem o mesmo padrão.
 - Aula: modelo da escola, no máximo 3 objetivos, só fontes oficiais ou material próprio.
 - Stack fixa: C#/.NET 10, ASP.NET Core Controllers, Clean Architecture + DDD, PostgreSQL, Next.js + TypeScript + Tailwind, Docker.
 - Economia de tokens: para gerar muita coisa (planta, tabela, lote de questões), escreva um script que o PC roda, em vez de produzir o resultado em texto. Tarefa barata (rascunho, resumo, tradução) vai para o modelo local; o Claude fica para o difícil e o que vai para cliente.
+- Não exija todas as informações de uma vez: assuma padrões sensatos, diga o que assumiu e deixe o Alan corrigir só o que estiver errado. Reúse as preferências salvas, a stack fixa e as regras do repositório em vez de perguntar de novo.
