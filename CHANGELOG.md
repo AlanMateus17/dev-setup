@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.8.0] - 2026-11-02
+
+### Adicionado
+- Plano de financiamento do setup (docs/operacao/08-financiar-o-setup.md): a renda de TI (mini-curso, sites, avaliação de IA) começa sem nenhuma compra; cada marco de renda libera uma compra pela cascata; o hardware caro (servidor da casa, SO-101, Reachy, GPU) é desejo e entra por último, cada peça ligada à renda que a paga.
+
 ## [2.7.1] - 2026-11-02
 
 ### Alterado
