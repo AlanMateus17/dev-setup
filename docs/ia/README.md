@@ -20,6 +20,8 @@
 
 **Catálogo do Hugging Face:** modelos e kits que servem ao setup, filtrados pela sua GPU, em [hugging-face.md](hugging-face.md).
 
+**Economia de tokens:** produzir mais gastando menos no Claude, com o exemplo da planta baixa, em [tokens.md](tokens.md).
+
 ## Quanto cabe na sua máquina
 
 ```bash

@@ -65,6 +65,7 @@ Fases 0, 3, 4 e 5 completas: diagnóstico, Windows (winget, BitLocker, Defender,
 - Lucro por ferramenta: tools/roi/roi.py (dados em ~/financas/roi.toml)
 - Jarvis: tools/jarvis/politica.py (validar | decidir | expor | ha-yaml) com modelo em politica.example.toml; tools/jarvis/falar.py (hook Stop do Claude Code); infra/jarvis (voz, MQTT e perfis zigbee e cameras)
 - Construção: tools/construcao/ifc_resumo.py ARQUIVO.ifc [--json]; regras da IA em infra/templates/regras-ia/construcao.md
+- Orçamento: tools/custos/orcamento.py ~/financas/orcamento.toml (só dev/protótipo, por etapa); economia de tokens: tools/ia/tokens.py rota "tarefa" e docs/ia/tokens.md
 - Segurança: tools/seguranca/escopo.py (validar | checar | rodar), cvss.py VETOR, relatorio.py ESCOPO ACHADOS; modelos em infra/templates/seguranca; lab em infra/lab-seguranca; scripts/wsl/ferramentas-re.sh (Ghidra, GhidraMCP, ILSpy)
 - Calculadora de modelos: tools/ia/cabe.py 32 ou cabe.py --hf DONO/MODELO (lê o tamanho no Hugging Face)
 - Rotinas: scripts/wsl/resumo-manha.sh, manutencao-semanal.sh, agendar.sh --aplicar

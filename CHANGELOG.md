@@ -2,6 +2,13 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.7.0] - 2026-11-02
+
+### Adicionado
+- Laboratório de alvo isolado (infra/lab-alvo + scripts/wsl/lab-alvo.sh e scripts/windows/lab-alvo.ps1): o software estudado roda numa rede sem internet, com atacante, prova do isolamento e foto para desfazer o ataque; ciclo engenharia reversa → pentest → relatório em docs/seguranca. Bloco, fluxo e 3 passos novos.
+- Orçamento do setup (tools/custos/orcamento.py): soma só desenvolvimento e protótipos (item de venda fica de fora), por etapa e por tipo, único vs. recorrente, com faixa min–máx; modelo em orcamento.example.toml. Com testes.
+- Economia de tokens (docs/ia/tokens.md e tools/ia/tokens.py): a regra "peça o script, não o resultado", o roteador de IA por tarefa e a estimativa de tokens; exemplo da planta baixa. Regra adicionada às regras da IA.
+
 ## [2.6.0] - 2026-11-02
 
 ### Adicionado

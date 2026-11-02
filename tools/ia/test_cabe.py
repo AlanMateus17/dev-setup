@@ -52,3 +52,21 @@ class TestCabe(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+import tokens as _tok  # noqa: E402
+
+
+class TestTokens(unittest.TestCase):
+    def test_rota_forte_para_arquitetura(self):
+        self.assertEqual(_tok.rota("revisar a arquitetura do AM Kaixara")[0], "forte")
+
+    def test_rota_barato_para_rascunho(self):
+        self.assertEqual(_tok.rota("resumir esta transcrição em lote")[0], "barato")
+
+    def test_rota_padrao_local(self):
+        self.assertEqual(_tok.rota("qualquer coisa fora das palavras")[0], "local")
+
+    def test_estimativa_de_tokens(self):
+        self.assertEqual(_tok.estimar_tokens("a" * 400), 100)
+        self.assertEqual(_tok.estimar_tokens(""), 1)
