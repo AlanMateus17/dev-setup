@@ -8,7 +8,7 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 
 | Camadas | Blocos | Conexões | Fluxos | Contas necessárias |
 |---|---|---|---|---|
-| 23 | 400 | 715 | 20 | 109 |
+| 23 | 404 | 724 | 20 | 109 |
 
 ## Por onde começar
 
@@ -104,12 +104,12 @@ O Windows cuida só do que precisa de janela, GPU e segurança; todo o trabalho 
 | 09 | [Containers, Kubernetes e infra como código](docs/camadas/09-cnt.md) | 16 | Caddy (proxy + HTTPS), Mailpit, Kafka, kubectl · Helm · k9s… |
 | 08 | [Claude: recursos, conectores e plugins](docs/camadas/08-clc.md) | 19 | Projects + memória, Artifacts (Docs, Slides, Sheets…), Pesquisa aprofundada, Tarefas agendadas… |
 | 07 | [Assistentes de IA (chat, pesquisa e estudo)](docs/camadas/07-chat.md) | 10 | Claude (app), ChatGPT, Gemini (pago), NotebookLM… |
-| 06 | [Dados e treino de IA](docs/camadas/06-dados.md) | 19 | Python de dados (Polars, Jupyter), DuckDB + Parquet, dbt Core, Airflow (orquestração)… |
+| 06 | [Dados e treino de IA](docs/camadas/06-dados.md) | 21 | Python de dados (Polars, Jupyter), DuckDB + Parquet, dbt Core, Airflow (orquestração)… |
 | 05 | [Agentes de IA e sandbox](docs/camadas/05-ia.md) | 21 | Modelos locais: Qwen · Gemma · Llama, Base de conhecimento (RAG) das suas notas, Claude Code, ai-jail… |
 | 04 | [Linux (Ubuntu no WSL2, Arch no 2º disco)](docs/camadas/04-lin.md) | 13 | Neovim, nmap · dig · curl, Ubuntu (WSL2), Git + SSH + gh… |
 | 03 | [Windows 11, apps e máquinas virtuais](docs/camadas/03-win.md) | 25 | Tailscale (VPN), .wslconfig + localhost, Terminal · PowerShell · winget, Excalidraw / draw.io… |
 | 02 | [Segurança e cofre](docs/camadas/02-seg.md) | 20 | Commits assinados (chave SSH), restic (backup criptografado), Chave física (YubiKey), TPM + Secure Boot… |
-| 01 | [Hardware](docs/camadas/01-hw.md) | 22 | Nobreak, Base com cooler, SSD SATA 2,5", Acer Nitro (32 GB, GTX 1650)… |
+| 01 | [Hardware](docs/camadas/01-hw.md) | 24 | Nobreak, Base com cooler, SSD SATA 2,5", Acer Nitro (32 GB, GTX 1650)… |
 
 ## Stack fixa dos sistemas
 

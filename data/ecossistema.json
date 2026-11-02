@@ -3178,6 +3178,24 @@
    "descricao": "AI-on-the-edge-device: uma ESP32-CAM fotografa o hidrômetro e lê os números no próprio chip. Só lê, nunca mexe no medidor da concessionária."
   },
   {
+   "id": "so101",
+   "camada": "hw",
+   "rotulo": "Braços SO-101|(líder + seguidor)",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Braço robótico aberto da Hugging Face: você move o líder, o seguidor copia e o LeRobot grava para o robô aprender."
+  },
+  {
+   "id": "reachy",
+   "camada": "hw",
+   "rotulo": "Reachy Mini|(corpo do Jarvis)",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Robô de mesa aberto da Hugging Face e Pollen: 4 microfones, câmera, alto-falante e cabeça que se mexe, programado em Python."
+  },
+  {
    "id": "paperless",
    "camada": "dados",
    "rotulo": "Paperless-ngx",
@@ -3617,6 +3635,24 @@
    "conta": false,
    "futuro": false,
    "descricao": "Quem compra mais, quem está sumindo, quanto vale cada cliente e previsão de receita, em Python/DuckDB."
+  },
+  {
+   "id": "lerobot",
+   "camada": "dados",
+   "rotulo": "LeRobot (robôs que|aprendem)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Biblioteca da Hugging Face para gravar demonstrações, treinar políticas (ACT, SmolVLA) e rodar no robô."
+  },
+  {
+   "id": "docling",
+   "camada": "dados",
+   "rotulo": "Docling + Granite-|Docling (documentos)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Converte PDF, foto e NFC-e em Markdown e JSON com tabelas: Caixa da Casa, documentos da escola, ABNT e acervo."
   },
   {
    "id": "chatwoot",
@@ -7293,6 +7329,51 @@
    "de": "tail",
    "para": "srvcasa",
    "rotulo": "acesso de fora"
+  },
+  {
+   "de": "so101",
+   "para": "lerobot",
+   "rotulo": "teleoperação e gravação"
+  },
+  {
+   "de": "lerobot",
+   "para": "hf",
+   "rotulo": "datasets e políticas"
+  },
+  {
+   "de": "lerobot",
+   "para": "kgl",
+   "rotulo": "treino do ACT"
+  },
+  {
+   "de": "lerobot",
+   "para": "gpuh",
+   "rotulo": "treino do SmolVLA (bf16)"
+  },
+  {
+   "de": "so101",
+   "para": "rob",
+   "rotulo": "aulas de robótica"
+  },
+  {
+   "de": "reachy",
+   "para": "jarvis",
+   "rotulo": "corpo na mesa"
+  },
+  {
+   "de": "reachy",
+   "para": "hf",
+   "rotulo": "apps do Hub"
+  },
+  {
+   "de": "docling",
+   "para": "hf",
+   "rotulo": "modelo Granite-Docling"
+  },
+  {
+   "de": "docling",
+   "para": "acv",
+   "rotulo": "lê os documentos"
   }
  ],
  "fluxos": [

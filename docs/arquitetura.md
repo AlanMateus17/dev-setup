@@ -26,12 +26,12 @@ flowchart TB
   L_cnt["09 · Containers, Kubernetes e infra como código<br/>16 blocos"]
   L_clc["08 · Claude: recursos, conectores e plugins<br/>19 blocos"]
   L_chat["07 · Assistentes de IA (chat, pesquisa e estudo)<br/>10 blocos"]
-  L_dados["06 · Dados e treino de IA<br/>19 blocos"]
+  L_dados["06 · Dados e treino de IA<br/>21 blocos"]
   L_ia["05 · Agentes de IA e sandbox<br/>21 blocos"]
   L_lin["04 · Linux (Ubuntu no WSL2, Arch no 2º disco)<br/>13 blocos"]
   L_win["03 · Windows 11, apps e máquinas virtuais<br/>25 blocos"]
   L_seg["02 · Segurança e cofre<br/>20 blocos"]
-  L_hw["01 · Hardware<br/>22 blocos"]
+  L_hw["01 · Hardware<br/>24 blocos"]
   L_oper --- L_pub
   L_pub --- L_mkt
   L_mkt --- L_venda
@@ -79,12 +79,12 @@ flowchart TB
 | 09 | [Containers, Kubernetes e infra como código](camadas/09-cnt.md) | 16 | A CLI docker e o kubectl no Ubuntu falam com a engine do Docker no WSL2. |
 | 08 | [Claude: recursos, conectores e plugins](camadas/08-clc.md) | 19 | Os conectores dão ao Claude acesso às suas contas, com permissão que você aprova; os plugins trazem rotinas prontas. |
 | 07 | [Assistentes de IA (chat, pesquisa e estudo)](camadas/07-chat.md) | 10 | O que é código vai para o agente; o que é pesquisa e estudo fica nos assistentes e termina salvo no vault. |
-| 06 | [Dados e treino de IA](camadas/06-dados.md) | 19 | Os seus dados viram tabelas limpas e datasets; o treino pesado roda numa GPU da nuvem e o modelo volta para o Ollama do notebook. |
+| 06 | [Dados e treino de IA](camadas/06-dados.md) | 21 | Os seus dados viram tabelas limpas e datasets; o treino pesado roda numa GPU da nuvem e o modelo volta para o Ollama do notebook. |
 | 05 | [Agentes de IA e sandbox](camadas/05-ia.md) | 21 | O agente roda dentro do ai-jail e só enxerga ~/dev/<projeto>. |
 | 04 | [Linux (Ubuntu no WSL2, Arch no 2º disco)](camadas/04-lin.md) | 13 | O código fica no ext4 do Linux; o Windows enxerga pela ponte do WSL2. |
 | 03 | [Windows 11, apps e máquinas virtuais](camadas/03-win.md) | 25 | O Windows depende de TPM, BitLocker e Defender para ficar protegido. |
 | 02 | [Segurança e cofre](camadas/02-seg.md) | 20 | Drivers AMD e NVIDIA ligam o sistema ao hardware. |
-| 01 | [Hardware](camadas/01-hw.md) | 22 | — |
+| 01 | [Hardware](camadas/01-hw.md) | 24 | — |
 
 ## Princípios
 

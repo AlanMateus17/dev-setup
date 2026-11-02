@@ -87,6 +87,7 @@ flowchart LR
     n_gcode["Agentes de código do Google"]
   end
   subgraph L_dados["Dados e treino de IA"]
+    n_lerobot["LeRobot (robôs que aprendem)"]
     n_unsl["Unsloth (QLoRA)"]
     n_vllm["vLLM (GPU alugada)"]
   end
@@ -173,6 +174,7 @@ flowchart LR
   n_gpuh -->|"GPU de 24 GB"| n_unsl
   n_litellm -->|"usa GPU alugada"| n_gpuh
   n_vllm -->|"roda em"| n_gpuh
+  n_lerobot -->|"treino do SmolVLA (bf16)"| n_gpuh
   n_gdrv -->|"cópia pelo Takeout"| n_acv
   n_cgws -->|"o Claude lê o Drive"| n_gdrv
   n_repopadrao -->|"inclui"| n_sec
@@ -488,6 +490,7 @@ Quando o Kaggle não bastar: GPU de 24 GB a partir de cerca de US$ 0,27 a 0,90 p
 | → envia para | [Unsloth (QLoRA)](06-dados.md#unsl) | Dados e treino de IA | GPU de 24 GB |
 | ← recebe de | [Gateway de modelos (LiteLLM)](05-ia.md#litellm) | Agentes de IA e sandbox | usa GPU alugada |
 | ← recebe de | [vLLM (GPU alugada)](06-dados.md#vllm) | Dados e treino de IA | roda em |
+| ← recebe de | [LeRobot (robôs que aprendem)](06-dados.md#lerobot) | Dados e treino de IA | treino do SmolVLA (bf16) |
 
 <a id="gdrv"></a>
 

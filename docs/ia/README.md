@@ -18,12 +18,15 @@
 
 **RAG antes de treino:** para "o modelo saber das minhas coisas", busca nas suas notas (RAG) resolve 80% e não precisa de GPU. Treine só quando o *jeito* de responder precisa mudar.
 
+**Catálogo do Hugging Face:** modelos e kits que servem ao setup, filtrados pela sua GPU, em [hugging-face.md](hugging-face.md).
+
 ## Quanto cabe na sua máquina
 
 ```bash
 python3 ~/dev/dev-setup/tools/ia/cabe.py 32        # um modelo de 32B
 python3 ~/dev/dev-setup/tools/ia/cabe.py 30 --ativos 3   # MoE de 30B com 3B ativos
 python3 ~/dev/dev-setup/tools/ia/cabe.py 70        # mostra que 70B vai para GPU alugada ou cluster
+python3 ~/dev/dev-setup/tools/ia/cabe.py --hf Qwen/Qwen3-VL-2B-Instruct   # lê o tamanho direto do Hugging Face
 ```
 
 ## Qualidade medida, não achada

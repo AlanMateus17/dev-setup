@@ -20,3 +20,5 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-02: v2.4: Jarvis por voz (docs/jarvis): Assist com voz local + Claude como agente; Claude Code por voz no PC (/voice + falar.py); casa num servidor próprio (ADR 0004).
 - 2026-11-02: tools/jarvis/politica.py (mínimos fixos: destrancar e abrir janela só com o celular; geladeira religa sozinha) e infra/jarvis (Whisper GPU, Piper, openWakeWord, MQTT, Zigbee, Frigate).
 - 2026-11-02: próximo do Jarvis: jv-claude-voz e jv-voz (nada a comprar). Compras em ordem: servidor da casa → coordenador Zigbee e tomadas → satélite ESP32-S3 → câmeras → leitor do hidrômetro.
+- 2026-11-02: v2.5: catálogo do Hugging Face filtrado pela GTX 1650 (docs/ia/hugging-face.md) e fase 52 (IA física); cabe.py --hf.
+- 2026-11-02: compras em ordem: servidor da casa → par SO-101 + 2 câmeras USB → Reachy Mini → LeKiwi; GPU de 12 GB só depois do portão. Conferir preço no Brasil com impostos antes.

@@ -2,6 +2,14 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.5.0] - 2026-11-02
+
+### Adicionado
+- Catálogo do Hugging Face (docs/ia/hugging-face.md): voz (Whisper large-v3-turbo e ajustes para português, Kokoro, Piper, openWakeWord), câmeras (Qwen3-VL 2B local, SmolVLM2, detectores do Frigate), robótica (LeRobot, SmolVLA, ACT), documentos (Docling e Granite-Docling), RAG (bge-m3), modelos em português (Tucano2), filtro de injeção (Prompt Guard 2) e agentes (smolagents, Spaces com MCP), cada um com onde roda na GTX 1650 e o cuidado de licença.
+- Compras em ordem do que destravam: servidor da casa, par SO-101, Reachy Mini, LeKiwi, câmeras e, só depois do portão, GPU de 12 GB.
+- tools/ia/cabe.py --hf DONO/MODELO: lê o número de parâmetros na API do Hugging Face e avisa quando o treino pede bfloat16.
+- Blocos SO-101, Reachy Mini, LeRobot e Docling; fase 52 (Hugging Face e IA física, 12 passos), do token de leitura ao modelo de doença de folha do projeto agro.
+
 ## [2.4.0] - 2026-11-02
 
 ### Adicionado

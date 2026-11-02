@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-52 fases, 423 passos, cerca de **1315 h 18 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+53 fases, 435 passos, cerca de **1343 h 33 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
-**Todo o planejamento está aqui:** os 400 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 105 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
+**Todo o planejamento está aqui:** os 404 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 105 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 323 dos 423 passos (365 h 38 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 332 dos 435 passos (376 h 53 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -66,6 +66,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [49 · Estudo contínuo](#f33) | Contínuo, desde a semana 2 | 12 | 3 h 30 min |
 | [50 · Engenharia reversa, AppSec e pentest](#f-seguranca) | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) | 16 | 71 h 15 min |
 | [51 · Jarvis: o setup e a casa por comando de voz](#f-jarvis) | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas | 13 | 30 h 50 min |
+| [52 · Hugging Face e IA física: modelos úteis e robôs que aprendem](#f-ia-fisica) | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino | 12 | 28 h 15 min |
 
 <a id="f0"></a>
 
@@ -5139,6 +5140,128 @@ mkdir -p ~/.config/amtech && cp -n ~/dev/dev-setup/tools/jarvis/politica.example
 - **Fora do terminal:** Quando o aura-status tiver API: o Jarvis lê dele em vez de duplicar a coleta.
 - [ ] **Pronto quando:** O painel mostra o que o Jarvis fez no dia
 
+<a id="f-ia-fisica"></a>
+
+## 52 · Hugging Face e IA física: modelos úteis e robôs que aprendem
+
+Usar do Hub o que melhora o setup (voz, câmera que descreve, documentos, filtro de injeção) e começar a robótica que aprende por imitação com o SO-101 e o LeRobot.
+
+**Quando:** Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino
+
+### 52.1 Conta no Hugging Face com token só de leitura
+
+**Você** · 15 min
+
+- **Fora do terminal:** Cadastro no site com 2FA; token de escrita só quando for publicar dataset.
+- [ ] **Pronto quando:** Token de leitura guardado no KeePassXC
+
+### 52.2 Conferir o que cabe na GTX 1650 antes de baixar
+
+**Script** · 10 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+python3 ~/dev/dev-setup/tools/ia/cabe.py --hf Qwen/Qwen3-VL-2B-Instruct
+```
+
+- [ ] **Pronto quando:** Lista dos modelos do catálogo com onde cada um roda
+- Repita para cada modelo de docs/ia/hugging-face.md.
+
+### 52.3 Whisper mais preciso: large-v3-turbo no lugar do small
+
+**Script** · 30 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/dev-setup/infra/jarvis && sed -i 's/^WHISPER_MODELO=.*/WHISPER_MODELO=turbo/' .env && docker compose up -d whisper
+```
+
+- [ ] **Pronto quando:** As mesmas 20 frases suas com menos erros que o small
+- Se a imagem não aceitar turbo, use large-v3 (int8). Grave as 20 frases antes e meça os dois.
+
+### 52.4 Câmera que descreve: Qwen3-VL 2B local no Ollama
+
+**Script** · 20 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+ollama pull qwen3-vl:2b
+```
+
+- [ ] **Pronto quando:** Descreve uma foto do quintal sem internet
+- Depois ligue no Frigate (descrição dos eventos por modelo local). Imagem da casa nunca vai para IA na nuvem.
+
+### 52.5 Docling para NFC-e, documentos da escola e acervo
+
+**Script** · 30 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+pipx install docling
+```
+
+- [ ] **Pronto quando:** Uma NFC-e e um plano de aula viram Markdown com as tabelas certas
+- Teste o Granite-Docling em português antes de ligar ao Caixa da Casa e ao verificador ABNT.
+- Implanta: Docling + Granite- Docling (documentos)
+
+### 52.6 Filtro de injeção de prompt antes do Jarvis agir
+
+**Claude com você** · 1 h 30 min
+
+- **Fora do terminal:** Llama Prompt Guard 2 (86M) no lab-ia; só entra no Jarvis se acertar em português.
+- [ ] **Pronto quando:** 20 frases de ataque em português barradas e 20 pedidos normais liberados
+
+### 52.7 Comprar e montar o par de braços SO-101
+
+**Você** · 8 h 00 min
+
+- **Fora do terminal:** Kit com motores e peças impressas (ou imprimir em PLA+), 2 câmeras USB; montagem e calibração pelo guia do LeRobot (há versão em português na wiki da Seeed).
+- [ ] **Pronto quando:** Os dois braços calibrados; o seguidor copia o líder
+- **Precisa:** comprar algo
+- Implanta: Braços SO-101 (líder + seguidor) · LeRobot (robôs que aprendem)
+
+### 52.8 Gravar 50 demonstrações de uma tarefa simples
+
+**Você** · 3 h 00 min
+
+- **Fora do terminal:** lerobot-record com o líder; tarefa de pegar e colocar numa caixa. Sem rosto de ninguém, muito menos de aluno.
+- [ ] **Pronto quando:** Dataset privado no Hub com 50 episódios da tarefa
+
+### 52.9 Treinar o ACT no Kaggle e o SmolVLA em GPU alugada
+
+**Claude com você** · 4 h 00 min
+
+- **Fora do terminal:** ACT no T4 grátis do Kaggle; SmolVLA pede bf16 (GPU L4 ou A10 por hora, com teto de gasto). A GTX 1650 só roda o resultado.
+- [ ] **Pronto quando:** O braço faz a tarefa sozinho em 7 de 10 tentativas
+- **Precisa:** pagar um serviço
+
+### 52.10 Aula de robótica: o robô que aprende vendo você
+
+**Claude com você** · 1 h 00 min
+
+- **Fora do terminal:** Plano pela Fábrica de aulas; os alunos operam o líder, sem câmera gravando rostos.
+- [ ] **Pronto quando:** Aula dada com o SO-101 e o roteiro salvo no repositório de aulas
+
+### 52.11 Reachy Mini como corpo do Jarvis na mesa
+
+**Você** · 5 h 00 min
+
+- **Fora do terminal:** Kit para montar, entrega longa; SDK em Python ligado ao Wyoming do Home Assistant e à política do Jarvis.
+- [ ] **Pronto quando:** O Reachy ouve "hey jarvis", vira a cabeça para quem falou e responde
+- **Precisa:** comprar algo
+- Implanta: Reachy Mini (corpo do Jarvis)
+
+### 52.12 Modelo de doença de folha para o projeto agro
+
+**Claude com você** · 4 h 00 min
+
+- **Fora do terminal:** Ajuste fino no Kaggle com o PlantVillage do Hub mais as fotos de vocês; roda no Raspberry Pi do projeto.
+- [ ] **Pronto quando:** Acerta nas fotos da horta da escola, não só nas do dataset
+
 <a id="quando-entra-cada-bloco"></a>
 
 ## Quando entra cada bloco
@@ -5533,6 +5656,8 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Destilação | 23.3 | 2027, depois do primeiro fine-tuning de 8B |
 | Metabase (painéis) | 26.1 | Com a primeira página de venda no ar (jan/2027) e por etapas |
 | Análises de cliente (RFM, LTV, churn) | 26.4 | Com a primeira página de venda no ar (jan/2027) e por etapas |
+| LeRobot (robôs que aprendem) | 52.7 | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
+| Docling + Granite- Docling (documentos) | 52.5 | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
 
 ### Agentes de IA e sandbox
 
@@ -5659,3 +5784,5 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Tomadas, sensores e atuadores | 51.7 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
 | Câmeras IP (RTSP) | 51.9 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
 | Leitor do hidrômetro (ESP32-CAM) | 51.8 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Braços SO-101 (líder + seguidor) | 52.7 | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
+| Reachy Mini (corpo do Jarvis) | 52.11 | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |

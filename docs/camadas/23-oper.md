@@ -96,6 +96,7 @@ flowchart LR
     n_anth["Claude (assinatura e API)"]
   end
   subgraph L_dados["Dados e treino de IA"]
+    n_docling["Docling + Granite- Docling (documentos)"]
     n_dset["Seus datasets (só conteúdo seu)"]
   end
   subgraph L_ia["Agentes de IA e sandbox"]
@@ -173,6 +174,7 @@ flowchart LR
   n_acv -->|"indexa"| n_rag
   n_acv -->|"só o que é seu"| n_dset
   n_gdrv -->|"cópia pelo Takeout"| n_acv
+  n_docling -->|"lê os documentos"| n_acv
   n_revisor -->|"feito com"| n_agentsdk
   n_roi -->|"resultado por ferramenta"| n_painel
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
@@ -588,6 +590,7 @@ tools/acervo/acervo.py: lê todos os seus documentos sem alterar nada, acha cóp
 | → envia para | [Seus datasets (só conteúdo seu)](06-dados.md#dset) | Dados e treino de IA | só o que é seu |
 | → envia para | [Flywheel de conteúdo](23-oper.md#ofly) | Operação do grupo (esteira, marca, qualidade) | ideias de conteúdo |
 | ← recebe de | [Google Drive (seus documentos)](12-nuvem.md#gdrv) | Nuvem, código e entrega | cópia pelo Takeout |
+| ← recebe de | [Docling + Granite- Docling (documentos)](06-dados.md#docling) | Dados e treino de IA | lê os documentos |
 
 <a id="revisor"></a>
 

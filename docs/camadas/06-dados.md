@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** Os seus dados viram tabelas limpas e datasets; o treino pesado roda numa GPU da nuvem e o modelo volta para o Ollama do notebook.
 
-**19 blocos** · 2 precisam de conta · 0 marcados como futuro
+**21 blocos** · 2 precisam de conta · 0 marcados como futuro
 
 ## Mapa de conexões
 
@@ -33,6 +33,8 @@ flowchart LR
     n_destilacao["Destilação"]
     n_metabase["Metabase (painéis)"]
     n_analises["Análises de cliente (RFM, LTV, churn)"]
+    n_lerobot["LeRobot (robôs que aprendem)"]
+    n_docling["Docling + Granite- Docling (documentos)"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_acv["Acervo (seus documentos)"]
@@ -72,6 +74,8 @@ flowchart LR
   end
   subgraph L_hw["Hardware"]
     n_nb["Acer Nitro (32 GB, GTX 1650)"]
+    n_reachy["Reachy Mini (corpo do Jarvis)"]
+    n_so101["Braços SO-101 (líder + seguidor)"]
   end
   n_pyds -->|"consulta Parquet"| n_duck
   n_rt -->|"Python + uv"| n_pyds
@@ -97,12 +101,16 @@ flowchart LR
   n_nb -->|"GTX 1650 (4 GB)"| n_torch
   n_dez -->|"exercícios de redes neurais"| n_torch
   n_hf -->|"modelos base; guarda o adaptador"| n_unsl
+  n_lerobot -->|"datasets e políticas"| n_hf
+  n_reachy -->|"apps do Hub"| n_hf
+  n_docling -->|"modelo Granite-Docling"| n_hf
   n_unsl -->|"registra o treino"| n_mlflow
   n_unsl -->|"modelo treinado"| n_evals
   n_kgl -->|"GPU grátis (T4 16 GB)"| n_unsl
   n_gpuh -->|"GPU de 24 GB"| n_unsl
   n_destilacao -->|"treina em"| n_kgl
   n_gptzero -->|"treina em"| n_kgl
+  n_lerobot -->|"treino do ACT"| n_kgl
   n_evals -->|"aprovado"| n_gguf
   n_gguf -->|"importa o modelo"| n_oll
   n_docker -->|"roda"| n_paperless
@@ -111,8 +119,11 @@ flowchart LR
   n_vllm -->|"roda em"| n_gpuh
   n_metabase -->|"lê"| n_metrics
   n_analises -->|"publica"| n_metabase
+  n_lerobot -->|"treino do SmolVLA (bf16)"| n_gpuh
+  n_so101 -->|"teleoperação e gravação"| n_lerobot
+  n_docling -->|"lê os documentos"| n_acv
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_pyds,n_duck,n_dbt,n_orq,n_spark,n_dset,n_torch,n_hf,n_unsl,n_kgl,n_mlflow,n_evals,n_gguf,n_paperless,n_grocy,n_vllm,n_destilacao,n_metabase,n_analises desta
+  class n_pyds,n_duck,n_dbt,n_orq,n_spark,n_dset,n_torch,n_hf,n_unsl,n_kgl,n_mlflow,n_evals,n_gguf,n_paperless,n_grocy,n_vllm,n_destilacao,n_metabase,n_analises,n_lerobot,n_docling desta
 ```
 
 ## Blocos
@@ -138,6 +149,8 @@ flowchart LR
 | [Destilação](#destilacao) | Local | Modelo grande gera exemplos da sua tarefa; um modelo pequeno aprende a imitá-lo. | passo 23.3 · 2027, depois do primeiro fine-tuning de 8B |
 | [Metabase (painéis)](#metabase) | Local | Painéis e perguntas sobre vendas, clientes e conteúdo sem programar, em cima do banco de métricas. Local. | passo 26.1 · Com a primeira página de venda no ar (jan/2027) e por etapas |
 | [Análises de cliente (RFM, LTV, churn)](#analises) | Local | Quem compra mais, quem está sumindo, quanto vale cada cliente e previsão de receita, em Python/DuckDB. | passo 26.4 · Com a primeira página de venda no ar (jan/2027) e por etapas |
+| [LeRobot (robôs que aprendem)](#lerobot) | Local | Biblioteca da Hugging Face para gravar demonstrações, treinar políticas (ACT, SmolVLA) e rodar no robô. | passo 52.7 · Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
+| [Docling + Granite- Docling (documentos)](#docling) | Local | Converte PDF, foto e NFC-e em Markdown e JSON com tabelas: Caixa da Casa, documentos da escola, ABNT e acervo. | passo 52.5 · Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
 
 <a id="pyds"></a>
 
@@ -272,6 +285,9 @@ Transformers, PEFT, TRL e Datasets; no Hub ficam os modelos base e, em repositó
 |---|---|---|---|
 | → envia para | [Unsloth (QLoRA)](06-dados.md#unsl) | Dados e treino de IA | modelos base; guarda o adaptador |
 | ← recebe de | [Seus datasets (só conteúdo seu)](06-dados.md#dset) | Dados e treino de IA | dataset privado |
+| ← recebe de | [LeRobot (robôs que aprendem)](06-dados.md#lerobot) | Dados e treino de IA | datasets e políticas |
+| ← recebe de | [Reachy Mini (corpo do Jarvis)](01-hw.md#reachy) | Hardware | apps do Hub |
+| ← recebe de | [Docling + Granite- Docling (documentos)](06-dados.md#docling) | Dados e treino de IA | modelo Granite-Docling |
 
 <a id="unsl"></a>
 
@@ -308,6 +324,7 @@ Notebooks com GPU T4 de 16 GB sem pagar: o Kaggle dá 30 horas por semana, com s
 | → envia para | [Unsloth (QLoRA)](06-dados.md#unsl) | Dados e treino de IA | GPU grátis (T4 16 GB) |
 | ← recebe de | [Destilação](06-dados.md#destilacao) | Dados e treino de IA | treina em |
 | ← recebe de | [GPT do zero (estudo)](14-est.md#gptzero) | Estudo e carreira | treina em |
+| ← recebe de | [LeRobot (robôs que aprendem)](06-dados.md#lerobot) | Dados e treino de IA | treino do ACT |
 
 <a id="mlflow"></a>
 
@@ -439,6 +456,38 @@ Quem compra mais, quem está sumindo, quanto vale cada cliente e previsão de re
 |---|---|---|---|
 | → envia para | [DuckDB + Parquet](06-dados.md#duck) | Dados e treino de IA | roda em |
 | → envia para | [Metabase (painéis)](06-dados.md#metabase) | Dados e treino de IA | publica |
+
+<a id="lerobot"></a>
+
+### LeRobot (robôs que aprendem)
+
+*Local*
+
+Biblioteca da Hugging Face para gravar demonstrações, treinar políticas (ACT, SmolVLA) e rodar no robô.
+
+**Quando entra:** passo 52.7 · Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Hugging Face (modelos e Hub)](06-dados.md#hf) | Dados e treino de IA | datasets e políticas |
+| → envia para | [Kaggle · Colab (GPU grátis)](06-dados.md#kgl) | Dados e treino de IA | treino do ACT |
+| → envia para | [GPU por hora (RunPod e afins)](12-nuvem.md#gpuh) | Nuvem, código e entrega | treino do SmolVLA (bf16) |
+| ← recebe de | [Braços SO-101 (líder + seguidor)](01-hw.md#so101) | Hardware | teleoperação e gravação |
+
+<a id="docling"></a>
+
+### Docling + Granite- Docling (documentos)
+
+*Local*
+
+Converte PDF, foto e NFC-e em Markdown e JSON com tabelas: Caixa da Casa, documentos da escola, ABNT e acervo.
+
+**Quando entra:** passo 52.5 · Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Hugging Face (modelos e Hub)](06-dados.md#hf) | Dados e treino de IA | modelo Granite-Docling |
+| → envia para | [Acervo (seus documentos)](23-oper.md#acv) | Operação do grupo (esteira, marca, qualidade) | lê os documentos |
 
 ---
 

@@ -5788,6 +5788,142 @@
      "fora": "Quando o aura-status tiver API: o Jarvis lê dele em vez de duplicar a coleta."
     }
    ]
+  },
+  {
+   "id": "f-ia-fisica",
+   "titulo": "Hugging Face e IA física: modelos úteis e robôs que aprendem",
+   "objetivo": "Usar do Hub o que melhora o setup (voz, câmera que descreve, documentos, filtro de injeção) e começar a robótica que aprende por imitação com o SO-101 e o LeRobot.",
+   "quando": "Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino",
+   "passos": [
+    {
+     "id": "hf-conta",
+     "titulo": "Conta no Hugging Face com token só de leitura",
+     "quem": "voce",
+     "pronto": "Token de leitura guardado no KeePassXC",
+     "tempo_min": 15,
+     "blocos": [],
+     "fora": "Cadastro no site com 2FA; token de escrita só quando for publicar dataset."
+    },
+    {
+     "id": "hf-cabe",
+     "titulo": "Conferir o que cabe na GTX 1650 antes de baixar",
+     "quem": "script",
+     "pronto": "Lista dos modelos do catálogo com onde cada um roda",
+     "tempo_min": 10,
+     "blocos": [],
+     "comando": "python3 ~/dev/dev-setup/tools/ia/cabe.py --hf Qwen/Qwen3-VL-2B-Instruct",
+     "nota": "Repita para cada modelo de docs/ia/hugging-face.md."
+    },
+    {
+     "id": "hf-whisper",
+     "titulo": "Whisper mais preciso: large-v3-turbo no lugar do small",
+     "quem": "script",
+     "pronto": "As mesmas 20 frases suas com menos erros que o small",
+     "tempo_min": 30,
+     "blocos": [],
+     "comando": "cd ~/dev/dev-setup/infra/jarvis && sed -i 's/^WHISPER_MODELO=.*/WHISPER_MODELO=turbo/' .env && docker compose up -d whisper",
+     "nota": "Se a imagem não aceitar turbo, use large-v3 (int8). Grave as 20 frases antes e meça os dois."
+    },
+    {
+     "id": "hf-vlm",
+     "titulo": "Câmera que descreve: Qwen3-VL 2B local no Ollama",
+     "quem": "script",
+     "pronto": "Descreve uma foto do quintal sem internet",
+     "tempo_min": 20,
+     "blocos": [],
+     "comando": "ollama pull qwen3-vl:2b",
+     "nota": "Depois ligue no Frigate (descrição dos eventos por modelo local). Imagem da casa nunca vai para IA na nuvem."
+    },
+    {
+     "id": "hf-docling",
+     "titulo": "Docling para NFC-e, documentos da escola e acervo",
+     "quem": "script",
+     "pronto": "Uma NFC-e e um plano de aula viram Markdown com as tabelas certas",
+     "tempo_min": 30,
+     "blocos": [
+      "docling"
+     ],
+     "comando": "pipx install docling",
+     "nota": "Teste o Granite-Docling em português antes de ligar ao Caixa da Casa e ao verificador ABNT."
+    },
+    {
+     "id": "hf-promptguard",
+     "titulo": "Filtro de injeção de prompt antes do Jarvis agir",
+     "quem": "claude",
+     "pronto": "20 frases de ataque em português barradas e 20 pedidos normais liberados",
+     "tempo_min": 90,
+     "blocos": [],
+     "fora": "Llama Prompt Guard 2 (86M) no lab-ia; só entra no Jarvis se acertar em português."
+    },
+    {
+     "id": "hf-so101",
+     "titulo": "Comprar e montar o par de braços SO-101",
+     "quem": "voce",
+     "pronto": "Os dois braços calibrados; o seguidor copia o líder",
+     "tempo_min": 480,
+     "blocos": [
+      "so101",
+      "lerobot"
+     ],
+     "precisa": [
+      "compra"
+     ],
+     "fora": "Kit com motores e peças impressas (ou imprimir em PLA+), 2 câmeras USB; montagem e calibração pelo guia do LeRobot (há versão em português na wiki da Seeed)."
+    },
+    {
+     "id": "hf-dataset",
+     "titulo": "Gravar 50 demonstrações de uma tarefa simples",
+     "quem": "voce",
+     "pronto": "Dataset privado no Hub com 50 episódios da tarefa",
+     "tempo_min": 180,
+     "blocos": [],
+     "fora": "lerobot-record com o líder; tarefa de pegar e colocar numa caixa. Sem rosto de ninguém, muito menos de aluno."
+    },
+    {
+     "id": "hf-treino",
+     "titulo": "Treinar o ACT no Kaggle e o SmolVLA em GPU alugada",
+     "quem": "claude",
+     "pronto": "O braço faz a tarefa sozinho em 7 de 10 tentativas",
+     "tempo_min": 240,
+     "blocos": [],
+     "precisa": [
+      "pagamento"
+     ],
+     "fora": "ACT no T4 grátis do Kaggle; SmolVLA pede bf16 (GPU L4 ou A10 por hora, com teto de gasto). A GTX 1650 só roda o resultado."
+    },
+    {
+     "id": "hf-aula",
+     "titulo": "Aula de robótica: o robô que aprende vendo você",
+     "quem": "claude",
+     "pronto": "Aula dada com o SO-101 e o roteiro salvo no repositório de aulas",
+     "tempo_min": 60,
+     "blocos": [],
+     "fora": "Plano pela Fábrica de aulas; os alunos operam o líder, sem câmera gravando rostos."
+    },
+    {
+     "id": "hf-reachy",
+     "titulo": "Reachy Mini como corpo do Jarvis na mesa",
+     "quem": "voce",
+     "pronto": "O Reachy ouve \"hey jarvis\", vira a cabeça para quem falou e responde",
+     "tempo_min": 300,
+     "blocos": [
+      "reachy"
+     ],
+     "precisa": [
+      "compra"
+     ],
+     "fora": "Kit para montar, entrega longa; SDK em Python ligado ao Wyoming do Home Assistant e à política do Jarvis."
+    },
+    {
+     "id": "hf-agro",
+     "titulo": "Modelo de doença de folha para o projeto agro",
+     "quem": "claude",
+     "pronto": "Acerta nas fotos da horta da escola, não só nas do dataset",
+     "tempo_min": 240,
+     "blocos": [],
+     "fora": "Ajuste fino no Kaggle com o PlantVillage do Hub mais as fotos de vocês; roda no Raspberry Pi do projeto."
+    }
+   ]
   }
  ]
 }
