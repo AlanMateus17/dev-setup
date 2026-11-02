@@ -5791,8 +5791,8 @@
   },
   {
    "id": "f-ia-fisica",
-   "titulo": "Hugging Face e IA física: modelos úteis e robôs que aprendem",
-   "objetivo": "Usar do Hub o que melhora o setup (voz, câmera que descreve, documentos, filtro de injeção) e começar a robótica que aprende por imitação com o SO-101 e o LeRobot.",
+   "titulo": "Hugging Face e IA física: TI, casa inteligente e agropecuária",
+   "objetivo": "Usar do Hub o que melhora o setup (TI primeiro), levar a casa inteligente para a horta e o curral e começar a robótica que aprende por imitação com o SO-101 e o LeRobot.",
    "quando": "Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino",
    "passos": [
     {
@@ -5915,13 +5915,61 @@
      "fora": "Kit para montar, entrega longa; SDK em Python ligado ao Wyoming do Home Assistant e à política do Jarvis."
     },
     {
-     "id": "hf-agro",
-     "titulo": "Modelo de doença de folha para o projeto agro",
-     "quem": "claude",
-     "pronto": "Acerta nas fotos da horta da escola, não só nas do dataset",
-     "tempo_min": 240,
+     "id": "hf-coder",
+     "titulo": "Autocompletar offline: Qwen2.5-Coder 1.5B no VS Code",
+     "quem": "script",
+     "pronto": "Sugestões de código com a internet desligada",
+     "tempo_min": 20,
      "blocos": [],
-     "fora": "Ajuste fino no Kaggle com o PlantVillage do Hub mais as fotos de vocês; roda no Raspberry Pi do projeto."
+     "comando": "ollama pull qwen2.5-coder:1.5b",
+     "nota": "Ligue no Continue (VS Code) como modelo de autocompletar; o Copilot e o Claude seguem para tarefa grande."
+    },
+    {
+     "id": "hf-horta",
+     "titulo": "Horta com irrigação automática (umidade do solo e previsão de chuva)",
+     "quem": "voce",
+     "pronto": "A horta se irriga sozinha por 30 dias e não irriga quando vai chover",
+     "tempo_min": 240,
+     "blocos": [
+      "kitcampo"
+     ],
+     "precisa": [
+      "compra"
+     ],
+     "fora": "ESP32 com sensor de umidade capacitivo e válvula solenoide pelo ESPHome; previsão pela integração Open-Meteo do Home Assistant; abrir válvula fica no nível voz da política."
+    },
+    {
+     "id": "hf-bebedouro",
+     "titulo": "Bebedouro, cocho e balança no painel",
+     "quem": "voce",
+     "pronto": "Aviso no celular quando o bebedouro baixa de 20%",
+     "tempo_min": 180,
+     "blocos": [],
+     "precisa": [
+      "compra"
+     ],
+     "fora": "Ultrassom à prova d'água no bebedouro e no cocho, célula de carga com HX711 na balança; LoRa onde o Wi-Fi não chega."
+    },
+    {
+     "id": "hf-gado",
+     "titulo": "Contagem de gado por câmera no Frigate",
+     "quem": "claude",
+     "pronto": "Contagem do curral batendo com a contagem à mão em 9 de 10 vezes",
+     "tempo_min": 300,
+     "blocos": [],
+     "fora": "Modelo de gado do Hub retreinado no Kaggle com fotos do rebanho (de um produtor parceiro ou do seu); roda local no servidor da casa."
+    },
+    {
+     "id": "hf-campo",
+     "titulo": "AMtech Campo: o primeiro sítio instalado",
+     "quem": "voce",
+     "pronto": "Um produtor com irrigação ou bebedouro no painel e mensalidade paga",
+     "tempo_min": 480,
+     "blocos": [],
+     "ofertas": [
+      "agrotec"
+     ],
+     "fora": "Só depois do seu caso rodando 3 meses; contrato simples, placas com rádio já homologadas pela Anatel e visita de manutenção combinada."
     }
    ]
   }

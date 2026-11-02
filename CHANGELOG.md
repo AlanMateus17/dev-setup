@@ -2,6 +2,18 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.5.1] - 2026-11-02
+
+### Alterado
+- Catálogo do Hugging Face com foco em TI (primeiro), casa inteligente e agropecuária; TI ganhou o Qwen2.5-Coder 1.5B para autocompletar offline.
+- Agropecuária no lugar do modelo de doença de folha: pecuária (contagem de gado por câmera, bebedouro, cocho e balança), lavoura e horta (irrigação por umidade e previsão de chuva, LoRa, datasets de erva daninha) e o negócio AMtech Campo.
+
+### Adicionado
+- Bloco Kit de campo; oferta Automação e monitoramento para sítios e produtores (AMtech Campo, 2027); fase 52 com 16 passos.
+
+### Removido
+- Passo hf-agro (modelo de doença de folha para o projeto da escola).
+
 ## [2.5.0] - 2026-11-02
 
 ### Adicionado

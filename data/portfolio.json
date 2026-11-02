@@ -4538,6 +4538,52 @@
     "crm",
     "horas"
    ]
+  },
+  {
+   "id": "agrotec",
+   "nome": "Automação e monitoramento para sítios e produtores (AMtech Campo)",
+   "frente": "campo",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "instalação + mensalidade do painel",
+   "escala": "local",
+   "canais": [
+    "indicação",
+    "Google Perfil",
+    "cooperativas e lojas agropecuárias"
+   ],
+   "automatico": [
+    "painel e avisos no celular",
+    "relatório mensal de água e consumo"
+   ],
+   "humano": [
+    "visita e instalação",
+    "manutenção"
+   ],
+   "deriva_de": [
+    "casainteligente"
+   ],
+   "proximo_passo": "Irrigação da horta e bebedouro funcionando na sua casa por 3 meses, com o painel",
+   "metrica": "sítios instalados e mensalidades ativas",
+   "nota": {
+    "sinergia": 4,
+    "escala": 2,
+    "demanda": 3,
+    "esforco": 3,
+    "capital": 2
+   },
+   "doc": "../ia/hugging-face.md",
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 50,
+   "veredito": "em2027",
+   "motivo": "Usa o mesmo Home Assistant, ESPHome e MQTT da casa; portão: o seu caso rodando 3 meses. Placas com rádio já homologadas pela Anatel.",
+   "lote": "2026-11",
+   "usa": [
+    "crm",
+    "recorrencia",
+    "horas"
+   ]
   }
  ],
  "regras": {

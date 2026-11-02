@@ -47,4 +47,4 @@
 - [04 · Linux (Ubuntu no WSL2, Arch no 2º disco)](camadas/04-lin.md) (13 blocos)
 - [03 · Windows 11, apps e máquinas virtuais](camadas/03-win.md) (25 blocos)
 - [02 · Segurança e cofre](camadas/02-seg.md) (20 blocos)
-- [01 · Hardware](camadas/01-hw.md) (24 blocos)
+- [01 · Hardware](camadas/01-hw.md) (25 blocos)

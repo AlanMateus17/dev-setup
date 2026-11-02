@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-53 fases, 435 passos, cerca de **1343 h 33 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+53 fases, 439 passos, cerca de **1359 h 53 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
-**Todo o planejamento está aqui:** os 404 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 105 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
+**Todo o planejamento está aqui:** os 405 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 106 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 332 dos 435 passos (376 h 53 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 334 dos 439 passos (386 h 13 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -66,7 +66,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [49 · Estudo contínuo](#f33) | Contínuo, desde a semana 2 | 12 | 3 h 30 min |
 | [50 · Engenharia reversa, AppSec e pentest](#f-seguranca) | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) | 16 | 71 h 15 min |
 | [51 · Jarvis: o setup e a casa por comando de voz](#f-jarvis) | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas | 13 | 30 h 50 min |
-| [52 · Hugging Face e IA física: modelos úteis e robôs que aprendem](#f-ia-fisica) | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino | 12 | 28 h 15 min |
+| [52 · Hugging Face e IA física: TI, casa inteligente e agropecuária](#f-ia-fisica) | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino | 16 | 44 h 35 min |
 
 <a id="f0"></a>
 
@@ -5142,9 +5142,9 @@ mkdir -p ~/.config/amtech && cp -n ~/dev/dev-setup/tools/jarvis/politica.example
 
 <a id="f-ia-fisica"></a>
 
-## 52 · Hugging Face e IA física: modelos úteis e robôs que aprendem
+## 52 · Hugging Face e IA física: TI, casa inteligente e agropecuária
 
-Usar do Hub o que melhora o setup (voz, câmera que descreve, documentos, filtro de injeção) e começar a robótica que aprende por imitação com o SO-101 e o LeRobot.
+Usar do Hub o que melhora o setup (TI primeiro), levar a casa inteligente para a horta e o curral e começar a robótica que aprende por imitação com o SO-101 e o LeRobot.
 
 **Quando:** Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino
 
@@ -5255,12 +5255,50 @@ pipx install docling
 - **Precisa:** comprar algo
 - Implanta: Reachy Mini (corpo do Jarvis)
 
-### 52.12 Modelo de doença de folha para o projeto agro
+### 52.12 Autocompletar offline: Qwen2.5-Coder 1.5B no VS Code
 
-**Claude com você** · 4 h 00 min
+**Script** · 20 min
 
-- **Fora do terminal:** Ajuste fino no Kaggle com o PlantVillage do Hub mais as fotos de vocês; roda no Raspberry Pi do projeto.
-- [ ] **Pronto quando:** Acerta nas fotos da horta da escola, não só nas do dataset
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+ollama pull qwen2.5-coder:1.5b
+```
+
+- [ ] **Pronto quando:** Sugestões de código com a internet desligada
+- Ligue no Continue (VS Code) como modelo de autocompletar; o Copilot e o Claude seguem para tarefa grande.
+
+### 52.13 Horta com irrigação automática (umidade do solo e previsão de chuva)
+
+**Você** · 4 h 00 min
+
+- **Fora do terminal:** ESP32 com sensor de umidade capacitivo e válvula solenoide pelo ESPHome; previsão pela integração Open-Meteo do Home Assistant; abrir válvula fica no nível voz da política.
+- [ ] **Pronto quando:** A horta se irriga sozinha por 30 dias e não irriga quando vai chover
+- **Precisa:** comprar algo
+- Implanta: Kit de campo (LoRa, umidade, ultrassom)
+
+### 52.14 Bebedouro, cocho e balança no painel
+
+**Você** · 3 h 00 min
+
+- **Fora do terminal:** Ultrassom à prova d'água no bebedouro e no cocho, célula de carga com HX711 na balança; LoRa onde o Wi-Fi não chega.
+- [ ] **Pronto quando:** Aviso no celular quando o bebedouro baixa de 20%
+- **Precisa:** comprar algo
+
+### 52.15 Contagem de gado por câmera no Frigate
+
+**Claude com você** · 5 h 00 min
+
+- **Fora do terminal:** Modelo de gado do Hub retreinado no Kaggle com fotos do rebanho (de um produtor parceiro ou do seu); roda local no servidor da casa.
+- [ ] **Pronto quando:** Contagem do curral batendo com a contagem à mão em 9 de 10 vezes
+
+### 52.16 AMtech Campo: o primeiro sítio instalado
+
+**Você** · 8 h 00 min
+
+- **Fora do terminal:** Só depois do seu caso rodando 3 meses; contrato simples, placas com rádio já homologadas pela Anatel e visita de manutenção combinada.
+- [ ] **Pronto quando:** Um produtor com irrigação ou bebedouro no painel e mensalidade paga
+- **Oferta:** Automação e monitoramento para sítios e produtores (AMtech Campo)
 
 <a id="quando-entra-cada-bloco"></a>
 
@@ -5786,3 +5824,4 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Leitor do hidrômetro (ESP32-CAM) | 51.8 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
 | Braços SO-101 (líder + seguidor) | 52.7 | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
 | Reachy Mini (corpo do Jarvis) | 52.11 | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
+| Kit de campo (LoRa, umidade, ultrassom) | 52.13 | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |

@@ -22,3 +22,4 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-02: próximo do Jarvis: jv-claude-voz e jv-voz (nada a comprar). Compras em ordem: servidor da casa → coordenador Zigbee e tomadas → satélite ESP32-S3 → câmeras → leitor do hidrômetro.
 - 2026-11-02: v2.5: catálogo do Hugging Face filtrado pela GTX 1650 (docs/ia/hugging-face.md) e fase 52 (IA física); cabe.py --hf.
 - 2026-11-02: compras em ordem: servidor da casa → par SO-101 + 2 câmeras USB → Reachy Mini → LeKiwi; GPU de 12 GB só depois do portão. Conferir preço no Brasil com impostos antes.
+- 2026-11-02: v2.5.1: foco em TI, casa inteligente e agropecuária; saiu o modelo de folha; entraram horta, bebedouro, gado por câmera e a oferta AMtech Campo (portão: o seu caso rodando 3 meses).

@@ -3196,6 +3196,15 @@
    "descricao": "Robô de mesa aberto da Hugging Face e Pollen: 4 microfones, câmera, alto-falante e cabeça que se mexe, programado em Python."
   },
   {
+   "id": "kitcampo",
+   "camada": "hw",
+   "rotulo": "Kit de campo (LoRa,|umidade, ultrassom)",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": true,
+   "descricao": "ESP32 com rádio LoRa, sensores de umidade capacitivos, válvula solenoide, ultrassom e célula de carga: horta, irrigação, bebedouro, cocho e balança."
+  },
+  {
    "id": "paperless",
    "camada": "dados",
    "rotulo": "Paperless-ngx",
@@ -7374,6 +7383,16 @@
    "de": "docling",
    "para": "acv",
    "rotulo": "lê os documentos"
+  },
+  {
+   "de": "kitcampo",
+   "para": "esphome",
+   "rotulo": "firmware"
+  },
+  {
+   "de": "kitcampo",
+   "para": "mqtt",
+   "rotulo": "leituras de longe"
   }
  ],
  "fluxos": [

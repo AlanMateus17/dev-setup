@@ -80,6 +80,7 @@ flowchart LR
     n_aguacam["Leitor do hidrômetro (ESP32-CAM)"]
     n_cams["Câmeras IP (RTSP)"]
     n_ha["Home Assistant"]
+    n_kitcampo["Kit de campo (LoRa, umidade, ultrassom)"]
     n_rob["Arduino · ESP32 · Pi"]
     n_satvoz["Satélites de voz (ESP32-S3)"]
     n_zbdongle["Coordenador Zigbee (USB)"]
@@ -129,11 +130,13 @@ flowchart LR
   n_frigate -->|"eventos"| n_mqtt
   n_aguacam -->|"leitura do hidrômetro"| n_mqtt
   n_ros2 -->|"ponte"| n_mqtt
+  n_kitcampo -->|"leituras de longe"| n_mqtt
   n_zbdongle -->|"rádio"| n_z2m
   n_cams -->|"RTSP"| n_frigate
   n_esphome -->|"entidades"| n_ha
   n_satvoz -->|"firmware"| n_esphome
   n_rob -->|"ESP32"| n_esphome
+  n_kitcampo -->|"firmware"| n_esphome
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_caddy,n_mailp,n_kafka,n_k8st,n_clis,n_datomic,n_docker,n_pg,n_redis,n_rmq,n_kind,n_tf,n_mqtt,n_z2m,n_frigate,n_esphome desta
 ```
@@ -378,6 +381,7 @@ Barramento da casa: Zigbee2MQTT, Frigate, leitor do hidrômetro e os robôs publ
 | ← recebe de | [Frigate (câmeras com detecção)](09-cnt.md#frigate) | Containers, Kubernetes e infra como código | eventos |
 | ← recebe de | [Leitor do hidrômetro (ESP32-CAM)](01-hw.md#aguacam) | Hardware | leitura do hidrômetro |
 | ← recebe de | [ROS 2 + ponte MQTT](04-lin.md#ros2) | Linux (Ubuntu no WSL2, Arch no 2º disco) | ponte |
+| ← recebe de | [Kit de campo (LoRa, umidade, ultrassom)](01-hw.md#kitcampo) | Hardware | leituras de longe |
 
 <a id="z2m"></a>
 
@@ -424,6 +428,7 @@ Firmware por arquivo de configuração para ESP32: satélites de voz, sensores e
 | → envia para | [Home Assistant](01-hw.md#ha) | Hardware | entidades |
 | ← recebe de | [Satélites de voz (ESP32-S3)](01-hw.md#satvoz) | Hardware | firmware |
 | ← recebe de | [Arduino · ESP32 · Pi](01-hw.md#rob) | Hardware | ESP32 |
+| ← recebe de | [Kit de campo (LoRa, umidade, ultrassom)](01-hw.md#kitcampo) | Hardware | firmware |
 
 ---
 
