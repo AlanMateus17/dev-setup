@@ -58,7 +58,7 @@ function Assert-Desligada {
 }
 
 function Show-Status {
-  param([string]$Nome)
+  param([string]$Nome, [string]$NomeRede)
   if (-not (Test-VmExiste -Nome $Nome)) { Write-Host "FALTA  VM '$Nome' nao existe no VirtualBox"; return $false }
   $i = Get-InfoVm -Nome $Nome
   $isolada = $true
@@ -67,7 +67,7 @@ function Show-Status {
     $tipo = $i["nic$n"]
     if ($tipo -and $tipo -ne 'none') {
       $placas += "nic$n=$tipo" + $(if ($tipo -eq 'intnet') { "($($i["intnet$n"]))" } else { '' })
-      if ($tipo -ne 'intnet' -or $i["intnet$n"] -ne $Rede) { $isolada = $false }
+      if ($tipo -ne 'intnet' -or $i["intnet$n"] -ne $NomeRede) { $isolada = $false }
     }
   }
   $pastas = @($i.Keys | Where-Object { $_ -like 'SharedFolderNameMachineMapping*' }).Count
@@ -79,27 +79,27 @@ function Show-Status {
 }
 
 function Invoke-Isolamento {
-  param([string]$Nome)
+  param([string]$Nome, [string]$NomeRede)
   Assert-Desligada -Nome $Nome
-  Invoke-VBox -Argumentos @('modifyvm', $Nome, '--nic1', 'intnet', '--intnet1', $Rede, '--nic2', 'none', '--nic3', 'none', '--nic4', 'none',
+  Invoke-VBox -Argumentos @('modifyvm', $Nome, '--nic1', 'intnet', '--intnet1', $NomeRede, '--nic2', 'none', '--nic3', 'none', '--nic4', 'none',
                             '--clipboard-mode', 'disabled', '--drag-and-drop', 'disabled') | Out-Null
   $i = Get-InfoVm -Nome $Nome
   foreach ($k in @($i.Keys | Where-Object { $_ -like 'SharedFolderNameMachineMapping*' })) {
     Invoke-VBox -Argumentos @('sharedfolder', 'remove', $Nome, '--name', $i[$k]) | Out-Null
   }
-  Write-Host "OK     '$Nome' so fala na rede interna $Rede, sem pasta compartilhada e sem area de transferencia"
+  Write-Host "OK     '$Nome' so fala na rede interna $NomeRede, sem pasta compartilhada e sem area de transferencia"
 }
 
 switch ($Acao) {
   'status' {
-    $a = Show-Status -Nome $Kali
-    $b = Show-Status -Nome $Alvo
+    $a = Show-Status -Nome $Kali -NomeRede $Rede
+    $b = Show-Status -Nome $Alvo -NomeRede $Rede
     if ($a -and $b) { Write-Host "Laboratorio isolado. Dentro do Kali: ip a, e nmap na faixa da rede interna." }
     else { Write-Host "Rode -Acao isolar com as duas VMs desligadas." }
   }
   'isolar' {
-    Invoke-Isolamento -Nome $Kali
-    Invoke-Isolamento -Nome $Alvo
+    Invoke-Isolamento -Nome $Kali -NomeRede $Rede
+    Invoke-Isolamento -Nome $Alvo -NomeRede $Rede
     Write-Host "Na rede interna nao ha DHCP: configure IP fixo nas duas (ex.: Kali 10.66.0.10/24 e Alvo 10.66.0.20/24)."
   }
   'snapshot' {
