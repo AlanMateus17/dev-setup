@@ -2,6 +2,20 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.6.0] - 2026-11-02
+
+### Adicionado
+- Construção civil, arquitetura e engenharia civil pela TI (docs/construcao): BIM aberto (Bonsai 0.8.5 com IfcOpenShell e ifcopenshell-mcp, FreeCAD 1.1), Autodesk educacional para professor (só estudo e ensino), QGIS, análise e energia (FreeCAD FEM, PyNite, EnergyPlus), Speckle, SINAPI; trilha de conceitos em 8 blocos, normas que importam (sem PDF pirata) e o que pode alimentar a IA.
+- infra/templates/regras-ia/construcao.md: regras para a IA em engenharia (quem assina, memória de cálculo, norma com número e ano, SINAPI com mês e UF, LGPD, formatos abertos).
+- tools/construcao/ifc_resumo.py: resumo de qualquer IFC (esquema, pavimentos, elementos e quantidades), sem dependências, com 7 testes.
+- 9 blocos, fluxo "do modelo BIM à estimativa da obra", fase 53 (13 passos) e as ofertas Automação BIM para escritórios e AM Obra.
+
+### Corrigido
+- Pacote de contexto (contexto.py): as regras da seção "Nunca" saíam como se fossem permitidas; agora saem com "NUNCA:" na frente, com teste.
+- Regras da IA ganharam as travas de segurança (escopo.py) e da casa (política do Jarvis).
+- ESTADO.md de 02/11 compactado em 5 linhas, como manda a regra.
+- Artefatos de Acompanhamento, Portfólio, Mapa e Ecossistema republicados com os dados atuais (o progresso marcado continua salvo).
+
 ## [2.5.1] - 2026-11-02
 
 ### Alterado

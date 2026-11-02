@@ -2881,6 +2881,15 @@
    "descricao": "App dos sistemas AM no celular, em C# como o resto do Aura. Entra em 2028; Kotlin, Swift e Flutter ficam fora para não abrir outra stack."
   },
   {
+   "id": "nobra",
+   "camada": "app",
+   "rotulo": "AM Obra (diário,|medição, compras)",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Sistema AM para pequenas construtoras: diário de obra, medição, compras e estimativa pelo SINAPI, lendo o IFC."
+  },
+  {
    "id": "ocatal",
    "camada": "oper",
    "rotulo": "Portfólio de ofertas",
@@ -3113,6 +3122,42 @@
    "conta": false,
    "futuro": false,
    "descricao": "Mede sozinho em que programas e sites vai o seu tempo. Base do retorno por hora de cada renda. Fica no seu PC."
+  },
+  {
+   "id": "bonsai",
+   "camada": "win",
+   "rotulo": "Bonsai + IfcOpenShell|(BIM aberto)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "BIM no formato aberto IFC dentro do Blender: plantas, cortes e quantitativos, de graça."
+  },
+  {
+   "id": "freecad",
+   "camada": "win",
+   "rotulo": "FreeCAD 1.1 (BIM,|2D e FEM)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Desenho técnico, BIM e elementos finitos no mesmo programa aberto."
+  },
+  {
+   "id": "adskedu",
+   "camada": "win",
+   "rotulo": "Autodesk educacional|(Revit, Civil 3D)",
+   "tipo": "local",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Revit, AutoCAD, Civil 3D e Robot Structural grátis para professor; só estudo e ensino, nunca trabalho pago."
+  },
+  {
+   "id": "qgis",
+   "camada": "win",
+   "rotulo": "QGIS (terreno e|mapas)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Topografia, mapa do terreno e dados do IBGE e da prefeitura."
   },
   {
    "id": "ha",
@@ -3574,6 +3619,15 @@
    "descricao": "Monta listas de negócios a partir de dados públicos e rascunha a abordagem; você aprova cada contato."
   },
   {
+   "id": "ifcresumo",
+   "camada": "oper",
+   "rotulo": "Resumo de IFC|(ifc_resumo.py)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "tools/construcao/ifc_resumo.py: pavimentos, elementos e quantidades de qualquer modelo IFC, sem instalar nada."
+  },
+  {
    "id": "aiusage",
    "camada": "ia",
    "rotulo": "ai-usagebar (Akita)",
@@ -3608,6 +3662,15 @@
    "conta": true,
    "futuro": false,
    "descricao": "Uma chave para dezenas de modelos, alguns grátis com limite; reserva no gateway."
+  },
+  {
+   "id": "speckle",
+   "camada": "nuvem",
+   "rotulo": "Speckle (modelos|na web)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": true,
+   "descricao": "Plataforma aberta para levar modelos à web com versões e API."
   },
   {
    "id": "posthog",
@@ -3662,6 +3725,15 @@
    "conta": false,
    "futuro": false,
    "descricao": "Converte PDF, foto e NFC-e em Markdown e JSON com tabelas: Caixa da Casa, documentos da escola, ABNT e acervo."
+  },
+  {
+   "id": "sinapi",
+   "camada": "dados",
+   "rotulo": "SINAPI (custos|de MG, Caixa)",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Custos de referência da construção por estado, todo mês, em Excel: base das estimativas, sempre com mês e UF."
   },
   {
    "id": "chatwoot",
@@ -3752,6 +3824,15 @@
    "conta": false,
    "futuro": false,
    "descricao": "Você fala com o /voice e ele responde em voz pelo hook tools/jarvis/falar.py (Piper local): pastas, arquivos, pesquisa, repositórios e PRs."
+  },
+  {
+   "id": "ifcmcp",
+   "camada": "ia",
+   "rotulo": "MCP do IfcOpenShell",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "O Claude consulta e edita o modelo IFC por MCP (ifcopenshell-mcp), seguindo as regras de construção."
   },
   {
    "id": "esteira",
@@ -7393,6 +7474,56 @@
    "de": "kitcampo",
    "para": "mqtt",
    "rotulo": "leituras de longe"
+  },
+  {
+   "de": "bonsai",
+   "para": "ifcresumo",
+   "rotulo": "exporta IFC"
+  },
+  {
+   "de": "freecad",
+   "para": "ifcresumo",
+   "rotulo": "exporta IFC"
+  },
+  {
+   "de": "adskedu",
+   "para": "ifcresumo",
+   "rotulo": "IFC do Revit"
+  },
+  {
+   "de": "qgis",
+   "para": "bonsai",
+   "rotulo": "terreno"
+  },
+  {
+   "de": "ifcmcp",
+   "para": "bonsai",
+   "rotulo": "consulta e edita o modelo"
+  },
+  {
+   "de": "ifcmcp",
+   "para": "mcp",
+   "rotulo": "fala por MCP"
+  },
+  {
+   "de": "ifcresumo",
+   "para": "nobra",
+   "rotulo": "quantidades"
+  },
+  {
+   "de": "sinapi",
+   "para": "nobra",
+   "rotulo": "preços do mês"
+  },
+  {
+   "de": "bonsai",
+   "para": "speckle",
+   "rotulo": "publica na web"
+  },
+  {
+   "de": "nobra",
+   "para": "nsoft",
+   "rotulo": "produto"
   }
  ],
  "fluxos": [
@@ -8121,6 +8252,28 @@
     {
      "bloco": "dispcasa",
      "descricao": "A tomada desliga, e o Piper confirma em voz."
+    }
+   ]
+  },
+  {
+   "id": "obra",
+   "titulo": "Do modelo BIM à estimativa da obra",
+   "passos": [
+    {
+     "bloco": "qgis",
+     "descricao": "O terreno sai do QGIS."
+    },
+    {
+     "bloco": "bonsai",
+     "descricao": "A casa é modelada em IFC no Bonsai."
+    },
+    {
+     "bloco": "ifcresumo",
+     "descricao": "O resumo confere pavimentos, elementos e quantidades."
+    },
+    {
+     "bloco": "nobra",
+     "descricao": "O AM Obra cruza as quantidades com os preços do SINAPI-MG do mês: estimativa para o profissional revisar."
     }
    ]
   }

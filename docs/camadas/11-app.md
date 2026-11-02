@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** A API envia logs, métricas e traces pelo OpenTelemetry.
 
-**18 blocos** · 0 precisam de conta · 7 marcados como futuro
+**19 blocos** · 0 precisam de conta · 8 marcados como futuro
 
 ## Mapa de conexões
 
@@ -32,8 +32,10 @@ flowchart LR
     n_nkaix["AM Kaixara (PDV e cardápio)"]
     n_nrot["AM Rotara (entregas)"]
     n_mobile["App mobile (.NET MAUI)"]
+    n_nobra["AM Obra (diário, medição, compras)"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
+    n_ifcresumo["Resumo de IFC (ifc_resumo.py)"]
     n_ocomp["Agente comprador"]
   end
   subgraph L_venda["Plataformas de venda e recebimento"]
@@ -87,6 +89,9 @@ flowchart LR
     n_anth["Claude (assinatura e API)"]
     n_ccan["Conectores Canva + Figma"]
     n_peng["Plugins: engineering + design"]
+  end
+  subgraph L_dados["Dados e treino de IA"]
+    n_sinapi["SINAPI (custos de MG, Caixa)"]
   end
   subgraph L_ia["Agentes de IA e sandbox"]
     n_jarvis["Jarvis (porta única dos agentes)"]
@@ -170,8 +175,11 @@ flowchart LR
   n_nrot -->|"app e painel"| n_ndeliv
   n_nrot -->|"repasses"| n_caixa
   n_nsoft -->|"constrói"| n_nrot
+  n_nobra -->|"produto"| n_nsoft
+  n_ifcresumo -->|"quantidades"| n_nobra
+  n_sinapi -->|"preços do mês"| n_nobra
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_oapi,n_gis,n_story,n_clean,n_ef,n_sig,n_rls,n_tests,n_shared,n_front,n_api,n_auth,n_ai,n_lic,n_status,n_nkaix,n_nrot,n_mobile desta
+  class n_oapi,n_gis,n_story,n_clean,n_ef,n_sig,n_rls,n_tests,n_shared,n_front,n_api,n_auth,n_ai,n_lic,n_status,n_nkaix,n_nrot,n_mobile,n_nobra desta
 ```
 
 ## Blocos
@@ -196,6 +204,7 @@ flowchart LR
 | [AM Kaixara (PDV e cardápio)](#nkaix) | Remoto · futuro | PDV, comandas, ordem de serviço, estoque, ficha técnica e engenharia de cardápio. Roda primeiro na loja e nos restaurantes do grupo. | passo 38.12 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 42.2 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
 | [AM Rotara (entregas)](#nrot) | Remoto · futuro | Pedidos, roteirização com PostGIS, app do entregador, prova de entrega e repasse semanal. Base da AM Entregas e do AM Delivery. | passo 42.3 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente); passo 42.5 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
 | [App mobile (.NET MAUI)](#mobile) | Local · futuro | App dos sistemas AM no celular, em C# como o resto do Aura. Entra em 2028; Kotlin, Swift e Flutter ficam fora para não abrir outra stack. | passo 46.6 · 2028 |
+| [AM Obra (diário, medição, compras)](#nobra) | Remoto · futuro | Sistema AM para pequenas construtoras: diário de obra, medição, compras e estimativa pelo SINAPI, lendo o IFC. | passo 53.12 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 
 <a id="oapi"></a>
 
@@ -514,6 +523,22 @@ App dos sistemas AM no celular, em C# como o resto do Aura. Entra em 2028; Kotli
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | HTTP + SignalR |
+
+<a id="nobra"></a>
+
+### AM Obra (diário, medição, compras)
+
+*Remoto · futuro*
+
+Sistema AM para pequenas construtoras: diário de obra, medição, compras e estimativa pelo SINAPI, lendo o IFC.
+
+**Quando entra:** passo 53.12 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [AMtech Software (projetos e SaaS)](16-neg.md#nsoft) | Negócios do grupo (Barbacena) | produto |
+| ← recebe de | [Resumo de IFC (ifc_resumo.py)](23-oper.md#ifcresumo) | Operação do grupo (esteira, marca, qualidade) | quantidades |
+| ← recebe de | [SINAPI (custos de MG, Caixa)](06-dados.md#sinapi) | Dados e treino de IA | preços do mês |
 
 ---
 

@@ -4584,6 +4584,98 @@
     "recorrencia",
     "horas"
    ]
+  },
+  {
+   "id": "automacaobim",
+   "nome": "Automação BIM e modelagem para escritórios de engenharia e arquitetura",
+   "frente": "servicos",
+   "tipo": "serviço",
+   "estagio": "ideia",
+   "receita": "por script ou pacote mensal",
+   "escala": "produtizado",
+   "canais": [
+    "escritórios da região",
+    "LinkedIn",
+    "comunidade OSArch"
+   ],
+   "automatico": [
+    "scripts IfcOpenShell reaproveitados",
+    "conferência de modelos",
+    "relatórios de quantidades"
+   ],
+   "humano": [
+    "entender o fluxo do escritório",
+    "modelar e documentar para quem assina"
+   ],
+   "deriva_de": [],
+   "proximo_passo": "Publicar 3 scripts úteis de IFC no GitHub e oferecer a 2 escritórios de Barbacena",
+   "metrica": "horas economizadas por escritório e contratos",
+   "nota": {
+    "sinergia": 4,
+    "escala": 3,
+    "demanda": 3,
+    "esforco": 3,
+    "capital": 1
+   },
+   "doc": "../construcao/README.md",
+   "nova": true,
+   "perfil": "ativa_boa",
+   "automacao": 60,
+   "veredito": "fila",
+   "motivo": "É TI aplicada à construção: você automatiza e modela, o engenheiro ou arquiteto revisa e assina. Portão: os 3 scripts e um escritório parceiro.",
+   "lote": "2026-11",
+   "usa": [
+    "crm",
+    "ci",
+    "horas"
+   ]
+  },
+  {
+   "id": "amobra",
+   "nome": "AM Obra: diário, medição, compras e estimativa para pequenas construtoras",
+   "frente": "software",
+   "tipo": "SaaS",
+   "estagio": "ideia",
+   "receita": "mensalidade",
+   "escala": "digital",
+   "canais": [
+    "construtoras pequenas",
+    "lojas de material",
+    "escritórios parceiros"
+   ],
+   "automatico": [
+    "diário de obra pelo celular",
+    "estimativa pelo SINAPI do mês",
+    "quantidades do IFC"
+   ],
+   "humano": [
+    "vendas iniciais",
+    "suporte"
+   ],
+   "deriva_de": [
+    "automacaobim"
+   ],
+   "proximo_passo": "Entrevistar 5 mestres de obra e engenheiros da região antes de escrever código",
+   "metrica": "obras ativas no sistema",
+   "nota": {
+    "sinergia": 4,
+    "escala": 5,
+    "demanda": 3,
+    "esforco": 5,
+    "capital": 2
+   },
+   "doc": "../construcao/README.md",
+   "nova": true,
+   "perfil": "passiva",
+   "automacao": 75,
+   "veredito": "em2027",
+   "motivo": "Sistema grande, na stack do Aura; só depois de validar com quem toca obra. A estimativa não substitui o orçamento do profissional.",
+   "lote": "2026-11",
+   "usa": [
+    "recorrencia",
+    "suporte",
+    "ci"
+   ]
   }
  ],
  "regras": {

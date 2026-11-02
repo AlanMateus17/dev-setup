@@ -12,8 +12,10 @@ para todas as IAs seguirem o mesmo padrão.
 - Dados de alunos (nome, nota, foto, voz) em prompt, arquivo ou treino.
 - Senhas, tokens ou chaves em código, commit, chat ou prompt. Segredo fica no KeePassXC.
 - Copiar conteúdo de livros, cursos pagos ou sites sem licença.
-- Recomendar investimento: aplicar as regras do Alan; a decisão é dele.
+- Recomendar investimento por conta própria: aplique as regras do Alan; a decisão é dele.
 - Publicar ou enviar algo em nome do Alan sem aprovação.
+- Testar segurança de sistema de terceiros sem termo assinado passando no tools/seguranca/escopo.py; binário de cliente em IA na nuvem.
+- Ação da casa acima do nível da política do Jarvis (tools/jarvis/politica.py): destrancar, abrir janela ou portão e desligar geladeira só com o ok no celular.
 
 ## Padrão de qualidade
 - Fonte da verdade: o repositório dev-setup (data/*.json gera a documentação; não edite arquivo gerado).

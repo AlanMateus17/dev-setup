@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** Os seus dados viram tabelas limpas e datasets; o treino pesado roda numa GPU da nuvem e o modelo volta para o Ollama do notebook.
 
-**21 blocos** · 2 precisam de conta · 0 marcados como futuro
+**22 blocos** · 2 precisam de conta · 0 marcados como futuro
 
 ## Mapa de conexões
 
@@ -35,6 +35,7 @@ flowchart LR
     n_analises["Análises de cliente (RFM, LTV, churn)"]
     n_lerobot["LeRobot (robôs que aprendem)"]
     n_docling["Docling + Granite- Docling (documentos)"]
+    n_sinapi["SINAPI (custos de MG, Caixa)"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_acv["Acervo (seus documentos)"]
@@ -57,6 +58,9 @@ flowchart LR
   end
   subgraph L_nuvem["Nuvem, código e entrega"]
     n_gpuh["GPU por hora (RunPod e afins)"]
+  end
+  subgraph L_app["Aplicação: sistemas AM (Aura)"]
+    n_nobra["AM Obra (diário, medição, compras)"]
   end
   subgraph L_cnt["Containers, Kubernetes e infra como código"]
     n_docker["Docker + Compose"]
@@ -122,8 +126,9 @@ flowchart LR
   n_lerobot -->|"treino do SmolVLA (bf16)"| n_gpuh
   n_so101 -->|"teleoperação e gravação"| n_lerobot
   n_docling -->|"lê os documentos"| n_acv
+  n_sinapi -->|"preços do mês"| n_nobra
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_pyds,n_duck,n_dbt,n_orq,n_spark,n_dset,n_torch,n_hf,n_unsl,n_kgl,n_mlflow,n_evals,n_gguf,n_paperless,n_grocy,n_vllm,n_destilacao,n_metabase,n_analises,n_lerobot,n_docling desta
+  class n_pyds,n_duck,n_dbt,n_orq,n_spark,n_dset,n_torch,n_hf,n_unsl,n_kgl,n_mlflow,n_evals,n_gguf,n_paperless,n_grocy,n_vllm,n_destilacao,n_metabase,n_analises,n_lerobot,n_docling,n_sinapi desta
 ```
 
 ## Blocos
@@ -151,6 +156,7 @@ flowchart LR
 | [Análises de cliente (RFM, LTV, churn)](#analises) | Local | Quem compra mais, quem está sumindo, quanto vale cada cliente e previsão de receita, em Python/DuckDB. | passo 26.4 · Com a primeira página de venda no ar (jan/2027) e por etapas |
 | [LeRobot (robôs que aprendem)](#lerobot) | Local | Biblioteca da Hugging Face para gravar demonstrações, treinar políticas (ACT, SmolVLA) e rodar no robô. | passo 52.7 · Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
 | [Docling + Granite- Docling (documentos)](#docling) | Local | Converte PDF, foto e NFC-e em Markdown e JSON com tabelas: Caixa da Casa, documentos da escola, ABNT e acervo. | passo 52.5 · Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
+| [SINAPI (custos de MG, Caixa)](#sinapi) | Remoto | Custos de referência da construção por estado, todo mês, em Excel: base das estimativas, sempre com mês e UF. | passo 53.8 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 
 <a id="pyds"></a>
 
@@ -488,6 +494,20 @@ Converte PDF, foto e NFC-e em Markdown e JSON com tabelas: Caixa da Casa, docume
 |---|---|---|---|
 | → envia para | [Hugging Face (modelos e Hub)](06-dados.md#hf) | Dados e treino de IA | modelo Granite-Docling |
 | → envia para | [Acervo (seus documentos)](23-oper.md#acv) | Operação do grupo (esteira, marca, qualidade) | lê os documentos |
+
+<a id="sinapi"></a>
+
+### SINAPI (custos de MG, Caixa)
+
+*Remoto*
+
+Custos de referência da construção por estado, todo mês, em Excel: base das estimativas, sempre com mês e UF.
+
+**Quando entra:** passo 53.8 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [AM Obra (diário, medição, compras)](11-app.md#nobra) | Aplicação: sistemas AM (Aura) | preços do mês |
 
 ---
 

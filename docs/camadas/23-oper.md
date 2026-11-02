@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** Toda oferta passa pela esteira e pelo padrão de qualidade antes de chegar ao público; cada venda e cada trabalho voltam como dado e conteúdo.
 
-**26 blocos** · 1 precisam de conta · 8 marcados como futuro
+**27 blocos** · 1 precisam de conta · 8 marcados como futuro
 
 ## Mapa de conexões
 
@@ -40,6 +40,7 @@ flowchart LR
     n_revisor["Agente revisor de qualidade"]
     n_roi["Lucro por ferramenta"]
     n_prospector["Prospector com aprovação"]
+    n_ifcresumo["Resumo de IFC (ifc_resumo.py)"]
   end
   subgraph L_pub["Público e canais"]
     n_ig["Instagram"]
@@ -85,6 +86,7 @@ flowchart LR
   end
   subgraph L_app["Aplicação: sistemas AM (Aura)"]
     n_nkaix["AM Kaixara (PDV e cardápio)"]
+    n_nobra["AM Obra (diário, medição, compras)"]
   end
   subgraph L_obs["Observabilidade"]
     n_graf["Grafana"]
@@ -107,6 +109,9 @@ flowchart LR
     n_wsl["Ubuntu (WSL2)"]
   end
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
+    n_adskedu["Autodesk educacional (Revit, Civil 3D)"]
+    n_bonsai["Bonsai + IfcOpenShell (BIM aberto)"]
+    n_freecad["FreeCAD 1.1 (BIM, 2D e FEM)"]
     n_obsd["Obsidian + Git"]
     n_w11["Windows 11 Home"]
   end
@@ -177,8 +182,12 @@ flowchart LR
   n_docling -->|"lê os documentos"| n_acv
   n_revisor -->|"feito com"| n_agentsdk
   n_roi -->|"resultado por ferramenta"| n_painel
+  n_ifcresumo -->|"quantidades"| n_nobra
+  n_bonsai -->|"exporta IFC"| n_ifcresumo
+  n_freecad -->|"exporta IFC"| n_ifcresumo
+  n_adskedu -->|"IFC do Revit"| n_ifcresumo
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_ocatal,n_oesteira,n_oqual,n_omarca,n_oaval,n_ocrm,n_ofly,n_obuild,n_oatend,n_oorc,n_ocob,n_opos,n_oedit,n_oanal,n_ofisc,n_orevo,n_ocomp,n_diag,n_oimpl,n_oinst,n_overif,n_opipe,n_acv,n_revisor,n_roi,n_prospector desta
+  class n_ocatal,n_oesteira,n_oqual,n_omarca,n_oaval,n_ocrm,n_ofly,n_obuild,n_oatend,n_oorc,n_ocob,n_opos,n_oedit,n_oanal,n_ofisc,n_orevo,n_ocomp,n_diag,n_oimpl,n_oinst,n_overif,n_opipe,n_acv,n_revisor,n_roi,n_prospector,n_ifcresumo desta
 ```
 
 ## Blocos
@@ -211,6 +220,7 @@ flowchart LR
 | [Agente revisor de qualidade](#revisor) | Local | Confere cada entrega contra o padrão de qualidade da oferta antes de chegar ao cliente. | passo 20.6 · Semana 5 · nov/2026; passo 21.5 · Semana 6 · nov/2026 a dez/2026 |
 | [Lucro por ferramenta](#roi) | Local | Lucro e prejuízo de cada ferramenta paga e de cada renda, mês a mês, contra a hora mínima. | passo 25.3 · Dez/2026 a jan/2027 |
 | [Prospector com aprovação](#prospector) | Remoto | Monta listas de negócios a partir de dados públicos e rascunha a abordagem; você aprova cada contato. | passo 25.6 · Dez/2026 a jan/2027 |
+| [Resumo de IFC (ifc_resumo.py)](#ifcresumo) | Local | tools/construcao/ifc_resumo.py: pavimentos, elementos e quantidades de qualquer modelo IFC, sem instalar nada. | passo 53.6 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 
 <a id="ocatal"></a>
 
@@ -633,6 +643,23 @@ Monta listas de negócios a partir de dados públicos e rascunha a abordagem; vo
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [CRM único + LGPD](23-oper.md#ocrm) | Operação do grupo (esteira, marca, qualidade) | leads aprovados |
+
+<a id="ifcresumo"></a>
+
+### Resumo de IFC (ifc_resumo.py)
+
+*Local*
+
+tools/construcao/ifc_resumo.py: pavimentos, elementos e quantidades de qualquer modelo IFC, sem instalar nada.
+
+**Quando entra:** passo 53.6 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [AM Obra (diário, medição, compras)](11-app.md#nobra) | Aplicação: sistemas AM (Aura) | quantidades |
+| ← recebe de | [Bonsai + IfcOpenShell (BIM aberto)](03-win.md#bonsai) | Windows 11, apps e máquinas virtuais | exporta IFC |
+| ← recebe de | [FreeCAD 1.1 (BIM, 2D e FEM)](03-win.md#freecad) | Windows 11, apps e máquinas virtuais | exporta IFC |
+| ← recebe de | [Autodesk educacional (Revit, Civil 3D)](03-win.md#adskedu) | Windows 11, apps e máquinas virtuais | IFC do Revit |
 
 ---
 

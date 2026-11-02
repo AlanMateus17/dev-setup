@@ -27,9 +27,15 @@ def carregar():
     return im, {b["id"]: b for b in eco["blocos"]}
 
 
-def regras_curtas() -> str:
-    linhas = [l for l in REGRAS.read_text(encoding="utf-8").splitlines() if l.startswith("- ")]
-    return "\n".join(linhas[:14])
+def regras_curtas(limite: int = 20) -> str:
+    """Itens das regras, sem perder o sentido da seção: o que está em "## Nunca" sai com "NUNCA:" na frente."""
+    linhas, secao = [], ""
+    for l in REGRAS.read_text(encoding="utf-8").splitlines():
+        if l.startswith("## "):
+            secao = l[3:].strip().lower()
+        elif l.startswith("- "):
+            linhas.append("- NUNCA: " + l[2:] if secao == "nunca" else l)
+    return "\n".join(linhas[:limite])
 
 
 def pacote_passo(pid: str) -> str:

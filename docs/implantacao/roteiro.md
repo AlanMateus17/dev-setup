@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-53 fases, 439 passos, cerca de **1359 h 53 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+54 fases, 452 passos, cerca de **1486 h 03 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
-**Todo o planejamento está aqui:** os 405 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 106 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
+**Todo o planejamento está aqui:** os 414 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 108 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 334 dos 439 passos (386 h 13 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 347 dos 452 passos (512 h 23 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -67,6 +67,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [50 · Engenharia reversa, AppSec e pentest](#f-seguranca) | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) | 16 | 71 h 15 min |
 | [51 · Jarvis: o setup e a casa por comando de voz](#f-jarvis) | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas | 13 | 30 h 50 min |
 | [52 · Hugging Face e IA física: TI, casa inteligente e agropecuária](#f-ia-fisica) | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino | 16 | 44 h 35 min |
+| [53 · Construção civil, arquitetura e engenharia civil (pela TI)](#f-construcao) | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão | 13 | 126 h 10 min |
 
 <a id="f0"></a>
 
@@ -5300,6 +5301,144 @@ ollama pull qwen2.5-coder:1.5b
 - [ ] **Pronto quando:** Um produtor com irrigação ou bebedouro no painel e mensalidade paga
 - **Oferta:** Automação e monitoramento para sítios e produtores (AMtech Campo)
 
+<a id="f-construcao"></a>
+
+## 53 · Construção civil, arquitetura e engenharia civil (pela TI)
+
+Estudar os conceitos com as ferramentas dos grandes escritórios, a IA seguindo regras de engenharia, e ganhar com automação BIM e software, sempre com quem assina revisando.
+
+**Quando:** Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão
+
+### 53.1 Regras de construção para a IA na pasta de estudo
+
+**Script** · 5 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+mkdir -p ~/dev/construcao && cat ~/dev/dev-setup/infra/templates/regras-ia/regras-ia.md ~/dev/dev-setup/infra/templates/regras-ia/construcao.md > ~/dev/construcao/CLAUDE.md
+```
+
+- [ ] **Pronto quando:** CLAUDE.md da pasta de construção com as regras gerais e as de engenharia
+- Use o mesmo texto nas instruções de um Project de construção no Claude.
+
+### 53.2 Instalar o FreeCAD
+
+**Script** · 15 min
+
+No **PowerShell** do Windows (linha `PS C:\>`):
+
+```powershell
+winget install --id FreeCAD.FreeCAD -e
+```
+
+- [ ] **Pronto quando:** FreeCAD abre com a bancada BIM
+- Implanta: FreeCAD 1.1 (BIM, 2D e FEM)
+
+### 53.3 Instalar o Blender e o Bonsai (BIM aberto)
+
+**Você** · 30 min
+
+No **PowerShell** do Windows (linha `PS C:\>`):
+
+```powershell
+winget install --id BlenderFoundation.Blender -e
+```
+
+- [ ] **Pronto quando:** Projeto IFC novo criado no Bonsai
+- Depois, no Blender: Editar > Preferências > Obter extensões > Bonsai (ou o pacote de bonsaibim.org).
+- Implanta: Bonsai + IfcOpenShell (BIM aberto)
+
+### 53.4 Instalar o QGIS
+
+**Script** · 20 min
+
+No **PowerShell** do Windows (linha `PS C:\>`):
+
+```powershell
+winget install --id OSGeo.QGIS -e
+```
+
+- [ ] **Pronto quando:** Mapa de Barbacena aberto com uma camada do IBGE
+- Implanta: QGIS (terreno e mapas)
+
+### 53.5 Licença educacional da Autodesk como professor
+
+**Você** · 1 h 00 min
+
+- **Fora do terminal:** Cadastro no site da Autodesk Education com o comprovante da escola; uso só para estudo e ensino.
+- [ ] **Pronto quando:** Revit e AutoCAD instalados pela conta educacional
+- Implanta: Autodesk educacional (Revit, Civil 3D)
+
+### 53.6 Primeiro modelo: casa térrea no Bonsai e o resumo do IFC
+
+**Você** · 4 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+python3 ~/dev/dev-setup/tools/construcao/ifc_resumo.py ~/dev/construcao/casa.ifc
+```
+
+- [ ] **Pronto quando:** Resumo com 1 pavimento, paredes, laje, portas e as quantidades
+- Exporte com as quantidades base ligadas, senão a tabela de quantidades vem vazia.
+- Implanta: Resumo de IFC (ifc_resumo.py)
+
+### 53.7 Ligar o MCP do IfcOpenShell ao Claude Code
+
+**Claude com você** · 1 h 00 min
+
+- **Fora do terminal:** Configuração do servidor ifcopenshell-mcp no Claude Code, dentro do ai-jail e só na pasta ~/dev/construcao.
+- [ ] **Pronto quando:** O Claude responde quantas portas a casa tem e muda uma pelo MCP, com você conferindo no Bonsai
+- Implanta: MCP do IfcOpenShell
+
+### 53.8 Estimativa da casa com o SINAPI-MG do mês
+
+**Você** · 3 h 00 min
+
+- **Fora do terminal:** Download no site da Caixa (Poder Público > Modernização da Gestão > SINAPI), arquivo de MG do mês.
+- [ ] **Pronto quando:** Planilha com as quantidades do IFC, as composições do SINAPI e o mês de referência
+- Implanta: SINAPI (custos de MG, Caixa)
+
+### 53.9 Trilha de conceitos de construção (8 blocos)
+
+**Você** · 100 h 00 min
+
+- **Fora do terminal:** Estudo contínuo no bloco da manhã, depois das trilhas de TI do plano de estudo.
+- [ ] **Pronto quando:** Os 8 blocos de docs/construcao/02-estudo-e-normas.md com anotação e prática
+
+### 53.10 Publicar o modelo no Speckle
+
+**Você** · 30 min
+
+- **Fora do terminal:** Conta no Speckle e o conector do Blender pela tela; modelo de cliente só com autorização.
+- [ ] **Pronto quando:** Modelo da casa visto no navegador do celular
+- Implanta: Speckle (modelos na web)
+
+### 53.11 3 scripts de automação BIM publicados e o primeiro escritório parceiro
+
+**Claude com você** · 10 h 00 min
+
+- **Fora do terminal:** Scripts IfcOpenShell (conferência de modelo, quantidades por pavimento, relatório de portas e janelas); o escritório revisa e assina o que for projeto.
+- [ ] **Pronto quando:** Scripts no GitHub com testes e um escritório usando um deles
+- **Oferta:** Automação BIM e modelagem para escritórios de engenharia e arquitetura
+
+### 53.12 AM Obra: entrevistar quem toca obra e decidir se constrói
+
+**Você** · 5 h 00 min
+
+- **Fora do terminal:** Conversa com mestres de obra e engenheiros da região; o sistema só nasce se as entrevistas pedirem.
+- [ ] **Pronto quando:** 5 entrevistas registradas e a decisão de construir ou não
+- **Oferta:** AM Obra: diário, medição, compras e estimativa para pequenas construtoras
+- Implanta: AM Obra (diário, medição, compras)
+
+### 53.13 Decidir se vai estudar para poder assinar projetos
+
+**Você** · 30 min
+
+- **Fora do terminal:** Decisão sua, depois de 6 meses da trilha; com ADS e Matemática você não assina projeto, laudo, ART nem RRT.
+- [ ] **Pronto quando:** Decisão anotada: Técnico em Edificações, Engenharia Civil, Arquitetura ou ficar no lado da TI
+
 <a id="quando-entra-cada-bloco"></a>
 
 ## Quando entra cada bloco
@@ -5336,6 +5475,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Agente revisor de qualidade | 20.6, 21.5 | Semana 5 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
 | Lucro por ferramenta | 25.3 | Dez/2026 a jan/2027 |
 | Prospector com aprovação | 25.6 | Dez/2026 a jan/2027 |
+| Resumo de IFC (ifc_resumo.py) | 53.6 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 
 ### Público e canais
 
@@ -5574,6 +5714,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Vigia semanal (GitHub Actions) | 25.1, 25.2 | Dez/2026 a jan/2027 |
 | VM sempre ligada (Oracle grátis) | 22.9, 25.1, 25.4, 25.5 | Semana 6 · nov/2026 a dez/2026; Dez/2026 a jan/2027 |
 | OpenRouter | 21.15 | Semana 6 · nov/2026 a dez/2026 |
+| Speckle (modelos na web) | 53.10 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 
 ### Aplicação: sistemas AM (Aura)
 
@@ -5597,6 +5738,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | AM Kaixara (PDV e cardápio) | 38.12, 42.2 | Fev a dez/2027, uma oferta por vez; 2027 |
 | AM Rotara (entregas) | 42.3, 42.5 | 2027 |
 | App mobile (.NET MAUI) | 46.6 | 2028 |
+| AM Obra (diário, medição, compras) | 53.12 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 
 ### Observabilidade
 
@@ -5696,6 +5838,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Análises de cliente (RFM, LTV, churn) | 26.4 | Com a primeira página de venda no ar (jan/2027) e por etapas |
 | LeRobot (robôs que aprendem) | 52.7 | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
 | Docling + Granite- Docling (documentos) | 52.5 | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
+| SINAPI (custos de MG, Caixa) | 53.8 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 
 ### Agentes de IA e sandbox
 
@@ -5722,6 +5865,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Voz local: Whisper, Piper, openWakeWord | 51.2 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
 | MCP do Home Assistant | 51.5 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
 | Claude Code por voz (/voice + falar.py) | 51.1 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| MCP do IfcOpenShell | 53.7 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 
 ### Linux (Ubuntu no WSL2, Arch no 2º disco)
 
@@ -5770,6 +5914,10 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Arduino IDE 2 | 3.2, 38.16 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez |
 | Rufus (grava pendrives) | 37.1 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 | ActivityWatch | 17.1 | Semana 4 · nov/2026 |
+| Bonsai + IfcOpenShell (BIM aberto) | 53.3 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| FreeCAD 1.1 (BIM, 2D e FEM) | 53.2 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| Autodesk educacional (Revit, Civil 3D) | 53.5 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| QGIS (terreno e mapas) | 53.4 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 
 ### Segurança e cofre
 

@@ -51,6 +51,7 @@ flowchart LR
   end
   subgraph L_app["Aplicação: sistemas AM (Aura)"]
     n_nkaix["AM Kaixara (PDV e cardápio)"]
+    n_nobra["AM Obra (diário, medição, compras)"]
     n_nrot["AM Rotara (entregas)"]
   end
   subgraph L_obs["Observabilidade"]
@@ -65,6 +66,7 @@ flowchart LR
   n_ncnpj -->|"AMtech Tecnologia"| n_nsoft
   n_oesteira -->|"lança"| n_nsoft
   n_nseg -->|"mesmos clientes"| n_nsoft
+  n_nobra -->|"produto"| n_nsoft
   n_nloja -->|"mesmo balcão"| n_nponto
   n_npecas -->|"vendidas no balcão"| n_nloja
   n_nmaker -->|"usa a bancada"| n_nloja
@@ -142,6 +144,7 @@ Software sob encomenda, sites, manutenção e SaaS AM. Primeiro CNPJ do grupo (M
 | ← recebe de | [3 CNPJs por frente](16-neg.md#ncnpj) | Negócios do grupo (Barbacena) | AMtech Tecnologia |
 | ← recebe de | [Esteira de ofertas](23-oper.md#oesteira) | Operação do grupo (esteira, marca, qualidade) | lança |
 | ← recebe de | [AMtech Segurança (pentest)](16-neg.md#nseg) | Negócios do grupo (Barbacena) | mesmos clientes |
+| ← recebe de | [AM Obra (diário, medição, compras)](11-app.md#nobra) | Aplicação: sistemas AM (Aura) | produto |
 
 <a id="nloja"></a>
 

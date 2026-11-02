@@ -13,13 +13,8 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-01: v2.0: roteador de agentes (primária, reserva e portão por tarefa) e esteira de sites (issue → Copilot → PR → prévia → aprovação → Hostinger). Auditoria em docs/recursos.md. OpenClaw só isolado na VM e depois da esteira entregar um site. Maior lacuna: verificação de professor no GitHub Education (ag-ghed).
 - 2026-11-01: v2.1: investimentos (metodologias por script, ARCA dentro de ações, carteira por metodologia contra o índice) e certificações (CNPI primeiro para recomendar; AZ-204 → AI-200). Alan pediu para não travar ideias novas: a regra de parar de adicionar áreas saiu.
 - 2026-11-01: v2.2: todas as metodologias ao mesmo tempo nas 4 classes do ARCA (27 metodologias), consenso por ativo e aporte em dois níveis com mínimo de R$ 100 por compra. Pendente do Alan: preencher investimentos.toml (portão, ARCA, NTN-B do mês) e os 4 CSVs de indicadores.
-- 2026-11-02: v2.3: frente de segurança (docs/seguranca): engenharia reversa com IA, AppSec nos sistemas AM, empresa de pentest e Jarvis; fases 50 e 51.
-- 2026-11-02: tools/seguranca (escopo.py, cvss.py, relatorio.py) com testes; modelos de termo, escopo, achados e ameaças; lab Juice Shop/WebGoat; ferramentas-re.sh.
-- 2026-11-02: regra: nenhum teste sem termo assinado passando no escopo.py; binário de cliente só com modelo local; ordem laudo → bug bounty → pentest → red team.
-- 2026-11-02: próximo da frente: sg-ferramentas e sg-crackme (1 h no estudo da manhã de dezembro). Pendente do Alan: revisar com advogado o termo antes do 1º laudo pago.
-- 2026-11-02: v2.4: Jarvis por voz (docs/jarvis): Assist com voz local + Claude como agente; Claude Code por voz no PC (/voice + falar.py); casa num servidor próprio (ADR 0004).
-- 2026-11-02: tools/jarvis/politica.py (mínimos fixos: destrancar e abrir janela só com o celular; geladeira religa sozinha) e infra/jarvis (Whisper GPU, Piper, openWakeWord, MQTT, Zigbee, Frigate).
-- 2026-11-02: próximo do Jarvis: jv-claude-voz e jv-voz (nada a comprar). Compras em ordem: servidor da casa → coordenador Zigbee e tomadas → satélite ESP32-S3 → câmeras → leitor do hidrômetro.
-- 2026-11-02: v2.5: catálogo do Hugging Face filtrado pela GTX 1650 (docs/ia/hugging-face.md) e fase 52 (IA física); cabe.py --hf.
-- 2026-11-02: compras em ordem: servidor da casa → par SO-101 + 2 câmeras USB → Reachy Mini → LeKiwi; GPU de 12 GB só depois do portão. Conferir preço no Brasil com impostos antes.
-- 2026-11-02: v2.5.1: foco em TI, casa inteligente e agropecuária; saiu o modelo de folha; entraram horta, bebedouro, gado por câmera e a oferta AMtech Campo (portão: o seu caso rodando 3 meses).
+- 2026-11-02: v2.3 a v2.5.1: segurança (engenharia reversa, AppSec, pentest com escopo.py, cvss.py, relatorio.py), Jarvis por voz (politica.py, falar.py, infra/jarvis, ADR 0004) e catálogo do Hugging Face com foco em TI, casa inteligente e agropecuária (cabe.py --hf).
+- 2026-11-02: v2.6: construção civil pela TI (docs/construcao, regras da IA para engenharia, ifc_resumo.py, fase 53); auditoria: regras "Nunca" do pacote de contexto corrigidas e artefatos sincronizados.
+- 2026-11-02: regras novas: nenhum teste sem termo no escopo.py; destrancar, abrir janela e desligar geladeira só com ok no celular; nada de projeto, laudo, ART ou RRT assinado por IA ou por Alan.
+- 2026-11-02: compras em ordem: servidor da casa → kit de campo e Zigbee → SO-101 + 2 câmeras → satélite ESP32-S3 → câmeras → Reachy Mini → LeKiwi; GPU de 12 GB só depois do portão.
+- 2026-11-02: próximo sem comprar nada: jv-claude-voz, jv-voz, hf-coder e sg-ferramentas. Pendente do Alan: termo de autorização com advogado antes do 1º laudo pago; licença educacional da Autodesk.

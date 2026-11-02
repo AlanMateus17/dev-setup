@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** O Windows depende de TPM, BitLocker e Defender para ficar protegido.
 
-**25 blocos** · 2 precisam de conta · 3 marcados como futuro
+**29 blocos** · 3 precisam de conta · 3 marcados como futuro
 
 ## Mapa de conexões
 
@@ -39,9 +39,14 @@ flowchart LR
     n_ard["Arduino IDE 2"]
     n_rufus["Rufus (grava pendrives)"]
     n_aw["ActivityWatch"]
+    n_bonsai["Bonsai + IfcOpenShell (BIM aberto)"]
+    n_freecad["FreeCAD 1.1 (BIM, 2D e FEM)"]
+    n_adskedu["Autodesk educacional (Revit, Civil 3D)"]
+    n_qgis["QGIS (terreno e mapas)"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_acv["Acervo (seus documentos)"]
+    n_ifcresumo["Resumo de IFC (ifc_resumo.py)"]
     n_overif["Verificadores"]
   end
   subgraph L_pub["Público e canais"]
@@ -79,6 +84,7 @@ flowchart LR
   end
   subgraph L_nuvem["Nuvem, código e entrega"]
     n_gh["GitHub"]
+    n_speckle["Speckle (modelos na web)"]
     n_vm247["VM sempre ligada (Oracle grátis)"]
   end
   subgraph L_app["Aplicação: sistemas AM (Aura)"]
@@ -107,6 +113,7 @@ flowchart LR
   end
   subgraph L_ia["Agentes de IA e sandbox"]
     n_iacluster["Cluster de IA na rede"]
+    n_ifcmcp["MCP do IfcOpenShell"]
     n_rag["Base de conhecimento (RAG) das suas notas"]
   end
   subgraph L_lin["Linux (Ubuntu no WSL2, Arch no 2º disco)"]
@@ -206,8 +213,14 @@ flowchart LR
   n_rufus -->|"grava a ISO"| n_pkali
   n_rufus -->|"grava a ISO"| n_parch
   n_aw -->|"horas por renda"| n_painel
+  n_bonsai -->|"exporta IFC"| n_ifcresumo
+  n_bonsai -->|"publica na web"| n_speckle
+  n_qgis -->|"terreno"| n_bonsai
+  n_ifcmcp -->|"consulta e edita o modelo"| n_bonsai
+  n_freecad -->|"exporta IFC"| n_ifcresumo
+  n_adskedu -->|"IFC do Revit"| n_ifcresumo
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_tail,n_wslcfg,n_wterm,n_draw,n_unity,n_boot,n_nitro,n_zip,n_ptoys,n_pdf,n_sharex,n_office,n_ffox,n_w11,n_vsc,n_obsd,n_syncth,n_dbv,n_nav,n_vbox,n_wshark,n_vms,n_ard,n_rufus,n_aw desta
+  class n_tail,n_wslcfg,n_wterm,n_draw,n_unity,n_boot,n_nitro,n_zip,n_ptoys,n_pdf,n_sharex,n_office,n_ffox,n_w11,n_vsc,n_obsd,n_syncth,n_dbv,n_nav,n_vbox,n_wshark,n_vms,n_ard,n_rufus,n_aw,n_bonsai,n_freecad,n_adskedu,n_qgis desta
 ```
 
 ## Blocos
@@ -239,6 +252,10 @@ flowchart LR
 | [Arduino IDE 2](#ard) | Local | Programação das placas de robótica. | passo 3.2 · Semana 1 · out/2026; passo 38.16 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
 | [Rufus (grava pendrives)](#rufus) | Local | Grava as ISOs do Kali e do Arch nos pendrives. Instalado pelo winget. | passo 37.1 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 | [ActivityWatch](#aw) | Local | Mede sozinho em que programas e sites vai o seu tempo. Base do retorno por hora de cada renda. Fica no seu PC. | passo 17.1 · Semana 4 · nov/2026 |
+| [Bonsai + IfcOpenShell (BIM aberto)](#bonsai) | Local | BIM no formato aberto IFC dentro do Blender: plantas, cortes e quantitativos, de graça. | passo 53.3 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| [FreeCAD 1.1 (BIM, 2D e FEM)](#freecad) | Local | Desenho técnico, BIM e elementos finitos no mesmo programa aberto. | passo 53.2 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| [Autodesk educacional (Revit, Civil 3D)](#adskedu) | Local · precisa de conta | Revit, AutoCAD, Civil 3D e Robot Structural grátis para professor; só estudo e ensino, nunca trabalho pago. | passo 53.5 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| [QGIS (terreno e mapas)](#qgis) | Local | Topografia, mapa do terreno e dados do IBGE e da prefeitura. | passo 53.4 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 
 <a id="tail"></a>
 
@@ -643,6 +660,65 @@ Mede sozinho em que programas e sites vai o seu tempo. Base do retorno por hora 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Painel de lucro (Grafana)](21-mkt.md#painel) | Marketing, automação e medição | horas por renda |
+
+<a id="bonsai"></a>
+
+### Bonsai + IfcOpenShell (BIM aberto)
+
+*Local*
+
+BIM no formato aberto IFC dentro do Blender: plantas, cortes e quantitativos, de graça.
+
+**Quando entra:** passo 53.3 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Resumo de IFC (ifc_resumo.py)](23-oper.md#ifcresumo) | Operação do grupo (esteira, marca, qualidade) | exporta IFC |
+| → envia para | [Speckle (modelos na web)](12-nuvem.md#speckle) | Nuvem, código e entrega | publica na web |
+| ← recebe de | [QGIS (terreno e mapas)](03-win.md#qgis) | Windows 11, apps e máquinas virtuais | terreno |
+| ← recebe de | [MCP do IfcOpenShell](05-ia.md#ifcmcp) | Agentes de IA e sandbox | consulta e edita o modelo |
+
+<a id="freecad"></a>
+
+### FreeCAD 1.1 (BIM, 2D e FEM)
+
+*Local*
+
+Desenho técnico, BIM e elementos finitos no mesmo programa aberto.
+
+**Quando entra:** passo 53.2 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Resumo de IFC (ifc_resumo.py)](23-oper.md#ifcresumo) | Operação do grupo (esteira, marca, qualidade) | exporta IFC |
+
+<a id="adskedu"></a>
+
+### Autodesk educacional (Revit, Civil 3D)
+
+*Local · precisa de conta*
+
+Revit, AutoCAD, Civil 3D e Robot Structural grátis para professor; só estudo e ensino, nunca trabalho pago.
+
+**Quando entra:** passo 53.5 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Resumo de IFC (ifc_resumo.py)](23-oper.md#ifcresumo) | Operação do grupo (esteira, marca, qualidade) | IFC do Revit |
+
+<a id="qgis"></a>
+
+### QGIS (terreno e mapas)
+
+*Local*
+
+Topografia, mapa do terreno e dados do IBGE e da prefeitura.
+
+**Quando entra:** passo 53.4 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Bonsai + IfcOpenShell (BIM aberto)](03-win.md#bonsai) | Windows 11, apps e máquinas virtuais | terreno |
 
 ---
 

@@ -582,3 +582,21 @@ flowchart LR
 5. **[Zigbee2MQTT](camadas/09-cnt.md#z2m)**: O Zigbee2MQTT traduz para o rádio.
 6. **[Coordenador Zigbee (USB)](camadas/01-hw.md#zbdongle)**: O coordenador envia pelo Zigbee.
 7. **[Tomadas, sensores e atuadores](camadas/01-hw.md#dispcasa)**: A tomada desliga, e o Piper confirma em voz.
+
+## Do modelo BIM à estimativa da obra
+
+```mermaid
+flowchart LR
+  s0["1. QGIS (terreno e mapas)"]
+  s1["2. Bonsai + IfcOpenShell (BIM aberto)"]
+  s2["3. Resumo de IFC (ifc_resumo.py)"]
+  s3["4. AM Obra (diário, medição, compras)"]
+  s0 --> s1
+  s1 --> s2
+  s2 --> s3
+```
+
+1. **[QGIS (terreno e mapas)](camadas/03-win.md#qgis)**: O terreno sai do QGIS.
+2. **[Bonsai + IfcOpenShell (BIM aberto)](camadas/03-win.md#bonsai)**: A casa é modelada em IFC no Bonsai.
+3. **[Resumo de IFC (ifc_resumo.py)](camadas/23-oper.md#ifcresumo)**: O resumo confere pavimentos, elementos e quantidades.
+4. **[AM Obra (diário, medição, compras)](camadas/11-app.md#nobra)**: O AM Obra cruza as quantidades com os preços do SINAPI-MG do mês: estimativa para o profissional revisar.

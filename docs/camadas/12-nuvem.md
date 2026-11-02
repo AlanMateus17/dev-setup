@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** git push via SSH leva o código ao GitHub; o Actions testa e publica.
 
-**21 blocos** · 14 precisam de conta · 3 marcados como futuro
+**22 blocos** · 15 precisam de conta · 4 marcados como futuro
 
 ## Mapa de conexões
 
@@ -35,6 +35,7 @@ flowchart LR
     n_vigia["Vigia semanal (GitHub Actions)"]
     n_vm247["VM sempre ligada (Oracle grátis)"]
     n_openrouter["OpenRouter"]
+    n_speckle["Speckle (modelos na web)"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_acv["Acervo (seus documentos)"]
@@ -102,6 +103,7 @@ flowchart LR
     n_sec["gitleaks · Trivy"]
   end
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
+    n_bonsai["Bonsai + IfcOpenShell (BIM aberto)"]
     n_obsd["Obsidian + Git"]
     n_tail["Tailscale (VPN)"]
   end
@@ -184,8 +186,9 @@ flowchart LR
   n_vm247 -->|"pela rede privada"| n_tail
   n_oclaw -->|"roda isolado"| n_vm247
   n_litellm -->|"reserva"| n_openrouter
+  n_bonsai -->|"publica na web"| n_speckle
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_blob,n_tmail,n_sonar,n_ghproj,n_dbot,n_gcp,n_gh,n_gha,n_ghcr,n_ghp,n_cf,n_vercel,n_azure,n_aws,n_b2,n_gpuh,n_gdrv,n_repopadrao,n_vigia,n_vm247,n_openrouter desta
+  class n_blob,n_tmail,n_sonar,n_ghproj,n_dbot,n_gcp,n_gh,n_gha,n_ghcr,n_ghp,n_cf,n_vercel,n_azure,n_aws,n_b2,n_gpuh,n_gdrv,n_repopadrao,n_vigia,n_vm247,n_openrouter,n_speckle desta
 ```
 
 ## Blocos
@@ -213,6 +216,7 @@ flowchart LR
 | [Vigia semanal (GitHub Actions)](#vigia) | Remoto | Roda no GitHub sem o notebook ligado: confere os sites dos clientes e procura segredos. | passo 25.1 · Dez/2026 a jan/2027; passo 25.2 · Dez/2026 a jan/2027 |
 | [VM sempre ligada (Oracle grátis)](#vm247) | Remoto · precisa de conta | 2 núcleos e 12 GB grátis para n8n, bot, Uptime Kuma e gateway rodarem 24 horas. | passo 22.9 · Semana 6 · nov/2026 a dez/2026; passo 25.1 · Dez/2026 a jan/2027; passo 25.4 · Dez/2026 a jan/2027; passo 25.5 · Dez/2026 a jan/2027 |
 | [OpenRouter](#openrouter) | Remoto · precisa de conta | Uma chave para dezenas de modelos, alguns grátis com limite; reserva no gateway. | passo 21.15 · Semana 6 · nov/2026 a dez/2026 |
+| [Speckle (modelos na web)](#speckle) | Remoto · precisa de conta · futuro | Plataforma aberta para levar modelos à web com versões e API. | passo 53.10 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 
 <a id="blob"></a>
 
@@ -565,6 +569,20 @@ Uma chave para dezenas de modelos, alguns grátis com limite; reserva no gateway
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | ← recebe de | [Gateway de modelos (LiteLLM)](05-ia.md#litellm) | Agentes de IA e sandbox | reserva |
+
+<a id="speckle"></a>
+
+### Speckle (modelos na web)
+
+*Remoto · precisa de conta · futuro*
+
+Plataforma aberta para levar modelos à web com versões e API.
+
+**Quando entra:** passo 53.10 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| ← recebe de | [Bonsai + IfcOpenShell (BIM aberto)](03-win.md#bonsai) | Windows 11, apps e máquinas virtuais | publica na web |
 
 ---
 

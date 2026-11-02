@@ -5972,6 +5972,158 @@
      "fora": "Só depois do seu caso rodando 3 meses; contrato simples, placas com rádio já homologadas pela Anatel e visita de manutenção combinada."
     }
    ]
+  },
+  {
+   "id": "f-construcao",
+   "titulo": "Construção civil, arquitetura e engenharia civil (pela TI)",
+   "objetivo": "Estudar os conceitos com as ferramentas dos grandes escritórios, a IA seguindo regras de engenharia, e ganhar com automação BIM e software, sempre com quem assina revisando.",
+   "quando": "Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão",
+   "passos": [
+    {
+     "id": "co-regras",
+     "titulo": "Regras de construção para a IA na pasta de estudo",
+     "quem": "script",
+     "pronto": "CLAUDE.md da pasta de construção com as regras gerais e as de engenharia",
+     "tempo_min": 5,
+     "blocos": [],
+     "comando": "mkdir -p ~/dev/construcao && cat ~/dev/dev-setup/infra/templates/regras-ia/regras-ia.md ~/dev/dev-setup/infra/templates/regras-ia/construcao.md > ~/dev/construcao/CLAUDE.md",
+     "nota": "Use o mesmo texto nas instruções de um Project de construção no Claude."
+    },
+    {
+     "id": "co-freecad",
+     "titulo": "Instalar o FreeCAD",
+     "quem": "script",
+     "pronto": "FreeCAD abre com a bancada BIM",
+     "tempo_min": 15,
+     "blocos": [
+      "freecad"
+     ],
+     "comando": "winget install --id FreeCAD.FreeCAD -e"
+    },
+    {
+     "id": "co-bonsai",
+     "titulo": "Instalar o Blender e o Bonsai (BIM aberto)",
+     "quem": "voce",
+     "pronto": "Projeto IFC novo criado no Bonsai",
+     "tempo_min": 30,
+     "blocos": [
+      "bonsai"
+     ],
+     "comando": "winget install --id BlenderFoundation.Blender -e",
+     "nota": "Depois, no Blender: Editar > Preferências > Obter extensões > Bonsai (ou o pacote de bonsaibim.org)."
+    },
+    {
+     "id": "co-qgis",
+     "titulo": "Instalar o QGIS",
+     "quem": "script",
+     "pronto": "Mapa de Barbacena aberto com uma camada do IBGE",
+     "tempo_min": 20,
+     "blocos": [
+      "qgis"
+     ],
+     "comando": "winget install --id OSGeo.QGIS -e"
+    },
+    {
+     "id": "co-autodesk",
+     "titulo": "Licença educacional da Autodesk como professor",
+     "quem": "voce",
+     "pronto": "Revit e AutoCAD instalados pela conta educacional",
+     "tempo_min": 60,
+     "blocos": [
+      "adskedu"
+     ],
+     "fora": "Cadastro no site da Autodesk Education com o comprovante da escola; uso só para estudo e ensino."
+    },
+    {
+     "id": "co-casa",
+     "titulo": "Primeiro modelo: casa térrea no Bonsai e o resumo do IFC",
+     "quem": "voce",
+     "pronto": "Resumo com 1 pavimento, paredes, laje, portas e as quantidades",
+     "tempo_min": 240,
+     "blocos": [
+      "ifcresumo"
+     ],
+     "comando": "python3 ~/dev/dev-setup/tools/construcao/ifc_resumo.py ~/dev/construcao/casa.ifc",
+     "nota": "Exporte com as quantidades base ligadas, senão a tabela de quantidades vem vazia."
+    },
+    {
+     "id": "co-mcp",
+     "titulo": "Ligar o MCP do IfcOpenShell ao Claude Code",
+     "quem": "claude",
+     "pronto": "O Claude responde quantas portas a casa tem e muda uma pelo MCP, com você conferindo no Bonsai",
+     "tempo_min": 60,
+     "blocos": [
+      "ifcmcp"
+     ],
+     "fora": "Configuração do servidor ifcopenshell-mcp no Claude Code, dentro do ai-jail e só na pasta ~/dev/construcao."
+    },
+    {
+     "id": "co-sinapi",
+     "titulo": "Estimativa da casa com o SINAPI-MG do mês",
+     "quem": "voce",
+     "pronto": "Planilha com as quantidades do IFC, as composições do SINAPI e o mês de referência",
+     "tempo_min": 180,
+     "blocos": [
+      "sinapi"
+     ],
+     "fora": "Download no site da Caixa (Poder Público > Modernização da Gestão > SINAPI), arquivo de MG do mês."
+    },
+    {
+     "id": "co-trilha",
+     "titulo": "Trilha de conceitos de construção (8 blocos)",
+     "quem": "voce",
+     "pronto": "Os 8 blocos de docs/construcao/02-estudo-e-normas.md com anotação e prática",
+     "tempo_min": 6000,
+     "blocos": [],
+     "fora": "Estudo contínuo no bloco da manhã, depois das trilhas de TI do plano de estudo."
+    },
+    {
+     "id": "co-speckle",
+     "titulo": "Publicar o modelo no Speckle",
+     "quem": "voce",
+     "pronto": "Modelo da casa visto no navegador do celular",
+     "tempo_min": 30,
+     "blocos": [
+      "speckle"
+     ],
+     "fora": "Conta no Speckle e o conector do Blender pela tela; modelo de cliente só com autorização."
+    },
+    {
+     "id": "co-automacao",
+     "titulo": "3 scripts de automação BIM publicados e o primeiro escritório parceiro",
+     "quem": "claude",
+     "pronto": "Scripts no GitHub com testes e um escritório usando um deles",
+     "tempo_min": 600,
+     "blocos": [],
+     "ofertas": [
+      "automacaobim"
+     ],
+     "fora": "Scripts IfcOpenShell (conferência de modelo, quantidades por pavimento, relatório de portas e janelas); o escritório revisa e assina o que for projeto."
+    },
+    {
+     "id": "co-amobra",
+     "titulo": "AM Obra: entrevistar quem toca obra e decidir se constrói",
+     "quem": "voce",
+     "pronto": "5 entrevistas registradas e a decisão de construir ou não",
+     "tempo_min": 300,
+     "blocos": [
+      "nobra"
+     ],
+     "ofertas": [
+      "amobra"
+     ],
+     "fora": "Conversa com mestres de obra e engenheiros da região; o sistema só nasce se as entrevistas pedirem."
+    },
+    {
+     "id": "co-assinar",
+     "titulo": "Decidir se vai estudar para poder assinar projetos",
+     "quem": "voce",
+     "pronto": "Decisão anotada: Técnico em Edificações, Engenharia Civil, Arquitetura ou ficar no lado da TI",
+     "tempo_min": 30,
+     "blocos": [],
+     "fora": "Decisão sua, depois de 6 meses da trilha; com ADS e Matemática você não assina projeto, laudo, ART nem RRT."
+    }
+   ]
   }
  ]
 }

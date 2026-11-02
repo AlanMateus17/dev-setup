@@ -13,6 +13,12 @@ class TestContexto(unittest.TestCase):
         self.assertIn("Dados de alunos", t)
         self.assertLess(len(t) // 4, 1500)  # cabe em poucos milhares de tokens
 
+    def test_regras_proibidas_saem_como_proibidas(self):
+        t = pacote_passo("fa-plano")
+        self.assertIn("- NUNCA: Dados de alunos", t)
+        self.assertIn("- NUNCA: Senhas, tokens ou chaves", t)
+        self.assertNotIn("\n- Senhas, tokens", t)
+
     def test_resumo(self):
         self.assertIn("fases", pacote_resumo())
 
