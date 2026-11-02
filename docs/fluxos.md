@@ -600,3 +600,21 @@ flowchart LR
 2. **[Bonsai + IfcOpenShell (BIM aberto)](camadas/03-win.md#bonsai)**: A casa é modelada em IFC no Bonsai.
 3. **[Resumo de IFC (ifc_resumo.py)](camadas/23-oper.md#ifcresumo)**: O resumo confere pavimentos, elementos e quantidades.
 4. **[AM Obra (diário, medição, compras)](camadas/11-app.md#nobra)**: O AM Obra cruza as quantidades com os preços do SINAPI-MG do mês: estimativa para o profissional revisar.
+
+## Da engenharia reversa ao pentest, no seu laboratório
+
+```mermaid
+flowchart LR
+  s0["1. Lab de engenharia reversa"]
+  s1["2. Lab de alvo isolado (rede sem internet)"]
+  s2["3. Kit de pentest (Burp, ZAP, nmap…)"]
+  s3["4. Relatório de pentest (CVSS)"]
+  s0 --> s1
+  s1 --> s2
+  s2 --> s3
+```
+
+1. **[Lab de engenharia reversa](camadas/02-seg.md#relab)**: O programa abre no Ghidra ou no ILSpy: onde confere senha, que dados guarda, com quem fala na rede.
+2. **[Lab de alvo isolado (rede sem internet)](camadas/02-seg.md#labalvo)**: Uma cópia dele roda na rede isolada, com foto do estado limpo.
+3. **[Kit de pentest (Burp, ZAP, nmap…)](camadas/02-seg.md#kitpent)**: O atacante testa os pontos que a engenharia reversa apontou.
+4. **[Relatório de pentest (CVSS)](camadas/02-seg.md#relpent)**: Os achados viram relatório com CVSS; se o software for de terceiro, aviso em particular ao projeto.

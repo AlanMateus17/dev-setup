@@ -8,7 +8,7 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 
 | Camadas | Blocos | Conexões | Fluxos | Contas necessárias |
 |---|---|---|---|---|
-| 23 | 414 | 736 | 21 | 111 |
+| 23 | 415 | 740 | 22 | 111 |
 
 ## Por onde começar
 
@@ -109,7 +109,7 @@ O Windows cuida só do que precisa de janela, GPU e segurança; todo o trabalho 
 | 05 | [Agentes de IA e sandbox](docs/camadas/05-ia.md) | 22 | Modelos locais: Qwen · Gemma · Llama, Base de conhecimento (RAG) das suas notas, Claude Code, ai-jail… |
 | 04 | [Linux (Ubuntu no WSL2, Arch no 2º disco)](docs/camadas/04-lin.md) | 13 | Neovim, nmap · dig · curl, Ubuntu (WSL2), Git + SSH + gh… |
 | 03 | [Windows 11, apps e máquinas virtuais](docs/camadas/03-win.md) | 29 | Tailscale (VPN), .wslconfig + localhost, Terminal · PowerShell · winget, Excalidraw / draw.io… |
-| 02 | [Segurança e cofre](docs/camadas/02-seg.md) | 20 | Commits assinados (chave SSH), restic (backup criptografado), Chave física (YubiKey), TPM + Secure Boot… |
+| 02 | [Segurança e cofre](docs/camadas/02-seg.md) | 21 | Commits assinados (chave SSH), restic (backup criptografado), Chave física (YubiKey), TPM + Secure Boot… |
 | 01 | [Hardware](docs/camadas/01-hw.md) | 25 | Nobreak, Base com cooler, SSD SATA 2,5", Acer Nitro (32 GB, GTX 1650)… |
 
 ## Stack fixa dos sistemas
@@ -156,6 +156,7 @@ scripts/windows/      instalar.ps1, verificar.ps1, extensões do VS Code e o inv
 scripts/wsl/          bootstrap.sh, nuvem.sh, verificar.sh e ativar-pipeline.sh
 infra/automacao/      n8n, banco de métricas, Grafana e Uptime Kuma (Docker Compose)
 infra/lab-seguranca/  laboratório de ataque local (Juice Shop, WebGoat) presos em 127.0.0.1
+infra/lab-alvo/       alvo isolado sem internet: o software que você estudou contra o atacante
 infra/jarvis/         voz local (Whisper, Piper, openWakeWord), MQTT, Zigbee2MQTT e Frigate
 config/marca.md       guia de marca usado pelo pipeline de conteúdo
 tools/                geradores, motor financeiro, pipeline de conteúdo e templates

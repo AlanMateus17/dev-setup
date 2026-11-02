@@ -30,7 +30,7 @@ flowchart TB
   L_ia["05 · Agentes de IA e sandbox<br/>22 blocos"]
   L_lin["04 · Linux (Ubuntu no WSL2, Arch no 2º disco)<br/>13 blocos"]
   L_win["03 · Windows 11, apps e máquinas virtuais<br/>29 blocos"]
-  L_seg["02 · Segurança e cofre<br/>20 blocos"]
+  L_seg["02 · Segurança e cofre<br/>21 blocos"]
   L_hw["01 · Hardware<br/>25 blocos"]
   L_oper --- L_pub
   L_pub --- L_mkt
@@ -83,7 +83,7 @@ flowchart TB
 | 05 | [Agentes de IA e sandbox](camadas/05-ia.md) | 22 | O agente roda dentro do ai-jail e só enxerga ~/dev/<projeto>. |
 | 04 | [Linux (Ubuntu no WSL2, Arch no 2º disco)](camadas/04-lin.md) | 13 | O código fica no ext4 do Linux; o Windows enxerga pela ponte do WSL2. |
 | 03 | [Windows 11, apps e máquinas virtuais](camadas/03-win.md) | 29 | O Windows depende de TPM, BitLocker e Defender para ficar protegido. |
-| 02 | [Segurança e cofre](camadas/02-seg.md) | 20 | Drivers AMD e NVIDIA ligam o sistema ao hardware. |
+| 02 | [Segurança e cofre](camadas/02-seg.md) | 21 | Drivers AMD e NVIDIA ligam o sistema ao hardware. |
 | 01 | [Hardware](camadas/01-hw.md) | 25 | — |
 
 ## Princípios

@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-54 fases, 452 passos, cerca de **1486 h 03 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+54 fases, 455 passos, cerca de **1495 h 23 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
-**Todo o planejamento está aqui:** os 414 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 108 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
+**Todo o planejamento está aqui:** os 415 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 108 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 347 dos 452 passos (512 h 23 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 350 dos 455 passos (521 h 43 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -64,7 +64,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [47 · Infraestrutura própria](#f31) | 2028, quando o grupo pedir | 3 | 17 h 00 min |
 | [48 · Negócios do grupo em Barbacena](#f32) | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano · **gatilho:** Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta | 10 | 483 h 00 min |
 | [49 · Estudo contínuo](#f33) | Contínuo, desde a semana 2 | 12 | 3 h 30 min |
-| [50 · Engenharia reversa, AppSec e pentest](#f-seguranca) | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) | 16 | 71 h 15 min |
+| [50 · Engenharia reversa, AppSec e pentest](#f-seguranca) | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) | 19 | 80 h 35 min |
 | [51 · Jarvis: o setup e a casa por comando de voz](#f-jarvis) | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas | 13 | 30 h 50 min |
 | [52 · Hugging Face e IA física: TI, casa inteligente e agropecuária](#f-ia-fisica) | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino | 16 | 44 h 35 min |
 | [53 · Construção civil, arquitetura e engenharia civil (pela TI)](#f-construcao) | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão | 13 | 126 h 10 min |
@@ -4901,7 +4901,41 @@ cd ~/dev/dev-setup && docker compose -f infra/lab-seguranca/compose.yaml up -d
 - Desligue com down quando terminar. Nunca publique nem rode na VM da Oracle.
 - Implanta: Lab de ataque (Juice Shop, WebGoat)
 
-### 50.6 Trilha PortSwigger: todos os laboratórios Apprentice
+### 50.6 Lab de alvo isolado em containers e prova do isolamento
+
+**Script** · 20 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/dev-setup && bash scripts/wsl/lab-alvo.sh subir && sleep 20 && bash scripts/wsl/lab-alvo.sh verificar
+```
+
+- [ ] **Pronto quando:** O verificar mostra 4 OK: alcança o alvo, nenhum dos dois sai para a internet, nada publicado na rede de casa
+- Para outro alvo: ALVO_IMAGEM=imagem ALVO_PORTA=porta antes do comando. Terminal do atacante: bash scripts/wsl/lab-alvo.sh entrar.
+- Implanta: Lab de alvo isolado (rede sem internet)
+
+### 50.7 Lab de alvo isolado em VMs (Kali e Alvo) para programas de desktop
+
+**Script** · 1 h 00 min
+
+No **PowerShell** do Windows (linha `PS C:\>`):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\lab-alvo.ps1 -Acao isolar; powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\lab-alvo.ps1 -Acao snapshot
+```
+
+- [ ] **Pronto quando:** status mostra as duas VMs ISOLADAS e o Alvo tem a foto 'limpo'
+- Crie antes as VMs 'Kali' e 'Alvo' e instale o programa no Alvo. Rede interna sem DHCP: IP fixo nas duas. Depois de cada teste: -Acao restaurar.
+
+### 50.8 Ciclo completo num programa de código aberto: engenharia reversa, pentest e relatório
+
+**Você** · 8 h 00 min
+
+- **Fora do terminal:** Escolha um app aberto pequeno, estude o binário, rode no lab isolado, ataque e gere o relatório. Falha real achada: aviso em particular ao projeto, nunca publicar antes da correção.
+- [ ] **Pronto quando:** Relatório do ensaio com o que a engenharia reversa apontou e o que o pentest confirmou
+
+### 50.9 Trilha PortSwigger: todos os laboratórios Apprentice
 
 **Você** · 40 h 00 min
 
@@ -4909,7 +4943,7 @@ cd ~/dev/dev-setup && docker compose -f infra/lab-seguranca/compose.yaml up -d
 - [ ] **Pronto quando:** Apprentice de todos os temas resolvidos e anotados no Obsidian
 - Implanta: PortSwigger Web Security Academy · Kit de pentest (Burp, ZAP, nmap…)
 
-### 50.7 Modelagem de ameaças e checklist ASVS do AM Kaixara
+### 50.10 Modelagem de ameaças e checklist ASVS do AM Kaixara
 
 **Claude com você** · 2 h 00 min
 
@@ -4923,7 +4957,7 @@ mkdir -p docs/seguranca && cp ~/dev/dev-setup/infra/templates/seguranca/modelage
 - Rode dentro da pasta do AM Kaixara. Repita em cada sistema AM antes de cada funcionalidade com login, dinheiro ou dado pessoal.
 - Implanta: AppSec nos seus sistemas
 
-### 50.8 ZAP passivo na homologação de cada sistema
+### 50.11 ZAP passivo na homologação de cada sistema
 
 **Script** · 20 min
 
@@ -4936,7 +4970,7 @@ mkdir -p .github/workflows && cp ~/dev/dev-setup/infra/templates/seguranca/dast-
 - [ ] **Pronto quando:** Issue do ZAP aberta e sem alerta alto
 - Dentro da pasta do sistema, quando ele tiver homologação (Passo 5 da trilha). Crie a variável HOMOLOGACAO_URL no repositório.
 
-### 50.9 Comparar o AM Kaixara com os repositórios de referência
+### 50.12 Comparar o AM Kaixara com os repositórios de referência
 
 **Claude com você** · 3 h 00 min
 
@@ -4944,7 +4978,7 @@ mkdir -p .github/workflows && cp ~/dev/dev-setup/infra/templates/seguranca/dast-
 - [ ] **Pronto quando:** 3 ADRs novas no Kaixara, cada uma com a diferença e a decisão
 - Implanta: Repositórios de referência
 
-### 50.10 Ensaiar o serviço completo contra o seu próprio site
+### 50.13 Ensaiar o serviço completo contra o seu próprio site
 
 **Script** · 4 h 00 min
 
@@ -4958,7 +4992,7 @@ mkdir -p ~/clientes/ensaio && cp ~/dev/dev-setup/infra/templates/seguranca/escop
 - Troque alvos e janela pelos do seu site. A validação só passa com o termo assinado salvo na pasta. Gere o relatório com tools/seguranca/relatorio.py.
 - Implanta: Guarda de escopo (autorização) · Relatório de pentest (CVSS)
 
-### 50.11 Certificação eJPT
+### 50.14 Certificação eJPT
 
 **Você** · 1 h 00 min
 
@@ -4966,7 +5000,7 @@ mkdir -p ~/clientes/ensaio && cp ~/dev/dev-setup/infra/templates/seguranca/escop
 - [ ] **Pronto quando:** eJPT aprovado
 - **Precisa:** pagar um serviço
 
-### 50.12 Primeiro report num programa público de bug bounty
+### 50.15 Primeiro report num programa público de bug bounty
 
 **Você** · 10 h 00 min
 
@@ -4975,7 +5009,7 @@ mkdir -p ~/clientes/ensaio && cp ~/dev/dev-setup/infra/templates/seguranca/escop
 - **Oferta:** Bug bounty e pentest
 - Implanta: BugHunt · HackerOne (bug bounty)
 
-### 50.13 Laudo de segurança nos sites que você mantém
+### 50.16 Laudo de segurança nos sites que você mantém
 
 **Você** · 1 h 00 min
 
@@ -4983,7 +5017,7 @@ mkdir -p ~/clientes/ensaio && cp ~/dev/dev-setup/infra/templates/seguranca/escop
 - [ ] **Pronto quando:** Laudo entregue a 3 clientes
 - **Oferta:** Laudo de segurança dos sites que você mantém
 
-### 50.14 Curso de segurança e engenharia reversa para devs
+### 50.17 Curso de segurança e engenharia reversa para devs
 
 **Você** · 1 h 00 min
 
@@ -4991,7 +5025,7 @@ mkdir -p ~/clientes/ensaio && cp ~/dev/dev-setup/infra/templates/seguranca/escop
 - [ ] **Pronto quando:** Pré-venda aberta
 - **Oferta:** Curso: segurança e engenharia reversa para devs
 
-### 50.15 Certificação OSCP
+### 50.18 Certificação OSCP
 
 **Você** · 2 h 00 min
 
@@ -4999,7 +5033,7 @@ mkdir -p ~/clientes/ensaio && cp ~/dev/dev-setup/infra/templates/seguranca/escop
 - [ ] **Pronto quando:** OSCP aprovado
 - **Precisa:** pagar um serviço
 
-### 50.16 Abrir a AMtech Segurança (pentest completo)
+### 50.19 Abrir a AMtech Segurança (pentest completo)
 
 **Você** · 4 h 00 min
 
@@ -5614,7 +5648,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Vigilância sanitária (RDC 216) | 48.6 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
 | Anatel e Inmetro | 48.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
 | Radar de revenda | 11.5 | Semana 4 · nov/2026 |
-| AMtech Segurança (pentest) | 50.16 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| AMtech Segurança (pentest) | 50.19 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 
 ### Editora AMS Silva (produção de livros)
 
@@ -5670,11 +5704,11 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Zoomcamp de dados + cursos de IA | 37.6 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 | GPT do zero (estudo) | 23.1 | 2027, depois do primeiro fine-tuning de 8B |
 | Laboratório de redes | 24.5 | Semana 6 · nov/2026 |
-| PortSwigger Web Security Academy | 50.6 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| PortSwigger Web Security Academy | 50.9 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | Crackmes (OWASP MAS, crackmes.one) | 50.2 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| BugHunt · HackerOne (bug bounty) | 50.12 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| BugHunt · HackerOne (bug bounty) | 50.15 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | Compiler Explorer (godbolt) | 50.2 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| Repositórios de referência | 50.9 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Repositórios de referência | 50.12 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 
 ### Produção de conteúdo
 
@@ -5938,11 +5972,12 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Lab de engenharia reversa | 50.1 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | GhidraMCP (IA no Ghidra) | 50.3 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | Lab de ataque (Juice Shop, WebGoat) | 50.5 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| Kit de pentest (Burp, ZAP, nmap…) | 50.6 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| AppSec nos seus sistemas | 50.7 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| Guarda de escopo (autorização) | 50.10 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| Relatório de pentest (CVSS) | 50.10 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Kit de pentest (Burp, ZAP, nmap…) | 50.9 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| AppSec nos seus sistemas | 50.10 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Guarda de escopo (autorização) | 50.13 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Relatório de pentest (CVSS) | 50.13 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | Política do Jarvis (níveis de risco) | 51.3 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Lab de alvo isolado (rede sem internet) | 50.6 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 
 ### Hardware
 

@@ -124,7 +124,7 @@ flowchart LR
 | [Vigilância sanitária (RDC 216)](#nvisa) | Remoto · precisa de conta · futuro | Alvará sanitário, Manual de Boas Práticas, POPs, curso dos manipuladores e controle de pragas. Em MG, o nível de risco define se há inspeção antes de abrir. | passo 48.6 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
 | [Anatel e Inmetro](#nanatel) | Remoto · precisa de conta · futuro | Homologação de produto próprio com Wi-Fi ou Bluetooth e, se o kit for brinquedo, certificação do Inmetro. | passo 48.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
 | [Radar de revenda](#radar) | Local | Lê os alertas de busca salvos (OLX, Mercado Livre, Facebook, Estante Virtual) que chegam ao Gmail, compara com o preço de referência e avisa no Telegram só o que passa da hora mínima. Nunca compra nem fala com vendedor. | passo 11.5 · Semana 4 · nov/2026 |
-| [AMtech Segurança (pentest)](#nseg) | Remoto · futuro | Testes de segurança para empresas: laudo dos sites primeiro, pentest completo depois da OSCP, com contrato revisado, seguro e reteste. | passo 50.16 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [AMtech Segurança (pentest)](#nseg) | Remoto · futuro | Testes de segurança para empresas: laudo dos sites primeiro, pentest completo depois da OSCP, com contrato revisado, seguro e reteste. | passo 50.19 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 
 <a id="nsoft"></a>
 
@@ -412,7 +412,7 @@ Lê os alertas de busca salvos (OLX, Mercado Livre, Facebook, Estante Virtual) q
 
 Testes de segurança para empresas: laudo dos sites primeiro, pentest completo depois da OSCP, com contrato revisado, seguro e reteste.
 
-**Quando entra:** passo 50.16 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 50.19 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

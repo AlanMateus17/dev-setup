@@ -47,5 +47,5 @@
 - [05 · Agentes de IA e sandbox](camadas/05-ia.md) (22 blocos)
 - [04 · Linux (Ubuntu no WSL2, Arch no 2º disco)](camadas/04-lin.md) (13 blocos)
 - [03 · Windows 11, apps e máquinas virtuais](camadas/03-win.md) (29 blocos)
-- [02 · Segurança e cofre](camadas/02-seg.md) (20 blocos)
+- [02 · Segurança e cofre](camadas/02-seg.md) (21 blocos)
 - [01 · Hardware](camadas/01-hw.md) (25 blocos)

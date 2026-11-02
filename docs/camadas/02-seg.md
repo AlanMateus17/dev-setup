@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** Drivers AMD e NVIDIA ligam o sistema ao hardware.
 
-**20 blocos** · 0 precisam de conta · 1 marcados como futuro
+**21 blocos** · 0 precisam de conta · 1 marcados como futuro
 
 ## Mapa de conexões
 
@@ -34,6 +34,7 @@ flowchart LR
     n_escopo["Guarda de escopo (autorização)"]
     n_relpent["Relatório de pentest (CVSS)"]
     n_politica["Política do Jarvis (níveis de risco)"]
+    n_labalvo["Lab de alvo isolado (rede sem internet)"]
   end
   subgraph L_mkt["Marketing, automação e medição"]
     n_painel["Painel de lucro (Grafana)"]
@@ -108,12 +109,14 @@ flowchart LR
   n_ssdext -->|"cópia portátil"| n_bkp
   n_restauracao -->|"resultado do teste"| n_painel
   n_relab -->|"plugin"| n_ghidramcp
+  n_relab -->|"o que estudou vira alvo"| n_labalvo
   n_crackmes -->|"desafios"| n_relab
   n_godbolt -->|"do C ao assembly"| n_relab
   n_ghidramcp -->|"fala por MCP"| n_mcp
   n_ghidramcp -->|"binário de cliente: modelo local"| n_oll
   n_kitpent -->|"treina em"| n_labseg
   n_kitpent -->|"achados"| n_relpent
+  n_kitpent -->|"ataca"| n_labalvo
   n_vms -->|"Kali roda o kit"| n_kitpent
   n_portsw -->|"ensina o Burp"| n_kitpent
   n_thm -->|"laboratórios guiados"| n_kitpent
@@ -124,10 +127,12 @@ flowchart LR
   n_appsec -->|"CodeQL"| n_dbot
   n_escopo -->|"registro de atividades"| n_relpent
   n_relpent -->|"entregável"| n_nseg
+  n_labalvo -->|"achados"| n_relpent
   n_politica -->|"níveis de risco"| n_jarvis
   n_politica -->|"o que expor"| n_hamcp
+  n_vms -->|"VMs Kali e Alvo"| n_labalvo
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_sign,n_restic,n_ykey,n_tpm,n_bitl,n_def,n_kee,n_tfa,n_bkp,n_organizar,n_segredos,n_restauracao,n_relab,n_ghidramcp,n_labseg,n_kitpent,n_appsec,n_escopo,n_relpent,n_politica desta
+  class n_sign,n_restic,n_ykey,n_tpm,n_bitl,n_def,n_kee,n_tfa,n_bkp,n_organizar,n_segredos,n_restauracao,n_relab,n_ghidramcp,n_labseg,n_kitpent,n_appsec,n_escopo,n_relpent,n_politica,n_labalvo desta
 ```
 
 ## Blocos
@@ -149,11 +154,12 @@ flowchart LR
 | [Lab de engenharia reversa](#relab) | Local | Ghidra, ILSpy, gdb e strace (scripts/wsl/ferramentas-re.sh) para estudar binários seus, crackmes e a aula dos alunos. Binário de terceiro só com autorização escrita. | passo 50.1 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | [GhidraMCP (IA no Ghidra)](#ghidramcp) | Local | Servidor MCP que deixa o Claude listar, renomear e explicar funções no Ghidra. Binário de cliente só com modelo local (Ollama) e cláusula no contrato. | passo 50.3 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | [Lab de ataque (Juice Shop, WebGoat)](#labseg) | Local | infra/lab-seguranca: aplicações vulneráveis de propósito, presas em 127.0.0.1, para treinar o OWASP Top 10 sem tocar em sistema real. | passo 50.5 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| [Kit de pentest (Burp, ZAP, nmap…)](#kitpent) | Local | Ferramentas maduras do mercado na VM Kali: Burp Suite, OWASP ZAP, nmap, ffuf, nuclei, sqlmap e Metasploit. Usar, não reescrever. | passo 50.6 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| [AppSec nos seus sistemas](#appsec) | Local | Modelagem de ameaças (STRIDE), checklist ASVS e ZAP na homologação, por cima do gitleaks, Trivy e Semgrep do repositório padrão. | passo 50.7 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| [Guarda de escopo (autorização)](#escopo) | Local | tools/seguranca/escopo.py: nenhum teste roda sem termo assinado, dentro da janela e do escopo; cada comando fica registrado. | passo 50.10 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| [Relatório de pentest (CVSS)](#relpent) | Local | tools/seguranca/relatorio.py e cvss.py: do sumário executivo ao registro de atividades, com a nota CVSS 3.1 calculada, nunca escrita à mão. | passo 50.10 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [Kit de pentest (Burp, ZAP, nmap…)](#kitpent) | Local | Ferramentas maduras do mercado na VM Kali: Burp Suite, OWASP ZAP, nmap, ffuf, nuclei, sqlmap e Metasploit. Usar, não reescrever. | passo 50.9 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [AppSec nos seus sistemas](#appsec) | Local | Modelagem de ameaças (STRIDE), checklist ASVS e ZAP na homologação, por cima do gitleaks, Trivy e Semgrep do repositório padrão. | passo 50.10 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [Guarda de escopo (autorização)](#escopo) | Local | tools/seguranca/escopo.py: nenhum teste roda sem termo assinado, dentro da janela e do escopo; cada comando fica registrado. | passo 50.13 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [Relatório de pentest (CVSS)](#relpent) | Local | tools/seguranca/relatorio.py e cvss.py: do sumário executivo ao registro de atividades, com a nota CVSS 3.1 calculada, nunca escrita à mão. | passo 50.13 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | [Política do Jarvis (níveis de risco)](#politica) | Local | tools/jarvis/politica.py: livre, voz, celular ou proibido por ação; destrancar, abrir janela e desligar geladeira nunca só por voz. | passo 51.3 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| [Lab de alvo isolado (rede sem internet)](#labalvo) | Local | O software que você estudou roda numa rede sem internet, só com o atacante: containers (scripts/wsl/lab-alvo.sh) ou VMs Kali e Alvo no VirtualBox (scripts/windows/lab-alvo.ps1), com foto para desfazer o ataque. | passo 50.6 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 
 <a id="sign"></a>
 
@@ -352,6 +358,7 @@ Ghidra, ILSpy, gdb e strace (scripts/wsl/ferramentas-re.sh) para estudar binári
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [GhidraMCP (IA no Ghidra)](02-seg.md#ghidramcp) | Segurança e cofre | plugin |
+| → envia para | [Lab de alvo isolado (rede sem internet)](02-seg.md#labalvo) | Segurança e cofre | o que estudou vira alvo |
 | ← recebe de | [Crackmes (OWASP MAS, crackmes.one)](14-est.md#crackmes) | Estudo e carreira | desafios |
 | ← recebe de | [Compiler Explorer (godbolt)](14-est.md#godbolt) | Estudo e carreira | do C ao assembly |
 
@@ -393,12 +400,13 @@ infra/lab-seguranca: aplicações vulneráveis de propósito, presas em 127.0.0.
 
 Ferramentas maduras do mercado na VM Kali: Burp Suite, OWASP ZAP, nmap, ffuf, nuclei, sqlmap e Metasploit. Usar, não reescrever.
 
-**Quando entra:** passo 50.6 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 50.9 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Lab de ataque (Juice Shop, WebGoat)](02-seg.md#labseg) | Segurança e cofre | treina em |
 | → envia para | [Relatório de pentest (CVSS)](02-seg.md#relpent) | Segurança e cofre | achados |
+| → envia para | [Lab de alvo isolado (rede sem internet)](02-seg.md#labalvo) | Segurança e cofre | ataca |
 | ← recebe de | [VMs: Kali · Arch · Servidores](03-win.md#vms) | Windows 11, apps e máquinas virtuais | Kali roda o kit |
 | ← recebe de | [PortSwigger Web Security Academy](14-est.md#portsw) | Estudo e carreira | ensina o Burp |
 | ← recebe de | [TryHackMe / Hack The Box](14-est.md#thm) | Estudo e carreira | laboratórios guiados |
@@ -413,7 +421,7 @@ Ferramentas maduras do mercado na VM Kali: Burp Suite, OWASP ZAP, nmap, ffuf, nu
 
 Modelagem de ameaças (STRIDE), checklist ASVS e ZAP na homologação, por cima do gitleaks, Trivy e Semgrep do repositório padrão.
 
-**Quando entra:** passo 50.7 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 50.10 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -429,7 +437,7 @@ Modelagem de ameaças (STRIDE), checklist ASVS e ZAP na homologação, por cima 
 
 tools/seguranca/escopo.py: nenhum teste roda sem termo assinado, dentro da janela e do escopo; cada comando fica registrado.
 
-**Quando entra:** passo 50.10 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 50.13 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -444,13 +452,14 @@ tools/seguranca/escopo.py: nenhum teste roda sem termo assinado, dentro da janel
 
 tools/seguranca/relatorio.py e cvss.py: do sumário executivo ao registro de atividades, com a nota CVSS 3.1 calculada, nunca escrita à mão.
 
-**Quando entra:** passo 50.10 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 50.13 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [AMtech Segurança (pentest)](16-neg.md#nseg) | Negócios do grupo (Barbacena) | entregável |
 | ← recebe de | [Kit de pentest (Burp, ZAP, nmap…)](02-seg.md#kitpent) | Segurança e cofre | achados |
 | ← recebe de | [Guarda de escopo (autorização)](02-seg.md#escopo) | Segurança e cofre | registro de atividades |
+| ← recebe de | [Lab de alvo isolado (rede sem internet)](02-seg.md#labalvo) | Segurança e cofre | achados |
 
 <a id="politica"></a>
 
@@ -466,6 +475,23 @@ tools/jarvis/politica.py: livre, voz, celular ou proibido por ação; destrancar
 |---|---|---|---|
 | → envia para | [Jarvis (porta única dos agentes)](05-ia.md#jarvis) | Agentes de IA e sandbox | níveis de risco |
 | → envia para | [MCP do Home Assistant](05-ia.md#hamcp) | Agentes de IA e sandbox | o que expor |
+
+<a id="labalvo"></a>
+
+### Lab de alvo isolado (rede sem internet)
+
+*Local*
+
+O software que você estudou roda numa rede sem internet, só com o atacante: containers (scripts/wsl/lab-alvo.sh) ou VMs Kali e Alvo no VirtualBox (scripts/windows/lab-alvo.ps1), com foto para desfazer o ataque.
+
+**Quando entra:** passo 50.6 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Relatório de pentest (CVSS)](02-seg.md#relpent) | Segurança e cofre | achados |
+| ← recebe de | [Lab de engenharia reversa](02-seg.md#relab) | Segurança e cofre | o que estudou vira alvo |
+| ← recebe de | [Kit de pentest (Burp, ZAP, nmap…)](02-seg.md#kitpent) | Segurança e cofre | ataca |
+| ← recebe de | [VMs: Kali · Arch · Servidores](03-win.md#vms) | Windows 11, apps e máquinas virtuais | VMs Kali e Alvo |
 
 ---
 

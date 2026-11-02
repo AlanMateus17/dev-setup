@@ -37,6 +37,7 @@ flowchart LR
 | Gerador de relatório | `tools/seguranca/relatorio.py` | Relatório completo a partir do escopo e dos achados; recusa achado fora do escopo |
 | Modelos | `infra/templates/seguranca/` | Termo de autorização, escopo, achados, modelagem de ameaças, ZAP no CI e o crackme da aula |
 | Laboratório de ataque | `infra/lab-seguranca/compose.yaml` | Juice Shop e WebGoat presos em 127.0.0.1 |
+| Laboratório de alvo isolado | `scripts/wsl/lab-alvo.sh` e `scripts/windows/lab-alvo.ps1` | Qualquer software que você estudou rodando numa rede sem internet, com prova do isolamento e foto para desfazer o ataque |
 | Ferramentas de engenharia reversa | `scripts/wsl/ferramentas-re.sh` | Ghidra, GhidraMCP, ILSpy, gdb e companhia no Ubuntu |
 
 O passo a passo está nas fases 50 (segurança) e 51 (Jarvis) do [roteiro de implantação](../implantacao/roteiro.md#f-seguranca).

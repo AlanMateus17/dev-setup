@@ -89,4 +89,5 @@ jobs:
           docker compose -f infra/rede/compose.yaml config --quiet
           docker compose -f infra/dados/compose.yaml config --quiet
           docker compose -f infra/lab-seguranca/compose.yaml config --quiet
+          docker compose -f infra/lab-alvo/compose.yaml config --quiet
           JARVIS_DIR=/tmp/jarvis docker compose -f infra/jarvis/compose.yaml --profile zigbee --profile cameras config --quiet

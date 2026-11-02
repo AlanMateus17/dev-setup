@@ -431,6 +431,7 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
             "scripts/wsl/          bootstrap.sh, nuvem.sh, verificar.sh e ativar-pipeline.sh",
             "infra/automacao/      n8n, banco de métricas, Grafana e Uptime Kuma (Docker Compose)",
             "infra/lab-seguranca/  laboratório de ataque local (Juice Shop, WebGoat) presos em 127.0.0.1",
+            "infra/lab-alvo/       alvo isolado sem internet: o software que você estudou contra o atacante",
             "infra/jarvis/         voz local (Whisper, Piper, openWakeWord), MQTT, Zigbee2MQTT e Frigate",
             "config/marca.md       guia de marca usado pelo pipeline de conteúdo",
             "tools/                geradores, motor financeiro, pipeline de conteúdo e templates",

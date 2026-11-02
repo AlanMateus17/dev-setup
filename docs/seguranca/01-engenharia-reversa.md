@@ -46,6 +46,29 @@ O trabalho lento da engenharia reversa é dar sentido a funções chamadas `FUN_
 | 5 a 8 | Android UnCrackable L1 e L2 (OWASP MAS) | Engenharia reversa de app, com soluções da comunidade para comparar |
 | 9 em diante | crackmes.one por dificuldade | Ritmo próprio; anote cada um no Obsidian como writeup |
 
+## Da engenharia reversa ao pentest, no seu laboratório
+
+A engenharia reversa mostra onde procurar; o pentest prova se dá para explorar. O setup junta os dois num ciclo:
+
+1. **Estudar:** o programa abre no Ghidra ou no ILSpy, com o Claude pelo GhidraMCP. Onde confere senha e licença, que dados guarda, com quem fala na rede.
+2. **Isolar:** uma cópia dele roda numa rede **sem internet**, só com o atacante.
+   - Sistema web ou API: `bash scripts/wsl/lab-alvo.sh subir` (containers). Outro alvo: `ALVO_IMAGEM=imagem ALVO_PORTA=porta` antes do comando.
+   - Programa de desktop ou binário de Windows: VMs `Kali` e `Alvo` no VirtualBox, isoladas com `scripts/windows/lab-alvo.ps1 -Acao isolar`, foto do estado limpo com `-Acao snapshot` e volta com `-Acao restaurar`.
+3. **Provar o isolamento antes de atacar:** `bash scripts/wsl/lab-alvo.sh verificar` (ou `-Acao status` nas VMs). Se algo sair para a internet, o script avisa.
+4. **Atacar:** `bash scripts/wsl/lab-alvo.sh entrar` abre o terminal do atacante (nmap, sqlmap, ffuf, nikto, gobuster); Burp e ZAP ficam na VM Kali.
+5. **Relatar:** os achados vão para o `tools/seguranca/relatorio.py`.
+
+### O que pode entrar no laboratório
+
+| Situação | Pode? |
+|---|---|
+| Software seu (AM Kaixara, sites, o crackme da aula) | Sim, e é o melhor uso |
+| Desafios e apps feitos para isso (crackmes, Juice Shop, WebGoat, OWASP MAS) | Sim |
+| Software de código aberto | Sim. Falha real achada: aviso em particular ao projeto antes de publicar |
+| Programa comercial instalado no seu PC | Depende da licença; quebrar proteção para usar sem pagar é crime |
+| Sistema de cliente | Só com termo assinado, passando pela guarda `escopo.py` |
+| Servidor, site ou app online de outra empresa | **Não.** Sem autorização escrita é crime (Lei 12.737/2012); o laboratório roda só cópias na sua máquina |
+
 ## A aula para os alunos (passo sg-aula)
 
 Encaixa em Arquitetura e Manutenção de Computadores (e serve de ponte para Lógica e POO):

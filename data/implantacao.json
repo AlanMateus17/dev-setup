@@ -5482,6 +5482,37 @@
      "nota": "Desligue com down quando terminar. Nunca publique nem rode na VM da Oracle."
     },
     {
+     "id": "sg-alvo-container",
+     "titulo": "Lab de alvo isolado em containers e prova do isolamento",
+     "quem": "script",
+     "pronto": "O verificar mostra 4 OK: alcança o alvo, nenhum dos dois sai para a internet, nada publicado na rede de casa",
+     "tempo_min": 20,
+     "blocos": [
+      "labalvo"
+     ],
+     "comando": "cd ~/dev/dev-setup && bash scripts/wsl/lab-alvo.sh subir && sleep 20 && bash scripts/wsl/lab-alvo.sh verificar",
+     "nota": "Para outro alvo: ALVO_IMAGEM=imagem ALVO_PORTA=porta antes do comando. Terminal do atacante: bash scripts/wsl/lab-alvo.sh entrar."
+    },
+    {
+     "id": "sg-alvo-vm",
+     "titulo": "Lab de alvo isolado em VMs (Kali e Alvo) para programas de desktop",
+     "quem": "script",
+     "pronto": "status mostra as duas VMs ISOLADAS e o Alvo tem a foto 'limpo'",
+     "tempo_min": 60,
+     "blocos": [],
+     "comando": "powershell -ExecutionPolicy Bypass -File $HOME\\dev-setup\\scripts\\windows\\lab-alvo.ps1 -Acao isolar; powershell -ExecutionPolicy Bypass -File $HOME\\dev-setup\\scripts\\windows\\lab-alvo.ps1 -Acao snapshot",
+     "nota": "Crie antes as VMs 'Kali' e 'Alvo' e instale o programa no Alvo. Rede interna sem DHCP: IP fixo nas duas. Depois de cada teste: -Acao restaurar."
+    },
+    {
+     "id": "sg-ciclo",
+     "titulo": "Ciclo completo num programa de código aberto: engenharia reversa, pentest e relatório",
+     "quem": "voce",
+     "pronto": "Relatório do ensaio com o que a engenharia reversa apontou e o que o pentest confirmou",
+     "tempo_min": 480,
+     "blocos": [],
+     "fora": "Escolha um app aberto pequeno, estude o binário, rode no lab isolado, ataque e gere o relatório. Falha real achada: aviso em particular ao projeto, nunca publicar antes da correção."
+    },
+    {
      "id": "sg-portswigger",
      "titulo": "Trilha PortSwigger: todos os laboratórios Apprentice",
      "quem": "voce",

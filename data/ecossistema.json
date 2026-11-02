@@ -3466,6 +3466,15 @@
    "descricao": "tools/jarvis/politica.py: livre, voz, celular ou proibido por ação; destrancar, abrir janela e desligar geladeira nunca só por voz."
   },
   {
+   "id": "labalvo",
+   "camada": "seg",
+   "rotulo": "Lab de alvo isolado|(rede sem internet)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "O software que você estudou roda numa rede sem internet, só com o atacante: containers (scripts/wsl/lab-alvo.sh) ou VMs Kali e Alvo no VirtualBox (scripts/windows/lab-alvo.ps1), com foto para desfazer o ataque."
+  },
+  {
    "id": "iacluster",
    "camada": "ia",
    "rotulo": "Cluster de IA|na rede",
@@ -7524,6 +7533,26 @@
    "de": "nobra",
    "para": "nsoft",
    "rotulo": "produto"
+  },
+  {
+   "de": "relab",
+   "para": "labalvo",
+   "rotulo": "o que estudou vira alvo"
+  },
+  {
+   "de": "kitpent",
+   "para": "labalvo",
+   "rotulo": "ataca"
+  },
+  {
+   "de": "vms",
+   "para": "labalvo",
+   "rotulo": "VMs Kali e Alvo"
+  },
+  {
+   "de": "labalvo",
+   "para": "relpent",
+   "rotulo": "achados"
   }
  ],
  "fluxos": [
@@ -8274,6 +8303,28 @@
     {
      "bloco": "nobra",
      "descricao": "O AM Obra cruza as quantidades com os preços do SINAPI-MG do mês: estimativa para o profissional revisar."
+    }
+   ]
+  },
+  {
+   "id": "estudar-atacar",
+   "titulo": "Da engenharia reversa ao pentest, no seu laboratório",
+   "passos": [
+    {
+     "bloco": "relab",
+     "descricao": "O programa abre no Ghidra ou no ILSpy: onde confere senha, que dados guarda, com quem fala na rede."
+    },
+    {
+     "bloco": "labalvo",
+     "descricao": "Uma cópia dele roda na rede isolada, com foto do estado limpo."
+    },
+    {
+     "bloco": "kitpent",
+     "descricao": "O atacante testa os pontos que a engenharia reversa apontou."
+    },
+    {
+     "bloco": "relpent",
+     "descricao": "Os achados viram relatório com CVSS; se o software for de terceiro, aviso em particular ao projeto."
     }
    ]
   }

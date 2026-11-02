@@ -128,6 +128,7 @@ flowchart LR
     n_def["Defender + Firewall"]
     n_kee["KeePassXC"]
     n_kitpent["Kit de pentest (Burp, ZAP, nmap…)"]
+    n_labalvo["Lab de alvo isolado (rede sem internet)"]
   end
   subgraph L_hw["Hardware"]
     n_cel["Celular"]
@@ -206,6 +207,7 @@ flowchart LR
   n_vbox -->|"executa"| n_vms
   n_wshark -->|"captura o tráfego do lab"| n_vms
   n_vms -->|"Kali roda o kit"| n_kitpent
+  n_vms -->|"VMs Kali e Alvo"| n_labalvo
   n_netw -->|"diagnóstico"| n_vms
   n_sata -->|"discos das VMs"| n_vms
   n_thm -->|"prática"| n_vms
@@ -612,6 +614,7 @@ Kali (segurança), Arch (treino da instalação), Ubuntu Server (deploy), Window
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Kit de pentest (Burp, ZAP, nmap…)](02-seg.md#kitpent) | Segurança e cofre | Kali roda o kit |
+| → envia para | [Lab de alvo isolado (rede sem internet)](02-seg.md#labalvo) | Segurança e cofre | VMs Kali e Alvo |
 | ← recebe de | [VirtualBox](03-win.md#vbox) | Windows 11, apps e máquinas virtuais | executa |
 | ← recebe de | [nmap · dig · curl](04-lin.md#netw) | Linux (Ubuntu no WSL2, Arch no 2º disco) | diagnóstico |
 | ← recebe de | [SSD SATA 2,5"](01-hw.md#sata) | Hardware | discos das VMs |
