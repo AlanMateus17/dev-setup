@@ -53,7 +53,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: ShellCheck
-        run: shellcheck -S warning scripts/wsl/*.sh infra/automacao/*.sh infra/automacao/sql/*.sh
+        run: shellcheck -S warning scripts/wsl/*.sh infra/automacao/*.sh infra/automacao/sql/*.sh && shellcheck -s sh infra/pocketbase/entrada.sh
       - name: PSScriptAnalyzer
         shell: pwsh
         run: |
@@ -91,3 +91,8 @@ jobs:
           docker compose -f infra/lab-seguranca/compose.yaml config --quiet
           docker compose -f infra/lab-alvo/compose.yaml config --quiet
           JARVIS_DIR=/tmp/jarvis docker compose -f infra/jarvis/compose.yaml --profile zigbee --profile cameras config --quiet
+      - name: Docker Compose da soberania e do PocketBase
+        run: |
+          cp infra/soberania/.env.example /tmp/soberania.env && sed -i 's/=$/=ci/' /tmp/soberania.env
+          docker compose -f infra/soberania/compose.yaml --env-file /tmp/soberania.env --profile '*' config --quiet
+          PB_VERSAO=1 LS_VERSAO=1 LITESTREAM_BUCKET=ci LITESTREAM_ENDPOINT=ci LITESTREAM_ACCESS_KEY_ID=ci LITESTREAM_SECRET_ACCESS_KEY=ci docker compose -f infra/pocketbase/compose.yaml config --quiet

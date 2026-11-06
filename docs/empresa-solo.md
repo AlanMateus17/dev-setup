@@ -4,90 +4,85 @@
 
 [← Índice da documentação](README.md)
 
-O contexto mestre (soberania técnica, anti-Frankenstein, economia de tokens, 88 ferramentas abertas, `just architect` e `just triage`, Kamal, ARCA, ciclo comercial, estrutura legal e o cronograma de 14 dias) foi cruzado com o setup inteiro. A maior parte **já estava aqui**: o setup tinha chegado às mesmas ideias por outro caminho. O que soma entrou como bloco, passo e ADR; o que repete ou contradiz as suas regras ficou de fora, com o motivo, em [Decisões](fora-do-setup.md).
+O contexto mestre (soberania técnica, anti-Frankenstein, economia de tokens, as 88 ferramentas, `just architect` e `just triage`, Kamal, ARCA, ciclo comercial, estrutura legal, o cronograma de 14 dias e os 5 módulos complementares) está **inteiro** no setup. Cada ferramenta tem uma função, um passo no [roteiro](implantacao/roteiro.md) e uma data ou gatilho.
 
-A regra que decidiu tudo é a do próprio documento: **uma ferramenta por função, e só se programa o que gera faturamento.** Aplicar 88 ferramentas de uma vez seria exatamente o Frankenstein que ele condena.
+O que evita o Frankenstein não é deixar ferramenta de fora: é **cada função ter uma principal e, quando faz sentido, uma reserva** ([ADR 0008](adr/0008-trocas-de-ferramenta-principal.md)). A reserva não roda o tempo todo; ela sobe quando a principal falhar ou quando o papel dela aparecer. Nenhuma linguagem é proibida: a triagem escolhe a melhor para cada trabalho ([ADR 0007](adr/0007-poliglota-por-funcao.md)).
 
-## O que mudou no setup
+## Decisões
 
-| O quê | Onde |
+| Tema | Decisão |
 |---|---|
-| `justfile` na raiz: porta única de comandos (`just check`, `just triagem`, `just arquiteto`, `just docs`, `just ci-local`, `just contexto-ia`, `just medir`) | [justfile](../justfile) |
-| Motor de decisão montar / colar / construir e pacote de contexto para o arquiteto | `tools/triagem/triagem.py` (com testes) |
-| Terminal moderno e o `just` no bootstrap: zoxide, eza, fd, btop, hyperfine, lazygit, lazydocker, Starship, tio e tcpdump | `scripts/wsl/bootstrap.sh` |
-| Deploy em VM pelo Kamal; Coolify e Dokploy de fora | [ADR 0005](adr/0005-deploy-em-vm-com-kamal.md) · `infra/templates/kamal` |
-| Contratos: OpenAPI no backend, Zod, Biome e Vitest no front | [ADR 0006](adr/0006-contratos-na-borda.md) |
-| O agente não lê segredo nem lixo: `permissions.deny` em todo repositório | `infra/templates/repo-padrao/.claude/settings.json` |
-| Klaro! (consentimento LGPD) antes de ligar o Pixel | passo `klaro-lgpd` |
-| Bancada de eletrônica: KiCad, PulseView, tio e o analisador lógico | passos `solo-kicad` e `solo-analisador` |
-| Fase nova do roteiro: **Empresa solo: o contexto mestre no setup** (9 passos, semana 5 de nov/2026) | [roteiro](implantacao/roteiro.md) |
+| Linguagens | Aura em .NET 10 + Next.js; Astro para sites, SvelteKit + PocketBase para MVP, Go para CLIs, Rust para firmware, Python para dados e IA (ADR 0007) |
+| Repositórios | Um por sistema AM, todos com `apps/web`, `apps/api`, `packages/core`, `packages/db` e `config/deploy.yml` |
+| Deploy | Kamal; VM grátis da Oracle primeiro; EC2 (sa-east-1) ou Azure B2s (Brazil South) quando um cliente pagar (ADR 0005) |
+| Segredos | Só no KeePassXC. age cifra arquivos que saem da máquina; sops cifra configuração de VM fora do Git |
+| Itens pagos | Configurados e prontos; ligam quando uma renda pagar (VM paga, VPS de cliente, SES do Plunk, SLU) |
+| Cronograma de 14 dias | Fase própria: Sprint de 14 dias, no recesso escolar de jan/2027 |
 
-## Correções ao documento original
+## Todas as ferramentas e o papel de cada uma
 
-Estas afirmações do contexto mestre estavam erradas ou desatualizadas e foram corrigidas aqui:
+**P** = principal da função. **R** = reserva. **+** = papel próprio, ao lado da principal.
 
-1. **`.claudeignore` não existe no Claude Code.** O que funciona são as regras `permissions.deny` do `.claude/settings.json` (o `.aiderignore` é só do Aider). Modelo no repo-padrão.
-2. **"Claude 3.5 Sonnet" está obsoleto.** As rotas de modelo do setup ficam no gateway LiteLLM e em [custos.md](custos.md); nenhum documento deve fixar versão de modelo.
-3. **Zod não existe em .NET.** O rigor de contrato fica no OpenAPI do backend e no Zod do front (ADR 0006), sem abrir uma segunda stack.
-4. **Fator R:** os 6% do Anexo III valem só na 1ª faixa (receita de até R$ 180 mil em 12 meses), e o pró-labore de 28% tem custo próprio (INSS de 11% e IR). Hoje a decisão é vender no CPF; isso volta na fase CNPJ, com o contador.
-5. **`just architect` e `just triage` não existiam.** Viraram `just arquiteto` e `just triagem`, que só montam o contexto e a decisão a partir dos dados do setup; nenhum deles "pesquisa líderes de mercado" sozinho.
-6. **ai-jail e ai-memory** existem (já estavam no setup, fase Agentes de IA).
-7. **O cronograma de 14 dias** pressupõe tempo integral. Com escola, restaurante e licenciatura, e com a regra de no máximo 3 rendas agora, ele foi encaixado nas ofertas que já existiam (abaixo).
-
-## O cronograma de 14 dias, reescrito
-
-| No documento | No setup | Quando |
-|---|---|---|
-| Dia 1: VPS, Coolify e Uptime Kuma | VM grátis da Oracle e Uptime Kuma (passos `op-vm` e `op-migrar`); Kamal no lugar do Coolify | Fase Operação 24 horas (dez/2026 a jan/2027) |
-| Dias 2 a 7: Chatwoot vendido a 5 empresas por R$ 1.800 + R$ 350/mês | Oferta **Automação com IA para pequenos negócios** (`automacaoia`, veredito fila): 1 implantação grátis em troca de caso, depois preço (passo `of-automacao`). O WhatsApp no Chatwoot exige a API oficial da Meta, com verificação do negócio e custo por conversa: some isso ao preço | Fase Mais ofertas (2027), quando uma das 3 de agora passar no portão |
-| Dias 8 a 14: micro-SaaS ARCA em SvelteKit + PocketBase | **AM Rendara começando pela planilha** (`rendara`, fila): Caixa da Casa na planilha (passo `caixa`), vender a planilha antes do sistema (passo `of-planilha`); o sistema, se vender, nasce na stack do Aura | Fases Vendas e finanças no CPF e Mais ofertas |
-
-## As 88 ferramentas, uma por uma
-
-**Já no setup** = o bloco já existia. **Entra** = virou bloco ou passo agora. **Fora** = repete algo ou contradiz uma regra; o motivo está em [Decisões](fora-do-setup.md).
-
-| Grupo | Já no setup | Entra | Fora |
-|---|---|---|---|
-| Terminal e ergonomia (5) | — | Starship; lazy.nvim e snacks.nvim entram na configuração do Neovim (bloco que já existia, para quando você começar a usá-lo) | Ghostty, Zellij |
-| Runtimes e coreutils (6) | ripgrep, fzf | zoxide, eza, fd | mise |
-| Arquivos, Git e containers (4) | — | lazygit, lazydocker | yazi, Podman |
-| APIs, bancos e backends (4) | Bruno | — | posting, harlequin, PocketBase |
-| Automação e métricas (5) | — | just, btop, hyperfine | gum, bubbletea |
-| Dotfiles e segredos (4) | gitleaks | — | chezmoi (o repositório de dotfiles já cobre), age, sops |
-| Rede, túneis e backup (5) | cloudflared, restic, Headscale (reserva do Tailscale) | — | bore, Litestream |
-| Deploy (3) | — | Kamal | Coolify, Dokploy |
-| Custódia de código (3) | — | Git LFS (para os arquivos grandes do KiCad e do Ghidra, quando aparecerem) | Forgejo/Gitea, gocryptfs |
-| Contexto de IA (2) | — | Repomix | tree-sitter avulso |
-| Monetização e release (5) | — | act | Polar, Stripe CLI, GoReleaser, cargo-dist |
-| Observabilidade e diagnóstico (15) | Uptime Kuma, strace, Wireshark/tshark, k6, Trivy, Penpot, Ghidra, GlitchTip (reserva do Sentry) | tcpdump (no bootstrap) | SigNoz, bpftrace (volta com o Linux nativo), vegeta, D2, Plane, Radare2 |
-| Hardware e firmware (6) | FreeCAD | KiCad, InteractiveHtmlBom, tio, sigrok/PulseView | probe-rs |
-| Qualidade e testes (4) | Playwright | Zod (front), Biome, Vitest | — |
-| Finanças e ARCA (7) | — | — | Portfolio Performance, Ghostfolio, Beancount + Fava, hledger, ERPNext, Actual Budget, Firefly III |
-| Comercial e atendimento (10) | Invoice Ninja, Cal.com, Twenty, Chatwoot, Documenso, Umami | Klaro! | BookStack, Formbricks, Logseq |
-| IA (fora das 88) | Ollama, ai-jail, ai-memory, Playwright/MCP (Claude in Chrome e servidores MCP) | — | Aider, llm (CLI) |
-
-## Delta de 06/11/2026: os 5 módulos complementares
-
-| Módulo | Decisão |
+| Grupo | Ferramentas |
 |---|---|
-| 1 · Economia de tokens | Já no setup: Repomix (`just contexto-ia`), ai-memory, roteamento local → Claude pelo LiteLLM, resposta seca no pacote do arquiteto. Corrigido: `.claudeignore` não existe (vale `permissions.deny`); Aider e `.aiderignore` ficam fora (o Claude Code é o agente); Claude 3.5 Sonnet está obsoleto; Qwen 2.5 Coder pode ser trocado pelo modelo que o `cabe.py` aprovar. |
-| 2 · Custódia e engenharia reversa | Entra: padrão sala limpa no lab (alvos → specs → src, reimplementação em C# ou TypeScript) e Git LFS para firmware, Ghidra e CAD. Fora: Forgejo, Soft Serve e gocryptfs (motivos em Decisões). |
-| 3 · Decisão no terminal | Já entrou como `just triagem` e `just arquiteto`. Novo: o pacote do arquiteto traz um link do grep.app com as palavras do pedido, para você abrir. Ele não gera Zod nem Vitest sozinho: quem gera é o Claude, a partir do pacote. |
-| 4 · Nuvem própria | Kamal já é o caminho (ADR 0005), começando na VM grátis da Oracle. EC2 e Azure VM pagas e o monorepo único ficam fora agora. |
-| 5 · Complementares | n8n já está no setup. SvelteKit, Astro, Plunk, React Email, Akaunting, HeyForm e Plausible ficam fora: cada um repete algo que já existe. |
+| Terminal e ergonomia | Windows Terminal (P no Windows) · Ghostty (P no Arch) · Zellij (P) · tmux (R, servidores) · Starship · Neovim com lazy.nvim e snacks.nvim |
+| Runtimes e coreutils | mise (P: Node, Go, Rust e CLIs) · fnm (R) · uv (P de Python) · zoxide · eza · ripgrep · fd · fzf |
+| Arquivos, Git e containers | yazi · lazygit · lazydocker · Docker Desktop (P) · Podman (+ rootless no lab e em VPS) |
+| APIs, bancos e backends | Bruno (P) · posting (R, terminal e SSH) · DBeaver (P) · harlequin (R, terminal) · PocketBase (+ MVP) |
+| Automação e métricas | just (porta única) · gum (`just menu`) · btop · hyperfine · bubbletea (CLIs em Go) |
+| Dotfiles e segredos | chezmoi (P, lê o KeePassXC) · gitleaks · age e sops (arquivos cifrados) · KeePassXC (P de segredos) |
+| Rede, túneis e backup | Tailscale (P) · Headscale (R e redes de clientes) · cloudflared (P de webhooks) · bore (+ TCP próprio) · restic · Litestream (+ SQLite do PocketBase) |
+| Deploy | Kamal (P dos sistemas AM) · Coolify (+ VPS de cliente) · Dokploy (R do Coolify) |
+| Custódia de código | GitHub (P) · Forgejo (espelho com LFS) · Soft Serve (servidor da casa) · Git LFS · gocryptfs (alvos cifrados) |
+| Contexto de IA | Repomix (`just contexto-ia`) · tree-sitter (no Neovim, no Repomix e no repo map do Aider) |
+| IA | Claude Code (P) · Aider + Ollama (nível R$ 0) · llm (pipes) · Ollama · ai-jail · ai-memory · MCP |
+| Monetização e release | Hotmart e Kiwify (P no Brasil) · Polar (+ venda internacional) · Stripe CLI · GoReleaser · cargo-dist · act |
+| Observabilidade | SigNoz (P dos apps) · Loki + Tempo (R) · Grafana (P do painel de lucro) · GlitchTip (P de erros) · Sentry (R) · Uptime Kuma · OpenTelemetry |
+| Diagnóstico | strace · bpftrace · Wireshark/tshark · tcpdump · k6 (P) · vegeta (+ taxa constante) · Trivy |
+| Projetos e desenho | GitHub Projects (P do código) · Plane (+ clientes e negócios) · Mermaid (P na documentação) · D2 (+ arquitetura) · Penpot |
+| Engenharia reversa | Ghidra (P) · radare2 (+ triagem) · sala limpa (alvos → specs → src) |
+| Hardware e firmware | KiCad · InteractiveHtmlBom · FreeCAD · tio · sigrok/PulseView · analisador lógico · probe-rs |
+| Qualidade e testes | Zod (front) · Biome · Vitest · Playwright · xUnit |
+| Finanças e ARCA | financeiro.py e Caixa da Casa (P) · Beancount + Fava (P do livro contábil) · hledger (R) · Portfolio Performance (P da rentabilidade) · Ghostfolio (painel) · Actual Budget (+ envelopes) · Firefly III (R) · ERPNext (+ negócios físicos) · Akaunting (+ CNPJ) |
+| Comercial e atendimento | Invoice Ninja · Cal.com · HeyForm (P da qualificação) · Twenty · Chatwoot · Documenso · Formbricks (P do NPS) · BookStack (+ manuais) · Klaro! |
+| Sites, e-mail e analytics | Astro (P dos sites de conteúdo) · SvelteKit (+ apps pequenos) · Next.js (P dos sistemas) · Resend (P) · Plunk (R próprio) · React Email · Umami (P) · Plausible (R) · n8n |
+| Notas | Obsidian (P) · Logseq (+ diário e runbooks) |
 
-## Topologia da máquina
+## Correções que valem para sempre
 
-O documento propõe `~/dev/commercial`, `~/dev/hardware`, `~/dev/re-lab` e `~/notes`. O setup mantém a árvore que já existe (`~/dev/<projeto>`, um repositório por sistema AM, o vault do Obsidian e `~/AMtech/entrada`), porque mudar pastas quebraria os scripts, o ai-jail e o acervo. O lab de engenharia reversa continua em `infra/lab-alvo`, isolado e sem internet; os projetos de placa entram como repositórios próprios em `~/dev` (ex.: `~/dev/sensor-agro`), com Git LFS para arquivos grandes.
+1. **`.claudeignore` não existe no Claude Code.** O que funciona é `permissions.deny` no `.claude/settings.json`. O `.aiderignore` é do Aider e também está no repo-padrão.
+2. **"Claude 3.5 Sonnet" está obsoleto.** A versão de modelo fica no gateway LiteLLM e em [custos.md](custos.md), nunca em documento.
+3. **Zod é TypeScript.** O contrato do backend .NET é o OpenAPI (ADR 0006).
+4. **age cifra, não assina.** Assinatura de firmware é o Secure Boot do chip (ESP32 ou STM32).
+5. **Fator R:** os 6% do Anexo III valem só na 1ª faixa (até R$ 180 mil em 12 meses) e o pró-labore de 28% paga INSS de 11% e IR.
+6. **`just architect` não pesquisa sozinho.** `just arquiteto` monta o pacote (stack, regras, o que existe, link do grep.app) e o Claude responde a partir dele.
 
-## Comandos
+## O cronograma de 14 dias
+
+Fase **Sprint de 14 dias (Estratégia do Halter)**, no recesso escolar de jan/2027, com o gatilho de uma das 3 rendas de agora já ter passado no portão:
+
+| Dias | O quê |
+|---|---|
+| 1 | VM, Uptime Kuma e Kamal conferidos |
+| 2 | Chatwoot com e-mail pelo Resend |
+| 3 | 5 empresas de Barbacena abordadas (lista aprovada por você) |
+| 4 | Demonstração, proposta e contrato no Documenso (R$ 1.800 + R$ 350/mês, mais o custo da API do WhatsApp) |
+| 5 e 6 | WhatsApp oficial do cliente, atendentes e a primeira fatura |
+| 7 | Treinamento e NPS |
+| 8 e 9 | MVP do ARCA em PocketBase e SvelteKit |
+| 10 | Lógica dos 4 quadrantes e do aporte, com Zod e Vitest |
+| 11 e 12 | Pix do Asaas e landing page em Astro |
+| 13 e 14 | Playwright, deploy pelo Kamal com réplica no R2 e 50 testadores no TabNews |
+
+## Ordem de montagem
 
 ```bash
-cd ~/dev/dev-setup && just                                   # lista tudo
-just check                                                   # antes de todo commit
-just triagem "atendimento no WhatsApp com fila" --nucleo nao # montar, colar ou construir
-just triagem "rebalancear a carteira ARCA" --nucleo sim --adr docs/adr
-just arquiteto "módulo de aporte do AM Rendara" > /tmp/pacote.md
-just contexto-ia tools/triagem                               # Repomix só da pasta
-just medir "python3 tools/gerar_docs.py --check"             # hyperfine antes de trocar algo
+cd ~/dev/dev-setup && git pull
+bash scripts/wsl/bootstrap.sh --simular && bash scripts/wsl/bootstrap.sh   # just, terminal moderno, mise
+bash scripts/wsl/extras.sh --simular && bash scripts/wsl/extras.sh         # CLIs do mise, uv, Podman, Git LFS
+chezmoi init && cp -rn infra/dotfiles/. ~/.local/share/chezmoi/ && chezmoi init && chezmoi apply
+just check                                                                  # antes de todo commit
+just menu                                                                   # todas as receitas
 ```
+
+Os serviços próprios (Forgejo, GlitchTip, BookStack, Headscale, Actual, Ghostfolio, Firefly III, Akaunting, Soft Serve) sobem por perfil: `just servico forgejo`. Os grandes (SigNoz, Plane, ERPNext, Formbricks, HeyForm, Plausible, Plunk, Coolify, Dokploy) têm o instalador oficial no passo de cada um.

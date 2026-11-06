@@ -3,7 +3,7 @@
 #   bash scripts/wsl/nuvem.sh --simular   # mostra o que faria
 #   bash scripts/wsl/nuvem.sh             # instala
 # Instala: Azure CLI (uv), Terraform (repositório oficial da HashiCorp),
-#          Vercel CLI e Wrangler da Cloudflare (npm global do Node do fnm).
+#          Vercel CLI e Wrangler da Cloudflare (npm global do Node do mise).
 # O login em cada uma é seu: az login, vercel login, wrangler login.
 set -euo pipefail
 
@@ -14,7 +14,7 @@ APT="DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::=--force-confde
 LOG="${HOME}/nuvem-$(date +%Y%m%d-%H%M).log"
 ERROS=0
 export PATH="$HOME/.local/bin:$PATH"
-command -v fnm >/dev/null 2>&1 && eval "$(fnm env --shell bash 2>/dev/null)"
+if command -v mise >/dev/null 2>&1; then eval "$(mise env -s bash 2>/dev/null)"; elif command -v fnm >/dev/null 2>&1; then eval "$(fnm env --shell bash 2>/dev/null)"; fi
 
 linha() { printf '%-9s %-24s %-11s %s\n' "$1" "$2" "$3" "${4:-}" | tee -a "$LOG"; }
 tem() { command -v "$1" >/dev/null 2>&1; }

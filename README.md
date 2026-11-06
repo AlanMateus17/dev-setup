@@ -8,7 +8,7 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 
 | Camadas | Blocos | Conexões | Fluxos | Contas necessárias |
 |---|---|---|---|---|
-| 23 | 425 | 762 | 22 | 111 |
+| 23 | 477 | 836 | 22 | 129 |
 
 ## Por onde começar
 
@@ -89,33 +89,33 @@ O Windows cuida só do que precisa de janela, GPU e segurança; todo o trabalho 
 
 | # | Camada | Blocos | Destaques |
 |---|---|---|---|
-| 23 | [Operação do grupo (esteira, marca, qualidade)](docs/camadas/23-oper.md) | 28 | Portfólio de ofertas, Esteira de ofertas, Padrão de qualidade, Marca pessoal Alan Mateus… |
+| 23 | [Operação do grupo (esteira, marca, qualidade)](docs/camadas/23-oper.md) | 29 | Portfólio de ofertas, Esteira de ofertas, Padrão de qualidade, Marca pessoal Alan Mateus… |
 | 22 | [Público e canais](docs/camadas/22-pub.md) | 12 | Meta Business Suite, Instagram, YouTube, LinkedIn… |
-| 21 | [Marketing, automação e medição](docs/camadas/21-mkt.md) | 28 | Meta Ads (Instagram, Facebook), Isca grátis + sequência de e-mails, MailerLite, Postiz (agendador)… |
-| 20 | [Plataformas de venda e recebimento](docs/camadas/20-venda.md) | 13 | Pix Automático + gateway (ex.: Asaas), Agenda online (Cal.com), CRM simples (planilha), Hotmart… |
-| 19 | [Pessoa física: impostos e finanças](docs/camadas/19-emp.md) | 14 | Registro de marca (INPI), Termos, privacidade (LGPD) e contratos, Certificado digital (e-CNPJ), API de NFS-e (ex.: Focus NFe)… |
-| 18 | [Vitrine web (sites e domínio)](docs/camadas/18-web.md) | 12 | E-mail profissional (enviar e receber), Domínio (Registro.br), Site pessoal + blog (Jekyll), Instituto AMS… |
+| 21 | [Marketing, automação e medição](docs/camadas/21-mkt.md) | 29 | Meta Ads (Instagram, Facebook), Isca grátis + sequência de e-mails, MailerLite, Postiz (agendador)… |
+| 20 | [Plataformas de venda e recebimento](docs/camadas/20-venda.md) | 15 | Pix Automático + gateway (ex.: Asaas), Agenda online (Cal.com), CRM simples (planilha), Hotmart… |
+| 19 | [Pessoa física: impostos e finanças](docs/camadas/19-emp.md) | 21 | Registro de marca (INPI), Termos, privacidade (LGPD) e contratos, Certificado digital (e-CNPJ), API de NFS-e (ex.: Focus NFe)… |
+| 18 | [Vitrine web (sites e domínio)](docs/camadas/18-web.md) | 15 | E-mail profissional (enviar e receber), Domínio (Registro.br), Site pessoal + blog (Jekyll), Instituto AMS… |
 | 17 | [Produtos (o que você vende)](docs/camadas/17-prod.md) | 8 | Mini-curso Lógica de Programação, Formações (TI, Matemática, Finanças), Templates e código-fonte, Livro Lógica e Máquina… |
-| 16 | [Negócios do grupo (Barbacena)](docs/camadas/16-neg.md) | 18 | AMtech Software (projetos e SaaS), Loja AMtech (assistência), Peças sem estoque (sob encomenda), Ponto de retirada (Shopee e ML)… |
+| 16 | [Negócios do grupo (Barbacena)](docs/camadas/16-neg.md) | 19 | AMtech Software (projetos e SaaS), Loja AMtech (assistência), Peças sem estoque (sob encomenda), Ponto de retirada (Shopee e ML)… |
 | 15 | [Editora AMS Silva (produção de livros)](docs/camadas/15-editora.md) | 36 | Selo Editora AMS Silva, Repositório do livro, Seu modelo de criação, Fonte única (Markdown + Pandoc)… |
 | 14 | [Estudo e carreira](docs/camadas/14-est.md) | 14 | Microsoft Learn + AWS Skill Builder, TryHackMe / Hack The Box, Alura · Rocketseat · DIO · Udemy, Anki… |
 | 13 | [Produção de conteúdo](docs/camadas/13-cont.md) | 8 | OBS Studio, DaVinci Resolve ou Kdenlive, Audacity, Canva · Krita · Inkscape… |
-| 12 | [Nuvem, código e entrega](docs/camadas/12-nuvem.md) | 24 | Armazenamento de arquivos (Blob/R2), E-mail transacional (Resend, SES…), SonarQube Cloud, Projects · ADRs · MkDocs… |
-| 11 | [Aplicação: sistemas AM (Aura)](docs/camadas/11-app.md) | 20 | OpenAPI + Scalar, PostGIS + MapLibre, Storybook, Clean Arch + DDD… |
-| 10 | [Observabilidade](docs/camadas/10-obs.md) | 8 | Sentry (erros), Uptime Kuma, Seq (logs), Loki + Tempo… |
+| 12 | [Nuvem, código e entrega](docs/camadas/12-nuvem.md) | 32 | Armazenamento de arquivos (Blob/R2), E-mail transacional (Resend, SES…), SonarQube Cloud, Projects · ADRs · MkDocs… |
+| 11 | [Aplicação: sistemas AM (Aura)](docs/camadas/11-app.md) | 26 | OpenAPI + Scalar, PostGIS + MapLibre, Storybook, Clean Arch + DDD… |
+| 10 | [Observabilidade](docs/camadas/10-obs.md) | 10 | Sentry (erros), Uptime Kuma, Seq (logs), Loki + Tempo… |
 | 09 | [Containers, Kubernetes e infra como código](docs/camadas/09-cnt.md) | 16 | Caddy (proxy + HTTPS), Mailpit, Kafka, kubectl · Helm · k9s… |
 | 08 | [Claude: recursos, conectores e plugins](docs/camadas/08-clc.md) | 19 | Projects + memória, Artifacts (Docs, Slides, Sheets…), Pesquisa aprofundada, Tarefas agendadas… |
 | 07 | [Assistentes de IA (chat, pesquisa e estudo)](docs/camadas/07-chat.md) | 10 | Claude (app), ChatGPT, Gemini (pago), NotebookLM… |
 | 06 | [Dados e treino de IA](docs/camadas/06-dados.md) | 22 | Python de dados (Polars, Jupyter), DuckDB + Parquet, dbt Core, Airflow (orquestração)… |
-| 05 | [Agentes de IA e sandbox](docs/camadas/05-ia.md) | 23 | Modelos locais: Qwen · Gemma · Llama, Base de conhecimento (RAG) das suas notas, Claude Code, ai-jail… |
-| 04 | [Linux (Ubuntu no WSL2, Arch no 2º disco)](docs/camadas/04-lin.md) | 15 | Neovim, nmap · dig · curl, Ubuntu (WSL2), Git + SSH + gh… |
-| 03 | [Windows 11, apps e máquinas virtuais](docs/camadas/03-win.md) | 30 | Tailscale (VPN), .wslconfig + localhost, Terminal · PowerShell · winget, Excalidraw / draw.io… |
-| 02 | [Segurança e cofre](docs/camadas/02-seg.md) | 21 | Commits assinados (chave SSH), restic (backup criptografado), Chave física (YubiKey), TPM + Secure Boot… |
+| 05 | [Agentes de IA e sandbox](docs/camadas/05-ia.md) | 25 | Modelos locais: Qwen · Gemma · Llama, Base de conhecimento (RAG) das suas notas, Claude Code, ai-jail… |
+| 04 | [Linux (Ubuntu no WSL2, Arch no 2º disco)](docs/camadas/04-lin.md) | 29 | Neovim, nmap · dig · curl, Ubuntu (WSL2), Git + SSH + gh… |
+| 03 | [Windows 11, apps e máquinas virtuais](docs/camadas/03-win.md) | 32 | Tailscale (VPN), .wslconfig + localhost, Terminal · PowerShell · winget, Excalidraw / draw.io… |
+| 02 | [Segurança e cofre](docs/camadas/02-seg.md) | 24 | Commits assinados (chave SSH), restic (backup criptografado), Chave física (YubiKey), TPM + Secure Boot… |
 | 01 | [Hardware](docs/camadas/01-hw.md) | 26 | Nobreak, Base com cooler, SSD SATA 2,5", Acer Nitro (32 GB, GTX 1650)… |
 
-## Stack fixa dos sistemas
+## Stack
 
-C#/.NET 10 · ASP.NET Core (Controllers) · Clean Architecture + DDD · PostgreSQL · Redis · SignalR · TypeScript, Next.js e Tailwind · Docker · GitHub Actions. Rejeitadas de propósito: Bun, Hono, Rust, Tauri e gRPC. Decisões em [`docs/adr`](docs/adr).
+Sistemas AM: C#/.NET 10 · ASP.NET Core (Controllers) · Clean Architecture + DDD · PostgreSQL · Redis · SignalR · Next.js, TypeScript, Tailwind e Zod · Docker · GitHub Actions · Kamal. Fora deles, a melhor ferramenta para cada trabalho ([ADR 0007](docs/adr/0007-poliglota-por-funcao.md)): Astro para sites, SvelteKit e PocketBase para MVPs, Go para CLIs, Rust para firmware, Python para dados e IA. Principal e reserva de cada função no [ADR 0008](docs/adr/0008-trocas-de-ferramenta-principal.md).
 
 ## Como este repositório funciona
 

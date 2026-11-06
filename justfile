@@ -74,3 +74,22 @@ verificar:
 # Mostra o que o bootstrap instalaria, sem mudar nada
 bootstrap-simular:
     bash scripts/wsl/bootstrap.sh --simular
+
+# Escolhe a receita num menu com setas (gum)
+menu:
+    just "$(just --summary | tr ' ' '\n' | gum choose --header 'Qual receita?')"
+
+# Desenha um diagrama D2 em SVG ao lado do arquivo: just diagrama docs/arquitetura-exemplo.d2
+diagrama arquivo:
+    d2 --layout elk "{{arquivo}}" "{{without_extension(arquivo)}}.svg"
+
+# Monta a pasta cifrada da sala limpa (pede a senha do gocryptfs) e desmonta com just lab-fechar
+lab-abrir:
+    mkdir -p ~/dev/lab && gocryptfs ~/dev/lab-cifrado ~/dev/lab
+
+lab-fechar:
+    fusermount -u ~/dev/lab
+
+# Sobe um serviço próprio pelo perfil: just servico forgejo
+servico perfil:
+    cd infra/soberania && docker compose --profile "{{perfil}}" up -d

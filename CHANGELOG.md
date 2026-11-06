@@ -2,6 +2,22 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.12.0] - 2026-11-06
+
+### Adicionado
+- Todas as ferramentas do contexto mestre no setup, com função, passo e data: 52 blocos novos, fases Soberania (serviços próprios na VM) e Sprint de 14 dias (recesso de jan/2027), e passos nas fases de finanças, investimentos, sites, crescimento, CNPJ, negócios, estudo, segurança e Linux nativo.
+- ADR 0007 (poliglota por função: nenhuma linguagem proibida) e ADR 0008 (principal e reserva de cada função, com as trocas).
+- scripts/wsl/extras.sh: chezmoi, as CLIs do mise (zellij, yazi, d2, vegeta, age, sops, bore, gum, soft-serve, goreleaser, cargo-dist, probe-rs, tree-sitter, stripe, litestream, pocketbase), uv tools (posting, harlequin, aider, llm, beancount, fava) e apt (podman, git-lfs, hledger, neovim).
+- infra/dotfiles (fonte do chezmoi): mise, Zellij com layout, Starship, Ghostty, Neovim com lazy.nvim, snacks.nvim e tree-sitter, yazi, Aider com Ollama; integração do chezmoi com o KeePassXC.
+- infra/soberania: Forgejo, Soft Serve, Headscale, GlitchTip, BookStack, Actual, Ghostfolio, Firefly III e Akaunting por perfil, em 127.0.0.1; validado no CI.
+- infra/pocketbase: PocketBase + Litestream (réplica no R2) para MVP; modelos go-cli (bubbletea, GoReleaser), rust-cli (cargo-dist) e sala-limpa (gocryptfs).
+- justfile: menu (gum), diagrama (D2), servico, lab-abrir e lab-fechar. Repo-padrão com .aiderignore. ferramentas-re.sh com radare2 e gocryptfs.
+
+### Alterado
+- Node passa do fnm para o mise (bootstrap, verificar, nuvem e manutenção), com o fnm de reserva.
+- Stack no README e na triagem: Aura em .NET 10 + Next.js e a melhor ferramenta para cada trabalho fora dele.
+- Decisões (fora do setup): saem os 22 itens que agora estão no setup; Bun, Hono, Tauri e gRPC deixam de ser proibidos.
+
 ## [2.11.1] - 2026-11-06
 
 ### Adicionado

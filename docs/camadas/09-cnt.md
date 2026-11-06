@@ -43,6 +43,7 @@ flowchart LR
     n_aws["AWS"]
     n_azure["Azure"]
     n_cf["Cloudflare (DNS, Pages, e-mail)"]
+    n_coolify["Coolify (apps de cliente em VPS)"]
     n_gcp["Google Cloud"]
   end
   subgraph L_app["Aplicação: sistemas AM (Aura)"]
@@ -71,6 +72,7 @@ flowchart LR
     n_rag["Base de conhecimento (RAG) das suas notas"]
   end
   subgraph L_lin["Linux (Ubuntu no WSL2, Arch no 2º disco)"]
+    n_harlequin["harlequin (SQL no terminal)"]
     n_ros2["ROS 2 + ponte MQTT"]
     n_wsl["Ubuntu (WSL2)"]
   end
@@ -112,6 +114,7 @@ flowchart LR
   n_aspire -->|"sobe os serviços"| n_docker
   n_overif -->|"confere"| n_docker
   n_act -->|"usa o Docker"| n_docker
+  n_coolify -->|"sobe containers"| n_docker
   n_dbv -->|"porta 5432"| n_pg
   n_mcp -->|"leitura do banco de dev"| n_pg
   n_rag -->|"pgvector"| n_pg
@@ -120,6 +123,7 @@ flowchart LR
   n_gis -->|"extensão"| n_pg
   n_api -->|"Npgsql"| n_pg
   n_ai -->|"pgvector"| n_pg
+  n_harlequin -->|"consulta o Postgres"| n_pg
   n_sig -->|"backplane"| n_redis
   n_api -->|"cache"| n_redis
   n_api -->|"eventos"| n_rmq
@@ -147,22 +151,22 @@ flowchart LR
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Caddy (proxy + HTTPS)](#caddy) | Local | Fica na frente das APIs e emite o certificado HTTPS sozinho. Usado no servidor e no homelab. | passo 35.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| [Mailpit](#mailp) | Local | Caixa de e-mail falsa para testar os e-mails dos sistemas sem enviar nada de verdade. | passo 35.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| [Kafka](#kafka) | Local · futuro | Mensageria padrão em empresa grande. Depois do RabbitMQ. | passo 47.1 · 2028 |
-| [kubectl · Helm · k9s](#k8st) | Local · futuro | Ferramentas para operar o Kubernetes: comandos, pacotes e painel no terminal. | passo 47.2 · 2028 |
-| [Azure CLI · AWS CLI](#clis) | Local | Linha de comando das nuvens; usadas pelo Terraform. | passo 36.1 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
-| [Datomic local](#datomic) | Local · futuro | Só quando o aura-historico existir (desvio intencional da stack). | passo 43.4 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
+| [Caddy (proxy + HTTPS)](#caddy) | Local | Fica na frente das APIs e emite o certificado HTTPS sozinho. Usado no servidor e no homelab. | passo 36.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| [Mailpit](#mailp) | Local | Caixa de e-mail falsa para testar os e-mails dos sistemas sem enviar nada de verdade. | passo 36.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| [Kafka](#kafka) | Local · futuro | Mensageria padrão em empresa grande. Depois do RabbitMQ. | passo 49.1 · 2028 |
+| [kubectl · Helm · k9s](#k8st) | Local · futuro | Ferramentas para operar o Kubernetes: comandos, pacotes e painel no terminal. | passo 49.2 · 2028 |
+| [Azure CLI · AWS CLI](#clis) | Local | Linha de comando das nuvens; usadas pelo Terraform. | passo 37.1 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| [Datomic local](#datomic) | Local · futuro | Só quando o aura-historico existir (desvio intencional da stack). | passo 45.4 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
 | [Docker + Compose](#docker) | Local | Engine no WSL2; um compose por sistema. | passo 4.2 · Semana 2 · nov/2026; passo 10.2 · Semana 4 · nov/2026 |
-| [PostgreSQL](#pg) | Local | Banco de todos os sistemas (com pgvector para IA). | passo 10.2 · Semana 4 · nov/2026; passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| [Redis](#redis) | Local | Cache e backplane do SignalR. | passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| [RabbitMQ](#rmq) | Local · futuro | Fila de eventos entre sistemas. | passo 47.1 · 2028 |
-| [Kubernetes local (kind)](#kind) | Local · futuro | Treino de Kubernetes sem pagar nuvem. | passo 47.2 · 2028 |
-| [Terraform](#tf) | Local | Cria Azure, AWS e Cloudflare por código. | passo 36.1 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028); passo 36.3 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
-| [Mosquitto (MQTT)](#mqtt) | Local | Barramento da casa: Zigbee2MQTT, Frigate, leitor do hidrômetro e os robôs publicam e recebem comandos por aqui, com usuário e senha. | passo 52.2 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| [Zigbee2MQTT](#z2m) | Local · futuro | Liga o coordenador Zigbee ao MQTT; aceita aparelhos de várias marcas sem o app de cada uma. | passo 52.7 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| [Frigate (câmeras com detecção)](#frigate) | Local · futuro | Grava e detecta pessoas, carros e animais localmente; manda eventos ao Home Assistant. Imagem nunca vai para IA na nuvem. | passo 52.9 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| [ESPHome](#esphome) | Local | Firmware por arquivo de configuração para ESP32: satélites de voz, sensores e robôs viram entidades do Home Assistant. | passo 52.6 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| [PostgreSQL](#pg) | Local | Banco de todos os sistemas (com pgvector para IA). | passo 10.2 · Semana 4 · nov/2026; passo 36.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| [Redis](#redis) | Local | Cache e backplane do SignalR. | passo 36.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| [RabbitMQ](#rmq) | Local · futuro | Fila de eventos entre sistemas. | passo 49.1 · 2028 |
+| [Kubernetes local (kind)](#kind) | Local · futuro | Treino de Kubernetes sem pagar nuvem. | passo 49.2 · 2028 |
+| [Terraform](#tf) | Local | Cria Azure, AWS e Cloudflare por código. | passo 37.1 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028); passo 37.3 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| [Mosquitto (MQTT)](#mqtt) | Local | Barramento da casa: Zigbee2MQTT, Frigate, leitor do hidrômetro e os robôs publicam e recebem comandos por aqui, com usuário e senha. | passo 54.2 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| [Zigbee2MQTT](#z2m) | Local · futuro | Liga o coordenador Zigbee ao MQTT; aceita aparelhos de várias marcas sem o app de cada uma. | passo 54.7 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| [Frigate (câmeras com detecção)](#frigate) | Local · futuro | Grava e detecta pessoas, carros e animais localmente; manda eventos ao Home Assistant. Imagem nunca vai para IA na nuvem. | passo 54.9 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| [ESPHome](#esphome) | Local | Firmware por arquivo de configuração para ESP32: satélites de voz, sensores e robôs viram entidades do Home Assistant. | passo 54.6 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
 
 <a id="caddy"></a>
 
@@ -172,7 +176,7 @@ flowchart LR
 
 Fica na frente das APIs e emite o certificado HTTPS sozinho. Usado no servidor e no homelab.
 
-**Quando entra:** passo 35.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 36.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -186,7 +190,7 @@ Fica na frente das APIs e emite o certificado HTTPS sozinho. Usado no servidor e
 
 Caixa de e-mail falsa para testar os e-mails dos sistemas sem enviar nada de verdade.
 
-**Quando entra:** passo 35.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 36.3 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -201,7 +205,7 @@ Caixa de e-mail falsa para testar os e-mails dos sistemas sem enviar nada de ver
 
 Mensageria padrão em empresa grande. Depois do RabbitMQ.
 
-**Quando entra:** passo 47.1 · 2028 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 49.1 · 2028 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -216,7 +220,7 @@ Mensageria padrão em empresa grande. Depois do RabbitMQ.
 
 Ferramentas para operar o Kubernetes: comandos, pacotes e painel no terminal.
 
-**Quando entra:** passo 47.2 · 2028 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 49.2 · 2028 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -230,7 +234,7 @@ Ferramentas para operar o Kubernetes: comandos, pacotes e painel no terminal.
 
 Linha de comando das nuvens; usadas pelo Terraform.
 
-**Quando entra:** passo 36.1 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.1 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -245,7 +249,7 @@ Linha de comando das nuvens; usadas pelo Terraform.
 
 Só quando o aura-historico existir (desvio intencional da stack).
 
-**Quando entra:** passo 43.4 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 45.4 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -281,6 +285,7 @@ Engine no WSL2; um compose por sistema.
 | ← recebe de | [.NET Aspire](10-obs.md#aspire) | Observabilidade | sobe os serviços |
 | ← recebe de | [Verificadores](23-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | confere |
 | ← recebe de | [act (CI do Actions na sua máquina)](12-nuvem.md#act) | Nuvem, código e entrega | usa o Docker |
+| ← recebe de | [Coolify (apps de cliente em VPS)](12-nuvem.md#coolify) | Nuvem, código e entrega | sobe containers |
 
 <a id="pg"></a>
 
@@ -290,7 +295,7 @@ Engine no WSL2; um compose por sistema.
 
 Banco de todos os sistemas (com pgvector para IA).
 
-**Quando entra:** passo 10.2 · Semana 4 · nov/2026; passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 10.2 · Semana 4 · nov/2026; passo 36.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -303,6 +308,7 @@ Banco de todos os sistemas (com pgvector para IA).
 | ← recebe de | [Docker + Compose](09-cnt.md#docker) | Containers, Kubernetes e infra como código | container |
 | ← recebe de | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | Npgsql |
 | ← recebe de | [IA: RAG + pgvector](11-app.md#ai) | Aplicação: sistemas AM (Aura) | pgvector |
+| ← recebe de | [harlequin (SQL no terminal)](04-lin.md#harlequin) | Linux (Ubuntu no WSL2, Arch no 2º disco) | consulta o Postgres |
 
 <a id="redis"></a>
 
@@ -312,7 +318,7 @@ Banco de todos os sistemas (com pgvector para IA).
 
 Cache e backplane do SignalR.
 
-**Quando entra:** passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 36.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -328,7 +334,7 @@ Cache e backplane do SignalR.
 
 Fila de eventos entre sistemas.
 
-**Quando entra:** passo 47.1 · 2028 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 49.1 · 2028 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -343,7 +349,7 @@ Fila de eventos entre sistemas.
 
 Treino de Kubernetes sem pagar nuvem.
 
-**Quando entra:** passo 47.2 · 2028 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 49.2 · 2028 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -358,7 +364,7 @@ Treino de Kubernetes sem pagar nuvem.
 
 Cria Azure, AWS e Cloudflare por código.
 
-**Quando entra:** passo 36.1 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028); passo 36.3 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.1 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028); passo 37.3 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -375,7 +381,7 @@ Cria Azure, AWS e Cloudflare por código.
 
 Barramento da casa: Zigbee2MQTT, Frigate, leitor do hidrômetro e os robôs publicam e recebem comandos por aqui, com usuário e senha.
 
-**Quando entra:** passo 52.2 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 54.2 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -394,7 +400,7 @@ Barramento da casa: Zigbee2MQTT, Frigate, leitor do hidrômetro e os robôs publ
 
 Liga o coordenador Zigbee ao MQTT; aceita aparelhos de várias marcas sem o app de cada uma.
 
-**Quando entra:** passo 52.7 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 54.7 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -409,7 +415,7 @@ Liga o coordenador Zigbee ao MQTT; aceita aparelhos de várias marcas sem o app 
 
 Grava e detecta pessoas, carros e animais localmente; manda eventos ao Home Assistant. Imagem nunca vai para IA na nuvem.
 
-**Quando entra:** passo 52.9 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 54.9 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -424,7 +430,7 @@ Grava e detecta pessoas, carros e animais localmente; manda eventos ao Home Assi
 
 Firmware por arquivo de configuração para ESP32: satélites de voz, sensores e robôs viram entidades do Home Assistant.
 
-**Quando entra:** passo 52.6 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 54.6 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

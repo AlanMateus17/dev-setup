@@ -439,7 +439,7 @@
    "tipo": "remoto",
    "conta": false,
    "futuro": false,
-   "descricao": "alanmateus17.github.io: portfólio, blog e newsletter."
+   "descricao": "alanmateus17.github.io: portfólio, blog e newsletter. Migra do Jekyll para o Astro (ADR 0008)."
   },
   {
    "id": "inst",
@@ -475,7 +475,7 @@
    "tipo": "remoto",
    "conta": true,
    "futuro": false,
-   "descricao": "Estatística de visitas sem cookies invasivos. Open source."
+   "descricao": "Principal do analytics sem cookie (o Plausible é a reserva). Open source."
   },
   {
    "id": "gsc",
@@ -943,7 +943,7 @@
    "tipo": "remoto",
    "conta": true,
    "futuro": false,
-   "descricao": "Avisa quando um erro acontece em produção, com o ponto exato no código. Plano grátis para um dev."
+   "descricao": "Reserva do GlitchTip (ADR 0008): avisa quando um erro acontece em produção, com o ponto exato no código. Plano grátis."
   },
   {
    "id": "kuma",
@@ -970,7 +970,7 @@
    "tipo": "local",
    "conta": false,
    "futuro": true,
-   "descricao": "Logs e rastreamento de requisições entre serviços, consultados no Grafana."
+   "descricao": "Reserva do SigNoz (ADR 0008): logs e rastreamento de requisições consultados no Grafana."
   },
   {
    "id": "otel",
@@ -1672,7 +1672,7 @@
    "tipo": "local",
    "conta": false,
    "futuro": false,
-   "descricao": "Configuração versionada do ambiente."
+   "descricao": "Configuração versionada do ambiente, aplicada pelo chezmoi a partir de infra/dotfiles."
   },
   {
    "id": "arch",
@@ -3941,6 +3941,474 @@
    "conta": false,
    "futuro": true,
    "descricao": "Clone de 8 canais compatível com o sigrok, por cerca de R$ 40 a R$ 80. Mostra o que o sensor e o ESP32 estão dizendo de verdade no fio."
+  },
+  {
+   "id": "mise",
+   "camada": "lin",
+   "rotulo": "mise (runtimes|e CLIs)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Principal (ADR 0008): instala e fixa Node, Go, Rust e as CLIs do setup a partir de ~/.config/mise/config.toml. O fnm fica como reserva; o Python segue no uv."
+  },
+  {
+   "id": "zellij",
+   "camada": "lin",
+   "rotulo": "Zellij (abas e|sessões)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Multiplexador principal (ADR 0008): atalhos visíveis, layout setup (código, servidor, lazygit, lazydocker, btop) e sessões que voltam. O tmux fica para servidores."
+  },
+  {
+   "id": "yazi",
+   "camada": "lin",
+   "rotulo": "yazi (arquivos no|terminal)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Gerenciador de arquivos no terminal com prévia de imagem, PDF e código. Pelo mise."
+  },
+  {
+   "id": "chezmoi",
+   "camada": "lin",
+   "rotulo": "chezmoi (dotfiles|com o cofre)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Principal dos dotfiles (ADR 0008): aplica infra/dotfiles (mise, Zellij, Starship, Ghostty, Neovim, yazi, Aider) e lê segredos do KeePassXC na hora, sem gravar nada no repositório."
+  },
+  {
+   "id": "ghostty",
+   "camada": "lin",
+   "rotulo": "Ghostty (terminal|do Arch)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Terminal acelerado por GPU para o Arch nativo; abre direto na sessão do Zellij. Não tem versão para Windows, onde o Windows Terminal continua."
+  },
+  {
+   "id": "podman",
+   "camada": "lin",
+   "rotulo": "Podman (containers|sem root)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Containers sem root e sem serviço: roda o lab de alvo e imagens de terceiros com menos risco. O Docker Desktop segue como principal no dia a dia."
+  },
+  {
+   "id": "gitlfs",
+   "camada": "lin",
+   "rotulo": "Git LFS (arquivos|grandes)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Firmware, bancos do Ghidra, placas do KiCad e modelos 3D fora do histórico do Git; o Forgejo serve o LFS do espelho."
+  },
+  {
+   "id": "treesitter",
+   "camada": "lin",
+   "rotulo": "tree-sitter|(AST no editor)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Destaque, seleção e navegação por árvore sintática no Neovim (C#, TS, Go, Rust, Python, Svelte, Astro). O Repomix e o Aider usam o mesmo parser."
+  },
+  {
+   "id": "posting",
+   "camada": "lin",
+   "rotulo": "posting (API no|terminal)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Cliente de API no terminal, com requisições em arquivo. Reserva do Bruno; o jeito de testar uma API por SSH dentro da VM."
+  },
+  {
+   "id": "harlequin",
+   "camada": "lin",
+   "rotulo": "harlequin (SQL no|terminal)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Editor de SQL no terminal para Postgres e DuckDB. Reserva do DBeaver; bom dentro do Zellij e por SSH."
+  },
+  {
+   "id": "gum",
+   "camada": "lin",
+   "rotulo": "gum (menus nos|scripts)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Menus, perguntas e confirmações bonitas nos scripts: o just menu escolhe a receita com setas."
+  },
+  {
+   "id": "d2",
+   "camada": "lin",
+   "rotulo": "D2 (diagramas|como texto)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Diagramas de arquitetura de sistema e de cliente como texto, exportados em SVG. Os diagramas da documentação do GitHub seguem em Mermaid."
+  },
+  {
+   "id": "vegeta",
+   "camada": "lin",
+   "rotulo": "vegeta (carga em|taxa fixa)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Carga HTTP em taxa constante para achar o teto de uma API, do limite de requisições e do pool do banco. Os cenários seguem no k6."
+  },
+  {
+   "id": "bpftrace",
+   "camada": "lin",
+   "rotulo": "bpftrace (kernel|em produção)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Rastreamento dinâmico com eBPF para latência que não aparece em log. Na VM e no Linux nativo, onde o kernel é seu."
+  },
+  {
+   "id": "aider",
+   "camada": "ia",
+   "rotulo": "Aider + Ollama|(nível R$ 0)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Par de programação no Git com o modelo local (Qwen 2.5 Coder) e o repo map por tree-sitter: o nível 1 do roteamento, sem gastar token. O Claude Code segue como agente principal."
+  },
+  {
+   "id": "llmcli",
+   "camada": "ia",
+   "rotulo": "llm (IA nos pipes|do terminal)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "git diff | llm \"mensagem de commit\": IA no meio de qualquer comando, com o plugin do Ollama (grátis) e os modelos do gateway."
+  },
+  {
+   "id": "age",
+   "camada": "seg",
+   "rotulo": "age · sops|(arquivos cifrados)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "age cifra arquivos que saem da máquina (exportações, entregas a cliente, cópia extra do cofre); sops cifra configurações de VM guardadas fora do Git. Segredo do dia a dia segue só no KeePassXC."
+  },
+  {
+   "id": "gocryptfs",
+   "camada": "seg",
+   "rotulo": "gocryptfs (pasta|dos alvos cifrada)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "A pasta dos alvos da sala limpa fica cifrada mesmo com o disco aberto: agentes, backups e sincronização só veem bytes embaralhados."
+  },
+  {
+   "id": "radare2",
+   "camada": "seg",
+   "rotulo": "radare2 (triagem|de binários)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Triagem rápida e scripts (r2pipe) antes de abrir o Ghidra, que segue como descompilador principal."
+  },
+  {
+   "id": "bore",
+   "camada": "nuvem",
+   "rotulo": "bore (túnel TCP|próprio)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Túnel TCP com servidor próprio na VM, para expor uma porta que não é web (demonstração, MQTT, SSH) sem passar por serviço de terceiro. Webhooks seguem no cloudflared."
+  },
+  {
+   "id": "headscale",
+   "camada": "nuvem",
+   "rotulo": "Headscale (rede|própria)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Servidor de controle próprio da rede WireGuard: reserva do Tailscale e rede privada dos clientes (AMtech Campo, lojas)."
+  },
+  {
+   "id": "forgejo",
+   "camada": "nuvem",
+   "rotulo": "Forgejo (espelho|dos repositórios)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Espelho de todos os repositórios do GitHub, com Git LFS, na VM: o código continua seu se a conta for bloqueada. O GitHub segue principal pelo Actions, Copilot e Education."
+  },
+  {
+   "id": "softserve",
+   "camada": "nuvem",
+   "rotulo": "Soft Serve (Git|por SSH em casa)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Servidor Git só por SSH, leve, no servidor da casa: firmware, placas e projetos que não precisam sair da rede."
+  },
+  {
+   "id": "coolify",
+   "camada": "nuvem",
+   "rotulo": "Coolify (apps de|cliente em VPS)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Painel para subir apps de um clique (WordPress, n8n, Chatwoot) na VPS de um cliente que quer mexer sozinho. Os sistemas AM seguem no Kamal."
+  },
+  {
+   "id": "dokploy",
+   "camada": "nuvem",
+   "rotulo": "Dokploy (reserva|do Coolify)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Mesmo papel do Coolify, mais leve: para VPS pequena de cliente."
+  },
+  {
+   "id": "plunk",
+   "camada": "nuvem",
+   "rotulo": "Plunk (e-mail|próprio no SES)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "E-mail transacional e campanhas auto-hospedados sobre o Amazon SES, quando o volume passar do plano grátis do Resend (que segue principal)."
+  },
+  {
+   "id": "stripecli",
+   "camada": "nuvem",
+   "rotulo": "Stripe CLI (testar|pagamentos)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Simula pagamentos e encaminha webhooks para a máquina (stripe listen) quando o Stripe ou o Polar entrarem nas vendas."
+  },
+  {
+   "id": "polar",
+   "camada": "venda",
+   "rotulo": "Polar (venda|internacional)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Merchant of Record aberto: vende templates, código-fonte e assinaturas para fora do Brasil e cuida do imposto de cada país. Confirme no cadastro se aceita recebimento no Brasil."
+  },
+  {
+   "id": "heyform",
+   "camada": "venda",
+   "rotulo": "HeyForm (qualifica|o orçamento)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Principal da qualificação (ADR 0008): formulário de conversa com lógica (escopo, prazo, verba) antes de liberar a agenda do Cal.com."
+  },
+  {
+   "id": "formbricks",
+   "camada": "mkt",
+   "rotulo": "Formbricks (NPS e|pesquisas)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Principal de pesquisas (ADR 0008): NPS e pesquisa dentro do produto e por link, com histórico por cliente."
+  },
+  {
+   "id": "plausible",
+   "camada": "web",
+   "rotulo": "Plausible (reserva|do Umami)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Analytics sem cookie, reserva do Umami e painel público para cliente que pedir."
+  },
+  {
+   "id": "bookstack",
+   "camada": "web",
+   "rotulo": "BookStack (manuais|dos clientes)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Wiki em livros, capítulos e páginas para os manuais que o cliente lê e o pós-venda aponta. A documentação de dev segue no MkDocs."
+  },
+  {
+   "id": "astro",
+   "camada": "web",
+   "rotulo": "Astro (sites de|conteúdo)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Principal dos sites de conteúdo (ADR 0007 e 0008): blog, landing pages, Instituto AMS, Catálogo do HTML. O site pessoal migra do Jekyll para ele; publica no Cloudflare Pages."
+  },
+  {
+   "id": "sveltekit",
+   "camada": "app",
+   "rotulo": "SvelteKit (apps|pequenos)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Apps pequenos e interativos e o front dos MVPs em PocketBase (ADR 0007). Sistemas AM seguem em Next.js."
+  },
+  {
+   "id": "pocketbase",
+   "camada": "app",
+   "rotulo": "PocketBase (MVP|antes do Aura)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Banco, login, arquivos e tempo real num binário: valida a ideia antes de construir no Aura. Modelo em infra/pocketbase."
+  },
+  {
+   "id": "litestream",
+   "camada": "app",
+   "rotulo": "Litestream (SQLite|no R2)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Copia o SQLite do PocketBase para o R2 a cada segundo e restaura sozinho se a VM for recriada."
+  },
+  {
+   "id": "reactemail",
+   "camada": "app",
+   "rotulo": "React Email|(modelos)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Modelos de e-mail em componentes, os mesmos para o Resend e o Plunk."
+  },
+  {
+   "id": "golang",
+   "camada": "app",
+   "rotulo": "Go (CLIs com|bubbletea)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "CLIs do setup e produtos em binário único, com tela interativa (bubbletea) e release multiplataforma pelo GoReleaser. Modelo em infra/templates/go-cli."
+  },
+  {
+   "id": "rust",
+   "camada": "app",
+   "rotulo": "Rust (firmware|e CLIs)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Firmware (ESP32-C3/C6, STM32 com Embassy) e ferramentas que pedem desempenho, com release pelo cargo-dist. Modelo em infra/templates/rust-cli."
+  },
+  {
+   "id": "probers",
+   "camada": "win",
+   "rotulo": "probe-rs (grava e|depura chips)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Grava e depura firmware em chips ARM e RISC-V (ESP32-C3/C6, STM32) por USB. Entra com a primeira placa que não seja ESP32 clássico."
+  },
+  {
+   "id": "logseq",
+   "camada": "win",
+   "rotulo": "Logseq (diário e|runbooks)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Diário e runbooks em tópicos sobre a mesma pasta Markdown do vault. O Obsidian segue principal."
+  },
+  {
+   "id": "signoz",
+   "camada": "obs",
+   "rotulo": "SigNoz (logs,|traces e métricas)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Principal da observabilidade dos apps (ADR 0008): logs, traces e métricas numa tela, nativo de OpenTelemetry. O Grafana fica para o painel de lucro."
+  },
+  {
+   "id": "glitchtip",
+   "camada": "obs",
+   "rotulo": "GlitchTip (erros|dos sistemas)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Principal dos erros (ADR 0008): o mesmo SDK do Sentry, auto-hospedado e sem cota. O Sentry SaaS fica de reserva."
+  },
+  {
+   "id": "plane",
+   "camada": "oper",
+   "rotulo": "Plane (projetos de|cliente)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Projetos e tarefas de cliente e dos negócios fora do código (restaurantes, editora). O código segue no GitHub Projects."
+  },
+  {
+   "id": "beancount",
+   "camada": "emp",
+   "rotulo": "Beancount + Fava|(livro contábil)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Principal da contabilidade em partidas dobradas (ADR 0008): o livro em texto puro, versionado em ~/financas, com balanço e DRE na tela do Fava."
+  },
+  {
+   "id": "hledger",
+   "camada": "emp",
+   "rotulo": "hledger (relatórios|no terminal)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Reserva do Beancount: relatórios de partidas dobradas no terminal."
+  },
+  {
+   "id": "pportf",
+   "camada": "emp",
+   "rotulo": "Portfolio Performance|(rentabilidade)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Principal da rentabilidade (ADR 0008): TTWROR, IRR e proventos em várias moedas, para conferir o resultado de cada metodologia do investimentos.py."
+  },
+  {
+   "id": "ghostfolio",
+   "camada": "emp",
+   "rotulo": "Ghostfolio (painel|do patrimônio)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Painel do patrimônio no celular, auto-hospedado. O cálculo fica no Portfolio Performance."
+  },
+  {
+   "id": "actual",
+   "camada": "emp",
+   "rotulo": "Actual Budget|(envelopes)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Orçamento pessoal por envelopes, base zero, local-first. O Caixa da Casa segue para o rateio da família."
+  },
+  {
+   "id": "firefly",
+   "camada": "emp",
+   "rotulo": "Firefly III|(reserva)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Fluxo de caixa com importação de extrato: reserva do financeiro.py, para comparar."
+  },
+  {
+   "id": "akaunting",
+   "camada": "emp",
+   "rotulo": "Akaunting|(contabilidade CNPJ)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "Contabilidade e faturas do CNPJ quando abrir; complementa o contador, não o substitui."
+  },
+  {
+   "id": "erpnext",
+   "camada": "neg",
+   "rotulo": "ERPNext (negócios|físicos)",
+   "tipo": "remoto",
+   "conta": true,
+   "futuro": false,
+   "descricao": "ERP aberto para os negócios físicos até o Aura cobrir e referência de mercado ao desenhar o AM Kaixara."
   }
  ],
  "conexoes": [
@@ -7753,6 +8221,376 @@
    "de": "analog",
    "para": "rob",
    "rotulo": "mede os sinais"
+  },
+  {
+   "de": "mise",
+   "para": "wsl",
+   "rotulo": "roda no Ubuntu"
+  },
+  {
+   "de": "mise",
+   "para": "rt",
+   "rotulo": "instala Node, Go e Rust"
+  },
+  {
+   "de": "zellij",
+   "para": "wsl",
+   "rotulo": "roda no Ubuntu"
+  },
+  {
+   "de": "zellij",
+   "para": "termx",
+   "rotulo": "abre lazygit e btop"
+  },
+  {
+   "de": "yazi",
+   "para": "wsl",
+   "rotulo": "roda no Ubuntu"
+  },
+  {
+   "de": "chezmoi",
+   "para": "dot",
+   "rotulo": "aplica os dotfiles"
+  },
+  {
+   "de": "chezmoi",
+   "para": "kee",
+   "rotulo": "lê segredos do cofre"
+  },
+  {
+   "de": "ghostty",
+   "para": "arch",
+   "rotulo": "terminal do Arch"
+  },
+  {
+   "de": "ghostty",
+   "para": "zellij",
+   "rotulo": "abre na sessão"
+  },
+  {
+   "de": "podman",
+   "para": "labalvo",
+   "rotulo": "alvo sem root"
+  },
+  {
+   "de": "gitlfs",
+   "para": "git",
+   "rotulo": "binários fora do histórico"
+  },
+  {
+   "de": "treesitter",
+   "para": "nvim",
+   "rotulo": "destaque por AST"
+  },
+  {
+   "de": "posting",
+   "para": "api",
+   "rotulo": "testa a API"
+  },
+  {
+   "de": "harlequin",
+   "para": "pg",
+   "rotulo": "consulta o Postgres"
+  },
+  {
+   "de": "harlequin",
+   "para": "duck",
+   "rotulo": "abre o DuckDB"
+  },
+  {
+   "de": "gum",
+   "para": "just",
+   "rotulo": "just menu"
+  },
+  {
+   "de": "d2",
+   "para": "ghproj",
+   "rotulo": "diagramas no repositório"
+  },
+  {
+   "de": "vegeta",
+   "para": "api",
+   "rotulo": "acha o teto"
+  },
+  {
+   "de": "bpftrace",
+   "para": "vm247",
+   "rotulo": "latência na VM"
+  },
+  {
+   "de": "aider",
+   "para": "oll",
+   "rotulo": "usa o modelo local"
+  },
+  {
+   "de": "aider",
+   "para": "git",
+   "rotulo": "commits pequenos"
+  },
+  {
+   "de": "llmcli",
+   "para": "oll",
+   "rotulo": "manda para o Ollama"
+  },
+  {
+   "de": "age",
+   "para": "gdrv",
+   "rotulo": "cifra antes de subir"
+  },
+  {
+   "de": "age",
+   "para": "kee",
+   "rotulo": "segredo segue no cofre"
+  },
+  {
+   "de": "gocryptfs",
+   "para": "relab",
+   "rotulo": "guarda os alvos"
+  },
+  {
+   "de": "radare2",
+   "para": "relab",
+   "rotulo": "triagem antes do Ghidra"
+  },
+  {
+   "de": "bore",
+   "para": "vm247",
+   "rotulo": "servidor na VM"
+  },
+  {
+   "de": "headscale",
+   "para": "tail",
+   "rotulo": "reserva do Tailscale"
+  },
+  {
+   "de": "headscale",
+   "para": "vm247",
+   "rotulo": "roda na VM"
+  },
+  {
+   "de": "forgejo",
+   "para": "gh",
+   "rotulo": "espelha o GitHub"
+  },
+  {
+   "de": "forgejo",
+   "para": "vm247",
+   "rotulo": "roda na VM"
+  },
+  {
+   "de": "forgejo",
+   "para": "gitlfs",
+   "rotulo": "serve o LFS"
+  },
+  {
+   "de": "softserve",
+   "para": "srvcasa",
+   "rotulo": "roda no servidor da casa"
+  },
+  {
+   "de": "coolify",
+   "para": "docker",
+   "rotulo": "sobe containers"
+  },
+  {
+   "de": "dokploy",
+   "para": "coolify",
+   "rotulo": "reserva leve"
+  },
+  {
+   "de": "plunk",
+   "para": "tmail",
+   "rotulo": "reserva própria do Resend"
+  },
+  {
+   "de": "plunk",
+   "para": "aws",
+   "rotulo": "envia pelo SES"
+  },
+  {
+   "de": "stripecli",
+   "para": "hooks",
+   "rotulo": "simula webhooks"
+  },
+  {
+   "de": "tmpl",
+   "para": "polar",
+   "rotulo": "vende lá fora"
+  },
+  {
+   "de": "heyform",
+   "para": "agenda",
+   "rotulo": "libera a agenda"
+  },
+  {
+   "de": "heyform",
+   "para": "ocrm",
+   "rotulo": "lead no CRM"
+  },
+  {
+   "de": "formbricks",
+   "para": "oaval",
+   "rotulo": "alimenta o NPS"
+  },
+  {
+   "de": "plausible",
+   "para": "umami",
+   "rotulo": "reserva"
+  },
+  {
+   "de": "opos",
+   "para": "bookstack",
+   "rotulo": "aponta o manual"
+  },
+  {
+   "de": "bookstack",
+   "para": "vm247",
+   "rotulo": "roda na VM"
+  },
+  {
+   "de": "astro",
+   "para": "site",
+   "rotulo": "o site migra para ele"
+  },
+  {
+   "de": "astro",
+   "para": "cf",
+   "rotulo": "publica no Pages"
+  },
+  {
+   "de": "sveltekit",
+   "para": "pocketbase",
+   "rotulo": "front do MVP"
+  },
+  {
+   "de": "pocketbase",
+   "para": "litestream",
+   "rotulo": "replica o banco"
+  },
+  {
+   "de": "litestream",
+   "para": "blob",
+   "rotulo": "cópia no R2"
+  },
+  {
+   "de": "reactemail",
+   "para": "tmail",
+   "rotulo": "modelos dos e-mails"
+  },
+  {
+   "de": "golang",
+   "para": "gha",
+   "rotulo": "GoReleaser na tag"
+  },
+  {
+   "de": "rust",
+   "para": "rob",
+   "rotulo": "firmware das placas"
+  },
+  {
+   "de": "rust",
+   "para": "gha",
+   "rotulo": "cargo-dist na tag"
+  },
+  {
+   "de": "probers",
+   "para": "rob",
+   "rotulo": "grava o firmware"
+  },
+  {
+   "de": "logseq",
+   "para": "obsd",
+   "rotulo": "mesma pasta do vault"
+  },
+  {
+   "de": "otel",
+   "para": "signoz",
+   "rotulo": "envia por OTLP"
+  },
+  {
+   "de": "signoz",
+   "para": "vm247",
+   "rotulo": "roda na VM"
+  },
+  {
+   "de": "api",
+   "para": "glitchtip",
+   "rotulo": "SDK do Sentry"
+  },
+  {
+   "de": "glitchtip",
+   "para": "vm247",
+   "rotulo": "roda na VM"
+  },
+  {
+   "de": "glitchtip",
+   "para": "sentry",
+   "rotulo": "reserva"
+  },
+  {
+   "de": "signoz",
+   "para": "loki",
+   "rotulo": "reserva"
+  },
+  {
+   "de": "plane",
+   "para": "ocrm",
+   "rotulo": "projeto do cliente"
+  },
+  {
+   "de": "financas",
+   "para": "beancount",
+   "rotulo": "lançamentos do mês"
+  },
+  {
+   "de": "hledger",
+   "para": "beancount",
+   "rotulo": "reserva"
+  },
+  {
+   "de": "pportf",
+   "para": "financas",
+   "rotulo": "rentabilidade da carteira"
+  },
+  {
+   "de": "ghostfolio",
+   "para": "pportf",
+   "rotulo": "painel"
+  },
+  {
+   "de": "actual",
+   "para": "caixa",
+   "rotulo": "complementa"
+  },
+  {
+   "de": "firefly",
+   "para": "financas",
+   "rotulo": "reserva"
+  },
+  {
+   "de": "akaunting",
+   "para": "cnpj",
+   "rotulo": "contas do CNPJ"
+  },
+  {
+   "de": "akaunting",
+   "para": "conta",
+   "rotulo": "relatório ao contador"
+  },
+  {
+   "de": "erpnext",
+   "para": "nkaix",
+   "rotulo": "referência do Kaixara"
+  },
+  {
+   "de": "kamal",
+   "para": "aws",
+   "rotulo": "VM paga quando a renda pagar"
+  },
+  {
+   "de": "kamal",
+   "para": "azure",
+   "rotulo": "VM paga quando a renda pagar"
   }
  ],
  "fluxos": [

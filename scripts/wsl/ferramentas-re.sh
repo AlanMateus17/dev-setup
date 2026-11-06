@@ -5,7 +5,7 @@
 #   bash scripts/wsl/ferramentas-re.sh --simular   # mostra o que faria
 #   bash scripts/wsl/ferramentas-re.sh             # instala
 #
-# Instala: gcc, gdb, binutils (objdump, strings), strace, ltrace, xxd, Java 21, Ghidra (última versão, da NSA),
+# Instala: gcc, gdb, binutils (objdump, strings), strace, ltrace, xxd, radare2 (triagem rápida), gocryptfs (pasta dos alvos cifrada), Java 21, Ghidra (última versão, da NSA),
 # o pacote do GhidraMCP (IA dentro do Ghidra) e o ilspycmd (descompilador de .NET).
 # Pede o gh logado (passo do GitHub) para baixar das páginas oficiais de release.
 # Regra: só analise binários seus, dos seus alunos em aula ou desafios feitos para isso (crackmes).
@@ -41,7 +41,7 @@ echo "Registro em: $LOG"
 [[ $SIMULAR -eq 1 ]] && echo "MODO: SIMULAR (nada será alterado)"
 
 # 1. Pacotes do sistema
-PACOTES=(build-essential gdb binutils strace ltrace xxd file unzip openjdk-21-jdk)
+PACOTES=(build-essential gdb binutils strace ltrace xxd file unzip openjdk-21-jdk radare2 gocryptfs)
 FALTAM=()
 for p in "${PACOTES[@]}"; do dpkg -s "$p" >/dev/null 2>&1 || FALTAM+=("$p"); done
 if [[ ${#FALTAM[@]} -eq 0 ]]; then linha base "pacotes (${#PACOTES[@]})" "JA TEM"

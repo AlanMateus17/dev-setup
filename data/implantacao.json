@@ -1578,6 +1578,51 @@
       "financas"
      ],
      "comando": "python3 ~/dev/dev-setup/tools/financeiro/financeiro.py mes $(date +%Y-%m)"
+    },
+    {
+     "id": "fin-beancount",
+     "titulo": "Livro contábil em partidas dobradas no Beancount, com o Fava",
+     "quem": "voce",
+     "pronto": "Fava mostra o balanço e o resultado do mês a partir de ~/financas/livro.beancount",
+     "tempo_min": 45,
+     "comando": "mkdir -p ~/financas && touch ~/financas/livro.beancount && fava ~/financas/livro.beancount",
+     "nota": "Nada disso vai para o GitHub nem para IA na nuvem.",
+     "blocos": [
+      "beancount"
+     ]
+    },
+    {
+     "id": "fin-hledger",
+     "titulo": "hledger como reserva dos relatórios no terminal",
+     "quem": "voce",
+     "pronto": "hledger balance mostra o mesmo saldo do Fava num lançamento de teste",
+     "tempo_min": 15,
+     "comando": "hledger -f ~/financas/teste.journal balance",
+     "blocos": [
+      "hledger"
+     ]
+    },
+    {
+     "id": "fin-actual",
+     "titulo": "Orçamento por envelopes no Actual Budget",
+     "quem": "voce",
+     "pronto": "Envelopes do mês criados e um gasto lançado",
+     "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup/infra/soberania && docker compose --profile actual up -d",
+     "blocos": [
+      "actual"
+     ]
+    },
+    {
+     "id": "fin-firefly",
+     "titulo": "Firefly III como reserva do financeiro.py",
+     "quem": "voce",
+     "pronto": "Um extrato importado nos dois dá o mesmo total",
+     "tempo_min": 40,
+     "comando": "cd ~/dev/dev-setup/infra/soberania && docker compose --profile firefly up -d",
+     "blocos": [
+      "firefly"
+     ]
     }
    ]
   },
@@ -1683,6 +1728,28 @@
      "tempo_min": 20,
      "blocos": [],
      "fora": "É ela que permite recomendar ativos no seu conteúdo de finanças. Ordem completa em docs/certificacoes.md."
+    },
+    {
+     "id": "inv-pp",
+     "titulo": "Rentabilidade real da carteira no Portfolio Performance",
+     "quem": "voce",
+     "pronto": "TTWROR e IRR de cada carteira por metodologia na tela",
+     "tempo_min": 45,
+     "fora": "Instalador no site do Portfolio Performance (Windows). Importe as notas de corretagem; o arquivo fica em ~/financas, fora do GitHub.",
+     "blocos": [
+      "pportf"
+     ]
+    },
+    {
+     "id": "inv-ghostfolio",
+     "titulo": "Painel do patrimônio no Ghostfolio",
+     "quem": "voce",
+     "pronto": "Patrimônio total por classe do ARCA visível no celular pela rede privada",
+     "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup/infra/soberania && docker compose --profile ghostfolio up -d",
+     "blocos": [
+      "ghostfolio"
+     ]
     }
    ]
   },
@@ -2126,6 +2193,121 @@
      "fora": "Compra de R$ 40 a R$ 80. Entra na cascata de compras, depois da primeira renda de TI (docs/operacao/08-financiar-o-setup.md).",
      "blocos": [
       "analog"
+     ]
+    },
+    {
+     "id": "solo-extras",
+     "titulo": "Instalar as ferramentas complementares (mise, CLIs, Podman, Git LFS, Aider, llm, posting, harlequin)",
+     "quem": "script",
+     "pronto": "extras.sh termina sem erro; zellij, yazi, d2, vegeta, gum, aider e llm respondem",
+     "tempo_min": 25,
+     "comando": "cd ~/dev/dev-setup && bash scripts/wsl/extras.sh",
+     "nota": "Rode antes com --simular. Depois de conferir o Node do mise (node -v), dá para apagar o fnm.",
+     "blocos": [
+      "mise",
+      "yazi",
+      "gitlfs",
+      "podman",
+      "posting",
+      "harlequin",
+      "d2",
+      "vegeta"
+     ]
+    },
+    {
+     "id": "solo-chezmoi",
+     "titulo": "Passar os dotfiles para o chezmoi e abrir o Zellij no layout do setup",
+     "quem": "voce",
+     "pronto": "chezmoi apply sem diferença pendente; zellij abre com as abas código e serviços",
+     "tempo_min": 30,
+     "comando": "chezmoi init && cp -rn ~/dev/dev-setup/infra/dotfiles/. ~/.local/share/chezmoi/ && chezmoi init && chezmoi apply && zellij",
+     "nota": "O repositório privado dotfiles vira a fonte do chezmoi (chezmoi cd && git remote add origin ...). O Neovim baixa os plugins e os parsers do tree-sitter na primeira abertura.",
+     "blocos": [
+      "chezmoi",
+      "zellij",
+      "treesitter"
+     ]
+    },
+    {
+     "id": "solo-age",
+     "titulo": "Chave do age para cifrar o que sai da máquina (e o sops para configuração de VM)",
+     "quem": "voce",
+     "pronto": "Um arquivo cifrado com age abre só com a sua chave; a chave está no KeePassXC",
+     "tempo_min": 15,
+     "comando": "mkdir -p ~/.config/age && age-keygen -o ~/.config/age/chave.txt && chmod 600 ~/.config/age/chave.txt",
+     "nota": "Cifrar: age -R <(age-keygen -y ~/.config/age/chave.txt) -o arquivo.age arquivo. Guarde o conteúdo da chave no KeePassXC. Segredo de sistema continua só no cofre, nunca no Git (ADR 0005).",
+     "blocos": [
+      "age"
+     ]
+    },
+    {
+     "id": "solo-menu",
+     "titulo": "Usar o just menu para escolher a receita com setas",
+     "quem": "voce",
+     "pronto": "just menu lista as receitas e roda a escolhida",
+     "tempo_min": 5,
+     "comando": "cd ~/dev/dev-setup && just menu",
+     "blocos": [
+      "gum"
+     ]
+    },
+    {
+     "id": "solo-aider",
+     "titulo": "Programar de graça com o Aider e o modelo local",
+     "quem": "voce",
+     "pronto": "O Aider responde no repositório com o Qwen 2.5 Coder do Ollama, sem gastar token",
+     "tempo_min": 20,
+     "comando": "ollama pull qwen2.5-coder:7b && cd ~/dev/dev-setup && aider tools/triagem/triagem.py",
+     "nota": "Regra do roteamento: tarefa simples no Aider (R$ 0), arquitetura e revisão no Claude Code. Na GTX 1650 o 7B usa parte da CPU; o 3B cabe inteiro.",
+     "blocos": [
+      "aider"
+     ]
+    },
+    {
+     "id": "solo-llm",
+     "titulo": "IA nos pipes do terminal com o llm e o Ollama",
+     "quem": "voce",
+     "pronto": "git diff | llm escreve a mensagem de commit",
+     "tempo_min": 10,
+     "comando": "cd ~/dev/dev-setup && git diff | llm -m qwen2.5-coder:7b \"Escreva a mensagem de commit no padrão Conventional Commits\"",
+     "blocos": [
+      "llmcli"
+     ]
+    },
+    {
+     "id": "solo-diagrama",
+     "titulo": "Desenhar a arquitetura de um sistema em D2",
+     "quem": "voce",
+     "pronto": "SVG gerado a partir do arquivo .d2 no repositório",
+     "tempo_min": 20,
+     "comando": "cd ~/dev/dev-setup && just diagrama docs/arquitetura-exemplo.d2",
+     "blocos": [
+      "d2"
+     ]
+    },
+    {
+     "id": "solo-logseq",
+     "titulo": "Abrir o vault no Logseq para diário e runbooks",
+     "quem": "voce",
+     "pronto": "Logseq abre a mesma pasta do Obsidian sem duplicar notas",
+     "tempo_min": 15,
+     "fora": "Instalador no site do Logseq (Windows). Abra a pasta do vault como grafo; o Obsidian segue principal.",
+     "blocos": [
+      "logseq"
+     ]
+    },
+    {
+     "id": "solo-probers",
+     "titulo": "Gravar e depurar uma placa ESP32-C3 ou STM32 com o probe-rs",
+     "quem": "voce",
+     "pronto": "probe-rs list mostra a placa e probe-rs run grava o firmware",
+     "tempo_min": 45,
+     "fora": "Precisa de uma placa ESP32-C3/C6 ou STM32 com USB (R$ 30 a R$ 60), pela cascata de compras. O probe-rs já vem pelo mise.",
+     "precisa": [
+      "compra"
+     ],
+     "blocos": [
+      "probers"
      ]
     }
    ]
@@ -2703,6 +2885,182 @@
    ]
   },
   {
+   "id": "f-soberania",
+   "titulo": "Soberania: serviços próprios na VM",
+   "objetivo": "Código, erros, logs, rede e documentação dos clientes rodando em servidor seu, com o GitHub e os SaaS grátis como reserva ou ao contrário, conforme o ADR 0008. O que custa dinheiro fica pronto e liga quando uma renda pagar.",
+   "quando": "Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar",
+   "passos": [
+    {
+     "id": "sob-forgejo",
+     "titulo": "Espelho de todos os repositórios no Forgejo, com Git LFS",
+     "quem": "voce",
+     "pronto": "Cada repositório do GitHub tem espelho atualizado no Forgejo",
+     "tempo_min": 40,
+     "comando": "cd ~/dev/dev-setup/infra/soberania && docker compose --profile forgejo up -d",
+     "nota": "Crie cada espelho em Nova migração > GitHub, marcando Espelho e LFS. Token do GitHub só de leitura, no KeePassXC.",
+     "blocos": [
+      "forgejo"
+     ]
+    },
+    {
+     "id": "sob-glitchtip",
+     "titulo": "Erros dos sistemas no GlitchTip (principal) com o Sentry de reserva",
+     "quem": "voce",
+     "pronto": "Um erro de teste do sistema exemplo aparece no GlitchTip",
+     "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup/infra/soberania && docker compose --profile glitchtip up -d",
+     "blocos": [
+      "glitchtip"
+     ]
+    },
+    {
+     "id": "sob-signoz",
+     "titulo": "Logs, traces e métricas dos apps no SigNoz",
+     "quem": "voce",
+     "pronto": "O trace de uma requisição do sistema exemplo aparece no SigNoz",
+     "tempo_min": 45,
+     "comando": "git clone --depth 1 https://github.com/SigNoz/signoz.git ~/signoz && cd ~/signoz/deploy/docker && docker compose up -d",
+     "nota": "O SigNoz pede uns 4 GB de RAM: cabe na VM de 12 GB junto do resto. O OpenTelemetry da API aponta para a porta 4317 dele.",
+     "blocos": [
+      "signoz"
+     ]
+    },
+    {
+     "id": "sob-headscale",
+     "titulo": "Headscale como reserva do Tailscale (e rede dos clientes)",
+     "quem": "voce",
+     "pronto": "Um aparelho de teste entra na rede pelo Headscale",
+     "tempo_min": 40,
+     "comando": "cd ~/dev/dev-setup/infra/soberania && curl -fsSL https://raw.githubusercontent.com/juanfont/headscale/main/config-example.yaml -o headscale/config.yaml && docker compose --profile headscale up -d",
+     "nota": "Troque server_url no config.yaml pelo endereço da VM. O Tailscale continua principal.",
+     "blocos": [
+      "headscale"
+     ]
+    },
+    {
+     "id": "sob-bookstack",
+     "titulo": "Manuais dos clientes no BookStack",
+     "quem": "voce",
+     "pronto": "Um manual de exemplo com livro, capítulo e página publicados",
+     "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup/infra/soberania && docker compose --profile bookstack up -d",
+     "blocos": [
+      "bookstack"
+     ]
+    },
+    {
+     "id": "sob-plane",
+     "titulo": "Projetos de cliente e dos negócios no Plane",
+     "quem": "voce",
+     "pronto": "Um projeto de cliente com tarefas no Plane",
+     "tempo_min": 40,
+     "comando": "mkdir -p ~/plane && cd ~/plane && curl -fsSL -o setup.sh https://github.com/makeplane/plane/releases/latest/download/setup.sh && chmod +x setup.sh && ./setup.sh",
+     "blocos": [
+      "plane"
+     ]
+    },
+    {
+     "id": "sob-bore",
+     "titulo": "Servidor de túnel TCP próprio (bore) na VM",
+     "quem": "voce",
+     "pronto": "bore local 5432 --to IP-DA-VM expõe uma porta de teste e fecha ao sair",
+     "tempo_min": 20,
+     "comando": "bore server --min-port 20000 --max-port 20100",
+     "nota": "Rode na VM. Libere só essa faixa de portas no firewall da Oracle, e só enquanto estiver usando.",
+     "blocos": [
+      "bore"
+     ]
+    },
+    {
+     "id": "sob-bpftrace",
+     "titulo": "Medir o kernel da VM com o bpftrace",
+     "quem": "voce",
+     "pronto": "Contagem de arquivos abertos por processo aparece na tela",
+     "tempo_min": 20,
+     "comando": "sudo apt-get install -y bpftrace && sudo bpftrace -e 'tracepoint:syscalls:sys_enter_openat { @[comm] = count(); }'",
+     "nota": "Rode na VM (Ubuntu); Ctrl+C mostra o resultado.",
+     "blocos": [
+      "bpftrace"
+     ]
+    },
+    {
+     "id": "sob-softserve",
+     "titulo": "Soft Serve no servidor da casa para firmware e placas",
+     "quem": "voce",
+     "pronto": "git clone ssh://servidor:23231/placa funciona na rede de casa",
+     "tempo_min": 20,
+     "comando": "cd ~/dev/dev-setup/infra/soberania && docker compose --profile soft-serve up -d",
+     "nota": "Depende do servidor da casa (ADR 0004).",
+     "precisa": [
+      "compra"
+     ],
+     "blocos": [
+      "softserve"
+     ]
+    },
+    {
+     "id": "sob-coolify",
+     "titulo": "Coolify na VPS do primeiro cliente que quiser painel próprio",
+     "quem": "voce",
+     "pronto": "O cliente sobe e atualiza o app dele pelo painel",
+     "tempo_min": 60,
+     "comando": "curl -fsSL https://cdn.coollabs.io/coolify/install.sh | sudo bash",
+     "nota": "Rode na VPS do cliente (paga por ele). Os sistemas AM seguem no Kamal.",
+     "precisa": [
+      "pagamento"
+     ],
+     "blocos": [
+      "coolify"
+     ]
+    },
+    {
+     "id": "sob-dokploy",
+     "titulo": "Dokploy como reserva leve do Coolify",
+     "quem": "voce",
+     "pronto": "Painel do Dokploy no ar numa VPS pequena de teste",
+     "tempo_min": 30,
+     "comando": "curl -sSL https://dokploy.com/install.sh | sh",
+     "precisa": [
+      "pagamento"
+     ],
+     "blocos": [
+      "dokploy"
+     ]
+    },
+    {
+     "id": "sob-plunk",
+     "titulo": "E-mail próprio com o Plunk sobre o Amazon SES",
+     "quem": "voce",
+     "pronto": "Um e-mail de teste sai pelo Plunk com SPF e DKIM certos",
+     "tempo_min": 60,
+     "comando": "git clone --depth 1 https://github.com/useplunk/plunk.git ~/plunk",
+     "nota": "Siga o docker-compose do repositório. Só quando o volume passar do plano grátis do Resend; o SES cobra por e-mail.",
+     "precisa": [
+      "pagamento"
+     ],
+     "blocos": [
+      "plunk"
+     ]
+    },
+    {
+     "id": "sob-vm-paga",
+     "titulo": "Kamal numa VM paga em São Paulo (AWS EC2 t4g ou Azure B2s)",
+     "quem": "voce",
+     "pronto": "kamal deploy no sistema de um cliente pagante, na VM dele",
+     "tempo_min": 60,
+     "fora": "Só com um cliente pagando a VM (cerca de R$ 200 a R$ 250 por mês). Na AWS a região é sa-east-1 e a t4g é ARM: builder com arch arm64 no deploy.yml. No Azure a região é Brazil South.",
+     "precisa": [
+      "pagamento"
+     ],
+     "blocos": [
+      "kamal",
+      "aws",
+      "azure"
+     ]
+    }
+   ]
+  },
+  {
    "id": "f-crescimento",
    "titulo": "Dados e crescimento: medir, testar e vender mais",
    "objetivo": "Saber onde o cliente desiste, testar a página que vende mais, conhecer cada cliente e atender rápido, com ferramentas abertas.",
@@ -2802,6 +3160,62 @@
       "penpot"
      ],
      "fora": "Conta grátis no Penpot (navegador) ou auto-hospedado depois."
+    },
+    {
+     "id": "cr-heyform",
+     "titulo": "Formulário de qualificação no HeyForm antes da agenda",
+     "quem": "voce",
+     "pronto": "Lead responde escopo, prazo e verba e só então vê a agenda",
+     "tempo_min": 45,
+     "comando": "git clone --depth 1 https://github.com/heyform/heyform.git ~/heyform",
+     "nota": "Siga o docker-compose do repositório na VM.",
+     "blocos": [
+      "heyform"
+     ]
+    },
+    {
+     "id": "cr-formbricks",
+     "titulo": "NPS e pesquisas no Formbricks",
+     "quem": "voce",
+     "pronto": "A pesquisa de NPS sai depois de cada venda e o resultado fica por cliente",
+     "tempo_min": 45,
+     "comando": "mkdir -p ~/formbricks && cd ~/formbricks && curl -fsSL https://raw.githubusercontent.com/formbricks/formbricks/main/docker/formbricks.sh -o formbricks.sh && bash formbricks.sh install",
+     "blocos": [
+      "formbricks"
+     ]
+    },
+    {
+     "id": "cr-plausible",
+     "titulo": "Plausible como reserva do Umami",
+     "quem": "voce",
+     "pronto": "Os dois contam as mesmas visitas num site de teste",
+     "tempo_min": 40,
+     "comando": "git clone --depth 1 https://github.com/plausible/community-edition.git ~/plausible",
+     "blocos": [
+      "plausible"
+     ]
+    },
+    {
+     "id": "cr-email",
+     "titulo": "Modelos dos e-mails em React Email",
+     "quem": "claude",
+     "pronto": "Os e-mails de boas-vindas e recibo renderizam igual no Gmail e no Outlook",
+     "tempo_min": 60,
+     "comando": "cd ~/dev && npx create-email@latest emails",
+     "blocos": [
+      "reactemail"
+     ]
+    },
+    {
+     "id": "cr-stripe",
+     "titulo": "Simular pagamentos e webhooks com o Stripe CLI",
+     "quem": "voce",
+     "pronto": "stripe listen entrega o evento de teste ao n8n",
+     "tempo_min": 20,
+     "comando": "stripe login && stripe listen --forward-to localhost:5678/webhook/stripe",
+     "blocos": [
+      "stripecli"
+     ]
     }
    ]
   },
@@ -3141,6 +3555,18 @@
      ],
      "ofertas": [
       "sites"
+     ]
+    },
+    {
+     "id": "site-astro",
+     "titulo": "Recomeçar o site pessoal e o blog em Astro",
+     "quem": "claude",
+     "pronto": "O site em Astro publicado no Cloudflare Pages com os posts do Jekyll",
+     "tempo_min": 120,
+     "comando": "cd ~/dev && npm create astro@latest -- --template blog site-astro",
+     "nota": "O Jekyll sai quando o Astro estiver no ar com os mesmos endereços (redirecionamentos).",
+     "blocos": [
+      "astro"
      ]
     }
    ],
@@ -4227,6 +4653,165 @@
    "quando": "Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029)"
   },
   {
+   "id": "f-sprint",
+   "titulo": "Sprint de 14 dias (Estratégia do Halter)",
+   "objetivo": "As duas frentes do contexto mestre em 14 dias seguidos: caixa rápido com atendimento omnicanal (Chatwoot) e o MVP do ARCA (AM Rendara em PocketBase e SvelteKit), cada uma validada antes de virar sistema no Aura.",
+   "quando": "Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite)",
+   "gatilho": "O recesso começou e uma das 3 rendas de agora já passou no portão",
+   "passos": [
+    {
+     "id": "halter-d1",
+     "titulo": "Dia 1: conferir a VM, o Uptime Kuma e o Kamal",
+     "quem": "voce",
+     "pronto": "VM responde, Uptime Kuma verde e kamal version funciona",
+     "tempo_min": 60,
+     "comando": "docker run --rm ghcr.io/basecamp/kamal:latest version",
+     "blocos": [
+      "vm247",
+      "kuma",
+      "kamal"
+     ]
+    },
+    {
+     "id": "halter-d2",
+     "titulo": "Dia 2: Chatwoot com e-mail pelo Resend na VM",
+     "quem": "voce",
+     "pronto": "Caixa de entrada de teste recebe e responde e-mail",
+     "tempo_min": 120,
+     "comando": "mkdir -p ~/chatwoot && cd ~/chatwoot && curl -fsSL https://raw.githubusercontent.com/chatwoot/chatwoot/develop/docker-compose.production.yaml -o docker-compose.yaml",
+     "nota": "Siga o guia de produção do Chatwoot (arquivo .env e migração do banco).",
+     "blocos": [
+      "chatwoot",
+      "tmail"
+     ]
+    },
+    {
+     "id": "halter-d3",
+     "titulo": "Dia 3: abordar 5 empresas de Barbacena que vivem no WhatsApp",
+     "quem": "voce",
+     "pronto": "5 conversas feitas e 2 demonstrações marcadas",
+     "tempo_min": 180,
+     "fora": "Presencial ou por WhatsApp, com a lista do prospector aprovada por você. Nunca disparo em massa.",
+     "ofertas": [
+      "automacaoia"
+     ],
+     "blocos": [
+      "prospector"
+     ]
+    },
+    {
+     "id": "halter-d4",
+     "titulo": "Dia 4: demonstração ao vivo, proposta e contrato no Documenso",
+     "quem": "voce",
+     "pronto": "1 contrato assinado (implantação + mensalidade)",
+     "tempo_min": 120,
+     "fora": "Reunião com o cliente. Preço do documento: R$ 1.800 de implantação + R$ 350/mês; some o custo das conversas da API oficial do WhatsApp.",
+     "ofertas": [
+      "automacaoia"
+     ],
+     "blocos": [
+      "agenda",
+      "documenso"
+     ]
+    },
+    {
+     "id": "halter-d5",
+     "titulo": "Dias 5 e 6: WhatsApp oficial do cliente, atendentes e a primeira fatura",
+     "quem": "voce",
+     "pronto": "O cliente atende pelo Chatwoot e a fatura saiu no Invoice Ninja",
+     "tempo_min": 240,
+     "fora": "A API oficial do WhatsApp (Meta) pede verificação do negócio e cobra por conversa: pago pelo cliente.",
+     "precisa": [
+      "pagamento"
+     ],
+     "ofertas": [
+      "automacaoia"
+     ],
+     "blocos": [
+      "chatwoot",
+      "invoiceninja",
+      "oatend"
+     ]
+    },
+    {
+     "id": "halter-d7",
+     "titulo": "Dia 7: treinar a equipe do cliente em 30 minutos",
+     "quem": "voce",
+     "pronto": "Equipe atende sozinha e o NPS da implantação foi respondido",
+     "tempo_min": 60,
+     "fora": "Treinamento presencial ou por vídeo.",
+     "ofertas": [
+      "automacaoia"
+     ],
+     "blocos": [
+      "opos",
+      "formbricks"
+     ]
+    },
+    {
+     "id": "halter-d8",
+     "titulo": "Dias 8 e 9: MVP do ARCA em PocketBase e SvelteKit",
+     "quem": "claude",
+     "pronto": "Ativos e transações gravados no PocketBase e listados na tela",
+     "tempo_min": 360,
+     "comando": "cd ~/dev && npx sv create am-rendara-mvp",
+     "ofertas": [
+      "rendara"
+     ],
+     "blocos": [
+      "pocketbase",
+      "sveltekit"
+     ]
+    },
+    {
+     "id": "halter-d10",
+     "titulo": "Dia 10: lógica dos 4 quadrantes do ARCA e do aporte, com Zod e Vitest",
+     "quem": "claude",
+     "pronto": "Testes do rebalanceamento e do aporte passando",
+     "tempo_min": 240,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo halter-d10 do roteiro: lógica dos 4 quadrantes do ARCA e do aporte, com Zod e Vitest\"",
+     "ofertas": [
+      "rendara"
+     ],
+     "blocos": [
+      "zod"
+     ]
+    },
+    {
+     "id": "halter-d11",
+     "titulo": "Dias 11 e 12: Pix do Asaas e a landing page em Astro",
+     "quem": "claude",
+     "pronto": "Um Pix de teste libera o plano Pro (R$ 29 a R$ 49/mês)",
+     "tempo_min": 360,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo halter-d11 do roteiro: Pix do Asaas e a landing page em Astro\"",
+     "ofertas": [
+      "rendara"
+     ],
+     "blocos": [
+      "pixa",
+      "astro"
+     ]
+    },
+    {
+     "id": "halter-d13",
+     "titulo": "Dias 13 e 14: testes E2E, deploy pelo Kamal e 50 testadores",
+     "quem": "voce",
+     "pronto": "Playwright verde, MVP no ar com réplica no R2 e o post no TabNews publicado",
+     "tempo_min": 360,
+     "comando": "cd ~/dev/am-rendara-mvp && npx playwright test",
+     "nota": "Publicar no TabNews só com a sua aprovação.",
+     "ofertas": [
+      "rendara"
+     ],
+     "blocos": [
+      "tests",
+      "kamal",
+      "litestream"
+     ]
+    }
+   ]
+  },
+  {
    "id": "f22",
    "titulo": "Mais ofertas, uma por vez",
    "objetivo": "Cada oferta do portfólio entra na esteira na ordem da pontuação: uma em construção e uma em validação por vez.",
@@ -4730,6 +5315,17 @@
       "formmat",
       "financas"
      ]
+    },
+    {
+     "id": "mk-polar",
+     "titulo": "Vender templates e código-fonte para fora do Brasil pelo Polar",
+     "quem": "voce",
+     "pronto": "Um produto à venda em dólar com o imposto de cada país resolvido",
+     "tempo_min": 60,
+     "fora": "Cadastro no site do Polar. Confirme se aceita recebimento no Brasil antes de anunciar.",
+     "blocos": [
+      "polar"
+     ]
     }
    ],
    "quando": "A partir de fev/2027",
@@ -4818,6 +5414,18 @@
      ],
      "blocos": [
       "mic"
+     ]
+    },
+    {
+     "id": "lin-ghostty",
+     "titulo": "Ghostty como terminal do Arch, abrindo no Zellij",
+     "quem": "voce",
+     "pronto": "Ghostty abre direto na sessão principal do Zellij",
+     "tempo_min": 15,
+     "comando": "sudo pacman -S --needed ghostty zellij && chezmoi apply",
+     "nota": "Rode no Arch. A configuração vem do chezmoi.",
+     "blocos": [
+      "ghostty"
      ]
     }
    ],
@@ -4973,6 +5581,17 @@
      "comando": "cd ~/dev/dev-setup && claude \"Passo pix-automatico do roteiro: Cobrança recorrente por Pix Automático\"",
      "blocos": [
       "pixa"
+     ]
+    },
+    {
+     "id": "cnpj-akaunting",
+     "titulo": "Contabilidade do CNPJ no Akaunting, junto do contador",
+     "quem": "voce",
+     "pronto": "Faturas e contas do CNPJ no Akaunting; o contador recebe o relatório do mês",
+     "tempo_min": 60,
+     "comando": "cd ~/dev/dev-setup/infra/soberania && docker compose --profile akaunting up -d",
+     "blocos": [
+      "akaunting"
      ]
     }
    ],
@@ -5456,6 +6075,17 @@
       "kitstindie",
       "revenda-veiculos"
      ]
+    },
+    {
+     "id": "neg-erpnext",
+     "titulo": "ERPNext para o primeiro negócio físico até o Aura cobrir",
+     "quem": "voce",
+     "pronto": "Estoque e vendas do negócio no ERPNext por um mês",
+     "tempo_min": 120,
+     "comando": "git clone --depth 1 https://github.com/frappe/frappe_docker.git ~/erpnext && cd ~/erpnext && docker compose -f pwd.yml up -d",
+     "blocos": [
+      "erpnext"
+     ]
     }
    ],
    "quando": "Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano",
@@ -5588,6 +6218,28 @@
      "tempo_min": 15,
      "blocos": [],
      "fora": "Rotina do Caixa da Casa (artefato), fora do terminal."
+    },
+    {
+     "id": "est-go",
+     "titulo": "Primeira CLI em Go com bubbletea e release pelo GoReleaser",
+     "quem": "voce",
+     "pronto": "goreleaser release --snapshot gera binários de Linux e Windows",
+     "tempo_min": 120,
+     "comando": "cp -r ~/dev/dev-setup/infra/templates/go-cli ~/dev/minha-cli && cd ~/dev/minha-cli && go mod tidy && go run ./cmd/ferramenta",
+     "blocos": [
+      "golang"
+     ]
+    },
+    {
+     "id": "est-rust",
+     "titulo": "Primeira CLI em Rust com release pelo cargo-dist",
+     "quem": "voce",
+     "pronto": "cargo run funciona e dist init gera o workflow de release",
+     "tempo_min": 120,
+     "comando": "cp -r ~/dev/dev-setup/infra/templates/rust-cli ~/dev/minha-cli-rs && cd ~/dev/minha-cli-rs && cargo run -- Alan",
+     "blocos": [
+      "rust"
+     ]
     }
    ],
    "quando": "Contínuo, desde a semana 2"
@@ -5822,6 +6474,29 @@
       "pagamento"
      ],
      "fora": "Termo e contrato revisados por advogado, seguro de responsabilidade profissional e CNPJ com o contador; só depois da OSCP e de histórico (bug bounty e laudos)."
+    },
+    {
+     "id": "re-radare2",
+     "titulo": "Triagem de binário com radare2 antes do Ghidra",
+     "quem": "voce",
+     "pronto": "r2 -A mostra as funções e as strings do crackme",
+     "tempo_min": 30,
+     "comando": "bash scripts/wsl/ferramentas-re.sh",
+     "blocos": [
+      "radare2"
+     ]
+    },
+    {
+     "id": "re-sala-limpa",
+     "titulo": "Montar a sala limpa com a pasta dos alvos cifrada (gocryptfs)",
+     "quem": "voce",
+     "pronto": "~/dev/lab montada só quando você digita a senha; alvos/ fora do Git",
+     "tempo_min": 20,
+     "comando": "cp -rn ~/dev/dev-setup/infra/templates/sala-limpa ~/dev/sala-limpa && gocryptfs -init ~/dev/lab-cifrado",
+     "nota": "Senha do gocryptfs no KeePassXC. Montar: mkdir -p ~/dev/lab && gocryptfs ~/dev/lab-cifrado ~/dev/lab. Desmontar: fusermount -u ~/dev/lab.",
+     "blocos": [
+      "gocryptfs"
+     ]
     }
    ]
   },

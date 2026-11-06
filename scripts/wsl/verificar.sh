@@ -10,7 +10,7 @@ set -uo pipefail
 SERVICOS=0; JSON=0
 for a in "$@"; do case "$a" in --servicos) SERVICOS=1 ;; --json) JSON=1 ;; -h|--help) sed -n '2,6p' "$0"; exit 0 ;; esac; done
 export PATH="$HOME/.local/bin:$PATH"
-command -v fnm >/dev/null 2>&1 && eval "$(fnm env --shell bash 2>/dev/null)"
+if command -v mise >/dev/null 2>&1; then eval "$(mise env -s bash 2>/dev/null)"; elif command -v fnm >/dev/null 2>&1; then eval "$(fnm env --shell bash 2>/dev/null)"; fi
 
 RES=(); FALTAS=0; OKS=0
 r() {  # r <area> <item> <OK|FALTA|AVISO> <detalhe> [obrigatorio=1]
@@ -38,7 +38,7 @@ cmd "GitHub CLI" gh "bootstrap.sh"
 if command -v dotnet >/dev/null 2>&1 && dotnet --list-sdks 2>/dev/null | grep -q '^10\.'; then r ferramenta ".NET 10 SDK" OK "$(dotnet --list-sdks | grep '^10\.' | tail -1 | cut -d' ' -f1)"
 else r ferramenta ".NET 10 SDK" FALTA "sudo apt install dotnet-sdk-10.0"; fi
 if command -v node >/dev/null 2>&1 && [[ "$(node -v | tr -d v | cut -d. -f1)" -ge 22 ]]; then r ferramenta "Node 22+" OK "$(node -v)"
-else r ferramenta "Node 22+" FALTA "fnm install --lts"; fi
+else r ferramenta "Node 22+" FALTA "mise use -g node@lts"; fi
 cmd "uv (Python)" uv "bootstrap.sh"
 cmd gitleaks gitleaks "bootstrap.sh"
 cmd trivy trivy "bootstrap.sh"

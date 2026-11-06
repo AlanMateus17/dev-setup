@@ -231,6 +231,7 @@ def gerar_arquitetura(eco: dict, por_camada: dict) -> str:
     out.append("- Infraestrutura por código, Azure primeiro e AWS depois. Ver [ADR 0003](adr/0003-azure-primeiro.md).")
     out.append("- Produção barata em VM pelo Kamal, um deploy só. Ver [ADR 0005](adr/0005-deploy-em-vm-com-kamal.md). Contrato no OpenAPI e Zod só no front. Ver [ADR 0006](adr/0006-contratos-na-borda.md).")
     out.append("- Antes de construir, a triagem: subir pronto, colar ou construir (`just triagem`). Ver [Empresa solo](empresa-solo.md).")
+    out.append("- A melhor ferramenta para cada trabalho, sem linguagem proibida. Ver [ADR 0007](adr/0007-poliglota-por-funcao.md); principal e reserva de cada função no [ADR 0008](adr/0008-trocas-de-ferramenta-principal.md).")
     out.append("- Uma ferramenta por função: o que repete outra fica de fora ([decisões](fora-do-setup.md)).")
     out.append("- Segredos só no KeePassXC; nunca no repositório.\n")
     return "\n".join(out)
@@ -399,8 +400,8 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
         destaque = ", ".join(nome(b) for b in bl[:4]) + ("…" if len(bl) > 4 else "")
         out.append(f"| {num(eco, c['id']):02d} | [{c['titulo']}](docs/camadas/{arquivo_camada(eco, c['id'])}) | {len(bl)} | {destaque} |")
     out += ["",
-            "## Stack fixa dos sistemas\n",
-            "C#/.NET 10 · ASP.NET Core (Controllers) · Clean Architecture + DDD · PostgreSQL · Redis · SignalR · TypeScript, Next.js e Tailwind · Docker · GitHub Actions. Rejeitadas de propósito: Bun, Hono, Rust, Tauri e gRPC. Decisões em [`docs/adr`](docs/adr).\n",
+            "## Stack\n",
+            "Sistemas AM: C#/.NET 10 · ASP.NET Core (Controllers) · Clean Architecture + DDD · PostgreSQL · Redis · SignalR · Next.js, TypeScript, Tailwind e Zod · Docker · GitHub Actions · Kamal. Fora deles, a melhor ferramenta para cada trabalho ([ADR 0007](docs/adr/0007-poliglota-por-funcao.md)): Astro para sites, SvelteKit e PocketBase para MVPs, Go para CLIs, Rust para firmware, Python para dados e IA. Principal e reserva de cada função no [ADR 0008](docs/adr/0008-trocas-de-ferramenta-principal.md).\n",
             "## Como este repositório funciona\n",
             "```mermaid", "flowchart LR",
             '  D["data/ecossistema.json<br/>data/mapa.json"] --> G["tools/gerar_docs.py"]',

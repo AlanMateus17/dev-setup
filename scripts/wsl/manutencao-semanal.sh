@@ -16,7 +16,7 @@ rodar sudo apt-get autoremove -y
 passo "Docker: imagens e build cache sem uso"
 command -v docker >/dev/null 2>&1 && rodar docker system prune -f
 passo "Ferramentas do usuário"
-command -v fnm >/dev/null 2>&1 && echo "Node: $(node -v 2>/dev/null)"
+{ command -v mise >/dev/null 2>&1 || command -v fnm >/dev/null 2>&1; } && echo "Node: $(node -v 2>/dev/null)"
 command -v dotnet >/dev/null 2>&1 && rodar dotnet workload update
 passo "Repositórios: buscar atualizações (sem mexer nos seus arquivos)"
 while IFS= read -r g; do rodar git -C "$(dirname "$g")" fetch --quiet --all; done < <(find "$HOME/dev" -maxdepth 2 -name .git -type d 2>/dev/null)
