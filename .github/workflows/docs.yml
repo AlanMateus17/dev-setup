@@ -39,7 +39,8 @@ jobs:
           python tools/recursos/recursos.py --check
           python tools/investimentos/investimentos.py docs --check
           python tools/carreira/certificacoes.py --check
-          for d in kitsites avaliador radar organizar remoto financeiro fabrica ia custos recursos investimentos carreira roi sessao documentos seguranca jarvis construcao triagem nucleo; do python -m unittest discover -s tools/$d -v || exit 1; done
+          python tools/cockpit/gerar.py --check
+          for d in kitsites avaliador radar organizar remoto financeiro fabrica ia custos recursos investimentos carreira roi sessao documentos seguranca jarvis construcao triagem nucleo cockpit; do python -m unittest discover -s tools/$d -v || exit 1; done
       - name: Testar o pipeline de conteúdo e conferir o roteiro de implantação
         run: |
           python -m unittest discover -s tools/conteudo -v

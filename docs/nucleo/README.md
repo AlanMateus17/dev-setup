@@ -69,6 +69,27 @@ flowchart LR
 | 7 | Orquestrador 24 h | agentes na VM; Jarvis por voz como porta de entrada | |
 | 8 | Teste do sistema | simulação noturna de ponta a ponta e relatório de manhã | |
 
+## Hoje: o que já roda sozinho
+
+| Função | Situação | O que falta |
+|---|---|---|
+| Instalação do setup | um comando | `just instalar` monta tudo; você roda uma vez |
+| Backup | sozinho | agendado às 22h30, avisa no Telegram se falhar |
+| Atualização das ferramentas | sozinho | domingo às 9h; o apt segue simulado porque pede sudo |
+| Padrão em todo repositório | sozinho | toda semana, junto da manutenção |
+| CI, tag e vigia | sozinho | a cada push e toda segunda |
+| Resumo da manhã | sozinho | 6h10 no Telegram |
+| Triagem e arquiteto consultando a base | um comando | gravam e leem o núcleo; falta o Claude Code ler sozinho (fase 4) |
+| Contexto enxuto para a IA | um comando | `just contexto-ia`; vira automático com os ganchos (fase 4) |
+| Roteamento local → Claude | não existe | fase 4 |
+| Garimpo de código | não existe | fase 2 |
+| Política de autonomia e ok pelo Telegram | não existe | fase 3 |
+| Alertas de erro e queda no Telegram | não existe | fase 5 |
+| Funil comercial ligado (formulário → agenda → CRM → contrato → fatura → NPS) | não existe | fase 6 |
+| Financeiro → Beancount → rentabilidade | não existe | fase 6 |
+| Agentes 24 horas | não existe | fase 7 |
+| Simulação noturna de ponta a ponta | não existe | fase 8 |
+
 ## Limites
 
 - Autonomia 24 horas precisa da VM ligada; o notebook é reforço.

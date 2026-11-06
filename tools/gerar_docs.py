@@ -348,6 +348,7 @@ def gerar_indice_docs(eco: dict, por_camada: dict) -> str:
     out.append("- [Construção civil, arquitetura e engenharia civil](construcao/README.md): BIM aberto e Autodesk educacional, estudo e normas, regras da IA e as rendas pela TI")
     out.append("- [Vários computadores, SSD externo e NAS](infra/README.md): como crescer o setup para mais máquinas e armazenamento local e em nuvem")
     out.append("- [Boas práticas em todo repositório](boas-praticas.md): git, versões, tags, segurança, qualidade, backup e licenças")
+    out.append("- [Painel do Núcleo](cockpit.html): a constelação do setup inteiro, o que já roda sozinho, principal e reserva, autonomia, roteiro e o que falta (abra no navegador)")
     out.append("- [Núcleo AMtech](nucleo/README.md): o setup conectado e autônomo, com banco central, garimpo de código, política de autonomia, agentes 24 horas e o teste do sistema inteiro")
     out.append("- [Empresa solo: o contexto mestre dentro do setup](empresa-solo.md): o que entrou, o que ficou de fora, as 88 ferramentas uma por uma, o cronograma de 14 dias reescrito e os comandos `just`")
     out.append("- [Decisões de arquitetura (ADRs)](adr/)")

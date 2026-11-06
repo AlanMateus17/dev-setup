@@ -2,6 +2,15 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.14.0] - 2026-11-06
+
+### Adicionado
+- Painel do Núcleo (docs/cockpit.html, gerado por tools/cockpit/gerar.py): a constelação do setup inteiro (cada bloco uma estrela, cada camada uma órbita, as conexões acendem ao tocar), busca, o que já roda sozinho, as 9 fases do núcleo, principal e reserva (ADR 0008), autonomia, o roteiro fase por fase e o que falta. Tudo lido dos dados e dos ADRs, com --check no CI e testes.
+- docs/nucleo/README.md: tabela "Hoje: o que já roda sozinho".
+
+### Alterado
+- Artefatos republicados com a versão 2.13: Implantação, Mapa, Portfólio e Ecossistema.
+
 ## [2.13.0] - 2026-11-06
 
 ### Adicionado
