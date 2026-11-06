@@ -2783,6 +2783,76 @@
    ]
   },
   {
+   "id": "f-professor",
+   "titulo": "Professor do setup: aprender tudo o que você opera",
+   "objetivo": "Cada módulo do eixo (ofício, finanças) e do próprio setup com aula estruturada, prática no seu setup, prova corrigida e revisão espaçada, até você operar tudo sem depender da IA.",
+   "quando": "Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre",
+   "passos": [
+    {
+     "id": "prof-modelo",
+     "titulo": "Ler a aula-modelo (backup com restic) e dizer se o formato serve para você",
+     "quem": "voce",
+     "pronto": "Formato aprovado ou ajustes anotados (mais curto, mais exemplos, mais teoria…)",
+     "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup && less docs/professor/exemplo-aula-s-backup.md",
+     "nota": "O formato vem das técnicas com mais evidência: pergunta antes da explicação, exemplo resolvido seguido de exemplo com lacunas, prática de recuperação e revisão espaçada.",
+     "decisao": true,
+     "blocos": [
+      "professor"
+     ]
+    },
+    {
+     "id": "prof-hoje",
+     "titulo": "Estudar pelo Professor todo dia: revisões primeiro, depois a próxima aula de cada trilha",
+     "quem": "voce",
+     "pronto": "Hábito de 4 semanas seguidas (just professor hoje no começo de cada sessão)",
+     "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup && just professor hoje",
+     "blocos": [
+      "professor",
+      "nucleo"
+     ]
+    },
+    {
+     "id": "prof-ciclo",
+     "titulo": "Fechar o ciclo de cada módulo: aula, prática, prova, correção e, quando der, ensinar",
+     "quem": "voce",
+     "pronto": "Módulos do trimestre 1 no nível 3 (passou na prova) ou 4 (ensinou)",
+     "tempo_min": 60,
+     "comando": "cd ~/dev/dev-setup && just professor prova s-backup",
+     "nota": "Prova sem consultar. Abaixo de 80, a revisão volta para o dia seguinte. Ensinar (post, aula, vídeo) é o nível 4.",
+     "blocos": [
+      "professor",
+      "cc"
+     ]
+    },
+    {
+     "id": "prof-anki",
+     "titulo": "Levar os cartões das aulas para o Anki e revisar todo dia",
+     "quem": "voce",
+     "pronto": "Cartões importados e revisão diária no celular",
+     "tempo_min": 15,
+     "comando": "cd ~/dev/dev-setup && just professor cartoes",
+     "blocos": [
+      "professor",
+      "anki"
+     ]
+    },
+    {
+     "id": "prof-curriculo",
+     "titulo": "No fim de cada trimestre, acrescentar os módulos do próximo (plano do eixo) com o Claude",
+     "quem": "claude",
+     "pronto": "Módulos do próximo trimestre em data/professor/curriculo.json, com objetivos, pré-requisitos e fontes oficiais",
+     "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo prof-curriculo do roteiro: acrescente ao data/professor/curriculo.json os módulos do próximo trimestre de docs/plano-eixo.md\"",
+     "blocos": [
+      "professor",
+      "cc"
+     ]
+    }
+   ]
+  },
+  {
    "id": "f-akita",
    "titulo": "Escola Akita: seguir a fundo, com o seu ok",
    "objetivo": "Os 831 posts do blog do Fabio Akita (incluindo 198 episódios do Akitando com transcrição) viram notas e regras; o setup compara cada regra com o que já faz e só muda depois da sua aprovação.",

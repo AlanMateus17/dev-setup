@@ -4472,6 +4472,15 @@
    "conta": false,
    "futuro": false,
    "descricao": "O blog e os episódios do Akitando (transcrições no próprio blog) viram notas no Obsidian e regras com outras palavras e link da fonte. O texto original fica só na sua máquina; regra só muda o setup depois do seu ok, por PR."
+  },
+  {
+   "id": "professor",
+   "camada": "est",
+   "rotulo": "Professor do setup|(aula, prova, revisão)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Currículo do eixo e do próprio setup: aula estruturada em blocos de 25 min, prática no setup, prova corrigida com rubrica, revisão espaçada e cartões para o Anki. Aulas geradas uma vez e guardadas no Obsidian."
   }
  ],
  "conexoes": [
@@ -8749,6 +8758,31 @@
    "de": "cc",
    "para": "akita",
    "rotulo": "aplica a regra aprovada (PR)"
+  },
+  {
+   "de": "professor",
+   "para": "nucleo",
+   "rotulo": "nível de domínio e revisões"
+  },
+  {
+   "de": "professor",
+   "para": "anki",
+   "rotulo": "cartões de cada aula"
+  },
+  {
+   "de": "professor",
+   "para": "obsd",
+   "rotulo": "aulas e provas"
+  },
+  {
+   "de": "akita",
+   "para": "professor",
+   "rotulo": "regras viram contexto da aula"
+  },
+  {
+   "de": "cc",
+   "para": "professor",
+   "rotulo": "escreve a aula e corrige a prova"
   }
  ],
  "fluxos": [

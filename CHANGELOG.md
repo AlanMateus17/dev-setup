@@ -2,6 +2,16 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.18.0] - 2026-11-06
+
+### Adicionado
+- Professor do setup (ADR 0012, tools/professor, just professor): currículo em data/professor/curriculo.json (19 módulos do trimestre 1 em três trilhas: ofício, operar o setup e finanças), aula com método fixo (diagnóstico, 3 blocos de 25 min, exemplo resolvido e com lacunas, prática no setup, recuperação, cartões, fontes oficiais), prova discursiva corrigida com rubrica, domínio de 0 a 4 no núcleo, revisão espaçada (1, 3, 7, 21, 60, 120 dias), pré-requisitos, cartões para o Anki e mini-aula de qualquer bloco do ecossistema. Testes.
+- Aula-modelo escrita à mão: docs/professor/exemplo-aula-s-backup.md.
+- Fase "Professor do setup" no roteiro e bloco no ecossistema.
+
+### Corrigido
+- O resumo do setup e a regra AK-0005 diziam que o backup diário já ia para o Backblaze B2; o script grava só no disco externo e o B2 é o passo restic-nuvem.
+
 ## [2.17.0] - 2026-11-06
 
 ### Adicionado

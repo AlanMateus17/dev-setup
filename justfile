@@ -130,6 +130,10 @@ feito +ids:
 progresso empresa="":
     python3 tools/nucleo/agenda.py progresso {{ if empresa != "" { "--empresa " + empresa } else { "" } }}
 
+# Professor: just professor hoje | trilha | aula ID | praticei ID | prova ID | corrigir ID | ensinei ID | cartoes | ferramenta BLOCO
+professor *args:
+    python3 tools/professor/professor.py {{args}}
+
 # Escola Akita: just akita sincronizar | indexar | fila | notar SLUG | lote | pendentes | aprovar ID | aplicar ID
 akita *args:
     python3 tools/akita/akita.py {{args}}

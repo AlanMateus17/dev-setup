@@ -105,7 +105,7 @@
    "tipo": "alerta",
    "area": "infra",
    "texto": "No Windows não existe snapshot leve confiável para os seus dados: quem desenvolve no Windows precisa de backup externo, sem discussão.",
-   "no_setup": "Já segue: restic diário às 22h30 para disco externo e B2.",
+   "no_setup": "Já segue em parte: restic diário às 22h30 para o disco externo. A cópia fora de casa no Backblaze B2 ainda é o passo restic-nuvem do roteiro.",
    "sugestao": "ja-segue",
    "validade": "perene",
    "fonte": {

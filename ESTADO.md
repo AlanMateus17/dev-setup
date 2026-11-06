@@ -38,3 +38,4 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-06: v2.16: Escola Akita. O blog do Akita (831 posts, 198 Akitando com transcrição) vem por git, fica só local; notas no Obsidian, regras com outras palavras e link; nada muda sem aprovação (just akita pendentes).
 - 2026-11-06: pendente do Alan: decidir as 22 regras do piloto e o motor (Claude ou Ollama) para gerar as notas dos outros 829 posts.
 - 2026-11-06: v2.17: eixo profundo = software + finanças, pelo Grupo AMtech Digital (ADR 0011). Plano de 12 meses em docs/plano-eixo.md; o resto pausado até o fim do trimestre 4.
+- 2026-11-06: v2.18: Professor do setup (ADR 0012): just professor hoje | aula | prova | corrigir; 19 módulos do T1; aula-modelo em docs/professor/exemplo-aula-s-backup.md.

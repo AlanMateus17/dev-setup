@@ -3,6 +3,6 @@
 - Código: .NET 10 + Next.js nos sistemas Aura (Clean Architecture, EF Core com migrations, PostgreSQL); Astro nos sites; SvelteKit + PocketBase em MVP; Go e Rust em CLIs. OpenAPI no back, Zod no front.
 - IA: Claude Code dentro do ai-jail; Ollama local (modelos de 3 a 8B); ai-memory; teto de US$ 20/mês de API via LiteLLM. `just triagem` decide montar, colar ou construir; `just arquiteto` monta o pacote de contexto.
 - Entrega: GitHub + Actions (CI com testes e gitleaks em todo push), Kamal em VM, Docker Compose, Hostinger para sites de clientes, esteira issue → Copilot → PR → prévia → aprovação.
-- Segurança e dados: KeePassXC; segredos mínimos com sops + age; backup restic diário às 22h30 (disco externo e Backblaze B2; 7 diários, 4 semanais, 12 mensais; exclui caches, node_modules, bin e obj); manutenção automática aos domingos; Uptime Kuma; GlitchTip.
+- Segurança e dados: KeePassXC; segredos mínimos com sops + age; backup restic diário às 22h30 no disco externo (a cópia fora de casa no Backblaze B2 é um passo à parte do roteiro; 7 diários, 4 semanais, 12 mensais; exclui caches, node_modules, bin e obj); manutenção automática aos domingos; Uptime Kuma; GlitchTip.
 - Núcleo AMtech: banco central (eventos, conhecimento, tarefas, auditoria); política de autonomia: publicar, enviar em nome do Alan, cobrar, comprar, assinar e senha sempre param no ok dele.
 - Regras fixas: nada de dado de aluno em IA; nada publicado sem aprovação; documento financeiro pessoal fora do GitHub e da IA na nuvem; não copiar curso ou livro pago.

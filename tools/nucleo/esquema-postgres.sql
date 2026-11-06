@@ -32,3 +32,6 @@ CREATE TABLE IF NOT EXISTS nucleo.auditoria (
 );
 
 CREATE TABLE IF NOT EXISTS nucleo.passos_feitos (passo text PRIMARY KEY, quando timestamptz NOT NULL DEFAULT now());
+
+CREATE TABLE IF NOT EXISTS nucleo.dominio (topico text PRIMARY KEY, nivel smallint NOT NULL DEFAULT 0 CHECK (nivel BETWEEN 0 AND 4),
+  ultima_nota smallint, intervalo_dias integer NOT NULL DEFAULT 0, proxima_revisao date, atualizado timestamptz NOT NULL DEFAULT now());

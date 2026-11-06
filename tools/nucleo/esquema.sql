@@ -59,3 +59,13 @@ CREATE TABLE IF NOT EXISTS passos_feitos (
   passo  TEXT PRIMARY KEY,
   quando TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%S', 'now', 'localtime'))
 );
+
+-- Domínio de cada tópico do Professor: nível 0 (nada) a 4 (ensinou) e a próxima revisão espaçada.
+CREATE TABLE IF NOT EXISTS dominio (
+  topico          TEXT PRIMARY KEY,
+  nivel           INTEGER NOT NULL DEFAULT 0 CHECK (nivel BETWEEN 0 AND 4),
+  ultima_nota     INTEGER,
+  intervalo_dias  INTEGER NOT NULL DEFAULT 0,
+  proxima_revisao TEXT,
+  atualizado      TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%S', 'now', 'localtime'))
+);
