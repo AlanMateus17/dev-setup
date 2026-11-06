@@ -8,7 +8,7 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 
 | Camadas | Blocos | Conexões | Fluxos | Contas necessárias |
 |---|---|---|---|---|
-| 23 | 484 | 855 | 22 | 129 |
+| 23 | 485 | 860 | 22 | 129 |
 
 ## Por onde começar
 
@@ -99,7 +99,7 @@ O Windows cuida só do que precisa de janela, GPU e segurança; todo o trabalho 
 | 17 | [Produtos (o que você vende)](docs/camadas/17-prod.md) | 8 | Mini-curso Lógica de Programação, Formações (TI, Matemática, Finanças), Templates e código-fonte, Livro Lógica e Máquina… |
 | 16 | [Negócios do grupo (Barbacena)](docs/camadas/16-neg.md) | 19 | AMtech Software (projetos e SaaS), Loja AMtech (assistência), Peças sem estoque (sob encomenda), Ponto de retirada (Shopee e ML)… |
 | 15 | [Editora AMS Silva (produção de livros)](docs/camadas/15-editora.md) | 36 | Selo Editora AMS Silva, Repositório do livro, Seu modelo de criação, Fonte única (Markdown + Pandoc)… |
-| 14 | [Estudo e carreira](docs/camadas/14-est.md) | 15 | Microsoft Learn + AWS Skill Builder, TryHackMe / Hack The Box, Alura · Rocketseat · DIO · Udemy, Anki… |
+| 14 | [Estudo e carreira](docs/camadas/14-est.md) | 16 | Microsoft Learn + AWS Skill Builder, TryHackMe / Hack The Box, Alura · Rocketseat · DIO · Udemy, Anki… |
 | 13 | [Produção de conteúdo](docs/camadas/13-cont.md) | 8 | OBS Studio, DaVinci Resolve ou Kdenlive, Audacity, Canva · Krita · Inkscape… |
 | 12 | [Nuvem, código e entrega](docs/camadas/12-nuvem.md) | 32 | Armazenamento de arquivos (Blob/R2), E-mail transacional (Resend, SES…), SonarQube Cloud, Projects · ADRs · MkDocs… |
 | 11 | [Aplicação: sistemas AM (Aura)](docs/camadas/11-app.md) | 26 | OpenAPI + Scalar, PostGIS + MapLibre, Storybook, Clean Arch + DDD… |

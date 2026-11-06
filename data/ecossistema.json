@@ -4476,7 +4476,7 @@
   {
    "id": "professor",
    "camada": "est",
-   "rotulo": "Professor do setup|(aula, prova, revisão)",
+   "rotulo": "Professor do setup|(aula e revisão)",
    "tipo": "local",
    "conta": false,
    "futuro": false,
