@@ -93,3 +93,23 @@ lab-fechar:
 # Sobe um serviço próprio pelo perfil: just servico forgejo
 servico perfil:
     cd infra/soberania && docker compose --profile "{{perfil}}" up -d
+
+# Monta o setup inteiro de uma vez (fase 0 do Núcleo): just instalar  ·  só ver: just instalar --simular
+instalar *opcao:
+    bash scripts/wsl/instalar-tudo.sh {{opcao}}
+
+# Guarda algo na base do núcleo: just lembrar "Kamal na t4g precisa de arm64" licao
+lembrar texto tipo="nota":
+    python3 tools/nucleo/nucleo.py lembrar "{{texto}}" --tipo {{tipo}}
+
+# Procura na base do núcleo (decisões, lições, triagens, garimpos): just buscar "deploy"
+buscar texto:
+    python3 tools/nucleo/nucleo.py buscar "{{texto}}"
+
+# Tarefas abertas do núcleo
+tarefas:
+    python3 tools/nucleo/nucleo.py tarefa listar
+
+# Backup agora (o mesmo do agendamento das 22h30)
+backup:
+    bash scripts/wsl/backup.sh

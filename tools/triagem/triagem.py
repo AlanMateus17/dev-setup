@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 import unicodedata
@@ -33,6 +34,18 @@ from datetime import date
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(RAIZ / "tools" / "nucleo"))
+import nucleo as nuc  # noqa: E402
+
+
+def _nucleo():
+    """Banco do núcleo, se já foi iniciado (nucleo.py iniciar). Sem banco, a triagem funciona igual."""
+    if os.environ.get("NUCLEO_DESLIGADO"):
+        return None
+    try:
+        return nuc.abrir(criar=False)
+    except Exception:  # noqa: BLE001 - o núcleo é opcional aqui
+        return None
 ECO = RAIZ / "data" / "ecossistema.json"
 MAPA = RAIZ / "data" / "mapa.json"
 ADRS = RAIZ / "docs" / "adr"
@@ -129,7 +142,7 @@ def rotulo(b: dict) -> str:
     return b["rotulo"].replace("|", " ")
 
 
-def relatorio(pedido: str, opcao: str, candidatos: list[dict], fora: list[dict]) -> str:
+def relatorio(pedido: str, opcao: str, candidatos: list[dict], fora: list[dict], base: str = "") -> str:
     nome, prazo, o_que = OPCOES[opcao]
     out = [f"Pedido: {pedido}", "", f"[OPÇÃO {opcao}] {nome} ({prazo})", o_que, ""]
     if candidatos:
@@ -140,6 +153,8 @@ def relatorio(pedido: str, opcao: str, candidatos: list[dict], fora: list[dict])
                    "dependências, licença MIT/Apache, sem 'any' e Trivy limpo.")
     if fora:
         out += ["", "Atenção, já recusado antes:"] + [f"  - {f['item']}: {f['motivo']}" for f in fora]
+    if base:
+        out += ["", "Já na base do núcleo:", base]
     out += ["", "Regra das 4 horas: sem nada visível em 4 horas, pare e rode a triagem de novo."]
     return "\n".join(out)
 
@@ -169,7 +184,7 @@ def url_grep(pedido: str) -> str:
     return "https://grep.app/search?q=" + quote_plus(" ".join(palavras(pedido)[:4]))
 
 
-def pacote(pedido: str, eco: dict, mapa: dict) -> str:
+def pacote(pedido: str, eco: dict, mapa: dict, base: str = "") -> str:
     cand = buscar_blocos(pedido, eco, limite=8)
     fora = buscar_fora(pedido, mapa)
     adrs = sorted(p.stem for p in ADRS.glob("*.md")) if ADRS.exists() else []
@@ -181,6 +196,8 @@ def pacote(pedido: str, eco: dict, mapa: dict) -> str:
         out += ["", "## Já recusado (não proponha de novo)", ""] + [f"- {f['item']}: {f['motivo']}" for f in fora]
     if adrs:
         out += ["", "## ADRs em vigor", ""] + [f"- {a}" for a in adrs]
+    if base:
+        out += ["", "## O que o núcleo já sabe (decisões, lições, garimpos)", "", base]
     out += ["", "## Referências para conferir (abra você; não é colado aqui)", "", f"- Código aberto parecido: {url_grep(pedido)}"]
     out += ["", "## Como responder", "", INSTRUCAO]
     texto = "\n".join(out) + "\n"
@@ -202,7 +219,12 @@ def main(argv: list[str] | None = None) -> int:
     eco, mapa = carregar()
 
     if args.cmd == "arquitetar":
-        txt = pacote(args.pedido, eco, mapa)
+        con = _nucleo()
+        base = nuc.contexto(con, args.pedido) if con else ""
+        txt = pacote(args.pedido, eco, mapa, base)
+        if con:
+            nuc.evento(con, "arquiteto.pacote", {"pedido": args.pedido}, fonte="triagem")
+            con.close()
         if args.saida:
             Path(args.saida).write_text(txt, encoding="utf-8")
             print(f"Pacote salvo em {args.saida} (cerca de {len(txt) // 4} tokens).")
@@ -221,7 +243,14 @@ def main(argv: list[str] | None = None) -> int:
     if integra is None and not nucleo:
         integra = _perguntar("Precisa ligar aos sistemas AM, a dados de cliente ou a outra ferramenta?")
     opcao = decidir(nucleo, cand, bool(integra))
-    print(relatorio(args.pedido, opcao, cand, buscar_fora(args.pedido, mapa)))
+    con = _nucleo()
+    base = nuc.contexto(con, args.pedido) if con else ""
+    rel = relatorio(args.pedido, opcao, cand, buscar_fora(args.pedido, mapa), base)
+    print(rel)
+    if con:
+        nuc.lembrar(con, rel, tipo="triagem", titulo=f"Triagem: {args.pedido} → {opcao}", tags=f"opcao-{opcao.lower()}")
+        nuc.evento(con, "triagem.feita", {"pedido": args.pedido, "opcao": opcao}, fonte="triagem")
+        con.close()
     if args.adr:
         pasta = Path(args.adr)
         pasta.mkdir(parents=True, exist_ok=True)

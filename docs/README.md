@@ -22,15 +22,16 @@
 - [Construção civil, arquitetura e engenharia civil](construcao/README.md): BIM aberto e Autodesk educacional, estudo e normas, regras da IA e as rendas pela TI
 - [Vários computadores, SSD externo e NAS](infra/README.md): como crescer o setup para mais máquinas e armazenamento local e em nuvem
 - [Boas práticas em todo repositório](boas-praticas.md): git, versões, tags, segurança, qualidade, backup e licenças
+- [Núcleo AMtech](nucleo/README.md): o setup conectado e autônomo, com banco central, garimpo de código, política de autonomia, agentes 24 horas e o teste do sistema inteiro
 - [Empresa solo: o contexto mestre dentro do setup](empresa-solo.md): o que entrou, o que ficou de fora, as 88 ferramentas uma por uma, o cronograma de 14 dias reescrito e os comandos `just`
 - [Decisões de arquitetura (ADRs)](adr/)
 - Versões interativas, geradas dos mesmos dados: [`index.html`](index.html) (diagrama) e [`mapa.html`](mapa.html) (mapa do setup), para abrir no navegador
 
 ## Camadas
 
-- [23 · Operação do grupo (esteira, marca, qualidade)](camadas/23-oper.md) (29 blocos)
+- [23 · Operação do grupo (esteira, marca, qualidade)](camadas/23-oper.md) (32 blocos)
 - [22 · Público e canais](camadas/22-pub.md) (12 blocos)
-- [21 · Marketing, automação e medição](camadas/21-mkt.md) (29 blocos)
+- [21 · Marketing, automação e medição](camadas/21-mkt.md) (30 blocos)
 - [20 · Plataformas de venda e recebimento](camadas/20-venda.md) (15 blocos)
 - [19 · Pessoa física: impostos e finanças](camadas/19-emp.md) (21 blocos)
 - [18 · Vitrine web (sites e domínio)](camadas/18-web.md) (15 blocos)
@@ -46,8 +47,8 @@
 - [08 · Claude: recursos, conectores e plugins](camadas/08-clc.md) (19 blocos)
 - [07 · Assistentes de IA (chat, pesquisa e estudo)](camadas/07-chat.md) (10 blocos)
 - [06 · Dados e treino de IA](camadas/06-dados.md) (22 blocos)
-- [05 · Agentes de IA e sandbox](camadas/05-ia.md) (25 blocos)
+- [05 · Agentes de IA e sandbox](camadas/05-ia.md) (26 blocos)
 - [04 · Linux (Ubuntu no WSL2, Arch no 2º disco)](camadas/04-lin.md) (29 blocos)
 - [03 · Windows 11, apps e máquinas virtuais](camadas/03-win.md) (32 blocos)
-- [02 · Segurança e cofre](camadas/02-seg.md) (24 blocos)
+- [02 · Segurança e cofre](camadas/02-seg.md) (25 blocos)
 - [01 · Hardware](camadas/01-hw.md) (26 blocos)

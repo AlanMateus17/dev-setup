@@ -4409,6 +4409,60 @@
    "conta": true,
    "futuro": false,
    "descricao": "ERP aberto para os negócios físicos até o Aura cobrir e referência de mercado ao desenhar o AM Kaixara."
+  },
+  {
+   "id": "nucleo",
+   "camada": "oper",
+   "rotulo": "Núcleo AMtech|(banco central)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "tools/nucleo/nucleo.py (ADR 0009): eventos, conhecimento, tarefas e auditoria. SQLite no notebook, PostgreSQL + pgvector na VM. A triagem e o arquiteto leem e gravam aqui sozinhos; just lembrar e just buscar para você."
+  },
+  {
+   "id": "garimpo",
+   "camada": "oper",
+   "rotulo": "Garimpo de código|(GitHub)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Busca no GitHub e no grep.app, filtra pelos 5 indicadores, clona num Podman sem internet, recorta com tree-sitter, testa, limpa e abre PR com licença e origem. Você aprova o merge."
+  },
+  {
+   "id": "politicaaut",
+   "camada": "seg",
+   "rotulo": "Política de|autonomia",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Cada ação de agente tem um nível: automático, avisa, pede ok (toque no Telegram) ou proibido. Botão de parar tudo. Estende a política do Jarvis a todo o setup."
+  },
+  {
+   "id": "orquestrador",
+   "camada": "ia",
+   "rotulo": "Orquestrador de|agentes (24 h)",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Claude Agent SDK na VM: lê eventos e tarefas do núcleo e chama o agente certo (garimpeiro, arquiteto, revisor, deploy, atendente, cobrador, financeiro), dentro do teto do LiteLLM."
+  },
+  {
+   "id": "adaptadores",
+   "camada": "mkt",
+   "rotulo": "Adaptadores do|núcleo",
+   "tipo": "remoto",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Um conector por ferramenta (n8n para os simples, código para os complexos): traduz webhooks em eventos do núcleo e executa as ações que ele manda."
+  },
+  {
+   "id": "simulacao",
+   "camada": "oper",
+   "rotulo": "Simulação noturna|de ponta a ponta",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Toda noite, uma venda falsa atravessa o setup inteiro (lead, agenda, contrato, fatura, pagamento, NPS, lançamento, painel). Se algo quebrar, o relatório da manhã avisa."
   }
  ],
  "conexoes": [
@@ -8591,6 +8645,81 @@
    "de": "kamal",
    "para": "azure",
    "rotulo": "VM paga quando a renda pagar"
+  },
+  {
+   "de": "triagem",
+   "para": "nucleo",
+   "rotulo": "lê e grava"
+  },
+  {
+   "de": "nucleo",
+   "para": "mcpproprio",
+   "rotulo": "servido por MCP"
+  },
+  {
+   "de": "garimpo",
+   "para": "nucleo",
+   "rotulo": "registra o garimpo"
+  },
+  {
+   "de": "garimpo",
+   "para": "podman",
+   "rotulo": "clona isolado"
+  },
+  {
+   "de": "garimpo",
+   "para": "treesitter",
+   "rotulo": "recorta o trecho"
+  },
+  {
+   "de": "garimpo",
+   "para": "gh",
+   "rotulo": "abre o PR"
+  },
+  {
+   "de": "orquestrador",
+   "para": "nucleo",
+   "rotulo": "lê eventos e tarefas"
+  },
+  {
+   "de": "orquestrador",
+   "para": "politicaaut",
+   "rotulo": "pede o nível"
+  },
+  {
+   "de": "politicaaut",
+   "para": "tg",
+   "rotulo": "ok no celular"
+  },
+  {
+   "de": "orquestrador",
+   "para": "litellm",
+   "rotulo": "teto de gasto"
+  },
+  {
+   "de": "adaptadores",
+   "para": "nucleo",
+   "rotulo": "eventos"
+  },
+  {
+   "de": "adaptadores",
+   "para": "n8n",
+   "rotulo": "fluxos simples"
+  },
+  {
+   "de": "simulacao",
+   "para": "adaptadores",
+   "rotulo": "testa a cadeia"
+  },
+  {
+   "de": "simulacao",
+   "para": "tg",
+   "rotulo": "relatório da manhã"
+  },
+  {
+   "de": "restic",
+   "para": "nucleo",
+   "rotulo": "registra o backup"
   }
  ],
  "fluxos": [

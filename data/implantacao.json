@@ -2313,6 +2313,152 @@
    ]
   },
   {
+   "id": "f-nucleo",
+   "titulo": "Núcleo AMtech: o setup conectado e autônomo",
+   "objetivo": "Um cérebro que conecta todas as ferramentas (ADR 0009): banco central, garimpo de código, política de autonomia, agentes 24 horas e o teste do sistema inteiro, para mais renda com menos horas suas.",
+   "quando": "Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois",
+   "passos": [
+    {
+     "id": "nuc-instalar",
+     "titulo": "Fase 0: montar o setup inteiro com um comando",
+     "quem": "script",
+     "pronto": "just instalar termina sem erro e as rotinas estão no crontab",
+     "tempo_min": 40,
+     "comando": "cd ~/dev/dev-setup && bash scripts/wsl/instalar-tudo.sh",
+     "nota": "Rode antes com --simular. Ele pede o sudo uma vez.",
+     "blocos": [
+      "nucleo",
+      "just"
+     ]
+    },
+    {
+     "id": "nuc-backup",
+     "titulo": "Fase 0: backup diário sem pergunta, com aviso se falhar",
+     "quem": "voce",
+     "pronto": "backup.sh roda sozinho às 22h30 e restic snapshots mostra o de hoje",
+     "tempo_min": 20,
+     "comando": "mkdir -p ~/.config/amtech && cp -n ~/dev/dev-setup/infra/templates/backup.env.example ~/.config/amtech/backup.env && bash ~/dev/dev-setup/scripts/wsl/backup.sh --simular",
+     "nota": "A senha do restic vai num arquivo só seu (chmod 600), a mesma que está no KeePassXC: é o preço de o backup rodar sem você.",
+     "blocos": [
+      "restic"
+     ]
+    },
+    {
+     "id": "nuc-banco",
+     "titulo": "Fase 1: banco central com as ADRs e as recusas",
+     "quem": "script",
+     "pronto": "just buscar \"Kamal\" mostra o ADR 0005",
+     "tempo_min": 5,
+     "comando": "cd ~/dev/dev-setup && python3 tools/nucleo/nucleo.py iniciar",
+     "blocos": [
+      "nucleo"
+     ]
+    },
+    {
+     "id": "nuc-lembrar",
+     "titulo": "Fase 1: guardar lições e consultar antes de planejar",
+     "quem": "voce",
+     "pronto": "Uma lição sua aparece no pacote do just arquiteto",
+     "tempo_min": 10,
+     "comando": "cd ~/dev/dev-setup && just lembrar \"Kamal na t4g precisa de builder arm64\" licao && just arquiteto \"deploy na AWS\"",
+     "blocos": [
+      "nucleo"
+     ]
+    },
+    {
+     "id": "nuc-postgres",
+     "titulo": "Fase 1: o mesmo banco no PostgreSQL da VM, com pgvector",
+     "quem": "claude",
+     "pronto": "esquema-postgres.sql aplicado na VM e a base copiada do notebook",
+     "tempo_min": 60,
+     "comando": "psql \"$NUCLEO_DSN\" -f ~/dev/dev-setup/tools/nucleo/esquema-postgres.sql",
+     "blocos": [
+      "nucleo",
+      "pg"
+     ]
+    },
+    {
+     "id": "nuc-garimpo",
+     "titulo": "Fase 2: garimpo de código do pedido ao PR",
+     "quem": "claude",
+     "pronto": "just garimpo \"validar CPF em C#\" abre um PR com o trecho, os testes, a licença e a origem",
+     "tempo_min": 480,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo nuc-garimpo do roteiro: garimpo de código do pedido ao PR\"",
+     "blocos": [
+      "garimpo"
+     ]
+    },
+    {
+     "id": "nuc-politica",
+     "titulo": "Fase 3: política de autonomia com ok pelo Telegram e botão de parar",
+     "quem": "claude",
+     "pronto": "Uma ação pede-ok chega no celular e só acontece depois do toque; /parar trava tudo",
+     "tempo_min": 240,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo nuc-politica do roteiro: política de autonomia com ok pelo Telegram e botão de parar\"",
+     "blocos": [
+      "politicaaut"
+     ]
+    },
+    {
+     "id": "nuc-ganchos",
+     "titulo": "Fase 4: Claude Code consultando o núcleo sozinho e roteando o simples para o local",
+     "quem": "claude",
+     "pronto": "Toda sessão nova começa com o contexto do núcleo, sem você colar nada",
+     "tempo_min": 180,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo nuc-ganchos do roteiro: Claude Code consultando o núcleo sozinho e roteando o simples para o local\"",
+     "blocos": [
+      "nucleo",
+      "cc",
+      "aider"
+     ]
+    },
+    {
+     "id": "nuc-dev",
+     "titulo": "Fase 5: adaptadores de dev (GitHub, Forgejo, Kamal, GlitchTip, SigNoz)",
+     "quem": "claude",
+     "pronto": "Um erro em produção vira tarefa no núcleo e aviso no Telegram sozinho",
+     "tempo_min": 360,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo nuc-dev do roteiro: adaptadores de dev (GitHub, Forgejo, Kamal, GlitchTip, SigNoz)\"",
+     "blocos": [
+      "adaptadores"
+     ]
+    },
+    {
+     "id": "nuc-negocio",
+     "titulo": "Fase 6: adaptadores de negócio (HeyForm, Cal.com, Twenty, Invoice Ninja, Asaas, Formbricks, Beancount)",
+     "quem": "claude",
+     "pronto": "Um lead de teste vira agenda, contrato, fatura, pagamento, NPS e lançamento sem você tocar",
+     "tempo_min": 480,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo nuc-negocio do roteiro: adaptadores de negócio\"",
+     "blocos": [
+      "adaptadores"
+     ]
+    },
+    {
+     "id": "nuc-orquestrador",
+     "titulo": "Fase 7: orquestrador de agentes 24 horas na VM",
+     "quem": "claude",
+     "pronto": "Os agentes trabalham com o notebook desligado, dentro do teto de US$ 20/mês",
+     "tempo_min": 480,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo nuc-orquestrador do roteiro: orquestrador de agentes 24 horas na VM\"",
+     "blocos": [
+      "orquestrador"
+     ]
+    },
+    {
+     "id": "nuc-simulacao",
+     "titulo": "Fase 8: simulação noturna de ponta a ponta e relatório da manhã",
+     "quem": "claude",
+     "pronto": "O relatório das 6h10 diz se a cadeia inteira passou esta noite",
+     "tempo_min": 240,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo nuc-simulacao do roteiro: simulação noturna de ponta a ponta e relatório da manhã\"",
+     "blocos": [
+      "simulacao"
+     ]
+    }
+   ]
+  },
+  {
    "id": "f-ia-elite",
    "titulo": "Agentes e IA com qualidade medida",
    "objetivo": "Todo agente passa pelo gateway, tem testes e um revisor antes de chegar ao cliente.",

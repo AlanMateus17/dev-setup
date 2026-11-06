@@ -2,6 +2,13 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.13.0] - 2026-11-06
+
+### Adicionado
+- Núcleo AMtech (ADR 0009 e docs/nucleo/README.md): o plano para o setup conectado e autônomo, com níveis de autonomia por área, o pipeline do garimpo e as 9 fases. Fase nova no roteiro com 12 passos.
+- Fase 0 pronta: scripts/wsl/instalar-tudo.sh (just instalar) monta tudo de uma vez; backup.sh diário sem pergunta (22h30, aviso no Telegram se falhar); a manutenção de domingo passa a aplicar o que não pede sudo (mise, uv, chezmoi, Claude Code, imagens, padronização dos repositórios).
+- Fase 1 começada: tools/nucleo (eventos, conhecimento com busca sem acento, tarefas e auditoria), esquema SQLite e PostgreSQL com pgvector, importação das ADRs e recusas, just lembrar, buscar e tarefas. A triagem e o arquiteto consultam e gravam no núcleo sozinhos. Com testes, no CI.
+
 ## [2.12.0] - 2026-11-06
 
 ### Adicionado

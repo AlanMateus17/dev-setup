@@ -89,20 +89,20 @@ flowchart LR
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Microsoft Learn + AWS Skill Builder](#learn) | Remoto · precisa de conta | Trilhas oficiais e gratuitas para AZ-900, AI-200 (substituto do AZ-204) e AWS. | passo 52.1 · Contínuo, desde a semana 2 |
-| [TryHackMe / Hack The Box](#thm) | Remoto · precisa de conta | Laboratórios guiados de segurança para Security+, eJPT e OSCP. | passo 52.1 · Contínuo, desde a semana 2 |
-| [Alura · Rocketseat · DIO · Udemy](#plat) | Remoto · precisa de conta | Contas de aluno. A licença é para você assistir e estudar; baixar, copiar ou extrair as aulas para alimentar IA não é permitido. O que vai para a IA são as suas anotações e os seus projetos. | passo 52.2 · Contínuo, desde a semana 2 |
-| [Anki](#anki) | Local · precisa de conta | Repetição espaçada para comandos, conceitos, certificações e concurso. Open source. A conta grátis do AnkiWeb sincroniza notebook e celular. | passo 3.2 · Semana 1 · out/2026; passo 41.7 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 52.3 · Contínuo, desde a semana 2 |
-| [roadmap.sh + Akita](#road) | Remoto | Roteiros de estudo e referência da trilha Linux. | passo 52.1 · Contínuo, desde a semana 2 |
-| [GitHub Education](#ghed) | Remoto · precisa de conta | Pacote para professores: Copilot Pro e outros benefícios. Peça a verificação. | passo 23.1 · Semana 6 · nov/2026 a dez/2026 |
-| [Zoomcamp de dados + cursos de IA](#dez) | Remoto | Data Engineering Zoomcamp (DataTalksClub, grátis, 10 semanas), curso de LLM da Hugging Face, fast.ai e Neural Networks: Zero to Hero. Para a IA vão só as suas anotações e os seus projetos. | passo 39.6 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
-| [GPT do zero (estudo)](#gptzero) | Local | Tokenizador, atenção e treino de um GPT pequeno no Kaggle, para dominar a arquitetura. | passo 24.1 · 2027, depois do primeiro fine-tuning de 8B |
-| [Laboratório de redes](#labrede) | Local | Packet Tracer e containerlab para VLAN, roteamento e firewall (Network+ e CCNA). | passo 25.5 · Semana 6 · nov/2026 |
-| [PortSwigger Web Security Academy](#portsw) | Remoto · precisa de conta | A melhor trilha grátis de segurança web, com laboratórios no navegador; prepara a certificação BSCP. | passo 53.9 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| [Crackmes (OWASP MAS, crackmes.one)](#crackmes) | Remoto | Desafios de engenharia reversa feitos para serem quebrados: o treino legal do laboratório. | passo 53.2 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| [BugHunt · HackerOne (bug bounty)](#bbplat) | Remoto · precisa de conta | Programas públicos de bug bounty com escopo e regras escritas: o primeiro histórico e a primeira renda de segurança. | passo 53.15 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| [Compiler Explorer (godbolt)](#godbolt) | Remoto | C de um lado, assembly do outro, no navegador: a aula de Arquitetura de Computadores sem instalar nada. | passo 53.2 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| [Repositórios de referência](#refarq) | Remoto | dotnet/eShop, modular-monolith-with-ddd, Clean Architecture, bitwarden/server e system-design-primer: comparar com o AM Kaixara e registrar em ADR. | passo 53.12 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [Microsoft Learn + AWS Skill Builder](#learn) | Remoto · precisa de conta | Trilhas oficiais e gratuitas para AZ-900, AI-200 (substituto do AZ-204) e AWS. | passo 53.1 · Contínuo, desde a semana 2 |
+| [TryHackMe / Hack The Box](#thm) | Remoto · precisa de conta | Laboratórios guiados de segurança para Security+, eJPT e OSCP. | passo 53.1 · Contínuo, desde a semana 2 |
+| [Alura · Rocketseat · DIO · Udemy](#plat) | Remoto · precisa de conta | Contas de aluno. A licença é para você assistir e estudar; baixar, copiar ou extrair as aulas para alimentar IA não é permitido. O que vai para a IA são as suas anotações e os seus projetos. | passo 53.2 · Contínuo, desde a semana 2 |
+| [Anki](#anki) | Local · precisa de conta | Repetição espaçada para comandos, conceitos, certificações e concurso. Open source. A conta grátis do AnkiWeb sincroniza notebook e celular. | passo 3.2 · Semana 1 · out/2026; passo 42.7 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 53.3 · Contínuo, desde a semana 2 |
+| [roadmap.sh + Akita](#road) | Remoto | Roteiros de estudo e referência da trilha Linux. | passo 53.1 · Contínuo, desde a semana 2 |
+| [GitHub Education](#ghed) | Remoto · precisa de conta | Pacote para professores: Copilot Pro e outros benefícios. Peça a verificação. | passo 24.1 · Semana 6 · nov/2026 a dez/2026 |
+| [Zoomcamp de dados + cursos de IA](#dez) | Remoto | Data Engineering Zoomcamp (DataTalksClub, grátis, 10 semanas), curso de LLM da Hugging Face, fast.ai e Neural Networks: Zero to Hero. Para a IA vão só as suas anotações e os seus projetos. | passo 40.6 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| [GPT do zero (estudo)](#gptzero) | Local | Tokenizador, atenção e treino de um GPT pequeno no Kaggle, para dominar a arquitetura. | passo 25.1 · 2027, depois do primeiro fine-tuning de 8B |
+| [Laboratório de redes](#labrede) | Local | Packet Tracer e containerlab para VLAN, roteamento e firewall (Network+ e CCNA). | passo 26.5 · Semana 6 · nov/2026 |
+| [PortSwigger Web Security Academy](#portsw) | Remoto · precisa de conta | A melhor trilha grátis de segurança web, com laboratórios no navegador; prepara a certificação BSCP. | passo 54.9 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [Crackmes (OWASP MAS, crackmes.one)](#crackmes) | Remoto | Desafios de engenharia reversa feitos para serem quebrados: o treino legal do laboratório. | passo 54.2 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [BugHunt · HackerOne (bug bounty)](#bbplat) | Remoto · precisa de conta | Programas públicos de bug bounty com escopo e regras escritas: o primeiro histórico e a primeira renda de segurança. | passo 54.15 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [Compiler Explorer (godbolt)](#godbolt) | Remoto | C de um lado, assembly do outro, no navegador: a aula de Arquitetura de Computadores sem instalar nada. | passo 54.2 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| [Repositórios de referência](#refarq) | Remoto | dotnet/eShop, modular-monolith-with-ddd, Clean Architecture, bitwarden/server e system-design-primer: comparar com o AM Kaixara e registrar em ADR. | passo 54.12 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 
 <a id="learn"></a>
 
@@ -112,7 +112,7 @@ flowchart LR
 
 Trilhas oficiais e gratuitas para AZ-900, AI-200 (substituto do AZ-204) e AWS.
 
-**Quando entra:** passo 52.1 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 53.1 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -127,7 +127,7 @@ Trilhas oficiais e gratuitas para AZ-900, AI-200 (substituto do AZ-204) e AWS.
 
 Laboratórios guiados de segurança para Security+, eJPT e OSCP.
 
-**Quando entra:** passo 52.1 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 53.1 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -144,7 +144,7 @@ Laboratórios guiados de segurança para Security+, eJPT e OSCP.
 
 Contas de aluno. A licença é para você assistir e estudar; baixar, copiar ou extrair as aulas para alimentar IA não é permitido. O que vai para a IA são as suas anotações e os seus projetos.
 
-**Quando entra:** passo 52.2 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 53.2 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -158,7 +158,7 @@ Contas de aluno. A licença é para você assistir e estudar; baixar, copiar ou 
 
 Repetição espaçada para comandos, conceitos, certificações e concurso. Open source. A conta grátis do AnkiWeb sincroniza notebook e celular.
 
-**Quando entra:** passo 3.2 · Semana 1 · out/2026; passo 41.7 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 52.3 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 3.2 · Semana 1 · out/2026; passo 42.7 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 53.3 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -173,7 +173,7 @@ Repetição espaçada para comandos, conceitos, certificações e concurso. Open
 
 Roteiros de estudo e referência da trilha Linux.
 
-**Quando entra:** passo 52.1 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 53.1 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -187,7 +187,7 @@ Roteiros de estudo e referência da trilha Linux.
 
 Pacote para professores: Copilot Pro e outros benefícios. Peça a verificação.
 
-**Quando entra:** passo 23.1 · Semana 6 · nov/2026 a dez/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 24.1 · Semana 6 · nov/2026 a dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -201,7 +201,7 @@ Pacote para professores: Copilot Pro e outros benefícios. Peça a verificação
 
 Data Engineering Zoomcamp (DataTalksClub, grátis, 10 semanas), curso de LLM da Hugging Face, fast.ai e Neural Networks: Zero to Hero. Para a IA vão só as suas anotações e os seus projetos.
 
-**Quando entra:** passo 39.6 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 40.6 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -216,7 +216,7 @@ Data Engineering Zoomcamp (DataTalksClub, grátis, 10 semanas), curso de LLM da 
 
 Tokenizador, atenção e treino de um GPT pequeno no Kaggle, para dominar a arquitetura.
 
-**Quando entra:** passo 24.1 · 2027, depois do primeiro fine-tuning de 8B ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 25.1 · 2027, depois do primeiro fine-tuning de 8B ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -230,7 +230,7 @@ Tokenizador, atenção e treino de um GPT pequeno no Kaggle, para dominar a arqu
 
 Packet Tracer e containerlab para VLAN, roteamento e firewall (Network+ e CCNA).
 
-**Quando entra:** passo 25.5 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 26.5 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -244,7 +244,7 @@ Packet Tracer e containerlab para VLAN, roteamento e firewall (Network+ e CCNA).
 
 A melhor trilha grátis de segurança web, com laboratórios no navegador; prepara a certificação BSCP.
 
-**Quando entra:** passo 53.9 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 54.9 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -258,7 +258,7 @@ A melhor trilha grátis de segurança web, com laboratórios no navegador; prepa
 
 Desafios de engenharia reversa feitos para serem quebrados: o treino legal do laboratório.
 
-**Quando entra:** passo 53.2 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 54.2 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -272,7 +272,7 @@ Desafios de engenharia reversa feitos para serem quebrados: o treino legal do la
 
 Programas públicos de bug bounty com escopo e regras escritas: o primeiro histórico e a primeira renda de segurança.
 
-**Quando entra:** passo 53.15 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 54.15 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -286,7 +286,7 @@ Programas públicos de bug bounty com escopo e regras escritas: o primeiro hist�
 
 C de um lado, assembly do outro, no navegador: a aula de Arquitetura de Computadores sem instalar nada.
 
-**Quando entra:** passo 53.2 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 54.2 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -300,7 +300,7 @@ C de um lado, assembly do outro, no navegador: a aula de Arquitetura de Computad
 
 dotnet/eShop, modular-monolith-with-ddd, Clean Architecture, bitwarden/server e system-design-primer: comparar com o AM Kaixara e registrar em ADR.
 
-**Quando entra:** passo 53.12 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 54.12 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

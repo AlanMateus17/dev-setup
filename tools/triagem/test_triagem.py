@@ -1,9 +1,11 @@
+import os
 import sys
 import tempfile
 import unittest
 from datetime import date
 from pathlib import Path
 
+os.environ["NUCLEO_DESLIGADO"] = "1"  # os testes nunca escrevem no seu banco
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from triagem import (buscar_blocos, buscar_fora, carregar, decidir, main, pacote, palavras,  # noqa: E402
                      proximo_adr, rascunho_adr, url_grep)
@@ -67,6 +69,22 @@ class TestTriagem(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             self.assertEqual(main(["triar", "agenda online", "--nucleo", "não", "--integra", "nao", "--adr", d]), 0)
             self.assertEqual(len(list(Path(d).glob("0001-*.md"))), 1)
+
+    def test_triagem_grava_e_consulta_no_nucleo(self):
+        import triagem as tr
+        with tempfile.TemporaryDirectory() as d:
+            os.environ["NUCLEO_DB"] = str(Path(d) / "n.db")
+            del os.environ["NUCLEO_DESLIGADO"]
+            try:
+                tr.nuc.abrir().close()
+                main(["triar", "agenda online", "--nucleo", "nao", "--integra", "nao"])
+                con = tr.nuc.abrir()
+                self.assertEqual(con.execute("SELECT count(*) FROM conhecimento WHERE tipo='triagem'").fetchone()[0], 1)
+                self.assertIn("Triagem: agenda online", tr.nuc.contexto(con, "agenda online"))
+                con.close()
+            finally:
+                os.environ["NUCLEO_DESLIGADO"] = "1"
+                del os.environ["NUCLEO_DB"]
 
     def test_cli_recusa_resposta_invalida(self):
         self.assertEqual(main(["triar", "agenda", "--nucleo", "talvez"]), 2)
