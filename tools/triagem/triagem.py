@@ -162,6 +162,12 @@ def rascunho_adr(n: int, pedido: str, opcao: str, candidatos: list[dict], hoje: 
             "## Consequências\n\n- (preencha: o que fica mais fácil, o que fica mais difícil, o custo de manter)\n")
 
 
+def url_grep(pedido: str) -> str:
+    """Busca no grep.app (código público do GitHub) com as palavras do pedido: referência para você abrir, não para colar."""
+    from urllib.parse import quote_plus
+    return "https://grep.app/search?q=" + quote_plus(" ".join(palavras(pedido)[:4]))
+
+
 def pacote(pedido: str, eco: dict, mapa: dict) -> str:
     cand = buscar_blocos(pedido, eco, limite=8)
     fora = buscar_fora(pedido, mapa)
@@ -174,6 +180,7 @@ def pacote(pedido: str, eco: dict, mapa: dict) -> str:
         out += ["", "## Já recusado (não proponha de novo)", ""] + [f"- {f['item']}: {f['motivo']}" for f in fora]
     if adrs:
         out += ["", "## ADRs em vigor", ""] + [f"- {a}" for a in adrs]
+    out += ["", "## Referências para conferir (abra você; não é colado aqui)", "", f"- Código aberto parecido: {url_grep(pedido)}"]
     out += ["", "## Como responder", "", INSTRUCAO]
     texto = "\n".join(out) + "\n"
     return texto + f"\n<!-- cerca de {len(texto) // 4} tokens -->\n"

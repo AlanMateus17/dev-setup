@@ -66,6 +66,16 @@ Estas afirmações do contexto mestre estavam erradas ou desatualizadas e foram 
 | Comercial e atendimento (10) | Invoice Ninja, Cal.com, Twenty, Chatwoot, Documenso, Umami | Klaro! | BookStack, Formbricks, Logseq |
 | IA (fora das 88) | Ollama, ai-jail, ai-memory, Playwright/MCP (Claude in Chrome e servidores MCP) | — | Aider, llm (CLI) |
 
+## Delta de 06/11/2026: os 5 módulos complementares
+
+| Módulo | Decisão |
+|---|---|
+| 1 · Economia de tokens | Já no setup: Repomix (`just contexto-ia`), ai-memory, roteamento local → Claude pelo LiteLLM, resposta seca no pacote do arquiteto. Corrigido: `.claudeignore` não existe (vale `permissions.deny`); Aider e `.aiderignore` ficam fora (o Claude Code é o agente); Claude 3.5 Sonnet está obsoleto; Qwen 2.5 Coder pode ser trocado pelo modelo que o `cabe.py` aprovar. |
+| 2 · Custódia e engenharia reversa | Entra: padrão sala limpa no lab (alvos → specs → src, reimplementação em C# ou TypeScript) e Git LFS para firmware, Ghidra e CAD. Fora: Forgejo, Soft Serve e gocryptfs (motivos em Decisões). |
+| 3 · Decisão no terminal | Já entrou como `just triagem` e `just arquiteto`. Novo: o pacote do arquiteto traz um link do grep.app com as palavras do pedido, para você abrir. Ele não gera Zod nem Vitest sozinho: quem gera é o Claude, a partir do pacote. |
+| 4 · Nuvem própria | Kamal já é o caminho (ADR 0005), começando na VM grátis da Oracle. EC2 e Azure VM pagas e o monorepo único ficam fora agora. |
+| 5 · Complementares | n8n já está no setup. SvelteKit, Astro, Plunk, React Email, Akaunting, HeyForm e Plausible ficam fora: cada um repete algo que já existe. |
+
 ## Topologia da máquina
 
 O documento propõe `~/dev/commercial`, `~/dev/hardware`, `~/dev/re-lab` e `~/notes`. O setup mantém a árvore que já existe (`~/dev/<projeto>`, um repositório por sistema AM, o vault do Obsidian e `~/AMtech/entrada`), porque mudar pastas quebraria os scripts, o ai-jail e o acervo. O lab de engenharia reversa continua em `infra/lab-alvo`, isolado e sem internet; os projetos de placa entram como repositórios próprios em `~/dev` (ex.: `~/dev/sensor-agro`), com Git LFS para arquivos grandes.

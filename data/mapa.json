@@ -435,6 +435,30 @@
   {
    "item": "SLU e Fator R agora",
    "motivo": "Decisão atual: vender no CPF (fase CNPJ e formalização). Quando abrir: os 6% do Anexo III valem só na 1ª faixa (até R$ 180 mil em 12 meses) e o pró-labore de 28% paga INSS de 11% e IR; confirme com o contador."
+  },
+  {
+   "item": "Soft Serve (servidor Git por SSH)",
+   "motivo": "Mesmo motivo do Forgejo: o GitHub privado é o centro da esteira e o backup dos repositórios no restic cobre o risco de bloqueio. Servidor Git próprio volta na fase Infraestrutura própria."
+  },
+  {
+   "item": "Monorepo único (apps/web, apps/api, packages/core, packages/db)",
+   "motivo": "Você já decidiu um repositório por sistema AM (am-kaixara, am-rotara, am-rendara) e os serviços aura- separados. Dentro de cada repositório a separação domínio, infraestrutura e apresentação continua (Clean Architecture)."
+  },
+  {
+   "item": "AWS EC2 t4g.medium e Azure VM B2s em São Paulo agora",
+   "motivo": "Cerca de R$ 200 a R$ 250 por mês sem cliente pagando. A produção começa na VM grátis da Oracle pelo Kamal (ADR 0005); VM paga só quando um cliente pagar por ela. Se for t4g (ARM), o builder do Kamal precisa de arch arm64. A região de São Paulo é sa-east-1 na AWS e Brazil South no Azure."
+  },
+  {
+   "item": "Astro e Plausible",
+   "motivo": "O front é Next.js (stack fixa) e o site pessoal está migrando para ela; o Umami já faz o analytics sem cookie."
+  },
+  {
+   "item": "Plunk e React Email",
+   "motivo": "O e-mail transacional já tem bloco (Resend ou SES) e o marketing está no MailerLite; React Email só se o front Next.js precisar de modelo de e-mail."
+  },
+  {
+   "item": "Akaunting e HeyForm",
+   "motivo": "Contabilidade é o contador mais o financeiro.py enquanto a venda é no CPF; formulário é o Cal.com com perguntas e a isca do MailerLite."
   }
  ]
 }

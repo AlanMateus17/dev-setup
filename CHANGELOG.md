@@ -2,6 +2,16 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.11.1] - 2026-11-06
+
+### Adicionado
+- Delta dos 5 módulos complementares em docs/empresa-solo.md: o que já estava, o que entra e o que fica de fora.
+- Padrão sala limpa no lab de engenharia reversa (alvos → specs → src em C# ou TypeScript).
+- O pacote do arquiteto (just arquiteto) traz um link do grep.app com as palavras do pedido.
+
+### Alterado
+- Decisões: Soft Serve, monorepo único, EC2/Azure VM pagas agora, Astro e Plausible, Plunk e React Email, Akaunting e HeyForm ficam de fora, com motivo.
+
 ## [2.11.0] - 2026-11-06
 
 ### Adicionado

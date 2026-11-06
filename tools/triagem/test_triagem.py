@@ -6,7 +6,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from triagem import (buscar_blocos, buscar_fora, carregar, decidir, main, pacote, palavras,  # noqa: E402
-                     proximo_adr, rascunho_adr)
+                     proximo_adr, rascunho_adr, url_grep)
 
 ECO = {"blocos": [
     {"id": "chatwoot", "rotulo": "Chatwoot|(atendimento)", "descricao": "Atendimento no WhatsApp com filas e respostas prontas."},
@@ -55,6 +55,9 @@ class TestTriagem(unittest.TestCase):
         self.assertIn(".NET 10", txt)
         self.assertIn("Responda seco", txt)
         self.assertIn("Chatwoot", txt)
+
+    def test_url_do_grep_app(self):
+        self.assertEqual(url_grep("Atendimento com fila"), "https://grep.app/search?q=atendimento+fila")
 
     def test_dados_reais_carregam_e_acham_chatwoot(self):
         eco, _ = carregar()
