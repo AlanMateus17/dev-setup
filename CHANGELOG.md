@@ -2,6 +2,13 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.15.0] - 2026-11-06
+
+### Adicionado
+- Fase "AMtech Software: a primeira empresa" no roteiro (10 passos): formalizar (CPF ou SLU, com o contador), marca no INPI, 3 ofertas com preço, contrato, hospedagem por tipo de cliente, autonomia da empresa, site, funil ligado, primeiros 5 contatos e revisão mensal.
+- tools/nucleo/agenda.py e as receitas just agora, decisoes, feito e progresso: o setup diz o que depende de você (passos manuais e decisões, na ordem, com o comando e onde rodar) e guarda o que já foi feito no núcleo (tabela passos_feitos). Filtro por empresa: just agora software. Com testes.
+- Campo "decisao" (20 passos marcados como decisão sua) e "empresas" (56 passos da AMtech Software) no roteiro.
+
 ## [2.14.0] - 2026-11-06
 
 ### Adicionado

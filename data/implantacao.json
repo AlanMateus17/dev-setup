@@ -241,6 +241,9 @@
       "govbr",
       "banco",
       "gh"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -349,7 +352,8 @@
      "blocos": [
       "kee"
      ],
-     "fora": "Decisão sua. Perder a chave = perder o cofre: guarde cópia."
+     "fora": "Decisão sua. Perder a chave = perder o cofre: guarde cópia.",
+     "decisao": true
     }
    ],
    "quando": "Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026"
@@ -468,7 +472,8 @@
      "comando": "winget install --id Unity.UnityHub -e",
      "blocos": [
       "unity"
-     ]
+     ],
+     "decisao": true
     },
     {
      "id": "win-verificar",
@@ -855,7 +860,8 @@
      "nota": "O acervo.py também barra esses arquivos pelo nome e pelo conteúdo e lista o que achou, mas tirar antes é mais seguro.",
      "blocos": [
       "bkp"
-     ]
+     ],
+     "decisao": true
     },
     {
      "id": "acervo-simular",
@@ -891,7 +897,8 @@
      "nota": "Material de terceiros (livros, cursos) não vira produto nem treino de IA. Material feito para a escola: confira os direitos antes de vender; o caminho seguro é reescrever do zero, no seu tempo, sem a identidade da escola.",
      "blocos": [
       "acv"
-     ]
+     ],
+     "decisao": true
     },
     {
      "id": "acervo-rag",
@@ -914,7 +921,8 @@
      "blocos": [
       "ocatal",
       "oesteira"
-     ]
+     ],
+     "decisao": true
     }
    ],
    "quando": "Semanas 3 e 4 · nov/2026"
@@ -1090,7 +1098,8 @@
      "fora": "Decisão sua.",
      "blocos": [
       "postiz"
-     ]
+     ],
+     "decisao": true
     }
    ],
    "quando": "Semana 4 · nov/2026"
@@ -1108,7 +1117,8 @@
      "pronto": "Valores confirmados em data/portfolio.json (regras)",
      "tempo_min": 15,
      "fora": "Decisão sua. Se mudar o valor, peça ao Claude para trocar em data/portfolio.json.",
-     "blocos": []
+     "blocos": [],
+     "decisao": true
     },
     {
      "id": "ar-rotina",
@@ -1141,6 +1151,9 @@
      "blocos": [],
      "ofertas": [
       "sites"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -1367,6 +1380,10 @@
      "fora": "Decisão sua; o kit está em docs/operacao/kit-sites.md.",
      "ofertas": [
       "sites"
+     ],
+     "decisao": true,
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -1378,7 +1395,10 @@
      "blocos": [
       "kitsites"
      ],
-     "fora": "A montagem é no editor da Hostinger, no navegador; o prompt pronto está no kit."
+     "fora": "A montagem é no editor da Hostinger, no navegador; o prompt pronto está no kit.",
+     "empresas": [
+      "software"
+     ]
     },
     {
      "id": "ks-conferir",
@@ -1390,7 +1410,10 @@
       "kitsites"
      ],
      "comando": "cd ~/dev/dev-setup && python3 tools/kitsites/conferir.py https://ENDERECO-DO-SITE --saida ~/laudo-site.md",
-     "nota": "Troque ENDERECO-DO-SITE. Com o Playwright instalado, acrescente --fotos para as fotos de celular e computador."
+     "nota": "Troque ENDERECO-DO-SITE. Com o Playwright instalado, acrescente --fotos para as fotos de celular e computador.",
+     "empresas": [
+      "software"
+     ]
     },
     {
      "id": "ks-contrato",
@@ -1401,7 +1424,10 @@
      "blocos": [
       "kitsites"
      ],
-     "fora": "Revisão jurídica, fora do terminal. Modelo em docs/operacao/contrato-sites-modelo.md."
+     "fora": "Revisão jurídica, fora do terminal. Modelo em docs/operacao/contrato-sites-modelo.md.",
+     "empresas": [
+      "software"
+     ]
     },
     {
      "id": "ks-templates",
@@ -1413,7 +1439,11 @@
       "avaliador"
      ],
      "comando": "cd ~/dev/dev-setup && python3 tools/avaliador/avaliar.py ~/templates",
-     "nota": "Ponha cada template (pasta ou .zip) em ~/templates. Guarde-os só num repositório PRIVADO: gh repo create templates-sites --private. O avaliador não roda código dos templates."
+     "nota": "Ponha cada template (pasta ou .zip) em ~/templates. Guarde-os só num repositório PRIVADO: gh repo create templates-sites --private. O avaliador não roda código dos templates.",
+     "decisao": true,
+     "empresas": [
+      "software"
+     ]
     }
    ]
   },
@@ -1652,7 +1682,8 @@
      "blocos": [
       "caixa"
      ],
-     "fora": "Decisão sua; o modelo está em ~/financas/politica-investimentos.md (financeiro.py iniciar)."
+     "fora": "Decisão sua; o modelo está em ~/financas/politica-investimentos.md (financeiro.py iniciar).",
+     "decisao": true
     },
     {
      "id": "inv-sena",
@@ -2459,6 +2490,188 @@
    ]
   },
   {
+   "id": "f-empresa-software",
+   "titulo": "AMtech Software: a primeira empresa",
+   "objetivo": "A empresa de desenvolvimento funcionando no CPF desde já, com o funil, a esteira de sites e a cobrança rodando pelo núcleo; o CNPJ entra no ponto de virada combinado com o contador. Aqui ficam as decisões que só você pode tomar.",
+   "quando": "Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada",
+   "passos": [
+    {
+     "id": "sw-formalizar",
+     "titulo": "Decidir com o contador: seguir no CPF ou abrir a SLU agora, e qual é o ponto de virada",
+     "quem": "voce",
+     "pronto": "Valor de renda mensal anotado a partir do qual abrir o CNPJ, e a data da revisão",
+     "tempo_min": 60,
+     "fora": "Conversa com o contador. Desenvolvimento de software (CNAE 6201-5/01) não pode ser MEI. As opções são: 1) seguir no CPF com carnê-leão, simples e sem custo fixo, mas com imposto que sobe com a renda (até 27,5%); 2) SLU no Simples Nacional, que com o Fator R (pró-labore de pelo menos 28% da receita) fica no Anexo III, a partir de 6% na 1ª faixa, mais INSS de 11% e IR sobre o pró-labore e a mensalidade do contador. Recomendação do setup: CPF até a renda de software pagar o contador e o pró-labore com folga.",
+     "decisao": true,
+     "empresas": [
+      "software"
+     ],
+     "blocos": [
+      "cnpj",
+      "conta"
+     ]
+    },
+    {
+     "id": "sw-marca",
+     "titulo": "Decidir o nome comercial e buscar a marca no INPI (classe 42) antes de investir nela",
+     "quem": "voce",
+     "pronto": "Busca feita sem conflito; nome confirmado ou trocado",
+     "tempo_min": 30,
+     "fora": "A busca é no site do INPI (busca de marcas, classe 42: serviços de software). O pedido pode ser no seu CPF; o passo do INPI já está no roteiro.",
+     "decisao": true,
+     "empresas": [
+      "software"
+     ],
+     "blocos": [
+      "inpi"
+     ]
+    },
+    {
+     "id": "sw-ofertas",
+     "titulo": "Decidir as 3 primeiras ofertas e o preço público de cada uma",
+     "quem": "voce",
+     "pronto": "3 pacotes com preço, prazo e o que entra, publicados no site da empresa",
+     "tempo_min": 60,
+     "fora": "Decisão sua, com base no kit de sites e na sua hora mínima. O setup calcula o lucro por venda (passo calc-regras) e o tempo de cada pacote.",
+     "ofertas": [
+      "sites"
+     ],
+     "decisao": true,
+     "empresas": [
+      "software"
+     ],
+     "blocos": [
+      "kitsites",
+      "sites"
+     ]
+    },
+    {
+     "id": "sw-contrato",
+     "titulo": "Revisar o contrato padrão e decidir se passa por um advogado antes do 1º cliente",
+     "quem": "voce",
+     "pronto": "Contrato padrão aprovado por você (e pelo advogado, se escolher), pronto no Documenso",
+     "tempo_min": 45,
+     "comando": "cd ~/dev/dev-setup && less docs/operacao/contrato-sites-modelo.md",
+     "decisao": true,
+     "empresas": [
+      "software"
+     ],
+     "blocos": [
+      "legal",
+      "documenso"
+     ]
+    },
+    {
+     "id": "sw-hospedagem",
+     "titulo": "Decidir onde roda cada tipo de cliente: Hostinger, Coolify na VPS dele ou Kamal",
+     "quem": "voce",
+     "pronto": "Regra escrita: site simples na Hostinger, cliente que quer painel no Coolify, sistema no Kamal",
+     "tempo_min": 20,
+     "comando": "cd ~/dev/dev-setup && just triagem \"hospedar o site de um cliente\" --nucleo nao",
+     "decisao": true,
+     "empresas": [
+      "software"
+     ],
+     "blocos": [
+      "hostg",
+      "coolify",
+      "kamal"
+     ]
+    },
+    {
+     "id": "sw-autonomia",
+     "titulo": "Decidir o que a empresa faz sem você e o que para no seu ok",
+     "quem": "voce",
+     "pronto": "Tabela de autonomia da empresa revisada por você e gravada no núcleo",
+     "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup && just lembrar \"Autonomia da AMtech Software: (escreva o que muda em relação ao docs/nucleo/README.md)\" padrao",
+     "nota": "O ponto de partida é a tabela de autonomia do Núcleo: proposta, contrato, cobrança e publicação param no seu toque no celular.",
+     "decisao": true,
+     "empresas": [
+      "software"
+     ],
+     "blocos": [
+      "politicaaut",
+      "nucleo"
+     ]
+    },
+    {
+     "id": "sw-site",
+     "titulo": "Publicar o site da AMtech Software com os 3 pacotes e o formulário de orçamento",
+     "quem": "claude",
+     "pronto": "Site no ar em Astro, com os pacotes, o HeyForm e o Klaro!",
+     "tempo_min": 180,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo sw-site do roteiro: Publicar o site da AMtech Software com os 3 pacotes e o formulário de orçamento\"",
+     "ofertas": [
+      "sites"
+     ],
+     "empresas": [
+      "software"
+     ],
+     "blocos": [
+      "amsite",
+      "astro",
+      "heyform"
+     ]
+    },
+    {
+     "id": "sw-funil",
+     "titulo": "Ligar o funil: formulário → agenda → CRM → proposta → contrato → fatura → NPS",
+     "quem": "claude",
+     "pronto": "Um lead de teste atravessa o funil inteiro e só para no seu ok para enviar a proposta",
+     "tempo_min": 240,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo sw-funil do roteiro: Ligar o funil da AMtech Software\"",
+     "nota": "Usa os adaptadores de negócio do Núcleo (fase 6): o funil fica pronto junto com ela.",
+     "empresas": [
+      "software"
+     ],
+     "blocos": [
+      "heyform",
+      "agenda",
+      "twenty",
+      "documenso",
+      "invoiceninja",
+      "formbricks",
+      "adaptadores"
+     ]
+    },
+    {
+     "id": "sw-primeiros",
+     "titulo": "Escolher 5 negócios da lista do prospector e aprovar a abordagem de cada um",
+     "quem": "voce",
+     "pronto": "5 abordagens aprovadas e enviadas por você",
+     "tempo_min": 45,
+     "fora": "O prospector monta a lista com dados públicos e rascunha a mensagem; quem escolhe e envia é você. Nunca disparo em massa.",
+     "ofertas": [
+      "sites"
+     ],
+     "decisao": true,
+     "empresas": [
+      "software"
+     ],
+     "blocos": [
+      "prospector"
+     ]
+    },
+    {
+     "id": "sw-revisao",
+     "titulo": "Revisar a empresa todo mês: receita, horas, cliente que paga abaixo da hora mínima",
+     "quem": "voce",
+     "pronto": "Revisão do mês anotada no núcleo; decisão de cortar, subir preço ou manter",
+     "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup && just buscar \"AMtech Software\"",
+     "decisao": true,
+     "empresas": [
+      "software"
+     ],
+     "blocos": [
+      "nucleo",
+      "roi"
+     ]
+    }
+   ]
+  },
+  {
    "id": "f-ia-elite",
    "titulo": "Agentes e IA com qualidade medida",
    "objetivo": "Todo agente passa pelo gateway, tem testes e um revisor antes de chegar ao cliente.",
@@ -2659,7 +2872,10 @@
       "copi"
      ],
      "comando": "Start-Process 'https://education.github.com/discount_requests/application'",
-     "nota": "Peça como PROFESSOR (comprovante de vínculo da escola), não como estudante: o plano de estudante exclui os agentes de terceiros. É o passo que mais destrava a esteira."
+     "nota": "Peça como PROFESSOR (comprovante de vínculo da escola), não como estudante: o plano de estudante exclui os agentes de terceiros. É o passo que mais destrava a esteira.",
+     "empresas": [
+      "software"
+     ]
     },
     {
      "id": "ag-hostinger-mcp",
@@ -2672,7 +2888,10 @@
       "anth"
      ],
      "comando": "bash ~/dev/dev-setup/scripts/wsl/segredos.sh \"Hostinger/API_TOKEN\" HOSTINGER_API_TOKEN -- claude mcp add -s user --env HOSTINGER_API_TOKEN=\"$HOSTINGER_API_TOKEN\" hostinger-api-mcp -- npx -y hostinger-api-mcp",
-     "nota": "A Hostinger não está no diretório de conectores do app; o servidor oficial roda pelo npm. Crie o token no painel e guarde no KeePassXC antes."
+     "nota": "A Hostinger não está no diretório de conectores do app; o servidor oficial roda pelo npm. Crie o token no painel e guarde no KeePassXC antes.",
+     "empresas": [
+      "software"
+     ]
     },
     {
      "id": "ag-esteira",
@@ -2684,7 +2903,10 @@
       "esteira",
       "copi"
      ],
-     "comando": "cp -r ~/dev/dev-setup/infra/templates/esteira-site/. ~/dev/site-pessoal/ && bash ~/dev/dev-setup/scripts/wsl/regras-ia.sh ~/dev/site-pessoal"
+     "comando": "cp -r ~/dev/dev-setup/infra/templates/esteira-site/. ~/dev/site-pessoal/ && bash ~/dev/dev-setup/scripts/wsl/regras-ia.sh ~/dev/site-pessoal",
+     "empresas": [
+      "software"
+     ]
     },
     {
      "id": "ag-deploy",
@@ -2697,7 +2919,10 @@
       "hostg",
       "cf"
      ],
-     "fora": "Peça ao Claude com a skill deploy-to-hosting depois do passo ag-hostinger-mcp."
+     "fora": "Peça ao Claude com a skill deploy-to-hosting depois do passo ag-hostinger-mcp.",
+     "empresas": [
+      "software"
+     ]
     },
     {
      "id": "ag-rotina-pr",
@@ -2709,7 +2934,10 @@
       "cc",
       "esteira"
      ],
-     "fora": "Rotina com gatilho de PR no GitHub. O Pro tem 5 execuções por dia: use só nos repositórios da esteira."
+     "fora": "Rotina com gatilho de PR no GitHub. O Pro tem 5 execuções por dia: use só nos repositórios da esteira.",
+     "empresas": [
+      "software"
+     ]
     },
     {
      "id": "ag-cf-mcp",
@@ -3003,7 +3231,10 @@
       "ocrm"
      ],
      "comando": "cd ~/dev/dev-setup && claude \"Passo op-prospector do roteiro: Construir o prospector: lista de negócios locais a partir de dados públicos, rascunho de abordagem, aprovação manual e registro no CRM com base legal LGPD\"",
-     "nota": "Nada de disparo em massa no WhatsApp: viola as regras e bloqueia o número. Contato um a um, com opção de não receber mais."
+     "nota": "Nada de disparo em massa no WhatsApp: viola as regras e bloqueia o número. Contato um a um, com opção de não receber mais.",
+     "empresas": [
+      "software"
+     ]
     },
     {
      "id": "op-treino",
@@ -3026,7 +3257,8 @@
      "blocos": [
       "sched"
      ],
-     "fora": "Tarefas agendadas gastam o mesmo limite do Claude: só as que pagam o próprio gasto. Peça numa conversa nova para criar."
+     "fora": "Tarefas agendadas gastam o mesmo limite do Claude: só as que pagam o próprio gasto. Peça numa conversa nova para criar.",
+     "decisao": true
     }
    ]
   },
@@ -3270,7 +3502,10 @@
       "oatend"
      ],
      "comando": "cd ~/dev/dev-setup && claude \"Passo cr-chatwoot do roteiro: Subir o Chatwoot na VM e ligar o agente atendente pelo gateway, com passagem para humano\"",
-     "nota": "Entra com 3 clientes de sites ou o primeiro curso vendendo."
+     "nota": "Entra com 3 clientes de sites ou o primeiro curso vendendo.",
+     "empresas": [
+      "software"
+     ]
     },
     {
      "id": "cr-crm",
@@ -3282,7 +3517,10 @@
       "twenty",
       "ocrm"
      ],
-     "comando": "cd ~/dev/dev-setup && claude \"Passo cr-crm do roteiro: Subir o Twenty CRM e migrar a planilha de leads e clientes\""
+     "comando": "cd ~/dev/dev-setup && claude \"Passo cr-crm do roteiro: Subir o Twenty CRM e migrar a planilha de leads e clientes\"",
+     "empresas": [
+      "software"
+     ]
     },
     {
      "id": "cr-contratos",
@@ -3294,7 +3532,10 @@
       "documenso",
       "invoiceninja"
      ],
-     "comando": "cd ~/dev/dev-setup && claude \"Passo cr-contratos do roteiro: Subir Documenso e Invoice Ninja na VM com o modelo de contrato do kit de sites\""
+     "comando": "cd ~/dev/dev-setup && claude \"Passo cr-contratos do roteiro: Subir Documenso e Invoice Ninja na VM com o modelo de contrato do kit de sites\"",
+     "empresas": [
+      "software"
+     ]
     },
     {
      "id": "cr-penpot",
@@ -3317,6 +3558,9 @@
      "nota": "Siga o docker-compose do repositório na VM.",
      "blocos": [
       "heyform"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -3570,6 +3814,9 @@
      "blocos": [
       "dom",
       "cf"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -3584,6 +3831,9 @@
      ],
      "blocos": [
       "mail"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -3650,6 +3900,9 @@
      ],
      "ofertas": [
       "catalogo"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -3701,6 +3954,9 @@
      ],
      "ofertas": [
       "sites"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -3743,6 +3999,9 @@
      "fora": "Cadastro no site ou app do serviço, com documento e confirmação no celular; nenhum deles deixa criar conta por terminal.",
      "blocos": [
       "banco"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -3757,6 +4016,9 @@
      ],
      "blocos": [
       "conta"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -3769,6 +4031,9 @@
      "nota": "O Claude rascunha; antes de usar, peça para o contador ou um advogado revisar. Isto vem antes de coletar e-mail ou vender.",
      "blocos": [
       "legal"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -3825,6 +4090,9 @@
      ],
      "ofertas": [
       "aulas"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -3837,6 +4105,9 @@
      "blocos": [
       "crm",
       "ocrm"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -3885,7 +4156,8 @@
      "blocos": [
       "calc",
       "regras"
-     ]
+     ],
+     "decisao": true
     },
     {
      "id": "ofertas",
@@ -3937,6 +4209,9 @@
      ],
      "blocos": [
       "inpi"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -4337,7 +4612,8 @@
      ],
      "ofertas": [
       "templates"
-     ]
+     ],
+     "decisao": true
     },
     {
      "id": "vaga",
@@ -4569,7 +4845,8 @@
      "fora": "Decisão sua; os números e as opções já estão no roteiro e no portfólio.",
      "blocos": [
       "selo"
-     ]
+     ],
+     "decisao": true
     },
     {
      "id": "isbn-ficha",
@@ -4599,7 +4876,8 @@
      ],
      "blocos": [
       "beta"
-     ]
+     ],
+     "decisao": true
     },
     {
      "id": "kdp",
@@ -4793,7 +5071,8 @@
       "evals",
       "gguf",
       "oll"
-     ]
+     ],
+     "decisao": true
     }
    ],
    "quando": "Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029)"
@@ -4829,6 +5108,9 @@
      "blocos": [
       "chatwoot",
       "tmail"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -4843,6 +5125,9 @@
      ],
      "blocos": [
       "prospector"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -4858,6 +5143,9 @@
      "blocos": [
       "agenda",
       "documenso"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -4877,6 +5165,9 @@
       "chatwoot",
       "invoiceninja",
       "oatend"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -4892,6 +5183,9 @@
      "blocos": [
       "opos",
       "formbricks"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -5035,6 +5329,9 @@
      ],
      "ofertas": [
       "automacaoia"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -5093,6 +5390,9 @@
      ],
      "ofertas": [
       "agencialocal"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -5108,6 +5408,9 @@
      ],
      "ofertas": [
       "sites"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -5122,6 +5425,9 @@
      ],
      "ofertas": [
       "remoto"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -5210,6 +5516,9 @@
      ],
      "ofertas": [
       "encomenda"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -5224,6 +5533,9 @@
      ],
      "ofertas": [
       "aulasushi"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -5239,6 +5551,9 @@
      ],
      "ofertas": [
       "workshop"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -5253,7 +5568,8 @@
      ],
      "ofertas": [
       "taskoro"
-     ]
+     ],
+     "decisao": true
     },
     {
      "id": "of-fila-digital",
@@ -5691,6 +6007,9 @@
      "blocos": [
       "cnpj",
       "ncnpj"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -5705,6 +6024,9 @@
      ],
      "blocos": [
       "ecnpj"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -5716,6 +6038,9 @@
      "comando": "cd ~/dev/dev-setup && claude \"Passo nfse-api do roteiro: Nota fiscal automática pela API de NFS-e\"",
      "blocos": [
       "nfapi"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -5780,6 +6105,9 @@
      "comando": "cd ~/dev/dev-setup && claude \"Passo ag-orcamento do roteiro: Orçamentista de sites e sistemas\"",
      "blocos": [
       "oorc"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -5791,6 +6119,9 @@
      "comando": "cd ~/dev/dev-setup && claude \"Passo ag-cobranca do roteiro: Cobrador educado (lembrete antes e depois do vencimento)\"",
      "blocos": [
       "ocob"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -6067,6 +6398,9 @@
      ],
      "blocos": [
       "nsoft"
+     ],
+     "empresas": [
+      "software"
      ]
     },
     {
@@ -6318,7 +6652,8 @@
      "pronto": "Decisão com data e custo no Caixa da Casa",
      "tempo_min": 20,
      "blocos": [],
-     "fora": "Decisão de formação; fora do terminal."
+     "fora": "Decisão de formação; fora do terminal.",
+     "decisao": true
     },
     {
      "id": "est-certificacoes",
@@ -6578,7 +6913,10 @@
      "ofertas": [
       "auditsites"
      ],
-     "fora": "Depois do ensaio e do eJPT; só nos sites que você mantém e com cláusula no contrato de sites."
+     "fora": "Depois do ensaio e do eJPT; só nos sites que você mantém e com cláusula no contrato de sites.",
+     "empresas": [
+      "software"
+     ]
     },
     {
      "id": "sg-curso",
@@ -7147,7 +7485,8 @@
      "pronto": "Decisão anotada: Técnico em Edificações, Engenharia Civil, Arquitetura ou ficar no lado da TI",
      "tempo_min": 30,
      "blocos": [],
-     "fora": "Decisão sua, depois de 6 meses da trilha; com ADS e Matemática você não assina projeto, laudo, ART nem RRT."
+     "fora": "Decisão sua, depois de 6 meses da trilha; com ADS e Matemática você não assina projeto, laudo, ART nem RRT.",
+     "decisao": true
     }
    ]
   }

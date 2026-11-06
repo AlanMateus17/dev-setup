@@ -30,3 +30,5 @@ CREATE TABLE IF NOT EXISTS nucleo.auditoria (
   nivel text NOT NULL CHECK (nivel IN ('automatico','avisa','pede-ok','proibido')),
   motivo text NOT NULL DEFAULT '', resultado text NOT NULL DEFAULT '', aprovado_por text
 );
+
+CREATE TABLE IF NOT EXISTS nucleo.passos_feitos (passo text PRIMARY KEY, quando timestamptz NOT NULL DEFAULT now());

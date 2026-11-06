@@ -112,6 +112,22 @@ buscar texto:
 tarefas:
     python3 tools/nucleo/nucleo.py tarefa listar
 
+# O que depende de você agora (passos manuais e decisões, na ordem): just agora  ·  just agora software
+agora empresa="":
+    python3 tools/nucleo/agenda.py agora {{ if empresa != "" { "--empresa " + empresa } else { "" } }}
+
+# Só as decisões que são suas: just decisoes software
+decisoes empresa="":
+    python3 tools/nucleo/agenda.py decisoes {{ if empresa != "" { "--empresa " + empresa } else { "" } }}
+
+# Marca passos ou fases inteiras como feitos: just feito kp-chave  ·  just feito f0
+feito +ids:
+    python3 tools/nucleo/agenda.py feito {{ids}}
+
+# Quanto do roteiro já foi feito: just progresso  ·  just progresso software
+progresso empresa="":
+    python3 tools/nucleo/agenda.py progresso {{ if empresa != "" { "--empresa " + empresa } else { "" } }}
+
 # Backup agora (o mesmo do agendamento das 22h30)
 backup:
     bash scripts/wsl/backup.sh

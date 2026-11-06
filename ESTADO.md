@@ -32,3 +32,6 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-06: v2.13: Núcleo AMtech decidido (ADR 0009): conectar as ferramentas, não reescrever; tokens mínimos com sops/age na VM; IA dos agentes até US$ 20/mês; garimpo como fase 2. Fase 0 pronta (just instalar, backup diário, manutenção real) e fase 1 começada (tools/nucleo, triagem gravando na base).
 - 2026-11-06: próximo: no notebook, just instalar --simular → just instalar → nuc-backup; depois a fase 2 (garimpo) numa conversa nova. Objetivo do Alan: máximo de renda com menos horas e as empresas do grupo.
 - 2026-11-06: v2.14: Painel do Núcleo publicado (https://claude.ai/artifact/Frwo8DGEdifkeVcCKdtTAo), gerado dos dados; Implantação, Mapa, Portfólio e Ecossistema republicados. O Plano de automação (documento de 31/10) ficou antigo: o Núcleo o substitui.
+- 2026-11-06: v2.15: começa a instalação. Primeira empresa: AMtech Software (desenvolvimento), no CPF até o ponto de virada combinado com o contador (MEI impossível no CNAE 6201-5/01).
+- 2026-11-06: o setup diz o que é manual: just agora software (próximos passos), just decisoes software (10 decisões), just feito ID, just progresso software.
+- 2026-11-06: pendente do Alan: rodar just instalar --simular e depois just instalar; marcar com just feito as fases já feitas; tomar as 10 decisões da empresa.

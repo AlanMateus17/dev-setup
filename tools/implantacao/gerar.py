@@ -151,6 +151,8 @@ def gerar_md(d: dict, eco: dict | None = None) -> str:
         for j, p in enumerate(f["passos"], 1):
             o.append(f"### {i}.{j} {p['titulo']}\n")
             o.append(f"**{QUEM[p['quem']]}** · {horas(p['tempo_min'])}\n")
+            if p.get("decisao"):
+                o.append("**Decisão sua:** o setup prepara as opções, quem decide é você.\n")
             if p.get("comando"):
                 lugar = onde_rodar(p["comando"])
                 lang = {"powershell": "powershell", "navegador": "text"}.get(lugar, "bash")

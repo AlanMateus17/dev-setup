@@ -53,3 +53,9 @@ CREATE TABLE IF NOT EXISTS auditoria (
   resultado    TEXT NOT NULL DEFAULT '',
   aprovado_por TEXT
 );
+
+-- Passos do roteiro que você já terminou (just feito ID). O Acompanhamento no navegador guarda o dele à parte.
+CREATE TABLE IF NOT EXISTS passos_feitos (
+  passo  TEXT PRIMARY KEY,
+  quando TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%S', 'now', 'localtime'))
+);
