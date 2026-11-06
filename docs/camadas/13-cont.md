@@ -109,14 +109,14 @@ flowchart LR
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [OBS Studio](#obss) | Local | Grava tela, câmera e áudio das aulas e vídeos. | passo 3.2 · Semana 1 · out/2026; passo 32.1 · Semana 5 · dez/2026; passo 37.2 · Semanas 12 a 15 · jan a fev/2027 |
-| [DaVinci Resolve ou Kdenlive](#edit) | Local | Edição de vídeo. Os dois têm versão grátis. | passo 3.7 · Semana 1 · out/2026; passo 32.3 · Semana 5 · dez/2026; passo 37.2 · Semanas 12 a 15 · jan a fev/2027 |
-| [Audacity](#aud) | Local | Limpa ruído e ajusta o áudio. | passo 3.2 · Semana 1 · out/2026; passo 32.2 · Semana 5 · dez/2026 |
-| [Canva · Krita · Inkscape](#img) | Local · precisa de conta | Capas, posts e thumbnails. Canva precisa de conta; Krita e Inkscape são open source. | passo 3.2 · Semana 1 · out/2026; passo 25.8 · Semana 6 · nov/2026 a dez/2026; passo 32.4 · Semana 5 · dez/2026 |
-| [Whisper (local)](#whis) | Local | Transcreve as aulas para legenda, artigo e capítulo. | passo 4.4 · Semana 2 · nov/2026; passo 31.6 · Semana 5 · nov/2026 |
-| [Voz clonada (ElevenLabs)](#voz) | Remoto · precisa de conta | Clonagem profissional da sua própria voz (plano Creator em diante, uso comercial nos planos pagos). Treino com 30 minutos ou mais de áudio limpo. Avise o público que a voz é gerada por IA. | passo 32.5 · Semana 5 · dez/2026 |
+| [OBS Studio](#obss) | Local | Grava tela, câmera e áudio das aulas e vídeos. | passo 3.2 · Semana 1 · out/2026; passo 33.1 · Semana 5 · dez/2026; passo 38.2 · Semanas 12 a 15 · jan a fev/2027 |
+| [DaVinci Resolve ou Kdenlive](#edit) | Local | Edição de vídeo. Os dois têm versão grátis. | passo 3.7 · Semana 1 · out/2026; passo 33.3 · Semana 5 · dez/2026; passo 38.2 · Semanas 12 a 15 · jan a fev/2027 |
+| [Audacity](#aud) | Local | Limpa ruído e ajusta o áudio. | passo 3.2 · Semana 1 · out/2026; passo 33.2 · Semana 5 · dez/2026 |
+| [Canva · Krita · Inkscape](#img) | Local · precisa de conta | Capas, posts e thumbnails. Canva precisa de conta; Krita e Inkscape são open source. | passo 3.2 · Semana 1 · out/2026; passo 26.8 · Semana 6 · nov/2026 a dez/2026; passo 33.4 · Semana 5 · dez/2026 |
+| [Whisper (local)](#whis) | Local | Transcreve as aulas para legenda, artigo e capítulo. | passo 4.4 · Semana 2 · nov/2026; passo 32.6 · Semana 5 · nov/2026 |
+| [Voz clonada (ElevenLabs)](#voz) | Remoto · precisa de conta | Clonagem profissional da sua própria voz (plano Creator em diante, uso comercial nos planos pagos). Treino com 30 minutos ou mais de áudio limpo. Avise o público que a voz é gerada por IA. | passo 33.5 · Semana 5 · dez/2026 |
 | [Fábrica de aulas](#fabrica) | Local | Gera planejamentos e documentos da escola no modelo exigido, a partir da ementa e das suas regras. Sem dados de aluno. | passo 14.1 · Semanas 5 e 6 · nov/2026; passo 14.2 · Semanas 5 e 6 · nov/2026; passo 14.3 · Semanas 5 e 6 · nov/2026; passo 14.4 · Semanas 5 e 6 · nov/2026; passo 14.5 · Semanas 5 e 6 · nov/2026; passo 14.6 · Semanas 5 e 6 · nov/2026; passo 14.7 · Semanas 5 e 6 · nov/2026; passo 14.8 · Semanas 5 e 6 · nov/2026; passo 14.9 · Semanas 5 e 6 · nov/2026 |
-| [Penpot (design)](#penpot) | Local | Design de telas e protótipos, aberto, alternativa ao Figma pago. | passo 30.8 · Com a primeira página de venda no ar (jan/2027) e por etapas |
+| [Penpot (design)](#penpot) | Local | Design de telas e protótipos, aberto, alternativa ao Figma pago. | passo 31.8 · Com a primeira página de venda no ar (jan/2027) e por etapas |
 
 <a id="obss"></a>
 
@@ -126,7 +126,7 @@ flowchart LR
 
 Grava tela, câmera e áudio das aulas e vídeos.
 
-**Quando entra:** passo 3.2 · Semana 1 · out/2026; passo 32.1 · Semana 5 · dez/2026; passo 37.2 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 3.2 · Semana 1 · out/2026; passo 33.1 · Semana 5 · dez/2026; passo 38.2 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -142,7 +142,7 @@ Grava tela, câmera e áudio das aulas e vídeos.
 
 Edição de vídeo. Os dois têm versão grátis.
 
-**Quando entra:** passo 3.7 · Semana 1 · out/2026; passo 32.3 · Semana 5 · dez/2026; passo 37.2 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 3.7 · Semana 1 · out/2026; passo 33.3 · Semana 5 · dez/2026; passo 38.2 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -163,7 +163,7 @@ Edição de vídeo. Os dois têm versão grátis.
 
 Limpa ruído e ajusta o áudio.
 
-**Quando entra:** passo 3.2 · Semana 1 · out/2026; passo 32.2 · Semana 5 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 3.2 · Semana 1 · out/2026; passo 33.2 · Semana 5 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -177,7 +177,7 @@ Limpa ruído e ajusta o áudio.
 
 Capas, posts e thumbnails. Canva precisa de conta; Krita e Inkscape são open source.
 
-**Quando entra:** passo 3.2 · Semana 1 · out/2026; passo 25.8 · Semana 6 · nov/2026 a dez/2026; passo 32.4 · Semana 5 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 3.2 · Semana 1 · out/2026; passo 26.8 · Semana 6 · nov/2026 a dez/2026; passo 33.4 · Semana 5 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -196,7 +196,7 @@ Capas, posts e thumbnails. Canva precisa de conta; Krita e Inkscape são open so
 
 Transcreve as aulas para legenda, artigo e capítulo.
 
-**Quando entra:** passo 4.4 · Semana 2 · nov/2026; passo 31.6 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 4.4 · Semana 2 · nov/2026; passo 32.6 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -215,7 +215,7 @@ Transcreve as aulas para legenda, artigo e capítulo.
 
 Clonagem profissional da sua própria voz (plano Creator em diante, uso comercial nos planos pagos). Treino com 30 minutos ou mais de áudio limpo. Avise o público que a voz é gerada por IA.
 
-**Quando entra:** passo 32.5 · Semana 5 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 33.5 · Semana 5 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -248,7 +248,7 @@ Gera planejamentos e documentos da escola no modelo exigido, a partir da ementa 
 
 Design de telas e protótipos, aberto, alternativa ao Figma pago.
 
-**Quando entra:** passo 30.8 · Com a primeira página de venda no ar (jan/2027) e por etapas ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.8 · Com a primeira página de venda no ar (jan/2027) e por etapas ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

@@ -33,6 +33,7 @@ docs:
     python3 tools/carreira/certificacoes.py
     python3 tools/negocios/gerar.py
     python3 tools/cockpit/gerar.py
+    python3 tools/akita/akita.py docs
 
 # O portão antes de cada commit: dados, documentação gerada, testes e segredos (o mesmo que o CI confere)
 check:
@@ -47,6 +48,7 @@ check:
     python3 tools/carreira/certificacoes.py --check
     python3 tools/negocios/gerar.py --check
     python3 tools/cockpit/gerar.py --check
+    python3 tools/akita/akita.py docs --check
     python3 -m unittest discover -s tools -p "test_gerar_docs.py" -q
     for d in tools/*/; do if ls "$d"test_*.py >/dev/null 2>&1; then python3 -m unittest discover -s "$d" -q; fi; done
     if command -v gitleaks >/dev/null; then gitleaks git --no-banner -v . >/dev/null; else echo "gitleaks ausente: rode o bootstrap"; fi
@@ -127,6 +129,10 @@ feito +ids:
 # Quanto do roteiro já foi feito: just progresso  ·  just progresso software
 progresso empresa="":
     python3 tools/nucleo/agenda.py progresso {{ if empresa != "" { "--empresa " + empresa } else { "" } }}
+
+# Escola Akita: just akita sincronizar | indexar | fila | notar SLUG | lote | pendentes | aprovar ID | aplicar ID
+akita *args:
+    python3 tools/akita/akita.py {{args}}
 
 # Backup agora (o mesmo do agendamento das 22h30)
 backup:

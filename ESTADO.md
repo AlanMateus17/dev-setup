@@ -35,3 +35,5 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-06: v2.15: começa a instalação. Primeira empresa: AMtech Software (desenvolvimento), no CPF até o ponto de virada combinado com o contador (MEI impossível no CNAE 6201-5/01).
 - 2026-11-06: o setup diz o que é manual: just agora software (próximos passos), just decisoes software (10 decisões), just feito ID, just progresso software.
 - 2026-11-06: pendente do Alan: rodar just instalar --simular e depois just instalar; marcar com just feito as fases já feitas; tomar as 10 decisões da empresa.
+- 2026-11-06: v2.16: Escola Akita. O blog do Akita (831 posts, 198 Akitando com transcrição) vem por git, fica só local; notas no Obsidian, regras com outras palavras e link; nada muda sem aprovação (just akita pendentes).
+- 2026-11-06: pendente do Alan: decidir as 22 regras do piloto e o motor (Claude ou Ollama) para gerar as notas dos outros 829 posts.

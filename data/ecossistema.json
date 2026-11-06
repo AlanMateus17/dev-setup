@@ -4463,6 +4463,15 @@
    "conta": false,
    "futuro": true,
    "descricao": "Toda noite, uma venda falsa atravessa o setup inteiro (lead, agenda, contrato, fatura, pagamento, NPS, lançamento, painel). Se algo quebrar, o relatório da manhã avisa."
+  },
+  {
+   "id": "akita",
+   "camada": "est",
+   "rotulo": "Escola Akita|(regras com seu ok)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "O blog e os episódios do Akitando (transcrições no próprio blog) viram notas no Obsidian e regras com outras palavras e link da fonte. O texto original fica só na sua máquina; regra só muda o setup depois do seu ok, por PR."
   }
  ],
  "conexoes": [
@@ -8720,6 +8729,26 @@
    "de": "restic",
    "para": "nucleo",
    "rotulo": "registra o backup"
+  },
+  {
+   "de": "akita",
+   "para": "nucleo",
+   "rotulo": "regras e texto pesquisável"
+  },
+  {
+   "de": "akita",
+   "para": "obsd",
+   "rotulo": "uma nota por post"
+  },
+  {
+   "de": "akita",
+   "para": "lmods",
+   "rotulo": "lote noturno grátis"
+  },
+  {
+   "de": "cc",
+   "para": "akita",
+   "rotulo": "aplica a regra aprovada (PR)"
   }
  ],
  "fluxos": [

@@ -2672,6 +2672,94 @@
    ]
   },
   {
+   "id": "f-akita",
+   "titulo": "Escola Akita: seguir a fundo, com o seu ok",
+   "objetivo": "Os 831 posts do blog do Fabio Akita (incluindo 198 episódios do Akitando com transcrição) viram notas e regras; o setup compara cada regra com o que já faz e só muda depois da sua aprovação.",
+   "quando": "Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último",
+   "passos": [
+    {
+     "id": "ak-sincronizar",
+     "titulo": "Trazer o blog do Akita para a sua máquina e indexar",
+     "quem": "script",
+     "pronto": "831 posts no índice e o texto pesquisável com just buscar",
+     "tempo_min": 10,
+     "comando": "cd ~/dev/dev-setup && just akita sincronizar && just akita indexar",
+     "nota": "Clona o repositório público do blog em ~/dev/referencias/akitaonrails, fora do dev-setup. O texto é dele e não vai para o seu GitHub.",
+     "blocos": [
+      "akita",
+      "nucleo"
+     ]
+    },
+    {
+     "id": "ak-decidir-piloto",
+     "titulo": "Decidir as 22 regras do piloto (agentes sem acesso a produção, backup, deploy frequente…)",
+     "quem": "voce",
+     "pronto": "Nenhuma regra do piloto em 'nova'",
+     "tempo_min": 40,
+     "comando": "cd ~/dev/dev-setup && just akita pendentes",
+     "nota": "Para cada uma: just akita aprovar AK-0001, recusar AK-0002 \"motivo\", ja-segue AK-0003 \"onde\" ou nao-se-aplica AK-0004 \"por quê\".",
+     "decisao": true,
+     "blocos": [
+      "akita"
+     ]
+    },
+    {
+     "id": "ak-aplicar",
+     "titulo": "Aplicar as regras aprovadas, uma por PR",
+     "quem": "claude",
+     "pronto": "Cada regra aprovada com PR revisado por você e marcada como aplicada",
+     "tempo_min": 60,
+     "comando": "cd ~/dev/dev-setup && just akita aplicar AK-0001",
+     "nota": "O Claude abre PR dentro do ai-jail e não faz merge. Depois do merge: just akita aplicada AK-0001.",
+     "blocos": [
+      "akita",
+      "cc"
+     ]
+    },
+    {
+     "id": "ak-motor",
+     "titulo": "Decidir quem lê os posts: Claude (melhor, gasta o plano) ou o modelo local do Ollama (grátis, mais fraco)",
+     "quem": "voce",
+     "pronto": "Motor escolhido por prioridade: por exemplo, Claude para a era da IA, Ollama para o histórico",
+     "tempo_min": 10,
+     "fora": "Decisão sua. Em ordem de grandeza: 831 posts somam perto de 1,8 milhão de palavras; pelo Claude são dias do seu plano, pelo Ollama na GTX 1650 são noites de processamento.",
+     "decisao": true,
+     "blocos": [
+      "akita",
+      "lmods",
+      "cc"
+     ]
+    },
+    {
+     "id": "ak-lote",
+     "titulo": "Gerar as notas em lotes, da era da IA para trás",
+     "quem": "script",
+     "pronto": "Fila vazia na prioridade 1 (191 posts) e as regras novas na lista de pendentes",
+     "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup && just akita lote -n 10 --motor claude",
+     "nota": "Cada post vira uma nota em ~/dev/notas/50-Akita e as regras entram como 'nova'. Rode just akita pendentes depois de cada lote.",
+     "blocos": [
+      "akita",
+      "obsd",
+      "nucleo"
+     ]
+    },
+    {
+     "id": "ak-revisao",
+     "titulo": "Revisar toda semana as regras novas e as datadas (benchmark e modelo envelhecem rápido)",
+     "quem": "voce",
+     "pronto": "Pendentes zeradas na revisão de domingo",
+     "tempo_min": 20,
+     "comando": "cd ~/dev/dev-setup && just akita pendentes",
+     "nota": "Regra nova que contradiz uma antiga: a mais nova vale, e a antiga vira 'substituida'.",
+     "decisao": true,
+     "blocos": [
+      "akita"
+     ]
+    }
+   ]
+  },
+  {
    "id": "f-ia-elite",
    "titulo": "Agentes e IA com qualidade medida",
    "objetivo": "Todo agente passa pelo gateway, tem testes e um revisor antes de chegar ao cliente.",

@@ -39,7 +39,7 @@
 - [17 · Produtos (o que você vende)](camadas/17-prod.md) (8 blocos)
 - [16 · Negócios do grupo (Barbacena)](camadas/16-neg.md) (19 blocos)
 - [15 · Editora AMS Silva (produção de livros)](camadas/15-editora.md) (36 blocos)
-- [14 · Estudo e carreira](camadas/14-est.md) (14 blocos)
+- [14 · Estudo e carreira](camadas/14-est.md) (15 blocos)
 - [13 · Produção de conteúdo](camadas/13-cont.md) (8 blocos)
 - [12 · Nuvem, código e entrega](camadas/12-nuvem.md) (32 blocos)
 - [11 · Aplicação: sistemas AM (Aura)](camadas/11-app.md) (26 blocos)

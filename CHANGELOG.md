@@ -2,6 +2,13 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.16.0] - 2026-11-06
+
+### Adicionado
+- Escola Akita (ADR 0010, tools/akita, just akita): o blog do Fabio Akita (831 posts, 198 episódios do Akitando com transcrição) vem do repositório público por git, fica só na sua máquina e pesquisável no núcleo; cada post vira nota no Obsidian e regras com outras palavras e link da fonte; toda regra espera a sua decisão (aprovar, recusar, já segue, não se aplica) e a aprovada vira PR do Claude, sem merge. Motor à escolha: Claude ou Ollama.
+- Piloto: 22 regras de 2 posts (agentes sem acesso a produção, sandbox, snapshots, backup, receitas idempotentes, migrations, deploy frequente com ambiente mínimo, expand-contract, auditoria de PR), cada uma comparada com o setup.
+- Fase "Escola Akita" no roteiro (6 passos, 2 decisões suas), bloco novo no ecossistema, docs/akita/README.md gerado e conferido no CI, testes.
+
 ## [2.15.0] - 2026-11-06
 
 ### Adicionado

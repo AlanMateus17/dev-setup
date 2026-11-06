@@ -18,7 +18,7 @@ flowchart TB
   L_prod["17 · Produtos (o que você vende)<br/>8 blocos"]
   L_neg["16 · Negócios do grupo (Barbacena)<br/>19 blocos"]
   L_editora["15 · Editora AMS Silva (produção de livros)<br/>36 blocos"]
-  L_est["14 · Estudo e carreira<br/>14 blocos"]
+  L_est["14 · Estudo e carreira<br/>15 blocos"]
   L_cont["13 · Produção de conteúdo<br/>8 blocos"]
   L_nuvem["12 · Nuvem, código e entrega<br/>32 blocos"]
   L_app["11 · Aplicação: sistemas AM (Aura)<br/>26 blocos"]
@@ -71,7 +71,7 @@ flowchart TB
 | 17 | [Produtos (o que você vende)](camadas/17-prod.md) | 8 | Cada produto nasce do conteúdo gravado, escrito ou programado. |
 | 16 | [Negócios do grupo (Barbacena)](camadas/16-neg.md) | 19 | Os nove negócios físicos e de serviço usam os sistemas AM, a frota de entregas e o mesmo caixa de medição. |
 | 15 | [Editora AMS Silva (produção de livros)](camadas/15-editora.md) | 36 | Cada livro sai do pipeline como produto pronto para as plataformas e para a gráfica. |
-| 14 | [Estudo e carreira](camadas/14-est.md) | 14 | O que você estuda vira produto, aula, post e linha no currículo. |
+| 14 | [Estudo e carreira](camadas/14-est.md) | 15 | O que você estuda vira produto, aula, post e linha no currículo. |
 | 13 | [Produção de conteúdo](camadas/13-cont.md) | 8 | Gravação e edição rodam no notebook; os arquivos finais sobem para as plataformas. |
 | 12 | [Nuvem, código e entrega](camadas/12-nuvem.md) | 32 | git push via SSH leva o código ao GitHub; o Actions testa e publica. |
 | 11 | [Aplicação: sistemas AM (Aura)](camadas/11-app.md) | 26 | A API envia logs, métricas e traces pelo OpenTelemetry. |
