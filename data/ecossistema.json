@@ -1618,7 +1618,7 @@
    "tipo": "local",
    "conta": false,
    "futuro": false,
-   "descricao": "Diagnóstico de rede no Ubuntu: portas, DNS e requisições HTTP. Instalados pelo bootstrap.sh."
+   "descricao": "Diagnóstico de rede no Ubuntu: portas, DNS, requisições HTTP e captura de pacotes (tcpdump). Instalados pelo bootstrap.sh."
   },
   {
    "id": "wsl",
@@ -3851,6 +3851,96 @@
    "conta": false,
    "futuro": false,
    "descricao": "Ficha como issue, agente abre o PR, CI confere HTML, links e acessibilidade, a rotina do Claude revisa, você aprova a prévia e o merge publica na Hostinger. Modelo em infra/templates/esteira-site."
+  },
+  {
+   "id": "just",
+   "camada": "lin",
+   "rotulo": "just (porta única|de comandos)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "O justfile na raiz do repositório junta os comandos do setup: just check (o mesmo portão do CI), just triagem, just arquiteto, just docs, just medir. Binário único, instalado pelo bootstrap.sh."
+  },
+  {
+   "id": "termx",
+   "camada": "lin",
+   "rotulo": "Terminal moderno|(zoxide, eza, fd…)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "zoxide (cd que aprende), eza (ls), fd (find), btop (monitor), hyperfine (benchmark), lazygit, lazydocker e o prompt Starship. Binários únicos, instalados pelo bootstrap.sh; ripgrep, fzf e tmux já vinham; tcpdump entra junto."
+  },
+  {
+   "id": "triagem",
+   "camada": "oper",
+   "rotulo": "Triagem: montar,|colar ou construir",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "tools/triagem/triagem.py (just triagem): acha no setup o que já resolve o pedido e decide A (subir pronto), B (colar com n8n ou API) ou C (construir o núcleo no Aura, com ADR). O arquitetar monta o pacote curto de contexto para o Claude. Regra das 4 horas."
+  },
+  {
+   "id": "repomix",
+   "camada": "ia",
+   "rotulo": "Repomix (contexto|enxuto para IA)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Empacota só a pasta pedida, com --compress (tree-sitter por dentro), para colar no Claude do app sem mandar o repositório inteiro. Roda por npx, sem instalar."
+  },
+  {
+   "id": "act",
+   "camada": "nuvem",
+   "rotulo": "act (CI do Actions|na sua máquina)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Roda os workflows do GitHub Actions no Docker local (gh act). Acha o erro do CI antes do push, sem gastar minuto de Actions."
+  },
+  {
+   "id": "kamal",
+   "camada": "nuvem",
+   "rotulo": "Kamal (deploy em|VM por SSH)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Deploy sem queda dos sistemas AM numa VM (a da Oracle primeiro), com HTTPS e rollback por versão. Roda pela imagem Docker oficial; segredos pelo keepassxc-cli. ADR 0005; modelo em infra/templates/kamal."
+  },
+  {
+   "id": "zod",
+   "camada": "app",
+   "rotulo": "Zod · Biome · Vitest|(front)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Zod valida no front tudo o que chega da API e dos formulários; Biome faz lint e formatação; Vitest testa as regras do front. O contrato do backend é o OpenAPI (ADR 0006)."
+  },
+  {
+   "id": "klaro",
+   "camada": "web",
+   "rotulo": "Klaro!|(consentimento LGPD)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "Banner de consentimento aberto: Pixel da Meta, tag do Google e demais só disparam depois do aceite. O Umami não usa cookie e fica fora do banner."
+  },
+  {
+   "id": "kicad",
+   "camada": "win",
+   "rotulo": "KiCad · PulseView|· tio (bancada)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": false,
+   "descricao": "KiCad desenha esquemático e placa (com a BOM interativa do InteractiveHtmlBom); PulseView decodifica I2C, SPI e UART do analisador lógico; tio abre a serial no Ubuntu (USB pelo usbipd)."
+  },
+  {
+   "id": "analog",
+   "camada": "hw",
+   "rotulo": "Analisador lógico|(8 canais USB)",
+   "tipo": "fisico",
+   "conta": false,
+   "futuro": true,
+   "descricao": "Clone de 8 canais compatível com o sigrok, por cerca de R$ 40 a R$ 80. Mostra o que o sensor e o ESP32 estão dizendo de verdade no fio."
   }
  ],
  "conexoes": [
@@ -7553,6 +7643,116 @@
    "de": "labalvo",
    "para": "relpent",
    "rotulo": "achados"
+  },
+  {
+   "de": "just",
+   "para": "triagem",
+   "rotulo": "just triagem e just arquiteto"
+  },
+  {
+   "de": "just",
+   "para": "gha",
+   "rotulo": "o mesmo portão do CI"
+  },
+  {
+   "de": "just",
+   "para": "repomix",
+   "rotulo": "just contexto-ia"
+  },
+  {
+   "de": "just",
+   "para": "wsl",
+   "rotulo": "roda no Ubuntu"
+  },
+  {
+   "de": "termx",
+   "para": "wsl",
+   "rotulo": "instalado no Ubuntu"
+  },
+  {
+   "de": "triagem",
+   "para": "ghproj",
+   "rotulo": "rascunha o ADR"
+  },
+  {
+   "de": "triagem",
+   "para": "cc",
+   "rotulo": "pacote de contexto"
+  },
+  {
+   "de": "triagem",
+   "para": "oesteira",
+   "rotulo": "decide antes da esteira"
+  },
+  {
+   "de": "repomix",
+   "para": "cc",
+   "rotulo": "contexto enxuto"
+  },
+  {
+   "de": "act",
+   "para": "gha",
+   "rotulo": "roda o workflow local"
+  },
+  {
+   "de": "act",
+   "para": "docker",
+   "rotulo": "usa o Docker"
+  },
+  {
+   "de": "kamal",
+   "para": "vm247",
+   "rotulo": "deploy por SSH"
+  },
+  {
+   "de": "kamal",
+   "para": "ghcr",
+   "rotulo": "puxa a imagem"
+  },
+  {
+   "de": "kamal",
+   "para": "segredos",
+   "rotulo": "lê os segredos"
+  },
+  {
+   "de": "zod",
+   "para": "front",
+   "rotulo": "valida o que chega"
+  },
+  {
+   "de": "zod",
+   "para": "oapi",
+   "rotulo": "segue o contrato"
+  },
+  {
+   "de": "klaro",
+   "para": "pixel",
+   "rotulo": "libera as tags com aceite"
+  },
+  {
+   "de": "klaro",
+   "para": "legal",
+   "rotulo": "cumpre a política"
+  },
+  {
+   "de": "kicad",
+   "para": "rob",
+   "rotulo": "desenha as placas"
+  },
+  {
+   "de": "kicad",
+   "para": "freecad",
+   "rotulo": "placa para o gabinete"
+  },
+  {
+   "de": "analog",
+   "para": "kicad",
+   "rotulo": "lido pelo PulseView"
+  },
+  {
+   "de": "analog",
+   "para": "rob",
+   "rotulo": "mede os sinais"
   }
  ],
  "fluxos": [

@@ -1,6 +1,6 @@
 # CONTINUAR: contexto completo para qualquer conversa nova
 
-Cole este arquivo na primeira mensagem de uma conversa nova (ou rode `python3 ~/dev/dev-setup/tools/sessao/contexto.py --inicio | clip.exe`). Decisões do dia a dia vão para o ESTADO.md; este arquivo muda quando algo grande muda. Última revisão: 02/11/2026 (v2.6).
+Cole este arquivo na primeira mensagem de uma conversa nova (ou rode `python3 ~/dev/dev-setup/tools/sessao/contexto.py --inicio | clip.exe`). Decisões do dia a dia vão para o ESTADO.md; este arquivo muda quando algo grande muda. Última revisão: 06/11/2026 (v2.11).
 
 ## 1. Quem sou e como trabalhar comigo
 - Alan Mateus, Barbacena-MG. Professor de informática numa escola EMTI (9 disciplinas, Técnico em Informática e em Desenvolvimento de Sistemas), trabalho também num restaurante (terça a domingo à noite), fundador da Grupo AMtech Digital. Formado em ADS, cursando Licenciatura em Matemática. Tenho TDAH.
@@ -19,7 +19,7 @@ Cole este arquivo na primeira mensagem de uma conversa nova (ou rode `python3 ~/
 ## 2. Onde está tudo
 - Repositório privado: github.com/AlanMateus17/dev-setup (branch main, CI verde). No PC: ~/dev/dev-setup (Ubuntu/WSL) e C:\Users\alanmateus\dev-setup (Windows).
 - Regra do repositório: data/*.json → geradores → docs/. Nunca editar arquivo gerado. Toda mudança: dados ou ferramenta, geradores, testes, CHANGELOG, commit, push, CI verde.
-- Números agora: 54 fases, 452 passos, 414 blocos, 108 rendas, 71 softwares, 27 metodologias de investimento. O CI recusa passo sem comando ou motivo, bloco fora do roteiro e renda sem passo.
+- Números agora: 55 fases, 469 passos, 425 blocos, 108 rendas, 71 softwares, 27 metodologias de investimento. O CI recusa passo sem comando ou motivo, bloco fora do roteiro e renda sem passo.
 - Artefatos: Acompanhamento (progresso marcado) https://claude.ai/artifact/CJ27fg9sycvhqZ2s9GSbjd · Portfólio de rendas https://claude.ai/artifact/Mbj1yj6LRmUnf3SJLrTfaB · Mapa https://claude.ai/artifact/BTUyCQfojw6cngvR5W5oAB · Ecossistema https://claude.ai/artifact/4Ze2J4Y1oKgAkjuQmbAAG1 · Plano de automação (documento) https://claude.ai/artifact/XCzSQNb28yFgPCymRV9wrL · Posts do setup (design) https://claude.ai/artifact/V8826RzNePgWKuy6GuYPvd
 - Guias no repositório: docs/implantacao/roteiro.md (passo a passo), docs/operacao/portfolio.md (rendas e automações), docs/operacao/softwares.md, docs/operacao/kit-sites.md, docs/custos.md (o que pagar, rotas de IA), docs/recursos.md (a melhor ferramenta para cada tarefa: primária, reserva e portão), docs/investimentos.md (as 27 metodologias nas 4 classes do ARCA), docs/certificacoes.md (o que cada certificação habilita e a ordem), docs/seguranca/README.md (engenharia reversa, AppSec e empresa de pentest), docs/jarvis/README.md (voz, casa, câmeras, energia, água, robótica e PC por comando de voz), docs/ia/hugging-face.md (modelos do Hub que cabem na GTX 1650 e as compras em ordem), docs/construcao/README.md (construção civil, arquitetura e engenharia pela TI), docs/operacao/24-horas.md, docs/operacao/sessoes-curtas.md, docs/ia/README.md, docs/rede/README.md.
 
@@ -48,8 +48,12 @@ Fases 0, 3, 4 e 5 completas: diagnóstico, Windows (winget, BitLocker, Defender,
 - Foco (nov/2026): TI em primeiro lugar, depois casa inteligente e agropecuária (pecuária, lavoura e horta, e o negócio AMtech Campo). O modelo de doença de folha saiu do plano.
 - Hugging Face e robótica (v2.5): LeRobot com o par SO-101 como primeira compra de robótica, Reachy Mini como corpo do Jarvis depois, LeKiwi por último; Whisper large-v3-turbo, Qwen3-VL 2B local para a câmera que descreve, Docling para documentos, Prompt Guard só se acertar em português. Treino com bf16 (SmolVLA) vai para GPU alugada: a GTX 1650 e o T4 não têm bf16. GPU de 12 GB só depois do portão.
 - Jarvis (v2.4): Home Assistant Assist com voz local (Whisper na GPU do notebook, Piper pt_BR, "hey jarvis") e o Claude como agente de conversa; Claude Code por voz no PC (/voice + falar.py). Casa num servidor próprio sempre ligado (ADR 0004), Zigbee e MQTT, Frigate local, leitor do hidrômetro, robôs pelo ESPHome e ROS 2. Política: destrancar, abrir janela/porta/portão e desligar geladeira só com toque no celular (geladeira religa sozinha); desarmar alarme, desligar câmera e apagar gravação proibidos por voz; no máximo 25 entidades expostas.
+- Empresa solo (v2.11, nov/2026): o contexto mestre entrou pelo que soma (docs/empresa-solo.md). Stack fixa mantida; Zod só no front com Biome e Vitest (ADR 0006); deploy de produção em VM pelo Kamal, sem Coolify nem Dokploy (ADR 0005); segredo só no KeePassXC (nada de sops/age); triagem antes de construir (A subir pronto, B colar, C construir com ADR) e regra das 4 horas. O cronograma de 14 dias virou as ofertas automacaoia e rendara, que seguem na fila.
 
 ## 5. Ferramentas prontas no repositório (comandos no Ubuntu)
+- Porta única: just (na raiz do repositório): just check antes de todo commit, just triagem "pedido", just arquiteto "pedido", just docs, just ci-local, just contexto-ia PASTA, just medir "comando"
+- Triagem e arquiteto: tools/triagem/triagem.py triar | arquitetar
+- Deploy em VM: infra/templates/kamal (Kamal pela imagem Docker, segredos pelo keepassxc-cli)
 - Pacote de contexto: tools/sessao/contexto.py (--inicio, --resumo, --passo ID)
 - Kit de sites: tools/kitsites/conferir.py URL (laudo); prompts e pacotes em docs/operacao/kit-sites.md; contrato em docs/operacao/contrato-sites-modelo.md
 - Avaliador de templates: tools/avaliador/avaliar.py ~/templates (não roda código de terceiros)
@@ -96,40 +100,41 @@ Fases 0, 3, 4 e 5 completas: diagnóstico, Windows (winget, BitLocker, Defender,
 | 17 | Rotina automatizada | Semana 4 · nov/2026 | 5 |
 | 18 | Comandos remotos pelo Telegram | Semana 5 · nov/2026 | 5 |
 | 19 | Casa e vida | Dez/2026 | 6 |
-| 20 | Padrão de elite em todo repositório | Semana 5 · nov/2026 | 8 |
-| 21 | Agentes e IA com qualidade medida | Semana 6 · nov/2026 a dez/2026 | 15 |
-| 22 | Roteador de agentes e esteira de sites | Semana 6 · nov/2026 a dez/2026 | 9 |
-| 23 | Modelos grandes sem computador maior | 2027, depois do primeiro fine-tuning de 8B | 6 |
-| 24 | Rede própria entre os seus computadores | Semana 6 · nov/2026 | 6 |
-| 25 | Operação 24 horas | Dez/2026 a jan/2027 | 8 |
-| 26 | Dados e crescimento: medir, testar e vender mais | Com a primeira página de venda no ar (jan/2027) e por etapas | 8 |
-| 27 | Pipeline de conteúdo | Semana 5 · nov/2026 | 7 |
-| 28 | Estúdio de conteúdo | Semana 5 · dez/2026 | 5 |
-| 29 | Contas, canais e sites | Semanas 6 e 7 · dez/2026 | 13 |
-| 30 | Vendas e finanças no CPF | Semanas 8 a 10 · dez/2026 a jan/2027 | 20 |
-| 31 | Vendas medidas | Semana 11 · jan/2027 | 4 |
-| 32 | Teste do núcleo | Semana 11 · jan/2027 | 4 |
-| 33 | Primeira venda: o mini-curso no ar | Semanas 12 a 15 · jan a fev/2027 | 8 |
-| 34 | Base dos sistemas AM | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 | 8 |
-| 35 | Nuvem e deploy | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) | 7 |
-| 36 | Editora | Quando o capítulo 1 estiver pronto | 11 |
-| 37 | Dados, IA e pendrives | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) | 12 |
-| 38 | Mais ofertas, uma por vez | Fev a dez/2027, uma oferta por vez | 23 |
-| 39 | Marketing pago e crescimento | A partir de fev/2027 | 10 |
-| 40 | Linux nativo e laboratório completo | 2027, conforme cada compra | 6 |
-| 41 | IA dentro dos sistemas AM | Depois do Passo 9 e do IA0 da Trilha de Dados e IA (≈ 2028), junto do IA5 | 1 |
-| 42 | Sistemas AM à venda | 2027 | 5 |
-| 43 | CNPJ e formalização | Quando a renda pedir | 4 |
-| 44 | Agentes do grupo | Junto com o primeiro CNPJ | 7 |
-| 45 | Editora: depois do primeiro livro | Depois do primeiro livro | 5 |
-| 46 | Distribuído, plataforma e segunda nuvem | 2028 | 6 |
-| 47 | Infraestrutura própria | 2028, quando o grupo pedir | 3 |
-| 48 | Negócios do grupo em Barbacena | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano | 10 |
-| 49 | Estudo contínuo | Contínuo, desde a semana 2 | 12 |
-| 50 | Engenharia reversa, AppSec e pentest | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) | 16 |
-| 51 | Jarvis: o setup e a casa por comando de voz | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas | 13 |
-| 52 | Hugging Face e IA física: TI, casa inteligente e agropecuária | Modelos em dez/2026; SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois | 16 |
-| 53 | Construção civil, arquitetura e engenharia civil (pela TI) | Ferramentas grátis a partir de jan/2027; serviços e AM Obra depois do portão | 13 |
+| 20 | Padrão de elite em todo repositório | Semana 5 · nov/2026 | 10 |
+| 21 | Empresa solo: o contexto mestre no setup | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica | 9 |
+| 22 | Agentes e IA com qualidade medida | Semana 6 · nov/2026 a dez/2026 | 15 |
+| 23 | Roteador de agentes e esteira de sites | Semana 6 · nov/2026 a dez/2026 | 9 |
+| 24 | Modelos grandes sem computador maior | 2027, depois do primeiro fine-tuning de 8B | 6 |
+| 25 | Rede própria entre os seus computadores | Semana 6 · nov/2026 | 6 |
+| 26 | Operação 24 horas | Dez/2026 a jan/2027 | 8 |
+| 27 | Dados e crescimento: medir, testar e vender mais | Com a primeira página de venda no ar (jan/2027) e por etapas | 8 |
+| 28 | Pipeline de conteúdo | Semana 5 · nov/2026 | 7 |
+| 29 | Estúdio de conteúdo | Semana 5 · dez/2026 | 5 |
+| 30 | Contas, canais e sites | Semanas 6 e 7 · dez/2026 | 13 |
+| 31 | Vendas e finanças no CPF | Semanas 8 a 10 · dez/2026 a jan/2027 | 20 |
+| 32 | Vendas medidas | Semana 11 · jan/2027 | 4 |
+| 33 | Teste do núcleo | Semana 11 · jan/2027 | 4 |
+| 34 | Primeira venda: o mini-curso no ar | Semanas 12 a 15 · jan a fev/2027 | 9 |
+| 35 | Base dos sistemas AM | Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 | 9 |
+| 36 | Nuvem e deploy | Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) | 8 |
+| 37 | Editora | Quando o capítulo 1 estiver pronto | 11 |
+| 38 | Dados, IA e pendrives | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) | 12 |
+| 39 | Mais ofertas, uma por vez | Fev a dez/2027, uma oferta por vez | 23 |
+| 40 | Marketing pago e crescimento | A partir de fev/2027 | 10 |
+| 41 | Linux nativo e laboratório completo | 2027, conforme cada compra | 6 |
+| 42 | IA dentro dos sistemas AM | Depois do Passo 9 e do IA0 da Trilha de Dados e IA (≈ 2028), junto do IA5 | 1 |
+| 43 | Sistemas AM à venda | 2027 | 5 |
+| 44 | CNPJ e formalização | Quando a renda pedir | 4 |
+| 45 | Agentes do grupo | Junto com o primeiro CNPJ | 7 |
+| 46 | Editora: depois do primeiro livro | Depois do primeiro livro | 5 |
+| 47 | Distribuído, plataforma e segunda nuvem | 2028 | 6 |
+| 48 | Infraestrutura própria | 2028, quando o grupo pedir | 3 |
+| 49 | Negócios do grupo em Barbacena | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano | 10 |
+| 50 | Estudo contínuo | Contínuo, desde a semana 2 | 12 |
+| 51 | Engenharia reversa, AppSec e pentest | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) | 19 |
+| 52 | Jarvis: o setup e a casa por comando de voz | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas | 13 |
+| 53 | Hugging Face e IA física: TI, casa inteligente e agropecuária | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino | 16 |
+| 54 | Construção civil, arquitetura e engenharia civil (pela TI) | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão | 13 |
 
 ## 7. Minhas pendências (ver também ESTADO.md)
 1. Senhas: passo kp-organizar, depois 2.4 (exportar do Chrome, importar no KeePassXC, apagar os CSVs, copiar o cofre para o pendrive).

@@ -229,6 +229,8 @@ def gerar_arquitetura(eco: dict, por_camada: dict) -> str:
     out.append("- O Windows cuida só do que precisa de janela, GPU e segurança; o código vive e roda no Linux (Ubuntu no WSL2). Ver [ADR 0001](adr/0001-wsl2-em-vez-de-dual-boot.md).")
     out.append("- Agentes de IA trabalham dentro de sandbox e só enxergam a pasta do projeto. Ver [ADR 0002](adr/0002-agentes-de-ia-em-sandbox.md).")
     out.append("- Infraestrutura por código, Azure primeiro e AWS depois. Ver [ADR 0003](adr/0003-azure-primeiro.md).")
+    out.append("- Produção barata em VM pelo Kamal, um deploy só. Ver [ADR 0005](adr/0005-deploy-em-vm-com-kamal.md). Contrato no OpenAPI e Zod só no front. Ver [ADR 0006](adr/0006-contratos-na-borda.md).")
+    out.append("- Antes de construir, a triagem: subir pronto, colar ou construir (`just triagem`). Ver [Empresa solo](empresa-solo.md).")
     out.append("- Uma ferramenta por função: o que repete outra fica de fora ([decisões](fora-do-setup.md)).")
     out.append("- Segredos só no KeePassXC; nunca no repositório.\n")
     return "\n".join(out)
@@ -344,6 +346,7 @@ def gerar_indice_docs(eco: dict, por_camada: dict) -> str:
     out.append("- [Construção civil, arquitetura e engenharia civil](construcao/README.md): BIM aberto e Autodesk educacional, estudo e normas, regras da IA e as rendas pela TI")
     out.append("- [Vários computadores, SSD externo e NAS](infra/README.md): como crescer o setup para mais máquinas e armazenamento local e em nuvem")
     out.append("- [Boas práticas em todo repositório](boas-praticas.md): git, versões, tags, segurança, qualidade, backup e licenças")
+    out.append("- [Empresa solo: o contexto mestre dentro do setup](empresa-solo.md): o que entrou, o que ficou de fora, as 88 ferramentas uma por uma, o cronograma de 14 dias reescrito e os comandos `just`")
     out.append("- [Decisões de arquitetura (ADRs)](adr/)")
     out.append("- Versões interativas, geradas dos mesmos dados: [`index.html`](index.html) (diagrama) e [`mapa.html`](mapa.html) (mapa do setup), para abrir no navegador\n")
     out.append("## Camadas\n")
@@ -364,6 +367,7 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
            "## Por onde começar\n",
            "- **Continuar numa conversa nova com o Claude**: cole o [CONTINUAR.md](CONTINUAR.md) (ou `python3 tools/sessao/contexto.py --inicio | clip.exe`) e diga qual passo vai fazer. As decisões recentes ficam no [ESTADO.md](ESTADO.md).",
            "- **Comece aqui, no Windows**: extraia o zip, entre na pasta que tem `RODAR-DIAGNOSTICO.cmd` e clique com o botão direito nele > Executar como administrador. Ele só lê o notebook e diz por qual passo do roteiro começar.",
+           "- **No Ubuntu, um comando só**: `cd ~/dev/dev-setup && just` lista tudo; `just check` antes de cada commit e `just triagem \"o que você quer\"` antes de construir algo novo. Ver [Empresa solo](docs/empresa-solo.md).",
            "- **[Arquitetura](docs/arquitetura.md)**: a pilha inteira, camada por camada, com o diagrama de cada uma.",
            "- **[Fluxos de ponta a ponta](docs/fluxos.md)**: codar com agente e publicar, vender um curso, publicar automaticamente, medir uma campanha e outros.",
            "- **[Editora AMS Silva](docs/editora/README.md)**: livros produzidos como software, com código testado, gabaritos conferidos e PDF, EPUB e impressão gerados da mesma fonte.",
@@ -435,7 +439,9 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
             "infra/lab-alvo/       alvo isolado sem internet: o software que você estudou contra o atacante",
             "infra/jarvis/         voz local (Whisper, Piper, openWakeWord), MQTT, Zigbee2MQTT e Frigate",
             "config/marca.md       guia de marca usado pelo pipeline de conteúdo",
+            "infra/templates/     repositório padrão, deploy com Kamal, esteira de sites, regras da IA e segurança",
             "tools/                geradores, motor financeiro, pipeline de conteúdo e templates",
+            "justfile              porta única de comandos (check, triagem, arquiteto, docs, ci-local)",
             "```\n",
             "## Status\n",
             "Em construção por fases. A fase 1 (Windows, WSL2, Docker e .NET) está em andamento; o restante segue o [roteiro de estudo](docs/roteiro.md).\n",

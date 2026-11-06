@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** A API envia logs, métricas e traces pelo OpenTelemetry.
 
-**19 blocos** · 0 precisam de conta · 8 marcados como futuro
+**20 blocos** · 0 precisam de conta · 8 marcados como futuro
 
 ## Mapa de conexões
 
@@ -33,6 +33,7 @@ flowchart LR
     n_nrot["AM Rotara (entregas)"]
     n_mobile["App mobile (.NET MAUI)"]
     n_nobra["AM Obra (diário, medição, compras)"]
+    n_zod["Zod · Biome · Vitest (front)"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_ifcresumo["Resumo de IFC (ifc_resumo.py)"]
@@ -110,6 +111,7 @@ flowchart LR
   end
   n_oapi -->|"documenta"| n_api
   n_oapi -->|"Bruno importa"| n_dbv
+  n_zod -->|"segue o contrato"| n_oapi
   n_gis -->|"extensão"| n_pg
   n_gis -->|"mapa"| n_front
   n_gis -->|"mapas"| n_nrot
@@ -133,6 +135,7 @@ flowchart LR
   n_ccan -->|"telas do Figma"| n_front
   n_auth -->|"login"| n_front
   n_penpot -->|"telas dos sistemas"| n_front
+  n_zod -->|"valida o que chega"| n_front
   n_api -->|"logs"| n_seq
   n_api -->|"SMTP de teste"| n_mailp
   n_api -->|"eventos"| n_kafka
@@ -179,32 +182,33 @@ flowchart LR
   n_ifcresumo -->|"quantidades"| n_nobra
   n_sinapi -->|"preços do mês"| n_nobra
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_oapi,n_gis,n_story,n_clean,n_ef,n_sig,n_rls,n_tests,n_shared,n_front,n_api,n_auth,n_ai,n_lic,n_status,n_nkaix,n_nrot,n_mobile,n_nobra desta
+  class n_oapi,n_gis,n_story,n_clean,n_ef,n_sig,n_rls,n_tests,n_shared,n_front,n_api,n_auth,n_ai,n_lic,n_status,n_nkaix,n_nrot,n_mobile,n_nobra,n_zod desta
 ```
 
 ## Blocos
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [OpenAPI + Scalar](#oapi) | Local | Documentação interativa da API. No .NET 9 em diante, o Swagger saiu do modelo padrão e o Scalar é a escolha comum. | passo 34.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| [PostGIS + MapLibre](#gis) | Local · futuro | Mapas e geolocalização do AM Rotara. Lacuna já identificada nos cursos da Alura e da Rocketseat. | passo 42.3 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
-| [Storybook](#story) | Local | Vitrine dos componentes do aura-frontend-kit; vira demo pública e produto (template). | passo 34.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| [Clean Arch + DDD](#clean) | Local | Domain, Application, Infrastructure e Api. O domínio não conhece banco nem web. | passo 34.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| [EF Core + Npgsql](#ef) | Local | ORM do .NET para PostgreSQL, com migrations versionadas. | passo 34.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| [SignalR](#sig) | Local | Tempo real: pedido mudou de status no AM Rotara, venda nova no AM Kaixara. | passo 34.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| [Multi-tenant (RLS)](#rls) | Local | tenant_id + Row-Level Security: cada cliente só vê os próprios dados, garantido pelo banco. | passo 34.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| [Testes: xUnit, Playwright, k6](#tests) | Local | Unidade, integração com banco real, testes de tela no navegador e teste de carga. | passo 34.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| [Serviços aura- (10)](#shared) | Local · futuro | aura-copilot, aura-historico (Clojure/Datomic), aura-analytics (Python/FastAPI) e os demais. Só nascem quando um sistema precisar. | passo 42.4 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
-| [Next.js + Aura Design System](#front) | Local | Telas dos sistemas e, no futuro, dos sites próprios. | passo 34.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6; passo 38.17 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
-| [API ASP.NET Core](#api) | Local | Regras de negócio dos sistemas AM. | passo 34.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6; passo 38.17 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
-| [Keycloak / Entra ID](#auth) | Local | Login e permissões (OAuth2/OIDC). | passo 34.2 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
-| [IA: RAG + pgvector](#ai) | Local · futuro | Busca e assistente dentro dos sistemas (AM Projeta, aura-copilot). | passo 41.1 · Depois do Passo 9 e do IA0 da Trilha de Dados e IA (≈ 2028), junto do IA5 |
-| [aura-licensing](#lic) | Local · futuro | Cobrança por módulo dos sistemas AM. | passo 42.1 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
-| [aura-status](#status) | Local | Seu painel de repos, backup e Dependabot. | passo 35.7 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
-| [AM Kaixara (PDV e cardápio)](#nkaix) | Remoto · futuro | PDV, comandas, ordem de serviço, estoque, ficha técnica e engenharia de cardápio. Roda primeiro na loja e nos restaurantes do grupo. | passo 38.12 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 42.2 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
-| [AM Rotara (entregas)](#nrot) | Remoto · futuro | Pedidos, roteirização com PostGIS, app do entregador, prova de entrega e repasse semanal. Base da AM Entregas e do AM Delivery. | passo 42.3 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente); passo 42.5 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
-| [App mobile (.NET MAUI)](#mobile) | Local · futuro | App dos sistemas AM no celular, em C# como o resto do Aura. Entra em 2028; Kotlin, Swift e Flutter ficam fora para não abrir outra stack. | passo 46.6 · 2028 |
-| [AM Obra (diário, medição, compras)](#nobra) | Remoto · futuro | Sistema AM para pequenas construtoras: diário de obra, medição, compras e estimativa pelo SINAPI, lendo o IFC. | passo 53.12 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| [OpenAPI + Scalar](#oapi) | Local | Documentação interativa da API. No .NET 9 em diante, o Swagger saiu do modelo padrão e o Scalar é a escolha comum. | passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| [PostGIS + MapLibre](#gis) | Local · futuro | Mapas e geolocalização do AM Rotara. Lacuna já identificada nos cursos da Alura e da Rocketseat. | passo 43.3 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
+| [Storybook](#story) | Local | Vitrine dos componentes do aura-frontend-kit; vira demo pública e produto (template). | passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| [Clean Arch + DDD](#clean) | Local | Domain, Application, Infrastructure e Api. O domínio não conhece banco nem web. | passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| [EF Core + Npgsql](#ef) | Local | ORM do .NET para PostgreSQL, com migrations versionadas. | passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| [SignalR](#sig) | Local | Tempo real: pedido mudou de status no AM Rotara, venda nova no AM Kaixara. | passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| [Multi-tenant (RLS)](#rls) | Local | tenant_id + Row-Level Security: cada cliente só vê os próprios dados, garantido pelo banco. | passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| [Testes: xUnit, Playwright, k6](#tests) | Local | Unidade, integração com banco real, testes de tela no navegador e teste de carga. | passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| [Serviços aura- (10)](#shared) | Local · futuro | aura-copilot, aura-historico (Clojure/Datomic), aura-analytics (Python/FastAPI) e os demais. Só nascem quando um sistema precisar. | passo 43.4 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
+| [Next.js + Aura Design System](#front) | Local | Telas dos sistemas e, no futuro, dos sites próprios. | passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6; passo 39.17 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [API ASP.NET Core](#api) | Local | Regras de negócio dos sistemas AM. | passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6; passo 39.17 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [Keycloak / Entra ID](#auth) | Local | Login e permissões (OAuth2/OIDC). | passo 35.2 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
+| [IA: RAG + pgvector](#ai) | Local · futuro | Busca e assistente dentro dos sistemas (AM Projeta, aura-copilot). | passo 42.1 · Depois do Passo 9 e do IA0 da Trilha de Dados e IA (≈ 2028), junto do IA5 |
+| [aura-licensing](#lic) | Local · futuro | Cobrança por módulo dos sistemas AM. | passo 43.1 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
+| [aura-status](#status) | Local | Seu painel de repos, backup e Dependabot. | passo 36.7 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) |
+| [AM Kaixara (PDV e cardápio)](#nkaix) | Remoto · futuro | PDV, comandas, ordem de serviço, estoque, ficha técnica e engenharia de cardápio. Roda primeiro na loja e nos restaurantes do grupo. | passo 39.12 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 43.2 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
+| [AM Rotara (entregas)](#nrot) | Remoto · futuro | Pedidos, roteirização com PostGIS, app do entregador, prova de entrega e repasse semanal. Base da AM Entregas e do AM Delivery. | passo 43.3 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente); passo 43.5 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
+| [App mobile (.NET MAUI)](#mobile) | Local · futuro | App dos sistemas AM no celular, em C# como o resto do Aura. Entra em 2028; Kotlin, Swift e Flutter ficam fora para não abrir outra stack. | passo 47.6 · 2028 |
+| [AM Obra (diário, medição, compras)](#nobra) | Remoto · futuro | Sistema AM para pequenas construtoras: diário de obra, medição, compras e estimativa pelo SINAPI, lendo o IFC. | passo 54.12 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| [Zod · Biome · Vitest (front)](#zod) | Local | Zod valida no front tudo o que chega da API e dos formulários; Biome faz lint e formatação; Vitest testa as regras do front. O contrato do backend é o OpenAPI (ADR 0006). | passo 35.9 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 |
 
 <a id="oapi"></a>
 
@@ -214,12 +218,13 @@ flowchart LR
 
 Documentação interativa da API. No .NET 9 em diante, o Swagger saiu do modelo padrão e o Scalar é a escolha comum.
 
-**Quando entra:** passo 34.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | documenta |
 | → envia para | [DBeaver · Bruno](03-win.md#dbv) | Windows 11, apps e máquinas virtuais | Bruno importa |
+| ← recebe de | [Zod · Biome · Vitest (front)](11-app.md#zod) | Aplicação: sistemas AM (Aura) | segue o contrato |
 
 <a id="gis"></a>
 
@@ -229,7 +234,7 @@ Documentação interativa da API. No .NET 9 em diante, o Swagger saiu do modelo 
 
 Mapas e geolocalização do AM Rotara. Lacuna já identificada nos cursos da Alura e da Rocketseat.
 
-**Quando entra:** passo 42.3 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 43.3 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -245,7 +250,7 @@ Mapas e geolocalização do AM Rotara. Lacuna já identificada nos cursos da Alu
 
 Vitrine dos componentes do aura-frontend-kit; vira demo pública e produto (template).
 
-**Quando entra:** passo 34.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -260,7 +265,7 @@ Vitrine dos componentes do aura-frontend-kit; vira demo pública e produto (temp
 
 Domain, Application, Infrastructure e Api. O domínio não conhece banco nem web.
 
-**Quando entra:** passo 34.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -274,7 +279,7 @@ Domain, Application, Infrastructure e Api. O domínio não conhece banco nem web
 
 ORM do .NET para PostgreSQL, com migrations versionadas.
 
-**Quando entra:** passo 34.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -289,7 +294,7 @@ ORM do .NET para PostgreSQL, com migrations versionadas.
 
 Tempo real: pedido mudou de status no AM Rotara, venda nova no AM Kaixara.
 
-**Quando entra:** passo 34.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -305,7 +310,7 @@ Tempo real: pedido mudou de status no AM Rotara, venda nova no AM Kaixara.
 
 tenant_id + Row-Level Security: cada cliente só vê os próprios dados, garantido pelo banco.
 
-**Quando entra:** passo 34.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -320,7 +325,7 @@ tenant_id + Row-Level Security: cada cliente só vê os próprios dados, garanti
 
 Unidade, integração com banco real, testes de tela no navegador e teste de carga.
 
-**Quando entra:** passo 34.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -335,7 +340,7 @@ Unidade, integração com banco real, testes de tela no navegador e teste de car
 
 aura-copilot, aura-historico (Clojure/Datomic), aura-analytics (Python/FastAPI) e os demais. Só nascem quando um sistema precisar.
 
-**Quando entra:** passo 42.4 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 43.4 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -350,7 +355,7 @@ aura-copilot, aura-historico (Clojure/Datomic), aura-analytics (Python/FastAPI) 
 
 Telas dos sistemas e, no futuro, dos sites próprios.
 
-**Quando entra:** passo 34.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6; passo 38.17 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6; passo 39.17 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -363,6 +368,7 @@ Telas dos sistemas e, no futuro, dos sites próprios.
 | ← recebe de | [Conectores Canva + Figma](08-clc.md#ccan) | Claude: recursos, conectores e plugins | telas do Figma |
 | ← recebe de | [Keycloak / Entra ID](11-app.md#auth) | Aplicação: sistemas AM (Aura) | login |
 | ← recebe de | [Penpot (design)](13-cont.md#penpot) | Produção de conteúdo | telas dos sistemas |
+| ← recebe de | [Zod · Biome · Vitest (front)](11-app.md#zod) | Aplicação: sistemas AM (Aura) | valida o que chega |
 
 <a id="api"></a>
 
@@ -372,7 +378,7 @@ Telas dos sistemas e, no futuro, dos sites próprios.
 
 Regras de negócio dos sistemas AM.
 
-**Quando entra:** passo 34.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6; passo 38.17 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 35.1 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6; passo 39.17 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -412,7 +418,7 @@ Regras de negócio dos sistemas AM.
 
 Login e permissões (OAuth2/OIDC).
 
-**Quando entra:** passo 34.2 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 35.2 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -427,7 +433,7 @@ Login e permissões (OAuth2/OIDC).
 
 Busca e assistente dentro dos sistemas (AM Projeta, aura-copilot).
 
-**Quando entra:** passo 41.1 · Depois do Passo 9 e do IA0 da Trilha de Dados e IA (≈ 2028), junto do IA5 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 42.1 · Depois do Passo 9 e do IA0 da Trilha de Dados e IA (≈ 2028), junto do IA5 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -444,7 +450,7 @@ Busca e assistente dentro dos sistemas (AM Projeta, aura-copilot).
 
 Cobrança por módulo dos sistemas AM.
 
-**Quando entra:** passo 42.1 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 43.1 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -460,7 +466,7 @@ Cobrança por módulo dos sistemas AM.
 
 Seu painel de repos, backup e Dependabot.
 
-**Quando entra:** passo 35.7 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 36.7 · Com o Passo 5 da trilha de estudo (≈ abr a jun/2027) para a conta e o deploy do sistema exemplo; o deploy de produção do AM Kaixara é o Passo 10 (≈ 2028) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -477,7 +483,7 @@ Seu painel de repos, backup e Dependabot.
 
 PDV, comandas, ordem de serviço, estoque, ficha técnica e engenharia de cardápio. Roda primeiro na loja e nos restaurantes do grupo.
 
-**Quando entra:** passo 38.12 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 42.2 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 39.12 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 43.2 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -500,7 +506,7 @@ PDV, comandas, ordem de serviço, estoque, ficha técnica e engenharia de cardá
 
 Pedidos, roteirização com PostGIS, app do entregador, prova de entrega e repasse semanal. Base da AM Entregas e do AM Delivery.
 
-**Quando entra:** passo 42.3 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente); passo 42.5 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 43.3 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente); passo 43.5 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -518,7 +524,7 @@ Pedidos, roteirização com PostGIS, app do entregador, prova de entrega e repas
 
 App dos sistemas AM no celular, em C# como o resto do Aura. Entra em 2028; Kotlin, Swift e Flutter ficam fora para não abrir outra stack.
 
-**Quando entra:** passo 46.6 · 2028 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 47.6 · 2028 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -532,13 +538,28 @@ App dos sistemas AM no celular, em C# como o resto do Aura. Entra em 2028; Kotli
 
 Sistema AM para pequenas construtoras: diário de obra, medição, compras e estimativa pelo SINAPI, lendo o IFC.
 
-**Quando entra:** passo 53.12 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 54.12 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [AMtech Software (projetos e SaaS)](16-neg.md#nsoft) | Negócios do grupo (Barbacena) | produto |
 | ← recebe de | [Resumo de IFC (ifc_resumo.py)](23-oper.md#ifcresumo) | Operação do grupo (esteira, marca, qualidade) | quantidades |
 | ← recebe de | [SINAPI (custos de MG, Caixa)](06-dados.md#sinapi) | Dados e treino de IA | preços do mês |
+
+<a id="zod"></a>
+
+### Zod · Biome · Vitest (front)
+
+*Local*
+
+Zod valida no front tudo o que chega da API e dos formulários; Biome faz lint e formatação; Vitest testa as regras do front. O contrato do backend é o OpenAPI (ADR 0006).
+
+**Quando entra:** passo 35.9 · Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6 ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Next.js + Aura Design System](11-app.md#front) | Aplicação: sistemas AM (Aura) | valida o que chega |
+| → envia para | [OpenAPI + Scalar](11-app.md#oapi) | Aplicação: sistemas AM (Aura) | segue o contrato |
 
 ---
 

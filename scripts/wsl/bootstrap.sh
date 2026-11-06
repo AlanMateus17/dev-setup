@@ -107,6 +107,24 @@ else
   rodar "seguranca" "trivy ${V}" bash -c "curl -fsSL -o /tmp/trivy.deb https://github.com/aquasecurity/trivy/releases/download/v${V}/trivy_${V}_Linux-64bit.deb && $SUDO dpkg -i /tmp/trivy.deb && rm -f /tmp/trivy.deb"
 fi
 
+# ------------------------------------------------------------------ 4b. terminal moderno e porta única (just)
+# Binários únicos, sem runtime: just (receitas do justfile), zoxide, eza, fd, btop, hyperfine, tio (serial da bancada) e tcpdump.
+TERMINAL=(just zoxide eza fd-find btop hyperfine tio tcpdump)
+FALTAM_T=()
+for p in "${TERMINAL[@]}"; do dpkg -s "$p" >/dev/null 2>&1 || FALTAM_T+=("$p"); done
+if [[ ${#FALTAM_T[@]} -eq 0 ]]; then linha "terminal" "just, zoxide, eza, fd, btop…" "JA TEM"
+else rodar "terminal" "terminal moderno (${#FALTAM_T[@]} faltando)" bash -c "$SUDO apt-get update -y && $SUDO env $APT install ${FALTAM_T[*]}"; fi
+for ferramenta in lazygit lazydocker; do
+  if tem "$ferramenta"; then linha "terminal" "$ferramenta" "JA TEM"; continue; fi
+  V="$( [[ $SIMULAR -eq 1 ]] || versao_mais_recente "jesseduffield/$ferramenta" )"
+  rodar "terminal" "$ferramenta ${V}" bash -c "curl -fsSL https://github.com/jesseduffield/$ferramenta/releases/download/v${V}/${ferramenta}_${V}_Linux_x86_64.tar.gz | tar -xz -C \"\$HOME/.local/bin\" $ferramenta"
+done
+if tem starship; then linha "terminal" "Starship" "JA TEM"
+else rodar "terminal" "Starship" bash -c 'curl -fsSL https://starship.rs/install.sh | sh -s -- -y -b "$HOME/.local/bin"'; fi
+# Uma linha só no .bashrc liga o prompt, o cd inteligente e o nome curto do fd (no Ubuntu o binário chama fdfind)
+TERM_LINHA='command -v starship >/dev/null && eval "$(starship init bash)"; command -v zoxide >/dev/null && eval "$(zoxide init bash)"; command -v fdfind >/dev/null && alias fd=fdfind'
+if [[ $SIMULAR -eq 0 ]] && ! grep -qxF "$TERM_LINHA" "$HOME/.bashrc" 2>/dev/null; then echo "$TERM_LINHA" >> "$HOME/.bashrc"; fi
+
 # ------------------------------------------------------------------ 5. agentes de IA
 if tem claude; then linha "agentes" "Claude Code" "JA TEM" "$(claude --version 2>/dev/null)"
 else rodar "agentes" "Claude Code" bash -c "curl -fsSL https://claude.ai/install.sh | bash"; fi

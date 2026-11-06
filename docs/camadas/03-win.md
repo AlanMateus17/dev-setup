@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** O Windows depende de TPM, BitLocker e Defender para ficar protegido.
 
-**29 blocos** · 3 precisam de conta · 3 marcados como futuro
+**30 blocos** · 3 precisam de conta · 3 marcados como futuro
 
 ## Mapa de conexões
 
@@ -43,6 +43,7 @@ flowchart LR
     n_freecad["FreeCAD 1.1 (BIM, 2D e FEM)"]
     n_adskedu["Autodesk educacional (Revit, Civil 3D)"]
     n_qgis["QGIS (terreno e mapas)"]
+    n_kicad["KiCad · PulseView · tio (bancada)"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_acv["Acervo (seus documentos)"]
@@ -131,6 +132,7 @@ flowchart LR
     n_labalvo["Lab de alvo isolado (rede sem internet)"]
   end
   subgraph L_hw["Hardware"]
+    n_analog["Analisador lógico (8 canais USB)"]
     n_cel["Celular"]
     n_mon["2º monitor"]
     n_nas["Servidor caseiro (NAS + serviços)"]
@@ -220,21 +222,24 @@ flowchart LR
   n_qgis -->|"terreno"| n_bonsai
   n_ifcmcp -->|"consulta e edita o modelo"| n_bonsai
   n_freecad -->|"exporta IFC"| n_ifcresumo
+  n_kicad -->|"placa para o gabinete"| n_freecad
   n_adskedu -->|"IFC do Revit"| n_ifcresumo
+  n_kicad -->|"desenha as placas"| n_rob
+  n_analog -->|"lido pelo PulseView"| n_kicad
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_tail,n_wslcfg,n_wterm,n_draw,n_unity,n_boot,n_nitro,n_zip,n_ptoys,n_pdf,n_sharex,n_office,n_ffox,n_w11,n_vsc,n_obsd,n_syncth,n_dbv,n_nav,n_vbox,n_wshark,n_vms,n_ard,n_rufus,n_aw,n_bonsai,n_freecad,n_adskedu,n_qgis desta
+  class n_tail,n_wslcfg,n_wterm,n_draw,n_unity,n_boot,n_nitro,n_zip,n_ptoys,n_pdf,n_sharex,n_office,n_ffox,n_w11,n_vsc,n_obsd,n_syncth,n_dbv,n_nav,n_vbox,n_wshark,n_vms,n_ard,n_rufus,n_aw,n_bonsai,n_freecad,n_adskedu,n_qgis,n_kicad desta
 ```
 
 ## Blocos
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Tailscale (VPN)](#tail) | Remoto · precisa de conta · futuro | Acesso seguro ao homelab e ao notebook de qualquer lugar, sem abrir porta no roteador. Grátis para uso pessoal. | passo 23.2 · 2027, depois do primeiro fine-tuning de 8B; passo 24.1 · Semana 6 · nov/2026; passo 24.2 · Semana 6 · nov/2026; passo 25.4 · Dez/2026 a jan/2027; passo 38.11 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 47.2 · 2028, quando o grupo pedir |
+| [Tailscale (VPN)](#tail) | Remoto · precisa de conta · futuro | Acesso seguro ao homelab e ao notebook de qualquer lugar, sem abrir porta no roteador. Grátis para uso pessoal. | passo 24.2 · 2027, depois do primeiro fine-tuning de 8B; passo 25.1 · Semana 6 · nov/2026; passo 25.2 · Semana 6 · nov/2026; passo 26.4 · Dez/2026 a jan/2027; passo 39.11 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 48.2 · 2028, quando o grupo pedir |
 | [.wslconfig + localhost](#wslcfg) | Local | Limita o WSL a 12 GB de RAM e faz o localhost do Windows abrir os apps que rodam no Linux. | passo 3.2 · Semana 1 · out/2026 |
 | [Terminal · PowerShell · winget](#wterm) | Local | Terminal com abas para Ubuntu e PowerShell; winget instala e atualiza programas. | passo 3.2 · Semana 1 · out/2026 |
 | [Excalidraw / draw.io](#draw) | Local | Diagramas de arquitetura para ADRs, aulas e entrevistas. | passo 3.2 · Semana 1 · out/2026 |
 | [Unity · Cocos](#unity) | Local | Mantidos para as aulas de robótica. Decisão sua: ficam ou saem. | passo 3.8 · Semana 1 · out/2026 |
-| [Gerenciador de boot](#boot) | Local · futuro | Escolhe Windows ou Arch ao ligar; cada sistema no próprio disco. | passo 40.1 · 2027, conforme cada compra |
+| [Gerenciador de boot](#boot) | Local · futuro | Escolhe Windows ou Arch ao ligar; cada sistema no próprio disco. | passo 41.1 · 2027, conforme cada compra |
 | [NitroSense + drivers AMD e NVIDIA](#nitro) | Local | Controle das ventoinhas e modos de energia do Nitro, mais os drivers de vídeo. Não remover. | passo 1.3 · Semana 1 · out/2026 |
 | [7-Zip](#zip) | Local | Abre e cria .zip, .7z e .tar (ISOs, backups, materiais de aula). | passo 3.2 · Semana 1 · out/2026 |
 | [PowerToys](#ptoys) | Local | Utilitários da Microsoft: organizar janelas nos dois monitores, renomear em lote, color picker para o design. | passo 3.2 · Semana 1 · out/2026 |
@@ -245,19 +250,20 @@ flowchart LR
 | [Windows 11 Home](#w11) | Local · precisa de conta | Host do dia a dia (conta local, sem conta Microsoft). | passo 0.3 · Antes de tudo · semana 1 (out/2026); passo 0.4 · Antes de tudo · semana 1 (out/2026); passo 1.3 · Semana 1 · out/2026 |
 | [VS Code](#vsc) | Local | Editor; abre os projetos dentro do Linux. | passo 3.2 · Semana 1 · out/2026; passo 3.5 · Semana 1 · out/2026 |
 | [Obsidian + Git](#obsd) | Local | Vault de estudo, roteiros e planejamento. | passo 3.2 · Semana 1 · out/2026; passo 4.8 · Semana 2 · nov/2026; passo 8.4 · Semanas 3 e 4 · nov/2026 |
-| [Syncthing](#syncth) | Local | Sincroniza vault, projetos de vídeo e o cofre do KeePassXC entre as máquinas, sem nuvem no meio. Open source. | passo 2.9 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 3.2 · Semana 1 · out/2026; passo 4.9 · Semana 2 · nov/2026; passo 24.3 · Semana 6 · nov/2026 |
+| [Syncthing](#syncth) | Local | Sincroniza vault, projetos de vídeo e o cofre do KeePassXC entre as máquinas, sem nuvem no meio. Open source. | passo 2.9 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 3.2 · Semana 1 · out/2026; passo 4.9 · Semana 2 · nov/2026; passo 25.3 · Semana 6 · nov/2026 |
 | [DBeaver · Bruno](#dbv) | Local | Banco de dados e testes de API. | passo 3.2 · Semana 1 · out/2026 |
 | [Navegador + Claude in Chrome](#nav) | Local | Testes, DevTools e acesso a todas as contas web. | passo 2.5 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 2.10 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 3.6 · Semana 1 · out/2026 |
 | [VirtualBox](#vbox) | Local | Roda as VMs de estudo. | passo 3.2 · Semana 1 · out/2026 |
 | [Wireshark](#wshark) | Local | Captura e lê o tráfego de rede no laboratório de segurança. Instalado pelo winget. | passo 3.2 · Semana 1 · out/2026 |
-| [VMs: Kali · Arch · Servidores](#vms) | Local · futuro | Kali (segurança), Arch (treino da instalação), Ubuntu Server (deploy), Windows Server com Active Directory e RHEL/Rocky (corporativo). Kali e Arch também ficam em pendrive. | passo 40.3 · 2027, conforme cada compra |
-| [Arduino IDE 2](#ard) | Local | Programação das placas de robótica. | passo 3.2 · Semana 1 · out/2026; passo 38.16 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
-| [Rufus (grava pendrives)](#rufus) | Local | Grava as ISOs do Kali e do Arch nos pendrives. Instalado pelo winget. | passo 37.1 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
+| [VMs: Kali · Arch · Servidores](#vms) | Local · futuro | Kali (segurança), Arch (treino da instalação), Ubuntu Server (deploy), Windows Server com Active Directory e RHEL/Rocky (corporativo). Kali e Arch também ficam em pendrive. | passo 41.3 · 2027, conforme cada compra |
+| [Arduino IDE 2](#ard) | Local | Programação das placas de robótica. | passo 3.2 · Semana 1 · out/2026; passo 39.16 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [Rufus (grava pendrives)](#rufus) | Local | Grava as ISOs do Kali e do Arch nos pendrives. Instalado pelo winget. | passo 38.1 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 | [ActivityWatch](#aw) | Local | Mede sozinho em que programas e sites vai o seu tempo. Base do retorno por hora de cada renda. Fica no seu PC. | passo 17.1 · Semana 4 · nov/2026 |
-| [Bonsai + IfcOpenShell (BIM aberto)](#bonsai) | Local | BIM no formato aberto IFC dentro do Blender: plantas, cortes e quantitativos, de graça. | passo 53.3 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
-| [FreeCAD 1.1 (BIM, 2D e FEM)](#freecad) | Local | Desenho técnico, BIM e elementos finitos no mesmo programa aberto. | passo 53.2 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
-| [Autodesk educacional (Revit, Civil 3D)](#adskedu) | Local · precisa de conta | Revit, AutoCAD, Civil 3D e Robot Structural grátis para professor; só estudo e ensino, nunca trabalho pago. | passo 53.5 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
-| [QGIS (terreno e mapas)](#qgis) | Local | Topografia, mapa do terreno e dados do IBGE e da prefeitura. | passo 53.4 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| [Bonsai + IfcOpenShell (BIM aberto)](#bonsai) | Local | BIM no formato aberto IFC dentro do Blender: plantas, cortes e quantitativos, de graça. | passo 54.3 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| [FreeCAD 1.1 (BIM, 2D e FEM)](#freecad) | Local | Desenho técnico, BIM e elementos finitos no mesmo programa aberto. | passo 54.2 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| [Autodesk educacional (Revit, Civil 3D)](#adskedu) | Local · precisa de conta | Revit, AutoCAD, Civil 3D e Robot Structural grátis para professor; só estudo e ensino, nunca trabalho pago. | passo 54.5 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| [QGIS (terreno e mapas)](#qgis) | Local | Topografia, mapa do terreno e dados do IBGE e da prefeitura. | passo 54.4 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| [KiCad · PulseView · tio (bancada)](#kicad) | Local | KiCad desenha esquemático e placa (com a BOM interativa do InteractiveHtmlBom); PulseView decodifica I2C, SPI e UART do analisador lógico; tio abre a serial no Ubuntu (USB pelo usbipd). | passo 21.8 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
 
 <a id="tail"></a>
 
@@ -267,7 +273,7 @@ flowchart LR
 
 Acesso seguro ao homelab e ao notebook de qualquer lugar, sem abrir porta no roteador. Grátis para uso pessoal.
 
-**Quando entra:** passo 23.2 · 2027, depois do primeiro fine-tuning de 8B; passo 24.1 · Semana 6 · nov/2026; passo 24.2 · Semana 6 · nov/2026; passo 25.4 · Dez/2026 a jan/2027; passo 38.11 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 47.2 · 2028, quando o grupo pedir ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 24.2 · 2027, depois do primeiro fine-tuning de 8B; passo 25.1 · Semana 6 · nov/2026; passo 25.2 · Semana 6 · nov/2026; passo 26.4 · Dez/2026 a jan/2027; passo 39.11 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 48.2 · 2028, quando o grupo pedir ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -345,7 +351,7 @@ Mantidos para as aulas de robótica. Decisão sua: ficam ou saem.
 
 Escolhe Windows ou Arch ao ligar; cada sistema no próprio disco.
 
-**Quando entra:** passo 40.1 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 41.1 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -530,7 +536,7 @@ Vault de estudo, roteiros e planejamento.
 
 Sincroniza vault, projetos de vídeo e o cofre do KeePassXC entre as máquinas, sem nuvem no meio. Open source.
 
-**Quando entra:** passo 2.9 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 3.2 · Semana 1 · out/2026; passo 4.9 · Semana 2 · nov/2026; passo 24.3 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 2.9 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 3.2 · Semana 1 · out/2026; passo 4.9 · Semana 2 · nov/2026; passo 25.3 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -609,7 +615,7 @@ Captura e lê o tráfego de rede no laboratório de segurança. Instalado pelo w
 
 Kali (segurança), Arch (treino da instalação), Ubuntu Server (deploy), Windows Server com Active Directory e RHEL/Rocky (corporativo). Kali e Arch também ficam em pendrive.
 
-**Quando entra:** passo 40.3 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 41.3 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -629,7 +635,7 @@ Kali (segurança), Arch (treino da instalação), Ubuntu Server (deploy), Window
 
 Programação das placas de robótica.
 
-**Quando entra:** passo 3.2 · Semana 1 · out/2026; passo 38.16 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 3.2 · Semana 1 · out/2026; passo 39.16 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -643,7 +649,7 @@ Programação das placas de robótica.
 
 Grava as ISOs do Kali e do Arch nos pendrives. Instalado pelo winget.
 
-**Quando entra:** passo 37.1 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 38.1 · Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -672,7 +678,7 @@ Mede sozinho em que programas e sites vai o seu tempo. Base do retorno por hora 
 
 BIM no formato aberto IFC dentro do Blender: plantas, cortes e quantitativos, de graça.
 
-**Quando entra:** passo 53.3 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 54.3 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -689,11 +695,12 @@ BIM no formato aberto IFC dentro do Blender: plantas, cortes e quantitativos, de
 
 Desenho técnico, BIM e elementos finitos no mesmo programa aberto.
 
-**Quando entra:** passo 53.2 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 54.2 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Resumo de IFC (ifc_resumo.py)](23-oper.md#ifcresumo) | Operação do grupo (esteira, marca, qualidade) | exporta IFC |
+| ← recebe de | [KiCad · PulseView · tio (bancada)](03-win.md#kicad) | Windows 11, apps e máquinas virtuais | placa para o gabinete |
 
 <a id="adskedu"></a>
 
@@ -703,7 +710,7 @@ Desenho técnico, BIM e elementos finitos no mesmo programa aberto.
 
 Revit, AutoCAD, Civil 3D e Robot Structural grátis para professor; só estudo e ensino, nunca trabalho pago.
 
-**Quando entra:** passo 53.5 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 54.5 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -717,11 +724,27 @@ Revit, AutoCAD, Civil 3D e Robot Structural grátis para professor; só estudo e
 
 Topografia, mapa do terreno e dados do IBGE e da prefeitura.
 
-**Quando entra:** passo 53.4 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 54.4 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Bonsai + IfcOpenShell (BIM aberto)](03-win.md#bonsai) | Windows 11, apps e máquinas virtuais | terreno |
+
+<a id="kicad"></a>
+
+### KiCad · PulseView · tio (bancada)
+
+*Local*
+
+KiCad desenha esquemático e placa (com a BOM interativa do InteractiveHtmlBom); PulseView decodifica I2C, SPI e UART do analisador lógico; tio abre a serial no Ubuntu (USB pelo usbipd).
+
+**Quando entra:** passo 21.8 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Arduino · ESP32 · Pi](01-hw.md#rob) | Hardware | desenha as placas |
+| → envia para | [FreeCAD 1.1 (BIM, 2D e FEM)](03-win.md#freecad) | Windows 11, apps e máquinas virtuais | placa para o gabinete |
+| ← recebe de | [Analisador lógico (8 canais USB)](01-hw.md#analog) | Hardware | lido pelo PulseView |
 
 ---
 

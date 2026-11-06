@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** Os sites mostram e vendem os produtos e o seu portfólio.
 
-**11 blocos** · 5 precisam de conta · 0 marcados como futuro
+**12 blocos** · 5 precisam de conta · 0 marcados como futuro
 
 ## Mapa de conexões
 
@@ -25,6 +25,7 @@ flowchart LR
     n_hostg["Hostinger (clientes WP)"]
     n_kitsites["Kit de sites (Hostinger IA)"]
     n_avaliador["Avaliador de templates"]
+    n_klaro["Klaro! (consentimento LGPD)"]
   end
   subgraph L_pub["Público e canais"]
     n_alunos["Alunos e ex-alunos"]
@@ -119,25 +120,28 @@ flowchart LR
   n_kitsites -->|"monitora os sites"| n_kuma
   n_avaliador -->|"templates aprovados"| n_kitsites
   n_vigia -->|"usa o conferir"| n_kitsites
+  n_klaro -->|"libera as tags com aceite"| n_pixel
+  n_klaro -->|"cumpre a política"| n_legal
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_mail,n_dom,n_site,n_inst,n_amsite,n_catal,n_umami,n_gsc,n_hostg,n_kitsites,n_avaliador desta
+  class n_mail,n_dom,n_site,n_inst,n_amsite,n_catal,n_umami,n_gsc,n_hostg,n_kitsites,n_avaliador,n_klaro desta
 ```
 
 ## Blocos
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [E-mail profissional (enviar e receber)](#mail) | Remoto · precisa de conta | contato@seu-dominio. O roteamento da Cloudflare só recebe; para enviar, é preciso um provedor de e-mail. | passo 29.4 · Semanas 6 e 7 · dez/2026 |
-| [Domínio (Registro.br)](#dom) | Remoto · precisa de conta | Seu domínio .com.br, registrado no seu CPF. Os nameservers apontam para a Cloudflare. | passo 29.3 · Semanas 6 e 7 · dez/2026 |
-| [Site pessoal + blog (Jekyll)](#site) | Remoto | alanmateus17.github.io: portfólio, blog e newsletter. | passo 29.7 · Semanas 6 e 7 · dez/2026; passo 38.1 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
-| [Instituto AMS](#inst) | Remoto | Site dos cursos: páginas de venda que levam ao checkout. | passo 29.8 · Semanas 6 e 7 · dez/2026; passo 33.4 · Semanas 12 a 15 · jan a fev/2027 |
-| [Site Grupo AMtech](#amsite) | Remoto | Site institucional da empresa: serviços, sistemas AM e contato. | passo 29.9 · Semanas 6 e 7 · dez/2026 |
-| [Catálogo do HTML](#catal) | Remoto | Site didático para os alunos publicarem os próprios sites. | passo 29.9 · Semanas 6 e 7 · dez/2026; passo 38.2 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
-| [Umami (analytics)](#umami) | Remoto · precisa de conta | Estatística de visitas sem cookies invasivos. Open source. | passo 29.11 · Semanas 6 e 7 · dez/2026 |
-| [Google Search Console](#gsc) | Remoto · precisa de conta | Mostra como o Google indexa os sites e quais buscas trazem visitas. | passo 29.12 · Semanas 6 e 7 · dez/2026 |
-| [Hostinger (clientes WP)](#hostg) | Remoto · precisa de conta | Hospedagem que você já tem. Deploy por push no GitHub (inclusive Node.js) e MCP oficial com 146 ferramentas para IAs: publicar, ligar domínio e manter WordPress pela conversa. Créditos de IA (construtor, Agent, Reach) são pagos à parte. | passo 22.2 · Semana 6 · nov/2026 a dez/2026; passo 22.4 · Semana 6 · nov/2026 a dez/2026; passo 29.13 · Semanas 6 e 7 · dez/2026; passo 38.10 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [E-mail profissional (enviar e receber)](#mail) | Remoto · precisa de conta | contato@seu-dominio. O roteamento da Cloudflare só recebe; para enviar, é preciso um provedor de e-mail. | passo 30.4 · Semanas 6 e 7 · dez/2026 |
+| [Domínio (Registro.br)](#dom) | Remoto · precisa de conta | Seu domínio .com.br, registrado no seu CPF. Os nameservers apontam para a Cloudflare. | passo 30.3 · Semanas 6 e 7 · dez/2026 |
+| [Site pessoal + blog (Jekyll)](#site) | Remoto | alanmateus17.github.io: portfólio, blog e newsletter. | passo 30.7 · Semanas 6 e 7 · dez/2026; passo 39.1 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [Instituto AMS](#inst) | Remoto | Site dos cursos: páginas de venda que levam ao checkout. | passo 30.8 · Semanas 6 e 7 · dez/2026; passo 34.5 · Semanas 12 a 15 · jan a fev/2027 |
+| [Site Grupo AMtech](#amsite) | Remoto | Site institucional da empresa: serviços, sistemas AM e contato. | passo 30.9 · Semanas 6 e 7 · dez/2026 |
+| [Catálogo do HTML](#catal) | Remoto | Site didático para os alunos publicarem os próprios sites. | passo 30.9 · Semanas 6 e 7 · dez/2026; passo 39.2 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [Umami (analytics)](#umami) | Remoto · precisa de conta | Estatística de visitas sem cookies invasivos. Open source. | passo 30.11 · Semanas 6 e 7 · dez/2026 |
+| [Google Search Console](#gsc) | Remoto · precisa de conta | Mostra como o Google indexa os sites e quais buscas trazem visitas. | passo 30.12 · Semanas 6 e 7 · dez/2026 |
+| [Hostinger (clientes WP)](#hostg) | Remoto · precisa de conta | Hospedagem que você já tem. Deploy por push no GitHub (inclusive Node.js) e MCP oficial com 146 ferramentas para IAs: publicar, ligar domínio e manter WordPress pela conversa. Créditos de IA (construtor, Agent, Reach) são pagos à parte. | passo 23.2 · Semana 6 · nov/2026 a dez/2026; passo 23.4 · Semana 6 · nov/2026 a dez/2026; passo 30.13 · Semanas 6 e 7 · dez/2026; passo 39.10 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
 | [Kit de sites (Hostinger IA)](#kitsites) | Local | Pacotes, ficha do cliente, 26 prompts por tipo de negócio, conferência automática, checklist e relatório mensal. | passo 13.1 · Semanas 4 e 5 · nov/2026; passo 13.2 · Semanas 4 e 5 · nov/2026; passo 13.3 · Semanas 4 e 5 · nov/2026; passo 13.4 · Semanas 4 e 5 · nov/2026 |
 | [Avaliador de templates](#avaliador) | Local | Lê uma pasta de templates e diz qual é útil, qual adaptar e qual descartar, sem rodar código de terceiros. | passo 13.5 · Semanas 4 e 5 · nov/2026 |
+| [Klaro! (consentimento LGPD)](#klaro) | Local | Banner de consentimento aberto: Pixel da Meta, tag do Google e demais só disparam depois do aceite. O Umami não usa cookie e fica fora do banner. | passo 34.4 · Semanas 12 a 15 · jan a fev/2027 |
 
 <a id="mail"></a>
 
@@ -147,7 +151,7 @@ flowchart LR
 
 contato@seu-dominio. O roteamento da Cloudflare só recebe; para enviar, é preciso um provedor de e-mail.
 
-**Quando entra:** passo 29.4 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 30.4 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -162,7 +166,7 @@ contato@seu-dominio. O roteamento da Cloudflare só recebe; para enviar, é prec
 
 Seu domínio .com.br, registrado no seu CPF. Os nameservers apontam para a Cloudflare.
 
-**Quando entra:** passo 29.3 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 30.3 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -180,7 +184,7 @@ Seu domínio .com.br, registrado no seu CPF. Os nameservers apontam para a Cloud
 
 alanmateus17.github.io: portfólio, blog e newsletter.
 
-**Quando entra:** passo 29.7 · Semanas 6 e 7 · dez/2026; passo 38.1 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 30.7 · Semanas 6 e 7 · dez/2026; passo 39.1 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -202,7 +206,7 @@ alanmateus17.github.io: portfólio, blog e newsletter.
 
 Site dos cursos: páginas de venda que levam ao checkout.
 
-**Quando entra:** passo 29.8 · Semanas 6 e 7 · dez/2026; passo 33.4 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 30.8 · Semanas 6 e 7 · dez/2026; passo 34.5 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -234,7 +238,7 @@ Site dos cursos: páginas de venda que levam ao checkout.
 
 Site institucional da empresa: serviços, sistemas AM e contato.
 
-**Quando entra:** passo 29.9 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 30.9 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -250,7 +254,7 @@ Site institucional da empresa: serviços, sistemas AM e contato.
 
 Site didático para os alunos publicarem os próprios sites.
 
-**Quando entra:** passo 29.9 · Semanas 6 e 7 · dez/2026; passo 38.2 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 30.9 · Semanas 6 e 7 · dez/2026; passo 39.2 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -265,7 +269,7 @@ Site didático para os alunos publicarem os próprios sites.
 
 Estatística de visitas sem cookies invasivos. Open source.
 
-**Quando entra:** passo 29.11 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 30.11 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -281,7 +285,7 @@ Estatística de visitas sem cookies invasivos. Open source.
 
 Mostra como o Google indexa os sites e quais buscas trazem visitas.
 
-**Quando entra:** passo 29.12 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 30.12 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -295,7 +299,7 @@ Mostra como o Google indexa os sites e quais buscas trazem visitas.
 
 Hospedagem que você já tem. Deploy por push no GitHub (inclusive Node.js) e MCP oficial com 146 ferramentas para IAs: publicar, ligar domínio e manter WordPress pela conversa. Créditos de IA (construtor, Agent, Reach) são pagos à parte.
 
-**Quando entra:** passo 22.2 · Semana 6 · nov/2026 a dez/2026; passo 22.4 · Semana 6 · nov/2026 a dez/2026; passo 29.13 · Semanas 6 e 7 · dez/2026; passo 38.10 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 23.2 · Semana 6 · nov/2026 a dez/2026; passo 23.4 · Semana 6 · nov/2026 a dez/2026; passo 30.13 · Semanas 6 e 7 · dez/2026; passo 39.10 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -332,6 +336,21 @@ Lê uma pasta de templates e diz qual é útil, qual adaptar e qual descartar, s
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Kit de sites (Hostinger IA)](18-web.md#kitsites) | Vitrine web (sites e domínio) | templates aprovados |
+
+<a id="klaro"></a>
+
+### Klaro! (consentimento LGPD)
+
+*Local*
+
+Banner de consentimento aberto: Pixel da Meta, tag do Google e demais só disparam depois do aceite. O Umami não usa cookie e fica fora do banner.
+
+**Quando entra:** passo 34.4 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Tags de conversão (Pixel, Google…)](21-mkt.md#pixel) | Marketing, automação e medição | libera as tags com aceite |
+| → envia para | [Termos, privacidade (LGPD) e contratos](19-emp.md#legal) | Pessoa física: impostos e finanças | cumpre a política |
 
 ---
 

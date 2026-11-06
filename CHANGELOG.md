@@ -2,6 +2,21 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.11.0] - 2026-11-06
+
+### Adicionado
+- Contexto mestre da empresa solo integrado ao setup (docs/empresa-solo.md): as 88 ferramentas uma por uma (já no setup, entra ou fora), as correções ao documento e o cronograma de 14 dias reescrito nas ofertas que já existiam.
+- justfile na raiz: porta única de comandos (just check, triagem, arquiteto, arquiteto-claude, docs, ci-local, contexto-ia, medir, conversa, verificar).
+- tools/triagem/triagem.py: decide montar, colar ou construir a partir dos dados do setup, avisa o que já foi recusado, grava o rascunho do ADR e monta o pacote de contexto do arquiteto (~400 tokens). Com testes, no CI.
+- ADR 0005 (deploy em VM pelo Kamal; Coolify e Dokploy fora) e ADR 0006 (contrato no OpenAPI, Zod, Biome e Vitest só no front). Modelo de deploy em infra/templates/kamal, com segredos pelo keepassxc-cli.
+- Repo-padrão: .claude/settings.json com permissions.deny (segredos, node_modules, bin/obj, logs, lockfiles, ~/.ssh).
+- Bootstrap: just, zoxide, eza, fd, btop, hyperfine, tio, tcpdump, lazygit, lazydocker e Starship.
+- Fase Empresa solo (9 passos) e passos front-contratos, kamal-vm e klaro-lgpd. Blocos: just, terminal moderno, triagem, Repomix, act, Kamal, Zod/Biome/Vitest, Klaro!, bancada (KiCad, PulseView, tio) e analisador lógico.
+
+### Alterado
+- Decisões (fora do setup): 17 itens novos com motivo, entre eles Coolify e Dokploy, segunda stack (PocketBase, SvelteKit, Go), mise, Podman, sops/age, Forgejo agora, ferramentas de finanças que repetem o financeiro.py, o cronograma de 14 dias e SLU/Fator R agora.
+- docs/ia/tokens.md: seção "Contexto enxuto: o que o agente lê".
+
 ## [2.10.0] - 2026-11-02
 
 ### Adicionado

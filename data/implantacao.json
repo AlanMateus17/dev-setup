@@ -2012,6 +2012,125 @@
    ]
   },
   {
+   "id": "f-solo",
+   "titulo": "Empresa solo: o contexto mestre no setup",
+   "objetivo": "Trazer do contexto mestre só o que soma ao setup: porta única de comandos (just), terminal rápido, triagem antes de construir, contexto enxuto para a IA, CI local e a bancada de eletrônica. O resto foi decidido em docs/empresa-solo.md.",
+   "quando": "Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica",
+   "passos": [
+    {
+     "id": "solo-terminal",
+     "titulo": "Instalar o just e o terminal moderno pelo bootstrap",
+     "quem": "script",
+     "pronto": "just --version, zoxide, eza, fdfind, btop, hyperfine, lazygit e lazydocker respondem num terminal novo",
+     "tempo_min": 15,
+     "comando": "cd ~/dev/dev-setup && bash scripts/wsl/bootstrap.sh",
+     "blocos": [
+      "termx",
+      "just"
+     ]
+    },
+    {
+     "id": "solo-check",
+     "titulo": "Rodar o just check antes de todo commit",
+     "quem": "voce",
+     "pronto": "just check termina sem erro no notebook",
+     "tempo_min": 5,
+     "comando": "cd ~/dev/dev-setup && just check",
+     "nota": "É o mesmo portão do CI (dados, documentação gerada, testes, gitleaks e ShellCheck). Se passar aqui, passa no GitHub.",
+     "blocos": [
+      "just"
+     ]
+    },
+    {
+     "id": "solo-triagem",
+     "titulo": "Triagem antes de construir: montar, colar ou construir",
+     "quem": "voce",
+     "pronto": "Toda ideia nova sai com a opção A, B ou C; se for C, com o rascunho do ADR",
+     "tempo_min": 10,
+     "comando": "cd ~/dev/dev-setup && just triagem \"atendimento no WhatsApp com fila\" --nucleo nao",
+     "nota": "Regra das 4 horas: programando há 4 horas sem nada na tela ou teste passando, pare e rode a triagem de novo.",
+     "blocos": [
+      "triagem"
+     ]
+    },
+    {
+     "id": "solo-arquiteto",
+     "titulo": "Pedir arquitetura com o pacote de contexto, não com o repositório inteiro",
+     "quem": "claude",
+     "pronto": "A resposta usa a stack fixa, cita o que já existe e termina numa primeira fatia de até 4 horas",
+     "tempo_min": 15,
+     "comando": "cd ~/dev/dev-setup && just arquiteto \"módulo de aporte do AM Rendara\" > /tmp/pacote.md",
+     "nota": "O pacote tem cerca de 400 tokens. Cole no Claude ou use just arquiteto-claude, que manda pelo Claude Code dentro do ai-jail.",
+     "blocos": [
+      "triagem",
+      "cc"
+     ]
+    },
+    {
+     "id": "solo-repomix",
+     "titulo": "Contexto enxuto com o Repomix para colar no Claude do app",
+     "quem": "voce",
+     "pronto": "/tmp/contexto-ia.xml só com a pasta pedida e sem lockfile",
+     "tempo_min": 10,
+     "comando": "cd ~/dev/dev-setup && just contexto-ia tools/triagem",
+     "blocos": [
+      "repomix"
+     ]
+    },
+    {
+     "id": "solo-deny",
+     "titulo": "Negar ao agente a leitura de segredos e lixo (no lugar do .claudeignore)",
+     "quem": "claude",
+     "pronto": "Todo repositório em ~/dev tem .claude/settings.json com permissions.deny; o Claude Code recusa ler .env",
+     "tempo_min": 15,
+     "comando": "cd ~/dev/dev-setup && bash scripts/wsl/padronizar-repo.sh --todos",
+     "nota": "O Claude Code não usa arquivo .claudeignore: o que vale são as regras permissions.deny. O modelo está em infra/templates/repo-padrao/.claude/settings.json.",
+     "blocos": [
+      "kit",
+      "jail"
+     ]
+    },
+    {
+     "id": "solo-act",
+     "titulo": "Rodar o CI do GitHub Actions na sua máquina antes do push",
+     "quem": "voce",
+     "pronto": "just ci-local passa o job check",
+     "tempo_min": 20,
+     "comando": "gh extension install nektos/gh-act && cd ~/dev/dev-setup && just ci-local",
+     "nota": "Precisa do Docker no WSL. Na primeira vez o act pergunta o tamanho da imagem: escolha Medium.",
+     "blocos": [
+      "act"
+     ]
+    },
+    {
+     "id": "solo-kicad",
+     "titulo": "Instalar o KiCad e desenhar a placa do sensor do projeto agro",
+     "quem": "voce",
+     "pronto": "Esquemático e placa do sensor de umidade com a BOM interativa gerada",
+     "tempo_min": 120,
+     "comando": "winget install --id KiCad.KiCad -e",
+     "nota": "Rode no PowerShell do Windows. O PulseView vem do site do sigrok; o InteractiveHtmlBom entra pelo gerenciador de plugins do KiCad; o tio já vem no bootstrap. Cada placa vira um repositório em ~/dev (ex.: ~/dev/sensor-agro), com git lfs track para os arquivos grandes.",
+     "blocos": [
+      "kicad"
+     ]
+    },
+    {
+     "id": "solo-analisador",
+     "titulo": "Comprar o analisador lógico e decodificar o I2C do sensor no PulseView",
+     "quem": "voce",
+     "pronto": "O PulseView mostra os bytes que o sensor manda ao ESP32",
+     "tempo_min": 60,
+     "precisa": [
+      "compra"
+     ],
+     "fora": "Compra de R$ 40 a R$ 80. Entra na cascata de compras, depois da primeira renda de TI (docs/operacao/08-financiar-o-setup.md).",
+     "blocos": [
+      "analog"
+     ]
+    }
+   ]
+  },
+  {
    "id": "f-ia-elite",
    "titulo": "Agentes e IA com qualidade medida",
    "objetivo": "Todo agente passa pelo gateway, tem testes e um revisor antes de chegar ao cliente.",
@@ -3451,6 +3570,17 @@
      ]
     },
     {
+     "id": "klaro-lgpd",
+     "titulo": "Banner de consentimento (Klaro!) antes de ligar o Pixel",
+     "quem": "claude",
+     "pronto": "Pixel e tags só disparam depois do aceite; o Umami segue sem banner",
+     "tempo_min": 45,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo klaro-lgpd do roteiro: Banner de consentimento (Klaro!) antes de ligar o Pixel\"",
+     "blocos": [
+      "klaro"
+     ]
+    },
+    {
      "id": "mc-pagina",
      "titulo": "Página de vendas no Instituto AMS: promessa, conteúdo, preço e garantia",
      "quem": "claude",
@@ -3647,6 +3777,18 @@
      "blocos": [
       "recr"
      ]
+    },
+    {
+     "id": "front-contratos",
+     "titulo": "Zod, Biome e Vitest no front do modelo Aura",
+     "quem": "claude",
+     "pronto": "O front recusa resposta fora do contrato no teste e o just check do sistema roda Biome e Vitest",
+     "tempo_min": 60,
+     "comando": "cd ~/dev/dev-setup && claude \"Passo front-contratos do roteiro: Zod, Biome e Vitest no front do modelo Aura\"",
+     "nota": "O contrato do backend é o OpenAPI; o Zod fica só no front (ADR 0006).",
+     "blocos": [
+      "zod"
+     ]
     }
    ],
    "quando": "Junto dos Passos 4 a 6 da trilha de estudo (≈ mar a jun/2027): o modelo nasce no Passo 4 (API e login) e ganha testes e qualidade no Passo 6"
@@ -3737,6 +3879,18 @@
      "comando": "cd ~/dev/dev-setup && claude \"Passo aura-status do roteiro: Criar o aura-status: painel de repositórios, backup e Dependabot\"",
      "blocos": [
       "status"
+     ]
+    },
+    {
+     "id": "kamal-vm",
+     "titulo": "Deploy do sistema exemplo na VM pelo Kamal, com rollback",
+     "quem": "claude",
+     "pronto": "kamal deploy troca a versão sem queda e kamal rollback volta para a anterior",
+     "tempo_min": 90,
+     "comando": "docker run --rm ghcr.io/basecamp/kamal:latest version",
+     "nota": "Modelo em infra/templates/kamal e decisão no ADR 0005. O Azure por Terraform segue na trilha de estudo.",
+     "blocos": [
+      "kamal"
      ]
     }
    ],

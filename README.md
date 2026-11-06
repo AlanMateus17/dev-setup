@@ -8,12 +8,13 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 
 | Camadas | Blocos | Conexões | Fluxos | Contas necessárias |
 |---|---|---|---|---|
-| 23 | 415 | 740 | 22 | 111 |
+| 23 | 425 | 762 | 22 | 111 |
 
 ## Por onde começar
 
 - **Continuar numa conversa nova com o Claude**: cole o [CONTINUAR.md](CONTINUAR.md) (ou `python3 tools/sessao/contexto.py --inicio | clip.exe`) e diga qual passo vai fazer. As decisões recentes ficam no [ESTADO.md](ESTADO.md).
 - **Comece aqui, no Windows**: extraia o zip, entre na pasta que tem `RODAR-DIAGNOSTICO.cmd` e clique com o botão direito nele > Executar como administrador. Ele só lê o notebook e diz por qual passo do roteiro começar.
+- **No Ubuntu, um comando só**: `cd ~/dev/dev-setup && just` lista tudo; `just check` antes de cada commit e `just triagem "o que você quer"` antes de construir algo novo. Ver [Empresa solo](docs/empresa-solo.md).
 - **[Arquitetura](docs/arquitetura.md)**: a pilha inteira, camada por camada, com o diagrama de cada uma.
 - **[Fluxos de ponta a ponta](docs/fluxos.md)**: codar com agente e publicar, vender um curso, publicar automaticamente, medir uma campanha e outros.
 - **[Editora AMS Silva](docs/editora/README.md)**: livros produzidos como software, com código testado, gabaritos conferidos e PDF, EPUB e impressão gerados da mesma fonte.
@@ -88,29 +89,29 @@ O Windows cuida só do que precisa de janela, GPU e segurança; todo o trabalho 
 
 | # | Camada | Blocos | Destaques |
 |---|---|---|---|
-| 23 | [Operação do grupo (esteira, marca, qualidade)](docs/camadas/23-oper.md) | 27 | Portfólio de ofertas, Esteira de ofertas, Padrão de qualidade, Marca pessoal Alan Mateus… |
+| 23 | [Operação do grupo (esteira, marca, qualidade)](docs/camadas/23-oper.md) | 28 | Portfólio de ofertas, Esteira de ofertas, Padrão de qualidade, Marca pessoal Alan Mateus… |
 | 22 | [Público e canais](docs/camadas/22-pub.md) | 12 | Meta Business Suite, Instagram, YouTube, LinkedIn… |
 | 21 | [Marketing, automação e medição](docs/camadas/21-mkt.md) | 28 | Meta Ads (Instagram, Facebook), Isca grátis + sequência de e-mails, MailerLite, Postiz (agendador)… |
 | 20 | [Plataformas de venda e recebimento](docs/camadas/20-venda.md) | 13 | Pix Automático + gateway (ex.: Asaas), Agenda online (Cal.com), CRM simples (planilha), Hotmart… |
 | 19 | [Pessoa física: impostos e finanças](docs/camadas/19-emp.md) | 14 | Registro de marca (INPI), Termos, privacidade (LGPD) e contratos, Certificado digital (e-CNPJ), API de NFS-e (ex.: Focus NFe)… |
-| 18 | [Vitrine web (sites e domínio)](docs/camadas/18-web.md) | 11 | E-mail profissional (enviar e receber), Domínio (Registro.br), Site pessoal + blog (Jekyll), Instituto AMS… |
+| 18 | [Vitrine web (sites e domínio)](docs/camadas/18-web.md) | 12 | E-mail profissional (enviar e receber), Domínio (Registro.br), Site pessoal + blog (Jekyll), Instituto AMS… |
 | 17 | [Produtos (o que você vende)](docs/camadas/17-prod.md) | 8 | Mini-curso Lógica de Programação, Formações (TI, Matemática, Finanças), Templates e código-fonte, Livro Lógica e Máquina… |
 | 16 | [Negócios do grupo (Barbacena)](docs/camadas/16-neg.md) | 18 | AMtech Software (projetos e SaaS), Loja AMtech (assistência), Peças sem estoque (sob encomenda), Ponto de retirada (Shopee e ML)… |
 | 15 | [Editora AMS Silva (produção de livros)](docs/camadas/15-editora.md) | 36 | Selo Editora AMS Silva, Repositório do livro, Seu modelo de criação, Fonte única (Markdown + Pandoc)… |
 | 14 | [Estudo e carreira](docs/camadas/14-est.md) | 14 | Microsoft Learn + AWS Skill Builder, TryHackMe / Hack The Box, Alura · Rocketseat · DIO · Udemy, Anki… |
 | 13 | [Produção de conteúdo](docs/camadas/13-cont.md) | 8 | OBS Studio, DaVinci Resolve ou Kdenlive, Audacity, Canva · Krita · Inkscape… |
-| 12 | [Nuvem, código e entrega](docs/camadas/12-nuvem.md) | 22 | Armazenamento de arquivos (Blob/R2), E-mail transacional (Resend, SES…), SonarQube Cloud, Projects · ADRs · MkDocs… |
-| 11 | [Aplicação: sistemas AM (Aura)](docs/camadas/11-app.md) | 19 | OpenAPI + Scalar, PostGIS + MapLibre, Storybook, Clean Arch + DDD… |
+| 12 | [Nuvem, código e entrega](docs/camadas/12-nuvem.md) | 24 | Armazenamento de arquivos (Blob/R2), E-mail transacional (Resend, SES…), SonarQube Cloud, Projects · ADRs · MkDocs… |
+| 11 | [Aplicação: sistemas AM (Aura)](docs/camadas/11-app.md) | 20 | OpenAPI + Scalar, PostGIS + MapLibre, Storybook, Clean Arch + DDD… |
 | 10 | [Observabilidade](docs/camadas/10-obs.md) | 8 | Sentry (erros), Uptime Kuma, Seq (logs), Loki + Tempo… |
 | 09 | [Containers, Kubernetes e infra como código](docs/camadas/09-cnt.md) | 16 | Caddy (proxy + HTTPS), Mailpit, Kafka, kubectl · Helm · k9s… |
 | 08 | [Claude: recursos, conectores e plugins](docs/camadas/08-clc.md) | 19 | Projects + memória, Artifacts (Docs, Slides, Sheets…), Pesquisa aprofundada, Tarefas agendadas… |
 | 07 | [Assistentes de IA (chat, pesquisa e estudo)](docs/camadas/07-chat.md) | 10 | Claude (app), ChatGPT, Gemini (pago), NotebookLM… |
 | 06 | [Dados e treino de IA](docs/camadas/06-dados.md) | 22 | Python de dados (Polars, Jupyter), DuckDB + Parquet, dbt Core, Airflow (orquestração)… |
-| 05 | [Agentes de IA e sandbox](docs/camadas/05-ia.md) | 22 | Modelos locais: Qwen · Gemma · Llama, Base de conhecimento (RAG) das suas notas, Claude Code, ai-jail… |
-| 04 | [Linux (Ubuntu no WSL2, Arch no 2º disco)](docs/camadas/04-lin.md) | 13 | Neovim, nmap · dig · curl, Ubuntu (WSL2), Git + SSH + gh… |
-| 03 | [Windows 11, apps e máquinas virtuais](docs/camadas/03-win.md) | 29 | Tailscale (VPN), .wslconfig + localhost, Terminal · PowerShell · winget, Excalidraw / draw.io… |
+| 05 | [Agentes de IA e sandbox](docs/camadas/05-ia.md) | 23 | Modelos locais: Qwen · Gemma · Llama, Base de conhecimento (RAG) das suas notas, Claude Code, ai-jail… |
+| 04 | [Linux (Ubuntu no WSL2, Arch no 2º disco)](docs/camadas/04-lin.md) | 15 | Neovim, nmap · dig · curl, Ubuntu (WSL2), Git + SSH + gh… |
+| 03 | [Windows 11, apps e máquinas virtuais](docs/camadas/03-win.md) | 30 | Tailscale (VPN), .wslconfig + localhost, Terminal · PowerShell · winget, Excalidraw / draw.io… |
 | 02 | [Segurança e cofre](docs/camadas/02-seg.md) | 21 | Commits assinados (chave SSH), restic (backup criptografado), Chave física (YubiKey), TPM + Secure Boot… |
-| 01 | [Hardware](docs/camadas/01-hw.md) | 25 | Nobreak, Base com cooler, SSD SATA 2,5", Acer Nitro (32 GB, GTX 1650)… |
+| 01 | [Hardware](docs/camadas/01-hw.md) | 26 | Nobreak, Base com cooler, SSD SATA 2,5", Acer Nitro (32 GB, GTX 1650)… |
 
 ## Stack fixa dos sistemas
 
@@ -159,7 +160,9 @@ infra/lab-seguranca/  laboratório de ataque local (Juice Shop, WebGoat) presos 
 infra/lab-alvo/       alvo isolado sem internet: o software que você estudou contra o atacante
 infra/jarvis/         voz local (Whisper, Piper, openWakeWord), MQTT, Zigbee2MQTT e Frigate
 config/marca.md       guia de marca usado pelo pipeline de conteúdo
+infra/templates/     repositório padrão, deploy com Kamal, esteira de sites, regras da IA e segurança
 tools/                geradores, motor financeiro, pipeline de conteúdo e templates
+justfile              porta única de comandos (check, triagem, arquiteto, docs, ci-local)
 ```
 
 ## Status

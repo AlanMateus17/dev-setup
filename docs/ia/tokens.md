@@ -77,12 +77,24 @@ A economia é a mesma nos três casos, porque o que conta é o texto que chega a
 - **Escrito:** frases curtas e diretas; o pacote de contexto entra no lugar de colar histórico.
 - **Arquivo (foto, PDF, planta):** o setup extrai local (Docling, Whisper, `ifc_resumo.py`) e manda ao Claude só o resumo, não o arquivo inteiro.
 
+## Contexto enxuto: o que o agente lê
+
+A regra nº 4 (buscar, não colar) também vale para o próprio repositório. Quatro travas, todas grátis:
+
+1. **O agente não lê lixo nem segredo.** Em todo repositório, `.claude/settings.json` com `permissions.deny` (modelo em `infra/templates/repo-padrao`): `node_modules`, `bin/obj`, lockfiles, logs, `.env` e `~/.ssh`. O Claude Code não usa arquivo `.claudeignore`; é essa regra que vale.
+2. **Pacote de arquitetura em vez de "leia o repositório".** `just arquiteto "o pedido"` monta em cerca de 400 tokens a stack fixa, as regras, o que já existe e o que foi recusado. O Claude não precisa descobrir isso lendo tudo.
+3. **Só a pasta que importa, comprimida.** Para colar no Claude do app: `just contexto-ia caminho/da/pasta` (Repomix com `--compress`, que guarda só assinaturas e tipos).
+4. **Resposta seca.** O pacote já pede a resposta sem saudação nem resumo; token de saída custa mais que o de entrada.
+
+Versão de modelo não se escreve em documento: fica no gateway LiteLLM e em [custos.md](../custos.md), porque muda a cada poucos meses.
+
 ## Ferramentas
 
 ```bash
 python3 ~/dev/dev-setup/tools/ia/tokens.py rota "revisar a arquitetura do AM Kaixara"   # qual IA usar
 python3 ~/dev/dev-setup/tools/ia/tokens.py tamanho aula.md                               # estima os tokens
 python3 ~/dev/dev-setup/tools/ia/cabe.py 32                                              # cabe um modelo local?
+just arquiteto "módulo de aporte do AM Rendara"                                          # pacote curto para o Claude
 ```
 
 O teto de gasto real fica no gateway LiteLLM (`infra/ia`) e no ai-usagebar; a tabela de rotas por tarefa está em [recursos.md](../recursos.md) e em [custos.md](../custos.md). A regra nº 1 — pedir o script, não o resultado — vale para todo agente do setup e está nas regras da IA.

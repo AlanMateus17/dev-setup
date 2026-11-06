@@ -7,7 +7,7 @@
 
 > **Ligação com a camada de baixo:** O código fica no ext4 do Linux; o Windows enxerga pela ponte do WSL2.
 
-**13 blocos** · 0 precisam de conta · 3 marcados como futuro
+**15 blocos** · 0 precisam de conta · 3 marcados como futuro
 
 ## Mapa de conexões
 
@@ -27,9 +27,12 @@ flowchart LR
     n_adguard["AdGuard Home (DNS)"]
     n_wireguard["WireGuard (na mão)"]
     n_ros2["ROS 2 + ponte MQTT"]
+    n_just["just (porta única de comandos)"]
+    n_termx["Terminal moderno (zoxide, eza, fd…)"]
   end
   subgraph L_oper["Operação do grupo (esteira, marca, qualidade)"]
     n_overif["Verificadores"]
+    n_triagem["Triagem: montar, colar ou construir"]
   end
   subgraph L_mkt["Marketing, automação e medição"]
     n_tg["Telegram (avisos)"]
@@ -39,6 +42,7 @@ flowchart LR
   end
   subgraph L_nuvem["Nuvem, código e entrega"]
     n_gh["GitHub"]
+    n_gha["GitHub Actions"]
     n_repopadrao["Repositório padrão"]
   end
   subgraph L_app["Aplicação: sistemas AM (Aura)"]
@@ -56,6 +60,7 @@ flowchart LR
   subgraph L_ia["Agentes de IA e sandbox"]
     n_cc["Claude Code"]
     n_jail["ai-jail"]
+    n_repomix["Repomix (contexto enxuto para IA)"]
   end
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
     n_boot["Gerenciador de boot"]
@@ -87,6 +92,8 @@ flowchart LR
   n_wslcfg -->|"limite de RAM"| n_wsl
   n_wterm -->|"abre o Ubuntu"| n_wsl
   n_overif -->|"confere"| n_wsl
+  n_just -->|"roda no Ubuntu"| n_wsl
+  n_termx -->|"instalado no Ubuntu"| n_wsl
   n_git -->|"push via SSH"| n_gh
   n_sec -->|"pre-commit"| n_git
   n_status -->|"git status"| n_git
@@ -106,27 +113,32 @@ flowchart LR
   n_wireguard -->|"base de"| n_tail
   n_ros2 -->|"ponte"| n_mqtt
   n_rob -->|"Raspberry Pi"| n_ros2
+  n_just -->|"just triagem e just arquiteto"| n_triagem
+  n_just -->|"o mesmo portão do CI"| n_gha
+  n_just -->|"just contexto-ia"| n_repomix
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
-  class n_nvim,n_netw,n_wsl,n_git,n_rt,n_tex,n_sec,n_dot,n_arch,n_rotinas,n_adguard,n_wireguard,n_ros2 desta
+  class n_nvim,n_netw,n_wsl,n_git,n_rt,n_tex,n_sec,n_dot,n_arch,n_rotinas,n_adguard,n_wireguard,n_ros2,n_just,n_termx desta
 ```
 
 ## Blocos
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Neovim](#nvim) | Local · futuro | Editor de terminal da trilha Arch e Akita. Aprender aos poucos; não substitui o VS Code no começo. | passo 40.2 · 2027, conforme cada compra |
-| [nmap · dig · curl](#netw) | Local | Diagnóstico de rede no Ubuntu: portas, DNS e requisições HTTP. Instalados pelo bootstrap.sh. | passo 4.4 · Semana 2 · nov/2026 |
+| [Neovim](#nvim) | Local · futuro | Editor de terminal da trilha Arch e Akita. Aprender aos poucos; não substitui o VS Code no começo. | passo 41.2 · 2027, conforme cada compra |
+| [nmap · dig · curl](#netw) | Local | Diagnóstico de rede no Ubuntu: portas, DNS, requisições HTTP e captura de pacotes (tcpdump). Instalados pelo bootstrap.sh. | passo 4.4 · Semana 2 · nov/2026 |
 | [Ubuntu (WSL2)](#wsl) | Local | Onde o código vive e roda. | passo 4.1 · Semana 2 · nov/2026; passo 4.5 · Semana 2 · nov/2026 |
 | [Git + SSH + gh](#git) | Local | Versionamento e acesso ao GitHub. | passo 4.4 · Semana 2 · nov/2026; passo 4.6 · Semana 2 · nov/2026 |
 | [.NET 10 · Node · Python](#rt) | Local | Runtimes das APIs, do front e dos scripts. | passo 4.4 · Semana 2 · nov/2026 |
 | [TeX Live](#tex) | Local | Compila o livro e as apostilas. | passo 4.4 · Semana 2 · nov/2026 |
 | [gitleaks · Trivy](#sec) | Local | Barra senha no commit e acha vulnerabilidades em imagens. | passo 4.4 · Semana 2 · nov/2026; passo 20.2 · Semana 5 · nov/2026; passo 20.3 · Semana 5 · nov/2026 |
 | [dotfiles](#dot) | Local | Configuração versionada do ambiente. | passo 4.7 · Semana 2 · nov/2026 |
-| [Arch + Omarchy (2º NVMe)](#arch) | Local · futuro | Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portátil em pendrive ou SSD USB. | passo 40.1 · 2027, conforme cada compra |
+| [Arch + Omarchy (2º NVMe)](#arch) | Local · futuro | Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portátil em pendrive ou SSD USB. | passo 41.1 · 2027, conforme cada compra |
 | [Rotinas agendadas](#rotinas) | Local | Resumo da manhã no Telegram e manutenção semanal, pelo cron do Ubuntu. | passo 17.3 · Semana 4 · nov/2026; passo 17.4 · Semana 4 · nov/2026; passo 17.5 · Semana 4 · nov/2026 |
-| [AdGuard Home (DNS)](#adguard) | Local | DNS da casa com bloqueio de anúncios e rastreadores, também pelo Tailscale. | passo 24.4 · Semana 6 · nov/2026 |
-| [WireGuard (na mão)](#wireguard) | Local | Túnel montado à mão entre duas máquinas, para entender o que o Tailscale faz. | passo 24.6 · Semana 6 · nov/2026 |
-| [ROS 2 + ponte MQTT](#ros2) | Local · futuro | Robôs no Raspberry Pi com ROS 2; o mqtt_client leva os tópicos para o MQTT e o Home Assistant manda e recebe comandos. | passo 51.10 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| [AdGuard Home (DNS)](#adguard) | Local | DNS da casa com bloqueio de anúncios e rastreadores, também pelo Tailscale. | passo 25.4 · Semana 6 · nov/2026 |
+| [WireGuard (na mão)](#wireguard) | Local | Túnel montado à mão entre duas máquinas, para entender o que o Tailscale faz. | passo 25.6 · Semana 6 · nov/2026 |
+| [ROS 2 + ponte MQTT](#ros2) | Local · futuro | Robôs no Raspberry Pi com ROS 2; o mqtt_client leva os tópicos para o MQTT e o Home Assistant manda e recebe comandos. | passo 52.10 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| [just (porta única de comandos)](#just) | Local | O justfile na raiz do repositório junta os comandos do setup: just check (o mesmo portão do CI), just triagem, just arquiteto, just docs, just medir. Binário único, instalado pelo bootstrap.sh. | passo 21.1 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; passo 21.2 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
+| [Terminal moderno (zoxide, eza, fd…)](#termx) | Local | zoxide (cd que aprende), eza (ls), fd (find), btop (monitor), hyperfine (benchmark), lazygit, lazydocker e o prompt Starship. Binários únicos, instalados pelo bootstrap.sh; ripgrep, fzf e tmux já vinham; tcpdump entra junto. | passo 21.1 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
 
 <a id="nvim"></a>
 
@@ -136,7 +148,7 @@ flowchart LR
 
 Editor de terminal da trilha Arch e Akita. Aprender aos poucos; não substitui o VS Code no começo.
 
-**Quando entra:** passo 40.2 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 41.2 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -148,7 +160,7 @@ Editor de terminal da trilha Arch e Akita. Aprender aos poucos; não substitui o
 
 *Local*
 
-Diagnóstico de rede no Ubuntu: portas, DNS e requisições HTTP. Instalados pelo bootstrap.sh.
+Diagnóstico de rede no Ubuntu: portas, DNS, requisições HTTP e captura de pacotes (tcpdump). Instalados pelo bootstrap.sh.
 
 **Quando entra:** passo 4.4 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
@@ -180,6 +192,8 @@ Onde o código vive e roda.
 | ← recebe de | [.wslconfig + localhost](03-win.md#wslcfg) | Windows 11, apps e máquinas virtuais | limite de RAM |
 | ← recebe de | [Terminal · PowerShell · winget](03-win.md#wterm) | Windows 11, apps e máquinas virtuais | abre o Ubuntu |
 | ← recebe de | [Verificadores](23-oper.md#overif) | Operação do grupo (esteira, marca, qualidade) | confere |
+| ← recebe de | [just (porta única de comandos)](04-lin.md#just) | Linux (Ubuntu no WSL2, Arch no 2º disco) | roda no Ubuntu |
+| ← recebe de | [Terminal moderno (zoxide, eza, fd…)](04-lin.md#termx) | Linux (Ubuntu no WSL2, Arch no 2º disco) | instalado no Ubuntu |
 
 <a id="git"></a>
 
@@ -268,7 +282,7 @@ Configuração versionada do ambiente.
 
 Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portátil em pendrive ou SSD USB.
 
-**Quando entra:** passo 40.1 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 41.1 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -299,7 +313,7 @@ Resumo da manhã no Telegram e manutenção semanal, pelo cron do Ubuntu.
 
 DNS da casa com bloqueio de anúncios e rastreadores, também pelo Tailscale.
 
-**Quando entra:** passo 24.4 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 25.4 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -313,7 +327,7 @@ DNS da casa com bloqueio de anúncios e rastreadores, também pelo Tailscale.
 
 Túnel montado à mão entre duas máquinas, para entender o que o Tailscale faz.
 
-**Quando entra:** passo 24.6 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 25.6 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -327,12 +341,43 @@ Túnel montado à mão entre duas máquinas, para entender o que o Tailscale faz
 
 Robôs no Raspberry Pi com ROS 2; o mqtt_client leva os tópicos para o MQTT e o Home Assistant manda e recebe comandos.
 
-**Quando entra:** passo 51.10 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 52.10 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Mosquitto (MQTT)](09-cnt.md#mqtt) | Containers, Kubernetes e infra como código | ponte |
 | ← recebe de | [Arduino · ESP32 · Pi](01-hw.md#rob) | Hardware | Raspberry Pi |
+
+<a id="just"></a>
+
+### just (porta única de comandos)
+
+*Local*
+
+O justfile na raiz do repositório junta os comandos do setup: just check (o mesmo portão do CI), just triagem, just arquiteto, just docs, just medir. Binário único, instalado pelo bootstrap.sh.
+
+**Quando entra:** passo 21.1 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; passo 21.2 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Triagem: montar, colar ou construir](23-oper.md#triagem) | Operação do grupo (esteira, marca, qualidade) | just triagem e just arquiteto |
+| → envia para | [GitHub Actions](12-nuvem.md#gha) | Nuvem, código e entrega | o mesmo portão do CI |
+| → envia para | [Repomix (contexto enxuto para IA)](05-ia.md#repomix) | Agentes de IA e sandbox | just contexto-ia |
+| → envia para | [Ubuntu (WSL2)](04-lin.md#wsl) | Linux (Ubuntu no WSL2, Arch no 2º disco) | roda no Ubuntu |
+
+<a id="termx"></a>
+
+### Terminal moderno (zoxide, eza, fd…)
+
+*Local*
+
+zoxide (cd que aprende), eza (ls), fd (find), btop (monitor), hyperfine (benchmark), lazygit, lazydocker e o prompt Starship. Binários únicos, instalados pelo bootstrap.sh; ripgrep, fzf e tmux já vinham; tcpdump entra junto.
+
+**Quando entra:** passo 21.1 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
+
+| Direção | Bloco | Camada | O que passa |
+|---|---|---|---|
+| → envia para | [Ubuntu (WSL2)](04-lin.md#wsl) | Linux (Ubuntu no WSL2, Arch no 2º disco) | instalado no Ubuntu |
 
 ---
 
