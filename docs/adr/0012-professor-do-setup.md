@@ -15,6 +15,7 @@ O Alan quer que o setup seja o professor mais qualificado possível em tudo o qu
 4. **Token econômico:** a aula é gerada uma vez e fica no Obsidian; reler é grátis. O Claude escreve e corrige (é o melhor professor disponível); o Ollama é a opção grátis, mais fraca para ensinar.
 5. **Contexto real:** cada aula recebe o resumo do setup e o que o núcleo já sabe sobre o assunto (ADRs, regras do Akita aprovadas, lições), para ensinar o setup dele, não um genérico.
 6. **Exceção ao congelamento do ADR 0011:** o Professor não abre área nova; ele serve ao eixo e à operação do que já existe.
+7. **O método junta a ciência e os planos do Alan** (docs/professor/metodo.md): o Protocolo de fim de bloco, a mesma ideia de 4 jeitos, a ficha dupla e o registro de entrevista (do metodo-de-estudo.md do vault), os exercícios N1 a N4 e o gabarito comentado (da arquitetura do livro Lógica e Máquina), os quadros das apostilas dele, a regra 20/80 e uma porta só (`just professor hoje`). A correção guarda os pontos fracos para a prática deliberada, e o `fechar` guarda o tempo real contra o estimado.
 
 ## Limites (ditos com franqueza)
 

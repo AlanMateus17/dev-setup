@@ -25,7 +25,9 @@
    ],
    "blocos": [
     "wsl"
-   ]
+   ],
+   "profundidade": "usar",
+   "estimado_min": 75
   },
   {
    "id": "s-git",
@@ -48,7 +50,9 @@
    "blocos": [
     "git",
     "gh"
-   ]
+   ],
+   "profundidade": "usar",
+   "estimado_min": 75
   },
   {
    "id": "s-just",
@@ -69,7 +73,9 @@
    ],
    "blocos": [
     "just"
-   ]
+   ],
+   "profundidade": "usar",
+   "estimado_min": 75
   },
   {
    "id": "s-backup",
@@ -90,7 +96,9 @@
    ],
    "blocos": [
     "restic"
-   ]
+   ],
+   "profundidade": "a-fundo",
+   "estimado_min": 75
   },
   {
    "id": "s-segredos",
@@ -114,7 +122,9 @@
    "blocos": [
     "kee",
     "age"
-   ]
+   ],
+   "profundidade": "a-fundo",
+   "estimado_min": 75
   },
   {
    "id": "s-docker",
@@ -136,7 +146,9 @@
    ],
    "blocos": [
     "docker"
-   ]
+   ],
+   "profundidade": "usar",
+   "estimado_min": 75
   },
   {
    "id": "s-ia-segura",
@@ -160,7 +172,9 @@
     "cc",
     "jail",
     "triagem"
-   ]
+   ],
+   "profundidade": "a-fundo",
+   "estimado_min": 75
   },
   {
    "id": "s-nucleo",
@@ -182,7 +196,9 @@
    ],
    "blocos": [
     "nucleo"
-   ]
+   ],
+   "profundidade": "usar",
+   "estimado_min": 75
   },
   {
    "id": "s-ci",
@@ -203,7 +219,9 @@
    ],
    "blocos": [
     "gha"
-   ]
+   ],
+   "profundidade": "usar",
+   "estimado_min": 75
   },
   {
    "id": "s-deploy",
@@ -226,7 +244,9 @@
    "blocos": [
     "kamal",
     "hostg"
-   ]
+   ],
+   "profundidade": "usar",
+   "estimado_min": 75
   },
   {
    "id": "o-csharp",
@@ -245,7 +265,9 @@
    ],
    "blocos": [
     "rt"
-   ]
+   ],
+   "profundidade": "a-fundo",
+   "estimado_min": 75
   },
   {
    "id": "o-dotnet",
@@ -268,7 +290,9 @@
    "blocos": [
     "rt",
     "api"
-   ]
+   ],
+   "profundidade": "usar",
+   "estimado_min": 75
   },
   {
    "id": "o-sql",
@@ -289,7 +313,9 @@
    ],
    "blocos": [
     "pg"
-   ]
+   ],
+   "profundidade": "a-fundo",
+   "estimado_min": 75
   },
   {
    "id": "o-astro",
@@ -310,7 +336,9 @@
    ],
    "blocos": [
     "astro"
-   ]
+   ],
+   "profundidade": "usar",
+   "estimado_min": 75
   },
   {
    "id": "f-caixa-competencia",
@@ -329,7 +357,9 @@
    ],
    "blocos": [
     "caixa"
-   ]
+   ],
+   "profundidade": "a-fundo",
+   "estimado_min": 75
   },
   {
    "id": "f-fluxo-caixa",
@@ -350,7 +380,9 @@
    ],
    "blocos": [
     "caixa"
-   ]
+   ],
+   "profundidade": "a-fundo",
+   "estimado_min": 75
   },
   {
    "id": "f-dre",
@@ -371,7 +403,9 @@
    ],
    "blocos": [
     "caixa"
-   ]
+   ],
+   "profundidade": "usar",
+   "estimado_min": 75
   },
   {
    "id": "f-carne-leao",
@@ -393,7 +427,9 @@
    "blocos": [
     "nfse",
     "govbr"
-   ]
+   ],
+   "profundidade": "usar",
+   "estimado_min": 75
   },
   {
    "id": "f-preco",
@@ -414,7 +450,9 @@
    ],
    "blocos": [
     "kitsites"
-   ]
+   ],
+   "profundidade": "a-fundo",
+   "estimado_min": 75
   }
  ]
 }

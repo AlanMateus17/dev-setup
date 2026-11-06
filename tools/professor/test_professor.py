@@ -53,6 +53,13 @@ class TestProfessor(unittest.TestCase):
         with self.assertRaises(ValueError):
             professor.nota_da_correcao("sem nota")
 
+    def test_pontos_fracos_viram_pratica_deliberada(self):
+        texto = 'Q1 parcial\n{"nota": 70, "revisar": ["prune", "retenção"]}'
+        self.assertEqual(professor.fracos_da_correcao(texto), ["prune", "retenção"])
+        nuc.evento(self.con, "professor.prova", {"modulo": "a", "nota": 70, "revisar": ["prune"]}, fonte="t")
+        nuc.evento(self.con, "professor.prova", {"modulo": "b", "nota": 100, "revisar": []}, fonte="t")
+        self.assertEqual(professor.pontos_fracos(self.con), {"a": ["prune"]})
+
     def test_curriculo_real_coerente(self):
         cur = professor.curriculo()
         ids = [m["id"] for m in cur["modulos"]]

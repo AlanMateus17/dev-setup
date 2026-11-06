@@ -2802,6 +2802,19 @@
      ]
     },
     {
+     "id": "prof-carga",
+     "titulo": "Decidir a carga real de estudo: calibrar em 2 h por dia (plano do vault) ou em 4 h (plano do eixo)",
+     "quem": "voce",
+     "pronto": "Carga decidida depois de 2 semanas medindo com just professor fechar; critérios do trimestre ajustados se preciso",
+     "tempo_min": 15,
+     "comando": "cd ~/dev/dev-setup && less docs/professor/metodo.md",
+     "decisao": true,
+     "nota": "O plano do vault (out/2026) dizia: calibre em 2 h e trate as 4 h como bônus, para a meta inflada não virar dívida de atraso.",
+     "blocos": [
+      "professor"
+     ]
+    },
+    {
      "id": "prof-hoje",
      "titulo": "Estudar pelo Professor todo dia: revisões primeiro, depois a próxima aula de cada trilha",
      "quem": "voce",

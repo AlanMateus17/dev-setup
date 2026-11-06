@@ -2,6 +2,13 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.19.0] - 2026-11-06
+
+### Adicionado
+- docs/professor/metodo.md: o método do Professor, juntando a ciência cognitiva e as metodologias das conversas anteriores (Protocolo de fim de bloco, a mesma ideia de 4 jeitos, ficha dupla e registro de entrevista, exercícios N1 a N4 com gabarito comentado, quadros das apostilas, 20/80, profundidade e velocidade calibradas, uma porta só).
+- A aula gerada segue o método novo; `just professor fechar ID MINUTOS` roda o protocolo e cria a ficha dupla e o registro de entrevista; a correção guarda os pontos fracos e o `hoje` mostra onde fazer a prática deliberada; módulos com profundidade ("usar" ou "a fundo") e tempo estimado.
+- Aula-modelo com exercícios N1 a N4 e gabarito; decisão nova no roteiro: carga de 2 h ou 4 h por dia.
+
 ## [2.18.0] - 2026-11-06
 
 ### Adicionado

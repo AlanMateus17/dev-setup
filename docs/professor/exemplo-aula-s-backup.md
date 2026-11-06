@@ -78,6 +78,26 @@ Situação: você quer o `justfile` como ele estava há uma semana. Complete as 
 3. `restic restore ___ --target ___ --include "$HOME/dev/dev-setup/___"`
 4. Compare com o atual: `diff ___ ~/dev/dev-setup/justfile`
 
+## Exercícios em 4 níveis
+
+**N1 · Reconhecimento**
+1. Qual comando lista os snapshots?
+2. Verdadeiro ou falso: o restic grava de novo o arquivo inteiro a cada noite.
+3. Em que pasta fica a configuração do seu backup?
+
+**N2 · Aplicação direta**
+4. Escreva o comando que restaura só o `justfile` do snapshot mais recente para `/tmp/j`.
+5. Escreva o comando que mostra quanto espaço o repositório ocupa.
+
+**N3 · Aplicação combinada e "encontre o erro"**
+6. Encontre o erro: `restic restore latest --target ~/dev/dev-setup`.
+7. Você criou a pasta `~/clientes` ontem e o arquivo de lá sumiu hoje. O backup tem esse arquivo? Por quê?
+
+**N4 · Desafio**
+8. Desenhe (no papel ou em Mermaid) como ficaria o seu 3-2-1 completo com o B2. Escreva os passos para restaurar tudo num notebook novo, do zero.
+
+> **Pare e responda:** se o notebook e o disco externo forem roubados juntos hoje, o que sobra?
+
 ## Prática no seu setup
 
 Ubuntu do WSL, com o disco externo conectado:
@@ -104,6 +124,19 @@ Ubuntu do WSL, com o disco externo conectado:
 3. O `backup.sh` se recusa a rodar, porque outro usuário poderia ler a senha. Corrija com `chmod 600`.
 4. Se o snapshot estiver errado, você não perde a versão atual.
 5. O disco externo estava conectado e montado em `/mnt/d`? O arquivo `backup.env` e o de senha existem? Há trava de um backup anterior (`restic unlock` só depois de confirmar que nada roda)? O disco está cheio?
+
+**Gabarito dos exercícios**
+
+1. `restic snapshots`.
+2. Falso: só os pedaços novos são gravados, graças à deduplicação.
+3. `~/.config/amtech/backup.env`.
+4. `restic restore latest --target /tmp/j --include "$HOME/dev/dev-setup/justfile"`.
+5. `restic stats --mode raw-data`. Confira na documentação os outros modos: cada um mede uma coisa diferente.
+6. O alvo é a própria pasta de trabalho: a restauração escreve por cima do que você tem. Restaure sempre para `/tmp` e compare antes.
+7. Só se `~/clientes` estiver em `BACKUP_PASTAS`. A lista padrão não tem essa pasta, então não está: acrescente ao `backup.env`.
+8. Resposta aberta. Confira se tem: instalar o restic, pegar a senha no KeePassXC (o kit de papel abre o cofre), apontar para o B2, `restic snapshots`, `restic restore latest --target`, conferir e só então rodar o setup.
+
+**Fechamento do bloco:** feche esta aula, reconstrua de cabeça e rode `just professor fechar s-backup MINUTOS`.
 </details>
 
 ## Cartões

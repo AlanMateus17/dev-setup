@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-62 fases, 560 passos, cerca de **1633 h 33 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+62 fases, 561 passos, cerca de **1633 h 48 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
 **Todo o planejamento está aqui:** os 485 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 108 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 435 dos 560 passos (615 h 18 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 436 dos 561 passos (615 h 33 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -39,7 +39,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [22 · Núcleo AMtech: o setup conectado e autônomo](#f-nucleo) | Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois | 12 | 43 h 15 min |
 | [23 · AMtech Software: a primeira empresa](#f-empresa-software) | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada | 10 | 12 h 20 min |
 | [24 · Eixo de 12 meses: dev sênior de software para finanças](#f-eixo) | Nov/2026 a out/2027, revisão no fim de cada trimestre | 6 | 4 h 40 min |
-| [25 · Professor do setup: aprender tudo o que você opera](#f-professor) | Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre | 5 | 2 h 45 min |
+| [25 · Professor do setup: aprender tudo o que você opera](#f-professor) | Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre | 6 | 3 h 00 min |
 | [26 · Escola Akita: seguir a fundo, com o seu ok](#f-akita) | Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último | 6 | 2 h 50 min |
 | [27 · Agentes e IA com qualidade medida](#f-ia-elite) | Semana 6 · nov/2026 a dez/2026 | 15 | 8 h 00 min |
 | [28 · Roteador de agentes e esteira de sites](#f-agentes) | Semana 6 · nov/2026 a dez/2026 | 9 | 2 h 55 min |
@@ -2776,7 +2776,23 @@ cd ~/dev/dev-setup && less docs/professor/exemplo-aula-s-backup.md
 - O formato vem das técnicas com mais evidência: pergunta antes da explicação, exemplo resolvido seguido de exemplo com lacunas, prática de recuperação e revisão espaçada.
 - Implanta: Professor do setup (aula e revisão)
 
-### 25.2 Estudar pelo Professor todo dia: revisões primeiro, depois a próxima aula de cada trilha
+### 25.2 Decidir a carga real de estudo: calibrar em 2 h por dia (plano do vault) ou em 4 h (plano do eixo)
+
+**Você** · 15 min
+
+**Decisão sua:** o setup prepara as opções, quem decide é você.
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/dev-setup && less docs/professor/metodo.md
+```
+
+- [ ] **Pronto quando:** Carga decidida depois de 2 semanas medindo com just professor fechar; critérios do trimestre ajustados se preciso
+- O plano do vault (out/2026) dizia: calibre em 2 h e trate as 4 h como bônus, para a meta inflada não virar dívida de atraso.
+- Implanta: Professor do setup (aula e revisão)
+
+### 25.3 Estudar pelo Professor todo dia: revisões primeiro, depois a próxima aula de cada trilha
 
 **Você** · 30 min
 
@@ -2789,7 +2805,7 @@ cd ~/dev/dev-setup && just professor hoje
 - [ ] **Pronto quando:** Hábito de 4 semanas seguidas (just professor hoje no começo de cada sessão)
 - Implanta: Professor do setup (aula e revisão) · Núcleo AMtech (banco central)
 
-### 25.3 Fechar o ciclo de cada módulo: aula, prática, prova, correção e, quando der, ensinar
+### 25.4 Fechar o ciclo de cada módulo: aula, prática, prova, correção e, quando der, ensinar
 
 **Você** · 1 h 00 min
 
@@ -2803,7 +2819,7 @@ cd ~/dev/dev-setup && just professor prova s-backup
 - Prova sem consultar. Abaixo de 80, a revisão volta para o dia seguinte. Ensinar (post, aula, vídeo) é o nível 4.
 - Implanta: Professor do setup (aula e revisão) · Claude Code
 
-### 25.4 Levar os cartões das aulas para o Anki e revisar todo dia
+### 25.5 Levar os cartões das aulas para o Anki e revisar todo dia
 
 **Você** · 15 min
 
@@ -2816,7 +2832,7 @@ cd ~/dev/dev-setup && just professor cartoes
 - [ ] **Pronto quando:** Cartões importados e revisão diária no celular
 - Implanta: Professor do setup (aula e revisão) · Anki
 
-### 25.5 No fim de cada trimestre, acrescentar os módulos do próximo (plano do eixo) com o Claude
+### 25.6 No fim de cada trimestre, acrescentar os módulos do próximo (plano do eixo) com o Claude
 
 **Claude com você** · 30 min
 
@@ -7004,7 +7020,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Resumo de IFC (ifc_resumo.py) | 61.6 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 | Triagem: montar, colar ou construir | 21.3, 21.4 | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
 | Plane (projetos de cliente) | 32.6 | Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar |
-| Núcleo AMtech (banco central) | 22.1, 22.3, 22.4, 22.5, 22.8, 23.6, 23.10, 24.1, 25.2, 26.1, 26.5 | Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois; Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Nov/2026 a out/2027, revisão no fim de cada trimestre; Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre; Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último |
+| Núcleo AMtech (banco central) | 22.1, 22.3, 22.4, 22.5, 22.8, 23.6, 23.10, 24.1, 25.3, 26.1, 26.5 | Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois; Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Nov/2026 a out/2027, revisão no fim de cada trimestre; Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre; Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último |
 | Garimpo de código (GitHub) | 22.6 | Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois |
 | Simulação noturna de ponta a ponta | 22.12 | Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois |
 
@@ -7211,7 +7227,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Microsoft Learn + AWS Skill Builder | 24.6, 57.1 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Contínuo, desde a semana 2 |
 | TryHackMe / Hack The Box | 57.1 | Contínuo, desde a semana 2 |
 | Alura · Rocketseat · DIO · Udemy | 57.2 | Contínuo, desde a semana 2 |
-| Anki | 3.2, 25.4, 46.7, 57.3 | Semana 1 · out/2026; Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre; Fev a dez/2027, uma oferta por vez; Contínuo, desde a semana 2 |
+| Anki | 3.2, 25.5, 46.7, 57.3 | Semana 1 · out/2026; Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre; Fev a dez/2027, uma oferta por vez; Contínuo, desde a semana 2 |
 | roadmap.sh + Akita | 57.1 | Contínuo, desde a semana 2 |
 | GitHub Education | 28.1 | Semana 6 · nov/2026 a dez/2026 |
 | Zoomcamp de dados + cursos de IA | 44.6 | Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
@@ -7223,7 +7239,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Compiler Explorer (godbolt) | 58.2 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | Repositórios de referência | 58.12 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | Escola Akita (regras com seu ok) | 26.1, 26.2, 26.3, 26.4, 26.5, 26.6 | Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último |
-| Professor do setup (aula e revisão) | 25.1, 25.2, 25.3, 25.4, 25.5 | Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre |
+| Professor do setup (aula e revisão) | 25.1, 25.2, 25.3, 25.4, 25.5, 25.6 | Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre |
 
 ### Produção de conteúdo
 
@@ -7414,7 +7430,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 |---|---|---|
 | Modelos locais: Qwen · Gemma · Llama | 6.4, 26.4, 27.4, 44.5 | Semana 2 · nov/2026; Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último; Semana 6 · nov/2026 a dez/2026; Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 | Base de conhecimento (RAG) das suas notas | 6.7, 8.6, 31.7 | Semana 2 · nov/2026; Semanas 3 e 4 · nov/2026; Dez/2026 a jan/2027 |
-| Claude Code | 6.1, 21.4, 22.8, 25.3, 25.5, 26.3, 26.4, 28.5 | Semana 2 · nov/2026; Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois; Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre; Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último; Semana 6 · nov/2026 a dez/2026 |
+| Claude Code | 6.1, 21.4, 22.8, 25.4, 25.6, 26.3, 26.4, 28.5 | Semana 2 · nov/2026; Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois; Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre; Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último; Semana 6 · nov/2026 a dez/2026 |
 | ai-jail | 6.2, 21.6 | Semana 2 · nov/2026; Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
 | ai-memory | 6.6, 27.13 | Semana 2 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
 | Servidores MCP | 6.5, 27.6 | Semana 2 · nov/2026; Semana 6 · nov/2026 a dez/2026 |

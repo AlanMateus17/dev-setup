@@ -2,10 +2,11 @@
 """O Professor do setup: aula, prática, prova e revisão espaçada de cada tópico de que você precisa para operar o setup e
 subir no eixo (software e finanças).
 
-O método: objetivo único por bloco de 25 minutos; pergunta diagnóstica antes de explicar; explicação em camadas
-(intuição → modelo → detalhe); exemplo resolvido e depois exemplo com lacunas; prática no seu próprio setup; perguntas de
-recuperação; cartões Anki; prova corrigida com rubrica; revisão em 1, 3, 7, 21, 60 e 120 dias. Domínio vai de 0 a 4:
-nada, viu a aula, fez a prática, passou na prova, ensinou.
+O método completo está em docs/professor/metodo.md: as técnicas da ciência cognitiva (recuperação, espaçamento,
+intercalação, dificuldade desejável, exemplos resolvidos, prática deliberada, Feynman) somadas ao que o Alan já tinha
+decidido nos planos dele (Protocolo de fim de bloco, loop da mesma ideia de 4 jeitos, ficha dupla, registro de
+entrevista, exercícios N1 a N4 do padrão do livro, 20/80, uma porta só). Domínio vai de 0 a 4: nada, viu a aula, fez a
+prática, passou na prova, ensinou.
 
 As aulas ficam no Obsidian (~/dev/notas/60-Professor) e são geradas uma vez só: reler não gasta token.
 
@@ -17,6 +18,7 @@ As aulas ficam no Obsidian (~/dev/notas/60-Professor) e são geradas uma vez só
     python3 tools/professor/professor.py prova s-backup       # gera a prova; você responde no próprio arquivo
     python3 tools/professor/professor.py corrigir s-backup    # a IA corrige com rubrica, marca o nível e agenda a revisão
     python3 tools/professor/professor.py ensinei s-backup     # nível 4: escreveu post ou deu a aula
+    python3 tools/professor/professor.py fechar s-backup 80   # Protocolo de fim de bloco: ficha dupla, registro de entrevista, tempo real
     python3 tools/professor/professor.py cartoes              # exporta todos os cartões para importar no Anki
 """
 from __future__ import annotations
@@ -106,25 +108,36 @@ def plano_do_dia(mods: list[dict], nv: dict[str, dict], hoje: date | None = None
 
 AULA = """Você é o professor particular do Alan: muito experiente, detalhista e didático. Ele é professor de TI,
 dev em formação rumo a sênior (eixo: software e finanças) e tem TDAH. Escreva UMA aula em português do Brasil, em
-Markdown, sobre o módulo abaixo, seguindo exatamente esta estrutura:
+Markdown, sobre o módulo abaixo. O método (docs/professor/metodo.md) é fixo; siga exatamente esta estrutura:
 
 # {titulo}
-## Objetivo (uma frase) e por que isso importa no setup dele
+> Profundidade: {profundidade} ("usar" = saber aplicar com segurança; "a fundo" = entender o porquê e os limites).
+## Por que isso importa (abra pela motivação, não pela definição: onde isso aparece no setup ou num sistema real dele)
+## Objetivo (uma frase verificável)
 ## Antes de começar (3 perguntas diagnósticas, sem resposta: ele responde de cabeça antes de ler)
 ## Bloco 1 (25 min) · Intuição: uma analogia do dia a dia dele (escola, restaurante, a casa)
-## Bloco 2 (25 min) · O modelo: como funciona por dentro, com um diagrama em texto ou Mermaid
-## Bloco 3 (25 min) · Os detalhes que pegam: casos de borda, erros comuns e como diagnosticar
-## Exemplo resolvido (passo a passo, explicando cada decisão)
-## Agora você (o mesmo tipo de exemplo com lacunas ___ para ele completar)
+## Bloco 2 (25 min) · O modelo: como funciona por dentro, com um diagrama em texto ou Mermaid; 3 a 5 exemplos
+   resolvidos embutidos na explicação; um quadro "> **Pare e responda:**" no meio
+## Bloco 3 (25 min) · Os detalhes que pegam: casos de borda e diagnóstico, com quadros "> **Erro comum:**"
+## A mesma ideia de 4 jeitos (quando fizer sentido): a ideia pura (matemática ou conceito) → em C# → em TypeScript →
+   no sistema real (Aura, AMtech, o próprio setup). Se não fizer sentido para o tema, diga e pule.
+## Exemplo resolvido completo (passo a passo, explicando cada decisão)
+## Agora você tenta (o mesmo tipo de exemplo com lacunas ___)
+## Exercícios em 4 níveis (N1 reconhecimento; N2 aplicação direta; N3 aplicação combinada e "encontre o erro";
+   N4 desafio ou mini-projeto real), 3 a 4 por nível
 ## Prática no seu setup (comandos de UMA linha, dizendo ONDE rodar: Ubuntu do WSL ou PowerShell; nada destrutivo
    sem cópia antes; critério de pronto verificável)
-## Perguntas de recuperação (5, de lembrar a aplicar; respostas só no fim, num bloco recolhido <details>)
-## Cartões (8 linhas no formato "- pergunta :: resposta", curtas, uma ideia cada)
+## Perguntas de recuperação (5, de lembrar a aplicar)
+## Gabarito comentado (exercícios e perguntas, num bloco recolhido <details>, explicando o porquê de cada resposta)
+## Cartões (8 linhas no formato "- pergunta :: resposta", curtas, uma ideia cada, conceito e não só termo)
+## Fechamento do bloco (lembre o Protocolo: fechar o material, reconstruir de cabeça, explicar em 3 a 5 frases sem
+   jargão, cartões, tempo real; rodar: just professor fechar {id} MINUTOS)
 ## Se quiser ir além (as fontes oficiais abaixo, dizendo o que ler em cada uma)
 
 Regras: explique com as suas palavras; nada copiado de curso pago ou livro; quando não tiver certeza de um detalhe,
-diga "confira na fonte oficial" em vez de inventar; aplique tudo ao setup dele (contexto abaixo); nada de dado de aluno,
-senha ou documento pessoal nos exemplos.
+diga "confira na fonte oficial" em vez de inventar; aplique tudo ao setup dele (contexto abaixo); 20/80: o que resolve
+a maior parte dos casos vem primeiro e marcado; fundamentos antes de framework; nada de dado de aluno, senha ou
+documento pessoal nos exemplos.
 
 MÓDULO: {titulo}
 Objetivos: {objetivos}
@@ -137,6 +150,31 @@ O SETUP DELE:
 O QUE O SETUP JÁ SABE SOBRE O ASSUNTO (decisões, regras do Akita aprovadas, lições):
 {nucleo}
 """
+
+FICHA = """# Ficha dupla · {titulo}
+
+1. **A ideia** (pura, sem código): definição com as suas palavras + um exemplo + um exercício
+2. **A mesma ideia, em código**: o trecho + por que é a MESMA coisa + um exercício
+3. **Por que importa**: onde aparece num sistema real (Aura, AMtech, o setup) + a motivação em uma frase
+4. **Conexão com o próximo tópico**: uma linha
+
+---
+
+# Registro de entrevista · {titulo}
+
+- **Contexto:** o que precisava ser resolvido, em qual sistema
+- **Decisão:** o que escolheu, a alternativa descartada e por quê
+- **Resultado:** o que aconteceu, com número real se tiver
+- **Pergunta que responde:** a pergunta de entrevista que este registro cobre
+"""
+
+PROTOCOLO = """Protocolo de fim de bloco ({titulo}):
+  1. FECHE o material.
+  2. RECONSTRUA de cabeça: o que o bloco resolveu e por quê.
+  3. ENSINE em 3 a 5 frases sem jargão: preencha a ficha dupla e o registro de entrevista em {ficha}
+  4. ANKI: 1 a 3 cartões de conceito (just professor cartoes junta os da aula).
+  5. TEMPO: {minutos} min reais contra {estimado} min estimados.
+  6. Só então avance: just professor praticei {id} (se fez a prática) ou just professor prova {id}."""
 
 PROVA = """Monte uma prova em português do Brasil sobre o módulo "{titulo}" (objetivos: {objetivos}). 8 questões: 3 de
 explicar com as próprias palavras, 3 de aplicar no setup dele (comando ou decisão), 2 de diagnosticar um erro. Nada de
@@ -151,7 +189,8 @@ fraco", ...]}}. Módulo: "{titulo}". Objetivos: {objetivos}.
 
 def pedido_aula(m: dict, contexto_nucleo: str = "") -> str:
     ctx = CONTEXTO.read_text(encoding="utf-8") if CONTEXTO.exists() else ""
-    return (AULA.replace("{titulo}", m["titulo"]).replace("{objetivos}", "; ".join(m["objetivos"]))
+    return (AULA.replace("{titulo}", m["titulo"]).replace("{id}", m["id"])
+            .replace("{profundidade}", "a fundo" if m.get("profundidade") == "a-fundo" else "usar").replace("{objetivos}", "; ".join(m["objetivos"]))
             .replace("{pratica}", m["pratica"]).replace("{fontes}", ", ".join(m["fontes"]))
             .replace("{contexto}", ctx).replace("{nucleo}", contexto_nucleo or "(nada ainda)"))
 
@@ -181,6 +220,23 @@ def cartoes_de(texto: str) -> list[tuple[str, str]]:
     return saida
 
 
+def fracos_da_correcao(texto: str) -> list[str]:
+    achado = re.findall(r"\{[^{}]*\"nota\"[^{}]*\}", texto)
+    try:
+        return [str(x) for x in json.loads(achado[-1]).get("revisar", [])] if achado else []
+    except json.JSONDecodeError:
+        return []
+
+
+def pontos_fracos(con) -> dict[str, list[str]]:
+    """O que a última correção de cada módulo mandou revisar: é ali que vai a prática deliberada."""
+    saida: dict[str, list[str]] = {}
+    for r in con.execute("SELECT dados FROM eventos WHERE tipo = 'professor.prova' ORDER BY id"):
+        d = json.loads(r["dados"])
+        saida[d["modulo"]] = d.get("revisar", []) if d.get("nota", 0) < 100 else []
+    return {k: v for k, v in saida.items() if v}
+
+
 def nota_da_correcao(texto: str) -> int:
     achado = re.findall(r"\{[^{}]*\"nota\"\s*:\s*(\d{1,3})[^{}]*\}", texto)
     if not achado:
@@ -202,6 +258,7 @@ def main(argv: list[str] | None = None) -> int:
     p = s.add_parser("prova"); p.add_argument("id"); p.add_argument("--motor", default="claude")
     c = s.add_parser("corrigir"); c.add_argument("id"); c.add_argument("--motor", default="claude")
     s.add_parser("cartoes")
+    z = s.add_parser("fechar"); z.add_argument("id"); z.add_argument("minutos", type=int)
     args = ap.parse_args(argv)
     con = nuc.abrir()
     try:
@@ -214,6 +271,8 @@ def main(argv: list[str] | None = None) -> int:
                 m = pl["proximos"].get(trilha)
                 if m:
                     print(f"{rotulo}: {m['id']} · {m['titulo']}\n   just professor aula {m['id']}")
+            for mid, fracos in pontos_fracos(con).items():
+                print(f"Prática deliberada em {mid}: {', '.join(fracos)}")
             if not pl["proximos"] and not pl["revisoes"]:
                 print("Currículo do trimestre dominado. Hora de acrescentar módulos (data/professor/curriculo.json).")
         elif args.cmd == "trilha":
@@ -268,9 +327,20 @@ def main(argv: list[str] | None = None) -> int:
             provas[-1].with_name(provas[-1].stem + "-correcao.md").write_text(texto, encoding="utf-8")
             nota = nota_da_correcao(texto)
             intervalo, prox = registrar_prova(con, m["id"], nota)
-            nuc.evento(con, "professor.prova", {"modulo": m["id"], "nota": nota}, fonte="professor")
+            nuc.evento(con, "professor.prova", {"modulo": m["id"], "nota": nota, "revisar": fracos_da_correcao(texto)},
+                       fonte="professor")
             veredito = "aprovado" if nota >= APROVA else f"abaixo de {APROVA}: releia o Bloco 3 e refaça"
             print(f"Nota {nota} ({veredito}). Próxima revisão em {intervalo} dia(s): {prox}.")
+        elif args.cmd == "fechar":
+            m = modulo(args.id)
+            ficha = pasta() / "fichas" / f"{m['id']}.md"
+            if not ficha.exists():
+                ficha.parent.mkdir(parents=True, exist_ok=True)
+                ficha.write_text(FICHA.replace("{titulo}", m["titulo"]), encoding="utf-8")
+            estimado = m.get("estimado_min", 75)
+            nuc.evento(con, "professor.bloco", {"modulo": m["id"], "minutos": args.minutos, "estimado": estimado}, fonte="professor")
+            print(PROTOCOLO.replace("{titulo}", m["titulo"]).replace("{ficha}", str(ficha)).replace("{id}", m["id"])
+                  .replace("{minutos}", str(args.minutos)).replace("{estimado}", str(estimado)))
         elif args.cmd == "cartoes":
             linhas = []
             for arq in sorted((pasta() / "aulas").glob("*.md")):
