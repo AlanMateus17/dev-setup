@@ -2,6 +2,12 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.17.0] - 2026-11-06
+
+### Adicionado
+- Eixo profundo escolhido (ADR 0011): software como ofício, finanças como domínio, o Grupo AMtech Digital como veículo. Plano de 12 meses em docs/plano-eixo.md (semana fixa, 4 trimestres com critério de pronto, pausas com gatilho) e fase "Eixo de 12 meses" no roteiro, com 5 decisões suas.
+- Setup congelado em amplitude até a primeira venda e o primeiro sistema em produção.
+
 ## [2.16.0] - 2026-11-06
 
 ### Adicionado

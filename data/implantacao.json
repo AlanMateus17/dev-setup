@@ -2672,6 +2672,117 @@
    ]
   },
   {
+   "id": "f-eixo",
+   "titulo": "Eixo de 12 meses: dev sênior de software para finanças",
+   "objetivo": "Um eixo profundo (software como ofício, finanças como domínio, o Grupo AMtech Digital como veículo) com critério de pronto por trimestre; o resto fica pausado com gatilho (ADR 0011).",
+   "quando": "Nov/2026 a out/2027, revisão no fim de cada trimestre",
+   "passos": [
+    {
+     "id": "eixo-cortes",
+     "titulo": "Confirmar o que fica pausado até o fim do ano 1 (42, AM-OS, pentest, treino de IA, robótica, agro, construção, idiomas extras)",
+     "quem": "voce",
+     "pronto": "Lista de pausas confirmada ou ajustada por você em docs/plano-eixo.md",
+     "tempo_min": 20,
+     "comando": "cd ~/dev/dev-setup && less docs/plano-eixo.md",
+     "nota": "Pausar não é apagar: cada item volta com o gatilho do trimestre 4. Vetar uma pausa é decisão sua; anote o motivo.",
+     "decisao": true,
+     "empresas": [
+      "software"
+     ],
+     "blocos": [
+      "nucleo"
+     ]
+    },
+    {
+     "id": "eixo-semana",
+     "titulo": "Montar a semana fixa: 2 h de ofício, 1 h de finanças, 30 min de inglês, 30 min de escrita, 1 dia de folga",
+     "quem": "voce",
+     "pronto": "Blocos no calendário pelas próximas 4 semanas",
+     "tempo_min": 20,
+     "fora": "Peça ao Claude que crie os blocos no Google Agenda pelo conector.",
+     "empresas": [
+      "software"
+     ],
+     "blocos": [
+      "cgws"
+     ]
+    },
+    {
+     "id": "eixo-t1",
+     "titulo": "Trimestre 1: 1 cliente de site pago, Caixa da Casa usado 3 meses, planilha do AM Rendara à venda, 3 posts",
+     "quem": "voce",
+     "pronto": "Os quatro itens cumpridos até 31/jan/2027",
+     "tempo_min": 60,
+     "comando": "cd ~/dev/dev-setup && just agora software",
+     "nota": "Revisão no fim do trimestre: seguir, ajustar ou mudar o eixo, com o motivo anotado (just lembrar \"...\" padrao).",
+     "decisao": true,
+     "empresas": [
+      "software"
+     ],
+     "blocos": [
+      "sites",
+      "caixa",
+      "site"
+     ]
+    },
+    {
+     "id": "eixo-t2",
+     "titulo": "Trimestre 2: 10 planilhas vendidas e o AM Rendara (MVP) com 1 usuário pagante em produção, com backup restaurado e rollback testado",
+     "quem": "voce",
+     "pronto": "Itens cumpridos até 30/abr/2027",
+     "tempo_min": 60,
+     "comando": "cd ~/dev/dev-setup && just triagem \"AM Rendara MVP\"",
+     "nota": "Se a planilha não vender 10, o sistema não nasce: muda a oferta, não o código.",
+     "decisao": true,
+     "empresas": [
+      "software"
+     ],
+     "blocos": [
+      "caixa",
+      "api",
+      "front",
+      "pg",
+      "tests"
+     ]
+    },
+    {
+     "id": "eixo-t3",
+     "titulo": "Trimestre 3: cobrança por Pix, observabilidade, 5 clientes pagantes e o 1º relato de incidente",
+     "quem": "voce",
+     "pronto": "Itens cumpridos até 31/jul/2027; CNPJ revisto com o contador",
+     "tempo_min": 60,
+     "comando": "cd ~/dev/dev-setup && just decisoes software",
+     "decisao": true,
+     "empresas": [
+      "software"
+     ],
+     "blocos": [
+      "pixa",
+      "otel",
+      "conta"
+     ]
+    },
+    {
+     "id": "eixo-t4",
+     "titulo": "Trimestre 4: 1 PR aceito em open source .NET, 12 posts no ano, entrevista em inglês simulada e revisão do ano",
+     "quem": "voce",
+     "pronto": "Itens cumpridos até 31/out/2027; decisão sobre o que sai da pausa",
+     "tempo_min": 60,
+     "comando": "cd ~/dev/dev-setup && just progresso",
+     "nota": "O gatilho das pausas: com o trimestre 4 cumprido, um item pausado volta por vez.",
+     "decisao": true,
+     "empresas": [
+      "software"
+     ],
+     "blocos": [
+      "gh",
+      "site",
+      "learn"
+     ]
+    }
+   ]
+  },
+  {
    "id": "f-akita",
    "titulo": "Escola Akita: seguir a fundo, com o seu ok",
    "objetivo": "Os 831 posts do blog do Fabio Akita (incluindo 198 episódios do Akitando com transcrição) viram notas e regras; o setup compara cada regra com o que já faz e só muda depois da sua aprovação.",
