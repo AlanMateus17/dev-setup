@@ -73,7 +73,7 @@ def frontmatter(texto: str) -> tuple[dict, str]:
     meta: dict = {"tags": []}
     chave = None
     for ln in cab.splitlines():
-        if re.match(r"^\s+-\s", ln) and chave == "tags":
+        if re.match(r"^\s*-\s", ln) and chave == "tags":
             meta["tags"].append(ln.split("-", 1)[1].strip().strip("'\""))
         elif re.match(r"^\S[^:]*:", ln):
             chave, _, valor = ln.partition(":")
@@ -385,6 +385,11 @@ def main(argv: list[str] | None = None) -> int:
             DOC.write_text(gerar_doc(d), encoding="utf-8")
             con = nuc.abrir()
             nuc.auditar(con, "alan", f"{estado} {r['id']}: {r['texto'][:120]}", "pede-ok", args.motivo, aprovado_por="alan")
+            if estado in ("aprovada", "aplicada", "ja-segue"):
+                # Regra aceita vira conhecimento do núcleo: a triagem, o arquiteto e as aulas do Professor passam a vê-la.
+                nuc.lembrar(con, f"{r['texto']} No setup: {r['no_setup']} Fonte: {r['fonte']['url']}", tipo="padrao",
+                            titulo=f"Akita {r['id']}: {r['texto'][:80]}", origem=r["fonte"]["url"], tags="akita regra",
+                            chave=f"akita-regra:{r['id']}")
             if estado == "aprovada":
                 tid = nuc.tarefa_nova(con, f"Aplicar {r['id']} (Akita): {r['texto'][:150]}", responsavel="claude")
                 print(f"{r['id']} aprovada; tarefa #{tid} no núcleo. Para aplicar: just akita aplicar {r['id']}")

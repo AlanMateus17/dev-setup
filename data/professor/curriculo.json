@@ -27,7 +27,17 @@
     "wsl"
    ],
    "profundidade": "usar",
-   "estimado_min": 75
+   "estimado_min": 75,
+   "akita": [
+    "linux",
+    "terminal",
+    "shell",
+    "bash"
+   ],
+   "akita_posts": [
+    "akitando-127-como-funciona-o-boot-de-um-linux-o-que-tem-num-livecd",
+    "coisas-que-iniciantes-ignoram-sobre-pcs"
+   ]
   },
   {
    "id": "s-git",
@@ -64,6 +74,14 @@
      "titulo": "Git e GitHub: branching, conflitos e pull requests",
      "url": "https://www.alura.com.br/curso-online-git-github-branching-conflitos-pull-requests"
     }
+   ],
+   "akita": [
+    "git",
+    "controle-de-versao"
+   ],
+   "akita_posts": [
+    "akitando-70-entendendo-git-nao-e-um-tutorial",
+    "akitando-71-usando-git-direito-limpando-seus-commits"
    ]
   },
   {
@@ -110,7 +128,17 @@
     "restic"
    ],
    "profundidade": "a-fundo",
-   "estimado_min": 75
+   "estimado_min": 75,
+   "akita": [
+    "backup",
+    "armazenamento-e-backup",
+    "btrfs",
+    "snapshot"
+   ],
+   "akita_posts": [
+    "akitando-146-protegendo-e-recuperando-dados-perdidos-git-backup-btrfs",
+    "usuarios-linux-sempre-escolham-btrfs-nao-ext4"
+   ]
   },
   {
    "id": "s-segredos",
@@ -136,7 +164,16 @@
     "age"
    ],
    "profundidade": "a-fundo",
-   "estimado_min": 75
+   "estimado_min": 75,
+   "akita": [
+    "senha",
+    "criptografia",
+    "seguranca"
+   ],
+   "akita_posts": [
+    "akitando-131-sua-seguranca-e-uma-droga-gerenciadores-de-senhas-2fa-encriptacao",
+    "akitando-67-entendendo-conceitos-basicos-de-criptografia-parte-1-2"
+   ]
   },
   {
    "id": "s-docker",
@@ -167,6 +204,14 @@
      "titulo": "Docker: criando e gerenciando containers",
      "url": "https://www.alura.com.br/conteudo/docker-criando-gerenciando-containers"
     }
+   ],
+   "akita": [
+    "docker",
+    "containers"
+   ],
+   "akita_posts": [
+    "akitando-139-entendendo-como-containers-funcionam",
+    "akitando-149-configurando-docker-compose-postgres-com-testes-de-carga-parte-final-da-rinha-de-backend"
    ]
   },
   {
@@ -193,7 +238,17 @@
     "triagem"
    ],
    "profundidade": "a-fundo",
-   "estimado_min": 75
+   "estimado_min": 75,
+   "akita": [
+    "agentes-de-codigo",
+    "agentes",
+    "sandbox",
+    "claude code"
+   ],
+   "akita_posts": [
+    "ai-jail-sandbox-para-agentes-de-ia-de-shell-script-a-ferramenta-real",
+    "como-me-precaver-pros-meus-agentes-nao-apagarem-minhas-coisas"
+   ]
   },
   {
    "id": "s-nucleo",
@@ -217,7 +272,12 @@
     "nucleo"
    ],
    "profundidade": "usar",
-   "estimado_min": 75
+   "estimado_min": 75,
+   "akita": [
+    "memória",
+    "memory",
+    "contexto"
+   ]
   },
   {
    "id": "s-ci",
@@ -246,6 +306,15 @@
      "plataforma": "Alura",
      "titulo": "Testes em .NET: integre seus testes nos pipelines de CI/CD"
     }
+   ],
+   "akita": [
+    "testes",
+    "devops",
+    "ci"
+   ],
+   "akita_posts": [
+    "parem-de-inventar-desculpas-e-facam-mais-deploy-a-premissa-mudou",
+    "testes-de-integracao-em-monorepo-bastidores-do-the-m-akita-chronicles"
    ]
   },
   {
@@ -271,7 +340,16 @@
     "hostg"
    ],
    "profundidade": "usar",
-   "estimado_min": 75
+   "estimado_min": 75,
+   "akita": [
+    "deploy",
+    "devops",
+    "kamal"
+   ],
+   "akita_posts": [
+    "sqlite-kamal-deploy-de-rails-sem-drama-bastidores-do-the-m-akita-chronicles",
+    "akitando-113-a-forma-ideal-de-projetos-web-os-12-fatores"
+   ]
   },
   {
    "id": "o-csharp",
@@ -314,6 +392,14 @@
      "plataforma": "Alura",
      "titulo": "C# e Exceções: construa aplicações resilientes"
     }
+   ],
+   "akita": [
+    "linguagens-de-programacao",
+    "orientação a objetos",
+    "programacao"
+   ],
+   "akita_posts": [
+    "akitando-46-gerenciamento-de-memoria-parte-2-entendendo-back-end-para-iniciantes-parte-6"
    ]
   },
   {
@@ -353,6 +439,14 @@
      "plataforma": "Alura",
      "titulo": "Testes em .NET: criando testes de unidade com xUnit"
     }
+   ],
+   "akita": [
+    "arquitetura-de-software",
+    "engenharia-de-software",
+    "testes"
+   ],
+   "akita_posts": [
+    "akitando-130-rant-projetos-testes-e-estimativa-rated-r"
    ]
   },
   {
@@ -383,6 +477,15 @@
      "titulo": "Formação SQL com PostgreSQL (os 2 primeiros cursos)",
      "url": "https://www.alura.com.br/formacao-postgresql"
     }
+   ],
+   "akita": [
+    "bancos-de-dados",
+    "postgres",
+    "sql"
+   ],
+   "akita_posts": [
+    "akitando-118-fiz-um-servidor-de-sql-entendendo-banco-de-dados",
+    "akitando-143-discutindo-sobre-banco-de-dados-dos-primordios-a-big-data"
    ]
   },
   {
@@ -406,7 +509,16 @@
     "astro"
    ],
    "profundidade": "usar",
-   "estimado_min": 75
+   "estimado_min": 75,
+   "akita": [
+    "desenvolvimento-web",
+    "frontend",
+    "site"
+   ],
+   "akita_posts": [
+    "akitando-124-como-funciona-sockets-cliente-servidor-e-a-web-introducao-a-redes-parte-4",
+    "akitando-133-tornando-sua-app-web-mais-rapida-4-tecnicas-de-otimizacao"
+   ]
   },
   {
    "id": "f-caixa-competencia",
@@ -450,7 +562,10 @@
     "caixa"
    ],
    "profundidade": "a-fundo",
-   "estimado_min": 75
+   "estimado_min": 75,
+   "akita_posts": [
+    "akitando-104-rant-empreendendo-com-software-do-jeito-errado"
+   ]
   },
   {
    "id": "f-dre",
@@ -521,7 +636,10 @@
     "kitsites"
    ],
    "profundidade": "a-fundo",
-   "estimado_min": 75
+   "estimado_min": 75,
+   "akita_posts": [
+    "akitando-104-rant-empreendendo-com-software-do-jeito-errado"
+   ]
   },
   {
    "id": "mat-linguagem",
@@ -637,6 +755,11 @@
      "obra": "Matemática Básica (V. H. S. Lins, Möbius)",
      "trecho": "potências e raízes; logaritmos (confira o nome na sua edição)"
     }
+   ],
+   "akita": [
+    "algoritmos-e-estruturas-de-dados",
+    "complexidade",
+    "big-o"
    ]
   },
   {
@@ -685,7 +808,10 @@
    ],
    "profundidade": "a-fundo",
    "estimado_min": 75,
-   "ler": []
+   "ler": [],
+   "akita_posts": [
+    "coisas-que-iniciantes-ignoram-sobre-pcs"
+   ]
   }
  ]
 }

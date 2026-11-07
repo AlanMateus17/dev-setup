@@ -15,7 +15,7 @@ date: '2026-07-11T10:00:00-03:00'
 slug: backup-sem-drama
 tags:
 - backup
-- linux
+  - linux
 draft: false
 ---
 
@@ -48,6 +48,7 @@ class TestAkita(unittest.TestCase):
         self.assertEqual(p["titulo"], "Como fazer backup sem drama")
         self.assertEqual(p["url"], "https://akitaonrails.com/2026/07/11/backup-sem-drama/")
         self.assertEqual((p["categoria"], p["prioridade"], p["video"]), ("ia-e-dev-atual", 1, True))
+        self.assertEqual(p["tags"], ["backup", "linux"], "tags com e sem recuo")
         self.assertNotIn("rm -rf", p["_texto"])
         self.assertNotIn("webp", p["_texto"])
 

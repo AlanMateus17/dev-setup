@@ -41,3 +41,4 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-06: v2.18: Professor do setup (ADR 0012): just professor hoje | aula | prova | corrigir; 19 módulos do T1; aula-modelo em docs/professor/exemplo-aula-s-backup.md.
 - 2026-11-06: v2.19: método do Professor em docs/professor/metodo.md (ciência + metodologias das conversas: protocolo de fim de bloco, ficha dupla, N1-N4, 20/80); just professor fechar ID MINUTOS.
 - 2026-11-06: v2.20: Alura (assistir antes) e VHSlins (ler antes) ligados aos módulos; trilhas de matemática e física; semana fixa no just professor hoje; aula termina com roteiro para dar a aula.
+- 2026-11-06: v2.21: posts do Akita escolhidos por módulo no Professor; regras aprovadas entram no núcleo; podcasts viram nota de escuta (just professor escutei); bug das tags do índice do Akita corrigido.

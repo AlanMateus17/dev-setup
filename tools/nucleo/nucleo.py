@@ -84,10 +84,11 @@ def buscar(con, texto: str, tipo: str | None = None, limite: int = 8) -> list[sq
     return con.execute(sql, args).fetchall()
 
 
-def contexto(con, pedido: str, limite: int = 5, max_chars: int = 280) -> str:
-    """Bloco curto (barato em token) com o que o núcleo já sabe sobre o pedido."""
+def contexto(con, pedido: str, limite: int = 5, max_chars: int = 280, excluir: tuple[str, ...] = ()) -> str:
+    """Bloco curto (barato em token) com o que o núcleo já sabe sobre o pedido. `excluir` tira tipos (ex.: referencia,
+    o texto de terceiros guardado só para consulta local)."""
     linhas = []
-    for r in buscar(con, pedido, limite=limite):
+    for r in [x for x in buscar(con, pedido, limite=limite + 10) if x["tipo"] not in excluir][:limite]:
         corpo = [ln for ln in r["texto"].splitlines() if ln.strip() and not ln.lstrip().startswith(("#", "- **"))]
         resumo = " ".join(" ".join(corpo).split())[:max_chars]
         linhas.append(f"- [{r['tipo']}] {r['titulo']}: {resumo}")

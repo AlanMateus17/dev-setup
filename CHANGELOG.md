@@ -2,6 +2,17 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.21.0] - 2026-11-06
+
+### Adicionado
+- Akita no Professor: cada módulo indica até 2 posts do Akita escolhidos a dedo (Akitando sobre Git, backup e BTRFS, containers, banco de dados, criptografia, 12 fatores, ai-jail, deploy) para ler antes da aula.
+- Regra do Akita aprovada, aplicada ou "já segue" vira conhecimento no núcleo, e a triagem, o arquiteto e as aulas passam a vê-la.
+- `just professor escutei "título" "3 ideias" --acao "..."`: nota de escuta para podcasts e vídeos (a ação vira tarefa).
+- O contexto da aula não leva texto de terceiros guardado para consulta (`nucleo.contexto(..., excluir=("referencia",))`).
+
+### Corrigido
+- Leitura das tags dos posts do Akita: as tags sem recuo eram ignoradas, e só 14 posts eram marcados como opinião (agora 189). Índice refeito.
+
 ## [2.20.0] - 2026-11-06
 
 ### Adicionado

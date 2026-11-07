@@ -66,6 +66,8 @@ class TestProfessor(unittest.TestCase):
         self.assertIn("fisica", professor.trilhas_do_dia(date(2026, 11, 7)))
         m = professor.modulo("o-dotnet")
         self.assertTrue(any("Alura" in ln for ln in professor.entrada(m)))
+        backup = professor.entrada(professor.modulo("s-backup"))
+        self.assertTrue(any("Akitando] #146" in ln for ln in backup), backup)
         pedido = professor.pedido_aula(m)
         self.assertIn("Não resuma o curso nem o livro", pedido)
         self.assertIn("Como você ensinaria isso", pedido)

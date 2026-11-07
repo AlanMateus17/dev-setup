@@ -18,8 +18,12 @@ O blog (akitaonrails.com) tem 831 posts em português de 2006 a 2026, e o códig
 5. **A mais nova vale.** Benchmark, modelo e preço ficam velhos rápido: essas regras são marcadas como "datado" e revistas toda semana. Quando uma regra nova contradiz uma antiga, a antiga vira "substituida".
 6. **Seguir o Akita não passa por cima das regras do Alan.** Exemplo: o "faça mais deploy" do Akita convive com o "nada publicado sem aprovação" do Alan, e a aprovação passa a ser de um toque.
 
+7. **Ligada ao Professor (ADR 0012).** Cada módulo indica até 2 posts escolhidos a dedo para ler antes da aula. Regra aprovada, aplicada ou "já segue" vira conhecimento no núcleo e entra no contexto das aulas. O texto original continua fora do pedido à IA: a aula recebe o link, não o post.
+8. **Podcasts:** o Akita não tem podcast próprio ativo; aparece como convidado em outros (Hipsters Ponto Tech, Dev na Estrada, Ruby Rogues e outros). Sem transcrição, entram como escuta com nota de 3 ideias e 1 ação (`just professor escutei`).
+
 ## Consequências
 
 - Gerar as notas custa: perto de 1,8 milhão de palavras. Pelo Claude, são dias do plano; pelo Ollama na GTX 1650, são noites de processamento, com notas mais fracas. O Alan escolhe o motor por prioridade.
 - Ordem: a era da IA (191 posts, 2025 e 2026), depois o Akitando, depois os técnicos, e o histórico da era Rails por último.
 - Piloto: 2 posts lidos e 22 regras esperando decisão.
+- Correção (2026-11-06): a leitura das tags ignorava as que vinham sem recuo, e por isso só 14 posts caíam em "opinião". Corrigido, o índice fica com 189 posts de opinião ou off-topic, que não viram regra.

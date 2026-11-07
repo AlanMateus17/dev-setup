@@ -19,6 +19,7 @@ As aulas ficam no Obsidian (~/dev/notas/60-Professor) e são geradas uma vez só
     python3 tools/professor/professor.py corrigir s-backup    # a IA corrige com rubrica, marca o nível e agenda a revisão
     python3 tools/professor/professor.py ensinei s-backup     # nível 4: escreveu post ou deu a aula
     python3 tools/professor/professor.py fechar s-backup 80   # Protocolo de fim de bloco: ficha dupla, registro de entrevista, tempo real
+    python3 tools/professor/professor.py escutei "Hipsters: carreira" "ideia 1; ideia 2; ideia 3" --acao "..."  # podcast vira nota
     python3 tools/professor/professor.py cartoes              # exporta todos os cartões para importar no Anki
 """
 from __future__ import annotations
@@ -51,10 +52,39 @@ def trilhas_do_dia(dia: date | None = None) -> tuple[str, ...]:
     return SEMANA[(dia or date.today()).weekday()]
 
 
+AKITA_INDICE = RAIZ / "data" / "akita" / "indice.json"
+
+
+def posts_akita(m: dict, limite: int = 2) -> list[dict]:
+    """Os posts do Akita que mais combinam com o módulo (palavras do campo `akita` no título e nas tags), os mais
+    recentes primeiro; opinião e histórico da era Rails ficam de fora."""
+    if not AKITA_INDICE.exists():
+        return []
+    indice = json.loads(AKITA_INDICE.read_text(encoding="utf-8"))
+    if m.get("akita_posts"):  # escolhidos a dedo para o módulo
+        por_slug = {p["slug"]: p for p in indice}
+        return [por_slug[s] for s in m["akita_posts"] if s in por_slug][:limite]
+    chaves = [c.lower() for c in m.get("akita", [])]
+    if not chaves:
+        return []
+    achados = []
+    for p in indice:
+        if p["categoria"] in ("opiniao", "historico"):
+            continue
+        alvo = (p["titulo"] + " " + " ".join(p["tags"])).lower()
+        pontos = sum(1 for c in chaves if c in alvo)
+        if pontos:
+            achados.append((pontos, p["data"], p))
+    achados.sort(key=lambda x: (x[0], x[1]), reverse=True)
+    return [p for _, _, p in achados[:limite]]
+
+
 def entrada(m: dict) -> list[str]:
-    """O que assistir e ler ANTES da aula: o curso da Alura e o trecho do livro. A aula não resume nenhum dos dois."""
+    """O que assistir e ler ANTES da aula: o curso da Alura, o trecho do livro e os posts do Akita.
+    A aula não resume nenhum deles."""
     linhas = [f"assistir: {a['titulo']} ({a['plataforma']})" for a in m.get("assistir", [])]
     linhas += [f"ler: {l['obra']}, {l['trecho']}" for l in m.get("ler", [])]
+    linhas += [f"ler (Akita): {p['titulo']} · {p['url']}" for p in posts_akita(m)]
     return linhas
 
 
@@ -279,6 +309,7 @@ def main(argv: list[str] | None = None) -> int:
     c = s.add_parser("corrigir"); c.add_argument("id"); c.add_argument("--motor", default="claude")
     s.add_parser("cartoes")
     z = s.add_parser("fechar"); z.add_argument("id"); z.add_argument("minutos", type=int)
+    y = s.add_parser("escutei"); y.add_argument("titulo"); y.add_argument("ideias"); y.add_argument("--acao", default="")
     args = ap.parse_args(argv)
     con = nuc.abrir()
     try:
@@ -322,7 +353,7 @@ def main(argv: list[str] | None = None) -> int:
             if destino.exists() and not refazer:
                 print(f"A aula já existe (reler não gasta token): {destino}")
             else:
-                texto = rodar(args.motor, pedido_aula(m, nuc.contexto(con, m["titulo"])))
+                texto = rodar(args.motor, pedido_aula(m, nuc.contexto(con, m["titulo"], excluir=("referencia",))))
                 if args.motor == "imprimir":
                     print(texto)
                     return 0
@@ -367,6 +398,13 @@ def main(argv: list[str] | None = None) -> int:
             nuc.evento(con, "professor.bloco", {"modulo": m["id"], "minutos": args.minutos, "estimado": estimado}, fonte="professor")
             print(PROTOCOLO.replace("{titulo}", m["titulo"]).replace("{ficha}", str(ficha)).replace("{id}", m["id"])
                   .replace("{minutos}", str(args.minutos)).replace("{estimado}", str(estimado)))
+        elif args.cmd == "escutei":
+            # Podcast e vídeo são passivos; a nota de escuta (3 ideias e 1 ação, de cabeça) é o que transforma em estudo.
+            texto = f"Ideias: {args.ideias}" + (f"\nAção: {args.acao}" if args.acao else "")
+            rid = nuc.lembrar(con, texto, tipo="nota", titulo=f"Escutei: {args.titulo}", tags="escuta podcast")
+            if args.acao:
+                nuc.tarefa_nova(con, f"Da escuta '{args.titulo}': {args.acao}")
+            print(f"Nota de escuta #{rid} guardada{' e a ação virou tarefa' if args.acao else ''}. Ache depois com: just buscar \"{args.titulo}\"")
         elif args.cmd == "cartoes":
             linhas = []
             for arq in sorted((pasta() / "aulas").glob("*.md")):
