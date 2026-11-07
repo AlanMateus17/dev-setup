@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-62 fases, 561 passos, cerca de **1633 h 48 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+62 fases, 564 passos, cerca de **1638 h 38 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
 **Todo o planejamento está aqui:** os 485 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 108 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 436 dos 561 passos (615 h 33 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 439 dos 564 passos (620 h 23 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -39,7 +39,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [22 · Núcleo AMtech: o setup conectado e autônomo](#f-nucleo) | Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois | 12 | 43 h 15 min |
 | [23 · AMtech Software: a primeira empresa](#f-empresa-software) | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada | 10 | 12 h 20 min |
 | [24 · Eixo de 12 meses: dev sênior de software para finanças](#f-eixo) | Nov/2026 a out/2027, revisão no fim de cada trimestre | 6 | 4 h 40 min |
-| [25 · Professor do setup: aprender tudo o que você opera](#f-professor) | Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre | 6 | 3 h 00 min |
+| [25 · Professor do setup: aprender tudo o que você opera](#f-professor) | Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre | 9 | 7 h 50 min |
 | [26 · Escola Akita: seguir a fundo, com o seu ok](#f-akita) | Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último | 6 | 2 h 50 min |
 | [27 · Agentes e IA com qualidade medida](#f-ia-elite) | Semana 6 · nov/2026 a dez/2026 | 15 | 8 h 00 min |
 | [28 · Roteador de agentes e esteira de sites](#f-agentes) | Semana 6 · nov/2026 a dez/2026 | 9 | 2 h 55 min |
@@ -2843,6 +2843,39 @@ cd ~/dev/dev-setup && claude "Passo prof-curriculo do roteiro: acrescente ao dat
 ```
 
 - [ ] **Pronto quando:** Módulos do próximo trimestre em data/professor/curriculo.json, com objetivos, pré-requisitos e fontes oficiais
+- Implanta: Professor do setup (aula e revisão) · Claude Code
+
+### 25.7 Marcar quais cursos da Alura do currículo você já fez e confirmar os nomes no seu plano
+
+**Você** · 30 min
+
+- **Fora do terminal:** No site da Alura, com a sua conta. O setup não entra na sua conta: os nomes vieram do catálogo público.
+- [ ] **Pronto quando:** Cada curso em data/professor/curriculo.json confirmado no catálogo; os já feitos anotados (o módulo começa pela prova de entrada)
+- Os cursos de C# e .NET, Git, Docker e PostgreSQL do trimestre 1 já estão ligados aos módulos. A Alura é fraca em finanças e não tem física: ali a base é o livro e as fontes oficiais.
+- Implanta: Professor do setup (aula e revisão)
+
+### 25.8 Confirmar o sumário da sua edição de Matemática Básica e qual livro de física você tem
+
+**Você** · 20 min
+
+**Decisão sua:** o setup prepara as opções, quem decide é você.
+
+- **Fora do terminal:** Mande uma foto só do sumário (estrutura, não conteúdo). Até agora não achei uma 'Física Básica' publicada pelo VHSlins: na Möbius, a física é de outro autor (Termodinâmica Clássica e Físico-Química, de Mateus Coldeira). Do VHSlins existe o PDF público 'Fundamentos Matemáticos para Físicos' (IF-USP, 2022).
+- [ ] **Pronto quando:** Os trechos de leitura dos módulos batem com a sua edição; o livro de física definido (título e autor)
+- Os trechos citados no currículo dizem 'confira o nome na sua edição' até essa confirmação.
+- Implanta: Professor do setup (aula e revisão)
+
+### 25.9 Depois de 4 semanas usando o Professor: tutor socrático, prever antes de rodar, confiança, caderno de erros, teste de entrada, prova acumulada, documentação local e o AM Rendara como projeto-âncora
+
+**Claude com você** · 4 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/dev-setup && claude "Passo prof-melhorias do roteiro: implemente a seção 5 de docs/professor/metodo.md"
+```
+
+- [ ] **Pronto quando:** As 10 melhorias da seção 5 de docs/professor/metodo.md feitas, com testes
 - Implanta: Professor do setup (aula e revisão) · Claude Code
 
 <a id="f-akita"></a>
@@ -7239,7 +7272,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Compiler Explorer (godbolt) | 58.2 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | Repositórios de referência | 58.12 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | Escola Akita (regras com seu ok) | 26.1, 26.2, 26.3, 26.4, 26.5, 26.6 | Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último |
-| Professor do setup (aula e revisão) | 25.1, 25.2, 25.3, 25.4, 25.5, 25.6 | Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre |
+| Professor do setup (aula e revisão) | 25.1, 25.2, 25.3, 25.4, 25.5, 25.6, 25.7, 25.8, 25.9 | Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre |
 
 ### Produção de conteúdo
 
@@ -7430,7 +7463,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 |---|---|---|
 | Modelos locais: Qwen · Gemma · Llama | 6.4, 26.4, 27.4, 44.5 | Semana 2 · nov/2026; Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último; Semana 6 · nov/2026 a dez/2026; Pendrives, GPU e laboratório a partir da semana 2; Zoomcamp, dbt e Airflow junto do IA2 da Trilha de Dados e IA do vault (depois do Passo 8, ≈ 2028); dataset e treino do 8B junto do IA6 (≈ 2029) |
 | Base de conhecimento (RAG) das suas notas | 6.7, 8.6, 31.7 | Semana 2 · nov/2026; Semanas 3 e 4 · nov/2026; Dez/2026 a jan/2027 |
-| Claude Code | 6.1, 21.4, 22.8, 25.4, 25.6, 26.3, 26.4, 28.5 | Semana 2 · nov/2026; Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois; Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre; Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último; Semana 6 · nov/2026 a dez/2026 |
+| Claude Code | 6.1, 21.4, 22.8, 25.4, 25.6, 25.9, 26.3, 26.4, 28.5 | Semana 2 · nov/2026; Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois; Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre; Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último; Semana 6 · nov/2026 a dez/2026 |
 | ai-jail | 6.2, 21.6 | Semana 2 · nov/2026; Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
 | ai-memory | 6.6, 27.13 | Semana 2 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
 | Servidores MCP | 6.5, 27.6 | Semana 2 · nov/2026; Semana 6 · nov/2026 a dez/2026 |

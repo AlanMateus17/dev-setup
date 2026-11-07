@@ -56,7 +56,47 @@ O gabarito é comentado, explicando o porquê de cada resposta.
 
 **Uma porta só, por causa do TDAH** (da organização do vault): você nunca precisa decidir o que abrir. `just professor hoje` é a porta. Cada bloco tem 25 minutos e um objetivo só.
 
-## 3. O ciclo de um módulo
+## 3. De onde vem o conteúdo: Alura, livros e o Professor
+
+Cada fonte tem um papel, e um não repete o outro:
+
+| Fonte | Papel | Como entra |
+|---|---|---|
+| **Alura** (cursos que você assina) | A primeira exposição em vídeo, com um instrutor mostrando | O módulo diz qual curso assistir **antes** da aula (campo `assistir`). A aula do Professor não resume o curso; começa perguntando sobre ele e acrescenta o que o curso não tem: o seu setup, a prática real, os exercícios N1 a N4, o porquê, a prova e a revisão. |
+| **Livros do VHSlins** (os seus exemplares) | Teoria rigorosa e exercícios com resolução: a base de matemática | O módulo diz qual trecho ler (campo `ler`). Os exercícios do livro são feitos no papel; o Professor nunca copia o livro, só aponta o trecho e cobra o entendimento. |
+| **Fundamentos Matemáticos para Físicos** (V. H. S. Lins, notas do curso de verão do IF-USP, 2022, PDF público) | Ponte grátis para a física: funções, trigonometria, complexos, polinômios, matrizes e introdução ao cálculo | Fonte dos módulos de matemática e física. |
+| **Documentação oficial** | A verdade sobre cada ferramenta | Citada em todo módulo; vai virar trecho dentro da aula (melhoria pendente). |
+| **O Professor** | Tutor: liga tudo ao seu setup, cobra, corrige e traz de volta | Aula, prova, revisão, ficha dupla e roteiro para você dar a aula. |
+
+**Regra que não muda:** curso pago e livro são para você assistir e ler. Transcrição de aula e página de livro nunca vão para a IA.
+
+**Para dar aula:** toda aula termina com "Como você ensinaria isso": um roteiro de quadro para 50 minutos, com a analogia, a pergunta para a turma, o erro mais comum e uma atividade sem gabarito. Esse é o formato que você já usa na escola. O nível 4 do Professor ("ensinou") só vale quando você dá a aula de verdade: na escola, numa aula particular, num vídeo ou num post.
+
+## 4. A semana do Professor (uma porta só: `just professor hoje`)
+
+| Dia | O que aparece |
+|---|---|
+| Segunda, quarta e sexta | Ofício, setup e finanças |
+| Terça e quinta | Ofício, setup e matemática |
+| Sábado | Física e matemática |
+| Domingo | Folga |
+
+## 5. Melhorias combinadas para depois
+
+Depois de 4 semanas usando o Professor (passo `prof-melhorias` do roteiro):
+
+1. Tutor socrático (`just professor tutor ID`), que pergunta em vez de explicar.
+2. Prever a saída antes de rodar, em todo exercício de código.
+3. Confiança de 1 a 5 em cada resposta da prova.
+4. Caderno de erros, que volta nas revisões.
+5. Teste de entrada para pular o que você já domina.
+6. Prova acumulada todo mês.
+7. 15 minutos de tentativa antes de abrir ajuda.
+8. A sequência de dias estudando visível no `hoje`.
+9. Documentação oficial guardada na sua máquina, com os trechos certos dentro da aula.
+10. O AM Rendara como projeto-âncora: cada módulo acrescenta uma peça.
+
+## 6. O ciclo de um módulo
 
 ```
 hoje → aula (3 blocos de 25 min) → fechar (protocolo + ficha) → prática no setup → praticei
@@ -64,12 +104,12 @@ hoje → aula (3 blocos de 25 min) → fechar (protocolo + ficha) → prática n
      → ensinar (post, aula, vídeo) → ensinei (nível 4)
 ```
 
-## 4. O que ficou de fora, de propósito
+## 7. O que ficou de fora, de propósito
 
 - **Matemática pura e os exercícios no volume do livro** (até 61 por capítulo). Isso é a obra do livro, não a aula do setup. O Professor usa de 3 a 4 exercícios por nível.
 - **Conteúdo de curso pago** (Alura, Rocketseat, Udemy, Finclass). Continua sendo para você assistir, nunca para a IA reproduzir.
 - **Vídeos e podcast do Akita como estudo.** O seu plano antigo dizia que eles "não contam como estudo", porque são passivos. A Escola Akita mudou isso: o que conta são as regras e notas que saem deles, não o tempo assistindo.
 
-## 5. Uma divergência para você decidir
+## 8. Uma divergência para você decidir
 
 O plano do vault (out/2026) mandava **calibrar em 2 h por dia e tratar as 4 h como bônus**. O plano do eixo (nov/2026) foi montado com 4 h por dia. O Professor funciona com os dois. Se a semana real fechar perto das 2 h, o critério de cada trimestre precisa ser revisto em vez de virar dívida de atraso.

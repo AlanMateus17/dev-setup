@@ -60,6 +60,16 @@ class TestProfessor(unittest.TestCase):
         nuc.evento(self.con, "professor.prova", {"modulo": "b", "nota": 100, "revisar": []}, fonte="t")
         self.assertEqual(professor.pontos_fracos(self.con), {"a": ["prune"]})
 
+    def test_semana_e_entrada(self):
+        self.assertEqual(professor.trilhas_do_dia(date(2026, 11, 8)), (), "domingo é folga")
+        self.assertIn("matematica", professor.trilhas_do_dia(date(2026, 11, 10)))
+        self.assertIn("fisica", professor.trilhas_do_dia(date(2026, 11, 7)))
+        m = professor.modulo("o-dotnet")
+        self.assertTrue(any("Alura" in ln for ln in professor.entrada(m)))
+        pedido = professor.pedido_aula(m)
+        self.assertIn("Não resuma o curso nem o livro", pedido)
+        self.assertIn("Como você ensinaria isso", pedido)
+
     def test_curriculo_real_coerente(self):
         cur = professor.curriculo()
         ids = [m["id"] for m in cur["modulos"]]
@@ -68,6 +78,7 @@ class TestProfessor(unittest.TestCase):
         blocos = {b["id"] for b in eco["blocos"]}
         for m in cur["modulos"]:
             self.assertIn(m["trilha"], professor.TRILHAS)
+            self.assertTrue(any(m["trilha"] in dia for dia in professor.SEMANA.values()), m["trilha"])
             self.assertTrue(set(m["prereq"]) <= set(ids), m["id"])
             self.assertTrue(set(m["blocos"]) <= blocos, m["id"])
             self.assertGreaterEqual(len(m["objetivos"]), 3)

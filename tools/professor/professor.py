@@ -40,7 +40,22 @@ CURRICULO = RAIZ / "data" / "professor" / "curriculo.json"
 CONTEXTO = RAIZ / "docs" / "akita" / "contexto-setup.md"
 INTERVALOS = (1, 3, 7, 21, 60, 120)
 APROVA = 80
-TRILHAS = {"oficio": "Ofício (2 h)", "setup": "Operar o setup (dentro das 2 h de ofício)", "financas": "Domínio: finanças (1 h)"}
+TRILHAS = {"oficio": "Ofício (2 h)", "setup": "Operar o setup (dentro das 2 h de ofício)",
+           "financas": "Domínio: finanças (1 h)", "matematica": "Domínio: matemática (1 h)", "fisica": "Física (1 bloco)"}
+# A semana fixa (docs/plano-eixo.md): ofício e setup todo dia útil; o domínio alterna; física no sábado; domingo é folga.
+SEMANA = {0: ("oficio", "setup", "financas"), 1: ("oficio", "setup", "matematica"), 2: ("oficio", "setup", "financas"),
+          3: ("oficio", "setup", "matematica"), 4: ("oficio", "setup", "financas"), 5: ("fisica", "matematica"), 6: ()}
+
+
+def trilhas_do_dia(dia: date | None = None) -> tuple[str, ...]:
+    return SEMANA[(dia or date.today()).weekday()]
+
+
+def entrada(m: dict) -> list[str]:
+    """O que assistir e ler ANTES da aula: o curso da Alura e o trecho do livro. A aula não resume nenhum dos dois."""
+    linhas = [f"assistir: {a['titulo']} ({a['plataforma']})" for a in m.get("assistir", [])]
+    linhas += [f"ler: {l['obra']}, {l['trecho']}" for l in m.get("ler", [])]
+    return linhas
 
 
 def pasta() -> Path:
@@ -112,6 +127,8 @@ Markdown, sobre o módulo abaixo. O método (docs/professor/metodo.md) é fixo; 
 
 # {titulo}
 > Profundidade: {profundidade} ("usar" = saber aplicar com segurança; "a fundo" = entender o porquê e os limites).
+## Antes desta aula (ele já assistiu ou leu: {entrada}). Não resuma o curso nem o livro: comece com 3 perguntas
+   sobre o que ele viu lá e diga o que esta aula acrescenta (o setup dele, a prática, os exercícios, o porquê)
 ## Por que isso importa (abra pela motivação, não pela definição: onde isso aparece no setup ou num sistema real dele)
 ## Objetivo (uma frase verificável)
 ## Antes de começar (3 perguntas diagnósticas, sem resposta: ele responde de cabeça antes de ler)
@@ -130,6 +147,8 @@ Markdown, sobre o módulo abaixo. O método (docs/professor/metodo.md) é fixo; 
 ## Perguntas de recuperação (5, de lembrar a aplicar)
 ## Gabarito comentado (exercícios e perguntas, num bloco recolhido <details>, explicando o porquê de cada resposta)
 ## Cartões (8 linhas no formato "- pergunta :: resposta", curtas, uma ideia cada, conceito e não só termo)
+## Como você ensinaria isso (ele também quer dar esta aula): roteiro de quadro para 50 min, com o que escrever no
+   quadro, a analogia, a pergunta para a turma, o erro que os alunos mais cometem e uma atividade sem gabarito
 ## Fechamento do bloco (lembre o Protocolo: fechar o material, reconstruir de cabeça, explicar em 3 a 5 frases sem
    jargão, cartões, tempo real; rodar: just professor fechar {id} MINUTOS)
 ## Se quiser ir além (as fontes oficiais abaixo, dizendo o que ler em cada uma)
@@ -189,7 +208,8 @@ fraco", ...]}}. Módulo: "{titulo}". Objetivos: {objetivos}.
 
 def pedido_aula(m: dict, contexto_nucleo: str = "") -> str:
     ctx = CONTEXTO.read_text(encoding="utf-8") if CONTEXTO.exists() else ""
-    return (AULA.replace("{titulo}", m["titulo"]).replace("{id}", m["id"])
+    ent = "; ".join(entrada(m)) or "nada antes; a aula é a primeira exposição"
+    return (AULA.replace("{entrada}", ent).replace("{titulo}", m["titulo"]).replace("{id}", m["id"])
             .replace("{profundidade}", "a fundo" if m.get("profundidade") == "a-fundo" else "usar").replace("{objetivos}", "; ".join(m["objetivos"]))
             .replace("{pratica}", m["pratica"]).replace("{fontes}", ", ".join(m["fontes"]))
             .replace("{contexto}", ctx).replace("{nucleo}", contexto_nucleo or "(nada ainda)"))
@@ -267,10 +287,16 @@ def main(argv: list[str] | None = None) -> int:
             pl = plano_do_dia(cur["modulos"], niveis(con))
             if pl["revisoes"]:
                 print("Revisar primeiro (prova curta de novo): " + ", ".join(pl["revisoes"]))
-            for trilha, rotulo in TRILHAS.items():
+            hoje_trilhas = trilhas_do_dia()
+            if not hoje_trilhas:
+                print("Domingo é folga. O descanso faz parte do plano.")
+            for trilha in hoje_trilhas:
                 m = pl["proximos"].get(trilha)
                 if m:
-                    print(f"{rotulo}: {m['id']} · {m['titulo']}\n   just professor aula {m['id']}")
+                    print(f"{TRILHAS[trilha]}: {m['id']} · {m['titulo']}")
+                    for ln in entrada(m):
+                        print(f"   antes, {ln}")
+                    print(f"   depois: just professor aula {m['id']}")
             for mid, fracos in pontos_fracos(con).items():
                 print(f"Prática deliberada em {mid}: {', '.join(fracos)}")
             if not pl["proximos"] and not pl["revisoes"]:
@@ -279,7 +305,7 @@ def main(argv: list[str] | None = None) -> int:
             nv, nomes = niveis(con), cur["niveis"]
             for m in sorted(cur["modulos"], key=lambda m: (m["trimestre"], m["trilha"])):
                 n = nv.get(m["id"], {}).get("nivel", 0)
-                print(f"T{m['trimestre']} {m['trilha']:<9} {'●' * n}{'○' * (4 - n)} {m['id']:<20} {m['titulo']}  ({nomes[n]})")
+                print(f"T{m['trimestre']} {m['trilha']:<10} {'●' * n}{'○' * (4 - n)} {m['id']:<20} {m['titulo']}  ({nomes[n]})")
         elif args.cmd in ("aula", "ferramenta"):
             if args.cmd == "ferramenta":
                 eco = json.loads((RAIZ / "data" / "ecossistema.json").read_text(encoding="utf-8"))

@@ -7,7 +7,8 @@ Decisão no [ADR 0011](adr/0011-eixo-software-e-financas.md). Os passos estão n
 | Bloco | Tempo | O que é |
 |---|---|---|
 | Ofício | 2 h | Código de verdade: o projeto do trimestre, não exercício solto. Primeiro sem IA quando for aprendizado; a IA revisa depois. |
-| Domínio | 1 h | Finanças do trimestre, com exercício resolvido à mão e depois em código. |
+| Domínio | 1 h | Segunda, quarta e sexta: finanças. Terça e quinta: matemática pelo livro do VHSlins (alimenta finanças e a Licenciatura). Exercício à mão, depois em código. |
+| Física | 1 bloco no sábado | Física básica ligada às suas aulas de hardware e robótica; matemática de revisão no mesmo dia. |
 | Inglês | 30 min | Documentação, vídeo sem legenda e, a partir do trimestre 3, conversa. |
 | Escrever | 30 min | O que aprendeu vira nota, post ou aula. Um post técnico por mês, no mínimo. |
 | Domingo | 30 min | Revisão: `just progresso`, `just akita pendentes` e o critério do trimestre. Um dia inteiro de folga por semana. |

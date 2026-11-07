@@ -2,6 +2,15 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.20.0] - 2026-11-06
+
+### Adicionado
+- Alura e livros no Professor: cada módulo diz o que assistir (cursos da Alura do catálogo público: C# e .NET, Git, Docker, PostgreSQL, testes) e o que ler (Matemática Básica do VHSlins) antes da aula; a aula não resume o curso nem o livro e acrescenta o setup, a prática, os exercícios e a prova.
+- Trilhas de matemática (4 módulos: linguagem matemática, conjuntos, porcentagem e juros, potências e logaritmos) e física (grandezas e unidades, eletricidade básica), com o PDF público do VHSlins "Fundamentos Matemáticos para Físicos" como ponte.
+- Semana fixa no `just professor hoje`: finanças às segundas, quartas e sextas, matemática às terças e quintas, física no sábado, domingo de folga.
+- Toda aula termina com "Como você ensinaria isso": roteiro de quadro de 50 min e atividade, para você dar a mesma aula.
+- Roteiro: confirmar os cursos da Alura, o sumário de Matemática Básica e o livro de física; as 10 melhorias do Professor ficam para depois de 4 semanas de uso.
+
 ## [2.19.0] - 2026-11-06
 
 ### Adicionado

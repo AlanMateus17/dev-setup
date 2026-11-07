@@ -52,7 +52,19 @@
     "gh"
    ],
    "profundidade": "usar",
-   "estimado_min": 75
+   "estimado_min": 75,
+   "assistir": [
+    {
+     "plataforma": "Alura",
+     "titulo": "Git e GitHub: controle de versão",
+     "url": "https://www.alura.com.br/curso-online-git-github-controle-de-versao"
+    },
+    {
+     "plataforma": "Alura",
+     "titulo": "Git e GitHub: branching, conflitos e pull requests",
+     "url": "https://www.alura.com.br/curso-online-git-github-branching-conflitos-pull-requests"
+    }
+   ]
   },
   {
    "id": "s-just",
@@ -148,7 +160,14 @@
     "docker"
    ],
    "profundidade": "usar",
-   "estimado_min": 75
+   "estimado_min": 75,
+   "assistir": [
+    {
+     "plataforma": "Alura",
+     "titulo": "Docker: criando e gerenciando containers",
+     "url": "https://www.alura.com.br/conteudo/docker-criando-gerenciando-containers"
+    }
+   ]
   },
   {
    "id": "s-ia-segura",
@@ -221,7 +240,13 @@
     "gha"
    ],
    "profundidade": "usar",
-   "estimado_min": 75
+   "estimado_min": 75,
+   "assistir": [
+    {
+     "plataforma": "Alura",
+     "titulo": "Testes em .NET: integre seus testes nos pipelines de CI/CD"
+    }
+   ]
   },
   {
    "id": "s-deploy",
@@ -267,7 +292,29 @@
     "rt"
    ],
    "profundidade": "a-fundo",
-   "estimado_min": 75
+   "estimado_min": 75,
+   "assistir": [
+    {
+     "plataforma": "Alura",
+     "titulo": "C#: criando sua primeira aplicação"
+    },
+    {
+     "plataforma": "Alura",
+     "titulo": "C#: aplicando a Orientação a Objetos"
+    },
+    {
+     "plataforma": "Alura",
+     "titulo": "C#: Trabalhando com Arrays e Coleções"
+    },
+    {
+     "plataforma": "Alura",
+     "titulo": "C# LINQ: explorando ferramentas de consulta"
+    },
+    {
+     "plataforma": "Alura",
+     "titulo": "C# e Exceções: construa aplicações resilientes"
+    }
+   ]
   },
   {
    "id": "o-dotnet",
@@ -292,7 +339,21 @@
     "api"
    ],
    "profundidade": "usar",
-   "estimado_min": 75
+   "estimado_min": 75,
+   "assistir": [
+    {
+     "plataforma": "Alura",
+     "titulo": ".NET: criando uma API Web com ASP.NET Core"
+    },
+    {
+     "plataforma": "Alura",
+     "titulo": ".NET: persistindo dados com Entity Framework Core"
+    },
+    {
+     "plataforma": "Alura",
+     "titulo": "Testes em .NET: criando testes de unidade com xUnit"
+    }
+   ]
   },
   {
    "id": "o-sql",
@@ -315,7 +376,14 @@
     "pg"
    ],
    "profundidade": "a-fundo",
-   "estimado_min": 75
+   "estimado_min": 75,
+   "assistir": [
+    {
+     "plataforma": "Alura",
+     "titulo": "Formação SQL com PostgreSQL (os 2 primeiros cursos)",
+     "url": "https://www.alura.com.br/formacao-postgresql"
+    }
+   ]
   },
   {
    "id": "o-astro",
@@ -442,7 +510,8 @@
     "Saber quando recusar cliente"
    ],
    "prereq": [
-    "f-dre"
+    "f-dre",
+    "mat-porcentagem-juros"
    ],
    "pratica": "Recalcular o preço dos 3 pacotes (passo sw-ofertas) e defender cada número.",
    "fontes": [
@@ -453,6 +522,170 @@
    ],
    "profundidade": "a-fundo",
    "estimado_min": 75
+  },
+  {
+   "id": "mat-linguagem",
+   "trilha": "matematica",
+   "trimestre": 1,
+   "titulo": "Linguagem matemática: símbolos, proposições e como ler uma definição",
+   "objetivos": [
+    "Ler em voz alta qualquer frase com ∀, ∃, ⇒, ⇔, ∈ e explicar o sentido",
+    "Montar a tabela-verdade de proposições compostas",
+    "Traduzir uma condição de negócio para lógica e para um if em C#"
+   ],
+   "prereq": [],
+   "pratica": "Escrever a regra de liberação de venda do AM Kaixara como proposição, tabela-verdade e if em C#.",
+   "fontes": [
+    "https://lins-victor.github.io/pdfs/fmf.pdf"
+   ],
+   "blocos": [
+    "rt"
+   ],
+   "profundidade": "a-fundo",
+   "estimado_min": 75,
+   "ler": [
+    {
+     "obra": "Matemática Básica (V. H. S. Lins, Möbius)",
+     "trecho": "parte de Lógica e o glossário de símbolos (confira o nome na sua edição)"
+    }
+   ]
+  },
+  {
+   "id": "mat-conjuntos",
+   "trilha": "matematica",
+   "trimestre": 1,
+   "titulo": "Teoria dos conjuntos: operações, relações e o elo com bancos de dados",
+   "objetivos": [
+    "Fazer união, interseção, diferença e complementar com diagramas",
+    "Explicar produto cartesiano e relação",
+    "Mostrar a mesma operação em HashSet do C# e num JOIN do SQL"
+   ],
+   "prereq": [
+    "mat-linguagem"
+   ],
+   "pratica": "Resolver 5 exercícios do livro no papel e reescrever 2 deles com HashSet e com SQL no PostgreSQL local.",
+   "fontes": [
+    "https://lins-victor.github.io/pdfs/fmf.pdf"
+   ],
+   "blocos": [
+    "rt",
+    "pg"
+   ],
+   "profundidade": "a-fundo",
+   "estimado_min": 75,
+   "ler": [
+    {
+     "obra": "Matemática Básica (V. H. S. Lins, Möbius)",
+     "trecho": "teoria dos conjuntos (confira o nome na sua edição)"
+    }
+   ]
+  },
+  {
+   "id": "mat-porcentagem-juros",
+   "trilha": "matematica",
+   "trimestre": 1,
+   "titulo": "Porcentagem e juros: a matemática que todo preço e todo empréstimo esconde",
+   "objetivos": [
+    "Calcular aumento, desconto e variação percentual sem errar a base",
+    "Diferenciar juros simples e compostos com exemplos reais",
+    "Montar no código uma função de juros compostos com testes"
+   ],
+   "prereq": [
+    "mat-linguagem"
+   ],
+   "pratica": "Calcular quanto custa parcelar o notebook no cartão contra pagar à vista com desconto, no papel e numa função C# testada.",
+   "fontes": [
+    "https://www.bcb.gov.br/cidadaniafinanceira"
+   ],
+   "blocos": [
+    "rt",
+    "caixa"
+   ],
+   "profundidade": "a-fundo",
+   "estimado_min": 75,
+   "ler": [
+    {
+     "obra": "Matemática Básica (V. H. S. Lins, Möbius)",
+     "trecho": "porcentagem e juros (confira o nome na sua edição)"
+    }
+   ]
+  },
+  {
+   "id": "mat-potencias-log",
+   "trilha": "matematica",
+   "trimestre": 1,
+   "titulo": "Potências, raízes e logaritmos: crescimento, juros compostos e Big-O",
+   "objetivos": [
+    "Aplicar as propriedades de potências e logaritmos",
+    "Resolver 'em quanto tempo o dinheiro dobra' com logaritmo",
+    "Explicar por que busca binária é O(log n)"
+   ],
+   "prereq": [
+    "mat-porcentagem-juros"
+   ],
+   "pratica": "Calcular o tempo para dobrar uma aplicação a 1% ao mês e comparar com a busca binária numa lista de 1 milhão de itens.",
+   "fontes": [
+    "https://lins-victor.github.io/pdfs/fmf.pdf"
+   ],
+   "blocos": [
+    "rt"
+   ],
+   "profundidade": "a-fundo",
+   "estimado_min": 75,
+   "ler": [
+    {
+     "obra": "Matemática Básica (V. H. S. Lins, Möbius)",
+     "trecho": "potências e raízes; logaritmos (confira o nome na sua edição)"
+    }
+   ]
+  },
+  {
+   "id": "fis-grandezas",
+   "trilha": "fisica",
+   "trimestre": 1,
+   "titulo": "Grandezas, unidades e notação científica: a base de toda física",
+   "objetivos": [
+    "Converter unidades do SI e prefixos (mili, micro, quilo, mega)",
+    "Escrever e operar números em notação científica",
+    "Fazer análise dimensional para conferir uma fórmula"
+   ],
+   "prereq": [],
+   "pratica": "Converter as especificações reais do seu notebook (W, V, A, GHz, GB) e conferir as contas.",
+   "fontes": [
+    "https://lins-victor.github.io/pdfs/fmf.pdf",
+    "https://www.bipm.org/en/measurement-units"
+   ],
+   "blocos": [
+    "nitro"
+   ],
+   "profundidade": "a-fundo",
+   "estimado_min": 75,
+   "ler": []
+  },
+  {
+   "id": "fis-eletricidade",
+   "trilha": "fisica",
+   "trimestre": 1,
+   "titulo": "Eletricidade básica: carga, tensão, corrente, resistência, lei de Ohm e potência",
+   "objetivos": [
+    "Explicar tensão, corrente e resistência com uma analogia e com a definição",
+    "Calcular o resistor de um LED pela lei de Ohm",
+    "Calcular potência e consumo em kWh de um aparelho"
+   ],
+   "prereq": [
+    "fis-grandezas"
+   ],
+   "pratica": "Calcular e montar no Arduino o resistor de um LED, medir com multímetro e comparar o medido com o calculado.",
+   "fontes": [
+    "https://www.bipm.org/en/measurement-units"
+   ],
+   "blocos": [
+    "rob",
+    "ard"
+   ],
+   "profundidade": "a-fundo",
+   "estimado_min": 75,
+   "ler": []
   }
  ]
 }
