@@ -34,6 +34,7 @@ docs:
     python3 tools/negocios/gerar.py
     python3 tools/cockpit/gerar.py
     python3 tools/akita/akita.py docs
+    python3 tools/vault/espelho.py --se-existir
 
 # O portão antes de cada commit: dados, documentação gerada, testes e segredos (o mesmo que o CI confere)
 check:
@@ -137,6 +138,10 @@ professor *args:
 # Escola Akita: just akita sincronizar | indexar | fila | notar SLUG | lote | pendentes | aprovar ID | aplicar ID
 akita *args:
     python3 tools/akita/akita.py {{args}}
+
+# Copia o dev-setup para a pasta 11 do seu vault (o just docs já faz isso quando o vault existe)
+vault-espelho *opcao:
+    python3 tools/vault/espelho.py {{opcao}}
 
 # Backup agora (o mesmo do agendamento das 22h30)
 backup:

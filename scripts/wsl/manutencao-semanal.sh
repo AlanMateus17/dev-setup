@@ -30,6 +30,8 @@ passo "Serviços próprios: imagens novas (só baixa; reinicia no próximo up)"
 [[ -f "$RAIZ/infra/soberania/.env" ]] && usuario docker compose -f "$RAIZ/infra/soberania/compose.yaml" --profile '*' pull --quiet
 passo "Padrão em todo repositório (só cria o que falta)"
 usuario bash "$RAIZ/scripts/wsl/padronizar-repo.sh" --todos
+passo "Espelho do setup no vault do Obsidian"
+usuario python3 "$RAIZ/tools/vault/espelho.py" --se-existir
 passo "Repositórios: buscar atualizações (sem mexer nos seus arquivos)"
 while IFS= read -r g; do rodar git -C "$(dirname "$g")" fetch --quiet --all; done < <(find "$HOME/dev" -maxdepth 2 -name .git -type d 2>/dev/null)
 passo "Conferência do setup"

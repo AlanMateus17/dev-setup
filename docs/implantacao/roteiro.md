@@ -613,18 +613,18 @@ cd ~ && gh repo create dotfiles --private --clone && cd dotfiles && for f in .ba
 - Nunca coloque chaves ou tokens nos dotfiles. O gitleaks do CI confere a cada envio.
 - Implanta: dotfiles
 
-### 4.8 Criar o cofre do Obsidian em ~/dev/notas e ligar o plugin Obsidian Git
+### 4.8 Trazer o seu vault (Portfolio-AMS-Obsidian-Vault) para ~/dev/notas, ligar o Obsidian Git e espelhar o setup na pasta 11
 
 **Você** · 20 min
 
 No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
-bash scripts/wsl/vault.sh
+bash scripts/wsl/vault.sh && just vault-espelho
 ```
 
-- [ ] **Pronto quando:** Cofre aberto no Obsidian com as pastas e modelos; notas vão sozinhas para um repositório privado a cada 10 minutos
-- No Obsidian do Windows, abra a pasta \\wsl.localhost\Ubuntu (ou o nome do seu Ubuntu)\home\SEU_USUARIO\dev\notas.
+- [ ] **Pronto quando:** Vault aberto no Obsidian a partir de ~/dev/notas; a pasta 11-setup-dev-setup igual ao repositório; notas vão sozinhas para o GitHub a cada 10 minutos
+- Um vault só: o seu. O dev-setup continua repositório próprio e é copiado para a pasta 11 a cada just docs e na manutenção de domingo; não edite a pasta 11 no Obsidian. No Windows, abra no Obsidian a pasta \\wsl.localhost\Ubuntu\home\SEU_USUARIO\dev\notas (troque Ubuntu pelo nome da sua distro).
 - Implanta: Obsidian + Git
 
 ### 4.9 Ligar o Syncthing entre o celular e o notebook para as gravações (opcional)
@@ -2951,7 +2951,7 @@ cd ~/dev/dev-setup && just akita lote -n 10 --motor claude
 ```
 
 - [ ] **Pronto quando:** Fila vazia na prioridade 1 (191 posts) e as regras novas na lista de pendentes
-- Cada post vira uma nota em ~/dev/notas/50-Akita e as regras entram como 'nova'. Rode just akita pendentes depois de cada lote.
+- Cada post vira uma nota em ~/dev/notas/07-estudo-e-carreira/akita (no seu vault) e as regras entram como 'nova'. Rode just akita pendentes depois de cada lote.
 - Implanta: Escola Akita (regras com seu ok) · Obsidian + Git · Núcleo AMtech (banco central)
 
 ### 26.6 Revisar toda semana as regras novas e as datadas (benchmark e modelo envelhecem rápido)

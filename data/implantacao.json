@@ -584,12 +584,12 @@
     },
     {
      "id": "obsidian-git",
-     "titulo": "Criar o cofre do Obsidian em ~/dev/notas e ligar o plugin Obsidian Git",
+     "titulo": "Trazer o seu vault (Portfolio-AMS-Obsidian-Vault) para ~/dev/notas, ligar o Obsidian Git e espelhar o setup na pasta 11",
      "quem": "voce",
-     "pronto": "Cofre aberto no Obsidian com as pastas e modelos; notas vão sozinhas para um repositório privado a cada 10 minutos",
+     "pronto": "Vault aberto no Obsidian a partir de ~/dev/notas; a pasta 11-setup-dev-setup igual ao repositório; notas vão sozinhas para o GitHub a cada 10 minutos",
      "tempo_min": 20,
-     "comando": "bash scripts/wsl/vault.sh",
-     "nota": "No Obsidian do Windows, abra a pasta \\\\wsl.localhost\\Ubuntu (ou o nome do seu Ubuntu)\\home\\SEU_USUARIO\\dev\\notas.",
+     "comando": "bash scripts/wsl/vault.sh && just vault-espelho",
+     "nota": "Um vault só: o seu. O dev-setup continua repositório próprio e é copiado para a pasta 11 a cada just docs e na manutenção de domingo; não edite a pasta 11 no Obsidian. No Windows, abra no Obsidian a pasta \\\\wsl.localhost\\Ubuntu\\home\\SEU_USUARIO\\dev\\notas (troque Ubuntu pelo nome da sua distro).",
      "blocos": [
       "obsd"
      ]
@@ -2968,7 +2968,7 @@
      "pronto": "Fila vazia na prioridade 1 (191 posts) e as regras novas na lista de pendentes",
      "tempo_min": 30,
      "comando": "cd ~/dev/dev-setup && just akita lote -n 10 --motor claude",
-     "nota": "Cada post vira uma nota em ~/dev/notas/50-Akita e as regras entram como 'nova'. Rode just akita pendentes depois de cada lote.",
+     "nota": "Cada post vira uma nota em ~/dev/notas/07-estudo-e-carreira/akita (no seu vault) e as regras entram como 'nova'. Rode just akita pendentes depois de cada lote.",
      "blocos": [
       "akita",
       "obsd",

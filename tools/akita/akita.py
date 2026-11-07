@@ -59,7 +59,8 @@ def repo_local() -> Path:
 
 
 def cofre_notas() -> Path:
-    return Path(os.environ.get("AKITA_NOTAS") or Path.home() / "dev" / "notas" / "50-Akita")
+    vault = Path(os.environ.get("AMTECH_VAULT") or Path.home() / "dev" / "notas")
+    return Path(os.environ.get("AKITA_NOTAS") or vault / "07-estudo-e-carreira" / "akita")
 
 
 # ---------- leitura do blog ----------

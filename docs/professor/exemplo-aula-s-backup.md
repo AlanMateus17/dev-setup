@@ -1,6 +1,6 @@
 # Backup com restic: como o seu setup se protege e como restaurar
 
-> Aula-modelo do Professor (módulo `s-backup`). As aulas geradas seguem esta mesma estrutura e ficam no Obsidian, em 60-Professor/aulas.
+> Aula-modelo do Professor (módulo `s-backup`). As aulas geradas seguem esta mesma estrutura e ficam no seu vault, em 07-estudo-e-carreira/professor/aulas.
 
 ## Objetivo e por que isso importa
 

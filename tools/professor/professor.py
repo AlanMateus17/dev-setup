@@ -8,7 +8,7 @@ decidido nos planos dele (Protocolo de fim de bloco, loop da mesma ideia de 4 je
 entrevista, exercícios N1 a N4 do padrão do livro, 20/80, uma porta só). Domínio vai de 0 a 4: nada, viu a aula, fez a
 prática, passou na prova, ensinou.
 
-As aulas ficam no Obsidian (~/dev/notas/60-Professor) e são geradas uma vez só: reler não gasta token.
+As aulas ficam no seu vault (~/dev/notas/07-estudo-e-carreira/professor) e são geradas uma vez só: reler não gasta token.
 
     python3 tools/professor/professor.py hoje                 # o que estudar hoje (revisões + próxima aula de cada trilha)
     python3 tools/professor/professor.py trilha               # o currículo com o seu nível em cada módulo
@@ -88,8 +88,18 @@ def entrada(m: dict) -> list[str]:
     return linhas
 
 
+def vault() -> Path:
+    return Path(os.environ.get("AMTECH_VAULT") or Path.home() / "dev" / "notas")
+
+
 def pasta() -> Path:
-    return Path(os.environ.get("PROFESSOR_NOTAS") or Path.home() / "dev" / "notas" / "60-Professor")
+    """Aulas, provas e cartões ficam no seu vault, ao lado do resto do estudo (07-estudo-e-carreira)."""
+    return Path(os.environ.get("PROFESSOR_NOTAS") or vault() / "07-estudo-e-carreira" / "professor")
+
+
+def pasta_fichas() -> Path:
+    """Ficha dupla e registro de entrevista vão para a pasta de produção simultânea que o vault já tinha."""
+    return Path(os.environ.get("PROFESSOR_FICHAS") or vault() / "09-material-producao-simultanea" / "fichas-duplas")
 
 
 def curriculo() -> dict:
@@ -390,7 +400,7 @@ def main(argv: list[str] | None = None) -> int:
             print(f"Nota {nota} ({veredito}). Próxima revisão em {intervalo} dia(s): {prox}.")
         elif args.cmd == "fechar":
             m = modulo(args.id)
-            ficha = pasta() / "fichas" / f"{m['id']}.md"
+            ficha = pasta_fichas() / f"{m['id']}.md"
             if not ficha.exists():
                 ficha.parent.mkdir(parents=True, exist_ok=True)
                 ficha.write_text(FICHA.replace("{titulo}", m["titulo"]), encoding="utf-8")

@@ -2,6 +2,13 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.22.0] - 2026-11-06
+
+### Adicionado
+- Um vault só (ADR 0013): `vault.sh` clona o seu Portfolio-AMS-Obsidian-Vault em ~/dev/notas (ou só completa as pastas); `tools/vault/espelho.py` (`just vault-espelho`, também no `just docs` e na manutenção de domingo) copia o dev-setup para a pasta 11 do vault, removendo o que saiu. Testes.
+- Professor e Escola Akita gravam nas pastas do seu vault: 07-estudo-e-carreira/professor, 07-estudo-e-carreira/akita e 09-material-producao-simultanea/fichas-duplas.
+- Plano mestre: o plano do eixo com o Professor; o Sumário Único, o Cartão e o Plano Mestre do vault apontam para eles.
+
 ## [2.21.1] - 2026-11-06
 
 ### Corrigido
