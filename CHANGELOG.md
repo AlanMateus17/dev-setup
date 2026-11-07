@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.21.1] - 2026-11-06
+
+### Corrigido
+- O Akita tem podcast próprio no Spotify, sim: The M.Akita Chronicles (semanal) e Akitando (áudio dos vídeos). O ADR 0010 e o método do Professor diziam que não; agora os dois entram como escuta com nota (just professor escutei).
+
 ## [2.21.0] - 2026-11-06
 
 ### Adicionado

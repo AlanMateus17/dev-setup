@@ -19,7 +19,7 @@ O blog (akitaonrails.com) tem 831 posts em português de 2006 a 2026, e o códig
 6. **Seguir o Akita não passa por cima das regras do Alan.** Exemplo: o "faça mais deploy" do Akita convive com o "nada publicado sem aprovação" do Alan, e a aprovação passa a ser de um toque.
 
 7. **Ligada ao Professor (ADR 0012).** Cada módulo indica até 2 posts escolhidos a dedo para ler antes da aula. Regra aprovada, aplicada ou "já segue" vira conhecimento no núcleo e entra no contexto das aulas. O texto original continua fora do pedido à IA: a aula recebe o link, não o post.
-8. **Podcasts:** o Akita não tem podcast próprio ativo; aparece como convidado em outros (Hipsters Ponto Tech, Dev na Estrada, Ruby Rogues e outros). Sem transcrição, entram como escuta com nota de 3 ideias e 1 ação (`just professor escutei`).
+8. **Podcasts no Spotify:** o Akita tem dois. **The M.Akita Chronicles** é semanal, com as notícias da semana em tecnologia e IA (episódios de cerca de 30 minutos; o site é themakitachronicles.com). **Akitando** é o áudio dos vídeos do canal, cuja transcrição já está no blog. Os dois entram como escuta (ônibus, restaurante) seguida da nota de 3 ideias e 1 ação (`just professor escutei`). O Chronicles serve para acompanhar o que muda; o que for regra técnica vem pelo blog. Ele também aparece como convidado em podcasts de outras pessoas.
 
 ## Consequências
 
