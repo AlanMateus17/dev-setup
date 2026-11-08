@@ -17,7 +17,10 @@ from __future__ import annotations
 
 import argparse
 import csv
+import getpass
 import os
+import shutil
+import subprocess
 import sys
 import urllib.parse
 from collections import defaultdict
@@ -46,6 +49,8 @@ GRUPOS = {
 }
 
 OUTROS = "11 Outros (revisar)"
+SETUP = "20 Setup técnico"
+TODOS_OS_GRUPOS = sorted([*GRUPOS, OUTROS, SETUP])
 
 
 def dominio(url: str) -> str:
@@ -110,19 +115,109 @@ def escrever(unicas: list[dict], saida: Path, rel: dict | None = None) -> None:
             w.writerow([grupo(r["titulo"]), r["titulo"], r["usuario"], r["senha"], r["url"], nota_com_alerta(r, rel)])
 
 
+def achar_cli() -> str | None:
+    """keepassxc-cli no PATH ou no lugar padrão do Windows."""
+    win = Path(os.environ.get("ProgramFiles", r"C:\Program Files")) / "KeePassXC" / "keepassxc-cli.exe"
+    return shutil.which("keepassxc-cli") or (str(win) if win.exists() else None)
+
+
+def _cli(cli: str, args: list[str], entrada: str, run=subprocess.run):
+    """Roda o keepassxc-cli mandando as senhas pela entrada padrão: nunca na linha de comando nem na tela."""
+    return run([cli, *args], input=entrada, text=True, capture_output=True)
+
+
+def criar_grupos(cofre: str, cli: str, mestre: str, run=subprocess.run) -> int:
+    """Cria os grupos numerados que faltam. Devolve quantos criou."""
+    criados = 0
+    for g in TODOS_OS_GRUPOS:
+        r = _cli(cli, ["mkdir", "-q", cofre, g], mestre + "\n", run)
+        criados += r.returncode == 0
+    return criados
+
+
+def gravar_no_cofre(unicas: list[dict], rel: dict, cofre: str, cli: str, mestre: str, run=subprocess.run) -> tuple[int, list[str]]:
+    """Grava cada conta direto no cofre, sem arquivo intermediário. Devolve (gravadas, títulos que falharam)."""
+    usados, falhas, ok = set(), [], 0
+    for i, r in enumerate(sorted(unicas, key=lambda r: (grupo(r["titulo"]), r["titulo"])), 1):
+        g = grupo(r["titulo"])
+        base = r["titulo"].replace("/", "-")
+        titulo = base if (g, base) not in usados else f"{base} · {r['usuario'] or 'sem usuário'}"
+        n = 2
+        while (g, titulo) in usados:
+            titulo, n = f"{base} ({n})", n + 1
+        usados.add((g, titulo))
+        args = ["add", "-q", "-p", "-u", r["usuario"], "--url", r["url"]]
+        alerta = nota_com_alerta({**r, "nota": ""}, rel)
+        if alerta:
+            args += ["--notes", alerta]
+        res = _cli(cli, [*args, cofre, f"{g}/{titulo}"], f"{mestre}\n{r['senha']}\n", run)
+        if res.returncode == 0:
+            ok += 1
+        else:
+            falhas.append(f"{g}/{titulo}")
+        if i % 25 == 0:
+            print(f"  ... {i} de {len(unicas)}")
+    return ok, falhas
+
+
+def configurar_bloqueio(ini: Path, segundos: int = 300) -> None:
+    """Liga no keepassxc.ini o bloqueio do cofre depois de N segundos parado (o KeePassXC precisa estar fechado)."""
+    chaves = {"LockDatabaseIdle": "true", "LockDatabaseIdleSeconds": str(segundos)}
+    linhas = ini.read_text(encoding="utf-8").splitlines() if ini.exists() else []
+    if "[Security]" not in linhas:
+        linhas += ["", "[Security]"]
+    ini_sec = linhas.index("[Security]")
+    fim = next((i for i in range(ini_sec + 1, len(linhas)) if linhas[i].startswith("[")), len(linhas))
+    sec = [ln for ln in linhas[ini_sec + 1:fim] if ln.split("=", 1)[0] not in chaves]
+    sec = [ln for ln in sec if ln.strip()] + [f"{k}={v}" for k, v in chaves.items()]
+    novas = linhas[:ini_sec + 1] + sec + ([""] if fim < len(linhas) else []) + linhas[fim:]
+    ini.parent.mkdir(parents=True, exist_ok=True)
+    ini.write_text("\n".join(novas).strip("\n") + "\n", encoding="utf-8")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("csv")
+    ap.add_argument("csv", nargs="?")
     ap.add_argument("--saida")
+    ap.add_argument("--cofre", help="grava direto no Cofre.kdbx pelo keepassxc-cli, sem criar o CSV de importação")
+    ap.add_argument("--so-grupos", action="store_true", help="só cria os grupos numerados no cofre (com --cofre)")
+    ap.add_argument("--bloqueio", type=int, metavar="MINUTOS", help="liga o bloqueio automático do KeePassXC (feche o KeePassXC antes)")
     a = ap.parse_args()
+    if a.bloqueio:
+        ini = Path(os.environ.get("APPDATA", Path.home() / ".config")) / ("KeePassXC" if os.name == "nt" else "keepassxc") / "keepassxc.ini"
+        configurar_bloqueio(ini, a.bloqueio * 60)
+        print(f"Bloqueio automático depois de {a.bloqueio} min parado: {ini}")
+        if not a.cofre and not a.csv:
+            return 0
+    if a.cofre:
+        cli = achar_cli()
+        if not cli:
+            print("Não achei o keepassxc-cli. Instale o KeePassXC.", file=sys.stderr)
+            return 1
+        mestre = getpass.getpass("Senha mestra do cofre (não aparece na tela): ")
+        if _cli(cli, ["ls", "-q", a.cofre], mestre + "\n").returncode != 0:
+            print("Não abriu o cofre: senha mestra errada ou caminho errado. Nada foi gravado.", file=sys.stderr)
+            return 1
+        print(f"{criar_grupos(a.cofre, cli, mestre)} grupo(s) criados (os que já existiam ficaram).")
+        if a.so_grupos:
+            return 0
+    if not a.csv:
+        print("Falta o arquivo CSV exportado do navegador.", file=sys.stderr)
+        return 1
     ent = Path(a.csv).expanduser()
     if not ent.exists():
         print(f"Arquivo não encontrado: {ent}", file=sys.stderr)
         return 1
     unicas, rel = processar(ler(ent))
-    saida = Path(a.saida).expanduser() if a.saida else ent.with_name("keepassxc-importar.csv")
-    escrever(unicas, saida, rel)
-    print(f"{len(unicas)} contas prontas em {saida} ({rel['duplicatas_removidas']} duplicatas juntadas).")
+    if a.cofre:
+        ok, falhas = gravar_no_cofre(unicas, rel, a.cofre, cli, mestre)
+        print(f"{ok} de {len(unicas)} contas gravadas no cofre ({rel['duplicatas_removidas']} duplicatas juntadas).")
+        for f in falhas:
+            print("  não gravou:", f)
+    else:
+        saida = Path(a.saida).expanduser() if a.saida else ent.with_name("keepassxc-importar.csv")
+        escrever(unicas, saida, rel)
+        print(f"{len(unicas)} contas prontas em {saida} ({rel['duplicatas_removidas']} duplicatas juntadas).")
     print(f"Senha repetida em vários sites ({len(rel['repetidas'])}): troque primeiro, começando por bancos e e-mail.")
     for s in rel["repetidas"]:
         print("  -", s)
@@ -131,7 +226,10 @@ def main() -> int:
         print("  -", s)
     print(f"\nSem grupo conhecido: {sum(1 for r in unicas if grupo(r['titulo']) == OUTROS)} conta(s) em '{OUTROS}'.")
     print("No KeePassXC, busque TROCAR para ver as que precisam de senha nova.")
-    print("\nPróximo: KeePassXC > Banco de dados > Importar > CSV. Depois APAGUE os dois arquivos CSV (Shift+Delete).")
+    if a.cofre:
+        print(f"\nPróximo: confira o cofre e APAGUE o arquivo exportado: {ent}")
+    else:
+        print("\nPróximo: KeePassXC > Banco de dados > Importar > CSV. Depois APAGUE os dois arquivos CSV (Shift+Delete).")
     return 0
 
 

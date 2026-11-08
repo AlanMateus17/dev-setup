@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.24.6] - 2026-11-08
+
+### Adicionado
+- `senhas_csv.py --cofre`: grava as senhas exportadas direto no Cofre.kdbx pelo keepassxc-cli (senha mestra pedida uma vez; senhas pela entrada padrão, nunca na linha de comando; sem CSV intermediário), `--so-grupos` cria os 13 grupos numerados e `--bloqueio MIN` liga o bloqueio automático no keepassxc.ini. Testado com o keepassxc-cli 2.7.6; testes. O passo `kp-organizar` apaga o arquivo exportado no fim.
+
 ## [2.24.5] - 2026-11-08
 
 ### Mudado

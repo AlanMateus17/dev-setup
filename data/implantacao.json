@@ -156,7 +156,7 @@
      "pronto": "Arquivo Cofre.kdbx em Documentos\\Cofre abre com a senha mestra; bloqueio automático depois de 5 minutos parado",
      "tempo_min": 30,
      "comando": "winget install --id KeePassXCTeam.KeePassXC -e; New-Item -ItemType Directory -Force \"$HOME\\Documents\\Cofre\" | Out-Null; & \"$env:ProgramFiles\\KeePassXC\\keepassxc-cli.exe\" db-create --set-password \"$HOME\\Documents\\Cofre\\Cofre.kdbx\"",
-     "nota": "Gere a senha mestra no próprio KeePassXC (Ferramentas > Gerador de senhas > Frase-senha, 6 palavras) e decore nos primeiros dias. Ela é a única senha que você precisa saber de cor e não pode ser usada em nenhum outro lugar. Não use arquivo-chave: se perder o arquivo, perde o cofre. Ninguém, nem o Claude, precisa ver o cofre ou a senha mestra. Para gerar a senha mestra no terminal: & \"$env:ProgramFiles\\KeePassXC\\keepassxc-cli.exe\" diceware -W 6 (anote no papel do kit e rode cls para limpar a tela). O db-create pergunta a senha sem mostrar nem gravar no histórico.",
+     "nota": "Gere a senha mestra no próprio KeePassXC (Ferramentas > Gerador de senhas > Frase-senha, 6 palavras) e decore nos primeiros dias. Ela é a única senha que você precisa saber de cor e não pode ser usada em nenhum outro lugar. Não use arquivo-chave: se perder o arquivo, perde o cofre. Ninguém, nem o Claude, precisa ver o cofre ou a senha mestra. Para gerar a senha mestra no terminal: & \"$env:ProgramFiles\\KeePassXC\\keepassxc-cli.exe\" diceware -W 6 (anote no papel do kit e rode cls para limpar a tela). O db-create pergunta a senha sem mostrar nem gravar no histórico. Depois de criar, os grupos numerados e o bloqueio automático saem por comando (feche o KeePassXC antes): py $HOME\\dev-setup\\tools\\organizar\\senhas_csv.py --cofre \"$HOME\\Documents\\Cofre\\Cofre.kdbx\" --so-grupos --bloqueio 5",
      "blocos": [
       "kee"
      ]
@@ -190,7 +190,7 @@
     },
     {
      "id": "kp-organizar",
-     "titulo": "Preparar o CSV exportado do Chrome/Google para o KeePassXC",
+     "titulo": "Gravar as senhas exportadas do Chrome direto no cofre, já em grupos",
      "quem": "script",
      "pronto": "keepassxc-importar.csv pronto e lista de senhas repetidas (só nomes de sites)",
      "tempo_min": 5,
@@ -198,8 +198,8 @@
       "organizar",
       "kee"
      ],
-     "comando": "$f = \"$HOME\\Downloads\\Chrome Passwords.csv\"; if (Test-Path $f) { py $HOME\\dev-setup\\tools\\organizar\\senhas_csv.py $f } else { Write-Host \"Nao achei $f : exporte em chrome://password-manager/settings\" }",
-     "nota": "Roda no Windows (py), antes do WSL existir. Nenhuma senha aparece na tela. Separa as contas em grupos numerados (00 Essenciais, 01 Bancos, 02 Governo, 03 Escola, 04 AMtech, 05 Instituto e Editora, 06 Código, 07 IA, 08 Redes, 09 Estudo, 10 Compras, 11 Outros) e marca TROCAR na nota das senhas repetidas ou curtas. Depois de importar, apague os dois CSVs."
+     "comando": "$f = \"$HOME\\Downloads\\Chrome Passwords.csv\"; if (-not (Test-Path $f)) { Write-Host \"Nao achei $f : exporte em chrome://password-manager/settings\" } else { py $HOME\\dev-setup\\tools\\organizar\\senhas_csv.py $f --cofre \"$HOME\\Documents\\Cofre\\Cofre.kdbx\"; if ($LASTEXITCODE -eq 0) { Remove-Item $f; Write-Host \"Arquivo exportado apagado.\" } }",
+     "nota": "Roda no Windows (py) antes do WSL existir. Pede a senha mestra uma vez, sem mostrar; as senhas vão para o keepassxc-cli pela entrada padrão, nunca pela linha de comando nem pela tela, e nenhum CSV de importação é criado. Grava cada conta no grupo certo (00 Essenciais a 11 Outros), marca TROCAR na nota das repetidas ou curtas e apaga o arquivo exportado no fim. Sem --cofre, o script gera o CSV para importar pela janela."
     },
     {
      "id": "senhas-importar",
@@ -209,7 +209,7 @@
      "tempo_min": 30,
      "comando": "Start-Process chrome 'chrome://password-manager/settings'",
      "fora": "Os navegadores só exportam senhas pela janela de configurações, e o KeePassXC só importa CSV pela janela dele (Banco de dados > Importar).",
-     "nota": "Exporte em chrome://password-manager/settings, edge://wallet/passwords e passwords.google.com. O CSV é a lista de todas as suas senhas em texto puro: importe na hora, apague com Shift+Delete e não deixe em Downloads, no Drive, no e-mail nem no repositório. Não mande esse arquivo para ninguém, nem para o Claude. Só depois de conferir o cofre apague as senhas dos navegadores e desligue 'Oferecer para salvar senhas'.",
+     "nota": "Exporte em chrome://password-manager/settings (e edge://wallet/passwords, se usar o Edge) e rode o passo kp-organizar, que grava direto no cofre e apaga o arquivo. O CSV é a lista de todas as suas senhas em texto puro: não deixe em Downloads, no Drive, no e-mail nem no repositório, e não mande para ninguém, nem para o Claude. Só depois de conferir o cofre apague as senhas dos navegadores e desligue 'Oferecer para salvar senhas'.",
      "blocos": [
       "kee",
       "nav"

@@ -235,7 +235,7 @@ winget install --id KeePassXCTeam.KeePassXC -e; New-Item -ItemType Directory -Fo
 ```
 
 - [ ] **Pronto quando:** Arquivo Cofre.kdbx em Documentos\Cofre abre com a senha mestra; bloqueio automático depois de 5 minutos parado
-- Gere a senha mestra no próprio KeePassXC (Ferramentas > Gerador de senhas > Frase-senha, 6 palavras) e decore nos primeiros dias. Ela é a única senha que você precisa saber de cor e não pode ser usada em nenhum outro lugar. Não use arquivo-chave: se perder o arquivo, perde o cofre. Ninguém, nem o Claude, precisa ver o cofre ou a senha mestra. Para gerar a senha mestra no terminal: & "$env:ProgramFiles\KeePassXC\keepassxc-cli.exe" diceware -W 6 (anote no papel do kit e rode cls para limpar a tela). O db-create pergunta a senha sem mostrar nem gravar no histórico.
+- Gere a senha mestra no próprio KeePassXC (Ferramentas > Gerador de senhas > Frase-senha, 6 palavras) e decore nos primeiros dias. Ela é a única senha que você precisa saber de cor e não pode ser usada em nenhum outro lugar. Não use arquivo-chave: se perder o arquivo, perde o cofre. Ninguém, nem o Claude, precisa ver o cofre ou a senha mestra. Para gerar a senha mestra no terminal: & "$env:ProgramFiles\KeePassXC\keepassxc-cli.exe" diceware -W 6 (anote no papel do kit e rode cls para limpar a tela). O db-create pergunta a senha sem mostrar nem gravar no histórico. Depois de criar, os grupos numerados e o bloqueio automático saem por comando (feche o KeePassXC antes): py $HOME\dev-setup\tools\organizar\senhas_csv.py --cofre "$HOME\Documents\Cofre\Cofre.kdbx" --so-grupos --bloqueio 5
 - Implanta: KeePassXC
 
 ### 2.2 Montar o kit de emergência em papel
@@ -262,18 +262,18 @@ Start-Process 'https://myaccount.google.com/security-checkup'
 - Vem antes de tudo porque todo 'Esqueci minha senha' manda o link para esse e-mail: quem controla o e-mail controla as outras contas. Faça em myaccount.google.com > Segurança e rode a Verificação de segurança no fim. Se não lembrar a senha atual, use g.co/recover no notebook e na rede de casa, onde o Google já reconhece você.
 - Implanta: KeePassXC · App 2FA (celular) · Conector Google (Gmail, Drive…)
 
-### 2.4 Preparar o CSV exportado do Chrome/Google para o KeePassXC
+### 2.4 Gravar as senhas exportadas do Chrome direto no cofre, já em grupos
 
 **Script** · 5 min
 
 No **PowerShell** do Windows (linha `PS C:\>`):
 
 ```powershell
-$f = "$HOME\Downloads\Chrome Passwords.csv"; if (Test-Path $f) { py $HOME\dev-setup\tools\organizar\senhas_csv.py $f } else { Write-Host "Nao achei $f : exporte em chrome://password-manager/settings" }
+$f = "$HOME\Downloads\Chrome Passwords.csv"; if (-not (Test-Path $f)) { Write-Host "Nao achei $f : exporte em chrome://password-manager/settings" } else { py $HOME\dev-setup\tools\organizar\senhas_csv.py $f --cofre "$HOME\Documents\Cofre\Cofre.kdbx"; if ($LASTEXITCODE -eq 0) { Remove-Item $f; Write-Host "Arquivo exportado apagado." } }
 ```
 
 - [ ] **Pronto quando:** keepassxc-importar.csv pronto e lista de senhas repetidas (só nomes de sites)
-- Roda no Windows (py), antes do WSL existir. Nenhuma senha aparece na tela. Separa as contas em grupos numerados (00 Essenciais, 01 Bancos, 02 Governo, 03 Escola, 04 AMtech, 05 Instituto e Editora, 06 Código, 07 IA, 08 Redes, 09 Estudo, 10 Compras, 11 Outros) e marca TROCAR na nota das senhas repetidas ou curtas. Depois de importar, apague os dois CSVs.
+- Roda no Windows (py) antes do WSL existir. Pede a senha mestra uma vez, sem mostrar; as senhas vão para o keepassxc-cli pela entrada padrão, nunca pela linha de comando nem pela tela, e nenhum CSV de importação é criado. Grava cada conta no grupo certo (00 Essenciais a 11 Outros), marca TROCAR na nota das repetidas ou curtas e apaga o arquivo exportado no fim. Sem --cofre, o script gera o CSV para importar pela janela.
 - Implanta: Organizadores · KeePassXC
 
 ### 2.5 Trazer para o cofre as senhas salvas no Chrome, no Edge e no Google
@@ -288,7 +288,7 @@ Start-Process chrome 'chrome://password-manager/settings'
 
 - **Fora do terminal:** Os navegadores só exportam senhas pela janela de configurações, e o KeePassXC só importa CSV pela janela dele (Banco de dados > Importar).
 - [ ] **Pronto quando:** Senhas importadas no KeePassXC (Banco de dados > Importar > CSV); o arquivo CSV apagado de vez; navegadores sem salvar senha
-- Exporte em chrome://password-manager/settings, edge://wallet/passwords e passwords.google.com. O CSV é a lista de todas as suas senhas em texto puro: importe na hora, apague com Shift+Delete e não deixe em Downloads, no Drive, no e-mail nem no repositório. Não mande esse arquivo para ninguém, nem para o Claude. Só depois de conferir o cofre apague as senhas dos navegadores e desligue 'Oferecer para salvar senhas'.
+- Exporte em chrome://password-manager/settings (e edge://wallet/passwords, se usar o Edge) e rode o passo kp-organizar, que grava direto no cofre e apaga o arquivo. O CSV é a lista de todas as suas senhas em texto puro: não deixe em Downloads, no Drive, no e-mail nem no repositório, e não mande para ninguém, nem para o Claude. Só depois de conferir o cofre apague as senhas dos navegadores e desligue 'Oferecer para salvar senhas'.
 - Implanta: KeePassXC · Navegador + Claude in Chrome
 
 ### 2.6 Ver no KeePassXC quais senhas são fracas, repetidas ou já vazaram
