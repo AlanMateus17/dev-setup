@@ -73,7 +73,7 @@ class TestSenhas(unittest.TestCase):
     def test_titulo_sem_barra_e_reorganizar(self):
         chamadas = []
 
-        def falso(cmd, input, text, capture_output):
+        def falso(cmd, input, text, capture_output, **kw):
             chamadas.append(cmd)
             saida = "com.itau · a\nsite-qualquer.net\n" if cmd[1] == "ls" else ""
             return SimpleNamespace(returncode=0, stdout=saida)

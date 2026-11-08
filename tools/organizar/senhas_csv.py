@@ -31,24 +31,24 @@ from pathlib import Path
 # Os números deixam os grupos na mesma ordem no KeePassXC: 00 é a corrente de recuperação, que protege todo o resto.
 GRUPOS = {
     "00 Essenciais (e-mail e contas-mãe)": ["accounts.google", "myaccount.google", "gmail", "outlook", "hotmail", "live.com",
-                                            "microsoft", "apple", "icloud", "proton"],
+                                            "microsoft", "apple", "icloud", "proton", "=google.com"],
     "01 Bancos e dinheiro": ["itau", "nubank", "pagbank", "pagseguro", "xp", "mercadopago", "paypal", "tesouro", "inter", "caixa", "bb.com",
-                             "santander", "bradesco", "c6bank", "picpay", "binance", "blockchain", "rico", "clear", "btg", "b3.com", "b3investidor", "br.com.bb", "bb.com.br", "com.itau", "bitnuvem", "bitypreco", "recupera.com", "bahamascred"],
+                             "santander", "bradesco", "c6bank", "picpay", "binance", "blockchain", "rico", "clear", "btg", "b3.com", "b3investidor", "br.com.bb", "bb.com.br", "com.itau", "bitnuvem", "bitypreco", "recupera.com", "bahamascred", "sofisa", "biscoint", "visa.com"],
     "03 Escola (só os seus acessos)": ["educacao.mg", "see.mg", "sisap", "simade", "diario", "moodle", "classroom"],
     "02 Governo": ["gov.br", "receita", "fazenda", "detran", "sefaz", "inss", "esocial.gov", "inpi", "mg.gov.br", "sispatri", "prodemge", "correios", "copasa"],
     "04 Grupo AMtech Digital": ["registro.br", "cloudflare", "hostinger", "business.facebook", "business.whatsapp", "whatsapp", "cal.com",
                                 "zoho", "resend", "upwork", "canva", "nuvemshop", "wordfence", "cloudclusters", "phpmyadmin"],
     "05 Instituto e Editora": ["hotmart", "kiwify", "eduzz", "udemy", "mailerlite", "amazon.com.br/kdp", "kdp", "clubedeautores", "isbn",
-                               "cbl.org"],
+                               "cbl.org", "institutoamssilva"],
     "06 Código e nuvem": ["github", "gitlab", "vercel", "supabase", "azure", "aws", "cloud.google", "docker", "npmjs", "nuget", "oracle",
-                          "backblaze", "tailscale", "sonarcloud", "sentry", "app-preview.com", "datadoghq", "n8n", "datomic", "hotreload", "obsidian.md"],
+                          "backblaze", "tailscale", "sonarcloud", "sentry", "app-preview.com", "datadoghq", "n8n", "datomic", "hotreload", "obsidian.md", "infobip", "formspree", "=localhost", "wordpress.org"],
     "07 IA": ["claude", "anthropic", "openai", "chatgpt", "gemini", "perplexity", "huggingface", "cursor", "deepseek", "grok", "x.ai",
               "elevenlabs", "notebooklm", "claudeusercontent"],
-    "08 Redes": ["facebook", "instagram", "tiktok", "linkedin", "youtube", "twitter", "=x.com", "kwai", "discord", "telegram", "threads"],
-    "09 Estudo": ["alura", "rocketseat", "dio.me", "estacio", "roadmap", "tryhackme", "hackthebox", "coursera", "ankiweb", "kaggle", "duolingo", "unicv", "anbimaedu", "cademi", "fabricadeprovas", "portaleducacional", "saberemrede", "pagtrust"],
-    "10 Compras e assinaturas": ["mercadolivre", "shopee", "amazon", "aliexpress", "magazineluiza", "netflix", "spotify", "ifood", "uber", "kabum", "acer", "lojabhs", "superbid", "leiloes", "luizalabs", "magalu", "disneyplus", "max.com", "globo", "steampowered", "dreamstime", "adobe", "autodesk", "ilovepdf", "99app"],
+    "08 Redes": ["facebook", "instagram", "tiktok", "linkedin", "youtube", "twitter", "=x.com", "kwai", "discord", "telegram", "threads", "vidiq", "twitch"],
+    "09 Estudo": ["alura", "rocketseat", "dio.me", "estacio", "roadmap", "tryhackme", "hackthebox", "coursera", "ankiweb", "kaggle", "duolingo", "unicv", "anbimaedu", "cademi", "fabricadeprovas", "portaleducacional", "saberemrede", "pagtrust", "finclass", "cursoemvideo", "iungo", "unigrande", "refactoring.guru"],
+    "10 Compras e assinaturas": ["mercadolivre", "shopee", "amazon", "aliexpress", "magazineluiza", "netflix", "spotify", "ifood", "uber", "kabum", "acer", "lojabhs", "superbid", "leiloes", "luizalabs", "magalu", "disneyplus", "max.com", "globo", "steampowered", "dreamstime", "adobe", "autodesk", "ilovepdf", "99app", "casio", "raizen", "indrive", "myhonda", "ticket360"],
     "12 Carreira e vagas": ["empregos", "abler", "infojobs", "vagas.com", "bne.com", "selecty", "talentbrand", "rivelli", "superestagios",
-                            "fiemg", "catho", "gupy"],
+                            "fiemg", "catho", "gupy", "solides", "nerdin"],
 }
 
 OUTROS = "11 Outros (revisar)"
@@ -124,8 +124,11 @@ def achar_cli() -> str | None:
     return shutil.which("keepassxc-cli") or (str(win) if win.exists() else None)
 
 
-def _cli(cli: str, args: list[str], entrada: str, run=subprocess.run):
-    """Roda o keepassxc-cli mandando as senhas pela entrada padrão: nunca na linha de comando nem na tela."""
+def _cli(cli: str, args: list[str], entrada: str, run=subprocess.run, utf8: bool = False):
+    """Roda o keepassxc-cli mandando as senhas pela entrada padrão: nunca na linha de comando nem na tela.
+    utf8=True lê a saída como UTF-8 (o keepassxc-cli escreve assim; no Windows o padrão do Python é cp1252 e estraga o '·')."""
+    if utf8:
+        return run([cli, *args], input=entrada, text=True, capture_output=True, encoding="utf-8", errors="replace")
     return run([cli, *args], input=entrada, text=True, capture_output=True)
 
 
@@ -166,13 +169,13 @@ def gravar_no_cofre(unicas: list[dict], rel: dict, cofre: str, cli: str, mestre:
 
 def reorganizar(cofre: str, cli: str, mestre: str, run=subprocess.run) -> list[tuple[str, str]]:
     """Move do grupo Outros para o grupo certo o que as regras novas já reconhecem. Devolve (entrada, grupo) movidos."""
-    r = _cli(cli, ["ls", "-q", cofre, OUTROS], mestre + "\n", run)
+    r = _cli(cli, ["ls", "-q", cofre, OUTROS], mestre + "\n", run, utf8=True)
     movidos = []
     for titulo in (ln.strip() for ln in (r.stdout or "").splitlines()):
         if not titulo or titulo.startswith("[") or titulo.endswith("/"):
             continue
         destino = grupo(titulo.split(" · ")[0].split(" (")[0])
-        if destino != OUTROS and _cli(cli, ["mv", "-q", cofre, f"{OUTROS}/{titulo}", destino], mestre + "\n", run).returncode == 0:
+        if destino != OUTROS and _cli(cli, ["mv", "-q", cofre, f"{OUTROS}/{titulo}", destino], mestre + "\n", run, utf8=True).returncode == 0:
             movidos.append((titulo, destino))
     return movidos
 

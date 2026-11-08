@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.24.9] - 2026-11-08
+
+### Corrigido
+- `--reorganizar` no Windows: lê a saída do keepassxc-cli como UTF-8. Antes o "·" dos títulos com usuário chegava estragado e essas entradas não saíam do grupo Outros. Mais sites reconhecidos.
+
 ## [2.24.8] - 2026-11-08
 
 ### Corrigido
