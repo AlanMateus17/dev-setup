@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.24.4] - 2026-11-08
+
+### Corrigido
+- `backup-inicial` ignora o arquivo interno de trava do OneDrive (nome .GUID), que fica sempre em uso (erro 32) e marcava a pasta OneDrive como falha sem motivo.
+
 ## [2.24.3] - 2026-11-08
 
 ### Corrigido
