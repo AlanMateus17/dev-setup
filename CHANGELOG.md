@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.24.2] - 2026-11-08
+
+### Corrigido
+- `backup-inicial` confere antes se cabe no disco (e para com uma mensagem clara em vez de 400 linhas de "Espaço insuficiente"), inclui a pasta do OneDrive e mostra quantas pastas falharam.
+
 ## [2.24.1] - 2026-11-08
 
 ### Corrigido

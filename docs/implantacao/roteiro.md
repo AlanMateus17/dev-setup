@@ -170,17 +170,17 @@ Nada se perde, o hardware está no lugar e as contas estão protegidas antes de 
 
 **Quando:** Semana 1 · out/2026
 
-### 1.1 Copiar documentos, fotos e projetos para um disco externo
+### 1.1 Copiar documentos, fotos e projetos para um disco externo ou pendrive
 
 **Você** · 1 h 00 min
 
 No **PowerShell** do Windows (linha `PS C:\>`):
 
 ```powershell
-$d = 'E:'; if (-not (Test-Path "$d\")) { Write-Host "Nao existe o disco $d. Conecte o disco externo e veja a letra com: Get-Volume" } else { foreach ($p in 'Desktop','Downloads','Documents','Pictures','Videos','Music','dev','dev-setup','source') { if (Test-Path "$HOME\$p") { robocopy "$HOME\$p" "$d\backup-inicial\$p" /E /R:1 /W:1 /XJ /NFL /NDL /NP } } }
+$d = 'E:'; if (-not (Test-Path "$d\")) { Write-Host "Nao existe o disco $d (veja a letra com Get-Volume)" } else { $pastas = @('Desktop','Documents','Pictures','Videos','Music','OneDrive','dev','dev-setup','source','Downloads') | Where-Object { Test-Path "$HOME\$_" }; $precisa = (Get-ChildItem -Path ($pastas | ForEach-Object { "$HOME\$_" }) -Recurse -File -Force -ErrorAction SilentlyContinue | Measure-Object Length -Sum).Sum; $livre = (Get-PSDrive $d.TrimEnd(':')).Free; if ($precisa -gt $livre) { Write-Host ("Nao cabe: precisa {0:N1} GB e $d tem {1:N1} GB livres. Tire 'Downloads' da lista ou use um disco maior." -f ($precisa/1GB), ($livre/1GB)) } else { $falhas = 0; foreach ($p in $pastas) { robocopy "$HOME\$p" "$d\backup-inicial\$p" /E /R:1 /W:1 /XJ /NFL /NDL /NP /NJH | Out-Null; if ($LASTEXITCODE -ge 8) { $falhas++; Write-Host "Falhou: $p" } }; Write-Host ("Copiado: {0:N1} GB para $d\backup-inicial, {1} pasta(s) com erro" -f ($precisa/1GB), $falhas) } }
 ```
 
-- [ ] **Pronto quando:** Disco externo com a cópia conferida (abra alguns arquivos)
+- [ ] **Pronto quando:** Mensagem "Copiado: ... 0 pasta(s) com erro" e alguns arquivos abertos no disco para conferir. Troque E: pela letra certa (Get-Volume); a partição RUFUS_BOOT de um pendrive de instalação tem 0 GB e não serve
 - Troque E: pela letra do disco externo (Get-Volume lista os discos; o seu notebook só tem o C:). Acrescente à lista as pastas suas que ficam direto na pasta do usuário, como o cofre do Obsidian. O robocopy copia sem apagar nada do notebook; rodar de novo só copia o que mudou. Se as suas pastas estiverem no OneDrive, troque $HOME\$p por $HOME\OneDrive\$p.
 - Implanta: Disco externo
 
