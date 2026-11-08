@@ -85,17 +85,17 @@ Saber exatamente o que o notebook já tem de hardware, segurança, programas, co
 
 **Quando:** Antes de tudo · semana 1 (out/2026)
 
-### 0.1 Extrair o dev-setup.zip e deixar a pasta em C:\Users\SEU_USUARIO\dev-setup
+### 0.1 Baixar o dev-setup do GitHub para C:\Users\SEU_USUARIO\dev-setup
 
 **Você** · 5 min
 
 No **PowerShell** do Windows (linha `PS C:\>`):
 
 ```powershell
-if (Test-Path $HOME\dev-setup) { Write-Host "Ja existe $HOME\dev-setup" } else { Expand-Archive "$HOME\Downloads\dev-setup.zip" "$env:TEMP\dsx" -Force; Move-Item "$env:TEMP\dsx\dev-setup" "$HOME\dev-setup"; Remove-Item "$env:TEMP\dsx" -Recurse; Write-Host "Pronto: $HOME\dev-setup" }
+if (Test-Path $HOME\dev-setup) { Write-Host "Ja existe $HOME\dev-setup" } else { winget install --id Git.Git -e --accept-source-agreements --accept-package-agreements; & "$env:ProgramFiles\Git\cmd\git.exe" clone https://github.com/AlanMateus17/dev-setup.git "$HOME\dev-setup" }
 ```
 
-- [ ] **Pronto quando:** Pasta C:\Users\SEU_USUARIO\dev-setup com RODAR-DIAGNOSTICO.cmd e as pastas scripts, data e docs logo dentro dela; nenhuma outra cópia em Downloads
+- [ ] **Pronto quando:** Pasta C:\Users\SEU_USUARIO\dev-setup com RODAR-DIAGNOSTICO.cmd e as pastas scripts, data e docs logo dentro dela (o Git pede o login do GitHub no navegador uma vez)
 - Botão direito no zip > Extrair tudo. O Windows costuma criar dev-setup\dev-setup: recorte a pasta de dentro (a que tem a pasta scripts) e cole em C:\Users\SEU_USUARIO, a pasta com o seu nome. Apague as cópias que sobraram em Downloads, como "dev-setup (1)". Todos os comandos do Windows deste roteiro apontam para esse lugar, então funcionam de qualquer pasta, até da System32 onde o PowerShell de Administrador abre. O comando extrai o zip que está em Downloads e põe a pasta no lugar; baixar o zip da conversa é pelo navegador.
 
 ### 0.2 Rodar o diagnóstico: botão direito em RODAR-DIAGNOSTICO.cmd > Executar como administrador
@@ -547,14 +547,14 @@ $f="$env:APPDATA\Docker\settings-store.json"; if (-not (Test-Path $f)) { Write-H
 - Rode no PowerShell (PS C:\>), não dentro do Ubuntu. Ele guarda uma cópia da configuração (settings-store.json.bak), liga a integração com o Ubuntu e reinicia o Docker Desktop. Depois, no Ubuntu: docker run --rm hello-world. Se o nome da sua distro não for Ubuntu (wsl -l -v), troque no comando.
 - Implanta: Docker + Compose
 
-### 4.3 Copiar este repositório para ~/dev/dev-setup
+### 4.3 Copiar o dev-setup do Windows para ~/dev/dev-setup (com o GitHub como origem)
 
 **Você** · 5 min
 
 No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
-mkdir -p ~/dev && cp -r /mnt/c/Users/SEU_USUARIO/dev-setup ~/dev/dev-setup
+mkdir -p ~/dev && { [ -d ~/dev/dev-setup ] || git clone "$(wslpath "$(cmd.exe /c 'echo %USERPROFILE%' 2>/dev/null | tr -d '\r')")/dev-setup" ~/dev/dev-setup; } && git -C ~/dev/dev-setup remote set-url origin git@github.com:AlanMateus17/dev-setup.git && ls ~/dev/dev-setup
 ```
 
 - [ ] **Pronto quando:** Pasta ~/dev/dev-setup com os arquivos
@@ -657,14 +657,14 @@ O repositório no ar, com testes automáticos verdes a cada envio e o trabalho o
 
 **Quando:** Semana 2 · nov/2026
 
-### 5.1 Criar o repositório privado e enviar o setup
+### 5.1 Ligar o repositório ao GitHub (cria só se ainda não existir)
 
 **Script** · 5 min
 
 No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
-cd ~/dev/dev-setup && git init -q 2>/dev/null; git add -A && git commit -qm 'chore: setup inicial' ; gh repo create AlanMateus17/dev-setup --private --source . --push
+cd ~/dev/dev-setup && if gh repo view AlanMateus17/dev-setup >/dev/null 2>&1; then git pull --ff-only && echo "Ja existe no GitHub: so atualizei"; else git add -A && git commit -qm "chore: setup inicial"; gh repo create AlanMateus17/dev-setup --private --source . --push; fi
 ```
 
 - [ ] **Pronto quando:** Repositório AlanMateus17/dev-setup privado com o código

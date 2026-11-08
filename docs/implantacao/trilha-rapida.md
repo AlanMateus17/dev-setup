@@ -13,8 +13,8 @@ Comece o backup-inicial e o windows-update (rodam sozinhos, em janelas separadas
 
 **Rode (segue sozinho)**
 
-- [ ] `diag-pasta` · Extrair o dev-setup.zip e deixar a pasta em C:\Users\SEU_USUARIO\dev-setup (5 min). Pronto quando: Pasta C:\Users\SEU_USUARIO\dev-setup com RODAR-DIAGNOSTICO.cmd e as pastas scripts, data e docs logo dentro dela; nenhuma outra cópia em Downloads
-  - PowerShell do Windows (`PS C:\>`): `if (Test-Path $HOME\dev-setup) { Write-Host "Ja existe $HOME\dev-setup" } else { Expand-Archive "$HOME\Downloads\dev-setup.zip" "$env:TEMP\dsx" -Force; Move-Item "$env:TEMP\dsx\dev-setup" "$HOME\dev-setup"; Remove-Item "$env:TEMP\dsx" -Recurse; Write-Host "Pronto: $HOME\dev-setup" }`
+- [ ] `diag-pasta` · Baixar o dev-setup do GitHub para C:\Users\SEU_USUARIO\dev-setup (5 min). Pronto quando: Pasta C:\Users\SEU_USUARIO\dev-setup com RODAR-DIAGNOSTICO.cmd e as pastas scripts, data e docs logo dentro dela (o Git pede o login do GitHub no navegador uma vez)
+  - PowerShell do Windows (`PS C:\>`): `if (Test-Path $HOME\dev-setup) { Write-Host "Ja existe $HOME\dev-setup" } else { winget install --id Git.Git -e --accept-source-agreements --accept-package-agreements; & "$env:ProgramFiles\Git\cmd\git.exe" clone https://github.com/AlanMateus17/dev-setup.git "$HOME\dev-setup" }`
 - [ ] `diag-rodar` · Rodar o diagnóstico: botão direito em RODAR-DIAGNOSTICO.cmd > Executar como administrador (10 min). Pronto quando: Pasta diagnostico-AAAAMMDD com diagnostico.md: o que você tem e em que passo cada pendência se resolve
   - PowerShell do Windows (`PS C:\>`): `powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\diagnostico.ps1`
 - [ ] `backup-inicial` · Copiar documentos, fotos e projetos para um disco externo (60 min). Pronto quando: Disco externo com a cópia conferida (abra alguns arquivos)
@@ -62,8 +62,8 @@ O win-aplicar leva cerca de 1 hora e não precisa de você. Nesse tempo, troque 
   - PowerShell do Windows (`PS C:\>`): `wsl -l -v; wsl -d Ubuntu`
 - [ ] `docker-wsl` · Ligar o Docker Desktop dentro do Ubuntu (integração com o WSL) (5 min). Pronto quando: 'docker run hello-world' funciona dentro do Ubuntu
   - PowerShell do Windows (`PS C:\>`): `$f="$env:APPDATA\Docker\settings-store.json"; if (-not (Test-Path $f)) { Write-Host "Nao achei $f : abra o Docker Desktop uma vez e rode de novo" } else { Copy-Item $f "$f.bak" -Force; $j=Get-Content $f -Raw | ConvertFrom-Json; $j | Add-Member -Force NoteProperty EnableIntegrationWithDefaultWslDistro $true; $j | Add-Member -Force NoteProperty IntegratedWslDistros @('Ubuntu'); [IO.File]::WriteAllText($f, ($j | ConvertTo-Json -Depth 10)); Get-Process 'Docker Desktop' -ErrorAction SilentlyContinue | Stop-Process -Force; Start-Sleep 3; Start-Process "$env:ProgramFiles\Docker\Docker\Docker Desktop.exe"; $i=0; do { Start-Sleep 5; $i++; docker info *> $null } until ($LASTEXITCODE -eq 0 -or $i -ge 36); if ($LASTEXITCODE -eq 0) { Write-Host "Docker pronto com o Ubuntu ligado" } else { Write-Host "Docker nao respondeu em 3 min: veja a janela dele" } }`
-- [ ] `clonar` · Copiar este repositório para ~/dev/dev-setup (5 min). Pronto quando: Pasta ~/dev/dev-setup com os arquivos
-  - Ubuntu do WSL: `mkdir -p ~/dev && cp -r /mnt/c/Users/SEU_USUARIO/dev-setup ~/dev/dev-setup`
+- [ ] `clonar` · Copiar o dev-setup do Windows para ~/dev/dev-setup (com o GitHub como origem) (5 min). Pronto quando: Pasta ~/dev/dev-setup com os arquivos
+  - Ubuntu do WSL: `mkdir -p ~/dev && { [ -d ~/dev/dev-setup ] || git clone "$(wslpath "$(cmd.exe /c 'echo %USERPROFILE%' 2>/dev/null | tr -d '\r')")/dev-setup" ~/dev/dev-setup; } && git -C ~/dev/dev-setup remote set-url origin git@github.com:AlanMateus17/dev-setup.git && ls ~/dev/dev-setup`
 - [ ] `wsl-reiniciar` · Reiniciar o WSL para o systemd valer (PowerShell) (2 min). Pronto quando: Ubuntu reabre normalmente
   - PowerShell do Windows (`PS C:\>`): `wsl --shutdown`
 
@@ -87,8 +87,8 @@ Rode o comando do passo bootstrap no Ubuntu do WSL (o just ainda não existe ant
 
 - [ ] `gh-login` · Entrar no GitHub pelo terminal e cadastrar a chave SSH para login e assinatura (10 min). Pronto quando: 'gh auth status' mostra sua conta
   - Ubuntu do WSL: `gh auth login && gh ssh-key add ~/.ssh/id_ed25519.pub --type authentication && gh ssh-key add ~/.ssh/id_ed25519.pub --type signing`
-- [ ] `repo-criar` · Criar o repositório privado e enviar o setup (5 min). Pronto quando: Repositório AlanMateus17/dev-setup privado com o código
-  - Ubuntu do WSL: `cd ~/dev/dev-setup && git init -q 2>/dev/null; git add -A && git commit -qm 'chore: setup inicial' ; gh repo create AlanMateus17/dev-setup --private --source . --push`
+- [ ] `repo-criar` · Ligar o repositório ao GitHub (cria só se ainda não existir) (5 min). Pronto quando: Repositório AlanMateus17/dev-setup privado com o código
+  - Ubuntu do WSL: `cd ~/dev/dev-setup && if gh repo view AlanMateus17/dev-setup >/dev/null 2>&1; then git pull --ff-only && echo "Ja existe no GitHub: so atualizei"; else git add -A && git commit -qm "chore: setup inicial"; gh repo create AlanMateus17/dev-setup --private --source . --push; fi`
 - [ ] `ci-verde` · Conferir o CI no GitHub (5 min). Pronto quando: Última execução do workflow 'docs' com sucesso
   - Ubuntu do WSL: `gh run list --limit 1`
 - [ ] `claude-login` · Entrar no Claude Code (5 min). Pronto quando: 'claude doctor' sem erros

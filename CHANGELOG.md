@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.24.1] - 2026-11-08
+
+### Corrigido
+- Passos `diag-pasta`, `clonar` e `repo-criar` sem caminho de exemplo: o dev-setup vem do GitHub por git clone (o ZIP do GitHub se chama dev-setup-main e quebrava o comando antigo), o Ubuntu copia do Windows sem SEU_USUARIO e o repositório que já existe no GitHub não é recriado.
+
 ## [2.24.0] - 2026-11-08
 
 ### Adicionado

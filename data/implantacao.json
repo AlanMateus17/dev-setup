@@ -7,11 +7,11 @@
    "passos": [
     {
      "id": "diag-pasta",
-     "titulo": "Extrair o dev-setup.zip e deixar a pasta em C:\\Users\\SEU_USUARIO\\dev-setup",
+     "titulo": "Baixar o dev-setup do GitHub para C:\\Users\\SEU_USUARIO\\dev-setup",
      "quem": "voce",
-     "pronto": "Pasta C:\\Users\\SEU_USUARIO\\dev-setup com RODAR-DIAGNOSTICO.cmd e as pastas scripts, data e docs logo dentro dela; nenhuma outra cópia em Downloads",
+     "pronto": "Pasta C:\\Users\\SEU_USUARIO\\dev-setup com RODAR-DIAGNOSTICO.cmd e as pastas scripts, data e docs logo dentro dela (o Git pede o login do GitHub no navegador uma vez)",
      "tempo_min": 5,
-     "comando": "if (Test-Path $HOME\\dev-setup) { Write-Host \"Ja existe $HOME\\dev-setup\" } else { Expand-Archive \"$HOME\\Downloads\\dev-setup.zip\" \"$env:TEMP\\dsx\" -Force; Move-Item \"$env:TEMP\\dsx\\dev-setup\" \"$HOME\\dev-setup\"; Remove-Item \"$env:TEMP\\dsx\" -Recurse; Write-Host \"Pronto: $HOME\\dev-setup\" }",
+     "comando": "if (Test-Path $HOME\\dev-setup) { Write-Host \"Ja existe $HOME\\dev-setup\" } else { winget install --id Git.Git -e --accept-source-agreements --accept-package-agreements; & \"$env:ProgramFiles\\Git\\cmd\\git.exe\" clone https://github.com/AlanMateus17/dev-setup.git \"$HOME\\dev-setup\" }",
      "nota": "Botão direito no zip > Extrair tudo. O Windows costuma criar dev-setup\\dev-setup: recorte a pasta de dentro (a que tem a pasta scripts) e cole em C:\\Users\\SEU_USUARIO, a pasta com o seu nome. Apague as cópias que sobraram em Downloads, como \"dev-setup (1)\". Todos os comandos do Windows deste roteiro apontam para esse lugar, então funcionam de qualquer pasta, até da System32 onde o PowerShell de Administrador abre. O comando extrai o zip que está em Downloads e põe a pasta no lugar; baixar o zip da conversa é pelo navegador.",
      "blocos": []
     },
@@ -520,11 +520,11 @@
     },
     {
      "id": "clonar",
-     "titulo": "Copiar este repositório para ~/dev/dev-setup",
+     "titulo": "Copiar o dev-setup do Windows para ~/dev/dev-setup (com o GitHub como origem)",
      "quem": "voce",
      "pronto": "Pasta ~/dev/dev-setup com os arquivos",
      "tempo_min": 5,
-     "comando": "mkdir -p ~/dev && cp -r /mnt/c/Users/SEU_USUARIO/dev-setup ~/dev/dev-setup",
+     "comando": "mkdir -p ~/dev && { [ -d ~/dev/dev-setup ] || git clone \"$(wslpath \"$(cmd.exe /c 'echo %USERPROFILE%' 2>/dev/null | tr -d '\\r')\")/dev-setup\" ~/dev/dev-setup; } && git -C ~/dev/dev-setup remote set-url origin git@github.com:AlanMateus17/dev-setup.git && ls ~/dev/dev-setup",
      "nota": "Troque SEU_USUARIO pelo seu usuário do Windows. Depois que o repositório estiver no GitHub, use git clone.",
      "blocos": []
     },
@@ -628,11 +628,11 @@
    "passos": [
     {
      "id": "repo-criar",
-     "titulo": "Criar o repositório privado e enviar o setup",
+     "titulo": "Ligar o repositório ao GitHub (cria só se ainda não existir)",
      "quem": "script",
      "pronto": "Repositório AlanMateus17/dev-setup privado com o código",
      "tempo_min": 5,
-     "comando": "cd ~/dev/dev-setup && git init -q 2>/dev/null; git add -A && git commit -qm 'chore: setup inicial' ; gh repo create AlanMateus17/dev-setup --private --source . --push",
+     "comando": "cd ~/dev/dev-setup && if gh repo view AlanMateus17/dev-setup >/dev/null 2>&1; then git pull --ff-only && echo \"Ja existe no GitHub: so atualizei\"; else git add -A && git commit -qm \"chore: setup inicial\"; gh repo create AlanMateus17/dev-setup --private --source . --push; fi",
      "nota": "Se você usar o zip, o histórico de commits não vem junto; o repositório começa com um commit novo, já assinado.",
      "blocos": [
       "gh"
