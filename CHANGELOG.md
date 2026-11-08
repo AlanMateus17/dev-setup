@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.24.3] - 2026-11-08
+
+### Corrigido
+- `backup-inicial` grava o detalhe de cada pasta em backup-inicial.log na Área de Trabalho, para saber por que uma pasta falhou (antes o erro sumia).
+
 ## [2.24.2] - 2026-11-08
 
 ### Corrigido
