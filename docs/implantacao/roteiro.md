@@ -266,14 +266,14 @@ Start-Process 'https://myaccount.google.com/security-checkup'
 
 **Script** · 5 min
 
-No **Ubuntu** (linha `alanmateus@...$`):
+No **PowerShell** do Windows (linha `PS C:\>`):
 
-```bash
-python3 ~/dev/dev-setup/tools/organizar/senhas_csv.py "/mnt/c/Users/SEU_USUARIO/Downloads/Chrome Passwords.csv"
+```powershell
+$f = "$HOME\Downloads\Chrome Passwords.csv"; if (Test-Path $f) { py $HOME\dev-setup\tools\organizar\senhas_csv.py $f } else { Write-Host "Nao achei $f : exporte em chrome://password-manager/settings" }
 ```
 
 - [ ] **Pronto quando:** keepassxc-importar.csv pronto e lista de senhas repetidas (só nomes de sites)
-- Nenhuma senha aparece na tela. Depois de importar, apague os dois CSVs.
+- Roda no Windows (py), antes do WSL existir. Nenhuma senha aparece na tela. Separa as contas em grupos numerados (00 Essenciais, 01 Bancos, 02 Governo, 03 Escola, 04 AMtech, 05 Instituto e Editora, 06 Código, 07 IA, 08 Redes, 09 Estudo, 10 Compras, 11 Outros) e marca TROCAR na nota das senhas repetidas ou curtas. Depois de importar, apague os dois CSVs.
 - Implanta: Organizadores · KeePassXC
 
 ### 2.5 Trazer para o cofre as senhas salvas no Chrome, no Edge e no Google

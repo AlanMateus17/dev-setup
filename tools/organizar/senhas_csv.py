@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Prepara a exportação de senhas do Chrome/Google para importar no KeePassXC. Roda só no seu computador.
 
-    python tools/organizar/senhas_csv.py ~/Downloads/"Chrome Passwords.csv"
+    PowerShell do Windows: py $HOME\\dev-setup\\tools\\organizar\\senhas_csv.py "$HOME\\Downloads\\Chrome Passwords.csv"
+    Ubuntu do WSL:         python3 tools/organizar/senhas_csv.py ~/Downloads/"Chrome Passwords.csv"
 
 O que faz:
 - gera um CSV no formato de importação do KeePassXC (Grupo, Título, Usuário, Senha, URL, Notas), com o título
@@ -22,16 +23,29 @@ import urllib.parse
 from collections import defaultdict
 from pathlib import Path
 
+# A ordem importa: o primeiro grupo cuja palavra aparece no site ganha (por isso Escola vem antes de Governo).
+# Os números deixam os grupos na mesma ordem no KeePassXC: 00 é a corrente de recuperação, que protege todo o resto.
 GRUPOS = {
-    "Bancos e dinheiro": ["itau", "nubank", "pagbank", "xp", "mercadopago", "paypal", "tesouro", "inter", "caixa", "bb.com", "santander", "bradesco", "binance", "blockchain"],
-    "Governo": ["gov.br", "receita", "fazenda", "detran", "sefaz"],
-    "Código e nuvem": ["github", "gitlab", "vercel", "cloudflare", "hostinger", "supabase", "azure", "aws", "google cloud", "docker"],
-    "Vendas": ["hotmart", "kiwify", "eduzz", "mercadolivre", "shopee", "amazon", "udemy"],
-    "Redes": ["facebook", "instagram", "tiktok", "linkedin", "youtube", "twitter", "x.com", "kwai", "discord"],
-    "E-mail": ["gmail", "outlook", "hotmail", "proton"],
-    "IA": ["claude", "openai", "chatgpt", "perplexity", "huggingface", "cursor"],
-    "Estudo": ["alura", "rocketseat", "dio", "estacio", "roadmap"],
+    "00 Essenciais (e-mail e contas-mãe)": ["accounts.google", "myaccount.google", "gmail", "outlook", "hotmail", "live.com",
+                                            "microsoft", "apple", "icloud", "proton"],
+    "01 Bancos e dinheiro": ["itau", "nubank", "pagbank", "pagseguro", "xp", "mercadopago", "paypal", "tesouro", "inter", "caixa", "bb.com",
+                             "santander", "bradesco", "c6bank", "picpay", "binance", "blockchain", "rico", "clear", "btg", "b3.com"],
+    "03 Escola (só os seus acessos)": ["educacao.mg", "see.mg", "sisap", "simade", "diario", "moodle", "classroom"],
+    "02 Governo": ["gov.br", "receita", "fazenda", "detran", "sefaz", "inss", "esocial", "inpi"],
+    "04 Grupo AMtech Digital": ["registro.br", "cloudflare", "hostinger", "business.facebook", "business.whatsapp", "whatsapp", "cal.com",
+                                "zoho", "resend", "upwork", "canva"],
+    "05 Instituto e Editora": ["hotmart", "kiwify", "eduzz", "udemy", "mailerlite", "amazon.com.br/kdp", "kdp", "clubedeautores", "isbn",
+                               "cbl.org"],
+    "06 Código e nuvem": ["github", "gitlab", "vercel", "supabase", "azure", "aws", "cloud.google", "docker", "npmjs", "nuget", "oracle",
+                          "backblaze", "tailscale", "sonarcloud", "sentry"],
+    "07 IA": ["claude", "anthropic", "openai", "chatgpt", "gemini", "perplexity", "huggingface", "cursor", "deepseek", "grok", "x.ai",
+              "elevenlabs", "notebooklm"],
+    "08 Redes": ["facebook", "instagram", "tiktok", "linkedin", "youtube", "twitter", "x.com", "kwai", "discord", "telegram", "threads"],
+    "09 Estudo": ["alura", "rocketseat", "dio.me", "estacio", "roadmap", "tryhackme", "hackthebox", "coursera", "ankiweb", "kaggle", "duolingo"],
+    "10 Compras e assinaturas": ["mercadolivre", "shopee", "amazon", "aliexpress", "magazineluiza", "netflix", "spotify", "ifood", "uber"],
 }
+
+OUTROS = "11 Outros (revisar)"
 
 
 def dominio(url: str) -> str:
@@ -44,7 +58,7 @@ def grupo(dom: str) -> str:
     for g, chaves in GRUPOS.items():
         if any(c in d for c in chaves):
             return g
-    return "Outros"
+    return OUTROS
 
 
 def ler(caminho: Path) -> list[dict]:
@@ -76,13 +90,24 @@ def processar(linhas: list[dict]) -> tuple[list[dict], dict]:
     return unicas, {"duplicatas_removidas": len(linhas) - len(unicas), "repetidas": repetidas, "curtas": curtas, "vazias": vazias}
 
 
-def escrever(unicas: list[dict], saida: Path) -> None:
+def nota_com_alerta(r: dict, rel: dict) -> str:
+    """Marca na nota o que precisa de troca, para achar no KeePassXC buscando TROCAR."""
+    alertas = []
+    if r["titulo"] in rel["repetidas"]:
+        alertas.append("TROCAR: senha repetida em outro site")
+    if r["titulo"] in rel["curtas"]:
+        alertas.append("TROCAR: senha curta")
+    return "\n".join(alertas + ([r["nota"]] if r["nota"] else []))
+
+
+def escrever(unicas: list[dict], saida: Path, rel: dict | None = None) -> None:
+    rel = rel or {"repetidas": [], "curtas": []}
     fd = os.open(saida, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
     with os.fdopen(fd, "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
         w.writerow(["Group", "Title", "Username", "Password", "URL", "Notes"])
         for r in sorted(unicas, key=lambda r: (grupo(r["titulo"]), r["titulo"])):
-            w.writerow([grupo(r["titulo"]), r["titulo"], r["usuario"], r["senha"], r["url"], r["nota"]])
+            w.writerow([grupo(r["titulo"]), r["titulo"], r["usuario"], r["senha"], r["url"], nota_com_alerta(r, rel)])
 
 
 def main() -> int:
@@ -96,7 +121,7 @@ def main() -> int:
         return 1
     unicas, rel = processar(ler(ent))
     saida = Path(a.saida).expanduser() if a.saida else ent.with_name("keepassxc-importar.csv")
-    escrever(unicas, saida)
+    escrever(unicas, saida, rel)
     print(f"{len(unicas)} contas prontas em {saida} ({rel['duplicatas_removidas']} duplicatas juntadas).")
     print(f"Senha repetida em vários sites ({len(rel['repetidas'])}): troque primeiro, começando por bancos e e-mail.")
     for s in rel["repetidas"]:
@@ -104,7 +129,9 @@ def main() -> int:
     print(f"Senha com menos de 12 caracteres ({len(rel['curtas'])}):")
     for s in rel["curtas"]:
         print("  -", s)
-    print("\nPróximo: KeePassXC > Banco de dados > Importar > CSV. Depois APAGUE os dois arquivos CSV.")
+    print(f"\nSem grupo conhecido: {sum(1 for r in unicas if grupo(r['titulo']) == OUTROS)} conta(s) em '{OUTROS}'.")
+    print("No KeePassXC, busque TROCAR para ver as que precisam de senha nova.")
+    print("\nPróximo: KeePassXC > Banco de dados > Importar > CSV. Depois APAGUE os dois arquivos CSV (Shift+Delete).")
     return 0
 
 

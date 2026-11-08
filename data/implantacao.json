@@ -198,8 +198,8 @@
       "organizar",
       "kee"
      ],
-     "comando": "python3 ~/dev/dev-setup/tools/organizar/senhas_csv.py \"/mnt/c/Users/SEU_USUARIO/Downloads/Chrome Passwords.csv\"",
-     "nota": "Nenhuma senha aparece na tela. Depois de importar, apague os dois CSVs."
+     "comando": "$f = \"$HOME\\Downloads\\Chrome Passwords.csv\"; if (Test-Path $f) { py $HOME\\dev-setup\\tools\\organizar\\senhas_csv.py $f } else { Write-Host \"Nao achei $f : exporte em chrome://password-manager/settings\" }",
+     "nota": "Roda no Windows (py), antes do WSL existir. Nenhuma senha aparece na tela. Separa as contas em grupos numerados (00 Essenciais, 01 Bancos, 02 Governo, 03 Escola, 04 AMtech, 05 Instituto e Editora, 06 Código, 07 IA, 08 Redes, 09 Estudo, 10 Compras, 11 Outros) e marca TROCAR na nota das senhas repetidas ou curtas. Depois de importar, apague os dois CSVs."
     },
     {
      "id": "senhas-importar",

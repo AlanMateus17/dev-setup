@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.24.5] - 2026-11-08
+
+### Mudado
+- `senhas_csv.py` organiza o cofre em grupos numerados do seu jeito (00 Essenciais a 11 Outros, com AMtech, Instituto e Editora e Escola separados), marca TROCAR na nota das senhas repetidas ou curtas e roda no Windows (passo `kp-organizar` em PowerShell, antes do WSL).
+
 ## [2.24.4] - 2026-11-08
 
 ### Corrigido
