@@ -2,6 +2,14 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.24.8] - 2026-11-08
+
+### Corrigido
+- `senhas_csv.py`: título com barra (usuário salvo como "Mozilla/5.0...") não quebra mais a gravação; mais sites reconhecidos (bancos por app, Governo de MG, vagas, compras); grupo novo 12 Carreira e vagas; palavra com "=" casa só o endereço exato (x.com não pega netflix.com).
+
+### Adicionado
+- `--reorganizar`: move do grupo 11 Outros para o grupo certo o que as regras já reconhecem, sem duplicar nada.
+
 ## [2.24.7] - 2026-11-08
 
 ### Corrigido

@@ -7,7 +7,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from downloads import destino, plano  # noqa: E402
 from types import SimpleNamespace
 
-from senhas_csv import OUTROS, configurar_bloqueio, dominio, gravar_no_cofre, grupo, nota_com_alerta, processar  # noqa: E402
+from senhas_csv import OUTROS, configurar_bloqueio, reorganizar, dominio, gravar_no_cofre, grupo, nota_com_alerta, processar  # noqa: E402
 
 
 class TestDownloads(unittest.TestCase):
@@ -35,6 +35,9 @@ class TestSenhas(unittest.TestCase):
         self.assertEqual(grupo("acesso.gov.br"), "02 Governo")
         self.assertEqual(grupo("registro.br"), "04 Grupo AMtech Digital")
         self.assertEqual(grupo("site-desconhecido.com"), OUTROS)
+        self.assertEqual(grupo("x.com"), "08 Redes")
+        self.assertEqual(grupo("netflix.com"), "10 Compras e assinaturas")
+        self.assertEqual(grupo("io.drivesocial.watcher.app"), OUTROS)
 
     def test_nota_marca_o_que_trocar(self):
         rel = {"repetidas": ["a.com"], "curtas": ["a.com"]}
@@ -66,6 +69,21 @@ class TestSenhas(unittest.TestCase):
         self.assertTrue(all("S3GREDO" not in " ".join(c) and "mestre" not in " ".join(c) for c, _ in chamadas))
         self.assertEqual(chamadas[0][1], "mestre\nS3GREDO\n")
         self.assertEqual(chamadas[1][0][-1], "06 Código e nuvem/github.com · b")
+
+    def test_titulo_sem_barra_e_reorganizar(self):
+        chamadas = []
+
+        def falso(cmd, input, text, capture_output):
+            chamadas.append(cmd)
+            saida = "com.itau · a\nsite-qualquer.net\n" if cmd[1] == "ls" else ""
+            return SimpleNamespace(returncode=0, stdout=saida)
+
+        linhas = [{"titulo": "x.net", "usuario": "a", "senha": "1", "url": "", "nota": ""},
+                  {"titulo": "x.net", "usuario": "Mozilla/5.0 (Linux)", "senha": "2", "url": "", "nota": ""}]
+        gravar_no_cofre(linhas, {"repetidas": [], "curtas": []}, "c", "cli", "m", run=falso)
+        self.assertNotIn("/5.0", chamadas[1][-1].split("/", 1)[1])
+        movidos = reorganizar("c", "cli", "m", run=falso)
+        self.assertEqual(movidos, [("com.itau · a", "01 Bancos e dinheiro")])
 
     def test_bloqueio_no_ini(self):
         with tempfile.TemporaryDirectory() as d:
