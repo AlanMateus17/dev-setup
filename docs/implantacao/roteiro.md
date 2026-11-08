@@ -269,7 +269,7 @@ Start-Process 'https://myaccount.google.com/security-checkup'
 No **PowerShell** do Windows (linha `PS C:\>`):
 
 ```powershell
-$f = "$HOME\Downloads\Chrome Passwords.csv"; if (-not (Test-Path $f)) { Write-Host "Nao achei $f : exporte em chrome://password-manager/settings" } else { py $HOME\dev-setup\tools\organizar\senhas_csv.py $f --cofre "$HOME\Documents\Cofre\Cofre.kdbx"; if ($LASTEXITCODE -eq 0) { Remove-Item $f; Write-Host "Arquivo exportado apagado." } }
+$f = (Get-ChildItem "$HOME\Downloads\*.csv" | Where-Object Name -match 'Chrome|Senhas|Passwords' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName; if (-not $f) { Write-Host "Nao achei o CSV exportado em Downloads: exporte em chrome://password-manager/settings" } else { Write-Host "Usando $f"; py $HOME\dev-setup\tools\organizar\senhas_csv.py $f --cofre "$HOME\Documents\Cofre\Cofre.kdbx"; if ($LASTEXITCODE -eq 0) { Remove-Item $f; Write-Host "Arquivo exportado apagado." } }
 ```
 
 - [ ] **Pronto quando:** keepassxc-importar.csv pronto e lista de senhas repetidas (só nomes de sites)

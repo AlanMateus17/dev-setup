@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.24.7] - 2026-11-08
+
+### Corrigido
+- `kp-organizar` acha o arquivo exportado pelo nome em português ("Senhas do Chrome.csv") ou em inglês, pegando o mais recente em Downloads.
+
 ## [2.24.6] - 2026-11-08
 
 ### Adicionado

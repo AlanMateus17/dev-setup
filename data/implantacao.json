@@ -198,7 +198,7 @@
       "organizar",
       "kee"
      ],
-     "comando": "$f = \"$HOME\\Downloads\\Chrome Passwords.csv\"; if (-not (Test-Path $f)) { Write-Host \"Nao achei $f : exporte em chrome://password-manager/settings\" } else { py $HOME\\dev-setup\\tools\\organizar\\senhas_csv.py $f --cofre \"$HOME\\Documents\\Cofre\\Cofre.kdbx\"; if ($LASTEXITCODE -eq 0) { Remove-Item $f; Write-Host \"Arquivo exportado apagado.\" } }",
+     "comando": "$f = (Get-ChildItem \"$HOME\\Downloads\\*.csv\" | Where-Object Name -match 'Chrome|Senhas|Passwords' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName; if (-not $f) { Write-Host \"Nao achei o CSV exportado em Downloads: exporte em chrome://password-manager/settings\" } else { Write-Host \"Usando $f\"; py $HOME\\dev-setup\\tools\\organizar\\senhas_csv.py $f --cofre \"$HOME\\Documents\\Cofre\\Cofre.kdbx\"; if ($LASTEXITCODE -eq 0) { Remove-Item $f; Write-Host \"Arquivo exportado apagado.\" } }",
      "nota": "Roda no Windows (py) antes do WSL existir. Pede a senha mestra uma vez, sem mostrar; as senhas vão para o keepassxc-cli pela entrada padrão, nunca pela linha de comando nem pela tela, e nenhum CSV de importação é criado. Grava cada conta no grupo certo (00 Essenciais a 11 Outros), marca TROCAR na nota das repetidas ou curtas e apaga o arquivo exportado no fim. Sem --cofre, o script gera o CSV para importar pela janela."
     },
     {
