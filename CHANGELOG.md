@@ -2,6 +2,14 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.24.0] - 2026-11-08
+
+### Adicionado
+- Trilha rápida (`data/implantacao-rapida.json`, `just rapido`, `docs/implantacao/trilha-rapida.md`): 50 passos do roteiro em 7 sessões de 2 a 3 horas, do Windows ao primeiro cliente. Cada sessão separa o que roda sozinho, o que fazer em paralelo enquanto o script roda e o que vem depois; o resto do roteiro espera. O .md serve para as sessões 1 e 2, antes do WSL existir. Conferida no `just check` e no CI; testes.
+
+### Corrigido
+- `just agora` dizia "Ubuntu do WSL" também para comandos de PowerShell. Agora diz o terminal certo (PowerShell do Windows, Ubuntu do WSL ou navegador), pela mesma regra do roteiro.
+
 ## [2.23.0] - 2026-11-07
 
 ### Adicionado

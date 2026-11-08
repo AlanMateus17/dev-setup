@@ -34,6 +34,7 @@ docs:
     python3 tools/negocios/gerar.py
     python3 tools/cockpit/gerar.py
     python3 tools/akita/akita.py docs
+    python3 tools/nucleo/agenda.py rapido --doc
     python3 tools/vault/espelho.py --se-existir
 
 # O portão antes de cada commit: dados, documentação gerada, testes e segredos (o mesmo que o CI confere)
@@ -50,6 +51,7 @@ check:
     python3 tools/negocios/gerar.py --check
     python3 tools/cockpit/gerar.py --check
     python3 tools/akita/akita.py docs --check
+    python3 tools/nucleo/agenda.py rapido --check
     python3 -m unittest discover -s tools -p "test_gerar_docs.py" -q
     for d in tools/*/; do if ls "$d"test_*.py >/dev/null 2>&1; then python3 -m unittest discover -s "$d" -q; fi; done
     if command -v gitleaks >/dev/null; then gitleaks git --no-banner -v . >/dev/null; else echo "gitleaks ausente: rode o bootstrap"; fi
@@ -118,6 +120,10 @@ tarefas:
 # O que depende de você agora (passos manuais e decisões, na ordem): just agora  ·  just agora software
 agora empresa="":
     python3 tools/nucleo/agenda.py agora {{ if empresa != "" { "--empresa " + empresa } else { "" } }}
+
+# O caminho mais curto: o setup funcionando e as 3 empresas prontas para vender, em 7 sessões: just rapido  ·  just rapido --todas
+rapido *opcao:
+    python3 tools/nucleo/agenda.py rapido {{opcao}}
 
 # Só as decisões que são suas: just decisoes software
 decisoes empresa="":

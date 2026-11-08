@@ -41,6 +41,7 @@ jobs:
           python tools/carreira/certificacoes.py --check
           python tools/cockpit/gerar.py --check
           python tools/akita/akita.py docs --check
+          python tools/nucleo/agenda.py rapido --check
           for d in kitsites avaliador radar organizar remoto financeiro fabrica ia custos recursos investimentos carreira roi sessao documentos seguranca jarvis construcao triagem nucleo cockpit akita professor vault sites; do python -m unittest discover -s tools/$d -v || exit 1; done
       - name: Testar o pipeline de conteúdo e conferir o roteiro de implantação
         run: |
