@@ -107,7 +107,7 @@ flowchart LR
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Microsoft Learn + AWS Skill Builder](#learn) | Remoto · precisa de conta | Trilhas oficiais e gratuitas para AZ-900, AI-200 (substituto do AZ-204) e AWS. | passo 24.6 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 57.1 · Contínuo, desde a semana 2 |
+| [Microsoft Learn + AWS Skill Builder](#learn) | Remoto · precisa de conta | Trilhas oficiais e gratuitas para AZ-900, AI-200 (substituto do AZ-204) e AWS. | passo 24.8 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 57.1 · Contínuo, desde a semana 2 |
 | [TryHackMe / Hack The Box](#thm) | Remoto · precisa de conta | Laboratórios guiados de segurança para Security+, eJPT e OSCP. | passo 57.1 · Contínuo, desde a semana 2 |
 | [Alura · Rocketseat · DIO · Udemy](#plat) | Remoto · precisa de conta | Contas de aluno. A licença é para você assistir e estudar; baixar, copiar ou extrair as aulas para alimentar IA não é permitido. O que vai para a IA são as suas anotações e os seus projetos. | passo 57.2 · Contínuo, desde a semana 2 |
 | [Anki](#anki) | Local · precisa de conta | Repetição espaçada para comandos, conceitos, certificações e concurso. Open source. A conta grátis do AnkiWeb sincroniza notebook e celular. | passo 3.2 · Semana 1 · out/2026; passo 25.5 · Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre; passo 46.7 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 57.3 · Contínuo, desde a semana 2 |
@@ -132,7 +132,7 @@ flowchart LR
 
 Trilhas oficiais e gratuitas para AZ-900, AI-200 (substituto do AZ-204) e AWS.
 
-**Quando entra:** passo 24.6 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 57.1 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 24.8 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 57.1 · Contínuo, desde a semana 2 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

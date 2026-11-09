@@ -92,7 +92,7 @@ flowchart LR
 | [Uptime Kuma](#kuma) | Local | Verifica a cada minuto se os sites e APIs estão no ar e avisa no celular. Open source. | passo 10.6 · Semana 4 · nov/2026; passo 31.5 · Dez/2026 a jan/2027; passo 45.1 · Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) (começa quando: o recesso começou e uma das 3 rendas de agora já passou no portão) |
 | [Seq (logs)](#seq) | Local | Visualizador de logs simples para começar, antes da stack Grafana. | passo 41.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | [Loki + Tempo](#loki) | Local · futuro | Reserva do SigNoz (ADR 0008): logs e rastreamento de requisições consultados no Grafana. | passo 54.3 · 2028 |
-| [OpenTelemetry](#otel) | Local | Coleta logs, métricas e traces da API. | passo 24.5 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 41.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
+| [OpenTelemetry](#otel) | Local | Coleta logs, métricas e traces da API. | passo 24.7 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 41.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | [Prometheus](#prom) | Local | Guarda as métricas. | passo 41.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | [Grafana](#graf) | Local | Painéis e alertas. | passo 10.4 · Semana 4 · nov/2026; passo 38.4 · Semana 11 · jan/2027 |
 | [.NET Aspire](#aspire) | Local | Sobe o sistema inteiro no dev com painel próprio. | passo 41.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
@@ -170,7 +170,7 @@ Reserva do SigNoz (ADR 0008): logs e rastreamento de requisições consultados n
 
 Coleta logs, métricas e traces da API.
 
-**Quando entra:** passo 24.5 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 41.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 24.7 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 41.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

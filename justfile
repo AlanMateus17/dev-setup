@@ -141,6 +141,10 @@ progresso empresa="":
 professor *args:
     python3 tools/professor/professor.py {{args}}
 
+# Recrutador: just recrutador semana | entrevista FORMATO [--empresa X] [--vaga arq.txt] [--claude] | registrar FORMATO NOTA | progresso
+recrutador *args:
+    python3 tools/recrutador/recrutador.py {{args}}
+
 # Escola Akita: just akita sincronizar | indexar | fila | notar SLUG | lote | pendentes | aprovar ID | aplicar ID
 akita *args:
     python3 tools/akita/akita.py {{args}}

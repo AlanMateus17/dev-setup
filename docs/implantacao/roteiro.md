@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-62 fases, 567 passos, cerca de **1639 h 58 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+62 fases, 569 passos, cerca de **1642 h 13 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
 **Todo o planejamento está aqui:** os 485 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 108 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 441 dos 567 passos (621 h 13 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 443 dos 569 passos (623 h 28 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -38,7 +38,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [21 · Empresa solo: o contexto mestre no setup](#f-solo) | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica | 18 | 7 h 35 min |
 | [22 · Núcleo AMtech: o setup conectado e autônomo](#f-nucleo) | Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois | 12 | 43 h 15 min |
 | [23 · Grupo AMtech Digital: a primeira empresa](#f-empresa-software) | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada | 10 | 12 h 20 min |
-| [24 · Eixo de 12 meses: dev sênior de software para finanças](#f-eixo) | Nov/2026 a out/2027, revisão no fim de cada trimestre | 6 | 4 h 40 min |
+| [24 · Eixo de 12 meses: dev sênior de software para finanças](#f-eixo) | Nov/2026 a out/2027, revisão no fim de cada trimestre | 8 | 6 h 55 min |
 | [25 · Professor do setup: aprender tudo o que você opera](#f-professor) | Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre | 9 | 7 h 50 min |
 | [26 · Escola Akita: seguir a fundo, com o seu ok](#f-akita) | Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último | 6 | 2 h 50 min |
 | [27 · Agentes e IA com qualidade medida](#f-ia-elite) | Semana 6 · nov/2026 a dez/2026 | 15 | 8 h 00 min |
@@ -2690,7 +2690,35 @@ cd ~/dev/dev-setup && less docs/plano-eixo.md
 - [ ] **Pronto quando:** Blocos no calendário pelas próximas 4 semanas
 - Implanta: Conector Google (Gmail, Drive…)
 
-### 24.3 Trimestre 1: 1 cliente de site pago, Caixa da Casa usado 3 meses, planilha do AM Rendara à venda, 3 posts
+### 24.3 Escrever as 8 histórias reais para entrevista (STAR) no vault
+
+**Você** · 1 h 30 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/dev-setup && mkdir -p ~/dev/notas/07-estudo-e-carreira/recrutador && cp -n docs/recrutador/historias-modelo.md ~/dev/notas/07-estudo-e-carreira/recrutador/historias.md
+```
+
+- [ ] **Pronto quando:** 07-estudo-e-carreira/recrutador/historias.md com 8 histórias, cada uma com situação, tarefa, a SUA ação e resultado com número
+- O entrevistador usa estas histórias para aprofundar e nunca inventa experiência por você. Ficam no vault, fora do GitHub. Nada de nome de aluno.
+- Implanta: Recrutadores
+
+### 24.4 Simulação de entrevista da semana (nacional ou internacional)
+
+**Você** · 45 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/dev-setup && just recrutador semana
+```
+
+- [ ] **Pronto quando:** Uma simulação por semana registrada com just recrutador registrar; os formatos do trimestre ficam PRONTOS em just recrutador progresso
+- As de inglês, no app do Claude com o modo de voz. A partir do trimestre 3, uma por mês com uma pessoa de verdade. Liga ao critério do trimestre 4: entrevista em inglês sem travar.
+- Implanta: Recrutadores
+
+### 24.5 Trimestre 1: 1 cliente de site pago, Caixa da Casa usado 3 meses, planilha do AM Rendara à venda, 3 posts
 
 **Você** · 1 h 00 min
 
@@ -2706,7 +2734,7 @@ cd ~/dev/dev-setup && just agora software
 - Revisão no fim do trimestre: seguir, ajustar ou mudar o eixo, com o motivo anotado (just lembrar "..." padrao).
 - Implanta: Sites para pequenas empresas · Caixa da Casa / AM Rendara · Site pessoal + blog (Jekyll)
 
-### 24.4 Trimestre 2: 10 planilhas vendidas e o AM Rendara (MVP) com 1 usuário pagante em produção, com backup restaurado e rollback testado
+### 24.6 Trimestre 2: 10 planilhas vendidas e o AM Rendara (MVP) com 1 usuário pagante em produção, com backup restaurado e rollback testado
 
 **Você** · 1 h 00 min
 
@@ -2722,7 +2750,7 @@ cd ~/dev/dev-setup && just triagem "AM Rendara MVP"
 - Se a planilha não vender 10, o sistema não nasce: muda a oferta, não o código.
 - Implanta: Caixa da Casa / AM Rendara · API ASP.NET Core · Next.js + Aura Design System · PostgreSQL · Testes: xUnit, Playwright, k6
 
-### 24.5 Trimestre 3: cobrança por Pix, observabilidade, 5 clientes pagantes e o 1º relato de incidente
+### 24.7 Trimestre 3: cobrança por Pix, observabilidade, 5 clientes pagantes e o 1º relato de incidente
 
 **Você** · 1 h 00 min
 
@@ -2737,7 +2765,7 @@ cd ~/dev/dev-setup && just decisoes software
 - [ ] **Pronto quando:** Itens cumpridos até 31/jul/2027; CNPJ revisto com o contador
 - Implanta: Pix Automático + gateway (ex.: Asaas) · OpenTelemetry · Contador
 
-### 24.6 Trimestre 4: 1 PR aceito em open source .NET, 12 posts no ano, entrevista em inglês simulada e revisão do ano
+### 24.8 Trimestre 4: 1 PR aceito em open source .NET, 12 posts no ano, entrevista em inglês simulada e revisão do ano
 
 **Você** · 1 h 00 min
 
@@ -7105,7 +7133,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Comunidade (Discord ou grupo) | 37.10, 46.15 | Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
 | Busca Google (SEO) | 36.12 | Semanas 6 e 7 · dez/2026 |
 | Alunos e ex-alunos | 36.10 | Semanas 6 e 7 · dez/2026 |
-| Recrutadores | 41.8 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
+| Recrutadores | 24.3, 24.4, 41.8 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | TikTok | 36.1 | Semanas 6 e 7 · dez/2026 |
 | Facebook | 36.1 | Semanas 6 e 7 · dez/2026 |
 
@@ -7148,7 +7176,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Pix Automático + gateway (ex.: Asaas) | 24.5, 45.9, 51.4 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite); Quando a renda pedir |
+| Pix Automático + gateway (ex.: Asaas) | 24.7, 45.9, 51.4 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite); Quando a renda pedir |
 | Agenda online (Cal.com) | 23.8, 37.8, 45.4, 46.18, 46.19 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Semanas 8 a 10 · dez/2026 a jan/2027; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite); Fev a dez/2027, uma oferta por vez |
 | CRM simples (planilha) | 37.9 | Semanas 8 a 10 · dez/2026 a jan/2027 |
 | Hotmart | 37.5, 40.2, 40.5, 40.10, 46.3, 46.4 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027; Fev a dez/2027, uma oferta por vez |
@@ -7177,8 +7205,8 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Carnê-leão (Receita Federal) | 37.18, 40.10 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027 |
 | Declaração anual do IR | 37.19 | Semanas 8 a 10 · dez/2026 a jan/2027 |
 | Conta bancária separada (CPF) | 2.7, 37.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Contador | 23.1, 24.5, 37.3 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Nov/2026 a out/2027, revisão no fim de cada trimestre; Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Caixa da Casa / AM Rendara | 16.1, 16.2, 16.3, 16.4, 16.5, 16.6, 16.7, 16.8, 20.10, 24.3, 24.4, 37.20, 46.4 | Dez/2026; Semana 5 · nov/2026; Nov/2026 a out/2027, revisão no fim de cada trimestre; Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
+| Contador | 23.1, 24.7, 37.3 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Nov/2026 a out/2027, revisão no fim de cada trimestre; Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Caixa da Casa / AM Rendara | 16.1, 16.2, 16.3, 16.4, 16.5, 16.6, 16.7, 16.8, 20.10, 24.5, 24.6, 37.20, 46.4 | Dez/2026; Semana 5 · nov/2026; Nov/2026 a out/2027, revisão no fim de cada trimestre; Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
 | Financeiro local | 15.1, 15.2, 15.3, 15.4 | Dez/2026 |
 | Documenso (assinatura) | 23.4, 23.8, 33.7, 45.4 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Com a primeira página de venda no ar (jan/2027) e por etapas; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) |
 | Invoice Ninja (orçamentos) | 23.8, 33.7, 45.5 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Com a primeira página de venda no ar (jan/2027) e por etapas; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) |
@@ -7196,7 +7224,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 |---|---|---|
 | E-mail profissional (enviar e receber) | 36.4 | Semanas 6 e 7 · dez/2026 |
 | Domínio (Registro.br) | 36.3 | Semanas 6 e 7 · dez/2026 |
-| Site pessoal + blog (Jekyll) | 24.3, 24.6, 36.7, 46.1 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Semanas 6 e 7 · dez/2026; Fev a dez/2027, uma oferta por vez |
+| Site pessoal + blog (Jekyll) | 24.5, 24.8, 36.7, 46.1 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Semanas 6 e 7 · dez/2026; Fev a dez/2027, uma oferta por vez |
 | Instituto AMS | 36.8, 40.1, 40.7 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
 | Site Grupo AMtech | 23.7, 36.9 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Semanas 6 e 7 · dez/2026 |
 | Catálogo do HTML | 36.9, 46.2 | Semanas 6 e 7 · dez/2026; Fev a dez/2027, uma oferta por vez |
@@ -7219,7 +7247,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Templates e código-fonte | 41.7 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Livro Lógica e Máquina | 43.2, 43.8 | Quando o capítulo 1 estiver pronto |
 | Aulas particulares | 37.8 | Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Sites para pequenas empresas | 23.3, 24.3, 36.13, 46.9, 46.10 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Nov/2026 a out/2027, revisão no fim de cada trimestre; Semanas 6 e 7 · dez/2026; Fev a dez/2027, uma oferta por vez |
+| Sites para pequenas empresas | 23.3, 24.5, 36.13, 46.9, 46.10 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Nov/2026 a out/2027, revisão no fim de cada trimestre; Semanas 6 e 7 · dez/2026; Fev a dez/2027, uma oferta por vez |
 | Sistemas AM (SaaS) | 50.1 | 2027 |
 | Esteira de sites (issue → PR → ar) | 28.3, 28.4, 28.5 | Semana 6 · nov/2026 a dez/2026 |
 
@@ -7292,7 +7320,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Microsoft Learn + AWS Skill Builder | 24.6, 57.1 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Contínuo, desde a semana 2 |
+| Microsoft Learn + AWS Skill Builder | 24.8, 57.1 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Contínuo, desde a semana 2 |
 | TryHackMe / Hack The Box | 57.1 | Contínuo, desde a semana 2 |
 | Alura · Rocketseat · DIO · Udemy | 57.2 | Contínuo, desde a semana 2 |
 | Anki | 3.2, 25.5, 46.7, 57.3 | Semana 1 · out/2026; Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre; Fev a dez/2027, uma oferta por vez; Contínuo, desde a semana 2 |
@@ -7332,7 +7360,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Projects · ADRs · MkDocs | 5.5 | Semana 2 · nov/2026 |
 | Dependabot + CodeQL | 5.3 | Semana 2 · nov/2026 |
 | Google Cloud | 54.5 | 2028 |
-| GitHub | 2.7, 5.1, 5.4, 24.6 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 2 · nov/2026; Nov/2026 a out/2027, revisão no fim de cada trimestre |
+| GitHub | 2.7, 5.1, 5.4, 24.8 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 2 · nov/2026; Nov/2026 a out/2027, revisão no fim de cada trimestre |
 | GitHub Actions | 5.2, 39.1 | Semana 2 · nov/2026; Semana 11 · jan/2027 |
 | GHCR (imagens) | 41.6 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | GitHub Pages | 36.7 | Semanas 6 e 7 · dez/2026 |
@@ -7370,10 +7398,10 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | EF Core + Npgsql | 41.1 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | SignalR | 41.1 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Multi-tenant (RLS) | 41.1 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
-| Testes: xUnit, Playwright, k6 | 24.4, 41.1, 45.10 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) |
+| Testes: xUnit, Playwright, k6 | 24.6, 41.1, 45.10 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) |
 | Serviços aura- (10) | 50.4 | 2027 |
-| Next.js + Aura Design System | 24.4, 41.1, 46.17 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; Fev a dez/2027, uma oferta por vez |
-| API ASP.NET Core | 24.4, 41.1, 46.17 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; Fev a dez/2027, uma oferta por vez |
+| Next.js + Aura Design System | 24.6, 41.1, 46.17 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; Fev a dez/2027, uma oferta por vez |
+| API ASP.NET Core | 24.6, 41.1, 46.17 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; Fev a dez/2027, uma oferta por vez |
 | Keycloak / Entra ID | 41.2 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | IA: RAG + pgvector | 49.1 | Depois do trimestre 4 do eixo (ADR 0011, ≈ 2028), quando o AM Rendara já estiver em produção |
 | aura-licensing | 50.1 | 2027 |
@@ -7398,7 +7426,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Uptime Kuma | 10.6, 31.5, 45.1 | Semana 4 · nov/2026; Dez/2026 a jan/2027; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) |
 | Seq (logs) | 41.3 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Loki + Tempo | 54.3 | 2028 |
-| OpenTelemetry | 24.5, 41.3 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
+| OpenTelemetry | 24.7, 41.3 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Prometheus | 41.3 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Grafana | 10.4, 38.4 | Semana 4 · nov/2026; Semana 11 · jan/2027 |
 | .NET Aspire | 41.3 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
@@ -7416,7 +7444,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Azure CLI · AWS CLI | 42.1 | Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Rendara (MVP com 1 usuário pagante) |
 | Datomic local | 50.4 | 2027 |
 | Docker + Compose | 4.2, 10.2 | Semana 2 · nov/2026; Semana 4 · nov/2026 |
-| PostgreSQL | 10.2, 22.5, 24.4, 41.1 | Semana 4 · nov/2026; Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois; Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
+| PostgreSQL | 10.2, 22.5, 24.6, 41.1 | Semana 4 · nov/2026; Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois; Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Redis | 41.1 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | RabbitMQ | 54.1 | 2028 |
 | Kubernetes local (kind) | 54.2 | 2028 |

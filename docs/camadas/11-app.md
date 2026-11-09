@@ -220,10 +220,10 @@ flowchart LR
 | [EF Core + Npgsql](#ef) | Local | ORM do .NET para PostgreSQL, com migrations versionadas. | passo 41.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | [SignalR](#sig) | Local | Tempo real: pedido mudou de status no AM Rotara, venda nova no AM Kaixara. | passo 41.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | [Multi-tenant (RLS)](#rls) | Local | tenant_id + Row-Level Security: cada cliente só vê os próprios dados, garantido pelo banco. | passo 41.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
-| [Testes: xUnit, Playwright, k6](#tests) | Local | Unidade, integração com banco real, testes de tela no navegador e teste de carga. | passo 24.4 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 41.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; passo 45.10 · Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) (começa quando: o recesso começou e uma das 3 rendas de agora já passou no portão) |
+| [Testes: xUnit, Playwright, k6](#tests) | Local | Unidade, integração com banco real, testes de tela no navegador e teste de carga. | passo 24.6 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 41.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; passo 45.10 · Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) (começa quando: o recesso começou e uma das 3 rendas de agora já passou no portão) |
 | [Serviços aura- (10)](#shared) | Local · futuro | aura-copilot, aura-historico (Clojure/Datomic), aura-analytics (Python/FastAPI) e os demais. Só nascem quando um sistema precisar. | passo 50.4 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
-| [Next.js + Aura Design System](#front) | Local | Telas dos sistemas e, no futuro, dos sites próprios. | passo 24.4 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 41.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; passo 46.17 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
-| [API ASP.NET Core](#api) | Local | Regras de negócio dos sistemas AM. | passo 24.4 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 41.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; passo 46.17 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [Next.js + Aura Design System](#front) | Local | Telas dos sistemas e, no futuro, dos sites próprios. | passo 24.6 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 41.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; passo 46.17 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [API ASP.NET Core](#api) | Local | Regras de negócio dos sistemas AM. | passo 24.6 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 41.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; passo 46.17 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
 | [Keycloak / Entra ID](#auth) | Local | Login e permissões (OAuth2/OIDC). | passo 41.2 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | [IA: RAG + pgvector](#ai) | Local · futuro | Busca e assistente dentro dos sistemas (AM Projeta, aura-copilot). | passo 49.1 · Depois do trimestre 4 do eixo (ADR 0011, ≈ 2028), quando o AM Rendara já estiver em produção |
 | [aura-licensing](#lic) | Local · futuro | Cobrança por módulo dos sistemas AM. | passo 50.1 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
@@ -355,7 +355,7 @@ tenant_id + Row-Level Security: cada cliente só vê os próprios dados, garanti
 
 Unidade, integração com banco real, testes de tela no navegador e teste de carga.
 
-**Quando entra:** passo 24.4 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 41.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; passo 45.10 · Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) (começa quando: o recesso começou e uma das 3 rendas de agora já passou no portão) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 24.6 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 41.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; passo 45.10 · Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) (começa quando: o recesso começou e uma das 3 rendas de agora já passou no portão) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -385,7 +385,7 @@ aura-copilot, aura-historico (Clojure/Datomic), aura-analytics (Python/FastAPI) 
 
 Telas dos sistemas e, no futuro, dos sites próprios.
 
-**Quando entra:** passo 24.4 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 41.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; passo 46.17 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 24.6 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 41.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; passo 46.17 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -408,7 +408,7 @@ Telas dos sistemas e, no futuro, dos sites próprios.
 
 Regras de negócio dos sistemas AM.
 
-**Quando entra:** passo 24.4 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 41.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; passo 46.17 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 24.6 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 41.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; passo 46.17 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

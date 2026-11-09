@@ -11,6 +11,7 @@ Decisão no [ADR 0011](adr/0011-eixo-software-e-financas.md). Os passos estão n
 | Física | 1 bloco no sábado | Física básica ligada às suas aulas de hardware e robótica; matemática de revisão no mesmo dia. |
 | Inglês | 30 min | Documentação, vídeo sem legenda e, a partir do trimestre 3, conversa. |
 | Escrever | 30 min | O que aprendeu vira nota, post ou aula. Um post técnico por mês, no mínimo. |
+| Entrevista | 45 min, 1 vez por semana | No lugar de um bloco de Ofício: `just recrutador semana` escolhe a simulação (nacional ou internacional) e `just recrutador progresso` mostra a evolução. Ver [docs/recrutador](recrutador/README.md). |
 | Domingo | 30 min | Revisão: `just progresso`, `just akita pendentes` e o critério do trimestre. Um dia inteiro de folga por semana. |
 
 ## Os trimestres

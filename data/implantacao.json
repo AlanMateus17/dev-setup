@@ -2715,6 +2715,36 @@
      ]
     },
     {
+     "id": "rec-historias",
+     "titulo": "Escrever as 8 histórias reais para entrevista (STAR) no vault",
+     "quem": "voce",
+     "pronto": "07-estudo-e-carreira/recrutador/historias.md com 8 histórias, cada uma com situação, tarefa, a SUA ação e resultado com número",
+     "tempo_min": 90,
+     "comando": "cd ~/dev/dev-setup && mkdir -p ~/dev/notas/07-estudo-e-carreira/recrutador && cp -n docs/recrutador/historias-modelo.md ~/dev/notas/07-estudo-e-carreira/recrutador/historias.md",
+     "nota": "O entrevistador usa estas histórias para aprofundar e nunca inventa experiência por você. Ficam no vault, fora do GitHub. Nada de nome de aluno.",
+     "empresas": [
+      "software"
+     ],
+     "blocos": [
+      "recr"
+     ]
+    },
+    {
+     "id": "rec-semanal",
+     "titulo": "Simulação de entrevista da semana (nacional ou internacional)",
+     "quem": "voce",
+     "pronto": "Uma simulação por semana registrada com just recrutador registrar; os formatos do trimestre ficam PRONTOS em just recrutador progresso",
+     "tempo_min": 45,
+     "comando": "cd ~/dev/dev-setup && just recrutador semana",
+     "nota": "As de inglês, no app do Claude com o modo de voz. A partir do trimestre 3, uma por mês com uma pessoa de verdade. Liga ao critério do trimestre 4: entrevista em inglês sem travar.",
+     "empresas": [
+      "software"
+     ],
+     "blocos": [
+      "recr"
+     ]
+    },
+    {
      "id": "eixo-t1",
      "titulo": "Trimestre 1: 1 cliente de site pago, Caixa da Casa usado 3 meses, planilha do AM Rendara à venda, 3 posts",
      "quem": "voce",

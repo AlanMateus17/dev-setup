@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.25.0] - 2026-11-09
+
+### Adicionado
+- Recrutador (`tools/recrutador`, `data/recrutador/formatos.json`, `docs/recrutador`, `just recrutador`): 9 formatos de entrevista simulada, nacionais e internacionais, liberados por trimestre do eixo (triagem de RH, técnica .NET, defesa de case, domínio de fintech, conversa em inglês, coding e system design no estilo big tech, seleção remota internacional, Leadership Principles). Monta o entrevistador para colar no Claude (modo de voz nas de inglês) ou abre no terminal, com a vaga real e as suas histórias do vault; registra a nota de 1 a 4 no Núcleo, mostra a evolução e escolhe o treino da semana pelo ponto fraco. Modelo das 8 histórias STAR; passos `rec-historias` e `rec-semanal` no roteiro; 45 min por semana no plano do eixo. Testes e CI.
+
 ## [2.24.9] - 2026-11-08
 
 ### Corrigido
