@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.25.1] - 2026-11-10
+
+### Adicionado
+- Trilha de estudo do Akita (`just akita trilha`, `docs/akita/trilha-estudo.md`): a ordem de ESTUDAR, separada da fila (que é a ordem de extrair regras, com a era da IA primeiro). Primeiro os posts ligados a cada módulo do Professor, na ordem do currículo; depois os 147 episódios do Akitando com post no blog, em ordem de episódio, com ★ nos que já estão no currículo e [x] nos que já têm nota; e como usar os dois podcasts do Spotify. Gerada no `just docs` e conferida no `just check`; teste.
+
 ## [2.25.0] - 2026-11-09
 
 ### Adicionado
