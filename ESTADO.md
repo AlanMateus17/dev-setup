@@ -52,3 +52,4 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-11: v2.27: motor de decisão 0.1 pronto (just motor "pedido", motor-custo, motor-ok/refazer, motor-relatorio). Falta rodar nucleo.py iniciar no notebook e usar antes de cada tarefa.
 - 2026-11-11: v2.28: celular ligado ao setup. just ligar sobe Ollama, aider, LiteLLM, fila, bot e Remote Control; /pedir no Telegram segue sem crédito do Claude (Claude → Gemini grátis → Ollama), sempre em ramo/PR rascunho.
 - 2026-11-11: pendente do Alan: no notebook, just ligar → aceitar o claude remote-control uma vez → chave do Gemini em infra/ia/.env → bot do Telegram (re-bot, re-env, re-id) → /pedir de teste.
+- 2026-11-11: contexto de instalação autônoma (docs/implantacao/INSTALACAO-AUTONOMA.md) para outra conta do Claude instalar a parte técnica até 25/11 e registrar tudo em ~/dev/RELATORIO-INSTALACAO.md.

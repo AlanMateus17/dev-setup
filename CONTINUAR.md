@@ -1,5 +1,7 @@
 # CONTINUAR: contexto completo para qualquer conversa nova
 
+> Instalação no notebook feita por outra conta ou conversa: use [docs/implantacao/INSTALACAO-AUTONOMA.md](docs/implantacao/INSTALACAO-AUTONOMA.md).
+
 Cole este arquivo na primeira mensagem de uma conversa nova (ou rode `python3 ~/dev/dev-setup/tools/sessao/contexto.py --inicio | clip.exe`). Decisões do dia a dia vão para o ESTADO.md; este arquivo muda quando algo grande muda. Última revisão: 06/11/2026 (v2.16). Escola Akita: `just akita pendentes`. Para saber o que é seu: `just agora` e `just decisoes software`.
 
 ## 1. Quem sou e como trabalhar comigo
