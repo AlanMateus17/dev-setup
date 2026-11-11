@@ -2,6 +2,16 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.28.0] - 2026-11-11
+
+### Adicionado
+- Celular ligado ao setup (`docs/operacao/celular.md`): `just ligar` (scripts/wsl/ligar-tudo.sh) confere o systemd e o linger, instala o que falta (Claude Code, Ollama com qwen2.5-coder:7b e qwen2.5:7b, aider), sobe o LiteLLM se houver Docker, grava e liga os serviços `amtech-fila`, `amtech-remoto` (Claude Code Remote Control em modo servidor, uma worktree por sessão) e `amtech-bot`, e chama `scripts/windows/manter-ligado.ps1` (tarefa no login, `vmIdleTimeout=-1`, sem dormir só na tomada; `-Desfazer` volta). `just ligado`, `just desligar`, `--simular`.
+- Fila de pedidos (`tools/remoto/fila.py`, `just pedir`, `just fila`, `/pedir` e `/fila` no Telegram): motor de decisão primeiro, worktree separada por pedido, motores em ordem Claude Code → aider + cota grátis (LiteLLM ou Gemini direto) → aider + Ollama local; dado sensível só local; limite do Claude detectado põe o Claude em pausa por 5 h; commit no ramo, PR em rascunho e aviso no Telegram; nunca faz merge. Testes.
+- LiteLLM: modelo `local-codigo` e reserva `gratis → gratis-cf → reserva → local`.
+
+### Alterado
+- Fase `f-remoto` do roteiro vira "Celular ligado ao setup": `re-servico` passa a ser `just ligar`; passos novos `re-remoto`, `re-gemini` e `re-teste`.
+
 ## [2.27.0] - 2026-11-11
 
 ### Adicionado
