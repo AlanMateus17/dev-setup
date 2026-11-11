@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.27.0] - 2026-11-11
+
+### Adicionado
+- Motor de decisão 0.1 (`tools/motor`, `data/motor/regras.json`, `just motor`): desce a escada de 5 degraus sem chamar IA (portão humano, pronto no setup, código, automação, linguagem), detecta dado sensível (CPF, CNPJ, e-mail, telefone, cartão, senha, aluno, contracheque) e manda só para IA local ou código, escolhe o modelo no degrau 4 (local, Claude Code com Fable só para planejar, Sonnet) e mostra o formulário pré-preenchido pelo tipo de tarefa. Catálogo = rotas de `data/recursos.json` + blocos do ecossistema. Registro no Núcleo (`motor.decisao`, `motor.custo`, `motor.resultado`) e `just motor-relatorio` com gasto por ferramenta e candidatas à regra de três. Testes no CI.
+
 ## [2.26.0] - 2026-11-11
 
 ### Adicionado
