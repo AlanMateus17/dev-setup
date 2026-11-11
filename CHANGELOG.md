@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.26.0] - 2026-11-11
+
+### Adicionado
+- Motor de decisão e custo mínimo de IA (`docs/ia/motor/`, ADR 0014 proposta): 7 arquivos de contexto com tudo o que foi planejado em 11/11/2026. Modelos Claude e Fable 5.2, chat x API e economia de tokens; os 7 erros recorrentes, as 10 regras e o formulário de pedido do perfil sênior, com o que o setup preenche e o que é do Alan, e o plano de 30 dias; a escada de 5 degraus, o que é determinístico e o roteador local com o papel de cada ferramenta; a regra de três (tarefa repetida vira cache, template ou script); as 6 peças anti-erro e as 7 lacunas de sênior com as ferramentas de cada uma; engenharia reversa, dissecação em 4 níveis, construir x usar, as 3 camadas e Hugging Face; e o que vai para a nuvem gastando pouco. Ligado no índice de IA e no CONTINUAR.md, com a pendência de calendário registrada.
+
 ## [2.25.1] - 2026-11-10
 
 ### Adicionado
