@@ -1,5 +1,7 @@
 # Instalação autônoma do dev-setup (contexto para outra conta do Claude)
 
+> **Leia antes** o [CONTEXTO-OUTRA-CONTA.md](CONTEXTO-OUTRA-CONTA.md): o que a conta principal decidiu e tudo o que precisa estar conectado.
+>
 > **Como usar:** abra o Claude Code no notebook do Alan (app do Claude no Windows → aba **Code**, ou o terminal) com a conta que vai fazer a instalação e **cole este arquivo inteiro como primeira mensagem**. Depois que o repositório estiver no notebook, basta dizer: *"Leia docs/implantacao/INSTALACAO-AUTONOMA.md e continue de onde parou."*
 > Versão: v2.28 · 11/11/2026 · prazo: **25/11/2026**.
 
