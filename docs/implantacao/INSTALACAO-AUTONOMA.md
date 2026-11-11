@@ -5,6 +5,49 @@
 
 ---
 
+## 0. Preparação (o Alan faz, uma vez, cerca de 20 min)
+
+Antes de colar este arquivo, o Alan prepara o terreno. A outra conta não consegue fazer isso por ele.
+
+1. **Merge do PR #4** no GitHub (pelo app do celular serve). Sem ele, este arquivo e o `just ligar` não estão na `main`.
+2. **Conta que vai instalar:** plano **Pro ou Max**. O plano grátis não tem Claude Code.
+3. **No notebook, no PowerShell normal (sem administrador, `PS C:\>`), uma linha por vez:**
+   - Git e o repositório (o Git abre o navegador uma vez para o login do GitHub):
+     `winget install --id Git.Git -e --accept-source-agreements --accept-package-agreements; & "$env:ProgramFiles\Git\cmd\git.exe" clone https://github.com/AlanMateus17/dev-setup.git "$HOME\dev-setup"`
+     Se a pasta já existir: `cd $HOME\dev-setup; git pull`
+   - Claude Code: `irm https://claude.ai/install.ps1 | iex`
+   - Feche e abra o PowerShell, e depois: `cd $HOME\dev-setup; claude`. Dentro dele, `/login` com a **outra conta**.
+4. **Preencha a ficha da seção 0.1** e cole na mesma mensagem, depois deste arquivo.
+5. **Durante as 2 semanas:**
+   - notebook **na tomada**, com o sono desligado na tomada (o `just ligar` configura isso no passo 7);
+   - o PowerShell do Claude Code aberto;
+   - disco externo por perto nas sessões 1 e 3.
+6. **Permissões:** o repositório tem `.claude/settings.json`. Comandos do setup (`just`, `bash scripts/wsl/…`, `python3 tools/…`, git sem força) passam sem perguntar. Ler segredos (`.env`, `.kdbx`, `~/.ssh`, `~/.config/amtech`), apagar em massa, push forçado, push na `main` e merge ficam **bloqueados**. Quando o Claude Code pedir permissão para algo fora disso, leia antes de aceitar. Nunca escolha a opção que libera tudo sem perguntar.
+7. **Celular depois:** a sessão do `claude remote-control` fica na conta que fez o login no Claude Code. Se quiser usar pelo app da sua conta principal no fim, faça `/login` com ela e rode `just ligar` de novo.
+
+### 0.1 Ficha do Alan (preencha e cole junto)
+
+```text
+Já fiz (marque com x; na dúvida, deixe em branco que o instalador confere):
+[ ] repositório em C:\Users\alanmateus\dev-setup     [ ] diagnóstico rodado
+[ ] backup inicial no disco externo                   [ ] Windows Update em dia
+[ ] KeePassXC e cofre criados                         [ ] kit de emergência em papel
+[ ] senha do Google trocada + 2FA                     [ ] 2FA no GitHub
+[ ] senhas críticas trocadas                          [ ] cofre no celular
+[ ] BitLocker ligado e chave no cofre                 [ ] instalar.ps1 -Aplicar
+[ ] Ubuntu no WSL com meu usuário                     [ ] Docker dentro do Ubuntu
+[ ] ~/dev/dev-setup no Ubuntu                         [ ] bootstrap.sh
+[ ] gh auth login no Ubuntu                           [ ] Claude Code no Ubuntu com login
+[ ] vault em ~/dev/notas                              [ ] backup restic
+[ ] just instalar                                     [ ] just ligar
+[ ] bot do Telegram criado                            [ ] chave do Gemini em infra/ia/.env
+Outras coisas que fiz e não estão na lista:
+Letra do disco externo no Windows (ex.: E:):
+Nome da distro do Ubuntu (resultado de: wsl -l -v):
+E-mail para o Git: alandesouzasilva04@gmail.com
+Horários em que posso aceitar permissões e digitar senhas nestas 2 semanas:
+```
+
 ## 1. Sua missão
 
 Você é o instalador do **dev-setup** do Alan Mateus. Em até **14 dias** (até 25/11/2026), deixe o setup técnico **instalado, configurado e verificado** no notebook dele. Trabalhe sozinho em tudo o que um script ou você mesmo pode fazer. Deixe para o Alan só o que exige ele, numa lista clara para ele fazer de uma vez e conferir depois.
@@ -93,7 +136,10 @@ Você **não** tem a memória nem as conversas da outra conta. Este arquivo e o 
    - Rode de novo: os scripts do setup são seguros para repetir.
    - Duas falhas seguidas do mesmo jeito: pare, registre no relatório e passe para o próximo passo que não dependa desse.
 5. **Bug ou lacuna no repositório** (script quebrado, passo sem comando): corrija num ramo `instalacao/AAAA-MM-DD`, com `just check` verde e PR. Nunca contorne à mão sem registrar.
-6. **Espera longa** (download de modelos, `win-aplicar`, `bootstrap`): enquanto roda, adiante os passos que não dependem dele.
+6. **Windows e Ubuntu na mesma sessão:** você começa no Claude Code do Windows. Depois que o Ubuntu existir, rode os comandos dele por lá mesmo, sem trocar de sessão: `wsl.exe -d Ubuntu -- bash -lc "cd ~/dev/dev-setup && just rapido"`.
+   - Comando que pede **sudo** não funciona assim, porque não há onde digitar a senha. Entregue ao Alan a linha exata para ele rodar no terminal do Ubuntu e espere a confirmação.
+   - Comando que precisa de **administrador** no Windows (`instalar.ps1 -Aplicar`, `diagnostico.ps1`, `manter-ligado.ps1`): mesma coisa, ele roda no PowerShell como Administrador.
+7. **Espera longa** (download de modelos, `win-aplicar`, `bootstrap`): enquanto roda, adiante os passos que não dependem dele.
 
 ## 7. Relatório (é o que o Alan confere depois)
 
