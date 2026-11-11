@@ -2681,17 +2681,17 @@
   {
    "id": "f-eixo",
    "titulo": "Eixo de 12 meses: dev sênior de software para finanças",
-   "objetivo": "Um eixo profundo (software como ofício, finanças como domínio, o Grupo AMtech Digital como veículo) com critério de pronto por trimestre; o resto fica pausado com gatilho (ADR 0011).",
+   "objetivo": "Um eixo profundo (software como ofício, finanças como domínio, o Grupo AMtech Digital como veículo) com critério de pronto por trimestre; nada fica pausado: os temas fora do eixo seguem ativos, na ordem do roteiro (ADR 0011, revisto pelo ADR 0015).",
    "quando": "Nov/2026 a out/2027, revisão no fim de cada trimestre",
    "passos": [
     {
      "id": "eixo-cortes",
-     "titulo": "Confirmar o que fica pausado até o fim do ano 1 (42, AM-OS, pentest, treino de IA, robótica, agro, construção, idiomas extras)",
+     "titulo": "Confirmar a ordem dos temas fora do eixo (42, AM-OS, pentest, treino de IA, robótica, agro, construção, idiomas extras), todos ativos",
      "quem": "voce",
-     "pronto": "Lista de pausas confirmada ou ajustada por você em docs/plano-eixo.md",
+     "pronto": "Ordem confirmada ou ajustada por você em docs/plano-eixo.md",
      "tempo_min": 20,
      "comando": "cd ~/dev/dev-setup && less docs/plano-eixo.md",
-     "nota": "Pausar não é apagar: cada item volta com o gatilho do trimestre 4. Vetar uma pausa é decisão sua; anote o motivo.",
+     "nota": "Nada fica pausado (ADR 0015): todos estão ativos. A ordem de execução segue o roteiro e o limite de 3 frentes \"agora\".",
      "decisao": true,
      "empresas": [
       "software"
@@ -2806,7 +2806,7 @@
      "pronto": "Itens cumpridos até 31/out/2027; decisão sobre o que sai da pausa",
      "tempo_min": 60,
      "comando": "cd ~/dev/dev-setup && just progresso",
-     "nota": "O gatilho das pausas: com o trimestre 4 cumprido, um item pausado volta por vez.",
+     "nota": "Sem gatilho de pausa desde o ADR 0015: os temas fora do eixo andam junto, na ordem do roteiro.",
      "decisao": true,
      "empresas": [
       "software"
@@ -5556,7 +5556,7 @@
      "decisao": true
     }
    ],
-   "quando": "Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028)"
+   "quando": "Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015)"
   },
   {
    "id": "f-sprint",
@@ -6051,9 +6051,9 @@
     },
     {
      "id": "of-pausadas",
-     "titulo": "Revisar a cada trimestre as ofertas pausadas (AM Taskoro)",
+     "titulo": "Revisar a cada trimestre as ofertas em fila (AM Taskoro)",
      "quem": "voce",
-     "pronto": "Decisão anotada: retomar ou manter pausada",
+     "pronto": "Decisão anotada: avançar ou manter na fila",
      "tempo_min": 30,
      "fora": "Decisão sua; os números e as opções já estão no roteiro e no portfólio.",
      "blocos": [
@@ -6292,7 +6292,7 @@
   {
    "id": "f-amtechos",
    "titulo": "AMtech OS: o setup como sistema operacional",
-   "objetivo": "O dev-setup instalável como sistema: testado numa VM, depois no 2º NVMe com o Windows intocado, e por fim como produto (ADR 0014).",
+   "objetivo": "O dev-setup instalável como sistema: testado numa VM, depois no 2º NVMe com o Windows intocado, e por fim como produto (ADR 0016).",
    "quando": "Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso",
    "passos": [
     {
@@ -6319,9 +6319,9 @@
     },
     {
      "id": "os-adr",
-     "titulo": "Aceitar ou ajustar o ADR 0014 (AMtech OS no 2º NVMe, Arch + Omarchy em VM e pendrive)",
+     "titulo": "Aceitar ou ajustar o ADR 0016 (AMtech OS no 2º NVMe, Arch + Omarchy em VM e pendrive)",
      "quem": "voce",
-     "pronto": "ADR 0014 com status aceita (ou a sua mudança registrada)",
+     "pronto": "ADR 0016 com status aceita (ou a sua mudança registrada)",
      "tempo_min": 15,
      "fora": "Decisão sua, ao revisar o PR.",
      "blocos": []
@@ -7259,7 +7259,7 @@
      "pronto": "Marco do ano definido",
      "tempo_min": 15,
      "blocos": [],
-     "fora": "Horizonte longo; pausado até o fim do ano 1 do eixo (ADR 0011)."
+     "fora": "Horizonte longo; ativo desde o ADR 0015, na ordem do roteiro."
     },
     {
      "id": "est-ebtt",

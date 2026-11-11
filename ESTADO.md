@@ -46,4 +46,8 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-09: v2.25: Recrutador com 9 formatos de entrevista simulada (just recrutador semana).
 - 2026-11-08: v2.24: trilha rápida em 7 sessões (just rapido; docs/implantacao/trilha-rapida.md antes do WSL); just agora mostra o terminal certo.
 - 2026-11-07: v2.23: sites das 3 empresas prontos pelo modelo Astro (just site amtech|instituto|editora; --checar mostra o que falta); roteiro por empresa (just agora instituto|editora); docs/empresas/README.md.
-- 2026-11-10: v2.26: AMtech OS 0.1 (os/, ADR 0014 em proposta): Ubuntu + os/instalar.sh, perfis e comando amtech. Próximo: testar numa VM do VirtualBox (os/README.md) e usar uma semana antes de decidir o ADR.
+- 2026-11-11: v2.26: motor de decisão e custo mínimo de IA (docs/ia/motor, ADR 0014): escada de 5 degraus, porta única LiteLLM, regra de três, formulário de pedido, perfil sênior, segurança no CI, nuvem barata.
+- 2026-11-11: nada fica pausado nem congelado (ADR 0015): 42, AM-OS, pentest, treino de IA, robótica, agro, construção, idiomas, dados e AM Taskoro voltam a ativos; a ordem segue o roteiro e o limite de 3 frentes "agora".
+- 2026-11-11: pendente do Alan: escolher a oferta que sai primeiro, revisar o PR #2, confirmar a skill arquiteto-de-prompt e a linguagem do roteador.
+- 2026-11-11: v2.27: motor de decisão 0.1 pronto (just motor "pedido", motor-custo, motor-ok/refazer, motor-relatorio). Falta rodar nucleo.py iniciar no notebook e usar antes de cada tarefa.
+- 2026-11-11: v2.28: AMtech OS 0.1 (os/, ADR 0016 em proposta): Ubuntu + os/instalar.sh, perfis e comando amtech. Próximo: testar numa VM do VirtualBox (os/README.md) e usar uma semana antes de decidir o ADR.

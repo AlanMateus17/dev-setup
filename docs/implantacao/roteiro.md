@@ -58,7 +58,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [41 · Base dos sistemas AM](#f18) | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP | 9 | 8 h 40 min |
 | [42 · Nuvem e deploy](#f19) | Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Rendara (MVP com 1 usuário pagante) | 8 | 7 h 45 min |
 | [43 · Editora](#f20) | Quando o capítulo 1 estiver pronto · **gatilho:** O capítulo 1 e o seu modelo de criação prontos | 12 | 19 h 00 min |
-| [44 · Dados, IA e pendrives](#f21) | Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) | 12 | 16 h 20 min |
+| [44 · Dados, IA e pendrives](#f21) | Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) | 12 | 16 h 20 min |
 | [45 · Sprint de 14 dias (Estratégia do Halter)](#f-sprint) | Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) · **gatilho:** O recesso começou e uma das 3 rendas de agora já passou no portão | 10 | 35 h 00 min |
 | [46 · Mais ofertas, uma por vez](#f22) | Fev a dez/2027, uma oferta por vez · **gatilho:** A primeira venda do mini-curso aconteceu | 23 | 129 h 00 min |
 | [47 · Marketing pago e crescimento](#f23) | A partir de fev/2027 · **gatilho:** O mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar | 11 | 38 h 30 min |
@@ -2663,11 +2663,11 @@ cd ~/dev/dev-setup && just buscar "Grupo AMtech Digital"
 
 ## 24 · Eixo de 12 meses: dev sênior de software para finanças
 
-Um eixo profundo (software como ofício, finanças como domínio, o Grupo AMtech Digital como veículo) com critério de pronto por trimestre; o resto fica pausado com gatilho (ADR 0011).
+Um eixo profundo (software como ofício, finanças como domínio, o Grupo AMtech Digital como veículo) com critério de pronto por trimestre; nada fica pausado: os temas fora do eixo seguem ativos, na ordem do roteiro (ADR 0011, revisto pelo ADR 0015).
 
 **Quando:** Nov/2026 a out/2027, revisão no fim de cada trimestre
 
-### 24.1 Confirmar o que fica pausado até o fim do ano 1 (42, AM-OS, pentest, treino de IA, robótica, agro, construção, idiomas extras)
+### 24.1 Confirmar a ordem dos temas fora do eixo (42, AM-OS, pentest, treino de IA, robótica, agro, construção, idiomas extras), todos ativos
 
 **Você** · 20 min
 
@@ -2679,8 +2679,8 @@ No **Ubuntu** (linha `alanmateus@...$`):
 cd ~/dev/dev-setup && less docs/plano-eixo.md
 ```
 
-- [ ] **Pronto quando:** Lista de pausas confirmada ou ajustada por você em docs/plano-eixo.md
-- Pausar não é apagar: cada item volta com o gatilho do trimestre 4. Vetar uma pausa é decisão sua; anote o motivo.
+- [ ] **Pronto quando:** Ordem confirmada ou ajustada por você em docs/plano-eixo.md
+- Nada fica pausado (ADR 0015): todos estão ativos. A ordem de execução segue o roteiro e o limite de 3 frentes "agora".
 - Implanta: Núcleo AMtech (banco central)
 
 ### 24.2 Montar a semana fixa: 2 h de ofício, 1 h de finanças, 30 min de inglês, 30 min de escrita, 1 dia de folga
@@ -2779,7 +2779,7 @@ cd ~/dev/dev-setup && just progresso
 ```
 
 - [ ] **Pronto quando:** Itens cumpridos até 31/out/2027; decisão sobre o que sai da pausa
-- O gatilho das pausas: com o trimestre 4 cumprido, um item pausado volta por vez.
+- Sem gatilho de pausa desde o ADR 0015: os temas fora do eixo andam junto, na ordem do roteiro.
 - Implanta: GitHub · Site pessoal + blog (Jekyll) · Microsoft Learn + AWS Skill Builder
 
 <a id="f-professor"></a>
@@ -5009,7 +5009,7 @@ cd ~/dev/dev-setup && just site editora && just site editora --checar
 
 O laboratório de dados e de treino no ar, um modelo seu rodando no Ollama e os pendrives de Kali e Arch dando boot.
 
-**Quando:** Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028)
+**Quando:** Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015)
 
 ### 44.1 Gravar o pendrive do Kali com persistência criptografada
 
@@ -5495,14 +5495,14 @@ cd ~/dev/dev-setup && claude "Passo of-ammentor do roteiro: AM Mentor: banco de 
 - **Oferta:** Workshops presenciais para pequenos empresários (IA, planilhas, presença digital)
 - Implanta: Agenda online (Cal.com) · Mercado Pago
 
-### 46.20 Revisar a cada trimestre as ofertas pausadas (AM Taskoro)
+### 46.20 Revisar a cada trimestre as ofertas em fila (AM Taskoro)
 
 **Você** · 30 min
 
 **Decisão sua:** o setup prepara as opções, quem decide é você.
 
 - **Fora do terminal:** Decisão sua; os números e as opções já estão no roteiro e no portfólio.
-- [ ] **Pronto quando:** Decisão anotada: retomar ou manter pausada
+- [ ] **Pronto quando:** Decisão anotada: avançar ou manter na fila
 - **Oferta:** AM Taskoro (gestão de projetos ágeis)
 - Implanta: Portfólio de ofertas
 
@@ -5645,7 +5645,7 @@ cd ~/dev/dev-setup && claude "Passo horario do roteiro: Ligar o algoritmo de hor
 
 ## 48 · AMtech OS: o setup como sistema operacional
 
-O dev-setup instalável como sistema: testado numa VM, depois no 2º NVMe com o Windows intocado, e por fim como produto (ADR 0014).
+O dev-setup instalável como sistema: testado numa VM, depois no 2º NVMe com o Windows intocado, e por fim como produto (ADR 0016).
 
 **Quando:** Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso
 
@@ -5670,12 +5670,12 @@ bash os/instalar.sh --simular
 - **Fora do terminal:** Uso real do sistema; as anotações vão para o vault.
 - [ ] **Pronto quando:** Lista no vault com o que faltou; ela vira a versão 0.2
 
-### 48.3 Aceitar ou ajustar o ADR 0014 (AMtech OS no 2º NVMe, Arch + Omarchy em VM e pendrive)
+### 48.3 Aceitar ou ajustar o ADR 0016 (AMtech OS no 2º NVMe, Arch + Omarchy em VM e pendrive)
 
 **Você** · 15 min
 
 - **Fora do terminal:** Decisão sua, ao revisar o PR.
-- [ ] **Pronto quando:** ADR 0014 com status aceita (ou a sua mudança registrada)
+- [ ] **Pronto quando:** ADR 0016 com status aceita (ou a sua mudança registrada)
 
 ### 48.4 Instalar o AMtech OS no 2º NVMe, com o Windows intocado no SSD atual
 
@@ -6428,7 +6428,7 @@ As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 
 **Você** · 15 min
 
-- **Fora do terminal:** Horizonte longo; pausado até o fim do ano 1 do eixo (ADR 0011).
+- **Fora do terminal:** Horizonte longo; ativo desde o ADR 0015, na ordem do roteiro.
 - [ ] **Pronto quando:** Marco do ano definido
 
 ### 58.11 Vigiar editais de professor EBTT (IF Sudeste MG, campus Barbacena) e de professor efetivo de MG
@@ -7386,7 +7386,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Anki | 3.2, 25.5, 46.7, 58.3 | Semana 1 · out/2026; Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre; Fev a dez/2027, uma oferta por vez; Contínuo, desde a semana 2 |
 | roadmap.sh + Akita | 58.1 | Contínuo, desde a semana 2 |
 | GitHub Education | 28.1 | Semana 6 · nov/2026 a dez/2026 |
-| Zoomcamp de dados + cursos de IA | 44.6 | Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
+| Zoomcamp de dados + cursos de IA | 44.6 | Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
 | GPT do zero (estudo) | 29.1 | 2027, depois do primeiro fine-tuning de 8B |
 | Laboratório de redes | 30.5 | Semana 6 · nov/2026 |
 | PortSwigger Web Security Academy | 59.9 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
@@ -7429,7 +7429,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Azure | 32.13, 42.2, 42.3, 42.6 | Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar; Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Rendara (MVP com 1 usuário pagante) |
 | AWS | 32.13, 55.4 | Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar; 2028 |
 | Backblaze B2 (backup) | 7.2 | Semana 3 · nov/2026 |
-| GPU por hora (RunPod e afins) | 29.4, 44.9 | 2027, depois do primeiro fine-tuning de 8B; Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
+| GPU por hora (RunPod e afins) | 29.4, 44.9 | 2027, depois do primeiro fine-tuning de 8B; Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
 | Google Drive (seus documentos) | 0.5, 8.1, 27.8 | Antes de tudo · semana 1 (out/2026); Semanas 3 e 4 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
 | Repositório padrão | 20.1, 20.2 | Semana 5 · nov/2026 |
 | Vigia semanal (GitHub Actions) | 31.1, 31.2 | Dez/2026 a jan/2027 |
@@ -7557,19 +7557,19 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Python de dados (Polars, Jupyter) | 44.4 | Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
-| DuckDB + Parquet | 33.4, 44.4 | Com a primeira página de venda no ar (jan/2027) e por etapas; Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
-| dbt Core | 44.7 | Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
-| Airflow (orquestração) | 44.8 | Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
-| Spark (PySpark) | 44.4 | Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
-| Seus datasets (só conteúdo seu) | 44.10 | Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
-| PyTorch + CUDA (WSL2) | 44.3, 44.4 | Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
-| Hugging Face (modelos e Hub) | 44.9 | Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
-| Unsloth (QLoRA) | 44.11 | Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
-| Kaggle · Colab (GPU grátis) | 29.1, 29.3, 44.9, 44.11 | 2027, depois do primeiro fine-tuning de 8B; Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
-| MLflow (experimentos) | 44.4 | Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
-| Avaliação dos modelos | 44.10, 44.12 | Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
-| llama.cpp (GGUF) | 27.3, 44.4, 44.12 | Semana 6 · nov/2026 a dez/2026; Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
+| Python de dados (Polars, Jupyter) | 44.4 | Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
+| DuckDB + Parquet | 33.4, 44.4 | Com a primeira página de venda no ar (jan/2027) e por etapas; Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
+| dbt Core | 44.7 | Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
+| Airflow (orquestração) | 44.8 | Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
+| Spark (PySpark) | 44.4 | Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
+| Seus datasets (só conteúdo seu) | 44.10 | Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
+| PyTorch + CUDA (WSL2) | 44.3, 44.4 | Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
+| Hugging Face (modelos e Hub) | 44.9 | Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
+| Unsloth (QLoRA) | 44.11 | Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
+| Kaggle · Colab (GPU grátis) | 29.1, 29.3, 44.9, 44.11 | 2027, depois do primeiro fine-tuning de 8B; Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
+| MLflow (experimentos) | 44.4 | Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
+| Avaliação dos modelos | 44.10, 44.12 | Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
+| llama.cpp (GGUF) | 27.3, 44.4, 44.12 | Semana 6 · nov/2026 a dez/2026; Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
 | Paperless-ngx | 19.1, 19.2 | Dez/2026 |
 | Grocy | 19.1, 19.3 | Dez/2026 |
 | vLLM (GPU alugada) | 29.4, 29.5 | 2027, depois do primeiro fine-tuning de 8B |
@@ -7584,14 +7584,14 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Modelos locais: Qwen · Gemma · Llama | 6.4, 26.4, 27.4, 44.5 | Semana 2 · nov/2026; Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último; Semana 6 · nov/2026 a dez/2026; Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
+| Modelos locais: Qwen · Gemma · Llama | 6.4, 26.4, 27.4, 44.5 | Semana 2 · nov/2026; Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último; Semana 6 · nov/2026 a dez/2026; Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
 | Base de conhecimento (RAG) das suas notas | 6.7, 8.6, 31.7 | Semana 2 · nov/2026; Semanas 3 e 4 · nov/2026; Dez/2026 a jan/2027 |
 | Claude Code | 6.1, 21.4, 22.8, 25.4, 25.6, 25.9, 26.3, 26.4, 28.5 | Semana 2 · nov/2026; Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois; Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre; Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último; Semana 6 · nov/2026 a dez/2026 |
 | ai-jail | 6.2, 21.6 | Semana 2 · nov/2026; Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
 | ai-memory | 6.6, 27.13 | Semana 2 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
 | Servidores MCP | 6.5, 27.6 | Semana 2 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
 | CLAUDE.md, agentes e skills (seus) | 6.3, 21.6, 27.10 | Semana 2 · nov/2026; Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; Semana 6 · nov/2026 a dez/2026 |
-| Ollama | 6.4, 27.4, 44.5, 44.12 | Semana 2 · nov/2026; Semana 6 · nov/2026 a dez/2026; Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
+| Ollama | 6.4, 27.4, 44.5, 44.12 | Semana 2 · nov/2026; Semana 6 · nov/2026 a dez/2026; Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
 | Gateway de modelos (LiteLLM) | 27.1, 27.7, 27.11, 27.15, 28.7, 29.5, 31.5 | Semana 6 · nov/2026 a dez/2026; 2027, depois do primeiro fine-tuning de 8B; Dez/2026 a jan/2027 |
 | Evals dos agentes (promptfoo) | 27.2, 27.7, 29.3, 31.7 | Semana 6 · nov/2026 a dez/2026; 2027, depois do primeiro fine-tuning de 8B; Dez/2026 a jan/2027 |
 | MCP próprio (seus dados) | 27.6 | Semana 6 · nov/2026 a dez/2026 |
@@ -7673,7 +7673,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Wireshark | 3.2 | Semana 1 · out/2026 |
 | VMs: Kali · Arch · Servidores | 49.3 | 2027, conforme cada compra |
 | Arduino IDE 2 | 3.2, 46.16 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez |
-| Rufus (grava pendrives) | 44.1 | Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
+| Rufus (grava pendrives) | 44.1 | Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
 | ActivityWatch | 17.1 | Semana 4 · nov/2026 |
 | Bonsai + IfcOpenShell (BIM aberto) | 62.3 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 | FreeCAD 1.1 (BIM, 2D e FEM) | 62.2 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
@@ -7726,8 +7726,8 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Microfone + câmera | 49.6 | 2027, conforme cada compra |
 | Celular | 1.2, 2.9, 4.9 | Semana 1 · out/2026; Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 2 · nov/2026 |
 | Disco externo | 1.1, 1.2, 2.11, 7.1 | Semana 1 · out/2026; Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 3 · nov/2026 |
-| Pendrive Kali (persistência) | 44.1 | Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
-| Pendrive Arch (instalação portátil) | 44.2 | Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
+| Pendrive Kali (persistência) | 44.1 | Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
+| Pendrive Arch (instalação portátil) | 44.2 | Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
 | Arduino · ESP32 · Pi | 1.2, 46.16 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez |
 | Servidor caseiro (NAS + serviços) | 56.1 | 2028, quando o grupo pedir |
 | SSD externo (USB-C 10 Gbps) | 1.2 | Semana 1 · out/2026 |

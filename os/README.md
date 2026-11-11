@@ -1,6 +1,6 @@
 # AMtech OS
 
-[← Índice da documentação](../docs/README.md) · Decisão: [ADR 0014](../docs/adr/0014-amtech-os.md)
+[← Índice da documentação](../docs/README.md) · Decisão: [ADR 0016](../docs/adr/0016-amtech-os.md)
 
 O AMtech OS é o dev-setup virando sistema operacional: **Ubuntu LTS como base, a sua camada por cima**. É o mesmo caminho do Omarchy, que é uma camada do DHH sobre o Arch: instala-se a base oficial e depois roda-se um script.
 

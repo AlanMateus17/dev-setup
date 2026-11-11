@@ -2,10 +2,10 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
-## [2.26.0] - 2026-11-10
+## [2.28.0] - 2026-11-11
 
 ### Adicionado
-- AMtech OS 0.1 (`os/`, ADR 0014 em proposta): o dev-setup como sistema operacional, uma camada sobre o Ubuntu 24.04 ou mais novo, no mesmo modelo do Omarchy sobre o Arch. `os/instalar.sh` transforma um Ubuntu recém-instalado (nativo ou VM, nunca o WSL) no AMtech OS: pacotes por perfil (`dev`, `escola`, `empresa`, `seguranca`, `criador`, listas em `os/perfis`), driver NVIDIA com `--com-nvidia`, firewall e atualização de segurança diária, usuário no grupo docker, snapper e o primeiro snapshot quando a raiz é Btrfs, `/etc/amtech-release`, papel de parede e padrões do GNOME pelo dconf (só padrões, nada travado), mensagem no terminal e o preparador do dev-setup nos perfis dev e seguranca. Não mexe em disco nem em partição; `--simular` mostra tudo antes.
+- AMtech OS 0.1 (`os/`, ADR 0016 em proposta): o dev-setup como sistema operacional, uma camada sobre o Ubuntu 24.04 ou mais novo, no mesmo modelo do Omarchy sobre o Arch. `os/instalar.sh` transforma um Ubuntu recém-instalado (nativo ou VM, nunca o WSL) no AMtech OS: pacotes por perfil (`dev`, `escola`, `empresa`, `seguranca`, `criador`, listas em `os/perfis`), driver NVIDIA com `--com-nvidia`, firewall e atualização de segurança diária, usuário no grupo docker, snapper e o primeiro snapshot quando a raiz é Btrfs, `/etc/amtech-release`, papel de parede e padrões do GNOME pelo dconf (só padrões, nada travado), mensagem no terminal e o preparador do dev-setup nos perfis dev e seguranca. Não mexe em disco nem em partição; `--simular` mostra tudo antes.
 - Comando `amtech` (status, saude, atualizar com snapshot antes, snapshots, sobre). `just os-simular` e `just os-instalar`.
 - `os/README.md`: teste no VirtualBox passo a passo, perfis, voltar atrás, cuidados no notebook (2º NVMe, Secure Boot, criptografia antes de snapshot, USBGuard desligado) e as próximas versões.
 - Bloco `amtechos` no ecossistema, fase "AMtech OS: o setup como sistema operacional" no roteiro (VM, uma semana de uso, decidir o ADR, 2º NVMe, edição Community) e a oferta `amtechos` no portfólio (fila, derivada do `setuppro`).
@@ -13,6 +13,18 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 ### Alterado
 - `scripts/wsl/bootstrap.sh` e `verificar.sh` reconhecem o Linux nativo: sem `/etc/wsl.conf` fora do WSL, e o aviso do Docker aponta para o `os/instalar.sh` em vez do Docker Desktop.
 - ShellCheck do CI e do `just check` cobre `os/instalar.sh` e `os/amtech`.
+## [2.27.0] - 2026-11-11
+
+### Adicionado
+- Motor de decisão 0.1 (`tools/motor`, `data/motor/regras.json`, `just motor`): desce a escada de 5 degraus sem chamar IA (portão humano, pronto no setup, código, automação, linguagem), detecta dado sensível (CPF, CNPJ, e-mail, telefone, cartão, senha, aluno, contracheque) e manda só para IA local ou código, escolhe o modelo no degrau 4 (local, Claude Code com Fable só para planejar, Sonnet) e mostra o formulário pré-preenchido pelo tipo de tarefa. Catálogo = rotas de `data/recursos.json` + blocos do ecossistema. Registro no Núcleo (`motor.decisao`, `motor.custo`, `motor.resultado`) e `just motor-relatorio` com gasto por ferramenta e candidatas à regra de três. Testes no CI.
+
+## [2.26.0] - 2026-11-11
+
+### Adicionado
+- Motor de decisão e custo mínimo de IA (`docs/ia/motor/`, ADR 0014 proposta): 7 arquivos de contexto com tudo o que foi planejado em 11/11/2026. Modelos Claude e Fable 5.2, chat x API e economia de tokens; os 7 erros recorrentes, as 10 regras e o formulário de pedido do perfil sênior, com o que o setup preenche e o que é do Alan, e o plano de 30 dias; a escada de 5 degraus, o que é determinístico e o roteador local com o papel de cada ferramenta; a regra de três (tarefa repetida vira cache, template ou script); as 6 peças anti-erro e as 7 lacunas de sênior com as ferramentas de cada uma; engenharia reversa, dissecação em 4 níveis, construir x usar, as 3 camadas e Hugging Face; e o que vai para a nuvem gastando pouco. Ligado no índice de IA e no CONTINUAR.md. ADR 0014 aceito: nada fica congelado; o motor entra agora.
+
+### Alterado
+- Nada fica pausado (ADR 0015, revê o item 5 do ADR 0011): 42, AM-OS, pentest, treino de IA, robótica, agro, construção, idiomas, segunda faculdade, certificações de investimentos e estudo de dados voltam a ativos, na ordem do roteiro e dentro do limite de 3 frentes "agora". AM Taskoro sai de "pausado" para a fila. Roteiro e portfólio regerados.
 
 ## [2.25.1] - 2026-11-10
 

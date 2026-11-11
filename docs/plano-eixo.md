@@ -23,9 +23,9 @@ Decisão no [ADR 0011](adr/0011-eixo-software-e-financas.md). Os passos estão n
 | 3 · mai a jul/2027 · Pagamento e operação | Cobrança por Pix (e Pix Automático), observabilidade, OWASP para devs, relato de incidente, revisão automática de PR | Tributos de empresa: Simples Nacional, Fator R, NFS-e; conciliação bancária | 5 clientes pagantes somando sites e sistemas; 1 relato de incidente publicado; decisão de CNPJ revista com o contador |
 | 4 · ago a out/2027 · Senioridade visível | DDD e ADRs, performance medida, 1 PR aceito num projeto open source de .NET, código de exemplo público | Investimentos: renda fixa, ações básico, análise de balanço (a sua metodologia no AM Rendara) | Renda própria a caminho dos R$ 7 mil líquidos por mês; 12 posts no ano; entrevista em inglês simulada sem travar; revisão do ano |
 
-## Pausado até o gatilho
+## Também ativos, fora do eixo (nada pausado desde o ADR 0015)
 
-Gatilho: fim do trimestre 4 com o critério dele cumprido. Aí cada item volta por decisão sua, um de cada vez.
+Desde 11/11/2026 nada fica pausado ([ADR 0015](adr/0015-nada-pausado.md)). Estes temas estão ativos e andam junto com o eixo, na ordem do roteiro e dentro do limite de 3 frentes "agora":
 
 C/C++ da École 42 · AM-OS e AM Linux · eJPT e OSCP · treino de IA do zero e fine-tuning de 8B · robótica pessoal, casa inteligente e agro · construção civil · espanhol e mandarim · escolha entre Ciências Econômicas e a faculdade de IA · certificações de investimentos.
 

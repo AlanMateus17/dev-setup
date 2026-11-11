@@ -1,4 +1,4 @@
-# 0014 · AMtech OS: o setup como sistema operacional, sobre o Ubuntu
+# 0016 · AMtech OS: o setup como sistema operacional, sobre o Ubuntu
 
 - **Status:** proposta (o Alan aceita ou ajusta ao revisar o PR)
 - **Data:** 2026-11-10

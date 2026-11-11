@@ -12,6 +12,24 @@ default:
 triagem pedido *opcoes:
     python3 tools/triagem/triagem.py triar "{{pedido}}" {{opcoes}}
 
+# Motor de decisão (ADR 0014): qual degrau da escada resolve o pedido, sem chamar IA: just motor "calcular o rateio"
+motor pedido:
+    python3 tools/motor/motor.py decidir "{{pedido}}"
+
+# Registra o gasto de uma chamada de IA: just motor-custo claude sonnet --entrada 12000 --saida 1800 --usd 0.06
+motor-custo ferramenta modelo *opcoes:
+    python3 tools/motor/motor.py custo {{ferramenta}} {{modelo}} {{opcoes}}
+
+# Marca se a decisão deu certo (alimenta a regra de três): just motor-ok 7   |   just motor-refazer 7
+motor-ok id:
+    python3 tools/motor/motor.py resultado {{id}} ok
+motor-refazer id:
+    python3 tools/motor/motor.py resultado {{id}} refazer
+
+# Decisões por degrau, gasto e o que já pode virar script: just motor-relatorio
+motor-relatorio:
+    python3 tools/motor/motor.py relatorio
+
 # Pacote de contexto para o Claude (só imprime, gasta zero token): just arquiteto "módulo de aporte do AM Rendara"
 arquiteto pedido:
     python3 tools/triagem/triagem.py arquitetar "{{pedido}}"

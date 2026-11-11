@@ -227,7 +227,7 @@ def gerar_arquitetura(eco: dict, por_camada: dict) -> str:
     out.append("")
     out.append("## Princípios\n")
     out.append("- O Windows cuida só do que precisa de janela, GPU e segurança; o código vive e roda no Linux (Ubuntu no WSL2). Ver [ADR 0001](adr/0001-wsl2-em-vez-de-dual-boot.md).")
-    out.append("- Proposta: o setup vira o AMtech OS, uma camada sobre o Ubuntu no 2º NVMe, com o Windows intocado no SSD atual. Ver [ADR 0014](adr/0014-amtech-os.md) e [os/](../os/README.md).")
+    out.append("- Proposta: o setup vira o AMtech OS, uma camada sobre o Ubuntu no 2º NVMe, com o Windows intocado no SSD atual. Ver [ADR 0016](adr/0016-amtech-os.md) e [os/](../os/README.md).")
     out.append("- Agentes de IA trabalham dentro de sandbox e só enxergam a pasta do projeto. Ver [ADR 0002](adr/0002-agentes-de-ia-em-sandbox.md).")
     out.append("- Infraestrutura por código, Azure primeiro e AWS depois. Ver [ADR 0003](adr/0003-azure-primeiro.md).")
     out.append("- Produção barata em VM pelo Kamal, um deploy só. Ver [ADR 0005](adr/0005-deploy-em-vm-com-kamal.md). Contrato no OpenAPI e Zod só no front. Ver [ADR 0006](adr/0006-contratos-na-borda.md).")
