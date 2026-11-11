@@ -25,10 +25,10 @@ Documento complementar (Claude Docs): [Plano de Perfil Sênior](https://claude.a
 1. **Escada** (estender o `just triagem` atual, sem criar ferramenta nova).
 2. **Catálogo único de capacidades** (evoluir `data/recursos.json`).
 3. **Registro de cada decisão e custo** (no Núcleo AMtech).
-4. Depois, e só depois: preenchimento automático do formulário pelo modelo local, regra de três, guardas de segurança no CI, nuvem.
+4. Em seguida: preenchimento automático do formulário pelo modelo local, regra de três, guardas de segurança no CI, nuvem.
 
 ## Pendências (decisão do Alan)
 
-- [ ] **Conflito de calendário:** o Plano de Perfil Sênior congela camadas novas até 11/12/2026, mas o CONTINUAR.md registra que "ideias novas entram no setup; a execução segue a ordem do roteiro". Decidir: (a) o motor entra na fila e só é construído depois da primeira oferta paga no ar, ou (b) a versão 0.1 do motor entra agora e substitui alguma tarefa do mês.
+- [x] **Calendário (decidido em 11/11/2026):** nada fica congelado. O motor e as frentes novas entram agora; a execução segue a ordem do roteiro e o limite de 3 frentes "agora".
 - [ ] Confirmar se a skill `arquiteto-de-prompt` foi salva e se deve rodar em toda tarefa.
 - [ ] Escolher a linguagem do roteador (Python, como o resto de `tools/`, é o padrão).

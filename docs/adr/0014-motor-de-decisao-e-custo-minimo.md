@@ -1,6 +1,6 @@
 # 0014 · Motor de decisão: a IA propõe, o código decide e verifica
 
-- **Status:** proposta (aguarda o Alan decidir a pendência de calendário)
+- **Status:** aceita
 - **Data:** 2026-11-11
 - **Detalhes:** [docs/ia/motor](../ia/motor/README.md)
 
@@ -22,7 +22,7 @@ O Alan quer escrever do jeito dele e ter resultado de engenheiro sênior, gastan
 ## Consequências
 
 - Versão 0.1: escada, catálogo e registro. O resto depende dos três.
-- Conflito em aberto: o Plano de Perfil Sênior congela camadas novas até 11/12/2026. O Alan decide se o motor espera a primeira oferta paga ou entra no lugar de uma tarefa do mês.
+- Nada fica congelado (decisão do Alan, 11/11/2026): o motor entra agora; a ordem de execução segue o roteiro e o limite de 3 frentes "agora".
 
 ## Alternativas descartadas
 

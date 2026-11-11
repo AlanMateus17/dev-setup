@@ -24,7 +24,7 @@ Regra: se dá para escrever a regra, vira código. Se só dá para descrever o q
 - **Segurança e aprovação:** KeePassXC, sops/age, tokens mínimos, guarda de escopo de pentest, política do Jarvis, portões de publicar, pagar e falar com cliente.
 - **Infraestrutura:** instalação declarativa (NixOS no AMtech OS), scripts idempotentes, versões fixadas, backup 3-2-1, git hooks e tags.
 - **Aulas:** templates, numeração, PDF, checagens (quantidade, "100% teóricas", enunciado completo, ABNT), filtro de dados de alunos.
-- **Rotina:** prazos, lembretes, horas semanais, bloqueio de frente nova.
+- **Rotina:** prazos, lembretes, horas semanais, aviso quando a execução passar de 3 frentes "agora".
 
 Continua com a IA (e é verificado por código): interpretar o texto do Alan, redigir, gerar código (só passa com teste e CI), propor ideias e design.
 
