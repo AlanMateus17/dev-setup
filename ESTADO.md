@@ -49,3 +49,4 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-11: v2.26: motor de decisão e custo mínimo de IA (docs/ia/motor, ADR 0014): escada de 5 degraus, porta única LiteLLM, regra de três, formulário de pedido, perfil sênior, segurança no CI, nuvem barata.
 - 2026-11-11: nada fica pausado nem congelado (ADR 0015): 42, AM-OS, pentest, treino de IA, robótica, agro, construção, idiomas, dados e AM Taskoro voltam a ativos; a ordem segue o roteiro e o limite de 3 frentes "agora".
 - 2026-11-11: pendente do Alan: escolher a oferta que sai primeiro, revisar o PR #2, confirmar a skill arquiteto-de-prompt e a linguagem do roteador.
+- 2026-11-11: v2.27: motor de decisão 0.1 pronto (just motor "pedido", motor-custo, motor-ok/refazer, motor-relatorio). Falta rodar nucleo.py iniciar no notebook e usar antes de cada tarefa.

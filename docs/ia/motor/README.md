@@ -20,7 +20,27 @@ Regra-mãe: **a IA propõe, o código decide e verifica.**
 
 Documento complementar (Claude Docs): [Plano de Perfil Sênior](https://claude.ai/artifact/NH2Y9FNG9L7FvWkZcn9cVi). Skill proposta no chat: `arquiteto-de-prompt` (confirmar se foi salva).
 
-## Ordem de construção (versão 0.1)
+## Versão 0.1: pronta (v2.27, 11/11/2026)
+
+| Comando | O que faz |
+|---|---|
+| `just motor "pedido"` | Desce a escada sem chamar IA: degrau, destino, motivo, aviso de dado sensível e o formulário pré-preenchido |
+| `just motor-custo claude sonnet --entrada N --saida N --usd X --decisao ID` | Registra o gasto de uma chamada de IA |
+| `just motor-ok ID` / `just motor-refazer ID` | Diz se a decisão deu certo (alimenta a regra de três) |
+| `just motor-relatorio` | Decisões por degrau, gasto por ferramenta e pedidos de IA aprovados 3+ vezes |
+
+- **Escada:** `tools/motor/motor.py`, com as regras em `data/motor/regras.json` (palavras por degrau, modelos, tipos, entregáveis, padrões de dado sensível). Mudar uma regra é editar o JSON.
+- **Catálogo:** as rotas de `data/recursos.json` e os blocos de `data/ecossistema.json` (degrau 1).
+- **Registro:** eventos `motor.decisao`, `motor.custo` e `motor.resultado` no Núcleo AMtech (precisa de `nucleo.py iniciar`; sem banco, a decisão funciona igual e só não é registrada).
+- O `just triagem` continua para "montar, colar ou construir" dentro do degrau 1 a 3.
+
+## Próximos passos
+
+1. Rodar no notebook: `python3 tools/nucleo/nucleo.py iniciar` e usar `just motor` antes de cada tarefa.
+2. Preenchimento automático do formulário pelo modelo local (Ollama), regra de três gerando o script, guardas de segurança no CI, nuvem.
+3. Depois de 2 a 3 semanas de uso: ajustar as palavras de `data/motor/regras.json` pelo que o relatório mostrar.
+
+## Ordem original
 
 1. **Escada** (estender o `just triagem` atual, sem criar ferramenta nova).
 2. **Catálogo único de capacidades** (evoluir `data/recursos.json`).
@@ -30,5 +50,5 @@ Documento complementar (Claude Docs): [Plano de Perfil Sênior](https://claude.a
 ## Pendências (decisão do Alan)
 
 - [x] **Calendário (decidido em 11/11/2026):** nada fica congelado. O motor e as frentes novas entram agora; a execução segue a ordem do roteiro e o limite de 3 frentes "agora".
-- [ ] Confirmar se a skill `arquiteto-de-prompt` foi salva e se deve rodar em toda tarefa.
-- [ ] Escolher a linguagem do roteador (Python, como o resto de `tools/`, é o padrão).
+- [x] Skill `arquiteto-de-prompt` salva na conta.
+- [x] Linguagem do roteador: Python, como o resto de `tools/`.
