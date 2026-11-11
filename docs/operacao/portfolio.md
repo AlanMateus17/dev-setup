@@ -131,7 +131,7 @@ A semana do arsenal:
 | Traduções do livro | Editora AMS Silva | Passiva | 80% | 11 | Depois do livro vender em português. |
 | Bug bounty e pentest | AMtech Digital (serviços remotos e B2B) | Ativa | 10% | 11 | Portão: eJPT e laboratórios. Renda irregular; vale pelo histórico que abre a AMtech Segurança. |
 | Perito em informática judicial | AMtech Digital (serviços remotos e B2B) | Ativa | 20% | 11 | Portão: estudo de perícia forense e cadastro no TJMG. |
-| AM Taskoro (gestão de projetos ágeis) | AMtech Software | Passiva | 70% | 10 | Pausado por você. |
+| AM Taskoro (gestão de projetos ágeis) | AMtech Software | Passiva | 70% | 10 | Despausado em 11/11/2026 (ADR 0015); segue na fila. |
 
 ### 2027, se a tarde ficar livre
 
@@ -426,7 +426,7 @@ Primeiro as que destravam as rendas de agora e as próximas; depois as que destr
 | 87 | Fotos e vídeos em bancos de imagens · **nova** | AMtech Mídia | Ideia | Digital | 7 | Nenhum: experimento sem prazo | passo 11.8 · Semana 4 · nov/2026 |
 | 88 | Redes Wi-Fi e câmeras com monitoramento mensal · **nova** | AMtech Campo (presencial, por parceiros) | Ideia | Produtizado | 7 | Achar 1 instalador parceiro | passo 56.9 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
 | 89 | [AM Entregas](../negocios/05-logistica-e-entregas.md) | Negócios físicos | Ideia | Local | 6 | Fase B, depois do portão da loja | passo 56.4 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| 90 | AM Taskoro (gestão de projetos ágeis) | AMtech Software | Pausado | Digital | 6 | Fica como projeto de portfólio até o Kaixara ter clientes | passo 46.20 · Fev a dez/2027, uma oferta por vez |
+| 90 | AM Taskoro (gestão de projetos ágeis) | AMtech Software | Ideia | Digital | 6 | Fica como projeto de portfólio até o Kaixara ter clientes | passo 46.20 · Fev a dez/2027, uma oferta por vez |
 | 91 | Aluguel de kits de robótica · **nova** | AMtech Campo (presencial, por parceiros) | Ideia | Produtizado | 6 | Depois do AMtech Maker | passo 56.10 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
 | 92 | Jogo educativo de lógica (itch.io e Steam) · **nova** | AMtech Software | Ideia | Digital | 6 | Nenhum por enquanto | passo 11.8 · Semana 4 · nov/2026 |
 | 93 | [AM Delivery](../negocios/06-delivery-multiempresas.md) | Negócios físicos | Ideia | Local | 5 | Fase B2 | passo 56.5 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
@@ -880,11 +880,10 @@ flowchart LR
 
 | Estágio | Ofertas |
 |---|---:|
-| Ideia | 96 |
+| Ideia | 97 |
 | Validação | 6 |
 | Construção | 4 |
 | Lançado | 1 |
-| Pausado | 1 |
 
 | Escala | Ofertas |
 |---|---:|
