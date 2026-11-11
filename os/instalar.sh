@@ -81,7 +81,14 @@ linha "ambiente" "sistema de arquivos /" "OK" "$RAIZFS"
 mapfile -t PACOTES < <(pacotes_de "$AQUI/perfis/base.lista" "$AQUI/perfis/$PERFIL.lista")
 rodar "pacotes" "lista do apt" $SUDO apt-get update
 FALTAM=(); INSTALAR=()
+# Docker oficial (docker-ce/containerd.io, do docker.com) já instalado conflita com o docker.io do Ubuntu: mantém o que existe.
+DOCKER_OFICIAL=0
+if dpkg-query -W -f='${Status}' containerd.io 2>/dev/null | grep -q "install ok installed"; then
+  DOCKER_OFICIAL=1
+  aviso "pacotes" "Docker" "Docker oficial (docker-ce) já instalado: docker.io e docker-compose-v2 ficam de fora"
+fi
 for p in "${PACOTES[@]}"; do
+  if [[ $DOCKER_OFICIAL -eq 1 && ( "$p" == "docker.io" || "$p" == "docker-compose-v2" ) ]]; then continue; fi
   c="$(apt-cache policy "$p" 2>/dev/null | awk '/Candidate:/{print $2}')"
   if [[ -z "$c" || "$c" == "(none)" ]]; then FALTAM+=("$p"); else INSTALAR+=("$p"); fi
 done
