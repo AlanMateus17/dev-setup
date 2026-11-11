@@ -6290,6 +6290,74 @@
    "gatilho": "O mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar"
   },
   {
+   "id": "f-amtechos",
+   "titulo": "AMtech OS: o setup como sistema operacional",
+   "objetivo": "O dev-setup instalável como sistema: testado numa VM, depois no 2º NVMe com o Windows intocado, e por fim como produto (ADR 0014).",
+   "quando": "Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso",
+   "passos": [
+    {
+     "id": "os-vm",
+     "titulo": "Testar o AMtech OS numa VM do VirtualBox (Ubuntu LTS + os/instalar.sh)",
+     "quem": "voce",
+     "pronto": "Na VM, o comando amtech mostra o estado e o papel de parede da marca aparece",
+     "tempo_min": 120,
+     "comando": "bash os/instalar.sh --simular",
+     "nota": "Passo a passo em os/README.md. Rode dentro da VM, nunca no WSL: lá o instalador recusa.",
+     "blocos": [
+      "amtechos",
+      "vbox"
+     ]
+    },
+    {
+     "id": "os-semana",
+     "titulo": "Usar a VM por uma semana e anotar o que faltou ou incomodou",
+     "quem": "voce",
+     "pronto": "Lista no vault com o que faltou; ela vira a versão 0.2",
+     "tempo_min": 60,
+     "fora": "Uso real do sistema; as anotações vão para o vault.",
+     "blocos": []
+    },
+    {
+     "id": "os-adr",
+     "titulo": "Aceitar ou ajustar o ADR 0014 (AMtech OS no 2º NVMe, Arch + Omarchy em VM e pendrive)",
+     "quem": "voce",
+     "pronto": "ADR 0014 com status aceita (ou a sua mudança registrada)",
+     "tempo_min": 15,
+     "fora": "Decisão sua, ao revisar o PR.",
+     "blocos": []
+    },
+    {
+     "id": "os-nativo",
+     "titulo": "Instalar o AMtech OS no 2º NVMe, com o Windows intocado no SSD atual",
+     "quem": "voce",
+     "pronto": "Escolha entre AMtech OS e Windows ao ligar; amtech mostra o perfil dev e a GPU NVIDIA",
+     "tempo_min": 240,
+     "comando": "bash os/instalar.sh --perfil dev --com-nvidia --nome \"Alan Mateus\" --email SEU_EMAIL",
+     "precisa": [
+      "compra"
+     ],
+     "nota": "Confira duas vezes o disco escolhido na instalação. Notebook: prefira criptografia a snapshots se o instalador não der os dois (os/README.md).",
+     "blocos": [
+      "amtechos",
+      "nvme",
+      "boot"
+     ]
+    },
+    {
+     "id": "os-oferta",
+     "titulo": "Preparar a edição Community e a oferta do AMtech OS",
+     "quem": "claude",
+     "pronto": "Versão sem nada pessoal publicada e página da oferta no Instituto AMS",
+     "tempo_min": 300,
+     "fora": "Depois de alguns meses de uso próprio sem problema (o portão da oferta).",
+     "blocos": [],
+     "ofertas": [
+      "amtechos"
+     ]
+    }
+   ]
+  },
+  {
    "id": "f24",
    "titulo": "Linux nativo e laboratório completo",
    "objetivo": "Arch com boot próprio, VMs de laboratório e a segurança física em dia.",

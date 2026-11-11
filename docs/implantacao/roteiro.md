@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-62 fases, 569 passos, cerca de **1642 h 13 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+63 fases, 574 passos, cerca de **1654 h 28 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
-**Todo o planejamento está aqui:** os 485 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 108 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
+**Todo o planejamento está aqui:** os 486 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 109 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 443 dos 569 passos (623 h 28 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 447 dos 574 passos (631 h 43 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -62,20 +62,21 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [45 · Sprint de 14 dias (Estratégia do Halter)](#f-sprint) | Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) · **gatilho:** O recesso começou e uma das 3 rendas de agora já passou no portão | 10 | 35 h 00 min |
 | [46 · Mais ofertas, uma por vez](#f22) | Fev a dez/2027, uma oferta por vez · **gatilho:** A primeira venda do mini-curso aconteceu | 23 | 129 h 00 min |
 | [47 · Marketing pago e crescimento](#f23) | A partir de fev/2027 · **gatilho:** O mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar | 11 | 38 h 30 min |
-| [48 · Linux nativo e laboratório completo](#f24) | 2027, conforme cada compra | 7 | 18 h 15 min |
-| [49 · IA dentro dos sistemas AM](#f25) | Depois do trimestre 4 do eixo (ADR 0011, ≈ 2028), quando o AM Rendara já estiver em produção | 1 | 8 h 00 min |
-| [50 · Sistemas AM à venda](#f26) | 2027 · **gatilho:** O primeiro sistema AM pronto e testado com um cliente | 5 | 120 h 00 min |
-| [51 · CNPJ e formalização](#f27) | Quando a renda pedir · **gatilho:** A renda passou do valor de virada definido com o contador | 5 | 14 h 00 min |
-| [52 · Agentes do grupo](#f28) | Junto com o primeiro CNPJ · **gatilho:** Clientes e vendas recorrentes | 7 | 18 h 00 min |
-| [53 · Editora: depois do primeiro livro](#f29) | Depois do primeiro livro · **gatilho:** O primeiro livro publicado | 5 | 56 h 00 min |
-| [54 · Distribuído, plataforma e segunda nuvem](#f30) | 2028 | 6 | 69 h 00 min |
-| [55 · Infraestrutura própria](#f31) | 2028, quando o grupo pedir | 3 | 17 h 00 min |
-| [56 · Negócios do grupo em Barbacena](#f32) | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano · **gatilho:** Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta | 11 | 485 h 00 min |
-| [57 · Estudo contínuo](#f33) | Contínuo, desde a semana 2 | 14 | 7 h 30 min |
-| [58 · Engenharia reversa, AppSec e pentest](#f-seguranca) | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) | 21 | 81 h 25 min |
-| [59 · Jarvis: o setup e a casa por comando de voz](#f-jarvis) | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas | 13 | 30 h 50 min |
-| [60 · Hugging Face e IA física: TI, casa inteligente e agropecuária](#f-ia-fisica) | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino | 16 | 44 h 35 min |
-| [61 · Construção civil, arquitetura e engenharia civil (pela TI)](#f-construcao) | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão | 13 | 126 h 10 min |
+| [48 · AMtech OS: o setup como sistema operacional](#f-amtechos) | Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso | 5 | 12 h 15 min |
+| [49 · Linux nativo e laboratório completo](#f24) | 2027, conforme cada compra | 7 | 18 h 15 min |
+| [50 · IA dentro dos sistemas AM](#f25) | Depois do trimestre 4 do eixo (ADR 0011, ≈ 2028), quando o AM Rendara já estiver em produção | 1 | 8 h 00 min |
+| [51 · Sistemas AM à venda](#f26) | 2027 · **gatilho:** O primeiro sistema AM pronto e testado com um cliente | 5 | 120 h 00 min |
+| [52 · CNPJ e formalização](#f27) | Quando a renda pedir · **gatilho:** A renda passou do valor de virada definido com o contador | 5 | 14 h 00 min |
+| [53 · Agentes do grupo](#f28) | Junto com o primeiro CNPJ · **gatilho:** Clientes e vendas recorrentes | 7 | 18 h 00 min |
+| [54 · Editora: depois do primeiro livro](#f29) | Depois do primeiro livro · **gatilho:** O primeiro livro publicado | 5 | 56 h 00 min |
+| [55 · Distribuído, plataforma e segunda nuvem](#f30) | 2028 | 6 | 69 h 00 min |
+| [56 · Infraestrutura própria](#f31) | 2028, quando o grupo pedir | 3 | 17 h 00 min |
+| [57 · Negócios do grupo em Barbacena](#f32) | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano · **gatilho:** Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta | 11 | 485 h 00 min |
+| [58 · Estudo contínuo](#f33) | Contínuo, desde a semana 2 | 14 | 7 h 30 min |
+| [59 · Engenharia reversa, AppSec e pentest](#f-seguranca) | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) | 21 | 81 h 25 min |
+| [60 · Jarvis: o setup e a casa por comando de voz](#f-jarvis) | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas | 13 | 30 h 50 min |
+| [61 · Hugging Face e IA física: TI, casa inteligente e agropecuária](#f-ia-fisica) | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino | 16 | 44 h 35 min |
+| [62 · Construção civil, arquitetura e engenharia civil (pela TI)](#f-construcao) | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão | 13 | 126 h 10 min |
 
 <a id="f0"></a>
 
@@ -5640,15 +5641,74 @@ cd ~/dev/dev-setup && claude "Passo horario do roteiro: Ligar o algoritmo de hor
 - [ ] **Pronto quando:** Um produto à venda em dólar com o imposto de cada país resolvido
 - Implanta: Polar (venda internacional)
 
+<a id="f-amtechos"></a>
+
+## 48 · AMtech OS: o setup como sistema operacional
+
+O dev-setup instalável como sistema: testado numa VM, depois no 2º NVMe com o Windows intocado, e por fim como produto (ADR 0014).
+
+**Quando:** Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso
+
+### 48.1 Testar o AMtech OS numa VM do VirtualBox (Ubuntu LTS + os/instalar.sh)
+
+**Você** · 2 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+bash os/instalar.sh --simular
+```
+
+- [ ] **Pronto quando:** Na VM, o comando amtech mostra o estado e o papel de parede da marca aparece
+- Passo a passo em os/README.md. Rode dentro da VM, nunca no WSL: lá o instalador recusa.
+- Implanta: AMtech OS (Ubuntu + setup) · VirtualBox
+
+### 48.2 Usar a VM por uma semana e anotar o que faltou ou incomodou
+
+**Você** · 1 h 00 min
+
+- **Fora do terminal:** Uso real do sistema; as anotações vão para o vault.
+- [ ] **Pronto quando:** Lista no vault com o que faltou; ela vira a versão 0.2
+
+### 48.3 Aceitar ou ajustar o ADR 0014 (AMtech OS no 2º NVMe, Arch + Omarchy em VM e pendrive)
+
+**Você** · 15 min
+
+- **Fora do terminal:** Decisão sua, ao revisar o PR.
+- [ ] **Pronto quando:** ADR 0014 com status aceita (ou a sua mudança registrada)
+
+### 48.4 Instalar o AMtech OS no 2º NVMe, com o Windows intocado no SSD atual
+
+**Você** · 4 h 00 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+bash os/instalar.sh --perfil dev --com-nvidia --nome "Alan Mateus" --email SEU_EMAIL
+```
+
+- [ ] **Pronto quando:** Escolha entre AMtech OS e Windows ao ligar; amtech mostra o perfil dev e a GPU NVIDIA
+- Confira duas vezes o disco escolhido na instalação. Notebook: prefira criptografia a snapshots se o instalador não der os dois (os/README.md).
+- **Precisa:** comprar algo
+- Implanta: AMtech OS (Ubuntu + setup) · 2º NVMe (1–4 TB) · Gerenciador de boot
+
+### 48.5 Preparar a edição Community e a oferta do AMtech OS
+
+**Claude com você** · 5 h 00 min
+
+- **Fora do terminal:** Depois de alguns meses de uso próprio sem problema (o portão da oferta).
+- [ ] **Pronto quando:** Versão sem nada pessoal publicada e página da oferta no Instituto AMS
+- **Oferta:** AMtech OS (sistema pronto para programar, baseado em Ubuntu)
+
 <a id="f24"></a>
 
-## 48 · Linux nativo e laboratório completo
+## 49 · Linux nativo e laboratório completo
 
 Arch com boot próprio, VMs de laboratório e a segurança física em dia.
 
 **Quando:** 2027, conforme cada compra
 
-### 48.1 Instalar o 2º NVMe e o Arch + Omarchy com boot próprio
+### 49.1 Instalar o 2º NVMe e o Arch + Omarchy com boot próprio
 
 **Você** · 5 h 00 min
 
@@ -5657,7 +5717,7 @@ Arch com boot próprio, VMs de laboratório e a segurança física em dia.
 - **Precisa:** comprar algo
 - Implanta: 2º NVMe (1–4 TB) · Arch + Omarchy (2º NVMe) · Gerenciador de boot
 
-### 48.2 Aprender o Neovim aos poucos
+### 49.2 Aprender o Neovim aos poucos
 
 **Você** · 5 h 00 min
 
@@ -5670,7 +5730,7 @@ sudo apt install -y neovim && nvim +Tutor
 - [ ] **Pronto quando:** Uma semana editando só no Neovim
 - Implanta: Neovim
 
-### 48.3 Montar as VMs do laboratório: Kali, Arch, Ubuntu Server, Windows Server e Rocky
+### 49.3 Montar as VMs do laboratório: Kali, Arch, Ubuntu Server, Windows Server e Rocky
 
 **Você** · 5 h 00 min
 
@@ -5678,7 +5738,7 @@ sudo apt install -y neovim && nvim +Tutor
 - [ ] **Pronto quando:** Duas VMs numa rede isolada, atacante e alvo
 - Implanta: VMs: Kali · Arch · Servidores
 
-### 48.4 SSD SATA na baia livre para as VMs
+### 49.4 SSD SATA na baia livre para as VMs
 
 **Você** · 1 h 00 min
 
@@ -5687,7 +5747,7 @@ sudo apt install -y neovim && nvim +Tutor
 - **Precisa:** comprar algo
 - Implanta: SSD SATA 2,5"
 
-### 48.5 Chave física no GitHub, Google e Microsoft
+### 49.5 Chave física no GitHub, Google e Microsoft
 
 **Você** · 1 h 00 min
 
@@ -5696,7 +5756,7 @@ sudo apt install -y neovim && nvim +Tutor
 - **Precisa:** comprar algo
 - Implanta: Chave física (YubiKey)
 
-### 48.6 Microfone e câmera
+### 49.6 Microfone e câmera
 
 **Você** · 1 h 00 min
 
@@ -5705,7 +5765,7 @@ sudo apt install -y neovim && nvim +Tutor
 - **Precisa:** comprar algo
 - Implanta: Microfone + câmera
 
-### 48.7 Ghostty como terminal do Arch, abrindo no Zellij
+### 49.7 Ghostty como terminal do Arch, abrindo no Zellij
 
 **Você** · 15 min
 
@@ -5721,13 +5781,13 @@ sudo pacman -S --needed ghostty zellij && chezmoi apply
 
 <a id="f25"></a>
 
-## 49 · IA dentro dos sistemas AM
+## 50 · IA dentro dos sistemas AM
 
 Busca e assistente com os seus dados dentro de um sistema AM.
 
 **Quando:** Depois do trimestre 4 do eixo (ADR 0011, ≈ 2028), quando o AM Rendara já estiver em produção
 
-### 49.1 RAG com pgvector dentro do primeiro sistema AM
+### 50.1 RAG com pgvector dentro do primeiro sistema AM
 
 **Claude com você** · 8 h 00 min
 
@@ -5742,7 +5802,7 @@ cd ~/dev/dev-setup && claude "Passo rag-sistema do roteiro: RAG com pgvector den
 
 <a id="f26"></a>
 
-## 50 · Sistemas AM à venda
+## 51 · Sistemas AM à venda
 
 Os sistemas viram produto por assinatura.
 
@@ -5750,7 +5810,7 @@ Os sistemas viram produto por assinatura.
 
 **Começa quando:** O primeiro sistema AM pronto e testado com um cliente
 
-### 50.1 Lançar o primeiro sistema AM como SaaS, com cobrança por módulo
+### 51.1 Lançar o primeiro sistema AM como SaaS, com cobrança por módulo
 
 **Claude com você** · 10 h 00 min
 
@@ -5763,7 +5823,7 @@ cd ~/dev/dev-setup && claude "Passo saas do roteiro: Lançar o primeiro sistema 
 - [ ] **Pronto quando:** Primeiro cliente pagando por assinatura
 - Implanta: Sistemas AM (SaaS) · aura-licensing
 
-### 50.2 AM Kaixara: PDV, cardápio, fichas técnicas e estoque
+### 51.2 AM Kaixara: PDV, cardápio, fichas técnicas e estoque
 
 **Claude com você** · 40 h 00 min
 
@@ -5777,7 +5837,7 @@ cd ~/dev/dev-setup && claude "Passo kaixara do roteiro: AM Kaixara: PDV, cardáp
 - **Oferta:** AM Kaixara (PDV, ficha técnica, cardápio)
 - Implanta: AM Kaixara (PDV e cardápio)
 
-### 50.3 AM Rotara: pedidos, rotas e mapas
+### 51.3 AM Rotara: pedidos, rotas e mapas
 
 **Claude com você** · 40 h 00 min
 
@@ -5791,7 +5851,7 @@ cd ~/dev/dev-setup && claude "Passo rotara do roteiro: AM Rotara: pedidos, rotas
 - **Oferta:** AM Rotara (pedidos e entregas)
 - Implanta: AM Rotara (entregas) · PostGIS + MapLibre
 
-### 50.4 Serviços aura- compartilhados, só quando um sistema precisar
+### 51.4 Serviços aura- compartilhados, só quando um sistema precisar
 
 **Claude com você** · 10 h 00 min
 
@@ -5804,7 +5864,7 @@ cd ~/dev/dev-setup && claude "Passo servicos-aura do roteiro: Serviços aura- co
 - [ ] **Pronto quando:** Um serviço compartilhado usado por dois sistemas
 - Implanta: Serviços aura- (10) · Datomic local
 
-### 50.5 App de delivery com a marca do restaurante (white-label)
+### 51.5 App de delivery com a marca do restaurante (white-label)
 
 **Claude com você** · 20 h 00 min
 
@@ -5821,7 +5881,7 @@ cd ~/dev/dev-setup && claude "Passo whitelabel do roteiro: App de delivery com a
 
 <a id="f27"></a>
 
-## 51 · CNPJ e formalização
+## 52 · CNPJ e formalização
 
 Sair do CPF na hora certa, com nota fiscal e cobrança automáticas.
 
@@ -5829,7 +5889,7 @@ Sair do CPF na hora certa, com nota fiscal e cobrança automáticas.
 
 **Começa quando:** A renda passou do valor de virada definido com o contador
 
-### 51.1 Abrir a AMtech Tecnologia (ME no Simples, sócio único)
+### 52.1 Abrir a AMtech Tecnologia (ME no Simples, sócio único)
 
 **Você** · 4 h 00 min
 
@@ -5838,7 +5898,7 @@ Sair do CPF na hora certa, com nota fiscal e cobrança automáticas.
 - **Precisa:** pagar um serviço
 - Implanta: CNPJ (futuro) · 3 CNPJs por frente
 
-### 51.2 Certificado digital e-CNPJ
+### 52.2 Certificado digital e-CNPJ
 
 **Você** · 1 h 00 min
 
@@ -5847,7 +5907,7 @@ Sair do CPF na hora certa, com nota fiscal e cobrança automáticas.
 - **Precisa:** pagar um serviço
 - Implanta: Certificado digital (e-CNPJ)
 
-### 51.3 Nota fiscal automática pela API de NFS-e
+### 52.3 Nota fiscal automática pela API de NFS-e
 
 **Claude com você** · 4 h 00 min
 
@@ -5860,7 +5920,7 @@ cd ~/dev/dev-setup && claude "Passo nfse-api do roteiro: Nota fiscal automática
 - [ ] **Pronto quando:** Venda de teste emite nota sozinha
 - Implanta: API de NFS-e (ex.: Focus NFe)
 
-### 51.4 Cobrança recorrente por Pix Automático
+### 52.4 Cobrança recorrente por Pix Automático
 
 **Claude com você** · 4 h 00 min
 
@@ -5873,7 +5933,7 @@ cd ~/dev/dev-setup && claude "Passo pix-automatico do roteiro: Cobrança recorre
 - [ ] **Pronto quando:** Assinatura de teste cobrada por Pix
 - Implanta: Pix Automático + gateway (ex.: Asaas)
 
-### 51.5 Contabilidade do CNPJ no Akaunting, junto do contador
+### 52.5 Contabilidade do CNPJ no Akaunting, junto do contador
 
 **Você** · 1 h 00 min
 
@@ -5888,7 +5948,7 @@ cd ~/dev/dev-setup/infra/soberania && docker compose --profile akaunting up -d
 
 <a id="f28"></a>
 
-## 52 · Agentes do grupo
+## 53 · Agentes do grupo
 
 Atendimento, orçamento, cobrança e análise rodando com a sua aprovação.
 
@@ -5896,7 +5956,7 @@ Atendimento, orçamento, cobrança e análise rodando com a sua aprovação.
 
 **Começa quando:** Clientes e vendas recorrentes
 
-### 52.1 Analista semanal: o que funcionou e o que mudar
+### 53.1 Analista semanal: o que funcionou e o que mudar
 
 **Claude com você** · 2 h 00 min
 
@@ -5909,7 +5969,7 @@ cd ~/dev/dev-setup && claude "Passo ag-analista do roteiro: Analista semanal: o 
 - [ ] **Pronto quando:** Relatório toda segunda no Telegram
 - Implanta: Analista semanal
 
-### 52.2 Atendente do WhatsApp com passagem para você
+### 53.2 Atendente do WhatsApp com passagem para você
 
 **Claude com você** · 4 h 00 min
 
@@ -5922,7 +5982,7 @@ cd ~/dev/dev-setup && claude "Passo ag-atendente do roteiro: Atendente do WhatsA
 - [ ] **Pronto quando:** Dúvida comum respondida sozinha; o resto chega para você
 - Implanta: Agente atendente (WhatsApp)
 
-### 52.3 Orçamentista de sites e sistemas
+### 53.3 Orçamentista de sites e sistemas
 
 **Claude com você** · 3 h 00 min
 
@@ -5935,7 +5995,7 @@ cd ~/dev/dev-setup && claude "Passo ag-orcamento do roteiro: Orçamentista de si
 - [ ] **Pronto quando:** Rascunho de orçamento em 5 minutos, revisado por você
 - Implanta: Agente orçamentista
 
-### 52.4 Cobrador educado (lembrete antes e depois do vencimento)
+### 53.4 Cobrador educado (lembrete antes e depois do vencimento)
 
 **Claude com você** · 2 h 00 min
 
@@ -5948,7 +6008,7 @@ cd ~/dev/dev-setup && claude "Passo ag-cobranca do roteiro: Cobrador educado (le
 - [ ] **Pronto quando:** Atraso cai pela metade
 - Implanta: Agente cobrador
 
-### 52.5 Pós-venda: NPS e pedido de avaliação
+### 53.5 Pós-venda: NPS e pedido de avaliação
 
 **Claude com você** · 2 h 00 min
 
@@ -5961,7 +6021,7 @@ cd ~/dev/dev-setup && claude "Passo ag-posvenda do roteiro: Pós-venda: NPS e pe
 - [ ] **Pronto quando:** NPS medido em cada venda
 - Implanta: Agente pós-venda
 
-### 52.6 Organizador fiscal para o contador
+### 53.6 Organizador fiscal para o contador
 
 **Claude com você** · 2 h 00 min
 
@@ -5974,7 +6034,7 @@ cd ~/dev/dev-setup && claude "Passo ag-fiscal do roteiro: Organizador fiscal par
 - [ ] **Pronto quando:** Pasta do mês pronta no dia 5
 - Implanta: Organizador fiscal
 
-### 52.7 Comprador com estoque mínimo
+### 53.7 Comprador com estoque mínimo
 
 **Claude com você** · 3 h 00 min
 
@@ -5989,7 +6049,7 @@ cd ~/dev/dev-setup && claude "Passo ag-comprador do roteiro: Comprador com estoq
 
 <a id="f29"></a>
 
-## 53 · Editora: depois do primeiro livro
+## 54 · Editora: depois do primeiro livro
 
 O mesmo livro em mais formatos, públicos e idiomas.
 
@@ -5997,7 +6057,7 @@ O mesmo livro em mais formatos, públicos e idiomas.
 
 **Começa quando:** O primeiro livro publicado
 
-### 53.1 Gráfica sob demanda no Brasil
+### 54.1 Gráfica sob demanda no Brasil
 
 **Você** · 2 h 00 min
 
@@ -6006,7 +6066,7 @@ O mesmo livro em mais formatos, públicos e idiomas.
 - **Precisa:** pagar um serviço
 - Implanta: Gráfica sob demanda (Brasil)
 
-### 53.2 Kit edição especial
+### 54.2 Kit edição especial
 
 **Você** · 4 h 00 min
 
@@ -6016,7 +6076,7 @@ O mesmo livro em mais formatos, públicos e idiomas.
 - **Oferta:** Kit do livro e edição do professor
 - Implanta: Kit edição especial
 
-### 53.3 Curso por seção do livro, com animações
+### 54.3 Curso por seção do livro, com animações
 
 **Você** · 20 h 00 min
 
@@ -6024,7 +6084,7 @@ O mesmo livro em mais formatos, públicos e idiomas.
 - [ ] **Pronto quando:** Primeira seção gravada e à venda
 - Implanta: Curso por seção · Manim (animações)
 
-### 53.4 Edição do professor com licença para escolas
+### 54.4 Edição do professor com licença para escolas
 
 **Claude com você** · 10 h 00 min
 
@@ -6038,7 +6098,7 @@ cd ~/dev/dev-setup && claude "Passo edicao-professor do roteiro: Edição do pro
 - **Oferta:** Adoção do livro por escolas
 - Implanta: Edição do professor
 
-### 53.5 Traduções para espanhol e inglês
+### 54.5 Traduções para espanhol e inglês
 
 **Claude com você** · 20 h 00 min
 
@@ -6055,13 +6115,13 @@ cd ~/dev/dev-setup && claude "Passo traducoes do roteiro: Traduções para espan
 
 <a id="f30"></a>
 
-## 54 · Distribuído, plataforma e segunda nuvem
+## 55 · Distribuído, plataforma e segunda nuvem
 
 O que pesa em vaga pleno e sênior.
 
 **Quando:** 2028
 
-### 54.1 RabbitMQ e depois Kafka entre dois sistemas AM
+### 55.1 RabbitMQ e depois Kafka entre dois sistemas AM
 
 **Claude com você** · 10 h 00 min
 
@@ -6074,7 +6134,7 @@ cd ~/dev/dev-setup && claude "Passo mensageria do roteiro: RabbitMQ e depois Kaf
 - [ ] **Pronto quando:** Evento de um sistema chega no outro sem chamada direta
 - Implanta: RabbitMQ · Kafka
 
-### 54.2 Kubernetes local com kind, kubectl, Helm e k9s
+### 55.2 Kubernetes local com kind, kubectl, Helm e k9s
 
 **Você** · 10 h 00 min
 
@@ -6087,7 +6147,7 @@ mkdir -p ~/.local/bin && curl -Lo ~/.local/bin/kind https://kind.sigs.k8s.io/dl/
 - [ ] **Pronto quando:** Um sistema AM rodando no cluster local
 - Implanta: Kubernetes local (kind) · kubectl · Helm · k9s
 
-### 54.3 Logs e rastreamento com Loki e Tempo no Grafana
+### 55.3 Logs e rastreamento com Loki e Tempo no Grafana
 
 **Claude com você** · 4 h 00 min
 
@@ -6100,7 +6160,7 @@ cd ~/dev/dev-setup && claude "Passo loki-tempo do roteiro: Logs e rastreamento c
 - [ ] **Pronto quando:** Uma requisição seguida de ponta a ponta
 - Implanta: Loki + Tempo
 
-### 54.4 AWS: Cloud Practitioner e o mesmo sistema rodando lá
+### 55.4 AWS: Cloud Practitioner e o mesmo sistema rodando lá
 
 **Você** · 20 h 00 min
 
@@ -6109,7 +6169,7 @@ cd ~/dev/dev-setup && claude "Passo loki-tempo do roteiro: Logs e rastreamento c
 - **Precisa:** pagar um serviço
 - Implanta: AWS
 
-### 54.5 Google Cloud só o básico, quando um projeto de IA ou dados pedir
+### 55.5 Google Cloud só o básico, quando um projeto de IA ou dados pedir
 
 **Você** · 5 h 00 min
 
@@ -6117,7 +6177,7 @@ cd ~/dev/dev-setup && claude "Passo loki-tempo do roteiro: Logs e rastreamento c
 - [ ] **Pronto quando:** Um serviço usado num projeto real
 - Implanta: Google Cloud
 
-### 54.6 App mobile dos sistemas AM com .NET MAUI
+### 55.6 App mobile dos sistemas AM com .NET MAUI
 
 **Claude com você** · 20 h 00 min
 
@@ -6132,13 +6192,13 @@ cd ~/dev/dev-setup && claude "Passo mobile do roteiro: App mobile dos sistemas A
 
 <a id="f31"></a>
 
-## 55 · Infraestrutura própria
+## 56 · Infraestrutura própria
 
 Servidor em casa e máquina de IA quando o grupo pedir.
 
 **Quando:** 2028, quando o grupo pedir
 
-### 55.1 Servidor caseiro com backup local e os serviços 24 horas
+### 56.1 Servidor caseiro com backup local e os serviços 24 horas
 
 **Você** · 8 h 00 min
 
@@ -6147,7 +6207,7 @@ Servidor em casa e máquina de IA quando o grupo pedir.
 - **Precisa:** comprar algo
 - Implanta: Servidor caseiro (NAS + serviços)
 
-### 55.2 Tailscale entre notebook, celular e servidor
+### 56.2 Tailscale entre notebook, celular e servidor
 
 **Você** · 1 h 00 min
 
@@ -6155,7 +6215,7 @@ Servidor em casa e máquina de IA quando o grupo pedir.
 - [ ] **Pronto quando:** Acesso ao servidor de fora de casa sem abrir porta
 - Implanta: Tailscale (VPN)
 
-### 55.3 Workstation com GPU para treinar e gerar voz e vídeo em casa
+### 56.3 Workstation com GPU para treinar e gerar voz e vídeo em casa
 
 **Você** · 8 h 00 min
 
@@ -6166,7 +6226,7 @@ Servidor em casa e máquina de IA quando o grupo pedir.
 
 <a id="f32"></a>
 
-## 56 · Negócios do grupo em Barbacena
+## 57 · Negócios do grupo em Barbacena
 
 Um negócio por vez, cada um só depois que o anterior passa no portão.
 
@@ -6174,7 +6234,7 @@ Um negócio por vez, cada um só depois que o anterior passa no portão.
 
 **Começa quando:** Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta
 
-### 56.1 Planejador do grupo com os números reais
+### 57.1 Planejador do grupo com os números reais
 
 **Claude com você** · 2 h 00 min
 
@@ -6187,7 +6247,7 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 - [ ] **Pronto quando:** Capital mínimo e portões calculados com os seus dados
 - Implanta: Planejador do Grupo
 
-### 56.2 A1 · Grupo AMtech Digital
+### 57.2 A1 · Grupo AMtech Digital
 
 **Você** · 40 h 00 min
 
@@ -6196,7 +6256,7 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 - **Precisa:** pagar um serviço
 - Implanta: AMtech Software (projetos e SaaS)
 
-### 56.3 A2 · Loja AMtech, peças sob encomenda, ponto de retirada e Maker
+### 57.3 A2 · Loja AMtech, peças sob encomenda, ponto de retirada e Maker
 
 **Você** · 80 h 00 min
 
@@ -6206,7 +6266,7 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 - **Oferta:** Assistência técnica · Peças e acessórios sem estoque · Ponto de retirada (Shopee e Mercado Livre) · AMtech Maker (robótica e automação)
 - Implanta: Loja AMtech (assistência) · Peças sem estoque (sob encomenda) · Ponto de retirada (Shopee e ML) · AMtech Maker (robótica) · Anatel e Inmetro · Google Perfil da Empresa
 
-### 56.4 B1 · AM Entregas e Mercado Envios Flex
+### 57.4 B1 · AM Entregas e Mercado Envios Flex
 
 **Você** · 80 h 00 min
 
@@ -6216,7 +6276,7 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 - **Oferta:** AM Entregas
 - Implanta: AM Entregas (moto e carro) · Mercado Envios Flex
 
-### 56.5 B2 · AM Delivery
+### 57.5 B2 · AM Delivery
 
 **Você** · 80 h 00 min
 
@@ -6226,7 +6286,7 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 - **Oferta:** AM Delivery · Licença do AM Delivery para outras cidades
 - Implanta: AM Delivery (várias empresas)
 
-### 56.6 C1 · Sushi, delivery primeiro
+### 57.6 C1 · Sushi, delivery primeiro
 
 **Você** · 80 h 00 min
 
@@ -6236,7 +6296,7 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 - **Oferta:** Sushi (delivery)
 - Implanta: Sushi (delivery) · Vigilância sanitária (RDC 216) · iFood (canal de descoberta)
 
-### 56.7 C2 · Padaria com café da manhã e almoço
+### 57.7 C2 · Padaria com café da manhã e almoço
 
 **Você** · 80 h 00 min
 
@@ -6246,7 +6306,7 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 - **Oferta:** Padaria com café da manhã e almoço
 - Implanta: Padaria + café da manhã + almoço
 
-### 56.8 C3 · Cafeteria
+### 57.8 C3 · Cafeteria
 
 **Você** · 40 h 00 min
 
@@ -6256,7 +6316,7 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 - **Oferta:** Cafeteria
 - Implanta: Cafeteria
 
-### 56.9 Serviços presenciais para 2027, se a tarde ficar livre (por parceiros quando der)
+### 57.9 Serviços presenciais para 2027, se a tarde ficar livre (por parceiros quando der)
 
 **Você** · 30 min
 
@@ -6264,7 +6324,7 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 - [ ] **Pronto quando:** Decisão tomada no replanejamento de 2027
 - **Oferta:** PC montado e entregue configurado · Redes Wi-Fi e câmeras com monitoramento mensal · Casa inteligente para clientes (Home Assistant) · Instrutor horista (SENAC, SENAI, prefeitura) · Aulas de informática e celular para idosos · Colônia de férias tech (robótica e programação) · Gestão de tráfego pago para o comércio local
 
-### 56.10 Rendas de capital alto: decidir só com o portão aberto
+### 57.10 Rendas de capital alto: decidir só com o portão aberto
 
 **Você** · 30 min
 
@@ -6272,7 +6332,7 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 - [ ] **Pronto quando:** Decisão registrada com capital próprio disponível
 - **Oferta:** Mercadinho autônomo em condomínio · Máquina de venda de lanches · Aluguel de kits de robótica · Kits e placas de robótica (Tindie e Mercado Livre) · Motos e carros: compra e revenda
 
-### 56.11 ERPNext para o primeiro negócio físico até o Aura cobrir
+### 57.11 ERPNext para o primeiro negócio físico até o Aura cobrir
 
 **Você** · 2 h 00 min
 
@@ -6287,13 +6347,13 @@ git clone --depth 1 https://github.com/frappe/frappe_docker.git ~/erpnext && cd 
 
 <a id="f33"></a>
 
-## 57 · Estudo contínuo
+## 58 · Estudo contínuo
 
 As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 
 **Quando:** Contínuo, desde a semana 2
 
-### 57.1 Montar as trilhas: Microsoft Learn, AWS Skill Builder, roadmap.sh e laboratórios do TryHackMe
+### 58.1 Montar as trilhas: Microsoft Learn, AWS Skill Builder, roadmap.sh e laboratórios do TryHackMe
 
 **Você** · 30 min
 
@@ -6301,7 +6361,7 @@ As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 - [ ] **Pronto quando:** Uma trilha de cada em andamento, anotada no Obsidian
 - Implanta: Microsoft Learn + AWS Skill Builder · roadmap.sh + Akita · TryHackMe / Hack The Box
 
-### 57.2 Organizar as contas de aluno (Alura, Rocketseat, DIO, Udemy)
+### 58.2 Organizar as contas de aluno (Alura, Rocketseat, DIO, Udemy)
 
 **Você** · 15 min
 
@@ -6310,7 +6370,7 @@ As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 - A licença é para assistir e estudar. Para a IA vão só as suas anotações e os seus projetos.
 - Implanta: Alura · Rocketseat · DIO · Udemy
 
-### 57.3 Criar os baralhos do Anki (comandos, conceitos, certificações)
+### 58.3 Criar os baralhos do Anki (comandos, conceitos, certificações)
 
 **Você** · 20 min
 
@@ -6318,7 +6378,7 @@ As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 - [ ] **Pronto quando:** Revisão do dia feita no notebook e no celular
 - Implanta: Anki
 
-### 57.4 Rendas que dependem de formação longa (perícia)
+### 58.4 Rendas que dependem de formação longa (perícia)
 
 **Você** · 15 min
 
@@ -6326,7 +6386,7 @@ As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 - [ ] **Pronto quando:** Portão de formação cumprido
 - **Oferta:** Perito em informática judicial
 
-### 57.5 Consultoria de investimentos só com a sócia certificada e registrada
+### 58.5 Consultoria de investimentos só com a sócia certificada e registrada
 
 **Você** · 15 min
 
@@ -6334,14 +6394,14 @@ As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 - [ ] **Pronto quando:** Certificação e registro conferidos
 - **Oferta:** Consultoria de investimentos (AM Rendara premium, com sócia certificada)
 
-### 57.6 Estudo vira produto: rodar a esteira depois de cada bloco de estudo
+### 58.6 Estudo vira produto: rodar a esteira depois de cada bloco de estudo
 
 **Você** · 15 min
 
 - **Fora do terminal:** Usa a automação au-esteira, quando construída; a revisão é sua.
 - [ ] **Pronto quando:** Aula, exercícios, cartões e roteiro gerados para revisar
 
-### 57.7 Decidir quando começar a graduação em Economia
+### 58.7 Decidir quando começar a graduação em Economia
 
 **Você** · 20 min
 
@@ -6350,42 +6410,42 @@ As trilhas de estudo ligadas ao setup, sem copiar conteúdo de ninguém.
 - **Fora do terminal:** Decisão de formação; fora do terminal.
 - [ ] **Pronto quando:** Decisão com data e custo no Caixa da Casa
 
-### 57.8 Trilha de certificações do mercado financeiro (CNPI → registro de consultor → CGE/CGA → CFP → CFA)
+### 58.8 Trilha de certificações do mercado financeiro (CNPI → registro de consultor → CGE/CGA → CFP → CFA)
 
 **Você** · 20 min
 
 - **Fora do terminal:** Ordem e motivos em docs/certificacoes.md. CPA e C-PRO só se for trabalhar em banco. Confira o edital do ano antes de pagar.
 - [ ] **Pronto quando:** Primeira prova marcada quando a cascata permitir
 
-### 57.9 Rotina diária de inglês; espanhol no B1 e mandarim no B2
+### 58.9 Rotina diária de inglês; espanhol no B1 e mandarim no B2
 
 **Você** · 10 min
 
 - **Fora do terminal:** Rotina de estudo; os gatilhos de espanhol e mandarim seguem o seu plano de idiomas.
 - [ ] **Pronto quando:** 25 a 30 min de inglês por dia na Rotina
 
-### 57.10 AM-OS e AM Linux: trilha de 10 anos de sistemas
+### 58.10 AM-OS e AM Linux: trilha de 10 anos de sistemas
 
 **Você** · 15 min
 
 - **Fora do terminal:** Horizonte longo; pausado até o fim do ano 1 do eixo (ADR 0011).
 - [ ] **Pronto quando:** Marco do ano definido
 
-### 57.11 Vigiar editais de professor EBTT (IF Sudeste MG, campus Barbacena) e de professor efetivo de MG
+### 58.11 Vigiar editais de professor EBTT (IF Sudeste MG, campus Barbacena) e de professor efetivo de MG
 
 **Você** · 20 min
 
 - **Fora do terminal:** A busca semanal de editais (passo au-editais) inclui esses concursos. Decisão sua: 40 h com dedicação exclusiva limita as outras rendas; existem vagas de 20 h.
 - [ ] **Pronto quando:** Editais na busca semanal e decisão registrada a cada edital
 
-### 57.12 Encaixar as atividades da Licenciatura em Matemática na Rotina
+### 58.12 Encaixar as atividades da Licenciatura em Matemática na Rotina
 
 **Você** · 15 min
 
 - **Fora do terminal:** Rotina do Caixa da Casa (artefato), fora do terminal.
 - [ ] **Pronto quando:** Aulas, atividades e provas da faculdade na Rotina do Caixa da Casa
 
-### 57.13 Primeira CLI em Go com bubbletea e release pelo GoReleaser
+### 58.13 Primeira CLI em Go com bubbletea e release pelo GoReleaser
 
 **Você** · 2 h 00 min
 
@@ -6398,7 +6458,7 @@ cp -r ~/dev/dev-setup/infra/templates/go-cli ~/dev/minha-cli && cd ~/dev/minha-c
 - [ ] **Pronto quando:** goreleaser release --snapshot gera binários de Linux e Windows
 - Implanta: Go (CLIs com bubbletea)
 
-### 57.14 Primeira CLI em Rust com release pelo cargo-dist
+### 58.14 Primeira CLI em Rust com release pelo cargo-dist
 
 **Você** · 2 h 00 min
 
@@ -6413,13 +6473,13 @@ cp -r ~/dev/dev-setup/infra/templates/rust-cli ~/dev/minha-cli-rs && cd ~/dev/mi
 
 <a id="f-seguranca"></a>
 
-## 58 · Engenharia reversa, AppSec e pentest
+## 59 · Engenharia reversa, AppSec e pentest
 
 Aprender engenharia reversa com binários seus, proteger os seus sistemas e montar a AMtech Segurança com trava de escopo, relatório e certificações, nessa ordem.
 
 **Quando:** Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP)
 
-### 58.1 Instalar as ferramentas de engenharia reversa (Ghidra, ILSpy, gdb)
+### 59.1 Instalar as ferramentas de engenharia reversa (Ghidra, ILSpy, gdb)
 
 **Script** · 30 min
 
@@ -6433,7 +6493,7 @@ cd ~/dev/dev-setup && bash scripts/wsl/ferramentas-re.sh
 - Rode antes com --simular para ver o que falta. Pede o gh logado.
 - Implanta: Lab de engenharia reversa
 
-### 58.2 Primeira engenharia reversa: o crackme da aula
+### 59.2 Primeira engenharia reversa: o crackme da aula
 
 **Script** · 45 min
 
@@ -6447,7 +6507,7 @@ cd /tmp && gcc -O0 -g -o licenca ~/dev/dev-setup/infra/templates/seguranca/aula-
 - Depois abra o mesmo binário no Ghidra e faça a versão C# (Licenca.cs) no ILSpy. Siga com os crackmes da OWASP MAS.
 - Implanta: Compiler Explorer (godbolt) · Crackmes (OWASP MAS, crackmes.one)
 
-### 58.3 Ligar o GhidraMCP ao Claude
+### 59.3 Ligar o GhidraMCP ao Claude
 
 **Você** · 30 min
 
@@ -6455,14 +6515,14 @@ cd /tmp && gcc -O0 -g -o licenca ~/dev/dev-setup/infra/templates/seguranca/aula-
 - [ ] **Pronto quando:** O Claude lista e renomeia as funções do licenca compilado
 - Implanta: GhidraMCP (IA no Ghidra)
 
-### 58.4 Aula: do C ao assembly e de volta (Arquitetura de Computadores)
+### 59.4 Aula: do C ao assembly e de volta (Arquitetura de Computadores)
 
 **Claude com você** · 1 h 00 min
 
 - **Fora do terminal:** Plano de aula pela Fábrica de aulas com o crackme de infra/templates/seguranca/aula-re; cada aluno analisa só o binário que ele mesmo compilou.
 - [ ] **Pronto quando:** Aula dada e o roteiro salvo no repositório de aulas
 
-### 58.5 Subir o laboratório de ataque (Juice Shop e WebGoat)
+### 59.5 Subir o laboratório de ataque (Juice Shop e WebGoat)
 
 **Script** · 10 min
 
@@ -6476,7 +6536,7 @@ cd ~/dev/dev-setup && docker compose -f infra/lab-seguranca/compose.yaml up -d
 - Desligue com down quando terminar. Nunca publique nem rode na VM da Oracle.
 - Implanta: Lab de ataque (Juice Shop, WebGoat)
 
-### 58.6 Lab de alvo isolado em containers e prova do isolamento
+### 59.6 Lab de alvo isolado em containers e prova do isolamento
 
 **Script** · 20 min
 
@@ -6490,7 +6550,7 @@ cd ~/dev/dev-setup && bash scripts/wsl/lab-alvo.sh subir && sleep 20 && bash scr
 - Para outro alvo: ALVO_IMAGEM=imagem ALVO_PORTA=porta antes do comando. Terminal do atacante: bash scripts/wsl/lab-alvo.sh entrar.
 - Implanta: Lab de alvo isolado (rede sem internet)
 
-### 58.7 Lab de alvo isolado em VMs (Kali e Alvo) para programas de desktop
+### 59.7 Lab de alvo isolado em VMs (Kali e Alvo) para programas de desktop
 
 **Script** · 1 h 00 min
 
@@ -6503,14 +6563,14 @@ powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\lab-alv
 - [ ] **Pronto quando:** status mostra as duas VMs ISOLADAS e o Alvo tem a foto 'limpo'
 - Crie antes as VMs 'Kali' e 'Alvo' e instale o programa no Alvo. Rede interna sem DHCP: IP fixo nas duas. Depois de cada teste: -Acao restaurar.
 
-### 58.8 Ciclo completo num programa de código aberto: engenharia reversa, pentest e relatório
+### 59.8 Ciclo completo num programa de código aberto: engenharia reversa, pentest e relatório
 
 **Você** · 8 h 00 min
 
 - **Fora do terminal:** Escolha um app aberto pequeno, estude o binário, rode no lab isolado, ataque e gere o relatório. Falha real achada: aviso em particular ao projeto, nunca publicar antes da correção.
 - [ ] **Pronto quando:** Relatório do ensaio com o que a engenharia reversa apontou e o que o pentest confirmou
 
-### 58.9 Trilha PortSwigger: todos os laboratórios Apprentice
+### 59.9 Trilha PortSwigger: todos os laboratórios Apprentice
 
 **Você** · 40 h 00 min
 
@@ -6518,7 +6578,7 @@ powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\lab-alv
 - [ ] **Pronto quando:** Apprentice de todos os temas resolvidos e anotados no Obsidian
 - Implanta: PortSwigger Web Security Academy · Kit de pentest (Burp, ZAP, nmap…)
 
-### 58.10 Modelagem de ameaças e checklist ASVS do AM Rendara (o primeiro sistema)
+### 59.10 Modelagem de ameaças e checklist ASVS do AM Rendara (o primeiro sistema)
 
 **Claude com você** · 2 h 00 min
 
@@ -6532,7 +6592,7 @@ mkdir -p docs/seguranca && cp ~/dev/dev-setup/infra/templates/seguranca/modelage
 - Rode dentro da pasta do AM Rendara. Repita em cada sistema AM antes de cada funcionalidade com login, dinheiro ou dado pessoal.
 - Implanta: AppSec nos seus sistemas
 
-### 58.11 ZAP passivo na homologação de cada sistema
+### 59.11 ZAP passivo na homologação de cada sistema
 
 **Script** · 20 min
 
@@ -6545,7 +6605,7 @@ mkdir -p .github/workflows && cp ~/dev/dev-setup/infra/templates/seguranca/dast-
 - [ ] **Pronto quando:** Issue do ZAP aberta e sem alerta alto
 - Dentro da pasta do sistema, quando ele tiver homologação (trimestre 2 do eixo, com o AM Rendara). Crie a variável HOMOLOGACAO_URL no repositório.
 
-### 58.12 Comparar o AM Rendara com os repositórios de referência
+### 59.12 Comparar o AM Rendara com os repositórios de referência
 
 **Claude com você** · 3 h 00 min
 
@@ -6553,7 +6613,7 @@ mkdir -p .github/workflows && cp ~/dev/dev-setup/infra/templates/seguranca/dast-
 - [ ] **Pronto quando:** 3 ADRs novas no AM Rendara, cada uma com a diferença e a decisão
 - Implanta: Repositórios de referência
 
-### 58.13 Ensaiar o serviço completo contra o seu próprio site
+### 59.13 Ensaiar o serviço completo contra o seu próprio site
 
 **Script** · 4 h 00 min
 
@@ -6567,7 +6627,7 @@ mkdir -p ~/clientes/ensaio && cp ~/dev/dev-setup/infra/templates/seguranca/escop
 - Troque alvos e janela pelos do seu site. A validação só passa com o termo assinado salvo na pasta. Gere o relatório com tools/seguranca/relatorio.py.
 - Implanta: Guarda de escopo (autorização) · Relatório de pentest (CVSS)
 
-### 58.14 Certificação eJPT
+### 59.14 Certificação eJPT
 
 **Você** · 1 h 00 min
 
@@ -6575,7 +6635,7 @@ mkdir -p ~/clientes/ensaio && cp ~/dev/dev-setup/infra/templates/seguranca/escop
 - [ ] **Pronto quando:** eJPT aprovado
 - **Precisa:** pagar um serviço
 
-### 58.15 Primeiro report num programa público de bug bounty
+### 59.15 Primeiro report num programa público de bug bounty
 
 **Você** · 10 h 00 min
 
@@ -6584,7 +6644,7 @@ mkdir -p ~/clientes/ensaio && cp ~/dev/dev-setup/infra/templates/seguranca/escop
 - **Oferta:** Bug bounty e pentest
 - Implanta: BugHunt · HackerOne (bug bounty)
 
-### 58.16 Laudo de segurança nos sites que você mantém
+### 59.16 Laudo de segurança nos sites que você mantém
 
 **Você** · 1 h 00 min
 
@@ -6592,7 +6652,7 @@ mkdir -p ~/clientes/ensaio && cp ~/dev/dev-setup/infra/templates/seguranca/escop
 - [ ] **Pronto quando:** Laudo entregue a 3 clientes
 - **Oferta:** Laudo de segurança dos sites que você mantém
 
-### 58.17 Curso de segurança e engenharia reversa para devs
+### 59.17 Curso de segurança e engenharia reversa para devs
 
 **Você** · 1 h 00 min
 
@@ -6600,7 +6660,7 @@ mkdir -p ~/clientes/ensaio && cp ~/dev/dev-setup/infra/templates/seguranca/escop
 - [ ] **Pronto quando:** Pré-venda aberta
 - **Oferta:** Curso: segurança e engenharia reversa para devs
 
-### 58.18 Certificação OSCP
+### 59.18 Certificação OSCP
 
 **Você** · 2 h 00 min
 
@@ -6608,7 +6668,7 @@ mkdir -p ~/clientes/ensaio && cp ~/dev/dev-setup/infra/templates/seguranca/escop
 - [ ] **Pronto quando:** OSCP aprovado
 - **Precisa:** pagar um serviço
 
-### 58.19 Abrir a AMtech Segurança (pentest completo)
+### 59.19 Abrir a AMtech Segurança (pentest completo)
 
 **Você** · 4 h 00 min
 
@@ -6618,7 +6678,7 @@ mkdir -p ~/clientes/ensaio && cp ~/dev/dev-setup/infra/templates/seguranca/escop
 - **Oferta:** Pentest completo para empresas (AMtech Segurança)
 - Implanta: AMtech Segurança (pentest)
 
-### 58.20 Triagem de binário com radare2 antes do Ghidra
+### 59.20 Triagem de binário com radare2 antes do Ghidra
 
 **Você** · 30 min
 
@@ -6631,7 +6691,7 @@ bash scripts/wsl/ferramentas-re.sh
 - [ ] **Pronto quando:** r2 -A mostra as funções e as strings do crackme
 - Implanta: radare2 (triagem de binários)
 
-### 58.21 Montar a sala limpa com a pasta dos alvos cifrada (gocryptfs)
+### 59.21 Montar a sala limpa com a pasta dos alvos cifrada (gocryptfs)
 
 **Você** · 20 min
 
@@ -6647,13 +6707,13 @@ cp -rn ~/dev/dev-setup/infra/templates/sala-limpa ~/dev/sala-limpa && gocryptfs 
 
 <a id="f-jarvis"></a>
 
-## 59 · Jarvis: o setup e a casa por comando de voz
+## 60 · Jarvis: o setup e a casa por comando de voz
 
 Falar com o setup e com a casa: o Claude Code por voz no PC agora, depois o servidor da casa, os aparelhos, as câmeras, a energia, a água e os robôs, sempre pela política de risco.
 
 **Quando:** Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas
 
-### 59.1 Claude Code por voz: falar com o /voice e ouvir a resposta
+### 60.1 Claude Code por voz: falar com o /voice e ouvir a resposta
 
 **Script** · 40 min
 
@@ -6667,7 +6727,7 @@ pipx install piper-tts && python3 ~/dev/dev-setup/tools/jarvis/falar.py --teste
 - Baixe uma voz pt_BR do Piper em ~/.local/share/piper e ligue o hook Stop no ~/.claude/settings.json (docs/jarvis/04-pc.md). O agente continua no ai-jail.
 - Implanta: Claude Code por voz (/voice + falar.py)
 
-### 59.2 Voz local para a casa: Whisper na GPU, Piper e openWakeWord
+### 60.2 Voz local para a casa: Whisper na GPU, Piper e openWakeWord
 
 **Script** · 40 min
 
@@ -6681,7 +6741,7 @@ cd ~/dev/dev-setup/infra/jarvis && cp -n jarvis.env.example .env && nano .env &&
 - Crie o usuário do MQTT na primeira vez (comando no topo do compose.yaml); a senha vai para o KeePassXC.
 - Implanta: Voz local: Whisper, Piper, openWakeWord · Mosquitto (MQTT)
 
-### 59.3 Política do Jarvis: o que cada comando pode fazer
+### 60.3 Política do Jarvis: o que cada comando pode fazer
 
 **Script** · 1 h 00 min
 
@@ -6695,7 +6755,7 @@ mkdir -p ~/.config/amtech && cp -n ~/dev/dev-setup/tools/jarvis/politica.example
 - Troque os ids pelos das suas entidades e gere as automações de segurança com: politica.py ha-yaml.
 - Implanta: Política do Jarvis (níveis de risco) · Jarvis (porta única dos agentes)
 
-### 59.4 Servidor da casa com Home Assistant OS
+### 60.4 Servidor da casa com Home Assistant OS
 
 **Você** · 2 h 00 min
 
@@ -6704,7 +6764,7 @@ mkdir -p ~/.config/amtech && cp -n ~/dev/dev-setup/tools/jarvis/politica.example
 - **Precisa:** comprar algo
 - Implanta: Servidor da casa (N100 ou Pi 5)
 
-### 59.5 Claude como agente de conversa e MCP do Home Assistant
+### 60.5 Claude como agente de conversa e MCP do Home Assistant
 
 **Você** · 1 h 00 min
 
@@ -6712,7 +6772,7 @@ mkdir -p ~/.config/amtech && cp -n ~/dev/dev-setup/tools/jarvis/politica.example
 - [ ] **Pronto quando:** "Hey jarvis, quanto gastei de energia hoje?" responde certo
 - Implanta: MCP do Home Assistant
 
-### 59.6 Primeiro satélite de voz (ESP32-S3) no quarto
+### 60.6 Primeiro satélite de voz (ESP32-S3) no quarto
 
 **Você** · 1 h 30 min
 
@@ -6721,7 +6781,7 @@ mkdir -p ~/.config/amtech && cp -n ~/dev/dev-setup/tools/jarvis/politica.example
 - **Precisa:** comprar algo
 - Implanta: Satélites de voz (ESP32-S3) · ESPHome
 
-### 59.7 Zigbee: coordenador, tomadas com medição e sensores de porta e janela
+### 60.7 Zigbee: coordenador, tomadas com medição e sensores de porta e janela
 
 **Você** · 2 h 00 min
 
@@ -6730,7 +6790,7 @@ mkdir -p ~/.config/amtech && cp -n ~/dev/dev-setup/tools/jarvis/politica.example
 - **Precisa:** comprar algo
 - Implanta: Coordenador Zigbee (USB) · Zigbee2MQTT · Tomadas, sensores e atuadores
 
-### 59.8 Leitor do hidrômetro com ESP32-CAM
+### 60.8 Leitor do hidrômetro com ESP32-CAM
 
 **Você** · 2 h 00 min
 
@@ -6739,7 +6799,7 @@ mkdir -p ~/.config/amtech && cp -n ~/dev/dev-setup/tools/jarvis/politica.example
 - **Precisa:** comprar algo
 - Implanta: Leitor do hidrômetro (ESP32-CAM)
 
-### 59.9 Câmeras com Frigate (detecção local)
+### 60.9 Câmeras com Frigate (detecção local)
 
 **Você** · 3 h 00 min
 
@@ -6748,7 +6808,7 @@ mkdir -p ~/.config/amtech && cp -n ~/dev/dev-setup/tools/jarvis/politica.example
 - **Precisa:** comprar algo
 - Implanta: Câmeras IP (RTSP) · Frigate (câmeras com detecção)
 
-### 59.10 Robôs na casa: ESP32 pelo ESPHome e Raspberry Pi com ROS 2 pelo MQTT
+### 60.10 Robôs na casa: ESP32 pelo ESPHome e Raspberry Pi com ROS 2 pelo MQTT
 
 **Claude com você** · 4 h 00 min
 
@@ -6756,21 +6816,21 @@ mkdir -p ~/.config/amtech && cp -n ~/dev/dev-setup/tools/jarvis/politica.example
 - [ ] **Pronto quando:** "Hey jarvis, manda o robô para a sala" move o robô de teste
 - Implanta: ROS 2 + ponte MQTT
 
-### 59.11 Primeira contribuição open source com o agente
+### 60.11 Primeira contribuição open source com o agente
 
 **Você** · 3 h 00 min
 
 - **Fora do terminal:** Issue com o rótulo good first issue num projeto que você usa (Home Assistant, ESPHome, Ghidra...), seguindo o CONTRIBUTING e a regra de uso de IA do projeto; você revisa e assina tudo.
 - [ ] **Pronto quando:** Um pull request aberto num projeto que você usa
 
-### 59.12 Orquestrador único: uma conversa para a casa, o PC e o setup
+### 60.12 Orquestrador único: uma conversa para a casa, o PC e o setup
 
 **Claude com você** · 8 h 00 min
 
 - **Fora do terminal:** Claude Agent SDK com o MCP do Home Assistant, o MCP próprio e a política; só depois do MCP próprio e do roteador de agentes.
 - [ ] **Pronto quando:** Do satélite de voz, pede o resumo do dia e o próximo passo do roteiro
 
-### 59.13 Aura Status como painel do Jarvis
+### 60.13 Aura Status como painel do Jarvis
 
 **Claude com você** · 2 h 00 min
 
@@ -6779,20 +6839,20 @@ mkdir -p ~/.config/amtech && cp -n ~/dev/dev-setup/tools/jarvis/politica.example
 
 <a id="f-ia-fisica"></a>
 
-## 60 · Hugging Face e IA física: TI, casa inteligente e agropecuária
+## 61 · Hugging Face e IA física: TI, casa inteligente e agropecuária
 
 Usar do Hub o que melhora o setup (TI primeiro), levar a casa inteligente para a horta e o curral e começar a robótica que aprende por imitação com o SO-101 e o LeRobot.
 
 **Quando:** Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino
 
-### 60.1 Conta no Hugging Face com token só de leitura
+### 61.1 Conta no Hugging Face com token só de leitura
 
 **Você** · 15 min
 
 - **Fora do terminal:** Cadastro no site com 2FA; token de escrita só quando for publicar dataset.
 - [ ] **Pronto quando:** Token de leitura guardado no KeePassXC
 
-### 60.2 Conferir o que cabe na GTX 1650 antes de baixar
+### 61.2 Conferir o que cabe na GTX 1650 antes de baixar
 
 **Script** · 10 min
 
@@ -6805,7 +6865,7 @@ python3 ~/dev/dev-setup/tools/ia/cabe.py --hf Qwen/Qwen3-VL-2B-Instruct
 - [ ] **Pronto quando:** Lista dos modelos do catálogo com onde cada um roda
 - Repita para cada modelo de docs/ia/hugging-face.md.
 
-### 60.3 Whisper mais preciso: large-v3-turbo no lugar do small
+### 61.3 Whisper mais preciso: large-v3-turbo no lugar do small
 
 **Script** · 30 min
 
@@ -6818,7 +6878,7 @@ cd ~/dev/dev-setup/infra/jarvis && sed -i 's/^WHISPER_MODELO=.*/WHISPER_MODELO=t
 - [ ] **Pronto quando:** As mesmas 20 frases suas com menos erros que o small
 - Se a imagem não aceitar turbo, use large-v3 (int8). Grave as 20 frases antes e meça os dois.
 
-### 60.4 Câmera que descreve: Qwen3-VL 2B local no Ollama
+### 61.4 Câmera que descreve: Qwen3-VL 2B local no Ollama
 
 **Script** · 20 min
 
@@ -6831,7 +6891,7 @@ ollama pull qwen3-vl:2b
 - [ ] **Pronto quando:** Descreve uma foto do quintal sem internet
 - Depois ligue no Frigate (descrição dos eventos por modelo local). Imagem da casa nunca vai para IA na nuvem.
 
-### 60.5 Docling para NFC-e, documentos da escola e acervo
+### 61.5 Docling para NFC-e, documentos da escola e acervo
 
 **Script** · 30 min
 
@@ -6845,14 +6905,14 @@ pipx install docling
 - Teste o Granite-Docling em português antes de ligar ao Caixa da Casa e ao verificador ABNT.
 - Implanta: Docling + Granite- Docling (documentos)
 
-### 60.6 Filtro de injeção de prompt antes do Jarvis agir
+### 61.6 Filtro de injeção de prompt antes do Jarvis agir
 
 **Claude com você** · 1 h 30 min
 
 - **Fora do terminal:** Llama Prompt Guard 2 (86M) no lab-ia; só entra no Jarvis se acertar em português.
 - [ ] **Pronto quando:** 20 frases de ataque em português barradas e 20 pedidos normais liberados
 
-### 60.7 Comprar e montar o par de braços SO-101
+### 61.7 Comprar e montar o par de braços SO-101
 
 **Você** · 8 h 00 min
 
@@ -6861,14 +6921,14 @@ pipx install docling
 - **Precisa:** comprar algo
 - Implanta: Braços SO-101 (líder + seguidor) · LeRobot (robôs que aprendem)
 
-### 60.8 Gravar 50 demonstrações de uma tarefa simples
+### 61.8 Gravar 50 demonstrações de uma tarefa simples
 
 **Você** · 3 h 00 min
 
 - **Fora do terminal:** lerobot-record com o líder; tarefa de pegar e colocar numa caixa. Sem rosto de ninguém, muito menos de aluno.
 - [ ] **Pronto quando:** Dataset privado no Hub com 50 episódios da tarefa
 
-### 60.9 Treinar o ACT no Kaggle e o SmolVLA em GPU alugada
+### 61.9 Treinar o ACT no Kaggle e o SmolVLA em GPU alugada
 
 **Claude com você** · 4 h 00 min
 
@@ -6876,14 +6936,14 @@ pipx install docling
 - [ ] **Pronto quando:** O braço faz a tarefa sozinho em 7 de 10 tentativas
 - **Precisa:** pagar um serviço
 
-### 60.10 Aula de robótica: o robô que aprende vendo você
+### 61.10 Aula de robótica: o robô que aprende vendo você
 
 **Claude com você** · 1 h 00 min
 
 - **Fora do terminal:** Plano pela Fábrica de aulas; os alunos operam o líder, sem câmera gravando rostos.
 - [ ] **Pronto quando:** Aula dada com o SO-101 e o roteiro salvo no repositório de aulas
 
-### 60.11 Reachy Mini como corpo do Jarvis na mesa
+### 61.11 Reachy Mini como corpo do Jarvis na mesa
 
 **Você** · 5 h 00 min
 
@@ -6892,7 +6952,7 @@ pipx install docling
 - **Precisa:** comprar algo
 - Implanta: Reachy Mini (corpo do Jarvis)
 
-### 60.12 Autocompletar offline: Qwen2.5-Coder 1.5B no VS Code
+### 61.12 Autocompletar offline: Qwen2.5-Coder 1.5B no VS Code
 
 **Script** · 20 min
 
@@ -6905,7 +6965,7 @@ ollama pull qwen2.5-coder:1.5b
 - [ ] **Pronto quando:** Sugestões de código com a internet desligada
 - Ligue no Continue (VS Code) como modelo de autocompletar; o Copilot e o Claude seguem para tarefa grande.
 
-### 60.13 Horta com irrigação automática (umidade do solo e previsão de chuva)
+### 61.13 Horta com irrigação automática (umidade do solo e previsão de chuva)
 
 **Você** · 4 h 00 min
 
@@ -6914,7 +6974,7 @@ ollama pull qwen2.5-coder:1.5b
 - **Precisa:** comprar algo
 - Implanta: Kit de campo (LoRa, umidade, ultrassom)
 
-### 60.14 Bebedouro, cocho e balança no painel
+### 61.14 Bebedouro, cocho e balança no painel
 
 **Você** · 3 h 00 min
 
@@ -6922,14 +6982,14 @@ ollama pull qwen2.5-coder:1.5b
 - [ ] **Pronto quando:** Aviso no celular quando o bebedouro baixa de 20%
 - **Precisa:** comprar algo
 
-### 60.15 Contagem de gado por câmera no Frigate
+### 61.15 Contagem de gado por câmera no Frigate
 
 **Claude com você** · 5 h 00 min
 
 - **Fora do terminal:** Modelo de gado do Hub retreinado no Kaggle com fotos do rebanho (de um produtor parceiro ou do seu); roda local no servidor da casa.
 - [ ] **Pronto quando:** Contagem do curral batendo com a contagem à mão em 9 de 10 vezes
 
-### 60.16 AMtech Campo: o primeiro sítio instalado
+### 61.16 AMtech Campo: o primeiro sítio instalado
 
 **Você** · 8 h 00 min
 
@@ -6939,13 +6999,13 @@ ollama pull qwen2.5-coder:1.5b
 
 <a id="f-construcao"></a>
 
-## 61 · Construção civil, arquitetura e engenharia civil (pela TI)
+## 62 · Construção civil, arquitetura e engenharia civil (pela TI)
 
 Estudar os conceitos com as ferramentas dos grandes escritórios, a IA seguindo regras de engenharia, e ganhar com automação BIM e software, sempre com quem assina revisando.
 
 **Quando:** Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão
 
-### 61.1 Regras de construção para a IA na pasta de estudo
+### 62.1 Regras de construção para a IA na pasta de estudo
 
 **Script** · 5 min
 
@@ -6958,7 +7018,7 @@ mkdir -p ~/dev/construcao && cat ~/dev/dev-setup/infra/templates/regras-ia/regra
 - [ ] **Pronto quando:** CLAUDE.md da pasta de construção com as regras gerais e as de engenharia
 - Use o mesmo texto nas instruções de um Project de construção no Claude.
 
-### 61.2 Instalar o FreeCAD
+### 62.2 Instalar o FreeCAD
 
 **Script** · 15 min
 
@@ -6971,7 +7031,7 @@ winget install --id FreeCAD.FreeCAD -e
 - [ ] **Pronto quando:** FreeCAD abre com a bancada BIM
 - Implanta: FreeCAD 1.1 (BIM, 2D e FEM)
 
-### 61.3 Instalar o Blender e o Bonsai (BIM aberto)
+### 62.3 Instalar o Blender e o Bonsai (BIM aberto)
 
 **Você** · 30 min
 
@@ -6985,7 +7045,7 @@ winget install --id BlenderFoundation.Blender -e
 - Depois, no Blender: Editar > Preferências > Obter extensões > Bonsai (ou o pacote de bonsaibim.org).
 - Implanta: Bonsai + IfcOpenShell (BIM aberto)
 
-### 61.4 Instalar o QGIS
+### 62.4 Instalar o QGIS
 
 **Script** · 20 min
 
@@ -6998,7 +7058,7 @@ winget install --id OSGeo.QGIS -e
 - [ ] **Pronto quando:** Mapa de Barbacena aberto com uma camada do IBGE
 - Implanta: QGIS (terreno e mapas)
 
-### 61.5 Licença educacional da Autodesk como professor
+### 62.5 Licença educacional da Autodesk como professor
 
 **Você** · 1 h 00 min
 
@@ -7006,7 +7066,7 @@ winget install --id OSGeo.QGIS -e
 - [ ] **Pronto quando:** Revit e AutoCAD instalados pela conta educacional
 - Implanta: Autodesk educacional (Revit, Civil 3D)
 
-### 61.6 Primeiro modelo: casa térrea no Bonsai e o resumo do IFC
+### 62.6 Primeiro modelo: casa térrea no Bonsai e o resumo do IFC
 
 **Você** · 4 h 00 min
 
@@ -7020,7 +7080,7 @@ python3 ~/dev/dev-setup/tools/construcao/ifc_resumo.py ~/dev/construcao/casa.ifc
 - Exporte com as quantidades base ligadas, senão a tabela de quantidades vem vazia.
 - Implanta: Resumo de IFC (ifc_resumo.py)
 
-### 61.7 Ligar o MCP do IfcOpenShell ao Claude Code
+### 62.7 Ligar o MCP do IfcOpenShell ao Claude Code
 
 **Claude com você** · 1 h 00 min
 
@@ -7028,7 +7088,7 @@ python3 ~/dev/dev-setup/tools/construcao/ifc_resumo.py ~/dev/construcao/casa.ifc
 - [ ] **Pronto quando:** O Claude responde quantas portas a casa tem e muda uma pelo MCP, com você conferindo no Bonsai
 - Implanta: MCP do IfcOpenShell
 
-### 61.8 Estimativa da casa com o SINAPI-MG do mês
+### 62.8 Estimativa da casa com o SINAPI-MG do mês
 
 **Você** · 3 h 00 min
 
@@ -7036,14 +7096,14 @@ python3 ~/dev/dev-setup/tools/construcao/ifc_resumo.py ~/dev/construcao/casa.ifc
 - [ ] **Pronto quando:** Planilha com as quantidades do IFC, as composições do SINAPI e o mês de referência
 - Implanta: SINAPI (custos de MG, Caixa)
 
-### 61.9 Trilha de conceitos de construção (8 blocos)
+### 62.9 Trilha de conceitos de construção (8 blocos)
 
 **Você** · 100 h 00 min
 
 - **Fora do terminal:** Estudo contínuo no bloco da manhã, depois das trilhas de TI do plano de estudo.
 - [ ] **Pronto quando:** Os 8 blocos de docs/construcao/02-estudo-e-normas.md com anotação e prática
 
-### 61.10 Publicar o modelo no Speckle
+### 62.10 Publicar o modelo no Speckle
 
 **Você** · 30 min
 
@@ -7051,7 +7111,7 @@ python3 ~/dev/dev-setup/tools/construcao/ifc_resumo.py ~/dev/construcao/casa.ifc
 - [ ] **Pronto quando:** Modelo da casa visto no navegador do celular
 - Implanta: Speckle (modelos na web)
 
-### 61.11 3 scripts de automação BIM publicados e o primeiro escritório parceiro
+### 62.11 3 scripts de automação BIM publicados e o primeiro escritório parceiro
 
 **Claude com você** · 10 h 00 min
 
@@ -7059,7 +7119,7 @@ python3 ~/dev/dev-setup/tools/construcao/ifc_resumo.py ~/dev/construcao/casa.ifc
 - [ ] **Pronto quando:** Scripts no GitHub com testes e um escritório usando um deles
 - **Oferta:** Automação BIM e modelagem para escritórios de engenharia e arquitetura
 
-### 61.12 AM Obra: entrevistar quem toca obra e decidir se constrói
+### 62.12 AM Obra: entrevistar quem toca obra e decidir se constrói
 
 **Você** · 5 h 00 min
 
@@ -7068,7 +7128,7 @@ python3 ~/dev/dev-setup/tools/construcao/ifc_resumo.py ~/dev/construcao/casa.ifc
 - **Oferta:** AM Obra: diário, medição, compras e estimativa para pequenas construtoras
 - Implanta: AM Obra (diário, medição, compras)
 
-### 61.13 Decidir se vai estudar para poder assinar projetos
+### 62.13 Decidir se vai estudar para poder assinar projetos
 
 **Você** · 30 min
 
@@ -7095,15 +7155,15 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | CRM único + LGPD | 31.6, 33.6, 37.9 | Dez/2026 a jan/2027; Com a primeira página de venda no ar (jan/2027) e por etapas; Semanas 8 a 10 · dez/2026 a jan/2027 |
 | Flywheel de conteúdo | 34.5, 34.6 | Semana 5 · nov/2026 |
 | Canal build in public | 47.7 | A partir de fev/2027 |
-| Agente atendente (WhatsApp) | 33.5, 45.5, 46.5, 52.2 | Com a primeira página de venda no ar (jan/2027) e por etapas; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite); Fev a dez/2027, uma oferta por vez; Junto com o primeiro CNPJ |
-| Agente orçamentista | 52.3 | Junto com o primeiro CNPJ |
-| Agente cobrador | 52.4 | Junto com o primeiro CNPJ |
-| Agente pós-venda | 45.6, 52.5 | Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite); Junto com o primeiro CNPJ |
+| Agente atendente (WhatsApp) | 33.5, 45.5, 46.5, 53.2 | Com a primeira página de venda no ar (jan/2027) e por etapas; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite); Fev a dez/2027, uma oferta por vez; Junto com o primeiro CNPJ |
+| Agente orçamentista | 53.3 | Junto com o primeiro CNPJ |
+| Agente cobrador | 53.4 | Junto com o primeiro CNPJ |
+| Agente pós-venda | 45.6, 53.5 | Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite); Junto com o primeiro CNPJ |
 | Agente editor de conteúdo | 34.5, 46.14 | Semana 5 · nov/2026; Fev a dez/2027, uma oferta por vez |
-| Analista semanal | 52.1 | Junto com o primeiro CNPJ |
-| Organizador fiscal | 52.6 | Junto com o primeiro CNPJ |
+| Analista semanal | 53.1 | Junto com o primeiro CNPJ |
+| Organizador fiscal | 53.6 | Junto com o primeiro CNPJ |
 | Revisor de oferta | 37.14 | Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Agente comprador | 52.7 | Junto com o primeiro CNPJ |
+| Agente comprador | 53.7 | Junto com o primeiro CNPJ |
 | Diagnóstico do notebook | 0.2 | Antes de tudo · semana 1 (out/2026) |
 | Roteiro de implantação | 0.6, 39.4 | Antes de tudo · semana 1 (out/2026); Semana 11 · jan/2027 |
 | Instaladores (PowerShell e bash) | 3.1, 4.4 | Semana 1 · out/2026; Semana 2 · nov/2026 |
@@ -7113,7 +7173,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Agente revisor de qualidade | 20.8, 27.5 | Semana 5 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
 | Lucro por ferramenta | 23.10, 31.3 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Dez/2026 a jan/2027 |
 | Prospector com aprovação | 23.9, 31.6, 45.3 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Dez/2026 a jan/2027; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) |
-| Resumo de IFC (ifc_resumo.py) | 61.6 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| Resumo de IFC (ifc_resumo.py) | 62.6 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 | Triagem: montar, colar ou construir | 21.3, 21.4 | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
 | Plane (projetos de cliente) | 32.6 | Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar |
 | Núcleo AMtech (banco central) | 22.1, 22.3, 22.4, 22.5, 22.8, 23.6, 23.10, 24.1, 25.3, 26.1, 26.5 | Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois; Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Nov/2026 a out/2027, revisão no fim de cada trimestre; Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre; Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último |
@@ -7129,7 +7189,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | YouTube | 36.1, 46.14 | Semanas 6 e 7 · dez/2026; Fev a dez/2027, uma oferta por vez |
 | LinkedIn | 36.1, 40.9 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
 | WhatsApp Business | 36.2, 40.9 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
-| Google Perfil da Empresa | 46.9, 56.3 | Fev a dez/2027, uma oferta por vez; Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Google Perfil da Empresa | 46.9, 57.3 | Fev a dez/2027, uma oferta por vez; Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
 | Comunidade (Discord ou grupo) | 37.10, 46.15 | Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
 | Busca Google (SEO) | 36.12 | Semanas 6 e 7 · dez/2026 |
 | Alunos e ex-alunos | 36.10 | Semanas 6 e 7 · dez/2026 |
@@ -7176,7 +7236,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Pix Automático + gateway (ex.: Asaas) | 24.7, 45.9, 51.4 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite); Quando a renda pedir |
+| Pix Automático + gateway (ex.: Asaas) | 24.7, 45.9, 52.4 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite); Quando a renda pedir |
 | Agenda online (Cal.com) | 23.8, 37.8, 45.4, 46.18, 46.19 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Semanas 8 a 10 · dez/2026 a jan/2027; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite); Fev a dez/2027, uma oferta por vez |
 | CRM simples (planilha) | 37.9 | Semanas 8 a 10 · dez/2026 a jan/2027 |
 | Hotmart | 37.5, 40.2, 40.5, 40.10, 46.3, 46.4 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027; Fev a dez/2027, uma oferta por vez |
@@ -7198,9 +7258,9 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 |---|---|---|
 | Registro de marca (INPI) | 23.2, 37.17, 40.1 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027 |
 | Termos, privacidade (LGPD) e contratos | 23.4, 37.4 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Certificado digital (e-CNPJ) | 51.2 | Quando a renda pedir |
-| API de NFS-e (ex.: Focus NFe) | 51.3 | Quando a renda pedir |
-| CNPJ (futuro) | 23.1, 51.1 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Quando a renda pedir |
+| Certificado digital (e-CNPJ) | 52.2 | Quando a renda pedir |
+| API de NFS-e (ex.: Focus NFe) | 52.3 | Quando a renda pedir |
+| CNPJ (futuro) | 23.1, 52.1 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Quando a renda pedir |
 | gov.br (prata ou ouro) | 2.7, 37.1 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semanas 8 a 10 · dez/2026 a jan/2027 |
 | Carnê-leão (Receita Federal) | 37.18, 40.10 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027 |
 | Declaração anual do IR | 37.19 | Semanas 8 a 10 · dez/2026 a jan/2027 |
@@ -7216,7 +7276,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Ghostfolio (painel do patrimônio) | 16.11 | Dez/2026 |
 | Actual Budget (envelopes) | 15.7 | Dez/2026 |
 | Firefly III (reserva) | 15.8 | Dez/2026 |
-| Akaunting (contabilidade CNPJ) | 51.5 | Quando a renda pedir |
+| Akaunting (contabilidade CNPJ) | 52.5 | Quando a renda pedir |
 
 ### Vitrine web (sites e domínio)
 
@@ -7248,32 +7308,32 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Livro Lógica e Máquina | 43.2, 43.8 | Quando o capítulo 1 estiver pronto |
 | Aulas particulares | 37.8 | Semanas 8 a 10 · dez/2026 a jan/2027 |
 | Sites para pequenas empresas | 23.3, 24.5, 36.13, 46.9, 46.10 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Nov/2026 a out/2027, revisão no fim de cada trimestre; Semanas 6 e 7 · dez/2026; Fev a dez/2027, uma oferta por vez |
-| Sistemas AM (SaaS) | 50.1 | 2027 |
+| Sistemas AM (SaaS) | 51.1 | 2027 |
 | Esteira de sites (issue → PR → ar) | 28.3, 28.4, 28.5 | Semana 6 · nov/2026 a dez/2026 |
 
 ### Negócios do grupo (Barbacena)
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| AMtech Software (projetos e SaaS) | 56.2 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Loja AMtech (assistência) | 56.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Peças sem estoque (sob encomenda) | 56.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Ponto de retirada (Shopee e ML) | 56.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| AMtech Maker (robótica) | 56.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| AM Entregas (moto e carro) | 56.4 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Mercado Envios Flex | 56.4 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| AM Delivery (várias empresas) | 56.5 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Sushi (delivery) | 56.6 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Cafeteria | 56.8 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Padaria + café da manhã + almoço | 56.7 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| 3 CNPJs por frente | 51.1 | Quando a renda pedir |
-| Planejador do Grupo | 56.1 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| iFood (canal de descoberta) | 56.6 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Vigilância sanitária (RDC 216) | 56.6 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Anatel e Inmetro | 56.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| AMtech Software (projetos e SaaS) | 57.2 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Loja AMtech (assistência) | 57.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Peças sem estoque (sob encomenda) | 57.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Ponto de retirada (Shopee e ML) | 57.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| AMtech Maker (robótica) | 57.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| AM Entregas (moto e carro) | 57.4 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Mercado Envios Flex | 57.4 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| AM Delivery (várias empresas) | 57.5 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Sushi (delivery) | 57.6 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Cafeteria | 57.8 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Padaria + café da manhã + almoço | 57.7 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| 3 CNPJs por frente | 52.1 | Quando a renda pedir |
+| Planejador do Grupo | 57.1 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| iFood (canal de descoberta) | 57.6 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Vigilância sanitária (RDC 216) | 57.6 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Anatel e Inmetro | 57.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
 | Radar de revenda | 11.5 | Semana 4 · nov/2026 |
-| AMtech Segurança (pentest) | 58.19 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| ERPNext (negócios físicos) | 56.11 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| AMtech Segurança (pentest) | 59.19 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| ERPNext (negócios físicos) | 57.11 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
 
 ### Editora AMS Silva (produção de livros)
 
@@ -7295,11 +7355,11 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Ficha catalográfica | 43.9 | Quando o capítulo 1 estiver pronto |
 | Depósito legal | 43.12 | Quando o capítulo 1 estiver pronto |
 | Amazon KDP | 43.11 | Quando o capítulo 1 estiver pronto |
-| Gráfica sob demanda (Brasil) | 53.1 | Depois do primeiro livro |
-| Kit edição especial | 53.2 | Depois do primeiro livro |
-| Curso por seção | 53.3 | Depois do primeiro livro |
-| Edição do professor | 53.4 | Depois do primeiro livro |
-| Traduções (espanhol, inglês) | 53.5 | Depois do primeiro livro |
+| Gráfica sob demanda (Brasil) | 54.1 | Depois do primeiro livro |
+| Kit edição especial | 54.2 | Depois do primeiro livro |
+| Curso por seção | 54.3 | Depois do primeiro livro |
+| Edição do professor | 54.4 | Depois do primeiro livro |
+| Traduções (espanhol, inglês) | 54.5 | Depois do primeiro livro |
 | Quadro de referências | 43.6 | Quando o capítulo 1 estiver pronto |
 | Matriz de editais | 43.6 | Quando o capítulo 1 estiver pronto |
 | Projeto do capítulo | 43.1 | Quando o capítulo 1 estiver pronto |
@@ -7313,27 +7373,27 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Figuras por código (Matplotlib…) | 43.4 | Quando o capítulo 1 estiver pronto |
 | CircuiTikZ | 4.4 | Semana 2 · nov/2026 |
 | Geradores de tabelas | 43.4 | Quando o capítulo 1 estiver pronto |
-| Manim (animações) | 53.3 | Depois do primeiro livro |
+| Manim (animações) | 54.3 | Depois do primeiro livro |
 | Texto alternativo | 43.4 | Quando o capítulo 1 estiver pronto |
 
 ### Estudo e carreira
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Microsoft Learn + AWS Skill Builder | 24.8, 57.1 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Contínuo, desde a semana 2 |
-| TryHackMe / Hack The Box | 57.1 | Contínuo, desde a semana 2 |
-| Alura · Rocketseat · DIO · Udemy | 57.2 | Contínuo, desde a semana 2 |
-| Anki | 3.2, 25.5, 46.7, 57.3 | Semana 1 · out/2026; Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre; Fev a dez/2027, uma oferta por vez; Contínuo, desde a semana 2 |
-| roadmap.sh + Akita | 57.1 | Contínuo, desde a semana 2 |
+| Microsoft Learn + AWS Skill Builder | 24.8, 58.1 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Contínuo, desde a semana 2 |
+| TryHackMe / Hack The Box | 58.1 | Contínuo, desde a semana 2 |
+| Alura · Rocketseat · DIO · Udemy | 58.2 | Contínuo, desde a semana 2 |
+| Anki | 3.2, 25.5, 46.7, 58.3 | Semana 1 · out/2026; Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre; Fev a dez/2027, uma oferta por vez; Contínuo, desde a semana 2 |
+| roadmap.sh + Akita | 58.1 | Contínuo, desde a semana 2 |
 | GitHub Education | 28.1 | Semana 6 · nov/2026 a dez/2026 |
 | Zoomcamp de dados + cursos de IA | 44.6 | Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
 | GPT do zero (estudo) | 29.1 | 2027, depois do primeiro fine-tuning de 8B |
 | Laboratório de redes | 30.5 | Semana 6 · nov/2026 |
-| PortSwigger Web Security Academy | 58.9 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| Crackmes (OWASP MAS, crackmes.one) | 58.2 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| BugHunt · HackerOne (bug bounty) | 58.15 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| Compiler Explorer (godbolt) | 58.2 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| Repositórios de referência | 58.12 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| PortSwigger Web Security Academy | 59.9 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Crackmes (OWASP MAS, crackmes.one) | 59.2 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| BugHunt · HackerOne (bug bounty) | 59.15 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Compiler Explorer (godbolt) | 59.2 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Repositórios de referência | 59.12 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | Escola Akita (regras com seu ok) | 26.1, 26.2, 26.3, 26.4, 26.5, 26.6 | Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último |
 | Professor do setup (aula e revisão) | 25.1, 25.2, 25.3, 25.4, 25.5, 25.6, 25.7, 25.8, 25.9 | Todo dia, nas 3 h de estudo do plano do eixo; o currículo cresce a cada trimestre |
 
@@ -7359,7 +7419,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | SonarQube Cloud | 41.5 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Projects · ADRs · MkDocs | 5.5 | Semana 2 · nov/2026 |
 | Dependabot + CodeQL | 5.3 | Semana 2 · nov/2026 |
-| Google Cloud | 54.5 | 2028 |
+| Google Cloud | 55.5 | 2028 |
 | GitHub | 2.7, 5.1, 5.4, 24.8 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 2 · nov/2026; Nov/2026 a out/2027, revisão no fim de cada trimestre |
 | GitHub Actions | 5.2, 39.1 | Semana 2 · nov/2026; Semana 11 · jan/2027 |
 | GHCR (imagens) | 41.6 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
@@ -7367,7 +7427,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Cloudflare (DNS, Pages, e-mail) | 28.4, 28.6, 28.7, 36.3, 36.8, 38.1, 42.6 | Semana 6 · nov/2026 a dez/2026; Semanas 6 e 7 · dez/2026; Semana 11 · jan/2027; Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Rendara (MVP com 1 usuário pagante) |
 | Vercel | 42.6 | Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Rendara (MVP com 1 usuário pagante) |
 | Azure | 32.13, 42.2, 42.3, 42.6 | Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar; Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Rendara (MVP com 1 usuário pagante) |
-| AWS | 32.13, 54.4 | Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar; 2028 |
+| AWS | 32.13, 55.4 | Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar; 2028 |
 | Backblaze B2 (backup) | 7.2 | Semana 3 · nov/2026 |
 | GPU por hora (RunPod e afins) | 29.4, 44.9 | 2027, depois do primeiro fine-tuning de 8B; Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
 | Google Drive (seus documentos) | 0.5, 8.1, 27.8 | Antes de tudo · semana 1 (out/2026); Semanas 3 e 4 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
@@ -7375,7 +7435,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Vigia semanal (GitHub Actions) | 31.1, 31.2 | Dez/2026 a jan/2027 |
 | VM sempre ligada (Oracle grátis) | 28.9, 31.1, 31.4, 31.5, 45.1 | Semana 6 · nov/2026 a dez/2026; Dez/2026 a jan/2027; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) |
 | OpenRouter | 27.15 | Semana 6 · nov/2026 a dez/2026 |
-| Speckle (modelos na web) | 61.10 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| Speckle (modelos na web) | 62.10 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 | act (CI do Actions na sua máquina) | 21.7 | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
 | Kamal (deploy em VM por SSH) | 23.5, 32.13, 42.8, 45.1, 45.10 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar; Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Rendara (MVP com 1 usuário pagante); Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) |
 | bore (túnel TCP próprio) | 32.7 | Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar |
@@ -7392,31 +7452,31 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Bloco | Passo | Quando |
 |---|---|---|
 | OpenAPI + Scalar | 41.1 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
-| PostGIS + MapLibre | 50.3 | 2027 |
+| PostGIS + MapLibre | 51.3 | 2027 |
 | Storybook | 41.1 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Clean Arch + DDD | 41.1 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | EF Core + Npgsql | 41.1 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | SignalR | 41.1 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Multi-tenant (RLS) | 41.1 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Testes: xUnit, Playwright, k6 | 24.6, 41.1, 45.10 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) |
-| Serviços aura- (10) | 50.4 | 2027 |
+| Serviços aura- (10) | 51.4 | 2027 |
 | Next.js + Aura Design System | 24.6, 41.1, 46.17 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; Fev a dez/2027, uma oferta por vez |
 | API ASP.NET Core | 24.6, 41.1, 46.17 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; Fev a dez/2027, uma oferta por vez |
 | Keycloak / Entra ID | 41.2 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
-| IA: RAG + pgvector | 49.1 | Depois do trimestre 4 do eixo (ADR 0011, ≈ 2028), quando o AM Rendara já estiver em produção |
-| aura-licensing | 50.1 | 2027 |
+| IA: RAG + pgvector | 50.1 | Depois do trimestre 4 do eixo (ADR 0011, ≈ 2028), quando o AM Rendara já estiver em produção |
+| aura-licensing | 51.1 | 2027 |
 | aura-status | 42.7 | Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Rendara (MVP com 1 usuário pagante) |
-| AM Kaixara (PDV e cardápio) | 46.12, 50.2 | Fev a dez/2027, uma oferta por vez; 2027 |
-| AM Rotara (entregas) | 50.3, 50.5 | 2027 |
-| App mobile (.NET MAUI) | 54.6 | 2028 |
-| AM Obra (diário, medição, compras) | 61.12 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| AM Kaixara (PDV e cardápio) | 46.12, 51.2 | Fev a dez/2027, uma oferta por vez; 2027 |
+| AM Rotara (entregas) | 51.3, 51.5 | 2027 |
+| App mobile (.NET MAUI) | 55.6 | 2028 |
+| AM Obra (diário, medição, compras) | 62.12 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 | Zod · Biome · Vitest (front) | 41.9, 45.8 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) |
 | SvelteKit (apps pequenos) | 45.7 | Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) |
 | PocketBase (MVP antes do Aura) | 45.7 | Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) |
 | Litestream (SQLite no R2) | 45.10 | Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) |
 | React Email (modelos) | 33.12 | Com a primeira página de venda no ar (jan/2027) e por etapas |
-| Go (CLIs com bubbletea) | 57.13 | Contínuo, desde a semana 2 |
-| Rust (firmware e CLIs) | 57.14 | Contínuo, desde a semana 2 |
+| Go (CLIs com bubbletea) | 58.13 | Contínuo, desde a semana 2 |
+| Rust (firmware e CLIs) | 58.14 | Contínuo, desde a semana 2 |
 
 ### Observabilidade
 
@@ -7425,7 +7485,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Sentry (erros) | 41.4 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Uptime Kuma | 10.6, 31.5, 45.1 | Semana 4 · nov/2026; Dez/2026 a jan/2027; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) |
 | Seq (logs) | 41.3 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
-| Loki + Tempo | 54.3 | 2028 |
+| Loki + Tempo | 55.3 | 2028 |
 | OpenTelemetry | 24.7, 41.3 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Prometheus | 41.3 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Grafana | 10.4, 38.4 | Semana 4 · nov/2026; Semana 11 · jan/2027 |
@@ -7439,20 +7499,20 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 |---|---|---|
 | Caddy (proxy + HTTPS) | 41.3 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Mailpit | 41.3 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
-| Kafka | 54.1 | 2028 |
-| kubectl · Helm · k9s | 54.2 | 2028 |
+| Kafka | 55.1 | 2028 |
+| kubectl · Helm · k9s | 55.2 | 2028 |
 | Azure CLI · AWS CLI | 42.1 | Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Rendara (MVP com 1 usuário pagante) |
-| Datomic local | 50.4 | 2027 |
+| Datomic local | 51.4 | 2027 |
 | Docker + Compose | 4.2, 10.2 | Semana 2 · nov/2026; Semana 4 · nov/2026 |
 | PostgreSQL | 10.2, 22.5, 24.6, 41.1 | Semana 4 · nov/2026; Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois; Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Redis | 41.1 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
-| RabbitMQ | 54.1 | 2028 |
-| Kubernetes local (kind) | 54.2 | 2028 |
+| RabbitMQ | 55.1 | 2028 |
+| Kubernetes local (kind) | 55.2 | 2028 |
 | Terraform | 42.1, 42.3 | Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Rendara (MVP com 1 usuário pagante) |
-| Mosquitto (MQTT) | 59.2 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| Zigbee2MQTT | 59.7 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| Frigate (câmeras com detecção) | 59.9 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| ESPHome | 59.6 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Mosquitto (MQTT) | 60.2 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Zigbee2MQTT | 60.7 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Frigate (câmeras com detecção) | 60.9 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| ESPHome | 60.6 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
 
 ### Claude: recursos, conectores e plugins
 
@@ -7516,9 +7576,9 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Destilação | 29.3 | 2027, depois do primeiro fine-tuning de 8B |
 | Metabase (painéis) | 33.1 | Com a primeira página de venda no ar (jan/2027) e por etapas |
 | Análises de cliente (RFM, LTV, churn) | 33.4 | Com a primeira página de venda no ar (jan/2027) e por etapas |
-| LeRobot (robôs que aprendem) | 60.7 | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
-| Docling + Granite- Docling (documentos) | 60.5 | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
-| SINAPI (custos de MG, Caixa) | 61.8 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| LeRobot (robôs que aprendem) | 61.7 | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
+| Docling + Granite- Docling (documentos) | 61.5 | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
+| SINAPI (custos de MG, Caixa) | 62.8 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 
 ### Agentes de IA e sandbox
 
@@ -7541,11 +7601,11 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Pacote de contexto + ESTADO.md | 27.12 | Semana 6 · nov/2026 a dez/2026 |
 | Strata (MoE grande) | 29.6 | 2027, depois do primeiro fine-tuning de 8B |
 | OpenClaw (agente 24 h) | 28.9 | Semana 6 · nov/2026 a dez/2026 |
-| Jarvis (porta única dos agentes) | 59.3 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| Voz local: Whisper, Piper, openWakeWord | 59.2 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| MCP do Home Assistant | 59.5 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| Claude Code por voz (/voice + falar.py) | 59.1 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| MCP do IfcOpenShell | 61.7 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| Jarvis (porta única dos agentes) | 60.3 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Voz local: Whisper, Piper, openWakeWord | 60.2 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| MCP do Home Assistant | 60.5 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Claude Code por voz (/voice + falar.py) | 60.1 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| MCP do IfcOpenShell | 62.7 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 | Repomix (contexto enxuto para IA) | 21.5 | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
 | Aider + Ollama (nível R$ 0) | 21.14, 22.8 | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois |
 | llm (IA nos pipes do terminal) | 21.15 | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
@@ -7555,7 +7615,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Neovim | 48.2 | 2027, conforme cada compra |
+| Neovim | 49.2 | 2027, conforme cada compra |
 | nmap · dig · curl | 4.4 | Semana 2 · nov/2026 |
 | Ubuntu (WSL2) | 4.1, 4.5 | Semana 2 · nov/2026 |
 | Git + SSH + gh | 4.4, 4.6 | Semana 2 · nov/2026 |
@@ -7563,18 +7623,19 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | TeX Live | 4.4 | Semana 2 · nov/2026 |
 | gitleaks · Trivy | 4.4, 20.2, 20.3 | Semana 2 · nov/2026; Semana 5 · nov/2026 |
 | dotfiles | 4.7 | Semana 2 · nov/2026 |
-| Arch + Omarchy (2º NVMe) | 48.1 | 2027, conforme cada compra |
+| Arch + Omarchy (2º NVMe) | 49.1 | 2027, conforme cada compra |
+| AMtech OS (Ubuntu + setup) | 48.1, 48.4 | Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso |
 | Rotinas agendadas | 17.3, 17.4, 17.5 | Semana 4 · nov/2026 |
 | AdGuard Home (DNS) | 30.4 | Semana 6 · nov/2026 |
 | WireGuard (na mão) | 30.6 | Semana 6 · nov/2026 |
-| ROS 2 + ponte MQTT | 59.10 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| ROS 2 + ponte MQTT | 60.10 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
 | just (porta única de comandos) | 21.1, 21.2, 22.1 | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois |
 | Terminal moderno (zoxide, eza, fd…) | 21.1 | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
 | mise (runtimes e CLIs) | 21.10 | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
 | Zellij (abas e sessões) | 21.11 | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
 | yazi (arquivos no terminal) | 21.10 | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
 | chezmoi (dotfiles com o cofre) | 21.11 | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
-| Ghostty (terminal do Arch) | 48.7 | 2027, conforme cada compra |
+| Ghostty (terminal do Arch) | 49.7 | 2027, conforme cada compra |
 | Podman (containers sem root) | 21.10 | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
 | Git LFS (arquivos grandes) | 21.10 | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
 | tree-sitter (AST no editor) | 21.11 | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
@@ -7589,12 +7650,12 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Tailscale (VPN) | 29.2, 30.1, 30.2, 31.4, 46.11, 55.2 | 2027, depois do primeiro fine-tuning de 8B; Semana 6 · nov/2026; Dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez; 2028, quando o grupo pedir |
+| Tailscale (VPN) | 29.2, 30.1, 30.2, 31.4, 46.11, 56.2 | 2027, depois do primeiro fine-tuning de 8B; Semana 6 · nov/2026; Dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez; 2028, quando o grupo pedir |
 | .wslconfig + localhost | 3.2 | Semana 1 · out/2026 |
 | Terminal · PowerShell · winget | 3.2 | Semana 1 · out/2026 |
 | Excalidraw / draw.io | 3.2 | Semana 1 · out/2026 |
 | Unity · Cocos | 3.8 | Semana 1 · out/2026 |
-| Gerenciador de boot | 48.1 | 2027, conforme cada compra |
+| Gerenciador de boot | 48.4, 49.1 | Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso; 2027, conforme cada compra |
 | NitroSense + drivers AMD e NVIDIA | 1.3 | Semana 1 · out/2026 |
 | 7-Zip | 3.2 | Semana 1 · out/2026 |
 | PowerToys | 3.2 | Semana 1 · out/2026 |
@@ -7608,16 +7669,16 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Syncthing | 2.9, 3.2, 4.9, 30.3 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 1 · out/2026; Semana 2 · nov/2026; Semana 6 · nov/2026 |
 | DBeaver · Bruno | 3.2 | Semana 1 · out/2026 |
 | Navegador + Claude in Chrome | 2.5, 2.10, 3.6 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 1 · out/2026 |
-| VirtualBox | 3.2 | Semana 1 · out/2026 |
+| VirtualBox | 3.2, 48.1 | Semana 1 · out/2026; Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso |
 | Wireshark | 3.2 | Semana 1 · out/2026 |
-| VMs: Kali · Arch · Servidores | 48.3 | 2027, conforme cada compra |
+| VMs: Kali · Arch · Servidores | 49.3 | 2027, conforme cada compra |
 | Arduino IDE 2 | 3.2, 46.16 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez |
 | Rufus (grava pendrives) | 44.1 | Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
 | ActivityWatch | 17.1 | Semana 4 · nov/2026 |
-| Bonsai + IfcOpenShell (BIM aberto) | 61.3 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
-| FreeCAD 1.1 (BIM, 2D e FEM) | 61.2 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
-| Autodesk educacional (Revit, Civil 3D) | 61.5 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
-| QGIS (terreno e mapas) | 61.4 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| Bonsai + IfcOpenShell (BIM aberto) | 62.3 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| FreeCAD 1.1 (BIM, 2D e FEM) | 62.2 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| Autodesk educacional (Revit, Civil 3D) | 62.5 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| QGIS (terreno e mapas) | 62.4 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 | KiCad · PulseView · tio (bancada) | 21.8 | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
 | probe-rs (grava e depura chips) | 21.18 | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
 | Logseq (diário e runbooks) | 21.17 | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
@@ -7628,7 +7689,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 |---|---|---|
 | Commits assinados (chave SSH) | 4.6, 39.1 | Semana 2 · nov/2026; Semana 11 · jan/2027 |
 | restic (backup criptografado) | 7.1, 7.4, 10.7, 22.2 | Semana 3 · nov/2026; Semana 4 · nov/2026; Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois |
-| Chave física (YubiKey) | 48.5 | 2027, conforme cada compra |
+| Chave física (YubiKey) | 49.5 | 2027, conforme cada compra |
 | TPM + Secure Boot | 3.3 | Semana 1 · out/2026 |
 | BitLocker | 3.3 | Semana 1 · out/2026 |
 | Defender + Firewall | 3.4 | Semana 1 · out/2026 |
@@ -7638,18 +7699,18 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Organizadores | 2.4, 17.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 4 · nov/2026 |
 | Segredos do cofre (keepassxc-cli) | 20.6 | Semana 5 · nov/2026 |
 | Teste de restauração | 20.7 | Semana 5 · nov/2026 |
-| Lab de engenharia reversa | 58.1 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| GhidraMCP (IA no Ghidra) | 58.3 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| Lab de ataque (Juice Shop, WebGoat) | 58.5 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| Kit de pentest (Burp, ZAP, nmap…) | 58.9 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| AppSec nos seus sistemas | 58.10 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| Guarda de escopo (autorização) | 58.13 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| Relatório de pentest (CVSS) | 58.13 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| Política do Jarvis (níveis de risco) | 59.3 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| Lab de alvo isolado (rede sem internet) | 58.6 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Lab de engenharia reversa | 59.1 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| GhidraMCP (IA no Ghidra) | 59.3 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Lab de ataque (Juice Shop, WebGoat) | 59.5 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Kit de pentest (Burp, ZAP, nmap…) | 59.9 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| AppSec nos seus sistemas | 59.10 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Guarda de escopo (autorização) | 59.13 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Relatório de pentest (CVSS) | 59.13 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| Política do Jarvis (níveis de risco) | 60.3 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Lab de alvo isolado (rede sem internet) | 59.6 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | age · sops (arquivos cifrados) | 21.12 | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
-| gocryptfs (pasta dos alvos cifrada) | 58.21 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| radare2 (triagem de binários) | 58.20 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| gocryptfs (pasta dos alvos cifrada) | 59.21 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
+| radare2 (triagem de binários) | 59.20 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | Política de autonomia | 22.7, 23.6 | Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois; Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada |
 
 ### Hardware
@@ -7658,27 +7719,27 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 |---|---|---|
 | Nobreak | 1.2 | Semana 1 · out/2026 |
 | Base com cooler | 1.2 | Semana 1 · out/2026 |
-| SSD SATA 2,5" | 48.4 | 2027, conforme cada compra |
+| SSD SATA 2,5" | 49.4 | 2027, conforme cada compra |
 | Acer Nitro (32 GB, GTX 1650) | 0.2, 1.2 | Antes de tudo · semana 1 (out/2026); Semana 1 · out/2026 |
-| 2º NVMe (1–4 TB) | 48.1 | 2027, conforme cada compra |
+| 2º NVMe (1–4 TB) | 48.4, 49.1 | Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso; 2027, conforme cada compra |
 | 2º monitor | 1.2 | Semana 1 · out/2026 |
-| Microfone + câmera | 48.6 | 2027, conforme cada compra |
+| Microfone + câmera | 49.6 | 2027, conforme cada compra |
 | Celular | 1.2, 2.9, 4.9 | Semana 1 · out/2026; Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 2 · nov/2026 |
 | Disco externo | 1.1, 1.2, 2.11, 7.1 | Semana 1 · out/2026; Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 3 · nov/2026 |
 | Pendrive Kali (persistência) | 44.1 | Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
 | Pendrive Arch (instalação portátil) | 44.2 | Pendrives e laboratório podem começar já; dados (Zoomcamp, dbt, Airflow) e treino de IA ficam pausados até o fim do trimestre 4 do eixo (ADR 0011, ≈ 2028) |
 | Arduino · ESP32 · Pi | 1.2, 46.16 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez |
-| Servidor caseiro (NAS + serviços) | 55.1 | 2028, quando o grupo pedir |
+| Servidor caseiro (NAS + serviços) | 56.1 | 2028, quando o grupo pedir |
 | SSD externo (USB-C 10 Gbps) | 1.2 | Semana 1 · out/2026 |
-| Workstation com GPU | 29.6, 55.3 | 2027, depois do primeiro fine-tuning de 8B; 2028, quando o grupo pedir |
+| Workstation com GPU | 29.6, 56.3 | 2027, depois do primeiro fine-tuning de 8B; 2028, quando o grupo pedir |
 | Home Assistant | 19.1, 19.6 | Dez/2026 |
-| Servidor da casa (N100 ou Pi 5) | 59.4 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| Coordenador Zigbee (USB) | 59.7 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| Satélites de voz (ESP32-S3) | 59.6 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| Tomadas, sensores e atuadores | 59.7 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| Câmeras IP (RTSP) | 59.9 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| Leitor do hidrômetro (ESP32-CAM) | 59.8 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| Braços SO-101 (líder + seguidor) | 60.7 | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
-| Reachy Mini (corpo do Jarvis) | 60.11 | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
-| Kit de campo (LoRa, umidade, ultrassom) | 60.13 | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
+| Servidor da casa (N100 ou Pi 5) | 60.4 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Coordenador Zigbee (USB) | 60.7 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Satélites de voz (ESP32-S3) | 60.6 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Tomadas, sensores e atuadores | 60.7 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Câmeras IP (RTSP) | 60.9 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Leitor do hidrômetro (ESP32-CAM) | 60.8 | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| Braços SO-101 (líder + seguidor) | 61.7 | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
+| Reachy Mini (corpo do Jarvis) | 61.11 | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
+| Kit de campo (LoRa, umidade, ultrassom) | 61.13 | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
 | Analisador lógico (8 canais USB) | 21.9 | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |

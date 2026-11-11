@@ -8,7 +8,7 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 
 | Camadas | Blocos | Conexões | Fluxos | Contas necessárias |
 |---|---|---|---|---|
-| 23 | 485 | 860 | 22 | 129 |
+| 23 | 486 | 863 | 22 | 129 |
 
 ## Por onde começar
 
@@ -20,7 +20,7 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 - **[Fluxos de ponta a ponta](docs/fluxos.md)**: codar com agente e publicar, vender um curso, publicar automaticamente, medir uma campanha e outros.
 - **[Editora AMS Silva](docs/editora/README.md)**: livros produzidos como software, com código testado, gabaritos conferidos e PDF, EPUB e impressão gerados da mesma fonte.
 - **[Implantação](docs/implantacao/README.md)**: do planejamento ao setup funcionando, com scripts de instalação, verificadores e o roteiro passo a passo.
-- **[Operação do grupo](docs/operacao/README.md)**: a esteira por onde passa toda oferta, o portfólio com 108 ofertas pontuadas e classificadas (arsenal de rendas), marca, conteúdo, automação, qualidade e a ordem de execução.
+- **[Operação do grupo](docs/operacao/README.md)**: a esteira por onde passa toda oferta, o portfólio com 109 ofertas pontuadas e classificadas (arsenal de rendas), marca, conteúdo, automação, qualidade e a ordem de execução.
 - **[Negócios do grupo](docs/negocios/README.md)**: software, loja, robótica, ponto de retirada, entregas, delivery, sushi, cafeteria e padaria, com números, ordem de abertura e mínimo legal de cada um.
 - **[Marketing, vendas e automação](docs/marketing/README.md)**: funil, canais sem rosto com voz clonada, publicação no melhor horário, tráfego pago, parcerias, internacional e lucro por venda.
 - **[Segurança](docs/seguranca/README.md)**: engenharia reversa com IA, AppSec nos seus sistemas, o caminho até a AMtech Segurança (pentest com guarda de escopo e relatório CVSS) e o Jarvis.
@@ -109,7 +109,7 @@ O Windows cuida só do que precisa de janela, GPU e segurança; todo o trabalho 
 | 07 | [Assistentes de IA (chat, pesquisa e estudo)](docs/camadas/07-chat.md) | 10 | Claude (app), ChatGPT, Gemini (pago), NotebookLM… |
 | 06 | [Dados e treino de IA](docs/camadas/06-dados.md) | 22 | Python de dados (Polars, Jupyter), DuckDB + Parquet, dbt Core, Airflow (orquestração)… |
 | 05 | [Agentes de IA e sandbox](docs/camadas/05-ia.md) | 26 | Modelos locais: Qwen · Gemma · Llama, Base de conhecimento (RAG) das suas notas, Claude Code, ai-jail… |
-| 04 | [Linux (Ubuntu no WSL2, Arch no 2º disco)](docs/camadas/04-lin.md) | 29 | Neovim, nmap · dig · curl, Ubuntu (WSL2), Git + SSH + gh… |
+| 04 | [Linux (Ubuntu no WSL2, Arch no 2º disco)](docs/camadas/04-lin.md) | 30 | Neovim, nmap · dig · curl, Ubuntu (WSL2), Git + SSH + gh… |
 | 03 | [Windows 11, apps e máquinas virtuais](docs/camadas/03-win.md) | 32 | Tailscale (VPN), .wslconfig + localhost, Terminal · PowerShell · winget, Excalidraw / draw.io… |
 | 02 | [Segurança e cofre](docs/camadas/02-seg.md) | 25 | Commits assinados (chave SSH), restic (backup criptografado), Chave física (YubiKey), TPM + Secure Boot… |
 | 01 | [Hardware](docs/camadas/01-hw.md) | 26 | Nobreak, Base com cooler, SSD SATA 2,5", Acer Nitro (32 GB, GTX 1650)… |
@@ -154,6 +154,7 @@ docs/
   adr/                decisões de arquitetura
   index.html          diagrama interativo (gerado)
   mapa.html           sistemas, nuvens, pilha, mercado e ordem de estudo (gerado)
+os/                  AMtech OS: instalar.sh (Ubuntu → AMtech OS), perfis, tema e o comando amtech
 scripts/windows/      instalar.ps1, verificar.ps1, extensões do VS Code e o inventário do Windows
 scripts/wsl/          bootstrap.sh, nuvem.sh, verificar.sh e ativar-pipeline.sh
 infra/automacao/      n8n, banco de métricas, Grafana e Uptime Kuma (Docker Compose)

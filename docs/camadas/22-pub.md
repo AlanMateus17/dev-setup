@@ -142,7 +142,7 @@ flowchart LR
 | [YouTube](#yt) | Remoto · precisa de conta | Aulas e vídeos de vendas. Gera público para os cursos e para o livro. | passo 36.1 · Semanas 6 e 7 · dez/2026; passo 46.14 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
 | [LinkedIn](#li) | Remoto · precisa de conta | Vitrine para a vaga de dev: projetos, posts técnicos e certificações. | passo 36.1 · Semanas 6 e 7 · dez/2026; passo 40.9 · Semanas 12 a 15 · jan a fev/2027 |
 | [WhatsApp Business](#wa) | Remoto · precisa de conta | Atendimento de alunos particulares e clientes de sites. | passo 36.2 · Semanas 6 e 7 · dez/2026; passo 40.9 · Semanas 12 a 15 · jan a fev/2027 |
-| [Google Perfil da Empresa](#ogbp) | Remoto · precisa de conta · futuro | O canal local mais importante: loja, assistência e restaurantes. Post semanal, fotos, horários e resposta a avaliações em 24 h. | passo 46.9 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 56.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
+| [Google Perfil da Empresa](#ogbp) | Remoto · precisa de conta · futuro | O canal local mais importante: loja, assistência e restaurantes. Post semanal, fotos, horários e resposta a avaliações em 24 h. | passo 46.9 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 57.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
 | [Comunidade (Discord ou grupo)](#comu) | Remoto · precisa de conta | Alunos do curso juntos: tira-dúvidas, retenção e indicação. | passo 37.10 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 46.15 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
 | [Busca Google (SEO)](#seo) | Remoto | Pessoas chegando ao blog e aos sites pelos artigos. | passo 36.12 · Semanas 6 e 7 · dez/2026 |
 | [Alunos e ex-alunos](#alunos) | Físico | Seu público inicial: alunos do EMTI, ex-alunos e contatos. | passo 36.10 · Semanas 6 e 7 · dez/2026 |
@@ -257,7 +257,7 @@ Atendimento de alunos particulares e clientes de sites.
 
 O canal local mais importante: loja, assistência e restaurantes. Post semanal, fotos, horários e resposta a avaliações em 24 h.
 
-**Quando entra:** passo 46.9 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 56.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 46.9 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu); passo 57.3 · Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

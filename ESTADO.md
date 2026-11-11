@@ -46,3 +46,4 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-09: v2.25: Recrutador com 9 formatos de entrevista simulada (just recrutador semana).
 - 2026-11-08: v2.24: trilha rápida em 7 sessões (just rapido; docs/implantacao/trilha-rapida.md antes do WSL); just agora mostra o terminal certo.
 - 2026-11-07: v2.23: sites das 3 empresas prontos pelo modelo Astro (just site amtech|instituto|editora; --checar mostra o que falta); roteiro por empresa (just agora instituto|editora); docs/empresas/README.md.
+- 2026-11-10: v2.26: AMtech OS 0.1 (os/, ADR 0014 em proposta): Ubuntu + os/instalar.sh, perfis e comando amtech. Próximo: testar numa VM do VirtualBox (os/README.md) e usar uma semana antes de decidir o ADR.

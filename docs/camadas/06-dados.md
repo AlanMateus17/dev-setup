@@ -156,9 +156,9 @@ flowchart LR
 | [Destilação](#destilacao) | Local | Modelo grande gera exemplos da sua tarefa; um modelo pequeno aprende a imitá-lo. | passo 29.3 · 2027, depois do primeiro fine-tuning de 8B |
 | [Metabase (painéis)](#metabase) | Local | Painéis e perguntas sobre vendas, clientes e conteúdo sem programar, em cima do banco de métricas. Local. | passo 33.1 · Com a primeira página de venda no ar (jan/2027) e por etapas |
 | [Análises de cliente (RFM, LTV, churn)](#analises) | Local | Quem compra mais, quem está sumindo, quanto vale cada cliente e previsão de receita, em Python/DuckDB. | passo 33.4 · Com a primeira página de venda no ar (jan/2027) e por etapas |
-| [LeRobot (robôs que aprendem)](#lerobot) | Local | Biblioteca da Hugging Face para gravar demonstrações, treinar políticas (ACT, SmolVLA) e rodar no robô. | passo 60.7 · Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
-| [Docling + Granite- Docling (documentos)](#docling) | Local | Converte PDF, foto e NFC-e em Markdown e JSON com tabelas: Caixa da Casa, documentos da escola, ABNT e acervo. | passo 60.5 · Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
-| [SINAPI (custos de MG, Caixa)](#sinapi) | Remoto | Custos de referência da construção por estado, todo mês, em Excel: base das estimativas, sempre com mês e UF. | passo 61.8 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
+| [LeRobot (robôs que aprendem)](#lerobot) | Local | Biblioteca da Hugging Face para gravar demonstrações, treinar políticas (ACT, SmolVLA) e rodar no robô. | passo 61.7 · Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
+| [Docling + Granite- Docling (documentos)](#docling) | Local | Converte PDF, foto e NFC-e em Markdown e JSON com tabelas: Caixa da Casa, documentos da escola, ABNT e acervo. | passo 61.5 · Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
+| [SINAPI (custos de MG, Caixa)](#sinapi) | Remoto | Custos de referência da construção por estado, todo mês, em Excel: base das estimativas, sempre com mês e UF. | passo 62.8 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 
 <a id="pyds"></a>
 
@@ -474,7 +474,7 @@ Quem compra mais, quem está sumindo, quanto vale cada cliente e previsão de re
 
 Biblioteca da Hugging Face para gravar demonstrações, treinar políticas (ACT, SmolVLA) e rodar no robô.
 
-**Quando entra:** passo 60.7 · Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 61.7 · Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -491,7 +491,7 @@ Biblioteca da Hugging Face para gravar demonstrações, treinar políticas (ACT,
 
 Converte PDF, foto e NFC-e em Markdown e JSON com tabelas: Caixa da Casa, documentos da escola, ABNT e acervo.
 
-**Quando entra:** passo 60.5 · Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 61.5 · Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -506,7 +506,7 @@ Converte PDF, foto e NFC-e em Markdown e JSON com tabelas: Caixa da Casa, docume
 
 Custos de referência da construção por estado, todo mês, em Excel: base das estimativas, sempre com mês e UF.
 
-**Quando entra:** passo 61.8 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 62.8 · Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
