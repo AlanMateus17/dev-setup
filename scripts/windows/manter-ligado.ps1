@@ -1,4 +1,4 @@
-<#
+﻿<#
   Mantém o Ubuntu (WSL) e o notebook acordados na tomada, para o celular alcançar o setup (v2.28).
   Rodado pelo "just ligar" (pede administrador uma vez) ou à mão:
     powershell -ExecutionPolicy Bypass -File manter-ligado.ps1 [-Distro Ubuntu] [-SemEnergia] [-Desfazer]
