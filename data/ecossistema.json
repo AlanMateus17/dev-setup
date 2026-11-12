@@ -1684,6 +1684,15 @@
    "descricao": "Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portátil em pendrive ou SSD USB."
   },
   {
+   "id": "amtechos",
+   "camada": "lin",
+   "rotulo": "AMtech OS|(Ubuntu + setup)",
+   "tipo": "local",
+   "conta": false,
+   "futuro": true,
+   "descricao": "O dev-setup como sistema operacional (ADR 0016): os/instalar.sh transforma um Ubuntu LTS no AMtech OS, com perfis, tema, firewall, snapshots e o comando amtech. VM primeiro; depois o 2º NVMe, com o Windows intocado."
+  },
+  {
    "id": "tail",
    "camada": "win",
    "rotulo": "Tailscale (VPN)",
@@ -8783,6 +8792,21 @@
    "de": "cc",
    "para": "professor",
    "rotulo": "escreve a aula e corrige a prova"
+  },
+  {
+   "de": "chezmoi",
+   "para": "amtechos",
+   "rotulo": "configura o usuário"
+  },
+  {
+   "de": "amtechos",
+   "para": "nvme",
+   "rotulo": "instalado no"
+  },
+  {
+   "de": "amtechos",
+   "para": "wsl",
+   "rotulo": "substitui no dia a dia"
   }
  ],
  "fluxos": [

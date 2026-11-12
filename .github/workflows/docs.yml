@@ -56,7 +56,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: ShellCheck
-        run: shellcheck -S warning scripts/wsl/*.sh infra/automacao/*.sh infra/automacao/sql/*.sh && shellcheck -s sh infra/pocketbase/entrada.sh
+        run: shellcheck -S warning scripts/wsl/*.sh infra/automacao/*.sh infra/automacao/sql/*.sh os/instalar.sh os/amtech && shellcheck -s sh infra/pocketbase/entrada.sh
       - name: PSScriptAnalyzer
         shell: pwsh
         run: |

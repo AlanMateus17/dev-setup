@@ -91,7 +91,7 @@ flowchart LR
 | [Sentry (erros)](#sentry) | Remoto · precisa de conta | Reserva do GlitchTip (ADR 0008): avisa quando um erro acontece em produção, com o ponto exato no código. Plano grátis. | passo 41.4 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | [Uptime Kuma](#kuma) | Local | Verifica a cada minuto se os sites e APIs estão no ar e avisa no celular. Open source. | passo 10.6 · Semana 4 · nov/2026; passo 31.5 · Dez/2026 a jan/2027; passo 45.1 · Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) (começa quando: o recesso começou e uma das 3 rendas de agora já passou no portão) |
 | [Seq (logs)](#seq) | Local | Visualizador de logs simples para começar, antes da stack Grafana. | passo 41.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
-| [Loki + Tempo](#loki) | Local · futuro | Reserva do SigNoz (ADR 0008): logs e rastreamento de requisições consultados no Grafana. | passo 54.3 · 2028 |
+| [Loki + Tempo](#loki) | Local · futuro | Reserva do SigNoz (ADR 0008): logs e rastreamento de requisições consultados no Grafana. | passo 55.3 · 2028 |
 | [OpenTelemetry](#otel) | Local | Coleta logs, métricas e traces da API. | passo 24.7 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 41.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | [Prometheus](#prom) | Local | Guarda as métricas. | passo 41.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | [Grafana](#graf) | Local | Painéis e alertas. | passo 10.4 · Semana 4 · nov/2026; passo 38.4 · Semana 11 · jan/2027 |
@@ -155,7 +155,7 @@ Visualizador de logs simples para começar, antes da stack Grafana.
 
 Reserva do SigNoz (ADR 0008): logs e rastreamento de requisições consultados no Grafana.
 
-**Quando entra:** passo 54.3 · 2028 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 55.3 · 2028 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

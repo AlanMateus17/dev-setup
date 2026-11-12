@@ -57,3 +57,4 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-12: v2.28.1: padronizar-repo.sh pula o próprio dev-setup (o just instalar criava docs/adr/0001-modelo.md e quebrava o just check).
 - 2026-11-12: pendente do Alan: merge do PR #4, apagar os 6 arquivos soltos do modelo em ~/dev/dev-setup, diagnóstico como Administrador, backup inicial no disco externo; relatório em ~/dev/RELATORIO-INSTALACAO.md.
 - 2026-11-12: v2.28.2: just ligar rodou no notebook (fila no ar, LiteLLM no ar, linger, tarefa AMtech WSL e vmIdleTimeout=-1); o Ollama falhou por falta do zstd, corrigido no ligar-tudo.sh e no bootstrap.sh.
+- 2026-11-12: v2.29: AMtech OS 0.1 (os/, ADR 0016 em proposta): Ubuntu + os/instalar.sh, perfis e comando amtech. Próximo: testar numa VM do VirtualBox (os/README.md) e usar uma semana antes de decidir o ADR.

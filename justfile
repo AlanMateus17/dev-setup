@@ -73,7 +73,7 @@ check:
     python3 -m unittest discover -s tools -p "test_gerar_docs.py" -q
     for d in tools/*/; do if ls "$d"test_*.py >/dev/null 2>&1; then python3 -m unittest discover -s "$d" -q; fi; done
     if command -v gitleaks >/dev/null; then gitleaks git --no-banner -v . >/dev/null; else echo "gitleaks ausente: rode o bootstrap"; fi
-    if command -v shellcheck >/dev/null; then shellcheck -S warning scripts/wsl/*.sh infra/automacao/*.sh infra/automacao/sql/*.sh; fi
+    if command -v shellcheck >/dev/null; then shellcheck -S warning scripts/wsl/*.sh infra/automacao/*.sh infra/automacao/sql/*.sh os/instalar.sh os/amtech; fi
 
 # Roda o CI do GitHub Actions na sua máquina, sem push (precisa do Docker): just ci-local
 ci-local:
@@ -91,6 +91,14 @@ conversa:
 # Mede antes de mudar de stack: just medir "python3 tools/gerar_docs.py --check"
 medir comando:
     hyperfine --warmup 2 "{{comando}}"
+
+# AMtech OS: mostra o que o instalador faria (rode numa VM ou no Linux nativo; veja os/README.md)
+os-simular perfil="dev":
+    bash os/instalar.sh --perfil {{perfil}} --simular
+
+# AMtech OS: transforma este Ubuntu no AMtech OS: just os-instalar dev "Alan Mateus" voce@exemplo.com
+os-instalar perfil="dev" nome="" email="":
+    bash os/instalar.sh --perfil {{perfil}} {{ if nome != "" { "--nome '" + nome + "'" } else { "" } }} {{ if email != "" { "--email " + email } else { "" } }}
 
 # Confere o que está instalado no Ubuntu
 verificar:

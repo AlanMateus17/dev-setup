@@ -141,9 +141,9 @@ flowchart LR
 |---|---|---|---|
 | [Registro de marca (INPI)](#inpi) | Remoto · precisa de conta | Proteger AMtech, Instituto AMS e os nomes AM antes de investir na marca. Pode ser pedido no seu CPF; confira no INPI o desconto disponível para pessoa física. | passo 23.2 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; passo 37.17 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 40.1 · Semanas 12 a 15 · jan a fev/2027 |
 | [Termos, privacidade (LGPD) e contratos](#legal) | Local | Termos de uso, política de privacidade nos sites e contrato padrão de serviço. Obrigatório antes de coletar e-mail ou vender. | passo 23.4 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; passo 37.4 · Semanas 8 a 10 · dez/2026 a jan/2027 |
-| [Certificado digital (e-CNPJ)](#ecnpj) | Remoto · precisa de conta · futuro | Só quando houver CNPJ: emissão de nota por API e assinatura de documentos da empresa. | passo 51.2 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
-| [API de NFS-e (ex.: Focus NFe)](#nfapi) | Remoto · precisa de conta · futuro | Só quando houver CNPJ. Implementa o seu IEmissorFiscal: os sistemas AM emitem nota sozinhos. | passo 51.3 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
-| [CNPJ (futuro)](#cnpj) | Remoto · precisa de conta · futuro | Ainda não. Quando a renda crescer, MEI ou SLU. Até lá, tudo no seu CPF. | passo 23.1 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; passo 51.1 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
+| [Certificado digital (e-CNPJ)](#ecnpj) | Remoto · precisa de conta · futuro | Só quando houver CNPJ: emissão de nota por API e assinatura de documentos da empresa. | passo 52.2 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
+| [API de NFS-e (ex.: Focus NFe)](#nfapi) | Remoto · precisa de conta · futuro | Só quando houver CNPJ. Implementa o seu IEmissorFiscal: os sistemas AM emitem nota sozinhos. | passo 52.3 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
+| [CNPJ (futuro)](#cnpj) | Remoto · precisa de conta · futuro | Ainda não. Quando a renda crescer, MEI ou SLU. Até lá, tudo no seu CPF. | passo 23.1 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; passo 52.1 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
 | [gov.br (prata ou ouro)](#govbr) | Remoto · precisa de conta | Acesso ao carnê-leão online e à declaração do Imposto de Renda. | passo 2.7 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 37.1 · Semanas 8 a 10 · dez/2026 a jan/2027 |
 | [Carnê-leão (Receita Federal)](#nfse) | Remoto · precisa de conta | Todo mês você lança o que recebeu de compradores (Hotmart, Kiwify, aulas, sites) e do exterior (Udemy) e paga o DARF até o último dia útil do mês seguinte. | passo 37.18 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 40.10 · Semanas 12 a 15 · jan a fev/2027 |
 | [Declaração anual do IR](#irpf) | Remoto · precisa de conta | Os valores lançados no carnê-leão entram sozinhos na declaração. | passo 37.19 · Semanas 8 a 10 · dez/2026 a jan/2027 |
@@ -159,7 +159,7 @@ flowchart LR
 | [Ghostfolio (painel do patrimônio)](#ghostfolio) | Remoto · precisa de conta | Painel do patrimônio no celular, auto-hospedado. O cálculo fica no Portfolio Performance. | passo 16.11 · Dez/2026 |
 | [Actual Budget (envelopes)](#actual) | Local | Orçamento pessoal por envelopes, base zero, local-first. O Caixa da Casa segue para o rateio da família. | passo 15.7 · Dez/2026 |
 | [Firefly III (reserva)](#firefly) | Remoto · precisa de conta | Fluxo de caixa com importação de extrato: reserva do financeiro.py, para comparar. | passo 15.8 · Dez/2026 |
-| [Akaunting (contabilidade CNPJ)](#akaunting) | Remoto · precisa de conta | Contabilidade e faturas do CNPJ quando abrir; complementa o contador, não o substitui. | passo 51.5 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
+| [Akaunting (contabilidade CNPJ)](#akaunting) | Remoto · precisa de conta | Contabilidade e faturas do CNPJ quando abrir; complementa o contador, não o substitui. | passo 52.5 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
 
 <a id="inpi"></a>
 
@@ -201,7 +201,7 @@ Termos de uso, política de privacidade nos sites e contrato padrão de serviço
 
 Só quando houver CNPJ: emissão de nota por API e assinatura de documentos da empresa.
 
-**Quando entra:** passo 51.2 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 52.2 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -215,7 +215,7 @@ Só quando houver CNPJ: emissão de nota por API e assinatura de documentos da e
 
 Só quando houver CNPJ. Implementa o seu IEmissorFiscal: os sistemas AM emitem nota sozinhos.
 
-**Quando entra:** passo 51.3 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 52.3 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -230,7 +230,7 @@ Só quando houver CNPJ. Implementa o seu IEmissorFiscal: os sistemas AM emitem n
 
 Ainda não. Quando a renda crescer, MEI ou SLU. Até lá, tudo no seu CPF.
 
-**Quando entra:** passo 23.1 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; passo 51.1 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 23.1 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; passo 52.1 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -496,7 +496,7 @@ Fluxo de caixa com importação de extrato: reserva do financeiro.py, para compa
 
 Contabilidade e faturas do CNPJ quando abrir; complementa o contador, não o substitui.
 
-**Quando entra:** passo 51.5 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 52.5 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
