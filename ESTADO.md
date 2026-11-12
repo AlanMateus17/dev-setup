@@ -50,3 +50,9 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-11: nada fica pausado nem congelado (ADR 0015): 42, AM-OS, pentest, treino de IA, robótica, agro, construção, idiomas, dados e AM Taskoro voltam a ativos; a ordem segue o roteiro e o limite de 3 frentes "agora".
 - 2026-11-11: pendente do Alan: escolher a oferta que sai primeiro, revisar o PR #2, confirmar a skill arquiteto-de-prompt e a linguagem do roteador.
 - 2026-11-11: v2.27: motor de decisão 0.1 pronto (just motor "pedido", motor-custo, motor-ok/refazer, motor-relatorio). Falta rodar nucleo.py iniciar no notebook e usar antes de cada tarefa.
+- 2026-11-11: v2.28: celular ligado ao setup. just ligar sobe Ollama, aider, LiteLLM, fila, bot e Remote Control; /pedir no Telegram segue sem crédito do Claude (Claude → Gemini grátis → Ollama), sempre em ramo/PR rascunho.
+- 2026-11-11: pendente do Alan: no notebook, just ligar → aceitar o claude remote-control uma vez → chave do Gemini em infra/ia/.env → bot do Telegram (re-bot, re-env, re-id) → /pedir de teste.
+- 2026-11-11: contexto de instalação autônoma (docs/implantacao/INSTALACAO-AUTONOMA.md) para outra conta do Claude instalar a parte técnica até 25/11 e registrar tudo em ~/dev/RELATORIO-INSTALACAO.md.
+- 2026-11-12: instalação autônoma, dia 1: trilha em 12/50 conferidos (repositório, extensões, Ubuntu, Docker no WSL, bootstrap, gh, CI, login do Claude no Ubuntu); just instalar aplicado e just ligar --simular da v2.28 passou na máquina real.
+- 2026-11-12: v2.28.1: padronizar-repo.sh pula o próprio dev-setup (o just instalar criava docs/adr/0001-modelo.md e quebrava o just check).
+- 2026-11-12: pendente do Alan: merge do PR #4, apagar os 6 arquivos soltos do modelo em ~/dev/dev-setup, diagnóstico como Administrador, backup inicial no disco externo; relatório em ~/dev/RELATORIO-INSTALACAO.md.

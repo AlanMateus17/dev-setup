@@ -178,3 +178,23 @@ vault-espelho *opcao:
 # Backup agora (o mesmo do agendamento das 22h30)
 backup:
     bash scripts/wsl/backup.sh
+
+# Liga o setup para o celular (Ollama, modelos, aider, LiteLLM, fila, bot, Remote Control): just ligar  ·  só ver: just ligar --simular
+ligar *opcao:
+    bash scripts/wsl/ligar-tudo.sh {{opcao}}
+
+# O que está no ar agora (serviços, Ollama, LiteLLM, últimos pedidos)
+ligado:
+    bash scripts/wsl/ligar-tudo.sh --status
+
+# Para os serviços do celular (não desinstala nada)
+desligar:
+    bash scripts/wsl/ligar-tudo.sh --desligar
+
+# Manda um pedido para a fila (o mesmo do /pedir no Telegram): just pedir "@catalogo-html corrigir o menu"
+pedir texto:
+    python3 tools/remoto/fila.py adicionar "{{texto}}"
+
+# Pedidos da fila e se o Claude está em pausa por limite
+fila:
+    python3 tools/remoto/fila.py listar

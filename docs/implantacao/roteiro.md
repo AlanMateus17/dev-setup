@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-62 fases, 569 passos, cerca de **1642 h 13 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+62 fases, 572 passos, cerca de **1643 h 03 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
 **Todo o planejamento está aqui:** os 485 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 108 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 443 dos 569 passos (623 h 28 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 446 dos 572 passos (624 h 18 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -32,7 +32,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [15 · Departamento financeiro pessoal](#f-financeiro) | Dez/2026 | 8 | 3 h 22 min |
 | [16 · Investimentos com as suas metodologias](#f-investimentos) | Dez/2026 | 11 | 5 h 05 min |
 | [17 · Rotina automatizada](#f-rotina) | Semana 4 · nov/2026 | 5 | 34 min |
-| [18 · Comandos remotos pelo Telegram](#f-remoto) | Semana 5 · nov/2026 | 5 | 35 min |
+| [18 · Celular ligado ao setup (com e sem Claude)](#f-remoto) | Agora · nov/2026 | 8 | 1 h 25 min |
 | [19 · Casa e vida](#f-casa) | Dez/2026 | 6 | 2 h 55 min |
 | [20 · Padrão de elite em todo repositório](#f-elite) | Semana 5 · nov/2026 | 10 | 2 h 45 min |
 | [21 · Empresa solo: o contexto mestre no setup](#f-solo) | Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica | 18 | 7 h 35 min |
@@ -1863,11 +1863,11 @@ bash ~/dev/dev-setup/scripts/wsl/manutencao-semanal.sh
 
 <a id="f-remoto"></a>
 
-## 18 · Comandos remotos pelo Telegram
+## 18 · Celular ligado ao setup (com e sem Claude)
 
-Status, resumo e radar no celular, respondendo só ao seu chat.
+Do celular: sessão do Claude Code no notebook (Remote Control) e pedidos pelo Telegram que seguem com cota grátis e modelo local quando o Claude acaba.
 
-**Quando:** Semana 5 · nov/2026
+**Quando:** Agora · nov/2026
 
 ### 18.1 Criar o bot no @BotFather e guardar o token no KeePassXC
 
@@ -1905,20 +1905,57 @@ python3 ~/dev/dev-setup/tools/remoto/bot.py
 - Mande /start para o bot no celular; ele responde com o seu id. Ctrl+C no terminal para parar, ponha TELEGRAM_CHAT_ID=... no arquivo.
 - Implanta: Telegram (avisos)
 
-### 18.4 Deixar o bot rodando como serviço
+### 18.4 Ligar tudo com um comando (Ollama, modelos, aider, LiteLLM, fila, bot, Remote Control)
 
-**Script** · 5 min
+**Script** · 30 min
 
 No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
-mkdir -p ~/.config/systemd/user && printf '[Unit]\nDescription=Bot AMtech\n[Service]\nExecStart=/usr/bin/python3 %%h/dev/dev-setup/tools/remoto/bot.py\nRestart=always\n[Install]\nWantedBy=default.target\n' > ~/.config/systemd/user/amtech-bot.service && systemctl --user daemon-reload && systemctl --user enable --now amtech-bot
+cd ~/dev/dev-setup && just ligar --simular && just ligar
 ```
 
-- [ ] **Pronto quando:** systemctl --user status amtech-bot ativo
+- [ ] **Pronto quando:** just ligado mostra amtech-fila e ollama no ar
+- Seguro para rodar de novo. A primeira vez baixa ~9 GB de modelos. O Windows pede administrador uma vez (tarefa no login e energia na tomada).
 - Implanta: Telegram (avisos)
 
-### 18.5 WhatsApp Cloud API: só depois de 1 mês de Telegram estável
+### 18.5 Aceitar o Remote Control uma vez e abrir a sessão no app do Claude
+
+**Você** · 10 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/dev-setup && claude remote-control
+```
+
+- [ ] **Pronto quando:** Sessão 'Setup AMtech' aparece no app do Claude (aba Code) e responde
+- Responda y, y e 2 (worktree); leia o QR com o celular; Ctrl+C; depois: touch ~/.config/amtech/remoto-aceito && just ligar. Exige plano Pro ou Max.
+- Implanta: Telegram (avisos)
+
+### 18.6 Colar a chave grátis do Gemini (AI Studio) em infra/ia/.env e guardar no KeePassXC
+
+**Você** · 5 min
+
+- **Fora do terminal:** Feito em aistudio.google.com com a sua conta; é o degrau entre o Claude e o modelo local na fila.
+- [ ] **Pronto quando:** GEMINI_API_KEY preenchida; just ligado sem aviso de cota grátis
+- Implanta: Telegram (avisos) · KeePassXC
+
+### 18.7 Testar a fila pelo celular: /pedir num repositório de teste
+
+**Você** · 10 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/dev-setup && just pedir "adicionar uma linha de teste no FILA-TESTE.md" && just fila
+```
+
+- [ ] **Pronto quando:** Aviso no Telegram com o ramo ou o PR em rascunho
+- Revise o PR em rascunho no app do GitHub. A fila nunca faz merge.
+- Implanta: Telegram (avisos)
+
+### 18.8 WhatsApp Cloud API: só depois de 1 mês de Telegram estável
 
 **Você** · 10 min
 
@@ -7146,7 +7183,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | MailerLite | 36.6, 40.8, 46.8 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027; Fev a dez/2027, uma oferta por vez |
 | Postiz (agendador) | 10.8 | Semana 4 · nov/2026 |
 | Aprovação no celular | 34.3 | Semana 5 · nov/2026 |
-| Telegram (avisos) | 18.1, 18.2, 18.3, 18.4, 18.5, 31.5, 34.3 | Semana 5 · nov/2026; Dez/2026 a jan/2027 |
+| Telegram (avisos) | 18.1, 18.2, 18.3, 18.4, 18.5, 18.6, 18.7, 18.8, 31.5, 34.3 | Agora · nov/2026; Dez/2026 a jan/2027; Semana 5 · nov/2026 |
 | n8n | 10.1, 10.2, 10.5, 10.7, 12.1, 12.4, 12.6, 12.7, 12.9, 12.10, 12.12, 27.7, 31.5, 46.5 | Semana 4 · nov/2026; Nov/2026 em diante, uma por vez, na ordem de desbloqueio; Semana 6 · nov/2026 a dez/2026; Dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
 | Algoritmo de horário | 47.6 | A partir de fev/2027 |
 | Tags de conversão (Pixel, Google…) | 36.5, 40.7 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
@@ -7632,7 +7669,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | TPM + Secure Boot | 3.3 | Semana 1 · out/2026 |
 | BitLocker | 3.3 | Semana 1 · out/2026 |
 | Defender + Firewall | 3.4 | Semana 1 · out/2026 |
-| KeePassXC | 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 2.10, 2.11, 2.12, 2.13, 2.14, 2.15, 2.16, 18.1 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 5 · nov/2026 |
+| KeePassXC | 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 2.10, 2.11, 2.12, 2.13, 2.14, 2.15, 2.16, 18.1, 18.6 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Agora · nov/2026 |
 | App 2FA (celular) | 1.4, 2.3, 2.7 | Semana 1 · out/2026; Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026 |
 | Backup 3-2-1 | 2.11, 7.1, 7.2, 7.3, 8.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 3 · nov/2026; Semanas 3 e 4 · nov/2026 |
 | Organizadores | 2.4, 17.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 4 · nov/2026 |
