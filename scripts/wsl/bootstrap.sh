@@ -60,7 +60,7 @@ else
 fi
 
 # ------------------------------------------------------------------ 1. pacotes do sistema
-PACOTES=(build-essential curl wget git unzip zip jq ripgrep fzf tmux zsh ca-certificates gnupg
+PACOTES=(build-essential curl wget git unzip zip zstd jq ripgrep fzf tmux zsh ca-certificates gnupg
          bubblewrap restic pandoc sqlite3 postgresql-client python3-venv shellcheck openssh-client
          nmap bind9-dnsutils)
 FALTAM=()

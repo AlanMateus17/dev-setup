@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.28.2] - 2026-11-12
+
+### Corrigido
+- `just ligar` instala o `zstd` antes do Ollama, e o `bootstrap.sh` passa a trazer o `zstd` nos pacotes base. O instalador do Ollama agora exige `zstd` para extrair; sem ele, a etapa 3/7 falhava ("This version requires zstd for extraction") e os dois modelos não baixavam. Achado na instalação real do notebook.
+
 ## [2.28.1] - 2026-11-12
 
 ### Corrigido

@@ -65,7 +65,7 @@ etapa "3/7 Ollama e modelos locais (funcionam sem crédito nenhum)"
 if curl -fsS -m 3 http://localhost:11434/api/tags >/dev/null 2>&1; then ok "Ollama no ar"
 elif tem ollama; then sim && faz "sudo systemctl enable --now ollama" || sudo systemctl enable --now ollama || erro "ligar o Ollama"
 else sim && faz "instalaria o Ollama (usa a GTX 1650 se o driver NVIDIA do Windows estiver em dia)" \
-  || { curl -fsSL https://ollama.com/install.sh | sh || erro "instalação do Ollama"; }; fi
+  || { { tem zstd || sudo apt-get install -y -qq zstd; } && curl -fsSL https://ollama.com/install.sh | sh || erro "instalação do Ollama"; }; fi  # o instalador do Ollama exige zstd para extrair
 for m in "${MODELOS[@]}"; do
   if tem ollama && ollama list 2>/dev/null | grep -q "^${m}"; then ok "modelo $m"
   else sim && faz "ollama pull $m (~4,7 GB)" || { tem ollama && ollama pull "$m" || erro "baixar $m"; }; fi
