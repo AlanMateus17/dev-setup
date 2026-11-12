@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.28.1] - 2026-11-12
+
+### Corrigido
+- `scripts/wsl/padronizar-repo.sh` não aplica mais o modelo de repositório no próprio dev-setup. O `just instalar` (etapa 4, `--todos`) criava `docs/adr/0001-modelo.md`, `.claude/settings.json` e mais 4 arquivos soltos em `~/dev/dev-setup`; o ADR modelo colidia com o ADR 0001 e o `just check` falhava em `test_importar_adrs_e_recusas_reais` (23 != 24). Achado na instalação real do notebook.
+
 ## [2.28.0] - 2026-11-11
 
 ### Adicionado
