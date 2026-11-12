@@ -1,5 +1,7 @@
 # CONTINUAR: contexto completo para qualquer conversa nova
 
+> Instalação no notebook feita por outra conta ou conversa: use [docs/implantacao/INSTALACAO-AUTONOMA.md](docs/implantacao/INSTALACAO-AUTONOMA.md).
+
 Cole este arquivo na primeira mensagem de uma conversa nova (ou rode `python3 ~/dev/dev-setup/tools/sessao/contexto.py --inicio | clip.exe`). Decisões do dia a dia vão para o ESTADO.md; este arquivo muda quando algo grande muda. Última revisão: 06/11/2026 (v2.16). Escola Akita: `just akita pendentes`. Para saber o que é seu: `just agora` e `just decisoes software`.
 
 ## 1. Quem sou e como trabalhar comigo
@@ -27,7 +29,7 @@ Cole este arquivo na primeira mensagem de uma conversa nova (ou rode `python3 ~/
 Fases 0, 3, 4 e 5 completas: diagnóstico, Windows (winget, BitLocker, Defender, extensões do VS Code), Ubuntu no WSL com Docker, gh e SSH, repositório no GitHub com CI. Também: backup inicial, Windows Update, 2FA do GitHub, KeePassXC instalado com os cofres copiados para o pendrive D:\Cofre. Falta: senhas (2.2 a 2.4), mesa (1.2), e todas as fases a partir da 6.
 
 ## 4. Decisões principais
-- AMtech OS (v2.28, nov/2026, ADR 0016 em proposta): o setup vira sistema operacional, uma camada sobre o Ubuntu LTS (os/instalar.sh, perfis dev/escola/empresa/seguranca/criador, comando amtech). Teste numa VM primeiro (os/README.md); depois o 2º NVMe, com o Windows intocado; Arch + Omarchy vai para VM e pendrive. Oferta amtechos na fila, derivada do setuppro.
+- AMtech OS (v2.29, nov/2026, ADR 0016 em proposta): o setup vira sistema operacional, uma camada sobre o Ubuntu LTS (os/instalar.sh, perfis dev/escola/empresa/seguranca/criador, comando amtech). Teste numa VM primeiro (os/README.md); depois o 2º NVMe, com o Windows intocado; Arch + Omarchy vai para VM e pendrive. Oferta amtechos na fila, derivada do setuppro.
 - Arsenal de 109 rendas, cada uma com veredito (agora, próxima, fila, 2027, decidir, descartar), % automático e motivo.
 - AGORA (máximo 3): Mini-curso Lógica de Programação, Sites e lojas para pequenas empresas, Avaliação de respostas de IA (DataAnnotation, Outlier).
 - PRÓXIMAS, em ordem: 1. AM Mentor: banco de exercícios com correção; 2. Aulas particulares; 3. Notebooks e PCs: comprar, consertar e revender; 4. Fábrica de documentos para professores de MG (assinatura); 5. Setup profissional (curso, template e configuração remota); 6. Plano de negócios e viabilidade financeira para quem vai abrir empresa; 7. Verificador e formatador ABNT automático (TCC, artigos, relatórios).

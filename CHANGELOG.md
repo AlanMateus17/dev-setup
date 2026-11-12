@@ -2,7 +2,7 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
-## [2.28.0] - 2026-11-11
+## [2.29.0] - 2026-11-12
 
 ### Adicionado
 - AMtech OS 0.1 (`os/`, ADR 0016 em proposta): o dev-setup como sistema operacional, uma camada sobre o Ubuntu 24.04 ou mais novo, no mesmo modelo do Omarchy sobre o Arch. `os/instalar.sh` transforma um Ubuntu recém-instalado (nativo ou VM, nunca o WSL) no AMtech OS: pacotes por perfil (`dev`, `escola`, `empresa`, `seguranca`, `criador`, listas em `os/perfis`), driver NVIDIA com `--com-nvidia`, firewall e atualização de segurança diária, usuário no grupo docker, snapper e o primeiro snapshot quando a raiz é Btrfs, `/etc/amtech-release`, papel de parede e padrões do GNOME pelo dconf (só padrões, nada travado), mensagem no terminal e o preparador do dev-setup nos perfis dev e seguranca. Não mexe em disco nem em partição; `--simular` mostra tudo antes.
@@ -14,6 +14,28 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 ### Alterado
 - `scripts/wsl/bootstrap.sh` e `verificar.sh` reconhecem o Linux nativo: sem `/etc/wsl.conf` fora do WSL, e o aviso do Docker aponta para o `os/instalar.sh` em vez do Docker Desktop.
 - ShellCheck do CI e do `just check` cobre `os/instalar.sh` e `os/amtech`.
+
+## [2.28.2] - 2026-11-12
+
+### Corrigido
+- `just ligar` instala o `zstd` antes do Ollama, e o `bootstrap.sh` passa a trazer o `zstd` nos pacotes base. O instalador do Ollama agora exige `zstd` para extrair; sem ele, a etapa 3/7 falhava ("This version requires zstd for extraction") e os dois modelos não baixavam. Achado na instalação real do notebook.
+- `just ligar` espera até 30 s o Ollama responder antes de baixar os modelos. Logo depois de instalar, o `ollama pull` falhava com "could not connect to ollama server" e era preciso rodar o `just ligar` outra vez.
+
+## [2.28.1] - 2026-11-12
+
+### Corrigido
+- `scripts/wsl/padronizar-repo.sh` não aplica mais o modelo de repositório no próprio dev-setup. O `just instalar` (etapa 4, `--todos`) criava `docs/adr/0001-modelo.md`, `.claude/settings.json` e mais 4 arquivos soltos em `~/dev/dev-setup`; o ADR modelo colidia com o ADR 0001 e o `just check` falhava em `test_importar_adrs_e_recusas_reais` (23 != 24). Achado na instalação real do notebook.
+
+## [2.28.0] - 2026-11-11
+
+### Adicionado
+- Celular ligado ao setup (`docs/operacao/celular.md`): `just ligar` (scripts/wsl/ligar-tudo.sh) confere o systemd e o linger, instala o que falta (Claude Code, Ollama com qwen2.5-coder:7b e qwen2.5:7b, aider), sobe o LiteLLM se houver Docker, grava e liga os serviços `amtech-fila`, `amtech-remoto` (Claude Code Remote Control em modo servidor, uma worktree por sessão) e `amtech-bot`, e chama `scripts/windows/manter-ligado.ps1` (tarefa no login, `vmIdleTimeout=-1`, sem dormir só na tomada; `-Desfazer` volta). `just ligado`, `just desligar`, `--simular`.
+- Fila de pedidos (`tools/remoto/fila.py`, `just pedir`, `just fila`, `/pedir` e `/fila` no Telegram): motor de decisão primeiro, worktree separada por pedido, motores em ordem Claude Code → aider + cota grátis (LiteLLM ou Gemini direto) → aider + Ollama local; dado sensível só local; limite do Claude detectado põe o Claude em pausa por 5 h; commit no ramo, PR em rascunho e aviso no Telegram; nunca faz merge. Testes.
+- LiteLLM: modelo `local-codigo` e reserva `gratis → gratis-cf → reserva → local`.
+
+### Alterado
+- Fase `f-remoto` do roteiro vira "Celular ligado ao setup": `re-servico` passa a ser `just ligar`; passos novos `re-remoto`, `re-gemini` e `re-teste`.
+
 ## [2.27.0] - 2026-11-11
 
 ### Adicionado

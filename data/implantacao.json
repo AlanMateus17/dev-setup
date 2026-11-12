@@ -1851,9 +1851,9 @@
   },
   {
    "id": "f-remoto",
-   "titulo": "Comandos remotos pelo Telegram",
-   "objetivo": "Status, resumo e radar no celular, respondendo só ao seu chat.",
-   "quando": "Semana 5 · nov/2026",
+   "titulo": "Celular ligado ao setup (com e sem Claude)",
+   "objetivo": "Do celular: sessão do Claude Code no notebook (Remote Control) e pedidos pelo Telegram que seguem com cota grátis e modelo local quando o Claude acaba.",
+   "quando": "Agora · nov/2026",
    "passos": [
     {
      "id": "re-bot",
@@ -1893,14 +1893,51 @@
     },
     {
      "id": "re-servico",
-     "titulo": "Deixar o bot rodando como serviço",
+     "titulo": "Ligar tudo com um comando (Ollama, modelos, aider, LiteLLM, fila, bot, Remote Control)",
      "quem": "script",
-     "pronto": "systemctl --user status amtech-bot ativo",
-     "tempo_min": 5,
+     "pronto": "just ligado mostra amtech-fila e ollama no ar",
+     "tempo_min": 30,
      "blocos": [
       "tg"
      ],
-     "comando": "mkdir -p ~/.config/systemd/user && printf '[Unit]\\nDescription=Bot AMtech\\n[Service]\\nExecStart=/usr/bin/python3 %%h/dev/dev-setup/tools/remoto/bot.py\\nRestart=always\\n[Install]\\nWantedBy=default.target\\n' > ~/.config/systemd/user/amtech-bot.service && systemctl --user daemon-reload && systemctl --user enable --now amtech-bot"
+     "comando": "cd ~/dev/dev-setup && just ligar --simular && just ligar",
+     "nota": "Seguro para rodar de novo. A primeira vez baixa ~9 GB de modelos. O Windows pede administrador uma vez (tarefa no login e energia na tomada)."
+    },
+    {
+     "id": "re-remoto",
+     "titulo": "Aceitar o Remote Control uma vez e abrir a sessão no app do Claude",
+     "quem": "voce",
+     "pronto": "Sessão 'Setup AMtech' aparece no app do Claude (aba Code) e responde",
+     "tempo_min": 10,
+     "blocos": [
+      "tg"
+     ],
+     "comando": "cd ~/dev/dev-setup && claude remote-control",
+     "nota": "Responda y, y e 2 (worktree); leia o QR com o celular; Ctrl+C; depois: touch ~/.config/amtech/remoto-aceito && just ligar. Exige plano Pro ou Max."
+    },
+    {
+     "id": "re-gemini",
+     "titulo": "Colar a chave grátis do Gemini (AI Studio) em infra/ia/.env e guardar no KeePassXC",
+     "quem": "voce",
+     "pronto": "GEMINI_API_KEY preenchida; just ligado sem aviso de cota grátis",
+     "tempo_min": 5,
+     "blocos": [
+      "tg",
+      "kee"
+     ],
+     "fora": "Feito em aistudio.google.com com a sua conta; é o degrau entre o Claude e o modelo local na fila."
+    },
+    {
+     "id": "re-teste",
+     "titulo": "Testar a fila pelo celular: /pedir num repositório de teste",
+     "quem": "voce",
+     "pronto": "Aviso no Telegram com o ramo ou o PR em rascunho",
+     "tempo_min": 10,
+     "blocos": [
+      "tg"
+     ],
+     "comando": "cd ~/dev/dev-setup && just pedir \"adicionar uma linha de teste no FILA-TESTE.md\" && just fila",
+     "nota": "Revise o PR em rascunho no app do GitHub. A fila nunca faz merge."
     },
     {
      "id": "re-whatsapp",
