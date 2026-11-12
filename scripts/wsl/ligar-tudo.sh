@@ -66,6 +66,9 @@ if curl -fsS -m 3 http://localhost:11434/api/tags >/dev/null 2>&1; then ok "Olla
 elif tem ollama; then sim && faz "sudo systemctl enable --now ollama" || sudo systemctl enable --now ollama || erro "ligar o Ollama"
 else sim && faz "instalaria o Ollama (usa a GTX 1650 se o driver NVIDIA do Windows estiver em dia)" \
   || { { tem zstd || sudo apt-get install -y -qq zstd; } && curl -fsSL https://ollama.com/install.sh | sh || erro "instalação do Ollama"; }; fi  # o instalador do Ollama exige zstd para extrair
+# Depois de instalar ou ligar, o serviço leva alguns segundos para responder: sem esperar, o ollama pull falhava
+# com "could not connect to ollama server".
+if ! sim && tem ollama; then for _ in $(seq 1 30); do curl -fsS -m 2 http://localhost:11434/api/tags >/dev/null 2>&1 && break; sleep 1; done; fi
 for m in "${MODELOS[@]}"; do
   if tem ollama && ollama list 2>/dev/null | grep -q "^${m}"; then ok "modelo $m"
   else sim && faz "ollama pull $m (~4,7 GB)" || { tem ollama && ollama pull "$m" || erro "baixar $m"; }; fi
