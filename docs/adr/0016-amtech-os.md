@@ -11,7 +11,7 @@ Hoje o código roda no Ubuntu do WSL2, dentro do Windows (ADR 0001). O Arch + Om
 Avaliação feita nas 485 peças do ecossistema (planilha "AMtech OS: as 485 peças do setup"):
 
 - 1 fica no Windows: Revit, Civil 3D e Robot (Autodesk educacional).
-- 10 entram com atenção: NitroSense, DaVinci, ActivityWatch no Wayland, Cocos, uso do computador do Claude, app do Codex, .NET MAUI, modelos .docx da escola, voz do Claude Code e o app do Claude.
+- 10 entram com atenção: NitroSense, DaVinci, ActivityWatch no Wayland, Cocos, uso do computador do Claude, app do Codex, React Native, modelos .docx da escola, voz do Claude Code e o app do Claude.
 - 13 trocam de ferramenta (ShareX, Rufus, SumatraPDF, PowerToys, BitLocker, Defender, scripts .ps1...).
 - 23 ficam melhores (Docker, Podman, CUDA, Ollama, Whisper, KVM, bpftrace, rotinas pelo systemd...).
 - O resto é igual: roda nativo no Linux ou é web.
