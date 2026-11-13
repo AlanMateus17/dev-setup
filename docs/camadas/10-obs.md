@@ -21,7 +21,7 @@ flowchart LR
     n_otel["OpenTelemetry"]
     n_prom["Prometheus"]
     n_graf["Grafana"]
-    n_aspire[".NET Aspire"]
+    n_aspire["Docker Compose (dev)"]
     n_signoz["SigNoz (logs, traces e métricas)"]
     n_glitchtip["GlitchTip (erros dos sistemas)"]
   end
@@ -48,7 +48,7 @@ flowchart LR
     n_vm247["VM sempre ligada (Oracle grátis)"]
   end
   subgraph L_app["Aplicação: sistemas AM (Aura)"]
-    n_api["API ASP.NET Core"]
+    n_api["API TypeScript (Next/NestJS)"]
     n_front["Next.js + Aura Design System"]
   end
   subgraph L_cnt["Containers, Kubernetes e infra como código"]
@@ -95,7 +95,7 @@ flowchart LR
 | [OpenTelemetry](#otel) | Local | Coleta logs, métricas e traces da API. | passo 24.7 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 41.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | [Prometheus](#prom) | Local | Guarda as métricas. | passo 41.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | [Grafana](#graf) | Local | Painéis e alertas. | passo 10.4 · Semana 4 · nov/2026; passo 38.4 · Semana 11 · jan/2027 |
-| [.NET Aspire](#aspire) | Local | Sobe o sistema inteiro no dev com painel próprio. | passo 41.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
+| [Docker Compose (dev)](#aspire) | Local | Sobe o sistema inteiro no dev com painel próprio. | passo 41.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | [SigNoz (logs, traces e métricas)](#signoz) | Remoto · precisa de conta | Principal da observabilidade dos apps (ADR 0008): logs, traces e métricas numa tela, nativo de OpenTelemetry. O Grafana fica para o painel de lucro. | passo 32.3 · Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar |
 | [GlitchTip (erros dos sistemas)](#glitchtip) | Remoto · precisa de conta | Principal dos erros (ADR 0008): o mesmo SDK do Sentry, auto-hospedado e sem cota. O Sentry SaaS fica de reserva. | passo 32.2 · Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar |
 
@@ -111,7 +111,7 @@ Reserva do GlitchTip (ADR 0008): avisa quando um erro acontece em produção, co
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | erros |
+| ← recebe de | [API TypeScript (Next/NestJS)](11-app.md#api) | Aplicação: sistemas AM (Aura) | erros |
 | ← recebe de | [Next.js + Aura Design System](11-app.md#front) | Aplicação: sistemas AM (Aura) | erros |
 | ← recebe de | [GlitchTip (erros dos sistemas)](10-obs.md#glitchtip) | Observabilidade | reserva |
 
@@ -145,7 +145,7 @@ Visualizador de logs simples para começar, antes da stack Grafana.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| ← recebe de | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | logs |
+| ← recebe de | [API TypeScript (Next/NestJS)](11-app.md#api) | Aplicação: sistemas AM (Aura) | logs |
 
 <a id="loki"></a>
 
@@ -176,8 +176,8 @@ Coleta logs, métricas e traces da API.
 |---|---|---|---|
 | → envia para | [Prometheus](10-obs.md#prom) | Observabilidade | métricas |
 | → envia para | [SigNoz (logs, traces e métricas)](10-obs.md#signoz) | Observabilidade | envia por OTLP |
-| ← recebe de | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | telemetria |
-| ← recebe de | [.NET Aspire](10-obs.md#aspire) | Observabilidade | painel de dev |
+| ← recebe de | [API TypeScript (Next/NestJS)](11-app.md#api) | Aplicação: sistemas AM (Aura) | telemetria |
+| ← recebe de | [Docker Compose (dev)](10-obs.md#aspire) | Observabilidade | painel de dev |
 
 <a id="prom"></a>
 
@@ -217,7 +217,7 @@ Painéis e alertas.
 
 <a id="aspire"></a>
 
-### .NET Aspire
+### Docker Compose (dev)
 
 *Local*
 
@@ -260,7 +260,7 @@ Principal dos erros (ADR 0008): o mesmo SDK do Sentry, auto-hospedado e sem cota
 |---|---|---|---|
 | → envia para | [VM sempre ligada (Oracle grátis)](12-nuvem.md#vm247) | Nuvem, código e entrega | roda na VM |
 | → envia para | [Sentry (erros)](10-obs.md#sentry) | Observabilidade | reserva |
-| ← recebe de | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | SDK do Sentry |
+| ← recebe de | [API TypeScript (Next/NestJS)](11-app.md#api) | Aplicação: sistemas AM (Aura) | SDK do Sentry |
 
 ---
 

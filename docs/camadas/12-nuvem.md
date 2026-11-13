@@ -85,7 +85,7 @@ flowchart LR
     n_voz["Voz clonada (ElevenLabs)"]
   end
   subgraph L_app["Aplicação: sistemas AM (Aura)"]
-    n_api["API ASP.NET Core"]
+    n_api["API TypeScript (Next/NestJS)"]
     n_golang["Go (CLIs com bubbletea)"]
     n_litestream["Litestream (SQLite no R2)"]
     n_reactemail["React Email (modelos)"]
@@ -304,7 +304,7 @@ Fotos de produtos, anexos e PDFs dos sistemas AM fora do banco de dados.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | arquivos |
+| → envia para | [API TypeScript (Next/NestJS)](11-app.md#api) | Aplicação: sistemas AM (Aura) | arquivos |
 | ← recebe de | [Litestream (SQLite no R2)](11-app.md#litestream) | Aplicação: sistemas AM (Aura) | cópia no R2 |
 
 <a id="tmail"></a>
@@ -319,7 +319,7 @@ E-mails automáticos dos sistemas: confirmação de conta, senha, recibo.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | e-mails do sistema |
+| → envia para | [API TypeScript (Next/NestJS)](11-app.md#api) | Aplicação: sistemas AM (Aura) | e-mails do sistema |
 | ← recebe de | [Plunk (e-mail próprio no SES)](12-nuvem.md#plunk) | Nuvem, código e entrega | reserva própria do Resend |
 | ← recebe de | [React Email (modelos)](11-app.md#reactemail) | Aplicação: sistemas AM (Aura) | modelos dos e-mails |
 

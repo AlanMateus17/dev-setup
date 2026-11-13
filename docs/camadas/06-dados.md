@@ -71,7 +71,7 @@ flowchart LR
   end
   subgraph L_lin["Linux (Ubuntu no WSL2, Arch no 2º disco)"]
     n_harlequin["harlequin (SQL no terminal)"]
-    n_rt[".NET 10 · Node · Python"]
+    n_rt["Node/TS · Python"]
     n_wsl["Ubuntu (WSL2)"]
   end
   subgraph L_win["Windows 11, apps e máquinas virtuais"]
@@ -173,7 +173,7 @@ Polars, pandas e JupyterLab num projeto uv em ~/dev/lab-ia. A base de toda a tri
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [DuckDB + Parquet](06-dados.md#duck) | Dados e treino de IA | consulta Parquet |
-| ← recebe de | [.NET 10 · Node · Python](04-lin.md#rt) | Linux (Ubuntu no WSL2, Arch no 2º disco) | Python + uv |
+| ← recebe de | [Node/TS · Python](04-lin.md#rt) | Linux (Ubuntu no WSL2, Arch no 2º disco) | Python + uv |
 | ← recebe de | [Airflow (orquestração)](06-dados.md#orq) | Dados e treino de IA | extrações agendadas |
 | ← recebe de | [Zoomcamp de dados + cursos de IA](14-est.md#dez) | Estudo e carreira | projetos dos módulos |
 

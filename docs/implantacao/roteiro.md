@@ -572,7 +572,7 @@ bash scripts/wsl/bootstrap.sh --nome "Alan Mateus" --email SEU_EMAIL --com-whisp
 ```
 
 - [ ] **Pronto quando:** Termina com 'Pronto' e sem ERRO
-- Implanta: .NET 10 · Node · Python · TeX Live · gitleaks · Trivy · Git + SSH + gh · nmap · dig · curl · Whisper (local) · Pranchas TikZ e SVG · CircuiTikZ · Instaladores (PowerShell e bash)
+- Implanta: Node/TS · Python · TeX Live · gitleaks · Trivy · Git + SSH + gh · nmap · dig · curl · Whisper (local) · Pranchas TikZ e SVG · CircuiTikZ · Instaladores (PowerShell e bash)
 
 ### 4.5 Reiniciar o WSL para o systemd valer (PowerShell)
 
@@ -2475,7 +2475,7 @@ No **Ubuntu** (linha `alanmateus@...$`):
 cd ~/dev/dev-setup && claude "Passo nuc-garimpo do roteiro: garimpo de código do pedido ao PR"
 ```
 
-- [ ] **Pronto quando:** just garimpo "validar CPF em C#" abre um PR com o trecho, os testes, a licença e a origem
+- [ ] **Pronto quando:** just garimpo "validar CPF em TypeScript" abre um PR com o trecho, os testes, a licença e a origem
 - Implanta: Garimpo de código (GitHub)
 
 ### 22.7 Fase 3: política de autonomia com ok pelo Telegram e botão de parar
@@ -2786,7 +2786,7 @@ cd ~/dev/dev-setup && just triagem "AM Rendara MVP"
 
 - [ ] **Pronto quando:** Itens cumpridos até 30/abr/2027
 - Se a planilha não vender 10, o sistema não nasce: muda a oferta, não o código.
-- Implanta: Caixa da Casa / AM Rendara · API ASP.NET Core · Next.js + Aura Design System · PostgreSQL · Testes: xUnit, Playwright, k6
+- Implanta: Caixa da Casa / AM Rendara · API TypeScript (Next/NestJS) · Next.js + Aura Design System · PostgreSQL · Testes: xUnit, Playwright, k6
 
 ### 24.7 Trimestre 3: cobrança por Pix, observabilidade, 5 clientes pagantes e o 1º relato de incidente
 
@@ -2918,7 +2918,7 @@ cd ~/dev/dev-setup && claude "Passo prof-curriculo do roteiro: acrescente ao dat
 
 - **Fora do terminal:** No site da Alura, com a sua conta. O setup não entra na sua conta: os nomes vieram do catálogo público.
 - [ ] **Pronto quando:** Cada curso em data/professor/curriculo.json confirmado no catálogo; os já feitos anotados (o módulo começa pela prova de entrada)
-- Os cursos de C# e .NET, Git, Docker e PostgreSQL do trimestre 1 já estão ligados aos módulos. A Alura é fraca em finanças e não tem física: ali a base é o livro e as fontes oficiais.
+- Os cursos de TypeScript e Python, Git, Docker e PostgreSQL do trimestre 1 já estão ligados aos módulos. A Alura é fraca em finanças e não tem física: ali a base é o livro e as fontes oficiais.
 - Implanta: Professor do setup (aula e revisão)
 
 ### 25.8 Confirmar o sumário da sua edição de Matemática Básica e qual livro de física você tem
@@ -4690,8 +4690,8 @@ cd ~/dev/dev-setup && claude "Passo template-aura do roteiro: Gerar o modelo de 
 ```
 
 - [ ] **Pronto quando:** Sistema exemplo sobe com 'dotnet run' e passa nos testes
-- Clean Architecture + DDD, EF Core com Npgsql, multi-tenant com RLS, SignalR com Redis, OpenAPI com Scalar, Next.js com o Aura Design System e Storybook, testes com xUnit, Playwright e k6.
-- Implanta: Clean Arch + DDD · EF Core + Npgsql · SignalR · Multi-tenant (RLS) · API ASP.NET Core · Next.js + Aura Design System · OpenAPI + Scalar · Storybook · PostgreSQL · Redis · Testes: xUnit, Playwright, k6
+- Clean Architecture + DDD, Prisma/Drizzle, multi-tenant com RLS, Supabase Realtime, OpenAPI com Scalar, Next.js com o Aura Design System e Storybook, testes com xUnit, Playwright e k6.
+- Implanta: Clean Arch + DDD · Prisma/Drizzle + PostgreSQL · Supabase Realtime · Multi-tenant (RLS) · API TypeScript (Next/NestJS) · Next.js + Aura Design System · OpenAPI + Scalar · Storybook · PostgreSQL · Redis · Testes: xUnit, Playwright, k6
 
 ### 41.2 Ligar o login: Keycloak no dev e Entra ID na nuvem
 
@@ -4706,18 +4706,18 @@ cd ~/dev/dev-setup && claude "Passo auth do roteiro: Ligar o login: Keycloak no 
 - [ ] **Pronto quando:** Usuário de teste entra e só vê os dados da própria empresa
 - Implanta: Keycloak / Entra ID
 
-### 41.3 Ligar a observabilidade do dev: .NET Aspire, OpenTelemetry, Prometheus, Seq, Mailpit e Caddy
+### 41.3 Ligar a observabilidade do dev: Docker Compose, OpenTelemetry, Prometheus, Seq, Mailpit e Caddy
 
 **Claude com você** · 1 h 00 min
 
 No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
-cd ~/dev/dev-setup && claude "Passo observabilidade-dev do roteiro: Ligar a observabilidade do dev: .NET Aspire, OpenTelemetry, Prometheus, Seq, Mailpit e Caddy"
+cd ~/dev/dev-setup && claude "Passo observabilidade-dev do roteiro: Ligar a observabilidade do dev: Docker Compose, OpenTelemetry, Prometheus, Seq, Mailpit e Caddy"
 ```
 
-- [ ] **Pronto quando:** Painel do Aspire mostra trace de uma requisição; e-mail de teste cai no Mailpit
-- Implanta: .NET Aspire · OpenTelemetry · Prometheus · Seq (logs) · Mailpit · Caddy (proxy + HTTPS)
+- [ ] **Pronto quando:** Painel do Docker Compose mostra trace de uma requisição; e-mail de teste cai no Mailpit
+- Implanta: Docker Compose (dev) · OpenTelemetry · Prometheus · Seq (logs) · Mailpit · Caddy (proxy + HTTPS)
 
 ### 41.4 Criar o projeto no Sentry e ligar no modelo
 
@@ -5512,7 +5512,7 @@ cd ~/dev/dev-setup && claude "Passo of-ammentor do roteiro: AM Mentor: banco de 
 - **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
 - [ ] **Pronto quando:** Primeiro contrato assinado
 - **Oferta:** Sistemas sob encomenda
-- Implanta: API ASP.NET Core · Next.js + Aura Design System
+- Implanta: API TypeScript (Next/NestJS) · Next.js + Aura Design System
 
 ### 46.18 Aula de sushi e sushiman para eventos: 2 eventos de teste
 
@@ -5888,18 +5888,18 @@ cd ~/dev/dev-setup && claude "Passo rotara do roteiro: AM Rotara: pedidos, rotas
 - **Oferta:** AM Rotara (pedidos e entregas)
 - Implanta: AM Rotara (entregas) · PostGIS + MapLibre
 
-### 51.4 Serviços aura- compartilhados, só quando um sistema precisar
+### 51.4 Módulos do AM Gestão, só quando um sistema precisar
 
 **Claude com você** · 10 h 00 min
 
 No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
-cd ~/dev/dev-setup && claude "Passo servicos-aura do roteiro: Serviços aura- compartilhados, só quando um sistema precisar"
+cd ~/dev/dev-setup && claude "Passo servicos-aura do roteiro: Módulos do AM Gestão, só quando um sistema precisar"
 ```
 
 - [ ] **Pronto quando:** Um serviço compartilhado usado por dois sistemas
-- Implanta: Serviços aura- (10) · Datomic local
+- Implanta: Módulos do AM Gestão · Histórico (append-only)
 
 ### 51.5 App de delivery com a marca do restaurante (white-label)
 
@@ -6214,18 +6214,18 @@ cd ~/dev/dev-setup && claude "Passo loki-tempo do roteiro: Logs e rastreamento c
 - [ ] **Pronto quando:** Um serviço usado num projeto real
 - Implanta: Google Cloud
 
-### 55.6 App mobile dos sistemas AM com .NET MAUI
+### 55.6 App mobile dos sistemas AM com React Native
 
 **Claude com você** · 20 h 00 min
 
 No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
-cd ~/dev/dev-setup && claude "Passo mobile do roteiro: App mobile dos sistemas AM com .NET MAUI"
+cd ~/dev/dev-setup && claude "Passo mobile do roteiro: App mobile dos sistemas AM com React Native"
 ```
 
 - [ ] **Pronto quando:** App publicado para teste interno
-- Implanta: App mobile (.NET MAUI)
+- Implanta: App mobile (React Native)
 
 <a id="f31"></a>
 
@@ -7492,20 +7492,20 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | PostGIS + MapLibre | 51.3 | 2027 |
 | Storybook | 41.1 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Clean Arch + DDD | 41.1 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
-| EF Core + Npgsql | 41.1 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
-| SignalR | 41.1 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
+| Prisma/Drizzle + PostgreSQL | 41.1 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
+| Supabase Realtime | 41.1 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Multi-tenant (RLS) | 41.1 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Testes: xUnit, Playwright, k6 | 24.6, 41.1, 45.10 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) |
-| Serviços aura- (10) | 51.4 | 2027 |
+| Módulos do AM Gestão | 51.4 | 2027 |
 | Next.js + Aura Design System | 24.6, 41.1, 46.17 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; Fev a dez/2027, uma oferta por vez |
-| API ASP.NET Core | 24.6, 41.1, 46.17 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; Fev a dez/2027, uma oferta por vez |
+| API TypeScript (Next/NestJS) | 24.6, 41.1, 46.17 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; Fev a dez/2027, uma oferta por vez |
 | Keycloak / Entra ID | 41.2 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | IA: RAG + pgvector | 50.1 | Depois do trimestre 4 do eixo (ADR 0011, ≈ 2028), quando o AM Rendara já estiver em produção |
 | aura-licensing | 51.1 | 2027 |
 | aura-status | 42.7 | Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Rendara (MVP com 1 usuário pagante) |
 | AM Kaixara (PDV e cardápio) | 46.12, 51.2 | Fev a dez/2027, uma oferta por vez; 2027 |
 | AM Rotara (entregas) | 51.3, 51.5 | 2027 |
-| App mobile (.NET MAUI) | 55.6 | 2028 |
+| App mobile (React Native) | 55.6 | 2028 |
 | AM Obra (diário, medição, compras) | 62.12 | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão |
 | Zod · Biome · Vitest (front) | 41.9, 45.8 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) |
 | SvelteKit (apps pequenos) | 45.7 | Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) |
@@ -7526,7 +7526,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | OpenTelemetry | 24.7, 41.3 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Prometheus | 41.3 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Grafana | 10.4, 38.4 | Semana 4 · nov/2026; Semana 11 · jan/2027 |
-| .NET Aspire | 41.3 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
+| Docker Compose (dev) | 41.3 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | SigNoz (logs, traces e métricas) | 32.3 | Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar |
 | GlitchTip (erros dos sistemas) | 32.2 | Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar |
 
@@ -7539,7 +7539,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Kafka | 55.1 | 2028 |
 | kubectl · Helm · k9s | 55.2 | 2028 |
 | Azure CLI · AWS CLI | 42.1 | Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Rendara (MVP com 1 usuário pagante) |
-| Datomic local | 51.4 | 2027 |
+| Histórico (append-only) | 51.4 | 2027 |
 | Docker + Compose | 4.2, 10.2 | Semana 2 · nov/2026; Semana 4 · nov/2026 |
 | PostgreSQL | 10.2, 22.5, 24.6, 41.1 | Semana 4 · nov/2026; Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois; Nov/2026 a out/2027, revisão no fim de cada trimestre; Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
 | Redis | 41.1 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
@@ -7656,7 +7656,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | nmap · dig · curl | 4.4 | Semana 2 · nov/2026 |
 | Ubuntu (WSL2) | 4.1, 4.5 | Semana 2 · nov/2026 |
 | Git + SSH + gh | 4.4, 4.6 | Semana 2 · nov/2026 |
-| .NET 10 · Node · Python | 4.4 | Semana 2 · nov/2026 |
+| Node/TS · Python | 4.4 | Semana 2 · nov/2026 |
 | TeX Live | 4.4 | Semana 2 · nov/2026 |
 | gitleaks · Trivy | 4.4, 20.2, 20.3 | Semana 2 · nov/2026; Semana 5 · nov/2026 |
 | dotfiles | 4.7 | Semana 2 · nov/2026 |

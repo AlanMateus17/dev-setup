@@ -18,7 +18,7 @@ flowchart LR
     n_netw["nmap · dig · curl"]
     n_wsl["Ubuntu (WSL2)"]
     n_git["Git + SSH + gh"]
-    n_rt[".NET 10 · Node · Python"]
+    n_rt["Node/TS · Python"]
     n_tex["TeX Live"]
     n_sec["gitleaks · Trivy"]
     n_dot["dotfiles"]
@@ -65,7 +65,7 @@ flowchart LR
     n_vm247["VM sempre ligada (Oracle grátis)"]
   end
   subgraph L_app["Aplicação: sistemas AM (Aura)"]
-    n_api["API ASP.NET Core"]
+    n_api["API TypeScript (Next/NestJS)"]
     n_status["aura-status"]
   end
   subgraph L_cnt["Containers, Kubernetes e infra como código"]
@@ -178,7 +178,7 @@ flowchart LR
 | [nmap · dig · curl](#netw) | Local | Diagnóstico de rede no Ubuntu: portas, DNS, requisições HTTP e captura de pacotes (tcpdump). Instalados pelo bootstrap.sh. | passo 4.4 · Semana 2 · nov/2026 |
 | [Ubuntu (WSL2)](#wsl) | Local | Onde o código vive e roda. | passo 4.1 · Semana 2 · nov/2026; passo 4.5 · Semana 2 · nov/2026 |
 | [Git + SSH + gh](#git) | Local | Versionamento e acesso ao GitHub. | passo 4.4 · Semana 2 · nov/2026; passo 4.6 · Semana 2 · nov/2026 |
-| [.NET 10 · Node · Python](#rt) | Local | Runtimes das APIs, do front e dos scripts. | passo 4.4 · Semana 2 · nov/2026 |
+| [Node/TS · Python](#rt) | Local | Runtimes das APIs, do front e dos scripts. | passo 4.4 · Semana 2 · nov/2026 |
 | [TeX Live](#tex) | Local | Compila o livro e as apostilas. | passo 4.4 · Semana 2 · nov/2026 |
 | [gitleaks · Trivy](#sec) | Local | Barra senha no commit e acha vulnerabilidades em imagens. | passo 4.4 · Semana 2 · nov/2026; passo 20.2 · Semana 5 · nov/2026; passo 20.3 · Semana 5 · nov/2026 |
 | [dotfiles](#dot) | Local | Configuração versionada do ambiente, aplicada pelo chezmoi a partir de infra/dotfiles. | passo 4.7 · Semana 2 · nov/2026 |
@@ -247,7 +247,7 @@ Onde o código vive e roda.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Git + SSH + gh](04-lin.md#git) | Linux (Ubuntu no WSL2, Arch no 2º disco) | terminal |
-| → envia para | [.NET 10 · Node · Python](04-lin.md#rt) | Linux (Ubuntu no WSL2, Arch no 2º disco) | executa |
+| → envia para | [Node/TS · Python](04-lin.md#rt) | Linux (Ubuntu no WSL2, Arch no 2º disco) | executa |
 | → envia para | [Docker + Compose](09-cnt.md#docker) | Containers, Kubernetes e infra como código | socket da engine |
 | → envia para | [PyTorch + CUDA (WSL2)](06-dados.md#torch) | Dados e treino de IA | CUDA no WSL2 |
 | ← recebe de | [Backup 3-2-1](02-seg.md#bkp) | Segurança e cofre | copia ~/dev |
@@ -287,7 +287,7 @@ Versionamento e acesso ao GitHub.
 
 <a id="rt"></a>
 
-### .NET 10 · Node · Python
+### Node/TS · Python
 
 *Local*
 
@@ -297,7 +297,7 @@ Runtimes das APIs, do front e dos scripts.
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | compila e roda |
+| → envia para | [API TypeScript (Next/NestJS)](11-app.md#api) | Aplicação: sistemas AM (Aura) | compila e roda |
 | → envia para | [Python de dados (Polars, Jupyter)](06-dados.md#pyds) | Dados e treino de IA | Python + uv |
 | ← recebe de | [Ubuntu (WSL2)](04-lin.md#wsl) | Linux (Ubuntu no WSL2, Arch no 2º disco) | executa |
 | ← recebe de | [mise (runtimes e CLIs)](04-lin.md#mise) | Linux (Ubuntu no WSL2, Arch no 2º disco) | instala Node, Go e Rust |
@@ -485,7 +485,7 @@ Principal (ADR 0008): instala e fixa Node, Go, Rust e as CLIs do setup a partir 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Ubuntu (WSL2)](04-lin.md#wsl) | Linux (Ubuntu no WSL2, Arch no 2º disco) | roda no Ubuntu |
-| → envia para | [.NET 10 · Node · Python](04-lin.md#rt) | Linux (Ubuntu no WSL2, Arch no 2º disco) | instala Node, Go e Rust |
+| → envia para | [Node/TS · Python](04-lin.md#rt) | Linux (Ubuntu no WSL2, Arch no 2º disco) | instala Node, Go e Rust |
 
 <a id="zellij"></a>
 
@@ -605,7 +605,7 @@ Cliente de API no terminal, com requisições em arquivo. Reserva do Bruno; o je
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | testa a API |
+| → envia para | [API TypeScript (Next/NestJS)](11-app.md#api) | Aplicação: sistemas AM (Aura) | testa a API |
 
 <a id="harlequin"></a>
 
@@ -662,7 +662,7 @@ Carga HTTP em taxa constante para achar o teto de uma API, do limite de requisi�
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | acha o teto |
+| → envia para | [API TypeScript (Next/NestJS)](11-app.md#api) | Aplicação: sistemas AM (Aura) | acha o teto |
 
 <a id="bpftrace"></a>
 

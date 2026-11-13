@@ -70,7 +70,7 @@ flowchart LR
     n_selo["Selo Editora AMS Silva"]
   end
   subgraph L_app["Aplicação: sistemas AM (Aura)"]
-    n_api["API ASP.NET Core"]
+    n_api["API TypeScript (Next/NestJS)"]
     n_nkaix["AM Kaixara (PDV e cardápio)"]
     n_nrot["AM Rotara (entregas)"]
   end
@@ -219,7 +219,7 @@ Só quando houver CNPJ. Implementa o seu IEmissorFiscal: os sistemas AM emitem n
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | IEmissorFiscal |
+| → envia para | [API TypeScript (Next/NestJS)](11-app.md#api) | Aplicação: sistemas AM (Aura) | IEmissorFiscal |
 | ← recebe de | [Certificado digital (e-CNPJ)](19-emp.md#ecnpj) | Pessoa física: impostos e finanças | autentica |
 
 <a id="cnpj"></a>
