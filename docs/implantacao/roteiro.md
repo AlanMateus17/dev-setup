@@ -2210,7 +2210,7 @@ No **Ubuntu** (linha `alanmateus@...$`):
 cd ~/dev/dev-setup && just arquiteto "módulo de aporte do AM Rendara" > /tmp/pacote.md
 ```
 
-- [ ] **Pronto quando:** A resposta usa a stack fixa, cita o que já existe e termina numa primeira fatia de até 4 horas
+- [ ] **Pronto quando:** A resposta usa a stack por problema, cita o que já existe e termina numa primeira fatia de até 4 horas
 - O pacote tem cerca de 400 tokens. Cole no Claude ou use just arquiteto-claude, que manda pelo Claude Code dentro do ai-jail.
 - Implanta: Triagem: montar, colar ou construir · Claude Code
 
