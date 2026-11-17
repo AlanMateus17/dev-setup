@@ -2,6 +2,16 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.34.0] - 2026-11-17
+
+### Adicionado
+- Ficha do assunto e colheita (ADR 0021): `just ficha ETAPA` cria uma ficha única por assunto do mapa de estudo; `just colher ETAPA` entrega a explicação ao pipeline de conteúdo, os exercícios ao banco (YAML) e ao Anki (TSV) e o plano de aula aos componentes do `ensino-ti`. Ligações em `data/aulas.json`.
+- `just diag ETAPA c3 x2 c1`: diagnóstico com certeza por resposta, registrado em `07-estudo-e-carreira/diagnosticos.md`, com a decisão do roteiro.
+- ADR 0020, que a v2.33.0 citava sem o arquivo existir.
+
+### Alterado
+- `just professor fechar` aponta para a ficha do assunto quando o módulo está ligado a uma etapa do mapa.
+
 ## [2.33.0] - 2026-11-17
 
 ### Adicionado
