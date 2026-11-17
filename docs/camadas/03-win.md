@@ -94,7 +94,7 @@ flowchart LR
     n_vm247["VM sempre ligada (Oracle grátis)"]
   end
   subgraph L_app["Aplicação: sistemas AM (Aura)"]
-    n_api["API ASP.NET Core"]
+    n_api["API TypeScript (Next/NestJS)"]
     n_front["Next.js + Aura Design System"]
     n_oapi["OpenAPI + Scalar"]
   end
@@ -575,7 +575,7 @@ Banco de dados e testes de API.
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [PostgreSQL](09-cnt.md#pg) | Containers, Kubernetes e infra como código | porta 5432 |
-| → envia para | [API ASP.NET Core](11-app.md#api) | Aplicação: sistemas AM (Aura) | HTTP (Bruno) |
+| → envia para | [API TypeScript (Next/NestJS)](11-app.md#api) | Aplicação: sistemas AM (Aura) | HTTP (Bruno) |
 | ← recebe de | [OpenAPI + Scalar](11-app.md#oapi) | Aplicação: sistemas AM (Aura) | Bruno importa |
 
 <a id="nav"></a>

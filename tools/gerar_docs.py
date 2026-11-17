@@ -406,7 +406,7 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
         out.append(f"| {num(eco, c['id']):02d} | [{c['titulo']}](docs/camadas/{arquivo_camada(eco, c['id'])}) | {len(bl)} | {destaque} |")
     out += ["",
             "## Stack\n",
-            "Sistemas AM: C#/.NET 10 · ASP.NET Core (Controllers) · Clean Architecture + DDD · PostgreSQL · Redis · SignalR · Next.js, TypeScript, Tailwind e Zod · Docker · GitHub Actions · Kamal. Fora deles, a melhor ferramenta para cada trabalho ([ADR 0007](docs/adr/0007-poliglota-por-funcao.md)): Astro para sites, SvelteKit e PocketBase para MVPs, Go para CLIs, Rust para firmware, Python para dados e IA. Principal e reserva de cada função no [ADR 0008](docs/adr/0008-trocas-de-ferramenta-principal.md).\n",
+            "AM Gestão (produto único): **TypeScript (Next.js/NestJS) · Python/FastAPI · PostgreSQL (Supabase) · SQLite offline · Docker · GitHub Actions**; agente fiscal em **Go** ou C#. **.NET/C# é carta de reserva** (vaga corporativa ou agente fiscal) — ver [ADR 0017](docs/adr/0017-nucleo-ts-python-dotnet-reserva.md). Fora do produto, a melhor ferramenta para cada trabalho ([ADR 0007](docs/adr/0007-poliglota-por-funcao.md)): Astro para sites, PocketBase para MVPs, Go para CLIs, Rust para firmware/SO, Python para dados e IA.\n",
             "## Como este repositório funciona\n",
             "```mermaid", "flowchart LR",
             '  D["data/ecossistema.json<br/>data/mapa.json"] --> G["tools/gerar_docs.py"]',
@@ -451,7 +451,7 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
             "justfile              porta única de comandos (check, triagem, arquiteto, docs, ci-local)",
             "```\n",
             "## Status\n",
-            "Em construção por fases. A fase 1 (Windows, WSL2, Docker e .NET) está em andamento; o restante segue o [roteiro de estudo](docs/roteiro.md).\n",
+            "Em construção por fases. A fase 1 (Windows, WSL2, Docker, Node/TS e Python) está em andamento; o restante segue o [roteiro de estudo](docs/roteiro.md).\n",
             "## Licença\n",
             "[MIT](LICENSE)\n"]
     return "\n".join(out)

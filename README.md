@@ -116,7 +116,7 @@ O Windows cuida só do que precisa de janela, GPU e segurança; todo o trabalho 
 
 ## Stack
 
-Sistemas AM: C#/.NET 10 · ASP.NET Core (Controllers) · Clean Architecture + DDD · PostgreSQL · Redis · SignalR · Next.js, TypeScript, Tailwind e Zod · Docker · GitHub Actions · Kamal. Fora deles, a melhor ferramenta para cada trabalho ([ADR 0007](docs/adr/0007-poliglota-por-funcao.md)): Astro para sites, SvelteKit e PocketBase para MVPs, Go para CLIs, Rust para firmware, Python para dados e IA. Principal e reserva de cada função no [ADR 0008](docs/adr/0008-trocas-de-ferramenta-principal.md).
+AM Gestão (produto único): **TypeScript (Next.js/NestJS) · Python/FastAPI · PostgreSQL (Supabase) · SQLite offline · Docker · GitHub Actions**; agente fiscal em **Go** ou C#. **.NET/C# é carta de reserva** (vaga corporativa ou agente fiscal) — ver [ADR 0017](docs/adr/0017-nucleo-ts-python-dotnet-reserva.md). Fora do produto, a melhor ferramenta para cada trabalho ([ADR 0007](docs/adr/0007-poliglota-por-funcao.md)): Astro para sites, PocketBase para MVPs, Go para CLIs, Rust para firmware/SO, Python para dados e IA.
 
 ## Como este repositório funciona
 
@@ -169,7 +169,7 @@ justfile              porta única de comandos (check, triagem, arquiteto, docs,
 
 ## Status
 
-Em construção por fases. A fase 1 (Windows, WSL2, Docker e .NET) está em andamento; o restante segue o [roteiro de estudo](docs/roteiro.md).
+Em construção por fases. A fase 1 (Windows, WSL2, Docker, Node/TS e Python) está em andamento; o restante segue o [roteiro de estudo](docs/roteiro.md).
 
 ## Licença
 

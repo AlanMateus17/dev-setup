@@ -2449,7 +2449,7 @@
      "id": "nuc-garimpo",
      "titulo": "Fase 2: garimpo de código do pedido ao PR",
      "quem": "claude",
-     "pronto": "just garimpo \"validar CPF em C#\" abre um PR com o trecho, os testes, a licença e a origem",
+     "pronto": "just garimpo \"validar CPF em TypeScript\" abre um PR com o trecho, os testes, a licença e a origem",
      "tempo_min": 480,
      "comando": "cd ~/dev/dev-setup && claude \"Passo nuc-garimpo do roteiro: garimpo de código do pedido ao PR\"",
      "blocos": [
@@ -2783,7 +2783,7 @@
     },
     {
      "id": "eixo-t1",
-     "titulo": "Trimestre 1: 1 cliente de site pago, Caixa da Casa usado 3 meses, planilha do AM Rendara à venda, 3 posts",
+     "titulo": "Trimestre 1: 1 cliente de site pago, 1 CLI em Go, planilha do financeiro à venda, esqueleto do AM Gestão com teste no CI, 1ª chamada de IA em TypeScript",
      "quem": "voce",
      "pronto": "Os quatro itens cumpridos até 31/jan/2027",
      "tempo_min": 60,
@@ -2801,11 +2801,11 @@
     },
     {
      "id": "eixo-t2",
-     "titulo": "Trimestre 2: 10 planilhas vendidas e o AM Rendara (MVP) com 1 usuário pagante em produção, com backup restaurado e rollback testado",
+     "titulo": "Trimestre 2: 10 planilhas vendidas e o AM Gestão (MVP) num restaurante real, com busca com IA avaliada no CI, backup restaurado e rollback testado",
      "quem": "voce",
      "pronto": "Itens cumpridos até 30/abr/2027",
      "tempo_min": 60,
-     "comando": "cd ~/dev/dev-setup && just triagem \"AM Rendara MVP\"",
+     "comando": "cd ~/dev/dev-setup && just triagem \"AM Gestão MVP\"",
      "nota": "Se a planilha não vender 10, o sistema não nasce: muda a oferta, não o código.",
      "decisao": true,
      "empresas": [
@@ -2944,7 +2944,7 @@
      "pronto": "Cada curso em data/professor/curriculo.json confirmado no catálogo; os já feitos anotados (o módulo começa pela prova de entrada)",
      "tempo_min": 30,
      "fora": "No site da Alura, com a sua conta. O setup não entra na sua conta: os nomes vieram do catálogo público.",
-     "nota": "Os cursos de C# e .NET, Git, Docker e PostgreSQL do trimestre 1 já estão ligados aos módulos. A Alura é fraca em finanças e não tem física: ali a base é o livro e as fontes oficiais.",
+     "nota": "Os cursos de TypeScript e Python, Git, Docker e PostgreSQL do trimestre 1 já estão ligados aos módulos. A Alura é fraca em finanças e não tem física: ali a base é o livro e as fontes oficiais.",
      "blocos": [
       "professor"
      ]
@@ -4993,7 +4993,7 @@
      "pronto": "Sistema exemplo sobe com 'dotnet run' e passa nos testes",
      "tempo_min": 120,
      "comando": "cd ~/dev/dev-setup && claude \"Passo template-aura do roteiro: Gerar o modelo de sistema com /novo-sistema-aura\"",
-     "nota": "Clean Architecture + DDD, EF Core com Npgsql, multi-tenant com RLS, SignalR com Redis, OpenAPI com Scalar, Next.js com o Aura Design System e Storybook, testes com xUnit, Playwright e k6.",
+     "nota": "Clean Architecture + DDD, Prisma/Drizzle, multi-tenant com RLS, Supabase Realtime, OpenAPI com Scalar, Next.js com o Aura Design System e Storybook, testes com xUnit, Playwright e k6.",
      "blocos": [
       "clean",
       "ef",
@@ -5021,11 +5021,11 @@
     },
     {
      "id": "observabilidade-dev",
-     "titulo": "Ligar a observabilidade do dev: .NET Aspire, OpenTelemetry, Prometheus, Seq, Mailpit e Caddy",
+     "titulo": "Ligar a observabilidade do dev: Docker Compose, OpenTelemetry, Prometheus, Seq, Mailpit e Caddy",
      "quem": "claude",
-     "pronto": "Painel do Aspire mostra trace de uma requisição; e-mail de teste cai no Mailpit",
+     "pronto": "Painel do Docker Compose mostra trace de uma requisição; e-mail de teste cai no Mailpit",
      "tempo_min": 60,
-     "comando": "cd ~/dev/dev-setup && claude \"Passo observabilidade-dev do roteiro: Ligar a observabilidade do dev: .NET Aspire, OpenTelemetry, Prometheus, Seq, Mailpit e Caddy\"",
+     "comando": "cd ~/dev/dev-setup && claude \"Passo observabilidade-dev do roteiro: Ligar a observabilidade do dev: Docker Compose, OpenTelemetry, Prometheus, Seq, Mailpit e Caddy\"",
      "blocos": [
       "aspire",
       "otel",
@@ -6561,11 +6561,11 @@
     },
     {
      "id": "servicos-aura",
-     "titulo": "Serviços aura- compartilhados, só quando um sistema precisar",
+     "titulo": "Módulos do AM Gestão, só quando um sistema precisar",
      "quem": "claude",
      "pronto": "Um serviço compartilhado usado por dois sistemas",
      "tempo_min": 600,
-     "comando": "cd ~/dev/dev-setup && claude \"Passo servicos-aura do roteiro: Serviços aura- compartilhados, só quando um sistema precisar\"",
+     "comando": "cd ~/dev/dev-setup && claude \"Passo servicos-aura do roteiro: Módulos do AM Gestão, só quando um sistema precisar\"",
      "blocos": [
       "shared",
       "datomic"
@@ -6927,11 +6927,11 @@
     },
     {
      "id": "mobile",
-     "titulo": "App mobile dos sistemas AM com .NET MAUI",
+     "titulo": "App mobile dos sistemas AM com React Native",
      "quem": "claude",
      "pronto": "App publicado para teste interno",
      "tempo_min": 1200,
-     "comando": "cd ~/dev/dev-setup && claude \"Passo mobile do roteiro: App mobile dos sistemas AM com .NET MAUI\"",
+     "comando": "cd ~/dev/dev-setup && claude \"Passo mobile do roteiro: App mobile dos sistemas AM com React Native\"",
      "blocos": [
       "mobile"
      ]
