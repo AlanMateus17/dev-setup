@@ -169,6 +169,19 @@ progresso empresa="":
 professor *args:
     python3 tools/professor/professor.py {{args}}
 
+# Caderno de erros e atritos do setup (uma linha, sem abrir arquivo): just erro 0.2 "o erro" --certo "o certo" | just atrito "o que travou" --area backup
+erro *args:
+    python3 tools/registro/registro.py erro {{args}}
+
+erros *args:
+    python3 tools/registro/registro.py erros {{args}}
+
+atrito *args:
+    python3 tools/registro/registro.py atrito {{args}}
+
+atritos:
+    python3 tools/registro/registro.py atritos
+
 # Biblioteca: just livros lista | para ETAPA | comprar | ler LIVRO --trecho T --min N --assunto ETAPA --nota "..." | lidos | marcar LIVRO tenho
 livros *args:
     python3 tools/biblioteca/biblioteca.py {{args}}
