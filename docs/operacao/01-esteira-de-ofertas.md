@@ -2,7 +2,7 @@
 
 [← Operação do grupo](README.md)
 
-Toda oferta, de um template de R$ 27 a uma padaria, anda pelos mesmos estágios. O que muda é o tamanho de cada passo, não a ordem.
+Toda oferta, de um template de R$ 27 à loja física, anda pelos mesmos estágios. O que muda é o tamanho de cada passo, não a ordem.
 
 ```mermaid
 flowchart LR
@@ -25,7 +25,7 @@ flowchart LR
 | **Escala** | Cresce sem você crescer junto? | Automação, tráfego pago, equipe, versões derivadas | Lucro por venda mantido enquanto o volume sobe |
 | **Pausa ou fim** | Ainda faz sentido? | Registro do porquê e do que se aprendeu | — |
 
-A regra que você mesmo adotou fica gravada aqui: **validar antes de construir.** A planilha vende antes do sistema; a pré-venda vem antes do curso; o evento de sushi vem antes do restaurante.
+A regra que você mesmo adotou fica gravada aqui: **validar antes de construir.** A planilha vende antes do sistema; a pré-venda vem antes do curso; o kit por encomenda vem antes do lote do Maker.
 
 ## Validações baratas por tipo
 

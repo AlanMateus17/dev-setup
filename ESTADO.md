@@ -72,3 +72,5 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-20: canais sem rosto = Primer Code, Bancada Dev e finanças (nome a definir; Bolso Exato ocupado).
 - 2026-11-20: CONTINUAR.md reescrito pela realidade pós-13/11 (ADR 0017 e 0018, AM Gestão, repositório público, mapa-de-estudo).
 - 2026-11-20: feito remotamente, sem o notebook ligado ao Claude: as tarefas A e B da missão de 18/11 e a receita github-sync ficaram para o notebook.
+- 2026-11-20: v2.37.0: restaurantes próprios fora do plano (sushi, cafeteria, padaria, aula de sushi) e também mercadinho, máquina de lanches e revenda de veículos; Campo e Maker são linhas de renda do Grupo AMtech.
+- 2026-11-20: software em suítes vendidas em pacotes: AM Gestão (suíte 1), depois AM Serviços, AM Escola e AM Projetos; Editora pausada com Lógica e Máquina estruturado em 6 volumes a partir das notas do Alan.

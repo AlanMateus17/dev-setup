@@ -32,6 +32,7 @@ jobs:
         run: |
           python -m unittest discover -s tools/softwares -v
           python tools/softwares/softwares.py --check
+          python tools/editora/livros.py --check
       - name: Testar o kit de sites, o avaliador e as ferramentas do dia a dia
         run: |
           python tools/kitsites/gerar.py --check

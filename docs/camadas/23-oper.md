@@ -241,7 +241,7 @@ flowchart LR
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Portfólio de ofertas](#ocatal) | Local | data/portfolio.json: todas as ofertas do grupo com estágio, notas, pontuação e próximo passo. Gera docs/operacao/portfolio.md e o portfólio interativo. | passo 8.7 · Semanas 3 e 4 · nov/2026; passo 37.14 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 46.20 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [Portfólio de ofertas](#ocatal) | Local | data/portfolio.json: todas as ofertas do grupo com estágio, notas, pontuação e próximo passo. Gera docs/operacao/portfolio.md e o portfólio interativo. | passo 8.7 · Semanas 3 e 4 · nov/2026; passo 37.14 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 46.19 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
 | [Esteira de ofertas](#oesteira) | Local | Ideia, validação, construção, lançamento e escala, com portões objetivos. Uma oferta em construção e uma em validação por vez. | passo 8.7 · Semanas 3 e 4 · nov/2026; passo 37.14 · Semanas 8 a 10 · dez/2026 a jan/2027 |
 | [Padrão de qualidade](#oqual) | Local | Checklist de 'pronto' por tipo de oferta: infoproduto, livro, software, serviço, negócio físico e conteúdo. | passo 37.14 · Semanas 8 a 10 · dez/2026 a jan/2027 |
 | [Marca pessoal Alan Mateus](#omarca) | Remoto | O guarda-chuva de confiança do grupo: Instituto AMS, Editora AMS Silva, AMtech e os negócios locais apontam para você. | passo 34.1 · Semana 5 · nov/2026; passo 36.1 · Semanas 6 e 7 · dez/2026 |
@@ -282,7 +282,7 @@ flowchart LR
 
 data/portfolio.json: todas as ofertas do grupo com estágio, notas, pontuação e próximo passo. Gera docs/operacao/portfolio.md e o portfólio interativo.
 
-**Quando entra:** passo 8.7 · Semanas 3 e 4 · nov/2026; passo 37.14 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 46.20 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 8.7 · Semanas 3 e 4 · nov/2026; passo 37.14 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 46.19 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

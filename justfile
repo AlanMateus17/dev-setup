@@ -44,6 +44,7 @@ docs:
     python3 tools/implantacao/gerar.py
     python3 tools/portfolio/portfolio.py
     python3 tools/softwares/softwares.py
+    python3 tools/editora/livros.py
     python3 tools/kitsites/gerar.py
     python3 tools/custos/custos.py
     python3 tools/recursos/recursos.py
@@ -62,6 +63,7 @@ check:
     python3 tools/implantacao/gerar.py --check
     python3 tools/portfolio/portfolio.py --check
     python3 tools/softwares/softwares.py --check
+    python3 tools/editora/livros.py --check
     python3 tools/kitsites/gerar.py --check
     python3 tools/custos/custos.py --check
     python3 tools/recursos/recursos.py --check
