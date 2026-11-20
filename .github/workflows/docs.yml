@@ -34,6 +34,7 @@ jobs:
           python tools/softwares/softwares.py --check
           python tools/editora/livros.py --check
           python tools/empresas/empresas.py --check
+          python tools/coerencia/coerencia.py
       - name: Testar o kit de sites, o avaliador e as ferramentas do dia a dia
         run: |
           python tools/kitsites/gerar.py --check
@@ -45,7 +46,7 @@ jobs:
           python tools/akita/akita.py docs --check
           python tools/nucleo/agenda.py rapido --check
           python tools/repos/repos.py --check
-          for d in kitsites avaliador radar organizar remoto financeiro fabrica ia custos recursos investimentos carreira roi sessao documentos seguranca jarvis construcao triagem nucleo motor cockpit akita professor vault sites recrutador repos empresas; do python -m unittest discover -s tools/$d -v || exit 1; done
+          for d in kitsites avaliador radar organizar remoto financeiro fabrica ia custos recursos investimentos carreira roi sessao documentos seguranca jarvis construcao triagem nucleo motor cockpit akita professor vault sites recrutador repos empresas coerencia; do python -m unittest discover -s tools/$d -v || exit 1; done
       - name: Testar o pipeline de conteúdo e conferir o roteiro de implantação
         run: |
           python -m unittest discover -s tools/conteudo -v
