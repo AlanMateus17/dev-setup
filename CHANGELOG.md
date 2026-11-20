@@ -12,6 +12,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
 ### Corrigido
 - `tools/vault/espelho.py` reconhece o vault também por `PLANO-UNICO-AMtech.md` ou `CARTAO-voce-esta-aqui.md` (o Sumário Único foi para `99-arquivo/` em 13/11), como o `vault.sh` da v2.34.1. Com teste.
+- Modelo `repo-padrao`: o CI de qualidade usava `aquasecurity/trivy-action@0.28.0`, tag que não existe; agora fixado no commit da v0.36.0. Os 4 repositórios padronizados hoje recebem a mesma correção.
 
 ## [2.35.0] - 2026-11-20
 
