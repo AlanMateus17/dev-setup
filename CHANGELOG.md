@@ -2,6 +2,15 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.34.1] - 2026-11-20
+
+### Corrigido
+- `padronizar-repo.sh` pula o vault do Obsidian (`~/dev/notas`, ou pasta com `PLANO-UNICO-AMtech.md`/`CARTAO-voce-esta-aqui.md`): o modelo de repositório de código tinha sido aplicado na raiz do vault.
+- `vault.sh` reconhece o vault por `PLANO-UNICO-AMtech.md` ou `CARTAO-voce-esta-aqui.md` (o Sumário Único foi para `99-arquivo/` em 13/11 e o script criava pastas modelo dentro do vault). Testes em `tools/vault/test_scripts_vault.py`.
+- `instalar.ps1`: padrão `-MemoriaWSL 20GB` e novo `-ProcessadoresWSL 12` (o comentário dizia "metade dos 32 GB" com 12 GB).
+- `verificar.sh`: com o contexto `desktop-linux` sem resposta, diz "abra o Docker Desktop no Windows".
+- `.gitignore`: `infra/soberania/data/`.
+
 ## [2.34.0] - 2026-11-17
 
 ### Adicionado
