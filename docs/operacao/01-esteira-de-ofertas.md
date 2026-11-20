@@ -44,7 +44,7 @@ A regra que você mesmo adotou fica gravada aqui: **validar antes de construir.*
 | Estágio | Ferramentas e agentes |
 |---|---|
 | Ideia | Catálogo em `data/portfolio.json`, pesquisa de mercado no Claude e no Perplexity, palavras-chave no vidIQ |
-| Validação | Página rápida (Lovable ou o template do Instituto AMS), checkout na Hotmart ou Kiwify, lista no MailerLite, anúncio pequeno com UTM |
+| Validação | Página rápida (Lovable ou o template do Instituto AMS Silva), checkout na Hotmart ou Kiwify, lista no MailerLite, anúncio pequeno com UTM |
 | Construção | Repositório por oferta, CI, agentes de revisão (código, texto, exercícios), Aura Design System |
 | Lançamento | Postiz com aprovação no celular, sequências de e-mail, Pixel e API de conversões, painel de lucro |
 | Escala | n8n, agentes do grupo, tráfego pago com regras de corte, dublagem, Udemy, white-label |

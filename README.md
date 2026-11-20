@@ -23,7 +23,7 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 - **[Editora AMS Silva](docs/editora/README.md)**: livros produzidos como software, com código testado, gabaritos conferidos e PDF, EPUB e impressão gerados da mesma fonte.
 - **[Implantação](docs/implantacao/README.md)**: do planejamento ao setup funcionando, com scripts de instalação, verificadores e o roteiro passo a passo.
 - **[Operação do grupo](docs/operacao/README.md)**: a esteira por onde passa toda oferta, o portfólio com 98 ofertas pontuadas e classificadas (arsenal de rendas), marca, conteúdo, automação, qualidade e a ordem de execução.
-- **[Negócios do grupo](docs/negocios/README.md)**: software, loja, robótica, ponto de retirada, entregas, delivery, sushi, cafeteria e padaria, com números, ordem de abertura e mínimo legal de cada um.
+- **[Negócios do grupo](docs/negocios/README.md)**: software, loja, robótica, ponto de retirada, entregas e delivery, com números, ordem de abertura e mínimo legal de cada um (restaurantes saíram do plano em 20/11/2026).
 - **[Marketing, vendas e automação](docs/marketing/README.md)**: funil, canais sem rosto com voz clonada, publicação no melhor horário, tráfego pago, parcerias, internacional e lucro por venda.
 - **[Segurança](docs/seguranca/README.md)**: engenharia reversa com IA, AppSec nos seus sistemas, o caminho até a AMtech Segurança (pentest com guarda de escopo e relatório CVSS) e o Jarvis.
 - **[Jarvis](docs/jarvis/README.md)**: comandos de voz para o PC, a casa (energia, água, câmeras, portas, janelas, eletrodomésticos) e os robôs, com política de risco.
@@ -47,7 +47,7 @@ flowchart TB
   L_est["14 · Estudo e carreira"]
   L_cont["13 · Produção de conteúdo"]
   L_nuvem["12 · Nuvem, código e entrega"]
-  L_app["11 · Aplicação: sistemas AM (Aura)"]
+  L_app["11 · Aplicação: AM Gestão e as suítes AM"]
   L_obs["10 · Observabilidade"]
   L_cnt["09 · Containers, Kubernetes e infra como código"]
   L_clc["08 · Claude: recursos, conectores e plugins"]
@@ -104,7 +104,7 @@ O Windows cuida só do que precisa de janela, GPU e segurança; todo o trabalho 
 | 14 | [Estudo e carreira](docs/camadas/14-est.md) | 16 | Microsoft Learn + AWS Skill Builder, TryHackMe / Hack The Box, Alura · Rocketseat · DIO · Udemy, Anki… |
 | 13 | [Produção de conteúdo](docs/camadas/13-cont.md) | 8 | OBS Studio, DaVinci Resolve ou Kdenlive, Audacity, Canva · Krita · Inkscape… |
 | 12 | [Nuvem, código e entrega](docs/camadas/12-nuvem.md) | 32 | Armazenamento de arquivos (Blob/R2), E-mail transacional (Resend, SES…), SonarQube Cloud, Projects · ADRs · MkDocs… |
-| 11 | [Aplicação: sistemas AM (Aura)](docs/camadas/11-app.md) | 26 | OpenAPI + Scalar, PostGIS + MapLibre, Storybook, Clean Arch + DDD… |
+| 11 | [Aplicação: AM Gestão e as suítes AM](docs/camadas/11-app.md) | 26 | OpenAPI + Scalar, PostGIS + MapLibre, Storybook, Clean Arch + DDD… |
 | 10 | [Observabilidade](docs/camadas/10-obs.md) | 10 | Sentry (erros), Uptime Kuma, Seq (logs), Loki + Tempo… |
 | 09 | [Containers, Kubernetes e infra como código](docs/camadas/09-cnt.md) | 16 | Caddy (proxy + HTTPS), Mailpit, Kafka, kubectl · Helm · k9s… |
 | 08 | [Claude: recursos, conectores e plugins](docs/camadas/08-clc.md) | 19 | Projects + memória, Artifacts (Docs, Slides, Sheets…), Pesquisa aprofundada, Tarefas agendadas… |
@@ -148,7 +148,7 @@ docs/
   editora/            Editora AMS Silva: pipeline dos livros, rigor, produtos e lançamento
   implantacao/        roteiro de implantação e acompanhamento (gerados)
   operacao/           esteira, portfólio, marca, conteúdo, automação, qualidade, execução
-  negocios/           os nove negócios do grupo: estrutura, ordem, números, cardápios, licenças
+  negocios/           os negócios do grupo: estrutura, ordem, números e licenças
   seguranca/          engenharia reversa, AppSec e empresa de pentest
   jarvis/             voz, casa, câmeras, energia, água, robótica e PC por comando de voz
   construcao/         construção civil, arquitetura e engenharia civil pela TI

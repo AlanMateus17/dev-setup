@@ -2,6 +2,13 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.38.0] - 2026-11-20
+
+### Alterado
+- Revisão de coerência de todos os textos escritos à mão e dos dados que geram documentos: nada mais apresenta .NET/Aura como stack principal, AM Rendara/Kaixara/Rotara como produtos separados (agora são módulos do AM Gestão), restaurantes, nove negócios, 3 CNPJs, 3 rendas "agora" ou a avaliação de IA como renda atual. ADRs, CHANGELOG e ESTADO ficam como histórico.
+- Ordem de execução (`docs/operacao/07`) reescrita com a sequência de 20/11 e a rotina real (domingo de folga; revisão no sábado). Marca e presença (`docs/operacao/02`) e `config/marca.md` com as 6 empresas.
+- Planejador do grupo sem as fases de restaurante (C1 a C3), que quebravam a página.
+
 ## [2.37.0] - 2026-11-20
 
 ### Removido

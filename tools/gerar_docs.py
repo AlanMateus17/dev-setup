@@ -343,7 +343,7 @@ def gerar_indice_docs(eco: dict, por_camada: dict) -> str:
     out.append("- [Editora AMS Silva](editora/README.md): estrutura legal, pipeline de produção dos livros, rigor editorial, identidade visual, avaliação, produtos, lançamento e roteiro")
     out.append("- [Implantação](implantacao/README.md): roteiro que cobre todos os blocos do setup, scripts que instalam e verificadores que conferem; pipeline de conteúdo e stack de automação")
     out.append("- [Operação do grupo](operacao/README.md): esteira de ofertas, portfólio pontuado, marca e presença, flywheel de conteúdo, automação, qualidade, clientes e ordem de execução")
-    out.append("- [Negócios do grupo](negocios/README.md): os nove negócios em Barbacena, estrutura de CNPJs, ordem de abertura, números, cardápios e mínimo legal")
+    out.append("- [Negócios do grupo](negocios/README.md): os negócios físicos (fase 2 da AMtech Maker e da AM Logística): estrutura de CNPJs, ordem de abertura, números e mínimo legal")
     out.append("- [Segurança](seguranca/README.md): engenharia reversa com IA, AppSec nos seus sistemas, empresa de pentest com guarda de escopo e relatório CVSS, e o Jarvis")
     out.append("- [Jarvis](jarvis/README.md): o setup e a casa por comando de voz: voz local, casa, câmeras, energia, água, robótica, PC e open source, com política de risco")
     out.append("- [Construção civil, arquitetura e engenharia civil](construcao/README.md): BIM aberto e Autodesk educacional, estudo e normas, regras da IA e as rendas pela TI")
@@ -381,7 +381,7 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
            "- **[Editora AMS Silva](docs/editora/README.md)**: livros produzidos como software, com código testado, gabaritos conferidos e PDF, EPUB e impressão gerados da mesma fonte.",
            "- **[Implantação](docs/implantacao/README.md)**: do planejamento ao setup funcionando, com scripts de instalação, verificadores e o roteiro passo a passo.",
            "- **[Operação do grupo](docs/operacao/README.md)**: a esteira por onde passa toda oferta, o portfólio com " + str(len(json.loads((RAIZ / "data" / "portfolio.json").read_text(encoding="utf-8"))["ofertas"])) + " ofertas pontuadas e classificadas (arsenal de rendas), marca, conteúdo, automação, qualidade e a ordem de execução.",
-           "- **[Negócios do grupo](docs/negocios/README.md)**: software, loja, robótica, ponto de retirada, entregas, delivery, sushi, cafeteria e padaria, com números, ordem de abertura e mínimo legal de cada um.",
+           "- **[Negócios do grupo](docs/negocios/README.md)**: software, loja, robótica, ponto de retirada, entregas e delivery, com números, ordem de abertura e mínimo legal de cada um (restaurantes saíram do plano em 20/11/2026).",
            "- **[Marketing, vendas e automação](docs/marketing/README.md)**: funil, canais sem rosto com voz clonada, publicação no melhor horário, tráfego pago, parcerias, internacional e lucro por venda.",
            "- **[Segurança](docs/seguranca/README.md)**: engenharia reversa com IA, AppSec nos seus sistemas, o caminho até a AMtech Segurança (pentest com guarda de escopo e relatório CVSS) e o Jarvis.",
            "- **[Jarvis](docs/jarvis/README.md)**: comandos de voz para o PC, a casa (energia, água, câmeras, portas, janelas, eletrodomésticos) e os robôs, com política de risco.",
@@ -432,7 +432,7 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
             "  editora/            Editora AMS Silva: pipeline dos livros, rigor, produtos e lançamento",
             "  implantacao/        roteiro de implantação e acompanhamento (gerados)",
             "  operacao/           esteira, portfólio, marca, conteúdo, automação, qualidade, execução",
-            "  negocios/           os nove negócios do grupo: estrutura, ordem, números, cardápios, licenças",
+            "  negocios/           os negócios do grupo: estrutura, ordem, números e licenças",
             "  seguranca/          engenharia reversa, AppSec e empresa de pentest",
             "  jarvis/             voz, casa, câmeras, energia, água, robótica e PC por comando de voz",
             "  construcao/         construção civil, arquitetura e engenharia civil pela TI",

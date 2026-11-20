@@ -4036,7 +4036,7 @@
   },
   {
    "id": "consultoriainv",
-   "nome": "Consultoria de investimentos (AM Rendara premium, com sócia certificada)",
+   "nome": "Consultoria de investimentos (Financeiro do AM Gestão premium, com sócia certificada)",
    "frente": "economia",
    "formato": "serviço",
    "tipo": "ativa",
@@ -4045,7 +4045,7 @@
    "receita": "mensalidade ou taxa sobre patrimônio",
    "escala": "produtizado",
    "canais": [
-    "AM Rendara"
+    "AM Gestão"
    ],
    "automatico": [
     "carteira e rebalanceamento ARCA no Rendara"

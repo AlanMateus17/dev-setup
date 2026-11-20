@@ -162,7 +162,7 @@ O que mostrar ao cliente está em [vitrines](vitrines/README.md), uma página po
 - BPO financeiro para pequenas empresas (contas, conciliação, fluxo de caixa) (fila)
 - Camisetas e canecas sob demanda (dev e professor) (fila)
 - Captação de crédito e editais para pequenos negócios (Pronampe, BDMG, Sebrae, FAPEMIG) (fila)
-- Consultoria de investimentos (AM Rendara premium, com sócia certificada) (fila)
+- Consultoria de investimentos (Financeiro do AM Gestão premium, com sócia certificada) (fila)
 - Mentoria de organização financeira e palestras em empresas (sem recomendar ativos) (fila)
 
 <a id="maker"></a>
