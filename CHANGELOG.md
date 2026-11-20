@@ -2,6 +2,14 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.36.0] - 2026-11-20
+
+### Adicionado
+- `docs/repositorios.md`: todos os repositórios do GitHub por status (ativo, estudo, revisar, arquivar), com o papel e a stack de cada um, gerado de `repos.json` por `tools/repos/repos.py` (no `just docs`, no `just check` e no CI). Link no README. O mesmo texto serve de README do perfil do GitHub.
+
+### Alterado
+- `repos.json` com acentos e o produto único escrito como AM Gestão.
+
 ## [2.35.0] - 2026-11-20
 
 ### Adicionado

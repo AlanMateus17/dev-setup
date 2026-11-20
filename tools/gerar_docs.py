@@ -374,6 +374,7 @@ def gerar_readme(eco: dict, por_camada: dict) -> str:
            "- **Comece aqui, no Windows**: extraia o zip, entre na pasta que tem `RODAR-DIAGNOSTICO.cmd` e clique com o botão direito nele > Executar como administrador. Ele só lê o notebook e diz por qual passo do roteiro começar.",
            "- **Montar tudo de uma vez**: `cd ~/dev/dev-setup && just instalar` (veja antes com `just instalar --simular`). O plano de autonomia está no [Núcleo AMtech](docs/nucleo/README.md).",
            "- **No Ubuntu, um comando só**: `cd ~/dev/dev-setup && just` lista tudo; `just check` antes de cada commit e `just triagem \"o que você quer\"` antes de construir algo novo. Ver [Empresa solo](docs/empresa-solo.md).",
+           "- **[Repositórios](docs/repositorios.md)**: todos os repositórios no GitHub, por status (ativo, estudo, revisar, arquivar), com o papel de cada um.",
            "- **[Arquitetura](docs/arquitetura.md)**: a pilha inteira, camada por camada, com o diagrama de cada uma.",
            "- **[Fluxos de ponta a ponta](docs/fluxos.md)**: codar com agente e publicar, vender um curso, publicar automaticamente, medir uma campanha e outros.",
            "- **[Editora AMS Silva](docs/editora/README.md)**: livros produzidos como software, com código testado, gabaritos conferidos e PDF, EPUB e impressão gerados da mesma fonte.",

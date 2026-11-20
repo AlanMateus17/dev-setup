@@ -72,3 +72,4 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-20: canais sem rosto = Primer Code, Bancada Dev e finanças (nome a definir; Bolso Exato ocupado).
 - 2026-11-20: CONTINUAR.md reescrito pela realidade pós-13/11 (ADR 0017 e 0018, AM Gestão, repositório público, mapa-de-estudo).
 - 2026-11-20: feito remotamente, sem o notebook ligado ao Claude: as tarefas A e B da missão de 18/11 e a receita github-sync ficaram para o notebook.
+- 2026-11-20: PRs #9 e #10 no ar (merge pedido pelo Alan); v2.36.0: docs/repositorios.md lista todos os repositórios do GitHub por status, gerado do repos.json.
