@@ -169,6 +169,10 @@ progresso empresa="":
 professor *args:
     python3 tools/professor/professor.py {{args}}
 
+# Professor × mapa-de-estudo: regrava o retrato do MAPA.md e confere (campo etapa de cada módulo)
+professor-mapa md="~/dev/mapa-de-estudo/MAPA.md":
+    python3 tools/professor/mapa.py atualizar {{md}} && python3 tools/professor/mapa.py conferir
+
 # Caderno de erros e atritos do setup (uma linha, sem abrir arquivo): just erro 0.2 "o erro" --certo "o certo" | just atrito "o que travou" --area backup
 [positional-arguments]
 erro *args:

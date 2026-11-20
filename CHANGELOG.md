@@ -2,6 +2,16 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.35.0] - 2026-11-20
+
+### Adicionado
+- Professor ligado ao mapa-de-estudo: campo `etapa` em cada um dos 49 módulos de `data/professor/curriculo.json`, apontando para um assunto do `MAPA.md`. Retrato do mapa em `data/professor/mapa-assuntos.json` (180 assuntos, gerado por `tools/professor/mapa.py`; `just professor-mapa` regrava e confere). Teste no `just check` falha se um módulo apontar para assunto inexistente ou se a ordem do Professor contrariar os pré-requisitos do mapa. Os 2 módulos de física ficam com `etapa: null` e motivo (o mapa só tem física em H6.6).
+- `data/portfolio.json`: campos `tipo` (`passiva`/`ativa`) e `onda` (0 a 3, ou null fora das ondas), seção "Ondas do plano" no portfólio e validação (só passivas nas ondas; "agora" = onda 0; "próxima" = onda 1). O antigo campo `tipo` (formato) virou `formato`.
+
+### Alterado
+- Rendas conforme a decisão de 18/11 (só passivas no plano): onda 0 = mini-curso, canais sem rosto, planilha do AM Gestão e catálogo; `max_agora` = 4; canais sem rosto = Primer Code, Bancada Dev e finanças (nome a definir); avaliação de IA descartada; sites, aulas, encomenda e laudo de sites como ativas, fora das ondas; ondas 1 a 3 preenchidas.
+- `CONTINUAR.md` reescrito com a realidade pós-13/11: stack TypeScript + Python + SQL (ADR 0017), produto único AM Gestão, repositório público, plano de estudo único (ADR 0018), mapa-de-estudo, rendas passivas × ativas e os 3 canais.
+- Ordem do Professor ajustada pelo teste: Astro aponta para 3.5 (HTML e CSS), testes do Akita para 2.4, DevOps para 3.9 e containers para 1.8, porque os assuntos mais altos do mapa contrariavam a ordem dos trimestres.
 ## [2.34.1] - 2026-11-20
 
 ### Corrigido
