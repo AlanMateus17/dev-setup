@@ -12,6 +12,14 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 - Rendas conforme a decisão de 18/11 (só passivas no plano): onda 0 = mini-curso, canais sem rosto, planilha do AM Gestão e catálogo; `max_agora` = 4; canais sem rosto = Primer Code, Bancada Dev e finanças (nome a definir); avaliação de IA descartada; sites, aulas, encomenda e laudo de sites como ativas, fora das ondas; ondas 1 a 3 preenchidas.
 - `CONTINUAR.md` reescrito com a realidade pós-13/11: stack TypeScript + Python + SQL (ADR 0017), produto único AM Gestão, repositório público, plano de estudo único (ADR 0018), mapa-de-estudo, rendas passivas × ativas e os 3 canais.
 - Ordem do Professor ajustada pelo teste: Astro aponta para 3.5 (HTML e CSS), testes do Akita para 2.4, DevOps para 3.9 e containers para 1.8, porque os assuntos mais altos do mapa contrariavam a ordem dos trimestres.
+## [2.34.1] - 2026-11-20
+
+### Corrigido
+- `padronizar-repo.sh` pula o vault do Obsidian (`~/dev/notas`, ou pasta com `PLANO-UNICO-AMtech.md`/`CARTAO-voce-esta-aqui.md`): o modelo de repositório de código tinha sido aplicado na raiz do vault.
+- `vault.sh` reconhece o vault por `PLANO-UNICO-AMtech.md` ou `CARTAO-voce-esta-aqui.md` (o Sumário Único foi para `99-arquivo/` em 13/11 e o script criava pastas modelo dentro do vault). Testes em `tools/vault/test_scripts_vault.py`.
+- `instalar.ps1`: padrão `-MemoriaWSL 20GB` e novo `-ProcessadoresWSL 12` (o comentário dizia "metade dos 32 GB" com 12 GB).
+- `verificar.sh`: com o contexto `desktop-linux` sem resposta, diz "abra o Docker Desktop no Windows".
+- `.gitignore`: `infra/soberania/data/`.
 
 ## [2.34.0] - 2026-11-17
 
