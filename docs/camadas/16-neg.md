@@ -5,7 +5,7 @@
 
 [← Arquitetura](../arquitetura.md) · [Índice da documentação](../README.md)
 
-> **Ligação com a camada de baixo:** Os nove negócios físicos e de serviço usam os sistemas AM, a frota de entregas e o mesmo caixa de medição.
+> **Ligação com a camada de baixo:** Os negócios do grupo usam o AM Gestão, a frota de entregas (quando existir) e o mesmo caixa de medição.
 
 **14 blocos** · 5 precisam de conta · 12 marcados como futuro
 
@@ -45,10 +45,10 @@ flowchart LR
   subgraph L_prod["Produtos (o que você vende)"]
     n_sites["Sites para pequenas empresas"]
   end
-  subgraph L_app["Aplicação: sistemas AM (Aura)"]
-    n_nkaix["AM Kaixara (PDV e cardápio)"]
+  subgraph L_app["Aplicação: AM Gestão e as suítes AM"]
+    n_nkaix["AM Gestão · Caixa (PDV e cardápio)"]
     n_nobra["AM Obra (diário, medição, compras)"]
-    n_nrot["AM Rotara (entregas)"]
+    n_nrot["AM Gestão · Pedidos (entregas)"]
   end
   subgraph L_obs["Observabilidade"]
     n_graf["Grafana"]
@@ -82,7 +82,7 @@ flowchart LR
   n_graf -->|"resultado real"| n_nplan
   n_radar -->|"lucro por hora"| n_painel
   n_relpent -->|"entregável"| n_nseg
-  n_erpnext -->|"referência do Kaixara"| n_nkaix
+  n_erpnext -->|"referência do AM Gestão"| n_nkaix
   classDef desta fill:#e2ecec,stroke:#0e3a45,color:#13262b
   class n_nsoft,n_nloja,n_npecas,n_nponto,n_nmaker,n_nentr,n_nflex,n_ndeliv,n_ncnpj,n_nplan,n_nanatel,n_radar,n_nseg,n_erpnext desta
 ```
@@ -104,7 +104,7 @@ flowchart LR
 | [Anatel e Inmetro](#nanatel) | Remoto · precisa de conta · futuro | Homologação de produto próprio com Wi-Fi ou Bluetooth e, se o kit for brinquedo, certificação do Inmetro. | passo 57.3 · Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026) (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
 | [Radar de revenda](#radar) | Local | Lê os alertas de busca salvos (OLX, Mercado Livre, Facebook, Estante Virtual) que chegam ao Gmail, compara com o preço de referência e avisa no Telegram só o que passa da hora mínima. Nunca compra nem fala com vendedor. | passo 11.5 · Semana 4 · nov/2026 |
 | [AMtech Segurança (pentest)](#nseg) | Remoto · futuro | Testes de segurança para empresas: laudo dos sites primeiro, pentest completo depois da OSCP, com contrato revisado, seguro e reteste. | passo 59.19 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| [ERPNext (negócios físicos)](#erpnext) | Remoto · precisa de conta | ERP aberto para os negócios físicos até o Aura cobrir e referência de mercado ao desenhar o AM Kaixara. | passo 57.8 · Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026) (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
+| [ERPNext (negócios físicos)](#erpnext) | Remoto · precisa de conta | ERP aberto para os negócios físicos até o AM Gestão cobrir e referência de mercado ao desenhar o Caixa. | passo 57.8 · Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026) (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) |
 
 <a id="nsoft"></a>
 
@@ -118,13 +118,13 @@ Software sob encomenda, sites, manutenção e SaaS AM. Primeiro CNPJ do grupo (M
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [AM Kaixara (PDV e cardápio)](11-app.md#nkaix) | Aplicação: sistemas AM (Aura) | constrói |
-| → envia para | [AM Rotara (entregas)](11-app.md#nrot) | Aplicação: sistemas AM (Aura) | constrói |
+| → envia para | [AM Gestão · Caixa (PDV e cardápio)](11-app.md#nkaix) | Aplicação: AM Gestão e as suítes AM | constrói |
+| → envia para | [AM Gestão · Pedidos (entregas)](11-app.md#nrot) | Aplicação: AM Gestão e as suítes AM | constrói |
 | ← recebe de | [Sites para pequenas empresas](17-prod.md#sites) | Produtos (o que você vende) | vira serviço da empresa |
 | ← recebe de | [2 CNPJs por frente](16-neg.md#ncnpj) | Negócios do grupo (Barbacena) | AMtech Tecnologia |
 | ← recebe de | [Esteira de ofertas](23-oper.md#oesteira) | Operação do grupo (esteira, marca, qualidade) | lança |
 | ← recebe de | [AMtech Segurança (pentest)](16-neg.md#nseg) | Negócios do grupo (Barbacena) | mesmos clientes |
-| ← recebe de | [AM Obra (diário, medição, compras)](11-app.md#nobra) | Aplicação: sistemas AM (Aura) | produto |
+| ← recebe de | [AM Obra (diário, medição, compras)](11-app.md#nobra) | Aplicação: AM Gestão e as suítes AM | produto |
 
 <a id="nloja"></a>
 
@@ -141,7 +141,7 @@ Loja de 30 a 50 m² com bancada técnica, mostruário e balcão de pacotes. Une 
 | → envia para | [Ponto de retirada (Shopee e ML)](16-neg.md#nponto) | Negócios do grupo (Barbacena) | mesmo balcão |
 | ← recebe de | [Peças sem estoque (sob encomenda)](16-neg.md#npecas) | Negócios do grupo (Barbacena) | vendidas no balcão |
 | ← recebe de | [AMtech Maker (robótica)](16-neg.md#nmaker) | Negócios do grupo (Barbacena) | usa a bancada |
-| ← recebe de | [AM Kaixara (PDV e cardápio)](11-app.md#nkaix) | Aplicação: sistemas AM (Aura) | ordens de serviço |
+| ← recebe de | [AM Gestão · Caixa (PDV e cardápio)](11-app.md#nkaix) | Aplicação: AM Gestão e as suítes AM | ordens de serviço |
 | ← recebe de | [2 CNPJs por frente](16-neg.md#ncnpj) | Negócios do grupo (Barbacena) | AMtech Tecnologia |
 | ← recebe de | [Google Perfil da Empresa](22-pub.md#ogbp) | Público e canais | presença local |
 
@@ -204,7 +204,7 @@ Automação residencial, empresarial, rural e virtual, e kits de robótica educa
 | → envia para | [Mercado Envios Flex](16-neg.md#nflex) | Negócios do grupo (Barbacena) | entrega o Flex |
 | → envia para | [AM Delivery (várias empresas)](16-neg.md#ndeliv) | Negócios do grupo (Barbacena) | frota |
 | ← recebe de | [Ponto de retirada (Shopee e ML)](16-neg.md#nponto) | Negócios do grupo (Barbacena) | vendedores da cidade |
-| ← recebe de | [AM Rotara (entregas)](11-app.md#nrot) | Aplicação: sistemas AM (Aura) | roteiriza |
+| ← recebe de | [AM Gestão · Pedidos (entregas)](11-app.md#nrot) | Aplicação: AM Gestão e as suítes AM | roteiriza |
 | ← recebe de | [2 CNPJs por frente](16-neg.md#ncnpj) | Negócios do grupo (Barbacena) | AM Logística |
 
 <a id="nflex"></a>
@@ -234,7 +234,7 @@ App de pedidos de restaurantes e lojas da cidade com comissão de 8% e entrega p
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | ← recebe de | [AM Entregas (moto e carro)](16-neg.md#nentr) | Negócios do grupo (Barbacena) | frota |
-| ← recebe de | [AM Rotara (entregas)](11-app.md#nrot) | Aplicação: sistemas AM (Aura) | app e painel |
+| ← recebe de | [AM Gestão · Pedidos (entregas)](11-app.md#nrot) | Aplicação: AM Gestão e as suítes AM | app e painel |
 
 <a id="ncnpj"></a>
 
@@ -319,13 +319,13 @@ Testes de segurança para empresas: laudo dos sites primeiro, pentest completo d
 
 *Remoto · precisa de conta*
 
-ERP aberto para os negócios físicos até o Aura cobrir e referência de mercado ao desenhar o AM Kaixara.
+ERP aberto para os negócios físicos até o AM Gestão cobrir e referência de mercado ao desenhar o Caixa.
 
 **Quando entra:** passo 57.8 · Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026) (começa quando: os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [AM Kaixara (PDV e cardápio)](11-app.md#nkaix) | Aplicação: sistemas AM (Aura) | referência do Kaixara |
+| → envia para | [AM Gestão · Caixa (PDV e cardápio)](11-app.md#nkaix) | Aplicação: AM Gestão e as suítes AM | referência do AM Gestão |
 
 ---
 

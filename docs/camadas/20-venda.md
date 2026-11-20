@@ -64,7 +64,7 @@ flowchart LR
     n_bcurso["Curso por seção"]
     n_prof["Edição do professor"]
   end
-  subgraph L_app["Aplicação: sistemas AM (Aura)"]
+  subgraph L_app["Aplicação: AM Gestão e as suítes AM"]
     n_lic["aura-licensing"]
   end
   subgraph L_clc["Claude: recursos, conectores e plugins"]
@@ -164,7 +164,7 @@ Cobrança recorrente dos sistemas AM por Pix, sem cartão. Lançado pelo Banco C
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
-| → envia para | [aura-licensing](11-app.md#lic) | Aplicação: sistemas AM (Aura) | cobrança recorrente |
+| → envia para | [aura-licensing](11-app.md#lic) | Aplicação: AM Gestão e as suítes AM | cobrança recorrente |
 | → envia para | [Conta bancária separada (CPF)](19-emp.md#banco) | Pessoa física: impostos e finanças | recebimento |
 | ← recebe de | [Agente cobrador](23-oper.md#ocob) | Operação do grupo (esteira, marca, qualidade) | Pix |
 

@@ -14,8 +14,7 @@ flowchart TB
     SW["AMtech Software<br/>AM Gestão e sites"]
     LJ["Loja AMtech<br/>assistência e peças sem estoque"]
     PR["Ponto de retirada<br/>Shopee e Mercado Livre"]
-    MK["AMtech Maker<br/>robótica e automação"]
-    CP["AMtech Campo<br/>serviços presenciais"]
+    MK["AMtech Maker<br/>robótica, automação e serviços"]
   end
   subgraph B["B · Logística (2º CNPJ)"]
     EN["AM Entregas<br/>moto, carro e marketplaces"]
@@ -26,7 +25,6 @@ flowchart TB
   SW -->|"app e painel"| DL
   LJ --- PR
   LJ --- MK
-  LJ --- CP
   PR -->|"pacotes da cidade"| EN
   EN -->|"entregadores"| DL
 ```
@@ -36,7 +34,7 @@ flowchart TB
 | # | Negócio | Frente | O que faz | Documento |
 |---|---|---|---|---|
 | 1 | AMtech Software | A | AM Gestão, sites, sistemas sob encomenda e plataformas | [01](01-software-house.md) |
-| 2 | Assistência técnica e peças (AMtech Campo) | A | Reparo, upgrade e venda de peças e acessórios sem estoque, na loja e on-line | [02](02-assistencia-e-pecas.md) |
+| 2 | Assistência técnica e peças (AMtech Maker) | A | Reparo, upgrade e venda de peças e acessórios sem estoque, na loja e on-line | [02](02-assistencia-e-pecas.md) |
 | 3 | AMtech Maker | A | Kits de robótica, automação residencial, empresarial, rural e virtual | [03](03-produtos-proprios.md) |
 | 4 | Ponto de retirada | A | Agência Shopee e Agência Mercado Livre dentro da loja | [04](04-ponto-de-retirada.md) |
 | 5 | Logística de marketplaces e entregas | B | Mercado Envios Flex, coleta para as agências, entregas de moto e carro para empresas | [05](05-logistica-e-entregas.md) |
@@ -53,7 +51,7 @@ flowchart TB
 ## Por que esta ordem
 
 1. **Tecnologia primeiro** porque é o que você já sabe fazer, cabe no seu tempo, quase não pede capital (R$ 3 mil para o software) e gera os sistemas que os outros negócios vão usar.
-2. **A loja vem logo depois** porque une três receitas em um aluguel só (assistência, peças e pacotes), vira a base física do grupo e abriga o Campo e o Maker.
+2. **A loja vem logo depois** porque une três receitas em um aluguel só (assistência, peças e pacotes), vira a base física do grupo e abriga a AMtech Maker (serviços e kits).
 3. **Logística por último** porque a loja já recebe os pacotes da cidade e conhece os vendedores locais: o Flex e a coleta nascem com clientes.
 
 ## Como os números foram feitos

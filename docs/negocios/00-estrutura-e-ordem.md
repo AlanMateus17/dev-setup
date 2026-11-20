@@ -4,11 +4,11 @@
 
 ## Dois CNPJs, não seis
 
-Abrir uma empresa por negócio multiplica contador, certificado, alvarás e declarações. Juntar tudo em uma só mistura o risco da frota de entregas com o caixa do software. O meio-termo é **um CNPJ por frente**, cada um com as atividades (CNAEs) da sua frente. Restaurantes próprios saíram do plano em 20/11/2026; Campo e Maker são linhas de renda da AMtech Tecnologia:
+Abrir uma empresa por negócio multiplica contador, certificado, alvarás e declarações. Juntar tudo em uma só mistura o risco da frota de entregas com o caixa do software. O meio-termo é **um CNPJ por frente**, cada um com as atividades (CNAEs) da sua frente. Restaurantes próprios saíram do plano em 20/11/2026; a AMtech Maker fica dentro da AMtech Tecnologia até virar empresa própria:
 
 | CNPJ | Negócios | Atividades principais (CNAE, a confirmar com o contador) | Anexo do Simples |
 |---|---|---|---|
-| **AMtech Tecnologia** | Software, loja, peças, ponto de retirada, Campo e Maker | 6201-5/01 e 6202-3/00 (software), 6203-1/00 (software não customizável), 9511-8/00 (reparação de computadores), 4751-2/01 (comércio de informática), serviços de ponto de coleta | III (Fator R), I (comércio), II (kits montados) |
+| **AMtech Tecnologia** | Software, Instituto, Mídia e a AMtech Maker (loja, peças, ponto de retirada, serviços e kits) | 6201-5/01 e 6202-3/00 (software), 6203-1/00 (software não customizável), 9511-8/00 (reparação de computadores), 4751-2/01 (comércio de informática), serviços de ponto de coleta | III (Fator R), I (comércio), II (kits montados) |
 | **AM Logística** | Entregas, Flex, delivery | 5320-2/02 (entrega rápida), 4930-2/01 (transporte municipal de carga), 7490-1/04 (intermediação, para o app) | III |
 
 Regras que pesam nessa escolha:

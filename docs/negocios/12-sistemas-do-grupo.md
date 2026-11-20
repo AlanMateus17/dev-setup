@@ -18,9 +18,9 @@ Os negócios do grupo são o primeiro cliente dos sistemas AM. Cada problema res
 
 ```mermaid
 flowchart LR
-  K["AM Kaixara<br/>vendas, OS, estoque"] --> DB[("PostgreSQL<br/>multi-tenant")]
-  R["AM Rotara<br/>entregas, pedidos"] --> DB
-  F["AM Rendara<br/>caixa, contas"] --> DB
+  K["AM Gestão · Caixa<br/>vendas, OS, estoque"] --> DB[("PostgreSQL<br/>multi-tenant")]
+  R["AM Gestão · Pedidos<br/>entregas, pedidos"] --> DB
+  F["AM Gestão · Financeiro<br/>caixa, contas"] --> DB
   B["Bancos e adquirentes<br/>extratos"] --> F
   DB --> G["Painel do grupo<br/>Grafana"]
   G --> P["Portões entre fases<br/>decididos por número"]
@@ -44,7 +44,7 @@ Cada negócio é um tenant. O painel do grupo lê todos, com permissão só para
 
 ## Fechamento do mês
 
-1. Extratos conciliados no AM Rendara (o banco é a verdade).
+1. Extratos conciliados no Financeiro do AM Gestão (o banco é a verdade).
 2. Inventário da loja e do Maker.
 3. DRE por negócio: receita, variáveis, impostos, margem, fixos, lucro.
 4. Comparação com o cenário de [Números](numeros.md) e atualização do `data/negocios.json` com o realizado.

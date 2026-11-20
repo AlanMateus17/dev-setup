@@ -135,7 +135,7 @@ Só rendas passivas entram nas ondas (decisão de 18/11). Onda 0 = agora; a onda
 | Formação em Matemática | AMtech Educação · Instituto AMS | Passiva | 85% | 13 | Depende do livro pronto. |
 | Curso de finanças pessoais (conteúdo próprio) | AMtech Educação · Instituto AMS | Passiva | 85% | 13 | Cuidado regulatório (não recomendar ativo); depois da planilha validar. |
 | Plugin WordPress com versão Pro | AMtech Software | Passiva | 75% | 13 | Suporte contínuo; o problema tem que vir dos clientes. |
-| Consultoria de investimentos (AM Rendara premium, com sócia certificada) | AMtech Economia (finanças e empreendedorismo) | Ativa que vale a pena | 30% | 13 | Portão regulatório: recomendar ativos exige certificação e registro na CVM. Sem isso, não existe. |
+| Consultoria de investimentos (Financeiro do AM Gestão premium, com sócia certificada) | AMtech Economia (finanças e empreendedorismo) | Ativa que vale a pena | 30% | 13 | Portão regulatório: recomendar ativos exige certificação e registro na CVM. Sem isso, não existe. |
 | Licença do ByteSDCoin para escolas (sem aposta) | AMtech Educação · Instituto AMS | Passiva | 60% | 12 | Precisa de revisão jurídica; demanda ainda não testada. |
 | Traduções do livro | Editora AMS Silva (pausada; livros em estruturação) | Passiva | 80% | 11 | Depois do livro vender em português. |
 | Bug bounty e pentest | AMtech Digital (serviços remotos e B2B) | Ativa | 10% | 11 | Portão: eJPT e laboratórios. Renda irregular; vale pelo histórico que abre a AMtech Segurança. |
@@ -306,7 +306,7 @@ Primeiro as que destravam as rendas de agora e as próximas; depois as que destr
 | AM Entregas | Decidir depois (capital alto) | 30% | Estoque, ordem de serviço e parceiros, CRM, proposta, contrato e cobrança |
 | Assistência técnica | Decidir depois (capital alto) | 30% | Estoque, ordem de serviço e parceiros, CRM, proposta, contrato e cobrança, Registro de horas |
 | Aulas particulares | Fila com portão | 30% | Agenda com pagamento antecipado e lembretes, CRM, proposta, contrato e cobrança, Estudo vira produto, Registro de horas |
-| Consultoria de investimentos (AM Rendara premium, com sócia certificada) | Fila com portão | 30% | CRM, proposta, contrato e cobrança, Cobrança recorrente e controle de acesso, Cascata e ARCA |
+| Consultoria de investimentos (Financeiro do AM Gestão premium, com sócia certificada) | Fila com portão | 30% | CRM, proposta, contrato e cobrança, Cobrança recorrente e controle de acesso, Cascata e ARCA |
 | Fotos de produto para lojas do Mercado Livre | Descartar | 30% | CRM, proposta, contrato e cobrança |
 | Freela internacional em dólar (Upwork) | Fila com portão | 30% | CRM, proposta, contrato e cobrança, Registro de horas |
 | Implantação de ficha técnica e engenharia de cardápio | 2027, se a tarde ficar livre | 30% | CRM, proposta, contrato e cobrança, Agenda com pagamento antecipado e lembretes, Registro de horas |
@@ -362,7 +362,7 @@ Primeiro as que destravam as rendas de agora e as próximas; depois as que destr
 | 31 | [Laudo de segurança dos sites que você mantém](../seguranca/03-empresa-de-pentest.md) · **nova** | AMtech Software | Ideia | Produtizado | 13 | Ensaiar o serviço completo no seu próprio site (escopo, testes, relatório) | passo 59.16 · Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
 | 32 | Monetização das plataformas (YouTube, Instagram) | AMtech Mídia | Ideia | Digital | 13 | Consequência dos canais; não é meta em si | passo 47.9 · A partir de fev/2027 |
 | 33 | Templates Next.js/Tailwind em inglês · **nova** | AMtech Software | Ideia | Digital | 13 | Publicar 1 template a partir do Aura Design System | passo 46.20 · Fev a dez/2027, uma oferta por vez |
-| 34 | Templates e código-fonte | AMtech Educação · Instituto AMS | Validação | Digital | 13 | Empacotar o primeiro frontend já pronto com documentação | passo 41.7 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Rendara (módulo o-dotnet do Professor) e ganha testes e qualidade até o MVP |
+| 34 | Templates e código-fonte | AMtech Educação · Instituto AMS | Validação | Digital | 13 | Empacotar o primeiro frontend já pronto com documentação | passo 41.7 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Gestão (módulo o-dotnet do Professor, hoje um projeto TypeScript) e ganha testes e qualidade até o MVP |
 | 35 | AM Gestão SaaS: Kaixara (PDV, ficha técnica, cardápio) | AMtech Software | Construção | Digital | 12 | Rodar primeiro num cliente piloto pagante | passo 51.2 · 2027 |
 | 36 | AM Mentor: banco de exercícios com correção | AMtech Educação · Instituto AMS | Ideia | Digital | 12 | Começar com o Capítulo 1 do livro em YAML | passo 46.13 · Fev a dez/2027, uma oferta por vez |
 | 37 | [AMtech OS (sistema pronto para programar, baseado em Ubuntu)](../../os/README.md) · **nova** | AMtech Software | Construção | Digital | 12 | Testar a versão 0.1 numa VM por uma semana (os/README.md) | passo 48.5 · Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso |
@@ -406,7 +406,7 @@ Primeiro as que destravam as rendas de agora e as próximas; depois as que destr
 | 75 | [Automação e monitoramento para sítios e produtores (AMtech Campo)](../ia/hugging-face.md) · **nova** | AMtech Maker (software primeiro: robótica, automação, serviços presenciais e loja) | Ideia | Local | 8 | Irrigação da horta e bebedouro funcionando na sua casa por 3 meses, com o painel | passo 61.16 · Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino |
 | 76 | Avaliação de respostas de IA (DataAnnotation, Outlier) · **nova** | AMtech Digital (serviços remotos e B2B) | Ideia | Local | 8 | Fazer o cadastro e o teste de entrada (quem pede pagamento para você entrar é golpe) | passo 11.3 · Semana 4 · nov/2026 |
 | 77 | Colônia de férias tech (robótica e programação) · **nova** | AMtech Educação · Instituto AMS | Ideia | Local | 8 | Só em 2027, em janeiro ou julho | passo 57.6 · Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026) |
-| 78 | Consultoria de investimentos (AM Rendara premium, com sócia certificada) · **nova** | AMtech Economia (finanças e empreendedorismo) | Ideia | Produtizado | 8 | Só quando a sócia estiver certificada e registrada | passo 58.5 · Contínuo, desde a semana 2 |
+| 78 | Consultoria de investimentos (Financeiro do AM Gestão premium, com sócia certificada) · **nova** | AMtech Economia (finanças e empreendedorismo) | Ideia | Produtizado | 8 | Só quando a sócia estiver certificada e registrada | passo 58.5 · Contínuo, desde a semana 2 |
 | 79 | Edição de vídeo para lojas e criadores · **nova** | AMtech Digital (serviços remotos e B2B) | Ideia | Produtizado | 8 | Nenhum: a IA de corte fica só no seu canal | passo 11.8 · Semana 4 · nov/2026 |
 | 80 | Kits e placas de robótica (Tindie e Mercado Livre) · **nova** | AMtech Maker (software primeiro: robótica, automação, serviços presenciais e loja) | Ideia | Produtizado | 8 | Validar 1 kit com pré-venda | passo 57.7 · Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026) |
 | 81 | Licença do ByteSDCoin para escolas (sem aposta) · **nova** | AMtech Educação · Instituto AMS | Ideia | Produtizado | 8 | Revisão jurídica e um piloto em outra escola | passo 46.20 · Fev a dez/2027, uma oferta por vez |
@@ -485,7 +485,7 @@ Ideias que nasceram do cruzamento entre os negócios, as aulas, o livro e o setu
 | Automação e monitoramento para sítios e produtores (AMtech Campo) | Casa inteligente para clientes (Home Assistant) | instalação + mensalidade do painel | Irrigação da horta e bebedouro funcionando na sua casa por 3 meses, com o painel | 8 |
 | Avaliação de respostas de IA (DataAnnotation, Outlier) | — | por hora, em dólar | Fazer o cadastro e o teste de entrada (quem pede pagamento para você entrar é golpe) | 8 |
 | Colônia de férias tech (robótica e programação) | Oficinas de robótica e programação para escolas | por semana | Só em 2027, em janeiro ou julho | 8 |
-| Consultoria de investimentos (AM Rendara premium, com sócia certificada) | Planilha do AM Gestão (finanças) | mensalidade ou taxa sobre patrimônio | Só quando a sócia estiver certificada e registrada | 8 |
+| Consultoria de investimentos (Financeiro do AM Gestão premium, com sócia certificada) | Planilha do AM Gestão (finanças) | mensalidade ou taxa sobre patrimônio | Só quando a sócia estiver certificada e registrada | 8 |
 | Edição de vídeo para lojas e criadores | — | por vídeo | Nenhum: a IA de corte fica só no seu canal | 8 |
 | Kits e placas de robótica (Tindie e Mercado Livre) | AMtech Maker (robótica e automação) | margem por kit | Validar 1 kit com pré-venda | 8 |
 | Licença do ByteSDCoin para escolas (sem aposta) | — | licença anual | Revisão jurídica e um piloto em outra escola | 8 |
@@ -816,7 +816,7 @@ flowchart LR
 | Mentoria de organização financeira e palestras em empresas (sem recomendar ativos) | por pacote ou palestra | diagnóstico pelo Caixa da Casa, material e planilha da cascata | encontros e palestras | R$ por hora sua |
 | BPO financeiro para pequenas empresas (contas, conciliação, fluxo de caixa) | mensalidade | importação de extratos e conciliação, fluxo de caixa e alertas, relatório mensal | conferir exceções, reunião mensal curta | contratos mensais |
 | Captação de crédito e editais para pequenos negócios (Pronampe, BDMG, Sebrae, FAPEMIG) | taxa + êxito | busca semanal de editais e linhas de crédito, documentos e projeções pelo plano de negócios | montar a proposta com o cliente | propostas aprovadas |
-| Consultoria de investimentos (AM Rendara premium, com sócia certificada) | mensalidade ou taxa sobre patrimônio | carteira e rebalanceamento ARCA no Rendara | a recomendação, feita por quem tem a certificação | clientes ativos |
+| Consultoria de investimentos (Financeiro do AM Gestão premium, com sócia certificada) | mensalidade ou taxa sobre patrimônio | carteira e rebalanceamento ARCA no Rendara | a recomendação, feita por quem tem a certificação | clientes ativos |
 
 ### Patrimônio (investimentos)
 
