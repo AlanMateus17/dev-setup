@@ -66,3 +66,4 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-17: v2.32: Biblioteca (just livros) e registro de leitura no vault; comprar o Código (Petzold, Bookman 2023) antes do 0.4.
 - 2026-11-17: v2.33: just erro / just atrito (caderno de erros e atritos do setup no vault, ADR 0020).
 - 2026-11-17: v2.34: just diag, just ficha e just colher (o estudo vira aula, livro, minicurso, Anki e banco de exercícios de uma vez, ADR 0021).
+- 2026-11-20: v2.34.1 (PR rascunho setup/2026-11-18-correcoes): padronizar-repo.sh pula o vault, vault.sh reconhece PLANO-UNICO/Cartão, instalar.ps1 com 20GB e 12 processadores, aviso do Docker Desktop, .gitignore da soberania. github-sync fica para o notebook (arquivos só existem lá).
