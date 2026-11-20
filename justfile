@@ -56,6 +56,7 @@ docs:
     python3 tools/akita/akita.py docs
     python3 tools/biblioteca/biblioteca.py docs
     python3 tools/nucleo/agenda.py rapido --doc
+    python3 tools/repos/repos.py
     python3 tools/vault/espelho.py --se-existir
 
 # O portão antes de cada commit: dados, documentação gerada, testes e segredos (o mesmo que o CI confere)
@@ -76,6 +77,7 @@ check:
     python3 tools/akita/akita.py docs --check
     python3 tools/biblioteca/biblioteca.py docs --check
     python3 tools/nucleo/agenda.py rapido --check
+    python3 tools/repos/repos.py --check
     python3 -m unittest discover -s tools -p "test_gerar_docs.py" -q
     for d in tools/*/; do if ls "$d"test_*.py >/dev/null 2>&1; then python3 -m unittest discover -s "$d" -q; fi; done
     if command -v gitleaks >/dev/null; then gitleaks git --no-banner -v . >/dev/null; else echo "gitleaks ausente: rode o bootstrap"; fi
@@ -251,3 +253,7 @@ pedir texto:
 # Pedidos da fila e se o Claude está em pausa por limite
 fila:
     python3 tools/remoto/fila.py listar
+
+# Vitrine para clientes: copia docs/vitrines/EMPRESA.md como README do repositório público da empresa (ex.: just vitrine software ~/dev/amtech-software)
+vitrine EMPRESA DESTINO:
+    test -f docs/vitrines/{{EMPRESA}}.md && test -d {{DESTINO}}/.git && cp docs/vitrines/{{EMPRESA}}.md {{DESTINO}}/README.md && echo "README da vitrine copiado; revise, faça o commit e o push em {{DESTINO}}"

@@ -2,7 +2,7 @@
 
 [← Índice da documentação](../README.md)
 
-Os negócios do Grupo AMtech Digital em Barbacena, em duas frentes que se alimentam: a tecnologia constrói os sistemas e abre a loja; a logística entrega para a loja e para os vendedores da cidade. **Restaurantes próprios (sushi, cafeteria e padaria) saíram do plano em 20/11/2026.** Campo, Maker e AM Logística começam como **software primeiro** (vendido pela AMtech Software) e só viram empresa própria quando o software provar demanda: ver [Empresas do grupo](../empresas.md). Os números abaixo valem para quando cada uma virar empresa.
+Os negócios do Grupo AMtech Digital em Barbacena, em duas frentes que se alimentam: a tecnologia constrói os sistemas e abre a loja; a logística entrega para a loja e para os vendedores da cidade. **Restaurantes próprios (sushi, cafeteria e padaria) saíram do plano em 20/11/2026.** A AMtech Maker (com o antigo Campo) e a AM Logística começam como **software primeiro** (vendido pela AMtech Software) e só viram empresa própria quando o software provar demanda: ver [Empresas do grupo](../empresas.md). Os números abaixo valem para quando cada uma virar empresa.
 
 > **Antes de tudo:** os cinco juntos pedem cerca de **R$ 190 mil** de capital mínimo (ver [Números](numeros.md)), mais gente de confiança para tocar cada operação. Este plano abre um por vez, e só passa ao próximo quando o anterior se paga. Cada ponto legal e tributário aqui precisa ser confirmado por contador e advogado antes de assinar qualquer coisa.
 

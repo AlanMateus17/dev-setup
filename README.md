@@ -16,12 +16,13 @@ Arquitetura completa do meu ambiente de desenvolvimento e de trabalho: do hardwa
 - **Comece aqui, no Windows**: extraia o zip, entre na pasta que tem `RODAR-DIAGNOSTICO.cmd` e clique com o botão direito nele > Executar como administrador. Ele só lê o notebook e diz por qual passo do roteiro começar.
 - **Montar tudo de uma vez**: `cd ~/dev/dev-setup && just instalar` (veja antes com `just instalar --simular`). O plano de autonomia está no [Núcleo AMtech](docs/nucleo/README.md).
 - **No Ubuntu, um comando só**: `cd ~/dev/dev-setup && just` lista tudo; `just check` antes de cada commit e `just triagem "o que você quer"` antes de construir algo novo. Ver [Empresa solo](docs/empresa-solo.md).
-- **[Empresas do grupo](docs/empresas.md)**: as 7 empresas (ativas, pausada e software primeiro) e todos os produtos de cada uma.
+- **[Empresas do grupo](docs/empresas.md)**: as 6 empresas, os produtos principais de cada uma (com componentes e pacotes), a sequência e as [vitrines para clientes](docs/vitrines/README.md).
+- **[Repositórios](docs/repositorios.md)**: todos os repositórios no GitHub, por empresa e por status, com o papel de cada um.
 - **[Arquitetura](docs/arquitetura.md)**: a pilha inteira, camada por camada, com o diagrama de cada uma.
 - **[Fluxos de ponta a ponta](docs/fluxos.md)**: codar com agente e publicar, vender um curso, publicar automaticamente, medir uma campanha e outros.
 - **[Editora AMS Silva](docs/editora/README.md)**: livros produzidos como software, com código testado, gabaritos conferidos e PDF, EPUB e impressão gerados da mesma fonte.
 - **[Implantação](docs/implantacao/README.md)**: do planejamento ao setup funcionando, com scripts de instalação, verificadores e o roteiro passo a passo.
-- **[Operação do grupo](docs/operacao/README.md)**: a esteira por onde passa toda oferta, o portfólio com 102 ofertas pontuadas e classificadas (arsenal de rendas), marca, conteúdo, automação, qualidade e a ordem de execução.
+- **[Operação do grupo](docs/operacao/README.md)**: a esteira por onde passa toda oferta, o portfólio com 98 ofertas pontuadas e classificadas (arsenal de rendas), marca, conteúdo, automação, qualidade e a ordem de execução.
 - **[Negócios do grupo](docs/negocios/README.md)**: software, loja, robótica, ponto de retirada, entregas, delivery, sushi, cafeteria e padaria, com números, ordem de abertura e mínimo legal de cada um.
 - **[Marketing, vendas e automação](docs/marketing/README.md)**: funil, canais sem rosto com voz clonada, publicação no melhor horário, tráfego pago, parcerias, internacional e lucro por venda.
 - **[Segurança](docs/seguranca/README.md)**: engenharia reversa com IA, AppSec nos seus sistemas, o caminho até a AMtech Segurança (pentest com guarda de escopo e relatório CVSS) e o Jarvis.

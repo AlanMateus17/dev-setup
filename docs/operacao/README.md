@@ -10,7 +10,7 @@ Nada é vendido sem ter passado pela esteira; nada é feito uma vez só: cada tr
 
 ```mermaid
 flowchart LR
-  C["Catálogo único<br/>102 ofertas pontuadas<br/>arsenal com vereditos"] --> E["Esteira<br/>ideia → validação → construção<br/>→ lançamento → escala"]
+  C["Catálogo único<br/>98 ofertas pontuadas<br/>arsenal com vereditos"] --> E["Esteira<br/>ideia → validação → construção<br/>→ lançamento → escala"]
   E --> Q["Padrão de qualidade<br/>por tipo de oferta"]
   Q --> V["Venda e entrega"]
   V --> D["Clientes e dados<br/>CRM único, LGPD"]

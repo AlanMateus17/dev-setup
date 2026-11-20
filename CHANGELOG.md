@@ -12,12 +12,28 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 - Livros da Editora (`data/livros.json` → `docs/editora/livros.md`, `tools/editora/livros.py`): *Lógica e Máquina* em 6 volumes, 52 capítulos ligados aos assuntos do mapa-de-estudo, com estado (notas, rascunho, escrito, revisado). Regra: o texto é do Alan, a partir das notas dele.
 
 ### Adicionado (empresas)
-- `data/empresas.json` → `docs/empresas.md` (`tools/empresas/empresas.py`): as 7 empresas do grupo com os produtos de cada uma; Maker, Campo (com a loja e o ponto de retirada) e AM Logística como "software primeiro, empresa depois", com fase 1, fase 2 e gatilho. O CI recusa frente ou oferta sem empresa. Frente `fisico` virou `logistica`.
+- `data/empresas.json` → `docs/empresas.md` (`tools/empresas/empresas.py`): as 6 empresas do grupo, cada uma com produtos principais no raciocínio do AM Gestão (componentes + pacotes), a sequência por etapa e as ofertas que sobram fora dos produtos (candidatas a corte). AMtech Maker (Maker + Campo, com a loja e o ponto de retirada) e AM Logística como "software primeiro, empresa depois", com fase 1, fase 2 e gatilho. O CI recusa frente sem empresa, componente inexistente, de outra empresa ou em dois produtos. Frente `fisico` virou `logistica`; a frente `maker` voltou para `campo`, agora AMtech Maker.
+- Vitrines para clientes (`docs/vitrines/`, uma por empresa): para quem é, o problema, como cada produto resolve e os pacotes, sem número interno; `just vitrine EMPRESA DESTINO` copia como README do repositório público.
+- `repos.json` com empresa e visibilidade de cada repositório e os repositórios planejados (4 de produto e 6 vitrines); `docs/repositorios.md` agrupado por empresa. Inclui o PR #11 (página dos repositórios).
+
+### Removido (revendas)
+- Revenda de notebooks, celulares, livros e peças (renda ativa de margem baixa e com estoque) e a automação do radar de revenda.
 
 ### Alterado
 - Campo e Maker como linhas de renda do Grupo AMtech (frente nova `maker` no portfólio; Maker, kits, aluguel de kits e oficinas mudam para ela). Editora marcada como pausada.
 - Ferramenta "Stack Aura (.NET + Next.js)" dos softwares virou "Stack AM (TypeScript + Next.js + PostgreSQL)", pela ADR 0017.
 - CONTINUAR.md com as decisões de 20/11.
+## [2.36.0] - 2026-11-20
+
+### Adicionado
+- `docs/repositorios.md`: todos os repositórios do GitHub por status (ativo, estudo, revisar, arquivar), com o papel e a stack de cada um, gerado de `repos.json` por `tools/repos/repos.py` (no `just docs`, no `just check` e no CI). Link no README. O mesmo texto serve de README do perfil do GitHub.
+
+### Alterado
+- `repos.json` com acentos e o produto único escrito como AM Gestão; `codigo-c-` (só PDFs de aula) e `instala-o-do-S.O-windows-pendrive` (vazio) passam para **revisar**.
+
+### Corrigido
+- `tools/vault/espelho.py` reconhece o vault também por `PLANO-UNICO-AMtech.md` ou `CARTAO-voce-esta-aqui.md` (o Sumário Único foi para `99-arquivo/` em 13/11), como o `vault.sh` da v2.34.1. Com teste.
+- Modelo `repo-padrao`: o CI de qualidade usava `aquasecurity/trivy-action@0.28.0`, tag que não existe; agora as três ações (checkout, gitleaks e trivy) são fixadas por commit, como o próprio Semgrep do modelo exige. Os 4 repositórios padronizados hoje recebem a mesma correção.
 
 ## [2.35.0] - 2026-11-20
 

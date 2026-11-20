@@ -8,7 +8,7 @@
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
-**Todo o planejamento está aqui:** os 481 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 102 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
+**Todo o planejamento está aqui:** os 481 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 98 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
 **Dá para fazer hoje:** 450 dos 573 passos (632 h 33 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
@@ -1176,7 +1176,6 @@ cd ~/dev/dev-setup && claude "Passo ar-radar do roteiro: Criar as buscas salvas 
 
 - [ ] **Pronto quando:** Radar avisa no Telegram só itens acima da hora mínima, com checklist antigolpe
 - Lê só a pasta de alertas do Gmail. Não raspa sites que proíbem coleta, não compra e não fala com vendedor.
-- **Oferta:** Notebooks e PCs: comprar, consertar e revender · Celulares: comprar, consertar e revender · Livros técnicos e didáticos usados · Peças de máquinas sucateadas (RAM, SSD, placas)
 - Implanta: Radar de revenda
 
 ### 11.6 Retorno por hora de cada marca no painel
