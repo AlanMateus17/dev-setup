@@ -9,8 +9,8 @@ Tudo o que existe no GitHub, agrupado por status, com o papel de cada repositór
 | Status | Quantos |
 |---|---:|
 | Ativos: em uso agora | 6 |
-| Estudo: material e exercícios | 3 |
-| A revisar: decidir se mantém ou funde | 1 |
+| Estudo: material e exercícios | 1 |
+| A revisar: decidir se mantém ou funde | 3 |
 | Arquivar: estudo concluído | 2 |
 
 ## Ativos: em uso agora
@@ -28,8 +28,6 @@ Tudo o que existe no GitHub, agrupado por status, com o papel de cada repositór
 
 | Repositório | Para que serve | Stack |
 |---|---|---|
-| [codigo-c-](https://github.com/AlanMateus17/codigo-c-) | Exercícios em C. Fila de estudo de baixo nível (trilha de SO e robótica) | C |
-| [instala-o-do-S.O-windows-pendrive](https://github.com/AlanMateus17/instala-o-do-S.O-windows-pendrive) | Tutorial de instalação de sistema operacional. Material de aula (trilha de SO) | Markdown |
 | [ebooks_financas](https://github.com/AlanMateus17/ebooks_financas) | Material de finanças. Insumo para infoprodutos | PDF/Markdown |
 
 ## A revisar: decidir se mantém ou funde
@@ -37,6 +35,8 @@ Tudo o que existe no GitHub, agrupado por status, com o papel de cada repositór
 | Repositório | Para que serve | Stack |
 |---|---|---|
 | [catalogo-plataforma](https://github.com/AlanMateus17/catalogo-plataforma) | A confirmar com o Alan: provavelmente catálogo ou plataforma de cursos (Instituto AMS). Revisar e decidir se mantém ou funde | a confirmar |
+| [codigo-c-](https://github.com/AlanMateus17/codigo-c-) | O nome diz C, mas hoje só tem 3 PDFs de aula (Aula 21 de Lógica e de SO, prática de sensores), sem código. Proposta: levar os PDFs para o ensino-ti e arquivar | PDF |
+| [instala-o-do-S.O-windows-pendrive](https://github.com/AlanMateus17/instala-o-do-S.O-windows-pendrive) | Repositório vazio, sem nenhum commit. Proposta: arquivar ou apagar (decisão do Alan) | — |
 
 ## Arquivar: estudo concluído
 

@@ -71,18 +71,18 @@
     },
     {
       "nome": "codigo-c-",
-      "papel": "Exercícios em C. Fila de estudo de baixo nível (trilha de SO e robótica)",
-      "status": "estudo",
+      "papel": "O nome diz C, mas hoje só tem 3 PDFs de aula (Aula 21 de Lógica e de SO, prática de sensores), sem código. Proposta: levar os PDFs para o ensino-ti e arquivar",
+      "status": "revisar",
       "stack": [
-        "C"
+        "PDF"
       ]
     },
     {
       "nome": "instala-o-do-S.O-windows-pendrive",
-      "papel": "Tutorial de instalação de sistema operacional. Material de aula (trilha de SO)",
-      "status": "estudo",
+      "papel": "Repositório vazio, sem nenhum commit. Proposta: arquivar ou apagar (decisão do Alan)",
+      "status": "revisar",
       "stack": [
-        "Markdown"
+        "—"
       ]
     },
     {
