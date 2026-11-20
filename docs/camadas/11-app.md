@@ -58,13 +58,10 @@ flowchart LR
   end
   subgraph L_neg["Negócios do grupo (Barbacena)"]
     n_erpnext["ERPNext (negócios físicos)"]
-    n_ncafe["Cafeteria"]
     n_ndeliv["AM Delivery (várias empresas)"]
     n_nentr["AM Entregas (moto e carro)"]
     n_nloja["Loja AMtech (assistência)"]
-    n_npad["Padaria + café da manhã + almoço"]
     n_nsoft["AMtech Software (projetos e SaaS)"]
-    n_nsushi["Sushi (delivery)"]
   end
   subgraph L_est["Estudo e carreira"]
     n_refarq["Repositórios de referência"]
@@ -181,9 +178,6 @@ flowchart LR
   n_dbot -->|"alertas"| n_status
   n_jarvis -->|"painel (HUD)"| n_status
   n_nkaix -->|"ordens de serviço"| n_nloja
-  n_nkaix -->|"PDV e ficha técnica"| n_nsushi
-  n_nkaix -->|"PDV"| n_ncafe
-  n_nkaix -->|"PDV e previsão"| n_npad
   n_nkaix -->|"vendas do dia"| n_caixa
   n_nsoft -->|"constrói"| n_nkaix
   n_saas -->|"vende por assinatura"| n_nkaix
@@ -521,9 +515,6 @@ PDV, comandas, ordem de serviço, estoque, ficha técnica e engenharia de cardá
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
 | → envia para | [Loja AMtech (assistência)](16-neg.md#nloja) | Negócios do grupo (Barbacena) | ordens de serviço |
-| → envia para | [Sushi (delivery)](16-neg.md#nsushi) | Negócios do grupo (Barbacena) | PDV e ficha técnica |
-| → envia para | [Cafeteria](16-neg.md#ncafe) | Negócios do grupo (Barbacena) | PDV |
-| → envia para | [Padaria + café da manhã + almoço](16-neg.md#npad) | Negócios do grupo (Barbacena) | PDV e previsão |
 | → envia para | [Caixa da Casa / AM Rendara](19-emp.md#caixa) | Pessoa física: impostos e finanças | vendas do dia |
 | ← recebe de | [AMtech Software (projetos e SaaS)](16-neg.md#nsoft) | Negócios do grupo (Barbacena) | constrói |
 | ← recebe de | [Sistemas AM (SaaS)](17-prod.md#saas) | Produtos (o que você vende) | vende por assinatura |

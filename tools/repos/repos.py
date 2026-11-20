@@ -16,8 +16,11 @@ RAIZ = Path(__file__).resolve().parents[2]
 DADOS = RAIZ / "repos.json"
 SAIDA = RAIZ / "docs" / "repositorios.md"
 DONO = "AlanMateus17"
-STATUS = {"ativo": "Ativos: em uso agora", "estudo": "Estudo: material e exercícios",
+STATUS = {"planejado": "Planejados: criar quando a vez chegar", "ativo": "Ativos: em uso agora", "estudo": "Estudo: material e exercícios",
           "revisar": "A revisar: decidir se mantém ou funde", "arquivar": "Arquivar: estudo concluído"}
+EMPRESAS_REPO = {"grupo": "Grupo (operação e estudo)", "software": "AMtech Software", "instituto": "Instituto AMS Silva",
+                 "midia": "AMtech Mídia", "maker": "AMtech Maker", "logistica": "AM Logística", "editora": "Editora AMS Silva",
+                 "pessoal": "Pessoal"}
 AVISO = "<!-- Arquivo GERADO por tools/repos/repos.py a partir de repos.json. Não edite à mão. -->\n"
 
 
@@ -30,6 +33,8 @@ def validar(d: dict) -> list[str]:
             erros.append(f"{r['nome']}: status inválido {r.get('status')}")
         if not str(r.get("papel", "")).strip():
             erros.append(f"{r['nome']}: sem papel")
+        if r.get("empresa") not in EMPRESAS_REPO:
+            erros.append(f"{r['nome']}: empresa inválida {r.get('empresa')}")
     return erros
 
 
@@ -40,20 +45,18 @@ def link(nome: str) -> str:
 
 def gerar(d: dict) -> str:
     o = [AVISO, "# Repositórios do Alan Mateus\n",
-         "Tudo o que existe no GitHub, agrupado por status, com o papel de cada repositório no plano. "
+         "Tudo o que existe no GitHub e o que vai ser criado, por empresa, com o papel, o status e a visibilidade de cada repositório. "
          "Fonte: [`repos.json`](../repos.json); o plano em si está no `PLANO-UNICO-AMtech.md` do vault.\n",
          f"**Núcleo da stack:** {', '.join(d['nucleo_stack'])}. **Reserva:** {', '.join(d['reserva'])}.\n",
          "| Status | Quantos |\n|---|---:|"]
     o += [f"| {t} | {sum(r['status'] == k for r in d['repos'])} |" for k, t in STATUS.items()]
     o.append("")
-    for k, t in STATUS.items():
-        g = [r for r in d["repos"] if r["status"] == k]
-        if not g:
-            continue
-        o.append(f"## {t}\n")
-        o.append("| Repositório | Para que serve | Stack |\n|---|---|---|")
-        o += [f"| {link(r['nome'])} | {r['papel'].replace('|', '/')} | {', '.join(r['stack'])} |" for r in g]
-        o.append("")
+    o.append("## Por empresa\n")
+    o.append("| Empresa | Repositório | Para que serve | Status | Visibilidade |\n|---|---|---|---|---|")
+    for k, t in EMPRESAS_REPO.items():
+        for r in [r for r in d["repos"] if r["empresa"] == k]:
+            o.append(f"| {t} | {link(r['nome'])} | {r['papel'].replace('|', '/')} | {r['status']} | {r.get('visibilidade', '—')} |")
+    o.append("")
     p = d.get("produto_unico")
     if p:
         o.append(f"## Produto único: {p['nome']}\n")

@@ -18,7 +18,7 @@ flowchart TB
 
 - **Você é o guarda-chuva.** A sua história (do primeiro emprego como sushiman à sala de aula e ao código) é o que nenhum concorrente copia. Conte o quanto quiser; é escolha sua o que fica privado.
 - **Instituto AMS, Editora AMS Silva e AMtech** são as marcas de produto. Cada uma tem página e perfil, mas todas apontam para você e entre si.
-- **Os negócios locais** têm nome próprio (o cliente do sushi não precisa saber de SaaS) com o endosso discreto "um negócio Grupo AMtech" no site e no rodapé.
+- **Os negócios locais** têm nome próprio (o cliente da assistência não precisa saber de SaaS) com o endosso discreto "um negócio Grupo AMtech" no site e no rodapé.
 - **Canais sem rosto** têm marca temática (ex.: lógica, matemática, finanças) e levam ao Instituto AMS. Rótulo de conteúdo feito com IA sempre que a plataforma pedir.
 
 ## O papel de cada canal

@@ -37,7 +37,7 @@
 - [19 · Pessoa física: impostos e finanças](camadas/19-emp.md) (21 blocos)
 - [18 · Vitrine web (sites e domínio)](camadas/18-web.md) (15 blocos)
 - [17 · Produtos (o que você vende)](camadas/17-prod.md) (8 blocos)
-- [16 · Negócios do grupo (Barbacena)](camadas/16-neg.md) (19 blocos)
+- [16 · Negócios do grupo (Barbacena)](camadas/16-neg.md) (14 blocos)
 - [15 · Editora AMS Silva (produção de livros)](camadas/15-editora.md) (36 blocos)
 - [14 · Estudo e carreira](camadas/14-est.md) (16 blocos)
 - [13 · Produção de conteúdo](camadas/13-cont.md) (8 blocos)

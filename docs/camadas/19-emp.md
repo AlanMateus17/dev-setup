@@ -62,7 +62,7 @@ flowchart LR
     n_sites["Sites para pequenas empresas"]
   end
   subgraph L_neg["Negócios do grupo (Barbacena)"]
-    n_ncnpj["3 CNPJs por frente"]
+    n_ncnpj["2 CNPJs por frente"]
   end
   subgraph L_editora["Editora AMS Silva (produção de livros)"]
     n_kdp["Amazon KDP"]
@@ -237,7 +237,7 @@ Ainda não. Quando a renda crescer, MEI ou SLU. Até lá, tudo no seu CPF.
 | → envia para | [gov.br (prata ou ouro)](19-emp.md#govbr) | Pessoa física: impostos e finanças | acesso |
 | → envia para | [Conta bancária separada (CPF)](19-emp.md#banco) | Pessoa física: impostos e finanças | titular |
 | → envia para | [Domínio (Registro.br)](18-web.md#dom) | Vitrine web (sites e domínio) | titular do domínio |
-| → envia para | [3 CNPJs por frente](16-neg.md#ncnpj) | Negócios do grupo (Barbacena) | vira |
+| → envia para | [2 CNPJs por frente](16-neg.md#ncnpj) | Negócios do grupo (Barbacena) | vira |
 | ← recebe de | [Registro de marca (INPI)](19-emp.md#inpi) | Pessoa física: impostos e finanças | marca passa para a empresa |
 | ← recebe de | [Akaunting (contabilidade CNPJ)](19-emp.md#akaunting) | Pessoa física: impostos e finanças | contas do CNPJ |
 

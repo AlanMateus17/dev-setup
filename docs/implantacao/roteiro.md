@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-63 fases, 577 passos, cerca de **1655 h 18 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+63 fases, 573 passos, cerca de **1451 h 18 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
-**Todo o planejamento está aqui:** os 486 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 109 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
+**Todo o planejamento está aqui:** os 481 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 98 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 450 dos 577 passos (632 h 33 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 450 dos 573 passos (632 h 33 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -60,7 +60,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [43 · Editora](#f20) | Quando o capítulo 1 estiver pronto · **gatilho:** O capítulo 1 e o seu modelo de criação prontos | 12 | 19 h 00 min |
 | [44 · Dados, IA e pendrives](#f21) | Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) | 12 | 16 h 20 min |
 | [45 · Sprint de 14 dias (Estratégia do Halter)](#f-sprint) | Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) · **gatilho:** O recesso começou e uma das 3 rendas de agora já passou no portão | 10 | 35 h 00 min |
-| [46 · Mais ofertas, uma por vez](#f22) | Fev a dez/2027, uma oferta por vez · **gatilho:** A primeira venda do mini-curso aconteceu | 23 | 129 h 00 min |
+| [46 · Mais ofertas, uma por vez](#f22) | Fev a dez/2027, uma oferta por vez · **gatilho:** A primeira venda do mini-curso aconteceu | 22 | 125 h 00 min |
 | [47 · Marketing pago e crescimento](#f23) | A partir de fev/2027 · **gatilho:** O mini-curso vendeu sem anúncio (por exemplo, 10 vendas) e o painel de lucro está no ar | 11 | 38 h 30 min |
 | [48 · AMtech OS: o setup como sistema operacional](#f-amtechos) | Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso | 5 | 12 h 15 min |
 | [49 · Linux nativo e laboratório completo](#f24) | 2027, conforme cada compra | 7 | 18 h 15 min |
@@ -71,7 +71,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [54 · Editora: depois do primeiro livro](#f29) | Depois do primeiro livro · **gatilho:** O primeiro livro publicado | 5 | 56 h 00 min |
 | [55 · Distribuído, plataforma e segunda nuvem](#f30) | 2028 | 6 | 69 h 00 min |
 | [56 · Infraestrutura própria](#f31) | 2028, quando o grupo pedir | 3 | 17 h 00 min |
-| [57 · Negócios do grupo em Barbacena](#f32) | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano · **gatilho:** Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta | 11 | 485 h 00 min |
+| [57 · Negócios do grupo em Barbacena](#f32) | Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026) · **gatilho:** Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta | 8 | 285 h 00 min |
 | [58 · Estudo contínuo](#f33) | Contínuo, desde a semana 2 | 14 | 7 h 30 min |
 | [59 · Engenharia reversa, AppSec e pentest](#f-seguranca) | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) | 21 | 81 h 25 min |
 | [60 · Jarvis: o setup e a casa por comando de voz](#f-jarvis) | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas | 13 | 30 h 50 min |
@@ -1176,7 +1176,6 @@ cd ~/dev/dev-setup && claude "Passo ar-radar do roteiro: Criar as buscas salvas 
 
 - [ ] **Pronto quando:** Radar avisa no Telegram só itens acima da hora mínima, com checklist antigolpe
 - Lê só a pasta de alertas do Gmail. Não raspa sites que proíbem coleta, não compra e não fala com vendedor.
-- **Oferta:** Notebooks e PCs: comprar, consertar e revender · Celulares: comprar, consertar e revender · Livros técnicos e didáticos usados · Peças de máquinas sucateadas (RAM, SSD, placas)
 - Implanta: Radar de revenda
 
 ### 11.6 Retorno por hora de cada marca no painel
@@ -5514,16 +5513,7 @@ cd ~/dev/dev-setup && claude "Passo of-ammentor do roteiro: AM Mentor: banco de 
 - **Oferta:** Sistemas sob encomenda
 - Implanta: API TypeScript (Next/NestJS) · Next.js + Aura Design System
 
-### 46.18 Aula de sushi e sushiman para eventos: 2 eventos de teste
-
-**Você** · 4 h 00 min
-
-- **Fora do terminal:** Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.
-- [ ] **Pronto quando:** 2 eventos pagos, com as regras sanitárias conferidas
-- **Oferta:** Aula de sushi e sushiman para eventos
-- Implanta: Agenda online (Cal.com)
-
-### 46.19 Workshop presencial para pequenos empresários: piloto com 10 vagas
+### 46.18 Workshop presencial para pequenos empresários: piloto com 10 vagas
 
 **Você** · 8 h 00 min
 
@@ -5532,7 +5522,7 @@ cd ~/dev/dev-setup && claude "Passo of-ammentor do roteiro: AM Mentor: banco de 
 - **Oferta:** Workshops presenciais para pequenos empresários (IA, planilhas, presença digital)
 - Implanta: Agenda online (Cal.com) · Mercado Pago
 
-### 46.20 Revisar a cada trimestre as ofertas em fila (AM Taskoro)
+### 46.19 Revisar a cada trimestre as ofertas em fila (AM Taskoro)
 
 **Você** · 30 min
 
@@ -5543,7 +5533,7 @@ cd ~/dev/dev-setup && claude "Passo of-ammentor do roteiro: AM Mentor: banco de 
 - **Oferta:** AM Taskoro (gestão de projetos ágeis)
 - Implanta: Portfólio de ofertas
 
-### 46.21 Fila de produtos digitais (Fábrica para professores, Setup profissional, templates e outros)
+### 46.20 Fila de produtos digitais (Fábrica para professores, Setup profissional, templates e outros)
 
 **Você** · 30 min
 
@@ -5551,7 +5541,7 @@ cd ~/dev/dev-setup && claude "Passo of-ammentor do roteiro: AM Mentor: banco de 
 - [ ] **Pronto quando:** Cada uma ativada na ordem, uma de cada vez
 - **Oferta:** Fábrica de documentos para professores de MG (assinatura) · Setup profissional (curso, template e configuração remota) · Templates Next.js/Tailwind em inglês · Blocos e kits de componentes de interface · Plugin WordPress com versão Pro · Templates de automação n8n · Cursos em plataformas que pagam royalties (Alura, Rocketseat, Domestika) · Cursos dublados por IA em inglês e espanhol (só a sua voz) · Licença do ByteSDCoin para escolas (sem aposta) · Camisetas e canecas sob demanda (dev e professor)
 
-### 46.22 Fila de serviços que pagam bem por hora (conteudista, questões, ERP e outros)
+### 46.21 Fila de serviços que pagam bem por hora (conteudista, questões, ERP e outros)
 
 **Você** · 30 min
 
@@ -5559,7 +5549,7 @@ cd ~/dev/dev-setup && claude "Passo of-ammentor do roteiro: AM Mentor: banco de 
 - [ ] **Pronto quando:** Cada uma ativada na ordem, uma de cada vez
 - **Oferta:** Professor conteudista EAD · Elaboração e revisão de questões · Formatação ABNT de TCC (só formatar e revisar) · Segurança digital para pequenas empresas · Freela internacional em dólar (Upwork) · Parceiro de ERP (Bling, Tiny, Omie): implantação e comissão · Português para estrangeiros (Preply, italki) · Recuperação de dados (intermediação com laboratório)
 
-### 46.23 Fila da AMtech Economia (plano de negócios, BPO financeiro, crédito e editais, mentoria, modelos, calculadoras)
+### 46.22 Fila da AMtech Economia (plano de negócios, BPO financeiro, crédito e editais, mentoria, modelos, calculadoras)
 
 **Você** · 30 min
 
@@ -5933,7 +5923,7 @@ Sair do CPF na hora certa, com nota fiscal e cobrança automáticas.
 - **Fora do terminal:** Órgão público, contador ou entidade: feito no site do governo ou com atendimento.
 - [ ] **Pronto quando:** CNPJ ativo, conta PJ aberta e contador contratado
 - **Precisa:** pagar um serviço
-- Implanta: CNPJ (futuro) · 3 CNPJs por frente
+- Implanta: CNPJ (futuro) · 2 CNPJs por frente
 
 ### 52.2 Certificado digital e-CNPJ
 
@@ -6267,7 +6257,7 @@ Servidor em casa e máquina de IA quando o grupo pedir.
 
 Um negócio por vez, cada um só depois que o anterior passa no portão.
 
-**Quando:** Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano
+**Quando:** Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026)
 
 **Começa quando:** Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta
 
@@ -6323,37 +6313,7 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 - **Oferta:** AM Delivery · Licença do AM Delivery para outras cidades
 - Implanta: AM Delivery (várias empresas)
 
-### 57.6 C1 · Sushi, delivery primeiro
-
-**Você** · 80 h 00 min
-
-- **Fora do terminal:** Negócio físico: ponto, alvará, compras e pessoas. O Claude faz os números e os documentos.
-- [ ] **Pronto quando:** Lucro por 3 meses e sushiman que toca a noite sem você
-- **Precisa:** comprar algo, pagar um serviço
-- **Oferta:** Sushi (delivery)
-- Implanta: Sushi (delivery) · Vigilância sanitária (RDC 216) · iFood (canal de descoberta)
-
-### 57.7 C2 · Padaria com café da manhã e almoço
-
-**Você** · 80 h 00 min
-
-- **Fora do terminal:** Negócio físico: ponto, alvará, compras e pessoas. O Claude faz os números e os documentos.
-- [ ] **Pronto quando:** Gerente no comando e CMV dentro da meta por 3 meses
-- **Precisa:** comprar algo, pagar um serviço
-- **Oferta:** Padaria com café da manhã e almoço
-- Implanta: Padaria + café da manhã + almoço
-
-### 57.8 C3 · Cafeteria
-
-**Você** · 40 h 00 min
-
-- **Fora do terminal:** Negócio físico: ponto, alvará, compras e pessoas. O Claude faz os números e os documentos.
-- [ ] **Pronto quando:** Cafeteria acima do equilíbrio
-- **Precisa:** comprar algo, pagar um serviço
-- **Oferta:** Cafeteria
-- Implanta: Cafeteria
-
-### 57.9 Serviços presenciais para 2027, se a tarde ficar livre (por parceiros quando der)
+### 57.6 Serviços presenciais para 2027, se a tarde ficar livre (por parceiros quando der)
 
 **Você** · 30 min
 
@@ -6361,15 +6321,15 @@ cd ~/dev/dev-setup && claude "Passo planejador-real do roteiro: Planejador do gr
 - [ ] **Pronto quando:** Decisão tomada no replanejamento de 2027
 - **Oferta:** PC montado e entregue configurado · Redes Wi-Fi e câmeras com monitoramento mensal · Casa inteligente para clientes (Home Assistant) · Instrutor horista (SENAC, SENAI, prefeitura) · Aulas de informática e celular para idosos · Colônia de férias tech (robótica e programação) · Gestão de tráfego pago para o comércio local
 
-### 57.10 Rendas de capital alto: decidir só com o portão aberto
+### 57.7 Rendas de capital alto: decidir só com o portão aberto
 
 **Você** · 30 min
 
 - **Fora do terminal:** Exigem capital; só quando a renda do núcleo pagar o investimento.
 - [ ] **Pronto quando:** Decisão registrada com capital próprio disponível
-- **Oferta:** Mercadinho autônomo em condomínio · Máquina de venda de lanches · Aluguel de kits de robótica · Kits e placas de robótica (Tindie e Mercado Livre) · Motos e carros: compra e revenda
+- **Oferta:** Aluguel de kits de robótica · Kits e placas de robótica (Tindie e Mercado Livre)
 
-### 57.11 ERPNext para o primeiro negócio físico até o Aura cobrir
+### 57.8 ERPNext para o primeiro negócio físico até o Aura cobrir
 
 **Você** · 2 h 00 min
 
@@ -7184,7 +7144,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| Portfólio de ofertas | 8.7, 37.14, 46.20 | Semanas 3 e 4 · nov/2026; Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
+| Portfólio de ofertas | 8.7, 37.14, 46.19 | Semanas 3 e 4 · nov/2026; Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
 | Esteira de ofertas | 8.7, 37.14 | Semanas 3 e 4 · nov/2026; Semanas 8 a 10 · dez/2026 a jan/2027 |
 | Padrão de qualidade | 37.14 | Semanas 8 a 10 · dez/2026 a jan/2027 |
 | Marca pessoal Alan Mateus | 34.1, 36.1 | Semana 5 · nov/2026; Semanas 6 e 7 · dez/2026 |
@@ -7226,7 +7186,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | YouTube | 36.1, 46.14 | Semanas 6 e 7 · dez/2026; Fev a dez/2027, uma oferta por vez |
 | LinkedIn | 36.1, 40.9 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
 | WhatsApp Business | 36.2, 40.9 | Semanas 6 e 7 · dez/2026; Semanas 12 a 15 · jan a fev/2027 |
-| Google Perfil da Empresa | 46.9, 57.3 | Fev a dez/2027, uma oferta por vez; Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| Google Perfil da Empresa | 46.9, 57.3 | Fev a dez/2027, uma oferta por vez; Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026) |
 | Comunidade (Discord ou grupo) | 37.10, 46.15 | Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
 | Busca Google (SEO) | 36.12 | Semanas 6 e 7 · dez/2026 |
 | Alunos e ex-alunos | 36.10 | Semanas 6 e 7 · dez/2026 |
@@ -7274,7 +7234,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Bloco | Passo | Quando |
 |---|---|---|
 | Pix Automático + gateway (ex.: Asaas) | 24.7, 45.9, 52.4 | Nov/2026 a out/2027, revisão no fim de cada trimestre; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite); Quando a renda pedir |
-| Agenda online (Cal.com) | 23.8, 37.8, 45.4, 46.18, 46.19 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Semanas 8 a 10 · dez/2026 a jan/2027; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite); Fev a dez/2027, uma oferta por vez |
+| Agenda online (Cal.com) | 23.8, 37.8, 45.4, 46.18 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Semanas 8 a 10 · dez/2026 a jan/2027; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite); Fev a dez/2027, uma oferta por vez |
 | CRM simples (planilha) | 37.9 | Semanas 8 a 10 · dez/2026 a jan/2027 |
 | Hotmart | 37.5, 40.2, 40.5, 40.10, 46.3, 46.4 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027; Fev a dez/2027, uma oferta por vez |
 | Kiwify | 37.5, 40.11 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027 |
@@ -7282,7 +7242,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Udemy | 37.6, 40.11 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027 |
 | DIO (parceria) | 37.6 | Semanas 8 a 10 · dez/2026 a jan/2027 |
 | YouTube (membros) | 47.9 | A partir de fev/2027 |
-| Mercado Pago | 37.7, 46.19 | Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
+| Mercado Pago | 37.7, 46.18 | Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
 | Afiliados (Amazon, Hotmart…) | 37.11, 46.1 | Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
 | Chatwoot (atendimento) | 33.5, 45.2, 45.5 | Com a primeira página de venda no ar (jan/2027) e por etapas; Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) |
 | Twenty (CRM aberto) | 23.8, 33.6 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Com a primeira página de venda no ar (jan/2027) e por etapas |
@@ -7352,25 +7312,20 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 
 | Bloco | Passo | Quando |
 |---|---|---|
-| AMtech Software (projetos e SaaS) | 57.2 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Loja AMtech (assistência) | 57.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Peças sem estoque (sob encomenda) | 57.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Ponto de retirada (Shopee e ML) | 57.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| AMtech Maker (robótica) | 57.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| AM Entregas (moto e carro) | 57.4 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Mercado Envios Flex | 57.4 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| AM Delivery (várias empresas) | 57.5 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Sushi (delivery) | 57.6 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Cafeteria | 57.8 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Padaria + café da manhã + almoço | 57.7 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| 3 CNPJs por frente | 52.1 | Quando a renda pedir |
-| Planejador do Grupo | 57.1 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| iFood (canal de descoberta) | 57.6 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Vigilância sanitária (RDC 216) | 57.6 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
-| Anatel e Inmetro | 57.3 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| AMtech Software (projetos e SaaS) | 57.2 | Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026) |
+| Loja AMtech (assistência) | 57.3 | Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026) |
+| Peças sem estoque (sob encomenda) | 57.3 | Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026) |
+| Ponto de retirada (Shopee e ML) | 57.3 | Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026) |
+| AMtech Maker (robótica) | 57.3 | Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026) |
+| AM Entregas (moto e carro) | 57.4 | Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026) |
+| Mercado Envios Flex | 57.4 | Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026) |
+| AM Delivery (várias empresas) | 57.5 | Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026) |
+| 2 CNPJs por frente | 52.1 | Quando a renda pedir |
+| Planejador do Grupo | 57.1 | Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026) |
+| Anatel e Inmetro | 57.3 | Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026) |
 | Radar de revenda | 11.5 | Semana 4 · nov/2026 |
 | AMtech Segurança (pentest) | 59.19 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
-| ERPNext (negócios físicos) | 57.11 | Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano |
+| ERPNext (negócios físicos) | 57.8 | Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026) |
 
 ### Editora AMS Silva (produção de livros)
 

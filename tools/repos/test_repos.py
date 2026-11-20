@@ -24,6 +24,11 @@ class TestRepos(unittest.TestCase):
         self.assertIn("https://github.com/Cursos-TI/x", repos.link("Cursos-TI/x"))
         self.assertIn("https://github.com/AlanMateus17/dev-setup", repos.link("dev-setup"))
 
+    def test_empresa_invalida(self):
+        d = copy.deepcopy(self.d)
+        d["repos"][0]["empresa"] = "restaurante"
+        self.assertTrue(repos.validar(d))
+
     def test_todo_repo_aparece(self):
         txt = repos.gerar(self.d)
         for r in self.d["repos"]:

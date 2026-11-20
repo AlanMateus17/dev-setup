@@ -18,7 +18,9 @@
         "Markdown",
         "Go (CLI)",
         "Python"
-      ]
+      ],
+      "empresa": "grupo",
+      "visibilidade": "privado"
     },
     {
       "nome": "Portfolio-AMS-Obsidian-Vault",
@@ -26,15 +28,19 @@
       "status": "ativo",
       "stack": [
         "Markdown"
-      ]
+      ],
+      "empresa": "grupo",
+      "visibilidade": "privado"
     },
     {
       "nome": "mapa-de-estudo",
-      "papel": "Material de estudo público: MAPA em etapas por pré-requisito e um arquivo conferido por assunto (o que estudar e em que ordem); o calendário fica no vault",
+      "papel": "Material de estudo: MAPA em etapas por pré-requisito e um arquivo conferido por assunto (o que estudar e em que ordem); o calendário fica no vault",
       "status": "ativo",
       "stack": [
         "Markdown"
-      ]
+      ],
+      "empresa": "grupo",
+      "visibilidade": "privado"
     },
     {
       "nome": "ensino-ti",
@@ -43,7 +49,9 @@
       "stack": [
         "Markdown",
         "HTML/CSS/JS"
-      ]
+      ],
+      "empresa": "instituto",
+      "visibilidade": "privado"
     },
     {
       "nome": "AlanMateus17.github.io",
@@ -51,7 +59,9 @@
       "status": "ativo",
       "stack": [
         "Jekyll -> Next.js"
-      ]
+      ],
+      "empresa": "pessoal",
+      "visibilidade": "público (GitHub Pages)"
     },
     {
       "nome": "catalogo-html",
@@ -59,15 +69,19 @@
       "status": "ativo",
       "stack": [
         "HTML/CSS/JS"
-      ]
+      ],
+      "empresa": "instituto",
+      "visibilidade": "público (GitHub Pages)"
     },
     {
       "nome": "catalogo-plataforma",
-      "papel": "A confirmar com o Alan: provavelmente catálogo ou plataforma de cursos (Instituto AMS). Revisar e decidir se mantém ou funde",
+      "papel": "Plataforma de contas, planos e vendas do curso do Catálogo do HTML (ASP.NET). Candidata a virar a plataforma de cursos do Instituto (AM Escola) ou ser reescrita em TypeScript",
       "status": "revisar",
       "stack": [
         "a confirmar"
-      ]
+      ],
+      "empresa": "instituto",
+      "visibilidade": "privado"
     },
     {
       "nome": "codigo-c-",
@@ -75,7 +89,9 @@
       "status": "revisar",
       "stack": [
         "PDF"
-      ]
+      ],
+      "empresa": "instituto",
+      "visibilidade": "privado"
     },
     {
       "nome": "instala-o-do-S.O-windows-pendrive",
@@ -83,7 +99,9 @@
       "status": "revisar",
       "stack": [
         "—"
-      ]
+      ],
+      "empresa": "pessoal",
+      "visibilidade": "privado"
     },
     {
       "nome": "ebooks_financas",
@@ -91,7 +109,9 @@
       "status": "estudo",
       "stack": [
         "PDF/Markdown"
-      ]
+      ],
+      "empresa": "midia",
+      "visibilidade": "privado"
     },
     {
       "nome": "Cursos-TI/desafio-cadastro-das-cartas-no-super-trunfo-AlanMateus17",
@@ -99,7 +119,9 @@
       "status": "arquivar",
       "stack": [
         "C"
-      ]
+      ],
+      "empresa": "pessoal",
+      "visibilidade": "privado"
     },
     {
       "nome": "Cursos-TI/desafio-batalha-naval-AlanMateus17",
@@ -107,7 +129,109 @@
       "status": "arquivar",
       "stack": [
         "C"
-      ]
+      ],
+      "empresa": "pessoal",
+      "visibilidade": "privado"
+    },
+    {
+      "nome": "am-gestao",
+      "papel": "O AM Gestão: um repositório, um módulo por componente (Caixa, Pedidos, Financeiro, Loja)",
+      "status": "planejado",
+      "stack": [
+        "a definir"
+      ],
+      "empresa": "software",
+      "visibilidade": "privado"
+    },
+    {
+      "nome": "trilha-logica",
+      "papel": "O mini-curso de Lógica e os exercícios da Trilha Lógica",
+      "status": "planejado",
+      "stack": [
+        "a definir"
+      ],
+      "empresa": "instituto",
+      "visibilidade": "privado"
+    },
+    {
+      "nome": "maker-automacoes",
+      "papel": "Automações prontas e projetos de robótica do Maker Digital",
+      "status": "planejado",
+      "stack": [
+        "a definir"
+      ],
+      "empresa": "maker",
+      "visibilidade": "privado"
+    },
+    {
+      "nome": "logica-e-maquina",
+      "papel": "O livro Lógica e Máquina como repositório (texto, exercícios, figuras e pipeline)",
+      "status": "planejado",
+      "stack": [
+        "a definir"
+      ],
+      "empresa": "editora",
+      "visibilidade": "privado"
+    },
+    {
+      "nome": "amtech-software",
+      "papel": "Vitrine para clientes da AMtech Software (README gerado de docs/vitrines/software.md)",
+      "status": "planejado",
+      "stack": [
+        "Markdown"
+      ],
+      "empresa": "software",
+      "visibilidade": "público"
+    },
+    {
+      "nome": "instituto-ams-silva",
+      "papel": "Vitrine para clientes do Instituto AMS Silva",
+      "status": "planejado",
+      "stack": [
+        "Markdown"
+      ],
+      "empresa": "instituto",
+      "visibilidade": "público"
+    },
+    {
+      "nome": "amtech-midia",
+      "papel": "Vitrine para clientes e patrocinadores da AMtech Mídia",
+      "status": "planejado",
+      "stack": [
+        "Markdown"
+      ],
+      "empresa": "midia",
+      "visibilidade": "público"
+    },
+    {
+      "nome": "amtech-maker",
+      "papel": "Vitrine para clientes da AMtech Maker",
+      "status": "planejado",
+      "stack": [
+        "Markdown"
+      ],
+      "empresa": "maker",
+      "visibilidade": "público"
+    },
+    {
+      "nome": "am-logistica",
+      "papel": "Vitrine para clientes da AM Logística",
+      "status": "planejado",
+      "stack": [
+        "Markdown"
+      ],
+      "empresa": "logistica",
+      "visibilidade": "público"
+    },
+    {
+      "nome": "editora-ams-silva",
+      "papel": "Vitrine da Editora AMS Silva",
+      "status": "planejado",
+      "stack": [
+        "Markdown"
+      ],
+      "empresa": "editora",
+      "visibilidade": "público"
     }
   ],
   "produto_unico": {

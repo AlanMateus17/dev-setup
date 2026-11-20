@@ -44,6 +44,8 @@ docs:
     python3 tools/implantacao/gerar.py
     python3 tools/portfolio/portfolio.py
     python3 tools/softwares/softwares.py
+    python3 tools/editora/livros.py
+    python3 tools/empresas/empresas.py
     python3 tools/kitsites/gerar.py
     python3 tools/custos/custos.py
     python3 tools/recursos/recursos.py
@@ -63,6 +65,8 @@ check:
     python3 tools/implantacao/gerar.py --check
     python3 tools/portfolio/portfolio.py --check
     python3 tools/softwares/softwares.py --check
+    python3 tools/editora/livros.py --check
+    python3 tools/empresas/empresas.py --check
     python3 tools/kitsites/gerar.py --check
     python3 tools/custos/custos.py --check
     python3 tools/recursos/recursos.py --check
@@ -249,3 +253,7 @@ pedir texto:
 # Pedidos da fila e se o Claude está em pausa por limite
 fila:
     python3 tools/remoto/fila.py listar
+
+# Vitrine para clientes: copia docs/vitrines/EMPRESA.md como README do repositório público da empresa (ex.: just vitrine software ~/dev/amtech-software)
+vitrine EMPRESA DESTINO:
+    test -f docs/vitrines/{{EMPRESA}}.md && test -d {{DESTINO}}/.git && cp docs/vitrines/{{EMPRESA}}.md {{DESTINO}}/README.md && echo "README da vitrine copiado; revise, faça o commit e o push em {{DESTINO}}"

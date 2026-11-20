@@ -1167,12 +1167,7 @@
      "blocos": [
       "radar"
      ],
-     "ofertas": [
-      "revenda-notebooks",
-      "revenda-celulares",
-      "revenda-livros",
-      "revenda-pecas"
-     ]
+     "ofertas": []
     },
     {
      "id": "ar-retorno",
@@ -6052,23 +6047,6 @@
      ]
     },
     {
-     "id": "of-aulasushi",
-     "titulo": "Aula de sushi e sushiman para eventos: 2 eventos de teste",
-     "quem": "voce",
-     "pronto": "2 eventos pagos, com as regras sanitárias conferidas",
-     "tempo_min": 240,
-     "fora": "Venda e relacionamento: falar com gente, publicar e atender. O Claude prepara textos e materiais; quem fala é você.",
-     "blocos": [
-      "agenda"
-     ],
-     "ofertas": [
-      "aulasushi"
-     ],
-     "empresas": [
-      "software"
-     ]
-    },
-    {
      "id": "of-workshop",
      "titulo": "Workshop presencial para pequenos empresários: piloto com 10 vagas",
      "quem": "voce",
@@ -7083,62 +7061,6 @@
      ]
     },
     {
-     "id": "neg-c1",
-     "titulo": "C1 · Sushi, delivery primeiro",
-     "quem": "voce",
-     "pronto": "Lucro por 3 meses e sushiman que toca a noite sem você",
-     "tempo_min": 4800,
-     "fora": "Negócio físico: ponto, alvará, compras e pessoas. O Claude faz os números e os documentos.",
-     "precisa": [
-      "compra",
-      "pagamento"
-     ],
-     "blocos": [
-      "nsushi",
-      "nvisa",
-      "nifood"
-     ],
-     "ofertas": [
-      "sushi"
-     ]
-    },
-    {
-     "id": "neg-c2",
-     "titulo": "C2 · Padaria com café da manhã e almoço",
-     "quem": "voce",
-     "pronto": "Gerente no comando e CMV dentro da meta por 3 meses",
-     "tempo_min": 4800,
-     "fora": "Negócio físico: ponto, alvará, compras e pessoas. O Claude faz os números e os documentos.",
-     "precisa": [
-      "compra",
-      "pagamento"
-     ],
-     "blocos": [
-      "npad"
-     ],
-     "ofertas": [
-      "padaria"
-     ]
-    },
-    {
-     "id": "neg-c3",
-     "titulo": "C3 · Cafeteria",
-     "quem": "voce",
-     "pronto": "Cafeteria acima do equilíbrio",
-     "tempo_min": 2400,
-     "fora": "Negócio físico: ponto, alvará, compras e pessoas. O Claude faz os números e os documentos.",
-     "precisa": [
-      "compra",
-      "pagamento"
-     ],
-     "blocos": [
-      "ncafe"
-     ],
-     "ofertas": [
-      "cafeteria"
-     ]
-    },
-    {
      "id": "nb-2027",
      "titulo": "Serviços presenciais para 2027, se a tarde ficar livre (por parceiros quando der)",
      "quem": "voce",
@@ -7165,11 +7087,8 @@
      "fora": "Exigem capital; só quando a renda do núcleo pagar o investimento.",
      "blocos": [],
      "ofertas": [
-      "mercadinho",
-      "vending",
       "aluguelkits",
-      "kitstindie",
-      "revenda-veiculos"
+      "kitstindie"
      ]
     },
     {
@@ -7184,7 +7103,7 @@
      ]
     }
    ],
-   "quando": "Fase A: 12 a 18 meses; B: mais 12 a 18; C: a partir do 3º ou 4º ano",
+   "quando": "Fase A: 12 a 18 meses; B: mais 12 a 18 (sem restaurantes desde 20/11/2026)",
    "gatilho": "Os 5 portões do planejador: negócio anterior se pagando há 3 meses, capital em caixa, alguém de confiança tocando, sistema AM rodando e a sua reserva intacta"
   },
   {

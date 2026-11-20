@@ -353,8 +353,8 @@ flowchart LR
   s0["1. Caixa da Casa / AM Rendara"]
   s1["2. Grafana"]
   s2["3. Planejador do Grupo"]
-  s3["4. 3 CNPJs por frente"]
-  s4["5. Sushi (delivery)"]
+  s3["4. 2 CNPJs por frente"]
+  s4["5. Loja AMtech (assistência)"]
   s5["6. AM Kaixara (PDV e cardápio)"]
   s6["7. Caixa da Casa / AM Rendara"]
   s0 --> s1
@@ -368,9 +368,9 @@ flowchart LR
 1. **[Caixa da Casa / AM Rendara](camadas/19-emp.md#caixa)**: O lucro do que já funciona acumula o capital.
 2. **[Grafana](camadas/10-obs.md#graf)**: O painel confirma 3 meses seguidos acima do ponto de equilíbrio.
 3. **[Planejador do Grupo](camadas/16-neg.md#nplan)**: O planejador mostra investimento, rampa e capital mínimo do próximo negócio.
-4. **[3 CNPJs por frente](camadas/16-neg.md#ncnpj)**: O CNPJ da frente recebe os novos CNAEs ou nasce.
-5. **[Sushi (delivery)](camadas/16-neg.md#nsushi)**: A casa abre, com alvará sanitário e bombeiros em dia.
-6. **[AM Kaixara (PDV e cardápio)](camadas/11-app.md#nkaix)**: O AM Kaixara cuida do cardápio, das fichas técnicas e do PDV.
+4. **[2 CNPJs por frente](camadas/16-neg.md#ncnpj)**: O CNPJ da frente recebe os novos CNAEs ou nasce.
+5. **[Loja AMtech (assistência)](camadas/16-neg.md#nloja)**: A loja abre, com alvará e bombeiros em dia.
+6. **[AM Kaixara (PDV e cardápio)](camadas/11-app.md#nkaix)**: O AM Gestão cuida do caixa, do estoque e das vendas.
 7. **[Caixa da Casa / AM Rendara](camadas/19-emp.md#caixa)**: As vendas do dia voltam para o caixa.
 
 ## Do trabalho ao conteúdo

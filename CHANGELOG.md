@@ -2,6 +2,27 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.37.0] - 2026-11-20
+
+### Removido
+- Restaurantes próprios fora do plano (decisão do Alan, 20/11): negócios sushi, cafeteria e padaria (`data/negocios.json`, documentos 07 a 10 de `docs/negocios/`, blocos do ecossistema, passos C1 a C3 do roteiro); ofertas sushi, aula de sushi, cafeteria, padaria, mercadinho autônomo, máquina de lanches e revenda de veículos. A frente de alimentação e o 3º CNPJ saem; o grupo fica com 2 CNPJs.
+
+### Adicionado
+- Suítes e pacotes de software (`data/softwares.json`, seção nova em `docs/operacao/softwares.md`): AM Gestão é a suíte 1 (MVP Caixa + Pedidos + Financeiro, vendida em pacotes) e os outros sistemas viram AM Serviços, AM Escola e AM Projetos, uma por vez. Validação: 3 ou mais sistemas por suíte, cada sistema numa suíte só, pacote só com sistemas da suíte, sistema sem suíte precisa de motivo.
+- Livros da Editora (`data/livros.json` → `docs/editora/livros.md`, `tools/editora/livros.py`): *Lógica e Máquina* em 6 volumes, 52 capítulos ligados aos assuntos do mapa-de-estudo, com estado (notas, rascunho, escrito, revisado). Regra: o texto é do Alan, a partir das notas dele.
+
+### Adicionado (empresas)
+- `data/empresas.json` → `docs/empresas.md` (`tools/empresas/empresas.py`): as 6 empresas do grupo, cada uma com produtos principais no raciocínio do AM Gestão (componentes + pacotes), a sequência por etapa e as ofertas que sobram fora dos produtos (candidatas a corte). AMtech Maker (Maker + Campo, com a loja e o ponto de retirada) e AM Logística como "software primeiro, empresa depois", com fase 1, fase 2 e gatilho. O CI recusa frente sem empresa, componente inexistente, de outra empresa ou em dois produtos. Frente `fisico` virou `logistica`; a frente `maker` voltou para `campo`, agora AMtech Maker.
+- Vitrines para clientes (`docs/vitrines/`, uma por empresa): para quem é, o problema, como cada produto resolve e os pacotes, sem número interno; `just vitrine EMPRESA DESTINO` copia como README do repositório público.
+- `repos.json` com empresa e visibilidade de cada repositório e os repositórios planejados (4 de produto e 6 vitrines); `docs/repositorios.md` agrupado por empresa. Inclui o PR #11 (página dos repositórios).
+
+### Removido (revendas)
+- Revenda de notebooks, celulares, livros e peças (renda ativa de margem baixa e com estoque) e a automação do radar de revenda.
+
+### Alterado
+- Campo e Maker como linhas de renda do Grupo AMtech (frente nova `maker` no portfólio; Maker, kits, aluguel de kits e oficinas mudam para ela). Editora marcada como pausada.
+- Ferramenta "Stack Aura (.NET + Next.js)" dos softwares virou "Stack AM (TypeScript + Next.js + PostgreSQL)", pela ADR 0017.
+- CONTINUAR.md com as decisões de 20/11.
 ## [2.36.0] - 2026-11-20
 
 ### Adicionado
