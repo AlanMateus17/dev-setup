@@ -1,0 +1,90 @@
+{
+  "_comment": "As empresas do Grupo AMtech Digital (marcas no plano; CNPJ só quando cada uma faturar) e o que cada uma vende. Cada frente do portfolio.json pertence a uma empresa; 'ofertas_extra' move ofertas soltas. Gera docs/empresas.md (tools/empresas/empresas.py). Decisões do Alan em 20/11/2026.",
+  "grupo": "Grupo AMtech Digital",
+  "regra": "Uma empresa por área, para nada ficar confuso; CNPJ próprio só quando a empresa faturar (confirmar com contador). As marcadas como 'software primeiro' começam vendendo software pela AMtech Software e só viram empresa própria quando o software provar demanda.",
+  "empresas": [
+    {
+      "id": "software",
+      "nome": "AMtech Software",
+      "estado": "ativa",
+      "faz": "AM Gestão e as outras suítes, produtos digitais para devs e serviços B2B remotos",
+      "frentes": [
+        "software",
+        "servicos"
+      ],
+      "suites": [
+        "am-gestao",
+        "am-servicos",
+        "am-escola",
+        "am-projetos"
+      ]
+    },
+    {
+      "id": "instituto",
+      "nome": "Instituto AMS Silva",
+      "estado": "ativa",
+      "faz": "Cursos, exercícios, materiais para professores e aulas",
+      "frentes": [
+        "educacao"
+      ]
+    },
+    {
+      "id": "midia",
+      "nome": "AMtech Mídia",
+      "estado": "ativa",
+      "faz": "Os 3 canais sem rosto (Primer Code, Bancada Dev e finanças), newsletter, afiliados e produtos de finanças e empreendedorismo",
+      "frentes": [
+        "midia",
+        "economia"
+      ]
+    },
+    {
+      "id": "editora",
+      "nome": "Editora AMS Silva",
+      "estado": "pausada",
+      "faz": "Livros: Lógica e Máquina e derivados (ver docs/editora/livros.md)",
+      "frentes": [
+        "editora"
+      ]
+    },
+    {
+      "id": "maker",
+      "nome": "AMtech Maker",
+      "estado": "software-primeiro",
+      "faz": "Robótica e automação próprias",
+      "frentes": [
+        "maker"
+      ],
+      "fase1": "Digital: projetos, códigos e automações prontas (Home Assistant, ESP32) e curso de robótica, vendidos pela AMtech Software e pelo Instituto",
+      "fase2": "Kits e placas físicos, aluguel de kits e oficinas para escolas, com estoque",
+      "gatilho": "100 vendas do digital ou 3 escolas pedindo oficina"
+    },
+    {
+      "id": "campo",
+      "nome": "AMtech Campo",
+      "estado": "software-primeiro",
+      "faz": "Serviços presenciais e a loja com ponto de retirada",
+      "frentes": [
+        "campo"
+      ],
+      "fase1": "AM Consertta (ordem de serviço) e AM Gestão Caixa vendidos a assistências, lojas e agências; suporte remoto",
+      "fase2": "Assistência própria, loja física com ponto de retirada (Shopee e Mercado Livre) e serviços presenciais",
+      "gatilho": "20 assistências ou lojas pagando o software e capital da loja em caixa"
+    },
+    {
+      "id": "logistica",
+      "nome": "AM Logística",
+      "estado": "software-primeiro",
+      "faz": "Entregas e delivery multiempresas",
+      "frentes": [
+        "logistica"
+      ],
+      "fase1": "Módulo Pedidos do AM Gestão e o app de delivery com a marca do cliente, vendidos a lojistas e motoboys",
+      "fase2": "Empresa de entregas com frota própria e o AM Delivery da cidade",
+      "gatilho": "30 lojistas usando o Pedidos e 1.000 entregas por mês passando pelo sistema"
+    }
+  ],
+  "fora": {
+    "patrimonio": "Finanças pessoais (cascata e ARCA): não é empresa do grupo"
+  }
+}

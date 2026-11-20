@@ -4,9 +4,9 @@
   "editora": "Editora AMS Silva (pausada; livros em estruturação)",
   "software": "AMtech Software",
   "servicos": "AMtech Digital (serviços remotos e B2B)",
-  "campo": "Grupo AMtech · Campo (serviços presenciais, por parceiros)",
-  "maker": "Grupo AMtech · Maker (robótica e automação próprias)",
-  "fisico": "Negócios físicos (logística e varejo)",
+  "campo": "AMtech Campo (software primeiro: serviços presenciais e loja com ponto de retirada)",
+  "maker": "AMtech Maker (software primeiro: robótica e automação próprias)",
+  "logistica": "AM Logística (software primeiro, empresa depois)",
   "midia": "AMtech Mídia",
   "economia": "AMtech Economia (finanças e empreendedorismo)",
   "patrimonio": "Patrimônio (investimentos)"
@@ -1630,7 +1630,7 @@
   {
    "id": "ponto",
    "nome": "Ponto de retirada (Shopee e Mercado Livre)",
-   "frente": "fisico",
+   "frente": "campo",
    "formato": "serviço",
    "tipo": "ativa",
    "onda": null,
@@ -1672,7 +1672,7 @@
   {
    "id": "entregas",
    "nome": "AM Entregas",
-   "frente": "fisico",
+   "frente": "logistica",
    "formato": "serviço",
    "tipo": "ativa",
    "onda": null,
@@ -1719,7 +1719,7 @@
   {
    "id": "delivery",
    "nome": "AM Delivery",
-   "frente": "fisico",
+   "frente": "logistica",
    "formato": "plataforma",
    "tipo": "ativa",
    "onda": null,

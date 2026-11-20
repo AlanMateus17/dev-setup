@@ -11,6 +11,9 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 - Suítes e pacotes de software (`data/softwares.json`, seção nova em `docs/operacao/softwares.md`): AM Gestão é a suíte 1 (MVP Caixa + Pedidos + Financeiro, vendida em pacotes) e os outros sistemas viram AM Serviços, AM Escola e AM Projetos, uma por vez. Validação: 3 ou mais sistemas por suíte, cada sistema numa suíte só, pacote só com sistemas da suíte, sistema sem suíte precisa de motivo.
 - Livros da Editora (`data/livros.json` → `docs/editora/livros.md`, `tools/editora/livros.py`): *Lógica e Máquina* em 6 volumes, 52 capítulos ligados aos assuntos do mapa-de-estudo, com estado (notas, rascunho, escrito, revisado). Regra: o texto é do Alan, a partir das notas dele.
 
+### Adicionado (empresas)
+- `data/empresas.json` → `docs/empresas.md` (`tools/empresas/empresas.py`): as 7 empresas do grupo com os produtos de cada uma; Maker, Campo (com a loja e o ponto de retirada) e AM Logística como "software primeiro, empresa depois", com fase 1, fase 2 e gatilho. O CI recusa frente ou oferta sem empresa. Frente `fisico` virou `logistica`.
+
 ### Alterado
 - Campo e Maker como linhas de renda do Grupo AMtech (frente nova `maker` no portfólio; Maker, kits, aluguel de kits e oficinas mudam para ela). Editora marcada como pausada.
 - Ferramenta "Stack Aura (.NET + Next.js)" dos softwares virou "Stack AM (TypeScript + Next.js + PostgreSQL)", pela ADR 0017.
