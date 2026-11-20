@@ -4,8 +4,7 @@
   "editora": "Editora AMS Silva (pausada; livros em estruturação)",
   "software": "AMtech Software",
   "servicos": "AMtech Digital (serviços remotos e B2B)",
-  "campo": "AMtech Campo (software primeiro: serviços presenciais e loja com ponto de retirada)",
-  "maker": "AMtech Maker (software primeiro: robótica e automação próprias)",
+  "campo": "AMtech Maker (software primeiro: robótica, automação, serviços presenciais e loja)",
   "logistica": "AM Logística (software primeiro, empresa depois)",
   "midia": "AMtech Mídia",
   "economia": "AMtech Economia (finanças e empreendedorismo)",
@@ -1538,7 +1537,7 @@
   {
    "id": "maker",
    "nome": "AMtech Maker (robótica e automação)",
-   "frente": "maker",
+   "frente": "campo",
    "formato": "produto e serviço",
    "tipo": "ativa",
    "onda": null,
@@ -1584,7 +1583,7 @@
   {
    "id": "oficinas",
    "nome": "Oficinas de robótica e programação para escolas",
-   "frente": "maker",
+   "frente": "campo",
    "formato": "serviço",
    "tipo": "ativa",
    "onda": null,
@@ -2047,56 +2046,6 @@
    "motivo": "só rendas passivas (decisão de 18/11)",
    "lote": "2026-11",
    "usa": [
-    "horas"
-   ]
-  },
-  {
-   "id": "revenda-notebooks",
-   "nome": "Notebooks e PCs: comprar, consertar e revender",
-   "frente": "campo",
-   "formato": "comércio",
-   "tipo": "ativa",
-   "onda": null,
-   "estagio": "ideia",
-   "receita": "margem por unidade",
-   "escala": "local",
-   "canais": [
-    "OLX",
-    "Mercado Livre",
-    "Facebook"
-   ],
-   "automatico": [
-    "alerta e pré-avaliação pelo radar",
-    "laudo de teste (diagnóstico)",
-    "anúncio pronto para você aprovar",
-    "estoque e lucro no Kaixara"
-   ],
-   "humano": [
-    "ver e testar antes de comprar",
-    "consertar"
-   ],
-   "deriva_de": [
-    "assist"
-   ],
-   "proximo_passo": "Criar as buscas salvas e rodar o radar 4 semanas sem comprar, só medindo",
-   "metrica": "lucro por hora sua",
-   "nota": {
-    "sinergia": 5,
-    "escala": 2,
-    "demanda": 4,
-    "esforco": 2,
-    "capital": 3
-   },
-   "doc": null,
-   "nova": true,
-   "perfil": "ativa_boa",
-   "automacao": 40,
-   "veredito": "fila",
-   "motivo": "Fora das ondas do plano (decisão de 18/11). Usa a sua bancada e o radar. Só continua se passar da hora mínima por 2 meses.",
-   "lote": "2026-11",
-   "usa": [
-    "radar",
-    "estoque",
     "horas"
    ]
   },
@@ -2773,7 +2722,7 @@
   {
    "id": "kitstindie",
    "nome": "Kits e placas de robótica (Tindie e Mercado Livre)",
-   "frente": "maker",
+   "frente": "campo",
    "formato": "produto",
    "tipo": "ativa",
    "onda": null,
@@ -2858,7 +2807,7 @@
   {
    "id": "aluguelkits",
    "nome": "Aluguel de kits de robótica",
-   "frente": "maker",
+   "frente": "campo",
    "formato": "serviço",
    "tipo": "ativa",
    "onda": null,
@@ -3758,140 +3707,6 @@
    ]
   },
   {
-   "id": "revenda-celulares",
-   "nome": "Celulares: comprar, consertar e revender",
-   "frente": "campo",
-   "formato": "comércio",
-   "tipo": "ativa",
-   "onda": null,
-   "estagio": "ideia",
-   "receita": "margem por unidade",
-   "escala": "local",
-   "canais": [
-    "OLX",
-    "Mercado Livre",
-    "Facebook"
-   ],
-   "automatico": [
-    "radar, checklist e anúncio"
-   ],
-   "humano": [
-    "consultar IMEI e testar na hora",
-    "trocar tela ou bateria"
-   ],
-   "deriva_de": [
-    "revenda-notebooks"
-   ],
-   "proximo_passo": "Depois dos notebooks passarem no portão",
-   "metrica": "lucro por hora sua",
-   "nota": {
-    "sinergia": 5,
-    "escala": 2,
-    "demanda": 4,
-    "esforco": 2,
-    "capital": 3
-   },
-   "doc": null,
-   "nova": true,
-   "perfil": "ativa_boa",
-   "automacao": 40,
-   "veredito": "fila",
-   "motivo": "Checklist rígido: IMEI, conta Google ou iCloud removida, recibo com CPF.",
-   "lote": "2026-11",
-   "usa": [
-    "radar",
-    "estoque",
-    "horas"
-   ]
-  },
-  {
-   "id": "revenda-livros",
-   "nome": "Livros técnicos e didáticos usados",
-   "frente": "campo",
-   "formato": "comércio",
-   "tipo": "ativa",
-   "onda": null,
-   "estagio": "ideia",
-   "receita": "margem por livro",
-   "escala": "digital",
-   "canais": [
-    "Estante Virtual",
-    "Mercado Livre"
-   ],
-   "automatico": [
-    "radar, anúncio e etiqueta de envio"
-   ],
-   "humano": [
-    "embalar"
-   ],
-   "deriva_de": [
-    "revenda-notebooks"
-   ],
-   "proximo_passo": "Experimento com 10 livros",
-   "metrica": "lucro por hora sua",
-   "nota": {
-    "sinergia": 4,
-    "escala": 3,
-    "demanda": 2,
-    "esforco": 1,
-    "capital": 1
-   },
-   "doc": null,
-   "nova": true,
-   "perfil": "ativa_boa",
-   "automacao": 70,
-   "veredito": "fila",
-   "motivo": "Margem pequena; envio quase automático.",
-   "lote": "2026-11",
-   "usa": [
-    "radar",
-    "estoque"
-   ]
-  },
-  {
-   "id": "revenda-pecas",
-   "nome": "Peças de máquinas sucateadas (RAM, SSD, placas)",
-   "frente": "campo",
-   "formato": "comércio",
-   "tipo": "ativa",
-   "onda": null,
-   "estagio": "ideia",
-   "receita": "margem por peça",
-   "escala": "local",
-   "canais": [
-    "Mercado Livre"
-   ],
-   "automatico": [
-    "radar e anúncio"
-   ],
-   "humano": [
-    "desmontar e testar"
-   ],
-   "deriva_de": [
-    "revenda-notebooks"
-   ],
-   "proximo_passo": "Junto com os notebooks",
-   "metrica": "lucro por hora sua",
-   "nota": {
-    "sinergia": 5,
-    "escala": 2,
-    "demanda": 3,
-    "esforco": 2,
-    "capital": 2
-   },
-   "doc": null,
-   "nova": true,
-   "perfil": "ativa_boa",
-   "automacao": 40,
-   "veredito": "fila",
-   "motivo": "Aproveita o que sobra da revenda de notebooks.",
-   "lote": "2026-11",
-   "usa": [
-    "radar",
-    "estoque"
-   ]
-  },
-  {
    "id": "dividendos",
    "nome": "Dividendos, FIIs e renda fixa (cascata e ARCA)",
    "frente": "patrimonio",
@@ -4762,14 +4577,6 @@
    "estado": "construir",
    "universal": false,
    "passo": "au-estoque"
-  },
-  {
-   "id": "radar",
-   "nome": "Radar de revenda",
-   "faz": "Lê os alertas de busca salvos e avisa só o que passa da hora mínima.",
-   "estado": "construir",
-   "universal": false,
-   "passo": "ar-radar"
   },
   {
    "id": "editais",

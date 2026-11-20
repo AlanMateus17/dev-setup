@@ -1167,12 +1167,7 @@
      "blocos": [
       "radar"
      ],
-     "ofertas": [
-      "revenda-notebooks",
-      "revenda-celulares",
-      "revenda-livros",
-      "revenda-pecas"
-     ]
+     "ofertas": []
     },
     {
      "id": "ar-retorno",
