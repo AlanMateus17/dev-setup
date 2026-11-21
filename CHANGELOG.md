@@ -15,6 +15,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
 ### Corrigido
 - Motor ausente ou com erro não derruba mais o Professor com traceback do Python: aviso em português com o que fazer, e a `aula` cai no motor `imprimir` sozinha.
+- `just professor nota ID NOTA`: registra a nota tirada nos exercícios e no gabarito do arquivo do mapa, sem IA, na mesma escada de revisão. Sem isso, quem não tem o `claude` instalado ficava preso no 0.1 (o 0.2 só libera com o 0.1 aprovado).
 
 ### Adicionado
 - Verificador de coerência: regras `rotulo-plano-antigo` (rótulos [00-SUMARIO-UNICO…], [00-PLANO-UNIFICADO…] e [00-PLANO-MESTRE…] em links que já apontam para o PLANO-UNICO; troca segura) e `ensino-csharp`; decisão "Estudo: a ordem é a do mapa" no plano.

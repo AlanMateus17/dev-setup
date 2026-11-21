@@ -172,7 +172,7 @@ feito +ids:
 progresso empresa="":
     python3 tools/nucleo/agenda.py progresso {{ if empresa != "" { "--empresa " + empresa } else { "" } }}
 
-# Professor: just professor hoje | trilha | aula ID | praticei ID | prova ID | corrigir ID | ensinei ID | cartoes | ferramenta BLOCO
+# Professor: just professor hoje | trilha | aula ID | praticei ID | prova ID | corrigir ID | nota ID NOTA (sem IA, pelo gabarito do mapa) | ensinei ID | cartoes | ferramenta BLOCO
 professor *args:
     python3 tools/professor/professor.py {{args}}
 

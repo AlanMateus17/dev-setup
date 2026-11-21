@@ -23,6 +23,7 @@ trilhas; quando nenhuma trilha do dia tem módulo liberado, o `hoje` mostra o pr
     python3 tools/professor/professor.py praticei s-backup    # nível 2
     python3 tools/professor/professor.py prova s-backup       # gera a prova; você responde no próprio arquivo
     python3 tools/professor/professor.py corrigir s-backup    # a IA corrige com rubrica, marca o nível e agenda a revisão
+    python3 tools/professor/professor.py nota b-aprender 85   # sem IA: a nota que você tirou no gabarito do arquivo do mapa
     python3 tools/professor/professor.py ensinei s-backup     # nível 4: escreveu post ou deu a aula
     python3 tools/professor/professor.py fechar s-backup 80   # Protocolo de fim de bloco: ficha dupla, registro de entrevista, tempo real
     python3 tools/professor/professor.py escutei "Hipsters: carreira" "ideia 1; ideia 2; ideia 3" --acao "..."  # podcast vira nota
@@ -330,7 +331,8 @@ PROTOCOLO = """Protocolo de fim de bloco ({titulo}):
   3. ENSINE em 3 a 5 frases sem jargão: preencha a ficha dupla e o registro de entrevista em {ficha}
   4. ANKI: 1 a 3 cartões de conceito (just professor cartoes junta os da aula).
   5. TEMPO: {minutos} min reais contra {estimado} min estimados.
-  6. Só então avance: just professor praticei {id} (se fez a prática) ou just professor prova {id}."""
+  6. Só então avance: just professor praticei {id} (se fez a prática) e a prova: just professor prova {id}
+     (corrigida pela IA) ou, sem IA, os exercícios e o gabarito do arquivo do mapa e just professor nota {id} NOTA."""
 
 PROVA = """Monte uma prova em português do Brasil sobre o módulo "{titulo}" (objetivos: {objetivos}). 8 questões: 3 de
 explicar com as próprias palavras, 3 de aplicar no setup dele (comando ou decisão), 2 de diagnosticar um erro. Nada de
@@ -428,6 +430,7 @@ def main(argv: list[str] | None = None) -> int:
         s.add_parser(nome).add_argument("id")
     p = s.add_parser("prova"); p.add_argument("id"); p.add_argument("--motor", default="claude")
     c = s.add_parser("corrigir"); c.add_argument("id"); c.add_argument("--motor", default="claude")
+    n = s.add_parser("nota"); n.add_argument("id"); n.add_argument("valor", type=int)
     s.add_parser("cartoes")
     z = s.add_parser("fechar"); z.add_argument("id"); z.add_argument("minutos", type=int)
     y = s.add_parser("escutei"); y.add_argument("titulo"); y.add_argument("ideias"); y.add_argument("--acao", default="")
@@ -547,6 +550,17 @@ def main(argv: list[str] | None = None) -> int:
                        fonte="professor")
             veredito = "aprovado" if nota >= APROVA else f"abaixo de {APROVA}: releia o Bloco 3 e refaça"
             print(f"Nota {nota} ({veredito}). Próxima revisão em {intervalo} dia(s): {prox}.")
+        elif args.cmd == "nota":
+            # Para quando a prova é feita sem IA: os exercícios e o gabarito comentado do arquivo do mapa (seções 12, 13
+            # e 17). A nota entra na mesma escada de revisão da prova corrigida pela IA.
+            m = modulo(args.id)
+            if not 0 <= args.valor <= 100:
+                raise ValueError("a nota vai de 0 a 100")
+            intervalo, prox = registrar_prova(con, m["id"], args.valor)
+            nuc.evento(con, "professor.prova", {"modulo": m["id"], "nota": args.valor, "revisar": [], "origem": "gabarito"},
+                       fonte="professor")
+            veredito = "aprovado" if args.valor >= APROVA else f"abaixo de {APROVA}: revise e refaça"
+            print(f"{m['id']}: nota {args.valor} ({veredito}). Próxima revisão em {intervalo} dia(s): {prox}.")
         elif args.cmd == "fechar":
             m = modulo(args.id)
             etapa = etapa_do_modulo(m["id"])

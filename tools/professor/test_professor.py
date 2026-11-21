@@ -100,6 +100,19 @@ class TestProfessor(unittest.TestCase):
         self.assertNotIn("o-csharp", nv)
         self.assertEqual(nv["o-typescript"]["nivel"], 2)
 
+    def test_nota_sem_ia_libera_o_proximo(self):
+        import os
+        from unittest import mock
+        banco = Path(self.tmp.name) / "cli.db"
+        with mock_pasta(self.tmp.name), mock.patch.dict(os.environ, {"NUCLEO_DB": str(banco)}):
+            self.assertEqual(professor.main(["nota", "b-aprender", "90"]), 0)
+            self.assertEqual(professor.main(["nota", "b-aprender", "120"]), 2, "nota fora de 0 a 100")
+        con = nuc.abrir(banco)
+        self.assertEqual(professor.niveis(con)["b-aprender"]["nivel"], 3)
+        pl = professor.plano_do_dia(professor.curriculo()["modulos"], professor.niveis(con), assuntos=professor.assuntos_mapa())
+        con.close()
+        self.assertIn("mat-linguagem", [m["id"] for m in pl["fila"]], "passou no 0.1: o 0.2 libera")
+
     def test_cartoes_e_nota(self):
         aula = "# X\n## Cartões\n- O que é snapshot? :: Uma foto do estado\n* 3-2-1 :: três cópias\n## Se quiser ir além\n- a :: b"
         self.assertEqual(professor.cartoes_de(aula), [("O que é snapshot?", "Uma foto do estado"), ("3-2-1", "três cópias")])
