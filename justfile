@@ -176,7 +176,7 @@ progresso empresa="":
 professor *args:
     python3 tools/professor/professor.py {{args}}
 
-# Professor × mapa-de-estudo: regrava o retrato do MAPA.md e confere (campo etapa de cada módulo)
+# Professor × mapa-de-estudo: regrava o retrato do MAPA.md (pré-requisitos, assuntos escritos 📘 e caminho do arquivo) e confere a ligação e a cobertura
 professor-mapa md="~/dev/mapa-de-estudo/MAPA.md":
     python3 tools/professor/mapa.py atualizar {{md}} && python3 tools/professor/mapa.py conferir
 
