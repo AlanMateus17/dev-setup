@@ -27,7 +27,10 @@
     "**/*.ico",
     "**/*.lock",
     "**/package-lock.json",
-    "**/.git/**"
+    "**/.git/**",
+    "12-artefatos/**",
+    "10-ferramentas-pessoais/paginas/**",
+    "_posts/**"
   ],
   "regras": [
     {
@@ -91,7 +94,8 @@
         "site/aula-*.html",
         "site/projeto-*.html",
         "site/projetos.html",
-        "tools/financeiro/modelos/*.toml"
+        "tools/financeiro/modelos/*.toml",
+        "**/gerar_projetos.py"
       ]
     },
     {
@@ -125,7 +129,14 @@
         "repos.json",
         "docs/repositorios.md"
       ]
+    },
+    {
+      "id": "planos-antigos",
+      "nivel": "revisar",
+      "padrao": "Plano Mestre|Sumário Único|Plano Unificado|fontes-de-renda-completas",
+      "motivo": "o PLANO-UNICO substituiu os planos antigos (13/11)",
+      "sugestao": "apontar para PLANO-UNICO-AMtech.md ou para o 99-arquivo"
     }
   ],
-  "permitir_linhas": "(saíram|saiu|sai|saem) do plano|fora do plano|[Dd]escartad|no lugar d[aoe]s? |\\bex-|vem d[oa] |virou|viraram|era o |antes chamad"
+  "permitir_linhas": "(saíram|saiu|sai|saem) do plano|fora do plano|[Dd]escartad|no lugar d[aoe]s? |\\bex-|vem d[oa] |virou|viraram|era o |antes chamad|acabou|[Ee]m vez d|melhor que|arquivad|[Ii]mpério|antig[oa]s?\\b|não stack fixa|[Ss]ubstitu|99-arquivo"
 }
