@@ -48,7 +48,7 @@ Só **rendas passivas** entram no plano, em ondas; a onda seguinte entra quando 
 
 ## 5. Comandos do dia a dia (Ubuntu, em `~/dev/dev-setup`)
 - `just` lista tudo; `just check` antes de todo commit; `just verificar` confere a instalação; `just ligado` mostra o que está no ar.
-- Estudo: `just professor hoje`, `just diag ETAPA ...`, `just ficha ETAPA`, `just colher ETAPA`, `just livros ...`, `just erro ETAPA "..." --certo "..."`, `just atrito "..."`.
+- Estudo: `just professor hoje`, `just fontes ...` (acervo privado das fontes originais, [docs/professor/fontes.md](docs/professor/fontes.md)), `just diag ETAPA ...`, `just ficha ETAPA`, `just colher ETAPA`, `just livros ...`, `just erro ETAPA "..." --certo "..."`, `just atrito "..."`.
 - Progresso: `just rapido` (trilha rápida da instalação), `just agora` (o que é seu agora), `just feito ID`.
 - Contexto para outra conversa: `python3 tools/sessao/contexto.py --inicio | clip.exe` ou `--passo ID`.
 

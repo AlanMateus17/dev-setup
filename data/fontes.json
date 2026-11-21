@@ -1,0 +1,59 @@
+{
+ "_comment": "Documentações oficiais que o setup baixa por Git, só a pasta da documentação, para o acervo privado ~/AMtech/estudo/docs-oficiais (tools/fontes/fontes.py). ref = tag ou ramo da versão que você usa; o commit exato fica registrado no manifesto a cada download. assuntos = os assuntos do mapa-de-estudo que usam a fonte. Licenças conferidas nos próprios repositórios em 21/11/2026.",
+ "documentacoes": [
+  {
+   "id": "typescript-handbook",
+   "titulo": "TypeScript Handbook e documentação oficial",
+   "repo": "https://github.com/microsoft/TypeScript-Website",
+   "ref": "v2",
+   "caminhos": ["packages/documentation/copy/en"],
+   "licenca": "CC BY 4.0 (texto) · MIT (código)",
+   "assuntos": ["2.1", "2.6"]
+  },
+  {
+   "id": "mdn",
+   "titulo": "MDN Web Docs (HTML, CSS, JavaScript, HTTP)",
+   "repo": "https://github.com/mdn/content",
+   "ref": "main",
+   "caminhos": ["files/en-us/web/html", "files/en-us/web/css", "files/en-us/web/javascript", "files/en-us/web/http"],
+   "licenca": "CC BY-SA 2.5",
+   "assuntos": ["3.2", "3.5", "3.6"]
+  },
+  {
+   "id": "node",
+   "titulo": "Documentação da API do Node.js 22",
+   "repo": "https://github.com/nodejs/node",
+   "ref": "v22.23.5",
+   "caminhos": ["doc/api"],
+   "licenca": "licença do Node.js (MIT e outras; ver LICENSE)",
+   "assuntos": ["2.6", "4.8"]
+  },
+  {
+   "id": "pro-git",
+   "titulo": "Pro Git, 2ª edição",
+   "repo": "https://github.com/progit/progit2",
+   "ref": "main",
+   "caminhos": ["book"],
+   "licenca": "CC BY-NC-SA 3.0",
+   "assuntos": ["1.5"]
+  },
+  {
+   "id": "python",
+   "titulo": "Documentação oficial do Python 3.14",
+   "repo": "https://github.com/python/cpython",
+   "ref": "3.14",
+   "caminhos": ["Doc/tutorial", "Doc/library", "Doc/reference"],
+   "licenca": "PSF License",
+   "assuntos": ["7.2", "7.3", "7.9"]
+  },
+  {
+   "id": "postgresql",
+   "titulo": "Documentação do PostgreSQL 18",
+   "repo": "https://github.com/postgres/postgres",
+   "ref": "REL_18_7",
+   "caminhos": ["doc/src/sgml"],
+   "licenca": "PostgreSQL License",
+   "assuntos": ["4.2", "4.3", "5.3", "7.4"]
+  }
+ ]
+}

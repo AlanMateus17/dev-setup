@@ -68,6 +68,7 @@ check:
     python3 tools/editora/livros.py --check
     python3 tools/empresas/empresas.py --check
     python3 tools/coerencia/coerencia.py
+    python3 tools/fontes/fontes.py conferir
     python3 tools/kitsites/gerar.py --check
     python3 tools/custos/custos.py --check
     python3 tools/recursos/recursos.py --check
@@ -214,6 +215,11 @@ colher *args:
 [positional-arguments]
 livros *args:
     python3 tools/biblioteca/biblioteca.py "$@"
+
+# Fontes de estudo, acervo privado em ~/AMtech/estudo (nunca no Git): just fontes docs | baixar ID | entrada [--licenca X] | buscar "termo" | citar ARQUIVO "trecho" | conferir
+[positional-arguments]
+fontes *args:
+    python3 tools/fontes/fontes.py "$@"
 
 # Recrutador: just recrutador semana | entrevista FORMATO [--empresa X] [--vaga arq.txt] [--claude] | registrar FORMATO NOTA | progresso
 recrutador *args:
