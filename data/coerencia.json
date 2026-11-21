@@ -9,7 +9,8 @@
     "Rendas: só passivas nas ondas; onda 0 (agora, máximo 4) = mini-curso de Lógica, canais sem rosto, planilha do AM Gestão e catálogo do HTML.",
     "Canais: Primer Code, Bancada Dev e o canal de finanças (nome a definir).",
     "Fora do plano: restaurantes próprios, mercadinho, máquina de lanches, revenda de veículos e revendas de usados.",
-    "Estudo: a ordem é a do mapa-de-estudo; o Professor só libera assunto escrito e conferido (📘) e com os pré-requisitos do mapa já aprovados (ADR 0018, v2.40)."
+    "Estudo: a ordem é a do mapa-de-estudo; o Professor só libera assunto escrito e conferido (📘) e com os pré-requisitos do mapa já aprovados (ADR 0018, v2.40).",
+    "Repositórios: todos os repositórios do Alan são privados desde 21/11/2026 (inclusive os sites do GitHub Pages); só as vitrines de cliente, quando existirem, serão públicas."
   ],
   "ignorar": [
     "docs/adr/**",

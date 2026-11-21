@@ -12,6 +12,9 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
   - `citar` confere, letra por letra, se um trecho existe na fonte (é a regra que impede alucinação no guia).
   - `conferir` entra no `just check`: falha se arquivo de fonte, livro digital ou PDF fora das pastas de documentos aparecer no repositório.
 
+### Alterado
+- Decisão de 21/11: todos os repositórios do Alan ficam privados, inclusive os sites do GitHub Pages (que saem do ar no plano grátis). `repos.json`, `docs/repositorios.md`, `CONTINUAR.md` e o plano em `data/coerencia.json` atualizados; as vitrines de cliente continuam planejadas como públicas.
+
  - 2026-11-21
 
 ### Alterado
