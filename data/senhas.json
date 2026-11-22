@@ -1,326 +1,939 @@
 {
-  "_sobre": "Complemento do inventário de senhas (tools/senhas/senhas.py). As contas vêm de data/ecossistema.json e os segredos dos serviços vêm dos infra/**/*.env.example; aqui ficam só os extras que não estão nesses lugares e o que não é login. Nenhuma senha mora aqui.",
-  "extras": [
-    {
-      "nome": "Senha mestra do cofre (KeePassXC)",
-      "grupo": "00 Essenciais (e-mail e contas-mãe)",
-      "tipo": "memoria",
-      "passo": "keepass",
-      "obs": "Só na sua cabeça e numa folha guardada em casa. Nunca dentro do próprio cofre."
-    },
-    {
-      "nome": "Códigos de backup do 2FA (Google, GitHub, Microsoft)",
-      "grupo": "00 Essenciais (e-mail e contas-mãe)",
-      "tipo": "anotacao",
-      "passo": "senhas-revisao",
-      "obs": "Uma entrada por conta, com os códigos no campo Notas."
-    },
-    {
-      "nome": "GitHub · chave gh-admin (visibilidade dos repositórios)",
-      "entrada": "GitHub/gh-admin",
-      "tipo": "chave",
-      "passo": "repos-visibilidade",
-      "obs": "Fine-grained, Administration: Read and write, 90 dias. Usada por just repos-visibilidade."
-    },
-    {
-      "nome": "Chave SSH do GitHub (login e assinatura)",
-      "grupo": "06 Código e nuvem",
-      "tipo": "ssh",
-      "passo": "kp-ssh",
-      "obs": "O KeePassXC entrega a chave ao agente SSH quando o cofre abre."
-    },
-    {
-      "nome": "Bot do Telegram (token do @BotFather)",
-      "grupo": "20 Setup técnico",
-      "tipo": "chave",
-      "passo": "re-bot",
-      "obs": "Usado pelo amtech-bot da fila de pedidos."
-    },
-    {
-      "nome": "Hugging Face (token só de leitura)",
-      "grupo": "07 IA",
-      "tipo": "chave",
-      "passo": "hf-conta",
-      "obs": ""
-    },
-    {
-      "nome": "Chave de recuperação do BitLocker",
-      "grupo": "00 Essenciais (e-mail e contas-mãe)",
-      "tipo": "anotacao",
-      "passo": "cripto",
-      "obs": "Sem ela, um problema no Windows pode trancar o disco para sempre."
-    },
-    {
-      "nome": "Senha do backup (restic)",
-      "grupo": "20 Setup técnico",
-      "tipo": "gerar",
-      "passo": "senhas-backup",
-      "obs": "Perder esta senha é perder o backup inteiro."
-    },
-    {
-      "nome": "Chave do age (arquivos cifrados)",
-      "grupo": "20 Setup técnico",
-      "tipo": "anotacao",
-      "passo": "solo-age",
-      "obs": ""
-    },
-    {
-      "nome": "Senha da sala limpa (gocryptfs)",
-      "grupo": "20 Setup técnico",
-      "tipo": "gerar",
-      "passo": "lab-abrir",
-      "obs": "Pedida pelo just lab-abrir."
-    },
-    {
-      "nome": "Wi-Fi de casa e roteador (admin)",
-      "grupo": "20 Setup técnico",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "O roteador sai do usuário e senha de fábrica."
-    },
-    {
-      "nome": "Gmail principal (conta Google de tudo)",
-      "grupo": "00 Essenciais (e-mail e contas-mãe)",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "Conta-mãe: recupera quase todas as outras. 2FA no celular, códigos de backup no cofre.",
-      "chave": "google"
-    },
-    {
-      "nome": "Celular (conta Google ou Apple e PIN)",
-      "grupo": "00 Essenciais (e-mail e contas-mãe)",
-      "tipo": "anotacao",
-      "passo": "",
-      "obs": "PIN e conta do aparelho."
-    },
-    {
-      "nome": "Windows do notebook (PIN e conta Microsoft)",
-      "grupo": "00 Essenciais (e-mail e contas-mãe)",
-      "tipo": "anotacao",
-      "passo": "",
-      "obs": "O Windows Hello usa este PIN."
-    },
-    {
-      "nome": "Claude · segunda conta (a do Claude Code)",
-      "grupo": "07 IA",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "A conta que faz a instalação do setup.",
-      "chave": "claude.ai"
-    },
-    {
-      "nome": "Licenciatura em Matemática (portal do aluno)",
-      "grupo": "09 Estudo",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "Troque o nome pela faculdade quando guardar."
-    },
-    {
-      "nome": "Faculdade de ADS (portal: diploma e histórico)",
-      "grupo": "09 Estudo",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "Guarde mesmo formado: diploma e histórico."
-    },
-    {
-      "nome": "Alura",
-      "grupo": "09 Estudo",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "",
-      "chave": "alura"
-    },
-    {
-      "nome": "Rocketseat",
-      "grupo": "09 Estudo",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "",
-      "chave": "rocketseat"
-    },
-    {
-      "nome": "Finclass",
-      "grupo": "09 Estudo",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "",
-      "chave": "finclass"
-    },
-    {
-      "nome": "42 São Paulo (intra e processo seletivo)",
-      "grupo": "09 Estudo",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "",
-      "chave": "42sp"
-    },
-    {
-      "nome": "Duolingo ou plataforma de idiomas",
-      "grupo": "09 Estudo",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "",
-      "chave": "duolingo"
-    },
-    {
-      "nome": "DED+ (diário escolar)",
-      "grupo": "03 Escola (só os seus acessos)",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "Só o seu acesso de professor; nada de dados de aluno no cofre.",
-      "chave": "diario"
-    },
-    {
-      "nome": "SEE-MG (portal e e-mail institucional)",
-      "grupo": "03 Escola (só os seus acessos)",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "",
-      "chave": "educacao.mg"
-    },
-    {
-      "nome": "Google Classroom da escola",
-      "grupo": "03 Escola (só os seus acessos)",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "",
-      "chave": "classroom"
-    },
-    {
-      "nome": "Bancos (uma entrada por banco)",
-      "grupo": "01 Bancos e dinheiro",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "Senha do app, do internet banking e a eletrônica, cada uma no seu campo."
-    },
-    {
-      "nome": "Corretora de investimentos",
-      "grupo": "01 Bancos e dinheiro",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "Inclui a assinatura eletrônica."
-    },
-    {
-      "nome": "B3 Investidor (Área do Investidor)",
-      "grupo": "01 Bancos e dinheiro",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "",
-      "chave": "b3investidor"
-    },
-    {
-      "nome": "Tesouro Direto",
-      "grupo": "01 Bancos e dinheiro",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "",
-      "chave": "tesouro"
-    },
-    {
-      "nome": "Meu INSS",
-      "grupo": "02 Governo",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "Entra pelo gov.br.",
-      "chave": "inss"
-    },
-    {
-      "nome": "CNH Digital / Detran-MG",
-      "grupo": "02 Governo",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "",
-      "chave": "detran"
-    },
-    {
-      "nome": "INEP · Página do Participante (ENEM 2027)",
-      "grupo": "02 Governo",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "Entra pelo gov.br; a inscrição pede o login.",
-      "chave": "inep"
-    },
-    {
-      "nome": "Operadora do celular",
-      "grupo": "10 Compras e assinaturas",
-      "tipo": "conta",
-      "passo": "",
-      "obs": ""
-    },
-    {
-      "nome": "Compras (Mercado Livre, Shopee, Amazon)",
-      "grupo": "10 Compras e assinaturas",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "",
-      "chave": "mercadolivre"
-    },
-    {
-      "nome": "Streaming e assinaturas pessoais",
-      "grupo": "10 Compras e assinaturas",
-      "tipo": "conta",
-      "passo": "",
-      "obs": ""
-    },
-    {
-      "nome": "WhatsApp pessoal (PIN da verificação em duas etapas)",
-      "grupo": "08 Redes",
-      "tipo": "anotacao",
-      "passo": "",
-      "obs": ""
-    },
-    {
-      "nome": "Vagas (LinkedIn Jobs, Gupy e afins)",
-      "grupo": "12 Carreira e vagas",
-      "tipo": "conta",
-      "passo": "",
-      "obs": "",
-      "chave": "gupy"
-    }
-  ],
-  "ignorar": [
-    "Já conectados",
-    "Revise as permissões",
-    "Projects + memória",
-    "Artifacts (Docs, Slides, Sheets…)",
-    "Pesquisa aprofundada",
-    "Tarefas agendadas",
-    "CNPJ (futuro)",
-    "2 CNPJs por frente",
-    "Anatel e Inmetro",
-    "Declaração anual do IR",
-    "Carnê-leão",
-    "Carnê-leão (Receita Federal)",
-    "Contador (uma consulta)",
-    "CNPJ",
-    "Programas de afiliados",
-    "Gráfica sob demanda",
-    "Gráfica sob demanda (Brasil)",
-    "Canal build in public",
-    "Windows 11 Home"
-  ],
-  "chaves": {
-    "Mercado Pago": "mercadopago",
-    "Conta bancária separada": "banco",
-    "Conta bancária separada (CPF)": "banco",
-    "Pix Automático + gateway (ex.: Asaas)": "asaas",
-    "Certificado digital (e-CNPJ)": "e-cnpj",
-    "VM sempre ligada (Oracle grátis)": "oracle",
-    "GPU por hora (RunPod e afins)": "runpod",
-    "Mídia nativa (Taboola, Outbrain)": "taboola",
-    "Armazenamento de arquivos (Blob/R2)": "cloudflare",
-    "Registro de marca (INPI)": "inpi",
-    "E-mail profissional (enviar e receber)": "zoho",
-    "Ponto de retirada (Shopee e ML)": "shopee",
-    "Wi-Fi de casa e roteador (admin)": "roteador",
-    "Voz clonada (ElevenLabs)": "elevenlabs",
-    "Acervos de imagens (APIs)": "pexels",
-    "Tags de conversão (Pixel, Google…)": "google",
-    "Comunidade (Discord ou grupo)": "discord",
-    "Afiliados (Amazon, Hotmart…)": "afiliados",
-    "API de NFS-e (ex.: Focus NFe)": "focusnfe"
+ "_sobre": "Complemento do inventário de senhas (tools/senhas/senhas.py). As contas vêm de data/ecossistema.json e os segredos dos serviços vêm dos infra/**/*.env.example; aqui ficam só os extras que não estão nesses lugares e o que não é login. Nenhuma senha mora aqui. do_email: contas achadas nos e-mails de cadastro, login e cobrança do Gmail em 22/11/2026 (só o nome da plataforma).",
+ "extras": [
+  {
+   "nome": "Senha mestra do cofre (KeePassXC)",
+   "grupo": "00 Essenciais (e-mail e contas-mãe)",
+   "tipo": "memoria",
+   "passo": "keepass",
+   "obs": "Só na sua cabeça e numa folha guardada em casa. Nunca dentro do próprio cofre."
   },
-  "camadas_sem_login": [
-    "clc"
+  {
+   "nome": "Códigos de backup do 2FA (Google, GitHub, Microsoft)",
+   "grupo": "00 Essenciais (e-mail e contas-mãe)",
+   "tipo": "anotacao",
+   "passo": "senhas-revisao",
+   "obs": "Uma entrada por conta, com os códigos no campo Notas."
+  },
+  {
+   "nome": "GitHub · chave gh-admin (visibilidade dos repositórios)",
+   "entrada": "GitHub/gh-admin",
+   "tipo": "chave",
+   "passo": "repos-visibilidade",
+   "obs": "Fine-grained, Administration: Read and write, 90 dias. Usada por just repos-visibilidade."
+  },
+  {
+   "nome": "Chave SSH do GitHub (login e assinatura)",
+   "grupo": "06 Código e nuvem",
+   "tipo": "ssh",
+   "passo": "kp-ssh",
+   "obs": "O KeePassXC entrega a chave ao agente SSH quando o cofre abre."
+  },
+  {
+   "nome": "Bot do Telegram (token do @BotFather)",
+   "grupo": "20 Setup técnico",
+   "tipo": "chave",
+   "passo": "re-bot",
+   "obs": "Usado pelo amtech-bot da fila de pedidos."
+  },
+  {
+   "nome": "Hugging Face (token só de leitura)",
+   "grupo": "07 IA",
+   "tipo": "chave",
+   "passo": "hf-conta",
+   "obs": ""
+  },
+  {
+   "nome": "Chave de recuperação do BitLocker",
+   "grupo": "00 Essenciais (e-mail e contas-mãe)",
+   "tipo": "anotacao",
+   "passo": "cripto",
+   "obs": "Sem ela, um problema no Windows pode trancar o disco para sempre."
+  },
+  {
+   "nome": "Senha do backup (restic)",
+   "grupo": "20 Setup técnico",
+   "tipo": "gerar",
+   "passo": "senhas-backup",
+   "obs": "Perder esta senha é perder o backup inteiro."
+  },
+  {
+   "nome": "Chave do age (arquivos cifrados)",
+   "grupo": "20 Setup técnico",
+   "tipo": "anotacao",
+   "passo": "solo-age",
+   "obs": ""
+  },
+  {
+   "nome": "Senha da sala limpa (gocryptfs)",
+   "grupo": "20 Setup técnico",
+   "tipo": "gerar",
+   "passo": "lab-abrir",
+   "obs": "Pedida pelo just lab-abrir."
+  },
+  {
+   "nome": "Wi-Fi de casa e roteador (admin)",
+   "grupo": "20 Setup técnico",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "O roteador sai do usuário e senha de fábrica."
+  },
+  {
+   "nome": "Gmail principal (conta Google de tudo)",
+   "grupo": "00 Essenciais (e-mail e contas-mãe)",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "Conta-mãe: recupera quase todas as outras. 2FA no celular, códigos de backup no cofre.",
+   "chave": "google"
+  },
+  {
+   "nome": "Celular (conta Google ou Apple e PIN)",
+   "grupo": "00 Essenciais (e-mail e contas-mãe)",
+   "tipo": "anotacao",
+   "passo": "",
+   "obs": "PIN e conta do aparelho."
+  },
+  {
+   "nome": "Windows do notebook (PIN e conta Microsoft)",
+   "grupo": "00 Essenciais (e-mail e contas-mãe)",
+   "tipo": "anotacao",
+   "passo": "",
+   "obs": "O Windows Hello usa este PIN."
+  },
+  {
+   "nome": "Claude · segunda conta (a do Claude Code)",
+   "grupo": "07 IA",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "A conta que faz a instalação do setup.",
+   "chave": "claude.ai"
+  },
+  {
+   "nome": "Licenciatura em Matemática · Estácio (matrícula de 2025)",
+   "grupo": "09 Estudo",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "Portal do aluno e e-mail @alunos.estacio.br desta matrícula."
+  },
+  {
+   "nome": "ADS · Estácio (matrícula de 2023: diploma e histórico)",
+   "grupo": "09 Estudo",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "Guarde mesmo formado: diploma, histórico e o e-mail @alunos.estacio.br."
+  },
+  {
+   "nome": "Alura",
+   "grupo": "09 Estudo",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "",
+   "chave": "alura"
+  },
+  {
+   "nome": "Rocketseat",
+   "grupo": "09 Estudo",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "",
+   "chave": "rocketseat"
+  },
+  {
+   "nome": "Finclass",
+   "grupo": "09 Estudo",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "",
+   "chave": "finclass"
+  },
+  {
+   "nome": "42 São Paulo (intra e processo seletivo)",
+   "grupo": "09 Estudo",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "",
+   "chave": "42sp"
+  },
+  {
+   "nome": "Duolingo ou plataforma de idiomas",
+   "grupo": "09 Estudo",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "",
+   "chave": "duolingo"
+  },
+  {
+   "nome": "DED+ (diário escolar)",
+   "grupo": "03 Escola (só os seus acessos)",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "Só o seu acesso de professor; nada de dados de aluno no cofre.",
+   "chave": "diario"
+  },
+  {
+   "nome": "SEE-MG (portal e e-mail institucional)",
+   "grupo": "03 Escola (só os seus acessos)",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "",
+   "chave": "educacao.mg"
+  },
+  {
+   "nome": "Google Classroom da escola",
+   "grupo": "03 Escola (só os seus acessos)",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "",
+   "chave": "classroom"
+  },
+  {
+   "nome": "Bancos (uma entrada por banco)",
+   "grupo": "01 Bancos e dinheiro",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "Senha do app, do internet banking e a eletrônica, cada uma no seu campo."
+  },
+  {
+   "nome": "Corretora de investimentos",
+   "grupo": "01 Bancos e dinheiro",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "Inclui a assinatura eletrônica."
+  },
+  {
+   "nome": "B3 Investidor (Área do Investidor)",
+   "grupo": "01 Bancos e dinheiro",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "",
+   "chave": "b3investidor"
+  },
+  {
+   "nome": "Tesouro Direto",
+   "grupo": "01 Bancos e dinheiro",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "",
+   "chave": "tesouro"
+  },
+  {
+   "nome": "Meu INSS",
+   "grupo": "02 Governo",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "Entra pelo gov.br.",
+   "chave": "inss"
+  },
+  {
+   "nome": "CNH Digital / Detran-MG",
+   "grupo": "02 Governo",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "",
+   "chave": "detran"
+  },
+  {
+   "nome": "INEP · Página do Participante (ENEM 2027)",
+   "grupo": "02 Governo",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "Entra pelo gov.br; a inscrição pede o login.",
+   "chave": "inep"
+  },
+  {
+   "nome": "Operadora do celular",
+   "grupo": "10 Compras e assinaturas",
+   "tipo": "conta",
+   "passo": "",
+   "obs": ""
+  },
+  {
+   "nome": "Compras (Mercado Livre, Shopee, Amazon)",
+   "grupo": "10 Compras e assinaturas",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "",
+   "chave": "mercadolivre"
+  },
+  {
+   "nome": "Streaming e assinaturas pessoais",
+   "grupo": "10 Compras e assinaturas",
+   "tipo": "conta",
+   "passo": "",
+   "obs": ""
+  },
+  {
+   "nome": "WhatsApp pessoal (PIN da verificação em duas etapas)",
+   "grupo": "08 Redes",
+   "tipo": "anotacao",
+   "passo": "",
+   "obs": ""
+  },
+  {
+   "nome": "Vagas (LinkedIn Jobs, Gupy e afins)",
+   "grupo": "12 Carreira e vagas",
+   "tipo": "conta",
+   "passo": "",
+   "obs": "",
+   "chave": "gupy"
+  }
+ ],
+ "ignorar": [
+  "Já conectados",
+  "Revise as permissões",
+  "Projects + memória",
+  "Artifacts (Docs, Slides, Sheets…)",
+  "Pesquisa aprofundada",
+  "Tarefas agendadas",
+  "CNPJ (futuro)",
+  "2 CNPJs por frente",
+  "Anatel e Inmetro",
+  "Declaração anual do IR",
+  "Carnê-leão",
+  "Carnê-leão (Receita Federal)",
+  "Contador (uma consulta)",
+  "CNPJ",
+  "Programas de afiliados",
+  "Gráfica sob demanda",
+  "Gráfica sob demanda (Brasil)",
+  "Canal build in public",
+  "Windows 11 Home"
+ ],
+ "chaves": {
+  "Mercado Pago": "mercadopago",
+  "Conta bancária separada": "banco",
+  "Conta bancária separada (CPF)": "banco",
+  "Pix Automático + gateway (ex.: Asaas)": "asaas",
+  "Certificado digital (e-CNPJ)": "e-cnpj",
+  "VM sempre ligada (Oracle grátis)": "oracle",
+  "GPU por hora (RunPod e afins)": "runpod",
+  "Mídia nativa (Taboola, Outbrain)": "taboola",
+  "Armazenamento de arquivos (Blob/R2)": "cloudflare",
+  "Registro de marca (INPI)": "inpi",
+  "E-mail profissional (enviar e receber)": "zoho",
+  "Ponto de retirada (Shopee e ML)": "shopee",
+  "Wi-Fi de casa e roteador (admin)": "roteador",
+  "Voz clonada (ElevenLabs)": "elevenlabs",
+  "Acervos de imagens (APIs)": "pexels",
+  "Tags de conversão (Pixel, Google…)": "google",
+  "Comunidade (Discord ou grupo)": "discord",
+  "Afiliados (Amazon, Hotmart…)": "afiliados",
+  "API de NFS-e (ex.: Focus NFe)": "focusnfe"
+ },
+ "camadas_sem_login": [
+  "clc"
+ ],
+ "do_email": [
+  [
+   "01 Bancos e dinheiro",
+   "Itaú",
+   "itau"
+  ],
+  [
+   "01 Bancos e dinheiro",
+   "Nubank",
+   "nubank"
+  ],
+  [
+   "01 Bancos e dinheiro",
+   "PicPay",
+   "picpay"
+  ],
+  [
+   "01 Bancos e dinheiro",
+   "PayPal",
+   "paypal"
+  ],
+  [
+   "01 Bancos e dinheiro",
+   "XP Investimentos",
+   "xpi"
+  ],
+  [
+   "01 Bancos e dinheiro",
+   "Avenue (corretora nos EUA)",
+   "avenue"
+  ],
+  [
+   "01 Bancos e dinheiro",
+   "Binance",
+   "binance"
+  ],
+  [
+   "01 Bancos e dinheiro",
+   "Blockchain.com (carteira)",
+   "blockchain"
+  ],
+  [
+   "01 Bancos e dinheiro",
+   "Bity (cripto)",
+   "bity"
+  ],
+  [
+   "01 Bancos e dinheiro",
+   "Rico",
+   "rico"
+  ],
+  [
+   "01 Bancos e dinheiro",
+   "Grão",
+   "grao"
+  ],
+  [
+   "01 Bancos e dinheiro",
+   "Caixa (login Caixa)",
+   "caixa"
+  ],
+  [
+   "01 Bancos e dinheiro",
+   "Honda Serviços Financeiros",
+   "hondaservicos"
+  ],
+  [
+   "01 Bancos e dinheiro",
+   "TradingView",
+   "tradingview"
+  ],
+  [
+   "01 Bancos e dinheiro",
+   "Link (pagamentos da Stripe)",
+   "link.com"
+  ],
+  [
+   "03 Escola (só os seus acessos)",
+   "Prodemge (acesso do Estado de MG)",
+   "prodemge"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "Nuvemshop",
+   "nuvemshop"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "Brevo",
+   "brevo"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "Resend",
+   "resend"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "beehiiv",
+   "beehiiv"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "WordPress.com",
+   "wordpress"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "Elementor",
+   "elementor"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "WPForms",
+   "wpforms"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "Astra / Brainstorm Force",
+   "bsf"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "All in One SEO",
+   "aioseo"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "Wordfence",
+   "wordfence"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "Calendly",
+   "calendly"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "Zoom",
+   "zoom"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "GetQR",
+   "getqr"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "vidIQ",
+   "vidiq"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "Design.com",
+   "design.com"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "Napkin AI",
+   "napkin"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "Figma",
+   "figma"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "Behance (Adobe)",
+   "behance"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "Artlist",
+   "artlist"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "Vecteezy",
+   "vecteezy"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "Wondershare (Filmora)",
+   "wondershare"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "KineMaster",
+   "kinemaster"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "Lumin PDF",
+   "lumin"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "WPS Office",
+   "wps"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "Creately",
+   "creately"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "Dovetail",
+   "dovetail"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "Notion",
+   "notion"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "Atlassian (Jira e Confluence)",
+   "atlassian"
+  ],
+  [
+   "04 Grupo AMtech Digital",
+   "GitBook",
+   "gitbook"
+  ],
+  [
+   "05 Instituto e Editora",
+   "Stripe",
+   "stripe"
+  ],
+  [
+   "06 Código e nuvem",
+   "GitLab",
+   "gitlab"
+  ],
+  [
+   "06 Código e nuvem",
+   "Supabase",
+   "supabase"
+  ],
+  [
+   "06 Código e nuvem",
+   "Prisma",
+   "prisma"
+  ],
+  [
+   "06 Código e nuvem",
+   "Cursor",
+   "cursor"
+  ],
+  [
+   "06 Código e nuvem",
+   "CodePen",
+   "codepen"
+  ],
+  [
+   "06 Código e nuvem",
+   "GitKraken",
+   "gitkraken"
+  ],
+  [
+   "06 Código e nuvem",
+   "Tabnine",
+   "tabnine"
+  ],
+  [
+   "06 Código e nuvem",
+   "Unity",
+   "unity"
+  ],
+  [
+   "06 Código e nuvem",
+   "Cloud Clusters",
+   "cloudclusters"
+  ],
+  [
+   "06 Código e nuvem",
+   "QuickNode (nó de blockchain)",
+   "quicknode"
+  ],
+  [
+   "06 Código e nuvem",
+   "HomeByMe (3D)",
+   "homebyme"
+  ],
+  [
+   "06 Código e nuvem",
+   "GDG (Google Developer Groups)",
+   "community.dev"
+  ],
+  [
+   "06 Código e nuvem",
+   "Disqus",
+   "disqus"
+  ],
+  [
+   "07 IA",
+   "OpenAI (ChatGPT)",
+   "openai"
+  ],
+  [
+   "07 IA",
+   "Google AI Studio",
+   "aistudio"
+  ],
+  [
+   "07 IA",
+   "TurboScribe",
+   "turboscribe"
+  ],
+  [
+   "08 Redes",
+   "X (Twitter)",
+   "twitter"
+  ],
+  [
+   "08 Redes",
+   "TikTok",
+   "tiktok"
+  ],
+  [
+   "08 Redes",
+   "Globo (conta Globo)",
+   "globo"
+  ],
+  [
+   "09 Estudo",
+   "LabEx",
+   "labex"
+  ],
+  [
+   "09 Estudo",
+   "Coursera",
+   "coursera"
+  ],
+  [
+   "09 Estudo",
+   "DataCamp",
+   "datacamp"
+  ],
+  [
+   "09 Estudo",
+   "Curso em Vídeo",
+   "cursoemvideo"
+  ],
+  [
+   "09 Estudo",
+   "roadmap.sh",
+   "roadmap"
+  ],
+  [
+   "09 Estudo",
+   "AnkiWeb",
+   "ankiweb"
+  ],
+  [
+   "09 Estudo",
+   "ANBIMA Edu (certificações)",
+   "anbima"
+  ],
+  [
+   "09 Estudo",
+   "Academia.edu",
+   "academia"
+  ],
+  [
+   "09 Estudo",
+   "Scribd",
+   "scribd"
+  ],
+  [
+   "09 Estudo",
+   "Reverso",
+   "reverso"
+  ],
+  [
+   "09 Estudo",
+   "Hot Reload",
+   "hotreload"
+  ],
+  [
+   "09 Estudo",
+   "Hashtag Treinamentos",
+   "hashtag"
+  ],
+  [
+   "09 Estudo",
+   "Alfa Concursos",
+   "alfaconcursos"
+  ],
+  [
+   "09 Estudo",
+   "DevBase",
+   "devbase"
+  ],
+  [
+   "09 Estudo",
+   "Acervo Lins (livros do VHSlins)",
+   "acervolins"
+  ],
+  [
+   "09 Estudo",
+   "CodeChef",
+   "codechef"
+  ],
+  [
+   "09 Estudo",
+   "GeeksforGeeks",
+   "geeksforgeeks"
+  ],
+  [
+   "09 Estudo",
+   "Guru99",
+   "guru99"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Amazon",
+   "amazon"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Mercado Livre",
+   "mercadolivre"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Shopee",
+   "shopee"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "AliExpress",
+   "aliexpress"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "iFood",
+   "ifood"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Rappi",
+   "rappi"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Uber",
+   "uber"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Decolar",
+   "decolar"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Ticket (benefícios)",
+   "ticket"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "TotalPass",
+   "totalpass"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Spotify",
+   "spotify"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Disney+",
+   "disneyplus"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Max (HBO)",
+   "max.com"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Prime Video",
+   "primevideo"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Epic Games",
+   "epicgames"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Rockstar Games",
+   "rockstar"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Strava",
+   "strava"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Waze",
+   "waze"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Espaço Laser",
+   "espacolaser"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Motorola",
+   "motorola"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Acer (registro do notebook)",
+   "acer"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "My Honda",
+   "myhonda"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "MG Conecta (internet de casa)",
+   "mgconecta"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Cemig (energia)",
+   "cemig"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Claro (Minha Claro)",
+   "claro"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Estadão",
+   "estadao"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "AppBarber",
+   "appbarber"
+  ],
+  [
+   "10 Compras e assinaturas",
+   "Authy (2FA)",
+   "authy"
+  ],
+  [
+   "12 Carreira e vagas",
+   "InfoJobs",
+   "infojobs"
+  ],
+  [
+   "12 Carreira e vagas",
+   "Empregare",
+   "empregare"
+  ],
+  [
+   "12 Carreira e vagas",
+   "Contrata Net",
+   "contratanet"
+  ],
+  [
+   "12 Carreira e vagas",
+   "BNE (Banco Nacional de Empregos)",
+   "bne"
+  ],
+  [
+   "12 Carreira e vagas",
+   "Superprof (perfil de professor)",
+   "superprof"
+  ],
+  [
+   "12 Carreira e vagas",
+   "Freelancer.com",
+   "freelancer"
+  ],
+  [
+   "12 Carreira e vagas",
+   "99Freelas",
+   "99freelas"
   ]
+ ],
+ "conferir_do_email": [
+  "365customerservice.com (cuidado: parece golpe imitando a Microsoft)",
+  "bubbleapps.io (Agende Online)",
+  "joinrs.com",
+  "gpsvc.app.br",
+  "zeorouteplanner.com",
+  "compraevolta.com.br",
+  "instacart.com",
+  "leiloespublico.com.br (leilões de MG)",
+  "programacnhpopular.com (cuidado: parece golpe)",
+  "meiaentradadigital.com.br",
+  "aprimoramente.com",
+  "ferpadesign.com.br",
+  "fireapparel.com.br",
+  "oggibikes.com.br",
+  "domecanico.com.br",
+  "stranger.com.br",
+  "fozoco.com",
+  "wpbeginner.com",
+  "luminpdf.com"
+ ]
 }

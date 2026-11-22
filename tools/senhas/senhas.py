@@ -143,6 +143,9 @@ def inventario(raiz: Path = RAIZ) -> list[dict]:
     for e in cfg["extras"]:
         chave = e.get("chave") or (sem_acento(e["entrada"]).split("/")[-1] if e.get("entrada") else palavra_chave(e["nome"]))
         add({**e, "grupo": e.get("grupo") or e["entrada"].split("/")[0], "fonte": "data/senhas.json", "chave": chave})
+    for grupo, nome, chave in cfg.get("do_email", []):
+        add({"nome": nome, "grupo": grupo, "tipo": "conta", "fonte": "Gmail (e-mails de cadastro, login e cobrança)",
+             "chave": chave, "obs": "achada no seu e-mail"})
     for s in ler_env_examples(raiz):
         add(s)
     return sorted(itens, key=lambda i: (i["grupo"], i["tipo"] != "conta", sem_acento(i["nome"])))
@@ -163,6 +166,11 @@ def gerar_doc(itens: list[dict]) -> str:
             o.append(f"\n## {grupo}\n\n| Item | Tipo | Observação |\n|---|---|---|")
         obs = (i.get("obs") or (f"`{i['entrada']}`" if i.get("entrada") else "")).replace("|", "/")
         o.append(f"| {i['nome']} | {i['tipo']} | {obs} |")
+    cfg = json.loads((RAIZ / "data" / "senhas.json").read_text(encoding="utf-8"))
+    if cfg.get("conferir_do_email"):
+        o.append("\n## Achados no e-mail para você conferir\n\nRemetentes de cadastro ou cobrança que podem ser só loja, newsletter ou golpe. "
+                 "O que for conta sua vai para `do_email` em `data/senhas.json`; o resto, apague a conta ou ignore.\n")
+        o += [f"- {x}" for x in cfg["conferir_do_email"]]
     return "\n".join(o) + "\n"
 
 
