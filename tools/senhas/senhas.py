@@ -141,8 +141,8 @@ def inventario(raiz: Path = RAIZ) -> list[dict]:
             add({"nome": limpar(b["rotulo"]), "grupo": grupo_web(b["rotulo"], GRUPO_DA_CAMADA.get(b["camada"])), "tipo": "conta",
                  "fonte": f"ecossistema.json · bloco {b['id']}", "chave": palavra_chave(b["rotulo"], trocas), "obs": ""})
     for e in cfg["extras"]:
-        add({**e, "grupo": e.get("grupo") or e["entrada"].split("/")[0], "fonte": "data/senhas.json",
-             "chave": sem_acento(e.get("entrada", e["nome"])).split("/")[-1] if e.get("entrada") else palavra_chave(e["nome"])})
+        chave = e.get("chave") or (sem_acento(e["entrada"]).split("/")[-1] if e.get("entrada") else palavra_chave(e["nome"]))
+        add({**e, "grupo": e.get("grupo") or e["entrada"].split("/")[0], "fonte": "data/senhas.json", "chave": chave})
     for s in ler_env_examples(raiz):
         add(s)
     return sorted(itens, key=lambda i: (i["grupo"], i["tipo"] != "conta", sem_acento(i["nome"])))
@@ -276,6 +276,17 @@ def cmd_conferir() -> int:
         print(f"  falta  {i['nome']}  [{i['tipo']}]")
     if faltam:
         print("\nContas: entre no site com a extensão ligada e salve. Segredos dos serviços: just senhas-criar.")
+    achadas = {no_cofre(i, todas) for i in itens}
+    fora = [e for e in todas if e not in achadas]
+    if fora:
+        print(f"\nNo cofre e fora do inventário ({len(fora)}): são contas suas que a lista ainda não conhece.")
+        grupos: dict[str, list[str]] = {}
+        for e in fora:
+            g, _, titulo = e.rpartition("/")
+            grupos.setdefault(g or "(sem grupo)", []).append(titulo)
+        for g, titulos in sorted(grupos.items()):
+            print(f"  {g} ({len(titulos)}): {', '.join(sorted(titulos)[:15])}{' …' if len(titulos) > 15 else ''}")
+        print("Para entrar no inventário, acrescente em data/senhas.json → extras (o que for login) ou ignorar.")
     return 0
 
 

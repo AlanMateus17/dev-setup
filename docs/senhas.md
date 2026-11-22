@@ -2,7 +2,7 @@
 
 # Senhas do setup: o que guardar e como cada uma é preenchida
 
-126 itens: 93 contas em sites, 20 segredos que o setup gera, 5 chaves de provedores, 4 chaves e tokens, 3 anotações e 1 que fica só na memória. Nenhuma senha aparece aqui.
+150 itens: 114 contas em sites, 20 segredos que o setup gera, 5 chaves de provedores, 4 chaves e tokens, 6 anotações e 1 que fica só na memória. Nenhuma senha aparece aqui.
 
 Para ver o que já está no cofre e o que falta: `just senhas`. Para pegar uma senha: `just senha NOME`.
 
@@ -21,9 +21,11 @@ Para ver o que já está no cofre e o que falta: `just senhas`. Para pegar uma s
 | Item | Tipo | Observação |
 |---|---|---|
 | Microsoft (Azure) | conta | Conta de estudo com alerta de orçamento. Use e-mail da empresa. |
+| Celular (conta Google ou Apple e PIN) | anotacao | PIN e conta do aparelho. |
 | Chave de recuperação do BitLocker | anotacao | Sem ela, um problema no Windows pode trancar o disco para sempre. |
 | Códigos de backup do 2FA (Google, GitHub, Microsoft) | anotacao | Uma entrada por conta, com os códigos no campo Notas. |
 | Senha mestra do cofre (KeePassXC) | memoria | Só na sua cabeça e numa folha guardada em casa. Nunca dentro do próprio cofre. |
+| Windows do notebook (PIN e conta Microsoft) | anotacao | O Windows Hello usa este PIN. |
 
 ## 01 Bancos e dinheiro
 
@@ -31,18 +33,33 @@ Para ver o que já está no cofre e o que falta: `just senhas`. Para pegar uma s
 |---|---|---|
 | Akaunting (contabilidade CNPJ) | conta |  |
 | API de NFS-e (ex.: Focus NFe) | conta |  |
+| B3 Investidor (Área do Investidor) | conta |  |
+| Bancos (uma entrada por banco) | conta | Senha do app, do internet banking e a eletrônica, cada uma no seu campo. |
 | Certificado digital (e-CNPJ) | conta |  |
+| Corretora de investimentos | conta | Inclui a assinatura eletrônica. |
 | Firefly III (reserva) | conta |  |
 | Ghostfolio (painel do patrimônio) | conta |  |
 | Mercado Pago | conta | Pix e cartão para serviços e aulas. |
+| Tesouro Direto | conta |  |
 
 ## 02 Governo
 
 | Item | Tipo | Observação |
 |---|---|---|
+| CNH Digital / Detran-MG | conta |  |
 | Conta bancária separada | conta | Banco digital sem mensalidade, só para as vendas. |
 | gov.br (prata ou ouro) | conta | Acesso ao carnê-leão online e ao IR. |
+| INEP · Página do Participante (ENEM 2027) | conta | Entra pelo gov.br; a inscrição pede o login. |
 | INPI | conta | Registro da marca Editora AMS Silva. |
+| Meu INSS | conta | Entra pelo gov.br. |
+
+## 03 Escola (só os seus acessos)
+
+| Item | Tipo | Observação |
+|---|---|---|
+| DED+ (diário escolar) | conta | Só o seu acesso de professor; nada de dados de aluno no cofre. |
+| Google Classroom da escola | conta |  |
+| SEE-MG (portal e e-mail institucional) | conta |  |
 
 ## 04 Grupo AMtech Digital
 
@@ -122,6 +139,7 @@ Para ver o que já está no cofre e o que falta: `just senhas`. Para pegar uma s
 |---|---|---|
 | ChatGPT (OpenAI) | conta | Plano grátis. |
 | Claude (Anthropic) | conta | Assinatura que você já tem; API à parte para os sistemas. |
+| Claude · segunda conta (a do Claude Code) | conta | A conta que faz a instalação do setup. |
 | Codex (OpenAI) | conta |  |
 | DeepSeek | conta | Grátis; nunca envie dados sensíveis. |
 | ElevenLabs | conta | Plano Creator para clonar a própria voz; 2FA obrigatório. |
@@ -144,15 +162,22 @@ Para ver o que já está no cofre e o que falta: `just senhas`. Para pegar uma s
 | Telegram | conta | Bot de avisos: peça pronta para aprovar e serviço fora do ar. |
 | TikTok e Facebook | conta | Perfis da marca, separados dos pessoais. |
 | YouTube | conta |  |
+| WhatsApp pessoal (PIN da verificação em duas etapas) | anotacao |  |
 
 ## 09 Estudo
 
 | Item | Tipo | Observação |
 |---|---|---|
+| 42 São Paulo (intra e processo seletivo) | conta |  |
 | Anki | conta |  |
 | BugHunt · HackerOne (bug bounty) | conta |  |
+| Duolingo ou plataforma de idiomas | conta |  |
+| Faculdade de ADS (portal: diploma e histórico) | conta | Guarde mesmo formado: diploma e histórico. |
+| Finclass | conta |  |
 | Kaggle · Colab (GPU grátis) | conta |  |
+| Licenciatura em Matemática (portal do aluno) | conta | Troque o nome pela faculdade quando guardar. |
 | PortSwigger Web Security Academy | conta |  |
+| Rocketseat | conta |  |
 | TryHackMe / Hack The Box | conta |  |
 
 ## 10 Compras e assinaturas
@@ -160,8 +185,17 @@ Para ver o que já está no cofre e o que falta: `just senhas`. Para pegar uma s
 | Item | Tipo | Observação |
 |---|---|---|
 | Autodesk educacional (Revit, Civil 3D) | conta |  |
+| Compras (Mercado Livre, Shopee, Amazon) | conta |  |
+| Operadora do celular | conta |  |
 | Ponto de retirada (Shopee e ML) | conta |  |
 | Spotify Ad Studio | conta | Áudio e podcast, para marca. |
+| Streaming e assinaturas pessoais | conta |  |
+
+## 12 Carreira e vagas
+
+| Item | Tipo | Observação |
+|---|---|---|
+| Vagas (LinkedIn Jobs, Gupy e afins) | conta |  |
 
 ## 20 Setup técnico
 
