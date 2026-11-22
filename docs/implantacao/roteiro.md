@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-63 fases, 572 passos, cerca de **1449 h 48 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+64 fases, 580 passos, cerca de **1464 h 48 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
 **Todo o planejamento está aqui:** os 481 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 98 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 449 dos 572 passos (631 h 03 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 457 dos 580 passos (646 h 03 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -77,6 +77,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [60 · Jarvis: o setup e a casa por comando de voz](#f-jarvis) | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas | 13 | 30 h 50 min |
 | [61 · Hugging Face e IA física: TI, casa inteligente e agropecuária](#f-ia-fisica) | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino | 16 | 44 h 35 min |
 | [62 · Construção civil, arquitetura e engenharia civil (pela TI)](#f-construcao) | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão | 13 | 126 h 10 min |
+| [63 · Central AMtech: uma tela para tudo do setup](#f-central) | Depois da fase Senhas · dez/2026 (protótipo em docs/central/prototipo) | 8 | 15 h 00 min |
 
 <a id="f0"></a>
 
@@ -7125,6 +7126,70 @@ python3 ~/dev/dev-setup/tools/construcao/ifc_resumo.py ~/dev/construcao/casa.ifc
 
 - **Fora do terminal:** Decisão sua, depois de 6 meses da trilha; com ADS e Matemática você não assina projeto, laudo, ART nem RRT.
 - [ ] **Pronto quando:** Decisão anotada: Técnico em Edificações, Engenharia Civil, Arquitetura ou ficar no lado da TI
+
+<a id="f-central"></a>
+
+## 63 · Central AMtech: uma tela para tudo do setup
+
+Abrir uma tela só, no notebook ou no celular, para ver o que espera você, rodar qualquer receita, pedir, estudar e acompanhar empresas e serviços.
+
+**Quando:** Depois da fase Senhas · dez/2026 (protótipo em docs/central/prototipo)
+
+### 63.1 F0 · Portas sem conflito, data/portas.json, correção do coerencia.py e ADR 0022
+
+**Claude com você** · 2 h 00 min
+
+- **Fora do terminal:** Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F0 de docs/central/PROMPTS.md.
+- [ ] **Pronto quando:** Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você
+
+### 63.2 F1 · Portal Homepage gerado dos dados (:3010)
+
+**Claude com você** · 2 h 00 min
+
+- **Fora do terminal:** Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F1 de docs/central/PROMPTS.md.
+- [ ] **Pronto quando:** Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você
+
+### 63.3 F2 · OliveTin com a lista fechada de receitas (:1337)
+
+**Claude com você** · 2 h 00 min
+
+- **Fora do terminal:** Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F2 de docs/central/PROMPTS.md.
+- [ ] **Pronto quando:** Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você
+
+### 63.4 R2 · Revisão de segurança da F2 (Opus)
+
+**Claude com você** · 1 h 00 min
+
+- **Fora do terminal:** Roda no Claude Code do notebook: cole o Bloco fixo e o prompt R de docs/central/PROMPTS.md.
+- [ ] **Pronto quando:** Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você
+
+### 63.5 F3 · Central: API de leitura e executor com saída ao vivo
+
+**Claude com você** · 2 h 00 min
+
+- **Fora do terminal:** Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F3 de docs/central/PROMPTS.md.
+- [ ] **Pronto quando:** Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você
+
+### 63.6 F4 · Central: as 9 telas, igual ao protótipo
+
+**Claude com você** · 2 h 00 min
+
+- **Fora do terminal:** Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F4 de docs/central/PROMPTS.md.
+- [ ] **Pronto quando:** Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você
+
+### 63.7 F5 · Caixa de aprovações ligada de verdade (PRs, Akita, motor, decisões)
+
+**Claude com você** · 2 h 00 min
+
+- **Fora do terminal:** Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F5 de docs/central/PROMPTS.md.
+- [ ] **Pronto quando:** Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você
+
+### 63.8 F6 · Celular: login, app instalável e Tailscale; testes de ponta a ponta
+
+**Claude com você** · 2 h 00 min
+
+- **Fora do terminal:** Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F6 de docs/central/PROMPTS.md.
+- [ ] **Pronto quando:** Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você
 
 <a id="quando-entra-cada-bloco"></a>
 

@@ -2,7 +2,12 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
-## [2.40.0] - 2026-11-21
+## [2.43.0] - 2026-11-22
+
+### Adicionado
+- **Central AMtech** em `docs/central/`: contexto (diagnóstico, decisões montar → colar → construir, arquitetura, fonte de cada tela, segurança, fases), prompts prontos por fase para o Claude Code (`PROMPTS.md`) e o protótipo clicável (`prototipo/index.html`, dados reais do v2.40.0). Fase nova `f-central` no roteiro com os passos F0 a F6 e a revisão de segurança.
+
+ - 2026-11-21
 
 ### Alterado
 - **Professor na ordem do mapa-de-estudo** (ADR 0018): um módulo só é liberado quando o assunto dele está escrito e conferido no mapa (📘), quando todo assunto de que ele depende no mapa também está escrito e quando os módulos desses assuntos já passaram na prova. Antes, cada módulo tinha pré-requisitos próprios e o `just professor hoje` podia mandar TypeScript (2.1) e terminal (1.3) antes do 0.1.

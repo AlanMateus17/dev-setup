@@ -8012,6 +8012,86 @@
      "decisao": true
     }
    ]
+  },
+  {
+   "id": "f-central",
+   "titulo": "Central AMtech: uma tela para tudo do setup",
+   "objetivo": "Abrir uma tela só, no notebook ou no celular, para ver o que espera você, rodar qualquer receita, pedir, estudar e acompanhar empresas e serviços.",
+   "quando": "Depois da fase Senhas · dez/2026 (protótipo em docs/central/prototipo)",
+   "passos": [
+    {
+     "id": "central-f0",
+     "titulo": "F0 · Portas sem conflito, data/portas.json, correção do coerencia.py e ADR 0022",
+     "quem": "claude",
+     "pronto": "Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você",
+     "tempo_min": 120,
+     "fora": "Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F0 de docs/central/PROMPTS.md.",
+     "blocos": []
+    },
+    {
+     "id": "central-f1",
+     "titulo": "F1 · Portal Homepage gerado dos dados (:3010)",
+     "quem": "claude",
+     "pronto": "Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você",
+     "tempo_min": 120,
+     "fora": "Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F1 de docs/central/PROMPTS.md.",
+     "blocos": []
+    },
+    {
+     "id": "central-f2",
+     "titulo": "F2 · OliveTin com a lista fechada de receitas (:1337)",
+     "quem": "claude",
+     "pronto": "Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você",
+     "tempo_min": 120,
+     "fora": "Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F2 de docs/central/PROMPTS.md.",
+     "blocos": []
+    },
+    {
+     "id": "central-r2",
+     "titulo": "R2 · Revisão de segurança da F2 (Opus)",
+     "quem": "claude",
+     "pronto": "Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você",
+     "tempo_min": 60,
+     "fora": "Roda no Claude Code do notebook: cole o Bloco fixo e o prompt R de docs/central/PROMPTS.md.",
+     "blocos": []
+    },
+    {
+     "id": "central-f3",
+     "titulo": "F3 · Central: API de leitura e executor com saída ao vivo",
+     "quem": "claude",
+     "pronto": "Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você",
+     "tempo_min": 120,
+     "fora": "Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F3 de docs/central/PROMPTS.md.",
+     "blocos": []
+    },
+    {
+     "id": "central-f4",
+     "titulo": "F4 · Central: as 9 telas, igual ao protótipo",
+     "quem": "claude",
+     "pronto": "Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você",
+     "tempo_min": 120,
+     "fora": "Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F4 de docs/central/PROMPTS.md.",
+     "blocos": []
+    },
+    {
+     "id": "central-f5",
+     "titulo": "F5 · Caixa de aprovações ligada de verdade (PRs, Akita, motor, decisões)",
+     "quem": "claude",
+     "pronto": "Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você",
+     "tempo_min": 120,
+     "fora": "Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F5 de docs/central/PROMPTS.md.",
+     "blocos": []
+    },
+    {
+     "id": "central-f6",
+     "titulo": "F6 · Celular: login, app instalável e Tailscale; testes de ponta a ponta",
+     "quem": "claude",
+     "pronto": "Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você",
+     "tempo_min": 120,
+     "fora": "Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F6 de docs/central/PROMPTS.md.",
+     "blocos": []
+    }
+   ]
   }
  ]
 }
