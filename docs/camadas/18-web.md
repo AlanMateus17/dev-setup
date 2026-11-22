@@ -142,21 +142,21 @@ flowchart LR
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [E-mail profissional (enviar e receber)](#mail) | Remoto · precisa de conta | contato@seu-dominio. O roteamento da Cloudflare só recebe; para enviar, é preciso um provedor de e-mail. | passo 36.4 · Semanas 6 e 7 · dez/2026 |
-| [Domínio (Registro.br)](#dom) | Remoto · precisa de conta | Seu domínio .com.br, registrado no seu CPF. Os nameservers apontam para a Cloudflare. | passo 36.3 · Semanas 6 e 7 · dez/2026 |
-| [Site pessoal + blog (Jekyll)](#site) | Remoto | alanmateus17.github.io: portfólio, blog e newsletter. Migra do Jekyll para o Astro (ADR 0008). | passo 24.5 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 24.8 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 36.7 · Semanas 6 e 7 · dez/2026; passo 46.1 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
-| [Instituto AMS](#inst) | Remoto | Site dos cursos: páginas de venda que levam ao checkout. | passo 36.8 · Semanas 6 e 7 · dez/2026; passo 40.1 · Semanas 12 a 15 · jan a fev/2027; passo 40.7 · Semanas 12 a 15 · jan a fev/2027 |
-| [Site Grupo AMtech](#amsite) | Remoto | Site institucional da empresa: serviços, sistemas AM e contato. | passo 23.7 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; passo 36.9 · Semanas 6 e 7 · dez/2026 |
-| [Catálogo do HTML](#catal) | Remoto | Site didático para os alunos publicarem os próprios sites. | passo 36.9 · Semanas 6 e 7 · dez/2026; passo 46.2 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
-| [Umami (analytics)](#umami) | Remoto · precisa de conta | Principal do analytics sem cookie (o Plausible é a reserva). Open source. | passo 36.11 · Semanas 6 e 7 · dez/2026 |
-| [Google Search Console](#gsc) | Remoto · precisa de conta | Mostra como o Google indexa os sites e quais buscas trazem visitas. | passo 36.12 · Semanas 6 e 7 · dez/2026 |
-| [Hostinger (clientes WP)](#hostg) | Remoto · precisa de conta | Hospedagem que você já tem. Deploy por push no GitHub (inclusive Node.js) e MCP oficial com 146 ferramentas para IAs: publicar, ligar domínio e manter WordPress pela conversa. Créditos de IA (construtor, Agent, Reach) são pagos à parte. | passo 23.5 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; passo 28.2 · Semana 6 · nov/2026 a dez/2026; passo 28.4 · Semana 6 · nov/2026 a dez/2026; passo 36.13 · Semanas 6 e 7 · dez/2026; passo 46.10 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
-| [Kit de sites (Hostinger IA)](#kitsites) | Local | Pacotes, ficha do cliente, 26 prompts por tipo de negócio, conferência automática, checklist e relatório mensal. | passo 13.1 · Semanas 4 e 5 · nov/2026; passo 13.2 · Semanas 4 e 5 · nov/2026; passo 13.3 · Semanas 4 e 5 · nov/2026; passo 13.4 · Semanas 4 e 5 · nov/2026; passo 23.3 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada |
-| [Avaliador de templates](#avaliador) | Local | Lê uma pasta de templates e diz qual é útil, qual adaptar e qual descartar, sem rodar código de terceiros. | passo 13.5 · Semanas 4 e 5 · nov/2026 |
-| [Klaro! (consentimento LGPD)](#klaro) | Local | Banner de consentimento aberto: Pixel da Meta, tag do Google e demais só disparam depois do aceite. O Umami não usa cookie e fica fora do banner. | passo 40.6 · Semanas 12 a 15 · jan a fev/2027 |
-| [Plausible (reserva do Umami)](#plausible) | Remoto · precisa de conta | Analytics sem cookie, reserva do Umami e painel público para cliente que pedir. | passo 33.11 · Com a primeira página de venda no ar (jan/2027) e por etapas |
-| [BookStack (manuais dos clientes)](#bookstack) | Remoto · precisa de conta | Wiki em livros, capítulos e páginas para os manuais que o cliente lê e o pós-venda aponta. A documentação de dev segue no MkDocs. | passo 32.5 · Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar |
-| [Astro (sites de conteúdo)](#astro) | Local | Principal dos sites de conteúdo (ADR 0007 e 0008): blog, landing pages, Instituto AMS, Catálogo do HTML. O site pessoal migra do Jekyll para ele; publica no Cloudflare Pages. | passo 23.7 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; passo 36.14 · Semanas 6 e 7 · dez/2026; passo 45.9 · Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) (começa quando: o recesso começou e uma das 4 rendas de agora já passou no portão) |
+| [E-mail profissional (enviar e receber)](#mail) | Remoto · precisa de conta | contato@seu-dominio. O roteamento da Cloudflare só recebe; para enviar, é preciso um provedor de e-mail. | passo 37.4 · Semanas 6 e 7 · dez/2026 |
+| [Domínio (Registro.br)](#dom) | Remoto · precisa de conta | Seu domínio .com.br, registrado no seu CPF. Os nameservers apontam para a Cloudflare. | passo 37.3 · Semanas 6 e 7 · dez/2026 |
+| [Site pessoal + blog (Jekyll)](#site) | Remoto | alanmateus17.github.io: portfólio, blog e newsletter. Migra do Jekyll para o Astro (ADR 0008). | passo 25.5 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 25.8 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 37.7 · Semanas 6 e 7 · dez/2026; passo 47.1 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [Instituto AMS](#inst) | Remoto | Site dos cursos: páginas de venda que levam ao checkout. | passo 37.8 · Semanas 6 e 7 · dez/2026; passo 41.1 · Semanas 12 a 15 · jan a fev/2027; passo 41.7 · Semanas 12 a 15 · jan a fev/2027 |
+| [Site Grupo AMtech](#amsite) | Remoto | Site institucional da empresa: serviços, sistemas AM e contato. | passo 24.7 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; passo 37.9 · Semanas 6 e 7 · dez/2026 |
+| [Catálogo do HTML](#catal) | Remoto | Site didático para os alunos publicarem os próprios sites. | passo 37.9 · Semanas 6 e 7 · dez/2026; passo 47.2 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [Umami (analytics)](#umami) | Remoto · precisa de conta | Principal do analytics sem cookie (o Plausible é a reserva). Open source. | passo 37.11 · Semanas 6 e 7 · dez/2026 |
+| [Google Search Console](#gsc) | Remoto · precisa de conta | Mostra como o Google indexa os sites e quais buscas trazem visitas. | passo 37.12 · Semanas 6 e 7 · dez/2026 |
+| [Hostinger (clientes WP)](#hostg) | Remoto · precisa de conta | Hospedagem que você já tem. Deploy por push no GitHub (inclusive Node.js) e MCP oficial com 146 ferramentas para IAs: publicar, ligar domínio e manter WordPress pela conversa. Créditos de IA (construtor, Agent, Reach) são pagos à parte. | passo 24.5 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; passo 29.2 · Semana 6 · nov/2026 a dez/2026; passo 29.4 · Semana 6 · nov/2026 a dez/2026; passo 37.13 · Semanas 6 e 7 · dez/2026; passo 47.10 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
+| [Kit de sites (Hostinger IA)](#kitsites) | Local | Pacotes, ficha do cliente, 26 prompts por tipo de negócio, conferência automática, checklist e relatório mensal. | passo 14.1 · Semanas 4 e 5 · nov/2026; passo 14.2 · Semanas 4 e 5 · nov/2026; passo 14.3 · Semanas 4 e 5 · nov/2026; passo 14.4 · Semanas 4 e 5 · nov/2026; passo 24.3 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada |
+| [Avaliador de templates](#avaliador) | Local | Lê uma pasta de templates e diz qual é útil, qual adaptar e qual descartar, sem rodar código de terceiros. | passo 14.5 · Semanas 4 e 5 · nov/2026 |
+| [Klaro! (consentimento LGPD)](#klaro) | Local | Banner de consentimento aberto: Pixel da Meta, tag do Google e demais só disparam depois do aceite. O Umami não usa cookie e fica fora do banner. | passo 41.6 · Semanas 12 a 15 · jan a fev/2027 |
+| [Plausible (reserva do Umami)](#plausible) | Remoto · precisa de conta | Analytics sem cookie, reserva do Umami e painel público para cliente que pedir. | passo 34.11 · Com a primeira página de venda no ar (jan/2027) e por etapas |
+| [BookStack (manuais dos clientes)](#bookstack) | Remoto · precisa de conta | Wiki em livros, capítulos e páginas para os manuais que o cliente lê e o pós-venda aponta. A documentação de dev segue no MkDocs. | passo 33.5 · Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar |
+| [Astro (sites de conteúdo)](#astro) | Local | Principal dos sites de conteúdo (ADR 0007 e 0008): blog, landing pages, Instituto AMS, Catálogo do HTML. O site pessoal migra do Jekyll para ele; publica no Cloudflare Pages. | passo 24.7 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; passo 37.14 · Semanas 6 e 7 · dez/2026; passo 46.9 · Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) (começa quando: o recesso começou e uma das 4 rendas de agora já passou no portão) |
 
 <a id="mail"></a>
 
@@ -166,7 +166,7 @@ flowchart LR
 
 contato@seu-dominio. O roteamento da Cloudflare só recebe; para enviar, é preciso um provedor de e-mail.
 
-**Quando entra:** passo 36.4 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.4 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -181,7 +181,7 @@ contato@seu-dominio. O roteamento da Cloudflare só recebe; para enviar, é prec
 
 Seu domínio .com.br, registrado no seu CPF. Os nameservers apontam para a Cloudflare.
 
-**Quando entra:** passo 36.3 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.3 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -199,7 +199,7 @@ Seu domínio .com.br, registrado no seu CPF. Os nameservers apontam para a Cloud
 
 alanmateus17.github.io: portfólio, blog e newsletter. Migra do Jekyll para o Astro (ADR 0008).
 
-**Quando entra:** passo 24.5 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 24.8 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 36.7 · Semanas 6 e 7 · dez/2026; passo 46.1 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 25.5 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 25.8 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 37.7 · Semanas 6 e 7 · dez/2026; passo 47.1 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -222,7 +222,7 @@ alanmateus17.github.io: portfólio, blog e newsletter. Migra do Jekyll para o As
 
 Site dos cursos: páginas de venda que levam ao checkout.
 
-**Quando entra:** passo 36.8 · Semanas 6 e 7 · dez/2026; passo 40.1 · Semanas 12 a 15 · jan a fev/2027; passo 40.7 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.8 · Semanas 6 e 7 · dez/2026; passo 41.1 · Semanas 12 a 15 · jan a fev/2027; passo 41.7 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -254,7 +254,7 @@ Site dos cursos: páginas de venda que levam ao checkout.
 
 Site institucional da empresa: serviços, sistemas AM e contato.
 
-**Quando entra:** passo 23.7 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; passo 36.9 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 24.7 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; passo 37.9 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -270,7 +270,7 @@ Site institucional da empresa: serviços, sistemas AM e contato.
 
 Site didático para os alunos publicarem os próprios sites.
 
-**Quando entra:** passo 36.9 · Semanas 6 e 7 · dez/2026; passo 46.2 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.9 · Semanas 6 e 7 · dez/2026; passo 47.2 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -285,7 +285,7 @@ Site didático para os alunos publicarem os próprios sites.
 
 Principal do analytics sem cookie (o Plausible é a reserva). Open source.
 
-**Quando entra:** passo 36.11 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.11 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -302,7 +302,7 @@ Principal do analytics sem cookie (o Plausible é a reserva). Open source.
 
 Mostra como o Google indexa os sites e quais buscas trazem visitas.
 
-**Quando entra:** passo 36.12 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 37.12 · Semanas 6 e 7 · dez/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -316,7 +316,7 @@ Mostra como o Google indexa os sites e quais buscas trazem visitas.
 
 Hospedagem que você já tem. Deploy por push no GitHub (inclusive Node.js) e MCP oficial com 146 ferramentas para IAs: publicar, ligar domínio e manter WordPress pela conversa. Créditos de IA (construtor, Agent, Reach) são pagos à parte.
 
-**Quando entra:** passo 23.5 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; passo 28.2 · Semana 6 · nov/2026 a dez/2026; passo 28.4 · Semana 6 · nov/2026 a dez/2026; passo 36.13 · Semanas 6 e 7 · dez/2026; passo 46.10 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 24.5 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; passo 29.2 · Semana 6 · nov/2026 a dez/2026; passo 29.4 · Semana 6 · nov/2026 a dez/2026; passo 37.13 · Semanas 6 e 7 · dez/2026; passo 47.10 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -332,7 +332,7 @@ Hospedagem que você já tem. Deploy por push no GitHub (inclusive Node.js) e MC
 
 Pacotes, ficha do cliente, 26 prompts por tipo de negócio, conferência automática, checklist e relatório mensal.
 
-**Quando entra:** passo 13.1 · Semanas 4 e 5 · nov/2026; passo 13.2 · Semanas 4 e 5 · nov/2026; passo 13.3 · Semanas 4 e 5 · nov/2026; passo 13.4 · Semanas 4 e 5 · nov/2026; passo 23.3 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 14.1 · Semanas 4 e 5 · nov/2026; passo 14.2 · Semanas 4 e 5 · nov/2026; passo 14.3 · Semanas 4 e 5 · nov/2026; passo 14.4 · Semanas 4 e 5 · nov/2026; passo 24.3 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -348,7 +348,7 @@ Pacotes, ficha do cliente, 26 prompts por tipo de negócio, conferência automá
 
 Lê uma pasta de templates e diz qual é útil, qual adaptar e qual descartar, sem rodar código de terceiros.
 
-**Quando entra:** passo 13.5 · Semanas 4 e 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 14.5 · Semanas 4 e 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -362,7 +362,7 @@ Lê uma pasta de templates e diz qual é útil, qual adaptar e qual descartar, s
 
 Banner de consentimento aberto: Pixel da Meta, tag do Google e demais só disparam depois do aceite. O Umami não usa cookie e fica fora do banner.
 
-**Quando entra:** passo 40.6 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 41.6 · Semanas 12 a 15 · jan a fev/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -377,7 +377,7 @@ Banner de consentimento aberto: Pixel da Meta, tag do Google e demais só dispar
 
 Analytics sem cookie, reserva do Umami e painel público para cliente que pedir.
 
-**Quando entra:** passo 33.11 · Com a primeira página de venda no ar (jan/2027) e por etapas ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 34.11 · Com a primeira página de venda no ar (jan/2027) e por etapas ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -391,7 +391,7 @@ Analytics sem cookie, reserva do Umami e painel público para cliente que pedir.
 
 Wiki em livros, capítulos e páginas para os manuais que o cliente lê e o pós-venda aponta. A documentação de dev segue no MkDocs.
 
-**Quando entra:** passo 32.5 · Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 33.5 · Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -406,7 +406,7 @@ Wiki em livros, capítulos e páginas para os manuais que o cliente lê e o pós
 
 Principal dos sites de conteúdo (ADR 0007 e 0008): blog, landing pages, Instituto AMS, Catálogo do HTML. O site pessoal migra do Jekyll para ele; publica no Cloudflare Pages.
 
-**Quando entra:** passo 23.7 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; passo 36.14 · Semanas 6 e 7 · dez/2026; passo 45.9 · Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) (começa quando: o recesso começou e uma das 4 rendas de agora já passou no portão) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 24.7 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; passo 37.14 · Semanas 6 e 7 · dez/2026; passo 46.9 · Recesso escolar de jan/2027 (14 dias seguidos, de dia; o restaurante segue à noite) (começa quando: o recesso começou e uma das 4 rendas de agora já passou no portão) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

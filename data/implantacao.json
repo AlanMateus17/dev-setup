@@ -359,6 +359,91 @@
    "quando": "Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026"
   },
   {
+   "id": "f-ferramentas",
+   "titulo": "Ferramentas do dia a dia: ligar e testar cada uma uma vez",
+   "objetivo": "Todo comando do setup testado uma vez no notebook, para que nada exista só no repositório sem você saber usar.",
+   "quando": "Junto com a fase Senhas · a partir de 22/11/2026 (uma sessão curta por grupo)",
+   "passos": [
+    {
+     "id": "fd-operacao",
+     "titulo": "Operação: conferir, fazer backup, ligar e desligar serviços",
+     "quem": "script",
+     "pronto": "verificar sem erro, backup feito e serviço de teste subindo e parando",
+     "tempo_min": 20,
+     "comando": "cd ~/dev/dev-setup && just verificar && just bootstrap-simular && just backup && just servico automacao && just desligar",
+     "nota": "O just ligar já está na fase Celular; aqui é o resto da operação diária. Senhas no dia a dia: just senha NOME, just senhas-lista (regenera docs/senhas.md) e just cofre-fechar (tranca na hora).",
+     "blocos": []
+    },
+    {
+     "id": "fd-motor",
+     "titulo": "Motor de decisão: escada, custo e regra de três",
+     "quem": "script",
+     "pronto": "Um pedido passou pela escada, foi marcado ok e aparece no relatório",
+     "tempo_min": 15,
+     "comando": "cd ~/dev/dev-setup && just motor \"calcular o rateio da casa\" && just motor-ok 1 && just motor-relatorio && just motor-custo && just conversa && just medir",
+     "nota": "just motor-refazer N marca uma decisão para refazer.",
+     "blocos": []
+    },
+    {
+     "id": "fd-nucleo",
+     "titulo": "Núcleo: tarefas",
+     "quem": "script",
+     "pronto": "just tarefas lista as tarefas abertas",
+     "tempo_min": 5,
+     "comando": "cd ~/dev/dev-setup && just tarefas",
+     "blocos": []
+    },
+    {
+     "id": "fd-estudo",
+     "titulo": "Estudo: mapa do Professor, biblioteca, diagnóstico, ficha, colheita, erros e atritos",
+     "quem": "script",
+     "pronto": "Cada comando roda uma vez sem erro e o erro/atrito de teste aparece no vault",
+     "tempo_min": 25,
+     "comando": "cd ~/dev/dev-setup && just professor-mapa && just livros lista && just diag && just ficha && just colher && just erro \"teste\" && just erros && just atrito \"teste\" && just atritos",
+     "blocos": []
+    },
+    {
+     "id": "fd-qualidade",
+     "titulo": "Qualidade: coerência dos textos com o plano",
+     "quem": "script",
+     "pronto": "just coerencia termina com 0 erros",
+     "tempo_min": 5,
+     "comando": "cd ~/dev/dev-setup && just coerencia",
+     "blocos": []
+    },
+    {
+     "id": "fd-vitrine",
+     "titulo": "Vitrine de um produto num repositório público",
+     "quem": "voce",
+     "pronto": "A vitrine de um produto está publicada e revisada por você",
+     "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup && just vitrine",
+     "nota": "Pede confirmação: sobrescreve o README do repositório da vitrine.",
+     "blocos": []
+    },
+    {
+     "id": "fd-lab",
+     "titulo": "Sala limpa cifrada do laboratório de segurança",
+     "quem": "script",
+     "pronto": "lab-abrir monta a pasta cifrada com a senha do cofre e lab-fechar desmonta",
+     "tempo_min": 15,
+     "comando": "cd ~/dev/dev-setup && just lab-abrir && just lab-fechar",
+     "nota": "A senha do gocryptfs fica no cofre (inventário: Senha da sala limpa).",
+     "blocos": []
+    },
+    {
+     "id": "fd-os",
+     "titulo": "AMtech OS 0.1: testar numa VM antes de decidir o ADR 0016",
+     "quem": "voce",
+     "pronto": "Uma semana de uso na VM e a decisão do ADR 0016 anotada",
+     "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && just os-simular",
+     "nota": "just os-instalar só depois da decisão: transforma o Ubuntu no AMtech OS.",
+     "blocos": []
+    }
+   ]
+  },
+  {
    "id": "f3",
    "titulo": "Windows",
    "objetivo": "Os programas do setup instalados, o navegador com o Claude e o WSL2 pronto.",
