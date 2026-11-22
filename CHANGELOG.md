@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.41.0] - 2026-11-22
+
+### Adicionado
+- `just repos-visibilidade`: confere a visibilidade de cada repositório no GitHub contra o `repos.json`, sem IA; com `--aplicar` mostra o plano e só muda depois da sua confirmação (digitar o número de mudanças; repositório com GitHub Pages ou estrelas pede o nome). A chave do GitHub vem do KeePassXC pelo `scripts/wsl/segredos.sh` (entrada `GitHub/gh-admin`) e existe só durante o comando. Fork de repositório público é avisado como impossível; cada mudança vai para a auditoria do núcleo. Testes em `tools/repos/test_visibilidade.py`.
+
 ## [2.40.0] - 2026-11-21
 
 ### Alterado
