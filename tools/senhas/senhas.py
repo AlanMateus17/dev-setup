@@ -176,7 +176,13 @@ def gerar_doc(itens: list[dict]) -> str:
 
 # ---------- cofre ----------
 def caminho_cofre() -> str:
-    return os.environ.get("COFRE") or f"/mnt/c/Users/{os.environ.get('USER', '')}/cofre senhas.kdbx"
+    """Cofre do roteiro (passo keepass): Documentos\\Cofre\\Cofre.kdbx do Windows. COFRE=... troca o caminho."""
+    if os.environ.get("COFRE"):
+        return os.environ["COFRE"]
+    achados = sorted(Path("/mnt/c/Users").glob("*/Documents/Cofre/Cofre.kdbx")) if Path("/mnt/c/Users").exists() else []
+    if achados:
+        return str(achados[0])
+    return str(Path.home() / "Documents" / "Cofre" / "Cofre.kdbx")
 
 
 def _keyctl(args: list[str], entrada: str | None = None, run=subprocess.run):
