@@ -4,19 +4,19 @@
 
 [← Implantação](README.md)
 
-63 fases, 572 passos, cerca de **1449 h 48 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+63 fases, 575 passos, cerca de **1450 h 28 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
 **Todo o planejamento está aqui:** os 481 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 98 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 449 dos 572 passos (631 h 03 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 452 dos 575 passos (631 h 43 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
 | [0 · Diagnóstico: o que você já tem](#f0) | Antes de tudo · semana 1 (out/2026) | 6 | 1 h 40 min |
 | [1 · Preparar](#f1) | Semana 1 · out/2026 | 4 | 2 h 40 min |
-| [2 · Senhas: recuperar, trocar e guardar](#f2) | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026 | 16 | 7 h 05 min |
+| [2 · Senhas: recuperar, trocar e guardar](#f2) | Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027 | 19 | 7 h 45 min |
 | [3 · Windows](#f3) | Semana 1 · out/2026 | 9 | 2 h 30 min |
 | [4 · Linux (WSL2)](#f4) | Semana 2 · nov/2026 | 10 | 2 h 22 min |
 | [5 · GitHub e CI](#f5) | Semana 2 · nov/2026 | 5 | 55 min |
@@ -223,7 +223,7 @@ winget upgrade --all --accept-source-agreements --accept-package-agreements; Ins
 
 Toda conta com senha única guardada no KeePassXC, verificação em duas etapas nas críticas e um jeito de recuperar tudo se perder o notebook ou o celular.
 
-**Quando:** Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026
+**Quando:** Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027
 
 ### 2.1 Instalar o KeePassXC e criar o cofre com uma senha mestra de 6 palavras
 
@@ -337,7 +337,44 @@ Start-Process chrome 'chrome://password-manager/settings'
 - No KeePassXC: Configurações > Integração com navegador, marque o seu navegador e instale a extensão KeePassXC-Browser.
 - Implanta: KeePassXC · Navegador + Claude in Chrome
 
-### 2.11 Pôr o cofre no backup e testar abrir a cópia
+### 2.11 Ligar o cofre ao terminal do Ubuntu e ver o que falta guardar
+
+**Script** · 10 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+sudo apt install -y keepassxc keyutils && cd ~/dev/dev-setup && just senhas
+```
+
+- [ ] **Pronto quando:** just senhas abre o cofre e mostra o que já está guardado, o que falta e as contas do cofre fora da lista (docs/senhas.md)
+- O cofre padrão é o deste roteiro (Documentos\Cofre\Cofre.kdbx). Para pegar uma senha sem procurar: just senha NOME (copia e limpa em 20 s). Desbloqueio por um tempo: just cofre-abrir 30.
+- Implanta: KeePassXC
+
+### 2.12 Completar o inventário com as contas que só existem no cofre
+
+**Você** · 20 min
+
+- **Fora do terminal:** Só você sabe quais contas são suas: a decisão e a edição do data/senhas.json são manuais.
+- [ ] **Pronto quando:** O bloco 'no cofre e fora do inventário' do just senhas está vazio ou tudo que sobrou está em ignorar
+- Conta sua vai para data/senhas.json → extras ou do_email; o que não é login vai para ignorar. Os 19 remetentes 'para conferir' do docs/senhas.md entram aqui (dois parecem golpe: não clique).
+- Implanta: KeePassXC
+
+### 2.13 Criar a chave gh-admin do GitHub e conferir a visibilidade dos repositórios
+
+**Você** · 10 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/dev-setup && just repos-visibilidade
+```
+
+- [ ] **Pronto quando:** Chave fine-grained (Administration: Read and write, 90 dias) no cofre como GitHub/gh-admin; just repos-visibilidade sem diferença
+- Decida o catalogo-html (público pelo repos.json, privado desde 22/11) e os forks do Cursos-TI antes de rodar --aplicar.
+- Implanta: KeePassXC
+
+### 2.14 Pôr o cofre no backup e testar abrir a cópia
 
 **Você** · 15 min
 
@@ -351,7 +388,7 @@ $d = 'E:'; New-Item -ItemType Directory -Force "$d\Cofre" | Out-Null; Copy-Item 
 - No WSL o caminho é /mnt/c/Users/SEU_USUARIO/Documents/Cofre: acrescente ao comando do restic no passo do backup.
 - Implanta: KeePassXC · Disco externo · Backup 3-2-1
 
-### 2.12 Trocar o resto aos poucos: 5 contas por semana, das mais usadas às menos usadas
+### 2.15 Trocar o resto aos poucos: 5 contas por semana, das mais usadas às menos usadas
 
 **Você** · 20 min
 
@@ -359,7 +396,7 @@ $d = 'E:'; New-Item -ItemType Directory -Force "$d\Cofre" | Out-Null; Copy-Item 
 - [ ] **Pronto quando:** Relatório de integridade do KeePassXC sem senha fraca, repetida ou vazada
 - Implanta: KeePassXC
 
-### 2.13 Marcar a revisão a cada 3 meses: relatório do cofre, aparelhos conectados no Google e códigos de backup
+### 2.16 Marcar a revisão a cada 3 meses: relatório do cofre, aparelhos conectados no Google e códigos de backup
 
 **Você** · 10 min
 
@@ -367,7 +404,7 @@ $d = 'E:'; New-Item -ItemType Directory -Force "$d\Cofre" | Out-Null; Copy-Item 
 - [ ] **Pronto quando:** Lembrete trimestral no calendário
 - Implanta: KeePassXC
 
-### 2.14 Usar o KeePassXC como agente SSH
+### 2.17 Usar o KeePassXC como agente SSH
 
 **Você** · 15 min
 
@@ -375,7 +412,7 @@ $d = 'E:'; New-Item -ItemType Directory -Force "$d\Cofre" | Out-Null; Copy-Item 
 - [ ] **Pronto quando:** Chave SSH carregada pelo cofre
 - Implanta: KeePassXC
 
-### 2.15 Ativar o auto-preenchimento (Auto-Type) com atalho
+### 2.18 Ativar o auto-preenchimento (Auto-Type) com atalho
 
 **Você** · 10 min
 
@@ -383,7 +420,7 @@ $d = 'E:'; New-Item -ItemType Directory -Force "$d\Cofre" | Out-Null; Copy-Item 
 - [ ] **Pronto quando:** Login preenchido pelo atalho
 - Implanta: KeePassXC
 
-### 2.16 Avaliar arquivo-chave ou chave física como segundo fator do cofre
+### 2.19 Avaliar arquivo-chave ou chave física como segundo fator do cofre
 
 **Você** · 15 min
 
@@ -1022,17 +1059,18 @@ n8n, banco de métricas, Grafana e Uptime Kuma rodando.
 
 **Quando:** Semana 4 · nov/2026
 
-### 10.1 Gerar as senhas da stack e guardar no KeePassXC
+### 10.1 Gerar no cofre as senhas dos serviços da stack (sem .env em texto)
 
 **Script** · 5 min
 
 No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
-cd infra/automacao && bash gerar-senhas.sh
+cd ~/dev/dev-setup && just senhas-criar
 ```
 
-- [ ] **Pronto quando:** .env criado com permissão 600
+- [ ] **Pronto quando:** As senhas de infra/**/*.env.example estão no cofre em 20 Setup técnico/PASTA/VARIÁVEL; nenhum .env com senha
+- Substitui o gerar-senhas.sh: o setup gera 32 caracteres, você confirma digitando o número de senhas.
 - Implanta: n8n
 
 ### 10.2 Subir a stack
@@ -2097,10 +2135,10 @@ cd ~/dev/dev-setup && git config core.hooksPath scripts/git-hooks && git config 
 No **Ubuntu** (linha `alanmateus@...$`):
 
 ```bash
-sudo apt install -y keepassxc && bash ~/dev/dev-setup/scripts/wsl/segredos.sh 'Automacao/N8N_CHAVE' N8N_CHAVE -- env | grep -c N8N_CHAVE
+cd ~/dev/dev-setup && just senhas-rodar automacao -- docker compose -f infra/automacao/compose.yaml up -d
 ```
 
-- [ ] **Pronto quando:** Um serviço sobe sem .env em texto puro
+- [ ] **Pronto quando:** Os serviços sobem com os segredos vindos do cofre, só no ambiente do comando, sem .env em texto puro
 - A senha do cofre é digitada à mão. O teste deve mostrar 1.
 - Implanta: Segredos do cofre (keepassxc-cli)
 
@@ -7250,10 +7288,10 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Certificado digital (e-CNPJ) | 52.2 | Quando a renda pedir |
 | API de NFS-e (ex.: Focus NFe) | 52.3 | Quando a renda pedir |
 | CNPJ (futuro) | 23.1, 52.1 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Quando a renda pedir |
-| gov.br (prata ou ouro) | 2.7, 37.1 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semanas 8 a 10 · dez/2026 a jan/2027 |
+| gov.br (prata ou ouro) | 2.7, 37.1 | Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Semanas 8 a 10 · dez/2026 a jan/2027 |
 | Carnê-leão (Receita Federal) | 37.18, 40.10 | Semanas 8 a 10 · dez/2026 a jan/2027; Semanas 12 a 15 · jan a fev/2027 |
 | Declaração anual do IR | 37.19 | Semanas 8 a 10 · dez/2026 a jan/2027 |
-| Conta bancária separada (CPF) | 2.7, 37.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semanas 8 a 10 · dez/2026 a jan/2027 |
+| Conta bancária separada (CPF) | 2.7, 37.2 | Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Semanas 8 a 10 · dez/2026 a jan/2027 |
 | Contador | 23.1, 24.7, 37.3 | Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; Nov/2026 a out/2027, revisão no fim de cada trimestre; Semanas 8 a 10 · dez/2026 a jan/2027 |
 | Caixa da Casa / Financeiro AM Gestão | 16.1, 16.2, 16.3, 16.4, 16.5, 16.6, 16.7, 16.8, 20.10, 24.5, 24.6, 37.20, 46.4 | Dez/2026; Semana 5 · nov/2026; Nov/2026 a out/2027, revisão no fim de cada trimestre; Semanas 8 a 10 · dez/2026 a jan/2027; Fev a dez/2027, uma oferta por vez |
 | Financeiro local | 15.1, 15.2, 15.3, 15.4 | Dez/2026 |
@@ -7404,7 +7442,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Projects · ADRs · MkDocs | 5.5 | Semana 2 · nov/2026 |
 | Dependabot + CodeQL | 5.3 | Semana 2 · nov/2026 |
 | Google Cloud | 55.5 | 2028 |
-| GitHub | 2.7, 5.1, 5.4, 24.8 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 2 · nov/2026; Nov/2026 a out/2027, revisão no fim de cada trimestre |
+| GitHub | 2.7, 5.1, 5.4, 24.8 | Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Semana 2 · nov/2026; Nov/2026 a out/2027, revisão no fim de cada trimestre |
 | GitHub Actions | 5.2, 39.1 | Semana 2 · nov/2026; Semana 11 · jan/2027 |
 | GHCR (imagens) | 41.6 | Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Gestão (módulo o-ts-projeto do Professor: projeto TypeScript) e ganha testes e qualidade até o MVP |
 | GitHub Pages | 36.7 | Semanas 6 e 7 · dez/2026 |
@@ -7508,7 +7546,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Tarefas agendadas | 9.1, 31.8 | Semana 4 · nov/2026; Dez/2026 a jan/2027 |
 | Claude in Chrome + uso do computador | 3.6 | Semana 1 · out/2026 |
 | Claude (assinatura e API) | 20.9, 27.9, 28.2, 34.2 | Semana 5 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
-| Conector Google (Gmail, Drive…) | 2.3, 9.2, 24.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 4 · nov/2026; Nov/2026 a out/2027, revisão no fim de cada trimestre |
+| Conector Google (Gmail, Drive…) | 2.3, 9.2, 24.2 | Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Semana 4 · nov/2026; Nov/2026 a out/2027, revisão no fim de cada trimestre |
 | Conectores Canva + Figma | 9.2, 35.4 | Semana 4 · nov/2026; Semana 5 · dez/2026 |
 | Conector MailerLite | 9.2, 36.6 | Semana 4 · nov/2026; Semanas 6 e 7 · dez/2026 |
 | Vercel · AWS · Microsoft Learn | 9.2 | Semana 4 · nov/2026 |
@@ -7650,9 +7688,9 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Windows 11 Home | 0.3, 0.4, 1.3 | Antes de tudo · semana 1 (out/2026); Semana 1 · out/2026 |
 | VS Code | 3.2, 3.5 | Semana 1 · out/2026 |
 | Obsidian + Git | 3.2, 4.8, 8.4, 26.5 | Semana 1 · out/2026; Semana 2 · nov/2026; Semanas 3 e 4 · nov/2026; Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último |
-| Syncthing | 2.9, 3.2, 4.9, 30.3 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 1 · out/2026; Semana 2 · nov/2026; Semana 6 · nov/2026 |
+| Syncthing | 2.9, 3.2, 4.9, 30.3 | Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Semana 1 · out/2026; Semana 2 · nov/2026; Semana 6 · nov/2026 |
 | DBeaver · Bruno | 3.2 | Semana 1 · out/2026 |
-| Navegador + Claude in Chrome | 2.5, 2.10, 3.6 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 1 · out/2026 |
+| Navegador + Claude in Chrome | 2.5, 2.10, 3.6 | Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Semana 1 · out/2026 |
 | VirtualBox | 3.2, 48.1 | Semana 1 · out/2026; Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso |
 | Wireshark | 3.2 | Semana 1 · out/2026 |
 | VMs: Kali · Arch · Servidores | 49.3 | 2027, conforme cada compra |
@@ -7677,10 +7715,10 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | TPM + Secure Boot | 3.3 | Semana 1 · out/2026 |
 | BitLocker | 3.3 | Semana 1 · out/2026 |
 | Defender + Firewall | 3.4 | Semana 1 · out/2026 |
-| KeePassXC | 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 2.10, 2.11, 2.12, 2.13, 2.14, 2.15, 2.16, 18.1, 18.6 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Agora · nov/2026 |
-| App 2FA (celular) | 1.4, 2.3, 2.7 | Semana 1 · out/2026; Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026 |
-| Backup 3-2-1 | 2.11, 7.1, 7.2, 7.3, 8.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 3 · nov/2026; Semanas 3 e 4 · nov/2026 |
-| Organizadores | 2.4, 17.2 | Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 4 · nov/2026 |
+| KeePassXC | 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 2.10, 2.11, 2.12, 2.13, 2.14, 2.15, 2.16, 2.17, 2.18, 2.19, 18.1, 18.6 | Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Agora · nov/2026 |
+| App 2FA (celular) | 1.4, 2.3, 2.7 | Semana 1 · out/2026; Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027 |
+| Backup 3-2-1 | 2.14, 7.1, 7.2, 7.3, 8.2 | Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Semana 3 · nov/2026; Semanas 3 e 4 · nov/2026 |
+| Organizadores | 2.4, 17.2 | Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Semana 4 · nov/2026 |
 | Segredos do cofre (keepassxc-cli) | 20.6 | Semana 5 · nov/2026 |
 | Teste de restauração | 20.7 | Semana 5 · nov/2026 |
 | Lab de engenharia reversa | 59.1 | Dez/2026 em diante: 1 bloco de 1 h por semana dentro do estudo da manhã; serviços pagos só depois dos portões (eJPT, ensaio, OSCP) |
@@ -7708,8 +7746,8 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | 2º NVMe (1–4 TB) | 48.4, 49.1 | Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso; 2027, conforme cada compra |
 | 2º monitor | 1.2 | Semana 1 · out/2026 |
 | Microfone + câmera | 49.6 | 2027, conforme cada compra |
-| Celular | 1.2, 2.9, 4.9 | Semana 1 · out/2026; Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 2 · nov/2026 |
-| Disco externo | 1.1, 1.2, 2.11, 7.1 | Semana 1 · out/2026; Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; Semana 3 · nov/2026 |
+| Celular | 1.2, 2.9, 4.9 | Semana 1 · out/2026; Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Semana 2 · nov/2026 |
+| Disco externo | 1.1, 1.2, 2.14, 7.1 | Semana 1 · out/2026; Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Semana 3 · nov/2026 |
 | Pendrive Kali (persistência) | 44.1 | Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
 | Pendrive Arch (instalação portátil) | 44.2 | Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
 | Arduino · ESP32 · Pi | 1.2, 46.16 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez |

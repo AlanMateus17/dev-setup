@@ -260,9 +260,9 @@ flowchart LR
 | [Windows 11 Home](#w11) | Local · precisa de conta | Host do dia a dia (conta local, sem conta Microsoft). | passo 0.3 · Antes de tudo · semana 1 (out/2026); passo 0.4 · Antes de tudo · semana 1 (out/2026); passo 1.3 · Semana 1 · out/2026 |
 | [VS Code](#vsc) | Local | Editor; abre os projetos dentro do Linux. | passo 3.2 · Semana 1 · out/2026; passo 3.5 · Semana 1 · out/2026 |
 | [Obsidian + Git](#obsd) | Local | Vault de estudo, roteiros e planejamento. | passo 3.2 · Semana 1 · out/2026; passo 4.8 · Semana 2 · nov/2026; passo 8.4 · Semanas 3 e 4 · nov/2026; passo 26.5 · Nov/2026 em diante: a era da IA (191 posts) primeiro, os episódios do Akitando depois, o histórico por último |
-| [Syncthing](#syncth) | Local | Sincroniza vault, projetos de vídeo e o cofre do KeePassXC entre as máquinas, sem nuvem no meio. Open source. | passo 2.9 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 3.2 · Semana 1 · out/2026; passo 4.9 · Semana 2 · nov/2026; passo 30.3 · Semana 6 · nov/2026 |
+| [Syncthing](#syncth) | Local | Sincroniza vault, projetos de vídeo e o cofre do KeePassXC entre as máquinas, sem nuvem no meio. Open source. | passo 2.9 · Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; passo 3.2 · Semana 1 · out/2026; passo 4.9 · Semana 2 · nov/2026; passo 30.3 · Semana 6 · nov/2026 |
 | [DBeaver · Bruno](#dbv) | Local | Banco de dados e testes de API. | passo 3.2 · Semana 1 · out/2026 |
-| [Navegador + Claude in Chrome](#nav) | Local | Testes, DevTools e acesso a todas as contas web. | passo 2.5 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 2.10 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 3.6 · Semana 1 · out/2026 |
+| [Navegador + Claude in Chrome](#nav) | Local | Testes, DevTools e acesso a todas as contas web. | passo 2.5 · Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; passo 2.10 · Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; passo 3.6 · Semana 1 · out/2026 |
 | [VirtualBox](#vbox) | Local | Roda as VMs de estudo. | passo 3.2 · Semana 1 · out/2026; passo 48.1 · Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso |
 | [Wireshark](#wshark) | Local | Captura e lê o tráfego de rede no laboratório de segurança. Instalado pelo winget. | passo 3.2 · Semana 1 · out/2026 |
 | [VMs: Kali · Arch · Servidores](#vms) | Local · futuro | Kali (segurança), Arch (treino da instalação), Ubuntu Server (deploy), Windows Server com Active Directory e RHEL/Rocky (corporativo). Kali e Arch também ficam em pendrive. | passo 49.3 · 2027, conforme cada compra |
@@ -552,7 +552,7 @@ Vault de estudo, roteiros e planejamento.
 
 Sincroniza vault, projetos de vídeo e o cofre do KeePassXC entre as máquinas, sem nuvem no meio. Open source.
 
-**Quando entra:** passo 2.9 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 3.2 · Semana 1 · out/2026; passo 4.9 · Semana 2 · nov/2026; passo 30.3 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 2.9 · Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; passo 3.2 · Semana 1 · out/2026; passo 4.9 · Semana 2 · nov/2026; passo 30.3 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -586,7 +586,7 @@ Banco de dados e testes de API.
 
 Testes, DevTools e acesso a todas as contas web.
 
-**Quando entra:** passo 2.5 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 2.10 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 3.6 · Semana 1 · out/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 2.5 · Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; passo 2.10 · Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; passo 3.6 · Semana 1 · out/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

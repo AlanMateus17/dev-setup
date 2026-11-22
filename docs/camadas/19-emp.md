@@ -144,10 +144,10 @@ flowchart LR
 | [Certificado digital (e-CNPJ)](#ecnpj) | Remoto · precisa de conta · futuro | Só quando houver CNPJ: emissão de nota por API e assinatura de documentos da empresa. | passo 52.2 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
 | [API de NFS-e (ex.: Focus NFe)](#nfapi) | Remoto · precisa de conta · futuro | Só quando houver CNPJ. Implementa o seu IEmissorFiscal: os sistemas AM emitem nota sozinhos. | passo 52.3 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
 | [CNPJ (futuro)](#cnpj) | Remoto · precisa de conta · futuro | Ainda não. Quando a renda crescer, MEI ou SLU. Até lá, tudo no seu CPF. | passo 23.1 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; passo 52.1 · Quando a renda pedir (começa quando: a renda passou do valor de virada definido com o contador) |
-| [gov.br (prata ou ouro)](#govbr) | Remoto · precisa de conta | Acesso ao carnê-leão online e à declaração do Imposto de Renda. | passo 2.7 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 37.1 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [gov.br (prata ou ouro)](#govbr) | Remoto · precisa de conta | Acesso ao carnê-leão online e à declaração do Imposto de Renda. | passo 2.7 · Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; passo 37.1 · Semanas 8 a 10 · dez/2026 a jan/2027 |
 | [Carnê-leão (Receita Federal)](#nfse) | Remoto · precisa de conta | Todo mês você lança o que recebeu de compradores (Hotmart, Kiwify, aulas, sites) e do exterior (Udemy) e paga o DARF até o último dia útil do mês seguinte. | passo 37.18 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 40.10 · Semanas 12 a 15 · jan a fev/2027 |
 | [Declaração anual do IR](#irpf) | Remoto · precisa de conta | Os valores lançados no carnê-leão entram sozinhos na declaração. | passo 37.19 · Semanas 8 a 10 · dez/2026 a jan/2027 |
-| [Conta bancária separada (CPF)](#banco) | Remoto · precisa de conta | Uma conta só para receber vendas e serviços, separada do salário. Facilita o carnê-leão e a futura passagem para CNPJ. | passo 2.7 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 37.2 · Semanas 8 a 10 · dez/2026 a jan/2027 |
+| [Conta bancária separada (CPF)](#banco) | Remoto · precisa de conta | Uma conta só para receber vendas e serviços, separada do salário. Facilita o carnê-leão e a futura passagem para CNPJ. | passo 2.7 · Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; passo 37.2 · Semanas 8 a 10 · dez/2026 a jan/2027 |
 | [Contador](#conta) | Físico | Uma consulta para montar o carnê-leão do jeito certo e dizer a partir de que renda vale abrir CNPJ. | passo 23.1 · Nov/2026 a jan/2027 (no CPF); o CNPJ quando a renda de software passar do ponto de virada; passo 24.7 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 37.3 · Semanas 8 a 10 · dez/2026 a jan/2027 |
 | [Caixa da Casa / Financeiro AM Gestão](#caixa) | Local | Controle financeiro pessoal e da empresa (seu sistema). | passo 16.1 · Dez/2026; passo 16.2 · Dez/2026; passo 16.3 · Dez/2026; passo 16.4 · Dez/2026; passo 16.5 · Dez/2026; passo 16.6 · Dez/2026; passo 16.7 · Dez/2026; passo 16.8 · Dez/2026; passo 20.10 · Semana 5 · nov/2026; passo 24.5 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 24.6 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 37.20 · Semanas 8 a 10 · dez/2026 a jan/2027; passo 46.4 · Fev a dez/2027, uma oferta por vez (começa quando: a primeira venda do mini-curso aconteceu) |
 | [Financeiro local](#financas) | Local | Importa extratos, categoriza, resume o mês e aplica a sua cascata. Dados em ~/financas, fora do GitHub. | passo 15.1 · Dez/2026; passo 15.2 · Dez/2026; passo 15.3 · Dez/2026; passo 15.4 · Dez/2026 |
@@ -249,7 +249,7 @@ Ainda não. Quando a renda crescer, MEI ou SLU. Até lá, tudo no seu CPF.
 
 Acesso ao carnê-leão online e à declaração do Imposto de Renda.
 
-**Quando entra:** passo 2.7 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 37.1 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 2.7 · Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; passo 37.1 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -306,7 +306,7 @@ Os valores lançados no carnê-leão entram sozinhos na declaração.
 
 Uma conta só para receber vendas e serviços, separada do salário. Facilita o carnê-leão e a futura passagem para CNPJ.
 
-**Quando entra:** passo 2.7 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 37.2 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 2.7 · Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; passo 37.2 · Semanas 8 a 10 · dez/2026 a jan/2027 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
