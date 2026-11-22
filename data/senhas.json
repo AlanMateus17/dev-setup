@@ -1,0 +1,36 @@
+{
+  "_sobre": "Complemento do inventário de senhas (tools/senhas/senhas.py). As contas vêm de data/ecossistema.json e os segredos dos serviços vêm dos infra/**/*.env.example; aqui ficam só os extras que não estão nesses lugares e o que não é login. Nenhuma senha mora aqui.",
+  "extras": [
+    {"nome": "Senha mestra do cofre (KeePassXC)", "grupo": "00 Essenciais (e-mail e contas-mãe)", "tipo": "memoria", "passo": "keepass",
+     "obs": "Só na sua cabeça e numa folha guardada em casa. Nunca dentro do próprio cofre."},
+    {"nome": "Códigos de backup do 2FA (Google, GitHub, Microsoft)", "grupo": "00 Essenciais (e-mail e contas-mãe)", "tipo": "anotacao", "passo": "senhas-revisao",
+     "obs": "Uma entrada por conta, com os códigos no campo Notas."},
+    {"nome": "GitHub · chave gh-admin (visibilidade dos repositórios)", "entrada": "GitHub/gh-admin", "tipo": "chave", "passo": "repos-visibilidade",
+     "obs": "Fine-grained, Administration: Read and write, 90 dias. Usada por just repos-visibilidade."},
+    {"nome": "Chave SSH do GitHub (login e assinatura)", "grupo": "06 Código e nuvem", "tipo": "ssh", "passo": "kp-ssh",
+     "obs": "O KeePassXC entrega a chave ao agente SSH quando o cofre abre."},
+    {"nome": "Bot do Telegram (token do @BotFather)", "grupo": "20 Setup técnico", "tipo": "chave", "passo": "re-bot",
+     "obs": "Usado pelo amtech-bot da fila de pedidos."},
+    {"nome": "Hugging Face (token só de leitura)", "grupo": "07 IA", "tipo": "chave", "passo": "hf-conta", "obs": ""},
+    {"nome": "Chave de recuperação do BitLocker", "grupo": "00 Essenciais (e-mail e contas-mãe)", "tipo": "anotacao", "passo": "cripto",
+     "obs": "Sem ela, um problema no Windows pode trancar o disco para sempre."},
+    {"nome": "Senha do backup (restic)", "grupo": "20 Setup técnico", "tipo": "gerar", "passo": "senhas-backup",
+     "obs": "Perder esta senha é perder o backup inteiro."},
+    {"nome": "Chave do age (arquivos cifrados)", "grupo": "20 Setup técnico", "tipo": "anotacao", "passo": "solo-age", "obs": ""},
+    {"nome": "Senha da sala limpa (gocryptfs)", "grupo": "20 Setup técnico", "tipo": "gerar", "passo": "lab-abrir", "obs": "Pedida pelo just lab-abrir."},
+    {"nome": "Wi-Fi de casa e roteador (admin)", "grupo": "20 Setup técnico", "tipo": "conta", "passo": "", "obs": "O roteador sai do usuário e senha de fábrica."}
+  ],
+  "ignorar": [
+    "Já conectados", "Revise as permissões", "Projects + memória", "Artifacts (Docs, Slides, Sheets…)", "Pesquisa aprofundada",
+    "Tarefas agendadas", "CNPJ (futuro)", "2 CNPJs por frente", "Anatel e Inmetro", "Declaração anual do IR", "Carnê-leão", "Carnê-leão (Receita Federal)",
+    "Contador (uma consulta)", "CNPJ", "Programas de afiliados", "Gráfica sob demanda", "Gráfica sob demanda (Brasil)",
+    "Canal build in public", "Windows 11 Home"
+  ],
+  "chaves": {"Mercado Pago": "mercadopago", "Conta bancária separada": "banco", "Conta bancária separada (CPF)": "banco", "Pix Automático + gateway (ex.: Asaas)": "asaas", "Certificado digital (e-CNPJ)": "e-cnpj",
+             "VM sempre ligada (Oracle grátis)": "oracle", "GPU por hora (RunPod e afins)": "runpod", "Mídia nativa (Taboola, Outbrain)": "taboola",
+             "Armazenamento de arquivos (Blob/R2)": "cloudflare", "Registro de marca (INPI)": "inpi", "E-mail profissional (enviar e receber)": "zoho",
+             "Ponto de retirada (Shopee e ML)": "shopee", "Wi-Fi de casa e roteador (admin)": "roteador", "Voz clonada (ElevenLabs)": "elevenlabs",
+             "Acervos de imagens (APIs)": "pexels", "Tags de conversão (Pixel, Google…)": "google", "Comunidade (Discord ou grupo)": "discord",
+             "Afiliados (Amazon, Hotmart…)": "afiliados", "API de NFS-e (ex.: Focus NFe)": "focusnfe"},
+  "camadas_sem_login": ["clc"]
+}
