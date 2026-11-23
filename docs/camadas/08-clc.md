@@ -139,7 +139,7 @@ flowchart LR
 | [Tarefas agendadas](#sched) | Remoto · precisa de conta | O Claude executa sozinho em horário marcado: resumo semanal dos repositórios, rascunho de post, revisão do plano de estudos. | passo 10.1 · Semana 4 · nov/2026; passo 32.8 · Dez/2026 a jan/2027 |
 | [Claude in Chrome + uso do computador](#cchr) | Remoto · precisa de conta | O Claude opera o navegador e os apps do Windows por você, pedindo aprovação nas ações sensíveis. | passo 4.6 · Semana 1 · out/2026 |
 | [Claude (assinatura e API)](#anth) | Remoto · precisa de conta | Assinatura usada pelo app e pelo Claude Code; API para as funções de IA dos sistemas. | passo 21.9 · Semana 5 · nov/2026; passo 28.9 · Semana 6 · nov/2026 a dez/2026; passo 29.2 · Semana 6 · nov/2026 a dez/2026; passo 35.2 · Semana 5 · nov/2026 |
-| [Conector Google (Gmail, Drive…)](#cgws) | Remoto · precisa de conta | Já conectado. Lê e organiza e-mail, agenda de aulas, arquivos do Drive, Docs, Sheets e Slides. | passo 2.3 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 10.2 · Semana 4 · nov/2026; passo 25.2 · Nov/2026 a out/2027, revisão no fim de cada trimestre |
+| [Conector Google (Gmail, Drive…)](#cgws) | Remoto · precisa de conta | Já conectado. Lê e organiza e-mail, agenda de aulas, arquivos do Drive, Docs, Sheets e Slides. | passo 2.3 · Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; passo 10.2 · Semana 4 · nov/2026; passo 25.2 · Nov/2026 a out/2027, revisão no fim de cada trimestre |
 | [Conectores Canva + Figma](#ccan) | Remoto · precisa de conta | Já conectados. Canva para posts e capas; Figma para as telas dos sistemas e do Instituto AMS. | passo 10.2 · Semana 4 · nov/2026; passo 36.4 · Semana 5 · dez/2026 |
 | [Conector MailerLite](#cml) | Remoto · precisa de conta | Já conectado. O Claude monta grupos, formulários e campanhas da newsletter. | passo 10.2 · Semana 4 · nov/2026; passo 37.6 · Semanas 6 e 7 · dez/2026 |
 | [Vercel · AWS · Microsoft Learn](#cdev) | Remoto · precisa de conta | Já conectados. Deploy e logs na Vercel; documentação oficial da AWS e da Microsoft (Azure, .NET) direto na conversa. | passo 10.2 · Semana 4 · nov/2026 |
@@ -251,7 +251,7 @@ Assinatura usada pelo app e pelo Claude Code; API para as funções de IA dos si
 
 Já conectado. Lê e organiza e-mail, agenda de aulas, arquivos do Drive, Docs, Sheets e Slides.
 
-**Quando entra:** passo 2.3 · Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026; passo 10.2 · Semana 4 · nov/2026; passo 25.2 · Nov/2026 a out/2027, revisão no fim de cada trimestre ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 2.3 · Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; passo 10.2 · Semana 4 · nov/2026; passo 25.2 · Nov/2026 a out/2027, revisão no fim de cada trimestre ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

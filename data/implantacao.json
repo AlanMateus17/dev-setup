@@ -247,13 +247,38 @@
      ]
     },
     {
+     "id": "senhas-conectados",
+     "titulo": "Revisar as contas que entram com Google, Facebook, Apple ou Microsoft (sem senha própria)",
+     "quem": "voce",
+     "pronto": "Cada app da lista do Google e do Facebook decidido: fica (no data/senhas.json como 'entra com Google') ou conta excluída no próprio app e acesso removido",
+     "tempo_min": 30,
+     "comando": "Start-Process 'https://myaccount.google.com/connections'; Start-Process 'https://www.facebook.com/settings?tab=applications'",
+     "nota": "Essas contas não têm senha, então não aparecem no CSV do Chrome, no kp-organizar nem no just senhas. Remover o acesso na lista do Google NÃO apaga a conta no app: para fechar de vez, exclua a conta dentro do próprio app (Configurações > Conta > Excluir) e só depois remova o acesso. As que ficam entram no data/senhas.json (extras) com a nota 'entra com Google' (ou Facebook, Apple, Microsoft). Confira também appleid.apple.com > Entrar com a Apple e account.microsoft.com > Privacidade > Apps e serviços, se usar.",
+     "blocos": [
+      "kee",
+      "nav"
+     ]
+    },
+    {
+     "id": "senhas-emails-antigos",
+     "titulo": "Tirar as contas dos e-mails antigos antes de apagá-los",
+     "quem": "voce",
+     "pronto": "Nenhuma conta que você mantém usa um e-mail antigo como login ou recuperação; só então o e-mail antigo é apagado",
+     "tempo_min": 60,
+     "fora": "A busca é na caixa de cada e-mail antigo e a troca de e-mail é no site de cada serviço.",
+     "nota": "Em cada e-mail antigo, busque: bem-vindo OR welcome OR \"confirme seu e-mail\" OR \"verify your email\" OR \"redefinir senha\" OR \"reset your password\". Cada remetente é uma conta: troque o e-mail dela para o endereço novo da finalidade certa, ou exclua a conta. Apagar o e-mail antes disso tranca você fora de todas as contas que dependem dele para recuperar a senha. Deixe o e-mail antigo encaminhando para o novo por 3 a 6 meses antes de apagar. Golpe e newsletter: só descadastre, não entre no link de login.",
+     "blocos": [
+      "kee"
+     ]
+    },
+    {
      "id": "senhas-esquecidas",
      "titulo": "Recuperar as contas cuja senha você esqueceu e fechar as que não usa mais",
      "quem": "voce",
      "pronto": "Toda conta da sua lista de contas está no cofre, foi recuperada ou foi excluída",
      "tempo_min": 60,
      "fora": "Recuperação de conta é sempre pelo site do serviço, com e-mail ou celular.",
-     "nota": "Use 'Esqueci minha senha' com o e-mail já protegido. Se o e-mail ou o telefone de recuperação forem antigos, cada serviço tem um formulário próprio (Meta: 'Precisa de ajuda?' na tela de login; gov.br: pelo app com reconhecimento facial ou pelo banco). Conta parada que guarda dado seu é risco: exclua.",
+     "nota": "Use 'Esqueci minha senha' com o e-mail já protegido. Se o e-mail ou o telefone de recuperação forem antigos, cada serviço tem um formulário próprio (Meta: 'Precisa de ajuda?' na tela de login; gov.br: pelo app com reconhecimento facial ou pelo banco). Conta parada que guarda dado seu é risco: exclua. No KeePassXC, marque cada entrada com a etiqueta MANTER, RECUPERAR ou EXCLUIR (campo Etiquetas) e busque por etiqueta para trabalhar uma de cada vez; a lista completa das contas é o docs/senhas.md (just senhas mostra o que falta). Para achar a página de exclusão de um serviço, procure '<serviço> excluir conta' no site oficial dele.",
      "blocos": [
       "kee"
      ]
@@ -279,7 +304,7 @@
      "pronto": "No login de teste, o navegador preenche a senha a partir do cofre",
      "tempo_min": 15,
      "fora": "Extensão de navegador e a opção de integração do KeePassXC só se ligam pelas janelas deles.",
-     "nota": "No KeePassXC: Configurações > Integração com navegador, marque o seu navegador e instale a extensão KeePassXC-Browser.",
+     "nota": "No KeePassXC: Configurações > Integração com navegador, marque o seu navegador e instale a extensão KeePassXC-Browser. Deixe ligado o pedido de permissão por site: o KeePassXC pergunta antes de entregar a senha a um site novo, e esse é o seu clique de confirmação.",
      "blocos": [
       "kee",
       "nav"
@@ -377,7 +402,8 @@
      "blocos": [
       "kee"
      ],
-     "fora": "Configurações > Auto-Type, na tela do KeePassXC."
+     "fora": "Configurações > Auto-Type, na tela do KeePassXC.",
+     "nota": "Atalho global (ex.: Ctrl+Alt+A) para preencher login em programas do Windows. Ligue 'Sempre perguntar antes de executar o Auto-Type': é o clique de confirmação antes de cada preenchimento. Apps de banco e o app do gov.br no celular bloqueiam preenchimento: neles, copie a senha pelo KeePassDX."
     },
     {
      "id": "kp-chave",
@@ -436,6 +462,16 @@
      "pronto": "Cada comando roda uma vez sem erro e o erro/atrito de teste aparece no vault",
      "tempo_min": 25,
      "comando": "cd ~/dev/dev-setup && just professor-mapa && just livros lista && just diag && just ficha && just colher && just erro \"teste\" && just erros && just atrito \"teste\" && just atritos",
+     "blocos": []
+    },
+    {
+     "id": "fd-fontes",
+     "titulo": "Fontes de estudo: baixar a primeira documentação oficial e conferir um trecho",
+     "quem": "script",
+     "pronto": "just fontes docs lista as documentações; a do TypeScript aparece como baixada com o commit registrado; just fontes citar devolve OK para um trecho real",
+     "tempo_min": 20,
+     "comando": "cd ~/dev/dev-setup && just fontes docs && just fontes baixar typescript-handbook && just fontes buscar \"union type\"",
+     "nota": "O acervo fica em ~/AMtech/estudo, fora do Git e dentro do backup. Para converter livros, aulas e áudios sem IA, instale antes Docling, Pandoc e WhisperX (e o Dangerzone para PDF de fora); depois: just fontes entrada --licenca comprado-uso-pessoal. Guia: docs/professor/fontes.md.",
      "blocos": []
     },
     {
