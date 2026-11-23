@@ -286,6 +286,42 @@
      ]
     },
     {
+     "id": "senhas-terminal",
+     "titulo": "Ligar o cofre ao terminal do Ubuntu e ver o que falta guardar",
+     "quem": "script",
+     "pronto": "just senhas abre o cofre e mostra o que já está guardado, o que falta e as contas do cofre fora da lista (docs/senhas.md)",
+     "tempo_min": 10,
+     "comando": "sudo apt install -y keepassxc keyutils && cd ~/dev/dev-setup && just senhas",
+     "nota": "O cofre padrão é o deste roteiro (Documentos\\Cofre\\Cofre.kdbx). Para pegar uma senha sem procurar: just senha NOME (copia e limpa em 20 s). Desbloqueio por um tempo: just cofre-abrir 30.",
+     "blocos": [
+      "kee"
+     ]
+    },
+    {
+     "id": "senhas-inventario",
+     "titulo": "Completar o inventário com as contas que só existem no cofre",
+     "quem": "voce",
+     "pronto": "O bloco 'no cofre e fora do inventário' do just senhas está vazio ou tudo que sobrou está em ignorar",
+     "tempo_min": 20,
+     "fora": "Só você sabe quais contas são suas: a decisão e a edição do data/senhas.json são manuais.",
+     "nota": "Conta sua vai para data/senhas.json → extras ou do_email; o que não é login vai para ignorar. Os 19 remetentes 'para conferir' do docs/senhas.md entram aqui (dois parecem golpe: não clique).",
+     "blocos": [
+      "kee"
+     ]
+    },
+    {
+     "id": "gh-admin",
+     "titulo": "Criar a chave gh-admin do GitHub e conferir a visibilidade dos repositórios",
+     "quem": "voce",
+     "pronto": "Chave fine-grained (Administration: Read and write, 90 dias) no cofre como GitHub/gh-admin; just repos-visibilidade sem diferença",
+     "tempo_min": 10,
+     "comando": "cd ~/dev/dev-setup && just repos-visibilidade",
+     "nota": "Decida o catalogo-html (público pelo repos.json, privado desde 22/11) e os forks do Cursos-TI antes de rodar --aplicar.",
+     "blocos": [
+      "kee"
+     ]
+    },
+    {
      "id": "senhas-backup",
      "titulo": "Pôr o cofre no backup e testar abrir a cópia",
      "quem": "voce",
@@ -356,7 +392,7 @@
      "decisao": true
     }
    ],
-   "quando": "Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026"
+   "quando": "Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027"
   },
   {
    "id": "f3",
@@ -1008,14 +1044,15 @@
    "passos": [
     {
      "id": "senhas",
-     "titulo": "Gerar as senhas da stack e guardar no KeePassXC",
+     "titulo": "Gerar no cofre as senhas dos serviços da stack (sem .env em texto)",
      "quem": "script",
-     "pronto": ".env criado com permissão 600",
+     "pronto": "As senhas de infra/**/*.env.example estão no cofre em 20 Setup técnico/PASTA/VARIÁVEL; nenhum .env com senha",
      "tempo_min": 5,
-     "comando": "cd infra/automacao && bash gerar-senhas.sh",
+     "comando": "cd ~/dev/dev-setup && just senhas-criar",
      "blocos": [
       "n8n"
-     ]
+     ],
+     "nota": "Substitui o gerar-senhas.sh: o setup gera 32 caracteres, você confirma digitando o número de senhas."
     },
     {
      "id": "subir-stack",
@@ -2074,12 +2111,12 @@
      "id": "el-segredos",
      "titulo": "Rodar serviços com segredos vindos do KeePassXC",
      "quem": "script",
-     "pronto": "Um serviço sobe sem .env em texto puro",
+     "pronto": "Os serviços sobem com os segredos vindos do cofre, só no ambiente do comando, sem .env em texto puro",
      "tempo_min": 15,
      "blocos": [
       "segredos"
      ],
-     "comando": "sudo apt install -y keepassxc && bash ~/dev/dev-setup/scripts/wsl/segredos.sh 'Automacao/N8N_CHAVE' N8N_CHAVE -- env | grep -c N8N_CHAVE",
+     "comando": "cd ~/dev/dev-setup && just senhas-rodar automacao -- docker compose -f infra/automacao/compose.yaml up -d",
      "nota": "A senha do cofre é digitada à mão. O teste deve mostrar 1."
     },
     {

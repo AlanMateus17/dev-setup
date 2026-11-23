@@ -80,6 +80,7 @@ check:
     python3 tools/biblioteca/biblioteca.py docs --check
     python3 tools/nucleo/agenda.py rapido --check
     python3 tools/repos/repos.py --check
+    python3 tools/senhas/senhas.py lista --check
     python3 -m unittest discover -s tools -p "test_gerar_docs.py" -q
     for d in tools/*/; do if ls "$d"test_*.py >/dev/null 2>&1; then python3 -m unittest discover -s "$d" -q; fi; done
     if command -v gitleaks >/dev/null; then gitleaks git --no-banner -v . >/dev/null; else echo "gitleaks ausente: rode o bootstrap"; fi
@@ -269,6 +270,30 @@ vitrine EMPRESA DESTINO:
 # just repos-visibilidade            (só confere)     just repos-visibilidade --aplicar     (muda depois da sua confirmação)
 repos-visibilidade *opcao:
     bash scripts/wsl/segredos.sh "${GH_ENTRADA:-GitHub/gh-admin}" GH_TOKEN -- python3 tools/repos/visibilidade.py {{opcao}}
+
+# Senhas sem procurar e sem digitar (tools/senhas/senhas.py). Inventário em docs/senhas.md; senha mestra só pela entrada padrão.
+# just senhas (o que falta no cofre) · just senha github (copia, limpa em 20 s) · just senhas-criar · just cofre-abrir 30 · just cofre-fechar
+senhas:
+    python3 tools/senhas/senhas.py conferir
+
+senhas-lista:
+    python3 tools/senhas/senhas.py lista
+
+senha busca="" *opcao:
+    python3 tools/senhas/senhas.py senha "{{busca}}" {{opcao}}
+
+senhas-criar:
+    python3 tools/senhas/senhas.py criar
+
+# just senhas-rodar soberania -- docker compose up -d   (segredos de infra/soberania vindos do cofre, só para este comando)
+senhas-rodar pasta *comando:
+    python3 tools/senhas/senhas.py rodar {{pasta}} {{comando}}
+
+cofre-abrir minutos="30":
+    python3 tools/senhas/senhas.py abrir {{minutos}}
+
+cofre-fechar:
+    python3 tools/senhas/senhas.py fechar
 
 # Coerência com o plano (data/coerencia.json): confere o dev-setup e todos os repositórios em ~/dev e grava ~/dev/COERENCIA.md
 # just coerencia            (só relatório)     just coerencia --corrigir     (troca sozinho o que tem troca segura)

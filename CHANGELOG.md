@@ -2,6 +2,14 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.43.0] - 2026-11-22
+
+### Adicionado
+- **Senhas sem procurar e sem digitar** (`tools/senhas/senhas.py`, sem IA): `docs/senhas.md` é o inventário gerado de tudo que precisa de senha no setup (126 itens: contas do `ecossistema.json`, segredos dos `infra/**/*.env.example` e os extras de `data/senhas.json`), com o grupo do cofre e o jeito de preencher cada um. Nenhuma senha aparece no repositório.
+- `just senhas` mostra o que já está no cofre e o que falta; `just senha NOME` escolhe a entrada e copia a senha, que some da área de transferência em 20 s; `just senhas-criar` gera no cofre, depois da sua confirmação, as senhas dos serviços locais; `just senhas-rodar PASTA -- comando` sobe o serviço com os segredos vindos do cofre, só no ambiente daquele comando.
+- `just cofre-abrir 30` / `just cofre-fechar`: desbloqueio temporário pelo chaveiro do kernel (keyctl), com prazo; nesse tempo os comandos não pedem a senha mestra. Fora dele, cada comando pede.
+- Testes com um cofre descartável e o keepassxc-cli de verdade (pulados quando ele não está instalado). `just check` confere se o `docs/senhas.md` está atualizado.
+
 ## [2.42.0] - 2026-11-22
 
 ### Adicionado
