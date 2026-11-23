@@ -1,5 +1,8 @@
 import copy
+import json
+import re
 import unittest
+from pathlib import Path
 
 from gerar import carregar, carregar_eco, gerar_html, gerar_md, quando_por_bloco, validar
 
@@ -11,6 +14,15 @@ class TestImplantacao(unittest.TestCase):
 
     def test_dados_reais_validos(self):
         self.assertEqual(validar(self.d), [])
+
+    def test_toda_receita_do_just_tem_passo(self):
+        """Nada existe só no repositório: toda receita do justfile aparece em algum passo (ou é interna)."""
+        internas = {"default", "menu", "docs", "check", "ci-local", "feito", "rapido", "agora", "progresso", "decisoes"}
+        raiz = Path(__file__).resolve().parents[2]
+        receitas = set(re.findall(r"^([a-z][a-z0-9-]*)(?:[ \t][^:=\n]*)?:(?!=)", (raiz / "justfile").read_text(encoding="utf-8"), re.M))
+        texto = json.dumps(self.d, ensure_ascii=False)
+        faltam = sorted(r for r in receitas - internas if not re.search(r"just " + re.escape(r) + r"\b", texto))
+        self.assertEqual(faltam, [], "receitas sem passo no roteiro: acrescente em data/implantacao.json")
 
     def test_detecta_id_repetido(self):
         d = copy.deepcopy(self.d)

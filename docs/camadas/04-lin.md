@@ -174,36 +174,36 @@ flowchart LR
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Neovim](#nvim) | Local · futuro | Editor de terminal da trilha Arch e Akita. Aprender aos poucos; não substitui o VS Code no começo. | passo 49.2 · 2027, conforme cada compra |
-| [nmap · dig · curl](#netw) | Local | Diagnóstico de rede no Ubuntu: portas, DNS, requisições HTTP e captura de pacotes (tcpdump). Instalados pelo bootstrap.sh. | passo 4.4 · Semana 2 · nov/2026 |
-| [Ubuntu (WSL2)](#wsl) | Local | Onde o código vive e roda. | passo 4.1 · Semana 2 · nov/2026; passo 4.5 · Semana 2 · nov/2026 |
-| [Git + SSH + gh](#git) | Local | Versionamento e acesso ao GitHub. | passo 4.4 · Semana 2 · nov/2026; passo 4.6 · Semana 2 · nov/2026 |
-| [Node/TS · Python](#rt) | Local | Runtimes das APIs, do front e dos scripts. | passo 4.4 · Semana 2 · nov/2026 |
-| [TeX Live](#tex) | Local | Compila o livro e as apostilas. | passo 4.4 · Semana 2 · nov/2026 |
-| [gitleaks · Trivy](#sec) | Local | Barra senha no commit e acha vulnerabilidades em imagens. | passo 4.4 · Semana 2 · nov/2026; passo 20.2 · Semana 5 · nov/2026; passo 20.3 · Semana 5 · nov/2026 |
-| [dotfiles](#dot) | Local | Configuração versionada do ambiente, aplicada pelo chezmoi a partir de infra/dotfiles. | passo 4.7 · Semana 2 · nov/2026 |
-| [Arch + Omarchy (2º NVMe)](#arch) | Local · futuro | Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portátil em pendrive ou SSD USB. | passo 49.1 · 2027, conforme cada compra |
-| [AMtech OS (Ubuntu + setup)](#amtechos) | Local · futuro | O dev-setup como sistema operacional (ADR 0016): os/instalar.sh transforma um Ubuntu LTS no AMtech OS, com perfis, tema, firewall, snapshots e o comando amtech. VM primeiro; depois o 2º NVMe, com o Windows intocado. | passo 48.1 · Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso; passo 48.4 · Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso |
-| [Rotinas agendadas](#rotinas) | Local | Resumo da manhã no Telegram e manutenção semanal, pelo cron do Ubuntu. | passo 17.3 · Semana 4 · nov/2026; passo 17.4 · Semana 4 · nov/2026; passo 17.5 · Semana 4 · nov/2026 |
-| [AdGuard Home (DNS)](#adguard) | Local | DNS da casa com bloqueio de anúncios e rastreadores, também pelo Tailscale. | passo 30.4 · Semana 6 · nov/2026 |
-| [WireGuard (na mão)](#wireguard) | Local | Túnel montado à mão entre duas máquinas, para entender o que o Tailscale faz. | passo 30.6 · Semana 6 · nov/2026 |
-| [ROS 2 + ponte MQTT](#ros2) | Local · futuro | Robôs no Raspberry Pi com ROS 2; o mqtt_client leva os tópicos para o MQTT e o Home Assistant manda e recebe comandos. | passo 60.10 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| [just (porta única de comandos)](#just) | Local | O justfile na raiz do repositório junta os comandos do setup: just check (o mesmo portão do CI), just triagem, just arquiteto, just docs, just medir. Binário único, instalado pelo bootstrap.sh. | passo 21.1 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; passo 21.2 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; passo 22.1 · Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois |
-| [Terminal moderno (zoxide, eza, fd…)](#termx) | Local | zoxide (cd que aprende), eza (ls), fd (find), btop (monitor), hyperfine (benchmark), lazygit, lazydocker e o prompt Starship. Binários únicos, instalados pelo bootstrap.sh; ripgrep, fzf e tmux já vinham; tcpdump entra junto. | passo 21.1 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
-| [mise (runtimes e CLIs)](#mise) | Local | Principal (ADR 0008): instala e fixa Node, Go, Rust e as CLIs do setup a partir de ~/.config/mise/config.toml. O fnm fica como reserva; o Python segue no uv. | passo 21.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
-| [Zellij (abas e sessões)](#zellij) | Local | Multiplexador principal (ADR 0008): atalhos visíveis, layout setup (código, servidor, lazygit, lazydocker, btop) e sessões que voltam. O tmux fica para servidores. | passo 21.11 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
-| [yazi (arquivos no terminal)](#yazi) | Local | Gerenciador de arquivos no terminal com prévia de imagem, PDF e código. Pelo mise. | passo 21.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
-| [chezmoi (dotfiles com o cofre)](#chezmoi) | Local | Principal dos dotfiles (ADR 0008): aplica infra/dotfiles (mise, Zellij, Starship, Ghostty, Neovim, yazi, Aider) e lê segredos do KeePassXC na hora, sem gravar nada no repositório. | passo 21.11 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
-| [Ghostty (terminal do Arch)](#ghostty) | Local · futuro | Terminal acelerado por GPU para o Arch nativo; abre direto na sessão do Zellij. Não tem versão para Windows, onde o Windows Terminal continua. | passo 49.7 · 2027, conforme cada compra |
-| [Podman (containers sem root)](#podman) | Local | Containers sem root e sem serviço: roda o lab de alvo e imagens de terceiros com menos risco. O Docker Desktop segue como principal no dia a dia. | passo 21.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
-| [Git LFS (arquivos grandes)](#gitlfs) | Local | Firmware, bancos do Ghidra, placas do KiCad e modelos 3D fora do histórico do Git; o Forgejo serve o LFS do espelho. | passo 21.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
-| [tree-sitter (AST no editor)](#treesitter) | Local | Destaque, seleção e navegação por árvore sintática no Neovim (C#, TS, Go, Rust, Python, Svelte, Astro). O Repomix e o Aider usam o mesmo parser. | passo 21.11 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
-| [posting (API no terminal)](#posting) | Local | Cliente de API no terminal, com requisições em arquivo. Reserva do Bruno; o jeito de testar uma API por SSH dentro da VM. | passo 21.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
-| [harlequin (SQL no terminal)](#harlequin) | Local | Editor de SQL no terminal para Postgres e DuckDB. Reserva do DBeaver; bom dentro do Zellij e por SSH. | passo 21.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
-| [gum (menus nos scripts)](#gum) | Local | Menus, perguntas e confirmações bonitas nos scripts: o just menu escolhe a receita com setas. | passo 21.13 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
-| [D2 (diagramas como texto)](#d2) | Local | Diagramas de arquitetura de sistema e de cliente como texto, exportados em SVG. Os diagramas da documentação do GitHub seguem em Mermaid. | passo 21.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; passo 21.16 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
-| [vegeta (carga em taxa fixa)](#vegeta) | Local | Carga HTTP em taxa constante para achar o teto de uma API, do limite de requisições e do pool do banco. Os cenários seguem no k6. | passo 21.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
-| [bpftrace (kernel em produção)](#bpftrace) | Local · futuro | Rastreamento dinâmico com eBPF para latência que não aparece em log. Na VM e no Linux nativo, onde o kernel é seu. | passo 32.8 · Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar |
+| [Neovim](#nvim) | Local · futuro | Editor de terminal da trilha Arch e Akita. Aprender aos poucos; não substitui o VS Code no começo. | passo 50.2 · 2027, conforme cada compra |
+| [nmap · dig · curl](#netw) | Local | Diagnóstico de rede no Ubuntu: portas, DNS, requisições HTTP e captura de pacotes (tcpdump). Instalados pelo bootstrap.sh. | passo 5.4 · Semana 2 · nov/2026 |
+| [Ubuntu (WSL2)](#wsl) | Local | Onde o código vive e roda. | passo 5.1 · Semana 2 · nov/2026; passo 5.5 · Semana 2 · nov/2026 |
+| [Git + SSH + gh](#git) | Local | Versionamento e acesso ao GitHub. | passo 5.4 · Semana 2 · nov/2026; passo 5.6 · Semana 2 · nov/2026 |
+| [Node/TS · Python](#rt) | Local | Runtimes das APIs, do front e dos scripts. | passo 5.4 · Semana 2 · nov/2026 |
+| [TeX Live](#tex) | Local | Compila o livro e as apostilas. | passo 5.4 · Semana 2 · nov/2026 |
+| [gitleaks · Trivy](#sec) | Local | Barra senha no commit e acha vulnerabilidades em imagens. | passo 5.4 · Semana 2 · nov/2026; passo 21.2 · Semana 5 · nov/2026; passo 21.3 · Semana 5 · nov/2026 |
+| [dotfiles](#dot) | Local | Configuração versionada do ambiente, aplicada pelo chezmoi a partir de infra/dotfiles. | passo 5.7 · Semana 2 · nov/2026 |
+| [Arch + Omarchy (2º NVMe)](#arch) | Local · futuro | Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portátil em pendrive ou SSD USB. | passo 50.1 · 2027, conforme cada compra |
+| [AMtech OS (Ubuntu + setup)](#amtechos) | Local · futuro | O dev-setup como sistema operacional (ADR 0016): os/instalar.sh transforma um Ubuntu LTS no AMtech OS, com perfis, tema, firewall, snapshots e o comando amtech. VM primeiro; depois o 2º NVMe, com o Windows intocado. | passo 49.1 · Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso; passo 49.4 · Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso |
+| [Rotinas agendadas](#rotinas) | Local | Resumo da manhã no Telegram e manutenção semanal, pelo cron do Ubuntu. | passo 18.3 · Semana 4 · nov/2026; passo 18.4 · Semana 4 · nov/2026; passo 18.5 · Semana 4 · nov/2026 |
+| [AdGuard Home (DNS)](#adguard) | Local | DNS da casa com bloqueio de anúncios e rastreadores, também pelo Tailscale. | passo 31.4 · Semana 6 · nov/2026 |
+| [WireGuard (na mão)](#wireguard) | Local | Túnel montado à mão entre duas máquinas, para entender o que o Tailscale faz. | passo 31.6 · Semana 6 · nov/2026 |
+| [ROS 2 + ponte MQTT](#ros2) | Local · futuro | Robôs no Raspberry Pi com ROS 2; o mqtt_client leva os tópicos para o MQTT e o Home Assistant manda e recebe comandos. | passo 61.10 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| [just (porta única de comandos)](#just) | Local | O justfile na raiz do repositório junta os comandos do setup: just check (o mesmo portão do CI), just triagem, just arquiteto, just docs, just medir. Binário único, instalado pelo bootstrap.sh. | passo 22.1 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; passo 22.2 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; passo 23.1 · Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois |
+| [Terminal moderno (zoxide, eza, fd…)](#termx) | Local | zoxide (cd que aprende), eza (ls), fd (find), btop (monitor), hyperfine (benchmark), lazygit, lazydocker e o prompt Starship. Binários únicos, instalados pelo bootstrap.sh; ripgrep, fzf e tmux já vinham; tcpdump entra junto. | passo 22.1 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
+| [mise (runtimes e CLIs)](#mise) | Local | Principal (ADR 0008): instala e fixa Node, Go, Rust e as CLIs do setup a partir de ~/.config/mise/config.toml. O fnm fica como reserva; o Python segue no uv. | passo 22.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
+| [Zellij (abas e sessões)](#zellij) | Local | Multiplexador principal (ADR 0008): atalhos visíveis, layout setup (código, servidor, lazygit, lazydocker, btop) e sessões que voltam. O tmux fica para servidores. | passo 22.11 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
+| [yazi (arquivos no terminal)](#yazi) | Local | Gerenciador de arquivos no terminal com prévia de imagem, PDF e código. Pelo mise. | passo 22.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
+| [chezmoi (dotfiles com o cofre)](#chezmoi) | Local | Principal dos dotfiles (ADR 0008): aplica infra/dotfiles (mise, Zellij, Starship, Ghostty, Neovim, yazi, Aider) e lê segredos do KeePassXC na hora, sem gravar nada no repositório. | passo 22.11 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
+| [Ghostty (terminal do Arch)](#ghostty) | Local · futuro | Terminal acelerado por GPU para o Arch nativo; abre direto na sessão do Zellij. Não tem versão para Windows, onde o Windows Terminal continua. | passo 50.7 · 2027, conforme cada compra |
+| [Podman (containers sem root)](#podman) | Local | Containers sem root e sem serviço: roda o lab de alvo e imagens de terceiros com menos risco. O Docker Desktop segue como principal no dia a dia. | passo 22.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
+| [Git LFS (arquivos grandes)](#gitlfs) | Local | Firmware, bancos do Ghidra, placas do KiCad e modelos 3D fora do histórico do Git; o Forgejo serve o LFS do espelho. | passo 22.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
+| [tree-sitter (AST no editor)](#treesitter) | Local | Destaque, seleção e navegação por árvore sintática no Neovim (C#, TS, Go, Rust, Python, Svelte, Astro). O Repomix e o Aider usam o mesmo parser. | passo 22.11 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
+| [posting (API no terminal)](#posting) | Local | Cliente de API no terminal, com requisições em arquivo. Reserva do Bruno; o jeito de testar uma API por SSH dentro da VM. | passo 22.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
+| [harlequin (SQL no terminal)](#harlequin) | Local | Editor de SQL no terminal para Postgres e DuckDB. Reserva do DBeaver; bom dentro do Zellij e por SSH. | passo 22.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
+| [gum (menus nos scripts)](#gum) | Local | Menus, perguntas e confirmações bonitas nos scripts: o just menu escolhe a receita com setas. | passo 22.13 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
+| [D2 (diagramas como texto)](#d2) | Local | Diagramas de arquitetura de sistema e de cliente como texto, exportados em SVG. Os diagramas da documentação do GitHub seguem em Mermaid. | passo 22.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; passo 22.16 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
+| [vegeta (carga em taxa fixa)](#vegeta) | Local | Carga HTTP em taxa constante para achar o teto de uma API, do limite de requisições e do pool do banco. Os cenários seguem no k6. | passo 22.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica |
+| [bpftrace (kernel em produção)](#bpftrace) | Local · futuro | Rastreamento dinâmico com eBPF para latência que não aparece em log. Na VM e no Linux nativo, onde o kernel é seu. | passo 33.8 · Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar |
 
 <a id="nvim"></a>
 
@@ -213,7 +213,7 @@ flowchart LR
 
 Editor de terminal da trilha Arch e Akita. Aprender aos poucos; não substitui o VS Code no começo.
 
-**Quando entra:** passo 49.2 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 50.2 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -228,7 +228,7 @@ Editor de terminal da trilha Arch e Akita. Aprender aos poucos; não substitui o
 
 Diagnóstico de rede no Ubuntu: portas, DNS, requisições HTTP e captura de pacotes (tcpdump). Instalados pelo bootstrap.sh.
 
-**Quando entra:** passo 4.4 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 5.4 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -242,7 +242,7 @@ Diagnóstico de rede no Ubuntu: portas, DNS, requisições HTTP e captura de pac
 
 Onde o código vive e roda.
 
-**Quando entra:** passo 4.1 · Semana 2 · nov/2026; passo 4.5 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 5.1 · Semana 2 · nov/2026; passo 5.5 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -273,7 +273,7 @@ Onde o código vive e roda.
 
 Versionamento e acesso ao GitHub.
 
-**Quando entra:** passo 4.4 · Semana 2 · nov/2026; passo 4.6 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 5.4 · Semana 2 · nov/2026; passo 5.6 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -293,7 +293,7 @@ Versionamento e acesso ao GitHub.
 
 Runtimes das APIs, do front e dos scripts.
 
-**Quando entra:** passo 4.4 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 5.4 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -310,7 +310,7 @@ Runtimes das APIs, do front e dos scripts.
 
 Compila o livro e as apostilas.
 
-**Quando entra:** passo 4.4 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 5.4 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -324,7 +324,7 @@ Compila o livro e as apostilas.
 
 Barra senha no commit e acha vulnerabilidades em imagens.
 
-**Quando entra:** passo 4.4 · Semana 2 · nov/2026; passo 20.2 · Semana 5 · nov/2026; passo 20.3 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 5.4 · Semana 2 · nov/2026; passo 21.2 · Semana 5 · nov/2026; passo 21.3 · Semana 5 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -339,7 +339,7 @@ Barra senha no commit e acha vulnerabilidades em imagens.
 
 Configuração versionada do ambiente, aplicada pelo chezmoi a partir de infra/dotfiles.
 
-**Quando entra:** passo 4.7 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 5.7 · Semana 2 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -356,7 +356,7 @@ Configuração versionada do ambiente, aplicada pelo chezmoi a partir de infra/d
 
 Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portátil em pendrive ou SSD USB.
 
-**Quando entra:** passo 49.1 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 50.1 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -374,7 +374,7 @@ Linux nativo com boot próprio, sem tocar no Windows. Antes dele, o Arch portát
 
 O dev-setup como sistema operacional (ADR 0016): os/instalar.sh transforma um Ubuntu LTS no AMtech OS, com perfis, tema, firewall, snapshots e o comando amtech. VM primeiro; depois o 2º NVMe, com o Windows intocado.
 
-**Quando entra:** passo 48.1 · Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso; passo 48.4 · Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 49.1 · Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso; passo 49.4 · Nov/2026: teste na VM (grátis, 2 h); no notebook quando o 2º NVMe chegar; venda depois de alguns meses de uso ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -390,7 +390,7 @@ O dev-setup como sistema operacional (ADR 0016): os/instalar.sh transforma um Ub
 
 Resumo da manhã no Telegram e manutenção semanal, pelo cron do Ubuntu.
 
-**Quando entra:** passo 17.3 · Semana 4 · nov/2026; passo 17.4 · Semana 4 · nov/2026; passo 17.5 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 18.3 · Semana 4 · nov/2026; passo 18.4 · Semana 4 · nov/2026; passo 18.5 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -404,7 +404,7 @@ Resumo da manhã no Telegram e manutenção semanal, pelo cron do Ubuntu.
 
 DNS da casa com bloqueio de anúncios e rastreadores, também pelo Tailscale.
 
-**Quando entra:** passo 30.4 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.4 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -418,7 +418,7 @@ DNS da casa com bloqueio de anúncios e rastreadores, também pelo Tailscale.
 
 Túnel montado à mão entre duas máquinas, para entender o que o Tailscale faz.
 
-**Quando entra:** passo 30.6 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 31.6 · Semana 6 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -432,7 +432,7 @@ Túnel montado à mão entre duas máquinas, para entender o que o Tailscale faz
 
 Robôs no Raspberry Pi com ROS 2; o mqtt_client leva os tópicos para o MQTT e o Home Assistant manda e recebe comandos.
 
-**Quando entra:** passo 60.10 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 61.10 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -447,7 +447,7 @@ Robôs no Raspberry Pi com ROS 2; o mqtt_client leva os tópicos para o MQTT e o
 
 O justfile na raiz do repositório junta os comandos do setup: just check (o mesmo portão do CI), just triagem, just arquiteto, just docs, just medir. Binário único, instalado pelo bootstrap.sh.
 
-**Quando entra:** passo 21.1 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; passo 21.2 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; passo 22.1 · Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 22.1 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; passo 22.2 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; passo 23.1 · Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -465,7 +465,7 @@ O justfile na raiz do repositório junta os comandos do setup: just check (o mes
 
 zoxide (cd que aprende), eza (ls), fd (find), btop (monitor), hyperfine (benchmark), lazygit, lazydocker e o prompt Starship. Binários únicos, instalados pelo bootstrap.sh; ripgrep, fzf e tmux já vinham; tcpdump entra junto.
 
-**Quando entra:** passo 21.1 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 22.1 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -480,7 +480,7 @@ zoxide (cd que aprende), eza (ls), fd (find), btop (monitor), hyperfine (benchma
 
 Principal (ADR 0008): instala e fixa Node, Go, Rust e as CLIs do setup a partir de ~/.config/mise/config.toml. O fnm fica como reserva; o Python segue no uv.
 
-**Quando entra:** passo 21.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 22.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -495,7 +495,7 @@ Principal (ADR 0008): instala e fixa Node, Go, Rust e as CLIs do setup a partir 
 
 Multiplexador principal (ADR 0008): atalhos visíveis, layout setup (código, servidor, lazygit, lazydocker, btop) e sessões que voltam. O tmux fica para servidores.
 
-**Quando entra:** passo 21.11 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 22.11 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -511,7 +511,7 @@ Multiplexador principal (ADR 0008): atalhos visíveis, layout setup (código, se
 
 Gerenciador de arquivos no terminal com prévia de imagem, PDF e código. Pelo mise.
 
-**Quando entra:** passo 21.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 22.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -525,7 +525,7 @@ Gerenciador de arquivos no terminal com prévia de imagem, PDF e código. Pelo m
 
 Principal dos dotfiles (ADR 0008): aplica infra/dotfiles (mise, Zellij, Starship, Ghostty, Neovim, yazi, Aider) e lê segredos do KeePassXC na hora, sem gravar nada no repositório.
 
-**Quando entra:** passo 21.11 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 22.11 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -541,7 +541,7 @@ Principal dos dotfiles (ADR 0008): aplica infra/dotfiles (mise, Zellij, Starship
 
 Terminal acelerado por GPU para o Arch nativo; abre direto na sessão do Zellij. Não tem versão para Windows, onde o Windows Terminal continua.
 
-**Quando entra:** passo 49.7 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 50.7 · 2027, conforme cada compra ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -556,7 +556,7 @@ Terminal acelerado por GPU para o Arch nativo; abre direto na sessão do Zellij.
 
 Containers sem root e sem serviço: roda o lab de alvo e imagens de terceiros com menos risco. O Docker Desktop segue como principal no dia a dia.
 
-**Quando entra:** passo 21.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 22.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -571,7 +571,7 @@ Containers sem root e sem serviço: roda o lab de alvo e imagens de terceiros co
 
 Firmware, bancos do Ghidra, placas do KiCad e modelos 3D fora do histórico do Git; o Forgejo serve o LFS do espelho.
 
-**Quando entra:** passo 21.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 22.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -586,7 +586,7 @@ Firmware, bancos do Ghidra, placas do KiCad e modelos 3D fora do histórico do G
 
 Destaque, seleção e navegação por árvore sintática no Neovim (C#, TS, Go, Rust, Python, Svelte, Astro). O Repomix e o Aider usam o mesmo parser.
 
-**Quando entra:** passo 21.11 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 22.11 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -601,7 +601,7 @@ Destaque, seleção e navegação por árvore sintática no Neovim (C#, TS, Go, 
 
 Cliente de API no terminal, com requisições em arquivo. Reserva do Bruno; o jeito de testar uma API por SSH dentro da VM.
 
-**Quando entra:** passo 21.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 22.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -615,7 +615,7 @@ Cliente de API no terminal, com requisições em arquivo. Reserva do Bruno; o je
 
 Editor de SQL no terminal para Postgres e DuckDB. Reserva do DBeaver; bom dentro do Zellij e por SSH.
 
-**Quando entra:** passo 21.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 22.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -630,7 +630,7 @@ Editor de SQL no terminal para Postgres e DuckDB. Reserva do DBeaver; bom dentro
 
 Menus, perguntas e confirmações bonitas nos scripts: o just menu escolhe a receita com setas.
 
-**Quando entra:** passo 21.13 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 22.13 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -644,7 +644,7 @@ Menus, perguntas e confirmações bonitas nos scripts: o just menu escolhe a rec
 
 Diagramas de arquitetura de sistema e de cliente como texto, exportados em SVG. Os diagramas da documentação do GitHub seguem em Mermaid.
 
-**Quando entra:** passo 21.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; passo 21.16 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 22.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica; passo 22.16 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -658,7 +658,7 @@ Diagramas de arquitetura de sistema e de cliente como texto, exportados em SVG. 
 
 Carga HTTP em taxa constante para achar o teto de uma API, do limite de requisições e do pool do banco. Os cenários seguem no k6.
 
-**Quando entra:** passo 21.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 22.10 · Semana 5 · nov/2026 (tudo grátis, em sessões curtas); o analisador lógico entra com a primeira compra de robótica ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -672,7 +672,7 @@ Carga HTTP em taxa constante para achar o teto de uma API, do limite de requisi�
 
 Rastreamento dinâmico com eBPF para latência que não aparece em log. Na VM e no Linux nativo, onde o kernel é seu.
 
-**Quando entra:** passo 32.8 · Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 33.8 · Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

@@ -2,6 +2,13 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.44.0] - 2026-11-22
+
+### Adicionado
+- **Central AMtech** em `docs/central/`: contexto (diagnóstico, decisões montar → colar → construir, arquitetura, fonte de cada tela, segurança, fases), prompts prontos por fase para o Claude Code (`PROMPTS.md`) e o protótipo clicável (`prototipo/index.html`, dados reais do v2.40.0). Fase nova `f-central` no roteiro com os passos F0 a F6 e a revisão de segurança.
+- Fase nova `f-ferramentas` (depois da fase Senhas): 8 passos para ligar e testar uma vez os 30 comandos que não estavam no roteiro (operação, motor, núcleo, estudo, coerência, vitrine, sala limpa e AMtech OS).
+- `just check` agora falha se alguma receita do `justfile` não aparecer em nenhum passo do roteiro (teste em `tools/implantacao/test_gerar.py`).
+
 ## [2.43.0] - 2026-11-22
 
 ### Adicionado
