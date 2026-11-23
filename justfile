@@ -265,6 +265,11 @@ fila:
 vitrine EMPRESA DESTINO:
     test -f docs/vitrines/{{EMPRESA}}.md && test -d {{DESTINO}}/.git && cp docs/vitrines/{{EMPRESA}}.md {{DESTINO}}/README.md && echo "README da vitrine copiado; revise, faça o commit e o push em {{DESTINO}}"
 
+# Visibilidade dos repositórios igual à de repos.json, sem IA. A chave vem do KeePassXC (entrada GitHub/gh-admin) só para este comando.
+# just repos-visibilidade            (só confere)     just repos-visibilidade --aplicar     (muda depois da sua confirmação)
+repos-visibilidade *opcao:
+    bash scripts/wsl/segredos.sh "${GH_ENTRADA:-GitHub/gh-admin}" GH_TOKEN -- python3 tools/repos/visibilidade.py {{opcao}}
+
 # Coerência com o plano (data/coerencia.json): confere o dev-setup e todos os repositórios em ~/dev e grava ~/dev/COERENCIA.md
 # just coerencia            (só relatório)     just coerencia --corrigir     (troca sozinho o que tem troca segura)
 coerencia *opcao:

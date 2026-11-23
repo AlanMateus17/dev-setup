@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.42.0] - 2026-11-22
+
+### Adicionado
+- `just repos-visibilidade`: confere a visibilidade de cada repositório no GitHub contra o `repos.json`, sem IA; com `--aplicar` mostra o plano e só muda depois da sua confirmação (digitar o número de mudanças; repositório com GitHub Pages ou estrelas pede o nome). A chave do GitHub vem do KeePassXC pelo `scripts/wsl/segredos.sh` (entrada `GitHub/gh-admin`) e existe só durante o comando. Fork de repositório público é avisado como impossível; cada mudança vai para a auditoria do núcleo. Testes em `tools/repos/test_visibilidade.py`.
+
 ## [2.41.0] - 2026-11-21
 
 ### Adicionado
@@ -15,7 +20,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 ### Alterado
 - Decisão de 21/11: todos os repositórios do Alan ficam privados, inclusive os sites do GitHub Pages (que saem do ar no plano grátis). `repos.json`, `docs/repositorios.md`, `CONTINUAR.md` e o plano em `data/coerencia.json` atualizados; as vitrines de cliente continuam planejadas como públicas.
 
- - 2026-11-21
+## [2.40.0] - 2026-11-21
 
 ### Alterado
 - **Professor na ordem do mapa-de-estudo** (ADR 0018): um módulo só é liberado quando o assunto dele está escrito e conferido no mapa (📘), quando todo assunto de que ele depende no mapa também está escrito e quando os módulos desses assuntos já passaram na prova. Antes, cada módulo tinha pré-requisitos próprios e o `just professor hoje` podia mandar TypeScript (2.1) e terminal (1.3) antes do 0.1.
