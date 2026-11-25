@@ -2,6 +2,19 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.51.0] - 2026-11-25
+
+### Adicionado
+- **Perfis no `just ligar`** (PR 4 do inventário): `just ligar` continua sendo o perfil *sempre*; `just ligar trabalho`, `just ligar sob-demanda` e `just ligar laboratorio` sobem também os serviços Docker do perfil, lidos de `data/ferramentas.json`, com os `--profile` de cada compose. `--simular` mostra o plano; `just desligar <perfil>` para só os containers do perfil.
+- Perfil novo **sob-demanda** (Metabase e PocketBase), para o `just ligar trabalho` não subir 1,5 GB de Metabase nem compilar o PocketBase toda vez.
+- `ferramentas.py --perfil NOME --acao ver|ligar|desligar`. 5 testes novos, incluindo um que confere se o `ligar-tudo.sh` aceita exatamente os perfis do registro.
+
+### Corrigido
+- O `just ligar` subia o LiteLLM, que está parado por decisão (ADR 0022); agora o passo 5 lê a decisão no registro e pula.
+
+### Alterado
+- AMKaixara no `CLAUDE.md` e na ADR 0022: am-kaixara#26 juntado e Postgres e Redis religados em 127.0.0.1 com os mesmos dados.
+
 ## [2.50.0] - 2026-11-25
 
 ### Adicionado

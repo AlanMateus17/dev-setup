@@ -73,5 +73,6 @@ mudar, o Alan decide e a ADR ganha uma nova. Ferramentas paradas ou adiadas têm
 | Vault | `C:\Users\alanmateus\vault` (clone do GitHub); `~/dev/notas` é symlink para ele |
 | IA | LiteLLM **parado**; o Ollama do setup é o do WSL; o Ollama do Windows fica só em `127.0.0.1` |
 | Conteúdo | Timer do pipeline **parado** |
+| Ligar | `just ligar` = perfil sempre; `just ligar trabalho`, `sob-demanda` ou `laboratorio` sobe também o Docker do perfil (`data/ferramentas.json`); o que está parado por decisão nunca sobe |
 | Rede | headscale **desligado de vez** (o Tailscale oficial cobre); bore e cloudflared **desinstalados** (túnel para a internet) |
-| AMKaixara | Postgres e Redis só em `127.0.0.1`, Redis com volume nomeado; containers parados até o PR no repositório dele entrar |
+| AMKaixara | Postgres, Redis e API só em `127.0.0.1`, Redis com volume nomeado (am-kaixara#26, juntado em 25/11). Postgres e Redis religados com os mesmos dados; a API não foi religada. Os 22 `.cs` apagados localmente ficam como estão até o Alan decidir |

@@ -11,6 +11,7 @@ Enquanto os scripts de instalação não leem este arquivo, o --check garante qu
     python3 tools/ferramentas/ferramentas.py --check      # o que o just check e o CI rodam
     python3 tools/ferramentas/ferramentas.py --estado     # o que está instalado e rodando neste PC (lento: winget, docker)
     python3 tools/ferramentas/ferramentas.py --estado --faltando   # só o que falta e conta como falta
+    python3 tools/ferramentas/ferramentas.py --perfil trabalho --acao ver|ligar|desligar   # serviços Docker de um perfil
 """
 from __future__ import annotations
 
@@ -253,7 +254,7 @@ def gerar_md(dados: dict) -> str:
             for p, nome in dados["perfis"].items():
                 sp = [f for f in g if f.get("perfil") == p]
                 if sp:
-                    L.append(f"| {nome} | {len(sp)} | {sum(f['ram_mb'] for f in sp) / 1024:.1f} GB | {sum(f['disco_gb'] for f in sp):.1f} GB |")
+                    L.append(f"| {nome} (`just ligar {p}`) | {len(sp)} | {sum(f['ram_mb'] for f in sp) / 1024:.1f} GB | {sum(f['disco_gb'] for f in sp):.1f} GB |")
             L.append(f"| **Todos juntos** | {len(g)} | {sum(f['ram_mb'] for f in g) / 1024:.1f} GB | {sum(f['disco_gb'] for f in g):.1f} GB |")
             L += ["", "| Serviço | Grupo | Perfil | Porta | Para quê | Decisão | Ligar |", "|---|---|---|---|---|---|---|"]
             for f in g:
@@ -378,6 +379,75 @@ def portas_expostas_windows(portas: tuple[int, ...] = PORTAS_SO_LOCAIS, linhas: 
     return sorted(set(abertas))
 
 
+# ------------------------------------------------------------------ perfis (just ligar <perfil>)
+def _perfis_compose(caminho: Path) -> dict[str, list[str]]:
+    """serviço -> perfis do compose (profiles: [a, b])."""
+    perfis, servico, em_servicos = {}, None, False
+    for linha in caminho.read_text(encoding="utf-8").splitlines():
+        if re.match(r"^[A-Za-z]", linha):
+            em_servicos, servico = linha.startswith("services:"), None
+            continue
+        m = re.match(r"^  ([A-Za-z0-9_.-]+):\s*$", linha)
+        if em_servicos and m:
+            servico = m.group(1)
+            perfis[servico] = []
+            continue
+        mp = re.match(r"^    profiles:\s*\[([^\]]*)\]", linha)
+        if servico and mp:
+            perfis[servico] = [x.strip().strip("'\"") for x in mp.group(1).split(",") if x.strip()]
+    return perfis
+
+
+def planejar_perfil(dados: dict, perfil: str, raiz: Path = RAIZ) -> list[dict]:
+    """Serviços Docker do perfil (decisão normal), agrupados por compose.yaml, com os --profile que cada grupo precisa."""
+    if perfil not in dados["perfis"]:
+        raise ValueError(f"perfil '{perfil}' não existe: {', '.join(dados['perfis'])}")
+    grupos: dict[str, dict] = {}
+    for f in dados["ferramentas"]:
+        if f["tipo"] != "docker" or f.get("perfil") != perfil or f["decisao"] != "normal":
+            continue
+        arquivo = f["fonte"]
+        servico = f["conferir"]["container"].split("/", 1)[1]
+        g = grupos.setdefault(arquivo, {"arquivo": arquivo, "perfis": [], "servicos": [], "ram_mb": 0})
+        g["servicos"].append(servico)
+        g["ram_mb"] += f["ram_mb"]
+        for p in _perfis_compose(raiz / arquivo).get(servico, []):
+            if p not in g["perfis"]:
+                g["perfis"].append(p)
+    return [grupos[k] for k in sorted(grupos)]
+
+
+def comando_grupo(g: dict, acao: str) -> list[str]:
+    cmd = ["docker", "compose", "-f", g["arquivo"]]
+    for p in g["perfis"]:
+        cmd += ["--profile", p]
+    return cmd + (["up", "-d", *g["servicos"]] if acao == "ligar" else ["stop", *g["servicos"]])
+
+
+def aplicar_perfil(dados: dict, perfil: str, acao: str) -> int:
+    """ver: só mostra; ligar/desligar: roda um docker compose por grupo e diz o que falhou. Devolve o número de falhas."""
+    grupos = planejar_perfil(dados, perfil)
+    print(f"Perfil {perfil} ({dados['perfis'][perfil]}): {sum(len(g['servicos']) for g in grupos)} serviços, "
+          f"~{sum(g['ram_mb'] for g in grupos) / 1024:.1f} GB de RAM")
+    paradas = [f["nome"] for f in dados["ferramentas"] if f["tipo"] == "docker" and f.get("perfil") == perfil and f["decisao"] != "normal"]
+    if paradas:
+        print(f"  [--]   fora por decisão (ADR 0022): {', '.join(paradas)}")
+    falhas = 0
+    for g in grupos:
+        cmd = comando_grupo(g, "ligar" if acao == "ver" else acao)
+        if acao == "ver":
+            print(f"  [faz]  {' '.join(cmd)}")
+            continue
+        r = subprocess.run(cmd, cwd=RAIZ, capture_output=True, text=True, errors="replace")
+        if r.returncode == 0:
+            print(f"  [ok]   {g['arquivo']}: {', '.join(g['servicos'])}")
+        else:
+            falhas += 1
+            motivo = next((l for l in r.stderr.splitlines() if "error" in l.lower() or "required" in l.lower()), r.stderr.strip()[-200:])
+            print(f"  [erro] {g['arquivo']}: {motivo}")
+    return falhas
+
+
 # ------------------------------------------------------------------ linha de comando
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
@@ -385,6 +455,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--estado", action="store_true", help="mostra o que está instalado e rodando neste PC")
     ap.add_argument("--faltando", action="store_true", help="com --estado: só o que conta como falta")
     ap.add_argument("--json", action="store_true", help="com --estado: saída em JSON")
+    ap.add_argument("--perfil", help="serviços Docker de um perfil (sempre, trabalho, sob-demanda, laboratorio)")
+    ap.add_argument("--acao", choices=("ver", "ligar", "desligar"), default="ver", help="com --perfil")
     a = ap.parse_args(argv)
     dados = carregar()
     erros = validar(dados)
@@ -393,6 +465,12 @@ def main(argv: list[str] | None = None) -> int:
     if erros:
         print("\n".join(f"ERRO: {e}" for e in erros), file=sys.stderr)
         return 1
+    if a.perfil:
+        try:
+            return 1 if aplicar_perfil(dados, a.perfil, a.acao) else 0
+        except ValueError as e:
+            print(f"ERRO: {e}", file=sys.stderr)
+            return 2
     if a.estado:
         est = estado(dados)
         lista = faltando(est) if a.faltando else est

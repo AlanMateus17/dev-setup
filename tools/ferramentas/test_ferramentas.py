@@ -191,6 +191,44 @@ class TestDecisoes(unittest.TestCase):
         self.assertEqual(ferramentas.portas_expostas_windows(linhas="11434 127.0.0.1\n"), [])
 
 
+class TestPerfis(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.dados = ferramentas.carregar()
+
+    def test_trabalho_sem_parados_e_com_profiles(self):
+        grupos = {g["arquivo"]: g for g in ferramentas.planejar_perfil(self.dados, "trabalho")}
+        todos = [s for g in grupos.values() for s in g["servicos"]]
+        self.assertNotIn("litellm", todos)
+        self.assertNotIn("headscale", todos)
+        sob = grupos["infra/soberania/compose.yaml"]
+        self.assertIn("ghostfolio", sob["perfis"])
+        self.assertNotIn("headscale", sob["perfis"])
+        cmd = ferramentas.comando_grupo(sob, "ligar")
+        self.assertEqual(cmd[:4], ["docker", "compose", "-f", "infra/soberania/compose.yaml"])
+        self.assertEqual(cmd[cmd.index("up"):cmd.index("up") + 2], ["up", "-d"])
+
+    def test_sob_demanda_fora_do_trabalho(self):
+        trabalho = [s for g in ferramentas.planejar_perfil(self.dados, "trabalho") for s in g["servicos"]]
+        sob = [s for g in ferramentas.planejar_perfil(self.dados, "sob-demanda") for s in g["servicos"]]
+        self.assertEqual(sorted(sob), ["metabase", "pocketbase"])
+        self.assertFalse(set(sob) & set(trabalho))
+
+    def test_desligar_usa_stop(self):
+        g = ferramentas.planejar_perfil(self.dados, "laboratorio")[0]
+        self.assertIn("stop", ferramentas.comando_grupo(g, "desligar"))
+
+    def test_perfil_inexistente(self):
+        with self.assertRaises(ValueError):
+            ferramentas.planejar_perfil(self.dados, "festa")
+
+    def test_ligar_tudo_aceita_os_perfis_do_registro(self):
+        script = (ferramentas.RAIZ / "scripts/wsl/ligar-tudo.sh").read_text(encoding="utf-8")
+        import re
+        aceitos = set(re.search(r"^\s+(sempre\|[a-z|-]+)\) PERFIL=", script, re.M).group(1).split("|"))
+        self.assertEqual(aceitos, set(self.dados["perfis"]))
+
+
 class TestEstado(unittest.TestCase):
     def sondas_falsas(self, **k) -> dict:
         s = {"winget": "Git.Git  2.47", "extensao": {"ms-python.python"}, "dpkg": {"jq"}, "container": {"soberania/forgejo": "running"},

@@ -192,8 +192,9 @@
 
 | Perfil | Serviços | RAM (estimada) | Imagens (estimadas) |
 |---|---|---|---|
-| Ligado para trabalhar | 25 | 3.6 GB | 12.5 GB |
-| Só para estudo e laboratório | 15 | 5.3 GB | 16.5 GB |
+| Ligado para trabalhar (`just ligar trabalho`) | 23 | 2.6 GB | 11.5 GB |
+| Só quando um trabalho pedir (`just ligar sob-demanda`) | 2 | 0.9 GB | 1.0 GB |
+| Só para estudo e laboratório (`just ligar laboratorio`) | 15 | 5.3 GB | 16.5 GB |
 | **Todos juntos** | 40 | 8.8 GB | 28.9 GB |
 
 | Serviço | Grupo | Perfil | Porta | Para quê | Decisão | Ligar |
@@ -206,7 +207,7 @@
 | paperless-redis | infra/casa | laboratorio | — | Fila do Paperless |  | `docker compose -f infra/casa/compose.yaml up -d paperless-redis` |
 | paperless | infra/casa | laboratorio | 8010 | Documentos digitalizados com OCR |  | `docker compose -f infra/casa/compose.yaml up -d paperless` |
 | grocy | infra/casa | laboratorio | 9283 | Estoque da casa |  | `docker compose -f infra/casa/compose.yaml up -d grocy` |
-| metabase | infra/dados | trabalho | 3012 | Painéis de dados |  | `docker compose -f infra/dados/compose.yaml up -d metabase` |
+| metabase | infra/dados | sob-demanda | 3012 | Painéis de dados |  | `docker compose -f infra/dados/compose.yaml up -d metabase` |
 | litellm | infra/ia | trabalho | 4000 | Gateway de modelos de IA com teto de gasto | parada | `docker compose -f infra/ia/compose.yaml up -d litellm` |
 | whisper | infra/jarvis | laboratorio | 10300 | Fala para texto na GPU (Jarvis) |  | `docker compose -f infra/jarvis/compose.yaml up -d whisper` |
 | piper | infra/jarvis | laboratorio | 10200 | Texto para fala (Jarvis) |  | `docker compose -f infra/jarvis/compose.yaml up -d piper` |
@@ -218,7 +219,7 @@
 | alvo | infra/lab-alvo | laboratorio | — | Alvo isolado do laboratório |  | `docker compose -f infra/lab-alvo/compose.yaml up -d alvo` |
 | juice-shop | infra/lab-seguranca | laboratorio | 3100 | App vulnerável para estudo |  | `docker compose -f infra/lab-seguranca/compose.yaml up -d juice-shop` |
 | webgoat | infra/lab-seguranca | laboratorio | 8180, 9090 | App vulnerável para estudo |  | `docker compose -f infra/lab-seguranca/compose.yaml up -d webgoat` |
-| pocketbase | infra/pocketbase | trabalho | 8090 | Backend dos sites |  | `docker compose -f infra/pocketbase/compose.yaml up -d pocketbase` |
+| pocketbase | infra/pocketbase | sob-demanda | 8090 | Backend dos sites |  | `docker compose -f infra/pocketbase/compose.yaml up -d pocketbase` |
 | adguard | infra/rede | laboratorio | 53, 53, 3011 | DNS com bloqueio de anúncios |  | `docker compose -f infra/rede/compose.yaml up -d adguard` |
 | forgejo | infra/soberania | trabalho | 3000, 2222 | Git próprio |  | `docker compose -f infra/soberania/compose.yaml --profile forgejo up -d forgejo` |
 | soft-serve | infra/soberania | trabalho | 23231 | Git pelo terminal |  | `docker compose -f infra/soberania/compose.yaml --profile soft-serve up -d soft-serve` |
