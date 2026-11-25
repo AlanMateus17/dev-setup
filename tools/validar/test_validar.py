@@ -123,6 +123,12 @@ class TestEstadoBackup(unittest.TestCase):
         self.assertEqual(integ[0], v.MIM)
         self.assertIn("restic init", integ[1])
 
+    def test_disco_do_windows_desmontado(self):
+        # O caso do PC em 25/11: /mnt/d existia só como pasta, sem disco D:
+        self.assertFalse(v.disco_montado(Path("/mnt/d/backup-restic"), ismount=lambda p: False))
+        self.assertTrue(v.disco_montado(Path("/mnt/e/backup-restic"), ismount=lambda p: p == "/mnt/e"))
+        self.assertTrue(v.disco_montado(Path("/home/x/repo"), ismount=lambda p: False), "fora de /mnt/<letra> não se aplica")
+
     def test_permissao_aberta(self):
         import tempfile
         with tempfile.TemporaryDirectory() as t:
