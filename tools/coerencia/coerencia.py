@@ -146,6 +146,7 @@ def main() -> int:
             achados += verificar(c.resolve(), d, a.corrigir)
     txt = relatorio(achados, d)
     if a.relatorio:
+        a.relatorio.parent.mkdir(parents=True, exist_ok=True)
         a.relatorio.write_text(txt, encoding="utf-8")
         print(f"Relatório em {a.relatorio}")
     erros = [x for x in achados if x.nivel == "erro" or a.estrito]

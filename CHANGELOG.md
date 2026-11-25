@@ -2,6 +2,17 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.40.1] - 2026-11-25
+
+### Adicionado
+- `just validar` (`tools/validar/validar.py`): refaz as checagens automáticas da validação de ponta a ponta (testes, roda no PC, roda sozinho, integração) e imprime a matriz; `--rapido` e `--restaurar`. Matriz e pendências em `docs/operacao/validacao.md`.
+
+### Corrigido
+- justfile: `set positional-arguments` global no lugar do atributo `[positional-arguments]`, que o `just` 1.21 do apt (Ubuntu 24.04, o que o bootstrap instala) não lê; antes, nenhuma receita rodava nessa versão.
+- `backup.sh`: o evento `backup.concluido` nunca chegava ao núcleo (a última linha do `restic snapshots --compact` é um separador "-----" que o argparse lia como opção, e o `|| true` escondia). Agora usa o id pelo `--json`.
+- `coerencia.py --relatorio` cria a pasta do relatório (sem `~/dev` dava traceback, escondido pelo `|| true` da receita).
+- `professor-mapa` sem o MAPA.md: aviso com o que fazer no lugar do traceback.
+
 ## [2.40.0] - 2026-11-21
 
 ### Alterado

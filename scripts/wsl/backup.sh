@@ -20,4 +20,6 @@ if [[ "${1:-}" == "--simular" ]]; then echo "restic backup ${PASTAS[*]}"; echo "
 restic backup "${PASTAS[@]}" --exclude-caches --exclude node_modules --exclude bin --exclude obj --tag diario
 restic forget --keep-daily 7 --keep-weekly 4 --keep-monthly 12 --prune --tag diario
 restic check --read-data-subset=2%
-python3 "$RAIZ/tools/nucleo/nucleo.py" evento backup.concluido "$(restic snapshots --latest 1 --compact | tail -2 | head -1)" >/dev/null 2>&1 || true
+# Id do snapshot pelo --json: a última linha do --compact é um separador "-----", que o argparse lia como opção.
+snap="$(restic snapshots --latest 1 --json | python3 -c 'import json,sys; s=json.load(sys.stdin) or [{}]; print(s[-1].get("short_id", ""))')"
+python3 "$RAIZ/tools/nucleo/nucleo.py" evento backup.concluido "{\"snapshot\": \"$snap\"}" --fonte backup >/dev/null 2>&1 || true

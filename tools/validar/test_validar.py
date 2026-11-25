@@ -1,0 +1,86 @@
+import io
+import re
+import shutil
+import subprocess
+import sys
+import unittest
+from contextlib import redirect_stdout
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+import validar as v  # noqa: E402
+
+
+class TestMatriz(unittest.TestCase):
+    def test_pior_estado_vence(self):
+        self.assertEqual(v.pior([v.OK, v.MIM, v.NAO]), v.MIM)
+        self.assertEqual(v.pior([v.OK, v.FALHA, v.MIM]), v.FALHA)
+        self.assertEqual(v.pior([]), v.NAO)
+
+    def test_matriz_junta_por_item_e_coluna(self):
+        rs = [v.Resultado("5. Núcleo", "pc", v.OK), v.Resultado("5. Núcleo", "pc", v.MIM, "inicie o núcleo")]
+        testes = {p: (v.OK, "") for ps in v.CRITICO.values() for p in ps}
+        testes["radar"] = (v.FALHA, "1 erro")
+        m = v.matriz(rs, testes)
+        self.assertEqual(list(m)[:7], list(v.CRITICO), "caminho crítico primeiro, na ordem")
+        self.assertEqual(m["5. Núcleo"]["pc"].status, v.MIM)
+        self.assertEqual(m["5. Núcleo"]["pc"].motivo, "inicie o núcleo")
+        self.assertEqual(m["5. Núcleo"]["testes"].status, v.OK)
+        self.assertEqual(m["3. Backup"]["testes"].status, v.OK)
+        self.assertEqual(m["módulo radar"]["testes"].status, v.FALHA)
+        self.assertEqual(m["módulo radar"]["pc"].status, "—", "o resto dos módulos só tem a coluna de testes")
+
+    def test_imprimir_sai_1_com_falha(self):
+        base = {c: v.Resultado("x", c, v.OK) for c in v.COLUNAS}
+        with redirect_stdout(io.StringIO()) as saida:
+            self.assertEqual(v.imprimir({"x": base}), 0)
+            self.assertEqual(v.imprimir({"x": {**base, "pc": v.Resultado("x", "pc", v.FALHA, "quebrou")}}), 1)
+        self.assertIn("FALHA (quebrou)", saida.getvalue())
+
+    def test_ci(self):
+        ok = [{"workflowName": "vigia", "conclusion": "success", "event": "schedule"},
+              {"workflowName": "docs", "conclusion": "success", "event": "pull_request"}]
+        self.assertEqual(v.avaliar_ci("6", ok).status, v.OK)
+        ruim = [{"workflowName": "docs", "conclusion": "failure", "event": "push"}] + ok
+        self.assertEqual(v.avaliar_ci("6", ruim).status, v.FALHA)
+        self.assertEqual(v.avaliar_ci("6", ok[1:]).status, v.FALHA, "sem o agendado não roda sozinho")
+        self.assertEqual(v.avaliar_ci("6", []).status, v.FALHA)
+
+    def test_runs_proprios_ignora_dependabot(self):
+        brutos = [{"name": "Graph Update", "path": "dynamic/dependabot/update-graph", "conclusion": "cancelled"},
+                  {"name": "docs", "path": ".github/workflows/docs.yml", "conclusion": "success", "event": "push"}]
+        self.assertEqual([r["workflowName"] for r in v.runs_proprios(brutos)], ["docs"])
+
+    def test_linha_agendada(self):
+        cron = "30 22 * * * bash /x/scripts/wsl/backup.sh > log 2>&1 # amtech-setup\n0 1 * * * outro"
+        self.assertTrue(v.linha_agendada("backup.sh", cron))
+        self.assertFalse(v.linha_agendada("resumo-manha", cron))
+        self.assertFalse(v.linha_agendada("backup.sh", None))
+
+
+class TestJustfileCompativel(unittest.TestCase):
+    """O bootstrap instala o just pelo apt; no Ubuntu 24.04 é o 1.21, que não conhece [positional-arguments]."""
+
+    def test_sem_atributos_novos(self):
+        txt = (v.RAIZ / "justfile").read_text(encoding="utf-8")
+        self.assertIsNone(re.search(r"^\[positional-arguments\]", txt, re.M))
+        self.assertRegex(txt, r"(?m)^set positional-arguments$")
+        self.assertRegex(txt, r"(?m)^validar ")
+
+    @unittest.skipUnless(shutil.which("just"), "just ausente")
+    def test_just_le_o_justfile(self):
+        p = subprocess.run(["just", "--summary"], cwd=v.RAIZ, capture_output=True, text=True)
+        self.assertEqual(p.returncode, 0, p.stderr)
+        self.assertIn("validar", p.stdout.split())
+
+
+class TestEnsaioBackup(unittest.TestCase):
+    @unittest.skipUnless(shutil.which("restic"), "restic ausente")
+    def test_backup_restaura_e_grava_evento(self):
+        # Pega o bug antigo do backup.sh: o evento backup.concluido se perdia (separador "-----" virava opção).
+        st, motivo = v.ensaio_backup()
+        self.assertEqual(st, v.OK, motivo)
+
+
+if __name__ == "__main__":
+    unittest.main()

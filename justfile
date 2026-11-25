@@ -3,6 +3,8 @@
 # Cada receita só chama os scripts que já existem; nada aqui tem lógica própria.
 
 set shell := ["bash", "-euo", "pipefail", "-c"]
+# Global (e não o atributo [positional-arguments], que só existe do just 1.29 em diante): o just do apt do Ubuntu 24.04 é o 1.21.
+set positional-arguments
 
 # Lista as receitas
 default:
@@ -181,15 +183,12 @@ professor-mapa md="~/dev/mapa-de-estudo/MAPA.md":
     python3 tools/professor/mapa.py atualizar {{md}} && python3 tools/professor/mapa.py conferir
 
 # Caderno de erros e atritos do setup (uma linha, sem abrir arquivo): just erro 0.2 "o erro" --certo "o certo" | just atrito "o que travou" --area backup
-[positional-arguments]
 erro *args:
     python3 tools/registro/registro.py erro "$@"
 
-[positional-arguments]
 erros *args:
     python3 tools/registro/registro.py erros "$@"
 
-[positional-arguments]
 atrito *args:
     python3 tools/registro/registro.py atrito "$@"
 
@@ -197,7 +196,6 @@ atritos:
     python3 tools/registro/registro.py atritos
 
 # Diagnóstico antes de cada assunto (certo/errado + certeza 1 a 3): just diag 0.1 c3 x2 c1 --min 4
-[positional-arguments]
 diag *args:
     python3 tools/registro/registro.py diag "$@"
 
@@ -206,12 +204,10 @@ ficha etapa:
     python3 tools/colher/colher.py ficha {{etapa}}
 
 # Entrega a ficha: capítulo no pipeline, exercícios no banco e no Anki, plano de aula no ensino-ti: just colher 0.2 [--seco] [--forcar]
-[positional-arguments]
 colher *args:
     python3 tools/colher/colher.py colher "$@"
 
 # Biblioteca: just livros lista | para ETAPA | comprar | ler LIVRO --trecho T --min N --assunto ETAPA --nota "..." | lidos | marcar LIVRO tenho
-[positional-arguments]
 livros *args:
     python3 tools/biblioteca/biblioteca.py "$@"
 
@@ -264,3 +260,8 @@ vitrine EMPRESA DESTINO:
 coerencia *opcao:
     python3 tools/coerencia/coerencia.py . $(find ~/dev -maxdepth 2 -name .git -type d -printf '%h ' 2>/dev/null) --relatorio ~/dev/COERENCIA.md {{opcao}} || true
     @echo "Leia ~/dev/COERENCIA.md: arquivo por arquivo, o que atualizar"
+
+# Validação de ponta a ponta (docs/operacao/validacao.md): refaz as checagens automáticas e imprime a matriz
+# just validar   ·   just validar --rapido (sem o just check)   ·   just validar --restaurar (restaura o backup real numa pasta temporária)
+validar *opcao:
+    python3 tools/validar/validar.py {{opcao}}

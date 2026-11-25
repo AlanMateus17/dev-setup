@@ -48,3 +48,18 @@ class TestCoerencia(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestRelatorioPastaNova(unittest.TestCase):
+    def test_cria_a_pasta_do_relatorio(self):
+        # Antes, sem ~/dev o --relatorio dava FileNotFoundError (escondido pelo "|| true" do justfile).
+        with tempfile.TemporaryDirectory() as t:
+            destino = Path(t) / "nao-existe" / "COERENCIA.md"
+            antigo = sys.argv
+            sys.argv = ["coerencia.py", str(Path(t)), "--relatorio", str(destino)]
+            try:
+                coerencia.main()
+            finally:
+                sys.argv = antigo
+            self.assertTrue(destino.exists())
+
