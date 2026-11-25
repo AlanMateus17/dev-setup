@@ -45,7 +45,7 @@ Todos OK (`python -m unittest discover -s tools/<pasta>`): acervo, akita, avalia
 ## Os 5 próximos consertos, por impacto
 
 1. **Backup que falha em silêncio.** O cron roda toda noite e sai com erro (falta o `backup.env`), e ninguém percebeu. O `resumo-manha.sh` deveria alertar quando não houver `backup.concluido` nas últimas 36 h, e o aviso do Telegram precisa ser conferido.
-2. **"Roda sozinho" depende do WSL aberto.** Com o notebook fechado ou o WSL parado, o cron não dispara. Uma tarefa do Agendador do Windows que acorda o WSL antes das 22h30 resolve.
+2. **"Roda sozinho" depende do WSL aberto.** Com o notebook fechado ou o WSL parado, o cron não dispara. **Resolvido na v2.46.1:** a tarefa "AMtech acordar backup" (`scripts/windows/acordar-backup.ps1`) acorda o notebook suspenso e liga o Ubuntu às 22h20 por 30 minutos. Com o notebook desligado, ela roda assim que ele ligar. Testar: `acordar-backup.ps1 -Testar`; remover: `-Desfazer`.
 3. **Tirar os `|| true` que escondem erro.** Dois bugs desta rodada (evento do backup e relatório da coerência) estavam escondidos assim.
 4. **O bootstrap instala o `just` pelo apt.** É o 1.21 no 24.04. O `verificar.sh` deveria conferir a versão mínima; o teste em `tools/validar` já barra o `[positional-arguments]`.
 5. **Núcleo e IA ligados na instalação.** O `instalar-tudo.sh` deveria iniciar o núcleo, e o LiteLLM deveria subir junto com o Ollama, que já está de pé.
