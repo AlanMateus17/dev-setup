@@ -51,6 +51,13 @@ class TestNucleo(unittest.TestCase):
         with self.assertRaises(ValueError):
             nucleo.tarefa_estado(self.con, 999, "feita")
 
+    def test_horas_desde_o_ultimo_evento(self):
+        self.assertIsNone(nucleo.horas_desde(self.con, "backup.concluido"))
+        self.con.execute("INSERT INTO eventos (tipo, quando) VALUES ('backup.concluido', strftime('%Y-%m-%dT%H:%M:%S', 'now', 'localtime', '-40 hours'))")
+        self.assertAlmostEqual(nucleo.horas_desde(self.con, "backup.concluido"), 40, delta=0.1)
+        nucleo.evento(self.con, "backup.concluido", "{}")
+        self.assertLess(nucleo.horas_desde(self.con, "backup.concluido"), 0.1)
+
     def test_evento_aceita_texto_solto(self):
         eid = nucleo.evento(self.con, "backup.concluido", "snapshot abc")
         self.assertIn("snapshot abc", self.con.execute("SELECT dados FROM eventos WHERE id=?", (eid,)).fetchone()[0])
