@@ -28,6 +28,8 @@ RAIZ = Path(__file__).resolve().parents[2]
 OK, FALHA, NAO, MIM = "OK", "FALHA", "NÃO EXISTE", "PRECISA DE MIM"
 PESO = {OK: 0, NAO: 1, MIM: 2, FALHA: 3}
 COLUNAS = ("testes", "pc", "sozinho", "integracao")
+VERBOSO = False  # main() liga: mostra cada passo no stderr para ninguém achar que travou
+
 TITULOS = {"testes": "Testes", "pc": "Roda no PC", "sozinho": "Roda sozinho", "integracao": "Integração"}
 
 # Caminho crítico, na ordem da validação: item -> pastas de tools/ cujos testes contam para ele
@@ -52,6 +54,8 @@ class Resultado:
 
 def rodar(cmd: list[str] | str, timeout: int = 300, env: dict | None = None) -> tuple[int, str]:
     """Roda um comando e devolve (código, últimas linhas). Nunca levanta."""
+    if VERBOSO:
+        print(f"  … {cmd if isinstance(cmd, str) else ' '.join(cmd)}"[:110], file=sys.stderr, flush=True)
     try:
         p = subprocess.run(cmd, cwd=RAIZ, shell=isinstance(cmd, str), capture_output=True, text=True,
                            timeout=timeout, env=env)
@@ -356,6 +360,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--rapido", action="store_true", help="pula o just check")
     ap.add_argument("--restaurar", action="store_true", help="restaura o último snapshot real numa pasta temporária")
     a = ap.parse_args(argv)
+    global VERBOSO
+    VERBOSO = True
+    print("Validando (5 a 10 min; a tabela sai no fim)…", file=sys.stderr, flush=True)
     por_pasta = {p: testes(p) for p in pastas_com_testes()}
     return imprimir(matriz(checar(a.rapido, a.restaurar), por_pasta))
 
