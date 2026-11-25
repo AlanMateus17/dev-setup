@@ -1,5 +1,5 @@
 # DNS da casa com bloqueio de anúncios e rastreadores (AdGuard Home), acessível também pelo Tailscale.
-#   cd infra/rede && docker compose up -d   → configuração inicial em http://localhost:3001
+#   cd infra/rede && docker compose up -d   → configuração inicial em http://localhost:3011
 name: amtech-rede
 services:
   adguard:
@@ -11,4 +11,4 @@ services:
     ports:
       - "53:53/tcp"
       - "53:53/udp"
-      - "127.0.0.1:3001:3000"
+      - "127.0.0.1:3011:3000"

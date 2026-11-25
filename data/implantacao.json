@@ -3664,7 +3664,7 @@
      "id": "rd-adguard",
      "titulo": "Subir o AdGuard Home como DNS da casa",
      "quem": "script",
-     "pronto": "Configuração inicial em http://localhost:3001",
+     "pronto": "Configuração inicial em http://localhost:3011",
      "tempo_min": 15,
      "blocos": [
       "adguard"
@@ -7471,7 +7471,7 @@
      "id": "sg-lab",
      "titulo": "Subir o laboratório de ataque (Juice Shop e WebGoat)",
      "quem": "script",
-     "pronto": "Juice Shop abre em http://127.0.0.1:3000",
+     "pronto": "Juice Shop abre em http://127.0.0.1:3100",
      "tempo_min": 10,
      "blocos": [
       "labseg"

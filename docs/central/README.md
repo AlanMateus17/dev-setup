@@ -18,7 +18,7 @@
 | ~28 serviços web em portas soltas | Cada um em uma porta; **5 conflitos** | Portal com status e links, gerado de `data/portas.json` |
 | Aprovações espalhadas (PR em rascunho, `akita pendentes`, `motor-ok`, `decisoes`, compras, publicações) | Cada uma num comando diferente | **Caixa de entrada única** “Esperando você” |
 
-**Conflitos de porta encontrados** (quando os serviços sobem juntos):
+**Conflitos de porta encontrados** (quando os serviços sobem juntos). **Resolvidos na v2.45.0:** fonte única em `data/portas.json`, conferida por `tools/portas/portas.py --check` no `just check` e no CI. Avaliação do plano da Central: [docs/avaliacao](../avaliacao/2026-11-25-avaliacao-completa.md), seções 3 e 12.
 
 | Porta | Quem usa | Proposta |
 |---|---|---|
@@ -29,7 +29,7 @@
 | 8090 | PocketBase × Akaunting (soberania) | Akaunting → 8091 |
 | — | Portas novas | Portal 3010 · OliveTin 1337 · Central 8700 |
 
-**Bug achado no caminho:** `just coerencia` quebra com `FileNotFoundError` quando `~/dev` não existe (o `coerencia.py` grava o relatório sem criar a pasta). A correção entra na fase 0.
+**Bug achado no caminho:** `just coerencia` quebrava com `FileNotFoundError` quando `~/dev` não existia. Corrigido na v2.44.1.
 
 ## 2. Decisão: montar → colar → construir (a sua triagem)
 

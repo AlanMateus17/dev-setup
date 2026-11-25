@@ -83,6 +83,7 @@ check:
     python3 tools/nucleo/agenda.py rapido --check
     python3 tools/repos/repos.py --check
     python3 tools/senhas/senhas.py lista --check
+    python3 tools/portas/portas.py --check
     python3 -m unittest discover -s tools -p "test_gerar_docs.py" -q
     for d in tools/*/; do if ls "$d"test_*.py >/dev/null 2>&1; then python3 -m unittest discover -s "$d" -q; fi; done
     if command -v gitleaks >/dev/null; then gitleaks git --no-banner -v . >/dev/null; else echo "gitleaks ausente: rode o bootstrap"; fi

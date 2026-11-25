@@ -1,0 +1,7 @@
+workspace = "amtech"
+project = "dev-setup"
+project_strategy = "repo-root"
+
+[briefing]
+inject_on_session_start = true
+max_chars = 6000

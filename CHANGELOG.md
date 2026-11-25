@@ -2,11 +2,29 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
-## [2.45.0] - 2026-11-25
+## [2.46.0] - 2026-11-25
 
 ### Adicionado
 - `docs/hardware/estacao-am5.md`: plano de hardware da estação única AM5 (19/11/2026, recuperado do Google Drive): arquitetura, lista de compras com faixas de preço (R$ 32.660 a R$ 44.730), entrada enxuta (R$ 24 a 26 mil), upgrades em 4 fases e cuidados 24/7 (NUT, backup 3-2-1, hub USB isolado da bancada). Não muda a ordem de compras: a estação continua atrás da cascata do financiamento e do portão.
 - Bloco `ws` (Workstation com GPU) aponta para o plano; link no índice da documentação.
+
+## [2.45.0] - 2026-11-25
+
+### Adicionado
+- **Avaliação completa** em `docs/avaliacao/2026-11-25-avaliacao-completa.md`: o setup visto por produto, arquitetura, UX, back-end, front-end, banco, testes, DevOps, segurança e documentação, com críticas, plano de atualização em fases (A a E) e 3 decisões para o Alan.
+- `data/portas.json` (fonte única das 33 portas do host e das reservadas: Portal 3010, OliveTin 1337, Central 8700) e `tools/portas/portas.py` (`--check` no `just check` e no CI; `--gerar` reescreve a partir dos compose.yaml). É a fase 0 da Central.
+- `nucleo.py ultimo TIPO`: horas desde o último evento daquele tipo.
+
+### Corrigido
+- 5 conflitos de porta: Juice Shop 3000 → 3100, WebGoat 8080 → 8180, AdGuard 3001 → 3011, Metabase 3002 → 3012, Akaunting 8090 → 8091 (compose, roteiro e comentários).
+- CI: a lista fixa de pastas deixava 7 pastas com testes de fora (biblioteca, colher, fontes, git, registro, senhas, validar); agora usa o mesmo laço do `just check` e também roda as conferências de biblioteca, senhas, fontes e portas.
+- Resumo da manhã: o aviso de backup procurava arquivos em `~/backups`, onde o restic não grava; agora lê o evento `backup.concluido` do núcleo e avisa quando não existe ou tem mais de 36 h.
+- `backup.sh`: o `nucleo.db` (fora do `BACKUP_PASTAS`) entra sempre no backup, como cópia consistente pela API de backup do SQLite.
+
+## [2.44.3] - 2026-11-25
+
+### Corrigido
+- `just validar`: avisa quando o repositório do backup aponta para um disco do Windows que não está ligado ao Ubuntu (no WSL, `/mnt/d` pode existir só como pasta, e o `restic init` falhava com "permission denied" sem explicar).
 
 ## [2.44.2] - 2026-11-25
 

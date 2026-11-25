@@ -24,6 +24,19 @@ else
   add "Backup local: nenhum em ~/backups (confira o backup do roteiro)."
 fi
 
+# Backup real (restic): o backup.sh grava o evento backup.concluido no núcleo. Sem ele em 36 h, o backup está falhando em silêncio.
+BANCO="${NUCLEO_DB:-$HOME/.local/share/nucleo/nucleo.db}"
+if [[ -f "$BANCO" ]]; then
+  h="$(NUCLEO_DB="$BANCO" python3 "$RAIZ/tools/nucleo/nucleo.py" ultimo backup.concluido 2>/dev/null || echo erro)"
+  case "$h" in
+    nunca) add "ATENÇÃO: nenhum backup restic registrado no núcleo. Rode: just backup (e confira ~/.config/amtech/backup.env)." ;;
+    erro|"") add "ATENÇÃO: não consegui ler o núcleo para conferir o backup." ;;
+    *) if [[ "$h" -ge 36 ]]; then add "ATENÇÃO: último backup restic há ${h} h (mais de 36 h). Rode: just validar"; else add "Backup restic: há ${h} h."; fi ;;
+  esac
+else
+  add "ATENÇÃO: núcleo não iniciado, não dá para conferir o backup restic (python3 tools/nucleo/nucleo.py iniciar)."
+fi
+
 pend=0
 while IFS= read -r g; do
   d="$(dirname "$g")"
