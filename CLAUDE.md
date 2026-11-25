@@ -43,7 +43,7 @@ O congelamento de 8 semanas **saiu** por decisão do Alan (emenda da [ADR 0022](
 1. **Instalar e configurar todas as ferramentas de `data/ferramentas.json`**, menos os túneis para a internet (bore e cloudflared), que
    continuam fora pela regra de segurança.
 2. **Criar a Central** como interface para usar 100% do setup, **do notebook e do celular** (pelo Tailscale), com login, CSRF,
-   auditoria e PWA desde o começo.
+   auditoria e PWA desde o começo, e **usuários e permissões no banco desde a v1**, para atender clientes depois sem reescrever.
 
 Ordem, em PRs pequenos, cada um com uma versão e merge do Alan: PR 4 (perfis no `just ligar`) → PR 5 (extensões do VS Code no WSL) →
 PR 6 (`just instalar`) → instalar e testar perfil por perfil (sempre, trabalho, laboratório) → ADR da arquitetura da Central e plano das
@@ -71,7 +71,7 @@ mudar, o Alan decide e a ADR ganha uma nova. Ferramentas paradas ou adiadas têm
 
 | Assunto | Decisão (25/11/2026) |
 |---|---|
-| Painel | Só a Central, sem Homepage nem OliveTin; roda no notebook (VM depois da primeira renda); acesso do notebook e do celular pelo Tailscale |
+| Painel | Só a Central, sem Homepage nem OliveTin; roda no notebook (VM depois da primeira renda); acesso do notebook e do celular pelo Tailscale na v1; **usuários e permissões no banco desde a v1**, para virar ferramenta de clientes depois sem reescrever |
 | Plano | **Sem congelamento** (saiu em 25/11): instalar e configurar todas as ferramentas, menos bore e cloudflared; depois a Central |
 | Senhas | KeePassXC **volta** (25/11, tarde): `keepassxc-cli`, cofre `.kdbx` e `segredos.sh` voltam a ser requisito. A senha do restic continua no caderno e também vai para o cofre |
 | Segredos em arquivo | `sops` **volta** |
