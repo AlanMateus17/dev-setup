@@ -10,6 +10,7 @@ agentes consultam antes de agir.
     python3 tools/nucleo/nucleo.py buscar "deploy arm"           # o que já se sabe sobre isso
     python3 tools/nucleo/nucleo.py contexto "deploy do AM Gestão · Financeiro"  # bloco curto para o pacote do arquiteto
     python3 tools/nucleo/nucleo.py evento venda.aprovada '{"oferta": "minicurso", "valor": 97}'
+    python3 tools/nucleo/nucleo.py ultimo backup.concluido         # horas desde o último backup (ou "nunca")
     python3 tools/nucleo/nucleo.py tarefa nova "Revisar PR do garimpo"   |   tarefa listar   |   tarefa feita 3
     python3 tools/nucleo/nucleo.py auditar claude-code "abriu PR" --nivel automatico --motivo "garimpo"
     python3 tools/nucleo/nucleo.py importar                      # reimporta ADRs e recusas (não duplica)
@@ -106,6 +107,15 @@ def evento(con, tipo: str, dados: dict | str = "{}", fonte: str = "manual") -> i
     return cur.lastrowid
 
 
+def horas_desde(con, tipo: str) -> float | None:
+    """Horas desde o último evento desse tipo (None se nunca houve). Usado pelo resumo da manhã para o backup."""
+    from datetime import datetime
+    r = con.execute("SELECT MAX(quando) AS q FROM eventos WHERE tipo = ?", (tipo,)).fetchone()
+    if not r or not r["q"]:
+        return None
+    return (datetime.now() - datetime.fromisoformat(r["q"])).total_seconds() / 3600
+
+
 def tarefa_nova(con, titulo: str, responsavel: str = "alan", evento_id: int | None = None) -> int:
     cur = con.execute("INSERT INTO tarefas (titulo, responsavel, evento_id) VALUES (?,?,?)", (titulo, responsavel, evento_id))
     con.commit()
@@ -155,6 +165,7 @@ def main(argv: list[str] | None = None) -> int:
     b = s.add_parser("buscar"); b.add_argument("texto"); b.add_argument("--tipo", choices=TIPOS); b.add_argument("--limite", type=int, default=8)
     c = s.add_parser("contexto"); c.add_argument("pedido")
     e = s.add_parser("evento"); e.add_argument("tipo"); e.add_argument("dados", nargs="?", default="{}"); e.add_argument("--fonte", default="manual")
+    s.add_parser("ultimo", help="horas desde o último evento do tipo (ou 'nunca')").add_argument("tipo")
     t = s.add_parser("tarefa"); t.add_argument("acao", choices=("nova", "listar", "fazendo", "esperando-ok", "feita", "cancelada"))
     t.add_argument("valor", nargs="?", default="")
     u = s.add_parser("auditar"); u.add_argument("agente"); u.add_argument("acao"); u.add_argument("--nivel", required=True, choices=NIVEIS)
@@ -178,6 +189,9 @@ def main(argv: list[str] | None = None) -> int:
             print(contexto(con, args.pedido) or "(nada na base)")
         elif args.cmd == "evento":
             print(f"Evento #{evento(con, args.tipo, args.dados, args.fonte)}.")
+        elif args.cmd == "ultimo":
+            h = horas_desde(con, args.tipo)
+            print("nunca" if h is None else int(h))
         elif args.cmd == "tarefa":
             if args.acao == "nova":
                 print(f"Tarefa #{tarefa_nova(con, args.valor)}.")

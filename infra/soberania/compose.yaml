@@ -218,7 +218,7 @@ services:
     restart: unless-stopped
     depends_on: [akaunting-db]
     environment:
-      APP_URL: ${AKAUNTING_URL:-http://localhost:8090}
+      APP_URL: ${AKAUNTING_URL:-http://localhost:8091}
       LOCALE: pt-BR
       DB_HOST: akaunting-db
       DB_PORT: "3306"
@@ -232,7 +232,7 @@ services:
       ADMIN_PASSWORD: ${AKAUNTING_ADMIN_SENHA:?defina AKAUNTING_ADMIN_SENHA no .env}
       AKAUNTING_SETUP: "true"
     ports:
-      - "127.0.0.1:8090:80"
+      - "127.0.0.1:8091:80"
     volumes:
       - akaunting-dados:/var/www/html
 

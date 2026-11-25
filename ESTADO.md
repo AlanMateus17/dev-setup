@@ -86,3 +86,5 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-22: roteiro atualizado: fase Senhas datada a partir de 22/11, passos novos senhas-terminal, senhas-inventario e gh-admin; senhas da stack e el-segredos agora pelo cofre (just senhas-criar / senhas-rodar), sem .env em texto.
 - 2026-11-22: Central AMtech no repositório (docs/central: contexto, prompts e protótipo) e fase f-central no roteiro, depois da fase Senhas.
 - 2026-11-22: auditoria roteiro × setup: 30 das 55 receitas não tinham passo; fase f-ferramentas cobre todas e o just check passa a barrar receita sem passo.
+- 2026-11-25: v2.45.0 (PR rascunho avaliacao/2026-11-25-portas-ci-backup): avaliação completa por papel (docs/avaliacao); portas sem conflito (data/portas.json + tools/portas no check e no CI); CI roda todas as pastas de teste; resumo da manhã avisa backup restic parado; nucleo.db no backup.
+- 2026-11-25: pendente do Alan: backup.env + just backup + just validar --restaurar (hoje não há backup); decidir Central enxuta × Homepage+OliveTin+Central, congelamento de 8 semanas e onde a Central roda (seção 13 da avaliação).

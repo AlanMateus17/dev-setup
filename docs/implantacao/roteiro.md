@@ -3631,7 +3631,7 @@ No **Ubuntu** (linha `alanmateus@...$`):
 cd ~/dev/dev-setup/infra/rede && docker compose up -d
 ```
 
-- [ ] **Pronto quando:** Configuração inicial em http://localhost:3001
+- [ ] **Pronto quando:** Configuração inicial em http://localhost:3011
 - Para usar no celular fora de casa, aponte o DNS do Tailscale para o notebook.
 - Implanta: AdGuard Home (DNS)
 
@@ -6720,7 +6720,7 @@ No **Ubuntu** (linha `alanmateus@...$`):
 cd ~/dev/dev-setup && docker compose -f infra/lab-seguranca/compose.yaml up -d
 ```
 
-- [ ] **Pronto quando:** Juice Shop abre em http://127.0.0.1:3000
+- [ ] **Pronto quando:** Juice Shop abre em http://127.0.0.1:3100
 - Desligue com down quando terminar. Nunca publique nem rode na VM da Oracle.
 - Implanta: Lab de ataque (Juice Shop, WebGoat)
 

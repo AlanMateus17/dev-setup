@@ -16,6 +16,17 @@ export RESTIC_REPOSITORY RESTIC_PASSWORD_FILE
 [[ -f "${RESTIC_PASSWORD_FILE:-}" ]] || { echo "Falta o arquivo de senha do restic."; exit 1; }
 [[ "$(stat -c %a "$RESTIC_PASSWORD_FILE")" == "600" ]] || { echo "O arquivo de senha precisa de chmod 600."; exit 1; }
 read -r -a PASTAS <<< "${BACKUP_PASTAS:?defina BACKUP_PASTAS}"
+# O banco do núcleo (decisões, eventos, auditoria, passos feitos) fica fora das pastas acima: entra sempre,
+# como cópia consistente (API de backup do SQLite), mesmo com o banco aberto pela fila ou pelo bot.
+BANCO="${NUCLEO_DB:-$HOME/.local/share/nucleo/nucleo.db}"
+if [[ -f "$BANCO" ]]; then
+  COPIA="$(dirname "$BANCO")/copia-backup"
+  if [[ "${1:-}" != "--simular" ]]; then
+    mkdir -p "$COPIA"
+    python3 -c 'import sqlite3,sys; o=sqlite3.connect(sys.argv[1]); d=sqlite3.connect(sys.argv[2]); o.backup(d); d.close(); o.close()' "$BANCO" "$COPIA/nucleo.db"
+  fi
+  PASTAS+=("$COPIA")
+fi
 if [[ "${1:-}" == "--simular" ]]; then echo "restic backup ${PASTAS[*]}"; echo "restic forget --keep-daily 7 --keep-weekly 4 --keep-monthly 12 --prune"; exit 0; fi
 restic backup "${PASTAS[@]}" --exclude-caches --exclude node_modules --exclude bin --exclude obj --tag diario
 restic forget --keep-daily 7 --keep-weekly 4 --keep-monthly 12 --prune --tag diario
