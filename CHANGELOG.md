@@ -2,6 +2,16 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.48.0] - 2026-11-25
+
+### Adicionado
+- `data/ferramentas.json`: fonte única das 188 ferramentas do setup (33 programas do Windows, 16 extensões do VS Code, 45 pacotes apt, 49 CLIs, 5 serviços do Ubuntu e 40 serviços Docker), cada uma com código aberto, obrigatória, perfil (sempre, trabalho, laboratório), decisão (normal, parada, adiada), como conferir, como instalar e ligar, RAM e disco estimados dos serviços, acesso de fora e uma linha de documentação.
+- `tools/ferramentas/ferramentas.py`: valida o registro, gera `docs/operacao/ferramentas.md` e, com `--check` (no `just check` e no CI), falha se `pacotes.json`, as extensões, os arrays dos scripts, o mise, o laço do uv ou os compose.yaml ganharem ou perderem ferramenta sem passar pelo registro; `--estado` mostra o que está instalado e rodando no PC. 20 testes, incluindo um para cada fonte divergente.
+- `just validar`: item **8. Ferramentas** (obrigatórias instaladas e serviços sempre ligados no ar).
+
+### Alterado
+- `just validar`: KeePassXC, cofre `.kdbx`, sops, LiteLLM e o timer do pipeline aparecem como "parado/adiado por decisão do Alan" (NÃO EXISTE), não mais como PRECISA DE MIM. A matriz fica com 0 PRECISA DE MIM.
+
 ## [2.47.0] - 2026-11-25
 
 ### Adicionado

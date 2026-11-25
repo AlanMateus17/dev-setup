@@ -50,6 +50,7 @@ jobs:
           python tools/senhas/senhas.py lista --check
           python tools/fontes/fontes.py conferir
           python tools/portas/portas.py --check
+          python tools/ferramentas/ferramentas.py --check
           # Todas as pastas com testes, igual ao just check (antes a lista era fixa e 7 pastas ficavam de fora).
           for d in tools/*/; do if ls "$d"test_*.py >/dev/null 2>&1; then python -m unittest discover -s "$d" -v || exit 1; fi; done
       - name: Testar o pipeline de conteúdo e conferir o roteiro de implantação

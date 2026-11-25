@@ -22,7 +22,7 @@ class TestMatriz(unittest.TestCase):
         testes = {p: (v.OK, "") for ps in v.CRITICO.values() for p in ps}
         testes["radar"] = (v.FALHA, "1 erro")
         m = v.matriz(rs, testes)
-        self.assertEqual(list(m)[:7], list(v.CRITICO), "caminho crítico primeiro, na ordem")
+        self.assertEqual(list(m)[:len(v.CRITICO)], list(v.CRITICO), "caminho crítico primeiro, na ordem")
         self.assertEqual(m["5. Núcleo"]["pc"].status, v.MIM)
         self.assertEqual(m["5. Núcleo"]["pc"].motivo, "inicie o núcleo")
         self.assertEqual(m["5. Núcleo"]["testes"].status, v.OK)
@@ -158,6 +158,22 @@ class TestEnsaioBackup(unittest.TestCase):
         # Pega o bug antigo do backup.sh: o evento backup.concluido se perdia (separador "-----" virava opção).
         st, motivo = v.ensaio_backup()
         self.assertEqual(st, v.OK, motivo)
+
+
+
+class TestDecisoes(unittest.TestCase):
+    def test_parada_por_decisao_nao_e_falta(self):
+        dec = {"x": ("parada", "decisão do Alan"), "y": ("normal", "")}
+        self.assertEqual(v.exigir("i", "pc", "x", False, "instale", dec).status, v.NAO)
+        self.assertEqual(v.exigir("i", "pc", "y", False, "instale", dec).status, v.MIM)
+        self.assertEqual(v.exigir("i", "pc", "y", True, "instale", dec).status, v.OK)
+        self.assertEqual(v.exigir("i", "pc", "sem-registro", False, "instale", dec).status, v.MIM)
+
+    def test_decisoes_do_registro(self):
+        dec = v.decisoes()
+        self.assertEqual(dec["cli-keepassxc-cli"][0], "adiada")
+        self.assertEqual(dec["docker-ia-litellm"][0], "parada")
+        self.assertEqual(dec["svc-pipeline"][0], "parada")
 
 
 if __name__ == "__main__":
