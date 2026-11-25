@@ -85,6 +85,51 @@ class TestCofre(unittest.TestCase):
         self.assertIn("Documents/Cofre/Cofre.kdbx", txt)
 
 
+class TestEstadoBackup(unittest.TestCase):
+    """O backup.env sozinho não basta: a senha precisa existir (não vazia, chmod 600) e o repositório também."""
+
+    def montar(self, t, conteudo_senha="segredo", modo=0o600, repo_existe=True):
+        h = Path(t)
+        senha = h / "restic.senha"
+        senha.write_text(conteudo_senha)
+        senha.chmod(modo)
+        repo = h / "repo"
+        if repo_existe:
+            repo.mkdir()
+            (repo / "config").write_text("x")
+        conf = h / "backup.env"
+        conf.write_text(f"RESTIC_REPOSITORY={repo}\nRESTIC_PASSWORD_FILE={senha}\n")
+        return conf
+
+    def test_sem_config(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as t:
+            pc, integ = v.estado_backup(Path(t) / "nao-existe.env")
+        self.assertEqual((pc[0], integ[0]), (v.MIM, v.MIM))
+
+    def test_tudo_certo(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as t:
+            pc, integ = v.estado_backup(self.montar(t))
+        self.assertEqual((pc[0], integ[0]), (v.OK, v.OK))
+
+    def test_senha_vazia_e_repo_inexistente(self):
+        # O caso do PC em 25/11: backup.env copiado, senha vazia, repositório nunca criado
+        import tempfile
+        with tempfile.TemporaryDirectory() as t:
+            pc, integ = v.estado_backup(self.montar(t, conteudo_senha="", repo_existe=False))
+        self.assertEqual(pc[0], v.MIM)
+        self.assertIn("vazio", pc[1])
+        self.assertEqual(integ[0], v.MIM)
+        self.assertIn("restic init", integ[1])
+
+    def test_permissao_aberta(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as t:
+            pc, _ = v.estado_backup(self.montar(t, modo=0o644))
+        self.assertEqual(pc[0], v.FALHA)
+
+
 class TestJustfileCompativel(unittest.TestCase):
     """O bootstrap instala o just pelo apt; no Ubuntu 24.04 é o 1.21, que não conhece [positional-arguments]."""
 

@@ -145,6 +145,41 @@ def recente(arquivo: Path, horas: float) -> bool:
     return arquivo.exists() and (time.time() - arquivo.stat().st_mtime) < horas * 3600
 
 
+def ler_backup_env(conf: Path) -> dict[str, str]:
+    """Lê RESTIC_REPOSITORY e RESTIC_PASSWORD_FILE do backup.env pelo próprio bash (expande $HOME). Não lê a senha."""
+    p = subprocess.run(["bash", "-c", 'set -a; . "$1" >/dev/null 2>&1; printf "%s\\n%s\\n" "${RESTIC_REPOSITORY:-}" "${RESTIC_PASSWORD_FILE:-}"', "_", str(conf)],
+                       capture_output=True, text=True, stdin=subprocess.DEVNULL)
+    linhas = (p.stdout.splitlines() + ["", ""])[:2]
+    return {"repo": linhas[0].strip(), "senha": linhas[1].strip()}
+
+
+def estado_backup(conf: Path) -> tuple[tuple[str, str], tuple[str, str]]:
+    """(Roda no PC, Integração) do backup real: config, arquivo de senha (só tamanho e permissão) e repositório."""
+    if not conf.exists():
+        return (MIM, f"crie {conf} (infra/templates/backup.env.example)"), (MIM, "repositório restic e senha no KeePassXC")
+    v = ler_backup_env(conf)
+    senha = Path(v["senha"]) if v["senha"] else None
+    if not senha or not senha.is_file() or senha.stat().st_size == 0:
+        pc = (MIM, f"arquivo de senha do restic vazio ou ausente ({v['senha'] or 'RESTIC_PASSWORD_FILE'}): cole a senha do KeePassXC")
+    elif oct(senha.stat().st_mode & 0o777) != "0o600":
+        pc = (FALHA, f"chmod 600 {senha}")
+    else:
+        pc = (OK, "")
+    repo = v["repo"]
+    if not repo:
+        integ = (MIM, "defina RESTIC_REPOSITORY no backup.env")
+    elif ":" in repo.split("/")[0]:
+        integ = (OK, "") if pc[0] == OK and rodar(["restic", "-r", repo, "--password-file", str(senha), "cat", "config"], 60)[0] == 0 \
+            else (MIM, f"repositório remoto {repo} não respondeu")
+    elif (Path(repo) / "config").is_file():
+        integ = (OK, "")
+    elif not Path(repo).parent.exists():
+        integ = (MIM, f"disco do repositório não existe ({Path(repo).parent})")
+    else:
+        integ = (MIM, f"repositório {repo} ainda não criado: restic init (com o backup.env carregado)")
+    return pc, integ
+
+
 def ensaio_backup() -> tuple[str, str]:
     """backup.sh + teste-restauracao.sh num HOME e repositório descartáveis; confere o evento no núcleo."""
     if not tem("restic"):
@@ -211,7 +246,8 @@ def checar(rapido: bool, restaurar: bool) -> list[Resultado]:
     i = "3. Backup"
     R.append(Resultado(i, "pc", *ensaio_backup()))
     conf = Path.home() / ".config/amtech/backup.env"
-    R.append(Resultado(i, "pc", OK if conf.exists() else MIM, "" if conf.exists() else f"crie {conf} (infra/templates/backup.env.example)"))
+    pc_backup, integ_backup = estado_backup(conf)
+    R.append(Resultado(i, "pc", *pc_backup))
     if restaurar and conf.exists():
         rc, ult = rodar(f'set -a; . "{conf}"; set +a; bash scripts/wsl/teste-restauracao.sh', 3600)
         R.append(Resultado(i, "pc", OK if rc == 0 else FALHA, "" if rc == 0 else f"restauração real: {ult}"))
@@ -223,8 +259,7 @@ def checar(rapido: bool, restaurar: bool) -> list[Resultado]:
     else:
         R.append(Resultado(i, "sozinho", MIM, cron_msg) if not agendado else
                  Resultado(i, "sozinho", FALHA, "agendado, mas sem backup nas últimas 36 h ou sem evento no núcleo (veja ~/backup-ultimo.log)"))
-    R.append(Resultado(i, "integracao", OK if conf.exists() else MIM,
-                       "" if conf.exists() else "disco do repositório restic (D:) e senha no KeePassXC"))
+    R.append(Resultado(i, "integracao", *integ_backup))
 
     # 4. Motor e triagem
     i = "4. Motor e triagem"
