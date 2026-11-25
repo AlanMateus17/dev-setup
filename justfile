@@ -142,7 +142,7 @@ lab-fechar:
 servico perfil:
     cd infra/soberania && docker compose --profile "{{perfil}}" up -d
 
-# Monta o setup inteiro de uma vez (fase 0 do Núcleo): just instalar  ·  só ver: just instalar --simular
+# Monta o setup inteiro: just instalar  ·  só o que falta de um perfil, tipo ou id: just instalar trabalho --simular
 instalar *opcao:
     bash scripts/wsl/instalar-tudo.sh {{opcao}}
 

@@ -177,17 +177,17 @@ Também no Ubuntu = instalada no VS Code do WSL por `just extensoes-wsl`.
 | wrangler | Nuvem | sim | — | Deploy na Cloudflare |  | `bash scripts/wsl/nuvem.sh` |
 | Ollama (WSL) | IA | sim | — | IA local na GPU, usada pela fila e pelo LiteLLM |  | `just ligar` |
 | keepassxc-cli | Segredos | sim | — | Ler segredos do cofre KeePassXC |  | `sudo apt install keepassxc` |
-| ai-memory | IA | sim | sim | Memória de longo prazo entre sessões de agentes |  | `ver infra/ai-memory-hooks/README.md` |
+| ai-memory | IA | sim | sim | Memória de longo prazo entre sessões de agentes |  | `(manual) siga infra/ai-memory-hooks/README.md` |
 | Projeto lab-ia | IA | sim | — | Laboratório de dados e IA (PyTorch com CUDA, ~6 GB) |  | `bash scripts/wsl/lab-ia.sh` |
 
 ## Serviços do Ubuntu
 
 | Ferramenta | Grupo | Código aberto | Obrigatória | Para quê | Decisão | Instalar |
 |---|---|---|---|---|---|---|
-| Servidor ai-memory | Serviços do Ubuntu | sim | sim | Servidor da memória dos agentes em 127.0.0.1:49374 |  | `ver infra/ai-memory-hooks/README.md` |
+| Servidor ai-memory | Serviços do Ubuntu | sim | sim | Servidor da memória dos agentes em 127.0.0.1:49374 |  | `(manual) siga infra/ai-memory-hooks/README.md` |
 | Fila de pedidos | Serviços do Ubuntu | sim | sim | Fila de pedidos do celular (tools/remoto/fila.py) |  | `just ligar` |
 | Claude Remote Control | Serviços do Ubuntu | sim | — | Controla o Claude Code do PC pelo celular |  | `just ligar` |
-| Bot do Telegram | Serviços do Ubuntu | sim | — | Comandos fixos pelo Telegram (só o chat do Alan) |  | `just ligar` |
+| Bot do Telegram | Serviços do Ubuntu | sim | — | Comandos fixos pelo Telegram (só o chat do Alan) |  | `(manual) crie ~/.config/amtech/telegram.env com TELEGRAM_TOKEN e TELEGRAM_CHAT_ID e rode: just ligar` |
 | Pipeline de conteúdo | Serviços do Ubuntu | sim | — | Timer do pipeline de conteúdo | parada | `bash scripts/wsl/ativar-pipeline.sh` |
 
 ## Serviços Docker
