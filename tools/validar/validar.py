@@ -153,6 +153,14 @@ def ler_backup_env(conf: Path) -> dict[str, str]:
     return {"repo": linhas[0].strip(), "senha": linhas[1].strip()}
 
 
+def disco_montado(caminho: Path, ismount=os.path.ismount) -> bool:
+    """Um caminho em /mnt/<letra>/ só vale se a letra for um disco do Windows montado de verdade (no WSL, /mnt/d pode ser só uma pasta)."""
+    partes = caminho.parts
+    if len(partes) >= 3 and partes[1] == "mnt" and len(partes[2]) == 1:
+        return ismount(str(Path(*partes[:3])))
+    return True
+
+
 def estado_backup(conf: Path) -> tuple[tuple[str, str], tuple[str, str]]:
     """(Roda no PC, Integração) do backup real: config, arquivo de senha (só tamanho e permissão) e repositório."""
     if not conf.exists():
@@ -173,6 +181,9 @@ def estado_backup(conf: Path) -> tuple[tuple[str, str], tuple[str, str]]:
             else (MIM, f"repositório remoto {repo} não respondeu")
     elif (Path(repo) / "config").is_file():
         integ = (OK, "")
+    elif not disco_montado(Path(repo)):
+        letra = Path(repo).parts[2].upper()
+        integ = (MIM, f"o disco {letra}: não está ligado ao Ubuntu ({Path(*Path(repo).parts[:3])} é só uma pasta): conecte o disco ou troque RESTIC_REPOSITORY no backup.env")
     elif not Path(repo).parent.exists():
         integ = (MIM, f"disco do repositório não existe ({Path(repo).parent})")
     else:

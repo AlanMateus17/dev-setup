@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.44.3] - 2026-11-25
+
+### Corrigido
+- `just validar`: avisa quando o repositório do backup aponta para um disco do Windows que não está ligado ao Ubuntu (no WSL, `/mnt/d` pode existir só como pasta, e o `restic init` falhava com "permission denied" sem explicar).
+
 ## [2.44.2] - 2026-11-25
 
 ### Corrigido
