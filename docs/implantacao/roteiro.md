@@ -663,6 +663,7 @@ powershell -ExecutionPolicy Bypass -File $HOME\dev-setup\scripts\windows\extenso
 ```
 
 - [ ] **Pronto quando:** Termina com 'Pronto'
+- Depois, no Ubuntu: just extensoes-wsl instala as mesmas extensões no VS Code do WSL (as marcadas com wsl=true em data/ferramentas.json).
 - Implanta: VS Code
 
 ### 4.6 Instalar o Claude in Chrome e entrar com a sua conta
