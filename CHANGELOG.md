@@ -2,6 +2,12 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.46.0] - 2026-11-25
+
+### Adicionado
+- `docs/hardware/estacao-am5.md`: plano de hardware da estação única AM5 (19/11/2026, recuperado do Google Drive): arquitetura, lista de compras com faixas de preço (R$ 32.660 a R$ 44.730), entrada enxuta (R$ 24 a 26 mil), upgrades em 4 fases e cuidados 24/7 (NUT, backup 3-2-1, hub USB isolado da bancada). Não muda a ordem de compras: a estação continua atrás da cascata do financiamento e do portão.
+- Bloco `ws` (Workstation com GPU) aponta para o plano; link no índice da documentação.
+
 ## [2.45.0] - 2026-11-25
 
 ### Adicionado
