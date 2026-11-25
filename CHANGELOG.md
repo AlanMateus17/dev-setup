@@ -2,6 +2,13 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.53.0] - 2026-11-25
+
+### Adicionado
+- **Extensões do VS Code no Ubuntu** (PR 5 do plano): `just extensoes-wsl` (`scripts/wsl/extensoes-vscode.sh`) instala no VS Code do WSL as extensões marcadas com `"wsl": true` em `data/ferramentas.json`. É o primeiro script que lê a lista direto da fonte única. Idempotente e com `--simular`; na primeira vez, o próprio `code` instala o servidor do VS Code no Ubuntu, sem abrir janela. Instaladas no PC: as 14 do registro.
+- `data/ferramentas.json`: campo `wsl` nas 16 extensões (14 também no Ubuntu; `remote-wsl` e `powershell` só no Windows), exigido pela validação.
+- `just validar` (item 8): avisa quando falta extensão no Ubuntu. A conferência lê `~/.vscode-server/extensions/extensions.json` direto, sem instalar nada. 4 testes novos.
+
 ## [2.52.0] - 2026-11-25
 
 ### Alterado

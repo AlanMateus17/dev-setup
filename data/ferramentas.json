@@ -521,6 +521,7 @@
    "fonte": "scripts/windows/vscode-extensoes.txt",
    "codigo_aberto": true,
    "obrigatoria": true,
+   "wsl": false,
    "decisao": "normal",
    "conferir": {
     "extensao": "ms-vscode-remote.remote-wsl"
@@ -536,6 +537,7 @@
    "fonte": "scripts/windows/vscode-extensoes.txt",
    "codigo_aberto": false,
    "obrigatoria": true,
+   "wsl": true,
    "decisao": "normal",
    "conferir": {
     "extensao": "anthropic.claude-code"
@@ -551,6 +553,7 @@
    "fonte": "scripts/windows/vscode-extensoes.txt",
    "codigo_aberto": true,
    "obrigatoria": false,
+   "wsl": true,
    "decisao": "normal",
    "conferir": {
     "extensao": "editorconfig.editorconfig"
@@ -566,6 +569,7 @@
    "fonte": "scripts/windows/vscode-extensoes.txt",
    "codigo_aberto": true,
    "obrigatoria": false,
+   "wsl": true,
    "decisao": "normal",
    "conferir": {
     "extensao": "redhat.vscode-yaml"
@@ -581,6 +585,7 @@
    "fonte": "scripts/windows/vscode-extensoes.txt",
    "codigo_aberto": true,
    "obrigatoria": false,
+   "wsl": false,
    "decisao": "normal",
    "conferir": {
     "extensao": "ms-vscode.powershell"
@@ -596,6 +601,7 @@
    "fonte": "scripts/windows/vscode-extensoes.txt",
    "codigo_aberto": true,
    "obrigatoria": false,
+   "wsl": true,
    "decisao": "normal",
    "conferir": {
     "extensao": "timonwong.shellcheck"
@@ -611,6 +617,7 @@
    "fonte": "scripts/windows/vscode-extensoes.txt",
    "codigo_aberto": false,
    "obrigatoria": false,
+   "wsl": true,
    "decisao": "normal",
    "conferir": {
     "extensao": "ms-dotnettools.csdevkit"
@@ -626,6 +633,7 @@
    "fonte": "scripts/windows/vscode-extensoes.txt",
    "codigo_aberto": true,
    "obrigatoria": false,
+   "wsl": true,
    "decisao": "normal",
    "conferir": {
     "extensao": "dbaeumer.vscode-eslint"
@@ -641,6 +649,7 @@
    "fonte": "scripts/windows/vscode-extensoes.txt",
    "codigo_aberto": true,
    "obrigatoria": false,
+   "wsl": true,
    "decisao": "normal",
    "conferir": {
     "extensao": "esbenp.prettier-vscode"
@@ -656,6 +665,7 @@
    "fonte": "scripts/windows/vscode-extensoes.txt",
    "codigo_aberto": true,
    "obrigatoria": false,
+   "wsl": true,
    "decisao": "normal",
    "conferir": {
     "extensao": "bradlc.vscode-tailwindcss"
@@ -671,6 +681,7 @@
    "fonte": "scripts/windows/vscode-extensoes.txt",
    "codigo_aberto": true,
    "obrigatoria": false,
+   "wsl": true,
    "decisao": "normal",
    "conferir": {
     "extensao": "ms-azuretools.vscode-docker"
@@ -686,6 +697,7 @@
    "fonte": "scripts/windows/vscode-extensoes.txt",
    "codigo_aberto": true,
    "obrigatoria": false,
+   "wsl": true,
    "decisao": "normal",
    "conferir": {
     "extensao": "hashicorp.terraform"
@@ -701,6 +713,7 @@
    "fonte": "scripts/windows/vscode-extensoes.txt",
    "codigo_aberto": true,
    "obrigatoria": false,
+   "wsl": true,
    "decisao": "normal",
    "conferir": {
     "extensao": "ms-python.python"
@@ -716,6 +729,7 @@
    "fonte": "scripts/windows/vscode-extensoes.txt",
    "codigo_aberto": true,
    "obrigatoria": false,
+   "wsl": true,
    "decisao": "normal",
    "conferir": {
     "extensao": "james-yu.latex-workshop"
@@ -731,6 +745,7 @@
    "fonte": "scripts/windows/vscode-extensoes.txt",
    "codigo_aberto": true,
    "obrigatoria": false,
+   "wsl": true,
    "decisao": "normal",
    "conferir": {
     "extensao": "bierner.markdown-mermaid"
@@ -746,6 +761,7 @@
    "fonte": "scripts/windows/vscode-extensoes.txt",
    "codigo_aberto": true,
    "obrigatoria": false,
+   "wsl": true,
    "decisao": "normal",
    "conferir": {
     "extensao": "ltex-plus.vscode-ltex-plus"
