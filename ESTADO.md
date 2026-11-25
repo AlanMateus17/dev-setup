@@ -100,3 +100,4 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-25: v2.53.0 (PR 5): just extensoes-wsl instala no VS Code do Ubuntu as 14 extensões marcadas com wsl=true no registro (feito no PC; servidor do VS Code instalado no WSL). Próximo: PR 6 (just instalar).
 - 2026-11-25: v2.54.0 (PR 6): just instalar <perfil|tipo|id|tudo> instala o que falta a partir do registro. Próximo: instalar perfil por perfil (sempre: sops, keepassxc-cli com sudo, bot manual; trabalho: nuvem + 10 imagens; laboratório: 25 itens).
 - 2026-11-25: v2.54.1: just validar não acusa mais o vigia por engano (agendado buscado à parte, idade ≤ 8 dias).
+- 2026-11-25: v2.54.2: sops e probe-rs funcionando (mise: bin e asset_pattern, versões fixas); just instalar confere de novo depois de instalar. Perfil sempre: falta só keepassxc-cli (sudo) e o bot do Telegram (telegram.env).
