@@ -151,22 +151,22 @@ flowchart LR
 
 | Bloco | Tipo | O que faz | Quando entra |
 |---|---|---|---|
-| [Caddy (proxy + HTTPS)](#caddy) | Local | Fica na frente das APIs e emite o certificado HTTPS sozinho. Usado no servidor e no homelab. | passo 41.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Gestão (módulo o-ts-projeto do Professor: projeto TypeScript) e ganha testes e qualidade até o MVP |
-| [Mailpit](#mailp) | Local | Caixa de e-mail falsa para testar os e-mails dos sistemas sem enviar nada de verdade. | passo 41.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Gestão (módulo o-ts-projeto do Professor: projeto TypeScript) e ganha testes e qualidade até o MVP |
-| [Kafka](#kafka) | Local · futuro | Mensageria padrão em empresa grande. Depois do RabbitMQ. | passo 55.1 · 2028 |
-| [kubectl · Helm · k9s](#k8st) | Local · futuro | Ferramentas para operar o Kubernetes: comandos, pacotes e painel no terminal. | passo 55.2 · 2028 |
-| [Azure CLI · AWS CLI](#clis) | Local | Linha de comando das nuvens; usadas pelo Terraform. | passo 42.1 · Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Gestão (MVP com 1 restaurante pagante) |
-| [Histórico (append-only)](#datomic) | Local · futuro | Cortado: aura-historico foi arquivado; histórico vira tabela append-only no PostgreSQL. | passo 51.4 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
-| [Docker + Compose](#docker) | Local | Engine no WSL2; um compose por sistema. | passo 4.2 · Semana 2 · nov/2026; passo 10.2 · Semana 4 · nov/2026 |
-| [PostgreSQL](#pg) | Local | Banco de todos os sistemas (com pgvector para IA). | passo 10.2 · Semana 4 · nov/2026; passo 22.5 · Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois; passo 24.6 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 41.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Gestão (módulo o-ts-projeto do Professor: projeto TypeScript) e ganha testes e qualidade até o MVP |
-| [Redis](#redis) | Local | Cache (opcional, quando precisar de verdade). | passo 41.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Gestão (módulo o-ts-projeto do Professor: projeto TypeScript) e ganha testes e qualidade até o MVP |
-| [RabbitMQ](#rmq) | Local · futuro | Fila de eventos entre sistemas. | passo 55.1 · 2028 |
-| [Kubernetes local (kind)](#kind) | Local · futuro | Treino de Kubernetes sem pagar nuvem. | passo 55.2 · 2028 |
-| [Terraform](#tf) | Local | Cria Azure, AWS e Cloudflare por código. | passo 42.1 · Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Gestão (MVP com 1 restaurante pagante); passo 42.3 · Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Gestão (MVP com 1 restaurante pagante) |
-| [Mosquitto (MQTT)](#mqtt) | Local | Barramento da casa: Zigbee2MQTT, Frigate, leitor do hidrômetro e os robôs publicam e recebem comandos por aqui, com usuário e senha. | passo 60.2 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| [Zigbee2MQTT](#z2m) | Local · futuro | Liga o coordenador Zigbee ao MQTT; aceita aparelhos de várias marcas sem o app de cada uma. | passo 60.7 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| [Frigate (câmeras com detecção)](#frigate) | Local · futuro | Grava e detecta pessoas, carros e animais localmente; manda eventos ao Home Assistant. Imagem nunca vai para IA na nuvem. | passo 60.9 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
-| [ESPHome](#esphome) | Local | Firmware por arquivo de configuração para ESP32: satélites de voz, sensores e robôs viram entidades do Home Assistant. | passo 60.6 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| [Caddy (proxy + HTTPS)](#caddy) | Local | Fica na frente das APIs e emite o certificado HTTPS sozinho. Usado no servidor e no homelab. | passo 42.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Gestão (módulo o-ts-projeto do Professor: projeto TypeScript) e ganha testes e qualidade até o MVP |
+| [Mailpit](#mailp) | Local | Caixa de e-mail falsa para testar os e-mails dos sistemas sem enviar nada de verdade. | passo 42.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Gestão (módulo o-ts-projeto do Professor: projeto TypeScript) e ganha testes e qualidade até o MVP |
+| [Kafka](#kafka) | Local · futuro | Mensageria padrão em empresa grande. Depois do RabbitMQ. | passo 56.1 · 2028 |
+| [kubectl · Helm · k9s](#k8st) | Local · futuro | Ferramentas para operar o Kubernetes: comandos, pacotes e painel no terminal. | passo 56.2 · 2028 |
+| [Azure CLI · AWS CLI](#clis) | Local | Linha de comando das nuvens; usadas pelo Terraform. | passo 43.1 · Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Gestão (MVP com 1 restaurante pagante) |
+| [Histórico (append-only)](#datomic) | Local · futuro | Cortado: aura-historico foi arquivado; histórico vira tabela append-only no PostgreSQL. | passo 52.4 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) |
+| [Docker + Compose](#docker) | Local | Engine no WSL2; um compose por sistema. | passo 5.2 · Semana 2 · nov/2026; passo 11.2 · Semana 4 · nov/2026 |
+| [PostgreSQL](#pg) | Local | Banco de todos os sistemas (com pgvector para IA). | passo 11.2 · Semana 4 · nov/2026; passo 23.5 · Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois; passo 25.6 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 42.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Gestão (módulo o-ts-projeto do Professor: projeto TypeScript) e ganha testes e qualidade até o MVP |
+| [Redis](#redis) | Local | Cache (opcional, quando precisar de verdade). | passo 42.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Gestão (módulo o-ts-projeto do Professor: projeto TypeScript) e ganha testes e qualidade até o MVP |
+| [RabbitMQ](#rmq) | Local · futuro | Fila de eventos entre sistemas. | passo 56.1 · 2028 |
+| [Kubernetes local (kind)](#kind) | Local · futuro | Treino de Kubernetes sem pagar nuvem. | passo 56.2 · 2028 |
+| [Terraform](#tf) | Local | Cria Azure, AWS e Cloudflare por código. | passo 43.1 · Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Gestão (MVP com 1 restaurante pagante); passo 43.3 · Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Gestão (MVP com 1 restaurante pagante) |
+| [Mosquitto (MQTT)](#mqtt) | Local | Barramento da casa: Zigbee2MQTT, Frigate, leitor do hidrômetro e os robôs publicam e recebem comandos por aqui, com usuário e senha. | passo 61.2 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| [Zigbee2MQTT](#z2m) | Local · futuro | Liga o coordenador Zigbee ao MQTT; aceita aparelhos de várias marcas sem o app de cada uma. | passo 61.7 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| [Frigate (câmeras com detecção)](#frigate) | Local · futuro | Grava e detecta pessoas, carros e animais localmente; manda eventos ao Home Assistant. Imagem nunca vai para IA na nuvem. | passo 61.9 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
+| [ESPHome](#esphome) | Local | Firmware por arquivo de configuração para ESP32: satélites de voz, sensores e robôs viram entidades do Home Assistant. | passo 61.6 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas |
 
 <a id="caddy"></a>
 
@@ -176,7 +176,7 @@ flowchart LR
 
 Fica na frente das APIs e emite o certificado HTTPS sozinho. Usado no servidor e no homelab.
 
-**Quando entra:** passo 41.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Gestão (módulo o-ts-projeto do Professor: projeto TypeScript) e ganha testes e qualidade até o MVP ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 42.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Gestão (módulo o-ts-projeto do Professor: projeto TypeScript) e ganha testes e qualidade até o MVP ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -190,7 +190,7 @@ Fica na frente das APIs e emite o certificado HTTPS sozinho. Usado no servidor e
 
 Caixa de e-mail falsa para testar os e-mails dos sistemas sem enviar nada de verdade.
 
-**Quando entra:** passo 41.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Gestão (módulo o-ts-projeto do Professor: projeto TypeScript) e ganha testes e qualidade até o MVP ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 42.3 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Gestão (módulo o-ts-projeto do Professor: projeto TypeScript) e ganha testes e qualidade até o MVP ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -205,7 +205,7 @@ Caixa de e-mail falsa para testar os e-mails dos sistemas sem enviar nada de ver
 
 Mensageria padrão em empresa grande. Depois do RabbitMQ.
 
-**Quando entra:** passo 55.1 · 2028 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 56.1 · 2028 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -220,7 +220,7 @@ Mensageria padrão em empresa grande. Depois do RabbitMQ.
 
 Ferramentas para operar o Kubernetes: comandos, pacotes e painel no terminal.
 
-**Quando entra:** passo 55.2 · 2028 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 56.2 · 2028 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -234,7 +234,7 @@ Ferramentas para operar o Kubernetes: comandos, pacotes e painel no terminal.
 
 Linha de comando das nuvens; usadas pelo Terraform.
 
-**Quando entra:** passo 42.1 · Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Gestão (MVP com 1 restaurante pagante) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 43.1 · Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Gestão (MVP com 1 restaurante pagante) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -249,7 +249,7 @@ Linha de comando das nuvens; usadas pelo Terraform.
 
 Cortado: aura-historico foi arquivado; histórico vira tabela append-only no PostgreSQL.
 
-**Quando entra:** passo 51.4 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 52.4 · 2027 (começa quando: o primeiro sistema AM pronto e testado com um cliente) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -263,7 +263,7 @@ Cortado: aura-historico foi arquivado; histórico vira tabela append-only no Pos
 
 Engine no WSL2; um compose por sistema.
 
-**Quando entra:** passo 4.2 · Semana 2 · nov/2026; passo 10.2 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 5.2 · Semana 2 · nov/2026; passo 11.2 · Semana 4 · nov/2026 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -295,7 +295,7 @@ Engine no WSL2; um compose por sistema.
 
 Banco de todos os sistemas (com pgvector para IA).
 
-**Quando entra:** passo 10.2 · Semana 4 · nov/2026; passo 22.5 · Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois; passo 24.6 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 41.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Gestão (módulo o-ts-projeto do Professor: projeto TypeScript) e ganha testes e qualidade até o MVP ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 11.2 · Semana 4 · nov/2026; passo 23.5 · Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois; passo 25.6 · Nov/2026 a out/2027, revisão no fim de cada trimestre; passo 42.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Gestão (módulo o-ts-projeto do Professor: projeto TypeScript) e ganha testes e qualidade até o MVP ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -318,7 +318,7 @@ Banco de todos os sistemas (com pgvector para IA).
 
 Cache (opcional, quando precisar de verdade).
 
-**Quando entra:** passo 41.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Gestão (módulo o-ts-projeto do Professor: projeto TypeScript) e ganha testes e qualidade até o MVP ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 42.1 · Trimestre 2 do eixo (fev a abr/2027): o modelo nasce no esqueleto do AM Gestão (módulo o-ts-projeto do Professor: projeto TypeScript) e ganha testes e qualidade até o MVP ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -334,7 +334,7 @@ Cache (opcional, quando precisar de verdade).
 
 Fila de eventos entre sistemas.
 
-**Quando entra:** passo 55.1 · 2028 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 56.1 · 2028 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -349,7 +349,7 @@ Fila de eventos entre sistemas.
 
 Treino de Kubernetes sem pagar nuvem.
 
-**Quando entra:** passo 55.2 · 2028 ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 56.2 · 2028 ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -364,7 +364,7 @@ Treino de Kubernetes sem pagar nuvem.
 
 Cria Azure, AWS e Cloudflare por código.
 
-**Quando entra:** passo 42.1 · Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Gestão (MVP com 1 restaurante pagante); passo 42.3 · Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Gestão (MVP com 1 restaurante pagante) ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 43.1 · Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Gestão (MVP com 1 restaurante pagante); passo 43.3 · Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Gestão (MVP com 1 restaurante pagante) ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -381,7 +381,7 @@ Cria Azure, AWS e Cloudflare por código.
 
 Barramento da casa: Zigbee2MQTT, Frigate, leitor do hidrômetro e os robôs publicam e recebem comandos por aqui, com usuário e senha.
 
-**Quando entra:** passo 60.2 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 61.2 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -400,7 +400,7 @@ Barramento da casa: Zigbee2MQTT, Frigate, leitor do hidrômetro e os robôs publ
 
 Liga o coordenador Zigbee ao MQTT; aceita aparelhos de várias marcas sem o app de cada uma.
 
-**Quando entra:** passo 60.7 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 61.7 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -415,7 +415,7 @@ Liga o coordenador Zigbee ao MQTT; aceita aparelhos de várias marcas sem o app 
 
 Grava e detecta pessoas, carros e animais localmente; manda eventos ao Home Assistant. Imagem nunca vai para IA na nuvem.
 
-**Quando entra:** passo 60.9 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 61.9 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|
@@ -430,7 +430,7 @@ Grava e detecta pessoas, carros e animais localmente; manda eventos ao Home Assi
 
 Firmware por arquivo de configuração para ESP32: satélites de voz, sensores e robôs viram entidades do Home Assistant.
 
-**Quando entra:** passo 60.6 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
+**Quando entra:** passo 61.6 · Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas ([roteiro](../implantacao/roteiro.md))
 
 | Direção | Bloco | Camada | O que passa |
 |---|---|---|---|

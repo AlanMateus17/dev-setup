@@ -2,6 +2,26 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.44.0] - 2026-11-22
+
+### Adicionado
+- **Central AMtech** em `docs/central/`: contexto (diagnóstico, decisões montar → colar → construir, arquitetura, fonte de cada tela, segurança, fases), prompts prontos por fase para o Claude Code (`PROMPTS.md`) e o protótipo clicável (`prototipo/index.html`, dados reais do v2.40.0). Fase nova `f-central` no roteiro com os passos F0 a F6 e a revisão de segurança.
+- Fase nova `f-ferramentas` (depois da fase Senhas): 8 passos para ligar e testar uma vez os 30 comandos que não estavam no roteiro (operação, motor, núcleo, estudo, coerência, vitrine, sala limpa e AMtech OS).
+- `just check` agora falha se alguma receita do `justfile` não aparecer em nenhum passo do roteiro (teste em `tools/implantacao/test_gerar.py`).
+
+## [2.43.0] - 2026-11-22
+
+### Adicionado
+- **Senhas sem procurar e sem digitar** (`tools/senhas/senhas.py`, sem IA): `docs/senhas.md` é o inventário gerado de tudo que precisa de senha no setup (126 itens: contas do `ecossistema.json`, segredos dos `infra/**/*.env.example` e os extras de `data/senhas.json`), com o grupo do cofre e o jeito de preencher cada um. Nenhuma senha aparece no repositório.
+- `just senhas` mostra o que já está no cofre e o que falta; `just senha NOME` escolhe a entrada e copia a senha, que some da área de transferência em 20 s; `just senhas-criar` gera no cofre, depois da sua confirmação, as senhas dos serviços locais; `just senhas-rodar PASTA -- comando` sobe o serviço com os segredos vindos do cofre, só no ambiente daquele comando.
+- `just cofre-abrir 30` / `just cofre-fechar`: desbloqueio temporário pelo chaveiro do kernel (keyctl), com prazo; nesse tempo os comandos não pedem a senha mestra. Fora dele, cada comando pede.
+- Testes com um cofre descartável e o keepassxc-cli de verdade (pulados quando ele não está instalado). `just check` confere se o `docs/senhas.md` está atualizado.
+
+## [2.42.0] - 2026-11-22
+
+### Adicionado
+- `just repos-visibilidade`: confere a visibilidade de cada repositório no GitHub contra o `repos.json`, sem IA; com `--aplicar` mostra o plano e só muda depois da sua confirmação (digitar o número de mudanças; repositório com GitHub Pages ou estrelas pede o nome). A chave do GitHub vem do KeePassXC pelo `scripts/wsl/segredos.sh` (entrada `GitHub/gh-admin`) e existe só durante o comando. Fork de repositório público é avisado como impossível; cada mudança vai para a auditoria do núcleo. Testes em `tools/repos/test_visibilidade.py`.
+
 ## [2.41.0] - 2026-11-21
 
 ### Adicionado
@@ -15,7 +35,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 ### Alterado
 - Decisão de 21/11: todos os repositórios do Alan ficam privados, inclusive os sites do GitHub Pages (que saem do ar no plano grátis). `repos.json`, `docs/repositorios.md`, `CONTINUAR.md` e o plano em `data/coerencia.json` atualizados; as vitrines de cliente continuam planejadas como públicas.
 
- - 2026-11-21
+## [2.40.0] - 2026-11-21
 
 ### Alterado
 - **Professor na ordem do mapa-de-estudo** (ADR 0018): um módulo só é liberado quando o assunto dele está escrito e conferido no mapa (📘), quando todo assunto de que ele depende no mapa também está escrito e quando os módulos desses assuntos já passaram na prova. Antes, cada módulo tinha pré-requisitos próprios e o `just professor hoje` podia mandar TypeScript (2.1) e terminal (1.3) antes do 0.1.
