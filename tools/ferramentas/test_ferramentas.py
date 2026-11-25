@@ -136,6 +136,26 @@ class TestDivergencia(unittest.TestCase):
         e = self.erros_com("infra/rede/compose.yaml", "services:\n", "services:\n  novo:\n    image: exemplo/novo:1\n")
         self.assertTrue(any("'novo'" in x for x in e))
 
+    def test_servico_sem_mem_limit(self):
+        e = self.erros_com("infra/rede/compose.yaml", "    mem_limit: 256m\n", "")
+        self.assertTrue(any("'adguard' sem mem_limit" in x for x in e))
+
+    def test_imagem_latest(self):
+        e = self.erros_com("infra/rede/compose.yaml", "adguardhome:v1.0.0", "adguardhome:latest")
+        self.assertTrue(any("'adguard' com versão flutuante" in x for x in e))
+
+    def test_imagem_latest_como_padrao_de_variavel(self):
+        e = self.erros_com("infra/soberania/compose.yaml", "${GLITCHTIP_VERSAO:-7.0.0}", "${GLITCHTIP_VERSAO:-latest}", todas=True)
+        self.assertTrue(any("glitchtip" in x and "flutuante" in x for x in e))
+
+    def test_imagem_sem_tag(self):
+        e = self.erros_com("infra/rede/compose.yaml", "adguard/adguardhome:v1.0.0", "adguard/adguardhome")
+        self.assertTrue(any("flutuante" in x for x in e))
+
+    def test_servico_so_com_build_nao_acusa_imagem(self):
+        with CopiaDoRepositorio() as raiz:
+            self.assertFalse([x for x in ferramentas.regras_compose(raiz) if "pocketbase" in x])
+
     def test_cli_some_do_script(self):
         e = self.erros_com("scripts/wsl/nuvem.sh", "terraform", "tf-removido", todas=True)
         self.assertTrue(any("cli-terraform" in x for x in e))

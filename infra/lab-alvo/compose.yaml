@@ -12,6 +12,7 @@ name: lab-alvo
 
 services:
   atacante:
+    mem_limit: 640m
     build: ./atacante
     image: amtech/lab-atacante:local
     command: ["sleep", "infinity"]
@@ -19,7 +20,8 @@ services:
     networks: [alvo]
 
   alvo:
-    image: ${ALVO_IMAGEM:-bkimminich/juice-shop:latest}
+    mem_limit: 512m
+    image: ${ALVO_IMAGEM:-bkimminich/juice-shop:v20.4.0}
     hostname: alvo
     networks: [alvo]
 

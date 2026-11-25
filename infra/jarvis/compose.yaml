@@ -18,8 +18,9 @@ name: amtech-jarvis
 
 services:
   whisper:
+    mem_limit: 3072m
     # faster-whisper com GPU: a GTX 1650 (4 GB) roda o modelo small com folga e o medium no limite.
-    image: lscr.io/linuxserver/faster-whisper:gpu
+    image: lscr.io/linuxserver/faster-whisper:gpu-version-v3.9.1
     restart: unless-stopped
     environment:
       TZ: America/Sao_Paulo
@@ -39,7 +40,8 @@ services:
               capabilities: [gpu]
 
   piper:
-    image: lscr.io/linuxserver/piper:latest
+    mem_limit: 384m
+    image: lscr.io/linuxserver/piper:2.5.4-ls141
     restart: unless-stopped
     environment:
       TZ: America/Sao_Paulo
@@ -50,14 +52,16 @@ services:
       - "${JARVIS_IP:-127.0.0.1}:10200:10200"
 
   openwakeword:
+    mem_limit: 384m
     # "hey_jarvis" já vem treinado no openWakeWord. Satélites ESP32-S3 usam o microWakeWord no próprio chip.
-    image: rhasspy/wyoming-openwakeword:latest
+    image: rhasspy/wyoming-openwakeword:2.1.0
     restart: unless-stopped
     command: --preload-model hey_jarvis
     ports:
       - "${JARVIS_IP:-127.0.0.1}:10400:10400"
 
   mosquitto:
+    mem_limit: 128m
     # Barramento da casa: sensores, Zigbee2MQTT, Frigate, leitor do hidrômetro e os robôs (ROS 2) falam por aqui.
     image: eclipse-mosquitto:2
     restart: unless-stopped
@@ -68,7 +72,8 @@ services:
       - "${JARVIS_IP:-127.0.0.1}:1883:1883"
 
   zigbee2mqtt:
-    image: koenkk/zigbee2mqtt:latest
+    mem_limit: 384m
+    image: koenkk/zigbee2mqtt:2.14.3
     restart: unless-stopped
     profiles: [zigbee]
     depends_on: [mosquitto]
@@ -82,8 +87,9 @@ services:
       - "${JARVIS_IP:-127.0.0.1}:8080:8080"
 
   frigate:
+    mem_limit: 1536m
     # Gravação e detecção 100% locais. Câmeras só no que é seu: nada de rua, vizinho ou cômodo de visita sem aviso.
-    image: ghcr.io/blakeblackshear/frigate:stable
+    image: ghcr.io/blakeblackshear/frigate:0.18.3
     restart: unless-stopped
     profiles: [cameras]
     shm_size: "256mb"

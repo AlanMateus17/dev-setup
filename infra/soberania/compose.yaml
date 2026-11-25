@@ -9,6 +9,7 @@ name: soberania
 services:
   # Espelho dos repositórios do GitHub, com Git LFS: o código continua seu se a conta for bloqueada.
   forgejo:
+    mem_limit: 256m
     profiles: [forgejo]
     image: codeberg.org/forgejo/forgejo:${FORGEJO_VERSAO:-11}
     restart: unless-stopped
@@ -27,8 +28,9 @@ services:
 
   # Git por SSH no servidor da casa, sem web: firmware, placas e o que não precisa de nuvem.
   soft-serve:
+    mem_limit: 128m
     profiles: [soft-serve]
-    image: charmbracelet/soft-serve:${SOFTSERVE_VERSAO:-latest}
+    image: ghcr.io/charmbracelet/soft-serve:${SOFTSERVE_VERSAO:-v0.12.4}
     restart: unless-stopped
     environment:
       SOFT_SERVE_INITIAL_ADMIN_KEYS: ${SOFTSERVE_CHAVE_ADMIN:?defina SOFTSERVE_CHAVE_ADMIN (sua chave SSH pública) no .env}
@@ -39,8 +41,9 @@ services:
 
   # Servidor de controle da rede privada (reserva do Tailscale e redes de clientes).
   headscale:
+    mem_limit: 128m
     profiles: [headscale]
-    image: headscale/headscale:${HEADSCALE_VERSAO:-stable}
+    image: headscale/headscale:${HEADSCALE_VERSAO:-v0.29.7}
     restart: unless-stopped
     command: serve
     ports:
@@ -51,6 +54,7 @@ services:
 
   # Erros e travamentos dos sistemas (compatível com o SDK do Sentry). Principal; o Sentry SaaS é a reserva.
   glitchtip-db:
+    mem_limit: 128m
     profiles: [glitchtip]
     image: postgres:17-alpine
     restart: unless-stopped
@@ -61,12 +65,14 @@ services:
     volumes:
       - glitchtip-db:/var/lib/postgresql/data
   glitchtip-redis:
+    mem_limit: 128m
     profiles: [glitchtip]
     image: valkey/valkey:8-alpine
     restart: unless-stopped
   glitchtip-web:
+    mem_limit: 384m
     profiles: [glitchtip]
-    image: glitchtip/glitchtip:${GLITCHTIP_VERSAO:-latest}
+    image: glitchtip/glitchtip:${GLITCHTIP_VERSAO:-7.0.0}
     restart: unless-stopped
     depends_on: [glitchtip-db, glitchtip-redis]
     environment: &glitchtip-env
@@ -80,23 +86,26 @@ services:
     ports:
       - "127.0.0.1:8001:8000"
   glitchtip-worker:
+    mem_limit: 512m
     profiles: [glitchtip]
-    image: glitchtip/glitchtip:${GLITCHTIP_VERSAO:-latest}
+    image: glitchtip/glitchtip:${GLITCHTIP_VERSAO:-7.0.0}
     restart: unless-stopped
     command: ./bin/run-celery-with-beat.sh
     depends_on: [glitchtip-db, glitchtip-redis]
     environment: *glitchtip-env
   glitchtip-migrate:
+    mem_limit: 512m
     profiles: [glitchtip]
-    image: glitchtip/glitchtip:${GLITCHTIP_VERSAO:-latest}
+    image: glitchtip/glitchtip:${GLITCHTIP_VERSAO:-7.0.0}
     command: ./bin/run-migrate.sh
     depends_on: [glitchtip-db, glitchtip-redis]
     environment: *glitchtip-env
 
   # Manuais dos clientes (wiki em livros, capítulos e páginas). A documentação de dev segue no MkDocs.
   bookstack-db:
+    mem_limit: 256m
     profiles: [bookstack]
-    image: lscr.io/linuxserver/mariadb:latest
+    image: lscr.io/linuxserver/mariadb:11.8.10-r0-ls242
     restart: unless-stopped
     environment:
       PUID: "1000"
@@ -108,8 +117,9 @@ services:
     volumes:
       - bookstack-db:/config
   bookstack:
+    mem_limit: 128m
     profiles: [bookstack]
-    image: lscr.io/linuxserver/bookstack:latest
+    image: lscr.io/linuxserver/bookstack:v26.09.3-ls301
     restart: unless-stopped
     depends_on: [bookstack-db]
     environment:
@@ -129,8 +139,9 @@ services:
 
   # Orçamento por envelopes (base zero) local-first: a sua conta pessoal; o Caixa da Casa segue para a família.
   actual:
+    mem_limit: 256m
     profiles: [actual]
-    image: actualbudget/actual-server:${ACTUAL_VERSAO:-latest}
+    image: actualbudget/actual-server:${ACTUAL_VERSAO:-26.11.0}
     restart: unless-stopped
     ports:
       - "127.0.0.1:5006:5006"
@@ -139,6 +150,7 @@ services:
 
   # Painel do patrimônio em qualquer lugar (o cálculo de rentabilidade fica no Portfolio Performance).
   ghostfolio-db:
+    mem_limit: 128m
     profiles: [ghostfolio]
     image: postgres:17-alpine
     restart: unless-stopped
@@ -149,17 +161,19 @@ services:
     volumes:
       - ghostfolio-db:/var/lib/postgresql/data
   ghostfolio-redis:
+    mem_limit: 128m
     profiles: [ghostfolio]
     image: valkey/valkey:8-alpine
     restart: unless-stopped
     command: ["valkey-server", "--requirepass", "${GHOSTFOLIO_REDIS_SENHA:?defina GHOSTFOLIO_REDIS_SENHA no .env}"]
   ghostfolio:
+    mem_limit: 640m
     profiles: [ghostfolio]
-    image: ghostfolio/ghostfolio:${GHOSTFOLIO_VERSAO:-latest}
+    image: ghostfolio/ghostfolio:${GHOSTFOLIO_VERSAO:-3.100.0}
     restart: unless-stopped
     depends_on: [ghostfolio-db, ghostfolio-redis]
     environment:
-      DATABASE_URL: postgresql://ghostfolio:${GHOSTFOLIO_DB_SENHA:?defina GHOSTFOLIO_DB_SENHA no .env}@ghostfolio-db:5432/ghostfolio?connect_timeout=300&sslmode=prefer
+      DATABASE_URL: postgresql://ghostfolio:${GHOSTFOLIO_DB_SENHA:?defina GHOSTFOLIO_DB_SENHA no .env}@ghostfolio-db:5432/ghostfolio?connect_timeout=300&sslmode=disable
       REDIS_HOST: ghostfolio-redis
       REDIS_PORT: "6379"
       REDIS_PASSWORD: ${GHOSTFOLIO_REDIS_SENHA:?defina GHOSTFOLIO_REDIS_SENHA no .env}
@@ -170,6 +184,7 @@ services:
 
   # Fluxo de caixa com importação de extratos (reserva do financeiro.py, para comparar).
   firefly-db:
+    mem_limit: 384m
     profiles: [firefly]
     image: mariadb:11
     restart: unless-stopped
@@ -181,8 +196,9 @@ services:
     volumes:
       - firefly-db:/var/lib/mysql
   firefly:
+    mem_limit: 256m
     profiles: [firefly]
-    image: fireflyiii/core:${FIREFLY_VERSAO:-latest}
+    image: fireflyiii/core:${FIREFLY_VERSAO:-version-6.7.9}
     restart: unless-stopped
     depends_on: [firefly-db]
     environment:
@@ -202,6 +218,7 @@ services:
 
   # Contabilidade do CNPJ quando abrir (complementa o contador; não o substitui).
   akaunting-db:
+    mem_limit: 256m
     profiles: [akaunting]
     image: mariadb:11
     restart: unless-stopped
@@ -213,8 +230,9 @@ services:
     volumes:
       - akaunting-db:/var/lib/mysql
   akaunting:
+    mem_limit: 384m
     profiles: [akaunting]
-    image: docker.io/akaunting/akaunting:${AKAUNTING_VERSAO:-latest}
+    image: docker.io/akaunting/akaunting:${AKAUNTING_VERSAO:-3.3.2}
     restart: unless-stopped
     depends_on: [akaunting-db]
     environment:

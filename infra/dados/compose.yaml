@@ -3,7 +3,8 @@
 name: amtech-dados
 services:
   metabase:
-    image: metabase/metabase:latest
+    mem_limit: 1536m
+    image: metabase/metabase:v0.65.7
     restart: unless-stopped
     volumes:
       - ${DADOS_DIR:-./dados}/metabase:/metabase-data
