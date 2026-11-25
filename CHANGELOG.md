@@ -2,7 +2,20 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
-## [2.40.0] - 2026-11-21
+## [2.41.0] - 2026-11-21
+
+### Adicionado
+- **Fontes de estudo** (`tools/fontes/fontes.py`, `just fontes`, `data/fontes.json`, [docs/professor/fontes.md](docs/professor/fontes.md)): acervo privado em `~/AMtech/estudo`, fora do Git, para estudar pelo conteúdo original.
+  - `baixar` clona só a pasta da documentação oficial, na versão cadastrada, e registra o commit: TypeScript Handbook, MDN, Node 22, Pro Git, Python 3.14 e PostgreSQL 18, cada uma ligada aos assuntos do mapa.
+  - `entrada` guarda livros, aulas e notas com hash, licença e manifesto, e converte para Markdown sem IA quando a ferramenta existe (Docling, Pandoc, WhisperX com o minuto de cada fala); PDF de fora passa antes pelo Dangerzone. Sem a ferramenta, o arquivo fica "pendente" e nada se perde.
+  - `buscar` procura no corpus e nas documentações.
+  - `citar` confere, letra por letra, se um trecho existe na fonte (é a regra que impede alucinação no guia).
+  - `conferir` entra no `just check`: falha se arquivo de fonte, livro digital ou PDF fora das pastas de documentos aparecer no repositório.
+
+### Alterado
+- Decisão de 21/11: todos os repositórios do Alan ficam privados, inclusive os sites do GitHub Pages (que saem do ar no plano grátis). `repos.json`, `docs/repositorios.md`, `CONTINUAR.md` e o plano em `data/coerencia.json` atualizados; as vitrines de cliente continuam planejadas como públicas.
+
+ - 2026-11-21
 
 ### Alterado
 - **Professor na ordem do mapa-de-estudo** (ADR 0018): um módulo só é liberado quando o assunto dele está escrito e conferido no mapa (📘), quando todo assunto de que ele depende no mapa também está escrito e quando os módulos desses assuntos já passaram na prova. Antes, cada módulo tinha pré-requisitos próprios e o `just professor hoje` podia mandar TypeScript (2.1) e terminal (1.3) antes do 0.1.

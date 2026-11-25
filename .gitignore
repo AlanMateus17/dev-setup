@@ -16,3 +16,9 @@ infra/soberania/data/
 
 # Worktrees das sessões do Claude Code
 .claude/worktrees/
+
+# Fontes de estudo (livros, aulas, documentações baixadas): ficam em ~/AMtech/estudo, nunca aqui
+corpus/
+docs-oficiais/
+fontes-originais/
+*.epub
