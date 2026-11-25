@@ -2,6 +2,16 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.55.0] - 2026-11-25
+
+### Adicionado
+- `scripts/wsl/gerar-env.sh <pasta>`: cria ou completa o `.env` de uma pasta de serviços a partir do modelo, sem nunca mostrar valores (`chmod 600`, idempotente). Gera aleatório só as chaves que a pasta declara (automação, casa, ia); senha que vem de fora, como a das câmeras do jarvis, fica na lista "preencha você". `*_VERSAO=latest` vira vazio, para valer a versão fixa do compose. O `infra/automacao/gerar-senhas.sh` passa a chamar esse script.
+- `just instalar`: quando a pasta de um serviço Docker tem modelo de `.env` e ainda não tem `.env`, o `gerar-env.sh` roda antes do `pull`. 3 testes novos.
+
+### Corrigido
+- `infra/automacao/.env.example` trazia `N8N_VERSAO=latest` e `GRAFANA_VERSAO=latest`, que derrubariam as versões fixas do compose; agora vazios.
+- `just instalar`: a conferência depois de instalar acusava falso erro em serviço Docker (o container só nasce no `just ligar`); Docker sai dessa conferência.
+
 ## [2.54.2] - 2026-11-25
 
 ### Corrigido

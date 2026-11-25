@@ -239,6 +239,22 @@ class TestInstalar(unittest.TestCase):
         est = [{"id": "cli-mise-sops", "nome": "sops", "instalada": False}, {"id": "cli-uv", "nome": "uv", "instalada": True}]
         self.assertEqual(ferramentas.ainda_faltando(d, ["cli-mise-sops", "cli-uv"], est), ["sops"])
 
+    def test_docker_nao_entra_na_conferencia_depois(self):
+        d = ferramentas.carregar()
+        est = [{"id": "docker-ia-litellm", "nome": "litellm", "instalada": False}]
+        self.assertEqual(ferramentas.ainda_faltando(d, ["docker-ia-litellm"], est), [])
+
+    def test_env_antes_do_pull(self):
+        d = ferramentas.carregar()
+        with CopiaDoRepositorio() as raiz:
+            (raiz / "infra/automacao/.env.example").write_text("METRICAS_SENHA=\n", encoding="utf-8")
+            est = [{"id": f["id"], "instalada": False, "instalada_wsl": None} for f in d["ferramentas"] if f["grupo"] == "infra/automacao"]
+            cmds = [a["comando"] for a in ferramentas.planejar_instalacao(d, est, "trabalho", raiz)]
+            self.assertEqual(cmds[0], "bash scripts/wsl/gerar-env.sh automacao")
+            (raiz / "infra/automacao/.env").write_text("x=1\n", encoding="utf-8")
+            cmds = [a["comando"] for a in ferramentas.planejar_instalacao(d, est, "trabalho", raiz)]
+            self.assertFalse(any("gerar-env" in c for c in cmds))
+
     def test_plano_sem_repetir_comando_e_sem_parados(self):
         d = ferramentas.carregar()
         est = [{"id": f["id"], "instalada": False, "instalada_wsl": None} for f in d["ferramentas"]]

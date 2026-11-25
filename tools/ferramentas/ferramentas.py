@@ -504,7 +504,14 @@ def _no_alvo(f: dict, alvo: str) -> bool:
     return alvo == "tudo" or f.get("perfil") == alvo or f["tipo"] == alvo or f["id"] == alvo
 
 
-def planejar_instalacao(dados: dict, estados: list[dict], alvo: str) -> list[dict]:
+def _precisa_env(arquivo_compose: str, raiz: Path = RAIZ) -> str | None:
+    """Pasta de serviços com modelo de .env e sem .env: devolve o nome da pasta (o .env vem antes do pull)."""
+    d = (raiz / arquivo_compose).parent
+    tem_modelo = (d / ".env.example").exists() or (d / f"{d.name}.env.example").exists()
+    return d.name if tem_modelo and not (d / ".env").exists() else None
+
+
+def planejar_instalacao(dados: dict, estados: list[dict], alvo: str, raiz: Path = RAIZ) -> list[dict]:
     """Ações para o que falta no alvo (perfil, tipo, id ou 'tudo'), um comando por ação, sem repetir comando."""
     validos = {"tudo", *dados["perfis"], *TIPOS, *(f["id"] for f in dados["ferramentas"])}
     if alvo not in validos:
@@ -523,17 +530,22 @@ def planejar_instalacao(dados: dict, estados: list[dict], alvo: str) -> list[dic
         if f["decisao"] != "normal" or not _no_alvo(f, alvo):
             continue
         if e["instalada"] is False:
+            if f["tipo"] == "docker" and (pasta := _precisa_env(f["fonte"], raiz)):
+                juntar(f"bash scripts/wsl/gerar-env.sh {pasta}", f"{pasta}/.env", f"{f['id']}#env")
             juntar(f["instalar"], f["nome"], f["id"])
         if f["tipo"] == "vscode" and e.get("instalada_wsl") is False:
             juntar("bash scripts/wsl/extensoes-vscode.sh", f["nome"], f["id"])
     ordem = {"auto": 0, "sudo": 1, "manual": 2}
-    return sorted(acoes.values(), key=lambda a: (ordem[a["modo"]], a["comando"]))
+    # o .env de cada pasta vem antes dos pulls dela
+    return sorted(acoes.values(), key=lambda a: (ordem[a["modo"]], 0 if "gerar-env.sh" in a["comando"] else 1, a["comando"]))
 
 
 def ainda_faltando(dados: dict, ids: list[str], estados: list[dict]) -> list[str]:
     """Depois de instalar: o comando terminou bem, mas a ferramenta continua sem existir (ex.: binário com outro nome)."""
     por_id = {e["id"]: e for e in estados}
-    return [por_id[i]["nome"] for i in ids if por_id.get(i, {}).get("instalada") is False]
+    tipos = {f["id"]: f["tipo"] for f in dados["ferramentas"]}
+    # Docker fica de fora: "instalada" é o container existir, e ele só nasce no just ligar; o pull já confere a imagem.
+    return [por_id[i]["nome"] for i in ids if tipos.get(i) != "docker" and por_id.get(i, {}).get("instalada") is False]
 
 
 def executar_instalacao(acoes: list[dict], simular: bool = False) -> dict:
