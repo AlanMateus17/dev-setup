@@ -1,3 +1,4 @@
+import time
 import io
 import re
 import shutil
@@ -45,6 +46,17 @@ class TestMatriz(unittest.TestCase):
         self.assertEqual(v.avaliar_ci("6", ruim).status, v.FALHA)
         self.assertEqual(v.avaliar_ci("6", ok[1:]).status, v.FALHA, "sem o agendado não roda sozinho")
         self.assertEqual(v.avaliar_ci("6", []).status, v.FALHA)
+
+    def test_ci_agendado_buscado_a_parte(self):
+        """Num dia com muitos PRs o vigia sai dos 30 runs recentes; o agendado buscado à parte decide."""
+        so_prs = [{"workflowName": "docs", "conclusion": "success", "event": "pull_request"}]
+        agora = time.mktime(time.strptime("2026-11-25T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")) - time.timezone
+        recente = {"created_at": "2026-11-23T20:51:35Z", "conclusion": "success"}
+        velho = {"created_at": "2026-11-10T09:00:00Z", "conclusion": "success"}
+        self.assertEqual(v.avaliar_ci("6", so_prs, recente, agora).status, v.OK)
+        self.assertEqual(v.avaliar_ci("6", so_prs, velho, agora).status, v.FALHA)
+        self.assertEqual(v.avaliar_ci("6", so_prs, {}, agora).status, v.FALHA)
+        self.assertEqual(v.avaliar_ci("6", so_prs, {**recente, "conclusion": "failure"}, agora).status, v.FALHA)
 
     def test_runs_proprios_ignora_dependabot(self):
         brutos = [{"name": "Graph Update", "path": "dynamic/dependabot/update-graph", "conclusion": "cancelled"},
