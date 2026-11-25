@@ -252,6 +252,9 @@ def checar_ferramentas() -> list[Resultado]:
     faltam = ferramentas.faltando(est)
     R.append(Resultado(i, "pc", OK if not faltam else MIM,
                        "" if not faltam else "faltam: " + ", ".join(f"{e['nome']} ({e['instalar']})" for e in faltam[:6])))
+    sem_wsl = ferramentas.faltando_wsl(est)
+    R.append(Resultado(i, "pc", OK if not sem_wsl else MIM,
+                       "" if not sem_wsl else f"{len(sem_wsl)} extensão(ões) do VS Code faltando no Ubuntu: just extensoes-wsl"))
     vencidas = ferramentas.revisoes_vencidas(dados)
     R.append(Resultado(i, "pc", OK if not vencidas else MIM,
                        "" if not vencidas else "rever decisão (ADR 0022): " + ", ".join(f"{f['nome']} ({f['rever_em']})" for f in vencidas)))

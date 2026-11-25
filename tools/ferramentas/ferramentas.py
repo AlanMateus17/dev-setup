@@ -76,6 +76,8 @@ def validar(dados: dict) -> list[str]:
             erros.append(f"{fid}: 'conferir' deve ter uma chave entre {sorted(CONFERIR[tipo])}")
         if not str(f.get("doc", "")).strip():
             erros.append(f"{fid}: falta a linha de documentação ('doc')")
+        if tipo == "vscode" and not isinstance(f.get("wsl"), bool):
+            erros.append(f"{fid}: extensão sem 'wsl' (true se também roda no VS Code do Ubuntu)")
         if tipo in ("docker", "systemd") and f.get("perfil") not in perfis:
             erros.append(f"{fid}: serviço sem perfil válido {sorted(perfis)}")
         if tipo == "docker":
@@ -260,6 +262,12 @@ def gerar_md(dados: dict) -> str:
             for f in g:
                 porta = ", ".join(portas.get(f["conferir"]["container"], [])) or "—"
                 L.append(f"| {f['nome']} | {f['grupo']} | {f['perfil']} | {porta} | {f['doc']} | {_decisao(f)} | `{f['ligar']}` |")
+        elif t == "vscode":
+            L += ["Também no Ubuntu = instalada no VS Code do WSL por `just extensoes-wsl`.", "",
+                  "| Extensão | Código aberto | Obrigatória | Também no Ubuntu | Para quê | Instalar no Windows |", "|---|---|---|---|---|---|"]
+            for f in g:
+                L.append(f"| {f['nome']} | {'sim' if f['codigo_aberto'] else 'não'} | {'sim' if f['obrigatoria'] else '—'} "
+                         f"| {'sim' if f['wsl'] else 'não'} | {f['doc']} | `{f['instalar']}` |")
         else:
             L += ["| Ferramenta | Grupo | Código aberto | Obrigatória | Para quê | Decisão | Instalar |", "|---|---|---|---|---|---|---|"]
             for f in g:
@@ -295,6 +303,7 @@ def sondas() -> dict:
     s["winget"] = _rodar(["winget.exe", "list", "--accept-source-agreements", "--disable-interactivity"], 120) if shutil.which("winget.exe") else None
     out = _rodar(["cmd.exe", "/c", "code --list-extensions"], 60) if shutil.which("cmd.exe") else None
     s["extensao"] = {l.strip().lower() for l in out.splitlines() if l.strip()} if out is not None else None
+    s["extensao_wsl"] = extensoes_wsl()
     out = _rodar(["dpkg-query", "-W", "-f=${Package} ${Status}\n"]) if shutil.which("dpkg-query") else None
     s["dpkg"] = {l.split()[0] for l in out.splitlines() if l.endswith("install ok installed")} if out else None
     out = _rodar(["docker", "ps", "-a", "--format", '{{.Label "com.docker.compose.project"}}/{{.Label "com.docker.compose.service"}} {{.State}}']) \
@@ -302,6 +311,17 @@ def sondas() -> dict:
     s["container"] = dict(l.split(" ", 1) for l in out.splitlines() if " " in l) if out is not None else None
     s["path"] = _caminho_comandos()
     return s
+
+
+EXTENSOES_WSL = Path.home() / ".vscode-server" / "extensions" / "extensions.json"
+
+
+def extensoes_wsl(arquivo: Path = EXTENSOES_WSL) -> set[str]:
+    """Extensões instaladas no VS Code do Ubuntu. Lê o arquivo direto: conferir nunca instala o servidor do VS Code."""
+    try:
+        return {e["identifier"]["id"].lower() for e in json.loads(arquivo.read_text(encoding="utf-8"))}
+    except (OSError, ValueError, KeyError, TypeError):
+        return set()
 
 
 def estado_de(f: dict, s: dict) -> dict:
@@ -328,13 +348,21 @@ def estado_de(f: dict, s: dict) -> dict:
         if s["container"] is not None:
             st = s["container"].get(alvo)
             inst, rod = st is not None, st == "running"
-    return {"id": f["id"], "nome": f["nome"], "tipo": f["tipo"], "obrigatoria": f["obrigatoria"], "decisao": f["decisao"],
-            "instalada": inst, "rodando": rod, "instalar": f["instalar"]}
+    r = {"id": f["id"], "nome": f["nome"], "tipo": f["tipo"], "obrigatoria": f["obrigatoria"], "decisao": f["decisao"],
+         "instalada": inst, "rodando": rod, "instalar": f["instalar"]}
+    if f["tipo"] == "vscode":
+        r["instalada_wsl"] = (alvo in s.get("extensao_wsl", set())) if f.get("wsl") else None
+    return r
 
 
 def estado(dados: dict, s: dict | None = None) -> list[dict]:
     s = s or sondas()
     return [estado_de(f, s) for f in dados["ferramentas"]]
+
+
+def faltando_wsl(estados: list[dict]) -> list[dict]:
+    """Extensões que precisam existir também no VS Code do Ubuntu e ainda não estão lá."""
+    return [e for e in estados if e["tipo"] == "vscode" and e.get("instalada_wsl") is False and e["decisao"] == "normal"]
 
 
 def faltando(estados: list[dict]) -> list[dict]:

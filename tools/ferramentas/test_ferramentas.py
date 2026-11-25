@@ -196,6 +196,37 @@ class TestDecisoes(unittest.TestCase):
         self.assertEqual(ferramentas.portas_expostas_windows(linhas="11434 127.0.0.1\n"), [])
 
 
+class TestExtensoesWsl(unittest.TestCase):
+    def test_registro_marca_o_que_vai_para_o_ubuntu(self):
+        ext = {f["nome"].lower(): f for f in ferramentas.carregar()["ferramentas"] if f["tipo"] == "vscode"}
+        self.assertFalse(ext["ms-vscode-remote.remote-wsl"]["wsl"])   # extensão de interface
+        self.assertTrue(ext["anthropic.claude-code"]["wsl"])
+        self.assertTrue(all(isinstance(f["wsl"], bool) for f in ext.values()))
+
+    def test_extensao_sem_campo_wsl(self):
+        d = copy.deepcopy(ferramentas.carregar())
+        del next(f for f in d["ferramentas"] if f["tipo"] == "vscode")["wsl"]
+        self.assertTrue(any("'wsl'" in e for e in ferramentas.validar(d)))
+
+    def test_le_extensions_json(self):
+        with tempfile.TemporaryDirectory() as d:
+            arq = Path(d) / "extensions.json"
+            arq.write_text('[{"identifier":{"id":"Timonwong.ShellCheck"},"version":"0.48.4"}]', encoding="utf-8")
+            self.assertEqual(ferramentas.extensoes_wsl(arq), {"timonwong.shellcheck"})
+            self.assertEqual(ferramentas.extensoes_wsl(Path(d) / "nao-existe.json"), set())
+            arq.write_text("isto não é json", encoding="utf-8")
+            self.assertEqual(ferramentas.extensoes_wsl(arq), set())
+
+    def test_faltando_wsl(self):
+        s = {"winget": "", "extensao": {"ms-python.python"}, "extensao_wsl": set(), "dpkg": set(), "container": {}, "path": ""}
+        def est(wsl):
+            return ferramentas.estado_de({"id": "x", "nome": "ms-python.python", "tipo": "vscode", "obrigatoria": False,
+                                          "decisao": "normal", "wsl": wsl, "conferir": {"extensao": "ms-python.python"},
+                                          "instalar": ""}, s)
+        self.assertEqual(len(ferramentas.faltando_wsl([est(True)])), 1)
+        self.assertEqual(ferramentas.faltando_wsl([est(False)]), [])
+
+
 class TestPerfis(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

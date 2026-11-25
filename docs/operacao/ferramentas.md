@@ -55,24 +55,26 @@
 
 ## Extensões do VS Code
 
-| Ferramenta | Grupo | Código aberto | Obrigatória | Para quê | Decisão | Instalar |
-|---|---|---|---|---|---|---|
-| ms-vscode-remote.remote-wsl | Extensões do VS Code | sim | sim | Abre o Ubuntu do WSL no VS Code |  | `code --install-extension ms-vscode-remote.remote-wsl` |
-| anthropic.claude-code | Extensões do VS Code | não | sim | Claude Code dentro do VS Code |  | `code --install-extension anthropic.claude-code` |
-| editorconfig.editorconfig | Extensões do VS Code | sim | — | Aplica o .editorconfig |  | `code --install-extension editorconfig.editorconfig` |
-| redhat.vscode-yaml | Extensões do VS Code | sim | — | YAML com validação (compose, CI) |  | `code --install-extension redhat.vscode-yaml` |
-| ms-vscode.powershell | Extensões do VS Code | sim | — | Scripts PowerShell |  | `code --install-extension ms-vscode.powershell` |
-| timonwong.shellcheck | Extensões do VS Code | sim | — | ShellCheck nos scripts bash |  | `code --install-extension timonwong.shellcheck` |
-| ms-dotnettools.csdevkit | Extensões do VS Code | não | — | C#/.NET (carta de reserva) |  | `code --install-extension ms-dotnettools.csdevkit` |
-| dbaeumer.vscode-eslint | Extensões do VS Code | sim | — | ESLint (TypeScript/JavaScript) |  | `code --install-extension dbaeumer.vscode-eslint` |
-| esbenp.prettier-vscode | Extensões do VS Code | sim | — | Formatação Prettier |  | `code --install-extension esbenp.prettier-vscode` |
-| bradlc.vscode-tailwindcss | Extensões do VS Code | sim | — | Tailwind CSS |  | `code --install-extension bradlc.vscode-tailwindcss` |
-| ms-azuretools.vscode-docker | Extensões do VS Code | sim | — | Docker e compose |  | `code --install-extension ms-azuretools.vscode-docker` |
-| hashicorp.terraform | Extensões do VS Code | sim | — | Terraform |  | `code --install-extension hashicorp.terraform` |
-| ms-python.python | Extensões do VS Code | sim | — | Python |  | `code --install-extension ms-python.python` |
-| james-yu.latex-workshop | Extensões do VS Code | sim | — | LaTeX do livro |  | `code --install-extension james-yu.latex-workshop` |
-| bierner.markdown-mermaid | Extensões do VS Code | sim | — | Diagramas Mermaid no Markdown |  | `code --install-extension bierner.markdown-mermaid` |
-| ltex-plus.vscode-ltex-plus | Extensões do VS Code | sim | — | Revisão de português (LanguageTool) |  | `code --install-extension ltex-plus.vscode-ltex-plus` |
+Também no Ubuntu = instalada no VS Code do WSL por `just extensoes-wsl`.
+
+| Extensão | Código aberto | Obrigatória | Também no Ubuntu | Para quê | Instalar no Windows |
+|---|---|---|---|---|---|
+| ms-vscode-remote.remote-wsl | sim | sim | não | Abre o Ubuntu do WSL no VS Code | `code --install-extension ms-vscode-remote.remote-wsl` |
+| anthropic.claude-code | não | sim | sim | Claude Code dentro do VS Code | `code --install-extension anthropic.claude-code` |
+| editorconfig.editorconfig | sim | — | sim | Aplica o .editorconfig | `code --install-extension editorconfig.editorconfig` |
+| redhat.vscode-yaml | sim | — | sim | YAML com validação (compose, CI) | `code --install-extension redhat.vscode-yaml` |
+| ms-vscode.powershell | sim | — | não | Scripts PowerShell | `code --install-extension ms-vscode.powershell` |
+| timonwong.shellcheck | sim | — | sim | ShellCheck nos scripts bash | `code --install-extension timonwong.shellcheck` |
+| ms-dotnettools.csdevkit | não | — | sim | C#/.NET (carta de reserva) | `code --install-extension ms-dotnettools.csdevkit` |
+| dbaeumer.vscode-eslint | sim | — | sim | ESLint (TypeScript/JavaScript) | `code --install-extension dbaeumer.vscode-eslint` |
+| esbenp.prettier-vscode | sim | — | sim | Formatação Prettier | `code --install-extension esbenp.prettier-vscode` |
+| bradlc.vscode-tailwindcss | sim | — | sim | Tailwind CSS | `code --install-extension bradlc.vscode-tailwindcss` |
+| ms-azuretools.vscode-docker | sim | — | sim | Docker e compose | `code --install-extension ms-azuretools.vscode-docker` |
+| hashicorp.terraform | sim | — | sim | Terraform | `code --install-extension hashicorp.terraform` |
+| ms-python.python | sim | — | sim | Python | `code --install-extension ms-python.python` |
+| james-yu.latex-workshop | sim | — | sim | LaTeX do livro | `code --install-extension james-yu.latex-workshop` |
+| bierner.markdown-mermaid | sim | — | sim | Diagramas Mermaid no Markdown | `code --install-extension bierner.markdown-mermaid` |
+| ltex-plus.vscode-ltex-plus | sim | — | sim | Revisão de português (LanguageTool) | `code --install-extension ltex-plus.vscode-ltex-plus` |
 
 ## Pacotes do Ubuntu (apt)
 

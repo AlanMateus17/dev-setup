@@ -243,6 +243,10 @@ backup:
 ligar *opcao:
     bash scripts/wsl/ligar-tudo.sh {{opcao}}
 
+# Instala no VS Code do Ubuntu as extensões marcadas com "wsl": true em data/ferramentas.json: just extensoes-wsl  ·  só ver: just extensoes-wsl --simular
+extensoes-wsl *opcao:
+    bash scripts/wsl/extensoes-vscode.sh {{opcao}}
+
 # O que está no ar agora (serviços, Ollama, LiteLLM, últimos pedidos)
 ligado:
     bash scripts/wsl/ligar-tudo.sh --status
