@@ -511,6 +511,10 @@ def _precisa_env(arquivo_compose: str, raiz: Path = RAIZ) -> str | None:
     return d.name if tem_modelo and not (d / ".env").exists() else None
 
 
+# Serviço que precisa de um arquivo de configuração antes de subir: id -> (arquivo, comando que o cria)
+PRE_PASSO = {"docker-soberania-headscale": ("infra/soberania/headscale/config.yaml", "bash scripts/wsl/headscale-config.sh")}
+
+
 def planejar_instalacao(dados: dict, estados: list[dict], alvo: str, raiz: Path = RAIZ) -> list[dict]:
     """Ações para o que falta no alvo (perfil, tipo, id ou 'tudo'), um comando por ação, sem repetir comando."""
     validos = {"tudo", *dados["perfis"], *TIPOS, *(f["id"] for f in dados["ferramentas"])}
@@ -532,12 +536,15 @@ def planejar_instalacao(dados: dict, estados: list[dict], alvo: str, raiz: Path 
         if e["instalada"] is False:
             if f["tipo"] == "docker" and (pasta := _precisa_env(f["fonte"], raiz)):
                 juntar(f"bash scripts/wsl/gerar-env.sh {pasta}", f"{pasta}/.env", f"{f['id']}#env")
+            if f["id"] in PRE_PASSO and not (raiz / PRE_PASSO[f["id"]][0]).is_file():
+                juntar(PRE_PASSO[f["id"]][1], PRE_PASSO[f["id"]][0], f"{f['id']}#config")
             juntar(f["instalar"], f["nome"], f["id"])
         if f["tipo"] == "vscode" and e.get("instalada_wsl") is False:
             juntar("bash scripts/wsl/extensoes-vscode.sh", f["nome"], f["id"])
     ordem = {"auto": 0, "sudo": 1, "manual": 2}
     # o .env de cada pasta vem antes dos pulls dela
-    return sorted(acoes.values(), key=lambda a: (ordem[a["modo"]], 0 if "gerar-env.sh" in a["comando"] else 1, a["comando"]))
+    pre = ("gerar-env.sh", "headscale-config.sh")
+    return sorted(acoes.values(), key=lambda a: (ordem[a["modo"]], 0 if any(p in a["comando"] for p in pre) else 1, a["comando"]))
 
 
 def ainda_faltando(dados: dict, ids: list[str], estados: list[dict]) -> list[str]:

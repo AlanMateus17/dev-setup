@@ -255,6 +255,17 @@ class TestInstalar(unittest.TestCase):
             cmds = [a["comando"] for a in ferramentas.planejar_instalacao(d, est, "trabalho", raiz)]
             self.assertFalse(any("gerar-env" in c for c in cmds))
 
+    def test_headscale_ganha_config_antes(self):
+        d = ferramentas.carregar()
+        with CopiaDoRepositorio() as raiz:
+            est = [{"id": "docker-soberania-headscale", "instalada": False, "instalada_wsl": None}]
+            cmds = [a["comando"] for a in ferramentas.planejar_instalacao(d, est, "docker-soberania-headscale", raiz)]
+            self.assertEqual(cmds[0], "bash scripts/wsl/headscale-config.sh")
+            (raiz / "infra/soberania/headscale").mkdir(parents=True, exist_ok=True)
+            (raiz / "infra/soberania/headscale/config.yaml").write_text("server_url: x\n", encoding="utf-8")
+            cmds = [a["comando"] for a in ferramentas.planejar_instalacao(d, est, "docker-soberania-headscale", raiz)]
+            self.assertNotIn("bash scripts/wsl/headscale-config.sh", cmds)
+
     def test_plano_sem_repetir_comando_e_sem_parados(self):
         d = ferramentas.carregar()
         est = [{"id": f["id"], "instalada": False, "instalada_wsl": None} for f in d["ferramentas"]]
