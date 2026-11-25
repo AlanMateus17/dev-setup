@@ -44,13 +44,15 @@ class TestRegistro(unittest.TestCase):
     def test_doc_gerada_em_dia(self):
         self.assertEqual(ferramentas.MD.read_text(encoding="utf-8"), ferramentas.gerar_md(self.dados))
 
-    def test_decisoes_de_25_11(self):
+    def test_decisoes_da_emenda_de_25_11(self):
+        """Emenda da ADR 0022: os 6 itens voltam; os túneis continuam fora."""
         por_id = {f["id"]: f for f in self.dados["ferramentas"]}
-        self.assertEqual(por_id["cli-keepassxc-cli"]["decisao"], "adiada")
-        self.assertEqual(por_id["win-keepassxcteam-keepassxc"]["decisao"], "adiada")
-        self.assertEqual(por_id["cli-mise-sops"]["decisao"], "parada")
-        self.assertEqual(por_id["docker-ia-litellm"]["decisao"], "parada")
-        self.assertEqual(por_id["svc-pipeline"]["decisao"], "parada")
+        for fid in ("cli-keepassxc-cli", "win-keepassxcteam-keepassxc", "cli-mise-sops", "docker-ia-litellm",
+                    "svc-pipeline", "docker-soberania-headscale"):
+            self.assertEqual(por_id[fid]["decisao"], "normal", fid)
+            self.assertNotIn("rever_em", por_id[fid])
+        self.assertEqual(sorted(f["id"] for f in self.dados["ferramentas"] if f["decisao"] != "normal"),
+                         ["cli-mise-bore", "win-cloudflared"])
 
     def test_acesso_de_fora_marcado(self):
         com = {f["id"] for f in self.dados["ferramentas"] if f.get("acesso_externo")}
@@ -164,7 +166,7 @@ class TestDivergencia(unittest.TestCase):
 class TestDecisoes(unittest.TestCase):
     def test_adr_0022_registrada(self):
         por_id = {f["id"]: f for f in ferramentas.carregar()["ferramentas"]}
-        for fid in ("docker-soberania-headscale", "cli-mise-bore", "win-cloudflared"):
+        for fid in ("cli-mise-bore", "win-cloudflared"):
             self.assertEqual(por_id[fid]["decisao"], "parada")
             self.assertIn("ADR 0022", por_id[fid]["motivo"])
         self.assertTrue(all(f.get("rever_em") for f in por_id.values() if f["decisao"] != "normal"))
@@ -178,6 +180,7 @@ class TestDecisoes(unittest.TestCase):
 
     def test_parada_presente(self):
         d = ferramentas.carregar()
+        d["ferramentas"] = [dict(f, decisao="parada") if f["id"] == "docker-soberania-headscale" else f for f in d["ferramentas"]]
         est = [{"id": "win-cloudflared", "tipo": "windows", "decisao": "parada", "instalada": True, "rodando": None},
                {"id": "docker-soberania-headscale", "tipo": "docker", "decisao": "parada", "instalada": True, "rodando": False},
                {"id": "cli-mise-bore", "tipo": "wsl-cli", "decisao": "parada", "instalada": False, "rodando": None}]
@@ -199,11 +202,11 @@ class TestPerfis(unittest.TestCase):
     def test_trabalho_sem_parados_e_com_profiles(self):
         grupos = {g["arquivo"]: g for g in ferramentas.planejar_perfil(self.dados, "trabalho")}
         todos = [s for g in grupos.values() for s in g["servicos"]]
-        self.assertNotIn("litellm", todos)
-        self.assertNotIn("headscale", todos)
+        self.assertIn("litellm", todos)    # voltou na emenda da ADR 0022
+        self.assertIn("headscale", todos)
         sob = grupos["infra/soberania/compose.yaml"]
         self.assertIn("ghostfolio", sob["perfis"])
-        self.assertNotIn("headscale", sob["perfis"])
+        self.assertIn("headscale", sob["perfis"])
         cmd = ferramentas.comando_grupo(sob, "ligar")
         self.assertEqual(cmd[:4], ["docker", "compose", "-f", "infra/soberania/compose.yaml"])
         self.assertEqual(cmd[cmd.index("up"):cmd.index("up") + 2], ["up", "-d"])

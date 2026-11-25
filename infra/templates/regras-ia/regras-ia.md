@@ -10,7 +10,7 @@ para todas as IAs seguirem o mesmo padrão.
 
 ## Nunca
 - Dados de alunos (nome, nota, foto, voz) em prompt, arquivo ou treino.
-- Senhas, tokens ou chaves em código, commit, chat ou prompt. Segredo fica fora do repositório (hoje no caderno do Alan; KeePassXC adiado por decisão dele).
+- Senhas, tokens ou chaves em código, commit, chat ou prompt. Segredo fica fora do repositório, no KeePassXC (a senha do restic também no caderno do Alan).
 - Copiar conteúdo de livros, cursos pagos ou sites sem licença.
 - Recomendar investimento por conta própria: aplique as regras do Alan; a decisão é dele.
 - Publicar ou enviar algo em nome do Alan sem aprovação.

@@ -140,9 +140,7 @@
    "fonte": "scripts/windows/pacotes.json",
    "codigo_aberto": true,
    "obrigatoria": false,
-   "decisao": "adiada",
-   "motivo": "KeePassXC não é usado por decisão do Alan (25/11/2026); senhas no caderno (ADR 0022)",
-   "rever_em": "2027-01-20",
+   "decisao": "normal",
    "conferir": {
     "winget": "KeePassXCTeam.KeePassXC"
    },
@@ -506,7 +504,7 @@
    "codigo_aberto": true,
    "obrigatoria": false,
    "decisao": "parada",
-   "motivo": "Desinstalar por decisão do Alan (25/11/2026): abre túnel do PC para a internet (ADR 0022)",
+   "motivo": "Desinstalar por decisão do Alan (25/11/2026): abre túnel do PC para a internet (ADR 0022, mantido na emenda: regra de segurança)",
    "rever_em": "2027-01-20",
    "conferir": {
     "arquivo": "/mnt/c/Program Files (x86)/cloudflared/cloudflared.exe"
@@ -1753,9 +1751,7 @@
    "fonte": "infra/dotfiles/dot_config/mise/config.toml",
    "codigo_aberto": true,
    "obrigatoria": false,
-   "decisao": "parada",
-   "motivo": "Segredos parados por decisão do Alan (25/11/2026) (ADR 0022)",
-   "rever_em": "2027-01-20",
+   "decisao": "normal",
    "conferir": {
     "comando": "sops"
    },
@@ -1771,7 +1767,7 @@
    "codigo_aberto": true,
    "obrigatoria": false,
    "decisao": "parada",
-   "motivo": "Desinstalado por decisão do Alan (25/11/2026): abre túnel do PC para a internet (ADR 0022)",
+   "motivo": "Desinstalado por decisão do Alan (25/11/2026): abre túnel do PC para a internet (ADR 0022, mantido na emenda: regra de segurança)",
    "rever_em": "2027-01-20",
    "conferir": {
     "comando": "bore"
@@ -2133,9 +2129,7 @@
    "fonte": "scripts/wsl/segredos.sh",
    "codigo_aberto": true,
    "obrigatoria": false,
-   "decisao": "adiada",
-   "motivo": "KeePassXC não é usado por decisão do Alan (25/11/2026) (ADR 0022)",
-   "rever_em": "2027-01-20",
+   "decisao": "normal",
    "conferir": {
     "comando": "keepassxc-cli"
    },
@@ -2247,9 +2241,7 @@
    "codigo_aberto": true,
    "obrigatoria": false,
    "perfil": "sempre",
-   "decisao": "parada",
-   "motivo": "Parado por decisão do Alan (25/11/2026) (ADR 0022)",
-   "rever_em": "2027-01-20",
+   "decisao": "normal",
    "conferir": {
     "systemd": "amtech-conteudo.timer"
    },
@@ -2436,9 +2428,7 @@
    "codigo_aberto": true,
    "obrigatoria": false,
    "perfil": "trabalho",
-   "decisao": "parada",
-   "motivo": "Parado por decisão do Alan (25/11/2026) (ADR 0022)",
-   "rever_em": "2027-01-20",
+   "decisao": "normal",
    "conferir": {
     "container": "ia/litellm"
    },
@@ -2725,9 +2715,7 @@
    "codigo_aberto": true,
    "obrigatoria": false,
    "perfil": "trabalho",
-   "decisao": "parada",
-   "motivo": "Desligado de vez por decisão do Alan (25/11/2026): o Tailscale oficial cobre (ADR 0022)",
-   "rever_em": "2027-01-20",
+   "decisao": "normal",
    "conferir": {
     "container": "soberania/headscale"
    },
@@ -2735,7 +2723,7 @@
    "ligar": "docker compose -f infra/soberania/compose.yaml --profile headscale up -d headscale",
    "ram_mb": 40,
    "disco_gb": 0.11,
-   "acesso_externo": "Servidor de coordenação da rede privada; desligado (ADR 0022)",
+   "acesso_externo": "Servidor de coordenação da rede privada (só 127.0.0.1:8085); precisa de config.yaml antes de subir",
    "doc": "Tailscale próprio"
   },
   {

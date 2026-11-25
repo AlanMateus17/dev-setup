@@ -171,9 +171,8 @@ class TestDecisoes(unittest.TestCase):
 
     def test_decisoes_do_registro(self):
         dec = v.decisoes()
-        self.assertEqual(dec["cli-keepassxc-cli"][0], "adiada")
-        self.assertEqual(dec["docker-ia-litellm"][0], "parada")
-        self.assertEqual(dec["svc-pipeline"][0], "parada")
+        self.assertEqual(dec["cli-keepassxc-cli"][0], "normal")   # emenda da ADR 0022
+        self.assertEqual(dec["cli-mise-bore"][0], "parada")
 
 
 if __name__ == "__main__":
