@@ -9,6 +9,10 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 - **probe-rs** também não: o mise pegava o arquivo `target-gen` do release. Agora `asset_pattern` aponta para `probe-rs-tools-x86_64-unknown-linux-gnu.tar.xz` (versão fixa 0.32.0).
 - `just instalar`: depois de rodar, confere de novo o PC e acusa erro quando o comando terminou bem mas a ferramenta continua sem existir (foi assim que o sops passou despercebido). 1 teste novo.
 
+## [2.54.1] - 2026-11-25
+
+### Corrigido
+- `just validar` (item 6): o alarme "vigia agendado não rodou nos últimos 30 runs" era falso num dia com muitos PRs (o run semanal saía da janela dos 30 mais recentes). Agora o último run agendado do `vigia.yml` é buscado à parte e conferido como o docstring já dizia: no máximo 8 dias e terminado com sucesso. 1 teste novo.
 ## [2.54.0] - 2026-11-25
 
 ### Adicionado
