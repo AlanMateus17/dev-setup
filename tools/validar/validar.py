@@ -398,7 +398,15 @@ def ci_github(item: str) -> list[Resultado]:
         runs = runs_proprios(json.loads(p.stdout or "{}").get("workflow_runs", []))
     except json.JSONDecodeError:
         runs = []
-    return [avaliar_ci(item, runs)]
+    # O agendado é buscado à parte: num dia com muitos PRs, os 30 runs mais recentes não chegam até ele.
+    a = subprocess.run(["gh", "api", f"repos/{REPO}/actions/workflows/vigia.yml/runs?event=schedule&per_page=1"],
+                       capture_output=True, text=True, cwd=RAIZ)
+    try:
+        lista = json.loads(a.stdout or "{}").get("workflow_runs", [])
+        agendado = lista[0] if lista else {}
+    except json.JSONDecodeError:
+        agendado = None
+    return [avaliar_ci(item, runs, agendado)]
 
 
 def runs_proprios(brutos: list[dict]) -> list[dict]:
@@ -407,8 +415,9 @@ def runs_proprios(brutos: list[dict]) -> list[dict]:
             for r in brutos if str(r.get("path", "")).startswith(".github/workflows/")]
 
 
-def avaliar_ci(item: str, runs: list[dict]) -> Resultado:
-    """O CI conta como 'roda sozinho' se o último de cada workflow passou e o agendado (vigia) rodou em 8 dias."""
+def avaliar_ci(item: str, runs: list[dict], agendado: dict | None = None, agora: float | None = None) -> Resultado:
+    """O CI conta como 'roda sozinho' se o último de cada workflow passou e o agendado (vigia) rodou em 8 dias.
+    agendado: o último run agendado do vigia ({} = nunca rodou; None = não deu para ler, usa só a lista de runs)."""
     if not runs:
         return Resultado(item, "sozinho", FALHA, "nenhuma execução do CI encontrada")
     ultimos: dict[str, dict] = {}
@@ -417,6 +426,16 @@ def avaliar_ci(item: str, runs: list[dict]) -> Resultado:
     ruins = [w for w, r in ultimos.items() if r.get("conclusion") not in ("success", "")]
     if ruins:
         return Resultado(item, "sozinho", FALHA, f"último run falhou: {', '.join(sorted(ruins))}")
+    if agendado is not None:
+        if not agendado:
+            return Resultado(item, "sozinho", FALHA, "o vigia agendado nunca rodou")
+        quando = time.mktime(time.strptime(agendado.get("created_at", "1970-01-01T00:00:00Z"), "%Y-%m-%dT%H:%M:%SZ")) - time.timezone
+        dias = ((agora or time.time()) - quando) / 86400
+        if dias > 8:
+            return Resultado(item, "sozinho", FALHA, f"o vigia agendado não roda há {dias:.0f} dias")
+        if agendado.get("conclusion") not in ("success", "", None):
+            return Resultado(item, "sozinho", FALHA, f"o último vigia agendado terminou com '{agendado.get('conclusion')}'")
+        return Resultado(item, "sozinho", OK)
     agendados = [r for r in runs if r.get("event") == "schedule"]
     if not agendados:
         return Resultado(item, "sozinho", FALHA, "o vigia agendado não rodou nos últimos 30 runs")

@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.54.1] - 2026-11-25
+
+### Corrigido
+- `just validar` (item 6): o alarme "vigia agendado não rodou nos últimos 30 runs" era falso num dia com muitos PRs (o run semanal saía da janela dos 30 mais recentes). Agora o último run agendado do `vigia.yml` é buscado à parte e conferido como o docstring já dizia: no máximo 8 dias e terminado com sucesso. 1 teste novo.
+
 ## [2.53.0] - 2026-11-25
 
 ### Adicionado
