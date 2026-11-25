@@ -2,6 +2,13 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.54.2] - 2026-11-25
+
+### Corrigido
+- **sops** nunca funcionou: o mise baixava o binário com o nome do release (`sops-v3.13.3.linux.amd64`) e não existia comando `sops`. Agora `bin = "sops"` no `config.toml` do mise (versão fixa 3.13.3).
+- **probe-rs** também não: o mise pegava o arquivo `target-gen` do release. Agora `asset_pattern` aponta para `probe-rs-tools-x86_64-unknown-linux-gnu.tar.xz` (versão fixa 0.32.0).
+- `just instalar`: depois de rodar, confere de novo o PC e acusa erro quando o comando terminou bem mas a ferramenta continua sem existir (foi assim que o sops passou despercebido). 1 teste novo.
+
 ## [2.54.0] - 2026-11-25
 
 ### Adicionado

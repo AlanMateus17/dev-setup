@@ -512,27 +512,34 @@ def planejar_instalacao(dados: dict, estados: list[dict], alvo: str) -> list[dic
     por_id = {f["id"]: f for f in dados["ferramentas"]}
     acoes: dict[str, dict] = {}
 
-    def juntar(comando: str, nome: str):
-        a = acoes.setdefault(comando, {"comando": comando, "modo": modo_de(comando), "ferramentas": []})
+    def juntar(comando: str, nome: str, fid: str):
+        a = acoes.setdefault(comando, {"comando": comando, "modo": modo_de(comando), "ferramentas": [], "ids": []})
         if nome not in a["ferramentas"]:
             a["ferramentas"].append(nome)
+            a["ids"].append(fid)
 
     for e in estados:
         f = por_id[e["id"]]
         if f["decisao"] != "normal" or not _no_alvo(f, alvo):
             continue
         if e["instalada"] is False:
-            juntar(f["instalar"], f["nome"])
+            juntar(f["instalar"], f["nome"], f["id"])
         if f["tipo"] == "vscode" and e.get("instalada_wsl") is False:
-            juntar("bash scripts/wsl/extensoes-vscode.sh", f["nome"])
+            juntar("bash scripts/wsl/extensoes-vscode.sh", f["nome"], f["id"])
     ordem = {"auto": 0, "sudo": 1, "manual": 2}
     return sorted(acoes.values(), key=lambda a: (ordem[a["modo"]], a["comando"]))
+
+
+def ainda_faltando(dados: dict, ids: list[str], estados: list[dict]) -> list[str]:
+    """Depois de instalar: o comando terminou bem, mas a ferramenta continua sem existir (ex.: binário com outro nome)."""
+    por_id = {e["id"]: e for e in estados}
+    return [por_id[i]["nome"] for i in ids if por_id.get(i, {}).get("instalada") is False]
 
 
 def executar_instalacao(acoes: list[dict], simular: bool = False) -> dict:
     """Roda as ações automáticas; as de sudo só se o sudo já estiver liberado; as manuais viram lista para o Alan."""
     sudo_livre = subprocess.run(["sudo", "-n", "true"], capture_output=True).returncode == 0 if shutil.which("sudo") else False
-    res = {"ok": 0, "erro": 0, "voce": []}
+    res = {"ok": 0, "erro": 0, "voce": [], "ids_ok": []}
     for a in acoes:
         nomes = ", ".join(a["ferramentas"][:6]) + (f" (+{len(a['ferramentas']) - 6})" if len(a["ferramentas"]) > 6 else "")
         if a["modo"] == "manual" or (a["modo"] == "sudo" and not sudo_livre and not simular):
@@ -545,6 +552,7 @@ def executar_instalacao(acoes: list[dict], simular: bool = False) -> dict:
         r = subprocess.run(argv_de(a["comando"]), cwd=RAIZ, capture_output=True, text=True, errors="replace")
         if r.returncode == 0:
             res["ok"] += 1
+            res["ids_ok"] += a["ids"]
             print(f"  [ok]   {a['comando']}   # {nomes}")
         else:
             res["erro"] += 1
@@ -586,8 +594,11 @@ def main(argv: list[str] | None = None) -> int:
         if a.simular:
             print("Simulação. Rode sem --simular para instalar.")
             return 0
-        print(f"\nInstalados: {res['ok']} comando(s); erros: {res['erro']}; com você: {len(res['voce'])}")
-        return 1 if res["erro"] else 0
+        faltam = ainda_faltando(dados, res["ids_ok"], estado(dados)) if res["ids_ok"] else []
+        for n in faltam:
+            print(f"  [erro] {n}: o comando terminou bem, mas a ferramenta continua sem existir no PC (confira o nome do binário)")
+        print(f"\nInstalados: {res['ok']} comando(s); erros: {res['erro'] + len(faltam)}; com você: {len(res['voce'])}")
+        return 1 if res["erro"] or faltam else 0
     if a.perfil:
         try:
             return 1 if aplicar_perfil(dados, a.perfil, a.acao) else 0

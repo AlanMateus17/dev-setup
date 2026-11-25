@@ -234,6 +234,11 @@ class TestInstalar(unittest.TestCase):
         self.assertEqual(ferramentas.modo_de("bash scripts/wsl/extras.sh"), "auto")
         self.assertEqual(ferramentas.argv_de("winget install --id Git.Git -e")[:4], ["winget.exe", "install", "--id", "Git.Git"])
 
+    def test_confere_depois_de_instalar(self):
+        d = ferramentas.carregar()
+        est = [{"id": "cli-mise-sops", "nome": "sops", "instalada": False}, {"id": "cli-uv", "nome": "uv", "instalada": True}]
+        self.assertEqual(ferramentas.ainda_faltando(d, ["cli-mise-sops", "cli-uv"], est), ["sops"])
+
     def test_plano_sem_repetir_comando_e_sem_parados(self):
         d = ferramentas.carregar()
         est = [{"id": f["id"], "instalada": False, "instalada_wsl": None} for f in d["ferramentas"]]
