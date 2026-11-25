@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.44.2] - 2026-11-25
+
+### Corrigido
+- `just validar`: o backup só aparece OK no PC quando o arquivo de senha do restic existe, não está vazio e tem chmod 600 (antes bastava o `backup.env` existir), e a integração só fica OK quando o repositório restic existe de fato (antes, também só o `backup.env`). A mensagem diz o que falta: colar a senha, `chmod 600`, o disco ou o `restic init`. A senha nunca é lida, só o tamanho e a permissão do arquivo.
+
 ## [2.44.1] - 2026-11-25
 
 ### Adicionado
