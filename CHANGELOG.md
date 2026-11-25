@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.46.1] - 2026-11-25
+
+### Adicionado
+- `scripts/windows/acordar-backup.ps1`: tarefa do Agendador "AMtech acordar backup" que, às 22h20, acorda o notebook suspenso (WakeToRun) e liga o Ubuntu por 30 minutos, para o backup do cron das 22h30 rodar com o terminal fechado. Roda depois, se o computador estava desligado (StartWhenAvailable). Sem administrador; `-Testar` e `-Desfazer`.
+
 ## [2.46.0] - 2026-11-25
 
 ### Adicionado
