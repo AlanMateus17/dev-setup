@@ -239,7 +239,7 @@ vault-espelho *opcao:
 backup:
     bash scripts/wsl/backup.sh
 
-# Liga o setup para o celular (Ollama, modelos, aider, LiteLLM, fila, bot, Remote Control): just ligar  ·  só ver: just ligar --simular
+# Liga o setup: just ligar (sempre: Ollama, fila, bot, Remote Control)  ·  com Docker: just ligar trabalho | sob-demanda | laboratorio  ·  só ver: just ligar trabalho --simular
 ligar *opcao:
     bash scripts/wsl/ligar-tudo.sh {{opcao}}
 
@@ -247,9 +247,9 @@ ligar *opcao:
 ligado:
     bash scripts/wsl/ligar-tudo.sh --status
 
-# Para os serviços do celular (não desinstala nada)
-desligar:
-    bash scripts/wsl/ligar-tudo.sh --desligar
+# Para os serviços do celular (não desinstala nada)  ·  só os containers de um perfil: just desligar trabalho
+desligar *opcao:
+    bash scripts/wsl/ligar-tudo.sh --desligar {{opcao}}
 
 # Manda um pedido para a fila (o mesmo do /pedir no Telegram): just pedir "@catalogo-html corrigir o menu"
 pedir texto:

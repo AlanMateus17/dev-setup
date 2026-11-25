@@ -4,6 +4,11 @@
 #   bash scripts/wsl/ligar-tudo.sh             # instala o que falta e liga os serviços
 #   bash scripts/wsl/ligar-tudo.sh --status    # só mostra o que está no ar
 #   bash scripts/wsl/ligar-tudo.sh --desligar  # para os serviços (não desinstala nada)
+# Perfil (data/ferramentas.json), em qualquer posição: sempre (padrão), trabalho, sob-demanda, laboratorio.
+#   bash scripts/wsl/ligar-tudo.sh trabalho             # o de sempre + os serviços Docker do perfil trabalho
+#   bash scripts/wsl/ligar-tudo.sh laboratorio --simular
+#   bash scripts/wsl/ligar-tudo.sh --desligar trabalho  # para só os containers do perfil
+# O que está parado por decisão (ADR 0022), como o LiteLLM, não sobe em nenhum perfil.
 #
 # Depois de ligado, do celular:
 #   · App do Claude → Code: a sessão "Setup AMtech" roda no seu notebook (Remote Control, plano Pro ou Max).
@@ -12,7 +17,17 @@
 set -uo pipefail
 USER="${USER:-$(id -un)}"
 RAIZ="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-MODO="${1:-}"
+MODO=""; PERFIL="sempre"
+for a in "$@"; do
+  case "$a" in
+    --simular|--status|--desligar) MODO="$a" ;;
+    sempre|trabalho|sob-demanda|laboratorio) PERFIL="$a" ;;
+    *) echo "Opção desconhecida: $a (use --simular, --status, --desligar ou um perfil: sempre, trabalho, sob-demanda, laboratorio)" >&2; exit 64 ;;
+  esac
+done
+FERRAMENTAS="$RAIZ/tools/ferramentas/ferramentas.py"
+# decisao <id>: normal, parada ou adiada (data/ferramentas.json)
+decisao() { python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); print(next((f["decisao"] for f in d["ferramentas"] if f["id"]==sys.argv[2]), "normal"))' "$RAIZ/data/ferramentas.json" "$1"; }
 UNIDADES="$HOME/.config/systemd/user"
 CFG="$HOME/.config/amtech"
 MODELOS=(qwen2.5-coder:7b qwen2.5:7b)
@@ -40,12 +55,13 @@ status() {
 case "$MODO" in
   --status) status; exit 0 ;;
   --desligar)
+    if [[ "$PERFIL" != "sempre" ]]; then python3 "$FERRAMENTAS" --perfil "$PERFIL" --acao desligar; exit $?; fi
     systemctl --user stop amtech-remoto amtech-fila amtech-bot 2>/dev/null
     (cd "$RAIZ/infra/ia" && docker compose down 2>/dev/null)
     echo "Serviços parados. Para ligar de novo: just ligar"; exit 0 ;;
 esac
 
-etapa "1/7 Ambiente (systemd no WSL)"
+etapa "1/8 Ambiente (systemd no WSL)"
 if [[ "$(ps -p 1 -o comm= 2>/dev/null)" == "systemd" ]]; then ok "systemd ativo"
 else
   sim && faz "gravaria /etc/wsl.conf com systemd=true" || { printf '[boot]\nsystemd=true\n' | sudo tee /etc/wsl.conf >/dev/null; }
@@ -55,13 +71,13 @@ fi
 if loginctl show-user "$USER" 2>/dev/null | grep -q 'Linger=yes'; then ok "serviços continuam sem terminal aberto (linger)"
 else sim && faz "loginctl enable-linger $USER" || sudo loginctl enable-linger "$USER"; fi
 
-etapa "2/7 Claude Code (assinatura, Remote Control)"
+etapa "2/8 Claude Code (assinatura, Remote Control)"
 if tem claude; then ok "Claude Code $(claude --version 2>/dev/null | head -1)"
 else sim && faz "instalaria o Claude Code" || curl -fsSL https://claude.ai/install.sh | bash || erro "instalação do Claude Code"; fi
 if [[ -f "$CFG/remoto-aceito" ]]; then ok "Remote Control já aceito nesta pasta"
 else falta "Uma vez só, num terminal: cd $RAIZ && claude remote-control  → responda y, y, escolha 2 (worktree), confira o QR no celular e Ctrl+C. Depois: touch $CFG/remoto-aceito && just ligar"; fi
 
-etapa "3/7 Ollama e modelos locais (funcionam sem crédito nenhum)"
+etapa "3/8 Ollama e modelos locais (funcionam sem crédito nenhum)"
 if curl -fsS -m 3 http://localhost:11434/api/tags >/dev/null 2>&1; then ok "Ollama no ar"
 elif tem ollama; then sim && faz "sudo systemctl enable --now ollama" || sudo systemctl enable --now ollama || erro "ligar o Ollama"
 else sim && faz "instalaria o Ollama (usa a GTX 1650 se o driver NVIDIA do Windows estiver em dia)" \
@@ -74,13 +90,16 @@ for m in "${MODELOS[@]}"; do
   else sim && faz "ollama pull $m (~4,7 GB)" || { tem ollama && ollama pull "$m" || erro "baixar $m"; }; fi
 done
 
-etapa "4/7 aider (agente que roda com qualquer modelo)"
+etapa "4/8 aider (agente que roda com qualquer modelo)"
 if tem aider; then ok "aider"
 elif tem uv; then sim && faz "uv tool install aider-chat" || uv tool install aider-chat || erro "aider"
 else erro "uv ausente: rode antes just instalar"; fi
 
-etapa "5/7 Gateway LiteLLM (opcional; precisa do Docker)"
+etapa "5/8 Gateway LiteLLM (opcional; precisa do Docker)"
 ENV_IA="$RAIZ/infra/ia/.env"
+if [[ "$(decisao docker-ia-litellm)" != "normal" ]]; then
+  printf '  [--]   LiteLLM parado por decisão (ADR 0022): não sobe; a fila usa Gemini direto ou o Ollama\n'
+else
 if [[ ! -f "$ENV_IA" ]]; then
   if sim; then faz "criaria infra/ia/.env com chave mestra nova"
   else
@@ -95,8 +114,9 @@ if tem docker && docker info >/dev/null 2>&1; then
   elif (cd "$RAIZ/infra/ia" && docker compose up -d >/dev/null 2>&1); then ok "LiteLLM em http://localhost:4000"
   else erro "subir o LiteLLM (cd infra/ia && docker compose up -d mostra o motivo)"; fi
 else ok "Docker desligado: a fila funciona sem o gateway (Gemini direto e Ollama direto)"; fi
+fi
 
-etapa "6/7 Serviços que ficam no ar"
+etapa "6/8 Serviços que ficam no ar"
 mkdir -p "$UNIDADES" "$CFG" && chmod 700 "$CFG"
 escrever() { # nome, descrição, comando, pasta
   local destino="$UNIDADES/$1.service"
@@ -132,7 +152,7 @@ if ! sim; then
   systemctl --user enable --now "${ligar[@]}" >/dev/null 2>&1 && ok "no ar: ${ligar[*]}" || erro "ligar ${ligar[*]} (veja: journalctl --user -u amtech-fila)"
 fi
 
-etapa "7/7 Windows: não deixar o WSL nem o notebook dormirem"
+etapa "7/8 Windows: não deixar o WSL nem o notebook dormirem"
 PS1="$RAIZ/scripts/windows/manter-ligado.ps1"
 if [[ -f "$CFG/windows-ok" ]]; then ok "WSL e energia já configurados no Windows"
 elif sim; then faz "abriria o PowerShell (pede permissão de administrador) com manter-ligado.ps1"
@@ -141,6 +161,12 @@ elif tem powershell.exe && tem wslpath; then
   powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$(wslpath -w "$PS1")" -Distro "${WSL_DISTRO_NAME:-Ubuntu}" \
     && touch "$CFG/windows-ok" && ok "tarefa de inicialização criada no Windows" || erro "manter-ligado.ps1 (rode de novo e aceite a permissão)"
 else falta "No PowerShell: powershell -ExecutionPolicy Bypass -File $PS1"; fi
+
+etapa "8/8 Serviços Docker do perfil: $PERFIL"
+if [[ "$PERFIL" == "sempre" ]]; then ok "perfil sempre: nenhum serviço Docker (trabalho: just ligar trabalho)"
+elif ! { tem docker && docker info >/dev/null 2>&1; }; then erro "Docker desligado: abra o Docker Desktop e rode de novo"
+elif sim; then python3 "$FERRAMENTAS" --perfil "$PERFIL" --acao ver
+else python3 "$FERRAMENTAS" --perfil "$PERFIL" --acao ligar || erro "algum compose do perfil $PERFIL não subiu (veja acima)"; fi
 
 status
 echo
