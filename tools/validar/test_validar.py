@@ -58,6 +58,13 @@ class TestMatriz(unittest.TestCase):
         self.assertFalse(v.linha_agendada("backup.sh", None))
 
 
+class TestRodar(unittest.TestCase):
+    def test_comando_que_pergunta_nao_trava(self):
+        # No PC (terminal de verdade) a triagem perguntava s/n escondida pela saída capturada e passava de 300 s.
+        rc, _ = v.rodar([sys.executable, "-c", "input('s/n? ')"], timeout=10)
+        self.assertNotEqual(rc, 124)
+
+
 class TestJustfileCompativel(unittest.TestCase):
     """O bootstrap instala o just pelo apt; no Ubuntu 24.04 é o 1.21, que não conhece [positional-arguments]."""
 

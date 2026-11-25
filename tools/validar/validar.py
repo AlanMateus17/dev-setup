@@ -57,8 +57,9 @@ def rodar(cmd: list[str] | str, timeout: int = 300, env: dict | None = None) -> 
     if VERBOSO:
         print(f"  … {cmd if isinstance(cmd, str) else ' '.join(cmd)}"[:110], file=sys.stderr, flush=True)
     try:
+        # stdin vazio: com a saída capturada, uma pergunta (ex.: a triagem sem --nucleo) ficaria invisível e travaria
         p = subprocess.run(cmd, cwd=RAIZ, shell=isinstance(cmd, str), capture_output=True, text=True,
-                           timeout=timeout, env=env)
+                           timeout=timeout, env=env, stdin=subprocess.DEVNULL)
         saida = [l for l in (p.stdout + p.stderr).strip().splitlines() if not l.startswith("error: Recipe")]
         return p.returncode, " | ".join(saida[-2:])[:160]
     except FileNotFoundError as e:
@@ -211,14 +212,14 @@ def checar(rapido: bool, restaurar: bool) -> list[Resultado]:
     if agendado and log_ok and ev:
         R.append(Resultado(i, "sozinho", OK))
     else:
-        R.append(Resultado(i, "sozinho", MIM, cron_msg if not agendado else
-                           "agendado, mas sem backup nas últimas 36 h ou sem evento no núcleo (veja ~/backup-ultimo.log)"))
+        R.append(Resultado(i, "sozinho", MIM, cron_msg) if not agendado else
+                 Resultado(i, "sozinho", FALHA, "agendado, mas sem backup nas últimas 36 h ou sem evento no núcleo (veja ~/backup-ultimo.log)"))
     R.append(Resultado(i, "integracao", OK if conf.exists() else MIM,
                        "" if conf.exists() else "disco do repositório restic (D:) e senha no KeePassXC"))
 
     # 4. Motor e triagem
     i = "4. Motor e triagem"
-    R.append(por_comando(i, "pc", ["just", "triagem", "atendimento no WhatsApp com fila"]))
+    R.append(por_comando(i, "pc", ["just", "triagem", "atendimento no WhatsApp com fila", "--nucleo", "nao", "--integra", "nao"]))
     R.append(por_comando(i, "pc", ["just", "motor", "calcular o rateio"]))
     R.append(Resultado(i, "sozinho", OK if linha_agendada("resumo-manha", cron) else MIM,
                        "" if linha_agendada("resumo-manha", cron) else cron_msg))
