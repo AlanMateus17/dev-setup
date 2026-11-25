@@ -4,20 +4,20 @@
 
 [← Implantação](README.md)
 
-65 fases, 594 passos, cerca de **1471 h 13 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+65 fases, 595 passos, cerca de **1471 h 28 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
 **Todo o planejamento está aqui:** os 481 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 98 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 471 dos 594 passos (652 h 28 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 472 dos 595 passos (652 h 43 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
 | [0 · Diagnóstico: o que você já tem](#f0) | Antes de tudo · semana 1 (out/2026) | 6 | 1 h 40 min |
 | [1 · Preparar](#f1) | Semana 1 · out/2026 | 4 | 2 h 40 min |
 | [2 · Senhas: recuperar, trocar e guardar](#f2) | Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027 | 21 | 9 h 15 min |
-| [3 · Ferramentas do dia a dia: ligar e testar cada uma uma vez](#f-ferramentas) | Junto com a fase Senhas · a partir de 22/11/2026 (uma sessão curta por grupo) | 9 | 4 h 15 min |
+| [3 · Ferramentas do dia a dia: ligar e testar cada uma uma vez](#f-ferramentas) | Junto com a fase Senhas · a partir de 22/11/2026 (uma sessão curta por grupo) | 10 | 4 h 30 min |
 | [4 · Windows](#f3) | Semana 1 · out/2026 | 9 | 2 h 30 min |
 | [5 · Linux (WSL2)](#f4) | Semana 2 · nov/2026 | 10 | 2 h 22 min |
 | [6 · GitHub e CI](#f5) | Semana 2 · nov/2026 | 5 | 55 min |
@@ -477,7 +477,20 @@ cd ~/dev/dev-setup && just verificar && just bootstrap-simular && just backup &&
 - [ ] **Pronto quando:** verificar sem erro, backup feito e serviço de teste subindo e parando
 - O just ligar já está na fase Celular; aqui é o resto da operação diária. Senhas no dia a dia: just senha NOME, just senhas-lista (regenera docs/senhas.md) e just cofre-fechar (tranca na hora).
 
-### 3.2 Motor de decisão: escada, custo e regra de três
+### 3.2 Validar o setup de ponta a ponta e ver o que falta
+
+**Script** · 15 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/dev-setup && just validar
+```
+
+- [ ] **Pronto quando:** just validar sem FALHA; cada PRECISA DE MIM vira passo feito ou pendência anotada
+- Imprime a matriz de docs/operacao/validacao.md (testes, roda no PC, roda sozinho, integração). just validar --rapido pula o just check; just validar --restaurar restaura o último backup numa pasta temporária.
+
+### 3.3 Motor de decisão: escada, custo e regra de três
 
 **Script** · 15 min
 
@@ -490,7 +503,7 @@ cd ~/dev/dev-setup && just motor "calcular o rateio da casa" && just motor-ok 1 
 - [ ] **Pronto quando:** Um pedido passou pela escada, foi marcado ok e aparece no relatório
 - just motor-refazer N marca uma decisão para refazer.
 
-### 3.3 Núcleo: tarefas
+### 3.4 Núcleo: tarefas
 
 **Script** · 5 min
 
@@ -502,7 +515,7 @@ cd ~/dev/dev-setup && just tarefas
 
 - [ ] **Pronto quando:** just tarefas lista as tarefas abertas
 
-### 3.4 Estudo: mapa do Professor, biblioteca, diagnóstico, ficha, colheita, erros e atritos
+### 3.5 Estudo: mapa do Professor, biblioteca, diagnóstico, ficha, colheita, erros e atritos
 
 **Script** · 25 min
 
@@ -514,7 +527,7 @@ cd ~/dev/dev-setup && just professor-mapa && just livros lista && just diag && j
 
 - [ ] **Pronto quando:** Cada comando roda uma vez sem erro e o erro/atrito de teste aparece no vault
 
-### 3.5 Fontes de estudo: baixar a primeira documentação oficial e conferir um trecho
+### 3.6 Fontes de estudo: baixar a primeira documentação oficial e conferir um trecho
 
 **Script** · 20 min
 
@@ -527,7 +540,7 @@ cd ~/dev/dev-setup && just fontes docs && just fontes baixar typescript-handbook
 - [ ] **Pronto quando:** just fontes docs lista as documentações; a do TypeScript aparece como baixada com o commit registrado; just fontes citar devolve OK para um trecho real
 - O acervo fica em ~/AMtech/estudo, fora do Git e dentro do backup. Para converter livros, aulas e áudios sem IA, instale antes Docling, Pandoc e WhisperX (e o Dangerzone para PDF de fora); depois: just fontes entrada --licenca comprado-uso-pessoal. Guia: docs/professor/fontes.md.
 
-### 3.6 Qualidade: coerência dos textos com o plano
+### 3.7 Qualidade: coerência dos textos com o plano
 
 **Script** · 5 min
 
@@ -539,7 +552,7 @@ cd ~/dev/dev-setup && just coerencia
 
 - [ ] **Pronto quando:** just coerencia termina com 0 erros
 
-### 3.7 Vitrine de um produto num repositório público
+### 3.8 Vitrine de um produto num repositório público
 
 **Você** · 30 min
 
@@ -552,7 +565,7 @@ cd ~/dev/dev-setup && just vitrine
 - [ ] **Pronto quando:** A vitrine de um produto está publicada e revisada por você
 - Pede confirmação: sobrescreve o README do repositório da vitrine.
 
-### 3.8 Sala limpa cifrada do laboratório de segurança
+### 3.9 Sala limpa cifrada do laboratório de segurança
 
 **Script** · 15 min
 
@@ -565,7 +578,7 @@ cd ~/dev/dev-setup && just lab-abrir && just lab-fechar
 - [ ] **Pronto quando:** lab-abrir monta a pasta cifrada com a senha do cofre e lab-fechar desmonta
 - A senha do gocryptfs fica no cofre (inventário: Senha da sala limpa).
 
-### 3.9 AMtech OS 0.1: testar numa VM antes de decidir o ADR 0016
+### 3.10 AMtech OS 0.1: testar numa VM antes de decidir o ADR 0016
 
 **Você** · 2 h 00 min
 

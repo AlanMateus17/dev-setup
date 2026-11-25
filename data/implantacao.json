@@ -437,6 +437,16 @@
      "blocos": []
     },
     {
+     "id": "fd-validar",
+     "titulo": "Validar o setup de ponta a ponta e ver o que falta",
+     "quem": "script",
+     "pronto": "just validar sem FALHA; cada PRECISA DE MIM vira passo feito ou pendência anotada",
+     "tempo_min": 15,
+     "comando": "cd ~/dev/dev-setup && just validar",
+     "nota": "Imprime a matriz de docs/operacao/validacao.md (testes, roda no PC, roda sozinho, integração). just validar --rapido pula o just check; just validar --restaurar restaura o último backup numa pasta temporária.",
+     "blocos": []
+    },
+    {
      "id": "fd-motor",
      "titulo": "Motor de decisão: escada, custo e regra de três",
      "quem": "script",

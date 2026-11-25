@@ -2,6 +2,20 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.44.1] - 2026-11-25
+
+### Adicionado
+- Passo `fd-validar` no roteiro (fase Ferramentas do dia a dia) para o `just validar`.
+- `just validar` (`tools/validar/validar.py`): refaz as checagens automáticas da validação de ponta a ponta (testes, roda no PC, roda sozinho, integração) e imprime a matriz; `--rapido` e `--restaurar`. Matriz e pendências em `docs/operacao/validacao.md`.
+
+### Corrigido
+- justfile: `set positional-arguments` global no lugar do atributo `[positional-arguments]`, que o `just` 1.21 do apt (Ubuntu 24.04, o que o bootstrap instala) não lê; antes, nenhuma receita rodava nessa versão.
+- `backup.sh`: o evento `backup.concluido` nunca chegava ao núcleo (a última linha do `restic snapshots --compact` é um separador "-----" que o argparse lia como opção, e o `|| true` escondia). Agora usa o id pelo `--json`.
+- `coerencia.py --relatorio` cria a pasta do relatório (sem `~/dev` dava traceback, escondido pelo `|| true` da receita).
+- `professor-mapa` sem o MAPA.md: aviso com o que fazer no lugar do traceback.
+- Receitas novas da `main` (`fontes` e `senha`) ajustadas para o `just` 1.21: sem o atributo `[positional-arguments]` e sem `*opcao` depois de parâmetro com padrão (`just senha` continua aceitando a busca opcional).
+- `segredos.sh` também aceita o nome antigo do cofre (`cofre senhas.kdbx`) depois do caminho do roteiro, e o `just validar` procura nos mesmos lugares.
+- `just validar` não trava esperando resposta de uma pergunta escondida (stdin vazio), e backup agendado que não roda aparece como FALHA.
 ## [2.44.0] - 2026-11-22
 
 ### Adicionado

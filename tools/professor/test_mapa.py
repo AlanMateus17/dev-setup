@@ -77,5 +77,22 @@ class TestMapa(unittest.TestCase):
                 self.assertEqual(c[info["professor"]], etapa, info["professor"])
 
 
+class TestMapaAusente(unittest.TestCase):
+    def test_sem_mapa_sai_com_mensagem_e_sem_traceback(self):
+        import io
+        import tempfile
+        from contextlib import redirect_stderr
+        with tempfile.TemporaryDirectory() as t:
+            antigo, err = sys.argv, io.StringIO()
+            sys.argv = ["mapa.py", "atualizar", str(Path(t) / "MAPA.md")]
+            try:
+                with redirect_stderr(err):
+                    rc = mapa.main()
+            finally:
+                sys.argv = antigo
+        self.assertEqual(rc, 2)
+        self.assertIn("MAPA.md não encontrado", err.getvalue())
+
+
 if __name__ == "__main__":
     unittest.main()

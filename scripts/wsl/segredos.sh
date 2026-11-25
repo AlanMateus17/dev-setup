@@ -6,7 +6,7 @@
 set -euo pipefail
 # Padrão: o cofre do roteiro (passo keepass), Documentos\Cofre\Cofre.kdbx no Windows.
 if [[ -z "${COFRE:-}" ]]; then
-  for c in /mnt/c/Users/*/Documents/Cofre/Cofre.kdbx "$HOME/Documents/Cofre/Cofre.kdbx"; do [[ -f "$c" ]] && { COFRE="$c"; break; }; done
+  for c in /mnt/c/Users/*/Documents/Cofre/Cofre.kdbx "$HOME/Documents/Cofre/Cofre.kdbx" "/mnt/c/Users/${USER}/cofre senhas.kdbx"; do [[ -f "$c" ]] && { COFRE="$c"; break; }; done
   COFRE="${COFRE:-/mnt/c/Users/${USER}/Documents/Cofre/Cofre.kdbx}"
 fi
 [[ $# -ge 4 && "$3" == "--" ]] || { sed -n '2,5p' "$0"; exit 1; }

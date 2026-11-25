@@ -119,6 +119,9 @@ def conferir(curriculo: dict, assuntos: dict[str, dict]) -> list[str]:
 def main() -> int:
     if len(sys.argv) >= 2 and sys.argv[1] == "atualizar":
         md = Path(sys.argv[2] if len(sys.argv) > 2 else Path.home() / "dev" / "mapa-de-estudo" / "MAPA.md").expanduser()
+        if not md.is_file():
+            print(f"MAPA.md não encontrado em {md}: clone o mapa-de-estudo em ~/dev (gh repo clone AlanMateus17/mapa-de-estudo ~/dev/mapa-de-estudo).", file=sys.stderr)
+            return 2
         assuntos = ler_mapa(md.read_text(encoding="utf-8"))
         RETRATO.write_text(json.dumps({"fonte": "AlanMateus17/mapa-de-estudo/MAPA.md", "assuntos": assuntos},
                                       ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
