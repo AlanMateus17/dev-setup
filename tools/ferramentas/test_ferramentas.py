@@ -227,6 +227,26 @@ class TestExtensoesWsl(unittest.TestCase):
         self.assertEqual(ferramentas.faltando_wsl([est(False)]), [])
 
 
+class TestInstalar(unittest.TestCase):
+    def test_modo_e_argv(self):
+        self.assertEqual(ferramentas.modo_de("sudo apt install keepassxc"), "sudo")
+        self.assertEqual(ferramentas.modo_de("(manual) faça X"), "manual")
+        self.assertEqual(ferramentas.modo_de("bash scripts/wsl/extras.sh"), "auto")
+        self.assertEqual(ferramentas.argv_de("winget install --id Git.Git -e")[:4], ["winget.exe", "install", "--id", "Git.Git"])
+
+    def test_plano_sem_repetir_comando_e_sem_parados(self):
+        d = ferramentas.carregar()
+        est = [{"id": f["id"], "instalada": False, "instalada_wsl": None} for f in d["ferramentas"]]
+        acoes = ferramentas.planejar_instalacao(d, est, "tudo")
+        cmds = [a["comando"] for a in acoes]
+        self.assertEqual(len(cmds), len(set(cmds)))
+        nomes = {n for a in acoes for n in a["ferramentas"]}
+        self.assertNotIn("bore", nomes)
+        self.assertNotIn("cloudflared", nomes)
+        with self.assertRaises(ValueError):
+            ferramentas.planejar_instalacao(d, est, "festa")
+
+
 class TestPerfis(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

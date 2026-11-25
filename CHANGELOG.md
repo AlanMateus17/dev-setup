@@ -2,6 +2,12 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.54.0] - 2026-11-25
+
+### Adicionado
+- **`just instalar <alvo>`** (PR 6): com um perfil (sempre, trabalho, sob-demanda, laboratorio), um tipo, um id ou `tudo`, instala só o que falta, lendo `data/ferramentas.json`; um comando por ação, sem repetir; `sudo` só roda se já estiver liberado, senão vira lista para o Alan; passos manuais idem; `--simular` mostra o plano. `just instalar` sem alvo continua montando o setup inteiro.
+- Toda ferramenta tem perfil (antes só os serviços). 2 testes novos.
+
 ## [2.53.0] - 2026-11-25
 
 ### Adicionado

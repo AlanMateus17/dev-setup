@@ -6,6 +6,11 @@
 #        → rotinas agendadas → banco local do núcleo → conferência. Pede o sudo uma vez no começo.
 set -uo pipefail
 RAIZ="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+# Com um alvo (perfil, tipo, id ou "tudo"), instala só o que falta dele, lendo data/ferramentas.json:
+#   bash scripts/wsl/instalar-tudo.sh trabalho --simular
+if [[ -n "${1:-}" && "${1:-}" != "--simular" ]]; then
+  exec python3 "$RAIZ/tools/ferramentas/ferramentas.py" --instalar "$1" ${2:+"$2"}
+fi
 SIMULAR=""; [[ "${1:-}" == "--simular" ]] && SIMULAR="--simular"
 etapa() { echo; echo "================ $1"; }
 falhas=0

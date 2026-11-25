@@ -12,6 +12,7 @@ Enquanto os scripts de instalação não leem este arquivo, o --check garante qu
     python3 tools/ferramentas/ferramentas.py --estado     # o que está instalado e rodando neste PC (lento: winget, docker)
     python3 tools/ferramentas/ferramentas.py --estado --faltando   # só o que falta e conta como falta
     python3 tools/ferramentas/ferramentas.py --perfil trabalho --acao ver|ligar|desligar   # serviços Docker de um perfil
+    python3 tools/ferramentas/ferramentas.py --instalar sempre|trabalho|...|TIPO|ID|tudo [--simular]   # instala o que falta
 """
 from __future__ import annotations
 
@@ -20,6 +21,7 @@ import datetime as dt
 import json
 import os
 import re
+import shlex
 import shutil
 import subprocess
 import sys
@@ -78,8 +80,8 @@ def validar(dados: dict) -> list[str]:
             erros.append(f"{fid}: falta a linha de documentação ('doc')")
         if tipo == "vscode" and not isinstance(f.get("wsl"), bool):
             erros.append(f"{fid}: extensão sem 'wsl' (true se também roda no VS Code do Ubuntu)")
-        if tipo in ("docker", "systemd") and f.get("perfil") not in perfis:
-            erros.append(f"{fid}: serviço sem perfil válido {sorted(perfis)}")
+        if f.get("perfil") not in perfis:
+            erros.append(f"{fid}: sem perfil válido {sorted(perfis)}")
         if tipo == "docker":
             for campo in ("ligar", "ram_mb", "disco_gb"):
                 if campo not in f:
@@ -476,6 +478,81 @@ def aplicar_perfil(dados: dict, perfil: str, acao: str) -> int:
     return falhas
 
 
+# ------------------------------------------------------------------ instalação (just instalar <alvo>)
+def modo_de(comando: str) -> str:
+    """auto: roda sozinho; sudo: precisa de senha de administrador no Ubuntu; manual: o Alan faz."""
+    c = comando.strip()
+    if c.startswith("(") or c.startswith("ver "):
+        return "manual"
+    if c.startswith("sudo "):
+        return "sudo"
+    return "auto"
+
+
+def argv_de(comando: str) -> list[str]:
+    """Comando do registro -> argumentos para rodar a partir do Ubuntu (winget e code do Windows pelo .exe)."""
+    c = comando.strip()
+    if c.startswith("winget install"):
+        return ["winget.exe", *shlex.split(c)[1:], "--silent", "--accept-package-agreements", "--accept-source-agreements",
+                "--disable-interactivity"]
+    if c.startswith("code --install-extension"):
+        return ["cmd.exe", "/c", c]
+    return ["bash", "-c", c]  # scripts do repositório, docker compose, just e variáveis de ambiente (dados do próprio repositório)
+
+
+def _no_alvo(f: dict, alvo: str) -> bool:
+    return alvo == "tudo" or f.get("perfil") == alvo or f["tipo"] == alvo or f["id"] == alvo
+
+
+def planejar_instalacao(dados: dict, estados: list[dict], alvo: str) -> list[dict]:
+    """Ações para o que falta no alvo (perfil, tipo, id ou 'tudo'), um comando por ação, sem repetir comando."""
+    validos = {"tudo", *dados["perfis"], *TIPOS, *(f["id"] for f in dados["ferramentas"])}
+    if alvo not in validos:
+        raise ValueError(f"alvo '{alvo}' desconhecido: use tudo, um perfil ({', '.join(dados['perfis'])}), um tipo ({', '.join(TIPOS)}) ou um id")
+    por_id = {f["id"]: f for f in dados["ferramentas"]}
+    acoes: dict[str, dict] = {}
+
+    def juntar(comando: str, nome: str):
+        a = acoes.setdefault(comando, {"comando": comando, "modo": modo_de(comando), "ferramentas": []})
+        if nome not in a["ferramentas"]:
+            a["ferramentas"].append(nome)
+
+    for e in estados:
+        f = por_id[e["id"]]
+        if f["decisao"] != "normal" or not _no_alvo(f, alvo):
+            continue
+        if e["instalada"] is False:
+            juntar(f["instalar"], f["nome"])
+        if f["tipo"] == "vscode" and e.get("instalada_wsl") is False:
+            juntar("bash scripts/wsl/extensoes-vscode.sh", f["nome"])
+    ordem = {"auto": 0, "sudo": 1, "manual": 2}
+    return sorted(acoes.values(), key=lambda a: (ordem[a["modo"]], a["comando"]))
+
+
+def executar_instalacao(acoes: list[dict], simular: bool = False) -> dict:
+    """Roda as ações automáticas; as de sudo só se o sudo já estiver liberado; as manuais viram lista para o Alan."""
+    sudo_livre = subprocess.run(["sudo", "-n", "true"], capture_output=True).returncode == 0 if shutil.which("sudo") else False
+    res = {"ok": 0, "erro": 0, "voce": []}
+    for a in acoes:
+        nomes = ", ".join(a["ferramentas"][:6]) + (f" (+{len(a['ferramentas']) - 6})" if len(a["ferramentas"]) > 6 else "")
+        if a["modo"] == "manual" or (a["modo"] == "sudo" and not sudo_livre and not simular):
+            res["voce"].append(f"{a['comando']}   # {nomes}")
+            print(f"  [você] {a['comando']}   # {nomes}")
+            continue
+        if simular:
+            print(f"  [faz]  {a['comando']}   # {nomes}")
+            continue
+        r = subprocess.run(argv_de(a["comando"]), cwd=RAIZ, capture_output=True, text=True, errors="replace")
+        if r.returncode == 0:
+            res["ok"] += 1
+            print(f"  [ok]   {a['comando']}   # {nomes}")
+        else:
+            res["erro"] += 1
+            ultima = next((l for l in reversed((r.stdout + r.stderr).splitlines()) if l.strip()), "")
+            print(f"  [erro] {a['comando']}   # {nomes}: {ultima[-200:]}")
+    return res
+
+
 # ------------------------------------------------------------------ linha de comando
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
@@ -485,6 +562,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--json", action="store_true", help="com --estado: saída em JSON")
     ap.add_argument("--perfil", help="serviços Docker de um perfil (sempre, trabalho, sob-demanda, laboratorio)")
     ap.add_argument("--acao", choices=("ver", "ligar", "desligar"), default="ver", help="com --perfil")
+    ap.add_argument("--instalar", metavar="ALVO", help="instala o que falta: tudo, um perfil, um tipo ou um id")
+    ap.add_argument("--simular", action="store_true", help="com --instalar: só mostra")
     a = ap.parse_args(argv)
     dados = carregar()
     erros = validar(dados)
@@ -493,6 +572,22 @@ def main(argv: list[str] | None = None) -> int:
     if erros:
         print("\n".join(f"ERRO: {e}" for e in erros), file=sys.stderr)
         return 1
+    if a.instalar:
+        try:
+            acoes = planejar_instalacao(dados, estado(dados), a.instalar)
+        except ValueError as e:
+            print(f"ERRO: {e}", file=sys.stderr)
+            return 2
+        if not acoes:
+            print(f"Nada a instalar em '{a.instalar}': tudo o que está no plano já está no PC.")
+            return 0
+        print(f"Instalar '{a.instalar}': {sum(len(x['ferramentas']) for x in acoes)} ferramenta(s) em {len(acoes)} comando(s)")
+        res = executar_instalacao(acoes, a.simular)
+        if a.simular:
+            print("Simulação. Rode sem --simular para instalar.")
+            return 0
+        print(f"\nInstalados: {res['ok']} comando(s); erros: {res['erro']}; com você: {len(res['voce'])}")
+        return 1 if res["erro"] else 0
     if a.perfil:
         try:
             return 1 if aplicar_perfil(dados, a.perfil, a.acao) else 0
