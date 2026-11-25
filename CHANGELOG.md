@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.55.1] - 2026-11-25
+
+### Corrigido
+- **headscale** volta a ter configuração: `infra/soberania/headscale/config.yaml.example` (sem segredo; `server_url` em 127.0.0.1:8085; validado com `headscale configtest` na v0.29.7, sem avisos) e `scripts/wsl/headscale-config.sh`, que copia o modelo para `config.yaml` e avisa quando o Docker deixou uma pasta de dono root no lugar. O `just instalar` roda esse passo antes do headscale. `LEIA.md` atualizado. 1 teste novo.
+
 ## [2.55.0] - 2026-11-25
 
 ### Adicionado

@@ -1,0 +1,50 @@
+# Configuração do headscale (Tailscale próprio). Copiada para config.yaml por scripts/wsl/headscale-config.sh.
+# Não tem segredo: a chave privada do servidor fica no volume headscale-dados (/var/lib/headscale).
+# O compose publica a porta só em 127.0.0.1:8085 (ADR 0022). Na VM, troque server_url pelo endereço público.
+server_url: http://127.0.0.1:8085
+listen_addr: 0.0.0.0:8080            # dentro do container; o host publica só em 127.0.0.1
+metrics_listen_addr: 127.0.0.1:9090
+grpc_listen_addr: 127.0.0.1:50443
+grpc_allow_insecure: false
+
+noise:
+  private_key_path: /var/lib/headscale/noise_private.key
+
+prefixes:
+  v4: 100.64.0.0/10
+  v6: fd7a:115c:a1e0::/48
+  allocation: sequential
+
+derp:
+  server:
+    enabled: false
+  urls:
+    - https://controlplane.tailscale.com/derpmap/default
+  auto_update_enabled: true
+  update_frequency: 24h
+
+disable_check_updates: true
+node:
+  ephemeral:
+    inactivity_timeout: 30m
+
+database:
+  type: sqlite
+  sqlite:
+    path: /var/lib/headscale/db.sqlite
+    write_ahead_log: true
+
+log:
+  level: info
+
+dns:
+  magic_dns: true
+  base_domain: amtech.interno
+  override_local_dns: true
+  nameservers:
+    global:
+      - 1.1.1.1
+      - 9.9.9.9
+
+unix_socket: /var/run/headscale/headscale.sock
+unix_socket_permission: "0770"

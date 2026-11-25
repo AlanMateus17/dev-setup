@@ -102,3 +102,4 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-25: v2.54.1: just validar não acusa mais o vigia por engano (agendado buscado à parte, idade ≤ 8 dias).
 - 2026-11-25: v2.54.2: sops e probe-rs funcionando (mise: bin e asset_pattern, versões fixas); just instalar confere de novo depois de instalar. Perfil sempre: falta só keepassxc-cli (sudo) e o bot do Telegram (telegram.env).
 - 2026-11-25: v2.55.0: gerar-env.sh cria .env das pastas de serviço sem mostrar valores; just instalar trabalho feito (az, vercel, wrangler, .env da automação e 10 imagens). Falta: terraform (sudo). Próximo: just ligar trabalho e testar cada serviço.
+- 2026-11-25: v2.55.1: headscale com config.yaml.example validado (configtest) e headscale-config.sh; falta o Alan apagar a pasta root config.yaml (sudo rm -r).
