@@ -2443,7 +2443,7 @@
    },
    "instalar": "docker compose -f infra/automacao/compose.yaml pull n8n",
    "ligar": "docker compose -f infra/automacao/compose.yaml up -d n8n",
-   "ram_mb": 250,
+   "ram_mb": 700,
    "disco_gb": 1.0,
    "doc": "Automação de fluxos"
   },
@@ -2940,28 +2940,9 @@
    },
    "instalar": "docker compose -f infra/soberania/compose.yaml --profile glitchtip pull glitchtip-web",
    "ligar": "docker compose -f infra/soberania/compose.yaml --profile glitchtip up -d glitchtip-web",
-   "ram_mb": 178,
+   "ram_mb": 400,
    "disco_gb": 0.95,
-   "doc": "Erros das aplicações"
-  },
-  {
-   "id": "docker-soberania-glitchtip-worker",
-   "nome": "glitchtip-worker",
-   "tipo": "docker",
-   "grupo": "infra/soberania",
-   "fonte": "infra/soberania/compose.yaml",
-   "codigo_aberto": true,
-   "obrigatoria": false,
-   "perfil": "trabalho",
-   "decisao": "normal",
-   "conferir": {
-    "container": "soberania/glitchtip-worker"
-   },
-   "instalar": "docker compose -f infra/soberania/compose.yaml --profile glitchtip pull glitchtip-worker",
-   "ligar": "docker compose -f infra/soberania/compose.yaml --profile glitchtip up -d glitchtip-worker",
-   "ram_mb": 200,
-   "disco_gb": 0,
-   "doc": "Trabalhador do GlitchTip"
+   "doc": "Erros das aplicações (no GlitchTip 7 o mesmo processo serve a web e consome a fila)"
   },
   {
    "id": "docker-soberania-glitchtip-migrate",
