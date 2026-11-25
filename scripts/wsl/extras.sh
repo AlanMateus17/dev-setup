@@ -6,7 +6,7 @@
 #   bash scripts/wsl/extras.sh             # instala
 #
 # Instala: chezmoi (dotfiles), as CLIs do ~/.config/mise/config.toml (zellij, yazi, d2, vegeta, age, sops,
-# bore, gum, soft-serve, goreleaser, cargo-dist, probe-rs, tree-sitter, stripe, litestream, pocketbase),
+# gum, soft-serve, goreleaser, cargo-dist, probe-rs, tree-sitter, stripe, litestream, pocketbase),
 # ferramentas Python pelo uv (posting, harlequin, aider, llm com o plugin do Ollama, beancount, fava),
 # e do apt: podman, git-lfs, hledger e neovim.
 set -euo pipefail

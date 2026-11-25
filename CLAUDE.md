@@ -57,9 +57,21 @@ Toda tarefa é vista pelos papéis que ela toca. Quando faltar algo que um papel
 - A versão é a próxima livre **no momento de abrir o PR**. Se outro PR entrar antes, o PR que entra depois troca para a próxima livre ao resolver o conflito.
 - Correção: `Z` (2.46.1 → 2.46.2). Funcionalidade ou documento novo: `Y` (2.46 → 2.47). `X` só por decisão do Alan.
 
-## Decisões em vigor (25/11/2026)
+## Decisões em vigor
 
-- Só a Central, sem Homepage nem OliveTin; ela roda no notebook.
-- Congelamento de 8 semanas (acima).
-- **KeePassXC: adiado por decisão do Alan.** As senhas (inclusive a do restic) ficam no caderno. Nada de `keepassxc-cli`, `segredos.sh` ou cofre `.kdbx` como requisito até o Alan decidir de novo.
-- Parados por decisão: `keepassxc-cli` e `sops`, timer do pipeline de conteúdo, LiteLLM.
+Registro completo e motivos: [ADR 0022](docs/adr/0022-decisoes-de-25-11-2026.md). **Não pergunte de novo o que está aqui**; para
+mudar, o Alan decide e a ADR ganha uma nova. Ferramentas paradas ou adiadas têm `decisao`, `motivo` e `rever_em` em
+`data/ferramentas.json`, e o `just validar` avisa quando a data passa. Revisão geral: **20/01/2027**.
+
+| Assunto | Decisão (25/11/2026) |
+|---|---|
+| Painel | Só a Central, sem Homepage nem OliveTin; roda no notebook (VM depois da primeira renda) |
+| Plano | Congelamento de 8 semanas até 20/01/2027 |
+| Senhas | KeePassXC **adiado**: senhas no caderno (a do restic foi testada). `keepassxc-cli`, `.kdbx` e `segredos.sh` não são requisito |
+| Segredos em arquivo | `sops` **parado** |
+| Backup | restic em `C:\Users\alanmateus\backup-restic`; o antigo, sem senha, em `backup-restic-senha-perdida` (não apagar); falta a cópia fora do SSD |
+| Vault | `C:\Users\alanmateus\vault` (clone do GitHub); `~/dev/notas` é symlink para ele |
+| IA | LiteLLM **parado**; o Ollama do setup é o do WSL; o Ollama do Windows fica só em `127.0.0.1` |
+| Conteúdo | Timer do pipeline **parado** |
+| Rede | headscale **desligado de vez** (o Tailscale oficial cobre); bore e cloudflared **desinstalados** (túnel para a internet) |
+| AMKaixara | Postgres e Redis só em `127.0.0.1`, Redis com volume nomeado; containers parados até o PR no repositório dele entrar |

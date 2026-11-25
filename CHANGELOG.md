@@ -2,6 +2,16 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.49.0] - 2026-11-25
+
+### Adicionado
+- **ADR 0022:** todas as decisões de 25/11/2026 num lugar só (Central enxuta, congelamento até 20/01/2027, KeePassXC adiado, sops, LiteLLM e pipeline parados, headscale desligado de vez, Ollama do Windows só em 127.0.0.1, AMKaixara só em 127.0.0.1, bore e cloudflared desinstalados). "Decisões em vigor" do `CLAUDE.md` vira uma tabela que aponta para ela.
+- `data/ferramentas.json`: toda ferramenta parada ou adiada tem `rever_em` (padrão 2027-01-20), exigido pela validação.
+- `just validar` (item 8): avisa quando a data de revisão passa, quando uma ferramenta parada que abre acesso de fora continua instalada ou rodando, e **falha** se as portas 11434, 5432 ou 6379 escutarem fora do 127.0.0.1 no Windows. 6 testes novos.
+
+### Alterado
+- headscale, bore e cloudflared passam a "parada". O bore sai do `config.toml` do mise (desinstalado no PC).
+
 ## [2.48.0] - 2026-11-25
 
 ### Adicionado

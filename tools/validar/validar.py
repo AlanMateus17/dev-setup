@@ -252,6 +252,18 @@ def checar_ferramentas() -> list[Resultado]:
     faltam = ferramentas.faltando(est)
     R.append(Resultado(i, "pc", OK if not faltam else MIM,
                        "" if not faltam else "faltam: " + ", ".join(f"{e['nome']} ({e['instalar']})" for e in faltam[:6])))
+    vencidas = ferramentas.revisoes_vencidas(dados)
+    R.append(Resultado(i, "pc", OK if not vencidas else MIM,
+                       "" if not vencidas else "rever decisão (ADR 0022): " + ", ".join(f"{f['nome']} ({f['rever_em']})" for f in vencidas)))
+    presentes = ferramentas.paradas_presentes(dados, est)
+    R.append(Resultado(i, "pc", OK if not presentes else MIM,
+                       "" if not presentes else "parada por decisão, mas ainda instalada: " + ", ".join(e["nome"] for e in presentes)))
+    expostas = ferramentas.portas_expostas_windows()
+    if expostas is None:
+        R.append(Resultado(i, "integracao", NAO, "sem PowerShell: não dá para conferir as portas do Windows daqui"))
+    else:
+        R.append(Resultado(i, "integracao", OK if not expostas else FALHA,
+                           "" if not expostas else "aberta fora do 127.0.0.1 (ADR 0022): " + ", ".join(f"{p} em {e}" for p, e in expostas)))
     sempre = [e for e, f in zip(est, dados["ferramentas"]) if f.get("perfil") == "sempre" and f["obrigatoria"] and f["decisao"] == "normal"]
     parados = [e["nome"] for e in sempre if e["rodando"] is False]
     R.append(Resultado(i, "sozinho", OK if not parados else MIM, "" if not parados else "fora do ar: " + ", ".join(parados) + " (just ligar)"))
