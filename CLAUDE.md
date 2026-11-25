@@ -43,7 +43,7 @@ O congelamento de 8 semanas **saiu** por decisão do Alan (emenda da [ADR 0022](
 1. **Instalar e configurar todas as ferramentas de `data/ferramentas.json`**, menos os túneis para a internet (bore e cloudflared), que
    continuam fora pela regra de segurança.
 2. **Criar a Central** como interface para usar 100% do setup, **do notebook e do celular** (pelo Tailscale), com login, CSRF,
-   auditoria e PWA desde o começo, e **usuários e permissões no banco desde a v1**, para atender clientes depois sem reescrever.
+   auditoria e PWA desde o começo, e **usuários e permissões no banco desde a v1**, para atender clientes depois sem reescrever (`organizacao_id` desde a v1, aprovado).
 
 Ordem, em PRs pequenos, cada um com uma versão e merge do Alan: PR 4 (perfis no `just ligar`) → PR 5 (extensões do VS Code no WSL) →
 PR 6 (`just instalar`) → instalar e testar perfil por perfil (sempre, trabalho, laboratório) → ADR da arquitetura da Central e plano das
@@ -71,14 +71,14 @@ mudar, o Alan decide e a ADR ganha uma nova. Ferramentas paradas ou adiadas têm
 
 | Assunto | Decisão (25/11/2026) |
 |---|---|
-| Painel | Só a Central, sem Homepage nem OliveTin; roda no notebook (VM depois da primeira renda); acesso do notebook e do celular pelo Tailscale na v1; **usuários e permissões no banco desde a v1**, para virar ferramenta de clientes depois sem reescrever |
+| Painel | Só a Central, sem Homepage nem OliveTin; roda no notebook (VM depois da primeira renda); acesso do notebook e do celular pelo Tailscale na v1; **usuários, permissões e `organizacao_id` no banco desde a v1**, para virar ferramenta de clientes depois sem reescrever |
 | Plano | **Sem congelamento** (saiu em 25/11): instalar e configurar todas as ferramentas, menos bore e cloudflared; depois a Central |
 | Senhas | KeePassXC **volta** (25/11, tarde): `keepassxc-cli`, cofre `.kdbx` e `segredos.sh` voltam a ser requisito. A senha do restic continua no caderno e também vai para o cofre |
 | Segredos em arquivo | `sops` **volta** |
 | Backup | restic em `C:\Users\alanmateus\backup-restic`; o antigo, sem senha, em `backup-restic-senha-perdida` (não apagar); falta a cópia fora do SSD |
 | Vault | `C:\Users\alanmateus\vault` (clone do GitHub); `~/dev/notas` é symlink para ele |
 | IA | LiteLLM **volta**; o Ollama do setup é o do WSL; o Ollama do Windows fica só em `127.0.0.1` |
-| Conteúdo | Timer do pipeline **volta** |
+| Conteúdo | Timer do pipeline **parado** por custo: precisa de chave de API paga, que o Alan não vai criar (FinOps); rever em 2027-01-20 |
 | Ligar | `just ligar` = perfil sempre; `just ligar trabalho`, `sob-demanda` ou `laboratorio` sobe também o Docker do perfil (`data/ferramentas.json`); o que está parado por decisão nunca sobe |
 | Rede | headscale **volta** (precisa do `config.yaml` antes de subir); bore e cloudflared **continuam desinstalados** (túnel para a internet, regra de segurança) |
 | AMKaixara | Postgres, Redis e API só em `127.0.0.1`, Redis com volume nomeado (am-kaixara#26, juntado em 25/11). Postgres e Redis religados com os mesmos dados; a API não foi religada. Os 22 `.cs` apagados localmente ficam como estão até o Alan decidir |

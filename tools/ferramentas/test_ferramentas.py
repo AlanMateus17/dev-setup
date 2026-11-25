@@ -45,14 +45,16 @@ class TestRegistro(unittest.TestCase):
         self.assertEqual(ferramentas.MD.read_text(encoding="utf-8"), ferramentas.gerar_md(self.dados))
 
     def test_decisoes_da_emenda_de_25_11(self):
-        """Emenda da ADR 0022: os 6 itens voltam; os túneis continuam fora."""
+        """Emenda da ADR 0022: 5 itens voltam; os túneis continuam fora; o pipeline fica parado por custo."""
         por_id = {f["id"]: f for f in self.dados["ferramentas"]}
         for fid in ("cli-keepassxc-cli", "win-keepassxcteam-keepassxc", "cli-mise-sops", "docker-ia-litellm",
-                    "svc-pipeline", "docker-soberania-headscale"):
+                    "docker-soberania-headscale"):
             self.assertEqual(por_id[fid]["decisao"], "normal", fid)
             self.assertNotIn("rever_em", por_id[fid])
         self.assertEqual(sorted(f["id"] for f in self.dados["ferramentas"] if f["decisao"] != "normal"),
-                         ["cli-mise-bore", "win-cloudflared"])
+                         ["cli-mise-bore", "svc-pipeline", "win-cloudflared"])
+        self.assertIn("FinOps", por_id["svc-pipeline"]["motivo"])
+        self.assertEqual(por_id["svc-pipeline"]["rever_em"], "2027-01-20")
 
     def test_acesso_de_fora_marcado(self):
         com = {f["id"] for f in self.dados["ferramentas"] if f.get("acesso_externo")}

@@ -12,7 +12,7 @@
 | Extensões do VS Code | 16 | 2 | 0 |
 | Pacotes do Ubuntu (apt) | 45 | 27 | 0 |
 | CLIs do Ubuntu | 49 | 9 | 1 |
-| Serviços do Ubuntu | 5 | 2 | 0 |
+| Serviços do Ubuntu | 5 | 2 | 1 |
 | Serviços Docker | 40 | 0 | 0 |
 
 ## Programas do Windows
@@ -186,7 +186,7 @@
 | Fila de pedidos | Serviços do Ubuntu | sim | sim | Fila de pedidos do celular (tools/remoto/fila.py) |  | `just ligar` |
 | Claude Remote Control | Serviços do Ubuntu | sim | — | Controla o Claude Code do PC pelo celular |  | `just ligar` |
 | Bot do Telegram | Serviços do Ubuntu | sim | — | Comandos fixos pelo Telegram (só o chat do Alan) |  | `just ligar` |
-| Pipeline de conteúdo | Serviços do Ubuntu | sim | — | Timer do pipeline de conteúdo |  | `bash scripts/wsl/ativar-pipeline.sh` |
+| Pipeline de conteúdo | Serviços do Ubuntu | sim | — | Timer do pipeline de conteúdo | parada | `bash scripts/wsl/ativar-pipeline.sh` |
 
 ## Serviços Docker
 
@@ -263,3 +263,4 @@ Registro das decisões: [ADR 0022](../adr/0022-decisoes-de-25-11-2026.md). O `ju
 |---|---|---|---|
 | cloudflared | parada | Desinstalar por decisão do Alan (25/11/2026): abre túnel do PC para a internet (ADR 0022, mantido na emenda: regra de segurança) | 2027-01-20 |
 | bore | parada | Desinstalado por decisão do Alan (25/11/2026): abre túnel do PC para a internet (ADR 0022, mantido na emenda: regra de segurança) | 2027-01-20 |
+| Pipeline de conteúdo | parada | Precisa de chave de API paga, que o Alan não vai criar (decisão de custo, FinOps; emenda da ADR 0022) | 2027-01-20 |

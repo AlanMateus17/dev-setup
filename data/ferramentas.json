@@ -2241,7 +2241,9 @@
    "codigo_aberto": true,
    "obrigatoria": false,
    "perfil": "sempre",
-   "decisao": "normal",
+   "decisao": "parada",
+   "motivo": "Precisa de chave de API paga, que o Alan não vai criar (decisão de custo, FinOps; emenda da ADR 0022)",
+   "rever_em": "2027-01-20",
    "conferir": {
     "systemd": "amtech-conteudo.timer"
    },
