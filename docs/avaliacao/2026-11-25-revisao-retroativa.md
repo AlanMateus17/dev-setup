@@ -6,7 +6,9 @@
 
 **O que foi revisto:** tudo o que mudou em 25/11: ai-memory (PR #26), avaliação, portas, CI e backup (v2.45.0), plano de hardware (v2.46.0), tarefa que acorda o WSL (v2.46.1), backup restic novo, limpeza do PC (cerca de 24 GB no C: e 15,7 GB no Docker), vault no Windows e inventário de ferramentas.
 
-**Papéis:** os 10 da avaliação mais 5 novos, que são o foco: **FinOps**, **Privacidade/LGPD**, **Engenheiro de IA/MLOps**, **Engenheiro de Plataforma** e **Comercial/Growth**.
+**Papéis:** os 15 do [CLAUDE.md](../../CLAUDE.md): os 10 da avaliação (Segurança passa a incluir privacidade e LGPD) mais 5 novos, que são o foco: **Engenheiro de Plataforma**, **Gerente de Release/Configuração**, **Engenheiro de IA/LLMOps**, **FinOps** e **Analista de Negócios/Growth**.
+
+**Correção de 25/11 (v2.47.0):** o KeePassXC não é usado, por decisão do Alan. A senha do restic está no caderno e foi testada (abriu o repositório). Os itens que dependiam do cofre saíram do P0 e estão em "Adiado por decisão" (seção 4).
 
 **Congelamento (decisão de 25/11):** nenhum item abaixo cria área, oferta, fase ou ferramenta nova. Tudo é conserto, higiene ou execução das fases B a D já existentes.
 
@@ -30,8 +32,8 @@
 
 | # | Achado | Papel | Gravidade |
 |---|---|---|---|
-| N1 | **O `Cofre.kdbx` não muda desde 08/11.** A senha nova do restic (25/11) não está nele, ou está em outro arquivo. Sem ela, o backup não abre | Segurança, DevOps | **Crítico** |
-| N2 | **O cofre de senhas não entra no backup**: `Documents\Cofre\Cofre.kdbx` fica fora do `BACKUP_PASTAS` | DevOps, Segurança | **Crítico** |
+| N1 | ~~O `Cofre.kdbx` não muda desde 08/11~~. **Adiado por decisão:** o KeePassXC não é usado; a senha do restic está no caderno e foi testada | Segurança, DevOps | Adiado |
+| N2 | ~~O cofre `.kdbx` não entra no backup~~. **Adiado por decisão**, junto com o KeePassXC | DevOps, Segurança | Adiado |
 | N3 | **Backup só no mesmo SSD.** O repositório restic está em `C:\Users\alanmateus\backup-restic`: falha do disco ou roubo do notebook leva tudo. Falta a cópia fora (regra 3-2-1) | DevOps | **Crítico** |
 | N4 | **AMKaixara publica Postgres (5432) e Redis (6379) em `0.0.0.0`**, alcançáveis pela rede local (compose em `aura-workspace\AMKaixara`) | Segurança | Alto |
 | N5 | **O `restart=no` de headscale e ghostfolio some no próximo `up`**: o compose ainda diz `unless-stopped`, e o loop volta | DevOps | Alto |
@@ -50,50 +52,58 @@
 
 ## 3. Visão por papel (foco nos 5 novos)
 
-### FinOps (novo)
-- **Hoje:** nenhum custo medido; o teto do LiteLLM (US$ 20 por mês) não tem como ser conferido porque o LiteLLM está fora do ar por decisão.
-- **O que faltava:** uma planilha mensal de 4 números reais: assinatura do Claude, gastos em API (zero hoje), energia (notebook 24 h na tomada) e espaço (disco usado em C: e no backup). Os 4 entram no resumo da manhã uma vez por mês.
-- **Ganho de hoje para registrar:** a limpeza liberou cerca de 24 GB no C: e 15,7 GB dentro do disco do Docker (volta ao C: depois de compactar os vhdx).
-
-### Privacidade/LGPD (novo)
-- **ai-memory:** sem vazamento hoje (seção 1, item 5). Falta uma conferência semanal das capturas com os mesmos padrões e a regra escrita: **nunca** `cat`, `less` ou `grep` em `.env`, `~/.config/amtech`, `.kdbx` ou `~/.ssh` (o `permissions.deny` já bloqueia o Claude; o risco é o terminal de outro agente).
-- **"Sensível só local":** falta o teste de ponta a ponta (seção 1, item 7).
-- **Dados de alunos e clientes:** nada foi para a nuvem hoje. O AMKaixara expõe banco e Redis na rede local (N4): se ele tiver dado de cliente, isso é incidente de LGPD em potencial.
-
-### Engenheiro de IA/MLOps (novo)
-- **Dois Ollama** (item 6). Fica o do WSL, que é o do `just ligar`, das rotas do LiteLLM e da fila.
-- **ai-memory** instalado e capturando. Falta conferir se a memória ajuda de fato (o `ai-memory doctor` e o `recent` numa sessão nova) antes de expandir para outros agentes.
-- **LiteLLM e motor parados por decisão:** registrar como "parado", não como falha, para o `just validar` não acusar.
-
 ### Engenheiro de Plataforma (novo)
-- **Princípio:** tudo o que foi feito à mão em 25/11 (item 1) precisa de um script idempotente e de uma checagem no `just validar`; a máquina tem de poder ser refeita do zero só pelo repositório e pelo cofre.
+- **Princípio:** a máquina tem de poder ser refeita do zero só pelo repositório e pelo caderno. Tudo o que foi feito à mão em 25/11 (item 1) precisa de um script idempotente e de uma checagem no `just validar`.
 - **Ordem:** `backup.env.example` certo → `scripts/wsl/ai-memory.sh` (binário, unit, hooks, MCP) → `vault.sh` aceitar o vault no Windows com symlink → fonte única de ferramentas (N11).
 
-### Comercial/Growth (novo)
+### Gerente de Release / Configuração (novo)
+Refeito em 25/11 (v2.47.0), com o que a conferência do Git e do GitHub mostrou:
+
+| # | Achado | Proposta |
+|---|---|---|
+| R1 | **Nenhuma tag de versão:** o CHANGELOG tem 111 versões e o repositório tem 0 tags. Não dá para voltar a "como estava na 2.44.3" sem procurar o commit à mão | Tag `vX.Y.Z` no commit de merge de cada PR, criada pelo Claude depois do merge (regra no CLAUDE.md); tags retroativas das versões de 25/11 |
+| R2 | **Um PR sem versão e uma versão disputada:** o #26 (ai-memory) entrou sem versão nem CHANGELOG; o #24 e o #25 reservaram a mesma 2.45.0, e o #24 teve de virar 2.46.0 no conflito | Regra "uma versão por PR" e "o que entra depois troca de número" no CLAUDE.md; versão do #26 registrada |
+| R3 | **26 branches juntadas continuam no GitHub**, e o repositório está com `delete_branch_on_merge=false` | Ligar a remoção automática de branch depois do merge (uma configuração) e apagar as 26 depois de o Alan ver a lista |
+| R4 | **Configuração sem controle:** 8 itens feitos à mão fora do repositório (item 1) e uma cópia dos hooks do ai-memory que pode divergir da fonte | Lista de itens de configuração no `just validar`: para cada um, onde fica, de onde vem e se bate com o repositório |
+| R5 | **Arquivos soltos na árvore de trabalho:** `tools/nucleo/github_memoria.py` e `infra/soberania/ai-memory/` (da ponte antiga) aparecem em todo `git status` desde 13/11 | Decidir: apagar ou guardar em `~/arquivo` |
+| R6 | **12 imagens `:latest`** e os binários do `mise` também em `latest`: o mesmo setup instalado em dias diferentes dá versões diferentes | Fixar versões; atualizar só por PR |
+| R7 | **`ESTADO.md` e `CHANGELOG.md` contam a mesma história** e o ESTADO fica velho (item 4) | ESTADO só com os últimos 14 dias e com o estado atual; o histórico fica no CHANGELOG |
+| R8 | **Sem roteiro de release:** os passos depois do merge (atualizar a `main` local, tag, apagar branch, conferir o ESTADO) são feitos de memória | Lista curta no CLAUDE.md (seção Git), seguida em todo merge |
+
+### Engenheiro de IA / LLMOps (novo)
+- **Dois Ollama** (item 6). Fica o do WSL, que é o do `just ligar`, das rotas do LiteLLM e da fila.
+- **ai-memory:** instalado e capturando, sem segredo nas 324 capturas. Falta conferir se a memória ajuda de fato (`ai-memory doctor` e `recent` numa sessão nova) antes de ligar outros agentes, e uma conferência semanal das capturas.
+- **LiteLLM e motor parados por decisão:** registrar como "parado", não como falha, para o `just validar` não acusar.
+- **"Sensível só local":** o teste de ponta a ponta da fila e do LiteLLM (item 7) é deste papel, com a Segurança revisando.
+
+### FinOps (novo)
+- **Hoje:** nenhum custo medido; o teto do LiteLLM (US$ 20 por mês) não tem como ser conferido porque o LiteLLM está fora do ar por decisão.
+- **O que faltava:** 4 números reais por mês: assinatura do Claude, gastos em API (zero hoje), energia (notebook 24 h na tomada) e espaço (disco usado no C: e no backup). Entram no resumo da manhã uma vez por mês.
+- **Ganho de hoje para registrar:** a limpeza liberou cerca de 24 GB no C: e 15,7 GB dentro do disco do Docker (volta ao C: depois de compactar os vhdx).
+
+### Analista de Negócios / Growth (novo)
 - **Escolher uma oferta só para as 8 semanas** (item 9). A candidata natural é o **`minicurso`**: já está em construção, o `catalogo` (lançado e grátis) já é a isca, e o próximo passo está escrito ("gravar as 5 primeiras aulas e abrir a pré-venda"). O `dark` (3 vídeos por semana) compete pelo mesmo tempo.
 - **Métrica das 8 semanas:** pré-vendas do mini-curso e inscritos vindos do catálogo, medidos toda semana.
 
 ### Os 10 papéis da avaliação, em uma linha cada
-- **Product Owner:** decisões de 25/11 sem ADR (item 4) e oferta sem escolha (item 9).
+- **Product Owner:** decisões de 25/11 sem ADR (item 4) e oferta sem escolha (item 9). Tem veto sobre o que furar o congelamento.
 - **Arquiteto:** fonte única de ferramentas (N11); a Central continua sendo o único painel.
 - **UX/UI:** o caminho do vault mudou para `C:\Users\alanmateus\vault`; o `vault.sh` ainda manda abrir `\\wsl.localhost\…\dev\notas`.
 - **Back-end:** ghostfolio (`sslmode`) e headscale (N6).
 - **Front-end:** sem mudança hoje.
 - **DBA:** `nucleo.db` já entra no backup (confirmado no snapshot `50b698a3`); o banco do ai-memory (`~/.local/share/ai-memory`) não entra.
 - **QA:** N8, N9, N10 e o teste de ponta a ponta do item 7.
-- **DevOps/SRE:** N1, N2, N3, N5 e N12.
-- **Segurança:** Ollama do Windows (item 6), N4 e N13.
+- **DevOps/SRE:** N3, N5 e N12.
+- **Segurança (inclui privacidade e LGPD):** Ollama do Windows (item 6), AMKaixara (N4, **containers parados em 25/11 até o PR dele entrar**), N13, captura do ai-memory e "sensível só local". A senha do restic fica só no caderno: uma cópia física só; vale uma segunda cópia guardada em outro lugar.
 - **Redator Técnico:** ESTADO (item 4) e N14.
 
 ## 4. Itens priorizados (entram nas fases B a D, sem fase nova)
 
 | Prioridade | Item | Fase | Quem | Pronto quando |
 |---|---|---|---|---|
-| **P0** | Conferir se a senha do restic está no KeePassXC (N1); se não, salvar agora | B | Alan | Entrada "restic - backup notebook" existe e o `Cofre.kdbx` tem data de hoje |
-| **P0** | Cofre `.kdbx` no backup (N2) | B | Alan | `BACKUP_PASTAS` inclui `/mnt/c/Users/alanmateus/Documents/Cofre` e o snapshot mostra o arquivo |
 | **P0** | Segunda cópia do backup fora deste SSD (N3) | B | Alan + Claude | `restic copy` para um HD externo ou B2, e restauração testada a partir dela |
 | **P0** | Ollama do Windows: desinstalar ou `OLLAMA_HOST=127.0.0.1` (item 6) | D | Alan decide, Claude faz | `Get-NetTCPConnection -LocalPort 11434` só em 127.0.0.1 |
-| **P0** | AMKaixara: Postgres e Redis em `127.0.0.1:` (N4) | D | Claude (PR no repositório do AMKaixara) | `ss`/`Get-NetTCPConnection` sem 0.0.0.0 nas portas 5432 e 6379 |
+| **P0** | AMKaixara: Postgres e Redis em `127.0.0.1:` (N4). **Containers parados em 25/11** até este PR entrar | D | Claude (PR no repositório do AMKaixara) | Compose com `127.0.0.1:`; containers religados; sem 0.0.0.0 nas portas 5432 e 6379 |
 | **P1** | ADR 0022 com as 3 decisões de 25/11 e `ESTADO.md` atualizado (item 4) | C0 | Claude | ADR escrita, ESTADO sem pendência já resolvida |
 | **P1** | Escolher a oferta das 8 semanas (item 9; sugestão: `minicurso`) | E | Alan | Oferta marcada no `data/portfolio.json` e métrica semanal no resumo da manhã |
 | **P1** | `backup.env.example` certo (item 2) | D | Claude | Repositório em `/mnt/c/...`, sem `financas`, com vault, `~/arquivo` e cofre |
@@ -108,5 +118,15 @@
 | **P2** | cloudflared e `bore` com regra de uso, ou fora (N13) | D | Alan decide | Registrados no inventário com a regra, ou desinstalados |
 | **P2** | Testar a tarefa das 22h20 com o WSL desligado; habilitar temporizadores de despertar (N10) | B | Alan | No dia seguinte, `just validar` com o backup OK a partir de WSL desligado |
 | **P3** | Apagar as 26 branches juntadas (item 3) e as sobras (N15) | D | Alan aprova a lista, Claude apaga | `git branch -r --merged` só com a main |
-| **P3** | Versão e CHANGELOG do ai-memory (N14) | D | Claude | Entrada no CHANGELOG |
+| **P1** | Tags `vX.Y.Z` depois de cada merge e remoção automática de branch no GitHub (R1, R3) | D | Claude | Tag da versão no GitHub; `delete_branch_on_merge=true` |
+| **P3** | Versão e CHANGELOG do ai-memory (N14, R2) | D | Claude | Entrada no CHANGELOG |
 | **P3** | Limpeza mensal do Temp (N16) e scripts com parada no primeiro erro (N17) | D | Claude | Agendada; scripts novos com `set -euo pipefail` |
+
+### Adiado por decisão do Alan
+
+| Item | Decisão | Quando rever |
+|---|---|---|
+| Senha do restic no KeePassXC (N1) | KeePassXC não é usado; a senha está no caderno e foi testada | Quando o Alan decidir adotar um cofre |
+| Cofre `.kdbx` no backup (N2) | Junto com o KeePassXC | Idem |
+| `keepassxc-cli`, `sops`, `segredos.sh` | Parados por decisão | Idem |
+

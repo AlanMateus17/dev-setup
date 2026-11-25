@@ -2,6 +2,15 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.47.0] - 2026-11-25
+
+### Adicionado
+- `CLAUDE.md`: os 15 papéis (responsabilidade, quando entra, Definição de Pronto), 1 responsável + 2 a 3 revisores por PR, veto do PO, congelamento de 8 semanas (até 20/01/2027), Git só pelo Claude e merge só pelo Alan, uma versão por PR com tag depois do merge. Importa as regras comuns de `infra/templates/regras-ia/regras-ia.md`.
+
+### Alterado
+- Revisão retroativa: papéis corrigidos (Segurança inclui privacidade e LGPD; novos: Plataforma, Release/Configuração, IA/LLMOps, FinOps, Negócios/Growth), parte do Gerente de Release refeita (R1 a R8: nenhuma tag para 111 versões, PR sem versão, 26 branches juntadas, configuração sem controle). KeePassXC saiu do P0 e foi para "Adiado por decisão".
+- Regras comuns das IAs: o segredo fica fora do repositório (no caderno; KeePassXC adiado por decisão).
+
 ## [2.46.2] - 2026-11-25
 
 ### Adicionado
