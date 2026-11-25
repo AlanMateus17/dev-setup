@@ -65,6 +65,26 @@ class TestRodar(unittest.TestCase):
         self.assertNotEqual(rc, 124)
 
 
+class TestCofre(unittest.TestCase):
+    def test_procura_onde_o_roteiro_manda_criar(self):
+        import os
+        antigo = os.environ.pop("COFRE", None)
+        try:
+            nomes = [str(c) for c in v.caminhos_cofre()]
+            self.assertTrue(nomes[0].endswith("Documents/Cofre/Cofre.kdbx"))
+            self.assertTrue(nomes[1].endswith("cofre senhas.kdbx"))
+            os.environ["COFRE"] = "/tmp/x.kdbx"
+            self.assertEqual(str(v.caminhos_cofre()[0]), "/tmp/x.kdbx")
+        finally:
+            os.environ.pop("COFRE", None)
+            if antigo is not None:
+                os.environ["COFRE"] = antigo
+
+    def test_segredos_sh_procura_o_mesmo_lugar(self):
+        txt = (v.RAIZ / "scripts/wsl/segredos.sh").read_text(encoding="utf-8")
+        self.assertIn("Documents/Cofre/Cofre.kdbx", txt)
+
+
 class TestJustfileCompativel(unittest.TestCase):
     """O bootstrap instala o just pelo apt; no Ubuntu 24.04 é o 1.21, que não conhece [positional-arguments]."""
 

@@ -12,6 +12,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 - `backup.sh`: o evento `backup.concluido` nunca chegava ao núcleo (a última linha do `restic snapshots --compact` é um separador "-----" que o argparse lia como opção, e o `|| true` escondia). Agora usa o id pelo `--json`.
 - `coerencia.py --relatorio` cria a pasta do relatório (sem `~/dev` dava traceback, escondido pelo `|| true` da receita).
 - `professor-mapa` sem o MAPA.md: aviso com o que fazer no lugar do traceback.
+- `segredos.sh` e `just validar` procuram o cofre onde o roteiro manda criar (`Documents\Cofre\Cofre.kdbx`) antes do nome antigo (`cofre senhas.kdbx`); antes, o script não achava o cofre criado pelo roteiro.
+- `just validar` não trava esperando resposta de uma pergunta escondida (stdin vazio), e backup agendado que não roda aparece como FALHA.
 
 ## [2.40.0] - 2026-11-21
 

@@ -4,7 +4,13 @@
 # Pede a senha do cofre (digite à mão). O segredo existe só no ambiente daquele comando.
 # Cofre: variável COFRE ou o padrão abaixo. Precisa do keepassxc-cli (sudo apt install keepassxc).
 set -euo pipefail
-COFRE="${COFRE:-/mnt/c/Users/${USER}/cofre senhas.kdbx}"
+# Sem COFRE, procura onde o roteiro manda criar (Documents\Cofre\Cofre.kdbx) e depois o nome antigo.
+if [[ -z "${COFRE:-}" ]]; then
+  for c in "/mnt/c/Users/${USER}/Documents/Cofre/Cofre.kdbx" "/mnt/c/Users/${USER}/cofre senhas.kdbx"; do
+    [[ -f "$c" ]] && { COFRE="$c"; break; }
+  done
+  COFRE="${COFRE:-/mnt/c/Users/${USER}/Documents/Cofre/Cofre.kdbx}"
+fi
 [[ $# -ge 4 && "$3" == "--" ]] || { sed -n '2,5p' "$0"; exit 1; }
 ENTRADA="$1"; VAR="$2"; shift 3
 command -v keepassxc-cli >/dev/null 2>&1 || { echo "Instale: sudo apt install keepassxc"; exit 1; }

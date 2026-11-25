@@ -115,6 +115,13 @@ def linha_agendada(trecho: str, cron: str | None) -> bool:
     return bool(cron) and any(trecho in l and "# amtech-setup" in l for l in cron.splitlines())
 
 
+def caminhos_cofre() -> list[Path]:
+    """Os mesmos lugares que o segredos.sh procura: COFRE, o do roteiro (Documents\\Cofre) e o nome antigo."""
+    u = os.environ.get("USER", "")
+    lista = [Path(os.environ["COFRE"])] if os.environ.get("COFRE") else []
+    return lista + [Path(f"/mnt/c/Users/{u}/Documents/Cofre/Cofre.kdbx"), Path(f"/mnt/c/Users/{u}/cofre senhas.kdbx")]
+
+
 def banco_nucleo() -> Path:
     return Path(os.environ.get("NUCLEO_DB") or Path.home() / ".local" / "share" / "nucleo" / "nucleo.db")
 
@@ -184,7 +191,7 @@ def checar(rapido: bool, restaurar: bool) -> list[Resultado]:
 
     # 2. Segredos (nunca abre o cofre)
     i = "2. Segredos"
-    cofre = Path(os.environ.get("COFRE") or f"/mnt/c/Users/{os.environ.get('USER', '')}/cofre senhas.kdbx")
+    cofre = next((c for c in caminhos_cofre() if c.exists()), caminhos_cofre()[0])
     R.append(Resultado(i, "pc", OK if tem("keepassxc-cli") else MIM, "" if tem("keepassxc-cli") else "sudo apt install keepassxc"))
     R.append(Resultado(i, "pc", OK if cofre.exists() else MIM, "" if cofre.exists() else "cofre .kdbx não achado (defina COFRE)"))
     if tem("age") and tem("age-keygen"):
