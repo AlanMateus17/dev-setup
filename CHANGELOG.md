@@ -6,6 +6,11 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
 ### Corrigido
 - `just validar` (item 6): o alarme "vigia agendado não rodou nos últimos 30 runs" era falso num dia com muitos PRs (o run semanal saía da janela dos 30 mais recentes). Agora o último run agendado do `vigia.yml` é buscado à parte e conferido como o docstring já dizia: no máximo 8 dias e terminado com sucesso. 1 teste novo.
+## [2.54.0] - 2026-11-25
+
+### Adicionado
+- **`just instalar <alvo>`** (PR 6): com um perfil (sempre, trabalho, sob-demanda, laboratorio), um tipo, um id ou `tudo`, instala só o que falta, lendo `data/ferramentas.json`; um comando por ação, sem repetir; `sudo` só roda se já estiver liberado, senão vira lista para o Alan; passos manuais idem; `--simular` mostra o plano. `just instalar` sem alvo continua montando o setup inteiro.
+- Toda ferramenta tem perfil (antes só os serviços). 2 testes novos.
 
 ## [2.53.0] - 2026-11-25
 
