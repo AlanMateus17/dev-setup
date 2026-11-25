@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.46.2] - 2026-11-25
+
+### Adicionado
+- `docs/avaliacao/2026-11-25-revisao-retroativa.md`: revisão retroativa de 25/11 com 15 papéis (os 10 da avaliação mais FinOps, Privacidade/LGPD, Engenheiro de IA/MLOps, Engenheiro de Plataforma e Comercial/Growth): os 9 achados do Alan conferidos (7 confirmados, 2 corrigidos), 17 achados novos e 21 itens priorizados nas fases B a D, sem quebrar o congelamento.
+
 ## [2.46.1] - 2026-11-25
 
 ### Adicionado

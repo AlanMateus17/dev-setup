@@ -223,6 +223,8 @@ Depois disso, use a Central por 2 semanas antes de qualquer tela nova.
 
 ### Fase D: higiene contínua (uma por semana, em paralelo)
 
+> Itens priorizados da revisão retroativa do mesmo dia (15 papéis): [2026-11-25-revisao-retroativa.md](2026-11-25-revisao-retroativa.md), seção 4.
+
 - Fixar as 12 imagens `:latest` e ligar o Renovate.
 - Remover ou justificar os 14 `|| true`.
 - `gitleaks` no CI.
