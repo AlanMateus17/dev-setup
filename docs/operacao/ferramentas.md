@@ -8,12 +8,12 @@
 
 | Tipo | Total | Obrigatórias | Paradas ou adiadas |
 |---|---|---|---|
-| Programas do Windows | 33 | 13 | 2 |
+| Programas do Windows | 33 | 13 | 1 |
 | Extensões do VS Code | 16 | 2 | 0 |
 | Pacotes do Ubuntu (apt) | 45 | 27 | 0 |
-| CLIs do Ubuntu | 49 | 9 | 3 |
+| CLIs do Ubuntu | 49 | 9 | 1 |
 | Serviços do Ubuntu | 5 | 2 | 1 |
-| Serviços Docker | 40 | 0 | 2 |
+| Serviços Docker | 40 | 0 | 0 |
 
 ## Programas do Windows
 
@@ -27,7 +27,7 @@
 | Docker Desktop | Base e terminal | não | sim | Motor do Docker usado pelo Ubuntu (integração WSL) |  | `winget install --id Docker.DockerDesktop -e` |
 | 7-Zip | Base e terminal | sim | sim | Compactar e extrair arquivos |  | `winget install --id 7zip.7zip -e` |
 | PowerToys | Base e terminal | sim | — | Utilitários do Windows (atalhos, FancyZones) |  | `winget install --id Microsoft.PowerToys -e` |
-| KeePassXC | Segurança e rede | sim | — | Cofre de senhas offline | adiada | `winget install --id KeePassXCTeam.KeePassXC -e` |
+| KeePassXC | Segurança e rede | sim | — | Cofre de senhas offline |  | `winget install --id KeePassXCTeam.KeePassXC -e` |
 | Yubico Authenticator | Segurança e rede | sim | — | Códigos 2FA da YubiKey |  | `winget install --id Yubico.Authenticator -e` |
 | Tailscale | Segurança e rede | sim | — | Rede privada para alcançar o notebook pelo celular |  | `winget install --id Tailscale.Tailscale -e` |
 | Syncthing | Segurança e rede | sim | — | Sincroniza pastas entre aparelhos, sem nuvem |  | `winget install --id Syncthing.Syncthing -e` |
@@ -149,7 +149,7 @@
 | d2 | CLIs do mise | sim | — | Diagramas a partir de texto |  | `bash scripts/wsl/extras.sh` |
 | vegeta | CLIs do mise | sim | — | Teste de carga HTTP |  | `bash scripts/wsl/extras.sh` |
 | age | CLIs do mise | sim | — | Criptografia de arquivos |  | `bash scripts/wsl/extras.sh` |
-| sops | CLIs do mise | sim | — | Segredos criptografados em arquivo | parada | `bash scripts/wsl/extras.sh` |
+| sops | CLIs do mise | sim | — | Segredos criptografados em arquivo |  | `bash scripts/wsl/extras.sh` |
 | bore | CLIs do mise | sim | — | Túnel TCP para a internet | parada | `(desinstalado; voltar só por decisão: ADR 0022)` |
 | gum | CLIs do mise | sim | — | Componentes para scripts shell |  | `bash scripts/wsl/extras.sh` |
 | soft-serve | CLIs do mise | sim | — | Servidor Git no terminal |  | `bash scripts/wsl/extras.sh` |
@@ -174,7 +174,7 @@
 | vercel | Nuvem | não | — | Deploy na Vercel |  | `bash scripts/wsl/nuvem.sh` |
 | wrangler | Nuvem | sim | — | Deploy na Cloudflare |  | `bash scripts/wsl/nuvem.sh` |
 | Ollama (WSL) | IA | sim | — | IA local na GPU, usada pela fila e pelo LiteLLM |  | `just ligar` |
-| keepassxc-cli | Segredos | sim | — | Ler segredos do cofre KeePassXC | adiada | `sudo apt install keepassxc` |
+| keepassxc-cli | Segredos | sim | — | Ler segredos do cofre KeePassXC |  | `sudo apt install keepassxc` |
 | ai-memory | IA | sim | sim | Memória de longo prazo entre sessões de agentes |  | `ver infra/ai-memory-hooks/README.md` |
 | Projeto lab-ia | IA | sim | — | Laboratório de dados e IA (PyTorch com CUDA, ~6 GB) |  | `bash scripts/wsl/lab-ia.sh` |
 
@@ -208,7 +208,7 @@
 | paperless | infra/casa | laboratorio | 8010 | Documentos digitalizados com OCR |  | `docker compose -f infra/casa/compose.yaml up -d paperless` |
 | grocy | infra/casa | laboratorio | 9283 | Estoque da casa |  | `docker compose -f infra/casa/compose.yaml up -d grocy` |
 | metabase | infra/dados | sob-demanda | 3012 | Painéis de dados |  | `docker compose -f infra/dados/compose.yaml up -d metabase` |
-| litellm | infra/ia | trabalho | 4000 | Gateway de modelos de IA com teto de gasto | parada | `docker compose -f infra/ia/compose.yaml up -d litellm` |
+| litellm | infra/ia | trabalho | 4000 | Gateway de modelos de IA com teto de gasto |  | `docker compose -f infra/ia/compose.yaml up -d litellm` |
 | whisper | infra/jarvis | laboratorio | 10300 | Fala para texto na GPU (Jarvis) |  | `docker compose -f infra/jarvis/compose.yaml up -d whisper` |
 | piper | infra/jarvis | laboratorio | 10200 | Texto para fala (Jarvis) |  | `docker compose -f infra/jarvis/compose.yaml up -d piper` |
 | openwakeword | infra/jarvis | laboratorio | 10400 | Palavra de ativação (Jarvis) |  | `docker compose -f infra/jarvis/compose.yaml up -d openwakeword` |
@@ -223,7 +223,7 @@
 | adguard | infra/rede | laboratorio | 53, 53, 3011 | DNS com bloqueio de anúncios |  | `docker compose -f infra/rede/compose.yaml up -d adguard` |
 | forgejo | infra/soberania | trabalho | 3000, 2222 | Git próprio |  | `docker compose -f infra/soberania/compose.yaml --profile forgejo up -d forgejo` |
 | soft-serve | infra/soberania | trabalho | 23231 | Git pelo terminal |  | `docker compose -f infra/soberania/compose.yaml --profile soft-serve up -d soft-serve` |
-| headscale | infra/soberania | trabalho | 8085 | Tailscale próprio | parada | `docker compose -f infra/soberania/compose.yaml --profile headscale up -d headscale` |
+| headscale | infra/soberania | trabalho | 8085 | Tailscale próprio |  | `docker compose -f infra/soberania/compose.yaml --profile headscale up -d headscale` |
 | glitchtip-db | infra/soberania | trabalho | — | Postgres do GlitchTip |  | `docker compose -f infra/soberania/compose.yaml --profile glitchtip up -d glitchtip-db` |
 | glitchtip-redis | infra/soberania | trabalho | — | Fila do GlitchTip |  | `docker compose -f infra/soberania/compose.yaml --profile glitchtip up -d glitchtip-redis` |
 | glitchtip-web | infra/soberania | trabalho | 8001 | Erros das aplicações |  | `docker compose -f infra/soberania/compose.yaml --profile glitchtip up -d glitchtip-web` |
@@ -253,7 +253,7 @@
 | Bot do Telegram | Serviços do Ubuntu | Recebe comandos pela internet (allowlist de um chat e de comandos fixos) |
 | adguard | Serviços Docker | DNS na porta 53 em todas as interfaces, por desenho |
 | soft-serve | Serviços Docker | SSH do Git em 23231 (só 127.0.0.1) |
-| headscale | Serviços Docker | Servidor de coordenação da rede privada; desligado (ADR 0022) |
+| headscale | Serviços Docker | Servidor de coordenação da rede privada (só 127.0.0.1:8085); precisa de config.yaml antes de subir |
 
 ## Paradas ou adiadas por decisão
 
@@ -261,11 +261,6 @@ Registro das decisões: [ADR 0022](../adr/0022-decisoes-de-25-11-2026.md). O `ju
 
 | Ferramenta | Decisão | Motivo | Rever em |
 |---|---|---|---|
-| KeePassXC | adiada | KeePassXC não é usado por decisão do Alan (25/11/2026); senhas no caderno (ADR 0022) | 2027-01-20 |
-| cloudflared | parada | Desinstalar por decisão do Alan (25/11/2026): abre túnel do PC para a internet (ADR 0022) | 2027-01-20 |
-| sops | parada | Segredos parados por decisão do Alan (25/11/2026) (ADR 0022) | 2027-01-20 |
-| bore | parada | Desinstalado por decisão do Alan (25/11/2026): abre túnel do PC para a internet (ADR 0022) | 2027-01-20 |
-| keepassxc-cli | adiada | KeePassXC não é usado por decisão do Alan (25/11/2026) (ADR 0022) | 2027-01-20 |
-| Pipeline de conteúdo | parada | Parado por decisão do Alan (25/11/2026) (ADR 0022) | 2027-01-20 |
-| litellm | parada | Parado por decisão do Alan (25/11/2026) (ADR 0022) | 2027-01-20 |
-| headscale | parada | Desligado de vez por decisão do Alan (25/11/2026): o Tailscale oficial cobre (ADR 0022) | 2027-01-20 |
+| cloudflared | parada | Desinstalar por decisão do Alan (25/11/2026): abre túnel do PC para a internet (ADR 0022, mantido na emenda: regra de segurança) | 2027-01-20 |
+| bore | parada | Desinstalado por decisão do Alan (25/11/2026): abre túnel do PC para a internet (ADR 0022, mantido na emenda: regra de segurança) | 2027-01-20 |
+| Pipeline de conteúdo | parada | Precisa de chave de API paga, que o Alan não vai criar (decisão de custo, FinOps; emenda da ADR 0022) | 2027-01-20 |

@@ -2,6 +2,17 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.52.0] - 2026-11-25
+
+### Alterado
+- **Fim do congelamento** (emenda da ADR 0022, decisão do Alan): o objetivo passa a ser instalar e configurar todas as ferramentas de `data/ferramentas.json` e criar a Central para usar 100% do setup do notebook e do celular (Tailscale), com login, CSRF, auditoria e PWA desde o começo.
+- A Central v1 tem **usuários, permissões e `organizacao_id` no banco desde o início** (contas por pessoa, papéis, permissões por ação, auditoria por usuário), para virar ferramenta de clientes depois sem reescrever.
+- Voltam a "normal" no registro: KeePassXC, `keepassxc-cli`, `sops`, LiteLLM e headscale. bore e cloudflared continuam parados (túnel para a internet).
+- O timer do pipeline de conteúdo **continua parado**, agora por custo: precisa de chave de API paga, que o Alan não vai criar (FinOps); rever em 2027-01-20.
+- `organizacao_id` desde a v1 da Central em usuários, permissões e dados (aprovado; detalhe na ADR da Central).
+- `CLAUDE.md`: a seção do congelamento vira "Plano em vigor" (ordem: PR 4 → PR 5 → PR 6 `just instalar` → instalar perfil por perfil → ADR da Central); PO, veto e Growth sem referência ao congelamento; tabela de decisões atualizada. As regras de segurança, de Git e de versão continuam.
+- Regras comuns das IAs: o segredo volta a ficar no KeePassXC (a senha do restic também no caderno).
+
 ## [2.51.0] - 2026-11-25
 
 ### Adicionado
