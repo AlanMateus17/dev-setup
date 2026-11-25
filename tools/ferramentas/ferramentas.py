@@ -102,6 +102,40 @@ def _servicos_compose(caminho: Path) -> list[str]:
     return nomes
 
 
+TAG_FLUTUANTE = {"latest", "stable", "main-stable", "main", "edge", "nightly"}
+
+
+def regras_compose(raiz: Path = RAIZ) -> list[str]:
+    """Todo serviço com mem_limit e imagem com versão fixa (tag flutuante quebra sem aviso; sem limite, um serviço toma a RAM do WSL)."""
+    erros: list[str] = []
+    for c in sorted(raiz.glob("infra/*/compose.yaml")):
+        rel = str(c.relative_to(raiz))
+        servico, tem_limite, em_servicos = None, False, False
+        def fechar():
+            if servico and not tem_limite:
+                erros.append(f"{rel}: serviço '{servico}' sem mem_limit")
+        for linha in c.read_text(encoding="utf-8").splitlines():
+            if re.match(r"^[A-Za-z]", linha):
+                fechar(); servico = None
+                em_servicos = linha.startswith("services:")
+                continue
+            m = re.match(r"^  ([A-Za-z0-9_.-]+):\s*$", linha)
+            if em_servicos and m:
+                fechar(); servico, tem_limite = m.group(1), False
+                continue
+            if servico and re.match(r"^    mem_limit:\s*\S+", linha):
+                tem_limite = True
+            mi = re.match(r"^    image:\s*(\S+)", linha)
+            if servico and mi:
+                imagem = re.sub(r"\$\{[A-Z_]+:-([^}]*)\}", r"\1", mi.group(1)).strip("'\"")
+                nome = imagem.rsplit("/", 1)[-1]
+                tag = nome.split(":", 1)[1] if ":" in nome else ""
+                if not tag or tag in TAG_FLUTUANTE:
+                    erros.append(f"{rel}: serviço '{servico}' com versão flutuante ('{imagem}'); fixe a versão")
+        fechar()
+    return erros
+
+
 def declarados(raiz: Path = RAIZ) -> dict[str, set[str]]:
     """Por fonte legível por máquina, as chaves de conferência que ela declara."""
     d: dict[str, set[str]] = {}
@@ -168,6 +202,7 @@ def conferir_fontes(dados: dict, raiz: Path = RAIZ) -> list[str]:
         texto = arq.read_text(encoding="utf-8")
         if termo not in texto and f["nome"] not in texto:
             erros.append(f"{f['id']}: {f['fonte']} não menciona '{termo}'")
+    erros += regras_compose(raiz)
     apt_registro = {f["conferir"]["dpkg"] for f in dados["ferramentas"] if f["tipo"] == "wsl-apt"}
     for fonte, nomes in decl.items():
         if "#" in fonte and not fonte.endswith("#uv"):

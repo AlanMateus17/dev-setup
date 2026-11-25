@@ -3,6 +3,7 @@
 name: pocketbase
 services:
   pocketbase:
+    mem_limit: 128m
     build:
       context: .
       args:

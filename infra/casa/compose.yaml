@@ -5,7 +5,8 @@
 name: amtech-casa
 services:
   homeassistant:
-    image: ghcr.io/home-assistant/home-assistant:stable
+    mem_limit: 896m
+    image: ghcr.io/home-assistant/home-assistant:2026.11.3
     restart: unless-stopped
     volumes:
       - ${CASA_DIR:?defina CASA_DIR no .env}/homeassistant:/config
@@ -14,10 +15,12 @@ services:
     ports:
       - "127.0.0.1:8123:8123"
   paperless-redis:
+    mem_limit: 128m
     image: docker.io/library/redis:7
     restart: unless-stopped
   paperless:
-    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    mem_limit: 1536m
+    image: ghcr.io/paperless-ngx/paperless-ngx:3.5.1
     restart: unless-stopped
     depends_on:
       - paperless-redis
@@ -33,7 +36,8 @@ services:
     ports:
       - "127.0.0.1:8010:8000"
   grocy:
-    image: lscr.io/linuxserver/grocy:latest
+    mem_limit: 128m
+    image: lscr.io/linuxserver/grocy:v4.7.1-ls352
     restart: unless-stopped
     environment:
       TZ: America/Sao_Paulo

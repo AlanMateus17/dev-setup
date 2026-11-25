@@ -3,7 +3,8 @@
 name: amtech-rede
 services:
   adguard:
-    image: adguard/adguardhome:latest
+    mem_limit: 256m
+    image: adguard/adguardhome:v1.0.0
     restart: unless-stopped
     volumes:
       - ${REDE_DIR:-./dados}/adguard/work:/opt/adguardhome/work

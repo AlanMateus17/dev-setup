@@ -2,6 +2,17 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.50.0] - 2026-11-25
+
+### Adicionado
+- `mem_limit` em todos os 40 serviços dos 10 compose.yaml (cerca de 2× a RAM estimada em `data/ferramentas.json`, mínimo 128 MB; soma de 19,9 GB se tudo subisse junto).
+- `ferramentas.py --check` (no `just check` e no CI): falha com serviço sem `mem_limit` ou com imagem de versão flutuante (`latest`, `stable`, `main-stable`, sem tag, inclusive como padrão `${X:-latest}`). 5 testes novos.
+
+### Corrigido
+- **ghostfolio** saía em loop (2.026 vezes): `sslmode=prefer` com o Prisma 7.10 exige TLS que o Postgres interno não tem; agora `sslmode=disable` (rede interna do Docker). Testado: sobe na 3.100.0 e fica no ar.
+- **soft-serve** apontava para `charmbracelet/soft-serve`, que não existe no Docker Hub (o serviço nunca subiria); agora `ghcr.io/charmbracelet/soft-serve`.
+- 24 imagens com versão fixa no lugar de `latest`/`stable` (versões estáveis mais recentes dos registros em 25/11/2026): Metabase v0.65.7, LiteLLM v1.83.14-stable, n8n 3.4.0, Grafana 13.0.2, Juice Shop v20.4.0, WebGoat v2026.5, Piper, openWakeWord, Zigbee2MQTT, Frigate 0.18.3, faster-whisper, Home Assistant 2026.11.3, Paperless 3.5.1, Grocy, AdGuard v1.0.0, soft-serve, headscale, GlitchTip 7.0.0, MariaDB e BookStack da linuxserver, Actual 26.11.0, Ghostfolio 3.100.0, Firefly 6.7.9 e Akaunting 3.3.2.
+
 ## [2.49.0] - 2026-11-25
 
 ### Adicionado

@@ -9,13 +9,15 @@ name: lab-seguranca
 
 services:
   juice-shop:
-    image: bkimminich/juice-shop:latest
+    mem_limit: 512m
+    image: bkimminich/juice-shop:v20.4.0
     restart: "no"
     ports:
       - "127.0.0.1:3100:3000"
 
   webgoat:
-    image: webgoat/webgoat:latest
+    mem_limit: 1024m
+    image: webgoat/webgoat:v2026.5
     restart: "no"
     ports:
       - "127.0.0.1:8180:8080"

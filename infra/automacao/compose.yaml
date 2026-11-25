@@ -9,6 +9,7 @@ name: amtech
 
 services:
   metricas-db:
+    mem_limit: 128m
     image: postgres:17-alpine
     restart: unless-stopped
     environment:
@@ -29,7 +30,8 @@ services:
       retries: 5
 
   n8n:
-    image: docker.n8n.io/n8nio/n8n:${N8N_VERSAO:-latest}
+    mem_limit: 512m
+    image: docker.n8n.io/n8nio/n8n:${N8N_VERSAO:-3.4.0}
     restart: unless-stopped
     environment:
       N8N_ENCRYPTION_KEY: ${N8N_CHAVE:?defina N8N_CHAVE no .env}
@@ -53,7 +55,8 @@ services:
       start_period: 40s
 
   grafana:
-    image: grafana/grafana-oss:${GRAFANA_VERSAO:-latest}
+    mem_limit: 256m
+    image: grafana/grafana-oss:${GRAFANA_VERSAO:-13.0.2}
     restart: unless-stopped
     environment:
       GF_SECURITY_ADMIN_USER: admin
@@ -77,6 +80,7 @@ services:
       retries: 5
 
   uptime-kuma:
+    mem_limit: 256m
     image: louislam/uptime-kuma:${KUMA_VERSAO:-1}
     restart: unless-stopped
     ports:
