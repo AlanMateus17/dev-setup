@@ -1,9 +1,9 @@
 {
- "_leia": "Fonte única das ferramentas do setup: programas do Windows, extensões do VS Code, pacotes e CLIs do WSL, serviços do Ubuntu e serviços Docker. Cada ferramenta tem como conferir, como instalar e uma linha de documentação. python3 tools/ferramentas/ferramentas.py --check confere este arquivo contra os scripts de instalação e os compose.yaml; --estado mostra o que está instalado e rodando no PC.",
+ "_leia": "Fonte única das ferramentas do setup: programas do Windows, extensões do VS Code, pacotes e CLIs do WSL, serviços do Ubuntu e serviços Docker. Cada ferramenta tem como conferir, como instalar e uma linha de documentação. python3 tools/ferramentas/ferramentas.py --check confere este arquivo contra os scripts de instalação e os compose.yaml; --estado mostra o que está instalado e rodando no PC. Toda ferramenta parada ou adiada tem rever_em (AAAA-MM-DD); o just validar avisa quando a data passa. Decisões: docs/adr/0022.",
  "decisoes": {
   "normal": "segue o plano",
-  "parada": "parada por decisão do Alan; não conta como falta",
-  "adiada": "adiada por decisão do Alan; não conta como falta"
+  "parada": "parada por decisão do Alan; não conta como falta; rever em rever_em",
+  "adiada": "adiada por decisão do Alan; não conta como falta; rever em rever_em"
  },
  "perfis": {
   "sempre": "Sempre ligado",
@@ -140,7 +140,8 @@
    "codigo_aberto": true,
    "obrigatoria": false,
    "decisao": "adiada",
-   "motivo": "KeePassXC não é usado por decisão do Alan (25/11/2026); senhas no caderno",
+   "motivo": "KeePassXC não é usado por decisão do Alan (25/11/2026); senhas no caderno (ADR 0022)",
+   "rever_em": "2027-01-20",
    "conferir": {
     "winget": "KeePassXCTeam.KeePassXC"
    },
@@ -312,7 +313,7 @@
     "winget": "Ollama.Ollama"
    },
    "instalar": "winget install --id Ollama.Ollama -e",
-   "acesso_externo": "Escuta em todas as interfaces (porta 11434) sem senha; revisão de segurança pendente",
+   "acesso_externo": "Deve escutar só em 127.0.0.1 (ADR 0022); a opção 'Expose Ollama to the network' fica desligada",
    "doc": "IA local no Windows (duplica o Ollama do WSL)"
   },
   {
@@ -503,11 +504,13 @@
    "fonte": "fora-do-plano",
    "codigo_aberto": true,
    "obrigatoria": false,
-   "decisao": "normal",
+   "decisao": "parada",
+   "motivo": "Desinstalar por decisão do Alan (25/11/2026): abre túnel do PC para a internet (ADR 0022)",
+   "rever_em": "2027-01-20",
    "conferir": {
     "arquivo": "/mnt/c/Program Files (x86)/cloudflared/cloudflared.exe"
    },
-   "instalar": "winget install --id Cloudflare.cloudflared -e",
+   "instalar": "(desinstalado; voltar só por decisão: ADR 0022)",
    "acesso_externo": "Abre túnel do PC para a internet; regra de uso pendente",
    "doc": "Túnel da Cloudflare; instalado fora do pacotes.json"
   },
@@ -1750,7 +1753,8 @@
    "codigo_aberto": true,
    "obrigatoria": false,
    "decisao": "parada",
-   "motivo": "Segredos parados por decisão do Alan (25/11/2026)",
+   "motivo": "Segredos parados por decisão do Alan (25/11/2026) (ADR 0022)",
+   "rever_em": "2027-01-20",
    "conferir": {
     "comando": "sops"
    },
@@ -1762,14 +1766,16 @@
    "nome": "bore",
    "tipo": "wsl-cli",
    "grupo": "CLIs do mise",
-   "fonte": "infra/dotfiles/dot_config/mise/config.toml",
+   "fonte": "fora-do-plano",
    "codigo_aberto": true,
    "obrigatoria": false,
-   "decisao": "normal",
+   "decisao": "parada",
+   "motivo": "Desinstalado por decisão do Alan (25/11/2026): abre túnel do PC para a internet (ADR 0022)",
+   "rever_em": "2027-01-20",
    "conferir": {
     "comando": "bore"
    },
-   "instalar": "bash scripts/wsl/extras.sh",
+   "instalar": "(desinstalado; voltar só por decisão: ADR 0022)",
    "acesso_externo": "Expõe qualquer porta local na internet com um comando; regra de uso pendente",
    "doc": "Túnel TCP para a internet"
   },
@@ -2127,7 +2133,8 @@
    "codigo_aberto": true,
    "obrigatoria": false,
    "decisao": "adiada",
-   "motivo": "KeePassXC não é usado por decisão do Alan (25/11/2026)",
+   "motivo": "KeePassXC não é usado por decisão do Alan (25/11/2026) (ADR 0022)",
+   "rever_em": "2027-01-20",
    "conferir": {
     "comando": "keepassxc-cli"
    },
@@ -2240,7 +2247,8 @@
    "obrigatoria": false,
    "perfil": "sempre",
    "decisao": "parada",
-   "motivo": "Parado por decisão do Alan (25/11/2026)",
+   "motivo": "Parado por decisão do Alan (25/11/2026) (ADR 0022)",
+   "rever_em": "2027-01-20",
    "conferir": {
     "systemd": "amtech-conteudo.timer"
    },
@@ -2428,7 +2436,8 @@
    "obrigatoria": false,
    "perfil": "trabalho",
    "decisao": "parada",
-   "motivo": "Parado por decisão do Alan (25/11/2026)",
+   "motivo": "Parado por decisão do Alan (25/11/2026) (ADR 0022)",
+   "rever_em": "2027-01-20",
    "conferir": {
     "container": "ia/litellm"
    },
@@ -2715,7 +2724,9 @@
    "codigo_aberto": true,
    "obrigatoria": false,
    "perfil": "trabalho",
-   "decisao": "normal",
+   "decisao": "parada",
+   "motivo": "Desligado de vez por decisão do Alan (25/11/2026): o Tailscale oficial cobre (ADR 0022)",
+   "rever_em": "2027-01-20",
    "conferir": {
     "container": "soberania/headscale"
    },
@@ -2723,7 +2734,7 @@
    "ligar": "docker compose -f infra/soberania/compose.yaml --profile headscale up -d headscale",
    "ram_mb": 40,
    "disco_gb": 0.11,
-   "acesso_externo": "Servidor de coordenação da rede privada; config.yaml ausente (loop)",
+   "acesso_externo": "Servidor de coordenação da rede privada; desligado (ADR 0022)",
    "doc": "Tailscale próprio"
   },
   {

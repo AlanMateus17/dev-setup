@@ -15,6 +15,7 @@ Enquanto os scripts de instalação não leem este arquivo, o --check garante qu
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import json
 import os
 import re
@@ -62,8 +63,13 @@ def validar(dados: dict) -> list[str]:
             continue
         if f.get("decisao") not in decisoes:
             erros.append(f"{fid}: decisão '{f.get('decisao')}' desconhecida")
-        if f.get("decisao") in ("parada", "adiada") and not f.get("motivo"):
-            erros.append(f"{fid}: decisão '{f['decisao']}' sem motivo")
+        if f.get("decisao") in ("parada", "adiada"):
+            if not f.get("motivo"):
+                erros.append(f"{fid}: decisão '{f['decisao']}' sem motivo")
+            try:
+                dt.date.fromisoformat(str(f.get("rever_em")))
+            except ValueError:
+                erros.append(f"{fid}: decisão '{f['decisao']}' sem rever_em válido (AAAA-MM-DD)")
         conf = f.get("conferir") or {}
         if len(conf) != 1 or next(iter(conf)) not in CONFERIR[tipo]:
             erros.append(f"{fid}: 'conferir' deve ter uma chave entre {sorted(CONFERIR[tipo])}")
@@ -227,8 +233,10 @@ def gerar_md(dados: dict) -> str:
     ext = [f for f in fs if f.get("acesso_externo")]
     L += ["## Acesso de fora (revisão de segurança)", "", "| Ferramenta | Tipo | O que abre |", "|---|---|---|"]
     L += [f"| {f['nome']} | {TIPOS[f['tipo']]} | {f['acesso_externo']} |" for f in ext]
-    L += ["", "## Paradas ou adiadas por decisão", "", "| Ferramenta | Decisão | Motivo |", "|---|---|---|"]
-    L += [f"| {f['nome']} | {f['decisao']} | {f['motivo']} |" for f in fs if f["decisao"] != "normal"]
+    L += ["", "## Paradas ou adiadas por decisão", "", "Registro das decisões: [ADR 0022](../adr/0022-decisoes-de-25-11-2026.md). "
+          "O `just validar` avisa quando a data de revisão passa.", "",
+          "| Ferramenta | Decisão | Motivo | Rever em |", "|---|---|---|---|"]
+    L += [f"| {f['nome']} | {f['decisao']} | {f['motivo']} | {f['rever_em']} |" for f in fs if f["decisao"] != "normal"]
     return "\n".join(L) + "\n"
 
 
@@ -296,6 +304,43 @@ def estado(dados: dict, s: dict | None = None) -> list[dict]:
 def faltando(estados: list[dict]) -> list[dict]:
     """O que conta como falta: obrigatória, decisão normal e não instalada (desconhecido não conta)."""
     return [e for e in estados if e["obrigatoria"] and e["decisao"] == "normal" and e["instalada"] is False]
+
+
+def revisoes_vencidas(dados: dict, hoje: dt.date | None = None) -> list[dict]:
+    """Paradas ou adiadas cuja data de revisão já passou."""
+    hoje = hoje or dt.date.today()
+    return [f for f in dados["ferramentas"] if f["decisao"] != "normal" and dt.date.fromisoformat(f["rever_em"]) < hoje]
+
+
+def paradas_presentes(dados: dict, estados: list[dict]) -> list[dict]:
+    """Parada ou adiada que abre acesso de fora, mas continua presente: a decisão não foi cumprida no PC.
+    Serviço (Docker, systemd) conta só se estiver rodando; programa e CLI contam se estiverem instalados."""
+    por_id = {f["id"]: f for f in dados["ferramentas"]}
+    def presente(e: dict) -> bool:
+        return bool(e["rodando"]) if e["tipo"] in ("docker", "systemd") else bool(e["instalada"])
+    return [e for e in estados if e["decisao"] != "normal" and presente(e) and por_id[e["id"]].get("acesso_externo")]
+
+
+PORTAS_SO_LOCAIS = (11434, 5432, 6379)  # Ollama do Windows e AMKaixara (ADR 0022)
+
+
+def portas_expostas_windows(portas: tuple[int, ...] = PORTAS_SO_LOCAIS, linhas: str | None = None) -> list[tuple[int, str]] | None:
+    """Portas que escutam fora do loopback no Windows. None = não dá para saber daqui (sem PowerShell)."""
+    if linhas is None:
+        if not shutil.which("powershell.exe"):
+            return None
+        lista = ",".join(str(p) for p in portas)
+        linhas = _rodar(["powershell.exe", "-NoProfile", "-Command",
+                         f"Get-NetTCPConnection -State Listen -LocalPort {lista} -ErrorAction SilentlyContinue | "
+                         "ForEach-Object { \"$($_.LocalPort) $($_.LocalAddress)\" }"], 30)
+        if linhas is None:
+            return None
+    abertas = []
+    for l in linhas.replace("\r", "").splitlines():
+        partes = l.split()
+        if len(partes) == 2 and partes[0].isdigit() and partes[1] not in ("127.0.0.1", "::1"):
+            abertas.append((int(partes[0]), partes[1]))
+    return sorted(set(abertas))
 
 
 # ------------------------------------------------------------------ linha de comando

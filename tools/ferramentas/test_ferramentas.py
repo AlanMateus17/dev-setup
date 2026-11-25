@@ -79,6 +79,17 @@ class TestValidacao(unittest.TestCase):
         f["conferir"] = {"dpkg": "x"}
         self.assertTrue(any("'conferir'" in e for e in ferramentas.validar(d)))
 
+    def test_parada_sem_rever_em(self):
+        d = self.base()
+        f = next(f for f in d["ferramentas"] if f["decisao"] != "normal")
+        del f["rever_em"]
+        self.assertTrue(any("rever_em" in e for e in ferramentas.validar(d)))
+
+    def test_rever_em_invalido(self):
+        d = self.base()
+        next(f for f in d["ferramentas"] if f["decisao"] != "normal")["rever_em"] = "20/01/2027"
+        self.assertTrue(any("rever_em" in e for e in ferramentas.validar(d)))
+
     def test_docker_sem_ram(self):
         d = self.base()
         del next(f for f in d["ferramentas"] if f["tipo"] == "docker")["ram_mb"]
@@ -128,6 +139,36 @@ class TestDivergencia(unittest.TestCase):
     def test_cli_some_do_script(self):
         e = self.erros_com("scripts/wsl/nuvem.sh", "terraform", "tf-removido", todas=True)
         self.assertTrue(any("cli-terraform" in x for x in e))
+
+
+class TestDecisoes(unittest.TestCase):
+    def test_adr_0022_registrada(self):
+        por_id = {f["id"]: f for f in ferramentas.carregar()["ferramentas"]}
+        for fid in ("docker-soberania-headscale", "cli-mise-bore", "win-cloudflared"):
+            self.assertEqual(por_id[fid]["decisao"], "parada")
+            self.assertIn("ADR 0022", por_id[fid]["motivo"])
+        self.assertTrue(all(f.get("rever_em") for f in por_id.values() if f["decisao"] != "normal"))
+
+    def test_revisao_vencida(self):
+        import datetime as dt
+        d = ferramentas.carregar()
+        self.assertEqual(ferramentas.revisoes_vencidas(d, dt.date(2026, 11, 25)), [])
+        vencidas = ferramentas.revisoes_vencidas(d, dt.date(2027, 1, 21))
+        self.assertEqual(len(vencidas), sum(f["decisao"] != "normal" for f in d["ferramentas"]))
+
+    def test_parada_presente(self):
+        d = ferramentas.carregar()
+        est = [{"id": "win-cloudflared", "tipo": "windows", "decisao": "parada", "instalada": True, "rodando": None},
+               {"id": "docker-soberania-headscale", "tipo": "docker", "decisao": "parada", "instalada": True, "rodando": False},
+               {"id": "cli-mise-bore", "tipo": "wsl-cli", "decisao": "parada", "instalada": False, "rodando": None}]
+        self.assertEqual([e["id"] for e in ferramentas.paradas_presentes(d, est)], ["win-cloudflared"])
+        est[1]["rodando"] = True
+        self.assertIn("docker-soberania-headscale", [e["id"] for e in ferramentas.paradas_presentes(d, est)])
+
+    def test_portas_expostas(self):
+        saida = "11434 ::\r\n11434 127.0.0.1\n5432 0.0.0.0\n6379 ::1\n"
+        self.assertEqual(ferramentas.portas_expostas_windows(linhas=saida), [(5432, "0.0.0.0"), (11434, "::")])
+        self.assertEqual(ferramentas.portas_expostas_windows(linhas="11434 127.0.0.1\n"), [])
 
 
 class TestEstado(unittest.TestCase):

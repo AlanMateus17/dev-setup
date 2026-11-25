@@ -8,12 +8,12 @@
 
 | Tipo | Total | Obrigatórias | Paradas ou adiadas |
 |---|---|---|---|
-| Programas do Windows | 33 | 13 | 1 |
+| Programas do Windows | 33 | 13 | 2 |
 | Extensões do VS Code | 16 | 2 | 0 |
 | Pacotes do Ubuntu (apt) | 45 | 27 | 0 |
-| CLIs do Ubuntu | 49 | 9 | 2 |
+| CLIs do Ubuntu | 49 | 9 | 3 |
 | Serviços do Ubuntu | 5 | 2 | 1 |
-| Serviços Docker | 40 | 0 | 1 |
+| Serviços Docker | 40 | 0 | 2 |
 
 ## Programas do Windows
 
@@ -51,7 +51,7 @@
 | Inkscape | Conteúdo | sim | — | Desenho vetorial (SVG, logos) |  | `winget install --id Inkscape.Inkscape -e` |
 | ShareX | Conteúdo | sim | — | Capturas de tela e GIFs |  | `winget install --id ShareX.ShareX -e` |
 | Telegram (aprovação dos posts) | Conteúdo | não | — | Telegram (aprovação dos posts e bot) |  | `winget install --id Telegram.TelegramDesktop -e` |
-| cloudflared | Segurança e rede | sim | — | Túnel da Cloudflare; instalado fora do pacotes.json |  | `winget install --id Cloudflare.cloudflared -e` |
+| cloudflared | Segurança e rede | sim | — | Túnel da Cloudflare; instalado fora do pacotes.json | parada | `(desinstalado; voltar só por decisão: ADR 0022)` |
 
 ## Extensões do VS Code
 
@@ -150,7 +150,7 @@
 | vegeta | CLIs do mise | sim | — | Teste de carga HTTP |  | `bash scripts/wsl/extras.sh` |
 | age | CLIs do mise | sim | — | Criptografia de arquivos |  | `bash scripts/wsl/extras.sh` |
 | sops | CLIs do mise | sim | — | Segredos criptografados em arquivo | parada | `bash scripts/wsl/extras.sh` |
-| bore | CLIs do mise | sim | — | Túnel TCP para a internet |  | `bash scripts/wsl/extras.sh` |
+| bore | CLIs do mise | sim | — | Túnel TCP para a internet | parada | `(desinstalado; voltar só por decisão: ADR 0022)` |
 | gum | CLIs do mise | sim | — | Componentes para scripts shell |  | `bash scripts/wsl/extras.sh` |
 | soft-serve | CLIs do mise | sim | — | Servidor Git no terminal |  | `bash scripts/wsl/extras.sh` |
 | goreleaser | CLIs do mise | sim | — | Empacotar releases Go |  | `bash scripts/wsl/extras.sh` |
@@ -222,7 +222,7 @@
 | adguard | infra/rede | laboratorio | 53, 53, 3011 | DNS com bloqueio de anúncios |  | `docker compose -f infra/rede/compose.yaml up -d adguard` |
 | forgejo | infra/soberania | trabalho | 3000, 2222 | Git próprio |  | `docker compose -f infra/soberania/compose.yaml --profile forgejo up -d forgejo` |
 | soft-serve | infra/soberania | trabalho | 23231 | Git pelo terminal |  | `docker compose -f infra/soberania/compose.yaml --profile soft-serve up -d soft-serve` |
-| headscale | infra/soberania | trabalho | 8085 | Tailscale próprio |  | `docker compose -f infra/soberania/compose.yaml --profile headscale up -d headscale` |
+| headscale | infra/soberania | trabalho | 8085 | Tailscale próprio | parada | `docker compose -f infra/soberania/compose.yaml --profile headscale up -d headscale` |
 | glitchtip-db | infra/soberania | trabalho | — | Postgres do GlitchTip |  | `docker compose -f infra/soberania/compose.yaml --profile glitchtip up -d glitchtip-db` |
 | glitchtip-redis | infra/soberania | trabalho | — | Fila do GlitchTip |  | `docker compose -f infra/soberania/compose.yaml --profile glitchtip up -d glitchtip-redis` |
 | glitchtip-web | infra/soberania | trabalho | 8001 | Erros das aplicações |  | `docker compose -f infra/soberania/compose.yaml --profile glitchtip up -d glitchtip-web` |
@@ -245,21 +245,26 @@
 |---|---|---|
 | Tailscale | Programas do Windows | Porta de entrada do celular, por desenho; conferir ACLs e expiração das chaves |
 | Syncthing | Programas do Windows | Quando ligado, escuta na rede local (22000) |
-| Ollama (IA local na GTX 1650) | Programas do Windows | Escuta em todas as interfaces (porta 11434) sem senha; revisão de segurança pendente |
+| Ollama (IA local na GTX 1650) | Programas do Windows | Deve escutar só em 127.0.0.1 (ADR 0022); a opção 'Expose Ollama to the network' fica desligada |
 | cloudflared | Programas do Windows | Abre túnel do PC para a internet; regra de uso pendente |
 | bore | CLIs do Ubuntu | Expõe qualquer porta local na internet com um comando; regra de uso pendente |
 | Claude Remote Control | Serviços do Ubuntu | Quem entrar na conta claude.ai comanda um shell no PC; exige 2FA na conta |
 | Bot do Telegram | Serviços do Ubuntu | Recebe comandos pela internet (allowlist de um chat e de comandos fixos) |
 | adguard | Serviços Docker | DNS na porta 53 em todas as interfaces, por desenho |
 | soft-serve | Serviços Docker | SSH do Git em 23231 (só 127.0.0.1) |
-| headscale | Serviços Docker | Servidor de coordenação da rede privada; config.yaml ausente (loop) |
+| headscale | Serviços Docker | Servidor de coordenação da rede privada; desligado (ADR 0022) |
 
 ## Paradas ou adiadas por decisão
 
-| Ferramenta | Decisão | Motivo |
-|---|---|---|
-| KeePassXC | adiada | KeePassXC não é usado por decisão do Alan (25/11/2026); senhas no caderno |
-| sops | parada | Segredos parados por decisão do Alan (25/11/2026) |
-| keepassxc-cli | adiada | KeePassXC não é usado por decisão do Alan (25/11/2026) |
-| Pipeline de conteúdo | parada | Parado por decisão do Alan (25/11/2026) |
-| litellm | parada | Parado por decisão do Alan (25/11/2026) |
+Registro das decisões: [ADR 0022](../adr/0022-decisoes-de-25-11-2026.md). O `just validar` avisa quando a data de revisão passa.
+
+| Ferramenta | Decisão | Motivo | Rever em |
+|---|---|---|---|
+| KeePassXC | adiada | KeePassXC não é usado por decisão do Alan (25/11/2026); senhas no caderno (ADR 0022) | 2027-01-20 |
+| cloudflared | parada | Desinstalar por decisão do Alan (25/11/2026): abre túnel do PC para a internet (ADR 0022) | 2027-01-20 |
+| sops | parada | Segredos parados por decisão do Alan (25/11/2026) (ADR 0022) | 2027-01-20 |
+| bore | parada | Desinstalado por decisão do Alan (25/11/2026): abre túnel do PC para a internet (ADR 0022) | 2027-01-20 |
+| keepassxc-cli | adiada | KeePassXC não é usado por decisão do Alan (25/11/2026) (ADR 0022) | 2027-01-20 |
+| Pipeline de conteúdo | parada | Parado por decisão do Alan (25/11/2026) (ADR 0022) | 2027-01-20 |
+| litellm | parada | Parado por decisão do Alan (25/11/2026) (ADR 0022) | 2027-01-20 |
+| headscale | parada | Desligado de vez por decisão do Alan (25/11/2026): o Tailscale oficial cobre (ADR 0022) | 2027-01-20 |
