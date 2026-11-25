@@ -41,6 +41,7 @@ CRITICO = {
     "5. Núcleo": ["nucleo"],
     "6. Coerência e docs": ["coerencia", "repos"],
     "7. Professor e mapa": ["professor", "registro", "colher"],
+    "8. Ferramentas": ["ferramentas"],
 }
 
 
@@ -221,11 +222,51 @@ def ensaio_backup() -> tuple[str, str]:
         return (OK, "") if n else (FALHA, "backup rodou, mas o evento backup.concluido não chegou ao núcleo")
 
 
+# ------------------------------------------------------------------ decisões do Alan (data/ferramentas.json)
+def decisoes() -> dict[str, tuple[str, str]]:
+    """id -> (decisão, nome). Parada ou adiada por decisão não conta como falta."""
+    try:
+        dados = json.loads((RAIZ / "data/ferramentas.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    return {f["id"]: (f["decisao"], f["nome"]) for f in dados["ferramentas"]}
+
+
+def exigir(item: str, coluna: str, ferramenta: str, ok: bool, falta: str, dec: dict[str, tuple[str, str]]) -> Resultado:
+    """OK se ok; NÃO EXISTE se a ferramenta está parada ou adiada por decisão; senão PRECISA DE MIM."""
+    d, nome = dec.get(ferramenta, ("normal", ferramenta))
+    if d != "normal":
+        return Resultado(item, coluna, NAO, f"{nome}: {d} por decisão do Alan")
+    return Resultado(item, coluna, OK if ok else MIM, "" if ok else falta)
+
+
+def checar_ferramentas() -> list[Resultado]:
+    """8. Ferramentas: obrigatórias instaladas e serviços sempre ligados no ar (fonte: data/ferramentas.json)."""
+    i = "8. Ferramentas"
+    sys.path.insert(0, str(RAIZ / "tools" / "ferramentas"))
+    import ferramentas  # noqa: E402
+    dados = ferramentas.carregar()
+    erros = ferramentas.validar(dados) or ferramentas.conferir_fontes(dados)
+    R = [Resultado(i, "pc", FALHA, f"registro divergente: {erros[0]}")] if erros else []
+    est = ferramentas.estado(dados)
+    faltam = ferramentas.faltando(est)
+    R.append(Resultado(i, "pc", OK if not faltam else MIM,
+                       "" if not faltam else "faltam: " + ", ".join(f"{e['nome']} ({e['instalar']})" for e in faltam[:6])))
+    sempre = [e for e, f in zip(est, dados["ferramentas"]) if f.get("perfil") == "sempre" and f["obrigatoria"] and f["decisao"] == "normal"]
+    parados = [e["nome"] for e in sempre if e["rodando"] is False]
+    R.append(Resultado(i, "sozinho", OK if not parados else MIM, "" if not parados else "fora do ar: " + ", ".join(parados) + " (just ligar)"))
+    desconhecidos = sum(e["instalada"] is None for e in est)
+    R.append(Resultado(i, "integracao", NAO if desconhecidos else OK,
+                       f"{desconhecidos} sem como conferir daqui (winget/VS Code só no WSL com Windows)" if desconhecidos else ""))
+    return R
+
+
 # ------------------------------------------------------------------ checagens por item
 def checar(rapido: bool, restaurar: bool) -> list[Resultado]:
     R: list[Resultado] = []
     cron = crontab()
     cron_msg = "sem cron neste ambiente" if cron is None else "rode: bash scripts/wsl/agendar.sh --aplicar"
+    dec = decisoes()
 
     # 1. Instalação
     i = "1. Instalação"
@@ -240,8 +281,8 @@ def checar(rapido: bool, restaurar: bool) -> list[Resultado]:
     # 2. Segredos (nunca abre o cofre)
     i = "2. Segredos"
     cofre = next((c for c in caminhos_cofre() if c.exists()), caminhos_cofre()[0])
-    R.append(Resultado(i, "pc", OK if tem("keepassxc-cli") else MIM, "" if tem("keepassxc-cli") else "sudo apt install keepassxc"))
-    R.append(Resultado(i, "pc", OK if cofre.exists() else MIM, "" if cofre.exists() else "cofre .kdbx não achado (defina COFRE)"))
+    R.append(exigir(i, "pc", "cli-keepassxc-cli", tem("keepassxc-cli"), "sudo apt install keepassxc", dec))
+    R.append(exigir(i, "pc", "win-keepassxcteam-keepassxc", cofre.exists(), "cofre .kdbx não achado (defina COFRE)", dec))
     if tem("age") and tem("age-keygen"):
         with tempfile.TemporaryDirectory() as t:
             rc, _ = rodar(f'cd "{t}" && age-keygen -o k 2>/dev/null && printf x | age -e -r "$(age-keygen -y k)" -o c '
@@ -249,7 +290,7 @@ def checar(rapido: bool, restaurar: bool) -> list[Resultado]:
         R.append(Resultado(i, "pc", OK if rc == 0 else FALHA, "" if rc == 0 else "age não cifra/decifra"))
     else:
         R.append(Resultado(i, "pc", MIM, "age ausente: bash scripts/wsl/extras.sh"))
-    R.append(Resultado(i, "pc", OK if tem("sops") else MIM, "" if tem("sops") else "sops ausente: bash scripts/wsl/extras.sh"))
+    R.append(exigir(i, "pc", "cli-mise-sops", tem("sops"), "sops ausente: bash scripts/wsl/extras.sh", dec))
     R.append(Resultado(i, "sozinho", NAO, "segredo não tem agendamento"))
     R.append(Resultado(i, "integracao", NAO, "sops/age na VM ainda não existe (ADR 0009, fase futura)"))
 
@@ -280,7 +321,7 @@ def checar(rapido: bool, restaurar: bool) -> list[Resultado]:
                        "" if linha_agendada("resumo-manha", cron) else cron_msg))
     ollama, litellm = http_ok("http://localhost:11434/api/tags"), http_ok("http://localhost:4000/health/liveliness")
     R.append(Resultado(i, "integracao", OK if ollama else MIM, "" if ollama else "Ollama fora do ar: just ligar"))
-    R.append(Resultado(i, "integracao", OK if litellm else MIM, "" if litellm else "LiteLLM fora do ar: just ligar (precisa do Docker)"))
+    R.append(exigir(i, "integracao", "docker-ia-litellm", litellm, "LiteLLM fora do ar: just ligar (precisa do Docker)", dec))
 
     # 5. Núcleo
     i = "5. Núcleo"
@@ -294,7 +335,7 @@ def checar(rapido: bool, restaurar: bool) -> list[Resultado]:
     n_cron = sum(1 for l in (cron or "").splitlines() if "# amtech-setup" in l)
     timer = rodar("systemctl --user is-active amtech-conteudo.timer", 20)[0] == 0
     R.append(Resultado(i, "sozinho", OK if n_cron >= 3 else MIM, "" if n_cron >= 3 else f"{n_cron}/3 rotinas no cron; {cron_msg}"))
-    R.append(Resultado(i, "sozinho", OK if timer else MIM, "" if timer else "timer do pipeline parado: bash scripts/wsl/ativar-pipeline.sh"))
+    R.append(exigir(i, "sozinho", "svc-pipeline", timer, "timer do pipeline parado: bash scripts/wsl/ativar-pipeline.sh", dec))
     R.append(Resultado(i, "integracao", NAO, "núcleo é local (PostgreSQL na VM é fase futura)"))
 
     # 6. Coerência e docs
@@ -320,6 +361,9 @@ def checar(rapido: bool, restaurar: bool) -> list[Resultado]:
     vault = Path.home() / "dev/notas"
     tem_vault = (vault / ".git").exists()
     R.append(Resultado(i, "integracao", OK if tem_vault else MIM, "" if tem_vault else "clone o vault em ~/dev/notas"))
+
+    # 8. Ferramentas (fonte única: data/ferramentas.json)
+    R.extend(checar_ferramentas())
     return R
 
 

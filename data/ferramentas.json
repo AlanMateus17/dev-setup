@@ -1,0 +1,3015 @@
+{
+ "_leia": "Fonte única das ferramentas do setup: programas do Windows, extensões do VS Code, pacotes e CLIs do WSL, serviços do Ubuntu e serviços Docker. Cada ferramenta tem como conferir, como instalar e uma linha de documentação. python3 tools/ferramentas/ferramentas.py --check confere este arquivo contra os scripts de instalação e os compose.yaml; --estado mostra o que está instalado e rodando no PC.",
+ "decisoes": {
+  "normal": "segue o plano",
+  "parada": "parada por decisão do Alan; não conta como falta",
+  "adiada": "adiada por decisão do Alan; não conta como falta"
+ },
+ "perfis": {
+  "sempre": "Sempre ligado",
+  "trabalho": "Ligado para trabalhar",
+  "laboratorio": "Só para estudo e laboratório"
+ },
+ "ferramentas": [
+  {
+   "id": "win-microsoft-windowsterminal",
+   "nome": "Windows Terminal",
+   "tipo": "windows",
+   "grupo": "Base e terminal",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "Microsoft.WindowsTerminal"
+   },
+   "instalar": "winget install --id Microsoft.WindowsTerminal -e",
+   "doc": "Terminal do Windows com abas para PowerShell e Ubuntu"
+  },
+  {
+   "id": "win-microsoft-powershell",
+   "nome": "PowerShell 7",
+   "tipo": "windows",
+   "grupo": "Base e terminal",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "Microsoft.PowerShell"
+   },
+   "instalar": "winget install --id Microsoft.PowerShell -e",
+   "doc": "PowerShell 7, usado pelos scripts de scripts/windows"
+  },
+  {
+   "id": "win-git-git",
+   "nome": "Git for Windows",
+   "tipo": "windows",
+   "grupo": "Base e terminal",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "Git.Git"
+   },
+   "instalar": "winget install --id Git.Git -e",
+   "doc": "Git do lado do Windows"
+  },
+  {
+   "id": "win-github-cli",
+   "nome": "GitHub CLI",
+   "tipo": "windows",
+   "grupo": "Base e terminal",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "GitHub.cli"
+   },
+   "instalar": "winget install --id GitHub.cli -e",
+   "doc": "gh: PRs e repositórios do GitHub pelo terminal"
+  },
+  {
+   "id": "win-microsoft-visualstudiocode",
+   "nome": "VS Code",
+   "tipo": "windows",
+   "grupo": "Base e terminal",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": false,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "Microsoft.VisualStudioCode"
+   },
+   "instalar": "winget install --id Microsoft.VisualStudioCode -e",
+   "doc": "Editor principal, abre o Ubuntu pelo Remote WSL"
+  },
+  {
+   "id": "win-docker-dockerdesktop",
+   "nome": "Docker Desktop",
+   "tipo": "windows",
+   "grupo": "Base e terminal",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": false,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "Docker.DockerDesktop"
+   },
+   "instalar": "winget install --id Docker.DockerDesktop -e",
+   "doc": "Motor do Docker usado pelo Ubuntu (integração WSL)"
+  },
+  {
+   "id": "win-7zip-7zip",
+   "nome": "7-Zip",
+   "tipo": "windows",
+   "grupo": "Base e terminal",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "7zip.7zip"
+   },
+   "instalar": "winget install --id 7zip.7zip -e",
+   "doc": "Compactar e extrair arquivos"
+  },
+  {
+   "id": "win-microsoft-powertoys",
+   "nome": "PowerToys",
+   "tipo": "windows",
+   "grupo": "Base e terminal",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "Microsoft.PowerToys"
+   },
+   "instalar": "winget install --id Microsoft.PowerToys -e",
+   "doc": "Utilitários do Windows (atalhos, FancyZones)"
+  },
+  {
+   "id": "win-keepassxcteam-keepassxc",
+   "nome": "KeePassXC",
+   "tipo": "windows",
+   "grupo": "Segurança e rede",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "adiada",
+   "motivo": "KeePassXC não é usado por decisão do Alan (25/11/2026); senhas no caderno",
+   "conferir": {
+    "winget": "KeePassXCTeam.KeePassXC"
+   },
+   "instalar": "winget install --id KeePassXCTeam.KeePassXC -e",
+   "doc": "Cofre de senhas offline"
+  },
+  {
+   "id": "win-yubico-authenticator",
+   "nome": "Yubico Authenticator",
+   "tipo": "windows",
+   "grupo": "Segurança e rede",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "Yubico.Authenticator"
+   },
+   "instalar": "winget install --id Yubico.Authenticator -e",
+   "doc": "Códigos 2FA da YubiKey"
+  },
+  {
+   "id": "win-tailscale-tailscale",
+   "nome": "Tailscale",
+   "tipo": "windows",
+   "grupo": "Segurança e rede",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "Tailscale.Tailscale"
+   },
+   "instalar": "winget install --id Tailscale.Tailscale -e",
+   "acesso_externo": "Porta de entrada do celular, por desenho; conferir ACLs e expiração das chaves",
+   "doc": "Rede privada para alcançar o notebook pelo celular"
+  },
+  {
+   "id": "win-syncthing-syncthing",
+   "nome": "Syncthing",
+   "tipo": "windows",
+   "grupo": "Segurança e rede",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "Syncthing.Syncthing"
+   },
+   "instalar": "winget install --id Syncthing.Syncthing -e",
+   "acesso_externo": "Quando ligado, escuta na rede local (22000)",
+   "doc": "Sincroniza pastas entre aparelhos, sem nuvem"
+  },
+  {
+   "id": "win-wiresharkfoundation-wireshark",
+   "nome": "Wireshark",
+   "tipo": "windows",
+   "grupo": "Segurança e rede",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "WiresharkFoundation.Wireshark"
+   },
+   "instalar": "winget install --id WiresharkFoundation.Wireshark -e",
+   "doc": "Captura e análise de tráfego de rede"
+  },
+  {
+   "id": "win-rufus-rufus",
+   "nome": "Rufus (pendrives do Kali e do Arch)",
+   "tipo": "windows",
+   "grupo": "Segurança e rede",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "Rufus.Rufus"
+   },
+   "instalar": "winget install --id Rufus.Rufus -e",
+   "doc": "Grava pendrives de instalação (Kali, Arch)"
+  },
+  {
+   "id": "win-dbeaver-dbeaver-community",
+   "nome": "DBeaver Community",
+   "tipo": "windows",
+   "grupo": "Desenvolvimento",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "DBeaver.DBeaver.Community"
+   },
+   "instalar": "winget install --id DBeaver.DBeaver.Community -e",
+   "doc": "Cliente de banco de dados com interface"
+  },
+  {
+   "id": "win-bruno-bruno",
+   "nome": "Bruno (testar APIs)",
+   "tipo": "windows",
+   "grupo": "Desenvolvimento",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "Bruno.Bruno"
+   },
+   "instalar": "winget install --id Bruno.Bruno -e",
+   "doc": "Testar APIs (coleções em arquivo, no Git)"
+  },
+  {
+   "id": "win-jgraph-draw",
+   "nome": "draw.io",
+   "tipo": "windows",
+   "grupo": "Desenvolvimento",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "JGraph.Draw"
+   },
+   "instalar": "winget install --id JGraph.Draw -e",
+   "doc": "draw.io: diagramas offline"
+  },
+  {
+   "id": "win-oracle-virtualbox",
+   "nome": "VirtualBox (Arch, Kali e servidores em VM)",
+   "tipo": "windows",
+   "grupo": "Desenvolvimento",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "Oracle.VirtualBox"
+   },
+   "instalar": "winget install --id Oracle.VirtualBox -e",
+   "doc": "Máquinas virtuais (Arch, Kali, servidores)"
+  },
+  {
+   "id": "win-arduinosa-ide-stable",
+   "nome": "Arduino IDE 2",
+   "tipo": "windows",
+   "grupo": "Desenvolvimento",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "ArduinoSA.IDE.stable"
+   },
+   "instalar": "winget install --id ArduinoSA.IDE.stable -e",
+   "doc": "Programar Arduino e ESP32"
+  },
+  {
+   "id": "win-ollama-ollama",
+   "nome": "Ollama (IA local na GTX 1650)",
+   "tipo": "windows",
+   "grupo": "Desenvolvimento",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "Ollama.Ollama"
+   },
+   "instalar": "winget install --id Ollama.Ollama -e",
+   "acesso_externo": "Escuta em todas as interfaces (porta 11434) sem senha; revisão de segurança pendente",
+   "doc": "IA local no Windows (duplica o Ollama do WSL)"
+  },
+  {
+   "id": "win-obsidian-obsidian",
+   "nome": "Obsidian",
+   "tipo": "windows",
+   "grupo": "Estudo e documentos",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": false,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "Obsidian.Obsidian"
+   },
+   "instalar": "winget install --id Obsidian.Obsidian -e",
+   "doc": "Notas e estudo (vault em C:\\Users\\alanmateus\\vault)"
+  },
+  {
+   "id": "win-anki-anki",
+   "nome": "Anki",
+   "tipo": "windows",
+   "grupo": "Estudo e documentos",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "Anki.Anki"
+   },
+   "instalar": "winget install --id Anki.Anki -e",
+   "doc": "Repetição espaçada dos cartões do Professor"
+  },
+  {
+   "id": "win-sumatrapdf-sumatrapdf",
+   "nome": "SumatraPDF",
+   "tipo": "windows",
+   "grupo": "Estudo e documentos",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "SumatraPDF.SumatraPDF"
+   },
+   "instalar": "winget install --id SumatraPDF.SumatraPDF -e",
+   "doc": "Leitor de PDF leve"
+  },
+  {
+   "id": "win-thedocumentfoundation-libreoffice",
+   "nome": "LibreOffice",
+   "tipo": "windows",
+   "grupo": "Estudo e documentos",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "TheDocumentFoundation.LibreOffice"
+   },
+   "instalar": "winget install --id TheDocumentFoundation.LibreOffice -e",
+   "doc": "Documentos, planilhas e apresentações"
+  },
+  {
+   "id": "win-mozilla-firefox",
+   "nome": "Firefox",
+   "tipo": "windows",
+   "grupo": "Estudo e documentos",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "Mozilla.Firefox"
+   },
+   "instalar": "winget install --id Mozilla.Firefox -e",
+   "doc": "Navegador"
+  },
+  {
+   "id": "win-obsproject-obsstudio",
+   "nome": "OBS Studio",
+   "tipo": "windows",
+   "grupo": "Conteúdo",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "OBSProject.OBSStudio"
+   },
+   "instalar": "winget install --id OBSProject.OBSStudio -e",
+   "doc": "Gravar aulas e vídeos"
+  },
+  {
+   "id": "win-audacity-audacity",
+   "nome": "Audacity",
+   "tipo": "windows",
+   "grupo": "Conteúdo",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "Audacity.Audacity"
+   },
+   "instalar": "winget install --id Audacity.Audacity -e",
+   "doc": "Editar áudio"
+  },
+  {
+   "id": "win-kde-kdenlive",
+   "nome": "Kdenlive",
+   "tipo": "windows",
+   "grupo": "Conteúdo",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "KDE.Kdenlive"
+   },
+   "instalar": "winget install --id KDE.Kdenlive -e",
+   "doc": "Editar vídeo"
+  },
+  {
+   "id": "win-kde-krita",
+   "nome": "Krita",
+   "tipo": "windows",
+   "grupo": "Conteúdo",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "KDE.Krita"
+   },
+   "instalar": "winget install --id KDE.Krita -e",
+   "doc": "Desenho e pintura digital"
+  },
+  {
+   "id": "win-inkscape-inkscape",
+   "nome": "Inkscape",
+   "tipo": "windows",
+   "grupo": "Conteúdo",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "Inkscape.Inkscape"
+   },
+   "instalar": "winget install --id Inkscape.Inkscape -e",
+   "doc": "Desenho vetorial (SVG, logos)"
+  },
+  {
+   "id": "win-sharex-sharex",
+   "nome": "ShareX",
+   "tipo": "windows",
+   "grupo": "Conteúdo",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "ShareX.ShareX"
+   },
+   "instalar": "winget install --id ShareX.ShareX -e",
+   "doc": "Capturas de tela e GIFs"
+  },
+  {
+   "id": "win-telegram-telegramdesktop",
+   "nome": "Telegram (aprovação dos posts)",
+   "tipo": "windows",
+   "grupo": "Conteúdo",
+   "fonte": "scripts/windows/pacotes.json",
+   "codigo_aberto": false,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "winget": "Telegram.TelegramDesktop"
+   },
+   "instalar": "winget install --id Telegram.TelegramDesktop -e",
+   "doc": "Telegram (aprovação dos posts e bot)"
+  },
+  {
+   "id": "win-cloudflared",
+   "nome": "cloudflared",
+   "tipo": "windows",
+   "grupo": "Segurança e rede",
+   "fonte": "fora-do-plano",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "arquivo": "/mnt/c/Program Files (x86)/cloudflared/cloudflared.exe"
+   },
+   "instalar": "winget install --id Cloudflare.cloudflared -e",
+   "acesso_externo": "Abre túnel do PC para a internet; regra de uso pendente",
+   "doc": "Túnel da Cloudflare; instalado fora do pacotes.json"
+  },
+  {
+   "id": "vscode-ms-vscode-remote-remote-wsl",
+   "nome": "ms-vscode-remote.remote-wsl",
+   "tipo": "vscode",
+   "grupo": "Extensões do VS Code",
+   "fonte": "scripts/windows/vscode-extensoes.txt",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "extensao": "ms-vscode-remote.remote-wsl"
+   },
+   "instalar": "code --install-extension ms-vscode-remote.remote-wsl",
+   "doc": "Abre o Ubuntu do WSL no VS Code"
+  },
+  {
+   "id": "vscode-anthropic-claude-code",
+   "nome": "anthropic.claude-code",
+   "tipo": "vscode",
+   "grupo": "Extensões do VS Code",
+   "fonte": "scripts/windows/vscode-extensoes.txt",
+   "codigo_aberto": false,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "extensao": "anthropic.claude-code"
+   },
+   "instalar": "code --install-extension anthropic.claude-code",
+   "doc": "Claude Code dentro do VS Code"
+  },
+  {
+   "id": "vscode-editorconfig-editorconfig",
+   "nome": "editorconfig.editorconfig",
+   "tipo": "vscode",
+   "grupo": "Extensões do VS Code",
+   "fonte": "scripts/windows/vscode-extensoes.txt",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "extensao": "editorconfig.editorconfig"
+   },
+   "instalar": "code --install-extension editorconfig.editorconfig",
+   "doc": "Aplica o .editorconfig"
+  },
+  {
+   "id": "vscode-redhat-vscode-yaml",
+   "nome": "redhat.vscode-yaml",
+   "tipo": "vscode",
+   "grupo": "Extensões do VS Code",
+   "fonte": "scripts/windows/vscode-extensoes.txt",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "extensao": "redhat.vscode-yaml"
+   },
+   "instalar": "code --install-extension redhat.vscode-yaml",
+   "doc": "YAML com validação (compose, CI)"
+  },
+  {
+   "id": "vscode-ms-vscode-powershell",
+   "nome": "ms-vscode.powershell",
+   "tipo": "vscode",
+   "grupo": "Extensões do VS Code",
+   "fonte": "scripts/windows/vscode-extensoes.txt",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "extensao": "ms-vscode.powershell"
+   },
+   "instalar": "code --install-extension ms-vscode.powershell",
+   "doc": "Scripts PowerShell"
+  },
+  {
+   "id": "vscode-timonwong-shellcheck",
+   "nome": "timonwong.shellcheck",
+   "tipo": "vscode",
+   "grupo": "Extensões do VS Code",
+   "fonte": "scripts/windows/vscode-extensoes.txt",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "extensao": "timonwong.shellcheck"
+   },
+   "instalar": "code --install-extension timonwong.shellcheck",
+   "doc": "ShellCheck nos scripts bash"
+  },
+  {
+   "id": "vscode-ms-dotnettools-csdevkit",
+   "nome": "ms-dotnettools.csdevkit",
+   "tipo": "vscode",
+   "grupo": "Extensões do VS Code",
+   "fonte": "scripts/windows/vscode-extensoes.txt",
+   "codigo_aberto": false,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "extensao": "ms-dotnettools.csdevkit"
+   },
+   "instalar": "code --install-extension ms-dotnettools.csdevkit",
+   "doc": "C#/.NET (carta de reserva)"
+  },
+  {
+   "id": "vscode-dbaeumer-vscode-eslint",
+   "nome": "dbaeumer.vscode-eslint",
+   "tipo": "vscode",
+   "grupo": "Extensões do VS Code",
+   "fonte": "scripts/windows/vscode-extensoes.txt",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "extensao": "dbaeumer.vscode-eslint"
+   },
+   "instalar": "code --install-extension dbaeumer.vscode-eslint",
+   "doc": "ESLint (TypeScript/JavaScript)"
+  },
+  {
+   "id": "vscode-esbenp-prettier-vscode",
+   "nome": "esbenp.prettier-vscode",
+   "tipo": "vscode",
+   "grupo": "Extensões do VS Code",
+   "fonte": "scripts/windows/vscode-extensoes.txt",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "extensao": "esbenp.prettier-vscode"
+   },
+   "instalar": "code --install-extension esbenp.prettier-vscode",
+   "doc": "Formatação Prettier"
+  },
+  {
+   "id": "vscode-bradlc-vscode-tailwindcss",
+   "nome": "bradlc.vscode-tailwindcss",
+   "tipo": "vscode",
+   "grupo": "Extensões do VS Code",
+   "fonte": "scripts/windows/vscode-extensoes.txt",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "extensao": "bradlc.vscode-tailwindcss"
+   },
+   "instalar": "code --install-extension bradlc.vscode-tailwindcss",
+   "doc": "Tailwind CSS"
+  },
+  {
+   "id": "vscode-ms-azuretools-vscode-docker",
+   "nome": "ms-azuretools.vscode-docker",
+   "tipo": "vscode",
+   "grupo": "Extensões do VS Code",
+   "fonte": "scripts/windows/vscode-extensoes.txt",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "extensao": "ms-azuretools.vscode-docker"
+   },
+   "instalar": "code --install-extension ms-azuretools.vscode-docker",
+   "doc": "Docker e compose"
+  },
+  {
+   "id": "vscode-hashicorp-terraform",
+   "nome": "hashicorp.terraform",
+   "tipo": "vscode",
+   "grupo": "Extensões do VS Code",
+   "fonte": "scripts/windows/vscode-extensoes.txt",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "extensao": "hashicorp.terraform"
+   },
+   "instalar": "code --install-extension hashicorp.terraform",
+   "doc": "Terraform"
+  },
+  {
+   "id": "vscode-ms-python-python",
+   "nome": "ms-python.python",
+   "tipo": "vscode",
+   "grupo": "Extensões do VS Code",
+   "fonte": "scripts/windows/vscode-extensoes.txt",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "extensao": "ms-python.python"
+   },
+   "instalar": "code --install-extension ms-python.python",
+   "doc": "Python"
+  },
+  {
+   "id": "vscode-james-yu-latex-workshop",
+   "nome": "james-yu.latex-workshop",
+   "tipo": "vscode",
+   "grupo": "Extensões do VS Code",
+   "fonte": "scripts/windows/vscode-extensoes.txt",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "extensao": "james-yu.latex-workshop"
+   },
+   "instalar": "code --install-extension james-yu.latex-workshop",
+   "doc": "LaTeX do livro"
+  },
+  {
+   "id": "vscode-bierner-markdown-mermaid",
+   "nome": "bierner.markdown-mermaid",
+   "tipo": "vscode",
+   "grupo": "Extensões do VS Code",
+   "fonte": "scripts/windows/vscode-extensoes.txt",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "extensao": "bierner.markdown-mermaid"
+   },
+   "instalar": "code --install-extension bierner.markdown-mermaid",
+   "doc": "Diagramas Mermaid no Markdown"
+  },
+  {
+   "id": "vscode-ltex-plus-vscode-ltex-plus",
+   "nome": "ltex-plus.vscode-ltex-plus",
+   "tipo": "vscode",
+   "grupo": "Extensões do VS Code",
+   "fonte": "scripts/windows/vscode-extensoes.txt",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "extensao": "ltex-plus.vscode-ltex-plus"
+   },
+   "instalar": "code --install-extension ltex-plus.vscode-ltex-plus",
+   "doc": "Revisão de português (LanguageTool)"
+  },
+  {
+   "id": "apt-build-essential",
+   "nome": "build-essential",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "build-essential"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Compiladores C/C++ e make"
+  },
+  {
+   "id": "apt-curl",
+   "nome": "curl",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "curl"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Baixar pela linha de comando"
+  },
+  {
+   "id": "apt-wget",
+   "nome": "wget",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "wget"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Baixar arquivos"
+  },
+  {
+   "id": "apt-git",
+   "nome": "git",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "git"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Controle de versão"
+  },
+  {
+   "id": "apt-unzip",
+   "nome": "unzip",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "unzip"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Extrair .zip"
+  },
+  {
+   "id": "apt-zip",
+   "nome": "zip",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "zip"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Criar .zip"
+  },
+  {
+   "id": "apt-zstd",
+   "nome": "zstd",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "zstd"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Compressão zstd (instalador do Ollama)"
+  },
+  {
+   "id": "apt-jq",
+   "nome": "jq",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "jq"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Ler e filtrar JSON"
+  },
+  {
+   "id": "apt-ripgrep",
+   "nome": "ripgrep",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "ripgrep"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Busca rápida em arquivos (rg)"
+  },
+  {
+   "id": "apt-fzf",
+   "nome": "fzf",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "fzf"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Busca interativa no terminal"
+  },
+  {
+   "id": "apt-tmux",
+   "nome": "tmux",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "tmux"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Várias janelas no terminal"
+  },
+  {
+   "id": "apt-zsh",
+   "nome": "zsh",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "zsh"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Shell alternativo"
+  },
+  {
+   "id": "apt-ca-certificates",
+   "nome": "ca-certificates",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "ca-certificates"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Certificados raiz"
+  },
+  {
+   "id": "apt-gnupg",
+   "nome": "gnupg",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "gnupg"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Assinatura e criptografia GPG"
+  },
+  {
+   "id": "apt-bubblewrap",
+   "nome": "bubblewrap",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "bubblewrap"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Sandbox do Claude Code e do ai-jail"
+  },
+  {
+   "id": "apt-restic",
+   "nome": "restic",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "restic"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Backup diário"
+  },
+  {
+   "id": "apt-pandoc",
+   "nome": "pandoc",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "pandoc"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Converter documentos (Markdown, DOCX, PDF)"
+  },
+  {
+   "id": "apt-sqlite3",
+   "nome": "sqlite3",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "sqlite3"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Banco do núcleo pela linha de comando"
+  },
+  {
+   "id": "apt-postgresql-client",
+   "nome": "postgresql-client",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "postgresql-client"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "psql"
+  },
+  {
+   "id": "apt-python3-venv",
+   "nome": "python3-venv",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "python3-venv"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Ambientes virtuais Python"
+  },
+  {
+   "id": "apt-shellcheck",
+   "nome": "shellcheck",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "shellcheck"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Conferir scripts bash"
+  },
+  {
+   "id": "apt-openssh-client",
+   "nome": "openssh-client",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "openssh-client"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "SSH"
+  },
+  {
+   "id": "apt-nmap",
+   "nome": "nmap",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "nmap"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Varredura de rede (só laboratório)"
+  },
+  {
+   "id": "apt-bind9-dnsutils",
+   "nome": "bind9-dnsutils",
+   "tipo": "wsl-apt",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "bind9-dnsutils"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "dig e nslookup"
+  },
+  {
+   "id": "apt-just",
+   "nome": "just",
+   "tipo": "wsl-apt",
+   "grupo": "Terminal (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#TERMINAL",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "just"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Receitas do setup (just check, just ligar…)"
+  },
+  {
+   "id": "apt-zoxide",
+   "nome": "zoxide",
+   "tipo": "wsl-apt",
+   "grupo": "Terminal (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#TERMINAL",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "zoxide"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "cd que aprende"
+  },
+  {
+   "id": "apt-eza",
+   "nome": "eza",
+   "tipo": "wsl-apt",
+   "grupo": "Terminal (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#TERMINAL",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "eza"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "ls moderno"
+  },
+  {
+   "id": "apt-fd-find",
+   "nome": "fd-find",
+   "tipo": "wsl-apt",
+   "grupo": "Terminal (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#TERMINAL",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "fd-find"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "find moderno"
+  },
+  {
+   "id": "apt-btop",
+   "nome": "btop",
+   "tipo": "wsl-apt",
+   "grupo": "Terminal (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#TERMINAL",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "btop"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Monitor de recursos"
+  },
+  {
+   "id": "apt-hyperfine",
+   "nome": "hyperfine",
+   "tipo": "wsl-apt",
+   "grupo": "Terminal (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#TERMINAL",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "hyperfine"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Medir tempo de comandos"
+  },
+  {
+   "id": "apt-tio",
+   "nome": "tio",
+   "tipo": "wsl-apt",
+   "grupo": "Terminal (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#TERMINAL",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "tio"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Terminal serial (ESP32, Arduino)"
+  },
+  {
+   "id": "apt-tcpdump",
+   "nome": "tcpdump",
+   "tipo": "wsl-apt",
+   "grupo": "Terminal (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh#TERMINAL",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "tcpdump"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Captura de pacotes"
+  },
+  {
+   "id": "apt-podman",
+   "nome": "podman",
+   "tipo": "wsl-apt",
+   "grupo": "Extras",
+   "fonte": "scripts/wsl/extras.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "podman"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Containers sem daemon"
+  },
+  {
+   "id": "apt-git-lfs",
+   "nome": "git-lfs",
+   "tipo": "wsl-apt",
+   "grupo": "Extras",
+   "fonte": "scripts/wsl/extras.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "git-lfs"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Arquivos grandes no Git"
+  },
+  {
+   "id": "apt-hledger",
+   "nome": "hledger",
+   "tipo": "wsl-apt",
+   "grupo": "Extras",
+   "fonte": "scripts/wsl/extras.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "hledger"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Contabilidade em texto"
+  },
+  {
+   "id": "apt-neovim",
+   "nome": "neovim",
+   "tipo": "wsl-apt",
+   "grupo": "Extras",
+   "fonte": "scripts/wsl/extras.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "neovim"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Editor no terminal"
+  },
+  {
+   "id": "apt-gdb",
+   "nome": "gdb",
+   "tipo": "wsl-apt",
+   "grupo": "Engenharia reversa",
+   "fonte": "scripts/wsl/ferramentas-re.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "gdb"
+   },
+   "instalar": "bash scripts/wsl/ferramentas-re.sh",
+   "doc": "Depurador"
+  },
+  {
+   "id": "apt-binutils",
+   "nome": "binutils",
+   "tipo": "wsl-apt",
+   "grupo": "Engenharia reversa",
+   "fonte": "scripts/wsl/ferramentas-re.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "binutils"
+   },
+   "instalar": "bash scripts/wsl/ferramentas-re.sh",
+   "doc": "objdump, readelf, strings"
+  },
+  {
+   "id": "apt-strace",
+   "nome": "strace",
+   "tipo": "wsl-apt",
+   "grupo": "Engenharia reversa",
+   "fonte": "scripts/wsl/ferramentas-re.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "strace"
+   },
+   "instalar": "bash scripts/wsl/ferramentas-re.sh",
+   "doc": "Chamadas de sistema"
+  },
+  {
+   "id": "apt-ltrace",
+   "nome": "ltrace",
+   "tipo": "wsl-apt",
+   "grupo": "Engenharia reversa",
+   "fonte": "scripts/wsl/ferramentas-re.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "ltrace"
+   },
+   "instalar": "bash scripts/wsl/ferramentas-re.sh",
+   "doc": "Chamadas de biblioteca"
+  },
+  {
+   "id": "apt-xxd",
+   "nome": "xxd",
+   "tipo": "wsl-apt",
+   "grupo": "Engenharia reversa",
+   "fonte": "scripts/wsl/ferramentas-re.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "xxd"
+   },
+   "instalar": "bash scripts/wsl/ferramentas-re.sh",
+   "doc": "Ver bytes em hexadecimal"
+  },
+  {
+   "id": "apt-file",
+   "nome": "file",
+   "tipo": "wsl-apt",
+   "grupo": "Engenharia reversa",
+   "fonte": "scripts/wsl/ferramentas-re.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "file"
+   },
+   "instalar": "bash scripts/wsl/ferramentas-re.sh",
+   "doc": "Tipo de arquivo"
+  },
+  {
+   "id": "apt-openjdk-21-jdk",
+   "nome": "openjdk-21-jdk",
+   "tipo": "wsl-apt",
+   "grupo": "Engenharia reversa",
+   "fonte": "scripts/wsl/ferramentas-re.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "openjdk-21-jdk"
+   },
+   "instalar": "bash scripts/wsl/ferramentas-re.sh",
+   "doc": "Java 21 (Ghidra)"
+  },
+  {
+   "id": "apt-radare2",
+   "nome": "radare2",
+   "tipo": "wsl-apt",
+   "grupo": "Engenharia reversa",
+   "fonte": "scripts/wsl/ferramentas-re.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "radare2"
+   },
+   "instalar": "bash scripts/wsl/ferramentas-re.sh",
+   "doc": "Engenharia reversa no terminal"
+  },
+  {
+   "id": "apt-gocryptfs",
+   "nome": "gocryptfs",
+   "tipo": "wsl-apt",
+   "grupo": "Engenharia reversa",
+   "fonte": "scripts/wsl/ferramentas-re.sh#PACOTES",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "dpkg": "gocryptfs"
+   },
+   "instalar": "bash scripts/wsl/ferramentas-re.sh",
+   "doc": "Pasta criptografada para amostras"
+  },
+  {
+   "id": "cli-gh",
+   "nome": "GitHub CLI",
+   "tipo": "wsl-cli",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "gh"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "GitHub pelo terminal"
+  },
+  {
+   "id": "cli-mise",
+   "nome": "mise",
+   "tipo": "wsl-cli",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "mise"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Versões de linguagens e CLIs"
+  },
+  {
+   "id": "cli-node",
+   "nome": "Node LTS",
+   "tipo": "wsl-cli",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "node"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "JavaScript/TypeScript (via mise)"
+  },
+  {
+   "id": "cli-uv",
+   "nome": "uv",
+   "tipo": "wsl-cli",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "uv"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Python e ferramentas Python"
+  },
+  {
+   "id": "cli-gitleaks",
+   "nome": "gitleaks",
+   "tipo": "wsl-cli",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "gitleaks"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Procura segredos nos commits (just check)"
+  },
+  {
+   "id": "cli-trivy",
+   "nome": "trivy",
+   "tipo": "wsl-cli",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "trivy"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Vulnerabilidades em imagens e dependências"
+  },
+  {
+   "id": "cli-lazygit",
+   "nome": "lazygit",
+   "tipo": "wsl-cli",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "lazygit"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Git em tela de terminal"
+  },
+  {
+   "id": "cli-lazydocker",
+   "nome": "lazydocker",
+   "tipo": "wsl-cli",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "lazydocker"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Docker em tela de terminal"
+  },
+  {
+   "id": "cli-starship",
+   "nome": "Starship",
+   "tipo": "wsl-cli",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "starship"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Prompt do terminal"
+  },
+  {
+   "id": "cli-claude",
+   "nome": "Claude Code",
+   "tipo": "wsl-cli",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh",
+   "codigo_aberto": false,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "claude"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Agente de código"
+  },
+  {
+   "id": "cli-ai-jail",
+   "nome": "ai-jail",
+   "tipo": "wsl-cli",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "ai-jail"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "Sandbox para agentes de IA"
+  },
+  {
+   "id": "cli-dotnet",
+   "nome": "SDK .NET 10",
+   "tipo": "wsl-cli",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "dotnet"
+   },
+   "instalar": "AMTECH_DOTNET=1 bash scripts/wsl/bootstrap.sh",
+   "doc": "Carta de reserva (ADR 0017)"
+  },
+  {
+   "id": "cli-latexmk",
+   "nome": "TeX Live",
+   "tipo": "wsl-cli",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "latexmk"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh",
+   "doc": "LaTeX do livro"
+  },
+  {
+   "id": "cli-whisper-ctranslate2",
+   "nome": "Whisper local",
+   "tipo": "wsl-cli",
+   "grupo": "Base (bootstrap)",
+   "fonte": "scripts/wsl/bootstrap.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "whisper-ctranslate2"
+   },
+   "instalar": "bash scripts/wsl/bootstrap.sh --com-whisper",
+   "doc": "Transcrição local de áudio"
+  },
+  {
+   "id": "cli-mise-go",
+   "nome": "go",
+   "tipo": "wsl-cli",
+   "grupo": "CLIs do mise",
+   "fonte": "infra/dotfiles/dot_config/mise/config.toml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "go"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Linguagem Go"
+  },
+  {
+   "id": "cli-mise-rust",
+   "nome": "rust",
+   "tipo": "wsl-cli",
+   "grupo": "CLIs do mise",
+   "fonte": "infra/dotfiles/dot_config/mise/config.toml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "rustc"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Linguagem Rust"
+  },
+  {
+   "id": "cli-mise-zellij",
+   "nome": "zellij",
+   "tipo": "wsl-cli",
+   "grupo": "CLIs do mise",
+   "fonte": "infra/dotfiles/dot_config/mise/config.toml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "zellij"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Multiplexador de terminal"
+  },
+  {
+   "id": "cli-mise-yazi",
+   "nome": "yazi",
+   "tipo": "wsl-cli",
+   "grupo": "CLIs do mise",
+   "fonte": "infra/dotfiles/dot_config/mise/config.toml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "yazi"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Gerenciador de arquivos no terminal"
+  },
+  {
+   "id": "cli-mise-d2",
+   "nome": "d2",
+   "tipo": "wsl-cli",
+   "grupo": "CLIs do mise",
+   "fonte": "infra/dotfiles/dot_config/mise/config.toml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "d2"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Diagramas a partir de texto"
+  },
+  {
+   "id": "cli-mise-vegeta",
+   "nome": "vegeta",
+   "tipo": "wsl-cli",
+   "grupo": "CLIs do mise",
+   "fonte": "infra/dotfiles/dot_config/mise/config.toml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "vegeta"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Teste de carga HTTP"
+  },
+  {
+   "id": "cli-mise-age",
+   "nome": "age",
+   "tipo": "wsl-cli",
+   "grupo": "CLIs do mise",
+   "fonte": "infra/dotfiles/dot_config/mise/config.toml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "age"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Criptografia de arquivos"
+  },
+  {
+   "id": "cli-mise-sops",
+   "nome": "sops",
+   "tipo": "wsl-cli",
+   "grupo": "CLIs do mise",
+   "fonte": "infra/dotfiles/dot_config/mise/config.toml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "parada",
+   "motivo": "Segredos parados por decisão do Alan (25/11/2026)",
+   "conferir": {
+    "comando": "sops"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Segredos criptografados em arquivo"
+  },
+  {
+   "id": "cli-mise-bore",
+   "nome": "bore",
+   "tipo": "wsl-cli",
+   "grupo": "CLIs do mise",
+   "fonte": "infra/dotfiles/dot_config/mise/config.toml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "bore"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "acesso_externo": "Expõe qualquer porta local na internet com um comando; regra de uso pendente",
+   "doc": "Túnel TCP para a internet"
+  },
+  {
+   "id": "cli-mise-gum",
+   "nome": "gum",
+   "tipo": "wsl-cli",
+   "grupo": "CLIs do mise",
+   "fonte": "infra/dotfiles/dot_config/mise/config.toml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "gum"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Componentes para scripts shell"
+  },
+  {
+   "id": "cli-mise-soft-serve",
+   "nome": "soft-serve",
+   "tipo": "wsl-cli",
+   "grupo": "CLIs do mise",
+   "fonte": "infra/dotfiles/dot_config/mise/config.toml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "soft"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Servidor Git no terminal"
+  },
+  {
+   "id": "cli-mise-goreleaser",
+   "nome": "goreleaser",
+   "tipo": "wsl-cli",
+   "grupo": "CLIs do mise",
+   "fonte": "infra/dotfiles/dot_config/mise/config.toml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "goreleaser"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Empacotar releases Go"
+  },
+  {
+   "id": "cli-mise-cargo-dist",
+   "nome": "cargo-dist",
+   "tipo": "wsl-cli",
+   "grupo": "CLIs do mise",
+   "fonte": "infra/dotfiles/dot_config/mise/config.toml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "dist"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Empacotar releases Rust"
+  },
+  {
+   "id": "cli-mise-probe-rs",
+   "nome": "probe-rs",
+   "tipo": "wsl-cli",
+   "grupo": "CLIs do mise",
+   "fonte": "infra/dotfiles/dot_config/mise/config.toml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "probe-rs"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Gravar e depurar microcontroladores"
+  },
+  {
+   "id": "cli-mise-tree-sitter",
+   "nome": "tree-sitter",
+   "tipo": "wsl-cli",
+   "grupo": "CLIs do mise",
+   "fonte": "infra/dotfiles/dot_config/mise/config.toml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "tree-sitter"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Parser de código"
+  },
+  {
+   "id": "cli-mise-stripe-cli",
+   "nome": "stripe-cli",
+   "tipo": "wsl-cli",
+   "grupo": "CLIs do mise",
+   "fonte": "infra/dotfiles/dot_config/mise/config.toml",
+   "codigo_aberto": false,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "stripe"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Testar pagamentos Stripe"
+  },
+  {
+   "id": "cli-mise-litestream",
+   "nome": "litestream",
+   "tipo": "wsl-cli",
+   "grupo": "CLIs do mise",
+   "fonte": "infra/dotfiles/dot_config/mise/config.toml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "litestream"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Réplica contínua do SQLite"
+  },
+  {
+   "id": "cli-mise-pocketbase",
+   "nome": "pocketbase",
+   "tipo": "wsl-cli",
+   "grupo": "CLIs do mise",
+   "fonte": "infra/dotfiles/dot_config/mise/config.toml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "pocketbase"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Backend em um binário"
+  },
+  {
+   "id": "cli-uv-posting",
+   "nome": "posting",
+   "tipo": "wsl-cli",
+   "grupo": "Ferramentas Python (uv)",
+   "fonte": "scripts/wsl/extras.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "posting"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Testar APIs no terminal"
+  },
+  {
+   "id": "cli-uv-harlequin",
+   "nome": "harlequin",
+   "tipo": "wsl-cli",
+   "grupo": "Ferramentas Python (uv)",
+   "fonte": "scripts/wsl/extras.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "harlequin"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Cliente SQL no terminal"
+  },
+  {
+   "id": "cli-uv-aider-chat",
+   "nome": "aider-chat",
+   "tipo": "wsl-cli",
+   "grupo": "Ferramentas Python (uv)",
+   "fonte": "scripts/wsl/extras.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "aider"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Agente de código com modelos locais"
+  },
+  {
+   "id": "cli-uv-llm",
+   "nome": "llm",
+   "tipo": "wsl-cli",
+   "grupo": "Ferramentas Python (uv)",
+   "fonte": "scripts/wsl/extras.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "llm"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "LLM pela linha de comando (plugin Ollama)"
+  },
+  {
+   "id": "cli-uv-beancount",
+   "nome": "beancount",
+   "tipo": "wsl-cli",
+   "grupo": "Ferramentas Python (uv)",
+   "fonte": "scripts/wsl/extras.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "bean-check"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Contabilidade em texto"
+  },
+  {
+   "id": "cli-uv-fava",
+   "nome": "fava",
+   "tipo": "wsl-cli",
+   "grupo": "Ferramentas Python (uv)",
+   "fonte": "scripts/wsl/extras.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "fava"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Interface web do beancount"
+  },
+  {
+   "id": "cli-chezmoi",
+   "nome": "chezmoi",
+   "tipo": "wsl-cli",
+   "grupo": "Extras",
+   "fonte": "scripts/wsl/extras.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "chezmoi"
+   },
+   "instalar": "bash scripts/wsl/extras.sh",
+   "doc": "Dotfiles versionados"
+  },
+  {
+   "id": "cli-ghidra",
+   "nome": "ghidra",
+   "tipo": "wsl-cli",
+   "grupo": "Engenharia reversa",
+   "fonte": "scripts/wsl/ferramentas-re.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "ghidra"
+   },
+   "instalar": "bash scripts/wsl/ferramentas-re.sh",
+   "doc": "Engenharia reversa com interface (WSLg)"
+  },
+  {
+   "id": "cli-ilspycmd",
+   "nome": "ilspycmd",
+   "tipo": "wsl-cli",
+   "grupo": "Engenharia reversa",
+   "fonte": "scripts/wsl/ferramentas-re.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "ilspycmd"
+   },
+   "instalar": "bash scripts/wsl/ferramentas-re.sh",
+   "doc": "Descompilar .NET"
+  },
+  {
+   "id": "cli-az",
+   "nome": "az",
+   "tipo": "wsl-cli",
+   "grupo": "Nuvem",
+   "fonte": "scripts/wsl/nuvem.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "az"
+   },
+   "instalar": "bash scripts/wsl/nuvem.sh",
+   "doc": "Azure CLI"
+  },
+  {
+   "id": "cli-terraform",
+   "nome": "terraform",
+   "tipo": "wsl-cli",
+   "grupo": "Nuvem",
+   "fonte": "scripts/wsl/nuvem.sh",
+   "codigo_aberto": false,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "terraform"
+   },
+   "instalar": "bash scripts/wsl/nuvem.sh",
+   "doc": "Infraestrutura como código"
+  },
+  {
+   "id": "cli-vercel",
+   "nome": "vercel",
+   "tipo": "wsl-cli",
+   "grupo": "Nuvem",
+   "fonte": "scripts/wsl/nuvem.sh",
+   "codigo_aberto": false,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "vercel"
+   },
+   "instalar": "bash scripts/wsl/nuvem.sh",
+   "doc": "Deploy na Vercel"
+  },
+  {
+   "id": "cli-wrangler",
+   "nome": "wrangler",
+   "tipo": "wsl-cli",
+   "grupo": "Nuvem",
+   "fonte": "scripts/wsl/nuvem.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "wrangler"
+   },
+   "instalar": "bash scripts/wsl/nuvem.sh",
+   "doc": "Deploy na Cloudflare"
+  },
+  {
+   "id": "cli-ollama",
+   "nome": "Ollama (WSL)",
+   "tipo": "wsl-cli",
+   "grupo": "IA",
+   "fonte": "scripts/wsl/ligar-tudo.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "ollama"
+   },
+   "instalar": "just ligar",
+   "doc": "IA local na GPU, usada pela fila e pelo LiteLLM"
+  },
+  {
+   "id": "cli-keepassxc-cli",
+   "nome": "keepassxc-cli",
+   "tipo": "wsl-cli",
+   "grupo": "Segredos",
+   "fonte": "scripts/wsl/segredos.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "adiada",
+   "motivo": "KeePassXC não é usado por decisão do Alan (25/11/2026)",
+   "conferir": {
+    "comando": "keepassxc-cli"
+   },
+   "instalar": "sudo apt install keepassxc",
+   "doc": "Ler segredos do cofre KeePassXC"
+  },
+  {
+   "id": "cli-ai-memory",
+   "nome": "ai-memory",
+   "tipo": "wsl-cli",
+   "grupo": "IA",
+   "fonte": "infra/ai-memory-hooks/README.md",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "decisao": "normal",
+   "conferir": {
+    "comando": "ai-memory"
+   },
+   "instalar": "ver infra/ai-memory-hooks/README.md",
+   "doc": "Memória de longo prazo entre sessões de agentes"
+  },
+  {
+   "id": "lab-ia",
+   "nome": "Projeto lab-ia",
+   "tipo": "wsl-cli",
+   "grupo": "IA",
+   "fonte": "scripts/wsl/lab-ia.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "decisao": "normal",
+   "conferir": {
+    "arquivo": "~/dev/lab-ia/pyproject.toml"
+   },
+   "instalar": "bash scripts/wsl/lab-ia.sh",
+   "doc": "Laboratório de dados e IA (PyTorch com CUDA, ~6 GB)"
+  },
+  {
+   "id": "svc-ai-memory",
+   "nome": "Servidor ai-memory",
+   "tipo": "systemd",
+   "grupo": "Serviços do Ubuntu",
+   "fonte": "infra/ai-memory-hooks/README.md",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "perfil": "sempre",
+   "decisao": "normal",
+   "conferir": {
+    "systemd": "ai-memory"
+   },
+   "instalar": "ver infra/ai-memory-hooks/README.md",
+   "doc": "Servidor da memória dos agentes em 127.0.0.1:49374"
+  },
+  {
+   "id": "svc-fila",
+   "nome": "Fila de pedidos",
+   "tipo": "systemd",
+   "grupo": "Serviços do Ubuntu",
+   "fonte": "scripts/wsl/ligar-tudo.sh",
+   "codigo_aberto": true,
+   "obrigatoria": true,
+   "perfil": "sempre",
+   "decisao": "normal",
+   "conferir": {
+    "systemd": "amtech-fila"
+   },
+   "instalar": "just ligar",
+   "doc": "Fila de pedidos do celular (tools/remoto/fila.py)"
+  },
+  {
+   "id": "svc-remoto",
+   "nome": "Claude Remote Control",
+   "tipo": "systemd",
+   "grupo": "Serviços do Ubuntu",
+   "fonte": "scripts/wsl/ligar-tudo.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "sempre",
+   "decisao": "normal",
+   "conferir": {
+    "systemd": "amtech-remoto"
+   },
+   "instalar": "just ligar",
+   "acesso_externo": "Quem entrar na conta claude.ai comanda um shell no PC; exige 2FA na conta",
+   "doc": "Controla o Claude Code do PC pelo celular"
+  },
+  {
+   "id": "svc-bot",
+   "nome": "Bot do Telegram",
+   "tipo": "systemd",
+   "grupo": "Serviços do Ubuntu",
+   "fonte": "scripts/wsl/ligar-tudo.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "sempre",
+   "decisao": "normal",
+   "conferir": {
+    "systemd": "amtech-bot"
+   },
+   "instalar": "just ligar",
+   "acesso_externo": "Recebe comandos pela internet (allowlist de um chat e de comandos fixos)",
+   "doc": "Comandos fixos pelo Telegram (só o chat do Alan)"
+  },
+  {
+   "id": "svc-pipeline",
+   "nome": "Pipeline de conteúdo",
+   "tipo": "systemd",
+   "grupo": "Serviços do Ubuntu",
+   "fonte": "scripts/wsl/ativar-pipeline.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "sempre",
+   "decisao": "parada",
+   "motivo": "Parado por decisão do Alan (25/11/2026)",
+   "conferir": {
+    "systemd": "amtech-conteudo.timer"
+   },
+   "instalar": "bash scripts/wsl/ativar-pipeline.sh",
+   "doc": "Timer do pipeline de conteúdo"
+  },
+  {
+   "id": "docker-automacao-metricas-db",
+   "nome": "metricas-db",
+   "tipo": "docker",
+   "grupo": "infra/automacao",
+   "fonte": "infra/automacao/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "automacao/metricas-db"
+   },
+   "instalar": "docker compose -f infra/automacao/compose.yaml pull metricas-db",
+   "ligar": "docker compose -f infra/automacao/compose.yaml up -d metricas-db",
+   "ram_mb": 50,
+   "disco_gb": 0.42,
+   "doc": "Postgres das métricas"
+  },
+  {
+   "id": "docker-automacao-n8n",
+   "nome": "n8n",
+   "tipo": "docker",
+   "grupo": "infra/automacao",
+   "fonte": "infra/automacao/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "automacao/n8n"
+   },
+   "instalar": "docker compose -f infra/automacao/compose.yaml pull n8n",
+   "ligar": "docker compose -f infra/automacao/compose.yaml up -d n8n",
+   "ram_mb": 250,
+   "disco_gb": 1.0,
+   "doc": "Automação de fluxos"
+  },
+  {
+   "id": "docker-automacao-grafana",
+   "nome": "grafana",
+   "tipo": "docker",
+   "grupo": "infra/automacao",
+   "fonte": "infra/automacao/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "automacao/grafana"
+   },
+   "instalar": "docker compose -f infra/automacao/compose.yaml pull grafana",
+   "ligar": "docker compose -f infra/automacao/compose.yaml up -d grafana",
+   "ram_mb": 120,
+   "disco_gb": 0.6,
+   "doc": "Painéis de métricas"
+  },
+  {
+   "id": "docker-automacao-uptime-kuma",
+   "nome": "uptime-kuma",
+   "tipo": "docker",
+   "grupo": "infra/automacao",
+   "fonte": "infra/automacao/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "automacao/uptime-kuma"
+   },
+   "instalar": "docker compose -f infra/automacao/compose.yaml pull uptime-kuma",
+   "ligar": "docker compose -f infra/automacao/compose.yaml up -d uptime-kuma",
+   "ram_mb": 120,
+   "disco_gb": 0.5,
+   "doc": "Monitor de disponibilidade"
+  },
+  {
+   "id": "docker-casa-homeassistant",
+   "nome": "homeassistant",
+   "tipo": "docker",
+   "grupo": "infra/casa",
+   "fonte": "infra/casa/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "laboratorio",
+   "decisao": "normal",
+   "conferir": {
+    "container": "casa/homeassistant"
+   },
+   "instalar": "docker compose -f infra/casa/compose.yaml pull homeassistant",
+   "ligar": "docker compose -f infra/casa/compose.yaml up -d homeassistant",
+   "ram_mb": 400,
+   "disco_gb": 2.0,
+   "doc": "Automação da casa"
+  },
+  {
+   "id": "docker-casa-paperless-redis",
+   "nome": "paperless-redis",
+   "tipo": "docker",
+   "grupo": "infra/casa",
+   "fonte": "infra/casa/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "laboratorio",
+   "decisao": "normal",
+   "conferir": {
+    "container": "casa/paperless-redis"
+   },
+   "instalar": "docker compose -f infra/casa/compose.yaml pull paperless-redis",
+   "ligar": "docker compose -f infra/casa/compose.yaml up -d paperless-redis",
+   "ram_mb": 10,
+   "disco_gb": 0.1,
+   "doc": "Fila do Paperless"
+  },
+  {
+   "id": "docker-casa-paperless",
+   "nome": "paperless",
+   "tipo": "docker",
+   "grupo": "infra/casa",
+   "fonte": "infra/casa/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "laboratorio",
+   "decisao": "normal",
+   "conferir": {
+    "container": "casa/paperless"
+   },
+   "instalar": "docker compose -f infra/casa/compose.yaml pull paperless",
+   "ligar": "docker compose -f infra/casa/compose.yaml up -d paperless",
+   "ram_mb": 700,
+   "disco_gb": 1.4,
+   "doc": "Documentos digitalizados com OCR"
+  },
+  {
+   "id": "docker-casa-grocy",
+   "nome": "grocy",
+   "tipo": "docker",
+   "grupo": "infra/casa",
+   "fonte": "infra/casa/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "laboratorio",
+   "decisao": "normal",
+   "conferir": {
+    "container": "casa/grocy"
+   },
+   "instalar": "docker compose -f infra/casa/compose.yaml pull grocy",
+   "ligar": "docker compose -f infra/casa/compose.yaml up -d grocy",
+   "ram_mb": 60,
+   "disco_gb": 0.2,
+   "doc": "Estoque da casa"
+  },
+  {
+   "id": "docker-dados-metabase",
+   "nome": "metabase",
+   "tipo": "docker",
+   "grupo": "infra/dados",
+   "fonte": "infra/dados/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "dados/metabase"
+   },
+   "instalar": "docker compose -f infra/dados/compose.yaml pull metabase",
+   "ligar": "docker compose -f infra/dados/compose.yaml up -d metabase",
+   "ram_mb": 900,
+   "disco_gb": 0.9,
+   "doc": "Painéis de dados"
+  },
+  {
+   "id": "docker-ia-litellm",
+   "nome": "litellm",
+   "tipo": "docker",
+   "grupo": "infra/ia",
+   "fonte": "infra/ia/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "parada",
+   "motivo": "Parado por decisão do Alan (25/11/2026)",
+   "conferir": {
+    "container": "ia/litellm"
+   },
+   "instalar": "docker compose -f infra/ia/compose.yaml pull litellm",
+   "ligar": "docker compose -f infra/ia/compose.yaml up -d litellm",
+   "ram_mb": 500,
+   "disco_gb": 1.84,
+   "doc": "Gateway de modelos de IA com teto de gasto"
+  },
+  {
+   "id": "docker-jarvis-whisper",
+   "nome": "whisper",
+   "tipo": "docker",
+   "grupo": "infra/jarvis",
+   "fonte": "infra/jarvis/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "laboratorio",
+   "decisao": "normal",
+   "conferir": {
+    "container": "jarvis/whisper"
+   },
+   "instalar": "docker compose -f infra/jarvis/compose.yaml pull whisper",
+   "ligar": "docker compose -f infra/jarvis/compose.yaml up -d whisper",
+   "ram_mb": 1500,
+   "disco_gb": 6.0,
+   "doc": "Fala para texto na GPU (Jarvis)"
+  },
+  {
+   "id": "docker-jarvis-piper",
+   "nome": "piper",
+   "tipo": "docker",
+   "grupo": "infra/jarvis",
+   "fonte": "infra/jarvis/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "laboratorio",
+   "decisao": "normal",
+   "conferir": {
+    "container": "jarvis/piper"
+   },
+   "instalar": "docker compose -f infra/jarvis/compose.yaml pull piper",
+   "ligar": "docker compose -f infra/jarvis/compose.yaml up -d piper",
+   "ram_mb": 150,
+   "disco_gb": 0.4,
+   "doc": "Texto para fala (Jarvis)"
+  },
+  {
+   "id": "docker-jarvis-openwakeword",
+   "nome": "openwakeword",
+   "tipo": "docker",
+   "grupo": "infra/jarvis",
+   "fonte": "infra/jarvis/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "laboratorio",
+   "decisao": "normal",
+   "conferir": {
+    "container": "jarvis/openwakeword"
+   },
+   "instalar": "docker compose -f infra/jarvis/compose.yaml pull openwakeword",
+   "ligar": "docker compose -f infra/jarvis/compose.yaml up -d openwakeword",
+   "ram_mb": 150,
+   "disco_gb": 0.3,
+   "doc": "Palavra de ativação (Jarvis)"
+  },
+  {
+   "id": "docker-jarvis-mosquitto",
+   "nome": "mosquitto",
+   "tipo": "docker",
+   "grupo": "infra/jarvis",
+   "fonte": "infra/jarvis/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "laboratorio",
+   "decisao": "normal",
+   "conferir": {
+    "container": "jarvis/mosquitto"
+   },
+   "instalar": "docker compose -f infra/jarvis/compose.yaml pull mosquitto",
+   "ligar": "docker compose -f infra/jarvis/compose.yaml up -d mosquitto",
+   "ram_mb": 10,
+   "disco_gb": 0.01,
+   "doc": "MQTT"
+  },
+  {
+   "id": "docker-jarvis-zigbee2mqtt",
+   "nome": "zigbee2mqtt",
+   "tipo": "docker",
+   "grupo": "infra/jarvis",
+   "fonte": "infra/jarvis/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "laboratorio",
+   "decisao": "normal",
+   "conferir": {
+    "container": "jarvis/zigbee2mqtt"
+   },
+   "instalar": "docker compose -f infra/jarvis/compose.yaml --profile zigbee pull zigbee2mqtt",
+   "ligar": "docker compose -f infra/jarvis/compose.yaml --profile zigbee up -d zigbee2mqtt",
+   "ram_mb": 150,
+   "disco_gb": 0.2,
+   "doc": "Ponte Zigbee"
+  },
+  {
+   "id": "docker-jarvis-frigate",
+   "nome": "frigate",
+   "tipo": "docker",
+   "grupo": "infra/jarvis",
+   "fonte": "infra/jarvis/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "laboratorio",
+   "decisao": "normal",
+   "conferir": {
+    "container": "jarvis/frigate"
+   },
+   "instalar": "docker compose -f infra/jarvis/compose.yaml --profile cameras pull frigate",
+   "ligar": "docker compose -f infra/jarvis/compose.yaml --profile cameras up -d frigate",
+   "ram_mb": 700,
+   "disco_gb": 2.5,
+   "doc": "Câmeras com detecção"
+  },
+  {
+   "id": "docker-lab-alvo-atacante",
+   "nome": "atacante",
+   "tipo": "docker",
+   "grupo": "infra/lab-alvo",
+   "fonte": "infra/lab-alvo/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "laboratorio",
+   "decisao": "normal",
+   "conferir": {
+    "container": "lab-alvo/atacante"
+   },
+   "instalar": "docker compose -f infra/lab-alvo/compose.yaml pull atacante",
+   "ligar": "docker compose -f infra/lab-alvo/compose.yaml up -d atacante",
+   "ram_mb": 300,
+   "disco_gb": 1.5,
+   "doc": "Container atacante do laboratório"
+  },
+  {
+   "id": "docker-lab-alvo-alvo",
+   "nome": "alvo",
+   "tipo": "docker",
+   "grupo": "infra/lab-alvo",
+   "fonte": "infra/lab-alvo/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "laboratorio",
+   "decisao": "normal",
+   "conferir": {
+    "container": "lab-alvo/alvo"
+   },
+   "instalar": "docker compose -f infra/lab-alvo/compose.yaml pull alvo",
+   "ligar": "docker compose -f infra/lab-alvo/compose.yaml up -d alvo",
+   "ram_mb": 250,
+   "disco_gb": 0.5,
+   "doc": "Alvo isolado do laboratório"
+  },
+  {
+   "id": "docker-lab-seguranca-juice-shop",
+   "nome": "juice-shop",
+   "tipo": "docker",
+   "grupo": "infra/lab-seguranca",
+   "fonte": "infra/lab-seguranca/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "laboratorio",
+   "decisao": "normal",
+   "conferir": {
+    "container": "lab-seguranca/juice-shop"
+   },
+   "instalar": "docker compose -f infra/lab-seguranca/compose.yaml pull juice-shop",
+   "ligar": "docker compose -f infra/lab-seguranca/compose.yaml up -d juice-shop",
+   "ram_mb": 250,
+   "disco_gb": 0.5,
+   "doc": "App vulnerável para estudo"
+  },
+  {
+   "id": "docker-lab-seguranca-webgoat",
+   "nome": "webgoat",
+   "tipo": "docker",
+   "grupo": "infra/lab-seguranca",
+   "fonte": "infra/lab-seguranca/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "laboratorio",
+   "decisao": "normal",
+   "conferir": {
+    "container": "lab-seguranca/webgoat"
+   },
+   "instalar": "docker compose -f infra/lab-seguranca/compose.yaml pull webgoat",
+   "ligar": "docker compose -f infra/lab-seguranca/compose.yaml up -d webgoat",
+   "ram_mb": 700,
+   "disco_gb": 0.8,
+   "doc": "App vulnerável para estudo"
+  },
+  {
+   "id": "docker-pocketbase-pocketbase",
+   "nome": "pocketbase",
+   "tipo": "docker",
+   "grupo": "infra/pocketbase",
+   "fonte": "infra/pocketbase/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "pocketbase/pocketbase"
+   },
+   "instalar": "docker compose -f infra/pocketbase/compose.yaml pull pocketbase",
+   "ligar": "docker compose -f infra/pocketbase/compose.yaml up -d pocketbase",
+   "ram_mb": 30,
+   "disco_gb": 0.05,
+   "doc": "Backend dos sites"
+  },
+  {
+   "id": "docker-rede-adguard",
+   "nome": "adguard",
+   "tipo": "docker",
+   "grupo": "infra/rede",
+   "fonte": "infra/rede/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "laboratorio",
+   "decisao": "normal",
+   "conferir": {
+    "container": "rede/adguard"
+   },
+   "instalar": "docker compose -f infra/rede/compose.yaml pull adguard",
+   "ligar": "docker compose -f infra/rede/compose.yaml up -d adguard",
+   "ram_mb": 80,
+   "disco_gb": 0.08,
+   "acesso_externo": "DNS na porta 53 em todas as interfaces, por desenho",
+   "doc": "DNS com bloqueio de anúncios"
+  },
+  {
+   "id": "docker-soberania-forgejo",
+   "nome": "forgejo",
+   "tipo": "docker",
+   "grupo": "infra/soberania",
+   "fonte": "infra/soberania/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "soberania/forgejo"
+   },
+   "instalar": "docker compose -f infra/soberania/compose.yaml --profile forgejo pull forgejo",
+   "ligar": "docker compose -f infra/soberania/compose.yaml --profile forgejo up -d forgejo",
+   "ram_mb": 92,
+   "disco_gb": 0.26,
+   "doc": "Git próprio"
+  },
+  {
+   "id": "docker-soberania-soft-serve",
+   "nome": "soft-serve",
+   "tipo": "docker",
+   "grupo": "infra/soberania",
+   "fonte": "infra/soberania/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "soberania/soft-serve"
+   },
+   "instalar": "docker compose -f infra/soberania/compose.yaml --profile soft-serve pull soft-serve",
+   "ligar": "docker compose -f infra/soberania/compose.yaml --profile soft-serve up -d soft-serve",
+   "ram_mb": 30,
+   "disco_gb": 0.05,
+   "acesso_externo": "SSH do Git em 23231 (só 127.0.0.1)",
+   "doc": "Git pelo terminal"
+  },
+  {
+   "id": "docker-soberania-headscale",
+   "nome": "headscale",
+   "tipo": "docker",
+   "grupo": "infra/soberania",
+   "fonte": "infra/soberania/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "soberania/headscale"
+   },
+   "instalar": "docker compose -f infra/soberania/compose.yaml --profile headscale pull headscale",
+   "ligar": "docker compose -f infra/soberania/compose.yaml --profile headscale up -d headscale",
+   "ram_mb": 40,
+   "disco_gb": 0.11,
+   "acesso_externo": "Servidor de coordenação da rede privada; config.yaml ausente (loop)",
+   "doc": "Tailscale próprio"
+  },
+  {
+   "id": "docker-soberania-glitchtip-db",
+   "nome": "glitchtip-db",
+   "tipo": "docker",
+   "grupo": "infra/soberania",
+   "fonte": "infra/soberania/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "soberania/glitchtip-db"
+   },
+   "instalar": "docker compose -f infra/soberania/compose.yaml --profile glitchtip pull glitchtip-db",
+   "ligar": "docker compose -f infra/soberania/compose.yaml --profile glitchtip up -d glitchtip-db",
+   "ram_mb": 58,
+   "disco_gb": 0.42,
+   "doc": "Postgres do GlitchTip"
+  },
+  {
+   "id": "docker-soberania-glitchtip-redis",
+   "nome": "glitchtip-redis",
+   "tipo": "docker",
+   "grupo": "infra/soberania",
+   "fonte": "infra/soberania/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "soberania/glitchtip-redis"
+   },
+   "instalar": "docker compose -f infra/soberania/compose.yaml --profile glitchtip pull glitchtip-redis",
+   "ligar": "docker compose -f infra/soberania/compose.yaml --profile glitchtip up -d glitchtip-redis",
+   "ram_mb": 10,
+   "disco_gb": 0.06,
+   "doc": "Fila do GlitchTip"
+  },
+  {
+   "id": "docker-soberania-glitchtip-web",
+   "nome": "glitchtip-web",
+   "tipo": "docker",
+   "grupo": "infra/soberania",
+   "fonte": "infra/soberania/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "soberania/glitchtip-web"
+   },
+   "instalar": "docker compose -f infra/soberania/compose.yaml --profile glitchtip pull glitchtip-web",
+   "ligar": "docker compose -f infra/soberania/compose.yaml --profile glitchtip up -d glitchtip-web",
+   "ram_mb": 178,
+   "disco_gb": 0.95,
+   "doc": "Erros das aplicações"
+  },
+  {
+   "id": "docker-soberania-glitchtip-worker",
+   "nome": "glitchtip-worker",
+   "tipo": "docker",
+   "grupo": "infra/soberania",
+   "fonte": "infra/soberania/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "soberania/glitchtip-worker"
+   },
+   "instalar": "docker compose -f infra/soberania/compose.yaml --profile glitchtip pull glitchtip-worker",
+   "ligar": "docker compose -f infra/soberania/compose.yaml --profile glitchtip up -d glitchtip-worker",
+   "ram_mb": 200,
+   "disco_gb": 0,
+   "doc": "Trabalhador do GlitchTip"
+  },
+  {
+   "id": "docker-soberania-glitchtip-migrate",
+   "nome": "glitchtip-migrate",
+   "tipo": "docker",
+   "grupo": "infra/soberania",
+   "fonte": "infra/soberania/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "soberania/glitchtip-migrate"
+   },
+   "instalar": "docker compose -f infra/soberania/compose.yaml --profile glitchtip pull glitchtip-migrate",
+   "ligar": "docker compose -f infra/soberania/compose.yaml --profile glitchtip up -d glitchtip-migrate",
+   "ram_mb": 0,
+   "disco_gb": 0,
+   "doc": "Migração do banco do GlitchTip"
+  },
+  {
+   "id": "docker-soberania-bookstack-db",
+   "nome": "bookstack-db",
+   "tipo": "docker",
+   "grupo": "infra/soberania",
+   "fonte": "infra/soberania/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "soberania/bookstack-db"
+   },
+   "instalar": "docker compose -f infra/soberania/compose.yaml --profile bookstack pull bookstack-db",
+   "ligar": "docker compose -f infra/soberania/compose.yaml --profile bookstack up -d bookstack-db",
+   "ram_mb": 114,
+   "disco_gb": 0.57,
+   "doc": "Banco do BookStack"
+  },
+  {
+   "id": "docker-soberania-bookstack",
+   "nome": "bookstack",
+   "tipo": "docker",
+   "grupo": "infra/soberania",
+   "fonte": "infra/soberania/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "soberania/bookstack"
+   },
+   "instalar": "docker compose -f infra/soberania/compose.yaml --profile bookstack pull bookstack",
+   "ligar": "docker compose -f infra/soberania/compose.yaml --profile bookstack up -d bookstack",
+   "ram_mb": 43,
+   "disco_gb": 0.5,
+   "doc": "Wiki da empresa"
+  },
+  {
+   "id": "docker-soberania-actual",
+   "nome": "actual",
+   "tipo": "docker",
+   "grupo": "infra/soberania",
+   "fonte": "infra/soberania/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "soberania/actual"
+   },
+   "instalar": "docker compose -f infra/soberania/compose.yaml --profile actual pull actual",
+   "ligar": "docker compose -f infra/soberania/compose.yaml --profile actual up -d actual",
+   "ram_mb": 75,
+   "disco_gb": 0.56,
+   "doc": "Orçamento pessoal"
+  },
+  {
+   "id": "docker-soberania-ghostfolio-db",
+   "nome": "ghostfolio-db",
+   "tipo": "docker",
+   "grupo": "infra/soberania",
+   "fonte": "infra/soberania/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "soberania/ghostfolio-db"
+   },
+   "instalar": "docker compose -f infra/soberania/compose.yaml --profile ghostfolio pull ghostfolio-db",
+   "ligar": "docker compose -f infra/soberania/compose.yaml --profile ghostfolio up -d ghostfolio-db",
+   "ram_mb": 21,
+   "disco_gb": 0,
+   "doc": "Postgres do Ghostfolio"
+  },
+  {
+   "id": "docker-soberania-ghostfolio-redis",
+   "nome": "ghostfolio-redis",
+   "tipo": "docker",
+   "grupo": "infra/soberania",
+   "fonte": "infra/soberania/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "soberania/ghostfolio-redis"
+   },
+   "instalar": "docker compose -f infra/soberania/compose.yaml --profile ghostfolio pull ghostfolio-redis",
+   "ligar": "docker compose -f infra/soberania/compose.yaml --profile ghostfolio up -d ghostfolio-redis",
+   "ram_mb": 5,
+   "disco_gb": 0,
+   "doc": "Cache do Ghostfolio"
+  },
+  {
+   "id": "docker-soberania-ghostfolio",
+   "nome": "ghostfolio",
+   "tipo": "docker",
+   "grupo": "infra/soberania",
+   "fonte": "infra/soberania/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "soberania/ghostfolio"
+   },
+   "instalar": "docker compose -f infra/soberania/compose.yaml --profile ghostfolio pull ghostfolio",
+   "ligar": "docker compose -f infra/soberania/compose.yaml --profile ghostfolio up -d ghostfolio",
+   "ram_mb": 300,
+   "disco_gb": 1.46,
+   "doc": "Carteira de investimentos"
+  },
+  {
+   "id": "docker-soberania-firefly-db",
+   "nome": "firefly-db",
+   "tipo": "docker",
+   "grupo": "infra/soberania",
+   "fonte": "infra/soberania/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "soberania/firefly-db"
+   },
+   "instalar": "docker compose -f infra/soberania/compose.yaml --profile firefly pull firefly-db",
+   "ligar": "docker compose -f infra/soberania/compose.yaml --profile firefly up -d firefly-db",
+   "ram_mb": 142,
+   "disco_gb": 0.47,
+   "doc": "Banco do Firefly III"
+  },
+  {
+   "id": "docker-soberania-firefly",
+   "nome": "firefly",
+   "tipo": "docker",
+   "grupo": "infra/soberania",
+   "fonte": "infra/soberania/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "soberania/firefly"
+   },
+   "instalar": "docker compose -f infra/soberania/compose.yaml --profile firefly pull firefly",
+   "ligar": "docker compose -f infra/soberania/compose.yaml --profile firefly up -d firefly",
+   "ram_mb": 94,
+   "disco_gb": 1.14,
+   "doc": "Finanças pessoais"
+  },
+  {
+   "id": "docker-soberania-akaunting-db",
+   "nome": "akaunting-db",
+   "tipo": "docker",
+   "grupo": "infra/soberania",
+   "fonte": "infra/soberania/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "soberania/akaunting-db"
+   },
+   "instalar": "docker compose -f infra/soberania/compose.yaml --profile akaunting pull akaunting-db",
+   "ligar": "docker compose -f infra/soberania/compose.yaml --profile akaunting up -d akaunting-db",
+   "ram_mb": 120,
+   "disco_gb": 0,
+   "doc": "Banco do Akaunting"
+  },
+  {
+   "id": "docker-soberania-akaunting",
+   "nome": "akaunting",
+   "tipo": "docker",
+   "grupo": "infra/soberania",
+   "fonte": "infra/soberania/compose.yaml",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "trabalho",
+   "decisao": "normal",
+   "conferir": {
+    "container": "soberania/akaunting"
+   },
+   "instalar": "docker compose -f infra/soberania/compose.yaml --profile akaunting pull akaunting",
+   "ligar": "docker compose -f infra/soberania/compose.yaml --profile akaunting up -d akaunting",
+   "ram_mb": 150,
+   "disco_gb": 0.6,
+   "doc": "Contabilidade da empresa"
+  }
+ ]
+}

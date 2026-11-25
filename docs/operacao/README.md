@@ -39,6 +39,7 @@ flowchart LR
 - [Conversas curtas](sessoes-curtas.md): o protocolo para o limite das IAs durar (pacote de contexto, ESTADO.md, ai-memory, ai-usagebar)
 - [Celular ligado ao setup](celular.md): `just ligar`, sessão do Claude Code pelo app e fila do Telegram que segue sem crédito do Claude
 - [Operação 24 horas](24-horas.md): o que roda no notebook, no GitHub e na VM grátis, e o que o setup faz sozinho o tempo todo
+- [Ferramentas do setup](ferramentas.md): as 188 ferramentas (Windows, VS Code, Ubuntu, serviços e Docker) com código aberto, obrigatória, perfil, decisão, como instalar e o que abre acesso de fora; `python3 tools/ferramentas/ferramentas.py --estado` mostra o que está no PC (gerado)
 - [Catálogo de softwares](softwares.md): todos os sites por tipo de negócio, sistemas AM, micro-SaaS e produtos que você pode criar e vender, montados com módulos reaproveitáveis e ligados às ofertas (gerado)
 - [`portfolio.html`](portfolio.html): o mesmo catálogo com filtros, para abrir no navegador
 
