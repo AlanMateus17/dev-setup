@@ -15,6 +15,11 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 - Resumo da manhã: o aviso de backup procurava arquivos em `~/backups`, onde o restic não grava; agora lê o evento `backup.concluido` do núcleo e avisa quando não existe ou tem mais de 36 h.
 - `backup.sh`: o `nucleo.db` (fora do `BACKUP_PASTAS`) entra sempre no backup, como cópia consistente pela API de backup do SQLite.
 
+## [2.44.3] - 2026-11-25
+
+### Corrigido
+- `just validar`: avisa quando o repositório do backup aponta para um disco do Windows que não está ligado ao Ubuntu (no WSL, `/mnt/d` pode existir só como pasta, e o `restic init` falhava com "permission denied" sem explicar).
+
 ## [2.44.2] - 2026-11-25
 
 ### Corrigido
