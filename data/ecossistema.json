@@ -2365,7 +2365,7 @@
    "tipo": "fisico",
    "conta": false,
    "futuro": true,
-   "descricao": "Segundo computador com 12 GB ou mais de memória de vídeo para voz, vídeo e IA locais. Só se sair mais barato que assinaturas e GPU por hora."
+   "descricao": "Estação única AM5 (Ryzen 9 9950X, X870E, RTX 5060 Ti 16 GB): dev, serviços 24/7 e IA locais. Entrada enxuta de R$ 24 a 26 mil; plano completo em docs/hardware/estacao-am5.md. Só se sair mais barato que assinaturas e GPU por hora."
   },
   {
    "id": "b2",

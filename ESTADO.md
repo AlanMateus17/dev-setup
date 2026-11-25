@@ -86,3 +86,4 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-22: roteiro atualizado: fase Senhas datada a partir de 22/11, passos novos senhas-terminal, senhas-inventario e gh-admin; senhas da stack e el-segredos agora pelo cofre (just senhas-criar / senhas-rodar), sem .env em texto.
 - 2026-11-22: Central AMtech no repositório (docs/central: contexto, prompts e protótipo) e fase f-central no roteiro, depois da fase Senhas.
 - 2026-11-22: auditoria roteiro × setup: 30 das 55 receitas não tinham passo; fase f-ferramentas cobre todas e o just check passa a barrar receita sem passo.
+- 2026-11-25: v2.45.0: plano de hardware da estação AM5 (19/11, estava só no Drive) agora em docs/hardware/estacao-am5.md e no bloco ws. Compra só pela cascata e depois do portão. Pendente do Alan: marcar no plano as peças que já tem e conferir preços na semana da compra.
