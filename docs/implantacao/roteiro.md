@@ -2277,7 +2277,7 @@ cd ~/dev/dev-setup && git fetch --unshallow 2>/dev/null; python3 tools/git/tague
 - [ ] **Pronto quando:** git tag mostra uma tag vx.y.z para cada versão do CHANGELOG, no GitHub
 - Rode no notebook; o proxy de git de algumas sessões não envia tags. Veja docs/boas-praticas.md.
 
-### 21.5 Ligar a tag automática a cada push
+### 21.5 Ligar o hook que roda o just check antes de cada push
 
 **Script** · 5 min
 
@@ -2287,8 +2287,8 @@ No **Ubuntu** (linha `alanmateus@...$`):
 cd ~/dev/dev-setup && git config core.hooksPath scripts/git-hooks && git config push.followTags true
 ```
 
-- [ ] **Pronto quando:** Depois de um push, a tag da versão do CHANGELOG aparece sozinha no GitHub
-- O hook scripts/git-hooks/pre-push cria e envia a tag da versão mais nova a cada git push. Para pular num push: AMTECH_SKIP_HOOK=1 git push.
+- [ ] **Pronto quando:** Um push com o just check vermelho é bloqueado; um push só de tag passa direto
+- O hook scripts/git-hooks/pre-push roda o just check e bloqueia o push se falhar (push só de tag ou só apagando branch passa direto). A tag da versão é criada depois do merge, no commit do merge. Para aprovar um PR: just aprovar N (marca como pronto, faz o merge e só termina se o GitHub disser MERGED).
 
 ### 21.6 Rodar serviços com segredos vindos do KeePassXC
 
