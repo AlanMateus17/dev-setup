@@ -18,9 +18,9 @@ Cole este arquivo na primeira mensagem de uma conversa nova (ou rode `python3 ~/
 - Uma conversa = uma tarefa. Termine me dando até 5 linhas para o ESTADO.md.
 
 ## 2. Onde está tudo
-- **dev-setup** (este repositório, **público** desde nov/2026): github.com/AlanMateus17/dev-setup; no PC em `~/dev/dev-setup`. Por ser público: nada de segredo, dado pessoal, financeiro ou de aluno aqui; o que é privado fica em `~/.config/amtech`, `~/financas` e no KeePassXC.
+- **dev-setup** (este repositório, **privado** desde 21/11/2026, como todos os repositórios do Alan; só as vitrines de cliente serão públicas): github.com/AlanMateus17/dev-setup; no PC em `~/dev/dev-setup`. Mesmo privado: nada de segredo, dado pessoal, financeiro ou de aluno aqui; o que é privado fica em `~/.config/amtech`, `~/financas` e no KeePassXC.
 - **Vault do Obsidian** (`~/dev/notas`, repositório Portfolio-AMS-Obsidian-Vault): PLANO-UNICO, CARTÃO, `07-estudo-e-carreira/PLANO-PASSO-A-PASSO.md` (o plano de estudo, ADR 0018). A pasta 11 é espelho do setup e **não se edita à mão** (`just vault-espelho`).
-- **mapa-de-estudo** (público, `~/dev/mapa-de-estudo`): `MAPA.md` com tudo o que se estuda em etapas por pré-requisito (0 a 8 + horizonte H1–H7) e os arquivos de assunto conferidos. Cada módulo do Professor aponta para um assunto do mapa (campo `etapa`; `just professor-mapa` confere e mostra a cobertura). **A ordem é a do mapa:** o Professor só libera um módulo quando o assunto dele está escrito e conferido (📘) e os assuntos de que ele depende já passaram na prova; quando o assunto está escrito, a aula é o próprio arquivo do mapa (v2.40).
+- **mapa-de-estudo** (privado desde 22/11/2026, como todos os repositórios; `~/dev/mapa-de-estudo`): `MAPA.md` com tudo o que se estuda em etapas por pré-requisito (0 a 8 + horizonte H1–H7) e os arquivos de assunto conferidos. Cada módulo do Professor aponta para um assunto do mapa (campo `etapa`; `just professor-mapa` confere e mostra a cobertura). **A ordem é a do mapa:** o Professor só libera um módulo quando o assunto dele está escrito e conferido (📘) e os assuntos de que ele depende já passaram na prova; quando o assunto está escrito, a aula é o próprio arquivo do mapa (v2.40).
 - Outros repositórios e o status de cada um (ativo, estudo, revisar, arquivar): `data/repos.json`.
 - **Mudou uma decisão?** Primeiro edite `data/coerencia.json` (objetivo, decisões e termos velhos); depois `just coerencia` mostra, em todos os repositórios, o que ficou desatualizado, e `just coerencia --corrigir` troca o que é seguro. O CI do dev-setup falha se algum texto contradisser o plano.
 - **Regra do repositório:** `data/*.json` → geradores → `docs/`. Nunca editar arquivo gerado. Toda mudança: dados ou ferramenta, geradores, testes, `just check` verde, CHANGELOG, linha no ESTADO.md, PR.
@@ -48,7 +48,7 @@ Só **rendas passivas** entram no plano, em ondas; a onda seguinte entra quando 
 
 ## 5. Comandos do dia a dia (Ubuntu, em `~/dev/dev-setup`)
 - `just` lista tudo; `just check` antes de todo commit; `just verificar` confere a instalação; `just ligado` mostra o que está no ar.
-- Estudo: `just professor hoje`, `just diag ETAPA ...`, `just ficha ETAPA`, `just colher ETAPA`, `just livros ...`, `just erro ETAPA "..." --certo "..."`, `just atrito "..."`.
+- Estudo: `just professor hoje`, `just fontes ...` (acervo privado das fontes originais, [docs/professor/fontes.md](docs/professor/fontes.md)), `just diag ETAPA ...`, `just ficha ETAPA`, `just colher ETAPA`, `just livros ...`, `just erro ETAPA "..." --certo "..."`, `just atrito "..."`.
 - Progresso: `just rapido` (trilha rápida da instalação), `just agora` (o que é seu agora), `just feito ID`.
 - Contexto para outra conversa: `python3 tools/sessao/contexto.py --inicio | clip.exe` ou `--passo ID`.
 

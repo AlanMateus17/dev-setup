@@ -2,9 +2,10 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
-## [2.40.1] - 2026-11-25
+## [2.44.1] - 2026-11-25
 
 ### Adicionado
+- Passo `fd-validar` no roteiro (fase Ferramentas do dia a dia) para o `just validar`.
 - `just validar` (`tools/validar/validar.py`): refaz as checagens automáticas da validação de ponta a ponta (testes, roda no PC, roda sozinho, integração) e imprime a matriz; `--rapido` e `--restaurar`. Matriz e pendências em `docs/operacao/validacao.md`.
 
 ### Corrigido
@@ -12,8 +13,41 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 - `backup.sh`: o evento `backup.concluido` nunca chegava ao núcleo (a última linha do `restic snapshots --compact` é um separador "-----" que o argparse lia como opção, e o `|| true` escondia). Agora usa o id pelo `--json`.
 - `coerencia.py --relatorio` cria a pasta do relatório (sem `~/dev` dava traceback, escondido pelo `|| true` da receita).
 - `professor-mapa` sem o MAPA.md: aviso com o que fazer no lugar do traceback.
-- `segredos.sh` e `just validar` procuram o cofre onde o roteiro manda criar (`Documents\Cofre\Cofre.kdbx`) antes do nome antigo (`cofre senhas.kdbx`); antes, o script não achava o cofre criado pelo roteiro.
+- Receitas novas da `main` (`fontes` e `senha`) ajustadas para o `just` 1.21: sem o atributo `[positional-arguments]` e sem `*opcao` depois de parâmetro com padrão (`just senha` continua aceitando a busca opcional).
+- `segredos.sh` também aceita o nome antigo do cofre (`cofre senhas.kdbx`) depois do caminho do roteiro, e o `just validar` procura nos mesmos lugares.
 - `just validar` não trava esperando resposta de uma pergunta escondida (stdin vazio), e backup agendado que não roda aparece como FALHA.
+## [2.44.0] - 2026-11-22
+
+### Adicionado
+- **Central AMtech** em `docs/central/`: contexto (diagnóstico, decisões montar → colar → construir, arquitetura, fonte de cada tela, segurança, fases), prompts prontos por fase para o Claude Code (`PROMPTS.md`) e o protótipo clicável (`prototipo/index.html`, dados reais do v2.40.0). Fase nova `f-central` no roteiro com os passos F0 a F6 e a revisão de segurança.
+- Fase nova `f-ferramentas` (depois da fase Senhas): 8 passos para ligar e testar uma vez os 30 comandos que não estavam no roteiro (operação, motor, núcleo, estudo, coerência, vitrine, sala limpa e AMtech OS).
+- `just check` agora falha se alguma receita do `justfile` não aparecer em nenhum passo do roteiro (teste em `tools/implantacao/test_gerar.py`).
+
+## [2.43.0] - 2026-11-22
+
+### Adicionado
+- **Senhas sem procurar e sem digitar** (`tools/senhas/senhas.py`, sem IA): `docs/senhas.md` é o inventário gerado de tudo que precisa de senha no setup (126 itens: contas do `ecossistema.json`, segredos dos `infra/**/*.env.example` e os extras de `data/senhas.json`), com o grupo do cofre e o jeito de preencher cada um. Nenhuma senha aparece no repositório.
+- `just senhas` mostra o que já está no cofre e o que falta; `just senha NOME` escolhe a entrada e copia a senha, que some da área de transferência em 20 s; `just senhas-criar` gera no cofre, depois da sua confirmação, as senhas dos serviços locais; `just senhas-rodar PASTA -- comando` sobe o serviço com os segredos vindos do cofre, só no ambiente daquele comando.
+- `just cofre-abrir 30` / `just cofre-fechar`: desbloqueio temporário pelo chaveiro do kernel (keyctl), com prazo; nesse tempo os comandos não pedem a senha mestra. Fora dele, cada comando pede.
+- Testes com um cofre descartável e o keepassxc-cli de verdade (pulados quando ele não está instalado). `just check` confere se o `docs/senhas.md` está atualizado.
+
+## [2.42.0] - 2026-11-22
+
+### Adicionado
+- `just repos-visibilidade`: confere a visibilidade de cada repositório no GitHub contra o `repos.json`, sem IA; com `--aplicar` mostra o plano e só muda depois da sua confirmação (digitar o número de mudanças; repositório com GitHub Pages ou estrelas pede o nome). A chave do GitHub vem do KeePassXC pelo `scripts/wsl/segredos.sh` (entrada `GitHub/gh-admin`) e existe só durante o comando. Fork de repositório público é avisado como impossível; cada mudança vai para a auditoria do núcleo. Testes em `tools/repos/test_visibilidade.py`.
+
+## [2.41.0] - 2026-11-21
+
+### Adicionado
+- **Fontes de estudo** (`tools/fontes/fontes.py`, `just fontes`, `data/fontes.json`, [docs/professor/fontes.md](docs/professor/fontes.md)): acervo privado em `~/AMtech/estudo`, fora do Git, para estudar pelo conteúdo original.
+  - `baixar` clona só a pasta da documentação oficial, na versão cadastrada, e registra o commit: TypeScript Handbook, MDN, Node 22, Pro Git, Python 3.14 e PostgreSQL 18, cada uma ligada aos assuntos do mapa.
+  - `entrada` guarda livros, aulas e notas com hash, licença e manifesto, e converte para Markdown sem IA quando a ferramenta existe (Docling, Pandoc, WhisperX com o minuto de cada fala); PDF de fora passa antes pelo Dangerzone. Sem a ferramenta, o arquivo fica "pendente" e nada se perde.
+  - `buscar` procura no corpus e nas documentações.
+  - `citar` confere, letra por letra, se um trecho existe na fonte (é a regra que impede alucinação no guia).
+  - `conferir` entra no `just check`: falha se arquivo de fonte, livro digital ou PDF fora das pastas de documentos aparecer no repositório.
+
+### Alterado
+- Decisão de 21/11: todos os repositórios do Alan ficam privados, inclusive os sites do GitHub Pages (que saem do ar no plano grátis). `repos.json`, `docs/repositorios.md`, `CONTINUAR.md` e o plano em `data/coerencia.json` atualizados; as vitrines de cliente continuam planejadas como públicas.
 
 ## [2.40.0] - 2026-11-21
 

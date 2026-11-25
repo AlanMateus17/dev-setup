@@ -247,13 +247,38 @@
      ]
     },
     {
+     "id": "senhas-conectados",
+     "titulo": "Revisar as contas que entram com Google, Facebook, Apple ou Microsoft (sem senha própria)",
+     "quem": "voce",
+     "pronto": "Cada app da lista do Google e do Facebook decidido: fica (no data/senhas.json como 'entra com Google') ou conta excluída no próprio app e acesso removido",
+     "tempo_min": 30,
+     "comando": "Start-Process 'https://myaccount.google.com/connections'; Start-Process 'https://www.facebook.com/settings?tab=applications'",
+     "nota": "Essas contas não têm senha, então não aparecem no CSV do Chrome, no kp-organizar nem no just senhas. Remover o acesso na lista do Google NÃO apaga a conta no app: para fechar de vez, exclua a conta dentro do próprio app (Configurações > Conta > Excluir) e só depois remova o acesso. As que ficam entram no data/senhas.json (extras) com a nota 'entra com Google' (ou Facebook, Apple, Microsoft). Confira também appleid.apple.com > Entrar com a Apple e account.microsoft.com > Privacidade > Apps e serviços, se usar.",
+     "blocos": [
+      "kee",
+      "nav"
+     ]
+    },
+    {
+     "id": "senhas-emails-antigos",
+     "titulo": "Tirar as contas dos e-mails antigos antes de apagá-los",
+     "quem": "voce",
+     "pronto": "Nenhuma conta que você mantém usa um e-mail antigo como login ou recuperação; só então o e-mail antigo é apagado",
+     "tempo_min": 60,
+     "fora": "A busca é na caixa de cada e-mail antigo e a troca de e-mail é no site de cada serviço.",
+     "nota": "Em cada e-mail antigo, busque: bem-vindo OR welcome OR \"confirme seu e-mail\" OR \"verify your email\" OR \"redefinir senha\" OR \"reset your password\". Cada remetente é uma conta: troque o e-mail dela para o endereço novo da finalidade certa, ou exclua a conta. Apagar o e-mail antes disso tranca você fora de todas as contas que dependem dele para recuperar a senha. Deixe o e-mail antigo encaminhando para o novo por 3 a 6 meses antes de apagar. Golpe e newsletter: só descadastre, não entre no link de login.",
+     "blocos": [
+      "kee"
+     ]
+    },
+    {
      "id": "senhas-esquecidas",
      "titulo": "Recuperar as contas cuja senha você esqueceu e fechar as que não usa mais",
      "quem": "voce",
      "pronto": "Toda conta da sua lista de contas está no cofre, foi recuperada ou foi excluída",
      "tempo_min": 60,
      "fora": "Recuperação de conta é sempre pelo site do serviço, com e-mail ou celular.",
-     "nota": "Use 'Esqueci minha senha' com o e-mail já protegido. Se o e-mail ou o telefone de recuperação forem antigos, cada serviço tem um formulário próprio (Meta: 'Precisa de ajuda?' na tela de login; gov.br: pelo app com reconhecimento facial ou pelo banco). Conta parada que guarda dado seu é risco: exclua.",
+     "nota": "Use 'Esqueci minha senha' com o e-mail já protegido. Se o e-mail ou o telefone de recuperação forem antigos, cada serviço tem um formulário próprio (Meta: 'Precisa de ajuda?' na tela de login; gov.br: pelo app com reconhecimento facial ou pelo banco). Conta parada que guarda dado seu é risco: exclua. No KeePassXC, marque cada entrada com a etiqueta MANTER, RECUPERAR ou EXCLUIR (campo Etiquetas) e busque por etiqueta para trabalhar uma de cada vez; a lista completa das contas é o docs/senhas.md (just senhas mostra o que falta). Para achar a página de exclusão de um serviço, procure '<serviço> excluir conta' no site oficial dele.",
      "blocos": [
       "kee"
      ]
@@ -279,10 +304,46 @@
      "pronto": "No login de teste, o navegador preenche a senha a partir do cofre",
      "tempo_min": 15,
      "fora": "Extensão de navegador e a opção de integração do KeePassXC só se ligam pelas janelas deles.",
-     "nota": "No KeePassXC: Configurações > Integração com navegador, marque o seu navegador e instale a extensão KeePassXC-Browser.",
+     "nota": "No KeePassXC: Configurações > Integração com navegador, marque o seu navegador e instale a extensão KeePassXC-Browser. Deixe ligado o pedido de permissão por site: o KeePassXC pergunta antes de entregar a senha a um site novo, e esse é o seu clique de confirmação.",
      "blocos": [
       "kee",
       "nav"
+     ]
+    },
+    {
+     "id": "senhas-terminal",
+     "titulo": "Ligar o cofre ao terminal do Ubuntu e ver o que falta guardar",
+     "quem": "script",
+     "pronto": "just senhas abre o cofre e mostra o que já está guardado, o que falta e as contas do cofre fora da lista (docs/senhas.md)",
+     "tempo_min": 10,
+     "comando": "sudo apt install -y keepassxc keyutils && cd ~/dev/dev-setup && just senhas",
+     "nota": "O cofre padrão é o deste roteiro (Documentos\\Cofre\\Cofre.kdbx). Para pegar uma senha sem procurar: just senha NOME (copia e limpa em 20 s). Desbloqueio por um tempo: just cofre-abrir 30.",
+     "blocos": [
+      "kee"
+     ]
+    },
+    {
+     "id": "senhas-inventario",
+     "titulo": "Completar o inventário com as contas que só existem no cofre",
+     "quem": "voce",
+     "pronto": "O bloco 'no cofre e fora do inventário' do just senhas está vazio ou tudo que sobrou está em ignorar",
+     "tempo_min": 20,
+     "fora": "Só você sabe quais contas são suas: a decisão e a edição do data/senhas.json são manuais.",
+     "nota": "Conta sua vai para data/senhas.json → extras ou do_email; o que não é login vai para ignorar. Os 19 remetentes 'para conferir' do docs/senhas.md entram aqui (dois parecem golpe: não clique).",
+     "blocos": [
+      "kee"
+     ]
+    },
+    {
+     "id": "gh-admin",
+     "titulo": "Criar a chave gh-admin do GitHub e conferir a visibilidade dos repositórios",
+     "quem": "voce",
+     "pronto": "Chave fine-grained (Administration: Read and write, 90 dias) no cofre como GitHub/gh-admin; just repos-visibilidade sem diferença",
+     "tempo_min": 10,
+     "comando": "cd ~/dev/dev-setup && just repos-visibilidade",
+     "nota": "Decida o catalogo-html (público pelo repos.json, privado desde 22/11) e os forks do Cursos-TI antes de rodar --aplicar.",
+     "blocos": [
+      "kee"
      ]
     },
     {
@@ -341,7 +402,8 @@
      "blocos": [
       "kee"
      ],
-     "fora": "Configurações > Auto-Type, na tela do KeePassXC."
+     "fora": "Configurações > Auto-Type, na tela do KeePassXC.",
+     "nota": "Atalho global (ex.: Ctrl+Alt+A) para preencher login em programas do Windows. Ligue 'Sempre perguntar antes de executar o Auto-Type': é o clique de confirmação antes de cada preenchimento. Apps de banco e o app do gov.br no celular bloqueiam preenchimento: neles, copie a senha pelo KeePassDX."
     },
     {
      "id": "kp-chave",
@@ -356,7 +418,112 @@
      "decisao": true
     }
    ],
-   "quando": "Semana 1 · out/2026 (o e-mail e as críticas); o resto, 5 contas por semana até dez/2026"
+   "quando": "Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027"
+  },
+  {
+   "id": "f-ferramentas",
+   "titulo": "Ferramentas do dia a dia: ligar e testar cada uma uma vez",
+   "objetivo": "Todo comando do setup testado uma vez no notebook, para que nada exista só no repositório sem você saber usar.",
+   "quando": "Junto com a fase Senhas · a partir de 22/11/2026 (uma sessão curta por grupo)",
+   "passos": [
+    {
+     "id": "fd-operacao",
+     "titulo": "Operação: conferir, fazer backup, ligar e desligar serviços",
+     "quem": "script",
+     "pronto": "verificar sem erro, backup feito e serviço de teste subindo e parando",
+     "tempo_min": 20,
+     "comando": "cd ~/dev/dev-setup && just verificar && just bootstrap-simular && just backup && just servico automacao && just desligar",
+     "nota": "O just ligar já está na fase Celular; aqui é o resto da operação diária. Senhas no dia a dia: just senha NOME, just senhas-lista (regenera docs/senhas.md) e just cofre-fechar (tranca na hora).",
+     "blocos": []
+    },
+    {
+     "id": "fd-validar",
+     "titulo": "Validar o setup de ponta a ponta e ver o que falta",
+     "quem": "script",
+     "pronto": "just validar sem FALHA; cada PRECISA DE MIM vira passo feito ou pendência anotada",
+     "tempo_min": 15,
+     "comando": "cd ~/dev/dev-setup && just validar",
+     "nota": "Imprime a matriz de docs/operacao/validacao.md (testes, roda no PC, roda sozinho, integração). just validar --rapido pula o just check; just validar --restaurar restaura o último backup numa pasta temporária.",
+     "blocos": []
+    },
+    {
+     "id": "fd-motor",
+     "titulo": "Motor de decisão: escada, custo e regra de três",
+     "quem": "script",
+     "pronto": "Um pedido passou pela escada, foi marcado ok e aparece no relatório",
+     "tempo_min": 15,
+     "comando": "cd ~/dev/dev-setup && just motor \"calcular o rateio da casa\" && just motor-ok 1 && just motor-relatorio && just motor-custo && just conversa && just medir",
+     "nota": "just motor-refazer N marca uma decisão para refazer.",
+     "blocos": []
+    },
+    {
+     "id": "fd-nucleo",
+     "titulo": "Núcleo: tarefas",
+     "quem": "script",
+     "pronto": "just tarefas lista as tarefas abertas",
+     "tempo_min": 5,
+     "comando": "cd ~/dev/dev-setup && just tarefas",
+     "blocos": []
+    },
+    {
+     "id": "fd-estudo",
+     "titulo": "Estudo: mapa do Professor, biblioteca, diagnóstico, ficha, colheita, erros e atritos",
+     "quem": "script",
+     "pronto": "Cada comando roda uma vez sem erro e o erro/atrito de teste aparece no vault",
+     "tempo_min": 25,
+     "comando": "cd ~/dev/dev-setup && just professor-mapa && just livros lista && just diag && just ficha && just colher && just erro \"teste\" && just erros && just atrito \"teste\" && just atritos",
+     "blocos": []
+    },
+    {
+     "id": "fd-fontes",
+     "titulo": "Fontes de estudo: baixar a primeira documentação oficial e conferir um trecho",
+     "quem": "script",
+     "pronto": "just fontes docs lista as documentações; a do TypeScript aparece como baixada com o commit registrado; just fontes citar devolve OK para um trecho real",
+     "tempo_min": 20,
+     "comando": "cd ~/dev/dev-setup && just fontes docs && just fontes baixar typescript-handbook && just fontes buscar \"union type\"",
+     "nota": "O acervo fica em ~/AMtech/estudo, fora do Git e dentro do backup. Para converter livros, aulas e áudios sem IA, instale antes Docling, Pandoc e WhisperX (e o Dangerzone para PDF de fora); depois: just fontes entrada --licenca comprado-uso-pessoal. Guia: docs/professor/fontes.md.",
+     "blocos": []
+    },
+    {
+     "id": "fd-qualidade",
+     "titulo": "Qualidade: coerência dos textos com o plano",
+     "quem": "script",
+     "pronto": "just coerencia termina com 0 erros",
+     "tempo_min": 5,
+     "comando": "cd ~/dev/dev-setup && just coerencia",
+     "blocos": []
+    },
+    {
+     "id": "fd-vitrine",
+     "titulo": "Vitrine de um produto num repositório público",
+     "quem": "voce",
+     "pronto": "A vitrine de um produto está publicada e revisada por você",
+     "tempo_min": 30,
+     "comando": "cd ~/dev/dev-setup && just vitrine",
+     "nota": "Pede confirmação: sobrescreve o README do repositório da vitrine.",
+     "blocos": []
+    },
+    {
+     "id": "fd-lab",
+     "titulo": "Sala limpa cifrada do laboratório de segurança",
+     "quem": "script",
+     "pronto": "lab-abrir monta a pasta cifrada com a senha do cofre e lab-fechar desmonta",
+     "tempo_min": 15,
+     "comando": "cd ~/dev/dev-setup && just lab-abrir && just lab-fechar",
+     "nota": "A senha do gocryptfs fica no cofre (inventário: Senha da sala limpa).",
+     "blocos": []
+    },
+    {
+     "id": "fd-os",
+     "titulo": "AMtech OS 0.1: testar numa VM antes de decidir o ADR 0016",
+     "quem": "voce",
+     "pronto": "Uma semana de uso na VM e a decisão do ADR 0016 anotada",
+     "tempo_min": 120,
+     "comando": "cd ~/dev/dev-setup && just os-simular",
+     "nota": "just os-instalar só depois da decisão: transforma o Ubuntu no AMtech OS.",
+     "blocos": []
+    }
+   ]
   },
   {
    "id": "f3",
@@ -1008,14 +1175,15 @@
    "passos": [
     {
      "id": "senhas",
-     "titulo": "Gerar as senhas da stack e guardar no KeePassXC",
+     "titulo": "Gerar no cofre as senhas dos serviços da stack (sem .env em texto)",
      "quem": "script",
-     "pronto": ".env criado com permissão 600",
+     "pronto": "As senhas de infra/**/*.env.example estão no cofre em 20 Setup técnico/PASTA/VARIÁVEL; nenhum .env com senha",
      "tempo_min": 5,
-     "comando": "cd infra/automacao && bash gerar-senhas.sh",
+     "comando": "cd ~/dev/dev-setup && just senhas-criar",
      "blocos": [
       "n8n"
-     ]
+     ],
+     "nota": "Substitui o gerar-senhas.sh: o setup gera 32 caracteres, você confirma digitando o número de senhas."
     },
     {
      "id": "subir-stack",
@@ -2074,12 +2242,12 @@
      "id": "el-segredos",
      "titulo": "Rodar serviços com segredos vindos do KeePassXC",
      "quem": "script",
-     "pronto": "Um serviço sobe sem .env em texto puro",
+     "pronto": "Os serviços sobem com os segredos vindos do cofre, só no ambiente do comando, sem .env em texto puro",
      "tempo_min": 15,
      "blocos": [
       "segredos"
      ],
-     "comando": "sudo apt install -y keepassxc && bash ~/dev/dev-setup/scripts/wsl/segredos.sh 'Automacao/N8N_CHAVE' N8N_CHAVE -- env | grep -c N8N_CHAVE",
+     "comando": "cd ~/dev/dev-setup && just senhas-rodar automacao -- docker compose -f infra/automacao/compose.yaml up -d",
      "nota": "A senha do cofre é digitada à mão. O teste deve mostrar 1."
     },
     {
@@ -8010,6 +8178,86 @@
      "blocos": [],
      "fora": "Decisão sua, depois de 6 meses da trilha; com ADS e Matemática você não assina projeto, laudo, ART nem RRT.",
      "decisao": true
+    }
+   ]
+  },
+  {
+   "id": "f-central",
+   "titulo": "Central AMtech: uma tela para tudo do setup",
+   "objetivo": "Abrir uma tela só, no notebook ou no celular, para ver o que espera você, rodar qualquer receita, pedir, estudar e acompanhar empresas e serviços.",
+   "quando": "Depois da fase Senhas · dez/2026 (protótipo em docs/central/prototipo)",
+   "passos": [
+    {
+     "id": "central-f0",
+     "titulo": "F0 · Portas sem conflito, data/portas.json, correção do coerencia.py e ADR 0022",
+     "quem": "claude",
+     "pronto": "Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você",
+     "tempo_min": 120,
+     "fora": "Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F0 de docs/central/PROMPTS.md.",
+     "blocos": []
+    },
+    {
+     "id": "central-f1",
+     "titulo": "F1 · Portal Homepage gerado dos dados (:3010)",
+     "quem": "claude",
+     "pronto": "Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você",
+     "tempo_min": 120,
+     "fora": "Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F1 de docs/central/PROMPTS.md.",
+     "blocos": []
+    },
+    {
+     "id": "central-f2",
+     "titulo": "F2 · OliveTin com a lista fechada de receitas (:1337)",
+     "quem": "claude",
+     "pronto": "Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você",
+     "tempo_min": 120,
+     "fora": "Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F2 de docs/central/PROMPTS.md.",
+     "blocos": []
+    },
+    {
+     "id": "central-r2",
+     "titulo": "R2 · Revisão de segurança da F2 (Opus)",
+     "quem": "claude",
+     "pronto": "Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você",
+     "tempo_min": 60,
+     "fora": "Roda no Claude Code do notebook: cole o Bloco fixo e o prompt R de docs/central/PROMPTS.md.",
+     "blocos": []
+    },
+    {
+     "id": "central-f3",
+     "titulo": "F3 · Central: API de leitura e executor com saída ao vivo",
+     "quem": "claude",
+     "pronto": "Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você",
+     "tempo_min": 120,
+     "fora": "Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F3 de docs/central/PROMPTS.md.",
+     "blocos": []
+    },
+    {
+     "id": "central-f4",
+     "titulo": "F4 · Central: as 9 telas, igual ao protótipo",
+     "quem": "claude",
+     "pronto": "Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você",
+     "tempo_min": 120,
+     "fora": "Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F4 de docs/central/PROMPTS.md.",
+     "blocos": []
+    },
+    {
+     "id": "central-f5",
+     "titulo": "F5 · Caixa de aprovações ligada de verdade (PRs, Akita, motor, decisões)",
+     "quem": "claude",
+     "pronto": "Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você",
+     "tempo_min": 120,
+     "fora": "Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F5 de docs/central/PROMPTS.md.",
+     "blocos": []
+    },
+    {
+     "id": "central-f6",
+     "titulo": "F6 · Celular: login, app instalável e Tailscale; testes de ponta a ponta",
+     "quem": "claude",
+     "pronto": "Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você",
+     "tempo_min": 120,
+     "fora": "Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F6 de docs/central/PROMPTS.md.",
+     "blocos": []
     }
    ]
   }

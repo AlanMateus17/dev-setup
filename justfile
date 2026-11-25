@@ -70,6 +70,7 @@ check:
     python3 tools/editora/livros.py --check
     python3 tools/empresas/empresas.py --check
     python3 tools/coerencia/coerencia.py
+    python3 tools/fontes/fontes.py conferir
     python3 tools/kitsites/gerar.py --check
     python3 tools/custos/custos.py --check
     python3 tools/recursos/recursos.py --check
@@ -81,6 +82,7 @@ check:
     python3 tools/biblioteca/biblioteca.py docs --check
     python3 tools/nucleo/agenda.py rapido --check
     python3 tools/repos/repos.py --check
+    python3 tools/senhas/senhas.py lista --check
     python3 -m unittest discover -s tools -p "test_gerar_docs.py" -q
     for d in tools/*/; do if ls "$d"test_*.py >/dev/null 2>&1; then python3 -m unittest discover -s "$d" -q; fi; done
     if command -v gitleaks >/dev/null; then gitleaks git --no-banner -v . >/dev/null; else echo "gitleaks ausente: rode o bootstrap"; fi
@@ -211,6 +213,10 @@ colher *args:
 livros *args:
     python3 tools/biblioteca/biblioteca.py "$@"
 
+# Fontes de estudo, acervo privado em ~/AMtech/estudo (nunca no Git): just fontes docs | baixar ID | entrada [--licenca X] | buscar "termo" | citar ARQUIVO "trecho" | conferir
+fontes *args:
+    python3 tools/fontes/fontes.py "$@"
+
 # Recrutador: just recrutador semana | entrevista FORMATO [--empresa X] [--vaga arq.txt] [--claude] | registrar FORMATO NOTA | progresso
 recrutador *args:
     python3 tools/recrutador/recrutador.py {{args}}
@@ -254,6 +260,36 @@ fila:
 # Vitrine para clientes: copia docs/vitrines/EMPRESA.md como README do repositório público da empresa (ex.: just vitrine software ~/dev/amtech-software)
 vitrine EMPRESA DESTINO:
     test -f docs/vitrines/{{EMPRESA}}.md && test -d {{DESTINO}}/.git && cp docs/vitrines/{{EMPRESA}}.md {{DESTINO}}/README.md && echo "README da vitrine copiado; revise, faça o commit e o push em {{DESTINO}}"
+
+# Visibilidade dos repositórios igual à de repos.json, sem IA. A chave vem do KeePassXC (entrada GitHub/gh-admin) só para este comando.
+# just repos-visibilidade            (só confere)     just repos-visibilidade --aplicar     (muda depois da sua confirmação)
+repos-visibilidade *opcao:
+    bash scripts/wsl/segredos.sh "${GH_ENTRADA:-GitHub/gh-admin}" GH_TOKEN -- python3 tools/repos/visibilidade.py {{opcao}}
+
+# Senhas sem procurar e sem digitar (tools/senhas/senhas.py). Inventário em docs/senhas.md; senha mestra só pela entrada padrão.
+# just senhas (o que falta no cofre) · just senha github (copia, limpa em 20 s) · just senhas-criar · just cofre-abrir 30 · just cofre-fechar
+senhas:
+    python3 tools/senhas/senhas.py conferir
+
+senhas-lista:
+    python3 tools/senhas/senhas.py lista
+
+# Variádico só (o just 1.21 do apt não aceita *opcao depois de parâmetro com padrão); a busca continua opcional no senhas.py
+senha *args:
+    python3 tools/senhas/senhas.py senha "$@"
+
+senhas-criar:
+    python3 tools/senhas/senhas.py criar
+
+# just senhas-rodar soberania -- docker compose up -d   (segredos de infra/soberania vindos do cofre, só para este comando)
+senhas-rodar pasta *comando:
+    python3 tools/senhas/senhas.py rodar {{pasta}} {{comando}}
+
+cofre-abrir minutos="30":
+    python3 tools/senhas/senhas.py abrir {{minutos}}
+
+cofre-fechar:
+    python3 tools/senhas/senhas.py fechar
 
 # Coerência com o plano (data/coerencia.json): confere o dev-setup e todos os repositórios em ~/dev e grava ~/dev/COERENCIA.md
 # just coerencia            (só relatório)     just coerencia --corrigir     (troca sozinho o que tem troca segura)

@@ -119,7 +119,9 @@ def caminhos_cofre() -> list[Path]:
     """Os mesmos lugares que o segredos.sh procura: COFRE, o do roteiro (Documents\\Cofre) e o nome antigo."""
     u = os.environ.get("USER", "")
     lista = [Path(os.environ["COFRE"])] if os.environ.get("COFRE") else []
-    return lista + [Path(f"/mnt/c/Users/{u}/Documents/Cofre/Cofre.kdbx"), Path(f"/mnt/c/Users/{u}/cofre senhas.kdbx")]
+    return lista + sorted(Path("/mnt/c/Users").glob("*/Documents/Cofre/Cofre.kdbx")) + [
+        Path.home() / "Documents/Cofre/Cofre.kdbx", Path(f"/mnt/c/Users/{u}/Documents/Cofre/Cofre.kdbx"),
+        Path(f"/mnt/c/Users/{u}/cofre senhas.kdbx")]
 
 
 def banco_nucleo() -> Path:

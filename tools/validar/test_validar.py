@@ -72,7 +72,7 @@ class TestCofre(unittest.TestCase):
         try:
             nomes = [str(c) for c in v.caminhos_cofre()]
             self.assertTrue(nomes[0].endswith("Documents/Cofre/Cofre.kdbx"))
-            self.assertTrue(nomes[1].endswith("cofre senhas.kdbx"))
+            self.assertTrue(nomes[-1].endswith("cofre senhas.kdbx"), "o nome antigo fica por último")
             os.environ["COFRE"] = "/tmp/x.kdbx"
             self.assertEqual(str(v.caminhos_cofre()[0]), "/tmp/x.kdbx")
         finally:
