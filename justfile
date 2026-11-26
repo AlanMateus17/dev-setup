@@ -85,6 +85,7 @@ check:
     python3 tools/senhas/senhas.py lista --check
     python3 tools/portas/portas.py --check
     python3 tools/ferramentas/ferramentas.py --check
+    python3 tools/git/versoes.py --check
     python3 -m unittest discover -s tools -p "test_gerar_docs.py" -q
     for d in tools/*/; do if ls "$d"test_*.py >/dev/null 2>&1; then python3 -m unittest discover -s "$d" -q; fi; done
     if command -v gitleaks >/dev/null; then gitleaks git --no-banner -v . >/dev/null; else echo "gitleaks ausente: rode o bootstrap"; fi
@@ -252,6 +253,10 @@ vault-espelho *opcao:
 # Backup agora (o mesmo do agendamento das 22h30)
 backup:
     bash scripts/wsl/backup.sh
+
+# Cópia do backup no HD externo (restic copy, mesma senha): just backup-externo  ·  teste de restauração do HD: just backup-externo --restaurar  ·  só ver: --simular
+backup-externo *opcao:
+    bash scripts/wsl/backup-externo.sh {{opcao}}
 
 # Liga o setup: just ligar (sempre: Ollama, fila, bot, Remote Control)  ·  com Docker: just ligar trabalho | sob-demanda | laboratorio  ·  só ver: just ligar trabalho --simular
 ligar *opcao:

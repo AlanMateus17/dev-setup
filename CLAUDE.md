@@ -77,7 +77,7 @@ mudar, o Alan decide e a ADR ganha uma nova. Ferramentas paradas ou adiadas têm
 | Plano | **Sem congelamento** (saiu em 25/11): instalar e configurar todas as ferramentas, menos bore e cloudflared; depois a Central |
 | Senhas | KeePassXC **volta** (25/11, tarde): `keepassxc-cli`, cofre `.kdbx` e `segredos.sh` voltam a ser requisito. A senha do restic continua no caderno e também vai para o cofre |
 | Segredos em arquivo | `sops` **volta** |
-| Backup | restic em `C:\Users\alanmateus\backup-restic`; o antigo, sem senha, em `backup-restic-senha-perdida` (não apagar); falta a cópia fora do SSD |
+| Backup | restic em `C:\Users\alanmateus\backup-restic`; o antigo, sem senha, em `backup-restic-senha-perdida` (não apagar); cópia no HD externo por `just backup-externo` (mesma senha), falta conectar o HD |
 | Vault | `C:\Users\alanmateus\vault` (clone do GitHub); `~/dev/notas` é symlink para ele |
 | IA | LiteLLM **volta**; o Ollama do setup é o do WSL; o Ollama do Windows fica só em `127.0.0.1` |
 | Conteúdo | Timer do pipeline **parado** por custo: precisa de chave de API paga, que o Alan não vai criar (FinOps); rever em 2027-01-20 |

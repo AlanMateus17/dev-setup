@@ -1,7 +1,9 @@
 import time
 import io
+import os
 import re
 import shutil
+import sqlite3
 import subprocess
 import sys
 import tempfile
@@ -172,6 +174,55 @@ class TestEnsaioBackup(unittest.TestCase):
         st, motivo = v.ensaio_backup()
         self.assertEqual(st, v.OK, motivo)
 
+
+
+class TestBackupExterno(unittest.TestCase):
+    AGORA = v.datetime(2026, 11, 26, 12, 0)
+
+    def test_estado(self):
+        e = lambda ext, c, t: v.estado_backup_externo(ext, c, t, self.AGORA)
+        self.assertEqual(e("", None, None)[0], v.MIM)                          # caso do PC em 26/11: só o SSD
+        self.assertIn("nunca feita", e("/mnt/e/r", "", None)[1])
+        self.assertIn("há 10 dias", e("/mnt/e/r", "2026-11-16T12:00:00", None)[1])
+        self.assertIn("nunca testada", e("/mnt/e/r", "2026-11-25T22:00:00", None)[1])
+        self.assertIn("--restaurar", e("/mnt/e/r", "2026-11-25T22:00:00", "2026-10-01T10:00:00")[1])
+        self.assertEqual(e("/mnt/e/r", "2026-11-25T22:00:00", "2026-11-20T10:00:00"), (v.OK, ""))
+
+    @unittest.skipUnless(shutil.which("restic"), "restic ausente")
+    def test_copia_restaura_e_recusa_o_proprio_ssd(self):
+        raiz = Path(__file__).resolve().parents[2]
+        with tempfile.TemporaryDirectory() as t:
+            h = Path(t)
+            (h / "dados/sub").mkdir(parents=True)
+            (h / "dados/a.txt").write_text("a\n")
+            (h / "dados/sub/b.txt").write_text("b\n")
+            senha = h / "senha"
+            senha.write_text(os.urandom(18).hex())
+            senha.chmod(0o600)
+            conf = h / "backup.env"
+            conf.write_text(f"RESTIC_REPOSITORY={h}/ssd\nRESTIC_PASSWORD_FILE={senha}\nRESTIC_REPOSITORY_EXTERNO={h}/hd\n")
+            env = {**os.environ, "BACKUP_CONF": str(conf), "NUCLEO_DB": str(h / "nucleo.db"),
+                   "RESTIC_PASSWORD_FILE": str(senha)}
+            corre = lambda *c: subprocess.run(list(c), cwd=raiz, env=env, capture_output=True, text=True,
+                                             stdin=subprocess.DEVNULL)
+            self.assertEqual(corre("restic", "-q", "-r", f"{h}/ssd", "init").returncode, 0)
+            self.assertEqual(corre("restic", "-q", "-r", f"{h}/ssd", "backup", f"{h}/dados", "--tag", "diario").returncode, 0)
+            script = "scripts/wsl/backup-externo.sh"
+            r = corre("bash", script)
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+            r = corre("bash", script, "--restaurar")
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+            self.assertIn("2 arquivos", r.stdout)
+            con = sqlite3.connect(h / "nucleo.db")
+            tipos = {x for (x,) in con.execute("select tipo from eventos")}
+            con.close()
+            self.assertEqual(tipos, {"backup.externo.concluido", "backup.externo.restaurado"})
+            # O HD não pode ser o próprio SSD (C:) nem uma pasta em /mnt/<letra> sem disco montado
+            for destino, msg in (("/mnt/c/backup-restic", "no C:"), ("/mnt/q/backup-restic", "não está ligado")):
+                conf.write_text(f"RESTIC_REPOSITORY={h}/ssd\nRESTIC_PASSWORD_FILE={senha}\nRESTIC_REPOSITORY_EXTERNO={destino}\n")
+                r = corre("bash", script)
+                self.assertEqual(r.returncode, 1)
+                self.assertIn(msg, r.stdout)
 
 
 class TestHook(unittest.TestCase):
