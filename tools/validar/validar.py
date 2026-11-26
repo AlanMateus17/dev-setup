@@ -126,6 +126,57 @@ def caminhos_cofre() -> list[Path]:
         Path(f"/mnt/c/Users/{u}/cofre senhas.kdbx")]
 
 
+def chave_age() -> Path:
+    """Onde o sops procura a chave privada do age: SOPS_AGE_KEY_FILE ou o padrão ~/.config/sops/age/keys.txt."""
+    return Path(os.environ.get("SOPS_AGE_KEY_FILE") or Path.home() / ".config/sops/age/keys.txt")
+
+
+def criticos() -> dict[str, list[Path]]:
+    """Arquivos que o backup leva sempre, fora das BACKUP_PASTAS (P0 G1/G2): os cofres .kdbx e a chave do age.
+    Com COFRE definido, vale só ele (o ensaio usa isso para não copiar o cofre real)."""
+    cofres = [Path(os.environ["COFRE"])] if os.environ.get("COFRE") else caminhos_cofre()
+    vistos: list[Path] = []
+    for c in cofres:
+        if c.is_file() and c.resolve() not in [v.resolve() for v in vistos]:
+            vistos.append(c)
+    return {"cofre": vistos, "chave_age": [chave_age()] if chave_age().is_file() else []}
+
+
+def arquivos_no_snapshot(repo: str, senha: str, env: dict | None = None) -> set[str] | None:
+    """Caminhos de arquivo do último snapshot (restic ls). None se o repositório não respondeu."""
+    try:
+        p = subprocess.run(["restic", "-r", repo, "--password-file", senha, "ls", "latest", "--json"],
+                           capture_output=True, text=True, timeout=600, env=env, stdin=subprocess.DEVNULL)
+    except (OSError, subprocess.TimeoutExpired):
+        return None
+    if p.returncode:
+        return None
+    caminhos = set()
+    for linha in p.stdout.splitlines():
+        try:
+            n = json.loads(linha)
+        except ValueError:
+            continue
+        if n.get("type") == "file" and n.get("path"):
+            caminhos.add(n["path"])
+    return caminhos
+
+
+def estado_criticos(crit: dict[str, list[Path]], no_snapshot: set[str] | None) -> tuple[str, str]:
+    """Cofre e chave do age existem e estão no último snapshot do backup."""
+    if not crit["cofre"]:
+        return MIM, "cofre .kdbx não achado (defina COFRE): o backup não leva as senhas"
+    if not crit["chave_age"]:
+        return MIM, (f"chave do age não existe ({chave_age()}): crie com age-keygen -o {chave_age()} "
+                     "e faça a cópia de recuperação (passo age-recuperacao)")
+    if no_snapshot is None:
+        return MIM, "não consegui listar o último snapshot (repositório ou senha do backup)"
+    fora = [str(c) for lista in crit.values() for c in lista if str(c) not in no_snapshot]
+    if fora:
+        return MIM, "fora do último snapshot: " + ", ".join(Path(f).name for f in fora) + " (rode just backup)"
+    return OK, ""
+
+
 def banco_nucleo() -> Path:
     return Path(os.environ.get("NUCLEO_DB") or Path.home() / ".local" / "share" / "nucleo" / "nucleo.db")
 
@@ -229,13 +280,18 @@ def ensaio_backup() -> tuple[str, str]:
         senha.chmod(0o600)
         (h / ".config/amtech/backup.env").write_text(
             f'RESTIC_REPOSITORY={h}/repo\nRESTIC_PASSWORD_FILE={senha}\nBACKUP_PASTAS="{h}/dados"\n')
+        (h / "Cofre.kdbx").write_text("cofre de ensaio\n")
+        (h / "keys.txt").write_text("chave de ensaio\n")
         env = {**os.environ, "HOME": str(h), "RESTIC_REPOSITORY": f"{h}/repo", "RESTIC_PASSWORD_FILE": str(senha),
-               "NUCLEO_DB": str(h / "nucleo.db")}
+               "NUCLEO_DB": str(h / "nucleo.db"), "COFRE": str(h / "Cofre.kdbx"), "SOPS_AGE_KEY_FILE": str(h / "keys.txt")}
         for passo in (["restic", "init", "-q"], ["bash", "scripts/wsl/backup.sh"],
                       ["bash", "scripts/wsl/teste-restauracao.sh"]):
             rc, ult = rodar(passo, 300, env)
             if rc:
                 return FALHA, f"{' '.join(passo[-1:])}: {ult}"
+        no_snap = arquivos_no_snapshot(f"{h}/repo", str(senha), env) or set()
+        if not {str(h / "Cofre.kdbx"), str(h / "keys.txt")} <= no_snap:
+            return FALHA, "backup.sh não levou o cofre e a chave do age para o snapshot"
         try:
             con = sqlite3.connect(h / "nucleo.db")
             n = con.execute("select count(*) from eventos where tipo='backup.concluido'").fetchone()[0]
@@ -353,6 +409,11 @@ def checar(rapido: bool, restaurar: bool) -> list[Resultado]:
     externo = ler_backup_env(conf)["externo"] if conf.exists() else ""
     R.append(Resultado(i, "pc", *estado_backup_externo(externo, ultimo_evento("backup.externo.concluido"),
                                                         ultimo_evento("backup.externo.restaurado"))))
+    if conf.exists() and integ_backup[0] == OK:
+        bk = ler_backup_env(conf)
+        R.append(Resultado(i, "pc", *estado_criticos(criticos(), arquivos_no_snapshot(bk["repo"], bk["senha"]))))
+    else:
+        R.append(Resultado(i, "pc", *estado_criticos(criticos(), None)))
 
     # 4. Motor e triagem
     i = "4. Motor e triagem"
@@ -526,7 +587,11 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--rapido", action="store_true", help="pula o just check")
     ap.add_argument("--restaurar", action="store_true", help="restaura o último snapshot real numa pasta temporária")
+    ap.add_argument("--criticos", action="store_true", help="lista (um por linha) o cofre e a chave do age que o backup leva")
     a = ap.parse_args(argv)
+    if a.criticos:
+        print("\n".join(str(c) for lista in criticos().values() for c in lista))
+        return 0
     global VERBOSO
     VERBOSO = True
     print("Validando (5 a 10 min; a tabela sai no fim)…", file=sys.stderr, flush=True)

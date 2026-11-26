@@ -1002,6 +1002,18 @@
      ]
     },
     {
+     "id": "age-recuperacao",
+     "titulo": "Guardar a cópia de recuperação da chave do age fora do PC (papel ou segundo YubiKey)",
+     "quem": "voce",
+     "pronto": "Cópia da chave em papel (ou segundo YubiKey) guardada fora do notebook, num lugar só seu, e testada: uma chave redigitada a partir do papel decifra um arquivo de teste",
+     "tempo_min": 20,
+     "comando": "k=~/.config/sops/age/keys.txt; [ -f $k ] || { mkdir -p ~/.config/sops/age && age-keygen -o $k && chmod 600 $k; }; printf teste | age -e -r \"$(age-keygen -y $k)\" -o /tmp/teste.age && echo 'Copie à mão a linha AGE-SECRET-KEY do arquivo (abra com: less ~/.config/sops/age/keys.txt). Depois: age -d -i <arquivo com a chave redigitada> /tmp/teste.age'",
+     "nota": "O backup leva a chave, mas o backup é cifrado pelo restic, não pelo age: se o SSD e o HD se perderem juntos, só a cópia fora do PC recupera o que o sops cifrou. Papel: escreva a linha AGE-SECRET-KEY-... com letra de forma, confira caractere por caractere e guarde num envelope longe do notebook (nunca foto, nuvem ou e-mail). Segundo YubiKey: com o age-plugin-yubikey, acrescente o YubiKey como segundo destinatário no .sops.yaml. Refaça o teste uma vez por ano. O just validar só confere que a chave está no último snapshot; esta cópia fora do PC é só sua.",
+     "blocos": [
+      "bkp"
+     ]
+    },
+    {
      "id": "agendar-backup",
      "titulo": "Agendar o backup diário",
      "quem": "claude",

@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-65 fases, 596 passos, cerca de **1471 h 48 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+65 fases, 597 passos, cerca de **1472 h 08 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
 **Todo o planejamento está aqui:** os 481 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 98 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 473 dos 596 passos (653 h 03 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 474 dos 597 passos (653 h 23 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -22,7 +22,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [5 · Linux (WSL2)](#f4) | Semana 2 · nov/2026 | 10 | 2 h 22 min |
 | [6 · GitHub e CI](#f5) | Semana 2 · nov/2026 | 5 | 55 min |
 | [7 · Agentes de IA](#f6) | Semana 2 · nov/2026 | 7 | 2 h 27 min |
-| [8 · Backup e segurança](#f7) | Semana 3 · nov/2026 | 5 | 2 h 05 min |
+| [8 · Backup e segurança](#f7) | Semana 3 · nov/2026 | 6 | 2 h 25 min |
 | [9 · Acervo: tudo o que você já tem](#f8) | Semanas 3 e 4 · nov/2026 | 7 | 4 h 55 min |
 | [10 · Claude e assistentes](#f9) | Semana 4 · nov/2026 | 4 | 1 h 45 min |
 | [11 · Automação e medição](#f10) | Semana 4 · nov/2026 | 8 | 1 h 42 min |
@@ -1079,7 +1079,21 @@ restic -r /mnt/d/backup-restic restore latest --target /tmp/teste-restauracao --
 - [ ] **Pronto quando:** Arquivo restaurado abre normalmente
 - Implanta: Backup 3-2-1
 
-### 8.5 Agendar o backup diário
+### 8.5 Guardar a cópia de recuperação da chave do age fora do PC (papel ou segundo YubiKey)
+
+**Você** · 20 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+k=~/.config/sops/age/keys.txt; [ -f $k ] || { mkdir -p ~/.config/sops/age && age-keygen -o $k && chmod 600 $k; }; printf teste | age -e -r "$(age-keygen -y $k)" -o /tmp/teste.age && echo 'Copie à mão a linha AGE-SECRET-KEY do arquivo (abra com: less ~/.config/sops/age/keys.txt). Depois: age -d -i <arquivo com a chave redigitada> /tmp/teste.age'
+```
+
+- [ ] **Pronto quando:** Cópia da chave em papel (ou segundo YubiKey) guardada fora do notebook, num lugar só seu, e testada: uma chave redigitada a partir do papel decifra um arquivo de teste
+- O backup leva a chave, mas o backup é cifrado pelo restic, não pelo age: se o SSD e o HD se perderem juntos, só a cópia fora do PC recupera o que o sops cifrou. Papel: escreva a linha AGE-SECRET-KEY-... com letra de forma, confira caractere por caractere e guarde num envelope longe do notebook (nunca foto, nuvem ou e-mail). Segundo YubiKey: com o age-plugin-yubikey, acrescente o YubiKey como segundo destinatário no .sops.yaml. Refaça o teste uma vez por ano. O just validar só confere que a chave está no último snapshot; esta cópia fora do PC é só sua.
+- Implanta: Backup 3-2-1
+
+### 8.6 Agendar o backup diário
 
 **Claude com você** · 20 min
 
@@ -7950,14 +7964,14 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Bloco | Passo | Quando |
 |---|---|---|
 | Commits assinados (chave SSH) | 5.6, 40.1 | Semana 2 · nov/2026; Semana 11 · jan/2027 |
-| restic (backup criptografado) | 8.1, 8.2, 8.5, 11.7, 23.2 | Semana 3 · nov/2026; Semana 4 · nov/2026; Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois |
+| restic (backup criptografado) | 8.1, 8.2, 8.6, 11.7, 23.2 | Semana 3 · nov/2026; Semana 4 · nov/2026; Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois |
 | Chave física (YubiKey) | 50.5 | 2027, conforme cada compra |
 | TPM + Secure Boot | 4.3 | Semana 1 · out/2026 |
 | BitLocker | 4.3 | Semana 1 · out/2026 |
 | Defender + Firewall | 4.4 | Semana 1 · out/2026 |
 | KeePassXC | 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 2.10, 2.11, 2.12, 2.13, 2.14, 2.15, 2.16, 2.17, 2.18, 2.19, 2.20, 2.21, 19.1, 19.6 | Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Agora · nov/2026 |
 | App 2FA (celular) | 1.4, 2.3, 2.7 | Semana 1 · out/2026; Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027 |
-| Backup 3-2-1 | 2.16, 8.1, 8.2, 8.3, 8.4, 9.2 | Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Semana 3 · nov/2026; Semanas 3 e 4 · nov/2026 |
+| Backup 3-2-1 | 2.16, 8.1, 8.2, 8.3, 8.4, 8.5, 9.2 | Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Semana 3 · nov/2026; Semanas 3 e 4 · nov/2026 |
 | Organizadores | 2.4, 18.2 | Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Semana 4 · nov/2026 |
 | Segredos do cofre (keepassxc-cli) | 21.6 | Semana 5 · nov/2026 |
 | Teste de restauração | 21.7 | Semana 5 · nov/2026 |

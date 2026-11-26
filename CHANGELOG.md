@@ -2,6 +2,13 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.59.0] - 2026-11-26
+
+### Adicionado
+- **Cofre e chave do age no backup** (P0 G1/G2 da análise de lacunas): o `backup.sh` leva sempre os cofres `.kdbx` achados (os mesmos lugares do `segredos.sh`; no PC, `Documents\Cofre\Cofre.kdbx` e o antigo `cofre senhas.kdbx`) e a chave do age (`SOPS_AGE_KEY_FILE` ou `~/.config/sops/age/keys.txt`), fora das `BACKUP_PASTAS`. A lista sai de `validar.py --criticos`, a mesma que o validar confere.
+- `just validar`, item 3: o cofre e a chave do age estão no **último snapshot** (`restic ls latest`); avisa quando a chave ainda não existe ou quando algum dos dois ficou fora. O ensaio do backup confere que o `backup.sh` leva os dois.
+- Passo `age-recuperacao` no roteiro, do Alan: cópia da chave do age fora do PC (papel ou segundo YubiKey), testada decifrando um arquivo.
+
 ## [2.58.0] - 2026-11-26
 
 ### Adicionado
