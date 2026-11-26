@@ -333,6 +333,23 @@ class TestEstado(unittest.TestCase):
         s.update(k)
         return s
 
+    def test_container_pelo_name_do_compose(self):
+        # 26/11: n8n, grafana, uptime-kuma, metricas-db e litellm rodando (amtech/…, amtech-ia/…) e o --estado dizia "não instalado"
+        reg = {f["id"]: f for f in ferramentas.carregar()["ferramentas"]}
+        s = self.sondas_falsas(container={"amtech/n8n": "running", "amtech-ia/litellm": "exited", "soberania/forgejo": "running"})
+        self.assertEqual((lambda e: (e["instalada"], e["rodando"]))(ferramentas.estado_de(reg["docker-automacao-n8n"], s)), (True, True))
+        self.assertEqual((lambda e: (e["instalada"], e["rodando"]))(ferramentas.estado_de(reg["docker-ia-litellm"], s)), (True, False))
+        self.assertTrue(ferramentas.estado_de(reg["docker-soberania-forgejo"], s)["rodando"])  # name: igual à pasta
+        self.assertFalse(ferramentas.estado_de(reg["docker-automacao-grafana"], s)["instalada"])
+
+    def test_projeto_compose_le_o_name(self):
+        self.assertEqual(ferramentas.projeto_compose("infra/automacao/compose.yaml"), "amtech")
+        self.assertEqual(ferramentas.projeto_compose("infra/ia/compose.yaml"), "amtech-ia")
+        with tempfile.TemporaryDirectory() as t:
+            (Path(t) / "infra/x").mkdir(parents=True)
+            (Path(t) / "infra/x/compose.yaml").write_text("services:\n  a:\n    image: b\n")
+            self.assertEqual(ferramentas.projeto_compose("infra/x/compose.yaml", Path(t)), "x")  # sem name: vale a pasta
+
     def test_estados(self):
         s = self.sondas_falsas()
         def est(conf, tipo="wsl-apt"):

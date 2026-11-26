@@ -109,3 +109,4 @@ O pacote de contexto (tools/sessao/contexto.py --resumo) lê as últimas linhas 
 - 2026-11-26: v2.58.0: just backup-externo (restic copy para o HD, mesma senha) e --restaurar comparando com o SSD; just validar cobra cópia ≤ 8 dias e teste ≤ 35. Falta o Alan conectar o HD e pôr RESTIC_REPOSITORY_EXTERNO no backup.env
 - 2026-11-26: v2.59.0: cofre(s) .kdbx e chave do age entram sempre no backup; just validar confere os dois no último snapshot; passo age-recuperacao (papel ou 2º YubiKey) é do Alan. A chave do age ainda não existe no PC
 - 2026-11-26: v2.60.0: Ollama do Windows em 127.0.0.1:11435 (ollama-windows.sh grava o OLLAMA_HOST; 11434 é do WSL); portas reservadas em data/portas.json; just validar confere. cloudflared desinstalado; chave do age e 2 cofres no snapshot 67649400. Pendente do Alan: escolher o cofre .kdbx atual
+- 2026-11-26: v2.60.1: --estado lê o name: do compose.yaml (amtech, amtech-ia...); os 5 serviços de automacao e ia aparecem rodando
