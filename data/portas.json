@@ -18,6 +18,18 @@
    "nome": "Central AMtech",
    "porta": 8700,
    "protocolo": "tcp"
+  },
+  {
+   "id": "ollama-wsl",
+   "nome": "Ollama do WSL (o do setup; o wslrelay publica em 127.0.0.1 no Windows)",
+   "porta": 11434,
+   "protocolo": "tcp"
+  },
+  {
+   "id": "ollama-windows",
+   "nome": "Ollama do Windows (só 127.0.0.1, OLLAMA_HOST do usuário: scripts/wsl/ollama-windows.sh)",
+   "porta": 11435,
+   "protocolo": "tcp"
   }
  ],
  "servicos": [

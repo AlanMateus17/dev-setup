@@ -38,7 +38,7 @@
 | draw.io | Desenvolvimento | sim | — | draw.io: diagramas offline |  | `winget install --id JGraph.Draw -e` |
 | VirtualBox (Arch, Kali e servidores em VM) | Desenvolvimento | sim | — | Máquinas virtuais (Arch, Kali, servidores) |  | `winget install --id Oracle.VirtualBox -e` |
 | Arduino IDE 2 | Desenvolvimento | sim | — | Programar Arduino e ESP32 |  | `winget install --id ArduinoSA.IDE.stable -e` |
-| Ollama (IA local na GTX 1650) | Desenvolvimento | sim | — | IA local no Windows (duplica o Ollama do WSL) |  | `winget install --id Ollama.Ollama -e` |
+| Ollama (IA local na GTX 1650) | Desenvolvimento | sim | — | IA local no Windows (duplica o Ollama do WSL); abre à mão quando precisar, na porta 11435 |  | `winget install --id Ollama.Ollama -e` |
 | Obsidian | Estudo e documentos | não | sim | Notas e estudo (vault em C:\Users\alanmateus\vault) |  | `winget install --id Obsidian.Obsidian -e` |
 | Anki | Estudo e documentos | sim | sim | Repetição espaçada dos cartões do Professor |  | `winget install --id Anki.Anki -e` |
 | SumatraPDF | Estudo e documentos | sim | — | Leitor de PDF leve |  | `winget install --id SumatraPDF.SumatraPDF -e` |
@@ -247,7 +247,7 @@ Também no Ubuntu = instalada no VS Code do WSL por `just extensoes-wsl`.
 |---|---|---|
 | Tailscale | Programas do Windows | Porta de entrada do celular, por desenho; conferir ACLs e expiração das chaves |
 | Syncthing | Programas do Windows | Quando ligado, escuta na rede local (22000) |
-| Ollama (IA local na GTX 1650) | Programas do Windows | Deve escutar só em 127.0.0.1 (ADR 0022); a opção 'Expose Ollama to the network' fica desligada |
+| Ollama (IA local na GTX 1650) | Programas do Windows | Só 127.0.0.1:11435 (OLLAMA_HOST do usuário, gravado por scripts/wsl/ollama-windows.sh; ADR 0022). A 11434 é do Ollama do WSL. Fica fora da inicialização do Windows e com 'Expose Ollama to the network' desligado |
 | cloudflared | Programas do Windows | Abre túnel do PC para a internet; regra de uso pendente |
 | bore | CLIs do Ubuntu | Expõe qualquer porta local na internet com um comando; regra de uso pendente |
 | Claude Remote Control | Serviços do Ubuntu | Quem entrar na conta claude.ai comanda um shell no PC; exige 2FA na conta |

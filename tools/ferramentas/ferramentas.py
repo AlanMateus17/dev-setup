@@ -387,7 +387,22 @@ def paradas_presentes(dados: dict, estados: list[dict]) -> list[dict]:
     return [e for e in estados if e["decisao"] != "normal" and presente(e) and por_id[e["id"]].get("acesso_externo")]
 
 
-PORTAS_SO_LOCAIS = (11434, 5432, 6379)  # Ollama do Windows e AMKaixara (ADR 0022)
+PORTAS_SO_LOCAIS = (11434, 11435, 5432, 6379)  # Ollama do WSL (wslrelay) e do Windows, AMKaixara (ADR 0022)
+
+
+def ollama_windows_host(portas: dict | None = None) -> str:
+    """O OLLAMA_HOST certo do Ollama do Windows: 127.0.0.1 e a porta reservada em data/portas.json (id ollama-windows)."""
+    portas = portas or json.loads((RAIZ / "data/portas.json").read_text(encoding="utf-8"))
+    porta = next(r["porta"] for r in portas["reservadas"] if r["id"] == "ollama-windows")
+    return f"127.0.0.1:{porta}"
+
+
+def ollama_windows_host_atual() -> str | None:
+    """OLLAMA_HOST do usuário no Windows ('' se vazio). None = não dá para saber daqui (sem PowerShell)."""
+    if not shutil.which("powershell.exe"):
+        return None
+    v = _rodar(["powershell.exe", "-NoProfile", "-Command", "[Environment]::GetEnvironmentVariable('OLLAMA_HOST','User')"], 30)
+    return None if v is None else v.strip()
 
 
 def portas_expostas_windows(portas: tuple[int, ...] = PORTAS_SO_LOCAIS, linhas: str | None = None) -> list[tuple[int, str]] | None:
@@ -591,7 +606,11 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--acao", choices=("ver", "ligar", "desligar"), default="ver", help="com --perfil")
     ap.add_argument("--instalar", metavar="ALVO", help="instala o que falta: tudo, um perfil, um tipo ou um id")
     ap.add_argument("--simular", action="store_true", help="com --instalar: só mostra")
+    ap.add_argument("--ollama-windows-host", action="store_true", help="imprime o OLLAMA_HOST certo do Ollama do Windows")
     a = ap.parse_args(argv)
+    if a.ollama_windows_host:
+        print(ollama_windows_host())
+        return 0
     dados = carregar()
     erros = validar(dados)
     if not erros:

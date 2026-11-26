@@ -332,8 +332,8 @@
     "winget": "Ollama.Ollama"
    },
    "instalar": "winget install --id Ollama.Ollama -e",
-   "acesso_externo": "Deve escutar só em 127.0.0.1 (ADR 0022); a opção 'Expose Ollama to the network' fica desligada",
-   "doc": "IA local no Windows (duplica o Ollama do WSL)"
+   "acesso_externo": "Só 127.0.0.1:11435 (OLLAMA_HOST do usuário, gravado por scripts/wsl/ollama-windows.sh; ADR 0022). A 11434 é do Ollama do WSL. Fica fora da inicialização do Windows e com 'Expose Ollama to the network' desligado",
+   "doc": "IA local no Windows (duplica o Ollama do WSL); abre à mão quando precisar, na porta 11435"
   },
   {
    "id": "win-obsidian-obsidian",
