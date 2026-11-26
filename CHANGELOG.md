@@ -2,7 +2,14 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
-## [2.57.0] - 2026-11-25
+## [2.58.0] - 2026-11-26
+
+### Adicionado
+- `scripts/wsl/backup-externo.sh` e `just backup-externo` (P0 B1a da análise de lacunas): cópia do repositório restic do SSD para o HD externo com `restic copy`, a mesma senha e os mesmos parâmetros de blocos (o repositório do HD é criado na primeira vez); depois `forget` com a mesma retenção e `check` de 5%. Recusa destino no C: (o mesmo SSD) e em `/mnt/<letra>` sem disco montado, dizendo como montar o HD. Caminho do HD em `RESTIC_REPOSITORY_EXTERNO` no `backup.env`.
+- `just backup-externo --restaurar` (B2): restaura o último snapshot do HD numa pasta temporária e confere que o número de arquivos bate com o snapshot de origem no SSD; grava `backup.externo.restaurado` no núcleo.
+- `just validar`, item 3: cópia no HD feita há no máximo 8 dias e restauração do HD testada há no máximo 35; avisa o que rodar quando falta. Passo `restic-hd` no roteiro.
+
+ - 2026-11-25
 
 ### Adicionado
 - `docs/avaliacao/2026-11-25-lacunas.md`: análise de lacunas com os 15 papéis, sem instalar nada: o setup contra um setup profissional .NET/TypeScript (nuvem, Kubernetes, SQL Server, mensageria, CD, observabilidade, SAST e dependências, backup fora do SSD, segredos), o que falta para operar uma pequena empresa de TI (e-mail com SPF/DKIM/DMARC, Pix com cobrança, NFS-e, contrato e LGPD, financeiro, CRM, monitoramento e backup de sites de clientes) e o `mapa-de-estudo` contra os fundamentos, com onde cada ferramenta do setup é estudada. Cada lacuna com prioridade (P0–P3), esforço e fase (F0–F3); plano de ativação das contas de nuvem só no papel; 7 PRs pequenos de F0 em ordem.

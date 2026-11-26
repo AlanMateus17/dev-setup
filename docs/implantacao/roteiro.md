@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-65 fases, 595 passos, cerca de **1471 h 28 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+65 fases, 596 passos, cerca de **1471 h 48 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
 **Todo o planejamento está aqui:** os 481 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 98 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 472 dos 595 passos (652 h 43 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 473 dos 596 passos (653 h 03 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -22,7 +22,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [5 · Linux (WSL2)](#f4) | Semana 2 · nov/2026 | 10 | 2 h 22 min |
 | [6 · GitHub e CI](#f5) | Semana 2 · nov/2026 | 5 | 55 min |
 | [7 · Agentes de IA](#f6) | Semana 2 · nov/2026 | 7 | 2 h 27 min |
-| [8 · Backup e segurança](#f7) | Semana 3 · nov/2026 | 4 | 1 h 45 min |
+| [8 · Backup e segurança](#f7) | Semana 3 · nov/2026 | 5 | 2 h 05 min |
 | [9 · Acervo: tudo o que você já tem](#f8) | Semanas 3 e 4 · nov/2026 | 7 | 4 h 55 min |
 | [10 · Claude e assistentes](#f9) | Semana 4 · nov/2026 | 4 | 1 h 45 min |
 | [11 · Automação e medição](#f10) | Semana 4 · nov/2026 | 8 | 1 h 42 min |
@@ -1044,7 +1044,21 @@ restic -r /mnt/d/backup-restic init && restic -r /mnt/d/backup-restic backup ~/d
 - Troque /mnt/d pela letra do seu disco externo (D: vira /mnt/d). Guarde a senha do repositório no KeePassXC.
 - Implanta: restic (backup criptografado) · Backup 3-2-1 · Disco externo
 
-### 8.2 Criar a cópia fora de casa (Backblaze B2 ou o armazenamento do seu plano Google)
+### 8.2 Copiar o backup para o HD externo e testar a restauração a partir dele
+
+**Você** · 20 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/dev-setup && just backup-externo && just backup-externo --restaurar
+```
+
+- [ ] **Pronto quando:** just backup-externo --restaurar termina com TESTE OK e o just validar mostra a cópia no HD em dia
+- Antes: conecte o HD, veja a letra (PS C:\> Get-Volume) e ponha RESTIC_REPOSITORY_EXTERNO=/mnt/<letra>/backup-restic no ~/.config/amtech/backup.env. Mesma senha do backup do SSD. Repita pelo menos uma vez por semana (o just validar avisa depois de 8 dias).
+- Implanta: restic (backup criptografado) · Backup 3-2-1 · Disco externo
+
+### 8.3 Criar a cópia fora de casa (Backblaze B2 ou o armazenamento do seu plano Google)
 
 **Você** · 40 min
 
@@ -1052,7 +1066,7 @@ restic -r /mnt/d/backup-restic init && restic -r /mnt/d/backup-restic backup ~/d
 - [ ] **Pronto quando:** Segundo repositório restic com snapshot
 - Implanta: Backblaze B2 (backup) · Backup 3-2-1
 
-### 8.3 Testar a restauração de uma pasta
+### 8.4 Testar a restauração de uma pasta
 
 **Você** · 15 min
 
@@ -1065,7 +1079,7 @@ restic -r /mnt/d/backup-restic restore latest --target /tmp/teste-restauracao --
 - [ ] **Pronto quando:** Arquivo restaurado abre normalmente
 - Implanta: Backup 3-2-1
 
-### 8.4 Agendar o backup diário
+### 8.5 Agendar o backup diário
 
 **Claude com você** · 20 min
 
@@ -7676,7 +7690,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Vercel | 43.6 | Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Gestão (MVP com 1 restaurante pagante) |
 | Azure | 33.13, 43.2, 43.3, 43.6 | Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar; Trimestre 2 do eixo (fev a abr/2027): conta, deploy com Kamal e rollback testado do AM Gestão (MVP com 1 restaurante pagante) |
 | AWS | 33.13, 56.4 | Dez/2026 a jan/2027 na VM grátis da Oracle, depois da Operação 24 horas; VPS e VM paga quando uma renda pagar; 2028 |
-| Backblaze B2 (backup) | 8.2 | Semana 3 · nov/2026 |
+| Backblaze B2 (backup) | 8.3 | Semana 3 · nov/2026 |
 | GPU por hora (RunPod e afins) | 30.4, 45.9 | 2027, depois do primeiro fine-tuning de 8B; Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
 | Google Drive (seus documentos) | 0.5, 9.1, 28.8 | Antes de tudo · semana 1 (out/2026); Semanas 3 e 4 · nov/2026; Semana 6 · nov/2026 a dez/2026 |
 | Repositório padrão | 21.1, 21.2 | Semana 5 · nov/2026 |
@@ -7936,14 +7950,14 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | Bloco | Passo | Quando |
 |---|---|---|
 | Commits assinados (chave SSH) | 5.6, 40.1 | Semana 2 · nov/2026; Semana 11 · jan/2027 |
-| restic (backup criptografado) | 8.1, 8.4, 11.7, 23.2 | Semana 3 · nov/2026; Semana 4 · nov/2026; Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois |
+| restic (backup criptografado) | 8.1, 8.2, 8.5, 11.7, 23.2 | Semana 3 · nov/2026; Semana 4 · nov/2026; Nov/2026 a abr/2027, uma fase por vez, dentro das 7 h extras por semana; fases 0 e 1 primeiro, o garimpo logo depois |
 | Chave física (YubiKey) | 50.5 | 2027, conforme cada compra |
 | TPM + Secure Boot | 4.3 | Semana 1 · out/2026 |
 | BitLocker | 4.3 | Semana 1 · out/2026 |
 | Defender + Firewall | 4.4 | Semana 1 · out/2026 |
 | KeePassXC | 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 2.10, 2.11, 2.12, 2.13, 2.14, 2.15, 2.16, 2.17, 2.18, 2.19, 2.20, 2.21, 19.1, 19.6 | Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Agora · nov/2026 |
 | App 2FA (celular) | 1.4, 2.3, 2.7 | Semana 1 · out/2026; Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027 |
-| Backup 3-2-1 | 2.16, 8.1, 8.2, 8.3, 9.2 | Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Semana 3 · nov/2026; Semanas 3 e 4 · nov/2026 |
+| Backup 3-2-1 | 2.16, 8.1, 8.2, 8.3, 8.4, 9.2 | Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Semana 3 · nov/2026; Semanas 3 e 4 · nov/2026 |
 | Organizadores | 2.4, 18.2 | Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Semana 4 · nov/2026 |
 | Segredos do cofre (keepassxc-cli) | 21.6 | Semana 5 · nov/2026 |
 | Teste de restauração | 21.7 | Semana 5 · nov/2026 |
@@ -7973,7 +7987,7 @@ Camada por camada, na mesma ordem do mapa. O número é o passo do roteiro.
 | 2º monitor | 1.2 | Semana 1 · out/2026 |
 | Microfone + câmera | 50.6 | 2027, conforme cada compra |
 | Celular | 1.2, 2.11, 5.9 | Semana 1 · out/2026; Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Semana 2 · nov/2026 |
-| Disco externo | 1.1, 1.2, 2.16, 8.1 | Semana 1 · out/2026; Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Semana 3 · nov/2026 |
+| Disco externo | 1.1, 1.2, 2.16, 8.1, 8.2 | Semana 1 · out/2026; Agora · a partir de 22/11/2026 (cofre, e-mail, Chrome e navegador numa sessão); o resto, 5 contas por semana até jan/2027; Semana 3 · nov/2026 |
 | Pendrive Kali (persistência) | 45.1 | Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
 | Pendrive Arch (instalação portátil) | 45.2 | Pendrives, laboratório, dados (Zoomcamp, dbt, Airflow) e treino de IA podem começar já, na ordem do roteiro (ADR 0015) |
 | Arduino · ESP32 · Pi | 1.2, 47.16 | Semana 1 · out/2026; Fev a dez/2027, uma oferta por vez |

@@ -253,6 +253,10 @@ vault-espelho *opcao:
 backup:
     bash scripts/wsl/backup.sh
 
+# Cópia do backup no HD externo (restic copy, mesma senha): just backup-externo  ·  teste de restauração do HD: just backup-externo --restaurar  ·  só ver: --simular
+backup-externo *opcao:
+    bash scripts/wsl/backup-externo.sh {{opcao}}
+
 # Liga o setup: just ligar (sempre: Ollama, fila, bot, Remote Control)  ·  com Docker: just ligar trabalho | sob-demanda | laboratorio  ·  só ver: just ligar trabalho --simular
 ligar *opcao:
     bash scripts/wsl/ligar-tudo.sh {{opcao}}

@@ -965,6 +965,20 @@
      ]
     },
     {
+     "id": "restic-hd",
+     "titulo": "Copiar o backup para o HD externo e testar a restauração a partir dele",
+     "quem": "voce",
+     "pronto": "just backup-externo --restaurar termina com TESTE OK e o just validar mostra a cópia no HD em dia",
+     "tempo_min": 20,
+     "comando": "cd ~/dev/dev-setup && just backup-externo && just backup-externo --restaurar",
+     "nota": "Antes: conecte o HD, veja a letra (PS C:\\> Get-Volume) e ponha RESTIC_REPOSITORY_EXTERNO=/mnt/<letra>/backup-restic no ~/.config/amtech/backup.env. Mesma senha do backup do SSD. Repita pelo menos uma vez por semana (o just validar avisa depois de 8 dias).",
+     "blocos": [
+      "restic",
+      "bkp",
+      "ext"
+     ]
+    },
+    {
      "id": "restic-nuvem",
      "titulo": "Criar a cópia fora de casa (Backblaze B2 ou o armazenamento do seu plano Google)",
      "quem": "voce",

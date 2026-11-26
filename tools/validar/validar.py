@@ -21,6 +21,7 @@ import sys
 import tempfile
 import time
 import urllib.request
+from datetime import datetime
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -148,10 +149,32 @@ def recente(arquivo: Path, horas: float) -> bool:
 
 def ler_backup_env(conf: Path) -> dict[str, str]:
     """Lê RESTIC_REPOSITORY e RESTIC_PASSWORD_FILE do backup.env pelo próprio bash (expande $HOME). Não lê a senha."""
-    p = subprocess.run(["bash", "-c", 'set -a; . "$1" >/dev/null 2>&1; printf "%s\\n%s\\n" "${RESTIC_REPOSITORY:-}" "${RESTIC_PASSWORD_FILE:-}"', "_", str(conf)],
+    p = subprocess.run(["bash", "-c", 'set -a; . "$1" >/dev/null 2>&1; printf "%s\\n%s\\n%s\\n" "${RESTIC_REPOSITORY:-}" "${RESTIC_PASSWORD_FILE:-}" "${RESTIC_REPOSITORY_EXTERNO:-}"', "_", str(conf)],
                        capture_output=True, text=True, stdin=subprocess.DEVNULL)
-    linhas = (p.stdout.splitlines() + ["", ""])[:2]
-    return {"repo": linhas[0].strip(), "senha": linhas[1].strip()}
+    linhas = (p.stdout.splitlines() + ["", "", ""])[:3]
+    return {"repo": linhas[0].strip(), "senha": linhas[1].strip(), "externo": linhas[2].strip()}
+
+
+def estado_backup_externo(externo: str, ult_copia: str | None, ult_teste: str | None,
+                          agora: datetime | None = None) -> tuple[str, str]:
+    """Cópia no HD externo (3-2-1): configurada, feita há no máximo 8 dias e restauração testada há no máximo 35."""
+    if not externo:
+        return MIM, "sem cópia fora do SSD: conecte um HD, ponha RESTIC_REPOSITORY_EXTERNO no backup.env e rode just backup-externo"
+    agora = agora or datetime.now()
+
+    def dias(quando: str | None) -> float | None:
+        try:
+            return (agora - datetime.fromisoformat(quando)).total_seconds() / 86400 if quando else None
+        except ValueError:
+            return None
+    d_copia, d_teste = dias(ult_copia), dias(ult_teste)
+    if d_copia is None or d_copia > 8:
+        quando = "nunca feita" if d_copia is None else f"feita há {d_copia:.0f} dias"
+        return MIM, f"cópia no HD {quando}: conecte o HD e rode just backup-externo"
+    if d_teste is None or d_teste > 35:
+        quando = "nunca testada" if d_teste is None else f"testada há {d_teste:.0f} dias"
+        return MIM, f"restauração do HD {quando}: just backup-externo --restaurar"
+    return OK, ""
 
 
 def disco_montado(caminho: Path, ismount=os.path.ismount) -> bool:
@@ -327,6 +350,9 @@ def checar(rapido: bool, restaurar: bool) -> list[Resultado]:
         R.append(Resultado(i, "sozinho", MIM, cron_msg) if not agendado else
                  Resultado(i, "sozinho", FALHA, "agendado, mas sem backup nas últimas 36 h ou sem evento no núcleo (veja ~/backup-ultimo.log)"))
     R.append(Resultado(i, "integracao", *integ_backup))
+    externo = ler_backup_env(conf)["externo"] if conf.exists() else ""
+    R.append(Resultado(i, "pc", *estado_backup_externo(externo, ultimo_evento("backup.externo.concluido"),
+                                                        ultimo_evento("backup.externo.restaurado"))))
 
     # 4. Motor e triagem
     i = "4. Motor e triagem"
