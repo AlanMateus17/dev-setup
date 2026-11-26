@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.57.0] - 2026-11-25
+
+### Adicionado
+- `docs/avaliacao/2026-11-25-lacunas.md`: análise de lacunas com os 15 papéis, sem instalar nada: o setup contra um setup profissional .NET/TypeScript (nuvem, Kubernetes, SQL Server, mensageria, CD, observabilidade, SAST e dependências, backup fora do SSD, segredos), o que falta para operar uma pequena empresa de TI (e-mail com SPF/DKIM/DMARC, Pix com cobrança, NFS-e, contrato e LGPD, financeiro, CRM, monitoramento e backup de sites de clientes) e o `mapa-de-estudo` contra os fundamentos, com onde cada ferramenta do setup é estudada. Cada lacuna com prioridade (P0–P3), esforço e fase (F0–F3); plano de ativação das contas de nuvem só no papel; 7 PRs pequenos de F0 em ordem.
+
 ## [2.56.1] - 2026-11-25
 
 ### Corrigido
