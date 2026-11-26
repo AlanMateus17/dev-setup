@@ -27,6 +27,10 @@ if [[ -f "$BANCO" ]]; then
   fi
   PASTAS+=("$COPIA")
 fi
+# Cofre do KeePassXC e chave do age (fora das pastas acima): entram sempre, onde estiverem. A lista vem do validar.py,
+# a mesma que o just validar confere no último snapshot.
+mapfile -t CRITICOS < <(python3 "$RAIZ/tools/validar/validar.py" --criticos)
+((${#CRITICOS[@]})) && PASTAS+=("${CRITICOS[@]}")
 if [[ "${1:-}" == "--simular" ]]; then echo "restic backup ${PASTAS[*]}"; echo "restic forget --keep-daily 7 --keep-weekly 4 --keep-monthly 12 --prune"; exit 0; fi
 restic backup "${PASTAS[@]}" --exclude-caches --exclude node_modules --exclude bin --exclude obj --tag diario
 restic forget --keep-daily 7 --keep-weekly 4 --keep-monthly 12 --prune --tag diario

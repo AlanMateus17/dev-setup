@@ -8,6 +8,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import unittest.mock
 from contextlib import redirect_stdout
 from pathlib import Path
 
@@ -223,6 +224,31 @@ class TestBackupExterno(unittest.TestCase):
                 r = corre("bash", script)
                 self.assertEqual(r.returncode, 1)
                 self.assertIn(msg, r.stdout)
+
+
+class TestCriticosNoBackup(unittest.TestCase):
+    """P0 G1/G2: o cofre .kdbx e a chave do age precisam estar no último snapshot."""
+    C = {"cofre": [Path("/c/Cofre.kdbx")], "chave_age": [Path("/h/keys.txt")]}
+
+    def test_estado(self):
+        self.assertEqual(v.estado_criticos(self.C, {"/c/Cofre.kdbx", "/h/keys.txt", "/outro"}), (v.OK, ""))
+        st, msg = v.estado_criticos(self.C, {"/c/Cofre.kdbx"})
+        self.assertEqual(st, v.MIM)
+        self.assertIn("keys.txt", msg)
+        self.assertIn("cofre", v.estado_criticos({"cofre": [], "chave_age": []}, set())[1])
+        # O caso do PC em 26/11: cofre existe, chave do age ainda não
+        self.assertIn("age-keygen", v.estado_criticos({"cofre": [Path("/c/Cofre.kdbx")], "chave_age": []}, set())[1])
+        self.assertIn("listar", v.estado_criticos(self.C, None)[1])
+
+    def test_criticos_respeita_cofre_e_chave_do_ambiente(self):
+        with tempfile.TemporaryDirectory() as t:
+            cofre, chave = Path(t) / "Cofre.kdbx", Path(t) / "keys.txt"
+            cofre.write_text("x")
+            amb = {"COFRE": str(cofre), "SOPS_AGE_KEY_FILE": str(chave)}
+            with unittest.mock.patch.dict(os.environ, amb):
+                self.assertEqual(v.criticos(), {"cofre": [cofre], "chave_age": []})
+                chave.write_text("x")
+                self.assertEqual(v.criticos(), {"cofre": [cofre], "chave_age": [chave]})
 
 
 class TestHook(unittest.TestCase):
