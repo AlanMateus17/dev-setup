@@ -2231,13 +2231,13 @@
     },
     {
      "id": "el-hook-tags",
-     "titulo": "Ligar a tag automática a cada push",
+     "titulo": "Ligar o hook que roda o just check antes de cada push",
      "quem": "script",
-     "pronto": "Depois de um push, a tag da versão do CHANGELOG aparece sozinha no GitHub",
+     "pronto": "Um push com o just check vermelho é bloqueado; um push só de tag passa direto",
      "tempo_min": 5,
      "blocos": [],
      "comando": "cd ~/dev/dev-setup && git config core.hooksPath scripts/git-hooks && git config push.followTags true",
-     "nota": "O hook scripts/git-hooks/pre-push cria e envia a tag da versão mais nova a cada git push. Para pular num push: AMTECH_SKIP_HOOK=1 git push."
+     "nota": "O hook scripts/git-hooks/pre-push roda o just check e bloqueia o push se falhar (push só de tag ou só apagando branch passa direto). A tag da versão é criada depois do merge, no commit do merge. Para aprovar um PR: just aprovar N (marca como pronto, faz o merge e só termina se o GitHub disser MERGED)."
     },
     {
      "id": "el-segredos",

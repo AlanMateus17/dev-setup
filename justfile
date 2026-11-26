@@ -142,6 +142,20 @@ lab-fechar:
 servico perfil:
     cd infra/soberania && docker compose --profile "{{perfil}}" up -d
 
+# Aprova um PR (o merge é do Alan): marca como pronto, faz o merge e só termina com sucesso se o GitHub disser MERGED: just aprovar 41
+aprovar n:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    if [[ "$(gh pr view {{n}} --json isDraft --jq .isDraft)" == "true" ]]; then gh pr ready {{n}}; fi
+    gh pr merge {{n}} --merge
+    for _ in 1 2 3 4 5 6 7 8 9 10 11 12; do
+      estado="$(gh pr view {{n}} --json state --jq .state)"
+      if [[ "$estado" == "MERGED" ]]; then echo "PR #{{n}} juntado ($(gh pr view {{n}} --json mergeCommit --jq '.mergeCommit.oid[0:7]'))."; exit 0; fi
+      sleep 5
+    done
+    echo "PR #{{n}} NÃO foi juntado (estado: $estado). Veja: gh pr view {{n}}" >&2
+    exit 1
+
 # Monta o setup inteiro: just instalar  ·  só o que falta de um perfil, tipo ou id: just instalar trabalho --simular
 instalar *opcao:
     bash scripts/wsl/instalar-tudo.sh {{opcao}}

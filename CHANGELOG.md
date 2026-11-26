@@ -2,6 +2,17 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.56.0] - 2026-11-25
+
+### Adicionado
+- **`just aprovar N`:** marca o PR como pronto, faz o merge e só termina com sucesso se o GitHub disser MERGED (confere por até 1 minuto). É o jeito do Alan aprovar; para o Claude, `just aprovar` está na lista `deny` do `.claude/settings.json` (testado: bloqueado).
+- **Hook `pre-push`:** roda o `just check` e bloqueia o push se falhar; push só de tag ou só apagando branch passa direto. Ligado no PC (`core.hooksPath`), e o `just validar` (item 6) confere. Testado com um `just` falso que falha (bloqueia) e outro que passa (libera). 1 teste novo.
+- `.claude/settings.json`: `git push --no-verify` também na lista `deny`.
+- `CLAUDE.md`: merge com `just aprovar N`; ao fim de cada PR, uma linha só ("pronto para aprovar: ! just aprovar N"); pós-merge só depois de conferir MERGED.
+
+### Alterado
+- O `pre-push` não cria mais a tag no push (ela ficava no commit da branch); a tag é criada depois do merge, no commit do merge. Passo `el-hook-tags` do roteiro e `docs/boas-praticas.md` atualizados.
+
 ## [2.55.1] - 2026-11-25
 
 ### Corrigido

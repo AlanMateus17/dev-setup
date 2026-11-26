@@ -11,7 +11,7 @@ O que fazer em qualquer repositório seu para o setup se manter profissional. Mu
 - **Um commit por mudança, com mensagem no padrão Conventional Commits:** `feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`. A mensagem diz o *porquê*, não só o *o quê*.
 - **Versão semântica (SemVer) `x.y.z`:** `z` para correção, `y` para novidade compatível, `x` para mudança que quebra. Cada versão vira uma seção no `CHANGELOG.md`.
 - **Tags marcam cada versão:** `tools/git/taguear.py --criar --push` cria as tags de todas as versões do CHANGELOG de uma vez (precisa do histórico completo e da sua máquina).
-- **Tag automática a cada push:** o hook `scripts/git-hooks/pre-push` cria e envia a tag da versão atual sozinho (ligue com `git config core.hooksPath scripts/git-hooks`). Backfill das versões antigas, uma vez: `tools/git/taguear.py --criar --push` após `git fetch --unshallow`.
+- **Push só com o `just check` verde:** o hook `scripts/git-hooks/pre-push` roda o `just check` e bloqueia o push se falhar (ligue com `git config core.hooksPath scripts/git-hooks`; o `just validar` confere). A tag da versão é criada depois do merge, no commit do merge, e o merge é feito com `just aprovar N`. Backfill das versões antigas, uma vez: `tools/git/taguear.py --criar --push` após `git fetch --unshallow`.
 - **Branch `main` sempre verde:** nada entra sem o CI passar. Trabalho novo em branch próprio, juntado por Pull Request.
 - **Proteja a `main` no GitHub:** exigir CI verde e revisão antes de juntar (já é o passo `protecao-main`).
 - **Histórico limpo:** nada de arquivo gerado, binário grande ou segredo no commit. Arquivo grande vai para o Git LFS ou fica fora.
