@@ -360,6 +360,7 @@ def checar(rapido: bool, restaurar: bool) -> list[Resultado]:
     rc, ult = rodar([sys.executable, "tools/coerencia/coerencia.py"], 120)
     R.append(Resultado(i, "pc", OK if rc == 0 else FALHA, "" if rc == 0 else ult))
     R.append(Resultado(i, "pc", OK if tem("gitleaks") else MIM, "" if tem("gitleaks") else "gitleaks ausente: rode o bootstrap"))
+    R.append(Resultado(i, "pc", OK if hook_ligado() else MIM, "" if hook_ligado() else "hook do push desligado: git config core.hooksPath scripts/git-hooks"))
     R += ci_github(i)
     R.append(Resultado(i, "integracao", OK if github_ok() else MIM, "" if github_ok() else "GitHub não responde: gh auth login"))
 
@@ -383,6 +384,12 @@ def checar(rapido: bool, restaurar: bool) -> list[Resultado]:
 
 
 REPO = "AlanMateus17/dev-setup"
+
+
+def hook_ligado(raiz: Path = RAIZ) -> bool:
+    """O pre-push (just check antes do push) só vale se o Git usar a pasta de hooks do repositório."""
+    p = subprocess.run(["git", "-C", str(raiz), "config", "--get", "core.hooksPath"], capture_output=True, text=True)
+    return p.stdout.strip() in ("scripts/git-hooks", str(raiz / "scripts/git-hooks"))
 
 
 def github_ok() -> bool:

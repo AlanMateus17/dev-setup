@@ -4,6 +4,7 @@ import re
 import shutil
 import subprocess
 import sys
+import tempfile
 import unittest
 from contextlib import redirect_stdout
 from pathlib import Path
@@ -171,6 +172,15 @@ class TestEnsaioBackup(unittest.TestCase):
         st, motivo = v.ensaio_backup()
         self.assertEqual(st, v.OK, motivo)
 
+
+
+class TestHook(unittest.TestCase):
+    def test_hook_ligado_le_o_core_hookspath(self):
+        with tempfile.TemporaryDirectory() as d:
+            subprocess.run(["git", "init", "-q", d], check=True)
+            self.assertFalse(v.hook_ligado(Path(d)))
+            subprocess.run(["git", "-C", d, "config", "core.hooksPath", "scripts/git-hooks"], check=True)
+            self.assertTrue(v.hook_ligado(Path(d)))
 
 
 class TestDecisoes(unittest.TestCase):

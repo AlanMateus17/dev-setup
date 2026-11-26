@@ -7,6 +7,24 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 ### Adicionado
 - `docs/avaliacao/2026-11-25-lacunas.md`: análise de lacunas com os 15 papéis, sem instalar nada: o setup contra um setup profissional .NET/TypeScript (nuvem, Kubernetes, SQL Server, mensageria, CD, observabilidade, SAST e dependências, backup fora do SSD, segredos), o que falta para operar uma pequena empresa de TI (e-mail com SPF/DKIM/DMARC, Pix com cobrança, NFS-e, contrato e LGPD, financeiro, CRM, monitoramento e backup de sites de clientes) e o `mapa-de-estudo` contra os fundamentos, com onde cada ferramenta do setup é estudada. Cada lacuna com prioridade (P0–P3), esforço e fase (F0–F3); plano de ativação das contas de nuvem só no papel; 7 PRs pequenos de F0 em ordem.
 
+## [2.56.1] - 2026-11-25
+
+### Corrigido
+- **GlitchTip 7 não tem mais worker separado:** o `glitchtip-worker` chamava `./bin/run-celery-with-beat.sh`, que não existe na 7.0.0 (o `run-worker.sh` recusa rodar e explica que o processo web serve o HTTP e consome a fila). O serviço saiu do compose e do registro (187 ferramentas); o `glitchtip-web` subiu o limite para 640 MB.
+- **n8n estourava a memória** ("JavaScript heap out of memory", 12 reinícios) com o `mem_limit` de 512 MB do PR 3; agora 1536 MB (usa ~375 MB em repouso; o pico é a migração do banco na primeira subida).
+- Achados ao subir o perfil trabalho (`just ligar trabalho`) e testar os 22 serviços: todos rodando, portas só em 127.0.0.1 e resposta HTTP (o Akaunting responde 404 na raiz até o assistente de instalação, o soft-serve é SSH e foi testado por TCP, o Postgres de métricas por TCP).
+
+## [2.56.0] - 2026-11-25
+
+### Adicionado
+- **`just aprovar N`:** marca o PR como pronto, faz o merge e só termina com sucesso se o GitHub disser MERGED (confere por até 1 minuto). É o jeito do Alan aprovar; para o Claude, `just aprovar` está na lista `deny` do `.claude/settings.json` (testado: bloqueado).
+- **Hook `pre-push`:** roda o `just check` e bloqueia o push se falhar; push só de tag ou só apagando branch passa direto. Ligado no PC (`core.hooksPath`), e o `just validar` (item 6) confere. Testado com um `just` falso que falha (bloqueia) e outro que passa (libera). 1 teste novo.
+- `.claude/settings.json`: `git push --no-verify` também na lista `deny`.
+- `CLAUDE.md`: merge com `just aprovar N`; ao fim de cada PR, uma linha só ("pronto para aprovar: ! just aprovar N"); pós-merge só depois de conferir MERGED.
+
+### Alterado
+- O `pre-push` não cria mais a tag no push (ela ficava no commit da branch); a tag é criada depois do merge, no commit do merge. Passo `el-hook-tags` do roteiro e `docs/boas-praticas.md` atualizados.
+
 ## [2.55.1] - 2026-11-25
 
 ### Corrigido

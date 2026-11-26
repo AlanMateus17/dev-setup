@@ -34,7 +34,8 @@ Toda tarefa é vista pelos papéis que ela toca. Quando faltar algo que um papel
   com uma linha de cada revisor ("QA: teste X cobre Y"). O responsável é o papel cujo "Entra quando" mais pesa.
 - **Veto do PO.** O PO pode vetar qualquer mudança que fuja do plano em vigor, cresça o escopo sem decisão do Alan ou não tenha critério de aceite.
   Vetado, não entra, mesmo com os outros papéis a favor.
-- **Merge é do Alan.** O Claude nunca faz merge (`gh pr merge` está bloqueado em `.claude/settings.json`).
+- **Merge é do Alan**, com `just aprovar N` (marca como pronto, faz o merge e só termina se o GitHub disser MERGED). O Claude nunca faz merge: `gh pr merge` e `just aprovar` estão bloqueados para ele em `.claude/settings.json`.
+- **Ao fim de cada PR**, o Claude mostra só uma linha: `pronto para aprovar: ! just aprovar N`.
 
 ## Plano em vigor (desde 25/11/2026, tarde)
 
@@ -52,9 +53,10 @@ telas. As regras de segurança, de Git e de versão abaixo continuam valendo.
 ## Git: só o Claude mexe, o merge é do Alan
 
 - O Claude cria branch, faz commit, push e abre o PR (em rascunho até o CI passar). O Alan não precisa rodar Git.
+- O hook `scripts/git-hooks/pre-push` roda o `just check` e bloqueia o push com falha. Nunca `--no-verify` (bloqueado).
 - Nunca na `main` direto, nunca `push --force`, nunca `reset --hard`.
 - Branch: `setup/AAAA-MM-DD-assunto` (ou `avaliacao/`, `validacao/`).
-- Depois do merge, o Claude atualiza a `main` local, cria a tag `vX.Y.Z` no commit do merge, envia a tag e apaga a branch (local e remota).
+- Depois do merge, e só depois de conferir no GitHub que o estado é MERGED, o Claude atualiza a `main` local, cria a tag `vX.Y.Z` no commit do merge, envia a tag e apaga a branch (local e remota).
 - Commits terminam com a linha de coautoria do Claude.
 
 ## Versão: uma por PR

@@ -4,7 +4,7 @@
 
 [← Índice da documentação](../README.md) · Fonte: [`data/ferramentas.json`](../../data/ferramentas.json) · Conferir no PC: `python3 tools/ferramentas/ferramentas.py --estado`
 
-**188 ferramentas.** Obrigatória = o setup conta com ela. Decisão *parada* ou *adiada* = escolha do Alan; não conta como falta no `just validar`.
+**187 ferramentas.** Obrigatória = o setup conta com ela. Decisão *parada* ou *adiada* = escolha do Alan; não conta como falta no `just validar`.
 
 | Tipo | Total | Obrigatórias | Paradas ou adiadas |
 |---|---|---|---|
@@ -13,7 +13,7 @@
 | Pacotes do Ubuntu (apt) | 45 | 27 | 0 |
 | CLIs do Ubuntu | 49 | 9 | 1 |
 | Serviços do Ubuntu | 5 | 2 | 1 |
-| Serviços Docker | 40 | 0 | 0 |
+| Serviços Docker | 39 | 0 | 0 |
 
 ## Programas do Windows
 
@@ -194,10 +194,10 @@ Também no Ubuntu = instalada no VS Code do WSL por `just extensoes-wsl`.
 
 | Perfil | Serviços | RAM (estimada) | Imagens (estimadas) |
 |---|---|---|---|
-| Ligado para trabalhar (`just ligar trabalho`) | 23 | 2.6 GB | 11.5 GB |
+| Ligado para trabalhar (`just ligar trabalho`) | 22 | 3.1 GB | 11.5 GB |
 | Só quando um trabalho pedir (`just ligar sob-demanda`) | 2 | 0.9 GB | 1.0 GB |
 | Só para estudo e laboratório (`just ligar laboratorio`) | 15 | 5.3 GB | 16.5 GB |
-| **Todos juntos** | 40 | 8.8 GB | 28.9 GB |
+| **Todos juntos** | 39 | 9.3 GB | 28.9 GB |
 
 | Serviço | Grupo | Perfil | Porta | Para quê | Decisão | Ligar |
 |---|---|---|---|---|---|---|
@@ -228,8 +228,7 @@ Também no Ubuntu = instalada no VS Code do WSL por `just extensoes-wsl`.
 | headscale | infra/soberania | trabalho | 8085 | Tailscale próprio |  | `docker compose -f infra/soberania/compose.yaml --profile headscale up -d headscale` |
 | glitchtip-db | infra/soberania | trabalho | — | Postgres do GlitchTip |  | `docker compose -f infra/soberania/compose.yaml --profile glitchtip up -d glitchtip-db` |
 | glitchtip-redis | infra/soberania | trabalho | — | Fila do GlitchTip |  | `docker compose -f infra/soberania/compose.yaml --profile glitchtip up -d glitchtip-redis` |
-| glitchtip-web | infra/soberania | trabalho | 8001 | Erros das aplicações |  | `docker compose -f infra/soberania/compose.yaml --profile glitchtip up -d glitchtip-web` |
-| glitchtip-worker | infra/soberania | trabalho | — | Trabalhador do GlitchTip |  | `docker compose -f infra/soberania/compose.yaml --profile glitchtip up -d glitchtip-worker` |
+| glitchtip-web | infra/soberania | trabalho | 8001 | Erros das aplicações (no GlitchTip 7 o mesmo processo serve a web e consome a fila) |  | `docker compose -f infra/soberania/compose.yaml --profile glitchtip up -d glitchtip-web` |
 | glitchtip-migrate | infra/soberania | trabalho | — | Migração do banco do GlitchTip |  | `docker compose -f infra/soberania/compose.yaml --profile glitchtip up -d glitchtip-migrate` |
 | bookstack-db | infra/soberania | trabalho | — | Banco do BookStack |  | `docker compose -f infra/soberania/compose.yaml --profile bookstack up -d bookstack-db` |
 | bookstack | infra/soberania | trabalho | 6875 | Wiki da empresa |  | `docker compose -f infra/soberania/compose.yaml --profile bookstack up -d bookstack` |
