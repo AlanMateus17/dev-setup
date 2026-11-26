@@ -79,7 +79,7 @@ mudar, o Alan decide e a ADR ganha uma nova. Ferramentas paradas ou adiadas têm
 | Segredos em arquivo | `sops` **volta** |
 | Backup | restic em `C:\Users\alanmateus\backup-restic`; o antigo, sem senha, em `backup-restic-senha-perdida` (não apagar); cópia no HD externo por `just backup-externo` (mesma senha), falta conectar o HD |
 | Vault | `C:\Users\alanmateus\vault` (clone do GitHub); `~/dev/notas` é symlink para ele |
-| IA | LiteLLM **volta**; o Ollama do setup é o do WSL; o Ollama do Windows fica só em `127.0.0.1` |
+| IA | LiteLLM **volta**; o Ollama do setup é o do WSL; o Ollama do Windows fica só em `127.0.0.1:11435` (`scripts/wsl/ollama-windows.sh`), fechado e fora da inicialização; a 11434 é do Ollama do WSL |
 | Conteúdo | Timer do pipeline **parado** por custo: precisa de chave de API paga, que o Alan não vai criar (FinOps); rever em 2027-01-20 |
 | Ligar | `just ligar` = perfil sempre; `just ligar trabalho`, `sob-demanda` ou `laboratorio` sobe também o Docker do perfil (`data/ferramentas.json`); o que está parado por decisão nunca sobe |
 | Rede | headscale **volta** (precisa do `config.yaml` antes de subir); bore e cloudflared **continuam desinstalados** (túnel para a internet, regra de segurança) |

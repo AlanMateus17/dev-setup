@@ -346,6 +346,13 @@ def checar_ferramentas() -> list[Resultado]:
     else:
         R.append(Resultado(i, "integracao", OK if not expostas else FALHA,
                            "" if not expostas else "aberta fora do 127.0.0.1 (ADR 0022): " + ", ".join(f"{p} em {e}" for p, e in expostas)))
+    host = ferramentas.ollama_windows_host_atual()
+    certo = ferramentas.ollama_windows_host()
+    if host is None:
+        R.append(Resultado(i, "integracao", NAO, "sem PowerShell: não dá para conferir o OLLAMA_HOST do Windows daqui"))
+    else:
+        R.append(Resultado(i, "integracao", OK if host == certo else MIM,
+                           "" if host == certo else f"OLLAMA_HOST do Windows é '{host or 'vazio'}', o certo é {certo}: bash scripts/wsl/ollama-windows.sh"))
     sempre = [e for e, f in zip(est, dados["ferramentas"]) if f.get("perfil") == "sempre" and f["obrigatoria"] and f["decisao"] == "normal"]
     parados = [e["nome"] for e in sempre if e["rodando"] is False]
     R.append(Resultado(i, "sozinho", OK if not parados else MIM, "" if not parados else "fora do ar: " + ", ".join(parados) + " (just ligar)"))

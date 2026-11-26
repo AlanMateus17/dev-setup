@@ -195,6 +195,15 @@ class TestDecisoes(unittest.TestCase):
         self.assertEqual(ferramentas.portas_expostas_windows(linhas=saida), [(5432, "0.0.0.0"), (11434, "::")])
         self.assertEqual(ferramentas.portas_expostas_windows(linhas="11434 127.0.0.1\n"), [])
 
+    def test_ollama_do_windows_na_11435_so_local(self):
+        # 26/11: o Ollama do Windows escutava em :: na 11434; agora 127.0.0.1:11435 (a 11434 é do WSL)
+        self.assertIn(11435, ferramentas.PORTAS_SO_LOCAIS)
+        self.assertEqual(ferramentas.ollama_windows_host(), "127.0.0.1:11435")
+        self.assertEqual(ferramentas.ollama_windows_host({"reservadas": [{"id": "ollama-windows", "porta": 9}]}), "127.0.0.1:9")
+        self.assertEqual(ferramentas.portas_expostas_windows(linhas="11435 ::\n"), [(11435, "::")])
+        reg = {f["id"]: f for f in ferramentas.carregar()["ferramentas"]}
+        self.assertIn("127.0.0.1:11435", reg["win-ollama-ollama"]["acesso_externo"])
+
 
 class TestExtensoesWsl(unittest.TestCase):
     def test_registro_marca_o_que_vai_para_o_ubuntu(self):

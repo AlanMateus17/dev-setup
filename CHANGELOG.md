@@ -2,6 +2,16 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.60.0] - 2026-11-26
+
+### Adicionado
+- `scripts/wsl/ollama-windows.sh [--simular]`: grava no Windows (variável de usuário, sem administrador) `OLLAMA_HOST=127.0.0.1:11435` para o Ollama do Windows; idempotente, confere depois de gravar. A porta vem de `data/portas.json` (`ferramentas.py --ollama-windows-host`).
+- `data/portas.json`: reservadas a 11434 (Ollama do WSL, publicada pelo wslrelay em 127.0.0.1) e a 11435 (Ollama do Windows).
+- `just validar`, item 8: confere o `OLLAMA_HOST` do Windows; a 11435 entra nas portas que só podem escutar em 127.0.0.1.
+
+### Corrigido
+- O Ollama do Windows escutava em `::` na 11434 (achado do `just validar` em 26/11). Corrigido à mão pelo Alan (fechado, fora da inicialização, `OLLAMA_HOST` na 11435) e agora reproduzível pelo script. Registro `win-ollama-ollama` atualizado.
+
 ## [2.59.0] - 2026-11-26
 
 ### Adicionado
