@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import functools
 import json
 import os
 import re
@@ -326,6 +327,15 @@ def extensoes_wsl(arquivo: Path = EXTENSOES_WSL) -> set[str]:
         return set()
 
 
+@functools.lru_cache(maxsize=None)
+def projeto_compose(fonte: str, raiz: Path = RAIZ) -> str:
+    """Nome do projeto Docker Compose de um compose.yaml: o 'name:' do arquivo ou, sem ele, a pasta (o padrão do Compose).
+    É o que vai no rótulo com.docker.compose.project dos containers (infra/automacao/ sobe como 'amtech')."""
+    caminho = raiz / fonte
+    m = re.search(r"^name:\s*['\"]?([A-Za-z0-9_.-]+)", caminho.read_text(encoding="utf-8"), re.M) if caminho.is_file() else None
+    return m.group(1) if m else caminho.parent.name
+
+
 def estado_de(f: dict, s: dict) -> dict:
     tipo_c, alvo = next(iter(f["conferir"].items()))
     inst = rod = None
@@ -348,7 +358,9 @@ def estado_de(f: dict, s: dict) -> dict:
         rod = (ativo or "").strip() == "active"
     elif tipo_c == "container":
         if s["container"] is not None:
-            st = s["container"].get(alvo)
+            # conferir.container é pasta/serviço; o Docker rotula pelo projeto do compose (o name:, se houver)
+            pasta, servico = alvo.split("/", 1)
+            st = s["container"].get(f"{projeto_compose(f.get('fonte') or f'infra/{pasta}/compose.yaml')}/{servico}")
             inst, rod = st is not None, st == "running"
     r = {"id": f["id"], "nome": f["nome"], "tipo": f["tipo"], "obrigatoria": f["obrigatoria"], "decisao": f["decisao"],
          "instalada": inst, "rodando": rod, "instalar": f["instalar"]}

@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.60.1] - 2026-11-26
+
+### Corrigido
+- `ferramentas.py --estado` dava n8n, Grafana, Uptime Kuma, Postgres de métricas e LiteLLM como não instalados, com os containers rodando: procurava o projeto pela pasta (`automacao`, `ia`), mas os compose.yaml usam `name: amtech` e `name: amtech-ia`. Agora lê o `name:` de cada compose.yaml (sem ele, vale a pasta, como no Compose). Vale também para casa, dados, jarvis e rede. Afetava o item 8 do `just validar` e o `just instalar`.
+
 ## [2.60.0] - 2026-11-26
 
 ### Adicionado
