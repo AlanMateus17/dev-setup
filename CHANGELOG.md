@@ -2,6 +2,13 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.56.1] - 2026-11-25
+
+### Corrigido
+- **GlitchTip 7 não tem mais worker separado:** o `glitchtip-worker` chamava `./bin/run-celery-with-beat.sh`, que não existe na 7.0.0 (o `run-worker.sh` recusa rodar e explica que o processo web serve o HTTP e consome a fila). O serviço saiu do compose e do registro (187 ferramentas); o `glitchtip-web` subiu o limite para 640 MB.
+- **n8n estourava a memória** ("JavaScript heap out of memory", 12 reinícios) com o `mem_limit` de 512 MB do PR 3; agora 1536 MB (usa ~375 MB em repouso; o pico é a migração do banco na primeira subida).
+- Achados ao subir o perfil trabalho (`just ligar trabalho`) e testar os 22 serviços: todos rodando, portas só em 127.0.0.1 e resposta HTTP (o Akaunting responde 404 na raiz até o assistente de instalação, o soft-serve é SSH e foi testado por TCP, o Postgres de métricas por TCP).
+
 ## [2.56.0] - 2026-11-25
 
 ### Adicionado

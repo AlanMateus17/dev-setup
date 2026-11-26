@@ -70,7 +70,7 @@ services:
     image: valkey/valkey:8-alpine
     restart: unless-stopped
   glitchtip-web:
-    mem_limit: 384m
+    mem_limit: 640m  # no GlitchTip 7 o web também consome a fila (não há mais worker separado)
     profiles: [glitchtip]
     image: glitchtip/glitchtip:${GLITCHTIP_VERSAO:-7.0.0}
     restart: unless-stopped
@@ -85,14 +85,6 @@ services:
       ENABLE_USER_REGISTRATION: "false"
     ports:
       - "127.0.0.1:8001:8000"
-  glitchtip-worker:
-    mem_limit: 512m
-    profiles: [glitchtip]
-    image: glitchtip/glitchtip:${GLITCHTIP_VERSAO:-7.0.0}
-    restart: unless-stopped
-    command: ./bin/run-celery-with-beat.sh
-    depends_on: [glitchtip-db, glitchtip-redis]
-    environment: *glitchtip-env
   glitchtip-migrate:
     mem_limit: 512m
     profiles: [glitchtip]
