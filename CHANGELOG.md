@@ -2,6 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.61.1] - 2026-11-27
+
+### Segurança
+- `python-multipart` 0.0.20 → 0.0.33 em `tools/central/requirements.txt`: fecha os 7 alertas do Dependabot (3 altos, 1 médio, 3 baixos; o último corrigido na 0.0.31). A 0.0.34 ficou de fora por ter menos de 2 semanas. Os 68 testes da Central passam com a versão nova.
+
 ## [2.61.0] - 2026-11-27
 
 ### Adicionado
