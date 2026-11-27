@@ -45,7 +45,7 @@ class Execucao:
 
 class Executor:
     def __init__(self, raiz: Path, caminho_banco: Path, comando_just: list[str] | None = None,
-                 max_simultaneas: int = 2, avisar=None):
+                 max_simultaneas: int = 4, avisar=None):
         self.raiz = raiz
         self.caminho_banco = caminho_banco
         self.comando_just = comando_just or ["just"]

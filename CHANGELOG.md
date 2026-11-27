@@ -11,9 +11,14 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
   - Executor sem shell, com ambiente mínimo (sem tokens) e tempo limite.
   - Aprovação com validade de 30 min e uso único; o merge pede o número do PR.
   - Tabelas `central_*` no `nucleo.db` com migrações, organizações, papéis e usuários; auditoria com corrente de hash.
+- **Pedido em português** na tela Hoje ("O que você quer fazer?"), com o mínimo de tokens:
+  - regra fixa (0 tokens), depois motor de decisão (o que é decisão sua não vira plano), depois IA local (Ollama, R$ 0, só as 12 receitas mais parecidas);
+  - todo plano passa pela allowlist; só o que é de regra fixa e só lê roda sem clique;
+  - pedidos guardados em `central_prompts` (migração 2), com sugestão de "virar regra" depois de 3 vezes (regra de três).
+- Formulários de `diag`, `erro`, `atrito` e `motor-custo` (argumentos com opção, como `--certo`); só `ficha` e `vitrine` continuam só no terminal.
 - `data/central.json`: allowlist única das 70 receitas (automatico, avisa, pede-ok, so-terminal, proibido), com padrão por argumento, subcomandos e opções permitidos.
 - `tools/central/allowlist.py --check` no `just check` e no CI: falha com receita não classificada ou que cole argumento no bash.
-- 31 testes em `tools/central` (19 só com a biblioteca padrão; 12 de ponta a ponta com FastAPI, que o CI instala).
+- 45 testes em `tools/central` (29 só com a biblioteca padrão; 16 de ponta a ponta com FastAPI, que o CI instala).
 - Passo `central-v1` no roteiro e ADR 0023.
 
 ### Corrigido

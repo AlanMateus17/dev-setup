@@ -15,11 +15,15 @@ just central                # sobe em http://127.0.0.1:8700; abra no navegador d
 
 | Tela | O que faz |
 |---|---|
-| **Hoje** | Aprovações pendentes, botões rápidos (`agora`, `professor hoje`, `fila`, `tarefas`, `ligado`, `validar --rapido`), pedir código e guardar no núcleo, últimas execuções |
+| **Hoje** | **"O que você quer fazer?"**: escreva o pedido em português (ex.: "o que estudo hoje?", "como está o backup?", "crie a página de vendas do curso"). Depois: aprovações pendentes, botões rápidos, guardar no núcleo, últimas execuções e sugestões de "virar regra" |
+| **Pedido** | O plano que a Central montou, de onde veio (regra fixa = 0 tokens, IA local = R$ 0) e o resultado ao vivo; ações pedem um clique e, se for o caso, aprovação |
 | **Comandos** | Todas as receitas de `data/central.json` por área, com formulário dos argumentos; as proibidas não aparecem |
 | **Aprovar** | Receitas que pedem aprovação: ✅ roda, ❌ recusa; vale 30 min e uma vez só; o merge pede o número do PR |
 | **Execução** | Saída ao vivo |
 | **Auditoria** | Quem fez o quê, e se a corrente de hash está íntegra |
+
+Para a IA local interpretar pedidos livres, deixe o Ollama no ar (`just ligar`). Sem ele, a Central ainda reconhece as frases
+fixas e manda trabalho de código para a fila.
 
 Arquitetura e decisões: [ADR 0023](../adr/0023-arquitetura-da-central.md). Mudar o que a Central pode rodar é editar
 `data/central.json` e passar no `just check`.

@@ -24,8 +24,10 @@ SENHA = "senha-de-teste-123"
 @unittest.skipUnless(TEM_WEB, "fastapi/httpx não instalados (pip install -r tools/central/requirements.txt httpx)")
 class TestCentral(unittest.TestCase):
     def setUp(self):
+        import prompt
         from executor import Executor
         from web import criar_app
+        self._ia = (prompt.ia_local_no_ar, prompt.chamar_ollama)
         self.tmp = tempfile.TemporaryDirectory()
         t = Path(self.tmp.name)
         self.registro = t / "chamadas.txt"
@@ -44,6 +46,8 @@ class TestCentral(unittest.TestCase):
         self.c = TestClient(criar_app(raiz, self.caminho, executor=self.ex), base_url="http://127.0.0.1:8700")
 
     def tearDown(self):
+        import prompt
+        prompt.ia_local_no_ar, prompt.chamar_ollama = self._ia
         self.tmp.cleanup()
 
     def entrar(self, usuario="alan", senha=SENHA):
@@ -146,6 +150,64 @@ class TestCentral(unittest.TestCase):
         self.c.post("/rodar", data={"csrf": self.csrf, "receita": "agora"})
         self.esperar("agora")
         self.assertIn("Corrente íntegra", self.c.get("/auditoria").text)
+
+    # ------------------------------------------------------------------ prompt
+    def pedir(self, texto):
+        return self.c.post("/prompt", data={"csrf": self.csrf, "texto": texto}, follow_redirects=False)
+
+    def test_prompt_por_regra_roda_sozinho(self):
+        import prompt
+        prompt.ia_local_no_ar = lambda: False
+        self.entrar()
+        r = self.pedir("como está o backup?")
+        self.assertEqual(r.status_code, 303)
+        self.esperar("validar")
+        self.assertIn("validar", self.registro.read_text(encoding="utf-8"))
+        tela = self.c.get(r.headers["location"]).text
+        self.assertIn("regra fixa", tela)
+        self.assertIn("0 tokens", tela)
+
+    def test_prompt_de_acao_espera_clique_e_aprovacao(self):
+        import prompt
+        prompt.ia_local_no_ar = lambda: False
+        self.entrar()
+        url = self.pedir("ligar o perfil trabalho").headers["location"]
+        time.sleep(0.2)
+        self.assertFalse(self.registro.exists(), "ação rodou sem clique")
+        self.assertIn("Executar plano", self.c.get(url).text)
+        r = self.c.post(url + "/executar", data={"csrf": self.csrf}, follow_redirects=False)
+        self.assertEqual(r.status_code, 303)
+        self.assertFalse(self.registro.exists(), "pede-ok rodou sem aprovação")
+        self.assertIn("ligar", self.c.get("/aprovar").text)
+        r = self.c.post(url + "/executar", data={"csrf": self.csrf})
+        self.assertEqual(r.status_code, 409, "plano executado duas vezes")
+
+    def test_prompt_com_ia_local_falsa(self):
+        import json as _json
+        import prompt
+        prompt.ia_local_no_ar = lambda: True
+        prompt.chamar_ollama = lambda _m: _json.dumps({"passos": [
+            {"receita": "senhas-rodar", "campos": {}}, {"receita": "tarefas"}], "resposta": "vou listar as tarefas"})
+        self.entrar()
+        url = self.pedir("me mostra o que tenho pendente no núcleo por favor").headers["location"]
+        tela = self.c.get(url).text
+        self.assertIn("IA local", tela)
+        self.assertIn("recusado", tela)
+        self.c.post(url + "/executar", data={"csrf": self.csrf})
+        self.esperar("tarefas")
+        chamadas = self.registro.read_text(encoding="utf-8")
+        self.assertIn("tarefas", chamadas)
+        self.assertNotIn("senhas-rodar", chamadas)
+
+    def test_regra_de_tres(self):
+        import json as _json
+        import prompt
+        prompt.ia_local_no_ar = lambda: True
+        prompt.chamar_ollama = lambda _m: _json.dumps({"passos": [{"receita": "tarefas"}], "resposta": ""})
+        self.entrar()
+        for _ in range(3):
+            self.pedir("quais pendências eu tenho mesmo")
+        self.assertIn("Virar regra", self.c.get("/").text)
 
 
 if __name__ == "__main__":

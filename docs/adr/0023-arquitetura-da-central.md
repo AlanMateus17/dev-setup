@@ -47,6 +47,20 @@ confirmação e auditoria desde a v1, e usuários, permissões e `organizacao_id
    - `Referrer-Policy: same-origin` (com `no-referrer` o Chrome manda `Origin: null` e o próprio login falhava, achado no teste com navegador).
 6. **Aprovação:** um `UPDATE … WHERE estado = 'pendente' AND expira >= agora` garante uso único. A allowlist é conferida de novo na hora de aprovar. `aprovar N` (merge) exige digitar o número do PR.
 
+7. **Pedido em português (prompt), com o mínimo de tokens.** A caixa "O que você quer fazer?" (tela Hoje) passa por uma escada
+   (`tools/central/prompt.py`) e para no primeiro degrau que resolve:
+   1. **Regra (0 tokens):** frases-gatilho em `data/central.json` levam direto à receita; os valores (etapa, número do PR, empresa,
+      perfil) são tirados do texto pelos mesmos padrões da allowlist.
+   2. **Motor de decisão (0 tokens):** "aprovar, pagar, publicar, comprar…" é decisão sua: a Central não monta plano para isso.
+   3. **IA local (Ollama `qwen2.5:7b`, R$ 0):** recebe só as 12 receitas mais parecidas com o pedido (~400–600 tokens) e devolve um
+      plano em JSON; nunca chama IA paga.
+   4. **Sem IA local no ar:** só trabalho de código vai para a fila (`pedir`); pergunta geral pede para ligar a IA local.
+
+   Todo plano passa por `allowlist.montar` (receita inventada, campo fora do padrão ou proibida é recusada). Roda sozinho só o que
+   veio de regra fixa e é `automatico`; o resto pede um clique em "Executar plano", e o que é `pede-ok` ainda vai para Aprovar.
+   Cada pedido fica em `central_prompts` (migração 2), com origem e tokens: o que a IA local resolver 3 vezes do mesmo jeito aparece
+   na tela Hoje como sugestão de virar regra (regra de três da ADR 0014).
+
 ## Consequências
 
 - Uma regra de segurança vale para a tela e para o terminal: o terminal também não tem mais injeção por argumento.

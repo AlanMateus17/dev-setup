@@ -58,6 +58,14 @@ MIGRACOES: list[str] = [
       resultado TEXT NOT NULL DEFAULT '', hash_anterior TEXT NOT NULL, hash TEXT NOT NULL);
     INSERT INTO central_organizacoes (nome, criada) VALUES ('Grupo AMtech', strftime('%Y-%m-%dT%H:%M:%S','now','localtime'));
     """,
+    # 2 · pedidos em português (prompt): o plano, de onde veio e quanto custou; base da regra de três
+    """
+    CREATE TABLE central_prompts (
+      id TEXT PRIMARY KEY, organizacao_id INTEGER NOT NULL, usuario_id INTEGER, texto TEXT NOT NULL,
+      origem TEXT NOT NULL, plano TEXT NOT NULL, tokens INTEGER NOT NULL DEFAULT 0, criado TEXT NOT NULL,
+      executado TEXT, execucoes TEXT NOT NULL DEFAULT '[]');
+    CREATE INDEX central_prompts_origem ON central_prompts (organizacao_id, origem, criado);
+    """,
 ]
 
 

@@ -11,14 +11,17 @@ import html
 import json
 import re
 import secrets
+from collections import Counter
 from pathlib import Path
 
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse, Response, StreamingResponse
 from fastapi.staticfiles import StaticFiles
+from starlette.concurrency import run_in_threadpool
 
 import allowlist
 import banco
+import prompt
 from executor import Executor
 
 COOKIE = "central_sessao"
@@ -161,9 +164,12 @@ def criar_app(raiz: Path, caminho_banco: Path, hosts: set[str] | None = None, ex
             pend = pendentes(c, s["organizacao_id"])
             ultimas = c.execute("SELECT * FROM central_execucoes WHERE organizacao_id = ? ORDER BY inicio DESC LIMIT 8",
                                 (s["organizacao_id"],)).fetchall()
+            pedidos = c.execute("SELECT id, texto, origem, tokens, criado FROM central_prompts WHERE organizacao_id = ? "
+                                "ORDER BY criado DESC LIMIT 5", (s["organizacao_id"],)).fetchall()
+            sugestoes = sugestoes_regra(c, s["organizacao_id"])
         finally:
             c.close()
-        corpo = ['<section><h2>Esperando você</h2>']
+        corpo = [caixa_pedido(s["csrf"], pedidos), '<section><h2>Esperando você</h2>']
         if pend:
             corpo.append(f'<p><a class="botao" href="/aprovar">{len(pend)} aprovação(ões) pendente(s)</a></p>')
         else:
@@ -175,7 +181,12 @@ def criar_app(raiz: Path, caminho_banco: Path, hosts: set[str] | None = None, ex
                 rotulo = " ".join(p for p in (receita, sub, *opcoes) if p)
                 corpo.append(form_rapido(s["csrf"], receita, sub, opcoes, rotulo))
         corpo.append('</div></section>')
-        for receita, titulo in (("pedir", "Pedir código (vai para a fila)"), ("lembrar", "Guardar no núcleo")):
+        if sugestoes:
+            corpo.append('<section><h2>Virar regra (economiza tokens)</h2>' + "".join(
+                f'<p>A IA local resolveu <code>{e(chave)}</code> {n} vezes, por exemplo “{e(ex[:80])}”. '
+                f'Acrescente uma frase assim em <code>gatilhos</code> dessa receita em <code>data/central.json</code>: '
+                'da próxima vez vai por regra, com 0 tokens.</p>' for chave, n, ex in sugestoes) + '</section>')
+        for receita, titulo in (("lembrar", "Guardar no núcleo"),):
             r = dados["receitas"].get(receita)
             if r and r["nivel"] in NIVEL_ORDEM:
                 corpo.append(f'<section><h2>{e(titulo)}</h2>{form_receita(s["csrf"], dados, receita, r)}</section>')
@@ -246,6 +257,113 @@ def criar_app(raiz: Path, caminho_banco: Path, hosts: set[str] | None = None, ex
             return erro(s, str(err), 409)
         return ir(f"/execucao/{id_}")
 
+    # ------------------------------------------------------------------ pedido em português (prompt)
+    @app.post("/prompt")
+    async def pedido(request: Request):
+        s = sessao_de(request)
+        if not s:
+            return ir("/login")
+        try:
+            form = await form_com_csrf(request, s)
+        except PermissionError as err:
+            return erro(s, str(err), 403)
+        texto = " ".join(str(form.get("texto", "")).split())[:1000]
+        if not texto:
+            return ir("/")
+        plano = await run_in_threadpool(prompt.planejar, dados, texto)
+        id_ = secrets.token_urlsafe(9)
+        c = con()
+        try:
+            c.execute("INSERT INTO central_prompts (id, organizacao_id, usuario_id, texto, origem, plano, tokens, criado) "
+                      "VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (id_, s["organizacao_id"], s["usuario_id"], texto, plano.origem,
+                                                         plano.para_json(), plano.tokens, banco._iso(banco.agora())))
+            banco.auditar(c, "prompt", organizacao_id=s["organizacao_id"], usuario_id=s["usuario_id"], alvo=texto[:200],
+                          resultado=f"{plano.origem}; {len(plano.validos)} passo(s); ~{plano.tokens} tokens")
+        finally:
+            c.close()
+        if plano.roda_sozinho:
+            executar_plano(s, id_)
+        return ir(f"/prompt/{id_}")
+
+    def executar_plano(s: dict, id_: str) -> str | None:
+        """Roda o plano guardado uma vez só: confere a allowlist de novo, roda o que pode e manda o resto para aprovação."""
+        c = con()
+        try:
+            marcado = c.execute("UPDATE central_prompts SET executado = ? WHERE id = ? AND organizacao_id = ? AND executado IS NULL",
+                                (banco._iso(banco.agora()), id_, s["organizacao_id"])).rowcount
+            if marcado != 1:
+                return "Esse plano já foi executado."
+            linha = c.execute("SELECT plano FROM central_prompts WHERE id = ?", (id_,)).fetchone()
+        finally:
+            c.close()
+        passos = [prompt.Passo(p["receita"], p.get("subcomando"), p.get("campos", {}), p.get("opcoes", []))
+                  for p in json.loads(linha["plano"])["passos"] if not p.get("erro")]
+        feitos = []
+        for p in prompt.validar(dados, passos):
+            if p.erro:
+                feitos.append({"rotulo": p.receita, "erro": p.erro})
+                continue
+            if not pode(s, p.nivel):
+                feitos.append({"rotulo": p.rotulo(), "erro": "o seu papel não permite"})
+                continue
+            if p.nivel == "pede-ok":
+                c = con()
+                try:
+                    aid = banco.criar_aprovacao(c, s["organizacao_id"], p.receita, p.args, s["usuario_id"], "prompt",
+                                                dados.get("aprovacao", {}).get("validade_min", 30))
+                    banco.auditar(c, "aprovacao.pedida", origem="prompt", organizacao_id=s["organizacao_id"],
+                                  usuario_id=s["usuario_id"], alvo=f"{aid} {p.rotulo()}", nivel="pede-ok")
+                finally:
+                    c.close()
+                feitos.append({"rotulo": p.rotulo(), "aprovacao": aid})
+                continue
+            r = dados["receitas"][p.receita]
+            try:
+                eid = ex.iniciar(p.receita, p.args, nivel=p.nivel, organizacao_id=s["organizacao_id"], usuario_id=s["usuario_id"],
+                                 origem="prompt", timeout=int(r.get("timeout", 900)), python=r.get("python"))
+                feitos.append({"rotulo": p.rotulo(), "execucao": eid})
+            except RuntimeError as err:
+                feitos.append({"rotulo": p.rotulo(), "erro": str(err)})
+        c = con()
+        try:
+            c.execute("UPDATE central_prompts SET execucoes = ? WHERE id = ?", (json.dumps(feitos, ensure_ascii=False), id_))
+        finally:
+            c.close()
+        return None
+
+    @app.post("/prompt/{id_}/executar")
+    async def executar(request: Request, id_: str):
+        s = sessao_de(request)
+        if not s:
+            return ir("/login")
+        try:
+            await form_com_csrf(request, s)
+        except PermissionError as err:
+            return erro(s, str(err), 403)
+        problema = executar_plano(s, id_)
+        return erro(s, problema, 409) if problema else ir(f"/prompt/{id_}")
+
+    @app.get("/prompt/{id_}")
+    async def ver_pedido(request: Request, id_: str):
+        s = sessao_de(request)
+        if not s:
+            return ir("/login")
+        c = con()
+        try:
+            x = c.execute("SELECT * FROM central_prompts WHERE id = ? AND organizacao_id = ?", (id_, s["organizacao_id"])).fetchone()
+            n_pend = len(pendentes(c, s["organizacao_id"]))
+            estados = {}
+            if x:
+                for f in json.loads(x["execucoes"]):
+                    if f.get("execucao"):
+                        y = c.execute("SELECT fim, codigo, saida FROM central_execucoes WHERE id = ?", (f["execucao"],)).fetchone()
+                        estados[f["execucao"]] = y
+        finally:
+            c.close()
+        if not x:
+            return erro(s, "Pedido não encontrado.", 404)
+        return HTMLResponse(pagina("Pedido", tela_pedido(s["csrf"], x, estados), s, n_pend))
+
     @app.get("/execucao/{id_}")
     async def execucao(request: Request, id_: str):
         s = sessao_de(request)
@@ -263,8 +381,8 @@ def criar_app(raiz: Path, caminho_banco: Path, hosts: set[str] | None = None, ex
         estado = "rodando…" if x["fim"] is None else f"terminou com código {x['codigo']}"
         saida = "" if x["fim"] is None else e(x["saida"])
         corpo = (f'<p><strong>{e(x["receita"])}</strong> <code>{e(args)}</code> · {e(ROTULO_NIVEL.get(x["nivel"], x["nivel"]))} · '
-                 f'<span id="estado">{e(estado)}</span></p>'
-                 f'<pre id="saida" data-id="{e(id_)}" data-vivo="{1 if x["fim"] is None else 0}">{saida}</pre>'
+                 f'<span data-estado-de="{e(id_)}">{e(estado)}</span></p>'
+                 f'<pre class="saida" data-id="{e(id_)}" data-vivo="{1 if x["fim"] is None else 0}">{saida}</pre>'
                  '<p><a href="/">Voltar ao Hoje</a> · <a href="/comandos">Comandos</a></p>')
         return HTMLResponse(pagina(f"Execução: {x['receita']}", corpo, s))
 
@@ -428,6 +546,84 @@ def criar_app(raiz: Path, caminho_banco: Path, hosts: set[str] | None = None, ex
                         media_type="application/manifest+json")
 
     return app
+
+
+ORIGEM = {"regra": ("regra fixa", "0 tokens"), "voce": ("decisão sua", "0 tokens"), "ia-local": ("IA local", "R$ 0"),
+          "fila": ("fila", "a fila escolhe o modelo"), "nada": ("não reconhecido", "0 tokens")}
+
+
+def sugestoes_regra(c, org: int) -> list[tuple[str, int, str]]:
+    """Regra de três (ADR 0014): o que a IA local resolveu 3 vezes do mesmo jeito deve virar regra fixa."""
+    cont, exemplo = Counter(), {}
+    for linha in c.execute("SELECT texto, plano FROM central_prompts WHERE organizacao_id = ? AND origem = 'ia-local' "
+                           "ORDER BY criado DESC LIMIT 300", (org,)):
+        passos = [p for p in json.loads(linha["plano"])["passos"] if not p.get("erro")]
+        chave = " + ".join(" ".join(x for x in (p["receita"], p.get("subcomando")) if x) for p in passos)
+        if chave:
+            cont[chave] += 1
+            exemplo.setdefault(chave, linha["texto"])
+    return [(k, n, exemplo[k]) for k, n in cont.most_common() if n >= 3]
+
+
+def caixa_pedido(csrf: str, recentes) -> str:
+    lista = "".join(f'<li><a href="/prompt/{e(p["id"])}">{e(p["texto"][:70])}</a> '
+                    f'<span class="calmo">· {e(ORIGEM.get(p["origem"], (p["origem"], ""))[0])}</span></li>' for p in recentes)
+    return ('<section class="pedido"><h2>O que você quer fazer?</h2>'
+            '<form method="post" action="/prompt" data-pensando="Pensando… (a IA local pode levar até 1 minuto)">'
+            f'<input type="hidden" name="csrf" value="{e(csrf)}">'
+            '<textarea name="texto" rows="3" maxlength="1000" required placeholder="Ex.: o que estudo hoje? · como está o backup? · '
+            'crie a página de vendas do curso de lógica · lembre que o HD externo está na gaveta"></textarea>'
+            '<button>Enviar</button></form>'
+            '<p class="calmo">Primeiro tento por regra (0 tokens); depois a IA local (R$ 0). Ações que mudam algo pedem o seu ✅.</p>'
+            + (f'<details><summary>Pedidos recentes</summary><ul>{lista}</ul></details>' if recentes else "") + '</section>')
+
+
+def tela_pedido(csrf: str, x, estados: dict) -> str:
+    plano = json.loads(x["plano"])
+    nome, custo = ORIGEM.get(x["origem"], (x["origem"], ""))
+    tok = f" · ~{x['tokens']} tokens" if x["tokens"] else ""
+    partes = [f'<section><p class="pedido-texto">“{e(x["texto"])}”</p>'
+              f'<p><span class="nivel">{e(nome)}</span> <span class="calmo">{e(custo)}{tok}</span></p>']
+    if plano.get("resposta"):
+        partes.append(f'<p>{e(plano["resposta"])}</p>')
+    if plano.get("sensivel"):
+        partes.append(f'<p class="erro">Dado sensível no pedido ({e(", ".join(plano["sensivel"]))}): só IA local.</p>')
+    partes.append('</section>')
+    if plano["passos"]:
+        partes.append('<section><h2>Plano</h2><ol>')
+        for p in plano["passos"]:
+            rot = " ".join(v for v in (p["receita"], *(p.get("args") or [])) if v)
+            if p.get("erro"):
+                partes.append(f'<li><code>{e(p["receita"])}</code> <span class="erro">recusado: {e(p["erro"])}</span></li>')
+            else:
+                partes.append(f'<li><code>just {e(rot)}</code> <span class="nivel n-{e(p["nivel"])}">{e(ROTULO_NIVEL[p["nivel"]])}</span></li>')
+        partes.append('</ol>')
+        validos = [p for p in plano["passos"] if not p.get("erro")]
+        if x["executado"] is None and validos:
+            partes.append(f'<form method="post" action="/prompt/{e(x["id"])}/executar">'
+                          f'<input type="hidden" name="csrf" value="{e(csrf)}"><button>Executar plano</button></form>'
+                          '<p class="calmo">O que pede aprovação vai para a tela Aprovar; o resto roda agora.</p>')
+        partes.append('</section>')
+    feitos = json.loads(x["execucoes"])
+    if feitos:
+        partes.append('<section><h2>Resultado</h2>')
+        for f in feitos:
+            if f.get("erro"):
+                partes.append(f'<p><code>{e(f["rotulo"])}</code> <span class="erro">{e(f["erro"])}</span></p>')
+            elif f.get("aprovacao"):
+                partes.append(f'<p><code>{e(f["rotulo"])}</code> → <a href="/aprovar">esperando o seu ✅</a></p>')
+            else:
+                y = estados.get(f["execucao"])
+                vivo = y is None or y["fim"] is None
+                estado = "rodando…" if vivo else ("terminou: ok" if y["codigo"] == 0 else f"terminou com código {y['codigo']}")
+                saida = "" if vivo else e(y["saida"])
+                partes.append(f'<h3><a href="/execucao/{e(f["execucao"])}">{e(f["rotulo"])}</a> · '
+                              f'<span data-estado-de="{e(f["execucao"])}">{e(estado)}</span></h3>'
+                              f'<pre class="saida" data-id="{e(f["execucao"])}" data-vivo="{1 if vivo else 0}">{saida}</pre>')
+        partes.append('</section>')
+    partes.append('<p><a href="/">Voltar ao Hoje</a></p>')
+    return "".join(partes)
+
 
 
 # ---------------------------------------------------------------------- HTML

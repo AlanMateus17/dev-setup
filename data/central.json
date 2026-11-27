@@ -1,5 +1,5 @@
 {
- "_leia": "Allowlist da Central (ADR 0023). A Central e o bot só mostram e rodam o que está aqui; o just check falha se uma receita do justfile não estiver classificada ou se alguma receita colar argumento no texto do bash. Níveis: automatico (roda), avisa (roda e avisa no Telegram), pede-ok (só com aprovação, 30 min, uso único), so-terminal (aparece, mas roda só no terminal: falta formulário ou pede interação), proibido (não aparece). Padrões: regex que o valor precisa casar por inteiro; 'texto:N' é texto livre de até N caracteres, que vai como um argumento só.",
+ "_leia": "Allowlist da Central (ADR 0023). A Central e o bot só mostram e rodam o que está aqui; o just check falha se uma receita do justfile não estiver classificada ou se alguma receita colar argumento no texto do bash. Níveis: automatico (roda), avisa (roda e avisa no Telegram), pede-ok (só com aprovação, 30 min, uso único), so-terminal (aparece, mas roda só no terminal: falta formulário ou pede interação), proibido (não aparece). Padrões: regex que o valor precisa casar por inteiro; 'texto:N' é texto livre de até N caracteres, que vai como um argumento só; 'flag' põe a opção antes do valor (--certo X). Gatilhos: frases (sem acento, minúsculas) que levam o pedido em português direto à receita, sem IA (0 tokens).",
  "versao": 1,
  "padroes": {
   "etapa": "^H?[0-9]{1,2}(\\.[0-9]{1,2}){0,2}$",
@@ -15,7 +15,8 @@
   "minutos": "^[0-9]{1,3}$",
   "situacao_livro": "^(tenho|comprar|gratis-online|emprestado)$",
   "formato": "^[a-z0-9-]{2,30}$",
-  "diagrama": "^docs/[a-z0-9/_-]{1,80}\\.d2$"
+  "diagrama": "^docs/[a-z0-9/_-]{1,80}\\.d2$",
+  "resposta_diag": "^[cx][1-3]$"
  },
  "areas": {
   "hoje": "Hoje",
@@ -43,6 +44,15 @@
      "obrigatorio": false,
      "padrao": "empresa"
     }
+   ],
+   "gatilhos": [
+    "o que faco agora",
+    "o que eu faco",
+    "o que tenho que fazer",
+    "o que depende de mim",
+    "o que falta fazer",
+    "proximo passo",
+    "proximos passos"
    ]
   },
   "akita": {
@@ -68,7 +78,17 @@
     "aprovar",
     "recusar",
     "aplicar"
-   ]
+   ],
+   "gatilhos_sub": {
+    "pendentes": [
+     "pendentes do akita",
+     "notas do akita",
+     "regras do akita"
+    ],
+    "trilha": [
+     "trilha do akita"
+    ]
+   }
   },
   "aprovar": {
    "area": "git",
@@ -83,7 +103,13 @@
     }
    ],
    "confirmacao_dupla": true,
-   "motivo": "merge na main"
+   "motivo": "merge na main",
+   "gatilhos": [
+    "aprove o pr",
+    "aprovar o pr",
+    "merge do pr",
+    "juntar o pr"
+   ]
   },
   "arquiteto": {
    "area": "negocio",
@@ -116,18 +142,35 @@
   },
   "atrito": {
    "area": "estudo",
-   "nivel": "so-terminal",
-   "celular": false,
+   "nivel": "avisa",
+   "celular": true,
    "descricao": "",
-   "args": [],
-   "motivo": "formulário (texto, área) ainda não existe"
+   "args": [
+    {
+     "nome": "texto",
+     "obrigatorio": true,
+     "tipo": "texto",
+     "max": 300
+    },
+    {
+     "nome": "area",
+     "obrigatorio": false,
+     "flag": "--area",
+     "padrao": "^[a-z0-9-]{2,30}$"
+    }
+   ]
   },
   "atritos": {
    "area": "estudo",
    "nivel": "automatico",
    "celular": true,
    "descricao": "",
-   "args": []
+   "args": [],
+   "gatilhos": [
+    "meus atritos",
+    "o que travou",
+    "atritos registrados"
+   ]
   },
   "backup": {
    "area": "setup",
@@ -135,7 +178,13 @@
    "celular": true,
    "descricao": "Backup agora (o mesmo do agendamento das 22h30)",
    "args": [],
-   "timeout": 3600
+   "timeout": 3600,
+   "gatilhos": [
+    "faca o backup",
+    "fazer backup agora",
+    "rode o backup",
+    "backup agora"
+   ]
   },
   "backup-externo": {
    "area": "setup",
@@ -168,6 +217,13 @@
      "tipo": "texto",
      "max": 120
     }
+   ],
+   "gatilhos": [
+    "buscar no nucleo",
+    "procurar no nucleo",
+    "o que ja sei sobre",
+    "procure no nucleo",
+    "busque no nucleo"
    ]
   },
   "central": {
@@ -192,7 +248,13 @@
    "celular": false,
    "descricao": "O portão antes de cada commit",
    "args": [],
-   "timeout": 1800
+   "timeout": 1800,
+   "gatilhos": [
+    "rode o check",
+    "rodar o check",
+    "just check",
+    "rodar os testes"
+   ]
   },
   "ci-local": {
    "area": "setup",
@@ -210,6 +272,10 @@
    "args": [],
    "opcoes_pede_ok": [
     "--corrigir"
+   ],
+   "gatilhos": [
+    "coerencia",
+    "o que esta desatualizado"
    ]
   },
   "cofre-abrir": {
@@ -242,6 +308,12 @@
    "opcoes": [
     "--seco",
     "--forcar"
+   ],
+   "gatilhos": [
+    "colher a etapa",
+    "colha a etapa",
+    "colher o assunto",
+    "fechei o assunto"
    ]
   },
   "contexto-ia": {
@@ -270,6 +342,12 @@
      "obrigatorio": false,
      "padrao": "empresa"
     }
+   ],
+   "gatilhos": [
+    "que decisoes",
+    "decisoes pendentes",
+    "o que preciso decidir",
+    "minhas decisoes"
    ]
   },
   "default": {
@@ -293,15 +371,39 @@
    ],
    "opcoes": [
     "--simular"
+   ],
+   "gatilhos": [
+    "desligar o setup",
+    "desligue",
+    "parar os servicos",
+    "derrubar os servicos"
    ]
   },
   "diag": {
    "area": "estudo",
-   "nivel": "so-terminal",
-   "celular": false,
+   "nivel": "avisa",
+   "celular": true,
    "descricao": "Diagnóstico antes de cada assunto (certo/errado + certeza 1 a 3)",
-   "args": [],
-   "motivo": "formulário do diagnóstico ainda não existe (c1..c3/x1..x3)"
+   "args": [
+    {
+     "nome": "etapa",
+     "obrigatorio": true,
+     "padrao": "etapa"
+    },
+    {
+     "nome": "respostas",
+     "obrigatorio": true,
+     "padrao": "resposta_diag",
+     "repetir": true
+    },
+    {
+     "nome": "minutos",
+     "obrigatorio": false,
+     "flag": "--min",
+     "padrao": "minutos"
+    }
+   ],
+   "motivo": "respostas: c1..c3 (certo e certeza) ou x1..x3 (errado)"
   },
   "diagrama": {
    "area": "ferramentas",
@@ -321,22 +423,50 @@
    "nivel": "avisa",
    "celular": false,
    "descricao": "Regenera toda a documentação a partir de data/",
-   "args": []
+   "args": [],
+   "gatilhos": [
+    "regenere a documentacao",
+    "gerar a documentacao",
+    "atualizar a documentacao"
+   ]
   },
   "erro": {
    "area": "estudo",
-   "nivel": "so-terminal",
-   "celular": false,
+   "nivel": "avisa",
+   "celular": true,
    "descricao": "Caderno de erros e atritos do setup (uma linha, sem abrir arquivo)",
-   "args": [],
-   "motivo": "formulário (etapa, erro, certo) ainda não existe"
+   "args": [
+    {
+     "nome": "etapa",
+     "obrigatorio": true,
+     "padrao": "etapa"
+    },
+    {
+     "nome": "erro",
+     "obrigatorio": true,
+     "tipo": "texto",
+     "max": 300
+    },
+    {
+     "nome": "certo",
+     "obrigatorio": true,
+     "flag": "--certo",
+     "tipo": "texto",
+     "max": 300
+    }
+   ]
   },
   "erros": {
    "area": "estudo",
    "nivel": "automatico",
    "celular": true,
    "descricao": "",
-   "args": []
+   "args": [],
+   "gatilhos": [
+    "meus erros",
+    "caderno de erros",
+    "erros registrados"
+   ]
   },
   "extensoes-wsl": {
    "area": "setup",
@@ -381,7 +511,13 @@
    "nivel": "automatico",
    "celular": true,
    "descricao": "Pedidos da fila e se o Claude está em pausa por limite",
-   "args": []
+   "args": [],
+   "gatilhos": [
+    "como esta a fila",
+    "pedidos da fila",
+    "status da fila",
+    "fila de pedidos"
+   ]
   },
   "fontes": {
    "area": "estudo",
@@ -446,6 +582,13 @@
      "obrigatorio": false,
      "padrao": "tipo_nota"
     }
+   ],
+   "gatilhos": [
+    "lembre que",
+    "anote que",
+    "guarde que",
+    "anotar no nucleo",
+    "guardar no nucleo"
    ]
   },
   "ligado": {
@@ -453,7 +596,14 @@
    "nivel": "automatico",
    "celular": true,
    "descricao": "O que está no ar agora (serviços, Ollama, LiteLLM, últimos pedidos)",
-   "args": []
+   "args": [],
+   "gatilhos": [
+    "o que esta ligado",
+    "o que esta no ar",
+    "servicos no ar",
+    "esta tudo ligado",
+    "status dos servicos"
+   ]
   },
   "ligar": {
    "area": "setup",
@@ -470,7 +620,14 @@
    "opcoes": [
     "--simular"
    ],
-   "timeout": 3600
+   "timeout": 3600,
+   "gatilhos": [
+    "ligar o setup",
+    "ligue o setup",
+    "subir os servicos",
+    "suba os servicos",
+    "ligar o perfil"
+   ]
   },
   "livros": {
    "area": "estudo",
@@ -492,7 +649,17 @@
    },
    "subcomandos_avisa": [
     "marcar"
-   ]
+   ],
+   "gatilhos_sub": {
+    "lista": [
+     "meus livros",
+     "lista de livros"
+    ],
+    "comprar": [
+     "livros para comprar",
+     "o que comprar de livro"
+    ]
+   }
   },
   "medir": {
    "area": "proibido",
@@ -522,15 +689,53 @@
      "tipo": "texto",
      "max": 300
     }
+   ],
+   "gatilhos": [
+    "qual degrau",
+    "motor de decisao"
    ]
   },
   "motor-custo": {
    "area": "negocio",
-   "nivel": "so-terminal",
+   "nivel": "avisa",
    "celular": false,
    "descricao": "Registra o gasto de uma chamada de IA",
-   "args": [],
-   "motivo": "formulário de custo ainda não existe"
+   "args": [
+    {
+     "nome": "ferramenta",
+     "obrigatorio": true,
+     "padrao": "^[a-z0-9-]{2,30}$"
+    },
+    {
+     "nome": "modelo",
+     "obrigatorio": true,
+     "padrao": "^[a-z0-9.-]{2,40}$"
+    },
+    {
+     "nome": "entrada",
+     "obrigatorio": false,
+     "flag": "--entrada",
+     "padrao": "^[0-9]{1,9}$"
+    },
+    {
+     "nome": "saida",
+     "obrigatorio": false,
+     "flag": "--saida",
+     "padrao": "^[0-9]{1,9}$"
+    },
+    {
+     "nome": "usd",
+     "obrigatorio": false,
+     "flag": "--usd",
+     "padrao": "^[0-9]{1,4}(\\.[0-9]{1,4})?$"
+    },
+    {
+     "nome": "decisao",
+     "obrigatorio": false,
+     "flag": "--decisao",
+     "padrao": "numero"
+    }
+   ]
   },
   "motor-ok": {
    "area": "negocio",
@@ -563,7 +768,13 @@
    "nivel": "automatico",
    "celular": true,
    "descricao": "Decisões por degrau, gasto e o que já pode virar script",
-   "args": []
+   "args": [],
+   "gatilhos": [
+    "relatorio do motor",
+    "gasto de ia",
+    "quanto gastei de ia",
+    "custo de ia"
+   ]
   },
   "os-instalar": {
    "area": "proibido",
@@ -600,7 +811,20 @@
     }
    ],
    "python": "fila.adicionar",
-   "motivo": "só enfileira; o código volta como PR em rascunho, e o merge continua sendo seu"
+   "motivo": "só enfileira; o código volta como PR em rascunho, e o merge continua sendo seu",
+   "gatilhos": [
+    "crie",
+    "criar",
+    "implemente",
+    "implementar",
+    "corrija",
+    "corrigir o",
+    "refatore",
+    "faca um script",
+    "escreva um script",
+    "adicione",
+    "altere o codigo"
+   ]
   },
   "professor": {
    "area": "estudo",
@@ -636,7 +860,26 @@
    "subcomandos_avisa": [
     "nota",
     "fechar"
-   ]
+   ],
+   "gatilhos_sub": {
+    "hoje": [
+     "o que estudo hoje",
+     "o que estudar hoje",
+     "estudo de hoje",
+     "aula de hoje",
+     "estudar hoje",
+     "o que eu estudo"
+    ],
+    "trilha": [
+     "minha trilha",
+     "trilha de estudo"
+    ],
+    "cartoes": [
+     "cartoes",
+     "anki de hoje",
+     "cartoes do anki"
+    ]
+   }
   },
   "professor-mapa": {
    "area": "estudo",
@@ -656,6 +899,12 @@
      "obrigatorio": false,
      "padrao": "empresa"
     }
+   ],
+   "gatilhos": [
+    "progresso",
+    "quanto falta",
+    "quanto ja fiz",
+    "andamento do roteiro"
    ]
   },
   "rapido": {
@@ -666,6 +915,10 @@
    "args": [],
    "opcoes": [
     "--todas"
+   ],
+   "gatilhos": [
+    "caminho mais curto",
+    "trilha rapida"
    ]
   },
   "recrutador": {
@@ -685,7 +938,16 @@
    },
    "subcomandos_avisa": [
     "registrar"
-   ]
+   ],
+   "gatilhos_sub": {
+    "semana": [
+     "entrevista da semana",
+     "recrutador"
+    ],
+    "progresso": [
+     "progresso nas entrevistas"
+    ]
+   }
   },
   "repos-visibilidade": {
    "area": "git",
@@ -711,7 +973,11 @@
    "nivel": "automatico",
    "celular": false,
    "descricao": "just senhas (o que falta no cofre) · just senha github (copia, limpa em 20 s) · just senhas-criar · just cofre-abrir 30 · just cofre-fechar",
-   "args": []
+   "args": [],
+   "gatilhos": [
+    "o que falta no cofre",
+    "senhas que faltam"
+   ]
   },
   "senhas-criar": {
    "area": "proibido",
@@ -763,6 +1029,13 @@
    ],
    "opcoes": [
     "--checar"
+   ],
+   "gatilhos": [
+    "site da",
+    "pendencias do site",
+    "site do instituto",
+    "site da amtech",
+    "site da editora"
    ]
   },
   "tarefas": {
@@ -770,7 +1043,12 @@
    "nivel": "automatico",
    "celular": true,
    "descricao": "Tarefas abertas do núcleo",
-   "args": []
+   "args": [],
+   "gatilhos": [
+    "tarefas abertas",
+    "minhas tarefas",
+    "lista de tarefas"
+   ]
   },
   "triagem": {
    "area": "negocio",
@@ -784,6 +1062,11 @@
      "tipo": "texto",
      "max": 300
     }
+   ],
+   "gatilhos": [
+    "triagem",
+    "montar colar ou construir",
+    "vale construir"
    ]
   },
   "validar": {
@@ -798,7 +1081,16 @@
    "opcoes_pede_ok": [
     "--restaurar"
    ],
-   "timeout": 1800
+   "timeout": 1800,
+   "gatilhos": [
+    "como esta o backup",
+    "o backup rodou",
+    "backup esta ok",
+    "esta tudo bem",
+    "saude do setup",
+    "validar o setup",
+    "tudo funcionando"
+   ]
   },
   "vault-espelho": {
    "area": "setup",
@@ -815,7 +1107,12 @@
    "nivel": "automatico",
    "celular": true,
    "descricao": "Confere o que está instalado no Ubuntu",
-   "args": []
+   "args": [],
+   "gatilhos": [
+    "verificar a instalacao",
+    "conferir a instalacao",
+    "o que esta instalado"
+   ]
   },
   "vitrine": {
    "area": "negocio",

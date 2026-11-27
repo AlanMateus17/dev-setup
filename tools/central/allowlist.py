@@ -79,6 +79,14 @@ def checar(raiz: Path = RAIZ) -> list[str]:
                 _padrao(dados, ref)
             except re.error as e:
                 erros.append(f"{nome}: padrão {ref!r} inválido: {e}")
+        if r.get("gatilhos") and r.get("nivel") not in EXECUTAVEIS:
+            erros.append(f"{nome}: tem gatilhos, mas não roda pela Central")
+        for sub in r.get("gatilhos_sub", {}):
+            if sub not in r.get("subcomandos", {}):
+                erros.append(f"{nome}: gatilhos_sub cita '{sub}', que não está em subcomandos")
+        for a in r.get("args", []):
+            if a.get("flag") and not re.fullmatch(r"--[a-z][a-z0-9-]*", a["flag"]):
+                erros.append(f"{nome}: flag inválida {a['flag']!r}")
         for chave in ("subcomandos_pede_ok", "subcomandos_avisa"):
             for sub in r.get(chave, []):
                 if sub not in r.get("subcomandos", {}):
@@ -150,10 +158,11 @@ def montar(dados: dict, receita: str, campos: dict | None = None, opcoes: list[s
             continue
         ref = f"texto:{a['max']}" if a.get("tipo") == "texto" else a["padrao"]
         if a.get("repetir"):
-            for parte in _limpar(valor, a["nome"], None).split():
-                args.append(_validar(dados, ref, parte, a["nome"]))
+            partes = [_validar(dados, ref, parte, a["nome"]) for parte in _limpar(valor, a["nome"], None).split()]
         else:
-            args.append(_validar(dados, ref, valor, a["nome"]))
+            partes = [_validar(dados, ref, valor, a["nome"])]
+        for parte in partes:
+            args.extend([a["flag"], parte] if a.get("flag") else [parte])
     extras = set(campos) - {a["nome"] for a in r.get("args", [])} - {f"sub_{i}" for i in range(1, 4)}
     if extras:
         raise ErroAllowlist(f"campos desconhecidos: {sorted(extras)}")
