@@ -37,7 +37,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
 ### Corrigido
 - **Injeção de comando em 40 receitas do `justfile`**: o argumento era colado no texto do bash (`"{{texto}}"`), e um valor com `"` ou `$(…)` executava comando. Agora todas usam `"$1"`/`"$@"` (o `set positional-arguments` já estava ligado). O `aprovar` recusa número de PR inválido.
-- **`just check` travava no teste de senhas**: o teste com o `keepassxc-cli` de verdade abre o cofre umas 40 vezes; no notebook levou 49 min. Agora o cofre de teste usa derivação curta (`-t 100`) e o teste só roda com `AMTECH_TESTE_COFRE=1`, fora do check.
+- **`just check` travava no teste de senhas quando rodado no terminal**: com o `gum` instalado e a entrada sendo um terminal, o `escolher` abria a tela interativa do `gum` escondida (a saída ia para o log) e esperava para sempre. Pelo pre-push não havia terminal, por isso lá passava. Agora o `gum` só aparece quando ninguém passa `ler` (os testes passam). O cofre de teste usa derivação curta (`-t 100`).
 
 ## [2.60.0] - 2026-11-26
 

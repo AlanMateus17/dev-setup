@@ -53,14 +53,19 @@ class TestInventario(unittest.TestCase):
         self.assertEqual(s.escolher(["a/x", "b/x"], "x", ler=lambda _: "2"), "b/x")
         self.assertIsNone(s.escolher(["a/x", "b/x"], "x", ler=lambda _: ""))
 
+    def test_escolher_com_ler_nao_abre_o_gum(self):
+        """No terminal com gum instalado, o teste não pode abrir a tela do gum (travava o just check)."""
+        from unittest import mock
+        with mock.patch.object(s.shutil, "which", return_value="/usr/bin/gum"), \
+                mock.patch.object(s.sys.stdin, "isatty", return_value=True), \
+                mock.patch.object(s.subprocess, "run", side_effect=AssertionError("abriu o gum")):
+            self.assertEqual(s.escolher(["a/x", "b/x"], "x", ler=lambda _: "1"), "a/x")
 
-@unittest.skipUnless(shutil.which("keepassxc-cli") and os.environ.get("AMTECH_TESTE_COFRE") == "1",
-                     "teste lento com o keepassxc-cli real: rode com AMTECH_TESTE_COFRE=1")
+
+@unittest.skipUnless(shutil.which("keepassxc-cli"), "keepassxc-cli não instalado")
 class TestCofreDeVerdade(unittest.TestCase):
     """Cofre de teste descartável: confere ls, criar com confirmação e leitura, com o keepassxc-cli real.
-
-    Fica fora do `just check`: cada chamada abre o cofre e paga a derivação da chave. No notebook do Alan
-    isso levou 49 min e estourou o check. Rode à mão: AMTECH_TESTE_COFRE=1 python3 -m unittest discover -s tools/senhas -v"""
+    O cofre usa derivação curta (-t 100) para o teste levar segundos."""
 
     def setUp(self):
         self.dir = tempfile.mkdtemp()

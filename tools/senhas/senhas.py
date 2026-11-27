@@ -254,7 +254,7 @@ def escolher(opcoes: list[str], busca: str, ler=input) -> str | None:
     if not achadas:
         print(f"Nada no cofre com '{busca}'.")
         return None
-    if shutil.which("gum") and sys.stdin.isatty():
+    if ler is input and shutil.which("gum") and sys.stdin.isatty():  # quem passa ler (os testes) nunca cai no gum
         r = subprocess.run(["gum", "filter", "--placeholder", "Qual senha?", *achadas], capture_output=True, text=True)
         return r.stdout.strip() or None
     for n, o in enumerate(achadas[:30], 1):
