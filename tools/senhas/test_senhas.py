@@ -54,14 +54,18 @@ class TestInventario(unittest.TestCase):
         self.assertIsNone(s.escolher(["a/x", "b/x"], "x", ler=lambda _: ""))
 
 
-@unittest.skipUnless(shutil.which("keepassxc-cli"), "keepassxc-cli não instalado")
+@unittest.skipUnless(shutil.which("keepassxc-cli") and os.environ.get("AMTECH_TESTE_COFRE") == "1",
+                     "teste lento com o keepassxc-cli real: rode com AMTECH_TESTE_COFRE=1")
 class TestCofreDeVerdade(unittest.TestCase):
-    """Cofre de teste descartável: confere ls, criar com confirmação e leitura, com o keepassxc-cli real."""
+    """Cofre de teste descartável: confere ls, criar com confirmação e leitura, com o keepassxc-cli real.
+
+    Fica fora do `just check`: cada chamada abre o cofre e paga a derivação da chave. No notebook do Alan
+    isso levou 49 min e estourou o check. Rode à mão: AMTECH_TESTE_COFRE=1 python3 -m unittest discover -s tools/senhas -v"""
 
     def setUp(self):
         self.dir = tempfile.mkdtemp()
         self.cofre = os.path.join(self.dir, "t.kdbx")
-        subprocess.run(["keepassxc-cli", "db-create", "-q", "-p", self.cofre], input="m\nm\n", text=True, capture_output=True, check=True)
+        subprocess.run(["keepassxc-cli", "db-create", "-q", "-p", "-t", "100", self.cofre], input="m\nm\n", text=True, capture_output=True, check=True)
         os.environ["COFRE"] = self.cofre
         s.mestre = lambda *a, **k: "m"
 
