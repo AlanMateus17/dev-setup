@@ -28,6 +28,10 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
   - a saída em memória fica limitada; a leitura tem prazo, então um processo que escapou do grupo não prende mais a receita;
   - a âncora da auditoria é assinada e gravada dentro da trava do banco; sem âncora válida, a auditoria acusa alteração.
 - `tools/remoto/fila.py`: `@..` não vira mais nome de repositório.
+- **Plano do frontend** (`docs/central/frontend.md`, ADR 0024 proposta), feito depois da leitura dos três repositórios:
+  - duas superfícies: Minha AMtech (painel do dono, paleta Aura fixa) e Instituto AMS (portal do aluno, separado da Central);
+  - o design system Aura como fonte única;
+  - as telas, os fluxos, as sugestões por papel e as fases A0–A6 e I0–I4.
 - 68 testes em `tools/central` (45 só com a biblioteca padrão; 23 de ponta a ponta com FastAPI, que o CI instala).
 - Passo `central-v1` no roteiro e ADR 0023.
 

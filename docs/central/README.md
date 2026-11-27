@@ -4,6 +4,8 @@
 
 [← Índice da documentação](../README.md) · Prompts por fase: [PROMPTS.md](PROMPTS.md) · Protótipo: [prototipo/index.html](prototipo/index.html) (também publicado no Claude como artefato “Central AMtech”)
 
+> **Próximo passo:** o frontend de usuário final (Minha AMtech) e o portal do aluno (Instituto AMS) estão planejados em [frontend.md](frontend.md) (ADR 0024, proposta).
+
 ## v1 pronta (2.61.0): como usar
 
 No Ubuntu, em `~/dev/dev-setup`:
