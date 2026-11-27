@@ -13,6 +13,7 @@ import re
 import secrets
 from collections import Counter
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse, Response, StreamingResponse
@@ -22,6 +23,7 @@ from starlette.concurrency import run_in_threadpool
 import allowlist
 import banco
 import prompt
+import telas
 from executor import Executor
 
 COOKIE = "central_sessao"
@@ -55,7 +57,8 @@ def criar_app(raiz: Path, caminho_banco: Path, hosts: set[str] | None = None, ex
             return Response("Host não permitido.", status_code=400, media_type="text/plain; charset=utf-8")
         if request.method == "POST":
             origem = request.headers.get("origin")
-            if origem and re.sub(r"^https?://", "", origem).rsplit(":", 1)[0].lower() != host:
+            # host E porta: outro app local (ex.: 127.0.0.1:3000) não conta como a Central; "null" é recusado
+            if origem is not None and (origem == "null" or urlsplit(origem).netloc.lower() != (request.headers.get("host") or "").lower()):
                 return Response("Origem não permitida.", status_code=403, media_type="text/plain; charset=utf-8")
         resp = await chamar(request)
         resp.headers["Content-Security-Policy"] = CSP
@@ -240,7 +243,8 @@ def criar_app(raiz: Path, caminho_banco: Path, hosts: set[str] | None = None, ex
                 return erro(s, "O seu papel não permite isso.", 403)
             if nivel == "pede-ok":
                 id_ = banco.criar_aprovacao(c, s["organizacao_id"], receita, args, s["usuario_id"], "web",
-                                            dados.get("aprovacao", {}).get("validade_min", 30))
+                                            dados.get("aprovacao", {}).get("validade_min", 30),
+                                            {"campos": campos, "opcoes": opcoes, "subcomando": sub})
                 banco.auditar(c, "aprovacao.pedida", organizacao_id=s["organizacao_id"], usuario_id=s["usuario_id"],
                               alvo=f"{id_} {receita} {json.dumps(args, ensure_ascii=False)}", nivel=nivel)
                 return ir("/aprovar")
@@ -289,17 +293,29 @@ def criar_app(raiz: Path, caminho_banco: Path, hosts: set[str] | None = None, ex
         """Roda o plano guardado uma vez só: confere a allowlist de novo, roda o que pode e manda o resto para aprovação."""
         c = con()
         try:
-            marcado = c.execute("UPDATE central_prompts SET executado = ? WHERE id = ? AND organizacao_id = ? AND executado IS NULL",
-                                (banco._iso(banco.agora()), id_, s["organizacao_id"])).rowcount
-            if marcado != 1:
-                return "Esse plano já foi executado."
-            linha = c.execute("SELECT plano FROM central_prompts WHERE id = ?", (id_,)).fetchone()
+            linha = c.execute("SELECT plano, executado FROM central_prompts WHERE id = ? AND organizacao_id = ?",
+                              (id_, s["organizacao_id"])).fetchone()
         finally:
             c.close()
-        passos = [prompt.Passo(p["receita"], p.get("subcomando"), p.get("campos", {}), p.get("opcoes", []))
-                  for p in json.loads(linha["plano"])["passos"] if not p.get("erro")]
+        if not linha:
+            return "Pedido não encontrado."
+        if linha["executado"]:
+            return "Esse plano já foi executado."
+        passos = prompt.validar(dados, [prompt.Passo(p["receita"], p.get("subcomando"), p.get("campos", {}), p.get("opcoes", []))
+                                        for p in json.loads(linha["plano"])["passos"] if not p.get("erro")])
+        problema = ex.sem_vaga([p.receita for p in passos if not p.erro and p.nivel in ("automatico", "avisa")])
+        if problema:
+            return problema
+        c = con()
+        try:
+            marcado = c.execute("UPDATE central_prompts SET executado = ? WHERE id = ? AND organizacao_id = ? AND executado IS NULL",
+                                (banco._iso(banco.agora()), id_, s["organizacao_id"])).rowcount
+        finally:
+            c.close()
+        if marcado != 1:
+            return "Esse plano já foi executado."
         feitos = []
-        for p in prompt.validar(dados, passos):
+        for p in passos:
             if p.erro:
                 feitos.append({"rotulo": p.receita, "erro": p.erro})
                 continue
@@ -310,7 +326,8 @@ def criar_app(raiz: Path, caminho_banco: Path, hosts: set[str] | None = None, ex
                 c = con()
                 try:
                     aid = banco.criar_aprovacao(c, s["organizacao_id"], p.receita, p.args, s["usuario_id"], "prompt",
-                                                dados.get("aprovacao", {}).get("validade_min", 30))
+                                                dados.get("aprovacao", {}).get("validade_min", 30),
+                                                {"campos": p.campos, "opcoes": p.opcoes, "subcomando": p.subcomando})
                     banco.auditar(c, "aprovacao.pedida", origem="prompt", organizacao_id=s["organizacao_id"],
                                   usuario_id=s["usuario_id"], alvo=f"{aid} {p.rotulo()}", nivel="pede-ok")
                 finally:
@@ -364,6 +381,91 @@ def criar_app(raiz: Path, caminho_banco: Path, hosts: set[str] | None = None, ex
             return erro(s, "Pedido não encontrado.", 404)
         return HTMLResponse(pagina("Pedido", tela_pedido(s["csrf"], x, estados), s, n_pend))
 
+    # ------------------------------------------------------------------ telas de dados (roteiro, estudo, empresas, serviços, núcleo)
+    def tela_simples(request: Request, titulo: str, gerar):
+        s = sessao_de(request)
+        if not s:
+            return ir("/login")
+        c = con()
+        try:
+            n_pend = len(pendentes(c, s["organizacao_id"]))
+        finally:
+            c.close()
+        try:
+            corpo = gerar(s)
+        except Exception as err:  # noqa: BLE001  a tela mostra o problema em vez de cair
+            corpo = f'<p class="erro">Não consegui montar esta tela: {e(type(err).__name__)}: {e(str(err))[:200]}</p>'
+        return HTMLResponse(pagina(titulo, corpo, s, n_pend))
+
+    @app.get("/roteiro")
+    async def tela_roteiro(request: Request, empresa: str = ""):
+        emp = empresa if re.fullmatch(r"[a-z]{2,20}", empresa or "") else None
+        return await run_in_threadpool(tela_simples, request, "Roteiro", lambda s: telas.roteiro(s["csrf"], emp))
+
+    @app.get("/estudo")
+    async def tela_estudo(request: Request):
+        return await run_in_threadpool(tela_simples, request, "Estudo", lambda s: telas.estudo(s["csrf"], dados, cartao_receita))
+
+    @app.get("/empresas")
+    async def tela_empresas(request: Request):
+        return await run_in_threadpool(tela_simples, request, "Empresas e rendas", lambda s: telas.empresas(s["csrf"]))
+
+    @app.get("/servicos")
+    async def tela_servicos(request: Request):
+        return await run_in_threadpool(tela_simples, request, "Serviços", lambda s: telas.servicos(s["csrf"], dados, cartao_receita))
+
+    @app.get("/nucleo")
+    async def tela_nucleo(request: Request, q: str = ""):
+        return await run_in_threadpool(tela_simples, request, "Núcleo", lambda s: telas.nucleo(s["csrf"], q[:120]))
+
+    @app.get("/ajuda")
+    async def tela_ajuda(request: Request):
+        return tela_simples(request, "Ajuda", lambda s: telas.AJUDA)
+
+    async def acao_nucleo(request: Request, acao: str, fazer, voltar: str):
+        s = sessao_de(request)
+        if not s:
+            return ir("/login")
+        try:
+            form = await form_com_csrf(request, s)
+        except PermissionError as err:
+            return erro(s, str(err), 403)
+        if not pode(s, "avisa"):
+            return erro(s, "O seu papel não permite isso.", 403)
+        try:
+            alvo = await run_in_threadpool(fazer, form)
+        except (ValueError, KeyError) as err:
+            return erro(s, f"Recusado: {err}")
+        c = con()
+        try:
+            banco.auditar(c, acao, organizacao_id=s["organizacao_id"], usuario_id=s["usuario_id"], alvo=str(alvo)[:200], nivel="avisa")
+        finally:
+            c.close()
+        return ir(voltar)
+
+    @app.post("/roteiro/feito")
+    async def roteiro_feito(request: Request):
+        return await acao_nucleo(request, "roteiro.feito", lambda f: telas.marcar_feito(str(f.get("passo", ""))[:60]), "/roteiro")
+
+    @app.post("/nucleo/lembrar")
+    async def nucleo_lembrar(request: Request):
+        return await acao_nucleo(request, "nucleo.lembrar",
+                                 lambda f: telas.lembrar(str(f.get("texto", "")), str(f.get("tipo", "nota"))), "/nucleo")
+
+    @app.post("/nucleo/tarefa-nova")
+    async def nucleo_tarefa_nova(request: Request):
+        return await acao_nucleo(request, "nucleo.tarefa", lambda f: telas.tarefa_nova(str(f.get("titulo", ""))), "/nucleo")
+
+    @app.post("/nucleo/tarefa")
+    async def nucleo_tarefa(request: Request):
+        def feita(f):
+            tid = str(f.get("id", ""))
+            if not tid.isdigit():
+                raise ValueError("id inválido")
+            telas.tarefa_feita(int(tid))
+            return f"tarefa {tid} feita"
+        return await acao_nucleo(request, "nucleo.tarefa-feita", feita, "/nucleo")
+
     @app.get("/execucao/{id_}")
     async def execucao(request: Request, id_: str):
         s = sessao_de(request)
@@ -414,10 +516,9 @@ def criar_app(raiz: Path, caminho_banco: Path, hosts: set[str] | None = None, ex
                         yield f"data: {json.dumps(linha, ensure_ascii=False)}\n\n"
                     yield f"event: fim\ndata: {y['codigo']}\n\n"
                     return
-                linhas, fim, codigo = lido
+                linhas, fim, codigo, desde = lido
                 for linha in linhas:
                     yield f"data: {json.dumps(linha, ensure_ascii=False)}\n\n"
-                desde += len(linhas)
                 if fim:
                     yield f"event: fim\ndata: {codigo}\n\n"
                     return
@@ -488,6 +589,18 @@ def criar_app(raiz: Path, caminho_banco: Path, hosts: set[str] | None = None, ex
                     return erro(s, "Essa receita não pode mais rodar pela Central (allowlist mudou).", 409)
                 if r.get("confirmacao_dupla") and str(form.get("confirmacao", "")).strip() != (args[0] if args else ""):
                     return erro(s, "A confirmação não bate. Nada foi feito.")
+                pedido_orig = json.loads(atual["pedido"] or "{}")
+                if pedido_orig:
+                    try:
+                        args2, nivel2 = allowlist.montar(dados, atual["receita"], pedido_orig.get("campos"),
+                                                         pedido_orig.get("opcoes"), pedido_orig.get("subcomando"))
+                    except allowlist.ErroAllowlist as err:
+                        return erro(s, f"A allowlist mudou e este pedido não passa mais: {err}. Nada foi feito.", 409)
+                    if args2 != args:
+                        return erro(s, "A allowlist mudou os argumentos deste pedido. Peça de novo. Nada foi feito.", 409)
+                problema = ex.sem_vaga([atual["receita"]])
+                if problema:
+                    return erro(s, problema, 409)
             decidida = banco.decidir_aprovacao(c, id_, s["organizacao_id"], s["usuario_id"], aprovar_)
             if not decidida:
                 return erro(s, "Essa aprovação já foi decidida ou expirou. Peça de novo.", 409)
@@ -498,6 +611,12 @@ def criar_app(raiz: Path, caminho_banco: Path, hosts: set[str] | None = None, ex
         if not aprovar_:
             return ir("/aprovar")
         resp = iniciar(s, atual["receita"], args, "pede-ok", "aprovacao")
+        if not isinstance(resp, RedirectResponse):
+            c = con()
+            try:
+                banco.devolver_aprovacao(c, id_)  # não começou: a aprovação volta para a lista
+            finally:
+                c.close()
         if isinstance(resp, RedirectResponse):
             exec_id = resp.headers["location"].rsplit("/", 1)[-1]
             c = con()
@@ -534,7 +653,7 @@ def criar_app(raiz: Path, caminho_banco: Path, hosts: set[str] | None = None, ex
             return JSONResponse({"erro": "login"}, status_code=401)
         c = con()
         try:
-            ok, _ = banco.verificar_auditoria(c)
+            ok = banco.auditoria_resumo(c)
             n = len(pendentes(c, s["organizacao_id"]))
         finally:
             c.close()
@@ -631,8 +750,10 @@ def pagina(titulo: str, corpo: str, s: dict | None, pendentes: int | None = None
     nav = ""
     if s:
         badge = f' <span class="badge">{pendentes}</span>' if pendentes else ""
-        nav = ('<nav><a href="/">Hoje</a><a href="/comandos">Comandos</a>'
-               f'<a href="/aprovar">Aprovar{badge}</a><a href="/auditoria">Auditoria</a>'
+        nav = ('<nav><a href="/">Hoje</a><a href="/roteiro">Roteiro</a><a href="/estudo">Estudo</a>'
+               '<a href="/empresas">Empresas</a><a href="/servicos">Serviços</a><a href="/nucleo">Núcleo</a>'
+               f'<a href="/comandos">Comandos</a><a href="/aprovar">Aprovar{badge}</a><a href="/auditoria">Auditoria</a>'
+               '<a href="/ajuda">Ajuda</a>'
                f'<form method="post" action="/sair"><input type="hidden" name="csrf" value="{e(s["csrf"])}">'
                f'<button class="link">Sair ({e(s["nome"])})</button></form></nav>')
     return ('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">'
@@ -731,4 +852,4 @@ def cartao_receita(csrf: str, dados: dict, nome: str, r: dict) -> str:
                         for sub in r["subcomandos"])
     else:
         corpo = form_receita(csrf, dados, nome, r)
-    return f'<details class="cartao">{cab}{corpo}</details>'
+    return f'<details class="cartao" id="{e(nome)}">{cab}{corpo}</details>'

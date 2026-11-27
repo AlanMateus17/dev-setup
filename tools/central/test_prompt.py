@@ -40,6 +40,14 @@ class TestRegra(unittest.TestCase):
                 self.assertEqual([x.rotulo() for x in p.passos], esperado)
                 self.assertTrue(p.roda_sozinho)
 
+    def test_site_pelo_prompt_so_confere(self):
+        """Achado da revisão: 'pendências do site' rodava 'just site amtech', que sobrescreve o site."""
+        for texto in ("quais as pendencias do site da amtech?", "Gerar o site da Editora AMS Silva"):
+            with self.subTest(texto=texto):
+                p = self.plano(texto)
+                self.assertIn("--checar", p.passos[0].args)
+                self.assertEqual(p.passos[0].nivel, "automatico")
+
     def test_acao_por_regra_nao_roda_sozinha(self):
         for texto in ("aprove o PR 41", "colher a etapa 0.2", "ligar o perfil trabalho", "lembre que o HD está na gaveta"):
             with self.subTest(texto=texto):

@@ -18,7 +18,17 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 - Formulários de `diag`, `erro`, `atrito` e `motor-custo` (argumentos com opção, como `--certo`); só `ficha` e `vitrine` continuam só no terminal.
 - `data/central.json`: allowlist única das 70 receitas (automatico, avisa, pede-ok, so-terminal, proibido), com padrão por argumento, subcomandos e opções permitidos.
 - `tools/central/allowlist.py --check` no `just check` e no CI: falha com receita não classificada ou que cole argumento no bash.
-- 45 testes em `tools/central` (29 só com a biblioteca padrão; 16 de ponta a ponta com FastAPI, que o CI instala).
+- Revisão de segurança independente (sem o contexto de quem escreveu) e correções:
+  - `site` sem `--checar` recria o site e agora pede aprovação; o pedido em português só usa `--checar`;
+  - auditoria assinada com HMAC (chave em `~/.config/amtech`, fora do banco) e âncora da última linha, que detecta linhas apagadas no fim;
+  - Origin conferida com a porta, e `null` é recusado;
+  - o check barra lista ou opção em receita de parâmetro fixo (o argumento a mais viraria outra receita no `just`);
+  - aprovação e plano não se perdem quando não há vaga para rodar;
+  - a aprovação reconfere a allowlist com o pedido original;
+  - a saída em memória fica limitada; a leitura tem prazo, então um processo que escapou do grupo não prende mais a receita;
+  - a âncora da auditoria é assinada e gravada dentro da trava do banco; sem âncora válida, a auditoria acusa alteração.
+- `tools/remoto/fila.py`: `@..` não vira mais nome de repositório.
+- 68 testes em `tools/central` (45 só com a biblioteca padrão; 23 de ponta a ponta com FastAPI, que o CI instala).
 - Passo `central-v1` no roteiro e ADR 0023.
 
 ### Corrigido

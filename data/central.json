@@ -1,5 +1,5 @@
 {
- "_leia": "Allowlist da Central (ADR 0023). A Central e o bot só mostram e rodam o que está aqui; o just check falha se uma receita do justfile não estiver classificada ou se alguma receita colar argumento no texto do bash. Níveis: automatico (roda), avisa (roda e avisa no Telegram), pede-ok (só com aprovação, 30 min, uso único), so-terminal (aparece, mas roda só no terminal: falta formulário ou pede interação), proibido (não aparece). Padrões: regex que o valor precisa casar por inteiro; 'texto:N' é texto livre de até N caracteres, que vai como um argumento só; 'flag' põe a opção antes do valor (--certo X). Gatilhos: frases (sem acento, minúsculas) que levam o pedido em português direto à receita, sem IA (0 tokens).",
+ "_leia": "Allowlist da Central (ADR 0023). A Central e o bot só mostram e rodam o que está aqui; o just check falha se uma receita do justfile não estiver classificada ou se alguma receita colar argumento no texto do bash. Níveis: automatico (roda), avisa (roda e avisa no Telegram), pede-ok (só com aprovação, 30 min, uso único; 'opcoes_so_leitura' rodam direto), so-terminal (aparece, mas roda só no terminal: falta formulário ou pede interação), proibido (não aparece). Padrões: regex que o valor precisa casar por inteiro; 'texto:N' é texto livre de até N caracteres, que vai como um argumento só; 'flag' põe a opção antes do valor (--certo X). Gatilhos: frases (sem acento, minúsculas) que levam o pedido em português direto à receita, sem IA (0 tokens); 'opcoes_regra' são as opções que esse caminho sempre usa (ex.: site só com --checar).",
  "versao": 1,
  "padroes": {
   "etapa": "^H?[0-9]{1,2}(\\.[0-9]{1,2}){0,2}$",
@@ -531,7 +531,10 @@
     "buscar": [
      "texto:120"
     ]
-   }
+   },
+   "subcomandos_avisa": [
+    "docs"
+   ]
   },
   "instalar": {
    "area": "setup",
@@ -1017,7 +1020,7 @@
   },
   "site": {
    "area": "negocio",
-   "nivel": "automatico",
+   "nivel": "pede-ok",
    "celular": true,
    "descricao": "Site de uma marca (amtech, instituto, editora)",
    "args": [
@@ -1030,6 +1033,13 @@
    "opcoes": [
     "--checar"
    ],
+   "opcoes_so_leitura": [
+    "--checar"
+   ],
+   "opcoes_regra": [
+    "--checar"
+   ],
+   "motivo": "sem --checar, recria o site a partir do modelo (sobrescreve arquivos)",
    "gatilhos": [
     "site da",
     "pendencias do site",

@@ -13,7 +13,8 @@
 # Depois de ligado, do celular:
 #   · App do Claude → Code: a sessão "Setup AMtech" roda no seu notebook (Remote Control, plano Pro ou Max).
 #   · Telegram: /pedir TEXTO manda para a fila, que usa Claude → cota grátis → modelo local, nessa ordem.
-# Serviços (systemd do usuário): amtech-remoto, amtech-fila, amtech-bot (se o Telegram estiver configurado), ollama.
+# Serviços (systemd do usuário): amtech-remoto, amtech-fila, amtech-bot (se o Telegram estiver configurado), amtech-central
+# (depois de just central-usuario), ollama.
 set -uo pipefail
 USER="${USER:-$(id -un)}"
 RAIZ="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
@@ -43,7 +44,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 status() {
   etapa "Status"
-  for u in amtech-remoto amtech-fila amtech-bot ollama; do
+  for u in amtech-remoto amtech-fila amtech-bot amtech-central ollama; do
     if systemctl --user is-active --quiet "$u" 2>/dev/null || systemctl is-active --quiet "$u" 2>/dev/null; then ok "$u no ar"
     else printf '  [--]   %s parado\n' "$u"; fi
   done
@@ -56,7 +57,7 @@ case "$MODO" in
   --status) status; exit 0 ;;
   --desligar)
     if [[ "$PERFIL" != "sempre" ]]; then python3 "$FERRAMENTAS" --perfil "$PERFIL" --acao desligar; exit $?; fi
-    systemctl --user stop amtech-remoto amtech-fila amtech-bot 2>/dev/null
+    systemctl --user stop amtech-remoto amtech-fila amtech-bot amtech-central 2>/dev/null
     (cd "$RAIZ/infra/ia" && docker compose down 2>/dev/null)
     echo "Serviços parados. Para ligar de novo: just ligar"; exit 0 ;;
 esac
@@ -143,12 +144,17 @@ escrever amtech-fila "Fila de pedidos do celular (AMtech)" "/usr/bin/python3 $RA
 escrever amtech-remoto "Claude Code Remote Control (AMtech)" "$CLAUDE_BIN remote-control --name \"Setup AMtech\" --spawn worktree" "$RAIZ"
 [[ -f "$CFG/telegram.env" ]] && escrever amtech-bot "Bot do Telegram (AMtech)" "/usr/bin/python3 $RAIZ/tools/remoto/bot.py" "$RAIZ" \
   || falta "Telegram: crie o bot no @BotFather e siga docs/operacao/celular.md (passo 3). Sem ele, o celular usa só o app do Claude."
+UV_BIN="$(command -v uv || echo "$HOME/.local/bin/uv")"
+[[ -f "$CFG/central-usuario" ]] && escrever amtech-central "Central AMtech (só 127.0.0.1:8700)" \
+  "$UV_BIN run --quiet --no-project --with-requirements $RAIZ/tools/central/requirements.txt python $RAIZ/tools/central/central.py servir" "$RAIZ" \
+  || falta "Central: crie o usuário com just central-usuario alan e rode just ligar de novo (ela passa a ficar sempre no ar)."
 
 if ! sim; then
   systemctl --user daemon-reload
   ligar=(amtech-fila)
   [[ -f "$CFG/remoto-aceito" ]] && ligar+=(amtech-remoto)
   [[ -f "$UNIDADES/amtech-bot.service" ]] && ligar+=(amtech-bot)
+  [[ -f "$UNIDADES/amtech-central.service" ]] && ligar+=(amtech-central)
   systemctl --user enable --now "${ligar[@]}" >/dev/null 2>&1 && ok "no ar: ${ligar[*]}" || erro "ligar ${ligar[*]} (veja: journalctl --user -u amtech-fila)"
 fi
 

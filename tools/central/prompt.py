@@ -117,7 +117,7 @@ def por_regra(dados: dict, texto: str) -> list[Passo]:
                 if r.get("subcomandos") and not sub_real:
                     continue
                 campos = _extrair_campos(dados, nome, r, texto, melhor, sub_real)
-                achados.append((len(melhor), Passo(nome, sub_real, campos)))
+                achados.append((len(melhor), Passo(nome, sub_real, campos, list(r.get("opcoes_regra", [])))))
                 break
     achados.sort(key=lambda x: -x[0])
     vistos, passos = set(), []

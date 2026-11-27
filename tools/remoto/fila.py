@@ -46,7 +46,7 @@ SINAIS_LIMITE = ("usage limit", "rate limit", "limit reached", "limite de uso", 
 
 def separar_repo(texto: str) -> tuple[str, str]:
     """'@catalogo-html corrigir X' -> ('catalogo-html', 'corrigir X'); sem @ -> ('dev-setup', texto)."""
-    m = re.match(r"\s*@([A-Za-z0-9._-]+)\s+(.*)", texto, re.S)
+    m = re.match(r"\s*@([A-Za-z0-9_-][A-Za-z0-9._-]*)\s+(.*)", texto, re.S)  # sem '.' no começo: '@..' não sobe para o $HOME
     return (m.group(1), m.group(2).strip()) if m else ("dev-setup", texto.strip())
 
 

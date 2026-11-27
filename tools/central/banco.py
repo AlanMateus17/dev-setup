@@ -12,6 +12,7 @@ import json
 import os
 import secrets
 import sqlite3
+import tempfile
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -66,11 +67,80 @@ MIGRACOES: list[str] = [
       executado TEXT, execucoes TEXT NOT NULL DEFAULT '[]');
     CREATE INDEX central_prompts_origem ON central_prompts (organizacao_id, origem, criado);
     """,
+    # 3 · auditoria assinada com HMAC (chave fora do banco) e aprovação guarda o pedido original para reconferir
+    """
+    ALTER TABLE central_auditoria ADD COLUMN assinatura INTEGER NOT NULL DEFAULT 1;
+    ALTER TABLE central_aprovacoes ADD COLUMN pedido TEXT NOT NULL DEFAULT '';
+    """,
+    # 4 · marca no banco que a auditoria passou a ser assinada: depois disso, chave ou âncora sumida = alteração
+    """
+    CREATE TABLE central_config (chave TEXT PRIMARY KEY, valor TEXT NOT NULL);
+    """,
 ]
 
 
 def caminho_padrao() -> Path:
     return Path(os.environ.get("NUCLEO_DB") or Path.home() / ".local" / "share" / "nucleo" / "nucleo.db")
+
+
+def pasta_segredos() -> Path:
+    """Fora do nucleo.db e fora do Git: quem consegue mexer no banco não consegue refazer a assinatura."""
+    p = Path(os.environ.get("AMTECH_CENTRAL_SEGREDOS") or Path.home() / ".config" / "amtech")
+    p.mkdir(parents=True, exist_ok=True, mode=0o700)
+    return p
+
+
+def chave_auditoria() -> bytes:
+    """Cria a chave uma vez só, mesmo com várias gravações ao mesmo tempo: escreve num temporário e liga no lugar
+    (os.link falha se outro processo chegou antes, e aí vale a dele). Chave vazia ou curta é recusada."""
+    pasta = pasta_segredos()
+    arq = pasta / "central-auditoria.key"
+    if not arq.exists():
+        fd, tmp = tempfile.mkstemp(prefix=".chave-", dir=pasta)
+        try:
+            with os.fdopen(fd, "w") as f:
+                f.write(secrets.token_hex(32))
+            os.chmod(tmp, 0o600)
+            try:
+                os.link(tmp, arq)
+            except FileExistsError:
+                pass
+        finally:
+            os.unlink(tmp)
+    chave = bytes.fromhex(arq.read_text().strip())
+    if len(chave) < 32:
+        raise RuntimeError(f"chave da auditoria inválida em {arq}")
+    return chave
+
+
+def _ancora() -> Path:
+    return pasta_segredos() / "central-auditoria.ancora"
+
+
+def _mac_ancora(ultimo: int, h: str, primeiro: int, chave: bytes) -> str:
+    return hmac.new(chave, f"{ultimo} {h} {primeiro}".encode(), hashlib.sha256).hexdigest()
+
+
+def _ler_ancora(chave: bytes) -> tuple[int, str, int] | None:
+    """(último id, último hash, id da primeira linha assinada) se a âncora existir e a assinatura dela bater; senão None."""
+    try:
+        ultimo, h, primeiro, mac = _ancora().read_text().split()
+        ultimo_i, primeiro_i = int(ultimo), int(primeiro)
+    except (OSError, ValueError):
+        return None
+    if not hmac.compare_digest(mac, _mac_ancora(ultimo_i, h, primeiro_i, chave)):
+        return None
+    return ultimo_i, h, primeiro_i
+
+
+def _gravar_ancora(ultimo: int, h: str, primeiro: int, chave: bytes) -> None:
+    """Arquivo temporário único na mesma pasta e troca atômica: dois processos gravando ao mesmo tempo não se atrapalham."""
+    pasta = pasta_segredos()
+    fd, tmp = tempfile.mkstemp(prefix=".ancora-", dir=pasta)
+    with os.fdopen(fd, "w") as f:
+        f.write(f"{ultimo} {h} {primeiro} {_mac_ancora(ultimo, h, primeiro, chave)}\n")
+    os.chmod(tmp, 0o600)
+    os.replace(tmp, _ancora())
 
 
 def agora() -> datetime:
@@ -221,9 +291,12 @@ def encerrar_sessao(con: sqlite3.Connection, token: str) -> None:
 
 
 # ------------------------------------------------------------------ auditoria
-def _hash_auditoria(anterior: str, campos: dict) -> str:
-    texto = anterior + json.dumps(campos, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
-    return hashlib.sha256(texto.encode()).hexdigest()
+def _hash_auditoria(anterior: str, campos: dict, assinatura: int = 2, chave: bytes | None = None) -> str:
+    """assinatura 1: SHA-256 puro (linhas da v1, antes da chave); 2: HMAC-SHA256 com a chave fora do banco."""
+    texto = (anterior + json.dumps(campos, ensure_ascii=False, sort_keys=True, separators=(",", ":"))).encode()
+    if assinatura == 1:
+        return hashlib.sha256(texto).hexdigest()
+    return hmac.new(chave or chave_auditoria(), texto, hashlib.sha256).hexdigest()
 
 
 _CAMPOS_AUDITORIA = ("quando", "organizacao_id", "usuario_id", "origem", "acao", "alvo", "nivel", "resultado")
@@ -231,41 +304,92 @@ _CAMPOS_AUDITORIA = ("quando", "organizacao_id", "usuario_id", "origem", "acao",
 
 def auditar(con: sqlite3.Connection, acao: str, *, origem: str = "web", organizacao_id: int | None = None,
             usuario_id: int | None = None, alvo: str = "", nivel: str = "", resultado: str = "") -> None:
+    """Grava a linha e a âncora dentro da mesma trava do banco (BEGIN IMMEDIATE): a âncora nunca fica para trás."""
+    chave = chave_auditoria()
     con.execute("BEGIN IMMEDIATE")
     try:
         ult = con.execute("SELECT hash FROM central_auditoria ORDER BY id DESC LIMIT 1").fetchone()
         anterior = ult[0] if ult else INICIO_CORRENTE
         campos = {"quando": _iso(agora()), "organizacao_id": organizacao_id, "usuario_id": usuario_id, "origem": origem,
                   "acao": acao, "alvo": alvo[:500], "nivel": nivel, "resultado": resultado[:500]}
-        con.execute(f"INSERT INTO central_auditoria ({', '.join(_CAMPOS_AUDITORIA)}, hash_anterior, hash) "
-                    f"VALUES ({', '.join('?' * len(_CAMPOS_AUDITORIA))}, ?, ?)",
-                    (*[campos[c] for c in _CAMPOS_AUDITORIA], anterior, _hash_auditoria(anterior, campos)))
+        h = _hash_auditoria(anterior, campos, 2, chave)
+        cur = con.execute(f"INSERT INTO central_auditoria ({', '.join(_CAMPOS_AUDITORIA)}, hash_anterior, hash, assinatura) "
+                          f"VALUES ({', '.join('?' * len(_CAMPOS_AUDITORIA))}, ?, ?, 2)",
+                          (*[campos[c] for c in _CAMPOS_AUDITORIA], anterior, h))
+        primeiro = con.execute("SELECT MIN(id) FROM central_auditoria WHERE assinatura = 2").fetchone()[0]
+        con.execute("INSERT OR IGNORE INTO central_config VALUES ('auditoria_assinada_desde', ?)", (str(primeiro),))
+        _gravar_ancora(cur.lastrowid, h, primeiro, chave)
         con.execute("COMMIT")
     except Exception:
-        con.execute("ROLLBACK")
+        if con.in_transaction:
+            con.execute("ROLLBACK")
         raise
 
 
 def verificar_auditoria(con: sqlite3.Connection) -> tuple[bool, int | None]:
+    """Confere a corrente inteira contra a âncora assinada.
+
+    - A âncora (assinada com a chave) diz qual é a última linha e onde começam as linhas assinadas.
+    - Linhas da v1 (SHA-256 puro) só valem antes desse ponto; dali em diante, toda linha precisa da chave.
+    - Sem âncora válida, só passa uma tabela 100% da v1 sem nenhuma chave criada ainda (o primeiro uso).
+    """
+    linhas = con.execute("SELECT * FROM central_auditoria ORDER BY id").fetchall()
+    chave_existe = (pasta_segredos() / "central-auditoria.key").exists()
+    assinada = con.execute("SELECT valor FROM central_config WHERE chave = 'auditoria_assinada_desde'").fetchone()
+    if not chave_existe and assinada:
+        return False, int(assinada[0])  # já foi assinada e a chave sumiu: alteração
+    if not chave_existe:
+        anterior = INICIO_CORRENTE
+        for linha in linhas:
+            campos = {c: linha[c] for c in _CAMPOS_AUDITORIA}
+            if linha["assinatura"] != 1 or linha["hash_anterior"] != anterior or linha["hash"] != _hash_auditoria(anterior, campos, 1):
+                return False, linha["id"]
+            anterior = linha["hash"]
+        return True, None
+    chave = chave_auditoria()
+    ancora = _ler_ancora(chave)
+    if ancora is None:
+        return False, (linhas[0]["id"] if linhas else 0)  # âncora apagada ou falsificada
+    ultimo, h_ultimo, primeiro = ancora
     anterior = INICIO_CORRENTE
-    for linha in con.execute("SELECT * FROM central_auditoria ORDER BY id"):
+    for linha in linhas:
         campos = {c: linha[c] for c in _CAMPOS_AUDITORIA}
-        if linha["hash_anterior"] != anterior or linha["hash"] != _hash_auditoria(anterior, campos):
+        esperada = 2 if linha["id"] >= primeiro else 1
+        if (linha["assinatura"] != esperada or linha["hash_anterior"] != anterior
+                or linha["hash"] != _hash_auditoria(anterior, campos, esperada, chave)):
             return False, linha["id"]
         anterior = linha["hash"]
+    if not linhas or linhas[-1]["id"] != ultimo or anterior != h_ultimo:
+        return False, (linhas[-1]["id"] + 1 if linhas else ultimo)
     return True, None
+
+
+def auditoria_resumo(con: sqlite3.Connection) -> bool:
+    """Conferência barata (só a última linha contra a âncora assinada) para telas que abrem o tempo todo."""
+    if not (pasta_segredos() / "central-auditoria.key").exists():
+        return con.execute("SELECT 1 FROM central_config WHERE chave = 'auditoria_assinada_desde'").fetchone() is None
+    ancora = _ler_ancora(chave_auditoria())
+    ult = con.execute("SELECT id, hash FROM central_auditoria ORDER BY id DESC LIMIT 1").fetchone()
+    return ancora is not None and ult is not None and (ancora[0], ancora[1]) == (ult["id"], ult["hash"])
 
 
 # ------------------------------------------------------------------ aprovações
 def criar_aprovacao(con: sqlite3.Connection, organizacao_id: int, receita: str, args: list[str], pedido_por: int | None,
-                    origem: str, validade_min: int) -> str:
+                    origem: str, validade_min: int, pedido: dict | None = None) -> str:
+    """pedido = {campos, opcoes, subcomando}: na hora de aprovar, a allowlist é conferida de novo com ele."""
     id_ = secrets.token_hex(6)
     t = agora()
-    con.execute("INSERT INTO central_aprovacoes (id, organizacao_id, receita, args, pedido_por, origem, criado, expira) "
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+    con.execute("INSERT INTO central_aprovacoes (id, organizacao_id, receita, args, pedido_por, origem, criado, expira, pedido) "
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 (id_, organizacao_id, receita, json.dumps(args, ensure_ascii=False), pedido_por, origem, _iso(t),
-                 _iso(t + timedelta(minutes=validade_min))))
+                 _iso(t + timedelta(minutes=validade_min)), json.dumps(pedido or {}, ensure_ascii=False)))
     return id_
+
+
+def devolver_aprovacao(con: sqlite3.Connection, id_: str) -> None:
+    """A execução não começou (fila cheia): a aprovação volta a pendente, para não se perder."""
+    con.execute("UPDATE central_aprovacoes SET estado = 'pendente', decidido_por = NULL, decidido_em = NULL "
+                "WHERE id = ? AND estado = 'aprovada' AND execucao_id IS NULL", (id_,))
 
 
 def expirar_aprovacoes(con: sqlite3.Connection) -> int:

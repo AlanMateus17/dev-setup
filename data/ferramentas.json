@@ -2392,6 +2392,23 @@
    "doc": "Comandos fixos pelo Telegram (só o chat do Alan)"
   },
   {
+   "id": "svc-central",
+   "nome": "Central AMtech",
+   "tipo": "systemd",
+   "grupo": "Serviços do Ubuntu",
+   "fonte": "scripts/wsl/ligar-tudo.sh",
+   "codigo_aberto": true,
+   "obrigatoria": false,
+   "perfil": "sempre",
+   "decisao": "normal",
+   "conferir": {
+    "systemd": "amtech-central"
+   },
+   "instalar": "(manual) crie o usuário com: just central-usuario alan; depois: just ligar",
+   "acesso_externo": "Nenhum: só 127.0.0.1:8700 (celular só pelo Tailscale, fase seguinte)",
+   "doc": "Tela única do setup: pedido em português, roteiro, estudo, empresas, serviços, núcleo e aprovações (ADR 0023)"
+  },
+  {
    "id": "svc-pipeline",
    "nome": "Pipeline de conteúdo",
    "tipo": "systemd",

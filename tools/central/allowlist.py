@@ -41,9 +41,10 @@ def receitas_do_justfile(raiz: Path = RAIZ) -> dict[str, dict]:
             continue
         m = RECEITA_RE.match(linha)
         if m and ":=" not in linha.split(":", 1)[0] + ":" + linha.split(":", 1)[1][:1]:
-            params = [p.lstrip("+*$").split("=")[0] for p in m.group(2).split()]
+            tokens = m.group(2).split()
+            params = [p.lstrip("+*$").split("=")[0] for p in tokens]
             atual = m.group(1)
-            receitas[atual] = {"params": params, "corpo": []}
+            receitas[atual] = {"params": params, "variadico": any(t.startswith(("*", "+")) for t in tokens), "corpo": []}
     return receitas
 
 
@@ -79,6 +80,16 @@ def checar(raiz: Path = RAIZ) -> list[str]:
                 _padrao(dados, ref)
             except re.error as e:
                 erros.append(f"{nome}: padrão {ref!r} inválido: {e}")
+        opcoes_todas = set(r.get("opcoes", [])) | set(r.get("opcoes_pede_ok", []))
+        for chave in ("opcoes_so_leitura", "opcoes_regra"):
+            if not set(r.get(chave, [])) <= set(r.get("opcoes", [])):
+                erros.append(f"{nome}: {chave} precisa estar em opcoes")
+        if nome in justfile and r.get("nivel") in EXECUTAVEIS and not justfile[nome]["variadico"]:
+            # um argumento a mais vira OUTRA receita para o just: só receitas variádicas aceitam listas e opções
+            if r.get("subcomandos") or opcoes_todas or any(a.get("repetir") or a.get("flag") for a in r.get("args", [])):
+                erros.append(f"{nome}: tem subcomandos, opções, repetir ou flag, mas a receita não é variádica (*args) no justfile")
+            elif len(r.get("args", [])) > len(justfile[nome]["params"]):
+                erros.append(f"{nome}: {len(r.get('args', []))} campos, mas a receita só tem {len(justfile[nome]['params'])} parâmetro(s)")
         if r.get("gatilhos") and r.get("nivel") not in EXECUTAVEIS:
             erros.append(f"{nome}: tem gatilhos, mas não roda pela Central")
         for sub in r.get("gatilhos_sub", {}):
@@ -174,6 +185,9 @@ def montar(dados: dict, receita: str, campos: dict | None = None, opcoes: list[s
             nivel = nivel_maior(nivel, "pede-ok")
         if o not in args:
             args.append(o)
+    so_leitura = set(r.get("opcoes_so_leitura", []))
+    if so_leitura and set(opcoes) & so_leitura and nivel == r["nivel"]:  # só baixa se nada (subcomando, opção) subiu o nível
+        nivel = "automatico"  # ex.: site --checar só confere; sem ele, recria o site
     return args, nivel
 
 

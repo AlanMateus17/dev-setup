@@ -41,3 +41,8 @@ code { font-size:.85em; word-break:break-all; }
 .pedido form { display:flex; flex-direction:column; gap:.5rem; }
 .pedido-texto { font-size:1.1rem; font-weight:600; }
 ol li { margin:.35rem 0; }
+form.inline { display:inline; margin:0; }
+progress { width:7rem; vertical-align:middle; accent-color:var(--marca); }
+.linha > span { flex:1; align-self:center; }
+.linha input { flex:1; margin-top:0; }
+details > summary { list-style-position:outside; }

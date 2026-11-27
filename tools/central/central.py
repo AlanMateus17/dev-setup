@@ -77,7 +77,11 @@ def usuario(nome: str, papel: str) -> int:
         return 1
     finally:
         con.close()
-    print(f"Usuário '{nome}' pronto ({papel}). Guarde a senha no KeePassXC. Agora: just central")
+    marca = Path.home() / ".config" / "amtech"
+    marca.mkdir(parents=True, exist_ok=True, mode=0o700)
+    (marca / "central-usuario").touch()  # o just ligar passa a manter a Central no ar (amtech-central)
+    print(f"Usuário '{nome}' pronto ({papel}). Guarde a senha no KeePassXC.")
+    print("Agora: just ligar (deixa a Central sempre no ar) ou just central (só enquanto o terminal estiver aberto).")
     return 0
 
 

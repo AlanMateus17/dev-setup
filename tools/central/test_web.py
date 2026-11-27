@@ -1,6 +1,8 @@
 """Testes de ponta a ponta da Central, com um 'just' falso. Precisam de fastapi e httpx; sem eles, são pulados.
 No CI: pip install -r tools/central/requirements.txt httpx."""
+import os
 import re
+import sqlite3
 import sys
 import tempfile
 import time
@@ -36,6 +38,10 @@ class TestCentral(unittest.TestCase):
                          encoding="utf-8")
         falso.chmod(0o755)
         self.caminho = t / "nucleo.db"
+        self._nucleo_db = os.environ.get("NUCLEO_DB")
+        os.environ["NUCLEO_DB"] = str(self.caminho)  # o núcleo (agenda.py, nucleo.py) usa o mesmo banco de teste
+        self._seg = os.environ.get("AMTECH_CENTRAL_SEGREDOS")
+        os.environ["AMTECH_CENTRAL_SEGREDOS"] = str(t / "segredos")
         banco.migrar(self.caminho)
         con = banco.abrir(self.caminho)
         banco.salvar_usuario(con, "alan", SENHA)
@@ -47,7 +53,19 @@ class TestCentral(unittest.TestCase):
 
     def tearDown(self):
         import prompt
+        for _ in range(100):  # execuções em segundo plano terminam antes de apagar a pasta temporária
+            if self.ex.em_andamento() == 0:
+                break
+            time.sleep(0.05)
         prompt.ia_local_no_ar, prompt.chamar_ollama = self._ia
+        if self._seg is None:
+            os.environ.pop("AMTECH_CENTRAL_SEGREDOS", None)
+        else:
+            os.environ["AMTECH_CENTRAL_SEGREDOS"] = self._seg
+        if self._nucleo_db is None:
+            os.environ.pop("NUCLEO_DB", None)
+        else:
+            os.environ["NUCLEO_DB"] = self._nucleo_db
         self.tmp.cleanup()
 
     def entrar(self, usuario="alan", senha=SENHA):
@@ -64,7 +82,7 @@ class TestCentral(unittest.TestCase):
             time.sleep(0.05)
 
     def test_sem_login_nao_entra(self):
-        for url in ("/", "/comandos", "/aprovar", "/auditoria"):
+        for url in ("/", "/comandos", "/aprovar", "/auditoria", "/roteiro", "/estudo", "/empresas", "/servicos", "/nucleo", "/ajuda"):
             self.assertEqual(self.c.get(url, follow_redirects=False).status_code, 303, url)
         self.assertEqual(self.c.get("/api/status").status_code, 401)
 
@@ -73,6 +91,12 @@ class TestCentral(unittest.TestCase):
         self.entrar()
         r = self.c.post("/rodar", data={"csrf": self.csrf, "receita": "agora"}, headers={"origin": "http://evil.com"})
         self.assertEqual(r.status_code, 403)
+        for origem in ("http://127.0.0.1:3000", "null", "http://127.0.0.1"):
+            r = self.c.post("/rodar", data={"csrf": self.csrf, "receita": "agora"}, headers={"origin": origem})
+            self.assertEqual(r.status_code, 403, origem)
+        r = self.c.post("/rodar", data={"csrf": self.csrf, "receita": "agora"}, headers={"origin": "http://127.0.0.1:8700"},
+                        follow_redirects=False)
+        self.assertEqual(r.status_code, 303)
 
     def test_login_errado(self):
         self.assertEqual(self.entrar(senha="errada-errada").status_code, 401)
@@ -208,6 +232,82 @@ class TestCentral(unittest.TestCase):
         for _ in range(3):
             self.pedir("quais pendências eu tenho mesmo")
         self.assertIn("Virar regra", self.c.get("/").text)
+
+    # ------------------------------------------------------------------ telas de dados
+    def test_telas_de_dados_abrem(self):
+        self.entrar()
+        esperado = {"/roteiro": "O que é seu agora", "/estudo": "Revisões vencidas", "/empresas": "Onda 0",
+                    "/servicos": "Ferramentas com tela", "/nucleo": "Tarefas abertas", "/ajuda": "Quanto custa"}
+        for url, texto in esperado.items():
+            r = self.c.get(url)
+            self.assertEqual(r.status_code, 200, url)
+            self.assertIn(texto, r.text, url)
+            self.assertNotIn("Não consegui montar", r.text, url)
+
+    def test_roteiro_feito(self):
+        self.entrar()
+        passo = re.search(r'name="passo" value="([^"]+)"', self.c.get("/roteiro").text).group(1)
+        self.assertEqual(self.c.post("/roteiro/feito", data={"csrf": "x", "passo": passo}).status_code, 403)
+        r = self.c.post("/roteiro/feito", data={"csrf": self.csrf, "passo": passo}, follow_redirects=False)
+        self.assertEqual(r.status_code, 303)
+        con = sqlite3.connect(self.caminho)
+        self.assertIn((passo,), con.execute("SELECT passo FROM passos_feitos").fetchall())
+        con.close()
+        self.assertEqual(self.c.post("/roteiro/feito", data={"csrf": self.csrf, "passo": "nao-existe; drop"}).status_code, 400)
+        self.c.post("/roteiro/feito", data={"csrf": self.csrf, "passo": "f0"})
+        con = sqlite3.connect(self.caminho)
+        feitos = {r[0] for r in con.execute("SELECT passo FROM passos_feitos")}
+        con.close()
+        self.assertIn("diag-pasta", feitos, "marcar a fase f0 marca todos os passos dela")
+
+    def test_nucleo_lembrar_buscar_e_tarefas(self):
+        self.entrar()
+        self.c.post("/nucleo/lembrar", data={"csrf": self.csrf, "texto": "Kamal na t4g precisa de arm64", "tipo": "licao"})
+        self.assertIn("Kamal", self.c.get("/nucleo", params={"q": "kamal arm"}).text)
+        self.assertEqual(self.c.post("/nucleo/lembrar", data={"csrf": self.csrf, "texto": "x", "tipo": "root"}).status_code, 400)
+        self.c.post("/nucleo/tarefa-nova", data={"csrf": self.csrf, "titulo": "Ligar o HD externo"})
+        tela = self.c.get("/nucleo").text
+        self.assertIn("Ligar o HD externo", tela)
+        tid = re.search(r'name="id" value="(\d+)"', tela).group(1)
+        self.c.post("/nucleo/tarefa", data={"csrf": self.csrf, "id": tid})
+        self.assertNotIn("Ligar o HD externo", self.c.get("/nucleo").text)
+        self.assertIn("nucleo.tarefa-feita", self.c.get("/auditoria").text)
+
+    def test_leitor_nao_muda_o_nucleo(self):
+        self.entrar("visita")
+        r = self.c.post("/nucleo/tarefa-nova", data={"csrf": self.csrf, "titulo": "x"})
+        self.assertEqual(r.status_code, 403)
+
+    # ------------------------------------------------------------------ achados da revisão independente
+    def test_aprovacao_nao_se_perde_sem_vaga(self):
+        self.entrar()
+        self.c.post("/rodar", data={"csrf": self.csrf, "receita": "backup"})
+        aid = re.search(r'action="/aprovar/([0-9a-f]+)"', self.c.get("/aprovar").text).group(1)
+        self.ex.sem_vaga = lambda receitas: "sem vaga agora"
+        r = self.c.post(f"/aprovar/{aid}", data={"csrf": self.csrf, "acao": "aprovar"})
+        self.assertEqual(r.status_code, 409)
+        self.assertIn(f'action="/aprovar/{aid}"', self.c.get("/aprovar").text, "a aprovação deveria continuar pendente")
+
+    def test_plano_nao_se_gasta_sem_vaga(self):
+        import prompt
+        prompt.ia_local_no_ar = lambda: False
+        self.entrar()
+        url = self.pedir("lembre que o HD está na gaveta").headers["location"]
+        self.ex.sem_vaga = lambda receitas: "sem vaga agora"
+        self.assertEqual(self.c.post(url + "/executar", data={"csrf": self.csrf}).status_code, 409)
+        self.assertIn("Executar plano", self.c.get(url).text, "o plano deveria continuar disponível")
+
+    def test_aprovacao_reconfere_a_allowlist(self):
+        self.entrar()
+        self.c.post("/rodar", data={"csrf": self.csrf, "receita": "colher", "a_etapa": "0.2"})
+        aid = re.search(r'action="/aprovar/([0-9a-f]+)"', self.c.get("/aprovar").text).group(1)
+        con = sqlite3.connect(self.caminho)
+        con.execute("UPDATE central_aprovacoes SET args = ? WHERE id = ?", ('["0.3"]', aid))  # argumentos trocados no banco
+        con.commit()
+        con.close()
+        r = self.c.post(f"/aprovar/{aid}", data={"csrf": self.csrf, "acao": "aprovar"})
+        self.assertEqual(r.status_code, 409)
+        self.assertFalse(self.registro.exists())
 
 
 if __name__ == "__main__":

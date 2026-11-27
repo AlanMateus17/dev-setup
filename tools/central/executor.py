@@ -9,6 +9,7 @@ import json
 import os
 import re
 import secrets
+import select
 import subprocess
 import sys
 import threading
@@ -20,6 +21,7 @@ import banco
 
 ANSI = re.compile(r"\x1b\[[0-9;?]*[A-Za-z]")
 SAIDA_MAX = 20_000
+LINHAS_MAX = 5_000  # em memória, por execução; o começo é descartado e a tela avisa
 # Só o que as receitas precisam para funcionar no WSL; nada de token, chave ou senha.
 AMBIENTE_PERMITIDO = ("PATH", "HOME", "USER", "LOGNAME", "LANG", "LC_ALL", "TZ", "SHELL",
                       "XDG_RUNTIME_DIR", "DBUS_SESSION_BUS_ADDRESS", "WSL_DISTRO_NAME", "WSL_INTEROP", "WSLENV",
@@ -39,8 +41,17 @@ class Execucao:
     id: str
     receita: str
     linhas: list[str] = field(default_factory=list)
+    descartadas: int = 0
     fim: bool = False
     codigo: int | None = None
+    morta: bool = False
+
+    def anotar(self, linha: str) -> None:
+        self.linhas.append(linha)
+        if len(self.linhas) > LINHAS_MAX:
+            corte = len(self.linhas) - LINHAS_MAX
+            del self.linhas[:corte]
+            self.descartadas += corte
 
 
 class Executor:
@@ -57,6 +68,17 @@ class Executor:
     def em_andamento(self) -> int:
         with self._trava:
             return sum(1 for e in self._vivas.values() if not e.fim)
+
+    def sem_vaga(self, receitas: list[str]) -> str | None:
+        """Confere ANTES de gastar uma aprovação ou um plano: há vaga para todas estas receitas agora?"""
+        with self._trava:
+            ativas = [e.receita for e in self._vivas.values() if not e.fim]
+        if len(ativas) + len(receitas) > self.max_simultaneas:
+            return f"já há {len(ativas)} receita(s) rodando; espere uma terminar e tente de novo (nada foi gasto)"
+        repetidas = sorted(set(receitas) & set(ativas)) or sorted({r for r in receitas if receitas.count(r) > 1})
+        if repetidas:
+            return f"'{repetidas[0]}' já está rodando; espere terminar e tente de novo (nada foi gasto)"
+        return None
 
     def iniciar(self, receita: str, args: list[str], *, nivel: str, organizacao_id: int, usuario_id: int | None,
                 origem: str, timeout: int = 900, python: str | None = None) -> str:
@@ -92,23 +114,55 @@ class Executor:
         inicio = time.monotonic()
         try:
             proc = subprocess.Popen(cmd, cwd=self.raiz, env=ambiente_minimo(), stdin=subprocess.DEVNULL,
-                                    stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, errors="replace",
-                                    bufsize=1, shell=False, start_new_session=True)
+                                    stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=0, shell=False,
+                                    start_new_session=True)
         except OSError as e:
-            ex.linhas.append(f"Não consegui rodar o just: {e}")
+            ex.anotar(f"Não consegui rodar o just: {e}")
             self._terminar(ex, 127, nivel, org, usuario, origem)
             return
         relogio = threading.Timer(timeout, self._matar, args=(proc, ex, timeout))
         relogio.start()
         try:
-            for linha in proc.stdout:
-                ex.linhas.append(ANSI.sub("", linha.rstrip("\n")))
-            codigo = proc.wait()
+            self._ler_saida(proc, ex)
+            try:
+                codigo = proc.wait(timeout=30)
+            except subprocess.TimeoutExpired:
+                proc.kill()
+                codigo = proc.wait()
         finally:
             relogio.cancel()
             proc.stdout.close()
-        ex.linhas.append(f"— terminou em {time.monotonic() - inicio:.1f} s, código {codigo}")
+        ex.anotar(f"— terminou em {time.monotonic() - inicio:.1f} s, código {codigo}")
         self._terminar(ex, codigo, nivel, org, usuario, origem)
+
+    @staticmethod
+    def _ler_saida(proc: subprocess.Popen, ex: Execucao) -> None:
+        """Lê com prazo: um filho que escapou do grupo (ex.: um serviço que a receita sobe) pode segurar a saída aberta
+        sem escrever nada. Para quando o tempo esgota ou quando o processo da receita já terminou e a saída ficou quieta."""
+        fd = proc.stdout.fileno()
+        resto = b""
+        terminou_em = None
+        while True:
+            if terminou_em is None and proc.poll() is not None:
+                terminou_em = time.monotonic()
+            if terminou_em is not None and time.monotonic() - terminou_em > 2:
+                break  # a receita acabou; o que um filho que escapou continuar escrevendo não é dela
+            pronto, _, _ = select.select([fd], [], [], 0.5)
+            if pronto:
+                try:
+                    bloco = os.read(fd, 65536)
+                except OSError:
+                    break
+                if not bloco:
+                    break
+                resto += bloco
+                *linhas, resto = resto.split(b"\n")
+                for linha in linhas:
+                    ex.anotar(ANSI.sub("", linha.decode("utf-8", "replace").rstrip("\r")))
+            elif ex.morta or proc.poll() is not None:
+                break
+        if resto:
+            ex.anotar(ANSI.sub("", resto.decode("utf-8", "replace")))
 
     def _rodar_python(self, ex: Execucao, args, _timeout, python, nivel, org, usuario, origem) -> None:
         codigo = 0
@@ -117,24 +171,25 @@ class Executor:
                 sys.path.insert(0, str(self.raiz / "tools" / "remoto"))
                 import fila  # noqa: PLC0415
                 item = fila.adicionar(args[0])
-                ex.linhas.append(f"Na fila: {item['id']} ({item['repo']}). O resultado volta como PR em rascunho.")
+                ex.anotar(f"Na fila: {item['id']} ({item['repo']}). O resultado volta como PR em rascunho.")
             else:
                 raise RuntimeError(f"ação Python desconhecida: {python}")
         except Exception as e:  # noqa: BLE001
-            ex.linhas.append(f"Falhou: {e}")
+            ex.anotar(f"Falhou: {e}")
             codigo = 1
         self._terminar(ex, codigo, nivel, org, usuario, origem)
 
     @staticmethod
     def _matar(proc: subprocess.Popen, ex: Execucao, timeout: int) -> None:
-        ex.linhas.append(f"— tempo esgotado ({timeout} s): parando")
+        ex.anotar(f"— tempo esgotado ({timeout} s): parando")
+        ex.morta = True
         try:
             os.killpg(proc.pid, 15)
         except OSError:
             proc.kill()
 
     def _terminar(self, ex: Execucao, codigo: int, nivel, org, usuario, origem) -> None:
-        saida = "\n".join(ex.linhas)
+        saida = (f"… ({ex.descartadas} linhas do começo descartadas) …\n" if ex.descartadas else "") + "\n".join(ex.linhas)
         if len(saida) > SAIDA_MAX:
             saida = saida[:SAIDA_MAX // 2] + "\n… (cortado) …\n" + saida[-SAIDA_MAX // 2:]
         con = banco.abrir(self.caminho_banco)
@@ -152,11 +207,14 @@ class Executor:
             except Exception:  # noqa: BLE001  aviso nunca derruba a execução
                 pass
 
-    def ler(self, id_: str, desde: int) -> tuple[list[str], bool, int | None] | None:
+    def ler(self, id_: str, desde: int) -> tuple[list[str], bool, int | None, int] | None:
+        """desde = posição absoluta já entregue à tela. Devolve (linhas novas, terminou, código, nova posição absoluta)."""
         ex = self._vivas.get(id_)
         if ex is None:
             return None
-        return ex.linhas[desde:], ex.fim, ex.codigo
+        linhas, descartadas = list(ex.linhas), ex.descartadas
+        inicio = max(0, desde - descartadas)
+        return linhas[inicio:], ex.fim, ex.codigo, descartadas + len(linhas)
 
 
 def avisar_telegram(raiz: Path):

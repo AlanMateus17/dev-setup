@@ -36,7 +36,10 @@ confirmação e auditoria desde a v1, e usuários, permissões e `organizacao_id
    O executor chama `just --justfile … <receita> <args>` com `shell=False`, ambiente mínimo (sem token do Telegram, chaves de API ou `GH_TOKEN`), tempo limite e saída ao vivo por SSE. O `pedir` chama `fila.adicionar()` direto, sem passar pelo bash.
 4. **Banco:** tabelas `central_*` dentro do `nucleo.db`, que já está no backup, com migrações numeradas (`central_migracoes`):
    - organizações, papéis (`dono`, `leitor`, `bot`), usuários com `organizacao_id`, sessões, execuções e aprovações;
-   - `central_auditoria` com corrente de hash, conferida por `central.py verificar` e na tela Auditoria.
+   - `central_auditoria` com corrente assinada por HMAC-SHA256 (chave em `~/.config/amtech/central-auditoria.key`, 0600, fora do
+     banco e do Git) e âncora da última linha (`central-auditoria.ancora`), conferida por `central.py verificar` e na tela Auditoria.
+     Linhas da v1 (SHA-256 puro) só valem antes da primeira linha assinada. Quem tem acesso à sua conta no Ubuntu consegue mexer na
+     chave também: a auditoria protege contra mudança no banco e contra engano, não contra quem já controla a sua máquina.
 
    A tabela `auditoria` antiga do núcleo continua como está (o `nucleo.py` a usa); juntar as duas fica para quando o bot virar cliente da API.
 5. **Login:**
@@ -60,6 +63,13 @@ confirmação e auditoria desde a v1, e usuários, permissões e `organizacao_id
    veio de regra fixa e é `automatico`; o resto pede um clique em "Executar plano", e o que é `pede-ok` ainda vai para Aprovar.
    Cada pedido fica em `central_prompts` (migração 2), com origem e tokens: o que a IA local resolver 3 vezes do mesmo jeito aparece
    na tela Hoje como sugestão de virar regra (regra de três da ADR 0014).
+
+8. **Telas de dados sem reescrever nada** (`tools/central/telas.py`): Roteiro, Estudo, Empresas e rendas, Serviços e Núcleo leem
+   `data/implantacao.json`, `data/portfolio.json`, `data/empresas.json`, `data/portas.json`, `data/ferramentas.json` e o `nucleo.db`,
+   e chamam `agenda.py` (pendentes, progresso, marcar) e `nucleo.py` (buscar, lembrar, tarefas). Toda ação delas exige login, CSRF,
+   papel com nível `avisa` e vai para a auditoria.
+9. **Serviço `amtech-central`** (systemd do usuário) no `just ligar`, depois que `just central-usuario` cria o primeiro usuário:
+   a Central fica no ar como a fila e o bot, sem depender de um terminal aberto. Registrada em `data/ferramentas.json` (`svc-central`).
 
 ## Consequências
 
