@@ -1,4 +1,4 @@
 # Central AMtech: dependências fixas (ADR 0023). Atualize de propósito, uma por vez, com o teste passando.
 fastapi==0.115.12
 uvicorn==0.34.2
-python-multipart==0.0.20
+python-multipart==0.0.33
