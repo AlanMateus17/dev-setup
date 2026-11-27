@@ -4,6 +4,26 @@
 
 [← Índice da documentação](../README.md) · Prompts por fase: [PROMPTS.md](PROMPTS.md) · Protótipo: [prototipo/index.html](prototipo/index.html) (também publicado no Claude como artefato “Central AMtech”)
 
+## v1 pronta (2.61.0): como usar
+
+No Ubuntu, em `~/dev/dev-setup`:
+
+```bash
+just central-usuario alan   # uma vez: cria o usuário (a senha vai para o KeePassXC)
+just central                # sobe em http://127.0.0.1:8700; abra no navegador do Windows
+```
+
+| Tela | O que faz |
+|---|---|
+| **Hoje** | Aprovações pendentes, botões rápidos (`agora`, `professor hoje`, `fila`, `tarefas`, `ligado`, `validar --rapido`), pedir código e guardar no núcleo, últimas execuções |
+| **Comandos** | Todas as receitas de `data/central.json` por área, com formulário dos argumentos; as proibidas não aparecem |
+| **Aprovar** | Receitas que pedem aprovação: ✅ roda, ❌ recusa; vale 30 min e uma vez só; o merge pede o número do PR |
+| **Execução** | Saída ao vivo |
+| **Auditoria** | Quem fez o quê, e se a corrente de hash está íntegra |
+
+Arquitetura e decisões: [ADR 0023](../adr/0023-arquitetura-da-central.md). Mudar o que a Central pode rodar é editar
+`data/central.json` e passar no `just check`.
+
 **Objetivo:** abrir uma tela só, no notebook ou no celular, e daí ver o que espera você, rodar qualquer receita do `just`, mandar pedidos para a fila, estudar, acompanhar as empresas e os serviços, sem lembrar de comandos, portas ou de qual HTML abrir.
 
 **Regra de ouro:** a Central não decide nem guarda nada sozinha. Ela é a tela de cima do que já existe: `justfile`, `tools/*.py`, `nucleo.db`, fila e motor. Mudou o dado, mudou a tela.

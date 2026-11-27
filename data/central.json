@@ -1,0 +1,829 @@
+{
+ "_leia": "Allowlist da Central (ADR 0023). A Central e o bot só mostram e rodam o que está aqui; o just check falha se uma receita do justfile não estiver classificada ou se alguma receita colar argumento no texto do bash. Níveis: automatico (roda), avisa (roda e avisa no Telegram), pede-ok (só com aprovação, 30 min, uso único), so-terminal (aparece, mas roda só no terminal: falta formulário ou pede interação), proibido (não aparece). Padrões: regex que o valor precisa casar por inteiro; 'texto:N' é texto livre de até N caracteres, que vai como um argumento só.",
+ "versao": 1,
+ "padroes": {
+  "etapa": "^H?[0-9]{1,2}(\\.[0-9]{1,2}){0,2}$",
+  "numero": "^[0-9]{1,6}$",
+  "id": "^[a-z0-9][a-z0-9._-]{0,60}$",
+  "empresa": "^(software|instituto|midia|maker|logistica|editora)$",
+  "marca": "^(amtech|instituto|editora)$",
+  "perfil": "^(sempre|trabalho|sob-demanda|laboratorio)$",
+  "perfil_soberania": "^(forgejo|soft-serve|headscale|glitchtip|bookstack|actual|ghostfolio|firefly|akaunting)$",
+  "alvo_instalar": "^(sempre|trabalho|sob-demanda|laboratorio|tudo|[a-z0-9-]{2,60})$",
+  "tipo_nota": "^(adr|triagem|garimpo|padrao|trecho|licao|recusa|nota|referencia)$",
+  "nota_0a10": "^([0-9]|10)$",
+  "minutos": "^[0-9]{1,3}$",
+  "situacao_livro": "^(tenho|comprar|gratis-online|emprestado)$",
+  "formato": "^[a-z0-9-]{2,30}$",
+  "diagrama": "^docs/[a-z0-9/_-]{1,80}\\.d2$"
+ },
+ "areas": {
+  "hoje": "Hoje",
+  "nucleo": "Núcleo",
+  "estudo": "Estudo",
+  "negocio": "Empresas e rendas",
+  "setup": "Serviços e setup",
+  "git": "Git",
+  "segredos": "Segredos",
+  "ferramentas": "Ferramentas",
+  "proibido": "Proibido"
+ },
+ "aprovacao": {
+  "validade_min": 30
+ },
+ "receitas": {
+  "agora": {
+   "area": "hoje",
+   "nivel": "automatico",
+   "celular": true,
+   "descricao": "O que depende de você agora (passos manuais e decisões, na ordem)",
+   "args": [
+    {
+     "nome": "empresa",
+     "obrigatorio": false,
+     "padrao": "empresa"
+    }
+   ]
+  },
+  "akita": {
+   "area": "estudo",
+   "nivel": "automatico",
+   "celular": true,
+   "descricao": "Escola Akita",
+   "args": [],
+   "subcomandos": {
+    "pendentes": [],
+    "trilha": [],
+    "aprovar": [
+     "id"
+    ],
+    "recusar": [
+     "id"
+    ],
+    "aplicar": [
+     "id"
+    ]
+   },
+   "subcomandos_pede_ok": [
+    "aprovar",
+    "recusar",
+    "aplicar"
+   ]
+  },
+  "aprovar": {
+   "area": "git",
+   "nivel": "pede-ok",
+   "celular": true,
+   "descricao": "Aprova um PR (o merge é do Alan)",
+   "args": [
+    {
+     "nome": "n",
+     "obrigatorio": true,
+     "padrao": "numero"
+    }
+   ],
+   "confirmacao_dupla": true,
+   "motivo": "merge na main"
+  },
+  "arquiteto": {
+   "area": "negocio",
+   "nivel": "automatico",
+   "celular": false,
+   "descricao": "Pacote de contexto para o Claude (só imprime, gasta zero token)",
+   "args": [
+    {
+     "nome": "pedido",
+     "obrigatorio": true,
+     "tipo": "texto",
+     "max": 300
+    }
+   ]
+  },
+  "arquiteto-claude": {
+   "area": "negocio",
+   "nivel": "pede-ok",
+   "celular": false,
+   "descricao": "O mesmo pacote enviado ao Claude Code dentro da sandbox (gasta token do seu plano)",
+   "args": [
+    {
+     "nome": "pedido",
+     "obrigatorio": true,
+     "tipo": "texto",
+     "max": 300
+    }
+   ],
+   "motivo": "gasta o limite do Claude"
+  },
+  "atrito": {
+   "area": "estudo",
+   "nivel": "so-terminal",
+   "celular": false,
+   "descricao": "",
+   "args": [],
+   "motivo": "formulário (texto, área) ainda não existe"
+  },
+  "atritos": {
+   "area": "estudo",
+   "nivel": "automatico",
+   "celular": true,
+   "descricao": "",
+   "args": []
+  },
+  "backup": {
+   "area": "setup",
+   "nivel": "pede-ok",
+   "celular": true,
+   "descricao": "Backup agora (o mesmo do agendamento das 22h30)",
+   "args": [],
+   "timeout": 3600
+  },
+  "backup-externo": {
+   "area": "setup",
+   "nivel": "pede-ok",
+   "celular": false,
+   "descricao": "Cópia do backup no HD externo (restic copy, mesma senha)",
+   "args": [],
+   "opcoes": [
+    "--simular",
+    "--restaurar"
+   ],
+   "timeout": 3600
+  },
+  "bootstrap-simular": {
+   "area": "setup",
+   "nivel": "automatico",
+   "celular": false,
+   "descricao": "Mostra o que o bootstrap instalaria, sem mudar nada",
+   "args": []
+  },
+  "buscar": {
+   "area": "nucleo",
+   "nivel": "automatico",
+   "celular": true,
+   "descricao": "Procura na base do núcleo (decisões, lições, triagens, garimpos)",
+   "args": [
+    {
+     "nome": "texto",
+     "obrigatorio": true,
+     "tipo": "texto",
+     "max": 120
+    }
+   ]
+  },
+  "central": {
+   "area": "proibido",
+   "nivel": "proibido",
+   "celular": false,
+   "descricao": "Central AMtech (ADR 0023) em http",
+   "args": [],
+   "motivo": "é a própria Central"
+  },
+  "central-usuario": {
+   "area": "proibido",
+   "nivel": "proibido",
+   "celular": false,
+   "descricao": "Cria ou troca a senha de um usuário da Central (pede a senha aqui no terminal)",
+   "args": [],
+   "motivo": "pede senha no terminal"
+  },
+  "check": {
+   "area": "setup",
+   "nivel": "automatico",
+   "celular": false,
+   "descricao": "O portão antes de cada commit",
+   "args": [],
+   "timeout": 1800
+  },
+  "ci-local": {
+   "area": "setup",
+   "nivel": "avisa",
+   "celular": false,
+   "descricao": "Roda o CI do GitHub Actions na sua máquina, sem push (precisa do Docker)",
+   "args": [],
+   "timeout": 3600
+  },
+  "coerencia": {
+   "area": "setup",
+   "nivel": "automatico",
+   "celular": false,
+   "descricao": "just coerencia            (só relatório)     just coerencia --corrigir     (troca sozinho o que tem troca segura)",
+   "args": [],
+   "opcoes_pede_ok": [
+    "--corrigir"
+   ]
+  },
+  "cofre-abrir": {
+   "area": "proibido",
+   "nivel": "proibido",
+   "celular": false,
+   "descricao": "",
+   "args": [],
+   "motivo": "abre o cofre"
+  },
+  "cofre-fechar": {
+   "area": "segredos",
+   "nivel": "automatico",
+   "celular": false,
+   "descricao": "",
+   "args": []
+  },
+  "colher": {
+   "area": "estudo",
+   "nivel": "pede-ok",
+   "celular": true,
+   "descricao": "Entrega a ficha",
+   "args": [
+    {
+     "nome": "etapa",
+     "obrigatorio": true,
+     "padrao": "etapa"
+    }
+   ],
+   "opcoes": [
+    "--seco",
+    "--forcar"
+   ]
+  },
+  "contexto-ia": {
+   "area": "proibido",
+   "nivel": "proibido",
+   "celular": false,
+   "descricao": "Contexto enxuto de uma pasta para colar numa IA",
+   "args": [],
+   "motivo": "empacota pasta para IA na nuvem"
+  },
+  "conversa": {
+   "area": "ferramentas",
+   "nivel": "automatico",
+   "celular": false,
+   "descricao": "Pacote de contexto para começar uma conversa nova (cole no Claude)",
+   "args": []
+  },
+  "decisoes": {
+   "area": "hoje",
+   "nivel": "automatico",
+   "celular": true,
+   "descricao": "Só as decisões que são suas",
+   "args": [
+    {
+     "nome": "empresa",
+     "obrigatorio": false,
+     "padrao": "empresa"
+    }
+   ]
+  },
+  "default": {
+   "area": "ferramentas",
+   "nivel": "automatico",
+   "celular": false,
+   "descricao": "Lista as receitas",
+   "args": []
+  },
+  "desligar": {
+   "area": "setup",
+   "nivel": "pede-ok",
+   "celular": true,
+   "descricao": "Para os serviços do celular (não desinstala nada)  ·  só os containers de um perfil",
+   "args": [
+    {
+     "nome": "perfil",
+     "obrigatorio": false,
+     "padrao": "perfil"
+    }
+   ],
+   "opcoes": [
+    "--simular"
+   ]
+  },
+  "diag": {
+   "area": "estudo",
+   "nivel": "so-terminal",
+   "celular": false,
+   "descricao": "Diagnóstico antes de cada assunto (certo/errado + certeza 1 a 3)",
+   "args": [],
+   "motivo": "formulário do diagnóstico ainda não existe (c1..c3/x1..x3)"
+  },
+  "diagrama": {
+   "area": "ferramentas",
+   "nivel": "avisa",
+   "celular": false,
+   "descricao": "Desenha um diagrama D2 em SVG ao lado do arquivo",
+   "args": [
+    {
+     "nome": "arquivo",
+     "obrigatorio": true,
+     "padrao": "diagrama"
+    }
+   ]
+  },
+  "docs": {
+   "area": "setup",
+   "nivel": "avisa",
+   "celular": false,
+   "descricao": "Regenera toda a documentação a partir de data/",
+   "args": []
+  },
+  "erro": {
+   "area": "estudo",
+   "nivel": "so-terminal",
+   "celular": false,
+   "descricao": "Caderno de erros e atritos do setup (uma linha, sem abrir arquivo)",
+   "args": [],
+   "motivo": "formulário (etapa, erro, certo) ainda não existe"
+  },
+  "erros": {
+   "area": "estudo",
+   "nivel": "automatico",
+   "celular": true,
+   "descricao": "",
+   "args": []
+  },
+  "extensoes-wsl": {
+   "area": "setup",
+   "nivel": "pede-ok",
+   "celular": false,
+   "descricao": "Instala no VS Code do Ubuntu as extensões marcadas com \"wsl\"",
+   "args": [],
+   "opcoes": [
+    "--simular"
+   ]
+  },
+  "feito": {
+   "area": "hoje",
+   "nivel": "avisa",
+   "celular": true,
+   "descricao": "Marca passos ou fases inteiras como feitos",
+   "args": [
+    {
+     "nome": "ids",
+     "obrigatorio": true,
+     "padrao": "id",
+     "repetir": true
+    }
+   ]
+  },
+  "ficha": {
+   "area": "estudo",
+   "nivel": "so-terminal",
+   "celular": false,
+   "descricao": "Ficha do assunto (escreva uma vez, depois de estudar)",
+   "args": [
+    {
+     "nome": "etapa",
+     "obrigatorio": true,
+     "padrao": "etapa"
+    }
+   ],
+   "motivo": "abre o editor no terminal"
+  },
+  "fila": {
+   "area": "negocio",
+   "nivel": "automatico",
+   "celular": true,
+   "descricao": "Pedidos da fila e se o Claude está em pausa por limite",
+   "args": []
+  },
+  "fontes": {
+   "area": "estudo",
+   "nivel": "automatico",
+   "celular": false,
+   "descricao": "Fontes de estudo, acervo privado em ~/AMtech/estudo (nunca no Git)",
+   "args": [],
+   "subcomandos": {
+    "docs": [],
+    "conferir": [],
+    "buscar": [
+     "texto:120"
+    ]
+   }
+  },
+  "instalar": {
+   "area": "setup",
+   "nivel": "pede-ok",
+   "celular": false,
+   "descricao": "Monta o setup inteiro",
+   "args": [
+    {
+     "nome": "alvo",
+     "obrigatorio": false,
+     "padrao": "alvo_instalar"
+    }
+   ],
+   "opcoes": [
+    "--simular"
+   ],
+   "timeout": 3600
+  },
+  "lab-abrir": {
+   "area": "proibido",
+   "nivel": "proibido",
+   "celular": false,
+   "descricao": "Monta a pasta cifrada da sala limpa (pede a senha do gocryptfs) e desmonta com just lab-fechar",
+   "args": [],
+   "motivo": "pede a senha do gocryptfs"
+  },
+  "lab-fechar": {
+   "area": "setup",
+   "nivel": "automatico",
+   "celular": false,
+   "descricao": "",
+   "args": []
+  },
+  "lembrar": {
+   "area": "nucleo",
+   "nivel": "avisa",
+   "celular": true,
+   "descricao": "Guarda algo na base do núcleo",
+   "args": [
+    {
+     "nome": "texto",
+     "obrigatorio": true,
+     "tipo": "texto",
+     "max": 500
+    },
+    {
+     "nome": "tipo",
+     "obrigatorio": false,
+     "padrao": "tipo_nota"
+    }
+   ]
+  },
+  "ligado": {
+   "area": "setup",
+   "nivel": "automatico",
+   "celular": true,
+   "descricao": "O que está no ar agora (serviços, Ollama, LiteLLM, últimos pedidos)",
+   "args": []
+  },
+  "ligar": {
+   "area": "setup",
+   "nivel": "pede-ok",
+   "celular": true,
+   "descricao": "Liga o setup",
+   "args": [
+    {
+     "nome": "perfil",
+     "obrigatorio": false,
+     "padrao": "perfil"
+    }
+   ],
+   "opcoes": [
+    "--simular"
+   ],
+   "timeout": 3600
+  },
+  "livros": {
+   "area": "estudo",
+   "nivel": "automatico",
+   "celular": true,
+   "descricao": "Biblioteca",
+   "args": [],
+   "subcomandos": {
+    "lista": [],
+    "para": [
+     "etapa"
+    ],
+    "comprar": [],
+    "lidos": [],
+    "marcar": [
+     "id",
+     "situacao_livro"
+    ]
+   },
+   "subcomandos_avisa": [
+    "marcar"
+   ]
+  },
+  "medir": {
+   "area": "proibido",
+   "nivel": "proibido",
+   "celular": false,
+   "descricao": "Mede antes de mudar de stack",
+   "args": [],
+   "motivo": "recebe comando livre"
+  },
+  "menu": {
+   "area": "proibido",
+   "nivel": "proibido",
+   "celular": false,
+   "descricao": "Escolhe a receita num menu com setas (gum)",
+   "args": [],
+   "motivo": "interativo"
+  },
+  "motor": {
+   "area": "negocio",
+   "nivel": "automatico",
+   "celular": true,
+   "descricao": "Motor de decisão (ADR 0014)",
+   "args": [
+    {
+     "nome": "pedido",
+     "obrigatorio": true,
+     "tipo": "texto",
+     "max": 300
+    }
+   ]
+  },
+  "motor-custo": {
+   "area": "negocio",
+   "nivel": "so-terminal",
+   "celular": false,
+   "descricao": "Registra o gasto de uma chamada de IA",
+   "args": [],
+   "motivo": "formulário de custo ainda não existe"
+  },
+  "motor-ok": {
+   "area": "negocio",
+   "nivel": "avisa",
+   "celular": true,
+   "descricao": "Marca se a decisão deu certo (alimenta a regra de três)",
+   "args": [
+    {
+     "nome": "id",
+     "obrigatorio": true,
+     "padrao": "numero"
+    }
+   ]
+  },
+  "motor-refazer": {
+   "area": "negocio",
+   "nivel": "avisa",
+   "celular": true,
+   "descricao": "",
+   "args": [
+    {
+     "nome": "id",
+     "obrigatorio": true,
+     "padrao": "numero"
+    }
+   ]
+  },
+  "motor-relatorio": {
+   "area": "negocio",
+   "nivel": "automatico",
+   "celular": true,
+   "descricao": "Decisões por degrau, gasto e o que já pode virar script",
+   "args": []
+  },
+  "os-instalar": {
+   "area": "proibido",
+   "nivel": "proibido",
+   "celular": false,
+   "descricao": "AMtech OS",
+   "args": [],
+   "motivo": "transforma a máquina"
+  },
+  "os-simular": {
+   "area": "setup",
+   "nivel": "automatico",
+   "celular": false,
+   "descricao": "AMtech OS",
+   "args": [
+    {
+     "nome": "perfil",
+     "obrigatorio": false,
+     "padrao": "^[a-z]{2,20}$"
+    }
+   ]
+  },
+  "pedir": {
+   "area": "negocio",
+   "nivel": "avisa",
+   "celular": true,
+   "descricao": "Manda um pedido para a fila (o mesmo do /pedir no Telegram)",
+   "args": [
+    {
+     "nome": "texto",
+     "obrigatorio": true,
+     "tipo": "texto",
+     "max": 1000
+    }
+   ],
+   "python": "fila.adicionar",
+   "motivo": "só enfileira; o código volta como PR em rascunho, e o merge continua sendo seu"
+  },
+  "professor": {
+   "area": "estudo",
+   "nivel": "automatico",
+   "celular": true,
+   "descricao": "Professor",
+   "args": [],
+   "subcomandos": {
+    "hoje": [],
+    "trilha": [],
+    "cartoes": [],
+    "aula": [
+     "id"
+    ],
+    "prova": [
+     "id"
+    ],
+    "corrigir": [
+     "id"
+    ],
+    "ferramenta": [
+     "id"
+    ],
+    "nota": [
+     "id",
+     "nota_0a10"
+    ],
+    "fechar": [
+     "id",
+     "minutos"
+    ]
+   },
+   "subcomandos_avisa": [
+    "nota",
+    "fechar"
+   ]
+  },
+  "professor-mapa": {
+   "area": "estudo",
+   "nivel": "avisa",
+   "celular": false,
+   "descricao": "Professor × mapa-de-estudo",
+   "args": []
+  },
+  "progresso": {
+   "area": "hoje",
+   "nivel": "automatico",
+   "celular": true,
+   "descricao": "Quanto do roteiro já foi feito",
+   "args": [
+    {
+     "nome": "empresa",
+     "obrigatorio": false,
+     "padrao": "empresa"
+    }
+   ]
+  },
+  "rapido": {
+   "area": "hoje",
+   "nivel": "automatico",
+   "celular": true,
+   "descricao": "O caminho mais curto",
+   "args": [],
+   "opcoes": [
+    "--todas"
+   ]
+  },
+  "recrutador": {
+   "area": "estudo",
+   "nivel": "automatico",
+   "celular": true,
+   "descricao": "Recrutador",
+   "args": [],
+   "subcomandos": {
+    "semana": [],
+    "progresso": [],
+    "formatos": [],
+    "registrar": [
+     "formato",
+     "nota_0a10"
+    ]
+   },
+   "subcomandos_avisa": [
+    "registrar"
+   ]
+  },
+  "repos-visibilidade": {
+   "area": "git",
+   "nivel": "automatico",
+   "celular": false,
+   "descricao": "just repos-visibilidade            (só confere)     just repos-visibilidade --aplicar     (muda depois da sua confirmação)",
+   "args": [],
+   "opcoes_pede_ok": [
+    "--aplicar"
+   ],
+   "motivo": "--aplicar muda a visibilidade dos repositórios"
+  },
+  "senha": {
+   "area": "proibido",
+   "nivel": "proibido",
+   "celular": false,
+   "descricao": "Variádico só (o just 1.21 do apt não aceita *opcao depois de parâmetro com padrão); a busca continua opcional no senhas.py",
+   "args": [],
+   "motivo": "copia senha para a área de transferência"
+  },
+  "senhas": {
+   "area": "segredos",
+   "nivel": "automatico",
+   "celular": false,
+   "descricao": "just senhas (o que falta no cofre) · just senha github (copia, limpa em 20 s) · just senhas-criar · just cofre-abrir 30 · just cofre-fechar",
+   "args": []
+  },
+  "senhas-criar": {
+   "area": "proibido",
+   "nivel": "proibido",
+   "celular": false,
+   "descricao": "",
+   "args": [],
+   "motivo": "pede a senha mestra"
+  },
+  "senhas-lista": {
+   "area": "segredos",
+   "nivel": "automatico",
+   "celular": false,
+   "descricao": "",
+   "args": []
+  },
+  "senhas-rodar": {
+   "area": "proibido",
+   "nivel": "proibido",
+   "celular": false,
+   "descricao": "just senhas-rodar soberania -- docker compose up -d   (segredos de infra/soberania vindos do cofre, só para este comando)",
+   "args": [],
+   "motivo": "roda comando livre com segredos"
+  },
+  "servico": {
+   "area": "setup",
+   "nivel": "pede-ok",
+   "celular": true,
+   "descricao": "Sobe um serviço próprio pelo perfil",
+   "args": [
+    {
+     "nome": "perfil",
+     "obrigatorio": true,
+     "padrao": "perfil_soberania"
+    }
+   ]
+  },
+  "site": {
+   "area": "negocio",
+   "nivel": "automatico",
+   "celular": true,
+   "descricao": "Site de uma marca (amtech, instituto, editora)",
+   "args": [
+    {
+     "nome": "marca",
+     "obrigatorio": true,
+     "padrao": "marca"
+    }
+   ],
+   "opcoes": [
+    "--checar"
+   ]
+  },
+  "tarefas": {
+   "area": "hoje",
+   "nivel": "automatico",
+   "celular": true,
+   "descricao": "Tarefas abertas do núcleo",
+   "args": []
+  },
+  "triagem": {
+   "area": "negocio",
+   "nivel": "automatico",
+   "celular": true,
+   "descricao": "Montar, colar ou construir",
+   "args": [
+    {
+     "nome": "pedido",
+     "obrigatorio": true,
+     "tipo": "texto",
+     "max": 300
+    }
+   ]
+  },
+  "validar": {
+   "area": "setup",
+   "nivel": "automatico",
+   "celular": true,
+   "descricao": "just validar   ·   just validar --rapido (sem o just check)   ·   just validar --restaurar (restaura o backup real numa pasta temporária)",
+   "args": [],
+   "opcoes": [
+    "--rapido"
+   ],
+   "opcoes_pede_ok": [
+    "--restaurar"
+   ],
+   "timeout": 1800
+  },
+  "vault-espelho": {
+   "area": "setup",
+   "nivel": "avisa",
+   "celular": false,
+   "descricao": "Copia o dev-setup para a pasta 11 do seu vault (o just docs já faz isso quando o vault existe)",
+   "args": [],
+   "opcoes": [
+    "--simular"
+   ]
+  },
+  "verificar": {
+   "area": "setup",
+   "nivel": "automatico",
+   "celular": true,
+   "descricao": "Confere o que está instalado no Ubuntu",
+   "args": []
+  },
+  "vitrine": {
+   "area": "negocio",
+   "nivel": "so-terminal",
+   "celular": false,
+   "descricao": "Vitrine para clientes",
+   "args": [],
+   "motivo": "publica README em repositório público; faça no terminal"
+  }
+ }
+}

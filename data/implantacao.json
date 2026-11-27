@@ -8224,6 +8224,16 @@
      "blocos": []
     },
     {
+     "id": "central-v1",
+     "titulo": "Central v1: criar o usuário, subir e testar no navegador",
+     "quem": "voce",
+     "pronto": "Pronto quando você entra em http://127.0.0.1:8700, roda o 'agora' pela tela e aprova um 'ligar --simular'",
+     "tempo_min": 20,
+     "blocos": [],
+     "comando": "cd ~/dev/dev-setup && just central-usuario alan && just central",
+     "nota": "Só 127.0.0.1. A senha vai para o KeePassXC. O celular entra na fase seguinte (Tailscale + AMTECH_CENTRAL_HOSTS)."
+    },
+    {
      "id": "central-f1",
      "titulo": "F1 · Portal Homepage gerado dos dados (:3010)",
      "quem": "claude",

@@ -2,6 +2,23 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.61.0] - 2026-11-27
+
+### Adicionado
+- **Central AMtech v1** (`tools/central/`, ADR 0023): `just central` sobe em `http://127.0.0.1:8700`; `just central-usuario NOME` cria o usuário.
+  - Telas Hoje, Comandos, Aprovar, Execução (saída ao vivo) e Auditoria; funciona em 390 px e como app instalável.
+  - Login com scrypt, bloqueio depois de 5 erros, sessão HttpOnly/SameSite=Strict, CSRF, Host e Origin conferidos, CSP sem script inline.
+  - Executor sem shell, com ambiente mínimo (sem tokens) e tempo limite.
+  - Aprovação com validade de 30 min e uso único; o merge pede o número do PR.
+  - Tabelas `central_*` no `nucleo.db` com migrações, organizações, papéis e usuários; auditoria com corrente de hash.
+- `data/central.json`: allowlist única das 70 receitas (automatico, avisa, pede-ok, so-terminal, proibido), com padrão por argumento, subcomandos e opções permitidos.
+- `tools/central/allowlist.py --check` no `just check` e no CI: falha com receita não classificada ou que cole argumento no bash.
+- 31 testes em `tools/central` (19 só com a biblioteca padrão; 12 de ponta a ponta com FastAPI, que o CI instala).
+- Passo `central-v1` no roteiro e ADR 0023.
+
+### Corrigido
+- **Injeção de comando em 40 receitas do `justfile`**: o argumento era colado no texto do bash (`"{{texto}}"`), e um valor com `"` ou `$(…)` executava comando. Agora todas usam `"$1"`/`"$@"` (o `set positional-arguments` já estava ligado). O `aprovar` recusa número de PR inválido.
+
 ## [2.60.0] - 2026-11-26
 
 ### Adicionado

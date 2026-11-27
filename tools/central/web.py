@@ -1,0 +1,538 @@
+"""Telas e rotas da Central (FastAPI, HTML gerado aqui, JavaScript só de arquivo estático: a CSP proíbe script inline).
+
+Segurança desde a primeira linha (ADR 0022 e 0023): login, cookie HttpOnly + SameSite=Strict, CSRF em todo POST,
+conferência de Host e de Origin, allowlist, aprovação com validade e uso único, auditoria encadeada.
+"""
+from __future__ import annotations
+
+import asyncio
+import hmac
+import html
+import json
+import re
+import secrets
+from pathlib import Path
+
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse, Response, StreamingResponse
+from fastapi.staticfiles import StaticFiles
+
+import allowlist
+import banco
+from executor import Executor
+
+COOKIE = "central_sessao"
+COOKIE_PRE = "central_pre"
+NIVEL_ORDEM = ("automatico", "avisa", "pede-ok")
+ROTULO_NIVEL = {"automatico": "roda direto", "avisa": "roda e avisa", "pede-ok": "pede aprovação",
+                "so-terminal": "só no terminal", "proibido": "proibido"}
+RAPIDOS = [("agora", None, []), ("professor", "hoje", []), ("fila", None, []), ("tarefas", None, []),
+           ("ligado", None, []), ("validar", None, ["--rapido"])]
+CSP = ("default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; "
+       "frame-ancestors 'none'; form-action 'self'; base-uri 'none'; object-src 'none'")
+e = html.escape
+
+
+def criar_app(raiz: Path, caminho_banco: Path, hosts: set[str] | None = None, executor: Executor | None = None) -> FastAPI:
+    banco.migrar(caminho_banco)
+    dados = allowlist.carregar(raiz)
+    hosts = {"127.0.0.1", "localhost", *(hosts or set())}
+    ex = executor or Executor(raiz, caminho_banco)
+    app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
+    app.mount("/static", StaticFiles(directory=Path(__file__).parent / "static"), name="static")
+
+    def con():
+        return banco.abrir(caminho_banco)
+
+    # ------------------------------------------------------------------ proteção geral
+    @app.middleware("http")
+    async def protecao(request: Request, chamar):
+        host = (request.headers.get("host") or "").rsplit(":", 1)[0].strip("[]").lower()
+        if host not in hosts:
+            return Response("Host não permitido.", status_code=400, media_type="text/plain; charset=utf-8")
+        if request.method == "POST":
+            origem = request.headers.get("origin")
+            if origem and re.sub(r"^https?://", "", origem).rsplit(":", 1)[0].lower() != host:
+                return Response("Origem não permitida.", status_code=403, media_type="text/plain; charset=utf-8")
+        resp = await chamar(request)
+        resp.headers["Content-Security-Policy"] = CSP
+        resp.headers["X-Frame-Options"] = "DENY"
+        resp.headers["X-Content-Type-Options"] = "nosniff"
+        resp.headers["Referrer-Policy"] = "same-origin"  # no-referrer faz o navegador mandar Origin: null
+        if not request.url.path.startswith("/static"):
+            resp.headers["Cache-Control"] = "no-store"
+        return resp
+
+    def sessao_de(request: Request) -> dict | None:
+        c = con()
+        try:
+            return banco.sessao(c, request.cookies.get(COOKIE))
+        finally:
+            c.close()
+
+    async def form_com_csrf(request: Request, s: dict):
+        form = await request.form()
+        if not hmac.compare_digest(str(form.get("csrf", "")), s["csrf"]):
+            raise PermissionError("Formulário expirado ou de outra página. Recarregue e tente de novo.")
+        return form
+
+    def ir(url: str) -> RedirectResponse:
+        return RedirectResponse(url, status_code=303)
+
+    def erro(s: dict | None, msg: str, status: int = 400) -> HTMLResponse:
+        return HTMLResponse(pagina("Não deu certo", f'<p class="erro">{e(msg)}</p><p><a href="/">Voltar ao Hoje</a></p>', s),
+                            status_code=status)
+
+    # ------------------------------------------------------------------ login
+    @app.get("/login")
+    async def login_tela(request: Request):
+        pre = secrets.token_urlsafe(16)
+        resp = HTMLResponse(pagina("Entrar", tela_login(pre), None))
+        resp.set_cookie(COOKIE_PRE, pre, httponly=True, samesite="strict", secure=request.url.scheme == "https", max_age=900)
+        return resp
+
+    @app.post("/login")
+    async def login(request: Request):
+        form = await request.form()
+        pre = request.cookies.get(COOKIE_PRE, "")
+        if not pre or not hmac.compare_digest(str(form.get("pre", "")), pre):
+            return ir("/login")
+        nome, senha = str(form.get("usuario", ""))[:60], str(form.get("senha", ""))[:200]
+        ip = request.client.host if request.client else ""
+        c = con()
+        try:
+            u = banco.autenticar(c, nome, senha)
+            if not u:
+                banco.auditar(c, "login.falha", alvo=nome, resultado=ip)
+                novo = secrets.token_urlsafe(16)
+                resp = HTMLResponse(pagina("Entrar", tela_login(novo, "Usuário ou senha incorretos (ou bloqueado por 15 min)."), None),
+                                    status_code=401)
+                resp.set_cookie(COOKIE_PRE, novo, httponly=True, samesite="strict", secure=request.url.scheme == "https", max_age=900)
+                return resp
+            token, _ = banco.criar_sessao(c, u, ip)
+            banco.auditar(c, "login.ok", organizacao_id=u["organizacao_id"], usuario_id=u["id"], resultado=ip)
+        finally:
+            c.close()
+        resp = ir("/")
+        resp.set_cookie(COOKIE, token, httponly=True, samesite="strict", secure=request.url.scheme == "https",
+                        max_age=int(banco.SESSAO_MAXIMA.total_seconds()))
+        resp.delete_cookie(COOKIE_PRE)
+        return resp
+
+    @app.post("/sair")
+    async def sair(request: Request):
+        s = sessao_de(request)
+        if s:
+            try:
+                await form_com_csrf(request, s)
+            except PermissionError as err:
+                return erro(s, str(err), 403)
+            c = con()
+            try:
+                banco.encerrar_sessao(c, request.cookies.get(COOKIE, ""))
+                banco.auditar(c, "logout", organizacao_id=s["organizacao_id"], usuario_id=s["usuario_id"])
+            finally:
+                c.close()
+        resp = ir("/login")
+        resp.delete_cookie(COOKIE)
+        return resp
+
+    # ------------------------------------------------------------------ telas
+    def pendentes(c, org: int):
+        banco.expirar_aprovacoes(c)
+        return c.execute("SELECT * FROM central_aprovacoes WHERE organizacao_id = ? AND estado = 'pendente' ORDER BY criado",
+                         (org,)).fetchall()
+
+    def pode(s: dict, nivel: str) -> bool:
+        c = con()
+        try:
+            p = banco.papel(c, s["papel"])
+        finally:
+            c.close()
+        return NIVEL_ORDEM.index(nivel) <= NIVEL_ORDEM.index(p["nivel_max"])
+
+    @app.get("/")
+    async def hoje(request: Request):
+        s = sessao_de(request)
+        if not s:
+            return ir("/login")
+        c = con()
+        try:
+            pend = pendentes(c, s["organizacao_id"])
+            ultimas = c.execute("SELECT * FROM central_execucoes WHERE organizacao_id = ? ORDER BY inicio DESC LIMIT 8",
+                                (s["organizacao_id"],)).fetchall()
+        finally:
+            c.close()
+        corpo = ['<section><h2>Esperando você</h2>']
+        if pend:
+            corpo.append(f'<p><a class="botao" href="/aprovar">{len(pend)} aprovação(ões) pendente(s)</a></p>')
+        else:
+            corpo.append('<p class="calmo">Nada esperando aprovação.</p>')
+        corpo.append('</section><section><h2>Agora</h2><div class="rapidos">')
+        for receita, sub, opcoes in RAPIDOS:
+            r = dados["receitas"].get(receita)
+            if r and r["nivel"] in NIVEL_ORDEM:
+                rotulo = " ".join(p for p in (receita, sub, *opcoes) if p)
+                corpo.append(form_rapido(s["csrf"], receita, sub, opcoes, rotulo))
+        corpo.append('</div></section>')
+        for receita, titulo in (("pedir", "Pedir código (vai para a fila)"), ("lembrar", "Guardar no núcleo")):
+            r = dados["receitas"].get(receita)
+            if r and r["nivel"] in NIVEL_ORDEM:
+                corpo.append(f'<section><h2>{e(titulo)}</h2>{form_receita(s["csrf"], dados, receita, r)}</section>')
+        corpo.append('<section><h2>Últimas execuções</h2>' + tabela_execucoes(ultimas) + '</section>')
+        return HTMLResponse(pagina("Hoje", "".join(corpo), s, len(pend)))
+
+    @app.get("/comandos")
+    async def comandos(request: Request):
+        s = sessao_de(request)
+        if not s:
+            return ir("/login")
+        c = con()
+        try:
+            n_pend = len(pendentes(c, s["organizacao_id"]))
+        finally:
+            c.close()
+        corpo = ['<p class="calmo">Só aparece o que está em <code>data/central.json</code>. '
+                 'Os valores são conferidos de novo no servidor antes de rodar.</p>']
+        for area, itens in allowlist.visiveis(dados).items():
+            corpo.append(f'<section><h2>{e(dados["areas"].get(area, area))}</h2>')
+            for nome, r in sorted(itens):
+                corpo.append(cartao_receita(s["csrf"], dados, nome, r))
+            corpo.append('</section>')
+        return HTMLResponse(pagina("Comandos", "".join(corpo), s, n_pend))
+
+    @app.post("/rodar")
+    async def rodar(request: Request):
+        s = sessao_de(request)
+        if not s:
+            return ir("/login")
+        try:
+            form = await form_com_csrf(request, s)
+        except PermissionError as err:
+            return erro(s, str(err), 403)
+        receita = str(form.get("receita", ""))
+        sub = str(form.get("subcomando", "")) or None
+        campos = {k[2:]: str(v) for k, v in form.multi_items() if k.startswith("a_")}
+        campos.update({k: str(v) for k, v in form.multi_items() if k.startswith("sub_")})
+        opcoes = [str(v) for k, v in form.multi_items() if k == "opcao"]
+        c = con()
+        try:
+            try:
+                args, nivel = allowlist.montar(dados, receita, campos, opcoes, sub)
+            except allowlist.ErroAllowlist as err:
+                banco.auditar(c, "receita.recusada", organizacao_id=s["organizacao_id"], usuario_id=s["usuario_id"],
+                              alvo=receita, resultado=str(err))
+                return erro(s, f"Recusado: {err}")
+            if not pode(s, nivel):
+                banco.auditar(c, "receita.sem-permissao", organizacao_id=s["organizacao_id"], usuario_id=s["usuario_id"],
+                              alvo=receita, nivel=nivel)
+                return erro(s, "O seu papel não permite isso.", 403)
+            if nivel == "pede-ok":
+                id_ = banco.criar_aprovacao(c, s["organizacao_id"], receita, args, s["usuario_id"], "web",
+                                            dados.get("aprovacao", {}).get("validade_min", 30))
+                banco.auditar(c, "aprovacao.pedida", organizacao_id=s["organizacao_id"], usuario_id=s["usuario_id"],
+                              alvo=f"{id_} {receita} {json.dumps(args, ensure_ascii=False)}", nivel=nivel)
+                return ir("/aprovar")
+        finally:
+            c.close()
+        return iniciar(s, receita, args, nivel, "web")
+
+    def iniciar(s: dict, receita: str, args: list[str], nivel: str, origem: str):
+        r = dados["receitas"][receita]
+        try:
+            id_ = ex.iniciar(receita, args, nivel=nivel, organizacao_id=s["organizacao_id"], usuario_id=s["usuario_id"],
+                             origem=origem, timeout=int(r.get("timeout", 900)), python=r.get("python"))
+        except RuntimeError as err:
+            return erro(s, str(err), 409)
+        return ir(f"/execucao/{id_}")
+
+    @app.get("/execucao/{id_}")
+    async def execucao(request: Request, id_: str):
+        s = sessao_de(request)
+        if not s:
+            return ir("/login")
+        c = con()
+        try:
+            x = c.execute("SELECT * FROM central_execucoes WHERE id = ? AND organizacao_id = ?",
+                          (id_, s["organizacao_id"])).fetchone()
+        finally:
+            c.close()
+        if not x:
+            return erro(s, "Execução não encontrada.", 404)
+        args = " ".join(json.loads(x["args"]))
+        estado = "rodando…" if x["fim"] is None else f"terminou com código {x['codigo']}"
+        saida = "" if x["fim"] is None else e(x["saida"])
+        corpo = (f'<p><strong>{e(x["receita"])}</strong> <code>{e(args)}</code> · {e(ROTULO_NIVEL.get(x["nivel"], x["nivel"]))} · '
+                 f'<span id="estado">{e(estado)}</span></p>'
+                 f'<pre id="saida" data-id="{e(id_)}" data-vivo="{1 if x["fim"] is None else 0}">{saida}</pre>'
+                 '<p><a href="/">Voltar ao Hoje</a> · <a href="/comandos">Comandos</a></p>')
+        return HTMLResponse(pagina(f"Execução: {x['receita']}", corpo, s))
+
+    @app.get("/execucao/{id_}/eventos")
+    async def eventos(request: Request, id_: str):
+        s = sessao_de(request)
+        if not s:
+            return Response(status_code=401)
+        c = con()
+        try:
+            x = c.execute("SELECT id FROM central_execucoes WHERE id = ? AND organizacao_id = ?",
+                          (id_, s["organizacao_id"])).fetchone()
+        finally:
+            c.close()
+        if not x:
+            return Response(status_code=404)
+
+        async def fluxo():
+            desde = 0
+            while True:
+                lido = ex.ler(id_, desde)
+                if lido is None:
+                    c2 = con()
+                    try:
+                        y = c2.execute("SELECT saida, codigo FROM central_execucoes WHERE id = ?", (id_,)).fetchone()
+                    finally:
+                        c2.close()
+                    for linha in (y["saida"] or "").splitlines():
+                        yield f"data: {json.dumps(linha, ensure_ascii=False)}\n\n"
+                    yield f"event: fim\ndata: {y['codigo']}\n\n"
+                    return
+                linhas, fim, codigo = lido
+                for linha in linhas:
+                    yield f"data: {json.dumps(linha, ensure_ascii=False)}\n\n"
+                desde += len(linhas)
+                if fim:
+                    yield f"event: fim\ndata: {codigo}\n\n"
+                    return
+                if await request.is_disconnected():
+                    return
+                await asyncio.sleep(0.3)
+
+        return StreamingResponse(fluxo(), media_type="text/event-stream", headers={"X-Accel-Buffering": "no"})
+
+    @app.get("/aprovar")
+    async def aprovar_tela(request: Request):
+        s = sessao_de(request)
+        if not s:
+            return ir("/login")
+        c = con()
+        try:
+            pend = pendentes(c, s["organizacao_id"])
+            feitas = c.execute("SELECT * FROM central_aprovacoes WHERE organizacao_id = ? AND estado != 'pendente' "
+                               "ORDER BY criado DESC LIMIT 15", (s["organizacao_id"],)).fetchall()
+        finally:
+            c.close()
+        corpo = ['<section><h2>Pendentes</h2>']
+        if not pend:
+            corpo.append('<p class="calmo">Nada esperando você.</p>')
+        for a in pend:
+            r = dados["receitas"].get(a["receita"], {})
+            args = json.loads(a["args"])
+            dupla = ""
+            if r.get("confirmacao_dupla"):
+                dupla = (f'<label>Para confirmar, digite <strong>{e(args[0] if args else "")}</strong>'
+                         '<input name="confirmacao" autocomplete="off" inputmode="numeric" required></label>')
+            corpo.append(
+                f'<div class="cartao"><p><strong>{e(a["receita"])}</strong> <code>{e(" ".join(args))}</code></p>'
+                f'<p class="calmo">{e(r.get("descricao", ""))}{(" · " + e(r["motivo"])) if r.get("motivo") else ""}</p>'
+                f'<p class="calmo">Pedido em {e(data(a["criado"]))} · vale até {e(a["expira"][11:16])}</p>'
+                f'<form method="post" action="/aprovar/{e(a["id"])}" data-confirmar="Rodar {e(a["receita"])} agora?">'
+                f'<input type="hidden" name="csrf" value="{e(s["csrf"])}">{dupla}'
+                '<div class="linha"><button name="acao" value="aprovar">✅ Aprovar e rodar</button>'
+                '<button name="acao" value="recusar" class="secundario" formnovalidate>❌ Recusar</button></div></form></div>')
+        corpo.append('</section><section><h2>Decididas</h2>')
+        corpo.append('<table><tr><th>Receita</th><th>Estado</th><th>Quando</th></tr>' + "".join(
+            f'<tr><td>{e(a["receita"])} <code>{e(" ".join(json.loads(a["args"])))}</code></td><td>{e(a["estado"])}</td>'
+            f'<td>{e(data(a["decidido_em"] or a["expira"]))}</td></tr>' for a in feitas) + '</table></section>')
+        return HTMLResponse(pagina("Aprovar", "".join(corpo), s, len(pend)))
+
+    @app.post("/aprovar/{id_}")
+    async def aprovar(request: Request, id_: str):
+        s = sessao_de(request)
+        if not s:
+            return ir("/login")
+        try:
+            form = await form_com_csrf(request, s)
+        except PermissionError as err:
+            return erro(s, str(err), 403)
+        aprovar_ = form.get("acao") == "aprovar"
+        c = con()
+        try:
+            if not banco.papel(c, s["papel"])["pode_aprovar"]:
+                return erro(s, "O seu papel não pode aprovar.", 403)
+            atual = c.execute("SELECT * FROM central_aprovacoes WHERE id = ? AND organizacao_id = ?",
+                              (id_, s["organizacao_id"])).fetchone()
+            if not atual:
+                return erro(s, "Aprovação não encontrada.", 404)
+            r = dados["receitas"].get(atual["receita"])
+            args = json.loads(atual["args"])
+            if aprovar_:
+                if not r or r["nivel"] not in NIVEL_ORDEM:
+                    return erro(s, "Essa receita não pode mais rodar pela Central (allowlist mudou).", 409)
+                if r.get("confirmacao_dupla") and str(form.get("confirmacao", "")).strip() != (args[0] if args else ""):
+                    return erro(s, "A confirmação não bate. Nada foi feito.")
+            decidida = banco.decidir_aprovacao(c, id_, s["organizacao_id"], s["usuario_id"], aprovar_)
+            if not decidida:
+                return erro(s, "Essa aprovação já foi decidida ou expirou. Peça de novo.", 409)
+            banco.auditar(c, "aprovacao." + ("aprovada" if aprovar_ else "recusada"), organizacao_id=s["organizacao_id"],
+                          usuario_id=s["usuario_id"], alvo=f"{id_} {atual['receita']}", nivel="pede-ok")
+        finally:
+            c.close()
+        if not aprovar_:
+            return ir("/aprovar")
+        resp = iniciar(s, atual["receita"], args, "pede-ok", "aprovacao")
+        if isinstance(resp, RedirectResponse):
+            exec_id = resp.headers["location"].rsplit("/", 1)[-1]
+            c = con()
+            try:
+                c.execute("UPDATE central_aprovacoes SET execucao_id = ? WHERE id = ?", (exec_id, id_))
+            finally:
+                c.close()
+        return resp
+
+    @app.get("/auditoria")
+    async def auditoria(request: Request):
+        s = sessao_de(request)
+        if not s:
+            return ir("/login")
+        c = con()
+        try:
+            ok, linha = banco.verificar_auditoria(c)
+            regs = c.execute("SELECT a.*, u.nome FROM central_auditoria a LEFT JOIN central_usuarios u ON u.id = a.usuario_id "
+                             "WHERE a.organizacao_id = ? OR a.organizacao_id IS NULL ORDER BY a.id DESC LIMIT 100",
+                             (s["organizacao_id"],)).fetchall()
+        finally:
+            c.close()
+        estado = ('<p class="ok">✅ Corrente íntegra: nenhuma linha foi apagada ou mudada.</p>' if ok else
+                  f'<p class="erro">🚨 Auditoria alterada a partir da linha {linha}.</p>')
+        tabela = '<table><tr><th>Quando</th><th>Quem</th><th>Ação</th><th>Alvo</th><th>Resultado</th></tr>' + "".join(
+            f'<tr><td>{e(data(r["quando"]))}</td><td>{e(r["nome"] or r["origem"])}</td><td>{e(r["acao"])}</td>'
+            f'<td>{e(r["alvo"][:90])}</td><td>{e(r["resultado"][:60])}</td></tr>' for r in regs) + '</table>'
+        return HTMLResponse(pagina("Auditoria", estado + tabela, s))
+
+    @app.get("/api/status")
+    async def status(request: Request):
+        s = sessao_de(request)
+        if not s:
+            return JSONResponse({"erro": "login"}, status_code=401)
+        c = con()
+        try:
+            ok, _ = banco.verificar_auditoria(c)
+            n = len(pendentes(c, s["organizacao_id"]))
+        finally:
+            c.close()
+        return {"usuario": s["nome"], "papel": s["papel"], "pendentes": n, "rodando": ex.em_andamento(), "auditoria_ok": ok}
+
+    @app.get("/manifest.webmanifest")
+    async def manifesto():
+        return Response((Path(__file__).parent / "static" / "manifest.webmanifest").read_text(encoding="utf-8"),
+                        media_type="application/manifest+json")
+
+    return app
+
+
+# ---------------------------------------------------------------------- HTML
+def pagina(titulo: str, corpo: str, s: dict | None, pendentes: int | None = None) -> str:
+    nav = ""
+    if s:
+        badge = f' <span class="badge">{pendentes}</span>' if pendentes else ""
+        nav = ('<nav><a href="/">Hoje</a><a href="/comandos">Comandos</a>'
+               f'<a href="/aprovar">Aprovar{badge}</a><a href="/auditoria">Auditoria</a>'
+               f'<form method="post" action="/sair"><input type="hidden" name="csrf" value="{e(s["csrf"])}">'
+               f'<button class="link">Sair ({e(s["nome"])})</button></form></nav>')
+    return ('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">'
+            '<meta name="viewport" content="width=device-width, initial-scale=1">'
+            f'<title>{e(titulo)} · Central AMtech</title><link rel="stylesheet" href="/static/central.css">'
+            '<link rel="manifest" href="/manifest.webmanifest"><link rel="icon" href="/static/icone.svg">'
+            '<meta name="theme-color" content="#1f4e79"><script src="/static/central.js" defer></script></head>'
+            f'<body><header><strong>Central AMtech</strong>{nav}</header><main><h1>{e(titulo)}</h1>{corpo}</main></body></html>')
+
+
+def tela_login(pre: str, msg: str = "") -> str:
+    aviso = f'<p class="erro">{e(msg)}</p>' if msg else ""
+    return (f'{aviso}<form method="post" action="/login" class="cartao">'
+            f'<input type="hidden" name="pre" value="{e(pre)}">'
+            '<label>Usuário<input name="usuario" autocomplete="username" required autofocus></label>'
+            '<label>Senha<input name="senha" type="password" autocomplete="current-password" required></label>'
+            '<button>Entrar</button></form>'
+            '<p class="calmo">Sem usuário? No Ubuntu: <code>just central-usuario alan</code></p>')
+
+
+def data(iso: str | None) -> str:
+    """2026-11-27T03:44:14 → 27/11 03:44"""
+    return f"{iso[8:10]}/{iso[5:7]} {iso[11:16]}" if iso and len(iso) >= 16 else ""
+
+
+def tabela_execucoes(linhas) -> str:
+    if not linhas:
+        return '<p class="calmo">Nada rodou ainda.</p>'
+    return ('<table><tr><th>Receita</th><th>Quando</th><th>Resultado</th></tr>' + "".join(
+        f'<tr><td><a href="/execucao/{e(x["id"])}">{e(x["receita"])}</a> <code>{e(" ".join(json.loads(x["args"])))[:60]}</code></td>'
+        f'<td>{e(data(x["inicio"]))}</td><td>{"rodando" if x["fim"] is None else ("ok" if x["codigo"] == 0 else "falhou")}</td></tr>'
+        for x in linhas) + '</table>')
+
+
+def _opcoes_fixas(padrao: str) -> list[str] | None:
+    m = re.fullmatch(r"\^\(([a-z0-9|_.-]+)\)\$", padrao)
+    return m.group(1).split("|") if m else None
+
+
+def _campo(dados: dict, nome_html: str, rotulo: str, ref: str, obrigatorio: bool) -> str:
+    req = " required" if obrigatorio else ""
+    if ref.startswith("texto:"):
+        n = int(ref.split(":", 1)[1])
+        if n > 200:
+            return f'<label>{e(rotulo)}<textarea name="{e(nome_html)}" maxlength="{n}" rows="3"{req}></textarea></label>'
+        return f'<label>{e(rotulo)}<input name="{e(nome_html)}" maxlength="{n}"{req}></label>'
+    padrao = dados["padroes"].get(ref, ref)
+    fixas = _opcoes_fixas(padrao)
+    if fixas:
+        vazio = "" if obrigatorio else '<option value="">(nenhum)</option>'
+        ops = "".join(f'<option>{e(o)}</option>' for o in fixas)
+        return f'<label>{e(rotulo)}<select name="{e(nome_html)}"{req}>{vazio}{ops}</select></label>'
+    return (f'<label>{e(rotulo)}<input name="{e(nome_html)}" pattern="{e(padrao.strip("^$"))}" autocomplete="off"'
+            f' placeholder="{e(ref)}"{req}></label>')
+
+
+BOTAO = {"pedir": "Enviar para a fila", "lembrar": "Guardar", "buscar": "Buscar"}
+
+
+def form_receita(csrf: str, dados: dict, nome: str, r: dict, sub: str | None = None) -> str:
+    nivel = r["nivel"]
+    if sub and sub in r.get("subcomandos_pede_ok", []):
+        nivel = "pede-ok"
+    partes = [f'<form method="post" action="/rodar"><input type="hidden" name="csrf" value="{e(csrf)}">'
+              f'<input type="hidden" name="receita" value="{e(nome)}">']
+    if sub is not None:
+        partes.append(f'<input type="hidden" name="subcomando" value="{e(sub)}">')
+        for i, ref in enumerate(r["subcomandos"][sub], 1):
+            partes.append(_campo(dados, f"sub_{i}", ref.split(":")[0], ref, True))
+    for a in r.get("args", []):
+        ref = f"texto:{a['max']}" if a.get("tipo") == "texto" else a["padrao"]
+        partes.append(_campo(dados, "a_" + a["nome"], a["nome"], ref, a.get("obrigatorio", True)))
+    for o in r.get("opcoes", []):
+        partes.append(f'<label class="check"><input type="checkbox" name="opcao" value="{e(o)}"> {e(o)}</label>')
+    for o in r.get("opcoes_pede_ok", []):
+        partes.append(f'<label class="check"><input type="checkbox" name="opcao" value="{e(o)}"> {e(o)} (pede aprovação)</label>')
+    botao = "Pedir aprovação" if nivel == "pede-ok" else BOTAO.get(nome, "Rodar")
+    partes.append(f'<button>{botao}</button></form>')
+    return "".join(partes)
+
+
+def form_rapido(csrf: str, receita: str, sub: str | None, opcoes: list[str], rotulo: str) -> str:
+    extra = f'<input type="hidden" name="subcomando" value="{e(sub)}">' if sub else ""
+    extra += "".join(f'<input type="hidden" name="opcao" value="{e(o)}">' for o in opcoes)
+    return (f'<form method="post" action="/rodar"><input type="hidden" name="csrf" value="{e(csrf)}">'
+            f'<input type="hidden" name="receita" value="{e(receita)}">{extra}<button class="secundario">{e(rotulo)}</button></form>')
+
+
+def cartao_receita(csrf: str, dados: dict, nome: str, r: dict) -> str:
+    cab = (f'<summary><strong>{e(nome)}</strong> <span class="nivel n-{e(r["nivel"])}">{e(ROTULO_NIVEL[r["nivel"]])}</span>'
+           f'{" 📱" if r.get("celular") else ""}</summary><p class="calmo">{e(r.get("descricao", ""))}</p>')
+    if r["nivel"] == "so-terminal":
+        return f'<details class="cartao">{cab}<p class="calmo">Rode no terminal: <code>just {e(nome)}</code> · {e(r.get("motivo", ""))}</p></details>'
+    if r.get("subcomandos"):
+        corpo = "".join(f'<div class="sub"><h3>{e(nome)} {e(sub)}</h3>{form_receita(csrf, dados, nome, r, sub)}</div>'
+                        for sub in r["subcomandos"])
+    else:
+        corpo = form_receita(csrf, dados, nome, r)
+    return f'<details class="cartao">{cab}{corpo}</details>'
