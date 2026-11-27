@@ -4,6 +4,40 @@
 
 [← Índice da documentação](../README.md) · Prompts por fase: [PROMPTS.md](PROMPTS.md) · Protótipo: [prototipo/index.html](prototipo/index.html) (também publicado no Claude como artefato “Central AMtech”)
 
+> **Próximo passo:** o frontend de usuário final (Minha AMtech) e o portal do aluno (Instituto AMS) estão planejados em [frontend.md](frontend.md) (ADR 0024, proposta).
+
+## v1 pronta (2.61.0): como usar
+
+No Ubuntu, em `~/dev/dev-setup`:
+
+```bash
+just central-usuario alan   # uma vez: cria o usuário (a senha vai para o KeePassXC)
+just ligar                  # deixa a Central sempre no ar (serviço amtech-central), junto com a fila e o Ollama
+```
+
+Abra **http://127.0.0.1:8700** no navegador do Windows. Para testar sem serviço: `just central` (só enquanto o terminal estiver aberto).
+
+| Tela | O que faz |
+|---|---|
+| **Hoje** | **"O que você quer fazer?"**: escreva o pedido em português (ex.: "o que estudo hoje?", "como está o backup?", "crie a página de vendas do curso"). Depois: aprovações pendentes, botões rápidos, guardar no núcleo, últimas execuções e sugestões de "virar regra" |
+| **Pedido** | O plano que a Central montou, de onde veio (regra fixa = 0 tokens, IA local = R$ 0) e o resultado ao vivo; ações pedem um clique e, se for o caso, aprovação |
+| **Roteiro** | Os próximos passos do `data/implantacao.json` que dependem de você, com **Feito** (por passo ou fase inteira) e **Pedir ajuda**; progresso por fase e filtro por empresa |
+| **Estudo** | Revisões vencidas do Professor, domínio por nível e os formulários de estudo (Professor, diagnóstico, erro, atrito, colher, livros, recrutador, Akita) |
+| **Empresas** | Rendas da onda 0 e 1 com próximo passo, métrica e **Pedir à Central**; as outras ofertas; as 6 empresas e os produtos |
+| **Serviços** | Estado dos serviços do Ubuntu (Central, fila, bot, Ollama), as ferramentas com tela (link quando no ar, perfil que sobe) e ligar/desligar |
+| **Núcleo** | Buscar no que já se sabe, guardar nota ou lição, tarefas (criar e marcar feita) |
+| **Ajuda** | Guia de uma página: telas, custo de cada caminho e o que fazer quando algo não funciona |
+| **Comandos** | Todas as receitas de `data/central.json` por área, com formulário dos argumentos; as proibidas não aparecem |
+| **Aprovar** | Receitas que pedem aprovação: ✅ roda, ❌ recusa; vale 30 min e uma vez só; o merge pede o número do PR |
+| **Execução** | Saída ao vivo |
+| **Auditoria** | Quem fez o quê, e se a corrente de hash está íntegra |
+
+Para a IA local interpretar pedidos livres, deixe o Ollama no ar (`just ligar`). Sem ele, a Central ainda reconhece as frases
+fixas e manda trabalho de código para a fila.
+
+Arquitetura e decisões: [ADR 0023](../adr/0023-arquitetura-da-central.md). Mudar o que a Central pode rodar é editar
+`data/central.json` e passar no `just check`.
+
 **Objetivo:** abrir uma tela só, no notebook ou no celular, e daí ver o que espera você, rodar qualquer receita do `just`, mandar pedidos para a fila, estudar, acompanhar as empresas e os serviços, sem lembrar de comandos, portas ou de qual HTML abrir.
 
 **Regra de ouro:** a Central não decide nem guarda nada sozinha. Ela é a tela de cima do que já existe: `justfile`, `tools/*.py`, `nucleo.db`, fila e motor. Mudou o dado, mudou a tela.

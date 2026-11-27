@@ -53,15 +53,24 @@ class TestInventario(unittest.TestCase):
         self.assertEqual(s.escolher(["a/x", "b/x"], "x", ler=lambda _: "2"), "b/x")
         self.assertIsNone(s.escolher(["a/x", "b/x"], "x", ler=lambda _: ""))
 
+    def test_escolher_com_ler_nao_abre_o_gum(self):
+        """No terminal com gum instalado, o teste não pode abrir a tela do gum (travava o just check)."""
+        from unittest import mock
+        with mock.patch.object(s.shutil, "which", return_value="/usr/bin/gum"), \
+                mock.patch.object(s.sys.stdin, "isatty", return_value=True), \
+                mock.patch.object(s.subprocess, "run", side_effect=AssertionError("abriu o gum")):
+            self.assertEqual(s.escolher(["a/x", "b/x"], "x", ler=lambda _: "1"), "a/x")
+
 
 @unittest.skipUnless(shutil.which("keepassxc-cli"), "keepassxc-cli não instalado")
 class TestCofreDeVerdade(unittest.TestCase):
-    """Cofre de teste descartável: confere ls, criar com confirmação e leitura, com o keepassxc-cli real."""
+    """Cofre de teste descartável: confere ls, criar com confirmação e leitura, com o keepassxc-cli real.
+    O cofre usa derivação curta (-t 100) para o teste levar segundos."""
 
     def setUp(self):
         self.dir = tempfile.mkdtemp()
         self.cofre = os.path.join(self.dir, "t.kdbx")
-        subprocess.run(["keepassxc-cli", "db-create", "-q", "-p", self.cofre], input="m\nm\n", text=True, capture_output=True, check=True)
+        subprocess.run(["keepassxc-cli", "db-create", "-q", "-p", "-t", "100", self.cofre], input="m\nm\n", text=True, capture_output=True, check=True)
         os.environ["COFRE"] = self.cofre
         s.mestre = lambda *a, **k: "m"
 

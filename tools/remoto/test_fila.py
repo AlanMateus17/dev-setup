@@ -12,6 +12,7 @@ class TestFila(unittest.TestCase):
     def test_repo_padrao_e_arroba(self):
         self.assertEqual(fila.separar_repo("criar X"), ("dev-setup", "criar X"))
         self.assertEqual(fila.separar_repo("@catalogo-html corrigir menu"), ("catalogo-html", "corrigir menu"))
+        self.assertEqual(fila.separar_repo("@.. apagar")[0], "dev-setup", "'@..' não pode virar um repositório fora de ~/dev")
 
     def test_sensivel_so_local(self):
         self.assertEqual(fila.motores(True, False, True), ["local"])

@@ -1,0 +1,10 @@
+{
+  "name": "Central AMtech",
+  "short_name": "Central",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1f4e79",
+  "theme_color": "#1f4e79",
+  "lang": "pt-BR",
+  "icons": [{"src": "/static/icone.svg", "sizes": "any", "type": "image/svg+xml"}]
+}

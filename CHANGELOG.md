@@ -2,6 +2,43 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
+## [2.61.0] - 2026-11-27
+
+### Adicionado
+- **Central AMtech v1** (`tools/central/`, ADR 0023): `just central` sobe em `http://127.0.0.1:8700`; `just central-usuario NOME` cria o usuário.
+  - Telas Hoje, Comandos, Aprovar, Execução (saída ao vivo) e Auditoria; funciona em 390 px e como app instalável.
+  - Login com scrypt, bloqueio depois de 5 erros, sessão HttpOnly/SameSite=Strict, CSRF, Host e Origin conferidos, CSP sem script inline.
+  - Executor sem shell, com ambiente mínimo (sem tokens) e tempo limite.
+  - Aprovação com validade de 30 min e uso único; o merge pede o número do PR.
+  - Tabelas `central_*` no `nucleo.db` com migrações, organizações, papéis e usuários; auditoria com corrente de hash.
+- **Pedido em português** na tela Hoje ("O que você quer fazer?"), com o mínimo de tokens:
+  - regra fixa (0 tokens), depois motor de decisão (o que é decisão sua não vira plano), depois IA local (Ollama, R$ 0, só as 12 receitas mais parecidas);
+  - todo plano passa pela allowlist; só o que é de regra fixa e só lê roda sem clique;
+  - pedidos guardados em `central_prompts` (migração 2), com sugestão de "virar regra" depois de 3 vezes (regra de três).
+- Formulários de `diag`, `erro`, `atrito` e `motor-custo` (argumentos com opção, como `--certo`); só `ficha` e `vitrine` continuam só no terminal.
+- `data/central.json`: allowlist única das 70 receitas (automatico, avisa, pede-ok, so-terminal, proibido), com padrão por argumento, subcomandos e opções permitidos.
+- `tools/central/allowlist.py --check` no `just check` e no CI: falha com receita não classificada ou que cole argumento no bash.
+- Revisão de segurança independente (sem o contexto de quem escreveu) e correções:
+  - `site` sem `--checar` recria o site e agora pede aprovação; o pedido em português só usa `--checar`;
+  - auditoria assinada com HMAC (chave em `~/.config/amtech`, fora do banco) e âncora da última linha, que detecta linhas apagadas no fim;
+  - Origin conferida com a porta, e `null` é recusado;
+  - o check barra lista ou opção em receita de parâmetro fixo (o argumento a mais viraria outra receita no `just`);
+  - aprovação e plano não se perdem quando não há vaga para rodar;
+  - a aprovação reconfere a allowlist com o pedido original;
+  - a saída em memória fica limitada; a leitura tem prazo, então um processo que escapou do grupo não prende mais a receita;
+  - a âncora da auditoria é assinada e gravada dentro da trava do banco; sem âncora válida, a auditoria acusa alteração.
+- `tools/remoto/fila.py`: `@..` não vira mais nome de repositório.
+- **Plano do frontend** (`docs/central/frontend.md`, ADR 0024 proposta), feito depois da leitura dos três repositórios:
+  - duas superfícies: Minha AMtech (painel do dono, paleta Aura fixa) e Instituto AMS (portal do aluno, separado da Central);
+  - o design system Aura como fonte única;
+  - as telas, os fluxos, as sugestões por papel e as fases A0–A6 e I0–I4.
+- 68 testes em `tools/central` (45 só com a biblioteca padrão; 23 de ponta a ponta com FastAPI, que o CI instala).
+- Passo `central-v1` no roteiro e ADR 0023.
+
+### Corrigido
+- **Injeção de comando em 40 receitas do `justfile`**: o argumento era colado no texto do bash (`"{{texto}}"`), e um valor com `"` ou `$(…)` executava comando. Agora todas usam `"$1"`/`"$@"` (o `set positional-arguments` já estava ligado). O `aprovar` recusa número de PR inválido.
+- **`just check` travava no teste de senhas quando rodado no terminal**: com o `gum` instalado e a entrada sendo um terminal, o `escolher` abria a tela interativa do `gum` escondida (a saída ia para o log) e esperava para sempre. Pelo pre-push não havia terminal, por isso lá passava. Agora o `gum` só aparece quando ninguém passa `ler` (os testes passam). O cofre de teste usa derivação curta (`-t 100`).
+
 ## [2.60.0] - 2026-11-26
 
 ### Adicionado

@@ -4,7 +4,7 @@
 
 [← Índice da documentação](../README.md) · Fonte: [`data/ferramentas.json`](../../data/ferramentas.json) · Conferir no PC: `python3 tools/ferramentas/ferramentas.py --estado`
 
-**187 ferramentas.** Obrigatória = o setup conta com ela. Decisão *parada* ou *adiada* = escolha do Alan; não conta como falta no `just validar`.
+**188 ferramentas.** Obrigatória = o setup conta com ela. Decisão *parada* ou *adiada* = escolha do Alan; não conta como falta no `just validar`.
 
 | Tipo | Total | Obrigatórias | Paradas ou adiadas |
 |---|---|---|---|
@@ -12,7 +12,7 @@
 | Extensões do VS Code | 16 | 2 | 0 |
 | Pacotes do Ubuntu (apt) | 45 | 27 | 0 |
 | CLIs do Ubuntu | 49 | 9 | 1 |
-| Serviços do Ubuntu | 5 | 2 | 1 |
+| Serviços do Ubuntu | 6 | 2 | 1 |
 | Serviços Docker | 39 | 0 | 0 |
 
 ## Programas do Windows
@@ -188,6 +188,7 @@ Também no Ubuntu = instalada no VS Code do WSL por `just extensoes-wsl`.
 | Fila de pedidos | Serviços do Ubuntu | sim | sim | Fila de pedidos do celular (tools/remoto/fila.py) |  | `just ligar` |
 | Claude Remote Control | Serviços do Ubuntu | sim | — | Controla o Claude Code do PC pelo celular |  | `just ligar` |
 | Bot do Telegram | Serviços do Ubuntu | sim | — | Comandos fixos pelo Telegram (só o chat do Alan) |  | `(manual) crie ~/.config/amtech/telegram.env com TELEGRAM_TOKEN e TELEGRAM_CHAT_ID e rode: just ligar` |
+| Central AMtech | Serviços do Ubuntu | sim | — | Tela única do setup: pedido em português, roteiro, estudo, empresas, serviços, núcleo e aprovações (ADR 0023) |  | `(manual) crie o usuário com: just central-usuario alan; depois: just ligar` |
 | Pipeline de conteúdo | Serviços do Ubuntu | sim | — | Timer do pipeline de conteúdo | parada | `bash scripts/wsl/ativar-pipeline.sh` |
 
 ## Serviços Docker
@@ -252,6 +253,7 @@ Também no Ubuntu = instalada no VS Code do WSL por `just extensoes-wsl`.
 | bore | CLIs do Ubuntu | Expõe qualquer porta local na internet com um comando; regra de uso pendente |
 | Claude Remote Control | Serviços do Ubuntu | Quem entrar na conta claude.ai comanda um shell no PC; exige 2FA na conta |
 | Bot do Telegram | Serviços do Ubuntu | Recebe comandos pela internet (allowlist de um chat e de comandos fixos) |
+| Central AMtech | Serviços do Ubuntu | Nenhum: só 127.0.0.1:8700 (celular só pelo Tailscale, fase seguinte) |
 | adguard | Serviços Docker | DNS na porta 53 em todas as interfaces, por desenho |
 | soft-serve | Serviços Docker | SSH do Git em 23231 (só 127.0.0.1) |
 | headscale | Serviços Docker | Servidor de coordenação da rede privada (só 127.0.0.1:8085); precisa de config.yaml antes de subir |

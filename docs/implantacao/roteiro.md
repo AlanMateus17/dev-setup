@@ -4,13 +4,13 @@
 
 [← Implantação](README.md)
 
-65 fases, 597 passos, cerca de **1472 h 08 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
+65 fases, 598 passos, cerca de **1472 h 28 min** de trabalho no total. Cada passo tem um critério de pronto que dá para conferir. A versão para marcar o progresso é o [`acompanhamento.html`](acompanhamento.html) (e o artefato Implantação AMtech).
 
 Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Script** (você roda o comando), **Claude com você** (o Claude faz pelo conector ou pelo Claude Code, com a sua aprovação).
 
 **Todo o planejamento está aqui:** os 481 blocos do [mapa do setup](../mapa.html), de todas as 23 camadas, entram em algum passo, com a data ou o gatilho de quando, e cada uma das 98 ofertas do portfólio tem o passo em que entra à venda. Nada fica de fora; o CI falha se um bloco ou uma oferta nova não tiver passo ([quando entra cada bloco](#quando-entra-cada-bloco)).
 
-**Dá para fazer hoje:** 474 dos 597 passos (653 h 23 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
+**Dá para fazer hoje:** 475 dos 598 passos (653 h 43 min) só precisam do notebook e de contas grátis. Os outros dizem o que falta: comprar algo, pagar um serviço, ter um conteúdo seu pronto ou esperar o gatilho da fase.
 
 | Fase | Quando | Passos | Tempo |
 |---|---|---:|---:|
@@ -78,7 +78,7 @@ Legenda de quem faz: **Você** (só você pode: contas, senhas, decisões), **Sc
 | [61 · Jarvis: o setup e a casa por comando de voz](#f-jarvis) | Voz no PC e política em dez/2026; servidor da casa e cada aparelho conforme a compra (2027); orquestrador depois da Operação 24 horas | 13 | 30 h 50 min |
 | [62 · Hugging Face e IA física: TI, casa inteligente e agropecuária](#f-ia-fisica) | Modelos em dez/2026 (nada a comprar); SO-101 na primeira compra de robótica de 2027; Reachy Mini e LeKiwi depois do primeiro treino | 16 | 44 h 35 min |
 | [63 · Construção civil, arquitetura e engenharia civil (pela TI)](#f-construcao) | Ferramentas grátis no estudo da manhã a partir de jan/2027; serviços e o AM Obra só depois das rendas de agora passarem no portão | 13 | 126 h 10 min |
-| [64 · Central AMtech: uma tela para tudo do setup](#f-central) | Depois da fase Senhas · dez/2026 (protótipo em docs/central/prototipo) | 8 | 15 h 00 min |
+| [64 · Central AMtech: uma tela para tudo do setup](#f-central) | Depois da fase Senhas · dez/2026 (protótipo em docs/central/prototipo) | 9 | 15 h 20 min |
 
 <a id="f0"></a>
 
@@ -7369,49 +7369,62 @@ Abrir uma tela só, no notebook ou no celular, para ver o que espera você, roda
 - **Fora do terminal:** Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F0 de docs/central/PROMPTS.md.
 - [ ] **Pronto quando:** Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você
 
-### 64.2 F1 · Portal Homepage gerado dos dados (:3010)
+### 64.2 Central v1: criar o usuário, subir e testar no navegador
+
+**Você** · 20 min
+
+No **Ubuntu** (linha `alanmateus@...$`):
+
+```bash
+cd ~/dev/dev-setup && just central-usuario alan && just central
+```
+
+- [ ] **Pronto quando:** Pronto quando você entra em http://127.0.0.1:8700, roda o 'agora' pela tela e aprova um 'ligar --simular'
+- Só 127.0.0.1. A senha vai para o KeePassXC. O celular entra na fase seguinte (Tailscale + AMTECH_CENTRAL_HOSTS).
+
+### 64.3 F1 · Portal Homepage gerado dos dados (:3010)
 
 **Claude com você** · 2 h 00 min
 
 - **Fora do terminal:** Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F1 de docs/central/PROMPTS.md.
 - [ ] **Pronto quando:** Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você
 
-### 64.3 F2 · OliveTin com a lista fechada de receitas (:1337)
+### 64.4 F2 · OliveTin com a lista fechada de receitas (:1337)
 
 **Claude com você** · 2 h 00 min
 
 - **Fora do terminal:** Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F2 de docs/central/PROMPTS.md.
 - [ ] **Pronto quando:** Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você
 
-### 64.4 R2 · Revisão de segurança da F2 (Opus)
+### 64.5 R2 · Revisão de segurança da F2 (Opus)
 
 **Claude com você** · 1 h 00 min
 
 - **Fora do terminal:** Roda no Claude Code do notebook: cole o Bloco fixo e o prompt R de docs/central/PROMPTS.md.
 - [ ] **Pronto quando:** Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você
 
-### 64.5 F3 · Central: API de leitura e executor com saída ao vivo
+### 64.6 F3 · Central: API de leitura e executor com saída ao vivo
 
 **Claude com você** · 2 h 00 min
 
 - **Fora do terminal:** Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F3 de docs/central/PROMPTS.md.
 - [ ] **Pronto quando:** Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você
 
-### 64.6 F4 · Central: as 9 telas, igual ao protótipo
+### 64.7 F4 · Central: as 9 telas, igual ao protótipo
 
 **Claude com você** · 2 h 00 min
 
 - **Fora do terminal:** Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F4 de docs/central/PROMPTS.md.
 - [ ] **Pronto quando:** Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você
 
-### 64.7 F5 · Caixa de aprovações ligada de verdade (PRs, Akita, motor, decisões)
+### 64.8 F5 · Caixa de aprovações ligada de verdade (PRs, Akita, motor, decisões)
 
 **Claude com você** · 2 h 00 min
 
 - **Fora do terminal:** Roda no Claude Code do notebook: cole o Bloco fixo e o prompt F5 de docs/central/PROMPTS.md.
 - [ ] **Pronto quando:** Pronto quando da fase em docs/central/README.md, seção 5; just check verde; PR revisado por você
 
-### 64.8 F6 · Celular: login, app instalável e Tailscale; testes de ponta a ponta
+### 64.9 F6 · Celular: login, app instalável e Tailscale; testes de ponta a ponta
 
 **Claude com você** · 2 h 00 min
 
